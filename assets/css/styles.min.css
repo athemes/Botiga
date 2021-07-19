@@ -220,9 +220,8 @@ body.mobile-menu-visible{overflow-y:hidden}
 .top-bar .col:last-of-type{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
 .top-bar .col>*:after{color:rgba(33,33,33,0.3)}
 .header-image img{width:100%;vertical-align:top}
-.custom-logo-link{margin-bottom:10px;line-height:1}
+.custom-logo-link{margin-bottom:10px}
 .custom-logo-link img{max-width:180px}
-.custom-logo-link+.site-title{margin-top:10px}
 .sticky{display:block}
 .content-wrapper{margin-top:80px;margin-bottom:120px}
 .site-main{padding-left:15px;padding-right:60px;width:calc(100% - 300px)}
@@ -251,8 +250,7 @@ body.mobile-menu-visible{overflow-y:hidden}
 .single-post-author{text-align:center}
 .botiga-related-posts,.post-navigation,.single-post-author,.comments-area{border-top:1px solid rgba(33,33,33,0.1);padding-top:50px;margin-top:50px}
 .post-thumbnail{display:block;margin-bottom:38px}
-.posts-archive .post-thumbnail{margin-bottom:16px;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:opacity .3s;transition:opacity .3s}
-.posts-archive .post-thumbnail:hover{opacity:.7}
+.posts-archive .post-thumbnail{margin-bottom:16px}
 .botiga-related-posts .related-post h3{font-size:16px;font-size:1rem}
 .botiga-related-posts .related-post h3 a{color:#212121}
 .botiga-related-posts .related-post .post-thumbnail{margin-bottom:20px}
@@ -294,7 +292,7 @@ body.mobile-menu-visible{overflow-y:hidden}
 .botiga-page-builder-mode .content-wrapper{margin-top:0;margin-bottom:0}
 .botiga-page-builder-mode .site-main{padding:0 !important}
 .botiga-page-builder-mode .site-main>.hentry{margin:0}
-.botiga-page-builder-mode .entry-content>*{max-width:1140px;margin-left:auto;margin-right:auto}
+.botiga-page-builder-mode .entry-content>*{max-width:1140px;padding-left:15px;padding-right:15px;margin-left:auto;margin-right:auto}
 .botiga-page-builder-mode .entry-content>.alignfull{max-width:100%}
 .botiga-page-builder-mode .entry-content>.alignwide{max-width:1300px}
 .comment-content a{word-wrap:break-word}

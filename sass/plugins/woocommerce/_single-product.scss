@@ -9,8 +9,8 @@
 
 			.woocommerce-product-gallery__trigger {
 				position: absolute;
-				top: 2em;
-				right: 1em;
+				top: 1.5em;
+				right: 1.4em;
 				display: block;
 				z-index: 99;
 			}
@@ -251,4 +251,8 @@
 
 figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
     display: inline-block;
+}
+
+.reset_variations {
+	margin-left: 10px;
 }

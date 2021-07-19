@@ -196,6 +196,9 @@ function botiga_scripts() {
 	wp_enqueue_style( 'botiga-style-min', get_template_directory_uri() . '/assets/css/styles.min.css', array(), BOTIGA_VERSION );
 
 	wp_enqueue_script( 'botiga-custom', get_template_directory_uri() . '/assets/js/custom.min.js', array( 'jquery', 'jquery-ui-core' ), BOTIGA_VERSION, true );
+	wp_localize_script( 'botiga-custom', 'botiga', array(
+		'ajaxurl' => admin_url( 'admin-ajax.php' )
+	) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -267,3 +270,23 @@ require get_template_directory() . '/theme-dashboard/class-theme-dashboard.php';
  * Theme dashboard settings.
  */
 require get_template_directory() . '/inc/theme-dashboard-settings.php';
+
+/**
+ * Botiga custom get template part
+ */
+function botiga_get_template_part( $slug, $name = null, $args = array() ) {
+	if ( version_compare( get_bloginfo( 'version' ), '5.5', '>=' ) ) {
+		return get_template_part( $slug, $name, $args );
+	} else {
+		extract($args);
+	
+		$templates = array();
+		$name = (string) $name;
+		if ( '' !== $name ) {
+			$templates[] = "{$slug}-{$name}.php";
+		}
+		$templates[] = "{$slug}.php";
+	 
+		return include( locate_template($templates) );
+	}
+}
