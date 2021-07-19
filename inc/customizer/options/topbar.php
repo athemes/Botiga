@@ -349,7 +349,7 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_nav_
 $wp_customize->add_setting( 'topbar_nav_link',
 	array(
 		'default' 			=> '',
-		//'sanitize_callback' => 'esc_attr'
+		'sanitize_callback' => 'esc_attr'
 	)
 );
 
