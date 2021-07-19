@@ -34,7 +34,8 @@ const config = require('./wpgulp.config.js');
 const gulp = require('gulp'); // Gulp of-course.
 
 // CSS related plugins.
-const sass = require('gulp-sass'); // Gulp plugin for Sass compilation.
+var nodesass = require('node-sass')
+var sass = require('gulp-sass')(nodesass); // Gulp plugin for Sass compilation.
 const minifycss = require('gulp-uglifycss'); // Minifies CSS files.
 const autoprefixer = require('gulp-autoprefixer'); // Autoprefixing magic.
 const mmq = require('gulp-merge-media-queries'); // Combine matching media queries into one.
@@ -121,7 +122,7 @@ gulp.task('styles', () => {
 		.pipe(
 			sass({
 				errLogToConsole: config.errLogToConsole,
-				outputStyle: config.outputStyle,
+				outputStyle: 'expanded',
 				precision: config.precision
 			})
 		)
@@ -143,12 +144,97 @@ gulp.task('styles', () => {
 		.pipe(browserSync.stream()) // Reloads style.min.css if that is enqueued.
 		.pipe(
 			notify({
-				message: '\n\n✅  ===> STYLES — completed!\n',
+				message: '\n\n✅  ===> STYLES Expanded — completed!\n',
 				onLast: true
 			})
 		);
 });
 
+gulp.task('stylesMin', () => {
+	return gulp
+		.src(config.styleSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		//.pipe(sourcemaps.init())
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> STYLES Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/*  
+* Customizer Styles
+*/
+gulp.task('customizerStyles', () => {
+	return gulp
+		.src(config.customizerSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		//.pipe(sourcemaps.init())
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Customizer Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('customizerStylesMin', () => {
+	return gulp
+		.src(config.customizerSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		//.pipe(sourcemaps.init())
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Customizer Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
 
 gulp.task('editorStyles', () => {
 	return gulp
@@ -158,7 +244,7 @@ gulp.task('editorStyles', () => {
 		.pipe(
 			sass({
 				errLogToConsole: config.errLogToConsole,
-				outputStyle: config.outputStyle,
+				outputStyle: 'expanded',
 				precision: config.precision
 			})
 		)
@@ -172,15 +258,40 @@ gulp.task('editorStyles', () => {
 		.pipe(filter('**/*.css')) // Filtering stream to only css files.
 		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
 		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Editor STYLES Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('editorStylesMin', () => {
+	return gulp
+		.src(config.editorStyleSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		//.pipe(sourcemaps.init())
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		//.pipe(sourcemaps.write({includeContent: false}))
+		//.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(autoprefixer(config.BROWSERS_LIST))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(minifycss({maxLineLen: 10}))
+		//.pipe(sourcemaps.write('./'))
 		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
 		.pipe(gulp.dest(config.styleDestination))
 		.pipe(filter('**/*.css')) // Filtering stream to only css files.
-		.pipe(browserSync.stream()) // Reloads style.min.css if that is enqueued.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
 		.pipe(
 			notify({
-				message: '\n\n✅  ===> Editor STYLES — completed!\n',
+				message: '\n\n✅  ===> Editor STYLES Minified — completed!\n',
 				onLast: true
 			})
 		);
@@ -194,7 +305,7 @@ gulp.task('woocommerceStyles', () => {
 		.pipe(
 			sass({
 				errLogToConsole: config.errLogToConsole,
-				outputStyle: config.outputStyle,
+				outputStyle: 'expanded',
 				precision: config.precision
 			})
 		)
@@ -216,7 +327,38 @@ gulp.task('woocommerceStyles', () => {
 		.pipe(browserSync.stream()) // Reloads style.min.css if that is enqueued.
 		.pipe(
 			notify({
-				message: '\n\n✅  ===> STYLES — completed!\n',
+				message: '\n\n✅  ===> Woocommerce Styles Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('woocommerceStylesMin', () => {
+	return gulp
+		.src(config.woocommerceSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		//.pipe(sourcemaps.init())
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		//.pipe(sourcemaps.write({includeContent: false}))
+		//.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		//.pipe(sourcemaps.write('./'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Woocommerce Styles Minified — completed!\n',
 				onLast: true
 			})
 		);
@@ -323,8 +465,45 @@ gulp.task('vendorsJS', () => {
 		);
 });
 
+//Customizer JS
+gulp.task('customizerJS', () => {
+	return gulp
+		.src(config.custSRC, {since: gulp.lastRun('customizerJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.custSRC)) // Bring all files back to stream.
+		.pipe(concat(config.custFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.custDestination))
+		.pipe(
+			rename({
+				basename: config.custFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify())
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.custDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Customizer JS — completed!\n',
+				onLast: true
+			})
+		);
+});
 
-//Customizer scripts
+//Customizer scripts JS
 gulp.task('customizerScriptsJS', () => {
 	return gulp
 		.src(config.custScriptsSRC, {since: gulp.lastRun('customizerScriptsJS')}) // Only run on changed files.
@@ -356,14 +535,11 @@ gulp.task('customizerScriptsJS', () => {
 		.pipe(gulp.dest(config.custScriptsDestination))
 		.pipe(
 			notify({
-				message: '\n\n✅  ===> VENDOR JS — completed!\n',
+				message: '\n\n✅  ===> Customizer Scripts JS — completed!\n',
 				onLast: true
 			})
 		);
 });
-
-
-
 
 /**
  * Task: `customJS`.
@@ -517,10 +693,16 @@ gulp.task(
 	gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'images', browsersync, () => {
 		gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
 		gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('customizerStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('woocommerceStyles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin')); // Reload on SCSS file changes.
 		gulp.watch(config.watchEditorStyles, gulp.parallel('editorStyles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchEditorStyles, gulp.parallel('editorStylesMin')); // Reload on SCSS file changes.
 		gulp.watch(config.watchJsVendor, gulp.series('vendorsJS', reload)); // Reload on vendorsJS file changes.
 		gulp.watch(config.watchJsCustom, gulp.series('customJS', reload)); // Reload on customJS file changes.
+		gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
 		gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
 		gulp.watch(config.imgSRC, gulp.series('images', reload)); // Reload on customJS file changes.
 	})

@@ -342,12 +342,6 @@ p.no-comments {
 			margin: 0 auto;
 			padding: 30px 0 0;
 
-			.woocommerce-mini-cart__empty-message {
-				padding-left: 30px;
-				padding-right: 30px;
-				padding-top: 30px;
-			}
-
 			.widgettitle {
 				@include font-size(24);
 				padding: 0 30px 30px;

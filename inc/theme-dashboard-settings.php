@@ -254,9 +254,6 @@ function botiga_dashboard_settings( $settings ) {
 	// Changelog.
 	$settings['changelog_version'] = $theme->version;
 	$settings['changelog_link']    = 'https://athemes.com/changelog/botiga/';
-	
-	//Has pro
-	$settings['has_pro'] = false;
 
 	return $settings;
 }

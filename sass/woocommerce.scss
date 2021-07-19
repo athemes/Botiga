@@ -23,6 +23,11 @@ $woocommerce__color-info: #3d9cd2;
 @import "plugins/woocommerce/products";
 
 /**
+ * Quick view
+ */
+ @import "plugins/woocommerce/quick-view";
+
+/**
  * Single product
  */
 @import "plugins/woocommerce/single-product";

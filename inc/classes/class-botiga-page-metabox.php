@@ -81,7 +81,7 @@ class Botiga_Page_Metabox {
 	?>
 	<p>
 		<label><input type="checkbox" name="botiga_page_builder_mode" value="1" <?php checked( $page_builder_mode, 1 ); ?> /><?php esc_html_e( 'Page builder mode', 'botiga' ); ?></label>
-		<div style="display:block;"><?php echo esc_html__( 'Activating the page builder mode prepares a canvas to build with the WP editor or a page builder', 'botiga' ); ?></div>
+		<div style="display:block;"><?php echo esc_html__( 'Activating the page builder mode prepare a canvas to build with the WP editor or a page builder', 'botiga' ); ?></div>
 	</p>
 	<p>
 		<label for="botiga_sidebar_layout"><?php esc_html_e( 'Sidebar layout', 'botiga' ); ?></label>	

@@ -36,6 +36,10 @@ ul.products {
 			fill: #fff;
 		}
 
+		.wc-block-grid__product-image {
+			margin-bottom: 0;
+		}
+
 		.price,
 		.woocommerce-LoopProduct-link,
 		img {
@@ -56,10 +60,6 @@ ul.products {
 			@include font-size(16);
 			font-weight: 400;
 			color: $color__primary;
-		}
-		
-		.wc-block-grid__product-link {
-			text-decoration: none;
 		}
 	}
 }
@@ -145,6 +145,41 @@ ul.products {
 	ul.products li.product {
 		width: 100% !important;
 		margin-right: 0;
+		.loop-image-wrap {
+			margin: 0;
+		}
+		.loop-button-wrap {
+			&.button-layout3 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				opacity: 0;
+				visibility: hidden;
+				transform: translate3d(-50%, -40%, 0);
+				transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+			}
+			&.button-layout4 {
+				position: absolute;
+				bottom: 15px;
+				left: 15px;
+				opacity: 0;
+				visibility: hidden;
+				transition: ease opacity 300ms, ease visibility 300ms;
+			}
+		}
+		&:hover {
+			.loop-button-wrap {
+				&.button-layout3 {
+					opacity: 1;
+					visibility: visible;
+					transform: translate3d(-50%, -50%, 0);
+				}
+				&.button-layout4 {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
 	}
 }
 
@@ -154,6 +189,7 @@ ul.products {
 
 .loop-image-wrap {
 	position: relative;
+	overflow: hidden;
 }
 
 .related.products,
@@ -164,13 +200,14 @@ ul.products {
 	.button-layout4 {
 		position: absolute;
 		opacity: 0;
-		transition: all 0.3s;
+		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
 	}
 
 	.button-layout3 {
 		top: 50%;
 		width: 100%;
 		text-align: center;
+		transform: translate3d(0, -40%, 0);
 
 		a {
 			display: inline-block !important;
@@ -182,7 +219,8 @@ ul.products {
 			&:hover {
 				.button-layout3 {
 					opacity: 1;
-					top: 40%;
+					visibility: visible;
+					transform: translate3d(0, -50%, 0);
 				}	
 				.button-layout4 {
 					opacity: 1;
@@ -207,10 +245,17 @@ ul.products {
 
 ul.wc-block-grid__products {
 	li.wc-block-grid__product {
+		.button-layout3,
+		.button-layout4 {
+			.wp-block-button {
+				margin-bottom: 0;
+			}
+		}
 		&:hover {
 			.button-layout3 {
 				opacity: 1;
-				top: 40%;
+				visibility: visible;
+				transform: translate3d(0, -50%, 0);
 			}	
 			.button-layout4 {
 				opacity: 1;
@@ -221,10 +266,4 @@ ul.wc-block-grid__products {
 
 .wc-block-grid__product-link {
 	display: block;
-}
-.price {
-	font-weight: 600;
-	ins {
-		background-color: transparent;
-	}
 }

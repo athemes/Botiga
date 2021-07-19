@@ -69,6 +69,69 @@ function botiga_woocommerce_scripts() {
 		}';
 
 	wp_add_inline_style( 'botiga-woocommerce-style', $inline_font );
+
+	//Enqueue gallery scripts for quick view
+	if ( is_shop() || is_product_category() || is_product_tag() || botiga_wc_has_blocks() ) {
+		$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+		
+		if( 'layout1' !== $quick_view_layout ) {
+			$register_scripts = array();
+			
+			if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
+				$register_scripts['flexslider'] = array(
+					'src'     => plugins_url( 'assets/js/flexslider/jquery.flexslider.min.js', WC_PLUGIN_FILE ),
+					'deps'    => array( 'jquery' )
+				);
+			}
+			if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
+				$register_styles = array(
+					'photoswipe' => array(
+						'src'     => plugins_url( 'assets/css/photoswipe/photoswipe.min.css', WC_PLUGIN_FILE ),
+						'deps'    => array()
+					),
+					'photoswipe-default-skin' => array(
+						'src'     => plugins_url( 'assets/css/photoswipe/default-skin/default-skin.min.css', WC_PLUGIN_FILE ),
+						'deps'    => array( 'photoswipe' )
+					)
+				);
+				foreach ( $register_styles as $name => $props ) {
+					wp_enqueue_style( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
+				}
+
+				$register_scripts['photoswipe'] = array(
+					'src'     => plugins_url( 'assets/js/photoswipe/photoswipe.min.js', WC_PLUGIN_FILE ),
+					'deps'    => array()
+				);
+				$register_scripts['photoswipe-ui-default'] = array(
+					'src'     => plugins_url( 'assets/js/photoswipe/photoswipe-ui-default.min.js', WC_PLUGIN_FILE ),
+					'deps'    => array( 'photoswipe' )
+				);
+			}
+
+			$register_scripts['wc-single-product'] = array(
+				'src'     => plugins_url( 'assets/js/frontend/single-product.min.js', WC_PLUGIN_FILE ),
+				'deps'    => array( 'jquery' )
+			);
+
+			if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) {
+				$register_scripts['zoom'] = array(
+					'src'     => plugins_url( 'assets/js/zoom/jquery.zoom.min.js', WC_PLUGIN_FILE ),
+					'deps'    => array( 'jquery' )
+				);
+			}
+
+			// Enqueue variation scripts.
+			$register_scripts['wc-add-to-cart-variation'] = array(
+				'src'     => plugins_url( 'assets/js/frontend/add-to-cart-variation.min.js', WC_PLUGIN_FILE ),
+				'deps'    => array( 'jquery', 'wp-util', 'jquery-blockui' )
+			);
+
+			foreach ( $register_scripts as $name => $props ) {
+				wp_enqueue_script( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
+			}
+
+		}
+	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
 
@@ -112,6 +175,27 @@ function botiga_woocommerce_related_products_args( $args ) {
 	return $args;
 }
 add_filter( 'woocommerce_output_related_products_args', 'botiga_woocommerce_related_products_args' );
+
+/**
+ * Check if page has woocommece GB blocks
+ */
+function botiga_wc_has_blocks() {
+	global $post;
+	
+	if( $post ) {
+		if( has_blocks( $post ) ) {
+			$post_blocks = parse_blocks( $post->post_content );
+
+			foreach( $post_blocks as $block ) {
+				if( strpos( $block['blockName'], 'woocommerce/' ) !== FALSE ) {
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
+}
 
 /**
  * Remove default WooCommerce wrapper.
@@ -186,8 +270,8 @@ function botiga_wc_hooks() {
 		add_filter( 'botiga_content_class', 'botiga_wc_archive_layout' );
 
 		if ( 'product-list' === $layout ) {
-			add_action( 'woocommerce_before_shop_loop_item', function() { echo '<div class="row valign"><div class="col-md-4">'; }, 1 );
-			add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div><div class="col-md-8">'; }, 11 );
+			add_action( 'woocommerce_before_shop_loop_item', function() { echo '<div class="row valign"><div class="col-md-4"><div class="loop-image-wrap">'; }, 1 );
+			add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div></div><div class="col-md-8">'; }, 11 );
 			add_action( 'woocommerce_after_shop_loop_item', function() { echo '</div>'; }, PHP_INT_MAX );
 		}
 	}
@@ -248,21 +332,34 @@ function botiga_wc_hooks() {
 	/**
 	 * Loop product structure
 	 */
-	$button_layout = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 
 	//Move link close tag
 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 	add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 12 );
 
-	if ( 'product-grid' === $layout ) {
+	//Wrap loop image
+	if ( 'product-grid' === $layout || is_product() ) {
 		//Wrap loop image
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '<div class="loop-image-wrap">'; }, 9 );
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div>'; }, 11 );
+	}
 
+	if ( 'product-grid' === $layout ) {
 		//Move button inside image wrap
-		if ( 'layout4' === $button_layout ) {
+		if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
 			add_action( 'woocommerce_before_shop_loop_item_title', function() { botiga_wrap_loop_button_start(); woocommerce_template_loop_add_to_cart(); echo '</div>'; } );
+		}
+	} else {
+		//Move button inside image wrap
+		if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
+			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
+			add_action( 'woocommerce_before_shop_loop_item_title', function() { botiga_wrap_loop_button_start(); woocommerce_template_loop_add_to_cart(); echo '</div>'; } );
+		}
+		if( 'layout4' === $button_layout && 'layout3' === $quick_view_layout || 'layout3' === $button_layout && 'layout2' === $quick_view_layout ) {
+			add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 12 );
 		}
 	}
 
@@ -281,8 +378,37 @@ function botiga_wc_hooks() {
 	}
 
 	//Remove button
-	if ( 'layout1' === $button_layout ) {
+	if ( 
+		'layout1' === $button_layout || 
+		( 'layout4' === $button_layout && 'layout3' === $quick_view_layout ) || 
+		( 'layout3' === $button_layout && 'layout2' === $quick_view_layout ) 
+	) {
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
+	}
+
+	//Quick view
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_wc_has_blocks() ) {
+		if( 'layout1' !== $quick_view_layout ) {
+			
+			//Button position for layout 2 & 3
+			remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open' );
+			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
+
+			add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_open', 9 );
+			add_action( 'woocommerce_before_shop_loop_item_title', 'botiga_quick_view_button', 10 );
+			add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 11 );
+			
+			//Quick view popup
+			add_action( 'wp_body_open', 'botiga_quick_view_popup' );
+			
+			// Do not include on single product pages
+			if ( current_theme_supports( 'wc-product-gallery-lightbox' ) && false === is_product() ) {
+				add_action( 'botiga_footer_after', function(){
+					wc_get_template( 'single-product/photoswipe.php' );
+				} );
+			}
+
+		}
 	}
 
 }
@@ -562,7 +688,7 @@ function botiga_filter_loop_add_to_cart( $button, $product, $args ) {
 	$button_layout 	= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 	$layout 		= get_theme_mod( 'shop_archive_layout', 'product-grid' );	
 
-	if ( 'layout4' !== $button_layout || 'product-grid' !== $layout ) {
+	if ( 'layout4' !== $button_layout ) {
 		return $button;
 	}
 
@@ -589,10 +715,6 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart
  * Sales badge text
  */
 function botiga_sale_badge( $html, $post, $product ) {
-
-	if ( !$product->is_on_sale() ) {
-		return;
-	}
 
 	$text 			= get_theme_mod( 'sale_badge_text', esc_html__( 'Sale!', 'botiga' ) );
 	$enable_perc 	= get_theme_mod( 'sale_badge_percent', 0 );
@@ -656,8 +778,9 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	global $post;
 
-	$button_layout 	= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$layout			= get_theme_mod( 'shop_product_card_layout', 'layout1' );
+	$button_layout 	   = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$layout			   = get_theme_mod( 'shop_product_card_layout', 'layout1' );
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' ); 
 
 	$markup = "<li class=\"wc-block-grid__product product-grid\">
 				<div class=\"loop-image-wrap\">
@@ -666,12 +789,15 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 					</a>"
 				. botiga_sale_badge( $html = '', $post, $product );
 
-	//Add button inside image wrapper for layout4
-	if ( 'layout4' === $button_layout ) {
+	//Add button inside image wrapper for layout4 and layout3
+	if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
 		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . "\">"
 				. botiga_gb_add_to_cart_button( $product ) .
 				"</div>";
-	}				
+	}
+
+	//Quick view
+	$markup .= botiga_quick_view_button( $product, false );
 
 	$markup .= "</div>";
 	
@@ -697,11 +823,11 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	
 		
 	//Add button outside image wrapper		
-	if ( 'layout4' !== $button_layout ) {
+	if ( 'layout1' !== $button_layout && 'layout4' !== $button_layout && 'layout3' !== $button_layout ) {
 		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . "\">"
 		. botiga_gb_add_to_cart_button( $product ) .
 		"</div>";
-	}	
+	}
 
 	$markup .= "</li>";
 
@@ -758,4 +884,357 @@ function botiga_gb_add_to_cart_button( $product ) {
 	$markup .= '</div>';
 
 	return $markup;
+}
+
+/**
+ * Quick view button
+ */
+function botiga_quick_view_button( $product = false, $echo = true ) {
+	if( $product == false ) {
+		global $product; 
+	}
+
+	$product_id        = $product->get_id(); 
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' ); 
+	if( 'layout1' == $quick_view_layout ) {
+		return '';
+	} 
+	
+	if( $echo == false ) {
+		ob_start();
+	} ?>
+
+	<a href="#" class="button botiga-quick-view-show-on-hover botiga-quick-view botiga-quick-view-<?php echo esc_attr( $quick_view_layout ); ?>" aria-label="<?php echo sprintf( esc_attr__( 'Quick view the %s product', 'botiga' ), absint( get_the_title( $product_id ) ) ); ?>" data-product-id="<?php echo absint( $product_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-qview-nonce' ) ); ?>">
+		<?php esc_html_e( 'Quick View', 'botiga' ); ?>
+	</a>
+	<?php
+	if( $echo == false ) {
+		$output = ob_get_clean();
+		return $output;
+	}
+}
+
+/**
+ * Quick view popup
+ */
+function botiga_quick_view_popup() { ?>
+	<div class="single-product botiga-quick-view-popup">
+		<div class="botiga-quick-view-loader">
+			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+				<path fill="#FFF" d="M288 39.056v16.659c0 10.804 7.281 20.159 17.686 23.066C383.204 100.434 440 171.518 440 256c0 101.689-82.295 184-184 184-101.689 0-184-82.295-184-184 0-84.47 56.786-155.564 134.312-177.219C216.719 75.874 224 66.517 224 55.712V39.064c0-15.709-14.834-27.153-30.046-23.234C86.603 43.482 7.394 141.206 8.003 257.332c.72 137.052 111.477 246.956 248.531 246.667C393.255 503.711 504 392.788 504 256c0-115.633-79.14-212.779-186.211-240.236C302.678 11.889 288 23.456 288 39.056z" />
+			</svg>
+		</div>
+		<div class="botiga-quick-view-popup-content">
+			<a href="#" class="botiga-quick-view-popup-close-button">
+				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 352 512" aria-hidden="true" focusable="false">
+					<path fill="#F4F4F4" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+				</svg>
+			</a>
+			<div class="botiga-quick-view-popup-content-ajax"></div>
+		</div>
+	</div>
+	
+	<?php
+}
+
+/**
+ * Quick view ajax callback
+ */
+function botiga_quick_view_content_callback_function(){
+	check_ajax_referer( 'botiga-qview-nonce', 'nonce' );
+	
+	$args = array(
+		'product_id' => absint( $_POST['product_id'] )
+	);
+	
+	botiga_get_template_part( 'template-parts/content', 'quick-view', $args );
+	
+	wp_die();
+}
+add_action('wp_ajax_botiga_quick_view_content', 'botiga_quick_view_content_callback_function');
+add_action( 'wp_ajax_nopriv_botiga_quick_view_content', 'botiga_quick_view_content_callback_function' );
+
+/**
+ * Quick view output the simple product add to cart area.
+ */
+function botiga_quick_view_simple_add_to_cart( $product ) {
+	if ( ! $product->is_purchasable() ) {
+		return;
+	}
+	
+	echo wc_get_stock_html( $product );
+	
+	if ( $product->is_in_stock() ) : ?>
+	
+		<?php do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+	
+		<form class="cart" action="<?php echo esc_url( apply_filters( 'botiga_quick_view_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+			<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); ?>
+	
+			<?php
+			do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
+	
+			woocommerce_quantity_input(
+				array(
+					'min_value'   => apply_filters( 'botiga_quick_view_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+					'max_value'   => apply_filters( 'botiga_quick_view_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+					'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity()
+				)
+			);
+	
+			do_action( 'botiga_quick_view_after_add_to_cart_quantity' );
+			?>
+	
+			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+	
+			<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+		</form>
+	
+		<?php do_action( 'botiga_quick_view_after_add_to_cart_form' ); ?>
+	
+	<?php endif;
+}
+
+/**
+ * Quick view output the grouped product add to cart area.
+ */
+function botiga_quick_view_grouped_add_to_cart( $product ) {
+	$products = array_filter( array_map( 'wc_get_product', $product->get_children() ), 'wc_products_array_filter_visible_grouped' );
+
+	if ( $products ) :
+		$post               = get_post( $product->get_id() );
+		$grouped_product    = $product;
+		$grouped_products   = $products;
+		$quantites_required = false;
+
+		do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+
+		<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'botiga_quick_view_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+			<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
+				<tbody>
+					<?php
+					$quantites_required      = false;
+					$previous_post           = $post;
+					$grouped_product_columns = apply_filters(
+						'botiga_quick_view_grouped_product_columns',
+						array(
+							'quantity',
+							'label',
+							'price',
+						),
+						$product
+					);
+					$show_add_to_cart_button = false;
+
+					do_action( 'botiga_quick_view_grouped_product_list_before', $grouped_product_columns, $quantites_required, $product );
+
+					foreach ( $grouped_products as $grouped_product_child ) {
+						$post_object        = get_post( $grouped_product_child->get_id() );
+						$quantites_required = $quantites_required || ( $grouped_product_child->is_purchasable() && ! $grouped_product_child->has_options() );
+						$post               = $post_object;
+						setup_postdata( $post );
+
+						if ( $grouped_product_child->is_in_stock() ) {
+							$show_add_to_cart_button = true;
+						}
+
+						echo '<tr id="product-' . esc_attr( $grouped_product_child->get_id() ) . '" class="woocommerce-grouped-product-list-item ' . esc_attr( implode( ' ', wc_get_product_class( '', $grouped_product_child ) ) ) . '">';
+
+						// Output columns for each product.
+						foreach ( $grouped_product_columns as $column_id ) {
+							do_action( 'botiga_quick_view_grouped_product_list_before_' . $column_id, $grouped_product_child );
+
+							switch ( $column_id ) {
+								case 'quantity':
+									ob_start();
+
+									if ( ! $grouped_product_child->is_purchasable() || $grouped_product_child->has_options() || ! $grouped_product_child->is_in_stock() ) {
+										woocommerce_template_loop_add_to_cart();
+									} elseif ( $grouped_product_child->is_sold_individually() ) {
+										echo '<input type="checkbox" name="' . esc_attr( 'quantity[' . $grouped_product_child->get_id() . ']' ) . '" value="1" class="wc-grouped-product-add-to-cart-checkbox" />';
+									} else {
+										do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
+
+										woocommerce_quantity_input(
+											array(
+												'input_name'  => 'quantity[' . $grouped_product_child->get_id() . ']',
+												'input_value' => isset( $_POST['quantity'][ $grouped_product_child->get_id() ] ) ? wc_stock_amount( wc_clean( wp_unslash( $_POST['quantity'][ $grouped_product_child->get_id() ] ) ) ) : '',
+												'min_value'   => apply_filters( 'botiga_quick_view_quantity_input_min', 0, $grouped_product_child ),
+												'max_value'   => apply_filters( 'botiga_quick_view_quantity_input_max', $grouped_product_child->get_max_purchase_quantity(), $grouped_product_child ),
+												'placeholder' => '0',
+											)
+										);
+
+										do_action( 'botiga_quick_view_after_add_to_cart_quantity' );
+									}
+
+									$value = ob_get_clean();
+									break;
+								case 'label':
+									$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
+									$value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( 'botiga_quick_view_grouped_product_list_link', $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
+									$value .= '</label>';
+									break;
+								case 'price':
+									$value = $grouped_product_child->get_price_html() . wc_get_stock_html( $grouped_product_child );
+									break;
+								default:
+									$value = '';
+									break;
+							}
+
+							echo '<td class="woocommerce-grouped-product-list-item__' . esc_attr( $column_id ) . '">' . apply_filters( 'botiga_quick_view_grouped_product_list_column_' . $column_id, $value, $grouped_product_child ) . '</td>';
+
+							do_action( 'botiga_quick_view_grouped_product_list_after_' . $column_id, $grouped_product_child );
+						}
+
+						echo '</tr>';
+					}
+					$post = $previous_post;
+					setup_postdata( $post );
+
+					do_action( 'botiga_quick_view_grouped_product_list_after', $grouped_product_columns, $quantites_required, $product );
+					?>
+				</tbody>
+			</table>
+
+			<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" />
+
+			<?php if ( $quantites_required && $show_add_to_cart_button ) : ?>
+
+				<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); ?>
+
+				<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+
+				<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+
+			<?php endif; ?>
+		</form>
+
+		<?php do_action( 'botiga_quick_view_after_add_to_cart_form' ); ?>
+	
+	<?php endif;
+}
+
+/**
+ * Quick view output the variable product add to cart area.
+ */
+function botiga_quick_view_variable_add_to_cart( $product ) {
+	// Get Available variations?
+	$get_variations = count( $product->get_children() ) <= apply_filters( 'botiga_quick_view_ajax_variation_threshold', 30, $product );
+
+	$available_variations = $get_variations ? $product->get_available_variations() : false;
+	$attributes           = $product->get_variation_attributes();
+	$selected_attributes  = $product->get_default_attributes();
+
+	$attribute_keys  = array_keys( $attributes );
+	$variations_json = wp_json_encode( $available_variations );
+	$variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_json ) : _wp_specialchars( $variations_json, ENT_QUOTES, 'UTF-8', true );
+
+	do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+
+	<form class="variations_form cart" action="<?php echo esc_url( apply_filters( 'botiga_quick_view_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; ?>">
+		<?php do_action( 'botiga_quick_view_before_variations_form' ); ?>
+
+		<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
+			<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'botiga_quick_view_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'botiga' ) ) ); ?></p>
+		<?php else : ?>
+			<table class="variations" cellspacing="0">
+				<tbody>
+					<?php foreach ( $attributes as $attribute_name => $options ) : ?>
+						<tr>
+							<td class="label"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); ?></label></td>
+							<td class="value">
+								<?php
+									wc_dropdown_variation_attribute_options(
+										array(
+											'options'   => $options,
+											'attribute' => $attribute_name,
+											'product'   => $product,
+										)
+									);
+									echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'botiga_quick_view_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'botiga' ) . '</a>' ) ) : '';
+								?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+
+			<div class="single_variation_wrap">
+				<?php
+					/**
+					 * Hook: woocommerce_before_single_variation.
+					 */
+					do_action( 'botiga_quick_view_before_single_variation' ); ?>
+
+					<div class="woocommerce-variation single_variation"></div>
+					<div class="woocommerce-variation-add-to-cart variations_button">
+						<?php do_action( 'woocommerce_before_add_to_cart_button' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
+
+						<?php
+						do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
+
+						woocommerce_quantity_input(
+							array(
+								'min_value'   => apply_filters( 'botiga_quick_view_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+								'max_value'   => apply_filters( 'botiga_quick_view_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+								'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(),
+							)
+						);
+
+						do_action( 'botiga_quick_view_after_add_to_cart_quantity' );
+						?>
+
+						<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+
+						<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+
+						<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
+						<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
+						<input type="hidden" name="variation_id" class="variation_id" value="0" />
+					</div>
+
+
+					<?php
+					/**
+					 * Hook: woocommerce_after_single_variation.
+					 */
+					do_action( 'botiga_quick_view_after_single_variation' );
+				?>
+			</div>
+		<?php endif; ?>
+
+		<?php do_action( 'botiga_quick_view_after_variations_form' ); ?>
+	</form>
+
+	<?php
+	do_action( 'botiga_quick_view_after_add_to_cart_form' );
+}
+
+
+/**
+ * Quick view output the external product add to cart area.
+ */
+function botiga_quick_view_external_add_to_cart( $product ) {
+	if ( ! $product->add_to_cart_url() ) {
+		return;
+	}
+
+	$product_url = $product->add_to_cart_url();
+	$button_text = $product->single_add_to_cart_text();
+
+	do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+
+	<form class="cart" action="<?php echo esc_url( $product_url ); ?>" method="get">
+		<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); ?>
+
+		<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $button_text ); ?></button>
+
+		<?php wc_query_string_form_fields( $product_url ); ?>
+
+		<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+	</form>
+
+	<?php do_action( 'botiga_quick_view_after_add_to_cart_form' );
 }

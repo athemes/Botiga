@@ -152,12 +152,13 @@
       position: relative;
       display: inline-block; }
     .thd-theme-dashboard .thd-hero .thd-hero-image img {
-      max-width:400px; }
+      display: block;
+      zoom: 0.5; }
     @media (min-width: 1360px) {
       .thd-theme-dashboard .thd-hero .thd-hero-image {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;margin-right:30px;flex-grow:1;text-align:right; } }
+        justify-content: flex-end;margin-right:30px; } }
 
 .thd-theme-dashboard .thd-main {
   display: flex;

@@ -12,7 +12,7 @@
 // Local project URL of your already running WordPress site.
 // > Could be something like "wpgulp.local" or "localhost"
 // > depending upon your local WordPress setup.
-const projectURL = 'http://localhost/wprig-botiga/';
+const projectURL = 'http://localhost:8080/';
 
 // Theme/Plugin URL. Leave it like it is; since our gulpfile.js lives in the root folder.
 const productURL = './';
@@ -21,9 +21,11 @@ const injectChanges = true;
 
 // >>>>> Style options.
 // Path to main .scss file.
+const customizerSRC = './sass/customizer.scss';
+
 const styleSRC = './sass/styles.scss';
 
-const editorStyleSRC = './assets/editor/editor.scss';
+const editorStyleSRC = './sass/editor.scss';
 
 const woocommerceSRC = './sass/woocommerce.scss';
 
@@ -40,24 +42,32 @@ const precision = 10;
 // Path to JS vendor folder.
 const jsVendorSRC = './assets/js/vendor/*.js';
 
-//Path to customizer scripts file
-const custScriptsSRC = './assets/js/admin/customizer-scripts.js';
+// Path to customizer js file
+const custSRC = './assets/js/src/customizer.js';
 
-// Path to place the compiled JS vendors file.
-const jsVendorDestination = './assets/js/';
+// Path to place the customizer scripts file.
+const custDestination = './assets/js/admin/';
+
+//Path to customizer-scripts js file
+const custScriptsSRC = './assets/js/src/customizer-scripts.js';
 
 // Path to place the customizer scripts file.
 const custScriptsDestination = './assets/js/';
 
+// Path to place the compiled JS vendors file.
+const jsVendorDestination = './assets/js/';
+
 // Compiled JS vendors file name. Default set to vendors i.e. vendors.js.
 const jsVendorFile = 'vendor';
+
+const custFile = 'customizer';
 
 const custScriptsFile = 'customizer-scripts';
 
 // JS Custom options.
 
 // Path to JS custom scripts folder.
-const jsCustomSRC = './assets/js/custom/*.js';
+const jsCustomSRC = './assets/js/src/custom.js';
 
 // Path to place the compiled JS custom scripts file.
 const jsCustomDestination = './assets/js/';
@@ -79,16 +89,16 @@ const imgDST = './assets/img/';
 // Path to all *.scss files inside css folder and inside them.
 const watchStyles = './sass/**/*.scss';
 
-const watchEditorStyles = './assets/editor/**/*.scss';
+const watchEditorStyles = './sass/editor.scss';
 
 // Path to all vendor JS files.
 const watchJsVendor = './assets/js/vendor/*.js';
 
 // Path to all custom JS files.
-const watchJsCustom = './assets/js/custom/*.js';
+const watchJsCustom = './assets/js/src/custom.js';
 
 // Path to all custom JS files.
-const watchJsCustomizer = './assets/js/admin/*.js';
+const watchJsCustomizer = './assets/js/src/*.js';
 
 // Path to all PHP files.
 const watchPhp = './**/*.php';
@@ -117,7 +127,15 @@ const zipIgnoreGlob = [
 	'!./package-lock.json',
 	'!./assets/img/raw/**/*',
 	'!./assets/img/raw',
+	'!./sass/**/*',
+	'!./sass',
+	'!./assets/js/src/**/*',
+	'!./assets/js/src',
 	`!${imgSRC}`,
+	`!${styleSRC}`,
+	`!${woocommerceSRC}`,
+	`!${jsCustomSRC}`,
+	`!${jsVendorSRC}`
 ];
 
 // >>>>> Translation options.
@@ -153,6 +171,7 @@ module.exports = {
 	browserAutoOpen,
 	injectChanges,
 	styleSRC,
+	customizerSRC,
 	editorStyleSRC,
 	woocommerceSRC,
 	styleDestination,
@@ -160,10 +179,13 @@ module.exports = {
 	errLogToConsole,
 	precision,
 	jsVendorSRC,
+	custSRC,
+	custDestination,
 	custScriptsSRC,
 	jsVendorDestination,
 	jsVendorFile,
 	custScriptsFile,
+	custFile,
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,

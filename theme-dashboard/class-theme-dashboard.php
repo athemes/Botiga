@@ -144,10 +144,6 @@ class Botiga_Theme_Dashboard {
 			$this->pro_status = $this->settings['pro_status'];
 		}
 
-		if ( isset( $this->settings['has_pro'] ) ) {
-			$this->has_pro = $this->settings['has_pro'];
-		}		
-
 		if ( isset( $this->settings['starter_plugin_slug'] ) ) {
 			$this->starter_plugin_slug = $this->settings['starter_plugin_slug'];
 		}
@@ -573,11 +569,6 @@ class Botiga_Theme_Dashboard {
 									$counter = 0;
 									foreach ( $this->settings['tabs'] as $tab ) {
 										$counter++;
-
-										if ( 'html' === $tab['type'] && !$this->has_pro ) {
-											continue;
-										}
-
 										if ( ! $this->is_visible( $tab ) ) {
 											continue;
 										}
@@ -595,11 +586,6 @@ class Botiga_Theme_Dashboard {
 									$counter = 0;
 									foreach ( $this->settings['tabs'] as $tab ) {
 										$counter++;
-
-										if ( 'html' === $tab['type'] && !$this->has_pro ) {
-											continue;
-										}
-
 										if ( ! $this->is_visible( $tab ) ) {
 											continue;
 										}
@@ -647,7 +633,7 @@ class Botiga_Theme_Dashboard {
 									</div>
 								</div>
 
-								<?php if ( ! $this->pro_status && $this->has_pro ) { ?>
+								<?php if ( ! $this->pro_status ) { ?>
 									<div class="thd-conttent-secondary">
 										<div class="thd-title">
 											<?php echo wp_kses_post( __( 'Priority Support', 'botiga' ) ); ?>
@@ -688,7 +674,7 @@ class Botiga_Theme_Dashboard {
 					</div>
 
 					<div class="thd-main-sidebar">
-						<?php if ( ! $this->pro_status && $this->has_pro ) { ?>
+						<?php if ( ! $this->pro_status ) { ?>
 							<div class="thd-panel thd-panel-promo">
 								<div class="thd-panel-inner">
 									<div class="thd-heading">

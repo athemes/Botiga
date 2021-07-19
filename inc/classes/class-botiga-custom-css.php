@@ -133,6 +133,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= ":-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 			$css .= "::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 
+			$table_border 	= get_theme_mod( 'color_heading_4' );
+			if ( '#212121' !== $table_border ) {
+				$css .= "table, table th, table td, table tr, .woocommerce-tabs ul.tabs,.product-gallery-summary .product_meta { border-color:" . esc_attr( $this->to_rgba( $table_border, 0.1 ) ) . ";}" . "\n";
+				$css .= ".woocommerce-tabs ul.tabs li.active a { border-color:" . esc_attr( $table_border ) . ";}" . "\n";
+				$css .= ".site-header-cart .product_list_widget li:after,.site-header-cart .widget_shopping_cart .widgettitle:after,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons:before { background-color:" . esc_attr( $this->to_rgba( $table_border, 0.1 ) ) . ";}" . "\n";	
+			}
+
 			$css .= $this->get_background_color_css( 'content_cards_background', '', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons' );
 
 			$background_color 	= get_theme_mod( 'background_color' );
