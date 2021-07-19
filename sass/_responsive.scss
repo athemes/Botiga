@@ -1,0 +1,107 @@
+@media (max-width: 991px) {
+    .comments-area {
+        padding: 15px;
+    }
+
+    .content-wrapper {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    .page-header {
+        padding-bottom: 30px;
+    }
+    h1 {
+        @include font-size(42);
+    }
+    h2 {
+        @include font-size(32);
+    }
+    h3 {
+        @include font-size(24);
+    }
+    h4 {
+        @include font-size(18);
+    }
+    h5 {
+        @include font-size(16);
+    }
+    h6 {
+        @include font-size(16);
+    }
+    .footer-widgets-grid.col4-bigleft,
+    .footer-widgets-grid.col4-bigright,
+    .footer-widgets-grid.col4 {
+        grid-template-columns: repeat(2,1fr);
+    }   
+    .site-main {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    } 
+    .widget-area {
+        padding-left: 15px;
+        padding-right: 15px;
+        max-width: 100%;
+        margin-top: 60px;
+    }
+}
+@media (max-width: 767px) {
+
+    .product-gallery-summary {
+        display: block;
+    }
+    .product-gallery-summary .woocommerce-product-gallery,
+    .product-gallery-summary .entry-summary {
+        max-width: 100%;
+        float: none !important;
+    }
+    .product-gallery-summary .entry-summary {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+    .woocommerce-tabs ul.tabs li a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .footer-widgets-grid.col3-bigright,
+    .footer-widgets-grid.col3-bigleft {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 576px) and (max-width:  991px) {
+    .custom-logo-link {        
+        img {
+            max-width: 100px;
+        }
+    }    
+}
+@media (max-width: 575px) {
+    .custom-logo-link {        
+        img {
+            max-width: 100px;
+        }
+    }     
+    .footer-widgets-grid {
+        grid-template-columns: 1fr !important;
+    }      
+    h1 {
+        @include font-size(32);
+    }
+    h2 {
+        @include font-size(24);
+    }
+    h3 {
+        @include font-size(20);
+    }
+    h4 {
+        @include font-size(16);
+    }
+    h5 {
+        @include font-size(16);
+    }
+    h6 {
+        @include font-size(16);
+    }
+
+}

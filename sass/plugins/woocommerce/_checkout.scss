@@ -1,0 +1,179 @@
+#customer_details {
+	flex: 0 0 50%;
+	max-width: 50%;
+	padding: 0;
+
+	.col-1,
+	.col-2 {
+		flex: 0 0 100%;
+		max-width: 100%;
+		padding: 0;
+	}
+
+	.col-1 {
+		input {
+			width: 100%;
+		}
+	}
+
+	.col-2 {
+		margin-top: 60px;
+	}
+}
+form.woocommerce-checkout {
+	display: flex;
+}
+
+.checkout-wrapper {
+	margin-left: 100px;
+
+	table {
+		border: 0 !important;
+
+		th,tr,td {
+			border-left: 0 !important;
+			border-right: 0 !important;
+		}
+
+		thead {
+			tr:first-of-type {
+				border-top: 0 !important;
+			}
+		}
+
+		tr {
+			border: 0 !important;
+		}
+	}
+
+	.wc_payment_methods {
+		padding: 24px;
+		background-color: #fff;
+		margin-bottom: 30px;
+
+		li:last-of-type {
+			padding-bottom: 0;
+		}
+	}
+	
+	.woocommerce-checkout-review-order {
+		background-color: #f2f2f2;
+		padding: 30px;
+	}
+
+	.product-name,
+	th {
+		text-align: left;
+		font-weight: 400;
+	}
+
+	thead th {
+		font-weight: 600 !important;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding-bottom: 14px;
+		}
+	}
+
+	#shipping_method {
+		display: table;
+		text-align: left;
+		margin-left: auto;
+	}
+
+	[type="radio"] {
+		margin-right: 5px;
+	}
+
+	td,
+	.product-total {
+		text-align: right;
+	}
+
+	td, th {
+		padding: 15px 0;
+	}
+
+	.cart_item td {
+		border: 0;
+	}
+
+	.order-total {
+		.amount {
+			@include font-size(24);
+		}
+		th,td {
+			border-bottom: 0;
+		}
+	}
+
+	.cart-subtotal {
+		.amount {
+			@include font-size(18);
+			font-weight: 600;
+		}
+	}
+
+	.button {
+		width: 100%;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding-top: 19px;
+		padding-bottom: 19px;
+	}
+
+}
+
+@media screen and (min-width: 768px) {
+
+	.col2-set {
+
+		.form-row-first {
+			float: left;
+			margin-right: $columns__margin;
+		}
+
+		.form-row-last {
+			float: right;
+			margin-right: 0;
+		}
+
+		.form-row-first,
+		.form-row-last {
+
+			@include column-width(2);
+		}
+	}
+}
+
+.checkout-layout2 {
+	form.woocommerce-checkout {
+		display: block;
+	}
+
+	#customer_details,
+	.checkout-wrapper {
+		max-width: 100%;
+		flex: 0 0 100%;
+		margin-left: 0;
+	}
+
+	.checkout-wrapper {
+		margin-top: 60px;
+	}
+}
+
+.payment_box {
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+}
+.woocommerce form .form-row .required {
+	text-decoration: none;
+}

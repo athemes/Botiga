@@ -1,0 +1,329 @@
+.main-navigation {
+	display: block;
+	width: 100%;
+
+	ul {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		ul {
+			box-shadow: 0 0 15px rgba(0,0,0,.1);
+			float: left;
+			position: absolute;
+			top: calc(100% + 20px);
+			transition: top 0.4s;
+			left: -999em;
+			z-index: 99999;
+			display: block;
+
+			ul {
+				left: -999em;
+				top: 0;
+			}
+
+			li {
+				background: #fff;
+				padding: 0 20px;
+				display: flex;
+				margin-right: 0;
+
+				&:hover > ul,
+				&.focus > ul {
+					display: block;
+					left: 100%;
+				}
+
+				.dropdown-symbol {
+					margin-top: 10px;
+					
+					svg {
+						transform: rotate(-90deg);
+					}
+				}
+			}
+
+			&.toggled {
+				li {
+					background-color: transparent;
+				}
+			}
+
+			a {
+				width: 187px;
+				display: inline-block;
+				text-transform: none;
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+			left: auto;
+			top: 100%;
+
+			ul {
+				top: 0;
+			}
+		}
+	}
+
+	li {
+		position: relative;
+		margin-right: 35px;
+
+		&:hover > a,
+		&.focus > a {
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	a {
+		padding: 10px 0;
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a,
+	.current-menu-ancestor > a {
+	}
+}
+
+.dropdown-symbol {
+	margin-left: 10px;
+	cursor: pointer;
+
+	.ws-svg-icon {
+		width: 13px;
+		height: 13px;
+	}
+}
+
+/* Small menu. */
+.main-navigation.toggled ul {
+	display: block;
+}
+
+@media screen and (min-width: 37.5em) {
+
+
+	.main-navigation ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+	}
+
+	.nav-links {
+		display: flex;
+	}
+
+	.nav-previous {
+		flex: 1 0 50%;
+	}
+
+	.nav-next {
+		text-align: end;
+		flex: 1 0 50%;
+	}
+}
+
+.navigation.pagination {
+	
+	text-align: center;
+	margin-top: 40px;
+
+	.page-numbers {
+		display: inline-block;
+		width: 36px;
+		height: 36px;
+		line-height: 36px;
+		text-align: center;
+		transition: background-color 0.3s;
+		margin-right: 7px;
+		border-radius: 50%;
+		background: transparent;
+		color: $color__primary;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:focus,
+		&:hover,
+		&.current {
+			color: #fff;
+			background-color: $color__primary;
+		}
+	}
+}
+.woocommerce-pagination {
+	text-align: center;
+	margin-top: 40px;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		display: inline-block;
+		margin-right: 7px;
+	
+		&:last-child {
+			margin-right: 0;
+		}
+
+		.page-numbers {
+			display: block;
+			width: 36px;
+			height: 36px;
+			line-height: 36px;
+			text-align: center;
+			background: transparent;
+			transition: background-color 0.3s;
+			border-radius: 50%;
+			color: $color__primary;
+
+			&:hover,
+			&.current {
+				color: #fff;
+				background-color: $color__primary;
+			}		
+		}
+	}
+}
+
+.botiga-offcanvas-menu {
+    position: fixed;
+    left: -100%;
+	opacity: 0;
+    transition: all 0.4s;
+    top: 0;
+    box-shadow: 0 5px 15px 3px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+    margin: 0;
+    z-index: 99999;
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    overflow-y: auto;
+
+    .admin-bar & {
+        top: 32px;
+    }
+
+    &.toggled {
+        left: 0;
+        opacity: 1;
+    }
+
+	.main-navigation {
+
+		a {
+			width: 100%;
+		}
+		.menu-item-has-children {
+			a {
+				width: calc(100% - 23px);
+			}	
+		}
+
+		ul ul {
+			a {
+				width: calc(100% - 23px);
+			}
+			li {
+				display: block;
+				padding: 0;
+			}
+		}
+	
+		ul li {
+			margin-right: 0;
+			
+		}
+	
+		ul ul ul {
+			position: static;
+		}
+	
+		ul ul li:hover>ul {
+			display: none;
+		}
+	
+		.sub-menu {
+			display: none;
+			margin: 0;
+			list-style: none;
+			padding-left: 10px;
+			position: static;
+			float: none;
+			box-shadow: none;
+	
+			&.toggled {
+				display: block;
+			}
+		}
+	}
+}
+.botiga-offcanvas-menu.toggled {
+	.menu {
+		display: block;
+	}
+}
+body.mobile-menu-visible {
+	overflow-y: hidden;
+}
+.menu-toggle {
+	width: 28px;
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+		
+	i,
+	svg {
+		width: 28px;
+		height: 20px;
+	} 
+}
+
+/* Secondary navigation */
+.secondary-navigation {
+	display: block;
+
+	ul {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		li {
+			a {
+				padding: 0 10px;
+			}
+		}
+	}
+}

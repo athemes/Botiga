@@ -1,0 +1,48 @@
+button,
+a.button,
+.wp-block-button__link,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 2px solid $color__primary;
+	box-shadow: none;
+	background: $color__primary;
+	color: #fff;
+	padding: 13px 24px;
+	cursor: pointer;
+	display: inline-block;
+	transition: all 0.3s;
+	border-radius: 0;
+	height: auto;
+	border-radius: 0;
+	font-weight: 400;
+	@include font-size(14);
+
+	&:hover {
+		color: #fff;
+		background-color: $color__hover;
+		border-color: $color__hover;
+	}
+
+	&:active,
+	&:focus {
+		color: #fff;
+	}
+}
+a.wc-backward {
+	color: #fff;
+}
+.is-style-outline .wp-block-button__link,
+.wp-block-button__link.is-style-outline {
+	color: $color__primary;
+	border: 2px solid $color__primary;
+}
+.wp-block-button {
+	margin-bottom: 20px;
+}
+.wp-block-button.is-style-squared, 
+.wp-block-button__link.wp-block-button.is-style-squared {
+	a {
+		border-radius: 0;
+	}
+}

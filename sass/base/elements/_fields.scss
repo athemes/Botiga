@@ -1,0 +1,46 @@
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+select,
+.woocommerce .select2-container .select2-selection--single,
+.woocommerce-page .select2-container .select2-selection--single {
+	color: $color__primary;
+	border: 1px solid $color__primary;
+	border-radius: 0;
+	padding: 12px 16px;
+	border-radius: 0;
+	min-height: 51px;
+
+	&:focus {
+		color: $color__text-input-focus;
+	}
+}
+
+select {
+	border: 1px solid $color__primary;
+}
+
+textarea {
+	width: 100%;
+}
+.woocommerce .select2-container .select2-selection--single,
+.woocommerce-page .select2-container .select2-selection--single {
+	height: 100%;
+
+	.select2-selection__arrow {
+		top: 15px;
+	}
+}

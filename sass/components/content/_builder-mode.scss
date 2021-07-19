@@ -1,0 +1,31 @@
+.botiga-page-builder-mode {
+	.content-wrapper {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.site-main {
+		padding: 0 !important;
+
+		& > .hentry {
+			margin: 0;
+		}
+	}
+
+	.entry-content {
+		& > * {
+			max-width: 1140px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		& > .alignfull {
+			max-width: 100%;
+		}
+
+		& > .alignwide {
+			max-width: 1300px;
+		}	
+
+	}
+}

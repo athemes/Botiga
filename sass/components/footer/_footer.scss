@@ -1,0 +1,147 @@
+.site-footer {
+    background-color: #f5f5f5;
+}
+.site-info {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    border-top: 1px solid rgba( $color__primary, 0.1);
+    color: $color__primary;
+
+    a {
+        color: $color__primary;
+        text-decoration: underline;
+    }
+
+    .row {
+        .col-md-6:nth-of-type(2) {
+            text-align: right;
+        }
+    }
+}
+.social-profile {
+    a {
+        margin-right: 40px;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+.footer-widgets {
+    background-color: #f5f5f5;
+}
+.widget-column {
+    .widget {
+        &:last-of-type {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .widget-title {
+            @include font-size(20);
+        }
+    }
+}
+
+.footer-widgets-grid {
+    display: grid;
+    padding-top: 70px;
+    padding-bottom: 70px;    
+    gap: 30px;
+
+    &.col2 {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    &.col2-bigleft {
+        grid-template-columns: 2fr 1fr; 
+    }    
+    &.col2-bigright {
+        grid-template-columns: 1fr 2fr; 
+    }     
+
+    &.col3 {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    &.col3-bigleft {
+        grid-template-columns: 3fr 1fr 1fr; 
+    }    
+    &.col3-bigright {
+        grid-template-columns: 1fr 1fr 3fr; 
+    }   
+
+    &.col4 {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    &.col4-bigleft {
+        grid-template-columns: 2fr 1fr 1fr 1fr; 
+    }    
+    &.col4-bigright {
+        grid-template-columns: 1fr 1fr 1fr 2fr; 
+    }      
+
+    &.align-middle {
+        align-items: center;
+    }
+
+    &.align-bottom {
+        align-items: end;
+    }
+
+}
+
+.visibility-mobile-only {
+    display: none;
+}
+@media (max-width: 991px) {
+    .visibility-desktop-only {
+        display: none;
+    }
+    .visibility-mobile-only {
+        display: block;
+    }    
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: -70px;
+    right: 30px;
+    cursor: pointer;
+    background-color: $color__primary;
+    line-height: 1;
+    padding: 15px;
+    border-radius: 30px;
+    transition: all 0.4s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+    color: #fff;
+
+    span {
+        margin-right: 5px;
+        @include font-size(14);
+    }
+
+    &.display {
+        visibility: visible;
+        opacity: 1;
+        bottom: 30px;
+    }
+
+    &.position-left {
+        right: auto;
+        left: 30px;
+    }
+
+    &:hover {
+        background-color: $color__hover;
+    }
+
+    .ws-svg-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    svg {
+        stroke: #fff;
+    }
+}

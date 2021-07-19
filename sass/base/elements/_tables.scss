@@ -1,0 +1,13 @@
+table {
+	margin: 0 0 30px;
+	width: 100%;
+	border: 1px solid rgba($color__primary,0.1);
+	border-collapse: collapse;
+
+	th,
+	td,
+	tr {
+		padding: 10px;
+		border: 1px solid rgba($color__primary,0.1);
+	}
+}
