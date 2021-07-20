@@ -797,6 +797,14 @@ html {
   margin-left: auto;
 }
 
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -823,14 +831,6 @@ html {
   .container {
     max-width: 1140px;
   }
-}
-
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 @media (min-width: 576px) {
@@ -2904,7 +2904,10 @@ body.mobile-menu-visible {
     padding-bottom: 30px;
   }
   h1,
-  .has-gigantic-font-size {
+  .has-gigantic-font-size,
+  .woocommerce-account .entry-title,
+  .woocommerce-checkout .entry-title,
+  .woocommerce-cart .entry-title {
     font-size: 42px;
     font-size: 2.625rem;
   }
@@ -2947,6 +2950,15 @@ body.mobile-menu-visible {
     max-width: 100%;
     margin-top: 60px;
   }
+  form.woocommerce-checkout {
+    display: block;
+  }
+  #customer_details {
+    max-width: 100%;
+  }
+  .checkout-wrapper {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 767px) {
@@ -2978,6 +2990,29 @@ body.mobile-menu-visible {
     margin-bottom: 0;
     text-align: center;
   }
+  .woocommerce-cart tr.cart_item td {
+    padding: 30px;
+  }
+  .woocommerce-cart .cart_totals {
+    margin-top: 60px;
+    max-width: 100%;
+    float: none;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .coupon {
+    float: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
+    float: none;
+    margin-top: 15px;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"] {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 991px) {
@@ -2994,7 +3029,10 @@ body.mobile-menu-visible {
     grid-template-columns: 1fr !important;
   }
   h1,
-  .has-gigantic-font-size {
+  .has-gigantic-font-size,
+  .woocommerce-account .entry-title,
+  .woocommerce-checkout .entry-title,
+  .woocommerce-cart .entry-title {
     font-size: 32px;
     font-size: 2rem;
   }

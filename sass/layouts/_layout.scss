@@ -17,6 +17,14 @@ html {
 	margin-left: auto;
   }
   
+  .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+  }
+    
   @media (min-width: 576px) {
 	.container {
 	  max-width: 540px;
@@ -43,14 +51,6 @@ html {
 	.container {
 	  max-width: 1140px;
 	}
-  }
-  
-  .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
   }
   
   @media (min-width: 576px) {

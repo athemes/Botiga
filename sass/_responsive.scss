@@ -11,7 +11,10 @@
         padding-bottom: 30px;
     }
     h1,
-    .has-gigantic-font-size {
+    .has-gigantic-font-size,
+    .woocommerce-account .entry-title,
+    .woocommerce-checkout .entry-title,
+    .woocommerce-cart .entry-title {
         @include font-size(42);
     }
     h2,
@@ -47,6 +50,15 @@
         padding-right: 15px;
         max-width: 100%;
         margin-top: 60px;
+    }
+    form.woocommerce-checkout {
+        display: block;
+    }
+    #customer_details {
+        max-width: 100%;
+    }
+    .checkout-wrapper {
+        margin-left: 0;
     }
 }
 @media (max-width: 767px) {
@@ -84,6 +96,25 @@
             }
         }
     }
+    .woocommerce-cart tr.cart_item td {
+        padding: 30px;
+    }
+    .woocommerce-cart .cart_totals {
+        margin-top: 60px;
+        max-width: 100%;
+        float: none;
+    }
+    .woocommerce-cart .woocommerce-cart-form .actions .coupon {
+        float: none;
+        display: flex;
+    }
+    .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
+        float: none;
+        margin-top: 15px;
+    }
+    .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"] {
+        flex-grow: 1;
+    }
 }
 
 @media (min-width: 576px) and (max-width:  991px) {
@@ -103,7 +134,10 @@
         grid-template-columns: 1fr !important;
     }      
     h1,
-    .has-gigantic-font-size {
+    .has-gigantic-font-size,
+    .woocommerce-account .entry-title,
+    .woocommerce-checkout .entry-title,
+    .woocommerce-cart .entry-title {
         @include font-size(32);
     }
     h2,
