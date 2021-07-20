@@ -14,6 +14,8 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
+		min-width: 145px;
+		text-align: center;
 		opacity: 0;
 		margin-top: 0 !important;
 		visibility: hidden;
@@ -33,6 +35,41 @@
 	}
 }
 
+.loop-image-wrap {
+	> .add_to_cart_button,
+	> .loop-button-wrap.button-layout3 {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-width: 145px;
+		text-align: center;;
+		opacity: 0;
+		visibility: hidden;
+		white-space: nowrap;
+		transform: translate3d(-50%, -10%, 0);
+		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		& + .botiga-quick-view-layout2 {
+			transform: translate3d(-50%, -50%, 0);
+		}
+	}
+	> .loop-button-wrap.button-layout3 {
+		.add_to_cart_button {
+			min-width: 145px;
+			text-align: center;;
+		}
+	}
+	&.botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 {
+		> .add_to_cart_button,
+		> .loop-button-wrap.button-layout4 {
+			top: auto;
+			left: 15px;
+			bottom: 55px;
+			min-width: 0;
+			transform: none !important;
+		}
+	}
+}
+
 ul.products,
 ul.wc-block-grid__products {
 	li.product,
@@ -45,6 +82,43 @@ ul.wc-block-grid__products {
 			}
 			.botiga-quick-view-layout3 {
 				transform: translate3d(0, 0, 0);
+			}
+			.loop-image-wrap {
+				> .add_to_cart_button,
+				> .loop-button-wrap.button-layout3 {
+					opacity: 1;
+					visibility: visible;
+					transform: translate3d(-50%, 0%, 0);
+					& + .botiga-quick-view-layout2 {
+						transform: translate3d(-50%, -75%, 0);
+					}
+				}
+				&.botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout3 {
+					> .add_to_cart_button,
+					> .loop-button-wrap.button-layout3 {
+						transform: translate3d(-50%, -50%, 0);
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+ul.wc-block-grid__products {
+	li.wc-block-grid__product {
+		.loop-image-wrap:not(.botiga-quick-view-button-layout3) {
+			> .loop-button-wrap.button-layout3 {
+				& + .button.botiga-quick-view {
+					transition-delay: 0ms;
+				}
+			}
+		}
+		&:hover {
+			.loop-image-wrap {
+				> .loop-button-wrap.button-layout3 {
+					transform: translate3d(-50%, 45%, 0);
+				}
 			}
 		}
 	}

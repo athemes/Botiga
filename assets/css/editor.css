@@ -30,6 +30,34 @@ div.editor-styles-wrapper textarea {
   line-height: 1.68;
 }
 
+div.editor-styles-wrapper .has-gigantic-font-size {
+  font-size: 64px;
+}
+
+div.editor-styles-wrapper .has-huge-font-size {
+  font-size: 48px;
+}
+
+div.editor-styles-wrapper .has-extra-large-font-size {
+  font-size: 32px;
+}
+
+div.editor-styles-wrapper .has-larger-font-size {
+  font-size: 24px;
+}
+
+div.editor-styles-wrapper .has-large-font-size {
+  font-size: 18px;
+}
+
+div.editor-styles-wrapper .has-normal-font-size {
+  font-size: 16px;
+}
+
+div.editor-styles-wrapper .has-small-font-size {
+  font-size: 14px;
+}
+
 div.editor-styles-wrapper h1,
 div.editor-styles-wrapper h2,
 div.editor-styles-wrapper h3,
