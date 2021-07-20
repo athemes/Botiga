@@ -35,6 +35,13 @@ template{display:none}
 *,*::before,*::after{-webkit-box-sizing:inherit;box-sizing:inherit}
 html{-webkit-box-sizing:border-box;box-sizing:border-box}
 body,button,input,select,optgroup,textarea{color:#212121;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;font-size:1rem;line-height:1.68}
+.has-gigantic-font-size{font-size:64px}
+.has-huge-font-size{font-size:48px}
+.has-extra-large-font-size{font-size:32px}
+.has-larger-font-size{font-size:24px}
+.has-large-font-size{font-size:18px}
+.has-normal-font-size{font-size:16px}
+.has-small-font-size{font-size:14px}
 h1,h2,h3,h4,h5,h6,.site-title{clear:both;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;line-height:1.2;font-weight:600;color:#212121}
 h1{font-size:64px;font-size:4rem;margin:60px 0 40px}
 h2{font-size:48px;font-size:3rem;margin:45px 0 30px}
@@ -459,10 +466,10 @@ body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignwide{margin
 .comments-area{padding:15px}
 .content-wrapper{margin-top:60px;margin-bottom:60px}
 .page-header{padding-bottom:30px}
-h1{font-size:42px;font-size:2.625rem}
-h2{font-size:32px;font-size:2rem}
-h3{font-size:24px;font-size:1.5rem}
-h4{font-size:18px;font-size:1.125rem}
+h1,.has-gigantic-font-size{font-size:42px;font-size:2.625rem}
+h2,.has-huge-font-size{font-size:32px;font-size:2rem}
+h3,.has-extra-large-font-size{font-size:24px;font-size:1.5rem}
+h4,.has-larger-font-size{font-size:18px;font-size:1.125rem}
 h5{font-size:16px;font-size:1rem}
 h6{font-size:16px;font-size:1rem}
 .footer-widgets-grid.col4-bigleft,.footer-widgets-grid.col4-bigright,.footer-widgets-grid.col4{grid-template-columns:repeat(2,1fr)}
@@ -475,10 +482,10 @@ h6{font-size:16px;font-size:1rem}
 .footer-widgets-grid.col3-bigright,.footer-widgets-grid.col3-bigleft{grid-template-columns:1fr 1fr 1fr}
 }@media(max-width:575px){.custom-logo-link img{max-width:100px}
 .footer-widgets-grid{grid-template-columns:1fr !important}
-h1{font-size:32px;font-size:2rem}
-h2{font-size:24px;font-size:1.5rem}
-h3{font-size:20px;font-size:1.25rem}
-h4{font-size:16px;font-size:1rem}
+h1,.has-gigantic-font-size{font-size:32px;font-size:2rem}
+h2,.has-huge-font-size{font-size:24px;font-size:1.5rem}
+h3,.has-extra-large-font-size{font-size:20px;font-size:1.25rem}
+h4,.has-larger-font-size{font-size:16px;font-size:1rem}
 h5{font-size:16px;font-size:1rem}
 h6{font-size:16px;font-size:1rem}
 }

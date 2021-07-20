@@ -10,16 +10,20 @@
     .page-header {
         padding-bottom: 30px;
     }
-    h1 {
+    h1,
+    .has-gigantic-font-size {
         @include font-size(42);
     }
-    h2 {
+    h2,
+    .has-huge-font-size {
         @include font-size(32);
     }
-    h3 {
+    h3,
+    .has-extra-large-font-size {
         @include font-size(24);
     }
-    h4 {
+    h4,
+    .has-larger-font-size {
         @include font-size(18);
     }
     h5 {
@@ -85,16 +89,20 @@
     .footer-widgets-grid {
         grid-template-columns: 1fr !important;
     }      
-    h1 {
+    h1,
+    .has-gigantic-font-size {
         @include font-size(32);
     }
-    h2 {
+    h2,
+    .has-huge-font-size {
         @include font-size(24);
     }
-    h3 {
+    h3,
+    .has-extra-large-font-size {
         @include font-size(20);
     }
-    h4 {
+    h4,
+    .has-larger-font-size {
         @include font-size(16);
     }
     h5 {

@@ -127,6 +127,57 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		add_theme_support(
 			'editor-color-palette',
 			$colors
+		);	
+		
+		/**
+		 * Editor font sizes
+		 */
+		add_theme_support(
+			'editor-font-sizes',
+			array(
+				array(
+					'name'      => esc_html__( 'Small', 'botiga' ),
+					'shortName' => esc_html_x( 'S', 'Font size', 'botiga' ),
+					'size'      => 14,
+					'slug'      => 'small',
+				),				
+				array(
+					'name'      => esc_html__( 'Normal', 'botiga' ),
+					'shortName' => esc_html_x( 'N', 'Font size', 'botiga' ),
+					'size'      => 16,
+					'slug'      => 'normal',
+				),
+				array(
+					'name'      => esc_html__( 'Large', 'botiga' ),
+					'shortName' => esc_html_x( 'L', 'Font size', 'botiga' ),
+					'size'      => 18,
+					'slug'      => 'large',
+				),
+				array(
+					'name'      => esc_html__( 'Larger', 'botiga' ),
+					'shortName' => esc_html_x( 'L', 'Font size', 'botiga' ),
+					'size'      => 24,
+					'slug'      => 'larger',
+				),
+				array(
+					'name'      => esc_html__( 'Extra large', 'botiga' ),
+					'shortName' => esc_html_x( 'XL', 'Font size', 'botiga' ),
+					'size'      => 32,
+					'slug'      => 'extra-large',
+				),
+				array(
+					'name'      => esc_html__( 'Huge', 'botiga' ),
+					'shortName' => esc_html_x( 'XXL', 'Font size', 'botiga' ),
+					'size'      => 48,
+					'slug'      => 'huge',
+				),
+				array(
+					'name'      => esc_html__( 'Gigantic', 'botiga' ),
+					'shortName' => esc_html_x( 'XXXL', 'Font size', 'botiga' ),
+					'size'      => 64,
+					'slug'      => 'gigantic',
+				),
+			)
 		);		
 
 		/**

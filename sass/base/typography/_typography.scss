@@ -10,5 +10,27 @@ textarea {
 	line-height: $font__line-height-body;
 }
 
+.has-gigantic-font-size {
+	font-size: 64px;
+}
+.has-huge-font-size {
+	font-size: 48px;
+}
+.has-extra-large-font-size {
+	font-size: 32px;
+}
+.has-larger-font-size {
+	font-size: 24px;
+}
+.has-large-font-size {
+	font-size: 18px;
+}
+.has-normal-font-size {
+	font-size: 16px;
+}
+.has-small-font-size {
+	font-size: 14px;
+}
+
 @import "headings";
 @import "copy";

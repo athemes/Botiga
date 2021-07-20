@@ -376,6 +376,34 @@ textarea {
   line-height: 1.68;
 }
 
+.has-gigantic-font-size {
+  font-size: 64px;
+}
+
+.has-huge-font-size {
+  font-size: 48px;
+}
+
+.has-extra-large-font-size {
+  font-size: 32px;
+}
+
+.has-larger-font-size {
+  font-size: 24px;
+}
+
+.has-large-font-size {
+  font-size: 18px;
+}
+
+.has-normal-font-size {
+  font-size: 16px;
+}
+
+.has-small-font-size {
+  font-size: 14px;
+}
+
 h1,
 h2,
 h3,
@@ -2870,19 +2898,23 @@ body.mobile-menu-visible {
   .page-header {
     padding-bottom: 30px;
   }
-  h1 {
+  h1,
+  .has-gigantic-font-size {
     font-size: 42px;
     font-size: 2.625rem;
   }
-  h2 {
+  h2,
+  .has-huge-font-size {
     font-size: 32px;
     font-size: 2rem;
   }
-  h3 {
+  h3,
+  .has-extra-large-font-size {
     font-size: 24px;
     font-size: 1.5rem;
   }
-  h4 {
+  h4,
+  .has-larger-font-size {
     font-size: 18px;
     font-size: 1.125rem;
   }
@@ -2948,19 +2980,23 @@ body.mobile-menu-visible {
   .footer-widgets-grid {
     grid-template-columns: 1fr !important;
   }
-  h1 {
+  h1,
+  .has-gigantic-font-size {
     font-size: 32px;
     font-size: 2rem;
   }
-  h2 {
+  h2,
+  .has-huge-font-size {
     font-size: 24px;
     font-size: 1.5rem;
   }
-  h3 {
+  h3,
+  .has-extra-large-font-size {
     font-size: 20px;
     font-size: 1.25rem;
   }
-  h4 {
+  h4,
+  .has-larger-font-size {
     font-size: 16px;
     font-size: 1rem;
   }

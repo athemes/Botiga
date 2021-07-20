@@ -9,10 +9,6 @@
   margin-bottom: 25px;
 }
 
-.block-editor-block-list__layout .wp-block {
-  width: 100%;
-}
-
 @media (min-width: 1600px) {
   .wp-block {
     max-width: 1000px;
@@ -158,7 +154,7 @@ div.editor-styles-wrapper .editor-post-title .editor-post-title__input {
 /*
 * Elements
 */
-div.editor-styles-wrapper button,
+div.editor-styles-wrapper button:not(.components-button),
 div.editor-styles-wrapper a.button,
 div.editor-styles-wrapper .wp-block-button__link,
 div.editor-styles-wrapper input[type="button"],
@@ -182,7 +178,7 @@ div.editor-styles-wrapper input[type="submit"] {
   font-size: 0.875rem;
 }
 
-div.editor-styles-wrapper button:hover,
+div.editor-styles-wrapper button:not(.components-button):hover,
 div.editor-styles-wrapper a.button:hover,
 div.editor-styles-wrapper .wp-block-button__link:hover,
 div.editor-styles-wrapper input[type="button"]:hover,
@@ -193,7 +189,7 @@ div.editor-styles-wrapper input[type="submit"]:hover {
   border-color: #757575;
 }
 
-div.editor-styles-wrapper button:active, div.editor-styles-wrapper button:focus,
+div.editor-styles-wrapper button:not(.components-button):active, div.editor-styles-wrapper button:not(.components-button):focus,
 div.editor-styles-wrapper a.button:active,
 div.editor-styles-wrapper a.button:focus,
 div.editor-styles-wrapper .wp-block-button__link:active,
