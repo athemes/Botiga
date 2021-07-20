@@ -1579,8 +1579,8 @@ body.mobile-menu-visible {
 
 .menu-toggle i,
 .menu-toggle svg {
-  width: 28px;
-  height: 20px;
+  width: 28px !important;
+  height: 20px !important;
 }
 
 /* Secondary navigation */
@@ -2281,6 +2281,11 @@ body.mobile-menu-visible {
   height: 16px;
   vertical-align: middle;
   line-height: 1;
+}
+
+.site-header .ws-svg-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .entry-footer {

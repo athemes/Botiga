@@ -1,3 +1,8 @@
+/* Temporary starter sites: disable go pro button and categories dropdown from starter sites page */
+.atss-demos-page .atss-header .atss-header-right,
+.atss-demos-page .atss-header .atss-header-col-categories {
+  display: none;
+}
 /* Theme Dashboard */
 .thd-theme-dashboard .button {
   transition: 0.25s;

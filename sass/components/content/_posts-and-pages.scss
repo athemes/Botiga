@@ -337,6 +337,11 @@
 	height: 16px;
 	vertical-align: middle;
 	line-height: 1;
+
+	.site-header & {
+		width: 24px;
+		height: 24px;		
+	}
 }
 
 .entry-footer {

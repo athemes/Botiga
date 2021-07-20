@@ -424,7 +424,7 @@ $wp_customize->add_setting( 'topbar_padding', array(
 
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'topbar_padding',
 	array(
-		'label' 		=> esc_html__( 'Top&amp;bottom padding', 'botiga' ),
+		'label' 		=> esc_html__( 'Top &amp; bottom padding', 'botiga' ),
 		'section' 		=> 'botiga_section_top_bar',
 		'is_responsive'	=> 0,
 		'settings' 		=> array (
