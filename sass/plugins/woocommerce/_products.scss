@@ -61,6 +61,10 @@ ul.products {
 			font-weight: 400;
 			color: $color__primary;
 		}
+
+		.wc-block-grid__product-link {
+			text-decoration: none;
+		}		
 	}
 }
 
@@ -266,4 +270,11 @@ ul.wc-block-grid__products {
 
 .wc-block-grid__product-link {
 	display: block;
+}
+
+.price {
+	font-weight: 600;
+	ins {
+		background-color: transparent;
+	}
 }

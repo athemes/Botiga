@@ -1918,10 +1918,15 @@ body.mobile-menu-visible {
 
 .custom-logo-link {
   margin-bottom: 10px;
+  line-height: 1;
 }
 
 .custom-logo-link img {
   max-width: 180px;
+}
+
+.custom-logo-link + .site-title {
+  margin-top: 10px;
 }
 
 /* Posts and pages
@@ -2073,6 +2078,14 @@ body.mobile-menu-visible {
 
 .posts-archive .post-thumbnail {
   margin-bottom: 16px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.posts-archive .post-thumbnail:hover {
+  opacity: 0.7;
 }
 
 .botiga-related-posts .related-post h3 {
@@ -2294,8 +2307,6 @@ body.mobile-menu-visible {
 
 .botiga-page-builder-mode .entry-content > * {
   max-width: 1140px;
-  padding-left: 15px;
-  padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
 }

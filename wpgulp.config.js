@@ -127,15 +127,6 @@ const zipIgnoreGlob = [
 	'!./package-lock.json',
 	'!./assets/img/raw/**/*',
 	'!./assets/img/raw',
-	'!./sass/**/*',
-	'!./sass',
-	'!./assets/js/src/**/*',
-	'!./assets/js/src',
-	`!${imgSRC}`,
-	`!${styleSRC}`,
-	`!${woocommerceSRC}`,
-	`!${jsCustomSRC}`,
-	`!${jsVendorSRC}`
 ];
 
 // >>>>> Translation options.
