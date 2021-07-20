@@ -251,7 +251,15 @@ function botiga_loop_product_structure() {
  * Hook into Woocommerce
  */
 function botiga_wc_hooks() {
-	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$layout			   = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+
+	//Loop image wrapper extra class
+	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
+	if( 'layout1' !== $quick_view_layout ) {
+		$loop_image_wrap_extra_class .= ' botiga-quick-view-button-'. $quick_view_layout;
+	}
 
 	//No sidebar for checkout, cart, account
 	if ( is_cart() ) {
@@ -270,7 +278,7 @@ function botiga_wc_hooks() {
 		add_filter( 'botiga_content_class', 'botiga_wc_archive_layout' );
 
 		if ( 'product-list' === $layout ) {
-			add_action( 'woocommerce_before_shop_loop_item', function() { echo '<div class="row valign"><div class="col-md-4"><div class="loop-image-wrap">'; }, 1 );
+			add_action( 'woocommerce_before_shop_loop_item', function() use ($loop_image_wrap_extra_class) { echo '<div class="row valign"><div class="col-md-4"><div class="loop-image-wrap '. esc_attr( $loop_image_wrap_extra_class ) .'">'; }, 1 );
 			add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div></div><div class="col-md-8">'; }, 11 );
 			add_action( 'woocommerce_after_shop_loop_item', function() { echo '</div>'; }, PHP_INT_MAX );
 		}
@@ -332,8 +340,6 @@ function botiga_wc_hooks() {
 	/**
 	 * Loop product structure
 	 */
-	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 
 	//Move link close tag
 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
@@ -342,7 +348,7 @@ function botiga_wc_hooks() {
 	//Wrap loop image
 	if ( 'product-grid' === $layout || is_product() ) {
 		//Wrap loop image
-		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '<div class="loop-image-wrap">'; }, 9 );
+		add_action( 'woocommerce_before_shop_loop_item_title', function() use ($loop_image_wrap_extra_class) { echo '<div class="loop-image-wrap '. esc_attr( $loop_image_wrap_extra_class ) .'">'; }, 9 );
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div>'; }, 11 );
 	}
 
@@ -357,9 +363,6 @@ function botiga_wc_hooks() {
 		if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
 			add_action( 'woocommerce_before_shop_loop_item_title', function() { botiga_wrap_loop_button_start(); woocommerce_template_loop_add_to_cart(); echo '</div>'; } );
-		}
-		if( 'layout4' === $button_layout && 'layout3' === $quick_view_layout || 'layout3' === $button_layout && 'layout2' === $quick_view_layout ) {
-			add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 12 );
 		}
 	}
 
@@ -378,12 +381,17 @@ function botiga_wc_hooks() {
 	}
 
 	//Remove button
+	if( 'layout1' === $button_layout ) {
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
+	}
+
+	//Quick view button & add to car button
 	if ( 
-		'layout1' === $button_layout || 
 		( 'layout4' === $button_layout && 'layout3' === $quick_view_layout ) || 
 		( 'layout3' === $button_layout && 'layout2' === $quick_view_layout ) 
 	) {
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
+		add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 10 );
 	}
 
 	//Quick view
@@ -780,17 +788,23 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	$button_layout 	   = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 	$layout			   = get_theme_mod( 'shop_product_card_layout', 'layout1' );
-	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' ); 
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	
+	//Loop image wrapper extra class
+	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
+	if( 'layout1' !== $quick_view_layout ) {
+		$loop_image_wrap_extra_class .= ' botiga-quick-view-button-'. $quick_view_layout;
+	}
 
 	$markup = "<li class=\"wc-block-grid__product product-grid\">
-				<div class=\"loop-image-wrap\">
+				<div class=\"loop-image-wrap $loop_image_wrap_extra_class\">
 					<a href=\"{$data->permalink}\" class=\"wc-block-grid__product-link\">
 						{$data->image}
 					</a>"
 				. botiga_sale_badge( $html = '', $post, $product );
 
 	//Add button inside image wrapper for layout4 and layout3
-	if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
+	if ( 'layout4' === $button_layout || 'layout3' === $button_layout ) {
 		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . "\">"
 				. botiga_gb_add_to_cart_button( $product ) .
 				"</div>";
