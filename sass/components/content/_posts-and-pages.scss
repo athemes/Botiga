@@ -23,6 +23,28 @@
 	}
 }
 
+
+.single .no-sidebar,
+.single.no-sidebar  {
+	.entry-header,
+	.entry-content,
+	.entry-footer,
+	.post-navigation,
+	.comments-area,
+	.single-post-author {
+		max-width: 730px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.post-thumbnail {
+		max-width: 920px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
+
 .post {
 	margin: 0 0 40px;
 }
@@ -159,6 +181,11 @@
 	border-top: 1px solid rgba($color__primary, 0.1);
 	padding-top: 50px;
 	margin-top: 50px;
+}
+.botiga-related-posts {
+	h3 {
+		margin-top: 8px;
+	}
 }
 .post-thumbnail {
 	display: block;
