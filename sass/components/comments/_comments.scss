@@ -123,3 +123,12 @@
 
 	}
 }
+.comment-respond {
+	.comment-form-author,
+	.comment-form-email,
+	.comment-form-url {
+		input {
+			width: 100%;
+		}
+	}
+}

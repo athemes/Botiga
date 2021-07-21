@@ -187,6 +187,16 @@ ul.products {
 	}
 }
 
+.loop-button-wrap.button-layout4 {
+	.ws-svg-icon {
+		width:24px;
+		height:24px;
+	}
+	.button {
+		margin-left: 0 !important;
+	}
+}
+
 .loop-price-inline {
 	text-align: right;
 }
@@ -276,5 +286,9 @@ ul.wc-block-grid__products {
 	font-weight: 600;
 	ins {
 		background-color: transparent;
+	}
+	del {
+		margin-right: 6px;
+		font-weight: 400;
 	}
 }

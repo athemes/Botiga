@@ -1,5 +1,5 @@
 p {
-	margin-bottom: 25px;
+	margin-bottom: 40px;
 	margin-top: 0;
 }
 
@@ -11,9 +11,24 @@ i {
 }
 
 blockquote {
-	margin: 0 0 0 15px;
-	padding-left: 15px;
-	border-left: 3px solid $color__primary;
+	margin: 0 0 0 50px;
+
+	p {
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 41px;
+
+		&:last-of-type {
+			margin-bottom: 12px;
+		}
+	}
+
+	cite {
+		font-size: 14px;
+		line-height: 22px;
+		font-style: normal;
+		letter-spacing: 2px;
+	}
 }
 
 address {

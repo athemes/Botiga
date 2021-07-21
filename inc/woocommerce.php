@@ -724,6 +724,10 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart
  */
 function botiga_sale_badge( $html, $post, $product ) {
 
+	if ( !$product->is_on_sale() ) {
+		return;
+	}	
+
 	$text 			= get_theme_mod( 'sale_badge_text', esc_html__( 'Sale!', 'botiga' ) );
 	$enable_perc 	= get_theme_mod( 'sale_badge_percent', 0 );
 	$perc_text 		= get_theme_mod( 'sale_percentage_text', '-{value}%' );
@@ -1252,3 +1256,16 @@ function botiga_quick_view_external_add_to_cart( $product ) {
 
 	<?php do_action( 'botiga_quick_view_after_add_to_cart_form' );
 }
+
+/**
+ * My account page 
+ * Identify the page and insert html so we can style some elements
+ */
+function botiga_myaccount_html_insert() {
+    $request_url = $_SERVER['REQUEST_URI'];
+    // view-order
+    if( strpos( $request_url, '/my-account/view-order' ) !== FALSE ) {
+        echo '<div class="botiga-wc-account-view-order"></div>';
+    }
+}
+add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );

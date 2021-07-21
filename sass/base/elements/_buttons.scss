@@ -16,6 +16,8 @@ input[type="submit"] {
 	height: auto;
 	border-radius: 0;
 	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 2px;
 	@include font-size(14);
 
 	&:hover {

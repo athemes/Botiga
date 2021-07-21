@@ -15,7 +15,7 @@
 
 	.product-name {
 		a {
-			font-weight: 600;
+			font-weight: 400;
 			color: $color__text-main;
 		}
 	}
@@ -25,6 +25,10 @@
 
 		td {
 			text-align: center;
+		}
+
+		th {
+			font-weight: 400;
 		}
 	}
 	thead tr,
@@ -55,7 +59,7 @@
 		@include font-size(22);
 		text-align: center;
 		font-weight: 600;
-		padding: 0;
+		padding: 0 10px;
 
 		a {
 			color: $color__primary;
@@ -63,6 +67,7 @@
 			text-align: center!important;
 			display: inline-block;
 			line-height: 30px;
+			font-weight: 300;
 
 			&:hover {
 				color: $color__primary;
@@ -84,6 +89,7 @@
 
 				input[type="text"] {
 					border-color: rgba(36, 32, 33, 0.2);
+					min-height: 53px;
 				}
 
 				label {
@@ -93,10 +99,8 @@
 			
 			.button {
 				float: right;
-				margin-left: 10px;
 				@include font-size(14);
 				text-transform: uppercase;
-				letter-spacing: 1px;
 
 				&:disabled:hover {
 					cursor: not-allowed;
@@ -233,5 +237,27 @@
 			width: 30%;
 			margin-top: 0;
 		}
+	}
+	.woocommerce-cart .cart_totals {
+        min-width: 445px;
+    }
+	
+}
+.woocommerce-cart table {
+	border: 0;
+}
+.woocommerce-cart div.cart_totals table tr.cart-subtotal td,
+.woocommerce-cart div.cart_totals table tr.shipping td {
+	border-bottom: 1px solid rgba(33,33,33,0.1) !important;
+}
+.woocommerce-cart div.cart_totals table tr.order-total th {
+	border-bottom: 0;
+}
+.woocommerce-cart div.cart_totals table tr.cart-subtotal th {
+	border-top: 0;
+}
+.woocommerce-cart-form__contents {
+	.product-subtotal {
+		font-weight: 600;
 	}
 }

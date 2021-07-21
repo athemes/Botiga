@@ -38,6 +38,10 @@ form.woocommerce-checkout {
 		thead {
 			tr:first-of-type {
 				border-top: 0 !important;
+				
+				th {
+					border-top: 0 !important;			
+				}
 			}
 		}
 
@@ -176,4 +180,10 @@ form.woocommerce-checkout {
 }
 .woocommerce form .form-row .required {
 	text-decoration: none;
+}
+
+.woocommerce-checkout-payment {
+	li {
+		background: transparent;
+	}
 }

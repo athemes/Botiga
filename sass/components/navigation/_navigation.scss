@@ -101,14 +101,15 @@
 	.current-menu-ancestor > a {
 	}
 }
-
-.dropdown-symbol {
-	margin-left: 10px;
-	cursor: pointer;
-
-	.ws-svg-icon {
-		width: 13px;
-		height: 13px;
+.site-header {
+	.dropdown-symbol {
+		margin-left: 10px;
+		cursor: pointer;
+	
+		.ws-svg-icon {
+			width: 13px;
+			height: 13px;
+		}
 	}
 }
 

@@ -1,5 +1,9 @@
 .woocommerce-account {
 
+	.woocommerce-notices-wrapper {
+		margin-bottom: 20px;
+	}
+
 	#customer_login {
 		display: flex;
 		flex-wrap: wrap;
@@ -26,6 +30,7 @@
 	.woocommerce-form-register {
 		border: 1px solid #ebebeb;
 		padding: 60px;
+		min-height: 503px;
 
 		input[type="password"],
 		input[type="text"],
@@ -40,58 +45,60 @@
 		}
 	}
 
-	.entry-content {
-		& > .woocommerce {
-			display: flex;
-			flex-wrap: wrap;
-
-			.woocommerce-MyAccount-navigation {
-				flex: 0 0 20%;
-				max-width: 20%;		
-				
-				ul {
-					list-style: none;
-					padding: 0;
-					margin: 0;
-
-					a {
-						display: block;
-						text-decoration: none;
-						color: $color__text_main;
-						padding: 16px;
-						border-bottom: 1px solid rgba($color__primary, 0.1);
-					}
-
-					.is-active {
+	&.logged-in {
+		.entry-content {
+			& > .woocommerce {
+				display: flex;
+				flex-wrap: wrap;
+	
+				.woocommerce-MyAccount-navigation {
+					flex: 0 0 20%;
+					max-width: 20%;		
+					
+					ul {
+						list-style: none;
+						padding: 0;
+						margin: 0;
+	
 						a {
-							background-color: $color__primary;
-							color: #fff;
+							display: block;
+							text-decoration: none;
+							color: $color__text_main;
+							padding: 16px;
+							border-bottom: 1px solid rgba($color__primary, 0.1);
+						}
+	
+						.is-active {
+							a {
+								background-color: $color__primary;
+								color: #fff;
+							}
 						}
 					}
 				}
-			}
-
-			.woocommerce-MyAccount-content {
-				flex: 0 0 70%;
-				max-width: 70%;		
-				padding-left: 30px;		
-				color: #666666;
-
-				a:not(.button) {
-					color: $color__primary;
-					text-decoration: underline;
+	
+				.woocommerce-MyAccount-content {
+					flex: 0 0 70%;
+					max-width: 70%;		
+					padding-left: 30px;		
+					color: #666666;
+	
+					a:not(.button) {
+						color: $color__primary;
+						text-decoration: underline;
+					}
+				}	
+				
+				.button {
+					color: #fff;
 				}
-			}	
-			
-			.button {
-				color: #fff;
-			}
-
-			.col-1,
-			.col-2 {
-				flex: 0 0 100%;
-				max-width: 100%;		
-				padding: 0;		
+	
+				.col-1,
+				.col-2 {
+					flex: 0 0 100%;
+					max-width: 100%;		
+					padding: 0;		
+				}
 			}
 		}
 	}
@@ -116,5 +123,64 @@
 		input[type="password"] {
 			width: 100%;
 		}
+	}
+
+	//View order
+	.botiga-wc-account-view-order + .woocommerce-notices-wrapper + p {
+		background: #f8f8f8;
+		padding: 25px;
+		mark {
+			padding: 2px 5px;
+		}
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.woocommerce-account {
+
+		#customer_login {
+			.col-1,
+			.col-2 {
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+			
+			.col-1 + .col-2 {
+				margin-top: 30px;
+			}
+		}
+
+		&.logged-in {
+			.entry-content {
+				& > .woocommerce {
+					.woocommerce-MyAccount-navigation {
+						flex: 0 0 100%;
+						max-width: 100%;
+						
+						& + .woocommerce-MyAccount-content {
+							margin-top: 30px;
+						}
+					}
+		
+					.woocommerce-MyAccount-content {
+						flex: 0 0 100%;
+						max-width: 100%;
+						padding-left: 0;	
+					}	
+				}
+			}
+		}
+
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.woocommerce-account {
+
+		.woocommerce-form-login,
+		.woocommerce-form-register {
+			padding: 45px;
+		}
+
 	}
 }

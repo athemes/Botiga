@@ -385,7 +385,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { border-radius:" . intval( $button_border_radius ) . "px;}" . "\n";
 
 			$css .= $this->get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), 'button,a.button,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"]' );
-			$button_text_transform = get_theme_mod( 'button_text_transform', 'none' );
+			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$css .= "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
 
 			$css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button,a.button,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"]' );			

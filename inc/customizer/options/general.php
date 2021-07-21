@@ -557,7 +557,7 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'button
 
 $wp_customize->add_setting( 'button_text_transform',
 	array(
-		'default' 			=> 'none',
+		'default' 			=> 'uppercase',
 		'sanitize_callback' => 'botiga_sanitize_text'
 	)
 );
