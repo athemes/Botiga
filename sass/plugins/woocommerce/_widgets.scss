@@ -8,11 +8,18 @@
 	}
 
 	.price_slider_amount {
+		display: flex;
 		text-align: right;
 		line-height: 2.4;
+		justify-content: space-between;
+
+		.price_label {
+			width: 100%;
+		}
 
 		.button {
-			float: left;
+			padding-top: 5px !important;
+			padding-bottom: 5px !important;
 		}
 	}
 
@@ -28,10 +35,11 @@
 		height: 1em;
 		cursor: ew-resize;
 		outline: none;
-		background: $color__link;
+		background: $color__primary;
 		box-sizing: border-box;
-		margin-top: -0.25em;
+		margin-top: -5px;
 		opacity: 1;
+		border-radius: 50%;
 
 		&:last-child {
 			margin-left: -1em;
@@ -48,7 +56,7 @@
 		z-index: 1;
 		display: block;
 		border: 0;
-		background: $color__link;
+		background: $color__primary;
 	}
 
 	.price_slider_wrapper .ui-widget-content {
@@ -56,10 +64,41 @@
 	}
 
 	.ui-slider-horizontal {
-		height: 0.5em;
+		height: 5px;
 	}
 
 	.ui-slider-horizontal .ui-slider-range {
 		height: 100%;
+	}
+}
+
+.widget-area,
+.widget-column {
+	.widget_products,
+	.widget_top_rated_products,
+	.widget_recently_viewed_products {
+		li {
+			margin-bottom: 15px;
+			a {
+				display: flex;
+				flex-wrap: wrap;
+				margin-bottom: 10px;
+			}
+			img {
+				flex: 0 0 10%;
+				max-width: 10%;
+			}
+			.product-title {
+				flex: 0 0 90%;
+				max-width: 90%;
+				padding-left: 15px;
+			}
+			.star-rating {
+				margin-left: 0;
+			}
+			del,ins {
+				background: transparent;
+			}
+		}
 	}
 }

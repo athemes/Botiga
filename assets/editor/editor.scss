@@ -111,3 +111,13 @@ div.editor-styles-wrapper {
 	@import "../../sass/plugins/woocommerce/products";
 	@import "../../sass/plugins/woocommerce/components";
 }
+
+/*
+* Widget blocks
+*/
+.wp-block[data-type="core/widget-area"] {
+	max-width: 300px;
+}
+div.editor-styles-wrapper {
+	@import "../../sass/components/widgets/widget_blocks";
+}

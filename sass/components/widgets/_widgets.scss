@@ -7,6 +7,10 @@
 		max-width: 100%;
 	}
 
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+
 	.widget-title {
 		margin: 0 0 20px;
 		@include font-size(18);
@@ -56,6 +60,7 @@
 
 .widget-area {
 	max-width: 300px;
+	width: 300px;
 	padding-right: 15px;
 
 	.widget {

@@ -115,3 +115,18 @@ div.editor-styles-wrapper {
 	@import "plugins/woocommerce/quick-view";
 
 }
+
+/*
+* Widget blocks
+*/
+.wp-block[data-type="core/widget-area"] {
+	max-width: 340px;
+
+	h3 {
+		margin: 0 0 20px;
+		@include font-size(18);		
+	}
+}
+div.editor-styles-wrapper {
+	@import "components/widgets/widget_blocks";
+}

@@ -2556,6 +2556,10 @@ body.mobile-menu-visible {
   max-width: 100%;
 }
 
+.widget p:last-of-type {
+  margin-bottom: 0;
+}
+
 .widget .widget-title {
   margin: 0 0 20px;
   font-size: 18px;
@@ -2599,6 +2603,7 @@ body.mobile-menu-visible {
 
 .widget-area {
   max-width: 300px;
+  width: 300px;
   padding-right: 15px;
 }
 
@@ -2622,6 +2627,44 @@ body.mobile-menu-visible {
 
 .widget_search button {
   fill: #fff;
+}
+
+.widget_block h3 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+/* Price filter */
+input.wc-block-price-filter__range-input {
+  min-height: auto;
+}
+
+input.wc-block-components-price-slider__range-input {
+  border: 0;
+  padding: 0;
+}
+
+.wc-block-components-price-slider__range-input-wrapper {
+  margin-bottom: 25px;
+}
+
+.wc-block-components-price-slider__range-input-progress {
+  --range-color: #212121;
+}
+
+.wc-block-components-price-slider__controls .wc-block-components-price-slider__amount {
+  padding: 5px 10px;
+  min-height: auto;
+}
+
+/* Attribute filter */
+.wp-block-woocommerce-attribute-filter .wc-block-attribute-filter-list li {
+  text-decoration: none;
+}
+
+.wp-block-woocommerce-attribute-filter input {
+  margin-right: 5px;
 }
 
 /* Media

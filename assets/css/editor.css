@@ -1508,3 +1508,48 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
 div.editor-styles-wrapper .pswp {
   z-index: 9999 !important;
 }
+
+/*
+* Widget blocks
+*/
+.wp-block[data-type="core/widget-area"] {
+  max-width: 340px;
+}
+
+.wp-block[data-type="core/widget-area"] h3 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+div.editor-styles-wrapper {
+  /* Price filter */
+}
+
+div.editor-styles-wrapper .widget_block h3 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+div.editor-styles-wrapper input.wc-block-price-filter__range-input {
+  min-height: auto;
+}
+
+div.editor-styles-wrapper input.wc-block-components-price-slider__range-input {
+  border: 0;
+  padding: 0;
+}
+
+div.editor-styles-wrapper .wc-block-components-price-slider__range-input-wrapper {
+  margin-bottom: 25px;
+}
+
+div.editor-styles-wrapper .wc-block-components-price-slider__range-input-progress {
+  --range-color: #212121;
+}
+
+div.editor-styles-wrapper .wc-block-components-price-slider__controls .wc-block-components-price-slider__amount {
+  padding: 5px 10px;
+  min-height: auto;
+}
