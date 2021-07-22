@@ -150,6 +150,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$topbar_divider_size 	= get_theme_mod( 'topbar_divider_size', 1 );
 			$topbar_divider_color 	= get_theme_mod( 'topbar_divider_color', 'rgba(33,33,33,0.1)' );
 
+			
             if ( 'fullwidth' === $topbar_divider_width ) {
                 $css .= ".top-bar { border-bottom:" . esc_attr( $topbar_divider_size ) . 'px solid ' . esc_attr( $topbar_divider_color ) . ";}" . "\n";
             } else {
@@ -170,6 +171,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				if ( 0 == $main_header_divider_size ) {
 					$css .= ".top-header-row { border-bottom: 1px solid " . esc_attr( $main_header_divider_color ) . ";}" . "\n";
 				}            
+			}
+
+			$center_top_bar_contents = get_theme_mod( 'center_top_bar_contents', 0 );
+			if ( $center_top_bar_contents ) {
+				$css .= ".top-bar-inner > .row { display:block;} .top-bar-inner .col,.top-bar-inner .col:last-of-type {justify-content:center;}" . "\n";
 			}
 
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );

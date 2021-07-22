@@ -1524,6 +1524,7 @@ div.editor-styles-wrapper .pswp {
 
 div.editor-styles-wrapper {
   /* Price filter */
+  /* Attribute filter */
 }
 
 div.editor-styles-wrapper .widget_block h3 {
@@ -1552,4 +1553,12 @@ div.editor-styles-wrapper .wc-block-components-price-slider__range-input-progres
 div.editor-styles-wrapper .wc-block-components-price-slider__controls .wc-block-components-price-slider__amount {
   padding: 5px 10px;
   min-height: auto;
+}
+
+div.editor-styles-wrapper .wp-block-woocommerce-attribute-filter .wc-block-attribute-filter-list li {
+  text-decoration: none;
+}
+
+div.editor-styles-wrapper .wp-block-woocommerce-attribute-filter input {
+  margin-right: 5px;
 }

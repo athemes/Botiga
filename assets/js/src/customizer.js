@@ -165,6 +165,19 @@
 	});	
 
 	//Header
+	wp.customize( 'center_top_bar_contents', function( value ) {
+		value.bind( function( to ) {
+			if ( false === to ) {
+				$( '.top-bar-inner > .row' ).css( 'display', 'flex' );
+				$( '.top-bar-inner .col' ).css( 'justify-content', 'flex-start' );
+				$( '.top-bar-inner .col:last-of-type' ).css( 'justify-content', 'flex-end' );
+			} else {
+				$( '.top-bar-inner > .row' ).css( 'display', 'block' );
+				$( '.top-bar-inner .col' ).css( 'justify-content', 'center' );
+			}
+		} );
+	} );
+
 	wp.customize( 'topbar_padding', function( value ) {
 		value.bind( function( to ) {
 			$( '.top-bar-inner' ).css( {

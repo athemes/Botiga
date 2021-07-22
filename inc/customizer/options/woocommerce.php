@@ -32,7 +32,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'woocommerce_product_catalog',
-			'controls_general'		=> json_encode( array( '#customize-control-woocommerce_catalog_rows','#customize-control-woocommerce_catalog_columns','#customize-control-accordion_shop_layout','#customize-control-shop_archive_layout','#customize-control-shop_archive_sidebar','#customize-control-shop_archive_divider_1','#customize-control-shop_page_elements_title','#customize-control-shop_page_title','#customize-control-shop_product_sorting','#customize-control-shop_results_count','#customize-control-accordion_shop_product_card','#customize-control-shop_product_card_layout','#customize-control-shop_product_add_to_cart_layout','#customize-control-shop_product_quickview_layout','#customize-control-shop_card_elements','#customize-control-shop_product_alignment','#customize-control-shop_product_element_spacing','#customize-control-accordion_shop_sale_tag','#customize-control-shop_product_sale_tag_layout','#customize-control-shop_sale_tag_spacing','#customize-control-shop_sale_tag_radius','#customize-control-sale_badge_text','#customize-control-sale_badge_percent','#customize-control-sale_percentage_text','#customize-control-accordion_shop_categories','#customize-control-shop_categories_layout','#customize-control-shop_categories_alignment','#customize-control-shop_categories_radius','#customize-control-shop_cart_layout','#customize-control-shop_checkout_layout', ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-shop_breadcrumbs','#customize-control-woocommerce_catalog_rows','#customize-control-woocommerce_catalog_columns','#customize-control-accordion_shop_layout','#customize-control-shop_archive_layout','#customize-control-shop_archive_sidebar','#customize-control-shop_archive_divider_1','#customize-control-shop_page_elements_title','#customize-control-shop_page_title','#customize-control-shop_product_sorting','#customize-control-shop_results_count','#customize-control-accordion_shop_product_card','#customize-control-shop_product_card_layout','#customize-control-shop_product_add_to_cart_layout','#customize-control-shop_product_quickview_layout','#customize-control-shop_card_elements','#customize-control-shop_product_alignment','#customize-control-shop_product_element_spacing','#customize-control-accordion_shop_sale_tag','#customize-control-shop_product_sale_tag_layout','#customize-control-shop_sale_tag_spacing','#customize-control-shop_sale_tag_radius','#customize-control-sale_badge_text','#customize-control-sale_badge_percent','#customize-control-sale_percentage_text','#customize-control-accordion_shop_categories','#customize-control-shop_categories_layout','#customize-control-shop_categories_alignment','#customize-control-shop_categories_radius','#customize-control-shop_cart_layout','#customize-control-shop_checkout_layout', ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-shop_product_product_title','#customize-control-accordion_shop_styling_card','#customize-control-shop_product_card_style','#customize-control-shop_product_card_radius','#customize-control-shop_product_card_thumb_radius','#customize-control-shop_product_card_background','#customize-control-shop_product_card_border_size','#customize-control-shop_product_card_border_color','#customize-control-accordion_shop_styling_sale','#customize-control-single_product_sale_background_color','#customize-control-single_product_sale_color', ) ),
 			'priority' 				=>	-10
 		)
@@ -52,7 +52,7 @@ $wp_customize->add_control(
         array(
             'label'         => esc_html__( 'Layout', 'botiga' ),
             'section'       => 'woocommerce_product_catalog',
-            'until'         => 'shop_results_count',
+            'until'         => 'shop_breadcrumbs',
 			'priority' =>	-1
 
         )
@@ -171,6 +171,24 @@ $wp_customize->add_control(
 		'shop_results_count',
 		array(
 			'label'         	=> esc_html__( 'Results count', 'botiga' ),
+			'section'       	=> 'woocommerce_product_catalog',
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'shop_breadcrumbs',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_breadcrumbs',
+		array(
+			'label'         	=> esc_html__( 'Display breadcrumbs', 'botiga' ),
 			'section'       	=> 'woocommerce_product_catalog',
 		)
 	)

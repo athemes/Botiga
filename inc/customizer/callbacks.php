@@ -333,3 +333,14 @@ function botiga_callback_topbar_elements( $element ) {
 		return false;
 	}
 }
+
+function botiga_callback_topbar_center_contents() {
+	$elements_left 	= get_theme_mod( 'topbar_components_left' );
+	$elements_right = get_theme_mod( 'topbar_components_right' );	
+
+	if ( empty( $elements_left ) || empty( $elements_right ) ) {
+		return true;
+	} else {
+		return false;
+	}	
+}

@@ -2235,6 +2235,12 @@ body.mobile-menu-visible {
   margin: 0 0 12px;
 }
 
+.page-title {
+  font-size: 64px;
+  font-size: 4rem;
+  margin: 0 0 12px;
+}
+
 .entry-header {
   margin-bottom: 40px;
   text-align: center;
@@ -2386,6 +2392,11 @@ body.mobile-menu-visible {
 .wp-block-gallery,
 .wp-block-cover {
   margin-bottom: 25px;
+}
+
+.search-no-results .woocommerce-products-header__title.page-title {
+  font-size: 32px;
+  font-size: 2rem;
 }
 
 .botiga-page-builder-mode .content-wrapper {
@@ -2615,16 +2626,19 @@ body.mobile-menu-visible {
   border-bottom: 0;
 }
 
+.widget_product_search form,
 .widget_search form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+.widget_product_search .search-field,
 .widget_search .search-field {
   width: 100%;
 }
 
+.widget_product_search button,
 .widget_search button {
   fill: #fff;
 }
@@ -3073,6 +3087,9 @@ input.wc-block-components-price-slider__range-input {
   }
   .checkout-wrapper {
     margin-left: 0;
+  }
+  .woocommerce-cart tr.cart_item td {
+    padding: 30px 10px;
   }
 }
 

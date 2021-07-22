@@ -446,10 +446,15 @@ function botiga_woocommerce_page_header() {
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description' );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description' );
 
+	$shop_breadcrumbs = get_theme_mod( 'shop_breadcrumbs', 1 );
 	?>
 		<header class="woocommerce-page-header">
 			<div class="container">
-				<?php woocommerce_breadcrumb(); ?>
+				<?php 
+				if ( $shop_breadcrumbs ) {
+					woocommerce_breadcrumb();
+				}
+				?>
 				<?php if ( ( $shop_page_title && is_shop() ) || !is_shop() ) : ?>
 					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 				<?php endif; ?>
