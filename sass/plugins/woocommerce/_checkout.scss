@@ -22,10 +22,13 @@
 }
 form.woocommerce-checkout {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .checkout-wrapper {
 	margin-left: 100px;
+    flex: 0 0 calc(50% - 100px);
+    max-width: calc(50% - 100px);
 
 	table {
 		border: 0 !important;
@@ -185,5 +188,12 @@ form.woocommerce-checkout {
 .woocommerce-checkout-payment {
 	li {
 		background: transparent;
+	}
+}
+.woocommerce-NoticeGroup-checkout {
+	flex: 0 0 100%;
+
+	ul {
+		list-style: none;
 	}
 }

@@ -63,6 +63,8 @@
     }
     .checkout-wrapper {
         margin-left: 0;
+        flex: 0 0 100%;
+        max-width: 100%;
     }
     .woocommerce-cart tr.cart_item td {
         padding: 30px 10px;

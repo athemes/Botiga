@@ -1540,10 +1540,16 @@ form.woocommerce-checkout {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .checkout-wrapper {
   margin-left: 100px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 100px);
+          flex: 0 0 calc(50% - 100px);
+  max-width: calc(50% - 100px);
 }
 
 .checkout-wrapper table {
@@ -1690,6 +1696,16 @@ form.woocommerce-checkout {
 
 .woocommerce-checkout-payment li {
   background: transparent;
+}
+
+.woocommerce-NoticeGroup-checkout {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+
+.woocommerce-NoticeGroup-checkout ul {
+  list-style: none;
 }
 
 /**
