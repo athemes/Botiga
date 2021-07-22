@@ -1099,6 +1099,35 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
   margin-bottom: 60px;
 }
 
+table.variations {
+  position: relative;
+  border: 0;
+}
+
+table.variations th, table.variations tr, table.variations td {
+  border: 0;
+}
+
+table.variations td {
+  border: 0;
+  padding: 0;
+}
+
+table.variations td select {
+  width: 100%;
+}
+
+table.variations .reset_variations {
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  color: #716f6f;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+
 /**
  * Cart
  */
@@ -1364,6 +1393,119 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 
 .woocommerce-cart-form__contents .product-subtotal {
   font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .woocommerce-cart tr.cart_item td {
+    padding: 30px;
+  }
+  .woocommerce-cart .cart_totals {
+    margin-top: 60px;
+    max-width: 100%;
+    float: none;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
+    float: none;
+    margin-top: 15px;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"] {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .coupon {
+    float: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  table.woocommerce-cart-form__contents tr td::before {
+    display: none;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 30px 15px;
+    position: relative;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item:not(:first-of-type) {
+    border-top: 0;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td {
+    border: 0;
+    padding: 0;
+    text-align: left;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-name {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(70% - 30px);
+            flex: 0 0 calc(70% - 30px);
+    padding-left: 15px !important;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-price {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(30% - 30px);
+            flex: 0 0 calc(30% - 30px);
+    text-align: right;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-thumbnail {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60px;
+            flex: 0 0 60px;
+    max-width: 60px;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-thumbnail img {
+    max-width: 60px;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-remove {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    line-height: 1;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-quantity, table.woocommerce-cart-form__contents tr.cart_item td.product-subtotal {
+    padding-top: 30px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+  }
+  table.woocommerce-cart-form__contents tr.cart_item td.product-subtotal {
+    text-align: right;
+  }
+}
+
+@media (max-width: 575px) {
+  .woocommerce-cart .woocommerce-cart-form .actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+    margin-top: 0;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .coupon {
+    float: none;
+    width: 100%;
+  }
+  .woocommerce-cart .woocommerce-cart-form .actions .coupon button, .woocommerce-cart .woocommerce-cart-form .actions .coupon input {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 
 /**

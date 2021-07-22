@@ -109,7 +109,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		}
 
 		public function customize_preview_js() {
-			wp_enqueue_script( 'botiga-customizer', get_template_directory_uri() . '/assets/js/admin/customizer.min.js', array( 'jquery', 'customize-preview' ), BOTIGA_VERSION, true );
+			wp_enqueue_script( 'botiga-customizer', get_template_directory_uri() . '/assets/js/src/customizer.js', array( 'jquery', 'customize-preview' ), BOTIGA_VERSION, true );
 
 		}		
 

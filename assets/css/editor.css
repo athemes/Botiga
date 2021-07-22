@@ -117,7 +117,7 @@ div.editor-styles-wrapper .woocommerce-cart .entry-title {
 }
 
 div.editor-styles-wrapper p {
-  margin-bottom: 25px;
+  margin-bottom: 40px;
   margin-top: 0;
 }
 
@@ -129,9 +129,24 @@ div.editor-styles-wrapper i {
 }
 
 div.editor-styles-wrapper blockquote {
-  margin: 0 0 0 15px;
-  padding-left: 15px;
-  border-left: 3px solid #212121;
+  margin: 0 0 0 50px;
+}
+
+div.editor-styles-wrapper blockquote p {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+div.editor-styles-wrapper blockquote p:last-of-type {
+  margin-bottom: 12px;
+}
+
+div.editor-styles-wrapper blockquote cite {
+  font-size: 14px;
+  line-height: 22px;
+  font-style: normal;
+  letter-spacing: 2px;
 }
 
 div.editor-styles-wrapper address {
@@ -433,7 +448,7 @@ div.editor-styles-wrapper .star-rating span::before {
   top: 0;
   position: absolute;
   left: 0;
-  color: #4169e1;
+  color: #FFA441;
 }
 
 div.editor-styles-wrapper p.stars a {
@@ -1103,6 +1118,15 @@ div.editor-styles-wrapper .product-list ul.products li.product:hover .loop-butto
   visibility: visible;
 }
 
+div.editor-styles-wrapper .loop-button-wrap.button-layout4 .ws-svg-icon {
+  width: 24px;
+  height: 24px;
+}
+
+div.editor-styles-wrapper .loop-button-wrap.button-layout4 .button {
+  margin-left: 0 !important;
+}
+
 div.editor-styles-wrapper .loop-price-inline {
   text-align: right;
 }
@@ -1194,6 +1218,11 @@ div.editor-styles-wrapper .price {
 
 div.editor-styles-wrapper .price ins {
   background-color: transparent;
+}
+
+div.editor-styles-wrapper .price del {
+  margin-right: 6px;
+  font-weight: 400;
 }
 
 @-webkit-keyframes rotateAnim {

@@ -314,3 +314,28 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 		margin-bottom: 60px;
 	}
 }
+table.variations {
+	position: relative;
+	border: 0;
+	th,tr,td {
+		border: 0;
+	}
+	td {
+		border: 0;
+		padding: 0;
+
+		select {
+			width: 100%;
+		}
+	}
+
+	.reset_variations {
+		position: absolute;
+		bottom: -15px;
+		right: 0;
+		color: #716f6f;
+		text-transform: uppercase;
+		text-decoration: underline;
+		@include font-size(13);
+	}
+}

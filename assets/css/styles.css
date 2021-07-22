@@ -2962,6 +2962,9 @@ body.mobile-menu-visible {
 /* Responsive
 --------------------------------------------- */
 @media (max-width: 991px) {
+  p {
+    margin-bottom: 25px;
+  }
   .comments-area {
     padding: 15px;
   }
@@ -3058,29 +3061,6 @@ body.mobile-menu-visible {
   .site-info .row .col-md-6:last-of-type {
     margin-bottom: 0;
     text-align: center;
-  }
-  .woocommerce-cart tr.cart_item td {
-    padding: 30px;
-  }
-  .woocommerce-cart .cart_totals {
-    margin-top: 60px;
-    max-width: 100%;
-    float: none;
-  }
-  .woocommerce-cart .woocommerce-cart-form .actions .coupon {
-    float: none;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
-    float: none;
-    margin-top: 15px;
-  }
-  .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"] {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
   }
 }
 

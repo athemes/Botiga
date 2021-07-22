@@ -1,4 +1,8 @@
 @media (max-width: 991px) {
+    p {
+        margin-bottom: 25px;
+    }
+    
     .comments-area {
         padding: 15px;
     }
@@ -96,25 +100,7 @@
             }
         }
     }
-    .woocommerce-cart tr.cart_item td {
-        padding: 30px;
-    }
-    .woocommerce-cart .cart_totals {
-        margin-top: 60px;
-        max-width: 100%;
-        float: none;
-    }
-    .woocommerce-cart .woocommerce-cart-form .actions .coupon {
-        float: none;
-        display: flex;
-    }
-    .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
-        float: none;
-        margin-top: 15px;
-    }
-    .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"] {
-        flex-grow: 1;
-    }
+
 }
 
 @media (min-width: 576px) and (max-width:  991px) {

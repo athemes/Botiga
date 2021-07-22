@@ -226,6 +226,8 @@
 	color: #fff;
 }
 
+
+
 @media ( min-width: 992px ) {
 	.cart-layout2 {
 		.woocommerce-cart-form {
@@ -259,5 +261,121 @@
 .woocommerce-cart-form__contents {
 	.product-subtotal {
 		font-weight: 600;
+	}
+}
+
+@media (max-width: 767px) {
+    .woocommerce-cart tr.cart_item td {
+        padding: 30px;
+    }
+    .woocommerce-cart .cart_totals {
+        margin-top: 60px;
+        max-width: 100%;
+        float: none;
+    }
+
+    .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
+        float: none;
+        margin-top: 15px;
+    }
+    .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"] {
+        flex-grow: 1;
+    }
+	.woocommerce-cart {
+		.woocommerce-cart-form {
+			.actions {
+				.coupon {
+					float: none;
+					display: flex;
+				}
+			}
+		}
+	}
+
+	table.woocommerce-cart-form__contents tr td::before {
+		display: none;
+	}
+
+	table.woocommerce-cart-form__contents {
+		tr.cart_item {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			padding: 30px 15px;
+			position: relative;
+
+			&:not(:first-of-type) {
+				border-top: 0;
+			}
+
+			td {
+				border: 0;
+				padding: 0;
+				text-align: left;
+
+				&.product-name {
+					flex: 0 0 calc(70% - 30px);	
+					padding-left: 15px !important;
+				}
+
+				&.product-price {
+					flex: 0 0 calc(30% - 30px);
+					text-align: right;
+				}
+
+				&.product-thumbnail {
+					flex: 0 0 60px;
+					max-width: 60px;
+
+					img {
+						max-width: 60px;
+					}
+				}
+
+				&.product-remove {
+					position: absolute;
+					top: 0;
+					right: 15px;
+					line-height: 1;
+				}
+
+				&.product-quantity,
+				&.product-subtotal {
+					padding-top: 30px;
+					flex: 0 0 50%;
+				}
+
+				&.product-subtotal {
+					text-align: right;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 575px) {
+	.woocommerce-cart {
+		.woocommerce-cart-form {
+			.actions {
+				display: flex;
+				flex-wrap: wrap;
+
+				.button[name="update_cart"] {
+					order: -1;
+					margin-top: 0;
+					margin-bottom: 15px;
+					width: 100%;
+				}
+
+				.coupon {
+					float: none;
+					width: 100%;
+
+					button, input {
+						flex: 0 0 50%;
+						max-width: 50%;
+					}
+				}
+			}
+		}
 	}
 }
