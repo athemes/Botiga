@@ -23,6 +23,7 @@ select,
 	padding: 12px 16px;
 	border-radius: 0;
 	min-height: 51px;
+	max-width: 100%;
 
 	&:focus {
 		color: $color__text-input-focus;

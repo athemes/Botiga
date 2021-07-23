@@ -404,6 +404,10 @@ textarea {
   font-size: 14px;
 }
 
+.smallmargin {
+  margin-bottom: 8px;
+}
+
 h1,
 h2,
 h3,
@@ -753,6 +757,7 @@ select,
   padding: 12px 16px;
   border-radius: 0;
   min-height: 51px;
+  max-width: 100%;
 }
 
 input[type="text"]:focus,

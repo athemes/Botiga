@@ -362,7 +362,7 @@ class Botiga_Theme_Dashboard {
 								$customize_uri = $this->pro_status ? $customize_uri : 'javascript:void(0);';
 							}
 							?>
-							<a href="<?php echo esc_attr( $customize_uri ); ?>" class="thd-theme-feature-customize" target="_blank">
+							<a href="<?php echo esc_url( $customize_uri ); ?>" class="thd-theme-feature-customize" target="_blank">
 								<?php esc_html_e( 'Customize', 'botiga' ); ?>
 							</a>
 						<?php } ?>

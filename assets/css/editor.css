@@ -58,6 +58,10 @@ div.editor-styles-wrapper .has-small-font-size {
   font-size: 14px;
 }
 
+div.editor-styles-wrapper .smallmargin {
+  margin-bottom: 8px;
+}
+
 div.editor-styles-wrapper h1,
 div.editor-styles-wrapper h2,
 div.editor-styles-wrapper h3,

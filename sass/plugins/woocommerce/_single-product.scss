@@ -339,3 +339,24 @@ table.variations {
 		@include font-size(13);
 	}
 }
+
+@media (max-width: 767px) {
+	.single-product {
+		.woocommerce-notices-wrapper {	
+			.woocommerce-message {
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: column;
+				text-align: center;
+			}
+	
+			.wc-forward {
+				padding: 8px 24px;
+				order: 2;
+				margin-top: 15px;
+				align-self: center;
+				margin-right: 0;
+			}
+		}
+	}
+}

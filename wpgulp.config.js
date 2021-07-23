@@ -12,7 +12,7 @@
 // Local project URL of your already running WordPress site.
 // > Could be something like "wpgulp.local" or "localhost"
 // > depending upon your local WordPress setup.
-const projectURL = 'http://localhost:8080/';
+const projectURL = 'http://localhost/wprig-woo-shop';
 
 // Theme/Plugin URL. Leave it like it is; since our gulpfile.js lives in the root folder.
 const productURL = './';
@@ -46,7 +46,7 @@ const jsVendorSRC = './assets/js/vendor/*.js';
 const custSRC = './assets/js/src/customizer.js';
 
 // Path to place the customizer scripts file.
-const custDestination = './assets/js/admin/';
+const custDestination = './assets/js/';
 
 //Path to customizer-scripts js file
 const custScriptsSRC = './assets/js/src/customizer-scripts.js';
