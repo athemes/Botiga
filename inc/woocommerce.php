@@ -24,7 +24,7 @@ function botiga_woocommerce_setup() {
 	add_theme_support(
 		'woocommerce',
 		array(
-			'thumbnail_image_width' => 350,
+			'thumbnail_image_width' => 420,
 			'single_image_width'    => 800,
 			'product_grid'          => array(
 				'default_rows'    => 3,
@@ -959,9 +959,7 @@ function botiga_quick_view_popup() { ?>
 		</div>
 		<div class="botiga-quick-view-popup-content">
 			<a href="#" class="botiga-quick-view-popup-close-button">
-				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 352 512" aria-hidden="true" focusable="false">
-					<path fill="#F4F4F4" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
-				</svg>
+				<i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i>
 			</a>
 			<div class="botiga-quick-view-popup-content-ajax"></div>
 		</div>

@@ -188,7 +188,6 @@
 			width: 100%;
 			text-align: center;
 			text-transform: uppercase;
-			letter-spacing: 1px;
 		}
 	}
 
@@ -354,6 +353,13 @@
 }
 @media (max-width: 575px) {
 	.woocommerce-cart {
+		table {
+			word-break: break-all;
+
+			.product-name a {
+				@include font-size(15);
+			}
+		}
 		.woocommerce-cart-form {
 			.actions {
 				display: flex;
@@ -369,6 +375,10 @@
 				.coupon {
 					float: none;
 					width: 100%;
+
+					button {
+						padding: 10px;
+					}
 
 					button, input {
 						flex: 0 0 50%;

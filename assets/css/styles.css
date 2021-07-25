@@ -780,6 +780,9 @@ select:focus,
 .woocommerce .select2-container .select2-selection--single:focus,
 .woocommerce-page .select2-container .select2-selection--single:focus {
   color: #111;
+  outline: none;
+  -webkit-box-shadow: 0 0 0 1px;
+          box-shadow: 0 0 0 1px;
 }
 
 select {
@@ -1852,6 +1855,11 @@ body.mobile-menu-visible {
 .header-search .icon-search.active,
 .header-search .icon-cancel.active {
   display: inline-block;
+}
+
+.header-search .icon-cancel svg {
+  width: 20px;
+  height: 24px;
 }
 
 .icon-cancel {

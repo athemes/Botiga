@@ -174,11 +174,12 @@ ul.wc-block-grid__products {
 		width: 100%;
 		max-width: 800px;
 		background: #FFF;
-		padding: 25px;
+		padding: 35px;
 		opacity: 0;
 		visibility: hidden;
 		transition: ease opacity 300ms 600ms;
 		z-index: 1;
+		
 		.botiga-quick-view-popup-close-button {
 			display: flex;
 			align-items: center;
@@ -189,9 +190,18 @@ ul.wc-block-grid__products {
 			width: 30px;
 			height: 30px;
 			z-index: 1;
+
+			svg {
+				fill: #fff;
+			}
+
+			path {
+				transform: scale(0.75);
+			}
+
 			&:hover,
 			&:focus {
-				> svg {
+				svg {
 					path {
 						fill: #FFF;
 					}

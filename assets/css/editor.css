@@ -390,11 +390,11 @@ div.editor-styles-wrapper .site-header-cart {
 
 div.editor-styles-wrapper .site-header-cart .count-number {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -8px;
+  right: -8px;
   width: 18px;
   height: 18px;
-  line-height: 18px;
+  line-height: 17px;
   border: 1px solid #212121;
   text-align: center;
   border-radius: 50%;
@@ -674,9 +674,7 @@ div.editor-styles-wrapper .demo_store {
     padding: 30px 0 0;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message {
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 30px;
+    padding: 30px;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .widgettitle {
     font-size: 24px;
@@ -1196,6 +1194,15 @@ div.editor-styles-wrapper .button-layout4 a {
   margin-top: 0 !important;
 }
 
+div.editor-styles-wrapper .button-layout3 .wc-forward {
+  margin-left: 5px;
+}
+
+div.editor-styles-wrapper .button-layout2 .wc-forward {
+  margin-top: 8px;
+  display: block;
+}
+
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-layout3 .wp-block-button,
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-layout4 .wp-block-button {
   margin-bottom: 0;
@@ -1447,7 +1454,7 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
   width: 100%;
   max-width: 800px;
   background: #FFF;
-  padding: 25px;
+  padding: 35px;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: ease opacity 300ms 600ms;
@@ -1473,7 +1480,16 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
   z-index: 1;
 }
 
-div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button:hover > svg path, div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button:focus > svg path {
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button svg {
+  fill: #fff;
+}
+
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button path {
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+}
+
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button:hover svg path, div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button:focus svg path {
   fill: #FFF;
 }
 
