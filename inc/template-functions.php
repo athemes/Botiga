@@ -117,7 +117,7 @@ function botiga_add_submenu_icons( $item_output, $item, $depth, $args ) {
 	}
 
 	if ( ! empty( $item->classes ) && in_array( 'menu-item-has-children', $item->classes ) ) {
-		return $item_output . '<span class="dropdown-symbol"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-down', false ) . '</i></span>';
+		return $item_output . '<span tabindex=0 class="dropdown-symbol"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-down', false ) . '</i></span>';
 	}
 
     return $item_output;

@@ -67,7 +67,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							<?php $this->logo(); ?>
 						</div>
 						<div class="col align-right">
-							<i class="ws-svg-icon mobile-menu-close icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i>
+							<a class="mobile-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						</div>
 					</div>
 				</div>
@@ -428,10 +428,10 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function search() {
 			?>
-				<div class="header-search header-item">
+				<a href="#" class="header-search header-item">
 					<i class="ws-svg-icon icon-search active"><?php botiga_get_svg_icon( 'icon-search', true ); ?></i>
 					<i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i>
-				</div>
+				</a>
 			<?php
 		}
 
@@ -483,9 +483,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function trigger() { ?>
 			<?php $icon = get_theme_mod( 'mobile_menu_icon', 'mobile-icon2' ); ?>
-			<div class="menu-toggle">
+			<a href="#" class="menu-toggle">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( $icon, true ); ?></i>
-			</div>
+			</a>
 			<?php
 		}
 

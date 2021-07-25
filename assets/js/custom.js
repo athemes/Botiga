@@ -40,7 +40,8 @@ botiga.navigation = {
       menu.classList.add('nav-menu');
     }
 
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
       button.classList.add('open');
       offCanvas.classList.add('toggled');
       document.body.classList.add('mobile-menu-visible'); //Toggle submenus
@@ -71,7 +72,6 @@ botiga.navigation = {
             }
 
             e.preventDefault();
-            submenuToggle.getElementsByTagName('span')[0].classList.toggle('submenu-exp');
             var parent = submenuToggle.parentNode.parentNode;
             parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
           });
@@ -87,65 +87,34 @@ botiga.navigation = {
         _iterator.f();
       }
 
-      var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])'),
-          firstFocusableEl = focusableEls[0];
-      lastFocusableEl = focusableEls[focusableEls.length - 1];
-      KEYCODE_TAB = 9;
-      offCanvas.addEventListener('keydown', function (e) {
-        var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
-
-        if (!isTabPressed) {
-          return;
-        }
-
-        if (e.shiftKey)
-          /* shift + tab */
-          {
-            if (document.activeElement === firstFocusableEl) {
-              button.focus();
-              e.preventDefault();
-              offCanvas.classList.remove('toggled');
-              document.body.style.overflowY = 'visible';
-            }
-          } else
-          /* tab */
-          {
-            if (document.activeElement === lastFocusableEl) {
-              button.click();
-              e.preventDefault();
-              offCanvas.classList.remove('toggled');
-              document.body.style.overflowY = 'visible';
-            }
-          }
-      });
-      button.addEventListener('keydown', function (e) {
-        var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
-
-        if (!isTabPressed) {
-          return;
-        }
-
-        if (e.shiftKey)
-          /* shift + tab */
-          {
-            if (document.activeElement === button) {
-              button.click();
-            }
-          }
-      });
-      mobileMenuClose.addEventListener('click', function (e) {
-        siteNavigation.classList.remove('toggled');
-        document.body.style.overflowY = 'visible';
-      });
-      mobileMenuClose.addEventListener('keyup', function (e) {
-        if (e.keyCode === 13) {
-          e.preventDefault();
-          siteNavigation.classList.remove('toggled');
-          document.body.style.overflowY = 'visible';
-        }
-      });
+      var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled]):not(.mobile-menu-close)');
+      var firstFocusableEl = focusableEls[0];
+      var lastFocusableEl = focusableEls[focusableEls.length - 1];
+      var KEYCODE_TAB = 9;
+      firstFocusableEl.focus();
     });
-    closeButton.addEventListener('click', function () {
+    var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
+    var firstFocusableEl = focusableEls[0];
+    var lastFocusableEl = focusableEls[focusableEls.length - 1];
+    var KEYCODE_TAB = 9;
+    lastFocusableEl.addEventListener('keydown', function (e) {
+      var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
+
+      if (!isTabPressed) {
+        return;
+      }
+
+      if (e.shiftKey)
+        /* shift + tab */
+        {} else
+        /* tab */
+        {
+          firstFocusableEl.focus();
+        }
+    });
+    closeButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      button.focus();
       button.classList.remove('open');
       offCanvas.classList.remove('toggled');
       document.body.classList.remove('mobile-menu-visible');
@@ -245,22 +214,39 @@ botiga.headerSearch = {
     var button = header.getElementsByClassName('header-search')[0];
     var form = header.getElementsByClassName('header-search-form')[0];
     var overlay = document.getElementsByClassName('search-overlay')[0];
+    var searchInput = form.getElementsByClassName('search-field')[0];
+    var searchBtn = form.getElementsByClassName('search-submit')[0];
 
     if ('undefined' === typeof button) {
       return;
     }
 
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
       form.classList.toggle('active');
       overlay.classList.toggle('active');
       button.getElementsByClassName('icon-search')[0].classList.toggle('active');
       button.getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+      searchInput.focus();
     });
     overlay.addEventListener('click', function () {
       form.classList.remove('active');
       overlay.classList.remove('active');
       button.getElementsByClassName('icon-search')[0].classList.toggle('active');
       button.getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+    });
+    searchBtn.addEventListener('keydown', function (e) {
+      var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
+
+      if (!isTabPressed) {
+        return;
+      }
+
+      form.classList.remove('active');
+      overlay.classList.remove('active');
+      button.getElementsByClassName('icon-search')[0].classList.toggle('active');
+      button.getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+      button.focus();
     });
   }
 };
