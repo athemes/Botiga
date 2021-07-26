@@ -186,7 +186,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'main_header_bottom_color', '', '.bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .main-navigation .menu > li > a' );
 			$css .= $this->get_fill_css( 'main_header_bottom_color', '', '.bottom-header-row .header-item svg,.dropdown-symbol .ws-svg-icon svg' );
 			
-			$main_header_padding 	= get_theme_mod( 'main_header_padding', 25 );
+			$main_header_padding 	= get_theme_mod( 'main_header_padding', 15 );
 			$css .= ".site-header .site-header-inner, .site-header .top-header-row { padding-top:" . esc_attr( $main_header_padding ) . 'px;padding-bottom:' . esc_attr( $main_header_padding ) . "px;}" . "\n";
 
 			$main_header_bottom_padding = get_theme_mod( 'main_header_bottom_padding', 15 );

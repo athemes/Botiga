@@ -721,7 +721,7 @@ $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'main_hea
 );
 
 $wp_customize->add_setting( 'main_header_padding', array(
-	'default'   		=> 25,
+	'default'   		=> 15,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );			
@@ -819,7 +819,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'main_heade
 		'section' 	=> 'botiga_section_main_header',
 		'choices' 	=> array(
 			'contained' 	=> esc_html__( 'Contained', 'botiga' ),
-			'fullwidth' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'fullwidth' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
 	)
 ) );

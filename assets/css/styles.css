@@ -1386,6 +1386,7 @@ html {
 .main-navigation li {
   position: relative;
   margin-right: 35px;
+  padding-bottom: 0;
 }
 
 .main-navigation li:last-of-type {
@@ -1640,8 +1641,8 @@ body.mobile-menu-visible {
 }
 
 .site-header-inner {
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 15px;
+  padding-bottom: 155px;
 }
 
 .botiga-offcanvas-menu,
@@ -1774,8 +1775,8 @@ body.mobile-menu-visible {
 }
 
 .site-header .top-header-row {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .site-header.header_layout_3 .site-header-inner, .site-header.header_layout_4 .site-header-inner, .site-header.header_layout_5 .site-header-inner {
@@ -2410,6 +2411,52 @@ body.mobile-menu-visible {
 .search-no-results .woocommerce-products-header__title.page-title {
   font-size: 32px;
   font-size: 2rem;
+}
+
+.error404 .site-main {
+  padding-right: 15px;
+  width: 100%;
+}
+
+.error404 .page-title {
+  max-width: 675px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error404 .page-header {
+  padding-top: 40px;
+}
+
+.error404 .page-content {
+  margin-top: 20px;
+}
+
+.error404 .page-content p {
+  text-align: center;
+}
+
+.error404 .search404 {
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error404 .search404 .search-field {
+  width: calc(100% - 76px);
+  min-height: 56px;
+}
+
+.error404 .search404 .search-submit {
+  min-height: 56px;
+  margin-left: -5px;
+  vertical-align: top;
+}
+
+.error404 .products404 {
+  padding-top: 120px;
 }
 
 .botiga-page-builder-mode .content-wrapper {
@@ -3107,6 +3154,9 @@ input.wc-block-components-price-slider__range-input {
   }
   .woocommerce-cart tr.cart_item td {
     padding: 30px 10px;
+  }
+  .error404 .products404 {
+    padding-top: 60px;
   }
 }
 

@@ -429,3 +429,44 @@
 		@include font-size(32);
 	}
 }
+
+.error404 {
+	.site-main {
+		padding-right: 15px;
+		width:100%;
+	}
+	.page-title {
+		max-width: 675px;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page-header {
+		padding-top: 40px;
+	}
+	.page-content {
+		margin-top: 20px;
+		p {
+			text-align: center;
+		}
+	}
+	.search404 {
+		max-width: 600px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+
+		.search-field {
+			width: calc(100% - 76px);
+			min-height: 56px;
+		}
+		.search-submit {
+			min-height: 56px;
+			margin-left: -5px;
+			vertical-align: top;
+		}
+	}
+	.products404 {
+		padding-top: 120px;
+	}	
+}
