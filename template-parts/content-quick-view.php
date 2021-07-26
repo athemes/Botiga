@@ -32,7 +32,7 @@ $product_id = $product->get_id(); ?>
                     <?php 
                     //On sale tag
                     if ( $product->is_on_sale() ) :
-                        echo apply_filters( 'botiga_quick_view_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'botiga' ) . '</span>', get_post( $product_id ), $product );
+                        echo apply_filters( 'botiga_quick_view_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'botiga' ) . '</span>', get_post( $product_id ), $product ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     endif; ?>
                     
                     <figure class="woocommerce-product-gallery__wrapper">
@@ -45,14 +45,14 @@ $product_id = $product->get_id(); ?>
                             $html .= '</div>';
                         }
 
-                        echo apply_filters( 'botiga_quick_view_image_thumbnail_html', $html, $post_thumbnail_id );
+                        echo apply_filters( 'botiga_quick_view_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
                         //Thumbnails
                         $attachment_ids = $product->get_gallery_image_ids();
 
                         if ( $attachment_ids && $product->get_image_id() ) {
                             foreach ( $attachment_ids as $attachment_id ) {
-                                echo apply_filters( 'botiga_quick_view_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id ), $attachment_id );
+                                echo apply_filters( 'botiga_quick_view_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id ), $attachment_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                             }
                         }
                         ?>
@@ -65,7 +65,7 @@ $product_id = $product->get_id(); ?>
         <div class="col-sm-6">
             <div class="botiga-quick-view-summary product-gallery-summary">
                 <h2 class="product_title entry-title">
-                    <?php echo get_the_title( $product_id ); ?>
+                    <?php echo esc_html( get_the_title( $product_id ) ); ?>
                 </h2>
                 <?php if ( wc_review_ratings_enabled() ) :
                     $rating_count = $product->get_rating_count();
@@ -75,16 +75,16 @@ $product_id = $product->get_id(); ?>
                     if ( $rating_count > 0 ) : ?>
 
                         <div class="woocommerce-product-rating">
-                            <?php echo wc_get_rating_html( $average, $rating_count ); ?>
+                            <?php echo wc_get_rating_html( $average, $rating_count ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             <?php if ( comments_open( $product_id ) ) : ?>
-                                <a href="<?php echo esc_url( get_permalink( $product_id ) ); ?>#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'botiga' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a>
+                                <a href="<?php echo esc_url( get_permalink( $product_id ) ); ?>#reviews" class="woocommerce-review-link" rel="nofollow">(<?php /* translators: %s: customer review text */ printf( _n( '%s customer review', '%s customer reviews', $review_count, 'botiga' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>)</a>
                             <?php endif ?>
                         </div>
 
                     <?php endif; ?>
                 <?php endif; ?>
                 
-                <p class="<?php echo esc_attr( apply_filters( 'botiga_quick_view_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p>
+                <p class="<?php echo esc_attr( apply_filters( 'botiga_quick_view_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
                 <?php
                 $short_description = apply_filters( 'botiga_quick_view_short_description', $product->get_short_description() );
@@ -118,13 +118,13 @@ $product_id = $product->get_id(); ?>
 
                     <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
-                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'botiga' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'botiga' ); ?></span></span>
+                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'botiga' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? esc_html( $sku ) : esc_html__( 'N/A', 'botiga' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span></span>
 
                     <?php endif; ?>
 
-                    <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'botiga' ) . ' ', '</span>' ); ?>
+                    <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'botiga' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-                    <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'botiga' ) . ' ', '</span>' ); ?>
+                    <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'botiga' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
                     <?php do_action( 'botiga_quick_view_product_meta_end' ); ?>
                 </div>

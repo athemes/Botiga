@@ -118,6 +118,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 
 		for ( $i = 0; $i < 8; $i++ ) { 
 			$colors[] = array(
+				/* translators: %s: color palette */
 				'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
 				'slug'  => $selected_palette . '-color-' . $i,
 				'color' => $palettes[$selected_palette][$i],
