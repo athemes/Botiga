@@ -133,7 +133,7 @@ if ( ! function_exists( 'botiga_post_thumbnail' ) ) :
 			?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail( 'botiga-large'); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>

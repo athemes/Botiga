@@ -46,6 +46,8 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( 'botiga-large', 920, 9999 );
+		add_image_size( 'botiga-medium', 380, 9999 );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(

@@ -631,6 +631,10 @@ span.delete:hover {
 .customize-control-title {
     color: #191E23;
     font-size: 13px;
+    text-transform: capitalize;
+}
+.accordion-section-title {
+    text-transform: capitalize;
 }
 /* Toggle */
 .toggle-switch {
