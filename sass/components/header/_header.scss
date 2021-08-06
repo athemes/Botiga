@@ -24,6 +24,7 @@
 }
 
 @media ( max-width: 1024px ) {
+    .bottom-header-row,
     .site-header {
         display: none;
     }
@@ -251,6 +252,7 @@
     left: -9999em;
     opacity: 0;
     transition: opacity 0.3s;
+    visibility: hidden;
 
     form {
         max-width: 720px;
@@ -281,6 +283,7 @@
     &.active {
         opacity: 1;
         left: 0;
+        visibility: visible;
     }
 }
 .search-overlay {

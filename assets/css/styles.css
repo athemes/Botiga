@@ -1399,11 +1399,13 @@ html {
   text-decoration: none;
 }
 
+.bottom-header-row .dropdown-symbol,
 .site-header .dropdown-symbol {
   margin-left: 10px;
   cursor: pointer;
 }
 
+.bottom-header-row .dropdown-symbol .ws-svg-icon,
 .site-header .dropdown-symbol .ws-svg-icon {
   width: 13px;
   height: 13px;
@@ -1540,6 +1542,10 @@ html {
   overflow-y: auto;
 }
 
+.botiga-offcanvas-menu .mobile-header-item {
+  visibility: hidden;
+}
+
 .admin-bar .botiga-offcanvas-menu {
   top: 32px;
 }
@@ -1547,6 +1553,10 @@ html {
 .botiga-offcanvas-menu.toggled {
   left: 0;
   opacity: 1;
+}
+
+.botiga-offcanvas-menu.toggled .mobile-header-item {
+  visibility: visible;
 }
 
 .botiga-offcanvas-menu .main-navigation a {
@@ -1663,6 +1673,7 @@ body.mobile-menu-visible {
 }
 
 @media (max-width: 1024px) {
+  .bottom-header-row,
   .site-header {
     display: none;
   }
@@ -1883,6 +1894,7 @@ body.mobile-menu-visible {
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
+  visibility: hidden;
 }
 
 .header-search-form form {
@@ -1918,6 +1930,7 @@ body.mobile-menu-visible {
 .header-search-form.active {
   opacity: 1;
   left: 0;
+  visibility: visible;
 }
 
 .search-overlay {

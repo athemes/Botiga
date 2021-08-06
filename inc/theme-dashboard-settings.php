@@ -231,7 +231,7 @@ function botiga_dashboard_settings( $settings ) {
 	);
 
 	// Documentation.
-	$settings['documentation_link'] = 'https://docs.athemes.com/category/8-botiga';
+	$settings['documentation_link'] = 'https://docs.athemes.com/collection/318-botiga';
 
 	// Promo.
 	$settings['promo_title']  = esc_html__( 'Upgrade to Pro', 'botiga' );

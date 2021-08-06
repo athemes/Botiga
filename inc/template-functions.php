@@ -390,8 +390,8 @@ function botiga_get_default_header_components() {
 		'l3right'	=> array( 'woocommerce_icons' ),
 		'l4top'		=> array( 'search' ),
 		'l4bottom'	=> array( 'woocommerce_icons' ),
-		'l5topleft'	=> array( 'search' ),
-		'l5topright'=> array( 'search' ),
+		'l5topleft'	=> array(),
+		'l5topright'=> array( 'woocommerce_icons' ),
 		'l5bottom'	=> array( 'search' ),
 		'mobile'	=> array( 'woocommerce_icons' ),
 		'offcanvas'	=> array()

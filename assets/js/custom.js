@@ -40,6 +40,8 @@ botiga.navigation = {
       menu.classList.add('nav-menu');
     }
 
+    var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled]):not(.mobile-menu-close)');
+    var firstFocusableEl = focusableEls[0];
     button.addEventListener('click', function (e) {
       e.preventDefault();
       button.classList.add('open');
@@ -87,10 +89,7 @@ botiga.navigation = {
         _iterator.f();
       }
 
-      var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled]):not(.mobile-menu-close)');
-      var firstFocusableEl = focusableEls[0];
-      var lastFocusableEl = focusableEls[focusableEls.length - 1];
-      var KEYCODE_TAB = 9;
+      console.log(firstFocusableEl);
       firstFocusableEl.focus();
     });
     var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');

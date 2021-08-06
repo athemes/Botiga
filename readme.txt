@@ -30,6 +30,8 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.1 - August 6 2021 =
+* improved accessibility
 = 1.0.0 - July 26 2021 =
 * Initial release
 

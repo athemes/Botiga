@@ -341,6 +341,7 @@ p.no-comments {
 			min-width: 400px;
 			margin: 0 auto;
 			padding: 30px 0 0;
+			visibility: hidden;
 
 			.woocommerce-mini-cart__empty-message {
 				padding: 30px;
@@ -436,6 +437,7 @@ p.no-comments {
 				left: auto;
 				right: 0;
 				display: block;
+				visibility: visible;
 			}
 		}
 
