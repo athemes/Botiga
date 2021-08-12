@@ -79,10 +79,14 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		}
 
 		/**
-		 * Blog layout
-		 */
+		* Blog layout
+		*/
 		public function blog_layout() {
 			$layout = get_theme_mod( 'blog_layout', 'layout3' );
+
+			if( ! $layout || $layout === 'Right'  ) {
+				$layout = 'layout3';
+			}
 
 			return $layout;
 		}
