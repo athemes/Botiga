@@ -672,6 +672,7 @@ div.editor-styles-wrapper .demo_store {
     min-width: 400px;
     margin: 0 auto;
     padding: 30px 0 0;
+    visibility: hidden;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message {
     padding: 30px;
@@ -763,6 +764,7 @@ div.editor-styles-wrapper .demo_store {
     left: auto;
     right: 0;
     display: block;
+    visibility: visible;
   }
   div.editor-styles-wrapper .site-header-cart .product_list_widget {
     margin: 0;

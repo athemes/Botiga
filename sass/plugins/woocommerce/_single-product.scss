@@ -145,23 +145,18 @@
 			top: -2px;
 		}
 	}
-	.quantity {
-		display: inline-block;
-		margin-right: 20px;
-		max-width: 90px;
-	}
 
-	.quantity .qty {
-		max-width: 90px;
-		padding-top: 16px;
-		padding-bottom: 16px;
-	}
 	.button {
 		display: inline-block;
 		width: calc(100% - 116px);
 		text-transform: uppercase;
 		padding-top: 17px;
 		padding-bottom: 17px;
+
+		@media(max-width: 991px) {
+			width: 100%;
+		}
+
 	}
 
 	&.gallery-side {

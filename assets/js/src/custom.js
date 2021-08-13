@@ -1,6 +1,5 @@
 var botiga = botiga || {};
 
-
 /**
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
@@ -299,12 +298,13 @@ botiga.quickView = {
 							productGallery.dispatchEvent(new Event('wc-product-gallery-after-init'));
 						} // Initialize product variable
 
-
 						var variationsForm = document.querySelector('.botiga-quick-view-summary .variations_form');
 
 						if (typeof wc_add_to_cart_variation_params !== 'undefined') {
 							jQuery(variationsForm).wc_variation_form();
 						}
+
+						botiga.qtyButton.init();
 					}
 				};
 
@@ -349,6 +349,39 @@ botiga.quickView = {
 		}
 	},
 };
+/**
+ * Quantity button
+ */
+botiga.qtyButton = {
+	init: function() {
+	  	var qty = document.querySelectorAll('.quantity');
+
+		if( qty.length < 1 ) {
+			return false;
+		}
+		
+		for(var i = 0; i < qty.length; i++) {
+			var plus  	= qty[i].querySelector('.botiga-quantity-plus'),
+				minus 	= qty[i].querySelector('.botiga-quantity-minus');
+
+			plus.addEventListener( 'click', function(e){
+				var input = this.parentNode.querySelector('.qty');
+
+				e.preventDefault();  
+
+				input.value = parseInt( input.value ) + 1;
+			});
+	
+			minus.addEventListener( 'click', function(e){
+				var input = this.parentNode.querySelector('.qty');
+
+				e.preventDefault();  
+				
+				input.value = ( parseInt( input.value ) > 0 ) ? parseInt( input.value ) - 1 : 0;
+			});
+		}
+	}
+}
 
 /**
  * Is the DOM ready?
@@ -375,4 +408,5 @@ botigaDomReady( function() {
     botiga.quickView.init();
 	botiga.stickyHeader.init();
 	botiga.backToTop.init();
+	botiga.qtyButton.init();
 } );

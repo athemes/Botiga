@@ -340,6 +340,8 @@ botiga.quickView = {
             if (typeof wc_add_to_cart_variation_params !== 'undefined') {
               jQuery(variationsForm).wc_variation_form();
             }
+
+            botiga.qtyButton.init();
           }
         };
 
@@ -382,6 +384,34 @@ botiga.backToTop = {
   }
 };
 /**
+ * Quantity button
+ */
+
+botiga.qtyButton = {
+  init: function init() {
+    var qty = document.querySelectorAll('.quantity');
+
+    if (qty.length < 1) {
+      return false;
+    }
+
+    for (var i = 0; i < qty.length; i++) {
+      var plus = qty[i].querySelector('.botiga-quantity-plus'),
+          minus = qty[i].querySelector('.botiga-quantity-minus');
+      plus.addEventListener('click', function (e) {
+        var input = this.parentNode.querySelector('.qty');
+        e.preventDefault();
+        input.value = parseInt(input.value) + 1;
+      });
+      minus.addEventListener('click', function (e) {
+        var input = this.parentNode.querySelector('.qty');
+        e.preventDefault();
+        input.value = parseInt(input.value) > 0 ? parseInt(input.value) - 1 : 0;
+      });
+    }
+  }
+};
+/**
  * Is the DOM ready?
  *
  * This implementation is coming from https://gomakethings.com/a-native-javascript-equivalent-of-jquerys-ready-method/
@@ -407,4 +437,5 @@ botigaDomReady(function () {
   botiga.quickView.init();
   botiga.stickyHeader.init();
   botiga.backToTop.init();
+  botiga.qtyButton.init();
 });

@@ -441,6 +441,19 @@ function botiga_wrap_loop_button_start() {
 }
 
 /**
+ * Quantity buttons
+ */
+function botiga_woocommerce_before_quantity_input_field() {
+	echo '<a href="#" class="botiga-quantity-minus" role="button">'. esc_html( '-', 'botiga' ) .'</a>';
+}
+add_action( 'woocommerce_before_quantity_input_field', 'botiga_woocommerce_before_quantity_input_field' );
+
+function botiga_woocommerce_after_quantity_input_field() {
+	echo '<a href="#" class="botiga-quantity-plus" role="button">'. esc_html( '+', 'botiga' ) .'</a>';
+}
+add_action( 'woocommerce_after_quantity_input_field', 'botiga_woocommerce_after_quantity_input_field' );
+
+/**
  * Page header
  */
 function botiga_woocommerce_page_header() {
