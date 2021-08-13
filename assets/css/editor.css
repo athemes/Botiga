@@ -364,6 +364,9 @@ div.editor-styles-wrapper {
  * Header cart
  */
   /**
+ * Quantity
+ */
+  /**
  * Star rating
  */
   /**
@@ -415,6 +418,115 @@ div.editor-styles-wrapper .site-header-cart .widget_shopping_cart {
 div.editor-styles-wrapper .site-header-cart .product_list_widget {
   margin: 0;
   padding: 0;
+}
+
+div.editor-styles-wrapper .quantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 90px;
+  margin-bottom: 1.3rem;
+}
+
+div.editor-styles-wrapper .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper .quantity .botiga-quantity-minus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0 20px 4px;
+  height: auto;
+  color: #FFF;
+  background: #212121;
+  border: 1px solid #212121;
+  text-align: center;
+  text-decoration: none;
+}
+
+div.editor-styles-wrapper .quantity .botiga-quantity-plus:hover,
+div.editor-styles-wrapper .quantity .botiga-quantity-minus:hover {
+  background: #757575;
+}
+
+div.editor-styles-wrapper .quantity .qty {
+  max-width: 90px;
+  text-align: center;
+  margin: 0 10px;
+  padding: 0;
+  max-width: 70px;
+}
+
+div.editor-styles-wrapper .woocommerce-cart .quantity {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  div.editor-styles-wrapper .woocommerce-cart .quantity {
+    position: relative;
+    margin-bottom: 0;
+    max-width: 120px;
+  }
+  div.editor-styles-wrapper .woocommerce-cart .quantity .botiga-quantity-plus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 38px;
+  }
+  div.editor-styles-wrapper .woocommerce-cart .quantity .botiga-quantity-minus {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 38px;
+  }
+  div.editor-styles-wrapper .woocommerce-cart .quantity .qty {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    height: 76px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  div.editor-styles-wrapper .woocommerce-cart .quantity {
+    max-width: 170px;
+  }
+}
+
+@media (min-width: 768px) {
+  div.editor-styles-wrapper .quantity .botiga-quantity-plus,
+  div.editor-styles-wrapper .quantity .botiga-quantity-minus {
+    padding: 0 30px 4px;
+  }
+  div.editor-styles-wrapper .quantity .qty {
+    margin: 0 15px;
+    max-width: 90px;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1025px) {
+  div.editor-styles-wrapper .quantity {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  div.editor-styles-wrapper .quantity .botiga-quantity-plus,
+  div.editor-styles-wrapper .quantity .botiga-quantity-minus {
+    display: none;
+  }
+  div.editor-styles-wrapper .quantity .qty {
+    margin: 0 10px 0 0;
+    text-align: left;
+  }
 }
 
 div.editor-styles-wrapper .star-rating {

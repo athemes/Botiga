@@ -33,3 +33,29 @@ input.wc-block-components-price-slider__range-input {
 		margin-right: 5px;
 	}
 }
+
+/* Default WP search */
+.wp-block-search {
+	.wp-block-search__label {
+		font-weight: 600;
+		margin-bottom: 15px;
+	}
+	.wp-block-search__button {
+		background: $color__primary;
+		color: #FFF;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		&:hover {
+			background: $color__hover;
+		}
+	}
+}
+
+/* Woo search */
+.wp-block-woocommerce-product-search {
+	.wc-block-product-search__label {
+		display: block;
+		font-weight: 600;
+		margin-bottom: 15px;
+	}
+}

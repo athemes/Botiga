@@ -177,6 +177,37 @@
 
 .single-post-author {
 	text-align: center;
+	.author-avatar {
+		min-width: 60px;
+		padding-top: 5px;
+	}
+	&.single-post-author-left,
+	&.single-post-author-right {
+		display: flex;
+		.author-content {
+			.author-name {
+				margin-top: 0;
+				& + .author-link {
+					position: relative;
+					top: -10px;
+				}
+			}
+		}
+	}
+	&.single-post-author-left {
+		text-align: left;
+		.author-avatar {
+			margin-right: 25px;
+		}
+	}
+	&.single-post-author-right {
+		flex-direction: row-reverse;
+		text-align: right;
+		.author-avatar {
+			margin-left: 25px;
+		}
+		
+	}
 }
 .botiga-related-posts,
 .post-navigation,

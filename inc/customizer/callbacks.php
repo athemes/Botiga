@@ -44,6 +44,19 @@ function botiga_callback_sidebar_single_post() {
 }
 
 /**
+ * Single post author bio align
+ */
+function botiga_callback_single_post_show_author_box() {
+    $enable = get_theme_mod( 'single_post_show_author_box', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}   	
+}
+
+/**
  * Sale percentage
  */
 function botiga_callback_sale_percentage() {

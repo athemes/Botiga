@@ -212,14 +212,15 @@ add_action( 'botiga_after_single_post_content', 'botiga_single_post_navigation',
  */
 function botiga_post_author_bio() {
 
-	$single_post_show_author_box = get_theme_mod( 'single_post_show_author_box', 0 );
+	$single_post_show_author_box  = get_theme_mod( 'single_post_show_author_box', 0 );
+	$single_post_author_box_align = get_theme_mod( 'single_post_author_box_align', 'center' );
 
 	if ( !$single_post_show_author_box ) {
 		return;
 	}
 
 	?>
-	<div class="single-post-author">
+	<div class="single-post-author single-post-author-<?php echo esc_attr( $single_post_author_box_align ); ?>">
 		<div class="author-avatar vcard">
 			<?php echo get_avatar( get_the_author_meta( 'ID' ), 60 ); ?>
 		</div>

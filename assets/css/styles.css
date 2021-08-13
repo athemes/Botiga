@@ -2166,6 +2166,46 @@ body.mobile-menu-visible {
   text-align: center;
 }
 
+.single-post-author .author-avatar {
+  min-width: 60px;
+  padding-top: 5px;
+}
+
+.single-post-author.single-post-author-left, .single-post-author.single-post-author-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.single-post-author.single-post-author-left .author-content .author-name, .single-post-author.single-post-author-right .author-content .author-name {
+  margin-top: 0;
+}
+
+.single-post-author.single-post-author-left .author-content .author-name + .author-link, .single-post-author.single-post-author-right .author-content .author-name + .author-link {
+  position: relative;
+  top: -10px;
+}
+
+.single-post-author.single-post-author-left {
+  text-align: left;
+}
+
+.single-post-author.single-post-author-left .author-avatar {
+  margin-right: 25px;
+}
+
+.single-post-author.single-post-author-right {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  text-align: right;
+}
+
+.single-post-author.single-post-author-right .author-avatar {
+  margin-left: 25px;
+}
+
 .botiga-related-posts,
 .post-navigation,
 .single-post-author,
@@ -2731,6 +2771,13 @@ body.mobile-menu-visible {
   fill: #fff;
 }
 
+.widget_search form {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .widget_block h3 {
   margin: 0 0 20px;
   font-size: 18px;
@@ -2767,6 +2814,30 @@ input.wc-block-components-price-slider__range-input {
 
 .wp-block-woocommerce-attribute-filter input {
   margin-right: 5px;
+}
+
+/* Default WP search */
+.wp-block-search .wp-block-search__label {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.wp-block-search .wp-block-search__button {
+  background: #212121;
+  color: #FFF;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.wp-block-search .wp-block-search__button:hover {
+  background: #757575;
+}
+
+/* Woo search */
+.wp-block-woocommerce-product-search .wc-block-product-search__label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 /* Media
