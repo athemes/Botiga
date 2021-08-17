@@ -244,11 +244,11 @@ function botiga_dashboard_settings( $settings ) {
 	$settings['suggest_idea_link'] = 'https://athemes.circle.so/c/give-feedback';
 
 	// Support.
-	$settings['support_link']     = 'https://forums.athemes.com/';
+	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
 	$settings['support_pro_link'] = 'https://athemes.com/theme/botiga-pro/?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
 
 	// Community.
-	$settings['community_link'] = 'https://community.athemes.com/';
+	$settings['community_link'] = 'https://www.facebook.com/groups/athemes/';
 
 	$theme = wp_get_theme();
 	// Changelog.
