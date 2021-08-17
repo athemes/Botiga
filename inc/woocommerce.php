@@ -1304,3 +1304,17 @@ function botiga_myaccount_html_insert() {
     }
 }
 add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
+
+/**
+ * Cross Sells
+ */
+function botiga_cross_sells_columns_number( $columns ) {
+	return 3;
+}
+add_filter( 'woocommerce_cross_sells_columns', 'botiga_cross_sells_columns_number' );
+ 
+ 
+function botiga_cross_sells_totals( $columns ) {
+	return 3;
+}
+add_filter( 'woocommerce_cross_sells_total', 'botiga_cross_sells_totals' );

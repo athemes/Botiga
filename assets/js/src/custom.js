@@ -304,7 +304,7 @@ botiga.quickView = {
 							jQuery(variationsForm).wc_variation_form();
 						}
 
-						botiga.qtyButton.init();
+						botiga.qtyButton.init( 'quick-view' );
 					}
 				};
 
@@ -353,34 +353,65 @@ botiga.quickView = {
  * Quantity button
  */
 botiga.qtyButton = {
-	init: function() {
-	  	var qty = document.querySelectorAll('.quantity');
+	init: function( type ) {
+		this.events( type );
+		this.wooEvents();
+	},
+
+	events: function( type ) {
+		var qty = document.querySelectorAll('form.cart .quantity, .botiga-quick-view-popup .quantity, .woocommerce-cart-form__cart-item.cart_item .quantity');
+		
+		if( type === 'quick-view' ) {
+			qty = document.querySelectorAll('.botiga-quick-view-popup .quantity');
+		} 
 
 		if( qty.length < 1 ) {
 			return false;
 		}
-		
+
 		for(var i = 0; i < qty.length; i++) {
 			var plus  	= qty[i].querySelector('.botiga-quantity-plus'),
 				minus 	= qty[i].querySelector('.botiga-quantity-minus');
 
+			plus.classList.add('show');
+			minus.classList.add('show');
+
 			plus.addEventListener( 'click', function(e){
-				var input = this.parentNode.querySelector('.qty');
+				var input = this.parentNode.querySelector('.qty'),
+					changeEvent = document.createEvent('HTMLEvents');
 
 				e.preventDefault();  
 
-				input.value = parseInt( input.value ) + 1;
+				input.value = input.value === '' ? 0 : parseInt( input.value ) + 1;
+
+				changeEvent.initEvent( 'change', true, false );
+				input.dispatchEvent( changeEvent );
 			});
 	
 			minus.addEventListener( 'click', function(e){
-				var input = this.parentNode.querySelector('.qty');
+				var input       = this.parentNode.querySelector('.qty'),
+					changeEvent = document.createEvent('HTMLEvents'); 
 
 				e.preventDefault();  
 				
 				input.value = ( parseInt( input.value ) > 0 ) ? parseInt( input.value ) - 1 : 0;
+
+				changeEvent.initEvent( 'change', true, false );
+				input.dispatchEvent( changeEvent );
 			});
 		}
-	}
+
+	},
+
+	wooEvents: function() {
+		var _self = this;
+
+		if( typeof jQuery !== 'undefined' ) {
+			jQuery( 'body' ).on('updated_cart_totals', function(){
+				_self.events();
+			});
+		}
+	} 
 }
 
 /**
