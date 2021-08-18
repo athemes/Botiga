@@ -326,6 +326,13 @@ require get_template_directory() . '/theme-dashboard/class-theme-dashboard.php';
 require get_template_directory() . '/inc/theme-dashboard-settings.php';
 
 /**
+ * Review notice
+ */
+if( is_admin() ) {
+	require get_template_directory() . '/inc/notices/class-botiga-review.php';
+}
+
+/**
  * Botiga custom get template part
  */
 function botiga_get_template_part( $slug, $name = null, $args = array() ) {
