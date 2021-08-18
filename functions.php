@@ -328,9 +328,7 @@ require get_template_directory() . '/inc/theme-dashboard-settings.php';
 /**
  * Review notice
  */
-if( is_admin() ) {
-	require get_template_directory() . '/inc/notices/class-botiga-review.php';
-}
+require get_template_directory() . '/inc/notices/class-botiga-review.php';
 
 /**
  * Botiga custom get template part
