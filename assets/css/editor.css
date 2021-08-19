@@ -420,6 +420,24 @@ div.editor-styles-wrapper .site-header-cart .product_list_widget {
   padding: 0;
 }
 
+div.editor-styles-wrapper .botiga-quantity-plus,
+div.editor-styles-wrapper .botiga-quantity-minus {
+  opacity: 0;
+  visibility: hidden;
+  display: none !important;
+  -webkit-transition: ease opacity 300ms;
+  transition: ease opacity 300ms;
+}
+
+div.editor-styles-wrapper .botiga-quantity-plus.show,
+div.editor-styles-wrapper .botiga-quantity-minus.show {
+  opacity: 1;
+  visibility: visible;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
 div.editor-styles-wrapper .woocommerce-cart-form .quantity,
 div.editor-styles-wrapper form.cart .quantity {
   display: -webkit-box;

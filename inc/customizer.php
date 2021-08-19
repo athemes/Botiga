@@ -104,6 +104,20 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 						'render_callback' => 'botiga_customize_partial_blogdescription',
 					)
 				);
+				$wp_customize->selective_refresh->add_partial( 
+					'social_profiles_footer', 
+					array(
+						'selector'          => '.site-info .social-profile',
+						'render_callback'   => 'botiga_customize_partial_social_profiles_footer',
+					) 
+				); 
+				$wp_customize->selective_refresh->add_partial( 
+					'footer_credits', 
+					array(
+						'selector'          => '.site-info .row > div:nth-child(2)',
+						'render_callback'   => 'botiga_customize_partial_footer_credits',
+					) 
+				);  
 			}
 
 		}
@@ -142,4 +156,23 @@ function botiga_customize_partial_blogname() {
  */
 function botiga_customize_partial_blogdescription() {
 	bloginfo( 'description' );
+}
+
+/**
+ * Render the social profiles footer for the selective refresh partial.
+ *
+ * @return void
+ */
+function botiga_customize_partial_social_profiles_footer() {
+	botiga_social_profile( 'social_profiles_footer' );
+}
+
+/**
+ * Render the footer credits for the selective refresh partial.
+ *
+ * @return void
+ */
+function botiga_customize_partial_footer_credits() {
+	$footer = new Botiga_Footer();
+	echo wp_kses_post( $footer->footer_credits() );
 }

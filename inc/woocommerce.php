@@ -81,7 +81,9 @@ function botiga_woocommerce_scripts() {
 	wp_add_inline_style( 'botiga-woocommerce-style', $inline_font );
 
 	//Enqueue gallery scripts for quick view
-	if ( is_shop() || is_product_category() || is_product_tag() || botiga_wc_has_blocks() ) {
+	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+	
+	if ( is_shop() || is_product_category() || is_product_tag() || botiga_wc_has_blocks() || is_cart() && $shop_cart_show_cross_sell ) {
 		$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 		
 		if( 'layout1' !== $quick_view_layout ) {
@@ -141,6 +143,14 @@ function botiga_woocommerce_scripts() {
 			}
 
 		}
+	}
+
+	//Cross sell
+	$layout                    = get_theme_mod( 'shop_cart_layout', 'layout1' );
+	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+
+	if( is_cart() && $layout === 'layout1' && $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) {
+		wp_enqueue_script( 'botiga-cross-sell', get_template_directory_uri() . '/assets/js/cross-sell.min.js', NULL, BOTIGA_VERSION );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
@@ -273,7 +283,16 @@ function botiga_wc_hooks() {
 
 	//No sidebar for checkout, cart, account
 	if ( is_cart() ) {
-		add_filter( 'botiga_content_class', function() { $layout = get_theme_mod( 'shop_cart_layout', 'layout1' ); return 'no-sidebar cart-' . esc_attr( $layout ); } );
+		add_filter( 'botiga_content_class', function() { 
+			$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+			$layout                    = get_theme_mod( 'shop_cart_layout', 'layout1' ); 
+
+			if( $layout === 'layout1' && $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) {
+				$layout .= ' cross-sell-carousel';
+			}
+			
+			return 'no-sidebar cart-' . esc_attr( $layout ); 
+		} );
 		add_filter( 'botiga_sidebar', '__return_false' );
 	} elseif ( is_checkout() ) {
 		add_filter( 'botiga_content_class', function() { $layout = get_theme_mod( 'shop_checkout_layout', 'layout1' ); return 'no-sidebar checkout-' . esc_attr( $layout ); } );
@@ -325,6 +344,8 @@ function botiga_wc_hooks() {
 		if ( !$single_upsell ) {
 			remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 		}	
+		add_filter( 'woocommerce_upsells_columns', function() { return 3; } );
+		add_filter( 'woocommerce_upsells_total', function() { return -1; } );
 		
 		//Move sale tag
 		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
@@ -345,7 +366,21 @@ function botiga_wc_hooks() {
 
 	if ( !$shop_results_count ) {
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
-	}	
+	}
+
+	//Cart cross sell
+	$cart_layout               = get_theme_mod( 'shop_cart_layout', 'layout1' );
+	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+
+	if( !$shop_cart_show_cross_sell ) {
+		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+	}
+	add_filter( 'woocommerce_cross_sells_columns', function() use ($cart_layout) {
+		return 'layout1' === $cart_layout ? 2 : 3;
+	} );
+	add_filter( 'woocommerce_cross_sells_total', function() use ($cart_layout) {
+		return -1;
+	} );
 
 	/**
 	 * Loop product structure
@@ -405,7 +440,7 @@ function botiga_wc_hooks() {
 	}
 
 	//Quick view
-	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_wc_has_blocks() ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_wc_has_blocks() || is_cart() && $shop_cart_show_cross_sell ) {
 		if( 'layout1' !== $quick_view_layout ) {
 			
 			//Button position for layout 2 & 3
@@ -1304,17 +1339,3 @@ function botiga_myaccount_html_insert() {
     }
 }
 add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
-
-/**
- * Cross Sells
- */
-function botiga_cross_sells_columns_number( $columns ) {
-	return 3;
-}
-add_filter( 'woocommerce_cross_sells_columns', 'botiga_cross_sells_columns_number' );
- 
- 
-function botiga_cross_sells_totals( $columns ) {
-	return 3;
-}
-add_filter( 'woocommerce_cross_sells_total', 'botiga_cross_sells_totals' );

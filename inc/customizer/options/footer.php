@@ -572,6 +572,7 @@ $wp_customize->add_setting(
 	array(
 		'sanitize_callback' => 'botiga_sanitize_text',
 		'default'           => sprintf( esc_html__( '%1$1s. Proudly powered by %2$2s', 'botiga' ), '{copyright} {year} {site_title}', '{theme_author}' ),// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+		'transport' => 'postMessage'
 	)       
 );
 $wp_customize->add_control( 'footer_credits', array(
@@ -597,7 +598,8 @@ $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'footer_d
 $wp_customize->add_setting( 'social_profiles_footer',
 	array(
 		'default' 			=> '',
-		'sanitize_callback' => 'botiga_sanitize_urls'
+		'sanitize_callback' => 'botiga_sanitize_urls',
+		'transport'         => 'postMessage'
 	)
 );
 $wp_customize->add_control( new Botiga_Repeater_Control( $wp_customize, 'social_profiles_footer',

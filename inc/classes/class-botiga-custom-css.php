@@ -376,6 +376,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'single_product_sale_background_color', '', '.wc-block-grid__product-onsale, span.onsale' );
 			$css .= $this->get_color_css( 'shop_product_product_title', '', 'ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, ul.wc-block-grid__products li.product .wc-block-grid__product-title, ul.wc-block-grid__products li.product .woocommerce-loop-product__title, ul.products li.wc-block-grid__product .wc-block-grid__product-title, ul.products li.wc-block-grid__product .woocommerce-loop-product__title, ul.products li.product .wc-block-grid__product-title, ul.products li.product .woocommerce-loop-product__title' );
 
+			//Cart
+			$css .= $this->get_stroke_css( 'color_link_hover', '', '.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav svg path' );
+			$css .= $this->get_stroke_css( 'color_link_default', '', '.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav:hover svg path' );
 
 			//Single product options
 			$css .= $this->get_color_css( 'single_product_title_color', '', '.product-gallery-summary .product_title' );

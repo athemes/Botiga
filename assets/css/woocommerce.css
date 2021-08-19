@@ -1042,19 +1042,19 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 }
 
 .related.products,
-.upsell.products {
+.upsells.products {
   margin-top: 50px;
 }
 
 .related.products > h2,
-.upsell.products > h2 {
+.upsells.products > h2 {
   margin: 0 0 30px;
   font-size: 32px;
   font-size: 2rem;
 }
 
 .related.products .products,
-.upsell.products .products {
+.upsells.products .products {
   overflow: hidden;
 }
 
@@ -1281,6 +1281,7 @@ table.variations .reset_variations {
 }
 
 .woocommerce-cart .cart_totals {
+  width: 100%;
   max-width: 445px;
   float: right;
   margin-top: 90px;
@@ -1362,6 +1363,16 @@ table.variations .reset_variations {
   text-transform: uppercase;
 }
 
+.woocommerce-cart .cart-collaterals {
+  margin-top: 90px;
+}
+
+.woocommerce-cart .cart-collaterals h2 {
+  font-size: 32px;
+  font-size: 2rem;
+  margin-top: 0;
+}
+
 .shipping-calculator-button {
   text-decoration: underline;
 }
@@ -1395,17 +1406,74 @@ table.variations .reset_variations {
   color: #fff;
 }
 
+.cross-sell-carousel .cross-sells .products:not(.show) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper {
+  position: relative;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: ease opacity 300ms 300ms;
+  transition: ease opacity 300ms 300ms;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products .product {
+  width: 100%;
+  margin-right: 0;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-next {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 21px;
+  height: 21px;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-prev {
+  position: absolute;
+  top: -40px;
+  right: 30px;
+  width: 21px;
+  height: 21px;
+  border-radius: 100%;
+  z-index: 1;
+}
+
 @media (min-width: 992px) {
   .woocommerce-cart .shop_table td.product-subtotal,
   .woocommerce-cart .shop_table td.product-quantity,
   .woocommerce-cart .shop_table td.product-price {
     width: 15%;
   }
-  .cart-layout1 .cart_totals {
-    width: 100%;
-    margin-top: -10px;
-    margin-bottom: 40px;
-    max-width: none;
+  .cart-layout1 .cart-collaterals {
+    float: left;
+    max-width: 467px;
+    margin-top: 23px;
+  }
+  .cart-layout2 .woocommerce-notices-wrapper:not(:empty) {
+    margin-bottom: 30px;
   }
   .cart-layout2 .woocommerce-cart-form {
     width: 70%;
@@ -1415,6 +1483,12 @@ table.variations .reset_variations {
   .cart-layout2 .cart_totals {
     width: 30%;
     margin-top: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cart-layout1 .cart-collaterals {
+    max-width: 640px;
   }
 }
 
@@ -1447,9 +1521,8 @@ table.variations .reset_variations {
 
 @media (max-width: 991px) {
   .woocommerce-cart .cart_totals {
-    width: 100%;
     max-width: none;
-    margin: -10px 0 40px;
+    margin: 5px 0 40px;
   }
 }
 
@@ -1458,9 +1531,12 @@ table.variations .reset_variations {
     padding: 30px;
   }
   .woocommerce-cart .cart_totals {
-    margin-top: 60px;
+    margin-top: 40px;
     max-width: 100%;
     float: none;
+  }
+  .woocommerce-cart .cart-collaterals {
+    margin-top: 40px;
   }
   .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
     float: none;
@@ -1573,6 +1649,20 @@ table.variations .reset_variations {
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
     max-width: 50%;
+  }
+  .cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-next {
+    top: auto;
+    bottom: 0;
+    right: 45%;
+    -webkit-transform: translate3d(50%, 0, 0);
+            transform: translate3d(50%, 0, 0);
+  }
+  .cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-prev {
+    top: auto;
+    bottom: 0;
+    right: 55%;
+    -webkit-transform: translate3d(50%, 0, 0);
+            transform: translate3d(50%, 0, 0);
   }
 }
 

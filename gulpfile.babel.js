@@ -553,6 +553,54 @@
 			 })
 		 );
  });
+
+ /**
+  * Task: `crossSellJS`.
+  *
+  * Concatenate and uglify custom JS scripts.
+  *
+  * This task does the following:
+  *     1. Gets the source folder for JS custom files
+  *     2. Concatenates all the files and generates custom.js
+  *     3. Renames the JS file with suffix .min.js
+  *     4. Uglifes/Minifies the JS file and generates custom.min.js
+  */
+  gulp.task('crossSellJS', () => {
+	return gulp
+		.src(config.jsCrossSellSRC, {since: gulp.lastRun('crossSellJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsCrossSellSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsCrossSellFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			rename({
+				basename: config.jsCrossSellFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify())
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> CROSS SELL JS — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
   * Task: `images`.
@@ -655,7 +703,7 @@
   */
  gulp.task(
 	 'default',
-	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'images', browsersync, () => {
+	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'crossSellJS', 'images', browsersync, () => {
 		 gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
@@ -667,6 +715,7 @@
 		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchJsVendor, gulp.series('vendorsJS', reload)); // Reload on vendorsJS file changes.
 		 gulp.watch(config.watchJsCustom, gulp.series('customJS', reload)); // Reload on customJS file changes.
+		 gulp.watch(config.watchJsCrossSell, gulp.series('crossSellJS', reload)); // Reload on Cross Sell file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.imgSRC, gulp.series('images', reload)); // Reload on customJS file changes.

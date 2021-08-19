@@ -1976,6 +1976,7 @@ body.mobile-menu-visible {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  text-align: center;
 }
 
 .top-bar .col:last-of-type {

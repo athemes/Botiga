@@ -633,7 +633,35 @@ $wp_customize->add_control(
 			)
 		)
 	)
-); 
+);
+$wp_customize->add_setting( 'shop_cart_divider_1',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'shop_cart_divider_1',
+		array(
+			'section' 			=> 'botiga_section_shop_cart',
+		)
+	)
+);
+$wp_customize->add_setting(
+	'shop_cart_show_cross_sell',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_cart_show_cross_sell',
+		array(
+			'label'         	=> esc_html__( 'Cross Sell', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_cart',
+		)
+	)
+);
 
 //Checkout
 $wp_customize->add_setting(

@@ -31,9 +31,6 @@
 			font-weight: 400;
 		}
 	}
-	thead tr,
-	tr.cart_item {
-	}
 
 	tbody tr:not(.woocommerce-cart-form__cart-item) {
 		border-color: transparent !important;
@@ -115,6 +112,7 @@
 	}
 
 	.cart_totals {
+		width: 100%;
 		max-width: 445px;
 		float: right;
 		margin-top: 90px;
@@ -192,6 +190,14 @@
 		}
 	}
 
+	.cart-collaterals {
+		margin-top: 90px;
+		h2 {
+			@include font-size(32);
+			margin-top: 0;
+		}
+	}
+
 }
 
 .shipping-calculator-button {
@@ -226,6 +232,59 @@
 	color: #fff;
 }
 
+.cross-sell-carousel {
+	.cross-sells {
+		.products:not(.show) {
+			display: flex;
+			opacity: 0;
+			visibility: hidden;
+		}
+		.cross-sells-carousel-wrapper {
+			position: relative;
+			.products {
+				opacity: 0;
+				visibility: hidden;
+				// display: none;
+				transition: ease opacity 300ms 300ms;
+				&.show {
+					opacity: 1;
+					visibility: visible;
+					// display: block;
+				}
+
+				> div {
+					display: flex;
+				}
+
+				.product {
+					width: 100%;
+					margin-right: 0;
+				}
+			}
+
+			.botiga-cross-sell-nav-next {
+				position: absolute;
+				top: -40px;
+				right: 0;
+				width: 21px;
+				height: 21px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+
+			.botiga-cross-sell-nav-prev {
+				position: absolute;
+				top: -40px;
+				right: 30px;
+				width: 21px;
+				height: 21px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+		}
+	}
+}
+
 @media ( min-width: 992px ) {
 	.woocommerce-cart {
 		.shop_table {
@@ -237,14 +296,16 @@
 		}
 	}
 	.cart-layout1 {
-		.cart_totals {
-			width: 100%;
-			margin-top: -10px;
-			margin-bottom: 40px;
-			max-width: none;
+		.cart-collaterals {
+			float: left;
+			max-width: 467px;
+			margin-top: 23px;
 		}
 	}
 	.cart-layout2 {
+		.woocommerce-notices-wrapper:not(:empty) {
+			margin-bottom: 30px;
+		}
 		.woocommerce-cart-form {
 			width: 70%;
 			float: left;
@@ -255,6 +316,14 @@
 			margin-top: 0;
 		}
 	}	
+}
+
+@media ( min-width: 1200px ) {
+	.cart-layout1 {
+		.cart-collaterals {
+			max-width: 640px;
+		}
+	}
 }
 
 .woocommerce-cart table {
@@ -289,9 +358,8 @@
 @media (max-width: 991px) {
 	.woocommerce-cart {
 		.cart_totals {
-			width: 100%;
 			max-width: none;
-			margin: -10px 0 40px;
+			margin: 5px 0 40px;
 		}
 	}
 }
@@ -301,9 +369,13 @@
         padding: 30px;
     }
     .woocommerce-cart .cart_totals {
-        margin-top: 60px;
+        margin-top: 40px;
         max-width: 100%;
         float: none;
+    }
+
+	.woocommerce-cart .cart-collaterals {
+        margin-top: 40px;
     }
 
     .woocommerce-cart .woocommerce-cart-form .actions .button[name="update_cart"] {
@@ -417,6 +489,25 @@
 						flex: 0 0 50%;
 						max-width: 50%;
 					}
+				}
+			}
+		}
+	}
+
+	.cross-sell-carousel {
+		.cross-sells {
+			.cross-sells-carousel-wrapper {
+				.botiga-cross-sell-nav-next {
+					top: auto;
+					bottom: 0;
+					right: 45%;
+					transform: translate3d(50%, 0, 0);
+				}
+				.botiga-cross-sell-nav-prev {
+					top: auto;
+					bottom: 0;
+					right: 55%;
+					transform: translate3d(50%, 0, 0);
 				}
 			}
 		}

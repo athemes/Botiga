@@ -75,7 +75,7 @@
 	});	
 	
 	//Stroke
-	var $stroke_options = { "scrolltop_color": ".back-to-top svg"};
+	var $stroke_options = { "scrolltop_color": ".back-to-top svg", "color_link_hover": ".cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav svg path"};
 
 	$.each( $stroke_options, function( option, selector ) {
 		wp.customize( option, function( value ) {
@@ -114,7 +114,7 @@
 	});	
 
 	//Stroke hover
-	var $stroke_hover_options = { "scrolltop_color_hover":".back-to-top:hover svg", };
+	var $stroke_hover_options = { "scrolltop_color_hover":".back-to-top:hover svg", "color_link_default": ".cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav:hover svg path" };
 
 	$.each( $stroke_hover_options, function( option, selector ) {
 		wp.customize( option, function( value ) {

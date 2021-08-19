@@ -66,6 +66,9 @@ const custScriptsFile = 'customizer-scripts';
 
 // JS Custom options.
 
+// Path to JS cross sell.
+const jsCrossSellSRC = './assets/js/src/cross-sell.js';
+
 // Path to JS custom scripts folder.
 const jsCustomSRC = './assets/js/src/custom.js';
 
@@ -74,6 +77,9 @@ const jsCustomDestination = './assets/js/';
 
 // Compiled JS custom file name. Default set to custom i.e. custom.js.
 const jsCustomFile = 'custom';
+
+// Compiled JS cross sell file name.
+const jsCrossSellFile = 'cross-sell';
 
 // Images options.
 
@@ -97,6 +103,9 @@ const watchJsVendor = './assets/js/vendor/*.js';
 // Path to all custom JS files.
 const watchJsCustom = './assets/js/src/custom.js';
 
+// Path to all cross sell JS files.
+const watchJsCrossSell = './assets/js/src/cross-sell.js';
+
 // Path to all custom JS files.
 const watchJsCustomizer = './assets/js/src/*.js';
 
@@ -109,24 +118,27 @@ const zipName = 'botiga.zip';
 
 // Must be a folder outside of the zip folder.
 const zipDestination = './../'; // Default: Parent folder.
-const zipIncludeGlob = ['./**/*']; // Default: Include all files/folders in current directory.
+// const zipIncludeGlob = ['./**/*']; // Default: Include all files/folders in current directory.
+const zipIncludeGlob = ['../@(Botiga|botiga)/**/*'];
 
 // Default ignored files and folders for the zip file.
 const zipIgnoreGlob = [
-	'!./{node_modules,node_modules/**/*}',
-	'!./.git',
-	'!./.svn',
-	'!./gulpfile.babel.js',
-	'!./wpgulp.config.js',
-	'!./.eslintrc.js',
-	'!./.eslintignore',
-	'!./.editorconfig',
-	'!./phpcs.xml.dist',
-	'!./vscode',
-	'!./package.json',
-	'!./package-lock.json',
-	'!./assets/img/raw/**/*',
-	'!./assets/img/raw',
+	'!../@(Botiga|botiga)/**/*{node_modules,node_modules/**/*}',
+	'!../@(Botiga|botiga)/**/*.git',
+	'!../@(Botiga|botiga)/**/*.svn',
+	'!../@(Botiga|botiga)/**/*gulpfile.babel.js',
+	'!../@(Botiga|botiga)/**/*wpgulp.config.js',
+	'!../@(Botiga|botiga)/**/*.eslintrc.js',
+	'!../@(Botiga|botiga)/**/*.eslintignore',
+	'!../@(Botiga|botiga)/**/*.editorconfig',
+	'!../@(Botiga|botiga)/**/*phpcs.xml.dist',
+	'!../@(Botiga|botiga)/**/*vscode',
+	'!../@(Botiga|botiga)/**/*package.json',
+	'!../@(Botiga|botiga)/**/*package-lock.json',
+	'!../@(Botiga|botiga)/**/*assets/img/raw/**/*',
+	'!../@(Botiga|botiga)/**/*assets/img/raw',
+	'!../@(Botiga|botiga)/**/*assets/js/src/**/*',
+	'!../@(Botiga|botiga)/**/*assets/js/src'
 ];
 
 // >>>>> Translation options.
@@ -177,15 +189,18 @@ module.exports = {
 	jsVendorFile,
 	custScriptsFile,
 	custFile,
+	jsCrossSellSRC,
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,
+	jsCrossSellFile,
 	jsCustomFile,
 	imgSRC,
 	imgDST,
 	watchStyles,
 	watchEditorStyles,
 	watchJsVendor,
+	watchJsCrossSell,
 	watchJsCustom,
 	watchJsCustomizer,
 	watchPhp,
