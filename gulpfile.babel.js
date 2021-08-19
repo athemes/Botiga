@@ -569,18 +569,6 @@
 	return gulp
 		.src(config.jsCrossSellSRC, {since: gulp.lastRun('crossSellJS')}) // Only run on changed files.
 		.pipe(plumber(errorHandler))
-		.pipe(
-			babel({
-				presets: [
-					[
-						'@babel/preset-env', // Preset to compile your modern JS to ES5.
-						{
-							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
-						}
-					]
-				]
-			})
-		)
 		.pipe(remember(config.jsCrossSellSRC)) // Bring all files back to stream.
 		.pipe(concat(config.jsCrossSellFile + '.js'))
 		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
@@ -591,7 +579,11 @@
 				suffix: '.min'
 			})
 		)
-		.pipe(uglify())
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
 		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
 		.pipe(gulp.dest(config.jsCustomDestination))
 		.pipe(

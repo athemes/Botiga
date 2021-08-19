@@ -118,7 +118,8 @@ const zipName = 'botiga.zip';
 
 // Must be a folder outside of the zip folder.
 const zipDestination = './../'; // Default: Parent folder.
-// const zipIncludeGlob = ['./**/*']; // Default: Include all files/folders in current directory.
+
+//Include all files/folders in current directory.
 const zipIncludeGlob = ['../@(Botiga|botiga)/**/*'];
 
 // Default ignored files and folders for the zip file.

@@ -244,12 +244,10 @@
 			.products {
 				opacity: 0;
 				visibility: hidden;
-				// display: none;
 				transition: ease opacity 300ms 300ms;
 				&.show {
 					opacity: 1;
 					visibility: visible;
-					// display: block;
 				}
 
 				> div {
