@@ -105,7 +105,9 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 								<?php botiga_social_profile( 'social_profiles_footer' ); ?>
 							</div>
 							<div class="col-md-6">
-								<?php echo wp_kses_post( $this->footer_credits() ); ?>
+								<div class="botiga-credits">
+									<?php echo wp_kses_post( $this->footer_credits() ); ?>
+								</div>
 							</div>
 						</div>
 					</div>
