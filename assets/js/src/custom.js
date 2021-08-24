@@ -163,37 +163,44 @@ var botiga = botiga || {};
  */
 botiga.headerSearch = {
 	init: function() {
+		var self            = this,
+			button 		    = document.querySelectorAll( '.header-search' ),
+			form 			= window.matchMedia('(max-width: 1024px)').matches ? document.querySelector( '#masthead-mobile .header-search-form' ) : document.querySelector( '#masthead .header-search-form' ),
+			overlay 		= document.getElementsByClassName( 'search-overlay' )[0],
+			searchInput 	= form.getElementsByClassName('search-field')[0],
+			searchBtn 	    = form.getElementsByClassName('search-submit')[0];
 
-		if ( window.matchMedia('(max-width: 1024px)').matches ) {
-			var header = document.getElementById( 'masthead-mobile' );
-		} else {
-			var header = document.getElementById( 'masthead' );
-		}
-
-		const button 		= header.getElementsByClassName( 'header-search' )[0];
-		const form 			= header.getElementsByClassName( 'header-search-form' )[0];
-		const overlay 		= document.getElementsByClassName( 'search-overlay' )[0];
-		const searchInput 	= form.getElementsByClassName('search-field')[0];
-		const searchBtn 	= form.getElementsByClassName('search-submit')[0];
-
-		if ( 'undefined' === typeof button ) {
+		if ( button.length === 0 ) {
 			return;
 		}
 
-		button.addEventListener( 'click', function(e) {
-			e.preventDefault();
-			form.classList.toggle( 'active' );
-			overlay.classList.toggle( 'active' );
-			button.getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
-			button.getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
-			searchInput.focus();
-		} );	
-				
+		for ( var buttonEl of button ) {
+			buttonEl.addEventListener( 'click', function(e){
+				e.preventDefault();
+
+				// Hide other search icons 
+				if( button.length > 1 ) {
+					for ( var btn of button ) {
+						btn.classList.toggle( 'hide' );
+					}
+				}
+
+				form.classList.toggle( 'active' );
+				overlay.classList.toggle( 'active' );
+				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
+				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
+				e.target.closest( '.header-search' ).classList.add( 'active' );
+				e.target.closest( '.header-search' ).classList.remove( 'hide' );
+				searchInput.focus();
+			} );	
+		}
+
 		overlay.addEventListener( 'click', function() {
 			form.classList.remove( 'active' );
-			overlay.classList.remove( 'active' );
-			button.getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
-			button.getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );			
+			overlay.classList.remove( 'active' );	
+			
+			// Back buttons to default state
+			self.backButtonsToDefaultState( button );
 		} );	
 
 		searchBtn.addEventListener('keydown', function(e) {
@@ -204,11 +211,22 @@ botiga.headerSearch = {
 			}
 			form.classList.remove( 'active' );
 			overlay.classList.remove( 'active' );
-			button.getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
-			button.getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );	
+
+			// Back buttons to default state
+			self.backButtonsToDefaultState( button );
 			button.focus();
 		});
+
+		return this;
 	},
+
+	backButtonsToDefaultState: function( button ) {
+		for ( var btn of button ) {
+			btn.classList.remove( 'hide' );
+			btn.querySelector( '.icon-cancel' ).classList.remove( 'active' );
+			btn.querySelector( '.icon-search' ).classList.add( 'active' );
+		}
+	}
 };
 
 /**

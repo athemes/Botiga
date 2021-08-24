@@ -1874,6 +1874,11 @@ body.mobile-menu-visible {
   height: 24px;
 }
 
+.header-search.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .icon-cancel {
   cursor: pointer;
 }
@@ -1918,7 +1923,7 @@ body.mobile-menu-visible {
 
 .header-search-form form button svg,
 .header-search-form form .search-field svg {
-  fill: #fff;
+  fill: #fff !important;
 }
 
 .header-search-form form button {

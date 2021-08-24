@@ -198,35 +198,62 @@ botiga.navigation = {
 
 botiga.headerSearch = {
   init: function init() {
-    if (window.matchMedia('(max-width: 1024px)').matches) {
-      var header = document.getElementById('masthead-mobile');
-    } else {
-      var header = document.getElementById('masthead');
-    }
+    var self = this,
+        button = document.querySelectorAll('.header-search'),
+        form = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('#masthead-mobile .header-search-form') : document.querySelector('#masthead .header-search-form'),
+        overlay = document.getElementsByClassName('search-overlay')[0],
+        searchInput = form.getElementsByClassName('search-field')[0],
+        searchBtn = form.getElementsByClassName('search-submit')[0];
 
-    var button = header.getElementsByClassName('header-search')[0];
-    var form = header.getElementsByClassName('header-search-form')[0];
-    var overlay = document.getElementsByClassName('search-overlay')[0];
-    var searchInput = form.getElementsByClassName('search-field')[0];
-    var searchBtn = form.getElementsByClassName('search-submit')[0];
-
-    if ('undefined' === typeof button) {
+    if (button.length === 0) {
       return;
     }
 
-    button.addEventListener('click', function (e) {
-      e.preventDefault();
-      form.classList.toggle('active');
-      overlay.classList.toggle('active');
-      button.getElementsByClassName('icon-search')[0].classList.toggle('active');
-      button.getElementsByClassName('icon-cancel')[0].classList.toggle('active');
-      searchInput.focus();
-    });
+    var _iterator5 = _createForOfIteratorHelper(button),
+        _step5;
+
+    try {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var buttonEl = _step5.value;
+        buttonEl.addEventListener('click', function (e) {
+          e.preventDefault(); // Hide other search icons 
+
+          if (button.length > 1) {
+            var _iterator6 = _createForOfIteratorHelper(button),
+                _step6;
+
+            try {
+              for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+                var btn = _step6.value;
+                btn.classList.toggle('hide');
+              }
+            } catch (err) {
+              _iterator6.e(err);
+            } finally {
+              _iterator6.f();
+            }
+          }
+
+          form.classList.toggle('active');
+          overlay.classList.toggle('active');
+          e.target.closest('.header-search').getElementsByClassName('icon-search')[0].classList.toggle('active');
+          e.target.closest('.header-search').getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+          e.target.closest('.header-search').classList.add('active');
+          e.target.closest('.header-search').classList.remove('hide');
+          searchInput.focus();
+        });
+      }
+    } catch (err) {
+      _iterator5.e(err);
+    } finally {
+      _iterator5.f();
+    }
+
     overlay.addEventListener('click', function () {
       form.classList.remove('active');
-      overlay.classList.remove('active');
-      button.getElementsByClassName('icon-search')[0].classList.toggle('active');
-      button.getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+      overlay.classList.remove('active'); // Back buttons to default state
+
+      self.backButtonsToDefaultState(button);
     });
     searchBtn.addEventListener('keydown', function (e) {
       var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
@@ -236,11 +263,29 @@ botiga.headerSearch = {
       }
 
       form.classList.remove('active');
-      overlay.classList.remove('active');
-      button.getElementsByClassName('icon-search')[0].classList.toggle('active');
-      button.getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+      overlay.classList.remove('active'); // Back buttons to default state
+
+      self.backButtonsToDefaultState(button);
       button.focus();
     });
+    return this;
+  },
+  backButtonsToDefaultState: function backButtonsToDefaultState(button) {
+    var _iterator7 = _createForOfIteratorHelper(button),
+        _step7;
+
+    try {
+      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+        var btn = _step7.value;
+        btn.classList.remove('hide');
+        btn.querySelector('.icon-cancel').classList.remove('active');
+        btn.querySelector('.icon-search').classList.add('active');
+      }
+    } catch (err) {
+      _iterator7.e(err);
+    } finally {
+      _iterator7.f();
+    }
   }
 };
 /**

@@ -234,6 +234,11 @@
         }
     }
 
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+
 }
 .icon-cancel {
     cursor: pointer;
@@ -269,7 +274,7 @@
             min-height: 60px;
 
             svg {
-                fill: #fff;
+                fill: #fff !important;
             }
         }
 
