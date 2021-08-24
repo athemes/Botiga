@@ -179,6 +179,10 @@ ul.wc-block-grid__products {
 		visibility: hidden;
 		transition: ease opacity 300ms 600ms;
 		z-index: 1;
+
+		@media(min-width: 1025px) {
+			max-width: 1110px;
+		}
 		
 		.botiga-quick-view-popup-close-button {
 			display: flex;
@@ -233,10 +237,10 @@ ul.wc-block-grid__products {
 	}
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 991px) {
 	.botiga-quick-view-popup {
 		.botiga-quick-view-popup-content {
-			.col-sm-6 + .col-sm-6 {
+			.col-lg-6 + .col-lg-6 {
 				margin-top: 30px;
 			}
 			.botiga-quick-view-summary {

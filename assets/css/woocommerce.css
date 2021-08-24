@@ -732,6 +732,12 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   z-index: 1;
 }
 
+@media (min-width: 1025px) {
+  .botiga-quick-view-popup .botiga-quick-view-popup-content {
+    max-width: 1110px;
+  }
+}
+
 .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -785,8 +791,8 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   }
 }
 
-@media only screen and (max-width: 575px) {
-  .botiga-quick-view-popup .botiga-quick-view-popup-content .col-sm-6 + .col-sm-6 {
+@media only screen and (max-width: 991px) {
+  .botiga-quick-view-popup .botiga-quick-view-popup-content .col-lg-6 + .col-lg-6 {
     margin-top: 30px;
   }
   .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary {
@@ -1062,10 +1068,6 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
   display: inline-block;
 }
 
-.reset_variations {
-  margin-left: 10px;
-}
-
 #review_form .comment-form-rating {
   margin-top: 15px;
 }
@@ -1111,6 +1113,19 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
   margin-bottom: 60px;
 }
 
+/* Variable and grouped products */
+.variations_form.cart,
+.grouped_form.cart {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.variations_form.cart .variations tbody > tr + tr > td.value > select {
+  margin-top: 10px;
+}
+
 table.variations {
   position: relative;
   border: 0;
@@ -1138,6 +1153,36 @@ table.variations .reset_variations {
   text-decoration: underline;
   font-size: 13px;
   font-size: 0.8125rem;
+}
+
+.woocommerce-variation-price {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 1025px) {
+  .single-product .variations_form.cart .woocommerce-variation-add-to-cart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.reset_variations {
+  margin-left: 10px;
+  bottom: -25px !important;
+}
+
+.grouped_form.cart .product_type_variable {
+  width: 100%;
+  text-align: center;
+}
+
+.grouped_form.cart .quantity {
+  width: 100% !important;
+}
+
+form.cart .quantity.hidden {
+  display: none !important;
 }
 
 @media (max-width: 767px) {

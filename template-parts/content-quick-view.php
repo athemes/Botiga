@@ -11,7 +11,7 @@ $product_id = $product->get_id(); ?>
 
 <div id="product-<?php echo absint( $product_id ); ?>" <?php wc_product_class( '', $product ); ?>>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-lg-6">
             
             <?php
             //Gallery
@@ -62,7 +62,7 @@ $product_id = $product->get_id(); ?>
             <?php endif; ?>
 
         </div>
-        <div class="col-sm-6">
+        <div class="col-lg-6">
             <div class="botiga-quick-view-summary product-gallery-summary">
                 <h2 class="product_title entry-title">
                     <?php echo esc_html( get_the_title( $product_id ) ); ?>

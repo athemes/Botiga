@@ -261,10 +261,6 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
     display: inline-block;
 }
 
-.reset_variations {
-	margin-left: 10px;
-}
-
 #review_form {
 	.comment-form-rating {
 		margin-top: 15px;
@@ -309,6 +305,23 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 		margin-bottom: 60px;
 	}
 }
+
+/* Variable and grouped products */
+.variations_form.cart,
+.grouped_form.cart {
+    flex-direction: column;
+}
+
+.variations_form.cart {
+	.variations {
+		tbody {
+			> tr + tr > td.value > select {
+				margin-top: 10px;
+			}
+		}
+	}
+}
+
 table.variations {
 	position: relative;
 	border: 0;
@@ -333,6 +346,40 @@ table.variations {
 		text-decoration: underline;
 		@include font-size(13);
 	}
+}
+
+.woocommerce-variation-price {
+    margin-bottom: 15px;
+}
+
+@media(min-width: 1025px) {
+    .single-product {
+		.variations_form.cart {
+			.woocommerce-variation-add-to-cart {
+				display: flex;
+			}
+		}
+	}
+}
+
+.reset_variations {
+	margin-left: 10px;
+	bottom: -25px !important;
+}
+
+.grouped_form.cart {
+	.product_type_variable {
+		width: 100%;
+		text-align: center;
+	}
+	.quantity {
+		width: 100% !important;
+	}
+}
+
+// When sold individually option is checked
+form.cart .quantity.hidden {
+    display: none !important;
 }
 
 @media (max-width: 767px) {
