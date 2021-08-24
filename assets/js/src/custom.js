@@ -53,18 +53,10 @@ var botiga = botiga || {};
 			document.body.classList.add( 'mobile-menu-visible' )
 			
 			//Toggle submenus
-			const submenuToggles 	= offCanvas.querySelectorAll( '.dropdown-symbol' );
-			for ( const submenuToggle of submenuToggles ) {
-				submenuToggle.addEventListener( 'touchstart', function(e) {
-					e.preventDefault();
-					var parent = submenuToggle.parentNode.parentNode;
-					parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
-				} );
-				submenuToggle.addEventListener( 'click', function(e) {
-					e.preventDefault();
-					var parent = submenuToggle.parentNode.parentNode;
-					parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
-				} );
+			var submenuToggles = offCanvas.querySelectorAll( '.dropdown-symbol' );
+			for ( var submenuToggle of submenuToggles ) {
+				submenuToggle.addEventListener( 'touchstart', submenuToggleHandler );
+				submenuToggle.addEventListener( 'click', submenuToggleHandler );
 
 				submenuToggle.addEventListener('keydown', function(e) {
 					var isTabPressed = (e.key === 'Enter' || e.keyCode === 13);
@@ -79,9 +71,14 @@ var botiga = botiga || {};
 			}
 			
 			//Trap focus inside modal
-			console.log(firstFocusableEl);
 			firstFocusableEl.focus();
 		} );
+
+		function submenuToggleHandler(e) {
+			e.preventDefault();
+			var parent = e.target.closest( 'li' );
+			parent.querySelector( '.sub-menu' ).classList.toggle( 'toggled' );
+		}
 
 		var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
 		var firstFocusableEl = focusableEls[0];  
@@ -111,7 +108,7 @@ var botiga = botiga || {};
 
 			offCanvas.classList.remove( 'toggled' );
 
-			document.body.classList.remove( 'mobile-menu-visible' )
+			document.body.classList.remove( 'mobile-menu-visible' );
 		} );
 
 		// Get all the link elements within the menu.

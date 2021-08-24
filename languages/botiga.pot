@@ -133,15 +133,15 @@ msgid "Skip to content"
 msgstr ""
 
 #. translators: %1$1s, %2$2s theme copyright tags
-#: inc/classes/class-botiga-footer.php:123, inc/customizer/options/footer.php:574
+#: inc/classes/class-botiga-footer.php:125, inc/customizer/options/footer.php:574
 msgid "%1$1s. Proudly powered by %2$2s"
 msgstr ""
 
-#: inc/classes/class-botiga-footer.php:126, inc/theme-dashboard-settings.php:21
+#: inc/classes/class-botiga-footer.php:128, inc/theme-dashboard-settings.php:21
 msgid "Botiga"
 msgstr ""
 
-#: inc/classes/class-botiga-footer.php:144, inc/customizer/options/general.php:90
+#: inc/classes/class-botiga-footer.php:146, inc/customizer/options/general.php:90
 msgid "Back to top"
 msgstr ""
 

@@ -54,18 +54,10 @@ botiga.navigation = {
           _step;
 
       try {
-        var _loop = function _loop() {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var submenuToggle = _step.value;
-          submenuToggle.addEventListener('touchstart', function (e) {
-            e.preventDefault();
-            var parent = submenuToggle.parentNode.parentNode;
-            parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
-          });
-          submenuToggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            var parent = submenuToggle.parentNode.parentNode;
-            parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
-          });
+          submenuToggle.addEventListener('touchstart', submenuToggleHandler);
+          submenuToggle.addEventListener('click', submenuToggleHandler);
           submenuToggle.addEventListener('keydown', function (e) {
             var isTabPressed = e.key === 'Enter' || e.keyCode === 13;
 
@@ -77,10 +69,6 @@ botiga.navigation = {
             var parent = submenuToggle.parentNode.parentNode;
             parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
           });
-        };
-
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          _loop();
         } //Trap focus inside modal
 
       } catch (err) {
@@ -89,9 +77,15 @@ botiga.navigation = {
         _iterator.f();
       }
 
-      console.log(firstFocusableEl);
       firstFocusableEl.focus();
     });
+
+    function submenuToggleHandler(e) {
+      e.preventDefault();
+      var parent = e.target.closest('li');
+      parent.querySelector('.sub-menu').classList.toggle('toggled');
+    }
+
     var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
     var firstFocusableEl = focusableEls[0];
     var lastFocusableEl = focusableEls[focusableEls.length - 1];
