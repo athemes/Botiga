@@ -375,6 +375,16 @@ table.variations {
 	.quantity {
 		width: 100% !important;
 	}
+	.group_table {
+		border: none;
+		th, td, tr {
+			border: none;
+		}
+		.woocommerce-grouped-product-list-item__quantity {
+			width: 150px;
+			padding-left: 0;
+		}
+	}
 }
 
 // When sold individually option is checked

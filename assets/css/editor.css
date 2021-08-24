@@ -1638,6 +1638,12 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
   z-index: 1;
 }
 
+@media (min-width: 1025px) {
+  div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content {
+    max-width: 1110px;
+  }
+}
+
 div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-popup-close-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1691,8 +1697,8 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
   }
 }
 
-@media only screen and (max-width: 575px) {
-  div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .col-sm-6 + .col-sm-6 {
+@media only screen and (max-width: 991px) {
+  div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .col-lg-6 + .col-lg-6 {
     margin-top: 30px;
   }
   div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary {

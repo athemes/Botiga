@@ -1181,6 +1181,19 @@ table.variations .reset_variations {
   width: 100% !important;
 }
 
+.grouped_form.cart .group_table {
+  border: none;
+}
+
+.grouped_form.cart .group_table th, .grouped_form.cart .group_table td, .grouped_form.cart .group_table tr {
+  border: none;
+}
+
+.grouped_form.cart .group_table .woocommerce-grouped-product-list-item__quantity {
+  width: 150px;
+  padding-left: 0;
+}
+
 form.cart .quantity.hidden {
   display: none !important;
 }
