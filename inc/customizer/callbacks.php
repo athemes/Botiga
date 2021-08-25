@@ -243,6 +243,16 @@ function botiga_callback_header_layout_5() {
 	}
 }
 
+function botiga_callback_header_layout_not_1() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( 'header_layout_1' !== $layout ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
 function botiga_callback_header_bottom() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 

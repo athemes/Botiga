@@ -1768,10 +1768,46 @@ body.mobile-menu-visible {
   border-bottom: 1px solid rgba(33, 33, 33, 0.1);
 }
 
-.bottom-header_layout_3 .main-navigation > div > ul {
+.bottom-header_layout_3 .menu-center .main-navigation > div > ul,
+.bottom-header_layout_4 .menu-center .main-navigation > div > ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.bottom-header_layout_3 .menu-right .main-navigation > div > ul,
+.bottom-header_layout_4 .menu-right .main-navigation > div > ul {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.bottom-header_layout_4 .row-menu,
+.bottom-header_layout_5 .row-menu {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bottom-header_layout_4 .row-menu .main-navigation > div > ul,
+.bottom-header_layout_5 .row-menu .main-navigation > div > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bottom-header_layout_4 .row-menu.menu-center .main-navigation > div > ul,
+.bottom-header_layout_5 .row-menu.menu-center .main-navigation > div > ul {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bottom-header_layout_4 .row-menu.menu-right .main-navigation > div > ul,
+.bottom-header_layout_5 .row-menu.menu-right .main-navigation > div > ul {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .header_layout_3 .header-elements:not(:first-of-type),
@@ -1817,7 +1853,7 @@ body.mobile-menu-visible {
 
 .bottom-header-row {
   background-color: #fff;
-  z-index: 999;
+  z-index: 998;
 }
 
 .bottom-header-inner {

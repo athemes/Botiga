@@ -114,9 +114,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Global colors
 			$css .= $this->get_color_css( 'site_title_color', '', '.site-header .site-title a' );
 			$css .= $this->get_color_css( 'site_description_color', '', '.site-description' );
-			$css .= $this->get_color_css( 'color_body_text', '', 'body' );
+			$css .= $this->get_color_css( 'color_body_text', '', 'body,.wp-block-columns p a,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a' );
 			$css .= $this->get_color_css( 'color_link_default', '', 'a' );
-			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover' );
+			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover,.wp-block-columns p a:hover' );
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2' );
 			$css .= $this->get_color_css( 'color_heading_3', '', 'h3' );
@@ -124,16 +124,16 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'color_heading_4', '', '.site-header-cart .product_list_widget li a.remove' );
 			$css .= $this->get_color_css( 'color_heading_5', '', 'h5' );
 			$css .= $this->get_color_css( 'color_heading_6', '', 'h6' );
-			$css .= $this->get_color_css( 'color_forms_text', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single' );
-			$css .= $this->get_background_color_css( 'color_forms_background', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single' );
+			$css .= $this->get_color_css( 'color_forms_text', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus, select:focus, .woocommerce .select2-container .select2-selection--single:focus, .woocommerce-page .select2-container .select2-selection--single:focus,.select2-container--default .select2-selection--single .select2-selection__rendered' );
+			$css .= $this->get_background_color_css( 'color_forms_background', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"]' );
 			$color_forms_borders 	= get_theme_mod( 'color_forms_borders' );
-			$css .= "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single { border-color:" . esc_attr( $color_forms_borders ) . ";}" . "\n";
+			$css .= "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-account fieldset,.woocommerce-account .woocommerce-form-login, .woocommerce-account .woocommerce-form-register,.shop_table th, .shop_table td, .shop_table tr,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"] { border-color:" . esc_attr( $color_forms_borders ) . ";}" . "\n";
 			$color_forms_placeholder 	= get_theme_mod( 'color_forms_placeholder' );
 			$css .= "::placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";opacity:1;}" . "\n";
 			$css .= ":-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 			$css .= "::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 
-			$css .= $this->get_background_color_css( 'content_cards_background', '', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons' );
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.checkout_coupon,.woocommerce-checkout .woocommerce-form-login' );
 
 			$background_color 	= get_theme_mod( 'background_color' );
 			$css .= ".checkout-wrapper .wc_payment_methods,.site-header-cart .widget_shopping_cart { background-color:#" . esc_attr( $background_color ) . ";}" . "\n";
@@ -184,6 +184,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_background_color_css( 'main_header_bottom_background', '', '.bottom-header-row' );
 			$css .= $this->get_color_css( 'main_header_bottom_color', '', '.bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .main-navigation .menu > li > a' );
+			$css .= $this->get_color_css( 'color_link_hover', '', '.bottom-header-row .main-navigation .menu > li > a:hover' );
 			$css .= $this->get_fill_css( 'main_header_bottom_color', '', '.bottom-header-row .header-item svg,.dropdown-symbol .ws-svg-icon svg' );
 			
 			$main_header_padding 	= get_theme_mod( 'main_header_padding', 15 );
@@ -376,15 +377,45 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'single_product_sale_background_color', '', '.wc-block-grid__product-onsale, span.onsale' );
 			$css .= $this->get_color_css( 'shop_product_product_title', '', 'ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, ul.wc-block-grid__products li.product .wc-block-grid__product-title, ul.wc-block-grid__products li.product .woocommerce-loop-product__title, ul.products li.wc-block-grid__product .wc-block-grid__product-title, ul.products li.wc-block-grid__product .woocommerce-loop-product__title, ul.products li.product .wc-block-grid__product-title, ul.products li.product .woocommerce-loop-product__title' );
 
+			$css .= $this->get_color_css( 'color_body_text', '', 'a.wc-forward' );
+			$css .= $this->get_color_css( 'color_link_hover', '', 'a.wc-forward:hover' );
+
+			//Quick view
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-quick-view-popup .botiga-quick-view-popup-content' );
+
+			//Mini cart
+			$css .= $this->get_color_css( 'color_body_text', '', '.mini_cart_item a:nth-child(2)' );
+
 			//Cart
 			$css .= $this->get_stroke_css( 'color_link_hover', '', '.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav svg path' );
 			$css .= $this->get_stroke_css( 'color_link_default', '', '.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav:hover svg path' );
+			$css .= $this->get_color_css( 'color_body_text', '', '.woocommerce-cart .product-name a,.woocommerce-cart .product-remove a' );
+			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover' );
+
+			//My account
+			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a' );
+			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a' );
+			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-orders-table__cell-order-number a:hover,.woocommerce-MyAccount-content p a:hover' );
 
 			//Single product options
+			$css .= $this->get_border_color_css( 'color_link_default', '', '.single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active' );
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments, .botiga-quick-view-popup form.cart .qty' );
 			$css .= $this->get_color_css( 'single_product_title_color', '', '.product-gallery-summary .product_title' );
 			$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price' );
 			$css .= $this->get_font_sizes_css( 'single_product_title_size', $defaults = array( 'desktop' => 32, 'tablet' => 32, 'mobile' => 32 ), '.product-gallery-summary .entry-title' );
 			$css .= $this->get_font_sizes_css( 'single_product_price_size', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '.product-gallery-summary .price' );
+			$css .= $this->get_border_color_css( 'color_body_text', '', '.woocommerce-cart-form .quantity, form.cart .quantity' );
+			$css .= $this->get_color_css( 'color_body_text', '', '.woocommerce-cart-form .quantity .botiga-quantity-plus, form.cart .quantity .botiga-quantity-plus, .woocommerce-cart-form .quantity .botiga-quantity-minus, form.cart .quantity .botiga-quantity-minus' );
+
+			//Order Received
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders' );
+			$css .= $this->get_color_css( 'color_body_text', '', '.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders' );
+
+			//View order
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p' );
+
+			//Tables
+			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-table__product-name.product-name a' );
 
 			//Buttons
 			$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'button,a.button,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"]' );
@@ -594,7 +625,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}		
 		
 		/**
-		 * Get color CSS
+		 * Get background color CSS
 		 */
 		public static function get_background_color_css( $setting, $default, $selector ) {
 			$mod = get_theme_mod( $setting, $default );
@@ -609,7 +640,16 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$mod = get_theme_mod( $setting, $default );
 
 			return $selector . '{ color:' . esc_attr( $mod ) . ';}' . "\n";
-		}	
+		}
+		
+		/**
+		 * Get border color CSS
+		 */
+		public static function get_border_color_css( $setting, $default, $selector ) {
+			$mod = get_theme_mod( $setting, $default );
+
+			return $selector . '{ border-color:' . esc_attr( $mod ) . ';}' . "\n";
+		}
 		
 		/**
 		 * Get fill CSS

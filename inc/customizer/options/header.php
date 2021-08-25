@@ -179,7 +179,7 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'main_header
 
 $wp_customize->add_setting( 'main_header_menu_position',
 	array(
-		'default' 			=> 'center',
+		'default' 			=> '',
 		'sanitize_callback' => 'botiga_sanitize_text'
 	)
 );
@@ -191,7 +191,8 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'main_heade
 			'left' 		=> esc_html__( 'Left', 'botiga' ),
 			'center' 	=> esc_html__( 'Center', 'botiga' ),
 			'right' 	=> esc_html__( 'Right', 'botiga' ),
-		)
+		),
+		'active_callback' => 'botiga_callback_header_layout_not_1'
 	)
 ) );
 

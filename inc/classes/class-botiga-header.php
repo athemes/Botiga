@@ -118,7 +118,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_layout_2() {
 			$layout 		= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$container 		= get_theme_mod( 'header_container', 'container-fluid' );
-			$menu_position 	= get_theme_mod( 'main_header_menu_position', 'center' );
+			$menu_position 	= empty( get_theme_mod( 'main_header_menu_position' ) ) ? 'right' : get_theme_mod( 'main_header_menu_position' );
 			?>
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -147,6 +147,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_layout_3() {
 			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position 	= empty( get_theme_mod( 'main_header_menu_position' ) ) ? 'center' : get_theme_mod( 'main_header_menu_position' );
 			?>
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -170,8 +171,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="bottom-header-inner">
 							<div class="row">
-								<div class="col-md-12">
-								<?php $this->menu(); ?>
+								<div class="col-md-12 menu-col menu-<?php echo esc_attr( $menu_position ); ?>">
+									<?php $this->menu(); ?>
 								</div>
 							</div>
 						</div>
@@ -186,6 +187,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_layout_4() {
 			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position 	= get_theme_mod( 'main_header_menu_position' );
 			?>
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -206,11 +208,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="bottom-header-inner">
-							<div class="row">
-								<div class="col-md-8">
+							<div class="row row-menu menu-<?php echo esc_attr( $menu_position ); ?>">
+								<div class="col">
 									<?php $this->menu(); ?>
 								</div>
-								<div class="col-md-4 header-elements">
+								<div class="col-md-auto header-elements">
 									<?php $this->render_components( 'l4bottom' ); ?>
 								</div>									
 							</div>
@@ -226,6 +228,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_layout_5() {
 			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position 	= get_theme_mod( 'main_header_menu_position' );
 			?>
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -248,11 +251,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="bottom-header-inner">
-							<div class="row">
-								<div class="col-md-8">
+							<div class="row row-menu menu-<?php echo esc_attr( $menu_position ); ?>">
+								<div class="col">
 									<?php $this->menu(); ?>
 								</div>
-								<div class="col-md-4 header-elements">
+								<div class="col-md-auto header-elements">
 									<?php $this->render_components( 'l5bottom' ); ?>
 								</div>									
 							</div>

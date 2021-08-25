@@ -59,20 +59,16 @@
 						list-style: none;
 						padding: 0;
 						margin: 0;
+
+						li {
+							padding-bottom: 0;
+						}
 	
 						a {
 							display: block;
 							text-decoration: none;
-							color: $color__text_main;
 							padding: 16px;
 							border-bottom: 1px solid rgba($color__primary, 0.1);
-						}
-	
-						.is-active {
-							a {
-								background-color: $color__primary;
-								color: #fff;
-							}
 						}
 					}
 				}
@@ -81,12 +77,6 @@
 					flex: 0 0 70%;
 					max-width: 70%;		
 					padding-left: 30px;		
-					color: #666666;
-	
-					a:not(.button) {
-						color: $color__primary;
-						text-decoration: underline;
-					}
 				}	
 				
 				.button {
@@ -127,7 +117,6 @@
 
 	//View order
 	.botiga-wc-account-view-order + .woocommerce-notices-wrapper + p {
-		background: #f8f8f8;
 		padding: 25px;
 		mark {
 			padding: 2px 5px;

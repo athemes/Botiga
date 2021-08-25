@@ -589,7 +589,7 @@ jQuery( document ).ready(function($) {
 		}
 
 		//Color 4 Paragraph, Paragraph small, Breadcrums, Icons
-		let elements4 = ['custom_color4','footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder'];
+		let elements4 = ['custom_color4','footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder','topbar_color','main_header_bottom_color'];
 		
 		for ( const element of elements4 ) {
 			wp.customize( element ).set( palettes[palette][3] );
@@ -613,7 +613,7 @@ jQuery( document ).ready(function($) {
 		}		
 
 		//Color 7 Default background, Text on dark BG
-		let elements7 = ['custom_color7','background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background'];
+		let elements7 = ['custom_color7','background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background','topbar_background'];
 		
 		for ( const element of elements7 ) {
 			wp.customize( element ).set( palettes[palette][6] );
