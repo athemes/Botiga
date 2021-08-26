@@ -30,6 +30,16 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.4 - August 27 2021 =
+* Improved: Checkout - Returning Customer Login Not Styled
+* Fixed: Two or More Search Icons Not Working In The Second Button
+* Fixed: Product Variable Quantity Breaking Layout. Grouped Product Too
+* Fixed: No Space Between Variation Options
+* Fixed: Color Pallete Issues
+* Fixed: Sticky Header Mini Cart and Search Box Issues (with some header layouts)
+* Fixed: Offcanvas Mobile Menu Dropdowns Issue
+* Fixed: Menu Position Working Only With Header Layout 2
+* Fixed: Checkout Create Account - Layout Issue
 = 1.0.3 - August 20 2021 =
 * Added: New option to toggle the display of product cross sells in cart page
 * Added: New option to align blog author box

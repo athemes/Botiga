@@ -141,7 +141,7 @@
   }); //Border color
 
   var $border_color_options = {
-    "color_forms_borders": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-account fieldset,.woocommerce-account .woocommerce-form-login, .woocommerce-account .woocommerce-form-register,.shop_table th, .shop_table td, .shop_table tr,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]",
+    "color_forms_borders": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-account fieldset,.woocommerce-account .woocommerce-form-login, .woocommerce-account .woocommerce-form-register,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]",
     "link_separator_color": ".botiga-offcanvas-menu .main-navigation ul li",
     "button_border_color": "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]",
     "shop_product_card_border_color": "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product",
@@ -415,6 +415,17 @@
   wp.customize('shop_product_card_border_size', function (value) {
     value.bind(function (to) {
       $('ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product').css('border-width', to + 'px');
+    });
+  }); //Shop tables
+
+  var $border_color_rgba_options = {
+    "color_body_text": ".shop_table th, .shop_table td, .shop_table tr"
+  };
+  $.each($border_color_rgba_options, function (option, selector) {
+    wp.customize(option, function (value) {
+      value.bind(function (to) {
+        $(selector).css('border-color', hexToRGB(to, 0.1));
+      });
     });
   }); //Responsive
 

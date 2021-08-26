@@ -42,7 +42,7 @@ class Botiga_Theme_Review_Notice {
 		$ignored_notice           = get_user_meta( $user_id, 'botiga_disable_review_notice', true );
 		$ignored_notice_partially = get_user_meta( $user_id, 'delay_botiga_disable_review_notice_partially', true );
 
-		if ( ( get_option( 'botiga_theme_installed_time' ) > strtotime( '-7 day' ) ) || ( $ignored_notice_partially > strtotime( '-14 day' ) ) || ( $ignored_notice ) ) {
+		if ( ( get_option( 'botiga_theme_installed_time' ) > strtotime( '-14 day' ) ) || ( $ignored_notice_partially > strtotime( '-14 day' ) ) || ( $ignored_notice ) ) {
 			return;
 		}
 		?>

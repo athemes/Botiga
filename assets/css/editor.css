@@ -795,7 +795,6 @@ div.editor-styles-wrapper .woocommerce-form-coupon-toggle {
 div.editor-styles-wrapper .checkout_coupon {
   margin-top: -30px;
   margin-bottom: 30px;
-  background-color: #f2f2f2;
   padding: 15px;
 }
 
@@ -810,6 +809,7 @@ div.editor-styles-wrapper p.no-comments {
 }
 
 div.editor-styles-wrapper .woocommerce-error {
+  list-style: none;
   background-color: #f2f2f2;
 }
 
