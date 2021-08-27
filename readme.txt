@@ -14,7 +14,7 @@ A starter theme called Botiga.
 
 == Description ==
 
-Launch your store with Botiga. Launch your online store with a beautiful theme that is Gutenberg-ready. We proudly introduce Botiga, with a modern and clean design that will effortlessly match your brand. Botiga has been developed from the ground up with clean code for optimal performance. You’ll get a mobile-optimized theme that looks and works great on any device and comes with plenty of customization options as well. Discover the theme that will transform your online business.
+Launch your online store with a beautiful theme that is Gutenberg-ready. We proudly introduce Botiga, with a modern and clean design that will effortlessly match your brand. Botiga has been developed from the ground up with clean code for optimal performance. You’ll get a mobile-optimized theme that looks and works great on any device and comes with plenty of customization options as well. Discover the theme that will transform your online business.
 
 == Installation ==
 

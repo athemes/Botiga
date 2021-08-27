@@ -196,6 +196,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.main-navigation ul ul li' );
 			$css .= $this->get_color_css( 'main_header_submenu_color', '', '.main-navigation ul ul a' );
 
+			//Header mini cart
+			$css .= $this->get_color_css( 'color_body_text', '', '.site-header-cart .count-number' );
+
 			//Mobile menu
 			$mobile_menu_alignment = get_theme_mod( 'mobile_menu_alignment', 'left' );
 			$css .= ".botiga-offcanvas-menu .main-navigation ul li { text-align:" . esc_attr( $mobile_menu_alignment ) . ";}" . "\n";

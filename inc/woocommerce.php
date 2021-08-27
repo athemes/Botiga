@@ -653,7 +653,7 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 			</div>
 			<?php
 			$instance = array(
-				'title' => esc_html__( 'Your cart', 'botiga' ),
+				'title' => esc_html__( 'Your Cart', 'botiga' ),
 			);
 
 			the_widget( 'WC_Widget_Cart', $instance );
