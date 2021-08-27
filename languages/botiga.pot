@@ -1489,7 +1489,7 @@ msgid "Your account"
 msgstr ""
 
 #: inc/woocommerce.php:656
-msgid "Your cart"
+msgid "Your Cart"
 msgstr ""
 
 #. translators: %s: quick view product title
