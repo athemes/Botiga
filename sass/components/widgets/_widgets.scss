@@ -88,3 +88,16 @@
 		flex-direction: column;
 	}
 }
+
+.widget {
+	.wp-block-latest-comments {
+		padding-left: 0;
+	}
+
+	&.widget_product_tag_cloud {
+		.tag-cloud-link {
+			padding: 7px 14px;
+			transition: ease background 300ms;
+		}	
+	}
+}

@@ -694,7 +694,6 @@ a.button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  color: #fff;
   background-color: #757575;
   border-color: #757575;
 }
@@ -1517,7 +1516,6 @@ html {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   border-radius: 50%;
-  color: #212121;
 }
 
 .woocommerce-pagination li .page-numbers:hover, .woocommerce-pagination li .page-numbers.current {
@@ -2820,6 +2818,16 @@ body.mobile-menu-visible {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.widget .wp-block-latest-comments {
+  padding-left: 0;
+}
+
+.widget.widget_product_tag_cloud .tag-cloud-link {
+  padding: 7px 14px;
+  -webkit-transition: ease background 300ms;
+  transition: ease background 300ms;
 }
 
 .widget_block h3 {

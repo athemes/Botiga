@@ -594,6 +594,12 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .button-layout4 {
           transform: none !important;
 }
 
+.loop-image-wrap.botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 > .add_to_cart_button .ws-svg-icon,
+.loop-image-wrap.botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 > .loop-button-wrap.button-layout4 .ws-svg-icon {
+  width: 25px;
+  height: 25px;
+}
+
 ul.products li.product:hover .botiga-quick-view-layout2,
 ul.products li.wc-block-grid__product:hover .botiga-quick-view-layout2,
 ul.wc-block-grid__products li.product:hover .botiga-quick-view-layout2,
