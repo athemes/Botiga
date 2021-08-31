@@ -36,9 +36,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Core header image
 		 */
 		public function header_image() {
-			echo '<div class="header-image">';
-				the_header_image_tag();
-			echo '</div>';
+			$show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
+
+			// output
+			$output = '<div class="header-image">';
+				$output .= get_header_image_tag();
+			$output .= '</div>';
+
+			if( $show_header_image_only_home ) {
+				if( is_front_page() ) {
+					echo wp_kses_post( $output );
+				}
+
+				return;
+			}
+
+			echo wp_kses_post( $output );
 		}
 
 		/**

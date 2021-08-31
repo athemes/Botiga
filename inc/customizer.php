@@ -64,7 +64,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			$wp_customize->get_section( 'title_tagline' )->panel 		= 'botiga_panel_header';
 			$wp_customize->get_section( 'header_image' )->panel 		= 'botiga_panel_header';
 			$wp_customize->get_section( 'background_image' )->panel 	= 'botiga_panel_general';
-
+// print_r($wp_customize->get_section( 'header_image' ));
 			$wp_customize->remove_control( 'header_textcolor' );
 			if ( class_exists( 'WooCommerce') ) {
 				$wp_customize->get_panel( 'woocommerce' )->priority 	= 31;

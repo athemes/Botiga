@@ -17,6 +17,27 @@ $wp_customize->add_panel(
 );
 
 /**
+ * Header image
+ */
+$wp_customize->add_setting(
+	'show_header_image_only_home',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'show_header_image_only_home',
+		array(
+			'label'         	=> esc_html__( 'Show only in the homepage', 'botiga' ),
+			'section'       	=> 'header_image',
+		)
+	)
+);
+
+/**
  * Site identity
  */
 $wp_customize->add_setting( 'site_logo_size_desktop', array(
