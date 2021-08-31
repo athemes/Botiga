@@ -31,7 +31,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_single_product',
-			'controls_general'		=> json_encode( array( '#customize-control-single_gallery_slider','#customize-control-single_product_gallery','#customize-control-single_zoom_effects','#customize-control-single_breadcrumbs','#customize-control-single_product_tabs','#customize-control-single_upsell_products','#customize-control-single_related_products', ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-single_gallery_slider','#customize-control-single_product_gallery','#customize-control-single_zoom_effects','#customize-control-single_breadcrumbs','#customize-control-single_product_tabs','#customize-control-single_upsell_products','#customize-control-single_related_products','#customize-control-single_product_sku','#customize-control-single_product_categories','#customize-control-single_product_tags' ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-single_product_title_color','#customize-control-single_product_title_size','#customize-control-single_product_styling_divider_1','#customize-control-single_product_price_color','#customize-control-single_product_price_size', ) ),
 		)
 	)
@@ -121,6 +121,60 @@ $wp_customize->add_control(
 		'single_breadcrumbs',
 		array(
 			'label'         	=> esc_html__( 'Breadcrumbs', 'botiga' ),
+			'section'       	=> 'botiga_section_single_product',
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'single_product_sku',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'single_product_sku',
+		array(
+			'label'         	=> esc_html__( 'SKU', 'botiga' ),
+			'section'       	=> 'botiga_section_single_product',
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'single_product_categories',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'single_product_categories',
+		array(
+			'label'         	=> esc_html__( 'Categories', 'botiga' ),
+			'section'       	=> 'botiga_section_single_product',
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'single_product_tags',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'single_product_tags',
+		array(
+			'label'         	=> esc_html__( 'Tags', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
 		)
 	)

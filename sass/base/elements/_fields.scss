@@ -15,6 +15,7 @@ input[type="datetime-local"],
 input[type="color"],
 textarea,
 select,
+.wp-block-search .wp-block-search__input,
 .woocommerce .select2-container .select2-selection--single,
 .woocommerce-page .select2-container .select2-selection--single {
 	color: $color__primary;

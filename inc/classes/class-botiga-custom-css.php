@@ -383,6 +383,21 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_body_text', '', 'a.wc-forward' );
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a.wc-forward:hover' );
 
+			//Single product
+			$single_sku 	 	= get_theme_mod( 'single_product_sku', 1 );
+			$single_categories  = get_theme_mod( 'single_product_categories', 1 );
+			$single_tags 	 	= get_theme_mod( 'single_product_tags', 1 );
+
+			if( !$single_sku ) {
+				$css .= ".single-product .product_meta .sku_wrapper { display: none }";
+			}
+			if( !$single_categories ) {
+				$css .= ".single-product .product_meta .posted_in { display: none }";
+			}
+			if( !$single_tags ) {
+				$css .= ".single-product .product_meta .tagged_as { display: none }";
+			}
+
 			//Quick view
 			$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-quick-view-popup .botiga-quick-view-popup-content' );
 

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.0.4' );
+	define( 'BOTIGA_VERSION', '1.0.5' );
 }
 
 if ( ! function_exists( 'botiga_setup' ) ) :
