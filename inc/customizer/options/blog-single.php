@@ -31,8 +31,42 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_blog_singles',
-			'controls_general'		=> json_encode( array( '#customize-control-sidebar_single_post','#customize-control-sidebar_single_post_position','#customize-control-blog_single_divider_1','#customize-control-single_post_header_title','#customize-control-single_post_header_alignment','#customize-control-single_post_header_spacing','#customize-control-blog_single_divider_2','#customize-control-single_post_image_title','#customize-control-single_post_show_featured','#customize-control-single_post_image_placement','#customize-control-single_post_image_spacing','#customize-control-blog_single_divider_3','#customize-control-single_post_meta_title','#customize-control-single_post_meta_position','#customize-control-single_post_meta_elements','#customize-control-single_post_meta_spacing','#customize-control-blog_single_divider_4','#customize-control-single_post_elements_title','#customize-control-single_post_show_tags','#customize-control-single_post_show_author_box','#customize-control-single_post_show_post_nav','#customize-control-single_post_show_related_posts', '#customize-control-single_post_author_box_align' ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-blog_single_layout','#customize-control-sidebar_single_post','#customize-control-sidebar_single_post_position','#customize-control-blog_single_divider_1','#customize-control-single_post_header_title','#customize-control-single_post_header_alignment','#customize-control-single_post_header_spacing','#customize-control-blog_single_divider_2','#customize-control-single_post_image_title','#customize-control-single_post_show_featured','#customize-control-single_post_image_placement','#customize-control-single_post_image_spacing','#customize-control-blog_single_divider_3','#customize-control-single_post_meta_title','#customize-control-single_post_meta_position','#customize-control-single_post_meta_elements','#customize-control-single_post_meta_spacing','#customize-control-blog_single_divider_4','#customize-control-single_post_elements_title','#customize-control-single_post_show_tags','#customize-control-single_post_show_author_box','#customize-control-single_post_show_post_nav','#customize-control-single_post_show_related_posts', '#customize-control-single_post_author_box_align' ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-single_post_title_size', '#customize-control-single_post_title_color', '#customize-control-single_posts_divider_1', '#customize-control-single_post_meta_size', '#customize-control-single_post_meta_color' ) ),
+		)
+	)
+);
+
+//Layout
+$wp_customize->add_setting(
+	'blog_single_layout',
+	array(
+		'default'           => 'layout1',
+		'sanitize_callback' => 'sanitize_key',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Radio_Images(
+		$wp_customize,
+		'blog_single_layout',
+		array(
+			'label'    => esc_html__( 'Post layout', 'botiga' ),
+			'section'  => 'botiga_section_blog_singles',
+			'cols' 		=> 2,
+			'choices'  => array(
+				'layout1' => array(
+					'label' => esc_html__( 'Centered', 'botiga' ),
+					'url'   => '%s/assets/img/bls1.svg'
+				),
+				'layout2' => array(
+					'label' => esc_html__( 'Wide', 'botiga' ),
+					'url'   => '%s/assets/img/bls2.svg'
+				),		
+				'layout3' => array(
+					'label' => esc_html__( 'Full width', 'botiga' ),
+					'url'   => '%s/assets/img/bls3.svg'
+				)				
+			)
 		)
 	)
 );
@@ -51,6 +85,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Enable sidebar', 'botiga' ),
 			'section'       	=> 'botiga_section_blog_singles',
+			'active_callback' => 'botiga_callback_single_post_layout'
 		)
 	)
 );

@@ -2079,28 +2079,32 @@ body.mobile-menu-visible {
   padding-right: 15px;
 }
 
-.single-post .no-sidebar .entry-header,
-.single-post .no-sidebar .entry-content,
-.single-post .no-sidebar .entry-footer,
-.single-post .no-sidebar .post-navigation,
-.single-post .no-sidebar .comments-area,
-.single-post .no-sidebar .single-post-author,
-.single-post.no-sidebar .entry-header,
-.single-post.no-sidebar .entry-content,
-.single-post.no-sidebar .entry-footer,
-.single-post.no-sidebar .post-navigation,
-.single-post.no-sidebar .comments-area,
-.single-post.no-sidebar .single-post-author {
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .entry-header,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .entry-content,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .entry-footer,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .post-navigation,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .comments-area,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .single-post-author,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .entry-header,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .entry-content,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .entry-footer,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .post-navigation,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .comments-area,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .single-post-author {
   max-width: 730px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.single-post .no-sidebar .post-thumbnail,
-.single-post.no-sidebar .post-thumbnail {
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar .post-thumbnail,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar .post-thumbnail {
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.single-post.blog-single-layout3 .content-wrapper {
+  max-width: 95vw;
 }
 
 .post {

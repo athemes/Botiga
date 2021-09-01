@@ -30,6 +30,8 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.5 - TBD =
+
 = 1.0.4 - August 27 2021 =
 * Improved: Checkout - Returning Customer Login Not Styled
 * Fixed: Two or More Search Icons Not Working In The Second Button

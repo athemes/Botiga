@@ -31,12 +31,26 @@ function botiga_callback_sidebar_archives() {
 }
 
 /**
- * Single post archives
+ * Single post layout
+ */
+function botiga_callback_single_post_layout() {
+    $blog_single_layout = get_theme_mod( 'blog_single_layout', 'layout1' );
+
+	if ( $blog_single_layout !== 'layout3' ) {
+		return true;
+	} else {
+		return false;
+	}   	
+}
+
+/**
+ * Single post sidebar
  */
 function botiga_callback_sidebar_single_post() {
-    $sidebar = get_theme_mod( 'sidebar_single_post', 1 );
+    $sidebar            = get_theme_mod( 'sidebar_single_post', 1 );
+	$blog_single_layout = get_theme_mod( 'blog_single_layout', 'layout1' );
 
-	if ( $sidebar ) {
+	if ( $sidebar && $blog_single_layout !== 'layout3' ) {
 		return true;
 	} else {
 		return false;

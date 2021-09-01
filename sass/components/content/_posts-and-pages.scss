@@ -27,9 +27,8 @@
 	}
 }
 
-
-.single-post .no-sidebar,
-.single-post.no-sidebar  {
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar,
+.single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar  {
 	.entry-header,
 	.entry-content,
 	.entry-footer,
@@ -47,7 +46,13 @@
 	}
 }
 
-
+.single-post {
+	&.blog-single-layout3 {
+		.content-wrapper {
+			max-width: 95vw;
+		}
+	}
+}
 
 .post {
 	margin: 0 0 40px;
@@ -55,11 +60,6 @@
 
 .updated:not(.published) {
 	display: none;
-}
-
-.page-content,
-.entry-content,
-.entry-summary {
 }
 
 .tags-links {
@@ -173,7 +173,6 @@
 		}
 	}
 }
-
 
 .single-post-author {
 	text-align: center;

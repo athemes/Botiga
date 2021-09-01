@@ -315,7 +315,6 @@
 		} );
 	} );
 
-
 	//Footer
 	wp.customize( 'footer_widgets_column_spacing_desktop', function( value ) {
 		value.bind( function( to ) {

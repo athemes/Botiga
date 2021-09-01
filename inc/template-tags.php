@@ -130,10 +130,23 @@ if ( ! function_exists( 'botiga_post_thumbnail' ) ) :
 		}
 
 		if ( is_singular() ) :
-			?>
+			$blog_single_layout = get_theme_mod( 'blog_single_layout', 'layout1' );
+			switch ( $blog_single_layout ) {
+				case 'layout1':
+					$thumbnail_size = 'botiga-large';
+					break;
+				
+				case 'layout2':
+					$thumbnail_size = 'botiga-extra-large';
+					break;
+
+				case 'layout3':
+					$thumbnail_size = 'full';
+					break;
+			} ?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail( 'botiga-large'); ?>
+				<?php the_post_thumbnail( $thumbnail_size ); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>

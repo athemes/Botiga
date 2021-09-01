@@ -18,6 +18,11 @@ function botiga_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+	// Add a class for blog single post layout.
+	if( is_singular( 'post' ) ) {
+		$classes[] = 'blog-single-' . get_theme_mod( 'blog_single_layout', 'layout1' );
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'botiga_body_classes' );
@@ -38,6 +43,10 @@ add_action( 'wp_head', 'botiga_pingback_header' );
 function botiga_sidebar() {
 
 	if ( !apply_filters( 'botiga_sidebar', true ) ) {
+		return;
+	}
+
+	if( is_singular( 'post' ) && get_theme_mod( 'blog_single_layout' ) === 'layout3' ) {
 		return;
 	}
 
@@ -81,7 +90,14 @@ function botiga_sidebar_position() {
 		$class = $sidebar_archives_position;
 
 		return esc_attr( $class );
-	} 
+	}
+
+	// Blog single
+	$blog_single_layout = get_theme_mod( 'blog_single_layout', 'layout1' );
+
+	if( is_singular( 'post' ) && $blog_single_layout === 'layout3' ) {
+		return 'no-sidebar';
+	}
 
 	global $post;
 
