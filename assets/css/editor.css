@@ -1500,6 +1500,12 @@ div.editor-styles-wrapper .loop-image-wrap.botiga-add-to-cart-button-layout4.bot
           transform: none !important;
 }
 
+div.editor-styles-wrapper .loop-image-wrap.botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 > .add_to_cart_button .ws-svg-icon,
+div.editor-styles-wrapper .loop-image-wrap.botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 > .loop-button-wrap.button-layout4 .ws-svg-icon {
+  width: 25px;
+  height: 25px;
+}
+
 div.editor-styles-wrapper ul.products li.product:hover .botiga-quick-view-layout2,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product:hover .botiga-quick-view-layout2,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product:hover .botiga-quick-view-layout2,
