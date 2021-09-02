@@ -19,3 +19,11 @@
 	display: flex;
 	align-items: center;
 }
+
+// Flexbox
+@mixin flexbox($grow, $shrink, $basis) {
+	-webkit-box-flex: $grow;
+    -ms-flex: $grow $shrink $basis;
+    flex: $grow $shrink $basis;
+    max-width: $basis;
+}

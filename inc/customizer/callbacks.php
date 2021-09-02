@@ -71,6 +71,33 @@ function botiga_callback_single_post_show_author_box() {
 }
 
 /**
+ * Single post show related posts
+ */
+function botiga_callback_single_post_show_related_posts() {
+    $enable = get_theme_mod( 'single_post_show_related_posts', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}   	
+}
+
+/**
+ * Single post related posts slider show
+ */
+function botiga_callback_single_post_related_posts_slider_navigation() {
+    $related_posts = get_theme_mod( 'single_post_show_related_posts', 0 );
+	$slider        = get_theme_mod( 'single_post_related_posts_slider', 0 );
+
+	if ( $related_posts && $slider ) {
+		return true;
+	} else {
+		return false;
+	}   	
+}
+
+/**
  * Sale percentage
  */
 function botiga_callback_sale_percentage() {
@@ -380,4 +407,17 @@ function botiga_callback_topbar_center_contents() {
 	} else {
 		return false;
 	}	
+}
+
+/**
+ * WooCommerce cart sticky totals box
+ */
+function botiga_callback_shop_cart_layout() {
+	$layout = get_theme_mod( 'shop_cart_layout', 'layout1' );
+
+	if ( $layout !== 'layout1' ) {
+		return true;
+	} else {
+		return false;
+	}
 }

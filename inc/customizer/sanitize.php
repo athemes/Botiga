@@ -39,7 +39,7 @@ function botiga_sanitize_single_meta_elements( $input ) {
     $sanitized = array();
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, array( 'botiga_posted_on', 'botiga_posted_by', 'botiga_post_categories', 'botiga_entry_comments' ), true ) ) {
+        if ( in_array( $sub_value, array( 'botiga_posted_on', 'botiga_posted_by', 'botiga_post_categories', 'botiga_entry_comments', 'botiga_post_reading_time' ), true ) ) {
             $sanitized[] = $sub_value;
         }
     }

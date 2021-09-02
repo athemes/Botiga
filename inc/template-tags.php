@@ -75,6 +75,21 @@ if ( ! function_exists( 'botiga_entry_comments' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'botiga_post_reading_time' ) ) :
+	function botiga_post_reading_time() {
+		global $post;
+
+		$words_per_min = apply_filters( 'botiga_post_reading_time_words_per_minute', 300 );
+
+		$words = str_word_count(strip_tags($post->post_content));
+		$m     = $words / $words_per_min;
+		$time  = sprintf( __( '%s min%s read', 'botiga' ), ( $m < 1 ? '1' : ceil($m) ), ( $m == 1 || $m < 1 ? '' : 's' ) );
+
+		echo '<span class="reading-time">';
+			echo esc_html( $time );	
+		echo '</span>';
+	}
+endif;
 
 if ( ! function_exists( 'botiga_entry_footer' ) ) :
 	/**
@@ -201,6 +216,20 @@ if ( ! function_exists( 'botiga_single_post_meta' ) ) :
 endif;
 
 /**
+ * Single post share box
+ */
+function botiga_single_post_share_box() {
+	?>
+
+	<div class="botiga-share-box">
+		asdasdsad
+	</div>
+
+	<?php
+}
+add_action( 'botiga_after_single_post_content', 'botiga_single_post_share_box', 10 );
+
+/**
  * Single post navigation
  */
 function botiga_single_post_navigation() {
@@ -269,7 +298,11 @@ add_action( 'botiga_after_single_post_content', 'botiga_post_author_bio', 21 );
  */
 function botiga_related_posts() {
 
-	$single_post_show_related_posts = get_theme_mod( 'single_post_show_related_posts', 0 );
+	$single_post_show_related_posts   		  = get_theme_mod( 'single_post_show_related_posts', 0 );
+	$single_post_related_posts_number 		  = get_theme_mod( 'single_post_related_posts_number', 3 );
+	$single_post_related_posts_columns_number = get_theme_mod( 'single_post_related_posts_columns_number', 3 );
+	$single_post_related_posts_slider         = get_theme_mod( 'single_post_related_posts_slider', 0 );
+	$single_post_related_posts_slider_nav     = get_theme_mod( 'single_post_related_posts_slider_nav', 'always-show' );
 
 	if ( !$single_post_show_related_posts ) {
 		return;
@@ -288,16 +321,37 @@ function botiga_related_posts() {
     $query_args = array( 
         'category__in'   	=> $cat_ids,
         'post__not_in'    	=> array( $post_id ),
-        'posts_per_page'  	=> '3',
+        'posts_per_page'  	=> $single_post_related_posts_number,
      );
 
     $related_cats_post = new WP_Query( $query_args );
 
+	$wrapper_atts = array();
+	$wrapper_classes = array( 'botiga-related-posts' );
+
+	if( $single_post_related_posts_slider ) {
+		wp_enqueue_script( 'botiga-carousel' );
+
+		$wrapper_classes[] = 'botiga-carousel botiga-carousel-nav2';
+
+		if( $single_post_related_posts_slider_nav === 'always-show' ) {
+			$wrapper_classes[] = 'botiga-carousel-nav2-always-show';
+		}
+
+		$wrapper_atts[] = 'data-per-page="'. absint( $single_post_related_posts_columns_number ) .'"';
+	}
+
+	// Mount related posts wrapper class
+	$wrapper_atts[] = 'class="'. esc_attr( implode( ' ', $wrapper_classes ) ) .'"';
+
+	// Columns class
+	$column_class = botiga_get_column_class( $single_post_related_posts_columns_number );
+
     if( $related_cats_post->have_posts()) :
-		echo '<div class="botiga-related-posts">';
-			echo '<div class="row">';
+		echo '<div '. implode( ' ', $wrapper_atts ) .'>';
+			echo '<div class="row'. ( $single_post_related_posts_slider ? ' botiga-carousel-stage' : '' ) .'">';
 			while( $related_cats_post->have_posts() ): $related_cats_post->the_post(); ?>
-				<div class="col-md-4">
+				<div class="<?php echo esc_attr( $column_class ); ?>">
 					<div class="related-post">
 						<?php 
 							botiga_post_thumbnail();

@@ -32,6 +32,7 @@
 	.entry-header,
 	.entry-content,
 	.entry-footer,
+	.botiga-share-box,
 	.post-navigation,
 	.comments-area,
 	.single-post-author {
@@ -39,7 +40,8 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.post-thumbnail {
+	.post-thumbnail,
+	.botiga-related-posts {
 		max-width: 920px;
 		margin-left: auto;
 		margin-right: auto;
@@ -208,6 +210,7 @@
 		
 	}
 }
+.botiga-share-box,
 .botiga-related-posts,
 .post-navigation,
 .single-post-author,

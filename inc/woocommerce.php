@@ -150,7 +150,10 @@ function botiga_woocommerce_scripts() {
 	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
 
 	if( is_cart() && $layout === 'layout1' && $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) {
-		wp_enqueue_script( 'botiga-cross-sell', get_template_directory_uri() . '/assets/js/cross-sell.min.js', NULL, BOTIGA_VERSION );
+
+		// We need register this script again because the order of 'wp_enqueue_scripts'
+		wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION );
+		wp_enqueue_script( 'botiga-carousel' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
@@ -288,7 +291,7 @@ function botiga_wc_hooks() {
 			$layout                    = get_theme_mod( 'shop_cart_layout', 'layout1' ); 
 
 			if( $layout === 'layout1' && $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) {
-				$layout .= ' cross-sell-carousel';
+				$layout .= ' has-cross-sells-carousel';
 			}
 			
 			return 'no-sidebar cart-' . esc_attr( $layout ); 
@@ -381,6 +384,13 @@ function botiga_wc_hooks() {
 	add_filter( 'woocommerce_cross_sells_total', function() use ($cart_layout) {
 		return -1;
 	} );
+
+	//Cart total sticky
+	$shop_cart_sticky_totals_box = get_theme_mod( 'shop_cart_sticky_totals_box', 0 );
+
+	if( $shop_cart_sticky_totals_box && $cart_layout === 'layout2' ) {
+		add_action( 'woocommerce_before_cart', function(){ echo '<div class="cart-totals-sticky"></div>'; }, 999 );
+	}
 
 	/**
 	 * Loop product structure

@@ -596,3 +596,40 @@ function botiga_preconnect_google_fonts() {
 	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
 }
 add_action( 'wp_head', 'botiga_preconnect_google_fonts' );
+
+/**
+ * Get columns class
+ */
+function botiga_get_column_class( $number_of_columns ) {
+	switch ( $number_of_columns ) {
+		case 1:
+			$class = 'col-12';
+			break;
+
+		case 2:
+			$class = 'col-md-6';
+			break;
+
+		case 3:
+			$class = 'col-md-4';
+			break;
+
+		case 4:
+			$class = 'col-md-6 col-lg-3';
+			break;
+
+		case 5:
+			$class = 'col-md-6 col-lg-1-5';
+			break;
+
+		case 6:
+			$class = 'col-md-6 col-lg-2';
+			break;
+		
+		default:
+			$class = 'col-md-4';
+			break;
+	}
+
+	return $class;
+}

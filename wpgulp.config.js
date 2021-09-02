@@ -66,8 +66,8 @@ const custScriptsFile = 'customizer-scripts';
 
 // JS Custom options.
 
-// Path to JS cross sell.
-const jsCrossSellSRC = './assets/js/src/cross-sell.js';
+// Path to JS carousel.
+const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
 
 // Path to JS custom scripts folder.
 const jsCustomSRC = './assets/js/src/custom.js';
@@ -78,8 +78,8 @@ const jsCustomDestination = './assets/js/';
 // Compiled JS custom file name. Default set to custom i.e. custom.js.
 const jsCustomFile = 'custom';
 
-// Compiled JS cross sell file name.
-const jsCrossSellFile = 'cross-sell';
+// Compiled JS carousel file name.
+const jsCarouselFile = 'botiga-carousel';
 
 // Images options.
 
@@ -103,8 +103,8 @@ const watchJsVendor = './assets/js/vendor/*.js';
 // Path to all custom JS files.
 const watchJsCustom = './assets/js/src/custom.js';
 
-// Path to all cross sell JS files.
-const watchJsCrossSell = './assets/js/src/cross-sell.js';
+// Path to all carousel JS files.
+const watchJsCarousel = './assets/js/src/botiga-carousel.js';
 
 // Path to all custom JS files.
 const watchJsCustomizer = './assets/js/src/*.js';
@@ -190,18 +190,18 @@ module.exports = {
 	jsVendorFile,
 	custScriptsFile,
 	custFile,
-	jsCrossSellSRC,
+	jsCarouselSRC,
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,
-	jsCrossSellFile,
+	jsCarouselFile,
 	jsCustomFile,
 	imgSRC,
 	imgDST,
 	watchStyles,
 	watchEditorStyles,
 	watchJsVendor,
-	watchJsCrossSell,
+	watchJsCarousel,
 	watchJsCustom,
 	watchJsCustomizer,
 	watchPhp,

@@ -48,7 +48,7 @@
     "color_forms_background": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]",
     "offcanvas_menu_background": ".botiga-offcanvas-menu",
     "mobile_header_background": "#masthead-mobile",
-    "button_background_color": "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"],.widget_product_tag_cloud .tag-cloud-link,.widget_price_filter .ui-slider .ui-slider-handle",
+    "button_background_color": "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"],.widget_product_tag_cloud .tag-cloud-link,.widget_price_filter .ui-slider .ui-slider-handle,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev",
     "single_product_sale_background_color": ".wc-block-grid__product-onsale, span.onsale",
     "shop_product_card_background": "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product",
     "main_header_bottom_background": ".bottom-header-row",
@@ -89,8 +89,8 @@
     "shop_product_product_title": "ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, ul.wc-block-grid__products li.product .wc-block-grid__product-title, ul.wc-block-grid__products li.product .woocommerce-loop-product__title, ul.products li.wc-block-grid__product .wc-block-grid__product-title, ul.products li.wc-block-grid__product .woocommerce-loop-product__title, ul.products li.product .wc-block-grid__product-title, ul.products li.product .woocommerce-loop-product__title",
     "site_description_color": ".site-description",
     "site_title_color": ".site-header .site-title a",
-    "color_body_text": "body,.site-header-cart .count-number, .woocommerce-cart-form .quantity .botiga-quantity-plus, form.cart .quantity .botiga-quantity-plus, .woocommerce-cart-form .quantity .botiga-quantity-minus, form.cart .quantity .botiga-quantity-minus, .wp-block-columns p a, .woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.mini_cart_item a:nth-child(2),.woocommerce-cart .product-name a,.woocommerce-cart .product-remove a,.widget a:not(.wc-forward)",
-    "color_link_default": "a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button),.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.woocommerce-table__product-name.product-name a,.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout)",
+    "color_body_text": "body,.site-header-cart .count-number, .woocommerce-cart-form .quantity .botiga-quantity-plus, form.cart .quantity .botiga-quantity-plus, .woocommerce-cart-form .quantity .botiga-quantity-minus, form.cart .quantity .botiga-quantity-minus, .wp-block-columns p a, .woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.mini_cart_item a:nth-child(2),.woocommerce-cart .product-name a,.woocommerce-cart .product-remove a,.widget a:not(.wc-forward),.botiga-related-posts .related-post h3 a",
+    "color_link_default": "a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button),.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.woocommerce-table__product-name.product-name a,.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout),.botiga-related-posts .related-post .posted-on a",
     "color_heading_1": "h1",
     "color_heading_2": "h2,.wp-block-search .wp-block-search__label",
     "color_heading_3": "h3",
@@ -100,7 +100,7 @@
     "color_forms_text": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,input[type=\"text\"]:focus,input[type=\"email\"]:focus,input[type=\"url\"]:focus,input[type=\"password\"]:focus,input[type=\"search\"]:focus,input[type=\"number\"]:focus,input[type=\"tel\"]:focus,input[type=\"range\"]:focus,input[type=\"date\"]:focus,input[type=\"month\"]:focus,input[type=\"week\"]:focus,input[type=\"time\"]:focus,input[type=\"datetime\"]:focus,input[type=\"datetime-local\"]:focus,input[type=\"color\"]:focus,textarea:focus,select:focus,.woocommerce .select2-container .select2-selection--single:focus,.woocommerce-page .select2-container .select2-selection--single,.select2-container--default .select2-selection--single .select2-selection__rendered",
     "offcanvas_menu_color": ".botiga-offcanvas-menu, .botiga-offcanvas-menu a:not(.button)",
     "mobile_header_color": "#masthead-mobile,#masthead-mobile a:not(.button)",
-    "button_color": "button,.button:not(.wc-forward),a.button:not(.wc-forward),.checkout-button.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"],.widget_product_tag_cloud .tag-cloud-link",
+    "button_color": "button,.button:not(.wc-forward),a.button:not(.wc-forward),.checkout-button.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"],.widget_product_tag_cloud .tag-cloud-link,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev",
     "single_product_sale_color": ".wc-block-grid__product-onsale, span.onsale",
     "single_product_title_color": ".product-gallery-summary .product_title",
     "single_product_price_color": ".product-gallery-summary .price",
@@ -144,7 +144,7 @@
 
   var $stroke_options = {
     "scrolltop_color": ".back-to-top svg",
-    "color_link_hover": ".cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav svg path"
+    "color_link_hover": ".has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav svg path"
   };
   $.each($stroke_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -184,8 +184,8 @@
   }); //Color hover
 
   var $color_hover_options = {
-    "color_link_hover": "a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):hover,.wp-block-columns p a:hover,.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover,.woocommerce-orders-table__cell-order-number a:hover, .woocommerce-MyAccount-content p a:hover,.widget a:not(.wc-forward):hover",
-    "button_color_hover": "button:hover,a.button:not(.wc-forward):hover,.a.button.checkout,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.woocommerce-pagination li .page-numbers:hover",
+    "color_link_hover": "a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):hover,.wp-block-columns p a:hover,.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover,.woocommerce-orders-table__cell-order-number a:hover, .woocommerce-MyAccount-content p a:hover,.widget a:not(.wc-forward):hover,.botiga-related-posts .related-post h3 a:hover,.botiga-related-posts .related-post .posted-on a:hover",
+    "button_color_hover": "button:hover,a.button:not(.wc-forward):hover,.a.button.checkout,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.woocommerce-pagination li .page-numbers:hover,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover",
     "scrolltop_color_hover": ".back-to-top:hover",
     "footer_widgets_links_hover_color": ".widget-column .widget a:hover"
   };
@@ -201,7 +201,7 @@
 
   var $stroke_hover_options = {
     "scrolltop_color_hover": ".back-to-top:hover svg",
-    "color_link_default": ".cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav:hover svg path"
+    "color_link_default": ".has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav:hover svg path"
   };
   $.each($stroke_hover_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -214,7 +214,7 @@
   }); //Background hover
 
   var $bg_hover_options = {
-    "button_background_color_hover": "button:hover,a.button:hover,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.widget_price_filter .ui-slider .ui-slider-handle:hover",
+    "button_background_color_hover": "button:hover,a.button:hover,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.widget_price_filter .ui-slider .ui-slider-handle:hover,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover",
     "scrolltop_bg_color_hover": ".back-to-top:hover"
   };
   $.each($bg_hover_options, function (option, selector) {

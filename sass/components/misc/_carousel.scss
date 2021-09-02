@@ -1,0 +1,141 @@
+// Botiga carousel
+// need to be compatible with cross sells too
+.botiga-carousel,
+.cross-sells {
+	.products:not(.show) {
+		display: flex;
+		opacity: 0;
+		visibility: hidden;
+	}
+	.botiga-carousel-wrapper {
+		position: relative;
+		.products,
+		.botiga-carousel-stage {
+			opacity: 0;
+			visibility: hidden;
+			transition: ease opacity 300ms 300ms;
+			&.row {
+				display: block;
+			}
+			&.show {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			> div {
+				display: flex;
+			}
+
+			.product,
+			div[class*="col-"] {
+				width: 100%;
+				max-width: none;
+				margin-right: 0;
+				padding: 0;
+			}
+		}
+
+		.botiga-carousel-nav-next {
+			position: absolute;
+			top: -40px;
+			right: 0;
+			width: 21px;
+			height: 21px;
+			border-radius: 100%;
+			z-index: 1;
+		}
+
+		.botiga-carousel-nav-prev {
+			position: absolute;
+			top: -40px;
+			right: 30px;
+			width: 21px;
+			height: 21px;
+			border-radius: 100%;
+			z-index: 1;
+		}
+	}
+}
+
+.botiga-carousel {
+    &.botiga-carousel-nav2 {
+        .botiga-carousel-nav-next,
+        .botiga-carousel-nav-prev {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 50%;
+            right: 0;
+            background: $color__primary;
+            width: 35px;
+            height: 35px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate3d(20px, -170%, 0);
+            transition: ease transform 300ms, ease opacity 300ms;
+            svg {
+                width: 14px;
+                height: 14px;
+                path {
+                    stroke: #FFF;
+                }
+            }
+            &:hover {
+                background: $color__hover;
+            }
+        }
+        .botiga-carousel-nav-prev {
+            right: auto;
+            left: 0;
+            transform: translate3d(-20px, -170%, 0);
+        }
+
+        &:hover,
+        &.botiga-carousel-nav2-always-show {
+            .botiga-carousel-nav-next,
+            .botiga-carousel-nav-prev {
+                opacity: 1;
+                visibility: visible;
+                transform: translate3d(0, -170%, 0);
+            }   
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .botiga-carousel {
+        &.botiga-carousel-nav2 {
+            .botiga-carousel-nav-next,
+            .botiga-carousel-nav-prev {
+                opacity: 1;
+                visibility: visible;
+                transform: translate3d(0, -170%, 0);
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .botiga-carousel {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+	.botiga-carousel:not(.botiga-carousel-nav2),
+	.cross-sells {
+		.botiga-carousel-wrapper {
+			.botiga-carousel-nav-next {
+				top: auto;
+				bottom: 0;
+				right: 45%;
+				transform: translate3d(50%, 0, 0);
+			}
+			.botiga-carousel-nav-prev {
+				top: auto;
+				bottom: 0;
+				right: 55%;
+				transform: translate3d(50%, 0, 0);
+			}
+		}
+	}
+}

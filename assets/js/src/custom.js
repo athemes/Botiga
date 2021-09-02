@@ -428,6 +428,97 @@ botiga.qtyButton = {
 		}
 	} 
 }
+/**
+ * Carousel 
+ */
+botiga.carousel = {
+	init: function() {
+
+		if( document.querySelector( '.botiga-carousel' ) === null && document.querySelector( '.has-cross-sells-carousel' ) === null ) {
+			return false;
+		}
+
+		var carouselEls  = document.querySelectorAll( '.botiga-carousel, .cross-sells' ),
+			products   = document.querySelectorAll( '.botiga-carousel .botiga-carousel-stage, .cross-sells .products' );
+
+		for( var carouselEl of carouselEls ) {
+			var perPage    = carouselEl.getAttribute( 'data-per-page' ),
+				wrapper    = document.createElement('div'),
+				next       = document.createElement('a'),
+				nextSVG    = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
+				prev       = document.createElement('a'),
+				prevSVG    = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+			for( var product of products ) {
+				wrapper.className = 'botiga-carousel-wrapper';
+				wrapper.innerHTML = product.outerHTML;
+				product.remove();
+			}
+
+			carouselEl.append( wrapper );
+
+			// Next button
+			next.role = 'button';
+			next.href = '#';
+			next.className = 'botiga-carousel-nav botiga-carousel-nav-next';
+			next.addEventListener('click', function(e){
+				e.preventDefault();
+				carousel.next();
+			});
+
+			nextSVG.setAttribute( 'width', 18 );
+			nextSVG.setAttribute( 'height', 18 );
+			nextSVG.setAttribute( 'viewBox', '0 0 10 16' );
+			nextSVG.setAttribute( 'fill', 'none' );
+			nextSVG.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
+			nextSVG.innerHTML = '<path d="M1.5 14.667L8.16667 8.00033L1.5 1.33366" stroke="#242021" stroke-width="1.5"></path>';
+			
+			next.append( nextSVG );
+			wrapper.append( next );
+
+			// Prev button
+			prev.role = 'button';
+			prev.href = '#';
+			prev.className = 'botiga-carousel-nav botiga-carousel-nav-prev';
+			prev.addEventListener('click', function(e){
+				e.preventDefault();
+				carousel.prev();
+			});
+
+			prevSVG.setAttribute( 'width', 18 );
+			prevSVG.setAttribute( 'height', 18 );
+			prevSVG.setAttribute( 'viewBox', '0 0 10 16' );
+			prevSVG.setAttribute( 'fill', 'none' );
+			prevSVG.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
+			prevSVG.innerHTML = '<path d="M8.5 1.33301L1.83333 7.99967L8.5 14.6663" stroke="#242021" stroke-width="1.5"></path>';
+
+			prev.append( prevSVG );
+			wrapper.append( prev );
+		}
+
+		var carousel = new Siema({
+			selector: document.querySelector( '.cross-sells' ) !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
+			duration: 200,
+			easing: 'ease-out',
+			perPage: perPage !== null ? {
+				0: 1,
+				768: 2,
+				1025: parseInt( perPage )
+			} : 2,
+			startIndex: 0,
+			draggable: false,
+			multipleDrag: false,
+			threshold: 20,
+			loop: true,
+			rtl: false,
+			margin: 30,
+			onInit: function() {
+				// Show the carousel
+				this.selector.classList.add( 'show' );
+			}
+		});
+	}
+}
 
 /**
  * Is the DOM ready?
@@ -455,4 +546,5 @@ botigaDomReady( function() {
 	botiga.stickyHeader.init();
 	botiga.backToTop.init();
 	botiga.qtyButton.init();
+	botiga.carousel.init();
 } );

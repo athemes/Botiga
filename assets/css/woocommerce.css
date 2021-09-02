@@ -1474,59 +1474,19 @@ form.cart .quantity.hidden {
   color: #fff;
 }
 
-.cross-sell-carousel .cross-sells .products:not(.show) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  opacity: 0;
-  visibility: hidden;
+.cart-layout2 > .hentry .entry-content > .woocommerce:after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper {
-  position: relative;
+.cart-totals-sticky + .woocommerce-cart-form + .cart_totals {
+  position: sticky;
+  top: 35px;
 }
 
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: ease opacity 300ms 300ms;
-  transition: ease opacity 300ms 300ms;
-}
-
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .products .product {
-  width: 100%;
-  margin-right: 0;
-}
-
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-next {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  width: 21px;
-  height: 21px;
-  border-radius: 100%;
-  z-index: 1;
-}
-
-.cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-prev {
-  position: absolute;
-  top: -40px;
-  right: 30px;
-  width: 21px;
-  height: 21px;
-  border-radius: 100%;
-  z-index: 1;
+.admin-bar .cart-totals-sticky + .woocommerce-cart-form + .cart_totals {
+  top: 67px;
 }
 
 @media (min-width: 992px) {
@@ -1717,20 +1677,6 @@ form.cart .quantity.hidden {
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
     max-width: 50%;
-  }
-  .cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-next {
-    top: auto;
-    bottom: 0;
-    right: 45%;
-    -webkit-transform: translate3d(50%, 0, 0);
-            transform: translate3d(50%, 0, 0);
-  }
-  .cross-sell-carousel .cross-sells .cross-sells-carousel-wrapper .botiga-cross-sell-nav-prev {
-    top: auto;
-    bottom: 0;
-    right: 55%;
-    -webkit-transform: translate3d(50%, 0, 0);
-            transform: translate3d(50%, 0, 0);
   }
 }
 

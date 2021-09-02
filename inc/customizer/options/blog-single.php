@@ -31,7 +31,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_blog_singles',
-			'controls_general'		=> json_encode( array( '#customize-control-blog_single_layout','#customize-control-sidebar_single_post','#customize-control-sidebar_single_post_position','#customize-control-blog_single_divider_1','#customize-control-single_post_header_title','#customize-control-single_post_header_alignment','#customize-control-single_post_header_spacing','#customize-control-blog_single_divider_2','#customize-control-single_post_image_title','#customize-control-single_post_show_featured','#customize-control-single_post_image_placement','#customize-control-single_post_image_spacing','#customize-control-blog_single_divider_3','#customize-control-single_post_meta_title','#customize-control-single_post_meta_position','#customize-control-single_post_meta_elements','#customize-control-single_post_meta_spacing','#customize-control-blog_single_divider_4','#customize-control-single_post_elements_title','#customize-control-single_post_show_tags','#customize-control-single_post_show_author_box','#customize-control-single_post_show_post_nav','#customize-control-single_post_show_related_posts', '#customize-control-single_post_author_box_align' ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-blog_single_layout','#customize-control-sidebar_single_post','#customize-control-sidebar_single_post_position','#customize-control-blog_single_divider_1','#customize-control-single_post_header_title','#customize-control-single_post_header_alignment','#customize-control-single_post_header_spacing','#customize-control-blog_single_divider_2','#customize-control-single_post_image_title','#customize-control-single_post_show_featured','#customize-control-single_post_image_placement','#customize-control-single_post_image_spacing','#customize-control-blog_single_divider_3','#customize-control-single_post_meta_title','#customize-control-single_post_meta_position','#customize-control-single_post_meta_elements','#customize-control-single_post_meta_spacing','#customize-control-blog_single_divider_4','#customize-control-single_post_elements_title','#customize-control-single_post_show_tags','#customize-control-single_post_share_box','#customize-control-single_post_show_author_box','#customize-control-single_post_show_post_nav','#customize-control-single_post_show_related_posts','#customize-control-single_post_related_posts_slider','#customize-control-single_post_related_posts_slider_nav','#customize-control-single_post_related_posts_number','#customize-control-single_post_related_posts_columns_number', '#customize-control-single_post_author_box_align' ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-single_post_title_size', '#customize-control-single_post_title_color', '#customize-control-single_posts_divider_1', '#customize-control-single_post_meta_size', '#customize-control-single_post_meta_color' ) ),
 		)
 	)
@@ -321,7 +321,7 @@ $wp_customize->add_control( new \Kirki\Control\Sortable( $wp_customize, 'single_
 		'botiga_posted_on' 			=> esc_html__( 'Post date', 'botiga' ),
 		'botiga_posted_by' 			=> esc_html__( 'Post author', 'botiga' ),
 		'botiga_post_categories'	=> esc_html__( 'Post categories', 'botiga' ),
-		'botiga_entry_comments' 	=> esc_html__( 'Post comments', 'botiga' ),
+		'botiga_entry_comments' 	=> esc_html__( 'Post comments', 'botiga' )
 	),
 ) ) );
 

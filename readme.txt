@@ -1,4 +1,4 @@
-=== Botiga ===
+=== Botiga Pro ===
 
 Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns
