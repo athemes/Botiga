@@ -215,19 +215,63 @@ if ( ! function_exists( 'botiga_single_post_meta' ) ) :
 	}
 endif;
 
-/**
- * Single post share box
- */
-function botiga_single_post_share_box() {
-	?>
+if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
+	/**
+	 * Single post share box
+	 */
+	function botiga_single_post_share_box() {
+		$single_post_share_box = get_theme_mod( 'single_post_share_box', 0 );
 
-	<div class="botiga-share-box">
-		asdasdsad
-	</div>
+		if ( !$single_post_share_box ) {
+			return;
+		}
 
-	<?php
-}
-add_action( 'botiga_after_single_post_content', 'botiga_single_post_share_box', 10 );
+		$socials = array(
+			'twitter' => array(
+				'tooltip' => __( 'Twitter', 'botiga' )
+			),
+			'facebook' => array(
+				'tooltip' => __( 'Facebook', 'botiga' )
+			),
+			'linkedin' => array(
+				'tooltip' => __( 'Linkedin', 'botiga' )
+			)
+		); ?>
+
+		<div class="botiga-share-box">
+			<div class="row">
+				<div class="col-auto">
+					<strong><?php echo esc_html__( 'SHARE', 'botiga' ); ?></strong>
+				</div>
+				<div class="col-auto">
+					<div class="botiga-share-box-items-wrapper">
+
+						<?php foreach( $socials as $key => $social ) : ?>
+
+							<div class="botiga-share-box-item">
+								<a href="<?php echo botiga_get_social_share_url( $key ); ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $social['tooltip'] ); ?>">
+									<?php botiga_get_svg_icon( 'icon-'. $key, true ); ?>
+								</a>
+							</div>
+
+						<?php endforeach; ?>
+
+						<div class="botiga-share-box-item">
+							<a href="#" onclick="botiga.copyLinkToClipboard.init(event, this);" data-botiga-tooltip="<?php echo esc_attr__( 'Copy link', 'botiga' ); ?>">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+								</svg>
+							</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+
+		<?php
+	}
+	add_action( 'botiga_after_single_post_content', 'botiga_single_post_share_box', 10 );
+endif;
 
 /**
  * Single post navigation

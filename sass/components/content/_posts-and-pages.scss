@@ -239,6 +239,76 @@
 	}
 }
 
+.botiga-share-box {
+	margin-bottom: 50px;
+    > .row {
+        justify-content: space-between;
+        align-items: center;
+    }
+    .botiga-share-box-items-wrapper {
+        display: flex;
+        .botiga-share-box-item {
+			height: 28px;
+            & + .botiga-share-box-item {
+                margin-left: 20px;
+            }
+			svg {
+				width: 28px;
+				height: 28px;
+				&[onclick] {
+					cursor: pointer;
+				}
+			}
+			> a {
+				position: relative;
+				display: inline-block;
+				width: 28px;
+				height: 28px;
+				&:before {
+					content: attr(data-botiga-tooltip);
+					position: absolute;
+					top: -40px;
+					left: 50%;
+					font-size: 0.8em;
+					color: rgba(255, 255, 255, 0.9);
+					background: $color__primary;
+					padding: 3px 17px;
+					border-radius: 4px;
+					white-space: nowrap;
+					opacity: 0;
+					visibility: hidden;
+					transform: translate3d(-50%, 0, 0);
+					transition: ease opacity 300ms;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					left: 50%;
+					top: -13px;
+					width: 0;
+					height: 0;
+					border-right: 5px solid transparent;
+					border-left: 5px solid transparent;
+					border-top: 5px solid $color__primary;
+					opacity: 0;
+					visibility: hidden;
+					transform: translate3d(-50%, 0, 0);
+					transition: ease opacity 300ms;
+				}
+
+				&:hover,
+				&.copied {
+					&:before,
+					&:after {
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+			}
+        }
+    }
+}
+
 .botiga-related-posts {
 	.related-post {
 		h3 {

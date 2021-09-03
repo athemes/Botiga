@@ -633,3 +633,33 @@ function botiga_get_column_class( $number_of_columns ) {
 
 	return $class;
 }
+
+/**
+ * Get social share url
+ */
+function botiga_get_social_share_url( $social ) {
+	global $post;
+
+	if( !$post ) {
+		return '';
+	}
+
+	$text = get_the_excerpt( $post->ID );
+	$url  = get_the_permalink( $post->ID );
+
+	switch ( $social ) {
+		case 'twitter':
+			$url = 'https://twitter.com/intent/tweet?text='. $text .'&url='. $url;
+			break;
+		
+		case 'facebook':
+			$url = 'https://www.facebook.com/sharer/sharer.php?t='. $text .'&u='. $url;
+			break;
+
+		case 'linkedin':
+			$url = 'https://www.linkedin.com/shareArticle/?title='. $text .'&url='. $url;
+			break;
+	}
+
+	return esc_url( $url );
+}

@@ -519,6 +519,23 @@ botiga.carousel = {
 		});
 	}
 }
+/**
+ * Copy link to clipboard
+ */
+botiga.copyLinkToClipboard = {
+	init: function(event, el) {
+		event.preventDefault();
+	
+		navigator.clipboard.writeText(window.location.href);
+
+		el.classList.add( 'copied' );
+		el.setAttribute( 'data-botiga-tooltip', botiga.i18n.botiga_sharebox_copy_link_copied );
+		setTimeout(function(){
+			el.setAttribute( 'data-botiga-tooltip', botiga.i18n.botiga_sharebox_copy_link );
+			el.classList.remove( 'copied' )
+		}, 1000);
+	}
+}
 
 /**
  * Is the DOM ready?

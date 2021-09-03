@@ -1,0 +1,14 @@
+.botiga-share-box {
+    > .row {
+        justify-content: space-between;
+        align-items: center;
+    }
+    .botiga-share-box-items-wrapper {
+        display: flex;
+        .botiga-share-box-item {
+            & + .botiga-share-box-item {
+                margin-left: 20px;
+            }
+        }
+    }
+}

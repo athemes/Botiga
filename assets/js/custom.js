@@ -581,6 +581,22 @@ botiga.carousel = {
   }
 };
 /**
+ * Copy link to clipboard
+ */
+
+botiga.copyLinkToClipboard = {
+  init: function init(event, el) {
+    event.preventDefault();
+    navigator.clipboard.writeText(window.location.href);
+    el.classList.add('copied');
+    el.setAttribute('data-botiga-tooltip', botiga.i18n.botiga_sharebox_copy_link_copied);
+    setTimeout(function () {
+      el.setAttribute('data-botiga-tooltip', botiga.i18n.botiga_sharebox_copy_link);
+      el.classList.remove('copied');
+    }, 1000);
+  }
+};
+/**
  * Is the DOM ready?
  *
  * This implementation is coming from https://gomakethings.com/a-native-javascript-equivalent-of-jquerys-ready-method/

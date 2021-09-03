@@ -2480,6 +2480,91 @@ body.mobile-menu-visible {
   opacity: 0.7;
 }
 
+.botiga-share-box {
+  margin-bottom: 50px;
+}
+
+.botiga-share-box > .row {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item {
+  height: 28px;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item + .botiga-share-box-item {
+  margin-left: 20px;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item svg {
+  width: 28px;
+  height: 28px;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item svg[onclick] {
+  cursor: pointer;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a:before {
+  content: attr(data-botiga-tooltip);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.9);
+  background: #212121;
+  padding: 3px 17px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  -webkit-transition: ease opacity 300ms;
+  transition: ease opacity 300ms;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  width: 0;
+  height: 0;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-top: 5px solid #212121;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  -webkit-transition: ease opacity 300ms;
+  transition: ease opacity 300ms;
+}
+
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a:hover:before, .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a:hover:after, .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a.copied:before, .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item > a.copied:after {
+  opacity: 1;
+  visibility: visible;
+}
+
 .botiga-related-posts .related-post h3 {
   font-size: 16px;
   font-size: 1rem;
