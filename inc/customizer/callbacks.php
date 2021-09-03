@@ -421,3 +421,16 @@ function botiga_callback_shop_cart_layout() {
 		return false;
 	}
 }
+
+/**
+ * WooCommerce Single sticky add to cart
+ */
+function botiga_callback_single_post_sticky_add_to_cart() {
+	$enable = get_theme_mod( 'single_post_sticky_add_to_cart', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}	
+}

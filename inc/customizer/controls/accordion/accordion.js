@@ -9,105 +9,110 @@
     'use strict';
 
     var Botiga_Accordion = {
-        init: function(){
+		init: function(){
+			this.firstTime = true;
+			if( !this.initialized ) {
+				this.events();
+			}
+			this.initialized = true;
+		},
+		events: function(){
+			var self = this;
+			// Toggle accordion
+			$( document ).on('click', '.botiga-accordion-title', function(){
+				var $this = $(this);
+				if( $(this).hasClass('expanded') ) {
+					self.showOrHide( $(this), 'hide' );
+					$(this).removeClass('expanded').addClass('collapse');
+					setTimeout(function(){
+						$this.removeClass('collapse');
+					}, 300);
+				}
+				if( !$(this).hasClass('collapse') ) {
+					// Open one accordion item per time 
+					$('.botiga-accordion-item').addClass('botiga-accordion-hide');
+					$('.botiga-accordion-title').removeClass('expanded');
+					// Show accordion content
+					self.showOrHide( $(this), 'show' );
+					$this.addClass('expanded');
+				}
+			});
+			// Mount the accordion when enter in the section (with accordions inside)
+			// Also used to collapse all accordions when navigating between others tabs
+			$( document ).on('click', '.control-section', function(e){
+				var $section = $('.control-section.open');
+				if( self.firstTime && $section.find('.botiga-accordion-title').length ) {
+					$section.find('.botiga-accordion-title').each(function(){
 
-            if( !this.initialized ) {
-                this.events();
-            }
+						if( $(this).data('start-after') ) {
+							$(this).closest('li').next().css('margin-top', '15px');
+							$(this).closest('li').insertAfter( $( '#customize-control-' + $(this).data('start-after') ) );
+						}
 
-            this.initialized = true;
-            
-        },
-        events: function(){
-            var self = this;
+						self.showOrHide( $(this), 'hide' );
+						$(this).removeClass('expanded');
+						self.firstTime = false;
+					});
+				}
+			});
+			// Reset the first time
+			$( document ).on('click', '.customize-section-back', function(){
+				self.firstTime = true;
+			});
+			return this;
+		},
+		showOrHide: function( $this, status ) {
+			var current = '';
+			current = $this.closest('.customize-control').next();
+			var elements = [];
+			if( current.attr( 'id' ) == 'customize-control-' + $this.data('until') ) {
+				elements.push( current[0].id );
+			} else {
+				while( current.attr( 'id' ) != 'customize-control-' + $this.data('until') ) {
+					elements.push( current[0].id );
+					current = current.next();
+				}
+			}
+			if( elements.length >= 1 ) {
+				elements.push( current[0].id );
+			}
+			for( var i = 0; i < elements.length; i++ ) {
+				// Identify accordion items
+				$( '#'+elements[i] ).addClass('botiga-accordion-item active');
+				// Hide or show the accordion content
+				if( status == 'hide' ) {
+					$( '#'+elements[i] ).addClass('botiga-accordion-hide');
+				} else {
+					$( '#'+elements[i] ).removeClass('botiga-accordion-hide');
+				}
+				// Identify first accordion item
+				if( i == 0 ) {
+					$( '#'+elements[i] ).addClass('botiga-accordion-first-item')
+				}
+				// Identify last accordion item
+				if( i == elements.length - 1 && elements.length > 1 || elements.length == 1 ) {
+					$( '#'+elements[i] ).addClass('botiga-accordion-last-item')
+				}
+			}
+			return this;
+		}
+	}
 
-            $( document ).on('click', '.botiga-accordion-title', function(){
-                var $this = $(this);
-                $(this).closest('.control-section.open').data('last-selected', $(this).data('until'));
+	$( document ).ready(function($) {
+		Botiga_Accordion.init();		
+	} );
 
-                if( $(this).hasClass('expanded') ) {
-                    self.showOrHide( $(this), 'hide' );
-                    $(this).removeClass('expanded').addClass('collapse');
-
-                    setTimeout(function(){
-                        $this.removeClass('collapse');
-                    }, 300);
-                }
-            });
-
-            $( document ).on('click', '.control-section', function(e){
-                var $section = $('.control-section.open'),
-                    lastSelected = $section.data('last-selected');
-
-                $section.find('.botiga-accordion-title').each(function(i){
-                    if( !$(this).hasClass('collapse') ) {
-                        if( lastSelected == $(this).data('until') ) {
-                            self.showOrHide( $(this), 'show' );
-                            $(this).addClass('expanded');
-                        } else {
-                            self.showOrHide( $(this), 'hide' );
-                            $(this).removeClass('expanded');
-                        }
-                    }
-                    
-                    if( typeof lastSelected === "undefined" && i == 0 ) {
-                        $(this).addClass('expanded');
-                        $(this).closest('.customize-control').next().removeClass('botiga-accordion-hide');
-                    }
-                });
-            });
-
-            return this;
-        },
-
-        showOrHide: function( $this, status ) {
-            var current = '';
-            current = $this.closest('.customize-control').next();
-            
-            var elements = [];
-            if( current.attr( 'id' ) == 'customize-control-' + $this.data('until') ) {
-                elements.push( current[0].id );
-            } else {
-                while( current.attr( 'id' ) != 'customize-control-' + $this.data('until') ) {
-                    elements.push( current[0].id );
-
-                    current = current.next();
-                }
-            }
-
-            if( elements.length >= 1 ) {
-                elements.push( current[0].id );
-            }
-            
-            for( var i = 0; i < elements.length; i++ ) {
-                // Identify accordion items
-                $( '#'+elements[i] ).addClass('botiga-accordion-item');
-
-                // Hide or show the accordion content
-                if( status == 'hide' ) {
-                    $( '#'+elements[i] ).addClass('botiga-accordion-hide');
-                } else {
-                    $( '#'+elements[i] ).removeClass('botiga-accordion-hide');
-                }
-
-                // Identify first accordion item
-                if( i == 0 ) {
-                    $( '#'+elements[i] ).addClass('botiga-accordion-first-item')
-                }
-
-                // Identify last accordion item
-                if( i == elements.length - 1 && elements.length > 1 || elements.length == 1 ) {
-                    $( '#'+elements[i] ).addClass('botiga-accordion-last-item')
-                }
-            }
-
-
-            return this;
-        }
-    }
-
-    $(document).ready(function(){
-        Botiga_Accordion.init();
-    });
+	wp.customize.bind('ready', function(){
+		wp.customize.previewer.bind('ready', function(){
+			var $section = $('.control-section.open');
+			if( $section.find('.botiga-accordion-title').length ) {
+				$section.find('.botiga-accordion-title').each(function(){
+					if( $(this).data('start-after') ) {
+						$(this).closest('li').insertAfter( $( '#customize-control-' + $(this).data('start-after') ) );
+					}
+				});
+			}
+		});
+	});
 
 })(jQuery);

@@ -17,6 +17,7 @@ class Botiga_Accordion_Control extends WP_Customize_Control {
 	 */
 	public $type  = 'botiga-accordion';
     public $until = '';
+    public $start_after = '';
 
     /**
      * Displays the control content.
@@ -24,7 +25,7 @@ class Botiga_Accordion_Control extends WP_Customize_Control {
      */
     public function render_content() {
     ?>
-        <a href="#" class="botiga-accordion-title" data-until="<?php echo esc_attr( $this->until ); ?>"><?php echo esc_html( $this->label ); ?></a>  
+        <a href="#" class="botiga-accordion-title" data-until="<?php echo esc_attr( $this->until ); ?>" data-start-after="<?php echo esc_attr( $this->start_after ); ?>"><?php echo esc_html( $this->label ); ?></a>  
     <?php 
     }
 }

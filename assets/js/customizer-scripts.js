@@ -695,7 +695,7 @@ jQuery(document).ready(function ($) {
  * Accordion control
  */
 
-jQuery(document).ready(function ($) {
+(function ($) {
   var Botiga_Accordion = {
     init: function init() {
       this.firstTime = true;
@@ -736,6 +736,11 @@ jQuery(document).ready(function ($) {
 
         if (self.firstTime && $section.find('.botiga-accordion-title').length) {
           $section.find('.botiga-accordion-title').each(function () {
+            if ($(this).data('start-after')) {
+              $(this).closest('li').next().css('margin-top', '15px');
+              $(this).closest('li').insertAfter($('#customize-control-' + $(this).data('start-after')));
+            }
+
             self.showOrHide($(this), 'hide');
             $(this).removeClass('expanded');
             self.firstTime = false;
@@ -790,7 +795,20 @@ jQuery(document).ready(function ($) {
       return this;
     }
   };
-  $(document).ready(function () {
+  $(document).ready(function ($) {
     Botiga_Accordion.init();
   });
-});
+  wp.customize.bind('ready', function () {
+    wp.customize.previewer.bind('ready', function () {
+      var $section = $('.control-section.open');
+
+      if ($section.find('.botiga-accordion-title').length) {
+        $section.find('.botiga-accordion-title').each(function () {
+          if ($(this).data('start-after')) {
+            $(this).closest('li').insertAfter($('#customize-control-' + $(this).data('start-after')));
+          }
+        });
+      }
+    });
+  });
+})(jQuery);
