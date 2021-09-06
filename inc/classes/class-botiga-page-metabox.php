@@ -23,6 +23,10 @@ class Botiga_Page_Metabox {
 	}
 
 	public function add_meta_box( $post_type ) {
+
+		if( $post_type === 'product' ) {
+			return;
+		}
 		
 		$types = get_post_types(
 			array(

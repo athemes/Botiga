@@ -200,7 +200,7 @@ function botiga_main_wrapper_start() {
 	if ( isset( $post ) ) {
 		$page_builder_mode	= get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
 
-		if ( $page_builder_mode ) {
+		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '<div class="content-wrapper">';
 		} else {
 			echo '<div class="container content-wrapper">';
@@ -222,7 +222,7 @@ function botiga_main_wrapper_end() {
 	if ( isset( $post ) ) {
 		$page_builder_mode	= get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
 
-		if ( $page_builder_mode ) {
+		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '</div>';
 		} else {
 			echo '</div>';
@@ -242,6 +242,10 @@ add_action( 'botiga_main_wrapper_end', 'botiga_main_wrapper_end' );
 function botiga_page_builder_mode() {
 
 	global $post;
+
+	if( is_singular( 'product' ) ) {
+		return;
+	}
 
 	if ( isset( $post ) && is_singular() ) {
 		$page_builder_mode	= get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
