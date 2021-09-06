@@ -294,7 +294,8 @@ botiga.headerSearch = {
 
 botiga.stickyHeader = {
   init: function init() {
-    var sticky = document.getElementsByClassName('sticky-header')[0];
+    var sticky = document.getElementsByClassName('sticky-header')[0],
+        body = document.getElementsByTagName('body')[0];
 
     if ('undefined' === typeof sticky) {
       return;
@@ -307,8 +308,10 @@ botiga.stickyHeader = {
 
         if (scroll > lastScrollTop) {
           sticky.classList.remove('is-sticky');
+          body.classList.remove('sticky-header-active');
         } else {
           sticky.classList.add('is-sticky');
+          body.classList.add('sticky-header-active');
         }
 
         lastScrollTop = scroll <= 0 ? 0 : scroll;
@@ -319,11 +322,42 @@ botiga.stickyHeader = {
 
         if (vertDist > 1) {
           sticky.classList.add('sticky-shadow');
+          body.classList.add('sticky-header-active');
         } else {
           sticky.classList.remove('sticky-shadow');
+          body.classList.remove('sticky-header-active');
         }
       }, false);
     }
+  }
+};
+/**
+ * Botiga scroll direction
+ */
+
+botiga.scrollDirection = {
+  init: function init() {
+    var elements = document.querySelectorAll('.botiga-single-sticky-add-to-cart-wrapper.hide-when-scroll'),
+        body = document.getElementsByTagName('body')[0];
+
+    if ('null' === typeof elements) {
+      return;
+    }
+
+    var lastScrollTop = 0;
+    window.addEventListener('scroll', function () {
+      var scroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scroll > lastScrollTop) {
+        body.classList.remove('botiga-scrolling-up');
+        body.classList.add('botiga-scrolling-down');
+      } else {
+        body.classList.remove('botiga-scrolling-down');
+        body.classList.add('botiga-scrolling-up');
+      }
+
+      lastScrollTop = scroll <= 0 ? 0 : scroll;
+    }, false);
   }
 };
 /**
@@ -432,7 +466,7 @@ botiga.qtyButton = {
     this.wooEvents();
   },
   events: function events(type) {
-    var qty = document.querySelectorAll('form.cart .quantity, .botiga-quick-view-popup .quantity, .woocommerce-cart-form__cart-item.cart_item .quantity');
+    var qty = document.querySelectorAll('form.cart .quantity, .botiga-quick-view-popup .quantity, .woocommerce-cart-form__cart-item.cart_item .quantity, .botiga-single-sticky-add-to-cart-wrapper-content .quantity');
 
     if (type === 'quick-view') {
       qty = document.querySelectorAll('.botiga-quick-view-popup .quantity');
@@ -621,6 +655,7 @@ botigaDomReady(function () {
   botiga.headerSearch.init();
   botiga.quickView.init();
   botiga.stickyHeader.init();
+  botiga.scrollDirection.init();
   botiga.backToTop.init();
   botiga.qtyButton.init();
   botiga.carousel.init();

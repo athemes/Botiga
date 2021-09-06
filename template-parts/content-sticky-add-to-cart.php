@@ -1,0 +1,67 @@
+<?php
+/**
+ * Template part for displaying single product sticky add to cart
+ *
+ * @package Botiga
+ */
+
+global $product;
+
+//Options
+$single_sticky_add_to_cart_position          = get_theme_mod( 'single_sticky_add_to_cart_position', 'bottom' );
+$single_sticky_add_to_cart_elements          = get_theme_mod( 'single_sticky_add_to_cart_elements', array( 'botiga_sticky_add_to_cart_product_image', 'botiga_sticky_add_to_cart_product_title', 'woocommerce_template_single_price', 'woocommerce_template_single_add_to_cart' ) ); 
+$single_sticky_add_to_cart_scroll_hide       = get_theme_mod( 'single_sticky_add_to_cart_scroll_hide', 0 );
+$single_sticky_add_to_cart_device_visibility = get_theme_mod( 'single_sticky_add_to_cart_device_visibility', 'all' );
+
+//Wrapper class
+$wrapper_class = 'botiga-single-sticky-add-to-cart-wrapper';
+
+//Position
+if( $single_sticky_add_to_cart_position === 'bottom' ) {
+    $wrapper_class .= ' position-bottom';
+} else {
+    $wrapper_class .= ' position-top';
+}
+
+//Hide when scroll
+if( $single_sticky_add_to_cart_scroll_hide ) {
+    $wrapper_class .= ' hide-when-scroll';
+} 
+
+//Visibility
+if( $single_sticky_add_to_cart_device_visibility === 'mobile-only' ) {
+    $wrapper_class .= ' visible-mobile-only';
+} elseif( $single_sticky_add_to_cart_device_visibility === 'desktop-only' ) {
+    $wrapper_class .= ' visible-desktop-only';
+} ?>
+
+<div class="<?php echo esc_attr( $wrapper_class ); ?>">
+    <div class="botiga-single-sticky-add-to-cart-wrapper-content">
+        
+        <?php foreach( $single_sticky_add_to_cart_elements as $element ) {
+            $class = '';
+            switch ( $element ) {
+                case 'botiga_sticky_add_to_cart_product_image':
+                    $class = 'product-image';
+                    break;
+                
+                case 'botiga_sticky_add_to_cart_product_title':
+                    $class = 'product-title';
+                    break;
+
+                case 'woocommerce_template_single_price':
+                    $class = 'product-price';
+                    break;
+
+                case 'woocommerce_template_single_add_to_cart':
+                    $class = 'product-addtocart';
+                    break;
+            }
+
+            echo '<div class="botiga-single-sticky-add-to-cart-item '. esc_attr( $class ) .'">';
+                call_user_func( $element );
+            echo '</div>';
+        } ?>
+
+    </div>
+</div>

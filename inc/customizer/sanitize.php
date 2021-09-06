@@ -78,6 +78,20 @@ function botiga_sanitize_product_loop_components( $input ) {
     return $sanitized;    
 }
 
+/**
+ * Sanitize single product sitcky add to cart elements
+ */
+function botiga_sanitize_single_add_to_cart_elements( $input ) {
+    $input     = (array) $input;
+    $sanitized = array();
+
+    foreach ( $input as $sub_value ) {
+        if ( in_array( $sub_value, array( 'botiga_sticky_add_to_cart_product_image', 'botiga_sticky_add_to_cart_product_title', 'woocommerce_template_single_price', 'woocommerce_template_single_add_to_cart' ), true ) ) {
+            $sanitized[] = $sub_value;
+        }
+    }
+    return $sanitized;
+}
 
 /**
  * Sanitize top bar components

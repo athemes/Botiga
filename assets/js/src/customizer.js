@@ -411,6 +411,13 @@
 		} );
 	} );	
 
+	//Woocommerce single 
+	wp.customize( 'single_sticky_add_to_cart_elements_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item').css( 'margin-right', to + 'px' );
+		} );
+	} );
+
 	//Responsive
 	var $devices 	= { "desktop": "(min-width: 992px)", "tablet": "(min-width: 576px) and (max-width: 991px)", "mobile": "(max-width: 575px)" };
 

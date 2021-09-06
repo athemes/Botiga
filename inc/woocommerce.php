@@ -318,10 +318,11 @@ function botiga_wc_hooks() {
 
 	//Single product settings
 	if ( is_product() ) {
-		$single_breadcrumbs = get_theme_mod( 'single_breadcrumbs', 1 );
-		$single_tabs		= get_theme_mod( 'single_product_tabs', 1 );
-		$single_related		= get_theme_mod( 'single_related_products', 1 );
-		$single_upsell		= get_theme_mod( 'single_upsell_products', 1 );
+		$single_breadcrumbs 			= get_theme_mod( 'single_breadcrumbs', 1 );
+		$single_tabs					= get_theme_mod( 'single_product_tabs', 1 );
+		$single_related					= get_theme_mod( 'single_related_products', 1 );
+		$single_upsell					= get_theme_mod( 'single_upsell_products', 1 );
+		$single_sticky_add_to_cart		= get_theme_mod( 'single_sticky_add_to_cart', 1 );
 
 		//Remove sidebar
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
@@ -353,6 +354,11 @@ function botiga_wc_hooks() {
 		//Move sale tag
 		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
 		add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', -1 );
+
+		// Sticky add to cart
+		if( $single_sticky_add_to_cart ) {
+			add_action( 'botiga_page_header', 'botiga_single_sticky_add_to_cart' );
+		}
 	}
 
 	//Move cart collaterals
@@ -1263,7 +1269,7 @@ function botiga_quick_view_variable_add_to_cart( $product ) {
 
 					<div class="woocommerce-variation single_variation"></div>
 					<div class="woocommerce-variation-add-to-cart variations_button">
-						<?php do_action( 'woocommerce_before_add_to_cart_button' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
+						<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
 
 						<?php
 						do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
@@ -1349,3 +1355,20 @@ function botiga_myaccount_html_insert() {
     }
 }
 add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
+
+/**
+ * Single sticky add to cart
+ */
+function botiga_single_sticky_add_to_cart() { 	
+	while ( have_posts() ) : the_post();
+		get_template_part( 'template-parts/content', 'sticky-add-to-cart' );
+	endwhile;
+}
+
+function botiga_sticky_add_to_cart_product_image() {
+	the_post_thumbnail( 'thumbnail' );
+}
+
+function botiga_sticky_add_to_cart_product_title() {
+	the_title( '<h5>', '</h5>' );
+}

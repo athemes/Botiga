@@ -441,6 +441,12 @@
     value.bind(function (to) {
       $('ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product').css('border-width', to + 'px');
     });
+  }); //Woocommerce single 
+
+  wp.customize('single_sticky_add_to_cart_elements_spacing', function (value) {
+    value.bind(function (to) {
+      $('.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item').css('margin-right', to + 'px');
+    });
   }); //Responsive
 
   var $devices = {
