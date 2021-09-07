@@ -77,8 +77,8 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 * Contact info
 		 */
 		public function contact_info() {
-			$email 	= get_theme_mod( 'header_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
-			$phone	= get_theme_mod( 'header_contact_phone', esc_html__( '111222333', 'botiga' ) );
+			$email 	= get_theme_mod( 'topbar_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
+			$phone	= get_theme_mod( 'topbar_contact_phone', esc_html__( '111222333', 'botiga' ) );
 
 			?>
 				<div class="header-item top-bar-contact">
