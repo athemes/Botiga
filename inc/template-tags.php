@@ -83,7 +83,8 @@ if ( ! function_exists( 'botiga_post_reading_time' ) ) :
 
 		$words = str_word_count(strip_tags($post->post_content));
 		$m     = $words / $words_per_min;
-		$time  = sprintf( __( '%s min%s read', 'botiga' ), ( $m < 1 ? '1' : ceil($m) ), ( $m == 1 || $m < 1 ? '' : 's' ) );
+		/* translators: 1: time, 2: plural for min(s). */
+		$time  = sprintf( __( '%1$s min%2$s read', 'botiga' ), ( $m < 1 ? '1' : ceil($m) ), ( $m == 1 || $m < 1 ? '' : 's' ) );
 
 		echo '<span class="reading-time">';
 			echo esc_html( $time );	
@@ -249,7 +250,7 @@ if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
 						<?php foreach( $socials as $key => $social ) : ?>
 
 							<div class="botiga-share-box-item">
-								<a href="<?php echo botiga_get_social_share_url( $key ); ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $social['tooltip'] ); ?>">
+								<a href="<?php echo esc_url( botiga_get_social_share_url( $key ) ); ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $social['tooltip'] ); ?>">
 									<?php botiga_get_svg_icon( 'icon-'. $key, true ); ?>
 								</a>
 							</div>
@@ -392,7 +393,7 @@ function botiga_related_posts() {
 	$column_class = botiga_get_column_class( $single_post_related_posts_columns_number );
 
     if( $related_cats_post->have_posts()) :
-		echo '<div '. implode( ' ', $wrapper_atts ) .'>';
+		echo '<div '. implode( ' ', $wrapper_atts ) .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 			echo '<div class="row'. ( $single_post_related_posts_slider ? ' botiga-carousel-stage' : '' ) .'">';
 			while( $related_cats_post->have_posts() ): $related_cats_post->the_post(); ?>
 				<div class="<?php echo esc_attr( $column_class ); ?>">

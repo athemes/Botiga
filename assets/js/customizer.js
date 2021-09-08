@@ -60,7 +60,8 @@
     "header_top_row_background": ".header-top",
     "header_middle_row_background": ".header-middle",
     "header_bottom_row_background": ".header-bottom",
-    "color_body_text": ".widget_price_filter .ui-slider .ui-slider-range"
+    "color_body_text": ".widget_price_filter .ui-slider .ui-slider-range",
+    "single_sticky_add_to_cart_style_color_background": ".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select"
   };
   $.each($bg_color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -95,7 +96,7 @@
     "color_heading_2": "h2,.wp-block-search .wp-block-search__label",
     "color_heading_3": "h3",
     "color_heading_4": "h4,.product-gallery-summary .product_meta,.product-gallery-summary .product_meta a,.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.woocommerce-tabs ul.tabs li a,.product-gallery-summary .woocommerce-Price-amount,.woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total .woocommerce-Price-amount,.order-total .woocommerce-Price-amount",
-    "color_heading_5": "h5",
+    "color_heading_5": "h5:not(.sticky-addtocart-title)",
     "color_heading_6": "h6",
     "color_forms_text": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,input[type=\"text\"]:focus,input[type=\"email\"]:focus,input[type=\"url\"]:focus,input[type=\"password\"]:focus,input[type=\"search\"]:focus,input[type=\"number\"]:focus,input[type=\"tel\"]:focus,input[type=\"range\"]:focus,input[type=\"date\"]:focus,input[type=\"month\"]:focus,input[type=\"week\"]:focus,input[type=\"time\"]:focus,input[type=\"datetime\"]:focus,input[type=\"datetime-local\"]:focus,input[type=\"color\"]:focus,textarea:focus,select:focus,.woocommerce .select2-container .select2-selection--single:focus,.woocommerce-page .select2-container .select2-selection--single,.select2-container--default .select2-selection--single .select2-selection__rendered",
     "offcanvas_menu_color": ".botiga-offcanvas-menu, .botiga-offcanvas-menu a:not(.button)",
@@ -116,7 +117,8 @@
     "footer_credits_text_color": ".site-info, .site-info a",
     "footer_widgets_links_color": ".widget-column .widget a",
     "footer_widgets_text_color": ".widget-column .widget",
-    "footer_widgets_title_color": ".widget-column .widget .widget-title"
+    "footer_widgets_title_color": ".widget-column .widget .widget-title",
+    "single_sticky_add_to_cart_style_color_content": ".botiga-single-sticky-add-to-cart-wrapper h5, .botiga-single-sticky-add-to-cart-wrapper .price, .botiga-single-sticky-add-to-cart-wrapper .price del, .botiga-single-sticky-add-to-cart-wrapper form.cart .quantity .botiga-quantity-minus, .botiga-single-sticky-add-to-cart-wrapper form.cart .quantity .botiga-quantity-plus, .botiga-single-sticky-add-to-cart-wrapper .quantity .qty, .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form table.variations .label, .botiga-single-sticky-add-to-cart-wrapper select"
   };
   $.each($color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -162,7 +164,9 @@
     "footer_credits_divider_color": ".site-info,.site-footer",
     "footer_widgets_divider_color": ".footer-widgets,.footer-widgets-grid",
     "color_body_text": ".woocommerce-cart-form .quantity, form.cart .quantity",
-    "color_link_default": ".single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active"
+    "color_link_default": ".single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active",
+    "single_sticky_add_to_cart_style_color_border": ".botiga-single-sticky-add-to-cart-wrapper",
+    "single_sticky_add_to_cart_style_color_content": ".botiga-single-sticky-add-to-cart-wrapper form.cart .quantity, .botiga-single-sticky-add-to-cart-wrapper select"
   };
   $.each($border_color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -249,6 +253,7 @@
       } else {
         $('.top-bar-inner > .row').css('display', 'block');
         $('.top-bar-inner .col').css('justify-content', 'center');
+        $('.top-bar-inner .col').css('text-align', 'center');
       }
     });
   });
@@ -441,7 +446,7 @@
     value.bind(function (to) {
       $('ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product').css('border-width', to + 'px');
     });
-  }); //Woocommerce single 
+  }); //Woocommerce single sticky add to cart
 
   wp.customize('single_sticky_add_to_cart_elements_spacing', function (value) {
     value.bind(function (to) {

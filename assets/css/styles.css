@@ -2210,7 +2210,6 @@ body.mobile-menu-visible {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  text-align: center;
 }
 
 .top-bar .col:last-of-type {
@@ -3566,7 +3565,7 @@ input.wc-block-components-price-slider__range-input {
   transition: all 0.4s;
   visibility: hidden;
   opacity: 0;
-  z-index: 999;
+  z-index: 996;
   color: #fff;
 }
 

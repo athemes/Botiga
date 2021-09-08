@@ -192,6 +192,10 @@ botiga.headerSearch = {
 				e.target.closest( '.header-search' ).classList.add( 'active' );
 				e.target.closest( '.header-search' ).classList.remove( 'hide' );
 				searchInput.focus();
+
+				if( e.target.closest( '.botiga-offcanvas-menu' ) !== null ) {
+					e.target.closest( '.botiga-offcanvas-menu' ).classList.remove( 'toggled' );
+				}
 			} );	
 		}
 

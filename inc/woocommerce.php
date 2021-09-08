@@ -322,12 +322,15 @@ function botiga_wc_hooks() {
 		$single_tabs					= get_theme_mod( 'single_product_tabs', 1 );
 		$single_related					= get_theme_mod( 'single_related_products', 1 );
 		$single_upsell					= get_theme_mod( 'single_upsell_products', 1 );
-		$single_sticky_add_to_cart		= get_theme_mod( 'single_sticky_add_to_cart', 1 );
+		$single_sticky_add_to_cart		= get_theme_mod( 'single_sticky_add_to_cart', 0 );
 
 		//Remove sidebar
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 		add_filter( 'botiga_sidebar', '__return_false' );
 		add_filter( 'botiga_content_class', function() { return 'no-sidebar'; } );
+
+		add_action( 'woocommerce_before_add_to_cart_button', 'botiga_single_addtocart_wrapper_open' );
+		add_action( 'woocommerce_after_add_to_cart_button', 'botiga_single_addtocart_wrapper_close' );
 
 		//Breadcrumbs
 		if ( !$single_breadcrumbs ) {
@@ -357,7 +360,13 @@ function botiga_wc_hooks() {
 
 		// Sticky add to cart
 		if( $single_sticky_add_to_cart ) {
-			add_action( 'botiga_page_header', 'botiga_single_sticky_add_to_cart' );
+			$single_sticky_add_to_cart_position = get_theme_mod( 'single_sticky_add_to_cart_position', 'bottom' );
+
+			if( $single_sticky_add_to_cart_position === 'bottom' ) {
+				add_action( 'botiga_footer_before', 'botiga_single_sticky_add_to_cart' );
+			} else {
+				add_action( 'botiga_page_header', 'botiga_single_sticky_add_to_cart' );
+			}
 		}
 	}
 
@@ -458,7 +467,7 @@ function botiga_wc_hooks() {
 	//Quick view
 	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_wc_has_blocks() || is_cart() && $shop_cart_show_cross_sell ) {
 		if( 'layout1' !== $quick_view_layout ) {
-			
+
 			//Button position for layout 2 & 3
 			remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open' );
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
@@ -482,6 +491,17 @@ function botiga_wc_hooks() {
 
 }
 add_action( 'wp', 'botiga_wc_hooks' );
+
+/**
+ * Single add to cart wrapper
+ */
+function botiga_single_addtocart_wrapper_open() {
+	echo '<div class="botiga-single-addtocart-wrapper">';
+}
+
+function botiga_single_addtocart_wrapper_close() {
+	echo '</div>';
+}
 
 /**
  * Wrap loop button
@@ -1033,6 +1053,12 @@ function botiga_quick_view_popup() { ?>
 }
 
 /**
+ * Quick view add to cart wrapper
+ */
+add_action( 'botiga_quick_view_before_add_to_cart_button', 'botiga_single_addtocart_wrapper_open' );
+add_action( 'botiga_quick_view_after_add_to_cart_button', 'botiga_single_addtocart_wrapper_close' );
+
+/**
  * Quick view ajax callback
  */
 function botiga_quick_view_content_callback_function(){
@@ -1054,9 +1080,10 @@ add_action('wp_ajax_botiga_quick_view_content', 'botiga_quick_view_content_callb
 add_action( 'wp_ajax_nopriv_botiga_quick_view_content', 'botiga_quick_view_content_callback_function' );
 
 /**
- * Quick view output the simple product add to cart area.
+ * Botiga output for simple product add to cart area.
+ * The purpose is avoid third party plugins hooking here
  */
-function botiga_quick_view_simple_add_to_cart( $product ) {
+function botiga_simple_add_to_cart( $product, $hook_prefix = '' ) {
 	if ( ! $product->is_purchasable() ) {
 		return;
 	}
@@ -1065,39 +1092,40 @@ function botiga_quick_view_simple_add_to_cart( $product ) {
 	
 	if ( $product->is_in_stock() ) : ?>
 	
-		<?php do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+		<?php do_action( "botiga_{$hook_prefix}_before_add_to_cart_form" ); ?>
 	
-		<form class="cart" action="<?php echo esc_url( apply_filters( 'botiga_quick_view_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
-			<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); ?>
+		<form class="cart" action="<?php echo esc_url( apply_filters( "botiga_{$hook_prefix}_add_to_cart_form_action", $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+			<?php do_action( "botiga_{$hook_prefix}_before_add_to_cart_button" ); ?>
 	
 			<?php
-			do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
-			
+			do_action( "botiga_{$hook_prefix}_before_add_to_cart_quantity" );
+
 			woocommerce_quantity_input(
 				array(
-					'min_value'   => apply_filters( 'botiga_quick_view_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-					'max_value'   => apply_filters( 'botiga_quick_view_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+					'min_value'   => apply_filters( "botiga_{$hook_prefix}_quantity_input_min", $product->get_min_purchase_quantity(), $product ),
+					'max_value'   => apply_filters( "botiga_{$hook_prefix}_quantity_input_max", $product->get_max_purchase_quantity(), $product ),
 					'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( absint( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity()
 				)
 			);
 	
-			do_action( 'botiga_quick_view_after_add_to_cart_quantity' );
+			do_action( "botiga_{$hook_prefix}_after_add_to_cart_quantity" );
 			?>
 	
 			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 	
-			<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+			<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_button" ); ?>
 		</form>
 	
-		<?php do_action( 'botiga_quick_view_after_add_to_cart_form' ); ?>
+		<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_form" ); ?>
 	
 	<?php endif;
 }
 
 /**
- * Quick view output the grouped product add to cart area.
+ * Botiga output for grouped product add to cart area.
+ * The purpose is avoid third party plugins hooking here
  */
-function botiga_quick_view_grouped_add_to_cart( $product ) {
+function botiga_grouped_add_to_cart( $product, $hook_prefix = '' ) {
 	$products = array_filter( array_map( 'wc_get_product', $product->get_children() ), 'wc_products_array_filter_visible_grouped' );
 
 	if ( $products ) :
@@ -1106,16 +1134,16 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 		$grouped_products   = $products;
 		$quantites_required = false;
 
-		do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+		do_action( "botiga_{$hook_prefix}_before_add_to_cart_form" ); ?>
 
-		<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'botiga_quick_view_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+		<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( "botiga_{$hook_prefix}_add_to_cart_form_action", $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 			<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
 				<tbody>
 					<?php
 					$quantites_required      = false;
 					$previous_post           = $post;
 					$grouped_product_columns = apply_filters(
-						'botiga_quick_view_grouped_product_columns',
+						"botiga_{$hook_prefix}_grouped_product_columns",
 						array(
 							'quantity',
 							'label',
@@ -1125,7 +1153,7 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 					);
 					$show_add_to_cart_button = false;
 
-					do_action( 'botiga_quick_view_grouped_product_list_before', $grouped_product_columns, $quantites_required, $product );
+					do_action( "botiga_{$hook_prefix}_grouped_product_list_before", $grouped_product_columns, $quantites_required, $product );
 
 					foreach ( $grouped_products as $grouped_product_child ) {
 						$post_object        = get_post( $grouped_product_child->get_id() );
@@ -1141,7 +1169,7 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 
 						// Output columns for each product.
 						foreach ( $grouped_product_columns as $column_id ) {
-							do_action( 'botiga_quick_view_grouped_product_list_before_' . $column_id, $grouped_product_child );
+							do_action( "botiga_{$hook_prefix}_grouped_product_list_before_" . $column_id, $grouped_product_child );
 
 							switch ( $column_id ) {
 								case 'quantity':
@@ -1152,26 +1180,26 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 									} elseif ( $grouped_product_child->is_sold_individually() ) {
 										echo '<input type="checkbox" name="' . esc_attr( 'quantity[' . $grouped_product_child->get_id() . ']' ) . '" value="1" class="wc-grouped-product-add-to-cart-checkbox" />';
 									} else {
-										do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
+										do_action( "botiga_{$hook_prefix}_before_add_to_cart_quantity" );
 
 										woocommerce_quantity_input(
 											array(
 												'input_name'  => 'quantity[' . $grouped_product_child->get_id() . ']',
 												'input_value' => isset( $_POST['quantity'][ $grouped_product_child->get_id() ] ) ? wc_stock_amount( wc_clean( wp_unslash( $_POST['quantity'][ $grouped_product_child->get_id() ] ) ) ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-												'min_value'   => apply_filters( 'botiga_quick_view_quantity_input_min', 0, $grouped_product_child ),
-												'max_value'   => apply_filters( 'botiga_quick_view_quantity_input_max', $grouped_product_child->get_max_purchase_quantity(), $grouped_product_child ),
+												'min_value'   => apply_filters( "botiga_{$hook_prefix}_quantity_input_min", 0, $grouped_product_child ),
+												'max_value'   => apply_filters( "botiga_{$hook_prefix}_quantity_input_max", $grouped_product_child->get_max_purchase_quantity(), $grouped_product_child ),
 												'placeholder' => '0',
 											)
 										);
 
-										do_action( 'botiga_quick_view_after_add_to_cart_quantity' );
+										do_action( "botiga_{$hook_prefix}_after_add_to_cart_quantity" );
 									}
 
 									$value = ob_get_clean();
 									break;
 								case 'label':
 									$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
-									$value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( 'botiga_quick_view_grouped_product_list_link', $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
+									$value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( "botiga_{$hook_prefix}_grouped_product_list_link", $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
 									$value .= '</label>';
 									break;
 								case 'price':
@@ -1182,9 +1210,9 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 									break;
 							}
 
-							echo '<td class="woocommerce-grouped-product-list-item__' . esc_attr( $column_id ) . '">' . apply_filters( 'botiga_quick_view_grouped_product_list_column_' . $column_id, $value, $grouped_product_child ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							echo '<td class="woocommerce-grouped-product-list-item__' . esc_attr( $column_id ) . '">' . apply_filters( "botiga_{$hook_prefix}_grouped_product_list_column_" . $column_id, $value, $grouped_product_child ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-							do_action( 'botiga_quick_view_grouped_product_list_after_' . $column_id, $grouped_product_child );
+							do_action( "botiga_{$hook_prefix}_grouped_product_list_after_" . $column_id, $grouped_product_child );
 						}
 
 						echo '</tr>';
@@ -1192,7 +1220,7 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 					$post = $previous_post;
 					setup_postdata( $post );
 
-					do_action( 'botiga_quick_view_grouped_product_list_after', $grouped_product_columns, $quantites_required, $product );
+					do_action( "botiga_{$hook_prefix}_grouped_product_list_after", $grouped_product_columns, $quantites_required, $product );
 					?>
 				</tbody>
 			</table>
@@ -1201,26 +1229,27 @@ function botiga_quick_view_grouped_add_to_cart( $product ) {
 
 			<?php if ( $quantites_required && $show_add_to_cart_button ) : ?>
 
-				<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); ?>
+				<?php do_action( "botiga_{$hook_prefix}_before_add_to_cart_button" ); ?>
 
 				<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
-				<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+				<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_button" ); ?>
 
 			<?php endif; ?>
 		</form>
 
-		<?php do_action( 'botiga_quick_view_after_add_to_cart_form' ); ?>
+		<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_form" ); ?>
 	
 	<?php endif;
 }
 
 /**
- * Quick view output the variable product add to cart area.
+ * Botiga output for variable product add to cart area.
+ * The purpose is avoid third party plugins hooking here
  */
-function botiga_quick_view_variable_add_to_cart( $product ) {
+function botiga_variable_add_to_cart( $product, $hook_prefix = '' ) {
 	// Get Available variations?
-	$get_variations = count( $product->get_children() ) <= apply_filters( 'botiga_quick_view_ajax_variation_threshold', 30, $product );
+	$get_variations = count( $product->get_children() ) <= apply_filters( "botiga_{$hook_prefix}_ajax_variation_threshold", 30, $product );
 
 	$available_variations = $get_variations ? $product->get_available_variations() : false;
 	$attributes           = $product->get_variation_attributes();
@@ -1230,13 +1259,13 @@ function botiga_quick_view_variable_add_to_cart( $product ) {
 	$variations_json = wp_json_encode( $available_variations );
 	$variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_json ) : _wp_specialchars( $variations_json, ENT_QUOTES, 'UTF-8', true );
 
-	do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+	do_action( "botiga_{$hook_prefix}_before_add_to_cart_form" ); ?>
 
-	<form class="variations_form cart" action="<?php echo esc_url( apply_filters( 'botiga_quick_view_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
-		<?php do_action( 'botiga_quick_view_before_variations_form' ); ?>
+	<form class="variations_form cart" action="<?php echo esc_url( apply_filters( "botiga_{$hook_prefix}_add_to_cart_form_action", $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
+		<?php do_action( "botiga_{$hook_prefix}_before_variations_form" ); ?>
 
 		<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
-			<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'botiga_quick_view_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'botiga' ) ) ); ?></p>
+			<p class="stock out-of-stock"><?php echo esc_html( apply_filters( "botiga_{$hook_prefix}_out_of_stock_message", __( 'This product is currently out of stock and unavailable.', 'botiga' ) ) ); ?></p>
 		<?php else : ?>
 			<table class="variations" cellspacing="0">
 				<tbody>
@@ -1252,7 +1281,7 @@ function botiga_quick_view_variable_add_to_cart( $product ) {
 											'product'   => $product,
 										)
 									);
-									echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'botiga_quick_view_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'botiga' ) . '</a>' ) ) : '';
+									echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( "botiga_{$hook_prefix}_reset_variations_link", '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'botiga' ) . '</a>' ) ) : '';
 								?>
 							</td>
 						</tr>
@@ -1265,29 +1294,29 @@ function botiga_quick_view_variable_add_to_cart( $product ) {
 					/**
 					 * Hook: woocommerce_before_single_variation.
 					 */
-					do_action( 'botiga_quick_view_before_single_variation' ); ?>
+					do_action( "botiga_{$hook_prefix}_before_single_variation" ); ?>
 
 					<div class="woocommerce-variation single_variation"></div>
 					<div class="woocommerce-variation-add-to-cart variations_button">
-						<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
+						<?php do_action( "botiga_{$hook_prefix}_before_add_to_cart_button" ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
 
 						<?php
-						do_action( 'botiga_quick_view_before_add_to_cart_quantity' );
+						do_action( "botiga_{$hook_prefix}_before_add_to_cart_quantity" );
 
 						woocommerce_quantity_input(
 							array(
-								'min_value'   => apply_filters( 'botiga_quick_view_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-								'max_value'   => apply_filters( 'botiga_quick_view_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+								'min_value'   => apply_filters( "botiga_{$hook_prefix}_quantity_input_min", $product->get_min_purchase_quantity(), $product ),
+								'max_value'   => apply_filters( "botiga_{$hook_prefix}_quantity_input_max", $product->get_max_purchase_quantity(), $product ),
 								'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 							)
 						);
 
-						do_action( 'botiga_quick_view_after_add_to_cart_quantity' );
+						do_action( "botiga_{$hook_prefix}_after_add_to_cart_quantity" );
 						?>
 
 						<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
-						<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+						<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_button" ); ?>
 
 						<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
 						<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
@@ -1313,9 +1342,10 @@ function botiga_quick_view_variable_add_to_cart( $product ) {
 
 
 /**
- * Quick view output the external product add to cart area.
+ * Botiga output for external product add to cart area.
+ * The purpose is avoid third party plugins hooking here
  */
-function botiga_quick_view_external_add_to_cart( $product ) {
+function botiga_external_add_to_cart( $product, $hook_prefix = '' ) {
 	if ( ! $product->add_to_cart_url() ) {
 		return;
 	}
@@ -1323,19 +1353,31 @@ function botiga_quick_view_external_add_to_cart( $product ) {
 	$product_url = $product->add_to_cart_url();
 	$button_text = $product->single_add_to_cart_text();
 
-	do_action( 'botiga_quick_view_before_add_to_cart_form' ); ?>
+	do_action( "botiga_{$hook_prefix}_before_add_to_cart_form" ); ?>
 
 	<form class="cart" action="<?php echo esc_url( $product_url ); ?>" method="get">
-		<?php do_action( 'botiga_quick_view_before_add_to_cart_button' ); ?>
+		<?php do_action( "botiga_{$hook_prefix}_before_add_to_cart_button" ); ?>
 
 		<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $button_text ); ?></button>
 
 		<?php wc_query_string_form_fields( $product_url ); ?>
 
-		<?php do_action( 'botiga_quick_view_after_add_to_cart_button' ); ?>
+		<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_button" ); ?>
 	</form>
 
-	<?php do_action( 'botiga_quick_view_after_add_to_cart_form' );
+	<?php do_action( "botiga_{$hook_prefix}_after_add_to_cart_form" );
+}
+
+/**
+ * Botiga output for product price.
+ * The purpose is avoid third party plugins hooking here
+ */
+function botiga_single_product_price( $hook_prefix = '' ) {
+	global $product; ?>
+
+	<p class="<?php echo esc_attr( apply_filters( "botiga_{$hook_prefix}_product_price_class", 'price' ) ); ?>"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+
+<?php
 }
 
 /**
@@ -1370,5 +1412,27 @@ function botiga_sticky_add_to_cart_product_image() {
 }
 
 function botiga_sticky_add_to_cart_product_title() {
-	the_title( '<h5>', '</h5>' );
+	the_title( '<h5 class="sticky-addtocart-title">', '</h5>' );
+}
+
+function botiga_sticky_add_to_cart_product_addtocart() {
+	global $product;
+
+	switch ( $product->get_type() ) {
+		case 'grouped':
+			botiga_grouped_add_to_cart( $product, 'single_sticky_addtocart' );
+			break;
+		
+		case 'variable':
+			botiga_variable_add_to_cart( $product, 'single_sticky_addtocart' );
+			break;
+
+		case 'external':
+			botiga_external_add_to_cart( $product, 'single_sticky_addtocart' );
+			break;
+		
+		default:
+			botiga_simple_add_to_cart( $product, 'single_sticky_addtocart' );
+			break;
+	}
 }

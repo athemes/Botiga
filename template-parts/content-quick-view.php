@@ -97,19 +97,19 @@ $product_id = $product->get_id(); ?>
                 <?php 
                 switch ( $product->get_type() ) {
                     case 'grouped':
-                        botiga_quick_view_grouped_add_to_cart( $product );
+                        botiga_grouped_add_to_cart( $product, 'quick_view' );
                         break;
                     
                     case 'variable':
-                        botiga_quick_view_variable_add_to_cart( $product );
+                        botiga_variable_add_to_cart( $product, 'quick_view' );
                         break;
 
                     case 'external':
-                        botiga_quick_view_external_add_to_cart( $product );
+                        botiga_external_add_to_cart( $product, 'quick_view' );
                         break;
                     
                     default:
-                        botiga_quick_view_simple_add_to_cart( $product );
+                        botiga_simple_add_to_cart( $product, 'quick_view' );
                         break;
                 } ?>
 

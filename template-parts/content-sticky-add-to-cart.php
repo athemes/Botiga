@@ -49,11 +49,11 @@ if( $single_sticky_add_to_cart_device_visibility === 'mobile-only' ) {
                     $class = 'product-title';
                     break;
 
-                case 'woocommerce_template_single_price':
+                case 'botiga_single_product_price':
                     $class = 'product-price';
                     break;
 
-                case 'woocommerce_template_single_add_to_cart':
+                case 'botiga_sticky_add_to_cart_product_addtocart':
                     $class = 'product-addtocart';
                     break;
             }
