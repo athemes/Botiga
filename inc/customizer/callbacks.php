@@ -124,6 +124,95 @@ function botiga_callback_footer_credits_divider() {
 }
 
 /**
+ * Footer copyright alignment
+ */
+function botiga_callback_footer_copyright_alignment() {
+    $layout = get_theme_mod( 'footer_copyright_layout', 'col2' );
+
+	if ( $layout !== 'col2' ) {
+		return true;
+	} else {
+		return false;
+	}      
+}
+
+/**
+ * Footer copyright elements
+ */
+function botiga_callback_footer_copyright_elements( $element, $check_columns_number = false ) {
+	$elements = get_theme_mod( 'footer_copyright_elements', array( 'footer_credits', 'footer_social_profiles' ) );
+
+	if ( in_array( $element, $elements ) ) {
+		if( $check_columns_number ) {
+			$cols = get_theme_mod( 'footer_copyright_layout', 'col2' );
+
+			if( $cols === 'col2' ) {
+				return true; 
+			} else {
+				return false;
+			}
+		}
+
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Footer payment icons
+ */
+function botiga_callback_footer_payment_show() {
+    $enable = get_theme_mod( 'footer_payment_show', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}      
+}
+
+/**
+ * Footer navigation menu
+ */
+function botiga_callback_footer_navigation_menu_show() {
+    $enable = get_theme_mod( 'footer_navigation_menu_show', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}      
+}
+
+/**
+ * Footer HTML
+ */
+function botiga_callback_footer_html_show() {
+    $enable = get_theme_mod( 'footer_html_show', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}      
+}
+
+/**
+ * Footer Shortcode
+ */
+function botiga_callback_footer_shortcode_show() {
+    $enable = get_theme_mod( 'footer_shortcode_show', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}      
+}
+
+/**
  * Enable custom palette
  */
 function botiga_callback_custom_palette() {

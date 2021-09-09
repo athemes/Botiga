@@ -101,6 +101,24 @@
     }    
 }
 
+.footer-copyright-elements {
+    > div {
+        & + div {
+            margin-top: 15px;
+        }
+    }
+
+    .botiga-credits {
+        line-height: 1;
+    }
+
+    .botiga-html {
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
 .back-to-top {
     position: fixed;
     bottom: -70px;

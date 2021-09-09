@@ -94,6 +94,21 @@ function botiga_sanitize_single_add_to_cart_elements( $input ) {
 }
 
 /**
+ * Sanitize footer copyright elements
+ */
+function botiga_sanitize_footer_copyright_elements( $input ) {
+    $input     = (array) $input;
+    $sanitized = array();
+
+    foreach ( $input as $sub_value ) {
+        if ( in_array( $sub_value, array( 'footer_credits', 'footer_social_profiles', 'footer_payment_icons', 'footer_navigation_menu', 'footer_html', 'footer_shortcode' ), true ) ) {
+            $sanitized[] = $sub_value;
+        }
+    }
+    return $sanitized;
+}
+
+/**
  * Sanitize top bar components
  */
 function botiga_sanitize_topbar_components( $input ) {

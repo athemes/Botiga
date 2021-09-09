@@ -320,8 +320,9 @@ body.mobile-menu-visible {
 	} 
 }
 
-/* Secondary navigation */
-.secondary-navigation {
+/* Secondary & Footer copyright navigation  */
+.secondary-navigation,
+.botiga-footer-copyright-navigation {
 	display: block;
 
 	ul {
@@ -331,9 +332,41 @@ body.mobile-menu-visible {
 		padding-left: 0;
 
 		li {
+			padding-bottom: 0;
 			a {
 				padding: 0 10px;
+				text-decoration: none;
 			}
+		}
+	}
+}
+
+.header-elements,
+.footer-copyright-elements {
+	&:nth-child(1) {
+		ul {
+			li:first-child {
+				a {
+					padding-left: 0;
+				}
+			}
+		}
+	}
+	&:nth-child(2) {
+		ul {
+			li:last-child {
+				a {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+
+.footer-copyright-elements {
+	&:nth-child(2) {
+		ul {
+			justify-content: flex-end;
 		}
 	}
 }
