@@ -114,7 +114,9 @@
     "main_header_color": ".site-header .site-title a,.site-header .main-navigation .menu > li > a, .site-header .header-contact a",
     "scrolltop_color": ".back-to-top",
     "topbar_color": ".top-bar, .top-bar a",
-    "footer_credits_text_color": ".site-info, .site-info a",
+    "footer_credits_text_color": ".site-info",
+    "footer_credits_links_color": ".site-info a",
+    "footer_credits_links_color_hover": ".site-info a:hover",
     "footer_widgets_links_color": ".widget-column .widget a",
     "footer_widgets_text_color": ".widget-column .widget",
     "footer_widgets_title_color": ".widget-column .widget .widget-title",
@@ -191,7 +193,8 @@
     "color_link_hover": "a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):hover,.wp-block-columns p a:hover,.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover,.woocommerce-orders-table__cell-order-number a:hover, .woocommerce-MyAccount-content p a:hover,.widget a:not(.wc-forward):hover,.botiga-related-posts .related-post h3 a:hover,.botiga-related-posts .related-post .posted-on a:hover",
     "button_color_hover": "button:hover,a.button:not(.wc-forward):hover,.a.button.checkout,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.woocommerce-pagination li .page-numbers:hover,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover",
     "scrolltop_color_hover": ".back-to-top:hover",
-    "footer_widgets_links_hover_color": ".widget-column .widget a:hover"
+    "footer_widgets_links_hover_color": ".widget-column .widget a:hover",
+    "footer_credits_links_color_hover": ".site-info a:hover"
   };
   $.each($color_hover_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -391,6 +394,12 @@
       $('table, table th, table td, table tr, .woocommerce-tabs ul.tabs,.product-gallery-summary .product_meta').css('border-color', color);
       $('.site-header-cart .product_list_widget li a.remove').css('background-color', to);
       $('.woocommerce-tabs ul.tabs li.active a').css('border-color', to);
+    });
+  }); //Footer copyright
+
+  wp.customize('footer_copyright_elements_spacing_desktop', function (value) {
+    value.bind(function (to) {
+      $('.footer-copyright-elements>div+div').css('margin-top', to + 'px');
     });
   }); //Back to top
 

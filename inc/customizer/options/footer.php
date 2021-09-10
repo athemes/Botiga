@@ -532,7 +532,7 @@ $wp_customize->add_control(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_footer_credits',
 			'controls_general'		=> json_encode( array( '#customize-control-footer_copyright_layout','#customize-control-footer_divider_9', '#customize-control-footer_divider_8', '#customize-control-footer_credits_container','#customize-control-footer_content_alignment','#customize-control-footer_copyright_elements', '#customize-control-footer_credits','#customize-control-footer_credits_position', '#customize-control-social_profiles_footer','#customize-control-social_profiles_footer_position') ),
-			'controls_design'		=> json_encode( array( '#customize-control-footer_credits_divider', '#customize-control-footer_credits_divider_size', '#customize-control-footer_credits_divider_color', '#customize-control-footer_credits_divider_width', '#customize-control-footer_divider_7', '#customize-control-footer_divider_6', '#customize-control-footer_credits_padding_bottom', '#customize-control-footer_credits_padding', '#customize-control-footer_credits_text_color', '#customize-control-footer_credits_background' ) ),
+			'controls_design'		=> json_encode( array( '#customize-control-footer_credits_divider', '#customize-control-footer_credits_divider_size', '#customize-control-footer_credits_divider_color', '#customize-control-footer_credits_divider_width', '#customize-control-footer_divider_7', '#customize-control-footer_divider_6', '#customize-control-footer_credits_padding_bottom', '#customize-control-footer_credits_padding', '#customize-control-footer_credits_text_color','#customize-control-footer_credits_links_color','#customize-control-footer_credits_links_color_hover', '#customize-control-footer_credits_background' ) ),
 		)
 	)
 );
@@ -599,7 +599,8 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'footer_con
 			'left' 	 => esc_html__( 'Left', 'botiga' ),
 			'center' => esc_html__( 'Center', 'botiga' ),
 			'right'  => esc_html__( 'Right', 'botiga' )
-		)
+		),
+		'priority' => 20
 	)
 ) );
 
@@ -621,8 +622,8 @@ $wp_customize->add_control(
 			'label'   => esc_html__( 'Elements', 'botiga' ),
 			'section' => 'botiga_section_footer_credits',
 			'choices' => array(
-				'footer_credits'         => esc_html__( 'Footer Credits', 'botiga' ),
-				'footer_social_profiles' => esc_html__( 'Footer Social Profiles', 'botiga' )
+				'footer_credits'         => esc_html__( 'Credits', 'botiga' ),
+				'footer_social_profiles' => esc_html__( 'Social Profiles', 'botiga' )
 			),
 			'priority' => 20
 		) 
@@ -777,6 +778,46 @@ $wp_customize->add_control(
 		'footer_credits_text_color',
 		array(
 			'label'         	=> esc_html__( 'Text color', 'botiga' ),
+			'section'       	=> 'botiga_section_footer_credits',
+			'priority' 			=> 80
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'footer_credits_links_color',
+	array(
+		'default'           => '#212121',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'footer_credits_links_color',
+		array(
+			'label'         	=> esc_html__( 'Links color', 'botiga' ),
+			'section'       	=> 'botiga_section_footer_credits',
+			'priority' 			=> 80
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'footer_credits_links_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'footer_credits_links_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Links color hover', 'botiga' ),
 			'section'       	=> 'botiga_section_footer_credits',
 			'priority' 			=> 80
 		)

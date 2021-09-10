@@ -121,8 +121,10 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 									} ?>
 
 								</div>
-							<?php else : ?>
-								<div class="col-12 footer-copyright-elements">
+							<?php else : 
+								$footer_content_alignment = get_theme_mod( 'footer_content_alignment', 'left' ); ?>
+								
+								<div class="col-12 footer-copyright-elements footer-copyright-alignment-<?php echo esc_attr( $footer_content_alignment ); ?>">
 
 									<?php 
 									foreach( $elements as $element ) {

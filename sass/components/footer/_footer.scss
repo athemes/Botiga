@@ -102,12 +102,6 @@
 }
 
 .footer-copyright-elements {
-    > div {
-        & + div {
-            margin-top: 15px;
-        }
-    }
-
     .botiga-credits {
         line-height: 1;
     }
@@ -115,6 +109,37 @@
     .botiga-html {
         p:last-child {
             margin-bottom: 0;
+        }
+    }
+
+    &.footer-copyright-alignment-left,
+    &.footer-copyright-alignment-center,
+    &.footer-copyright-alignment-right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &.footer-copyright-alignment-left {
+        align-items: flex-start;
+    }
+
+    &.footer-copyright-alignment-center {
+        align-items: center;
+        text-align: center;
+    }
+
+    &.footer-copyright-alignment-right {
+        align-items: flex-end;
+        text-align: right;
+    }
+}
+
+@media(max-width: 767px) {
+    .footer-copyright-elements {
+        &.col-md-6 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 }

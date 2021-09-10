@@ -490,7 +490,7 @@ wp.customize('color_palettes', function (control) {
   control.bind(function () {
     var palette = control.get(); //Color 1 Button color, Link color
 
-    var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default'];
+    var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color'];
 
     for (var _i = 0, _elements = elements1; _i < _elements.length; _i++) {
       var element = _elements[_i];
@@ -499,7 +499,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
 
 
-    var elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover'];
+    var elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover'];
 
     for (var _i2 = 0, _elements2 = elements2; _i2 < _elements2.length; _i2++) {
       var _element = _elements2[_i2];

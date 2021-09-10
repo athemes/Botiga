@@ -345,12 +345,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'footer_widgets_links_color', '', '.widget-column .widget a' );
 			$css .= $this->get_color_css( 'footer_widgets_links_hover_color', '', '.widget-column .widget a:hover' );
 			$css .= $this->get_background_color_css( 'footer_credits_background', '', '.site-footer' );
-			$css .= $this->get_color_css( 'footer_credits_text_color', '', '.site-info, .site-info a' );
+			$css .= $this->get_color_css( 'footer_credits_text_color', '', '.site-info' );
 			$css .= $this->get_fill_css( 'footer_credits_text_color', '', '.site-info .ws-svg-icon svg' );
+			$css .= $this->get_color_css( 'footer_credits_links_color', '', '.site-info a' );
+			$css .= $this->get_color_css( 'footer_credits_links_color_hover', '', '.site-info a:hover' );
 
 			$footer_credits_padding_desktop 		= get_theme_mod( 'footer_credits_padding_desktop', 30 );
 			$footer_credits_padding_bottom_desktop 	= get_theme_mod( 'footer_credits_padding_bottom_desktop', 60 );
 			$css .= ".site-info { padding-top:" . esc_attr( $footer_credits_padding_desktop ) . 'px;padding-bottom:' . esc_attr( $footer_credits_padding_bottom_desktop ) . "px;}" . "\n";
+
+			$footer_copyright_elements_spacing_desktop = get_theme_mod( 'footer_copyright_elements_spacing_desktop', 15 );
+			$css .= ".footer-copyright-elements>div+div { margin-top:" . esc_attr( $footer_copyright_elements_spacing_desktop ) . "px; }" . "\n";
 
 			//Woocommerce
 			$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
