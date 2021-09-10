@@ -892,6 +892,11 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$button_layout 	   = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 	$layout			   = get_theme_mod( 'shop_product_card_layout', 'layout1' );
 	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+
+	//Check for gb option to hide or show add to cart button
+	if( strpos( $html, 'wp-block-button' ) === FALSE ) {
+		$button_layout = 'layout1';
+	}
 	
 	//Loop image wrapper extra class
 	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
