@@ -241,10 +241,10 @@ function botiga_dashboard_settings( $settings ) {
 
 	// Review.
 	$settings['review_link']       = 'https://wordpress.org/support/theme/botiga/reviews/';
-	$settings['suggest_idea_link'] = 'https://athemes.circle.so/c/give-feedback';
+	$settings['suggest_idea_link'] = 'https://athemes.com/feature-request/';
 
 	// Support.
-	$settings['support_link']     = 'https://athemes.com/support/';
+	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
 	$settings['support_pro_link'] = 'https://athemes.com/theme/botiga-pro/?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
 
 	// Community.
@@ -253,7 +253,7 @@ function botiga_dashboard_settings( $settings ) {
 	$theme = wp_get_theme();
 	// Changelog.
 	$settings['changelog_version'] = $theme->version;
-	$settings['changelog_link']    = 'https://athemes.com/changelog/botiga-pro/';
+	$settings['changelog_link']    = 'https://athemes.com/changelog/botiga/';
 	
 	//Has pro
 	$settings['has_pro'] = false;
