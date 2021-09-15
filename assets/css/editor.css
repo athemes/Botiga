@@ -1241,6 +1241,13 @@ div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-link {
   }
 }
 
+@media screen and (max-width: 575px) {
+  div.editor-styles-wrapper ul.products li.product {
+    float: left;
+    width: 100%;
+  }
+}
+
 div.editor-styles-wrapper .woocommerce-pagination {
   clear: both;
 }

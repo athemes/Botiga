@@ -461,6 +461,26 @@
     value.bind(function (to) {
       $('.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item').css('margin-right', to + 'px');
     });
+  }); //Cart
+
+  wp.customize('shop_cart_show_coupon_form', function (value) {
+    value.bind(function (to) {
+      if (!to) {
+        $('.woocommerce-cart .coupon').css('display', 'none');
+      } else {
+        $('.woocommerce-cart .coupon').css('display', 'block');
+      }
+    });
+  }); //Checkout
+
+  wp.customize('shop_checkout_show_coupon_form', function (value) {
+    value.bind(function (to) {
+      if (!to) {
+        $('.woocommerce-checkout .woocommerce-form-coupon-toggle').css('display', 'none');
+      } else {
+        $('.woocommerce-checkout .woocommerce-form-coupon-toggle').css('display', 'block');
+      }
+    });
   }); //Responsive
 
   var $devices = {

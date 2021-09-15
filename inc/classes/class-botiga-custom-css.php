@@ -454,6 +454,18 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_stroke_css( 'color_link_default', '', '.has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav:hover svg path' );
 			$css .= $this->get_color_css( 'color_body_text', '', '.woocommerce-cart .product-name a,.woocommerce-cart .product-remove a' );
 			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover' );
+			
+			//Cart display coupon form
+			$shop_cart_show_coupon_form = get_theme_mod( 'shop_cart_show_coupon_form', 1 );
+			if( !$shop_cart_show_coupon_form ) {
+				$css .= '.woocommerce-cart .coupon { display: none; }';
+			}
+
+			//Cart display coupon form
+			$shop_checkout_show_coupon_form = get_theme_mod( 'shop_checkout_show_coupon_form', 1 );
+			if( !$shop_checkout_show_coupon_form ) {
+				$css .= '.woocommerce-checkout .woocommerce-form-coupon-toggle { display: none; }';
+			}
 
 			//My account
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a' );

@@ -706,13 +706,32 @@ $wp_customize->add_control(
 		)
 	)
 );
+$wp_customize->add_setting(
+	'shop_cart_show_coupon_form',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_cart_show_coupon_form',
+		array(
+			'label'         	=> esc_html__( 'Display Coupon Form', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_cart',
+			'priority'	 		=> 50
+		)
+	)
+);
 
 //Checkout
 $wp_customize->add_setting(
 	'shop_checkout_layout',
 	array(
 		'default'           => 'layout1',
-		'sanitize_callback' => 'sanitize_key',
+		'sanitize_callback' => 'sanitize_key'
 	)
 );
 $wp_customize->add_control(
@@ -737,6 +756,25 @@ $wp_customize->add_control(
 		)
 	)
 ); 
+$wp_customize->add_setting(
+	'shop_checkout_show_coupon_form',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_checkout_show_coupon_form',
+		array(
+			'label'         	=> esc_html__( 'Display Coupon Form', 'botiga' ),
+			'section'       	=> 'woocommerce_checkout',
+			'priority'	 		=> 30
+		)
+	)
+);
 
 /**
  * Styling

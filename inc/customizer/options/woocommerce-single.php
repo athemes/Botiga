@@ -65,7 +65,8 @@ $wp_customize->add_control(
 					'label' => esc_html__( 'Layout 3', 'botiga' ),
 					'url'   => '%s/assets/img/sg3.svg'
 				),															
-			)
+			),
+			'priority'	 => 20
 		)
 	)
 );
@@ -85,6 +86,7 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Gallery thumbnail slider', 'botiga' ),
 			'description'       => esc_html__( 'Requires page refresh after saving', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 30
 		)
 	)
 );
@@ -104,6 +106,7 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Image zoom effects', 'botiga' ),
 			'description'       => esc_html__( 'Requires page refresh after saving', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 40
 		)
 	)
 );
@@ -122,6 +125,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Breadcrumbs', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 50
 		)
 	)
 );
@@ -140,6 +144,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'SKU', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 60
 		)
 	)
 );
@@ -158,6 +163,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Categories', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 70
 		)
 	)
 );
@@ -176,6 +182,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Tags', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 80
 		)
 	)
 );
@@ -194,6 +201,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Product tabs', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 90
 		)
 	)
 );
@@ -212,6 +220,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Upsell products', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 100
 		)
 	)
 );
@@ -230,6 +239,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Related products', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 110
 		)
 	)
 );
@@ -270,7 +280,8 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'single
 		'input_attrs' => array (
 			'min'	=> 0,
 			'max'	=> 200
-		)		
+		),
+		'priority'	 => 120
 	)
 ) );
 
@@ -289,6 +300,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Product title color', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 130
 		)
 	)
 );
@@ -302,6 +314,7 @@ $wp_customize->add_setting( 'single_product_styling_divider_1',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'single_product_styling_divider_1',
 		array(
 			'section' 		=> 'botiga_section_single_product',
+			'priority'	 	=> 140
 		)
 	)
 );
@@ -337,6 +350,7 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'single
 		'input_attrs' => array (
 			'min'	=> 0,
 			'max'	=> 200
-		)		
+		),
+		'priority'	 => 150
 	)
 ) );
