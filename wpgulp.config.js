@@ -69,6 +69,9 @@ const custScriptsFile = 'customizer-scripts';
 // Path to JS carousel.
 const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
 
+// Path to JS sidebar.
+const jsSidebarSRC = './assets/js/src/botiga-sidebar.js';
+
 // Path to JS custom scripts folder.
 const jsCustomSRC = './assets/js/src/custom.js';
 
@@ -80,6 +83,9 @@ const jsCustomFile = 'custom';
 
 // Compiled JS carousel file name.
 const jsCarouselFile = 'botiga-carousel';
+
+// Compiled JS sidebar file name.
+const jsSidebarFile = 'botiga-sidebar';
 
 // Images options.
 
@@ -105,6 +111,9 @@ const watchJsCustom = './assets/js/src/custom.js';
 
 // Path to all carousel JS files.
 const watchJsCarousel = './assets/js/src/botiga-carousel.js';
+
+// Path to all sidebar JS files.
+const watchJsSidebar = './assets/js/src/botiga-sidebar.js';
 
 // Path to all custom JS files.
 const watchJsCustomizer = './assets/js/src/*.js';
@@ -191,10 +200,12 @@ module.exports = {
 	custScriptsFile,
 	custFile,
 	jsCarouselSRC,
+	jsSidebarSRC,
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,
 	jsCarouselFile,
+	jsSidebarFile,
 	jsCustomFile,
 	imgSRC,
 	imgDST,
@@ -202,6 +213,7 @@ module.exports = {
 	watchEditorStyles,
 	watchJsVendor,
 	watchJsCarousel,
+	watchJsSidebar,
 	watchJsCustom,
 	watchJsCustomizer,
 	watchPhp,

@@ -125,6 +125,15 @@ ul.products {
 	}
 }
 
+@media screen and (max-width: 575px) {
+	ul.products {
+		li.product {
+			float: left;
+			width: 100%;
+		}
+	}
+}
+
 .woocommerce-pagination {
 	clear: both;
 }

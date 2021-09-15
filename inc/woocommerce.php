@@ -155,6 +155,14 @@ function botiga_woocommerce_scripts() {
 		wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION );
 		wp_enqueue_script( 'botiga-carousel' );
 	}
+
+	// Sidebar
+	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+
+	if( 'sidebar-slide' === $shop_archive_sidebar && ( is_shop() || is_product_category() || is_product_tag() ) ) {
+		wp_register_script( 'botiga-sidebar', get_template_directory_uri() . '/assets/js/botiga-sidebar.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
+		wp_enqueue_script( 'botiga-sidebar' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
 
@@ -235,7 +243,13 @@ function botiga_wc_archive_layout() {
 
 	if ( 'no-sidebar' === $archive_sidebar ) {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-	}	
+	}
+
+	if ( 'sidebar-top' === $archive_sidebar ) {
+		$shop_archive_sidebar_top_columns = get_theme_mod( 'shop_archive_sidebar_top_columns', '4' );
+
+		$archive_sidebar .= ' sidebar-top-columns-' . $shop_archive_sidebar_top_columns;
+	}
 	
 	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
 
@@ -384,6 +398,31 @@ function botiga_wc_hooks() {
 
 	if ( !$shop_results_count ) {
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+	}
+	
+	//Shop sidebar
+	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+
+	if( 'sidebar-slide' === $shop_archive_sidebar ) {
+		add_action( 'woocommerce_before_shop_loop', function() {
+			$shop_archive_sidebar_open_button_text = get_theme_mod( 'shop_archive_sidebar_open_button_text', '' );
+			$shop_archive_sidebar_open_icon        = get_theme_mod( 'shop_archive_sidebar_open_icon', 0 );
+
+			$icon = '';
+			if( $shop_archive_sidebar_open_icon ) {
+				$icon = botiga_get_svg_icon( 'icon-filters' );
+			}
+
+			$text = '';
+			if( $shop_archive_sidebar_open_button_text ) {
+				$text = $shop_archive_sidebar_open_button_text;
+			}
+
+			echo '<div class="sidebar-open-wrapper">';
+			echo '    <a href="#" role="button" class="sidebar-open" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-open\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. $icon . esc_html( $text ) .'</a>'; 
+			echo '</div>';
+			
+		}, 19 );
 	}
 
 	//Cart cross sell

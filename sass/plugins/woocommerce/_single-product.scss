@@ -726,3 +726,48 @@ body {
 	}
 
 }
+
+/* Reviews */
+.woocommerce-Reviews {
+	#review_form_wrapper {
+		background: #f7f7f7;
+		padding: 40px;
+		margin-top: 40px;
+		.comment-reply-title {
+			font-weight: 600;
+		}
+	}
+	#comments {
+		margin-top: 40px;
+		li {
+			list-style: none;
+		}
+		.review {
+			& + .review {
+				margin-top: 40px;
+			}
+			.comment_container {
+				display: flex;
+				align-items: flex-start;
+				.avatar {
+					max-width: 60px;
+					height: auto;
+					margin-right: 20px;
+				}
+				.comment-text {
+					width: 100%;
+					.meta {
+						margin-bottom: 30px;
+					}
+					.description {
+						background: #f7f7f7;
+						padding: 25px;
+						p:last-child {
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

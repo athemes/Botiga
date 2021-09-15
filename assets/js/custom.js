@@ -8,6 +8,27 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var botiga = botiga || {};
 /**
+ * Is the DOM ready?
+ *
+ * This implementation is coming from https://gomakethings.com/a-native-javascript-equivalent-of-jquerys-ready-method/
+ *
+ * @param {Function} fn Callback function to run.
+ */
+
+botiga.helpers = {
+  botigaDomReady: function botigaDomReady(fn) {
+    if (typeof fn !== 'function') {
+      return;
+    }
+
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      return fn();
+    }
+
+    document.addEventListener('DOMContentLoaded', fn, false);
+  }
+};
+/**
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
@@ -635,26 +656,26 @@ botiga.copyLinkToClipboard = {
   }
 };
 /**
- * Is the DOM ready?
- *
- * This implementation is coming from https://gomakethings.com/a-native-javascript-equivalent-of-jquerys-ready-method/
- *
- * @param {Function} fn Callback function to run.
+ * Toggle class
  */
 
-function botigaDomReady(fn) {
-  if (typeof fn !== 'function') {
-    return;
+botiga.toggleClass = {
+  init: function init(event, el, triggerEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    var selector = document.querySelector(el.getAttribute('data-botiga-selector')),
+        classname = el.getAttribute('data-botiga-toggle-class'),
+        classes = selector.classList;
+    classes.toggle(classname);
+
+    if (triggerEvent) {
+      var ev = document.createEvent('HTMLEvents');
+      ev.initEvent(triggerEvent, true, false);
+      window.dispatchEvent(ev);
+    }
   }
-
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    return fn();
-  }
-
-  document.addEventListener('DOMContentLoaded', fn, false);
-}
-
-botigaDomReady(function () {
+};
+botiga.helpers.botigaDomReady(function () {
   botiga.navigation.init();
   botiga.headerSearch.init();
   botiga.quickView.init();

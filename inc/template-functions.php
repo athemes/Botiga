@@ -49,8 +49,8 @@ function botiga_sidebar() {
 	if( is_singular( 'post' ) && get_theme_mod( 'blog_single_layout' ) === 'layout3' ) {
 		return;
 	}
-
-	get_sidebar();
+	
+	get_sidebar();	
 }
 add_action( 'botiga_do_sidebar', 'botiga_sidebar' );
 

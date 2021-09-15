@@ -286,7 +286,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_fill_css( 'color_link_hover', '', '.botiga-share-box-item svg' );
 			$css .= $this->get_fill_css( 'color_link_default', '', '.botiga-share-box-item:hover svg' );
 			
-
 			//Back to top
 			$scrolltop_radius 			= get_theme_mod( 'scrolltop_radius', 30 );
 			$scrolltop_side_offset 		= get_theme_mod( 'scrolltop_side_offset', 30 );
@@ -404,6 +403,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a.wc-forward:not(.checkout-button):hover,.woocommerce-pagination li .page-numbers:hover' );
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.woocommerce-sorting-wrapper', '0.1' );
 
+			//Sidebar
+			$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+
+			if( 'sidebar-top' === $shop_archive_sidebar ) {
+				$css .= $this->get_background_color_css( 'content_cards_background', '', '.sidebar-top+.widget-area .sidebar-wrapper' );
+			}
+			
 			//Woocommerce single
 			$single_sku 	 	= get_theme_mod( 'single_product_sku', 1 );
 			$single_categories  = get_theme_mod( 'single_product_categories', 1 );
@@ -499,7 +505,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			//Widgets
 			$css .= $this->get_background_color_css( 'color_body_text', '', '.widget_price_filter .ui-slider .ui-slider-range' );
-			$css .= $this->get_border_color_rgba_css( 'color_body_text', '', '.widget-area .widget', '0.1' );
+			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.widget-area .widget', 0.1 );
 			$css .= $this->get_color_css( 'button_color', '', '.widget_product_tag_cloud .tag-cloud-link' );
 			$css .= $this->get_color_css( 'button_color_hover', '', '.widget_product_tag_cloud .tag-cloud-link:hover' );
 			$css .= $this->get_background_color_css( 'button_background_color', '', '.widget_product_tag_cloud .tag-cloud-link' );
@@ -839,11 +845,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			if (strlen($color) == 6) {
-					$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
 			} elseif ( strlen( $color ) == 3 ) {
-					$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+				$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
 			} else {
-					return $default;
+				return $default;
 			}
 		
 			$rgb =  array_map('hexdec', $hex);
