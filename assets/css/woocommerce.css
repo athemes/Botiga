@@ -1783,7 +1783,6 @@ body.botiga-scrolling-up .botiga-single-sticky-add-to-cart-wrapper.hide-when-scr
 
 /* Reviews */
 .woocommerce-Reviews #review_form_wrapper {
-  background: #f7f7f7;
   padding: 40px;
   margin-top: 40px;
 }
@@ -1828,7 +1827,6 @@ body.botiga-scrolling-up .botiga-single-sticky-add-to-cart-wrapper.hide-when-scr
 }
 
 .woocommerce-Reviews #comments .review .comment_container .comment-text .description {
-  background: #f7f7f7;
   padding: 25px;
 }
 

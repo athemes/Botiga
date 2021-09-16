@@ -179,11 +179,10 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		 * Payment icons
 		 */
 		public function footer_payment_icons( $position = 'all' ) {
-			$footer_payment_show     = get_theme_mod( 'footer_payment_show', 0 );
 			$footer_payment_image    = get_theme_mod( 'footer_payment_image' );
 			$footer_payment_position = get_theme_mod( 'footer_payment_position', 'right' );
 
-			if( ! $footer_payment_show || $footer_payment_show && ! $footer_payment_image ) {
+			if( ! $footer_payment_image ) {
 				return '';
 			}
 
@@ -201,12 +200,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		 * Navigation menu
 		 */
 		public function footer_navigation_menu( $position = 'all' ) {
-			$footer_navigation_menu_show     = get_theme_mod( 'footer_navigation_menu_show', 0 );
 			$footer_navigation_menu_position = get_theme_mod( 'footer_navigation_menu_position', 'left' );
-
-			if( ! $footer_navigation_menu_show ) {
-				return '';
-			}
 
 			if( $footer_navigation_menu_position !== $position && 'all' !== $position ) {
 				return '';
@@ -229,11 +223,10 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		 * HTML
 		 */
 		public function footer_html( $position = 'all' ) {
-			$footer_html_show     = get_theme_mod( 'footer_html_show', 0 );
 			$footer_html_content  = get_theme_mod( 'footer_html_content' );
 			$footer_html_position = get_theme_mod( 'footer_html_position', 'right' );
 
-			if( ! $footer_html_show || $footer_html_show && ! $footer_html_content ) {
+			if( ! $footer_html_content ) {
 				return '';
 			}
 
@@ -248,11 +241,10 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		 * Shortcode
 		 */
 		public function footer_shortcode( $position = 'all' ) {
-			$footer_shortcode_show     = get_theme_mod( 'footer_shortcode_show', 0 );
 			$footer_shortcode_content  = get_theme_mod( 'footer_shortcode_content' );
 			$footer_shortcode_position = get_theme_mod( 'footer_shortcode_position', 'right' );
 
-			if( ! $footer_shortcode_show || $footer_shortcode_show && ! $footer_shortcode_content ) {
+			if( ! $footer_shortcode_content ) {
 				return '';
 			}
 
