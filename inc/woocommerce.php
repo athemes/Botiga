@@ -583,17 +583,19 @@ function botiga_woocommerce_page_header() {
 		return;
 	}
 
-	$shop_page_title = get_theme_mod( 'shop_page_title', 1 );
+	$shop_archive_header_style 					   = get_theme_mod( 'shop_archive_header_style', 'style1' );
+	$shop_archive_header_style_alignment 		   = $shop_archive_header_style !== 'style2' ? get_theme_mod( 'shop_archive_header_style_alignment', 'center' ) : 'left';
+	$shop_archive_header_style_show_sub_categories = get_theme_mod( 'shop_archive_header_style_show_sub_categories', 0 );
+	$shop_page_title           					   = get_theme_mod( 'shop_page_title', 1 );
+	$shop_breadcrumbs 							   = get_theme_mod( 'shop_breadcrumbs', 1 );
 
 	//Remove elements
 	add_filter( 'woocommerce_show_page_title', '__return_false' );
 	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description' );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description' );
-
-	$shop_breadcrumbs = get_theme_mod( 'shop_breadcrumbs', 1 );
 	?>
-		<header class="woocommerce-page-header">
+		<header class="woocommerce-page-header woocommerce-page-header-<?php echo esc_attr( $shop_archive_header_style ); ?> woocommerce-page-header-alignment-<?php echo esc_attr( $shop_archive_header_style_alignment ); ?>">
 			<div class="container">
 				<?php 
 				if ( $shop_breadcrumbs ) {
@@ -605,6 +607,11 @@ function botiga_woocommerce_page_header() {
 				<?php endif; ?>
 				<?php woocommerce_taxonomy_archive_description(); ?>
 				<?php woocommerce_product_archive_description(); ?>
+				<?php if( is_product_category() && is_product_tag() && $shop_archive_header_style_show_sub_categories ) : ?>
+					<div class="sub-categories-wrapper">
+						categories links
+					</div>
+				<?php endif; ?>
 			</div>
 		</header>
 	<?php

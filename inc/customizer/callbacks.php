@@ -517,3 +517,17 @@ function botiga_callback_shop_archive_sidebar_top() {
 		return false;
 	}	
 }
+
+/**
+ * WooCommerce product catalog page header style
+ */
+function botiga_callback_shop_archive_header_style_alignment() {
+	$style = get_theme_mod( 'shop_archive_header_style', 'style1' );
+
+	if ( 'style2' !== $style ) {
+		return true;
+	} else {
+		return false;
+	}	
+}
+

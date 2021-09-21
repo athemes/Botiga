@@ -778,11 +778,6 @@ div.editor-styles-wrapper .botiga-tabs-style3 .woocommerce-tabs ul.tabs li a {
   border-bottom: 0 !important;
 }
 
-div.editor-styles-wrapper .botiga-tabs-style3 .woocommerce-tabs ul.tabs li.active a, div.editor-styles-wrapper .botiga-tabs-style3 .woocommerce-tabs ul.tabs li:hover a {
-  background: #212121;
-  color: #FFF;
-}
-
 div.editor-styles-wrapper .botiga-tabs-style4 .woocommerce-tabs ul.tabs {
   position: relative;
   border: 0;
@@ -901,6 +896,18 @@ div.editor-styles-wrapper .botiga-tabs-style5.botiga-tabs-align-center .woocomme
 div.editor-styles-wrapper .botiga-tabs-style5.botiga-tabs-align-center .woocommerce-tabs ul.tabs li + li a {
   border-top: 1px solid rgba(33, 33, 33, 0.2);
   border-right: 1px solid rgba(33, 33, 33, 0.2);
+}
+
+div.editor-styles-wrapper .botiga-tabs-style5.botiga-tabs-align-center .woocommerce-tabs ul.tabs li + li.active a {
+  border-left: 0;
+}
+
+div.editor-styles-wrapper .botiga-tabs-align-center .woocommerce-tabs .wc-tabs {
+  text-align: center;
+}
+
+div.editor-styles-wrapper .botiga-tabs-align-right .woocommerce-tabs .wc-tabs {
+  text-align: right;
 }
 
 div.editor-styles-wrapper .woocommerce-password-strength {
