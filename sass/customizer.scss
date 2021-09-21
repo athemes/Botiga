@@ -417,16 +417,17 @@ span.delete:hover {
 }
 .customize-control-color,
 .customize-control-botiga-alpha-color {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
     position: relative;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &.botiga-hide-control[style="display: list-item;"],
+    &.botiga-accordion-hide[style="display: list-item;"] {
+        display: none !important;
+    }
+    &[style="display: list-item;"] {
+        display: flex !important;
+    }
 }
 .wp-picker-container .wp-color-result.button {
     border-radius: 50%;
@@ -736,7 +737,8 @@ span.delete:hover {
 #sub-accordion-section-botiga_section_typography_body li:not(.customize-control-botiga-text-control) .customize-control-title,
 #sub-accordion-section-botiga_section_typography_body li:not(.customize-control-botiga-text-control) .font-control-title strong,
 #sub-accordion-section-botiga_section_typography_headings li:not(.customize-control-botiga-text-control) .customize-control-title,
-#sub-accordion-section-botiga_section_typography_headings li:not(.customize-control-botiga-text-control) .font-control-title strong {
+#sub-accordion-section-botiga_section_typography_headings li:not(.customize-control-botiga-text-control) .font-control-title strong,
+#sub-accordion-section-botiga_section_single_product li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title {
     color: #565D65;
     font-weight: 400;
 }

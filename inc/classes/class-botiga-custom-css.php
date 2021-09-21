@@ -120,9 +120,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
 			$css .= $this->get_color_css( 'color_heading_3', '', 'h3' );
-			$css .= $this->get_color_css( 'color_heading_4', '', 'h4,.product-gallery-summary .product_meta,.product-gallery-summary .product_meta a,.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.woocommerce-tabs ul.tabs li a,.woocommerce-tabs ul.tabs li a:hover,.product-gallery-summary .woocommerce-Price-amount,.order-total .woocommerce-Price-amount, .woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total .woocommerce-Price-amount' );
+			$css .= $this->get_color_css( 'color_heading_4', '', 'h4,.product-gallery-summary .product_meta,.product-gallery-summary .product_meta a,.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a:hover,.product-gallery-summary .woocommerce-Price-amount,.order-total .woocommerce-Price-amount, .woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total .woocommerce-Price-amount' );
 			$css .= $this->get_background_color_css( 'color_heading_4', '', '.site-header-cart .product_list_widget li a.remove' );
-			$css .= $this->get_border_color_css( 'color_heading_4', '', '.woocommerce-tabs ul.tabs li.active a' );
+			$css .= $this->get_border_color_css( 'color_heading_4', '', '.botiga-tabs-style1 .woocommerce-tabs ul.tabs li.active a' );
 			$css .= $this->get_color_css( 'color_heading_5', '', 'h5' );
 			$css .= $this->get_color_css( 'color_heading_6', '', 'h6' );
 			$css .= $this->get_color_css( 'color_forms_text', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus, select:focus, .woocommerce .select2-container .select2-selection--single:focus, .woocommerce-page .select2-container .select2-selection--single:focus,.select2-container--default .select2-selection--single .select2-selection__rendered,.wp-block-search .wp-block-search__input,.wp-block-search .wp-block-search__input:focus' );
@@ -428,6 +428,44 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( !$single_sku && !$single_categories && !$single_tags ) {
 				$css .= ".single-product .product_meta { border-top: 0; }";
 			}
+
+			//Woocommerce single tabs
+			$single_product_tabs_layout    = get_theme_mod( 'single_product_tabs_layout', 'style1' );
+
+			switch ( $single_product_tabs_layout ) {
+				case 'style1':
+					$css .= $this->get_border_color_css( 'single_product_tabs_border_color_active', '', '.botiga-tabs-style1 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style1 .woocommerce-tabs ul.tabs li:hover a' );
+					$css .= $this->get_border_bottom_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style1 .woocommerce-tabs ul.tabs', '0.3' );
+					break;
+				case 'style2':
+					$css .= $this->get_border_top_color_css( 'single_product_tabs_border_color_active', '', '.botiga-tabs-style2 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style2 .woocommerce-tabs ul.tabs li:hover a' );
+					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style2 .woocommerce-tabs ul.tabs li a, .botiga-tabs-style2 .woocommerce-tabs ul.tabs, .botiga-tabs-style2 .woocommerce-tabs ul.tabs li:not(.active):not(:hover) a', '0.3' );
+					break;	
+				case 'style3':
+					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color', '#f5f5f5', '.botiga-tabs-style3 .woocommerce-tabs ul.tabs li:not(.active) a, .botiga-tabs-style3 .woocommerce-tabs ul.tabs li:not(.active):hover a', '0.5' );
+					$css .= $this->get_background_color_css( 'single_product_tabs_background_color_active', '#f5f5f5', '.botiga-tabs-style3 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style3 .woocommerce-tabs ul.tabs li:hover a' );
+					$css .= $this->get_border_bottom_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style3 .woocommerce-tabs ul.tabs', '0.3' );
+					break;
+				case 'style4':
+					$css .= $this->get_border_color_css( 'single_product_tabs_border_color_active', '', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style4 .woocommerce-tabs ul.tabs li:hover a' );
+					$css .= $this->get_background_color_css( 'single_product_tabs_background_color', '#f5f5f5', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a' );
+					$css .= $this->get_background_color_css( 'single_product_tabs_background_color_active', '#f5f5f5', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li.active a' );
+					$css .= $this->get_border_color_css( 'single_product_tabs_background_color_active', '', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a' );
+					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs:before', '0.3' );
+					break;
+				case 'style5':
+					$color_rgba = Botiga_Custom_CSS::get_instance()->to_rgba( get_theme_mod( 'single_product_tabs_remaining_borders', '#212121' ), '0.3' );
+
+					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color', '#f5f5f5', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a', '0.5' );
+					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color_active', '#f5f5f5', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style5 .woocommerce-tabs .panel', '0.7' );
+					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li a, .botiga-tabs-style5 .woocommerce-tabs .panel', '0.3' );
+					$css .= '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a { border-right: 1px solid '.  esc_attr( $color_rgba ) .' }';
+					$css .= '.botiga-tabs-style5.botiga-tabs-align-center .woocommerce-tabs ul.tabs li+li a { border-top-color: '.  esc_attr( $color_rgba ) .'; border-right-color: '.  esc_attr( $color_rgba ) .' }';
+					break;		
+			}
+
+			$css .= $this->get_color_css( 'single_product_tabs_text_color', '', '.woocommerce-tabs ul.tabs li:not(.active) a ,.woocommerce-tabs ul.tabs li:not(.active) a:hover' );
+			$css .= $this->get_color_css( 'single_product_tabs_text_color_active', '', '.woocommerce-tabs ul.tabs li.active a,.woocommerce-tabs ul.tabs li.active a:hover' );
 
 			//Woocommerce single sticky add to cart
 			$single_sticky_add_to_cart = get_theme_mod( 'single_sticky_add_to_cart', 0 );
@@ -748,12 +786,30 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}
 
 		/**
+		 * Get border top color CSS
+		 */
+		public static function get_border_top_color_css( $setting, $default, $selector ) {
+			$mod = get_theme_mod( $setting, $default );
+
+			return $selector . '{ border-top-color:' . esc_attr( $mod ) . ';}' . "\n";
+		}
+
+		/**
 		 * Get border color rgba CSS
 		 */
 		public static function get_border_color_rgba_css( $setting, $default, $selector, $opacity, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
 			return $selector . '{ border-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ( $important ? '!important' : '' ) .';}' . "\n";
+		}
+
+		/**
+		 * Get border bottom color rgba CSS
+		 */
+		public static function get_border_bottom_color_rgba_css( $setting, $default, $selector, $opacity, $important = false ) {
+			$mod = get_theme_mod( $setting, $default );
+
+			return $selector . '{ border-bottom-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
 		
 		/**

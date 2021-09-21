@@ -176,7 +176,7 @@
 	});	
 	
 	//Border hover
-	var $border_hover_options = { "button_border_color_hover":"button:hover,a.button:hover,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover", };
+	var $border_hover_options = { "button_border_color_hover":"button:hover,a.button:hover,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover" };
 
 	$.each( $border_hover_options, function( option, selector ) {
 		wp.customize( option, function( value ) {
@@ -417,7 +417,207 @@
 		value.bind( function( to ) {
 			$( 'ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product' ).css( 'border-width', to + 'px' );
 		} );
-	} );	
+	} );
+
+	//Woocommerce single tabs
+	wp.customize( 'single_product_tabs_border_color_active', function( value ) {
+		value.bind( function( to ) {
+			var single_product_tabs_layout = window.parent.window.wp.customize.control('single_product_tabs_layout').setting.get();
+			
+			$( 'head' ).find( '#botiga-customizer-styles-single_product_tabs_border_color_active' ).remove();
+	
+			var output = '';
+			switch ( single_product_tabs_layout ) {
+				case 'style1':
+				case 'style4':
+					output += '.botiga-tabs-style1 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style1 .woocommerce-tabs ul.tabs li:hover a, .botiga-tabs-style4 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style4 .woocommerce-tabs ul.tabs li:hover a { border-color: '+ to +' !important; }';
+					break;
+					
+				case 'style2':
+					output += '.botiga-tabs-style2 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style2 .woocommerce-tabs ul.tabs li:hover a { border-top-color: '+ to +' !important; }';
+					break;
+					
+				default:
+					output = '';
+					break;
+			}
+
+			if( output ) {
+				$( 'head' ).append( '<style id="botiga-customizer-styles-single_product_tabs_border_color_active">' + output + '</style>' );
+			}
+		} );
+	} );
+	wp.customize( 'single_product_tabs_background_color', function( value ) {
+		value.bind( function( to ) {
+			var single_product_tabs_layout = window.parent.window.wp.customize.control('single_product_tabs_layout').setting.get();
+			
+			$( 'head' ).find( '#botiga-customizer-styles-single_product_tabs_background_color' ).remove();
+	
+			var output = '';
+			switch ( single_product_tabs_layout ) {
+				case 'style3':
+					output += '.botiga-tabs-style3 .woocommerce-tabs ul.tabs li:not(.active) a, .botiga-tabs-style3 .woocommerce-tabs ul.tabs li:not(.active):hover a { background-color: '+ hexToRGB( to, 0.5 ) +' !important; }';
+					break;
+				case 'style4':
+					output += '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a { background-color: '+ to +' !important; }';
+					break;
+
+				case 'style5':
+					output += '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a { background-color: '+ hexToRGB( to, 0.5 ) +' !important; }';
+					break;
+					
+				default:
+					output = '';
+					break;
+			}
+
+			if( output ) {
+				$( 'head' ).append( '<style id="botiga-customizer-styles-single_product_tabs_background_color">' + output + '</style>' );
+			}
+		} );
+	} );
+	wp.customize( 'single_product_tabs_background_color_active', function( value ) {
+		value.bind( function( to ) {
+			var single_product_tabs_layout = window.parent.window.wp.customize.control('single_product_tabs_layout').setting.get();
+			
+			$( 'head' ).find( '#botiga-customizer-styles-single_product_tabs_background_color_active' ).remove();
+	
+			var output = '';
+			switch ( single_product_tabs_layout ) {
+				case 'style3':
+					output += '.botiga-tabs-style3 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style3 .woocommerce-tabs ul.tabs li:hover a { background-color: '+ to +' !important; }';
+					break;
+				case 'style4':
+					output += '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li.active a { background-color: '+ to +' !important; } .botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a { border-color: '+ to +' !important; }';
+					break;
+
+				case 'style5':
+					output += '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style5 .woocommerce-tabs .panel { background-color: '+ hexToRGB( to, 0.7 ) +' !important; }';
+					break;
+					
+				default:
+					output = '';
+					break;
+			}
+
+			if( output ) {
+				$( 'head' ).append( '<style id="botiga-customizer-styles-single_product_tabs_background_color_active">' + output + '</style>' );
+			}
+		} );
+	} );
+	wp.customize( 'single_product_tabs_text_color', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-single_product_tabs_text_color' ).remove();
+	
+			var output = '.woocommerce-tabs ul.tabs li:not(.active) a ,.woocommerce-tabs ul.tabs li:not(.active) a:hover { color: '+ to +' !important; }';
+			
+			if( output ) {
+				$( 'head' ).append( '<style id="botiga-customizer-styles-single_product_tabs_text_color">' + output + '</style>' );
+			}
+		} );
+	} );
+	wp.customize( 'single_product_tabs_text_color_active', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-single_product_tabs_text_color_active' ).remove();
+	
+			var output = '.woocommerce-tabs ul.tabs li.active a,.woocommerce-tabs ul.tabs li.active a:hover { color: '+ to +' !important; }';
+			
+			if( output ) {
+				$( 'head' ).append( '<style id="botiga-customizer-styles-single_product_tabs_text_color_active">' + output + '</style>' );
+			}
+		} );
+	} );
+	wp.customize( 'single_product_tabs_remaining_borders', function( value ) {
+		value.bind( function( to ) {
+			var single_product_tabs_layout = window.parent.window.wp.customize.control('single_product_tabs_layout').setting.get();
+			
+			$( 'head' ).find( '#botiga-customizer-styles-single_product_tabs_remaining_borders' ).remove();
+	
+			var output = '';
+			switch ( single_product_tabs_layout ) {
+				case 'style2':
+					output += '.botiga-tabs-style2 .woocommerce-tabs ul.tabs li a, .botiga-tabs-style2 .woocommerce-tabs ul.tabs, .botiga-tabs-style2 .woocommerce-tabs ul.tabs li:not(.active):not(:hover) a { border-color: '+ hexToRGB( to, 0.3 ) +' !important; }';
+					break;
+
+				case 'style1':
+				case 'style3':
+					output += '.botiga-tabs-style1 .woocommerce-tabs ul.tabs, .botiga-tabs-style3 .woocommerce-tabs ul.tabs { border-bottom-color: '+ hexToRGB( to, 0.3 ) +' !important; }';
+					break;
+				case 'style4':
+					output += '.botiga-tabs-style4 .woocommerce-tabs ul.tabs:before { border-color: '+ hexToRGB( to, 0.3 ) +' !important; }';
+					break;
+					
+				case 'style5':
+					output += '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li a, .botiga-tabs-style5 .woocommerce-tabs .panel { border-color: '+ hexToRGB( to, 0.3 ) +' !important; } .botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a { border-right: 1px solid '+ to +' }';
+					break;
+
+				default:
+					output = '';
+					break;
+			}
+
+			if( output ) {
+				$( 'head' ).append( '<style id="botiga-customizer-styles-single_product_tabs_remaining_borders">' + output + '</style>' );
+			}
+		} );
+	} );
+
+	wp.customize( 'single_product_tabs_layout', function( value ) {
+		value.bind( function( layout ) {
+			$('.site-main').removeClass( 'botiga-tabs-style1 botiga-tabs-style2 botiga-tabs-style3 botiga-tabs-style4 botiga-tabs-style5' );
+			$('.site-main').addClass( 'botiga-tabs-' + layout );
+			
+			//Run the colors code again in this option change
+			//It is like trigger a "change" in the colors options of respective opened section
+			$( window.parent.document ).find( '.control-section.open .alpha-color-control' ).each(function(){
+				var id = $(this).closest('li').attr('id'),
+					element    = $(this).data('customize-setting-link'),
+					color = $(this).val();
+
+				window.parent.window.wp.customize( element ).set('');
+				window.parent.window.wp.customize( element ).set( color );
+				$( '#' + id ).find( '.wp-color-result' ).css( 'background-color', color );
+			});
+
+			// hide and show options based in the selected layout since it's a postMessage option
+			// works together with active_callback in the backend
+			// active_callback works in the first load or when the customize "refresh"
+			switch ( layout ) {
+				case 'style1':
+					hideControls( ['single_product_tabs_background_color', 'single_product_tabs_background_color_active'] );
+					showControls( ['single_product_tabs_border_color_active'] );
+					break;
+
+				case 'style2':
+					hideControls( ['single_product_tabs_background_color', 'single_product_tabs_background_color_active'] );
+					showControls( ['single_product_tabs_border_color_active'] );
+					break;
+
+				case 'style3':
+					hideControls( ['single_product_tabs_border_color_active'] );
+					showControls( ['single_product_tabs_background_color', 'single_product_tabs_background_color_active'] );
+					break;
+
+				case 'style4':
+					showControls( ['single_product_tabs_border_color_active', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active'] );
+					break;
+				
+				case 'style5':
+					hideControls( ['single_product_tabs_border_color_active'] );
+					showControls( ['single_product_tabs_background_color', 'single_product_tabs_background_color_active'] );
+					break;			
+			}
+
+		} );
+	} );
+
+	wp.customize( 'single_product_tabs_alignment', function( value ) {
+		value.bind( function( to ) {
+			$('.site-main').removeClass( 'botiga-tabs-align-left botiga-tabs-align-center botiga-tabs-align-right' );
+			$('.site-main').addClass( 'botiga-tabs-align-' + to );
+			$( '.woocommerce-tabs ul.tabs').css( 'text-align', to );
+		} );
+	} );
 
 	//Woocommerce single sticky add to cart
 	wp.customize( 'single_sticky_add_to_cart_elements_spacing', function( value ) {
@@ -605,6 +805,19 @@
 	} );	
 
 }( jQuery ) );
+
+function hideControls( options ) {
+	for(var i=0;i<options.length;i++) {
+		window.parent.window.wp.customize.control( options[i] ).toggle(false);
+		jQuery( window.parent.window.wp.customize.control( options[i] ).container[0] ).css( 'display', 'none' );
+	}
+}
+
+function showControls( options ) {
+	for(var i=0;i<options.length;i++) {
+		window.parent.window.wp.customize.control( options[i] ).toggle(true);
+	}
+}
 
 function hexToRGB(hex, alpha) {
     var r = parseInt(hex.slice(1, 3), 16),

@@ -490,7 +490,7 @@ wp.customize('color_palettes', function (control) {
   control.bind(function () {
     var palette = control.get(); //Color 1 Button color, Link color
 
-    var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color'];
+    var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color'];
 
     for (var _i = 0, _elements = elements1; _i < _elements.length; _i++) {
       var element = _elements[_i];
@@ -526,7 +526,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 5 Input, tag borders
 
 
-    var elements5 = ['custom_color5', 'color_forms_borders'];
+    var elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders'];
 
     for (var _i5 = 0, _elements5 = elements5; _i5 < _elements5.length; _i5++) {
       var _element4 = _elements5[_i5];
@@ -535,7 +535,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 6 Footer background, Subtle backgrounds
 
 
-    var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background'];
+    var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active'];
 
     for (var _i6 = 0, _elements6 = elements6; _i6 < _elements6.length; _i6++) {
       var _element5 = _elements6[_i6];
