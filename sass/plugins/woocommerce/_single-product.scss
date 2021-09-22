@@ -208,7 +208,7 @@
 		ul.flex-direction-nav {
 			position: absolute;
 			top: calc( 50% - 20px);
-			z-index: 99999;
+			z-index: 9999;
 			width: 100%;
 			left: 0;
 			margin: 0;
@@ -224,40 +224,58 @@
 		}
 		.flex-next,
 		.flex-prev {
-			visibility:hidden;
-		}
-		a.flex-next::after,
-		a.flex-prev::before {
-			background: #fff;
-			color: $color__primary;
+			display: block;
+			position: relative;
 			width: 40px;
 			height: 40px;
-			display: inline-block;
 			border-radius: 50%;
 			border: 1px solid $color__primary;
+			background: #FFF;
+			text-indent: -9999px;
+		}
+		.flex-next {
+			margin-right: 16px;
+		}
+		.flex-prev {
+			margin-left: 16px;
+		}
+		.flex-next::after,
+		.flex-prev::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 0; 
+			height: 0; 
+			color: $color__primary;
+			display: inline-block;
 			line-height: 37px;
 			text-align: center;
+			border-top: 8px solid transparent;
+			border-bottom: 8px solid transparent;
 			transition: all 0.3s;
 		}
 
-		a.flex-next:hover,
-		a.flex-prev:hover {
-			&:before,
+		.flex-next:hover,
+		.flex-prev:hover {
+			background-color: $color__primary;		
+			&:before {
+				border-right-color: #FFF;
+			}
 			&:after {
-				color: #fff;
-				background-color: $color__primary;				
+				border-left-color: #FFF;
 			}
 		}
 
-		a.flex-next::after {
-			visibility:visible;
-			content: '\25B6';
-			margin-right: 16px;
+		.flex-next::after {
+			visibility: visible;
+			border-left: 12px solid $color__primary;
+			transform: translate3d(-40%, -50%, 0);
 		}
-		a.flex-prev::before {
-			visibility:visible;
-			content: '\25C0';
-			margin-left: 16px;
+		.flex-prev::before {
+			visibility: visible;
+			border-right: 12px solid $color__primary;
+			transform: translate3d(-70%, -50%, 0);
 		}
 	}
 }

@@ -260,12 +260,16 @@ ul.products li.product .button {
 
 ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title,
 ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title,
+ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-category__title,
 ul.wc-block-grid__products li.product .wc-block-grid__product-title,
 ul.wc-block-grid__products li.product .woocommerce-loop-product__title,
+ul.wc-block-grid__products li.product .woocommerce-loop-category__title,
 ul.products li.wc-block-grid__product .wc-block-grid__product-title,
 ul.products li.wc-block-grid__product .woocommerce-loop-product__title,
+ul.products li.wc-block-grid__product .woocommerce-loop-category__title,
 ul.products li.product .wc-block-grid__product-title,
-ul.products li.product .woocommerce-loop-product__title {
+ul.products li.product .woocommerce-loop-product__title,
+ul.products li.product .woocommerce-loop-category__title {
   font-size: 16px;
   font-size: 1rem;
   font-weight: 400;
@@ -1213,7 +1217,7 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 .product-gallery-summary.gallery-single ul.flex-direction-nav {
   position: absolute;
   top: calc( 50% - 20px);
-  z-index: 99999;
+  z-index: 9999;
   width: 100%;
   left: 0;
   margin: 0;
@@ -1231,41 +1235,69 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 
 .product-gallery-summary.gallery-single .flex-next,
 .product-gallery-summary.gallery-single .flex-prev {
-  visibility: hidden;
-}
-
-.product-gallery-summary.gallery-single a.flex-next::after,
-.product-gallery-summary.gallery-single a.flex-prev::before {
-  background: #fff;
-  color: #212121;
+  display: block;
+  position: relative;
   width: 40px;
   height: 40px;
-  display: inline-block;
   border-radius: 50%;
   border: 1px solid #212121;
+  background: #FFF;
+  text-indent: -9999px;
+}
+
+.product-gallery-summary.gallery-single .flex-next {
+  margin-right: 16px;
+}
+
+.product-gallery-summary.gallery-single .flex-prev {
+  margin-left: 16px;
+}
+
+.product-gallery-summary.gallery-single .flex-next::after,
+.product-gallery-summary.gallery-single .flex-prev::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  color: #212121;
+  display: inline-block;
   line-height: 37px;
   text-align: center;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-.product-gallery-summary.gallery-single a.flex-next:hover:before, .product-gallery-summary.gallery-single a.flex-next:hover:after,
-.product-gallery-summary.gallery-single a.flex-prev:hover:before,
-.product-gallery-summary.gallery-single a.flex-prev:hover:after {
-  color: #fff;
+.product-gallery-summary.gallery-single .flex-next:hover,
+.product-gallery-summary.gallery-single .flex-prev:hover {
   background-color: #212121;
 }
 
-.product-gallery-summary.gallery-single a.flex-next::after {
-  visibility: visible;
-  content: '\25B6';
-  margin-right: 16px;
+.product-gallery-summary.gallery-single .flex-next:hover:before,
+.product-gallery-summary.gallery-single .flex-prev:hover:before {
+  border-right-color: #FFF;
 }
 
-.product-gallery-summary.gallery-single a.flex-prev::before {
+.product-gallery-summary.gallery-single .flex-next:hover:after,
+.product-gallery-summary.gallery-single .flex-prev:hover:after {
+  border-left-color: #FFF;
+}
+
+.product-gallery-summary.gallery-single .flex-next::after {
   visibility: visible;
-  content: '\25C0';
-  margin-left: 16px;
+  border-left: 12px solid #212121;
+  -webkit-transform: translate3d(-40%, -50%, 0);
+          transform: translate3d(-40%, -50%, 0);
+}
+
+.product-gallery-summary.gallery-single .flex-prev::before {
+  visibility: visible;
+  border-right: 12px solid #212121;
+  -webkit-transform: translate3d(-70%, -50%, 0);
+          transform: translate3d(-70%, -50%, 0);
 }
 
 .woocommerce-product-gallery__wrapper {
@@ -1924,6 +1956,9 @@ body.botiga-scrolling-up .botiga-single-sticky-add-to-cart-wrapper.hide-when-scr
 }
 
 .woocommerce-cart .woocommerce-cart-form .actions .coupon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   float: left;
 }
 

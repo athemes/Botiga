@@ -624,7 +624,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting(
 	'button_color',
 	array(
-		'default'           => '#fffff',
+		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
 		'transport'         => 'postMessage'
 	)
@@ -709,7 +709,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting(
 	'button_color_hover',
 	array(
-		'default'           => '#fffff',
+		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
 		'transport'         => 'postMessage'
 	)

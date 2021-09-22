@@ -1346,12 +1346,16 @@ div.editor-styles-wrapper ul.products li.product .button {
 
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-category__title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-loop-product__title,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-loop-category__title,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .woocommerce-loop-product__title,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .woocommerce-loop-category__title,
 div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-title,
-div.editor-styles-wrapper ul.products li.product .woocommerce-loop-product__title {
+div.editor-styles-wrapper ul.products li.product .woocommerce-loop-product__title,
+div.editor-styles-wrapper ul.products li.product .woocommerce-loop-category__title {
   font-size: 16px;
   font-size: 1rem;
   font-weight: 400;

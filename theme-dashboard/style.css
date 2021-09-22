@@ -1,5 +1,5 @@
 /* Temporary starter sites: disable go pro button and categories dropdown from starter sites page */
-.atss-demos-page .atss-header .atss-header-right,
+.atss-demos-page .atss-header .atss-header-right .atss-get-pro-version,
 .atss-demos-page .atss-header .atss-header-col-categories {
   display: none;
 }

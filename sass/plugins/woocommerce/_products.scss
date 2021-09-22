@@ -56,7 +56,8 @@ ul.products {
 		}
 
 		.wc-block-grid__product-title,
-		.woocommerce-loop-product__title {
+		.woocommerce-loop-product__title,
+		.woocommerce-loop-category__title {
 			@include font-size(16);
 			font-weight: 400;
 			color: $color__primary;
