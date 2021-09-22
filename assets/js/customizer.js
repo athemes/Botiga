@@ -605,9 +605,12 @@
         var id = $(this).closest('li').attr('id'),
             element = $(this).data('customize-setting-link'),
             color = $(this).val();
-        window.parent.window.wp.customize(element).set('');
-        window.parent.window.wp.customize(element).set(color);
-        $('#' + id).find('.wp-color-result').css('background-color', color);
+
+        if (typeof window.parent.window.wp.customize(element) !== 'undefined') {
+          window.parent.window.wp.customize(element).set('');
+          window.parent.window.wp.customize(element).set(color);
+          $('#' + id).find('.wp-color-result').css('background-color', color);
+        }
       }); // hide and show options based in the selected layout since it's a postMessage option
       // works together with active_callback in the backend
       // active_callback works in the first load or when the customize "refresh"

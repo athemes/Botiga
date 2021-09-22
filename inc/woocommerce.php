@@ -431,7 +431,7 @@ function botiga_wc_hooks() {
 			}
 
 			echo '<div class="sidebar-open-wrapper">';
-			echo '    <a href="#" role="button" class="sidebar-open" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-open\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. $icon . esc_html( $text ) .'</a>'; 
+			echo '    <a href="#" role="button" class="sidebar-open" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-open\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. $icon . esc_html( $text ) .'</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 			
 		}, 19 );

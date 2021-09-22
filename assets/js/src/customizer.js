@@ -570,13 +570,15 @@
 			//Run the colors code again in this option change
 			//It is like trigger a "change" in the colors options of respective opened section
 			$( window.parent.document ).find( '.control-section.open .alpha-color-control' ).each(function(){
-				var id = $(this).closest('li').attr('id'),
-					element    = $(this).data('customize-setting-link'),
-					color = $(this).val();
+				var id 		= $(this).closest('li').attr('id'),
+					element = $(this).data('customize-setting-link'),
+					color   = $(this).val();
 
-				window.parent.window.wp.customize( element ).set('');
-				window.parent.window.wp.customize( element ).set( color );
-				$( '#' + id ).find( '.wp-color-result' ).css( 'background-color', color );
+				if( typeof window.parent.window.wp.customize( element ) !== 'undefined' ) {
+					window.parent.window.wp.customize( element ).set('');
+					window.parent.window.wp.customize( element ).set( color );
+					$( '#' + id ).find( '.wp-color-result' ).css( 'background-color', color );
+				}
 			});
 
 			// hide and show options based in the selected layout since it's a postMessage option

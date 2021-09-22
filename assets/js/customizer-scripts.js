@@ -494,8 +494,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i = 0, _elements = elements1; _i < _elements.length; _i++) {
       var element = _elements[_i];
-      wp.customize(element).set(palettes[palette][0]);
-      jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', palettes[palette][0]);
+
+      if (typeof wp.customize(element) !== 'undefined') {
+        wp.customize(element).set(palettes[palette][0]);
+        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', palettes[palette][0]);
+      }
     } //Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
 
 
@@ -503,8 +506,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i2 = 0, _elements2 = elements2; _i2 < _elements2.length; _i2++) {
       var _element = _elements2[_i2];
-      wp.customize(_element).set(palettes[palette][1]);
-      jQuery('#customize-control-' + _element).find('.wp-color-result').css('background-color', palettes[palette][1]);
+
+      if (typeof wp.customize(_element) !== 'undefined') {
+        wp.customize(_element).set(palettes[palette][1]);
+        jQuery('#customize-control-' + _element).find('.wp-color-result').css('background-color', palettes[palette][1]);
+      }
     } //Color 3 Heading (1-6), Small text, Nav links, Site title, 
 
 
@@ -512,8 +518,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i3 = 0, _elements3 = elements3; _i3 < _elements3.length; _i3++) {
       var _element2 = _elements3[_i3];
-      wp.customize(_element2).set(palettes[palette][2]);
-      jQuery('#customize-control-' + _element2).find('.wp-color-result').css('background-color', palettes[palette][2]);
+
+      if (typeof wp.customize(_element2) !== 'undefined') {
+        wp.customize(_element2).set(palettes[palette][2]);
+        jQuery('#customize-control-' + _element2).find('.wp-color-result').css('background-color', palettes[palette][2]);
+      }
     } //Color 4 Paragraph, Paragraph small, Breadcrums, Icons
 
 
@@ -521,8 +530,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i4 = 0, _elements4 = elements4; _i4 < _elements4.length; _i4++) {
       var _element3 = _elements4[_i4];
-      wp.customize(_element3).set(palettes[palette][3]);
-      jQuery('#customize-control-' + _element3).find('.wp-color-result').css('background-color', palettes[palette][3]);
+
+      if (typeof wp.customize(_element3) !== 'undefined') {
+        wp.customize(_element3).set(palettes[palette][3]);
+        jQuery('#customize-control-' + _element3).find('.wp-color-result').css('background-color', palettes[palette][3]);
+      }
     } //Color 5 Input, tag borders
 
 
@@ -530,8 +542,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i5 = 0, _elements5 = elements5; _i5 < _elements5.length; _i5++) {
       var _element4 = _elements5[_i5];
-      wp.customize(_element4).set(palettes[palette][4]);
-      jQuery('#customize-control-' + _element4).find('.wp-color-result').css('background-color', palettes[palette][4]);
+
+      if (typeof wp.customize(_element4) !== 'undefined') {
+        wp.customize(_element4).set(palettes[palette][4]);
+        jQuery('#customize-control-' + _element4).find('.wp-color-result').css('background-color', palettes[palette][4]);
+      }
     } //Color 6 Footer background, Subtle backgrounds
 
 
@@ -539,8 +554,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i6 = 0, _elements6 = elements6; _i6 < _elements6.length; _i6++) {
       var _element5 = _elements6[_i6];
-      wp.customize(_element5).set(palettes[palette][5]);
-      jQuery('#customize-control-' + _element5).find('.wp-color-result').css('background-color', palettes[palette][5]);
+
+      if (typeof wp.customize(_element5) !== 'undefined') {
+        wp.customize(_element5).set(palettes[palette][5]);
+        jQuery('#customize-control-' + _element5).find('.wp-color-result').css('background-color', palettes[palette][5]);
+      }
     } //Color 7 Default background, Text on dark BG
 
 
@@ -548,8 +566,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i7 = 0, _elements7 = elements7; _i7 < _elements7.length; _i7++) {
       var _element6 = _elements7[_i7];
-      wp.customize(_element6).set(palettes[palette][6]);
-      jQuery('#customize-control-' + _element6).find('.wp-color-result').css('background-color', palettes[palette][6]);
+
+      if (typeof wp.customize(_element6) !== 'undefined') {
+        wp.customize(_element6).set(palettes[palette][6]);
+        jQuery('#customize-control-' + _element6).find('.wp-color-result').css('background-color', palettes[palette][6]);
+      }
     } //Color 8 header background
 
 
@@ -557,8 +578,11 @@ wp.customize('color_palettes', function (control) {
 
     for (var _i8 = 0, _elements8 = elements8; _i8 < _elements8.length; _i8++) {
       var _element7 = _elements8[_i8];
-      wp.customize(_element7).set(palettes[palette][7]);
-      jQuery('#customize-control-' + _element7).find('.wp-color-result').css('background-color', palettes[palette][7]);
+
+      if (typeof wp.customize(_element7) !== 'undefined') {
+        wp.customize(_element7).set(palettes[palette][7]);
+        jQuery('#customize-control-' + _element7).find('.wp-color-result').css('background-color', palettes[palette][7]);
+      }
     }
   });
 });
@@ -573,8 +597,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i9 = 0, _elements9 = elements1; _i9 < _elements9.length; _i9++) {
         var element = _elements9[_i9];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -584,8 +611,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i10 = 0, _elements10 = elements2; _i10 < _elements10.length; _i10++) {
         var element = _elements10[_i10];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -595,8 +625,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i11 = 0, _elements11 = elements3; _i11 < _elements11.length; _i11++) {
         var element = _elements11[_i11];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -606,8 +639,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i12 = 0, _elements12 = elements4; _i12 < _elements12.length; _i12++) {
         var element = _elements12[_i12];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -617,8 +653,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i13 = 0, _elements13 = elements5; _i13 < _elements13.length; _i13++) {
         var element = _elements13[_i13];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -628,8 +667,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i14 = 0, _elements14 = elements6; _i14 < _elements14.length; _i14++) {
         var element = _elements14[_i14];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -639,8 +681,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i15 = 0, _elements15 = elements7; _i15 < _elements15.length; _i15++) {
         var element = _elements15[_i15];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });
@@ -650,8 +695,11 @@ wp.customize.bind('ready', function () {
 
       for (var _i16 = 0, _elements16 = elements8; _i16 < _elements16.length; _i16++) {
         var element = _elements16[_i16];
-        wp.customize(element).set(value);
-        jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+
+        if (typeof wp.customize(element) !== 'undefined') {
+          wp.customize(element).set(value);
+          jQuery('#customize-control-' + element).find('.wp-color-result').css('background-color', value);
+        }
       }
     });
   });

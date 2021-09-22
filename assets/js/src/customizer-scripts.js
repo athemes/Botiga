@@ -568,64 +568,80 @@ jQuery( document ).ready(function($) {
 		let elements1 = ['custom_color1','scrolltop_bg_color','button_background_color','button_border_color','color_link_default','footer_credits_links_color','single_product_tabs_border_color_active','single_product_tabs_text_color_active','single_product_tabs_text_color'];
 		
 		for ( const element of elements1 ) {
-			wp.customize( element ).set( palettes[palette][0] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][0] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][0] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][0] );
+			}
 		}
 
 		//Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
 		let elements2 = ['custom_color2','footer_widgets_links_hover_color','scrolltop_bg_color_hover','button_background_color_hover','button_border_color_hover','color_link_hover','footer_credits_links_color_hover'];
 		
 		for ( const element of elements2 ) {
-			wp.customize( element ).set( palettes[palette][1] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][1] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][1] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][1] );
+			}
 		}
 
 		//Color 3 Heading (1-6), Small text, Nav links, Site title, 
 		let elements3 = ['single_post_title_color','custom_color3','main_header_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6'];
 		
 		for ( const element of elements3 ) {
-			wp.customize( element ).set( palettes[palette][2] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][2] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][2] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][2] );
+			}
 		}
 
 		//Color 4 Paragraph, Paragraph small, Breadcrums, Icons
 		let elements4 = ['custom_color4','footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder','topbar_color','main_header_bottom_color'];
 		
 		for ( const element of elements4 ) {
-			wp.customize( element ).set( palettes[palette][3] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][3] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][3] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][3] );
+			}
 		}
 
 		//Color 5 Input, tag borders
 		let elements5 = ['custom_color5','color_forms_borders','single_product_tabs_remaining_borders'];
 		
 		for ( const element of elements5 ) {
-			wp.customize( element ).set( palettes[palette][4] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][4] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][4] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][4] );
+			}
 		}
 		
 		//Color 6 Footer background, Subtle backgrounds
 		let elements6 = ['custom_color6','footer_widgets_background','footer_credits_background', 'content_cards_background','single_product_tabs_background_color','single_product_tabs_background_color_active'];
 		
 		for ( const element of elements6 ) {
-			wp.customize( element ).set( palettes[palette][5] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][5] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][5] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][5] );
+			}
 		}		
 
 		//Color 7 Default background, Text on dark BG
 		let elements7 = ['custom_color7','background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background','topbar_background'];
 		
 		for ( const element of elements7 ) {
-			wp.customize( element ).set( palettes[palette][6] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][6] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][6] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][6] );
+			}
 		}	
 		
 		//Color 8 header background
 		let elements8 = ['custom_color8','main_header_submenu_background','main_header_background','main_header_bottom_background','mobile_header_background','offcanvas_menu_background'];
 		
 		for ( const element of elements8 ) {
-			wp.customize( element ).set( palettes[palette][7] );
-			jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][7] );
+			if( typeof wp.customize( element ) !== 'undefined' ) {
+				wp.customize( element ).set( palettes[palette][7] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][7] );
+			}
 		}				
 		
     });
@@ -641,8 +657,10 @@ wp.customize.bind( 'ready', function () {
 			let elements1 = ['scrolltop_bg_color','button_background_color','button_border_color','color_link_default'];
 			
 			for ( const element of elements1 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}
 		} );
 	});
@@ -652,8 +670,10 @@ wp.customize.bind( 'ready', function () {
 			let elements2 = ['footer_widgets_links_hover_color','scrolltop_bg_color_hover','button_background_color_hover','button_border_color_hover','color_link_hover'];
 		
 			for ( const element of elements2 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}
 		} );
 	});	
@@ -663,8 +683,10 @@ wp.customize.bind( 'ready', function () {
 			let elements3 = ['main_header_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6'];
 		
 			for ( const element of elements3 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}
 	
 		} );
@@ -675,8 +697,10 @@ wp.customize.bind( 'ready', function () {
 			let elements4 = ['footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder'];
 		
 			for ( const element of elements4 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}
 		} );
 	});
@@ -687,8 +711,10 @@ wp.customize.bind( 'ready', function () {
 			let elements5 = ['color_forms_borders'];
 		
 			for ( const element of elements5 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}
 		} );
 	});	
@@ -699,8 +725,10 @@ wp.customize.bind( 'ready', function () {
 			let elements6 = ['footer_widgets_background','footer_credits_background', 'content_cards_background'];
 		
 			for ( const element of elements6 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}	
 		} );
 	});	
@@ -711,8 +739,10 @@ wp.customize.bind( 'ready', function () {
 			let elements7 = ['background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background'];
 		
 			for ( const element of elements7 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}	
 		} );
 	});	
@@ -723,8 +753,10 @@ wp.customize.bind( 'ready', function () {
 			let elements8 = ['main_header_submenu_background','main_header_background','main_header_bottom_background','mobile_header_background','offcanvas_menu_background'];
 		
 			for ( const element of elements8 ) {
-				wp.customize( element ).set( value );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				if( typeof wp.customize( element ) !== 'undefined' ) {
+					wp.customize( element ).set( value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+				}
 			}		
 		} );
 	});
