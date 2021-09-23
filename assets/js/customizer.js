@@ -455,6 +455,16 @@
     value.bind(function (to) {
       $('ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product').css('border-width', to + 'px');
     });
+  });
+  wp.customize('shop_categories_radius', function (value) {
+    value.bind(function (to) {
+      var shop_categories_layout = window.parent.window.wp.customize.control('shop_categories_layout').setting.get();
+      $('ul.products li.product-category > a, ul.products li.product-category > a > img').css('border-radius', to + 'px');
+
+      if ('layout4' === shop_categories_layout) {
+        $('.product-category-item-layout4 ul.products li.product-category > a h2').css('border-radius', '0 0 ' + to + 'px ' + to + 'px');
+      }
+    });
   }); //Woocommerce single tabs
 
   wp.customize('single_product_tabs_border_color_active', function (value) {

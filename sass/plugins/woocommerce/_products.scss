@@ -313,3 +313,125 @@ ul.wc-block-grid__products {
 		font-weight: 400;
 	}
 }
+
+ul.products {
+	li.product-category {
+		mark {
+			background: none;
+			color: inherit;
+		}
+	}
+}
+
+.product-category-item-layout1 {
+	ul.products {
+		li.product-category {
+			.woocommerce-loop-category__title {
+				margin-top: 15px;
+			}
+		}
+	}
+}
+
+.product-category-item-layout2 {
+	ul.products {
+		li.product-category {
+			a {
+				position: relative;
+				display: block;
+			}
+			.woocommerce-loop-category__title {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				background: rgba(255, 255, 255, 0.6);
+				padding: 20px 0px;
+				margin: 0;
+			}
+		}
+	}
+}
+
+.product-category-item-layout3 {
+	ul.products {
+		li.product-category {
+			a {
+				position: relative;
+				display: block;
+				overflow: hidden;
+			}
+			.woocommerce-loop-category__title {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				padding: 20px 0px;
+				margin: 0;
+				color: #FFF;
+				z-index: 1;
+				&:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					height: 0;
+					width: 100%;
+					box-shadow: 0px 0px 60px 60px rgba(0, 0, 0, 0.5);
+					z-index: -1;
+				}
+			}
+		}
+	}
+}
+
+.product-category-item-layout4 {
+	ul.products {
+		li.product-category {
+			a {
+				position: relative;
+				display: block;
+			}
+			.woocommerce-loop-category__title {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: calc( 100% - 30px );
+				background: #FFF;
+				padding: 20px 0px;
+				margin: 0 0 15px 15px;
+			}
+		}
+	}
+}
+
+.product-category-item-layout5 {
+	ul.products {
+		li.product-category {
+			a {
+				position: relative;
+				display: block;
+				overflow: hidden;
+				&:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					background: rgba(0, 0, 0, 0.7);
+					z-index: 0;
+				}
+			}
+			.woocommerce-loop-category__title {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: 0;
+				color: #FFF;
+				transform: translate3d(-50%, -50%, 0);
+				z-index: 1;
+			}
+		}
+	}
+}

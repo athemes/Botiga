@@ -239,7 +239,8 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
  */
 function botiga_wc_archive_layout() {
 
-	$archive_sidebar 	= get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+	$archive_sidebar 	    = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+	$shop_categories_layout = get_theme_mod( 'shop_categories_layout', 'layout1' );
 
 	if ( 'no-sidebar' === $archive_sidebar ) {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
@@ -250,6 +251,8 @@ function botiga_wc_archive_layout() {
 
 		$archive_sidebar .= ' sidebar-top-columns-' . $shop_archive_sidebar_top_columns;
 	}
+
+	$archive_sidebar .= ' product-category-item-' . $shop_categories_layout;
 	
 	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
 
@@ -298,9 +301,9 @@ function botiga_loop_product_structure() {
  * Hook into Woocommerce
  */
 function botiga_wc_hooks() {
-	$layout			   = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
-	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	$layout			   		= get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$button_layout     		= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$quick_view_layout 		= get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 
 	//Loop image wrapper extra class
 	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;

@@ -360,6 +360,16 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
 			$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
 
+			$shop_categories_alignment = get_theme_mod( 'shop_categories_alignment', 'center' );
+			$css .= "ul.products li.product-category .woocommerce-loop-category__title { text-align:" . esc_attr( $shop_categories_alignment ) . ";}" . "\n";
+
+			$shop_categories_layout = get_theme_mod( 'shop_categories_layout', 'layout1' );
+			$shop_categories_radius = get_theme_mod( 'shop_categories_radius', 0 );
+			$css .= "ul.products li.product-category > a, ul.products li.product-category > a > img { border-radius:" . esc_attr( $shop_categories_radius ) . "px;}" . "\n";
+			if( 'layout4' === $shop_categories_layout ) {
+				$css .= ".product-category-item-layout4 ul.products li.product-category > a h2 { border-radius: 0 0 " . esc_attr( $shop_categories_radius ) . "px " . esc_attr( $shop_categories_radius ) . "px;}" . "\n";
+			}
+
 			$shop_product_card_style 		= get_theme_mod( 'shop_product_card_style', 'layout1' );
 			$shop_product_card_border_color = get_theme_mod( 'shop_product_card_border_color', '#eee' );
 			$shop_product_card_border_size 	= get_theme_mod( 'shop_product_card_border_size', 1 );
