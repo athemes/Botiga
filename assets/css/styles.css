@@ -2624,6 +2624,8 @@ body.mobile-menu-visible {
 
 .woocommerce-page-header {
   padding-top: 80px;
+  padding-bottom: 80px;
+  margin-bottom: -70px;
 }
 
 .woocommerce-page-header h1 {
@@ -2634,19 +2636,78 @@ body.mobile-menu-visible {
   text-align: center;
 }
 
-.woocommerce-page-header .page-description {
+.woocommerce-page-header .page-description,
+.woocommerce-page-header .term-description {
   margin-top: 20px;
   max-width: 560px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.woocommerce-page-header .page-description p:last-of-type {
+.woocommerce-page-header .page-description p:last-of-type,
+.woocommerce-page-header .term-description p:last-of-type {
   margin-bottom: 0;
 }
 
 .woocommerce-page-header .woocommerce-breadcrumb {
   text-align: left;
+}
+
+.woocommerce-page-header .category-button {
+  border: 2px solid #212121;
+  border-radius: 35px;
+  padding: 7px 22px;
+  margin-bottom: 10px;
+  -webkit-transition: ease background 300ms, ease color 300ms;
+  transition: ease background 300ms, ease color 300ms;
+}
+
+.woocommerce-page-header .category-button:hover {
+  background: #212121;
+  color: #FFF;
+}
+
+.woocommerce-page-header .categories-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.woocommerce-page-header .categories-wrapper .category-button + .category-button {
+  margin-left: 10px;
+}
+
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-left, .woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-right {
+  max-width: none;
+}
+
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-left .woocommerce-products-header__title {
+  text-align: left;
+}
+
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-left .page-description,
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-left .term-description {
+  margin-left: 0;
+  text-align: left;
+}
+
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-right .woocommerce-products-header__title {
+  text-align: right;
+}
+
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-right .page-description,
+.woocommerce-page-header.woocommerce-page-header-style1.woocommerce-page-header-alignment-right .term-description {
+  margin-right: 0;
+  text-align: right;
 }
 
 .woocommerce-page-header.woocommerce-page-header-style2 > .container {
@@ -2658,10 +2719,45 @@ body.mobile-menu-visible {
           align-items: center;
 }
 
-.woocommerce-page-header.woocommerce-page-header-style2 .page-description {
+.woocommerce-page-header.woocommerce-page-header-style2 .page-description,
+.woocommerce-page-header.woocommerce-page-header-style2 .term-description {
+  font-size: 1.2rem;
+  line-height: 1.4;
   text-align: left;
-  margin: 0 0 0 25px;
+  margin: 8px 0 0 25px;
   max-width: none;
+}
+
+.woocommerce-page-header.woocommerce-page-header-style2 .categories-wrapper {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.woocommerce-page-header.woocommerce-page-header-alignment-left .categories-wrapper .category-button {
+  margin-right: 10px;
+}
+
+.woocommerce-page-header.woocommerce-page-header-alignment-left .categories-wrapper .category-button:last-child {
+  margin-right: 0;
+}
+
+.woocommerce-page-header.woocommerce-page-header-alignment-left .categories-wrapper .category-button + .category-button {
+  margin-left: 0;
+}
+
+@media (max-width: 1024px) {
+  .woocommerce-page-header.woocommerce-page-header-style2 > .container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .woocommerce-page-header.woocommerce-page-header-style2 .page-description,
+  .woocommerce-page-header.woocommerce-page-header-style2 .term-description {
+    margin: 15px 0 25px 0;
+  }
+  .woocommerce-page-header.woocommerce-page-header-style2 .categories-wrapper {
+    margin-top: 5px;
+  }
 }
 
 .entry-title {

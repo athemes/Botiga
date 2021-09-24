@@ -30,6 +30,12 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.0.6 - September 24 2021 =
+* Added: New option to hide/show the cart and checkout coupon form
+* Added: Button to back to theme dashboard while previewing the demo
+* Fixed: Huge font size when shop catalog is set to show products and categories
+* Fixed: Changelog link in the theme dashboard
+* Fixed: Mobile single product page gallery layout with arrows issue
 = 1.0.5 - September 08 2021 =
 * Added: New options to hide products meta (SKU, categories or tags)
 * Added: New option to show "Header Image" only in the home page

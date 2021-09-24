@@ -357,6 +357,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= ".footer-copyright-elements>div+div { margin-top:" . esc_attr( $footer_copyright_elements_spacing_desktop ) . "px; }" . "\n";
 
 			//Woocommerce
+			$shop_archive_header_style 			 = get_theme_mod( 'shop_archive_header_style', 'style1' );
+			if( 'style1' === $shop_archive_header_style ) {
+				$shop_archive_header_style_alignment = get_theme_mod( 'shop_archive_header_style_alignment', 'center' );
+
+				if( 'left' === $shop_archive_header_style_alignment ) {
+					$css .= ".woocommerce-page-header .categories-wrapper { justify-content: flex-start;}" . "\n";
+				} elseif( 'right' === $shop_archive_header_style_alignment ) {
+					$css .= ".woocommerce-page-header .categories-wrapper { justify-content: flex-end;}" . "\n";
+				}
+			}
+
 			$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
 			$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
 

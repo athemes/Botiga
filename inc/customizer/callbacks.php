@@ -531,3 +531,13 @@ function botiga_callback_shop_archive_header_style_alignment() {
 	}	
 }
 
+function botiga_callback_shop_archive_header_style_category_buttons() {
+	$shop_archive_header_style_show_categories     = get_theme_mod( 'shop_archive_header_style_show_categories', 0 );
+	$shop_archive_header_style_show_sub_categories = get_theme_mod( 'shop_archive_header_style_show_sub_categories', 0 );
+
+	if ( $shop_archive_header_style_show_categories || $shop_archive_header_style_show_sub_categories ) {
+		return true;
+	} else {
+		return false;
+	}	
+}

@@ -1672,6 +1672,7 @@ div.editor-styles-wrapper .product-category-item-layout4 ul.products li.product-
 div.editor-styles-wrapper .product-category-item-layout5 ul.products li.product-category a {
   position: relative;
   display: block;
+  overflow: hidden;
 }
 
 div.editor-styles-wrapper .product-category-item-layout5 ul.products li.product-category a:after {

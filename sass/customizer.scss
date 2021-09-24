@@ -738,7 +738,8 @@ span.delete:hover {
 #sub-accordion-section-botiga_section_typography_body li:not(.customize-control-botiga-text-control) .font-control-title strong,
 #sub-accordion-section-botiga_section_typography_headings li:not(.customize-control-botiga-text-control) .customize-control-title,
 #sub-accordion-section-botiga_section_typography_headings li:not(.customize-control-botiga-text-control) .font-control-title strong,
-#sub-accordion-section-botiga_section_single_product li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title {
+#sub-accordion-section-botiga_section_single_product li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title,
+#sub-accordion-section-woocommerce_product_catalog li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title {
     color: #565D65;
     font-weight: 400;
 }

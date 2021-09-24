@@ -465,6 +465,12 @@
         $('.product-category-item-layout4 ul.products li.product-category > a h2').css('border-radius', '0 0 ' + to + 'px ' + to + 'px');
       }
     });
+  }); //Woocommerce header style
+
+  wp.customize('shop_archive_header_background_color', function (value) {
+    value.bind(function (to) {
+      $('.woocommerce-page-header').css('background-color', to);
+    });
   }); //Woocommerce single tabs
 
   wp.customize('single_product_tabs_border_color_active', function (value) {
