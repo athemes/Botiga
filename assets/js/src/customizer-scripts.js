@@ -565,7 +565,7 @@ jQuery( document ).ready(function($) {
 		var palette = control.get();
 
 		//Color 1 Button color, Link color
-		let elements1 = ['custom_color1','scrolltop_bg_color','button_background_color','button_border_color','color_link_default','footer_credits_links_color','single_product_tabs_border_color_active','single_product_tabs_text_color_active','single_product_tabs_text_color'];
+		let elements1 = ['custom_color1','scrolltop_bg_color','button_background_color','button_border_color','color_link_default','footer_credits_links_color','single_product_tabs_border_color_active','single_product_tabs_text_color_active','single_product_tabs_text_color','shop_archive_header_button_color','shop_archive_header_button_border_color'];
 		
 		for ( const element of elements1 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
@@ -575,7 +575,7 @@ jQuery( document ).ready(function($) {
 		}
 
 		//Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
-		let elements2 = ['custom_color2','footer_widgets_links_hover_color','scrolltop_bg_color_hover','button_background_color_hover','button_border_color_hover','color_link_hover','footer_credits_links_color_hover'];
+		let elements2 = ['custom_color2','footer_widgets_links_hover_color','scrolltop_bg_color_hover','button_background_color_hover','button_border_color_hover','color_link_hover','footer_credits_links_color_hover','shop_archive_header_button_background_color_hover','shop_archive_header_button_border_color_hover'];
 		
 		for ( const element of elements2 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
@@ -585,7 +585,7 @@ jQuery( document ).ready(function($) {
 		}
 
 		//Color 3 Heading (1-6), Small text, Nav links, Site title, 
-		let elements3 = ['single_post_title_color','custom_color3','main_header_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6'];
+		let elements3 = ['single_post_title_color','custom_color3','main_header_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6','shop_archive_header_title_color','shop_archive_header_description_color'];
 		
 		for ( const element of elements3 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
@@ -635,7 +635,7 @@ jQuery( document ).ready(function($) {
 		}	
 		
 		//Color 8 header background
-		let elements8 = ['custom_color8','main_header_submenu_background','main_header_background','main_header_bottom_background','mobile_header_background','offcanvas_menu_background'];
+		let elements8 = ['custom_color8','main_header_submenu_background','main_header_background','main_header_bottom_background','mobile_header_background','offcanvas_menu_background','shop_archive_header_background_color','shop_archive_header_button_background_color','shop_archive_header_button_color_hover'];
 		
 		for ( const element of elements8 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {

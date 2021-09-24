@@ -490,7 +490,7 @@ wp.customize('color_palettes', function (control) {
   control.bind(function () {
     var palette = control.get(); //Color 1 Button color, Link color
 
-    var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color'];
+    var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color'];
 
     for (var _i = 0, _elements = elements1; _i < _elements.length; _i++) {
       var element = _elements[_i];
@@ -502,7 +502,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
 
 
-    var elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover'];
+    var elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover'];
 
     for (var _i2 = 0, _elements2 = elements2; _i2 < _elements2.length; _i2++) {
       var _element = _elements2[_i2];
@@ -514,7 +514,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 3 Heading (1-6), Small text, Nav links, Site title, 
 
 
-    var elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6'];
+    var elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color'];
 
     for (var _i3 = 0, _elements3 = elements3; _i3 < _elements3.length; _i3++) {
       var _element2 = _elements3[_i3];
@@ -574,7 +574,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 8 header background
 
 
-    var elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background'];
+    var elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover'];
 
     for (var _i8 = 0, _elements8 = elements8; _i8 < _elements8.length; _i8++) {
       var _element7 = _elements8[_i8];

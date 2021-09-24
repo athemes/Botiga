@@ -357,7 +357,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= ".footer-copyright-elements>div+div { margin-top:" . esc_attr( $footer_copyright_elements_spacing_desktop ) . "px; }" . "\n";
 
 			//Woocommerce
-			$shop_archive_header_style 			 = get_theme_mod( 'shop_archive_header_style', 'style1' );
+			$shop_archive_header_style = get_theme_mod( 'shop_archive_header_style', 'style1' );
 			if( 'style1' === $shop_archive_header_style ) {
 				$shop_archive_header_style_alignment = get_theme_mod( 'shop_archive_header_style_alignment', 'center' );
 
@@ -367,6 +367,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= ".woocommerce-page-header .categories-wrapper { justify-content: flex-end;}" . "\n";
 				}
 			}
+
+			$css .= $this->get_background_color_css( 'shop_archive_header_background_color', '#FFF', '.woocommerce-page-header' );
+			$css .= $this->get_color_css( 'shop_archive_header_title_color', '#212121', '.woocommerce-page-header h1' );
+			$css .= $this->get_color_css( 'shop_archive_header_description_color', '#212121', '.woocommerce-page-header .page-description, .woocommerce-page-header .term-description' );
+			$css .= $this->get_color_css( 'shop_archive_header_button_color', '#212121', '.woocommerce-page-header .category-button' );
+			$css .= $this->get_color_css( 'shop_archive_header_button_color_hover', '#FFF', '.woocommerce-page-header .category-button:hover', true );
+			$css .= $this->get_background_color_css( 'shop_archive_header_button_background_color', '#FFF', '.woocommerce-page-header .category-button' );
+			$css .= $this->get_background_color_css( 'shop_archive_header_button_background_color_hover', '#FFF', '.woocommerce-page-header .category-button:hover', true );
+			$css .= $this->get_border_color_css( 'shop_archive_header_button_border_color', '#212121', '.woocommerce-page-header .category-button' );
+			$css .= $this->get_border_color_css( 'shop_archive_header_button_border_color_hover', '#212121', '.woocommerce-page-header .category-button:hover', true );
+			$css .= ".woocommerce-page-header .category-button { border-radius: ". get_theme_mod( 'shop_archive_header_button_border_radius', 35 ) ."px; }" . "\n";
 
 			$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
 			$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
@@ -773,10 +784,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get background color CSS
 		 */
-		public static function get_background_color_css( $setting, $default, $selector ) {
+		public static function get_background_color_css( $setting, $default, $selector, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			return $selector . '{ background-color:' . esc_attr( $mod ) . ';}' . "\n";
+			return $selector . '{ background-color:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) . ';}' . "\n";
 		}
 
 		/**
@@ -791,19 +802,19 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get color CSS
 		 */
-		public static function get_color_css( $setting, $default, $selector ) {
+		public static function get_color_css( $setting, $default, $selector, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			return $selector . '{ color:' . esc_attr( $mod ) . ';}' . "\n";
+			return $selector . '{ color:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
 		
 		/**
 		 * Get border color CSS
 		 */
-		public static function get_border_color_css( $setting, $default, $selector ) {
+		public static function get_border_color_css( $setting, $default, $selector, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			return $selector . '{ border-color:' . esc_attr( $mod ) . ';}' . "\n";
+			return $selector . '{ border-color:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) . ';}' . "\n";
 		}
 
 		/**

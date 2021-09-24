@@ -125,7 +125,7 @@
 	});
 
 	//Color hover
-	var $color_hover_options = { "color_link_hover":"a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):hover,.wp-block-columns p a:hover,.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover,.woocommerce-orders-table__cell-order-number a:hover, .woocommerce-MyAccount-content p a:hover,.widget a:not(.wc-forward):hover,.botiga-related-posts .related-post h3 a:hover,.botiga-related-posts .related-post .posted-on a:hover","button_color_hover":"button:hover,a.button:not(.wc-forward):hover,.a.button.checkout,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.woocommerce-pagination li .page-numbers:hover,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover","scrolltop_color_hover":".back-to-top:hover","footer_widgets_links_hover_color":".widget-column .widget a:hover","footer_credits_links_color_hover":".site-info a:hover" };
+	var $color_hover_options = { "color_link_hover":"a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):hover,.wp-block-columns p a:hover,.woocommerce-cart .product-name a:hover,.woocommerce-cart .product-remove a:hover,.woocommerce-orders-table__cell-order-number a:hover, .woocommerce-MyAccount-content p a:hover,.widget a:not(.wc-forward):hover,.botiga-related-posts .related-post h3 a:hover,.botiga-related-posts .related-post .posted-on a:hover","button_color_hover":"button:hover,a.button:not(.wc-forward):hover,.a.button.checkout,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.woocommerce-pagination li .page-numbers:hover,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover","scrolltop_color_hover":".back-to-top:hover","footer_widgets_links_hover_color":".widget-column .widget a:hover","footer_credits_links_color_hover":".site-info a:hover" };
 
 	$.each( $color_hover_options, function( option, selector ) {
 		wp.customize( option, function( value ) {
@@ -431,11 +431,74 @@
 	} );
 
 	//Woocommerce header style
-	wp.customize( 'shop_archive_header_background_color', function( value ) {
-		value.bind( function( to ) {
-			$( '.woocommerce-page-header' ).css( 'background-color', to );
+	var $shop_page_header_options = { 
+		"shop_archive_header_background_color": {
+			selector: ".woocommerce-page-header",
+			prop    : "background-color"
+		},
+		"shop_archive_header_title_color": {
+			selector: ".woocommerce-page-header h1",
+			prop    : "color"
+		},
+		"shop_archive_header_description_color": {
+			selector: ".woocommerce-page-header .page-description, .woocommerce-page-header .term-description",
+			prop    : "color"
+		},
+		"shop_archive_header_button_color": { 
+			selector: ".woocommerce-page-header .category-button",
+			prop    : "color" 
+		},
+		"shop_archive_header_button_color_hover": { 
+			selector: ".woocommerce-page-header .category-button:hover",
+			prop    : "color",
+			hover    : true
+		},
+		"shop_archive_header_button_background_color": { 
+			selector: ".woocommerce-page-header .category-button",
+			prop    : "background-color" 
+		},
+		"shop_archive_header_button_background_color_hover": { 
+			selector: ".woocommerce-page-header .category-button:hover",
+			prop    : "background-color",
+			hover   : true
+		},
+		"shop_archive_header_button_border_color": { 
+			selector: ".woocommerce-page-header .category-button",
+			prop    : "border-color" 
+		},
+		"shop_archive_header_button_border_color_hover": { 
+			selector: ".woocommerce-page-header .category-button:hover",
+			prop    : "border-color",
+			hover   : true
+		},
+		"shop_archive_header_button_border_radius": {
+			selector: ".woocommerce-page-header .category-button",
+			prop    : "border-radius",
+			unit    : "px" 
+		}
+	};
+
+	$.each( $shop_page_header_options, function( option, css ) {
+		var unit = typeof css.unit !== 'undefined' ? css.unit : '';
+
+		wp.customize( option, function( value ) {
+			value.bind( function( to ) {
+				if( typeof css.hover === 'undefined' ) {
+					$( css.selector ).css( css.prop, to + unit );
+				} else {
+					$( 'head' ).find( '#botiga-customizer-styles-' + option ).remove();
+			
+					var output = '';
+
+					output += css.selector + '{ '+ css.prop +': '+ to +'!important; }'; 
+
+					if( output ) {
+						$( 'head' ).append( '<style id="botiga-customizer-styles-'+ option +'">' + output + '</style>' );
+					}
+				}
+			} );
 		} );
-	} );
+	});	
 
 	//Woocommerce single tabs
 	wp.customize( 'single_product_tabs_border_color_active', function( value ) {
