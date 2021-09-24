@@ -32,7 +32,7 @@ function botiga_woocommerce_setup() {
 				'default_columns' => 3,
 				'min_columns'     => 1,
 				'max_columns'     => 4,
-			),
+			)
 		)
 	);
 	
@@ -350,6 +350,7 @@ function botiga_wc_hooks() {
 		$single_related					= get_theme_mod( 'single_related_products', 1 );
 		$single_upsell					= get_theme_mod( 'single_upsell_products', 1 );
 		$single_sticky_add_to_cart		= get_theme_mod( 'single_sticky_add_to_cart', 0 );
+		$single_product_gallery         = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
 		//Content class
 		add_filter( 'botiga_content_class', 'botiga_wc_single_layout' );
@@ -360,6 +361,15 @@ function botiga_wc_hooks() {
 
 		add_action( 'woocommerce_before_add_to_cart_button', 'botiga_single_addtocart_wrapper_open' );
 		add_action( 'woocommerce_after_add_to_cart_button', 'botiga_single_addtocart_wrapper_close' );
+
+		//Gallery
+		if( 'gallery-grid' === $single_product_gallery ) {
+			remove_theme_support( 'wc-product-gallery-slider' );
+			remove_theme_support( 'wc-product-gallery-zoom' );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '<div class="sticky-entry-summary">'; }, -99 );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '</div>'; }, 99 );
+			add_filter( 'woocommerce_gallery_image_size', function(){ return 'woocommerce_single'; } );
+		}
 
 		//Breadcrumbs
 		if ( !$single_breadcrumbs ) {
@@ -635,7 +645,7 @@ function botiga_woocommerce_page_header() {
 							
 							foreach( $categories as $cat_id => $cat_name ) {
 								$cat_link = get_term_link( $cat_id );
-								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. $cat_name .'</a>';
+								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
 							} ?>
 						</div>
 					</div>
@@ -655,7 +665,7 @@ function botiga_woocommerce_page_header() {
 
 							foreach( $categories as $cat_id => $cat_name ) {
 								$cat_link = get_term_link( $cat_id );
-								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. $cat_name .'</a>';
+								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
 							} ?>
 						</div>
 					</div>
