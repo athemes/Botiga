@@ -615,7 +615,7 @@ jQuery( document ).ready(function($) {
 		}
 		
 		//Color 6 Footer background, Subtle backgrounds
-		let elements6 = ['custom_color6','footer_widgets_background','footer_credits_background', 'content_cards_background','single_product_tabs_background_color','single_product_tabs_background_color_active'];
+		let elements6 = ['custom_color6','footer_widgets_background','footer_credits_background', 'content_cards_background','single_product_tabs_background_color','single_product_tabs_background_color_active','single_product_gallery_styles_background_color'];
 		
 		for ( const element of elements6 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {

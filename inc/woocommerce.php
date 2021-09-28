@@ -183,6 +183,11 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
  * @return array $classes modified to include 'woocommerce-active' class.
  */
 function botiga_woocommerce_active_body_class( $classes ) {
+	$single_breadcrumbs = get_theme_mod( 'single_breadcrumbs', 1 );
+	if( ! $single_breadcrumbs && is_single() ) {
+		$classes[] = 'no-single-breadcrumbs';
+	}
+
 	$classes[] = 'woocommerce-active';
 
 	return $classes;
@@ -363,12 +368,25 @@ function botiga_wc_hooks() {
 		add_action( 'woocommerce_after_add_to_cart_button', 'botiga_single_addtocart_wrapper_close' );
 
 		//Gallery
-		if( 'gallery-grid' === $single_product_gallery ) {
+		if( 'gallery-grid' === $single_product_gallery || 'gallery-scrolling' === $single_product_gallery ) {
 			remove_theme_support( 'wc-product-gallery-slider' );
 			remove_theme_support( 'wc-product-gallery-zoom' );
 			add_action( 'woocommerce_single_product_summary', function(){ echo '<div class="sticky-entry-summary">'; }, -99 );
 			add_action( 'woocommerce_single_product_summary', function(){ echo '</div>'; }, 99 );
 			add_filter( 'woocommerce_gallery_image_size', function(){ return 'woocommerce_single'; } );
+		}
+
+		if( 'gallery-showcase' === $single_product_gallery ) {
+			remove_theme_support( 'wc-product-gallery-zoom' );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '<div class="sticky-entry-summary">'; }, -99 );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '</div>'; }, 99 );
+		}
+
+		if( 'gallery-full-width' === $single_product_gallery ) {
+			remove_theme_support( 'wc-product-gallery-zoom' );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '<div class="gallery-full-width-title-wrapper">'; }, 0 );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '</div><div class="gallery-full-width-addtocart-wrapper">'; }, 20 );
+			add_action( 'woocommerce_single_product_summary', function(){ echo '</div>'; }, 99 );
 		}
 
 		//Breadcrumbs
@@ -395,7 +413,7 @@ function botiga_wc_hooks() {
 		
 		//Move sale tag
 		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
-		add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', -1 );
+		add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', 99 );
 
 		// Sticky add to cart
 		if( $single_sticky_add_to_cart ) {
@@ -872,6 +890,11 @@ function botiga_product_carousel_options( $options ) {
 
 	if ( 'gallery-single' === $layout ) {
 		$options['controlNav'] = false;
+		$options['directionNav'] = true;
+	}
+
+	if ( 'gallery-showcase' === $layout || 'gallery-full-width' === $layout ) {
+		$options['controlNav'] = 'thumbnails';
 		$options['directionNav'] = true;
 	}
 

@@ -473,6 +473,19 @@ function botiga_callback_single_sticky_add_to_cart() {
 }
 
 /**
+ * WooCommerce single product image layout
+ */
+function botiga_callback_single_product_gallery_image_layout() {
+	$layout = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+
+	if ( 'gallery-showcase' === $layout || 'gallery-full-width' === $layout ) {
+		return true;
+	} else {
+		return false;
+	}	
+}
+
+/**
  * WooCommerce single tabs
  */
 function botiga_callback_single_tabs_border_color_active() {
@@ -501,7 +514,7 @@ function botiga_callback_single_tabs_background_color() {
 function botiga_callback_single_product_gallery_layout() {
 	$layout = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
-	if( ! in_array( $layout, array( 'gallery-grid' ) ) ) {
+	if( ! in_array( $layout, array( 'gallery-grid', 'gallery-scrolling', 'gallery-showcase', 'gallery-full-width' ) ) ) {
 		return true;
 	} else {
 		return false;

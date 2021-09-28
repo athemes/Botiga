@@ -44,7 +44,7 @@
   var $bg_color_options = {
     "main_header_submenu_background": ".main-navigation ul ul li",
     "background_color": ".wc_payment_methods,.site-header-cart .widget_shopping_cart",
-    "content_cards_background": ".checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.botiga-quick-view-popup .botiga-quick-view-popup-content,.botiga-quick-view-popup form.cart .qty,.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments,.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.sidebar-top+.widget-area .sidebar-wrapper,.woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper",
+    "content_cards_background": ".checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.botiga-quick-view-popup .botiga-quick-view-popup-content,.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments,.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.sidebar-top+.widget-area .sidebar-wrapper,.woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper",
     "color_forms_background": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]",
     "offcanvas_menu_background": ".botiga-offcanvas-menu",
     "mobile_header_background": "#masthead-mobile",
@@ -528,6 +528,26 @@
             $('head').append('<style id="botiga-customizer-styles-' + option + '">' + output + '</style>');
           }
         }
+      });
+    });
+  }); //Woocommerce single image gallery
+
+  wp.customize('single_product_gallery_styles_background_color', function (value) {
+    value.bind(function (to) {
+      $('head').find('#botiga-customizer-styles-single_product_gallery_styles_background_color').remove();
+      var output = '';
+      output += '.product-gallery-summary.gallery-showcase:before, .product-gallery-summary.gallery-full-width:before { background-color: ' + to + '; }';
+
+      if (output) {
+        $('head').append('<style id="botiga-customizer-styles-single_product_gallery_styles_background_color">' + output + '</style>');
+      }
+    });
+  });
+  wp.customize('single_product_gallery_styles_padding_top_bottom', function (value) {
+    value.bind(function (to) {
+      $('.product-gallery-summary.gallery-showcase, .product-gallery-summary.gallery-full-width').css({
+        paddingTop: to + 'px',
+        paddingBottom: to + 'px'
       });
     });
   }); //Woocommerce single tabs

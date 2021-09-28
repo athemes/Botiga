@@ -512,6 +512,7 @@ div.editor-styles-wrapper form.cart .quantity .qty {
   border: none;
   width: 100%;
   min-height: 0;
+  background: transparent;
 }
 
 div.editor-styles-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .quantity .qty:focus,

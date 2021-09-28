@@ -176,7 +176,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$center_top_bar_contents = get_theme_mod( 'center_top_bar_contents', 0 );
 			if ( $center_top_bar_contents ) {
-				$css .= ".top-bar-inner > .row { display:block;} .top-bar-inner .col,.top-bar-inner .col:last-of-type {justify-content:center; text-align: center;}" . "\n";
+				$css .= ".top-bar-inner > .row { display:block;} .top-bar-inner .col,.top-bar-inner .col:last-of-type {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}" . "\n";
 			}
 
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
@@ -362,9 +362,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$shop_archive_header_style_alignment = get_theme_mod( 'shop_archive_header_style_alignment', 'center' );
 
 				if( 'left' === $shop_archive_header_style_alignment ) {
-					$css .= ".woocommerce-page-header .categories-wrapper { justify-content: flex-start;}" . "\n";
+					$css .= ".woocommerce-page-header .categories-wrapper { -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start;}" . "\n";
 				} elseif( 'right' === $shop_archive_header_style_alignment ) {
-					$css .= ".woocommerce-page-header .categories-wrapper { justify-content: flex-end;}" . "\n";
+					$css .= ".woocommerce-page-header .categories-wrapper { -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end;}" . "\n";
 				}
 			}
 
@@ -432,7 +432,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'shop_product_product_title', '', 'ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, ul.wc-block-grid__products li.product .wc-block-grid__product-title, ul.wc-block-grid__products li.product .woocommerce-loop-product__title, ul.products li.wc-block-grid__product .wc-block-grid__product-title, ul.products li.wc-block-grid__product .woocommerce-loop-product__title, ul.products li.product .wc-block-grid__product-title, ul.products li.product .woocommerce-loop-product__title, ul.products li.product .woocommerce-loop-category__title' );
 
 			$css .= $this->get_color_css( 'color_body_text', '', 'a.wc-forward:not(.checkout-button)' );
-			$css .= $this->get_color_css( 'color_link_hover', '', 'a.wc-forward:not(.checkout-button):hover,.woocommerce-pagination li .page-numbers:hover' );
+			$css .= $this->get_color_css( 'color_link_hover', '', 'a.wc-forward:not(.checkout-button):hover' );
+			$css .= $this->get_color_css( 'button_color_hover', '', '.woocommerce-pagination li .page-numbers:hover' );
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.woocommerce-sorting-wrapper', '0.1' );
 
 			//Sidebar
@@ -459,6 +460,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 			if( !$single_sku && !$single_categories && !$single_tags ) {
 				$css .= ".single-product .product_meta { border-top: 0; }";
+			}
+
+			//Woocommerce single product gallery
+			$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+			if( 'gallery-showcase' === $single_product_gallery || 'gallery-full-width' === $single_product_gallery ) {
+				$css .= $this->get_background_color_css( 'single_product_gallery_styles_background_color', '', '.product-gallery-summary.gallery-showcase:before, .product-gallery-summary.gallery-full-width:before' );
+
+				$single_product_gallery_styles_padding_top_bottom = get_theme_mod( 'single_product_gallery_styles_padding_top_bottom', 80 );
+				$css .= ".product-gallery-summary.gallery-showcase, .product-gallery-summary.gallery-full-width { padding-top: ". esc_attr( $single_product_gallery_styles_padding_top_bottom ) ."px; padding-bottom: ". esc_attr( $single_product_gallery_styles_padding_top_bottom ) ."px; }";
 			}
 
 			//Woocommerce single tabs

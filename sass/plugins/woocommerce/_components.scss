@@ -94,6 +94,7 @@ form.cart {
 			border: none;
 			width: 100%;
 			min-height: 0;
+			background: transparent !important;
 			&:focus {
 				box-shadow: none;
 			}
@@ -503,11 +504,15 @@ p.stars {
 			}
 		}
 		.panel {
+			width: 100%;
 			padding: 35px;
 			background: #f2f2f2;
 			border: 1px solid rgba(33,33,33,0.2);
 			p:last-child {
 				margin-bottom: 0;
+			}
+			#comments {
+				margin-top: 0;
 			}
 		}
 	}

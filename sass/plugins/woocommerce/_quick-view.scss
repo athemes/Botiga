@@ -224,6 +224,9 @@ ul.wc-block-grid__products {
 		.woocommerce-product-gallery {
 			width: 100%;
 			float: none !important;
+			.flex-direction-nav {
+				display: none;
+			}
 		}
 	}
 }

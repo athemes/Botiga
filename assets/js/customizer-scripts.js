@@ -550,7 +550,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 6 Footer background, Subtle backgrounds
 
 
-    var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active'];
+    var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color'];
 
     for (var _i6 = 0, _elements6 = elements6; _i6 < _elements6.length; _i6++) {
       var _element5 = _elements6[_i6];

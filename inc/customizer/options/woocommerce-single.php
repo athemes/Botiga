@@ -49,7 +49,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'single_product_gallery',
 		array(
-			'label'    	=> esc_html__( 'Layout', 'botiga' ),
+			'label'    	=> esc_html__( 'Product Image', 'botiga' ),
 			'section'  	=> 'botiga_section_single_product',
 			'cols'		=> 3,
 			'choices'  => array(
