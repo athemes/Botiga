@@ -113,6 +113,12 @@ $product_id = $product->get_id(); ?>
                         break;
                 } ?>
 
+                <?php
+                $wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+                if( 'layout1' !== $wishlist_layout ) {
+                    botiga_single_wishlist_button( $product, true );
+                } ?>
+
                 <div class="product_meta">
                     <?php do_action( 'botiga_quick_view_product_meta_start' ); ?>
 

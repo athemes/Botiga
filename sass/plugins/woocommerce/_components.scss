@@ -936,3 +936,125 @@ span.onsale {
 .product-gallery-summary del .amount {
 	opacity: 0.5;
 }
+
+/* Wishlist Button */
+.botiga-wishlist-button {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 20px;
+	height: 21px;
+	
+	&.botiga-wishlist-button-tooltip:not(.active) {
+		&:before {
+			content: attr(data-botiga-wishlist-tooltip);
+			position: absolute;
+			top: 50%;
+			right: calc( 100% + 15px );
+			background: $color__primary;
+			color: #FFF;
+			padding: 5px 14px;
+			font-size: 0.8rem;
+			border-radius: 4px;
+			white-space: nowrap;
+			opacity: 0;
+			visibility: hidden;
+			transform: translate3d(0, -50%, 0);
+			transition: ease opacity 300ms;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: calc( 100% + 8px );
+			width: 0;
+			height: 0;
+			border-top: 7px solid transparent;
+			border-bottom: 7px solid transparent;
+			border-left: 7px solid $color__primary;
+			opacity: 0;
+			visibility: hidden;
+			transform: translate3d(0, -50%, 0);
+			transition: ease opacity 300ms;
+		}
+	}
+
+	svg path {
+		transition: ease fill 300ms, ease stroke 300ms;
+	}
+
+	&:hover {
+		&.botiga-wishlist-button-tooltip {
+			&:before,
+			&:after {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	&:hover,
+	&.active {
+		svg path {
+			fill: $color__primary;
+			stroke: $color__primary;
+		}
+	}
+}
+
+.botiga-wishlist-button-layout3 {
+	.botiga-wishlist-button {
+		top: auto;
+		bottom: 20px;
+	}
+}
+
+.single-product {
+	.botiga-wishlist-wrapper {
+		margin-top: 15px;
+		.botiga-wishlist-button {
+			display: flex;
+			position: relative;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: auto;
+			align-items: center;
+			font-size: 0.9rem;
+			font-weight: 600;
+			svg {
+				width: 17px;
+				margin-right: 5px;
+			}
+		}	
+	}
+}
+
+/* Wishlist Table */
+.botiga-wishlist-wrapper {
+	margin-top: 60px;
+	.botiga_wishlist_table {
+		.botiga-wishlist-row-item {
+			transition: ease background 300ms, ease opacity 300ms;
+			&.removing {
+				background: #e9e9e9;
+				opacity: 0.3;
+			}
+		}
+		&.empty {
+			tbody {
+				td {
+					padding: 20px 0;
+					text-align: center;
+				}
+			}
+		}
+		.botiga-custom-addtocart {
+			display: block;
+			min-width: 100px;
+		}
+	}
+	.footer-buttons {
+		text-align: right;
+	}
+}

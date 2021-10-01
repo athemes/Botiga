@@ -556,3 +556,27 @@ function botiga_callback_shop_archive_header_style_alignment() {
 		return false;
 	}	
 }
+
+/**
+ * WooCommerce product catalog wishlist
+ */
+function botiga_callback_shop_product_wishlist_layout() {
+	$layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+
+	if( 'layout1' !== $layout ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function botiga_callback_shop_product_wishlist_tooltip() {
+	$layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+	$enable = get_theme_mod( 'shop_product_wishlist_tooltip', 0 );
+
+	if( $enable && 'layout1' !== $layout ) {
+		return true;
+	} else {
+		return false;
+	}
+}

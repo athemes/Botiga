@@ -23,6 +23,7 @@
 # Utilities
 	- Accessibility
 	- Alignments
+	- Animations
 
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -3875,6 +3876,49 @@ input.wc-block-components-price-slider__range-input {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1.5em;
+}
+
+/* Animations
+--------------------------------------------- */
+/* Rotate */
+@-webkit-keyframes botigaAnimRotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes botigaAnimRotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.botigaAnimRotate {
+  -webkit-animation-name: botigaAnimRotate;
+          animation-name: botigaAnimRotate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+
+.botiga-anim-infinite {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.botiga-anim-fowards {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 /* Responsive

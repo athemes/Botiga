@@ -895,3 +895,75 @@ jQuery( document ).ready(function($) {
 	} );
 
 })(jQuery);
+
+/**
+ * Go to (links to navigate between sections and panels)
+ */
+jQuery( document ).ready(function($) {
+	$( document ).on( 'click', 'a[data-goto]', function(e){
+		e.preventDefault();
+		var type = $(this).data('type'),
+			goto = $(this).data('goto');
+
+		if( 'section' === type ) {
+			wp.customize.section( goto ).focus();
+		} else if( 'panel' === type ) {
+			wp.customize.panel( goto ).focus();
+		}
+	});
+});
+
+/**
+ * Create page control
+ */
+jQuery( document ).ready(function($) {
+	$( document ).on( 'click', '.botiga-create-page-control-button', function(e){
+		e.preventDefault();
+
+		var $this            = $(this),
+			$create_message  = $this.parent().find('.botiga-create-page-control-create-message'),
+			$success_message = $this.parent().find('.botiga-create-page-control-success-message'),
+			initial_text     = $this.text(),
+			creating_text    = $this.data('creating-text'),
+			created_text     = $this.data('created-text'),
+			page_title       = $this.data('page-title'),
+			page_meta_key    = $this.data('page-meta-key'),
+			page_meta_value  = $this.data('page-meta-value'),
+			option_name      =  $this.data('option-name'),
+			nonce            = $this.data('nonce');
+
+		if( ! page_title ) {
+			return false;
+		}
+		
+		$(this).text( creating_text );
+		$(this).attr( 'disabled', true );
+
+		$.ajax({
+			type: 'post',
+			url: ajaxurl,
+			data: {
+				action: 'botiga_create_page_control',
+				page_title: page_title,
+				page_meta_key: page_meta_key,
+				page_meta_value: page_meta_value,
+				option_name: option_name,
+				nonce: nonce
+			},
+			success: function(response) {
+				if( 'success' === response.status ) {
+					var href    = $success_message.find('a').attr( 'href' ),
+						newhref = href.replace( '?post=&', '?post='+ response.page_id +'&' );
+
+					$success_message.find('a').attr( 'href', newhref );
+					$success_message.css( 'display', 'block' );
+
+					$create_message.remove();
+					$this.remove();
+				} else {
+
+				}
+			}
+		});
+	});
+});

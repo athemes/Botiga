@@ -1,0 +1,23 @@
+/* Rotate */
+@keyframes botigaAnimRotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.botigaAnimRotate {
+    animation-name: botigaAnimRotate;
+    animation-timing-function: linear;
+    animation-duration: 1.5s;
+}
+
+.botiga-anim-infinite {
+    animation-iteration-count: infinite;
+}
+
+.botiga-anim-fowards {
+    animation-fill-mode: forwards;
+}

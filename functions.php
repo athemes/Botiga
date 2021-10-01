@@ -270,6 +270,18 @@ function botiga_scripts() {
 add_action( 'wp_enqueue_scripts', 'botiga_scripts' );
 
 /**
+ * Page Templates
+ */
+function botiga_remove_page_templates( $page_templates ) {
+	if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+		unset( $page_templates['page-templates/template-wishlist.php'] );
+	}
+   
+	return $page_templates;
+  }
+  add_filter( 'theme_page_templates', 'botiga_remove_page_templates' );
+
+/**
  * Gutenberg editor
  */
 require get_template_directory() . '/inc/editor.php';

@@ -9,6 +9,8 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 
 	public $type = 'botiga-radio-image';
 
+	public $desc_below = false;
+
 	public $cols;
 
 	public function render_content() {
@@ -20,7 +22,7 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 		<?php endif; ?>
 
-		<?php if ( !empty( $this->description ) ) : ?>
+		<?php if ( !empty( $this->description ) && !$this->desc_below ) : ?>
 			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 		<?php endif; ?>
 
@@ -38,6 +40,10 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 			<?php endforeach; ?>
 
 		</div><!-- .image -->
+
+		<?php if ( !empty( $this->description ) && $this->desc_below ) : ?>
+			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+		<?php endif; ?>
 
 		<script type="text/javascript">
 			jQuery( document ).ready( function() {

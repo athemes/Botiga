@@ -436,6 +436,20 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'button_color_hover', '', '.woocommerce-pagination li .page-numbers:hover' );
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.woocommerce-sorting-wrapper', '0.1' );
 
+			//Wishlist
+			$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+			if( 'layout1' !== $wishlist_layout ) {
+				// wishlist buttons/icons
+				$css .= $this->get_stroke_css( 'color_link_default', '', '.botiga-wishlist-button svg path, .botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= $this->get_fill_css( 'color_link_default', '', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):after { border-left-color: '. get_theme_mod( 'color_link_default', '#212121' ) .'; }';
+				$css .= $this->get_background_color_css( 'color_link_default', '', '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):before' );
+
+				// wishlist page
+				$css .= $this->get_color_css( 'color_link_default', '', 'a.botiga-custom-addtocart' );
+				$css .= $this->get_color_css( 'color_link_hover', '', 'a.botiga-custom-addtocart:hover' );
+			} 
+
 			//Sidebar
 			$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 

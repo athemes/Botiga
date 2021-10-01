@@ -326,6 +326,116 @@ botiga.scrollDirection = {
 }
 
 /**
+ * Botiga wishlist
+ */
+ botiga.wishList = {
+	init: function init() {
+		this.addRemoveButton();	
+	},
+	addRemoveButton: function() {
+		var button = document.querySelectorAll('.botiga-wishlist-button, .botiga-wishlist-remove-item');
+
+		if( ! button.length ) {
+			return false;
+		}
+
+		for (var i = 0; i < button.length; i++) {
+			button[i].addEventListener('click', function(e) {
+				e.preventDefault();
+
+				var button       = this,
+					productId    = this.getAttribute('data-product-id'),
+					wishlistLink = this.getAttribute('data-wishlist-link'),
+					type         = this.getAttribute('data-type'),
+					nonce        = this.getAttribute('data-nonce');
+
+				if( button.classList.contains( 'active' ) ) {
+					window.location = wishlistLink;
+					return false;
+				}
+
+				var ajax = new XMLHttpRequest();
+				ajax.open('POST', botiga.ajaxurl, true);
+				ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+				if( 'remove' === type ) {					
+					button.closest('tr').classList.add( 'removing' );
+					button.classList.add( 'botigaAnimRotate' );
+					button.classList.add( 'botiga-anim-infinite' );
+				}
+
+				ajax.onload = function() {
+					if (this.status >= 200 && this.status < 400) {
+						if( 'add' === type ) {
+							button.classList.add( 'active' );
+							
+							if( button.closest('.single-product') !== null  ) {
+								var single_wishlist_button_text = button.querySelector( '.botiga-wishlist-text' );
+								single_wishlist_button_text.innerHTML = single_wishlist_button_text.getAttribute( 'data-wishlist-view-text' );
+							}
+						} else {
+							button.closest('tr').classList.add( 'removing' );
+							setTimeout(function(){
+								button.closest('tr').remove();
+							}, 800);	
+						}
+					}
+				};
+
+				ajax.send('action=botiga_button_wishlist&product_id=' + productId + '&nonce=' + nonce + '&type=' + type);
+			});
+		}
+	},
+
+};
+
+/**
+ * Botiga custom add to cart button
+ * 
+ */
+ botiga.customAddToCartButton = {
+	init: function init() {
+		var button = document.querySelectorAll('.botiga-custom-addtocart');
+
+		if( ! button.length ) {
+			return false;
+		}
+
+		for (var i = 0; i < button.length; i++) {
+			button[i].addEventListener('click', function(e) {
+				e.preventDefault();
+
+				var button       = this,
+					productId    = this.getAttribute('data-product-id'),
+					initial_text = this.innerHTML,
+					loading_text = this.getAttribute('data-loading-text'),
+					added_text   = this.getAttribute('data-added-text'),
+					nonce        = this.getAttribute('data-nonce');
+
+				var ajax = new XMLHttpRequest();
+				ajax.open('POST', botiga.ajaxurl, true);
+				ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+				button.innerHTML = loading_text;
+
+				ajax.onload = function() {
+					if (this.status >= 200 && this.status < 400) {
+						button.innerHTML = added_text;
+						setTimeout(function(){
+							button.innerHTML = initial_text;
+						}, 1500);
+
+						jQuery(document.body).trigger('wc_fragment_refresh');
+					}
+				};
+
+				ajax.send('action=botiga_custom_addtocart&product_id=' + productId + '&nonce=' + nonce );
+			});
+		}
+	}
+};
+
+/**
  * Botiga quick view
  */
 botiga.quickView = {
@@ -378,6 +488,7 @@ botiga.quickView = {
 						}
 
 						botiga.qtyButton.init( 'quick-view' );
+						botiga.wishList.init();
 					}
 				};
 
@@ -620,7 +731,9 @@ botiga.toggleClass = {
 botiga.helpers.botigaDomReady( function() {
 	botiga.navigation.init();
 	botiga.headerSearch.init();
-    botiga.quickView.init();
+	botiga.customAddToCartButton.init();
+    botiga.wishList.init();
+	botiga.quickView.init();
 	botiga.stickyHeader.init();
 	botiga.scrollDirection.init();
 	botiga.backToTop.init();
