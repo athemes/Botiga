@@ -49,6 +49,20 @@ function botiga_woocommerce_setup() {
 add_action( 'after_setup_theme', 'botiga_woocommerce_setup' );
 
 /**
+ * WooCommerce admin specific scripts & stylesheets.
+ *
+ * @return void
+ */
+function botiga_admin_woocommerce_scripts() {
+	$current_screen = get_current_screen();
+
+    if( method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor() ) {
+		wp_enqueue_style( 'botiga-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css', array(), BOTIGA_VERSION );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
+
+/**
  * WooCommerce specific scripts & stylesheets.
  *
  * @return void
@@ -1048,6 +1062,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$button_layout 	   = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 	$layout			   = get_theme_mod( 'shop_product_card_layout', 'layout1' );
 	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
 
 	//Check for gb option to hide or show add to cart button
 	if( strpos( $html, 'wp-block-button' ) === FALSE ) {
@@ -1058,6 +1073,10 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
 	if( 'layout1' !== $quick_view_layout ) {
 		$loop_image_wrap_extra_class .= ' botiga-quick-view-button-'. $quick_view_layout;
+	}
+
+	if( 'layout1' !== $wishlist_layout ) {
+		$loop_image_wrap_extra_class .= ' botiga-wishlist-button-'. $quick_view_layout;
 	}
 
 	$markup = "<li class=\"wc-block-grid__product product-grid\">
@@ -1076,6 +1095,9 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	//Quick view
 	$markup .= botiga_quick_view_button( $product, false );
+
+	//Wishlist
+	$markup .= botiga_wishlist_button( $product, false );
 
 	$markup .= "</div>";
 	
@@ -1098,7 +1120,6 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		</div>
 		</div>";
 	}
-	
 		
 	//Add button outside image wrapper		
 	if ( 'layout1' !== $button_layout && 'layout4' !== $button_layout && 'layout3' !== $button_layout ) {

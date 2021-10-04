@@ -44,7 +44,7 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 			);
 		} else {
 			echo '<div class="botiga-create-page-control-create-message">';
-				/* translators: 1:  */	
+				/* translators: 1: page name */	
 				echo sprintf( __( 'Seems you dont\' have a <strong>%s</strong> page created yet. Click in the below button to create the page.', 'botiga' ), esc_html( $this->page_title ) );
 				echo '<br><br>';
 			echo '</div>';
