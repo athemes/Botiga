@@ -180,6 +180,32 @@ botiga.helpers = {
 };
 
 /**
+ * Desktop offcanvas menu navigation
+ */
+ botiga.desktopOffcanvasNav = {
+	init: function(){
+		const buttons   = document.querySelectorAll( '.desktop-menu-toggle' ),
+			closeButton = document.getElementsByClassName( 'desktop-menu-close' )[0],
+			offcanvas   = document.getElementsByClassName( 'botiga-desktop-offcanvas' )[0];
+
+		for( var i=0;i<buttons.length;i++ ) {
+			buttons[i].addEventListener( 'click', function(e){
+				e.preventDefault();
+
+				offcanvas.classList.add( 'botiga-desktop-offcanvas-show' );
+			} );
+		}
+
+		closeButton.addEventListener( 'click', function(e){
+			e.preventDefault();
+
+			offcanvas.classList.remove( 'botiga-desktop-offcanvas-show' );
+		} );
+
+	}
+ }
+
+/**
  * Header search
  */
 botiga.headerSearch = {
@@ -730,6 +756,7 @@ botiga.toggleClass = {
 
 botiga.helpers.botigaDomReady( function() {
 	botiga.navigation.init();
+	botiga.desktopOffcanvasNav.init();
 	botiga.headerSearch.init();
 	botiga.customAddToCartButton.init();
     botiga.wishList.init();

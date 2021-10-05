@@ -49,7 +49,10 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_mobile' ) ); ?>" <?php $this->link( 'size_mobile' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_mobile' ) ); ?>" <?php $this->link( 'size_mobile' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 				</div>		
-				<?php endif; ?>										
+				<?php endif; ?>	
+				<?php if ( $this->description ) : ?>
+					<p><?php echo esc_html( $this->description ); ?></p>
+				<?php endif; ?>									
 			</div>	
 		<?php
 	}

@@ -43,7 +43,7 @@
 
 
 	//Background colors
-	var $bg_color_options = { "main_header_submenu_background":".main-navigation ul ul li","background_color":".wc_payment_methods,.site-header-cart .widget_shopping_cart", "content_cards_background":".checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.botiga-quick-view-popup .botiga-quick-view-popup-content,.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments,.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.sidebar-top+.widget-area .sidebar-wrapper,.woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper","color_forms_background":"input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]", "offcanvas_menu_background":".botiga-offcanvas-menu","mobile_header_background":"#masthead-mobile","button_background_color":"button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"],.widget_product_tag_cloud .tag-cloud-link,.widget_price_filter .ui-slider .ui-slider-handle,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev","single_product_sale_background_color":".wc-block-grid__product-onsale, span.onsale","shop_product_card_background":"ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product","main_header_bottom_background":".bottom-header-row","main_header_background":".site-header,.header-search-form", "scrolltop_bg_color": ".back-to-top","topbar_background":".top-bar","footer_credits_background":".site-footer", "footer_widgets_background":".footer-widgets","header_top_row_background":".header-top", "header_middle_row_background":".header-middle", "header_bottom_row_background":".header-bottom", "color_body_text":".widget_price_filter .ui-slider .ui-slider-range","single_sticky_add_to_cart_style_color_background":".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select" };
+	var $bg_color_options = { "main_header_submenu_background":".main-navigation ul ul li","background_color":".wc_payment_methods,.site-header-cart .widget_shopping_cart", "content_cards_background":".checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.botiga-quick-view-popup .botiga-quick-view-popup-content,.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments,.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.sidebar-top+.widget-area .sidebar-wrapper,.woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper","color_forms_background":"input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]", "offcanvas_menu_background":".botiga-offcanvas-menu","mobile_header_background":"#masthead-mobile","button_background_color":"button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"],.widget_product_tag_cloud .tag-cloud-link,.widget_price_filter .ui-slider .ui-slider-handle,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev","single_product_sale_background_color":".wc-block-grid__product-onsale, span.onsale","shop_product_card_background":"ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product","main_header_bottom_background":".bottom-header-row","main_header_background":".site-header,.header-search-form", "scrolltop_bg_color": ".back-to-top","topbar_background":".top-bar","footer_credits_background":".site-footer", "footer_widgets_background":".footer-widgets","header_top_row_background":".header-top", "header_middle_row_background":".header-middle", "header_bottom_row_background":".header-bottom", "color_body_text":".widget_price_filter .ui-slider .ui-slider-range","single_sticky_add_to_cart_style_color_background":".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select","desktop_offcanvas_menu_background_color":".botiga-desktop-offcanvas" };
 
 	$.each( $bg_color_options, function( option, selector ) {
 		wp.customize( option, function( value ) {
@@ -275,7 +275,63 @@
 		} );
 	} );	
 
+	wp.customize( 'main_header_areas_spacing_l6', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_6 .botiga-desktop-offcanvas > .row > div' ).css( {
+				'margin-top': to + 'px'
+			} );
+		} );
+	} );
 
+	wp.customize( 'main_header_elements_spacing_l6', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_6 .header-item, .header_layout_6 .header-item.header-contact a + a' ).css( {
+				'margin-top': to + 'px'
+			} );
+		} );
+	} );
+
+	wp.customize( 'main_header_padding', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_6 .botiga-desktop-offcanvas' ).css( {
+				padding:  to + 'px'
+			} );
+		} );
+	} );
+
+	wp.customize( 'desktop_offcanvas_padding', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_7 .botiga-desktop-offcanvas, .header_layout_8 .botiga-desktop-offcanvas' ).css( {
+				padding:  to + 'px'
+			} );
+		} );
+	} );
+
+	wp.customize( 'desktop_offcanvas_menu_link_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li > a, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li > a' ).css( {
+				'padding-top':  to + 'px',
+				'padding-bottom':  to + 'px'
+			} );
+		} );
+	} );
+
+	wp.customize( 'desktop_offcanvas_content_areas_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_7 .botiga-desktop-offcanvas > .row > div ,.header_layout_8 .botiga-desktop-offcanvas > .row > div' ).css( {
+				'margin-top': to + 'px'
+			} );
+		} );
+	} );
+
+	wp.customize( 'header_components_desktop_offcanvas_elements_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( '.header_layout_7 .botiga-desktop-offcanvas .header-item, .header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item, .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a' ).css( {
+				'margin-top': to + 'px'
+			} );
+		} );
+	} );
+	
 	//Blog
 	wp.customize( 'archive_featured_image_size_desktop', function( value ) {
 		value.bind( function( to ) {

@@ -13,6 +13,9 @@
  */
 function botiga_body_classes( $classes ) {
 
+	// Add a class for header layout
+	$classes[] = 'header-' . get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -413,6 +416,9 @@ function botiga_get_default_header_components() {
 		'l5topleft'	=> array(),
 		'l5topright'=> array( 'woocommerce_icons' ),
 		'l5bottom'	=> array( 'search' ),
+		'l7left'    => array( 'contact_info' ),
+		'l7right'   => array( 'search', 'woocommerce_icons', 'hamburguer_btn' ),
+		'desktop_offcanvas' => array(),
 		'mobile'	=> array( 'woocommerce_icons' ),
 		'offcanvas'	=> array()
 	);
@@ -444,7 +450,7 @@ function botiga_header_layouts() {
 		'header_layout_5' => array(
 			'label' => esc_html__( 'Layout 5', 'botiga' ),
 			'url'   => '%s/assets/img/hl5.svg'
-		),
+		)
 	);
 
 	return apply_filters( 'botiga_header_layout_choices', $choices );

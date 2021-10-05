@@ -89,7 +89,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				</div>
 				<div class="mobile-header-item">
 					<?php $this->render_components( 'offcanvas' ); ?>
-				</div>				
+				</div>			
 			</div>
 			
 			<?php call_user_func( array( $this, $layout ) ); ?>
@@ -278,6 +278,76 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			<?php
 		}			
 
+		/**
+		 * Desktop: header layout 6
+		 */
+		public function header_layout_6() {
+			$layout 			= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$vertical_alignment = get_theme_mod( 'main_header_vertical_alignment_l6', 'center' );
+			$content_alignment  = get_theme_mod( 'main_header_content_alignment_l6', 'left' );
+			?>
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
+					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-show vertical-align-<?php echo esc_attr( $vertical_alignment ); ?> content-align-<?php echo esc_attr( $content_alignment ); ?>">
+						<div class="row">
+							<div class="col-12">
+								<?php $this->logo(); ?>
+							</div>
+							<div class="col-12">
+								<?php $this->menu(); ?>
+							</div>
+							<div class="col-12 header-elements">
+								<?php $this->render_components( 'l1' ); ?>
+							</div>
+						</div>	
+					</div>
+					<?php $this->search_form(); ?>
+				</header>			
+			<?php
+		}
+
+		/**
+		 * Desktop: header layout 7
+		 */
+		public function header_layout_7() {
+			$layout 						   = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
+			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'left' );
+			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
+			?>
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+					<div class="<?php echo esc_attr( $container ); ?>">
+						<div class="site-header-inner">
+							<div class="row valign">
+								<div class="col-md-5">
+									<?php $this->render_components( 'l7left' ); ?>
+								</div>
+								<div class="col-md-2">
+									<?php $this->logo(); ?>
+								</div>
+								<div class="col-md-5 header-elements">
+									<?php $this->render_components( 'l7right' ); ?>
+								</div>							
+							</div>
+						</div>
+					</div>
+					<?php $this->search_form(); ?>
+					<div class="botiga-desktop-offcanvas vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
+						<a class="desktop-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
+						<div class="row">
+							<div class="col-12">
+								<?php $this->logo(); ?>
+							</div>
+							<div class="col-12">
+								<?php $this->menu(); ?>
+							</div>
+							<div class="col-12 header-elements">
+								<?php $this->render_components( 'desktop_offcanvas' ); ?>
+							</div>
+						</div>	
+					</div>
+				</header>
+			<?php
+		}
 
 		/**
 		 * Mobile: layout 1
@@ -491,6 +561,16 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<p class="site-description"><?php echo $botiga_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
+			<?php
+		}
+
+		/**
+		 * Desktop menu trigger
+		 */
+		public function hamburguer_btn() { ?>
+			<a href="#" class="desktop-menu-toggle">
+				<i class="ws-svg-icon"><?php botiga_get_svg_icon( 'mobile-icon2', true ); ?></i>
+			</a>
 			<?php
 		}
 

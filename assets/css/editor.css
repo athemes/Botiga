@@ -1349,6 +1349,20 @@ div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table .botig
   opacity: 0.3;
 }
 
+div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table.empty tbody td {
+  padding: 20px 0;
+  text-align: center;
+}
+
+div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table .botiga-custom-addtocart {
+  display: block;
+  min-width: 100px;
+}
+
+div.editor-styles-wrapper .botiga-wishlist-wrapper .footer-buttons {
+  text-align: right;
+}
+
 div.editor-styles-wrapper ul.wc-block-grid__products,
 div.editor-styles-wrapper ul.products {
   margin: 0;

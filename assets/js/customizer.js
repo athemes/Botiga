@@ -61,7 +61,8 @@
     "header_middle_row_background": ".header-middle",
     "header_bottom_row_background": ".header-bottom",
     "color_body_text": ".widget_price_filter .ui-slider .ui-slider-range",
-    "single_sticky_add_to_cart_style_color_background": ".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select"
+    "single_sticky_add_to_cart_style_color_background": ".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select",
+    "desktop_offcanvas_menu_background_color": ".botiga-desktop-offcanvas"
   };
   $.each($bg_color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -321,6 +322,56 @@
   wp.customize('mobile_header_separator_width', function (value) {
     value.bind(function (to) {
       $('.botiga-offcanvas-menu .main-navigation ul li').css('border-bottom-width', to + 'px');
+    });
+  });
+  wp.customize('main_header_areas_spacing_l6', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_6 .botiga-desktop-offcanvas > .row > div').css({
+        'margin-top': to + 'px'
+      });
+    });
+  });
+  wp.customize('main_header_elements_spacing_l6', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_6 .header-item, .header_layout_6 .header-item.header-contact a + a').css({
+        'margin-top': to + 'px'
+      });
+    });
+  });
+  wp.customize('main_header_padding', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_6 .botiga-desktop-offcanvas').css({
+        padding: to + 'px'
+      });
+    });
+  });
+  wp.customize('desktop_offcanvas_padding', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_7 .botiga-desktop-offcanvas, .header_layout_8 .botiga-desktop-offcanvas').css({
+        padding: to + 'px'
+      });
+    });
+  });
+  wp.customize('desktop_offcanvas_menu_link_spacing', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li > a, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li > a').css({
+        'padding-top': to + 'px',
+        'padding-bottom': to + 'px'
+      });
+    });
+  });
+  wp.customize('desktop_offcanvas_content_areas_spacing', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_7 .botiga-desktop-offcanvas > .row > div ,.header_layout_8 .botiga-desktop-offcanvas > .row > div').css({
+        'margin-top': to + 'px'
+      });
+    });
+  });
+  wp.customize('header_components_desktop_offcanvas_elements_spacing', function (value) {
+    value.bind(function (to) {
+      $('.header_layout_7 .botiga-desktop-offcanvas .header-item, .header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item, .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a').css({
+        'margin-top': to + 'px'
+      });
     });
   }); //Blog
 

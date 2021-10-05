@@ -283,7 +283,7 @@ function botiga_callback_author_avatar() {
 function botiga_callback_header_layout_1_2() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	
-	if ( 'header_layout_1' === $layout || 'header_layout_2' === $layout ) {
+	if ( 'header_layout_1' === $layout || 'header_layout_2' === $layout || 'header_layout_6' === $layout ) {
 		return true;
 	} else { 
 		return false;
@@ -324,7 +324,47 @@ function botiga_callback_header_layout_5() {
 function botiga_callback_header_layout_not_1() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	
-	if ( 'header_layout_1' !== $layout ) {
+	if ( 'header_layout_1' !== $layout && 'header_layout_6' !== $layout && 'header_layout_7' !== $layout && 'header_layout_8' !== $layout ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
+function botiga_callback_header_layout_not_6() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( 'header_layout_6' !== $layout ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
+function botiga_callback_header_layout_is_6() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( 'header_layout_6' === $layout ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
+function botiga_callback_header_layout_is_7() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( 'header_layout_7' === $layout ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
+function botiga_callback_header_layout_is_7_8() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( 'header_layout_7' === $layout || 'header_layout_8' === $layout ) {
 		return true;
 	} else { 
 		return false;
@@ -366,6 +406,7 @@ function botiga_callback_header_elements( $element ) {
 	switch ( $layout ) {
 		case 'header_layout_1':
 		case 'header_layout_2':
+		case 'header_layout_6':
 			$elements = get_theme_mod( 'header_components_l1', array( 'search' ) );
 
 			if ( in_array( $element, $elements ) ) {
@@ -411,7 +452,7 @@ function botiga_callback_header_elements( $element ) {
 				return false;
 			}
 
-			break;				
+			break;
 
 		default:
 			return false;
