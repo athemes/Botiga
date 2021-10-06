@@ -789,17 +789,18 @@ $wp_customize->add_setting( 'main_header_padding', array(
 
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'main_header_padding',
 	array(
-		'label' 		=> esc_html__( 'Padding', 'botiga' ),
-		'section' 		=> 'botiga_section_main_header',
-		'is_responsive'	=> 0,
-		'settings' 		=> array (
+		'label' 		  => esc_html__( 'Padding', 'botiga' ),
+		'section' 		  => 'botiga_section_main_header',
+		'active_callback' => 'botiga_callback_header_layout_not_7_8',
+		'is_responsive'	  => 0,
+		'settings' 		  => array (
 			'size_desktop' 		=> 'main_header_padding',
 		),
-		'input_attrs' => array (
+		'input_attrs'     => array (
 			'min'	=> 0,
 			'max'	=> 100
 		),
-		'priority'			=> 390
+		'priority'		  => 390
 	)
 ) );
 
@@ -836,7 +837,7 @@ $wp_customize->add_setting( 'main_header_divider_7',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'main_header_divider_7',
 		array(
 			'section' 			=> 'botiga_section_main_header',
-			'active_callback' => 'botiga_callback_header_layout_not_6',
+			'active_callback'   => 'botiga_callback_header_layout_not_6_7_8',
 			'priority'			=> 410
 		)
 	)

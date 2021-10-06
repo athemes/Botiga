@@ -62,6 +62,19 @@ function botiga_sanitize_header_components( $input ) {
     return $sanitized;    
 }
 
+function botiga_sanitize_header_components_layout_7_8( $input ) {
+    $input      = (array) $input;
+    $sanitized  = array();
+    $elements   = array_keys( botiga_header_elements_layout_7_8() );
+
+    foreach ( $input as $sub_value ) {
+        if ( in_array( $sub_value, $elements, true ) ) {
+            $sanitized[] = $sub_value;
+        }
+    }
+    return $sanitized;    
+}
+
 /**
  * Sanitize loop product components
  */

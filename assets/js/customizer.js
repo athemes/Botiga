@@ -360,6 +360,17 @@
       });
     });
   });
+  wp.customize('desktop_offcanvas_link_separator_color', function (value) {
+    value.bind(function (to) {
+      var desktop_offcanvas_menu_link_separator = window.parent.window.wp.customize.control('desktop_offcanvas_menu_link_separator').setting.get();
+
+      if (desktop_offcanvas_menu_link_separator) {
+        $('.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li').css({
+          'border-top': '1px solid ' + hexToRGB(to, 0.1)
+        });
+      }
+    });
+  });
   wp.customize('desktop_offcanvas_content_areas_spacing', function (value) {
     value.bind(function (to) {
       $('.header_layout_7 .botiga-desktop-offcanvas > .row > div ,.header_layout_8 .botiga-desktop-offcanvas > .row > div').css({
@@ -369,7 +380,7 @@
   });
   wp.customize('header_components_desktop_offcanvas_elements_spacing', function (value) {
     value.bind(function (to) {
-      $('.header_layout_7 .botiga-desktop-offcanvas .header-item, .header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item, .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a').css({
+      $('.header_layout_7 .botiga-desktop-offcanvas .header-item:not(:first-child), .header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item:not(:first-child), .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a').css({
         'margin-top': to + 'px'
       });
     });

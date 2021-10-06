@@ -341,6 +341,26 @@ function botiga_callback_header_layout_not_6() {
 	}
 }
 
+function botiga_callback_header_layout_not_6_7_8() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( ! in_array( $layout, array( 'header_layout_6', 'header_layout_7', 'header_layout_8' ) ) ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
+function botiga_callback_header_layout_not_7_8() {
+	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	
+	if ( ! in_array( $layout, array( 'header_layout_7', 'header_layout_8' ) ) ) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
 function botiga_callback_header_layout_is_6() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	

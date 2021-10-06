@@ -188,6 +188,10 @@ botiga.helpers = {
 			closeButton = document.getElementsByClassName( 'desktop-menu-close' )[0],
 			offcanvas   = document.getElementsByClassName( 'botiga-desktop-offcanvas' )[0];
 
+		if( ! buttons.length ) {
+			return false;
+		}
+
 		for( var i=0;i<buttons.length;i++ ) {
 			buttons[i].addEventListener( 'click', function(e){
 				e.preventDefault();
@@ -267,6 +271,20 @@ botiga.headerSearch = {
 			self.backButtonsToDefaultState( button );
 			button.focus();
 		});
+
+		var desktop_offcanvas = document.getElementsByClassName( 'header-desktop-offcanvas-layout2' )[0] !== null ? document.getElementsByClassName( 'botiga-desktop-offcanvas' )[0] : false;
+
+		if( desktop_offcanvas ) {
+			desktop_offcanvas.addEventListener( 'click', function(e){
+				if( e.target.closest( '.header-search' ) === null ) {
+					form.classList.remove( 'active' );
+					overlay.classList.remove( 'active' );	
+					
+					// Back buttons to default state
+					self.backButtonsToDefaultState( button );
+				}
+			} );
+		}
 
 		return this;
 	},

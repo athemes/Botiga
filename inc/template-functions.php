@@ -14,7 +14,14 @@
 function botiga_body_classes( $classes ) {
 
 	// Add a class for header layout
-	$classes[] = 'header-' . get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	$classes[] = 'header-' . $header_layout;
+
+	if( in_array( $header_layout, array( 'header_layout_7', 'header_layout_8' ) ) ) {
+		$main_header_desktop_offcanvas = get_theme_mod( 'main_header_desktop_offcanvas', 'layout1' );
+
+		$classes[] = 'header-desktop-offcanvas-' . $main_header_desktop_offcanvas;
+	}
 
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
@@ -487,10 +494,23 @@ function botiga_header_elements() {
 		'search' 			=> esc_html__( 'Search', 'botiga' ),
 		'woocommerce_icons' => esc_html__( 'Cart &amp; account icons', 'botiga' ),
 		'button' 			=> esc_html__( 'Button', 'botiga' ),
-		'contact_info' 		=> esc_html__( 'Contact info', 'botiga' ),
+		'contact_info' 		=> esc_html__( 'Contact info', 'botiga' )
 	);
 
 	return apply_filters( 'botiga_header_elements', $elements );
+}
+
+function botiga_header_elements_layout_7_8() {
+
+	$elements = array(
+		'search' 			=> esc_html__( 'Search', 'botiga' ),
+		'woocommerce_icons' => esc_html__( 'Cart &amp; account icons', 'botiga' ),
+		'button' 			=> esc_html__( 'Button', 'botiga' ),
+		'contact_info' 		=> esc_html__( 'Contact info', 'botiga' ),
+		'hamburguer_btn'    => esc_html__( 'Hamburguer button', 'botiga' )
+	);
+
+	return apply_filters( 'botiga_header_elements_layout_7_8', $elements );
 }
 
 /**
