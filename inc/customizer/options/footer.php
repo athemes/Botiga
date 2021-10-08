@@ -142,7 +142,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'footer_con
 		'section' => 'botiga_section_footer_widgets',
 		'choices' => array(
 			'container' 		=> esc_html__( 'Contained', 'botiga' ),
-			'container-fluid' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'container-fluid' 	=> esc_html__( 'Full-width', 'botiga' ),
 		)
 	)
 ) );
@@ -381,7 +381,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'footer_wid
 		'section' 	=> 'botiga_section_footer_widgets',
 		'choices' 	=> array(
 			'contained' 	=> esc_html__( 'Contained', 'botiga' ),
-			'fullwidth' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'fullwidth' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
 		'active_callback' 	=> 'botiga_callback_footer_widgets_divider'
 	)
@@ -578,7 +578,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'footer_cre
 		'section' => 'botiga_section_footer_credits',
 		'choices' => array(
 			'container' 		=> esc_html__( 'Contained', 'botiga' ),
-			'container-fluid' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'container-fluid' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
 		'priority' => 20
 	)
@@ -904,7 +904,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'footer_cre
 		'section' 	=> 'botiga_section_footer_credits',
 		'choices' 	=> array(
 			'contained' 	=> esc_html__( 'Contained', 'botiga' ),
-			'fullwidth' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'fullwidth' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
 		'active_callback' 	=> 'botiga_callback_footer_credits_divider',
 		'priority' 			=> 130

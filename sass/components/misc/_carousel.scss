@@ -1,12 +1,17 @@
 // Botiga carousel
 // need to be compatible with cross sells too
+.has-cross-sells-carousel {
+	.cross-sells {
+		.products:not(.show) {
+			display: flex;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
+
 .botiga-carousel,
 .cross-sells {
-	.products:not(.show) {
-		display: flex;
-		opacity: 0;
-		visibility: hidden;
-	}
 	.botiga-carousel-wrapper {
 		position: relative;
 		.products,

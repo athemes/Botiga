@@ -3621,8 +3621,7 @@ input.wc-block-components-price-slider__range-input {
 
 /* Carousel
 --------------------------------------------- */
-.botiga-carousel .products:not(.show),
-.cross-sells .products:not(.show) {
+.has-cross-sells-carousel .cross-sells .products:not(.show) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

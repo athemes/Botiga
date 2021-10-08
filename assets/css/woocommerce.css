@@ -3961,6 +3961,33 @@ span.onsale {
   text-align: right;
 }
 
+/* Product swatch */
+.botiga-variations-wrapper select {
+  display: none;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a + a {
+  margin-left: 8px;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a:hover, .botiga-variations-wrapper .botiga-variation-type-color > a.active {
+  border-color: #212121;
+}
+
 /**
  * WooCommerce widgets
  */

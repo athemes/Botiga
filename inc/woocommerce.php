@@ -1244,10 +1244,10 @@ function botiga_single_wishlist_button( $product = false, $echo = true  ) {
 			<svg width="20" height="17" viewBox="-2 -2 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M13.8213 2.50804L13.8216 2.5078C16.1161 0.140222 19.7976 -0.212946 22.2492 1.87607C25.093 4.30325 25.2444 8.66651 22.6933 11.2992L22.6932 11.2993L13.245 21.055C13.245 21.0551 13.245 21.0551 13.2449 21.0551C12.8311 21.4822 12.1652 21.4822 11.7514 21.0551C11.7513 21.0551 11.7513 21.0551 11.7513 21.055L2.30334 11.2995C-0.243225 8.66684 -0.0918835 4.30344 2.75181 1.8762C5.20368 -0.213127 8.88985 0.140465 11.1793 2.50744L11.1799 2.50804L12.1418 3.49925L12.5006 3.86899L12.8594 3.49925L13.8213 2.50804Z" stroke-width="3" stroke="#212121" fill="transparent"/>
 			</svg>
-			<span class="botiga-wishlist-text" data-wishlist-view-text="<?php echo esc_attr__( 'View the Wishlist', 'botiga' ); ?>">
+			<span class="botiga-wishlist-text" data-wishlist-view-text="<?php echo esc_attr__( 'View Wishlist', 'botiga' ); ?>">
 				<?php 
 				if( $product_is_inthe_wishlist ) {
-					esc_html_e( 'View the Wishlist', 'botiga' );
+					esc_html_e( 'View Wishlist', 'botiga' );
 				} else {
 					esc_html_e( 'Add to Wishlist', 'botiga' );
 				} ?>

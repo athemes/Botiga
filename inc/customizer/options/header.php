@@ -233,7 +233,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'header_con
 		'section' => 'botiga_section_main_header',
 		'choices' => array(
 			'container' 		=> esc_html__( 'Contained', 'botiga' ),
-			'container-fluid' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'container-fluid' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
 		'active_callback' => 'botiga_callback_header_layout_not_6',
 		'priority'		  => 60

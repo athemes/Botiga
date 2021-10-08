@@ -1058,3 +1058,27 @@ span.onsale {
 		text-align: right;
 	}
 }
+
+/* Product swatch */
+.botiga-variations-wrapper {
+	select {
+		display: none;
+	}
+	.botiga-variation-type-color {
+		display: flex;
+		> a {
+			width: 30px;
+			height: 30px;
+			border-radius: 100%;
+			border: 1px solid transparent;
+			cursor: pointer;
+			& + a {
+				margin-left: 8px;
+			}
+			&:hover,
+			&.active {
+				border-color: $color__primary;
+			}
+		}
+	}
+}

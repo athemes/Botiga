@@ -66,7 +66,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'topbar_con
 		'section' => 'botiga_section_top_bar',
 		'choices' => array(
 			'container' 		=> esc_html__( 'Contained', 'botiga' ),
-			'container-fluid' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'container-fluid' 	=> esc_html__( 'Full-width', 'botiga' ),
 		)
 	)
 ) );
@@ -513,7 +513,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'topbar_div
 		'section' 	=> 'botiga_section_top_bar',
 		'choices' 	=> array(
 			'contained' 	=> esc_html__( 'Contained', 'botiga' ),
-			'fullwidth' 	=> esc_html__( 'Fullwidth', 'botiga' ),
+			'fullwidth' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
 	)
 ) );

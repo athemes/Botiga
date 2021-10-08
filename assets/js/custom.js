@@ -820,6 +820,58 @@ botiga.toggleClass = {
     }
   }
 };
+/**
+ * Product Swatch
+ */
+
+botiga.productSwatch = {
+  init: function init() {
+    var wrapper = document.getElementsByClassName('botiga-variations-wrapper')[0];
+
+    if (typeof wrapper === 'undefined') {
+      return false;
+    }
+
+    var type = wrapper.getAttribute('data-type');
+
+    switch (type) {
+      case 'color':
+        this.colorVariationType();
+        break;
+
+      default:
+        break;
+    }
+  },
+  colorVariationType: function colorVariationType() {
+    var self = this,
+        select = document.querySelector('.botiga-variations-wrapper > select'),
+        items = document.querySelectorAll('.botiga-variations-wrapper .botiga-variation-item');
+
+    for (var i = 0; i < items.length; i++) {
+      items[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        var value = this.getAttribute('value');
+        jQuery(select).val(value).trigger('change');
+        self.resetVariations();
+        this.classList.add('active');
+      });
+    }
+  },
+  resetVariations: function resetVariations() {
+    var resetbtn = document.querySelectorAll('.reset_variations'),
+        items = document.querySelectorAll('.botiga-variations-wrapper .botiga-variation-item');
+
+    for (var i = 0; i < resetbtn.length; i++) {
+      resetbtn[i].addEventListener('click', function () {
+        for (var u = 0; u < items.length; u++) {
+          console.log(items);
+          items[u].classList.remove('active');
+        }
+      });
+    }
+  }
+};
 botiga.helpers.botigaDomReady(function () {
   botiga.navigation.init();
   botiga.desktopOffcanvasNav.init();
@@ -832,4 +884,5 @@ botiga.helpers.botigaDomReady(function () {
   botiga.backToTop.init();
   botiga.qtyButton.init();
   botiga.carousel.init();
+  botiga.productSwatch.init();
 });
