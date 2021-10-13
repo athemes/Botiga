@@ -873,3 +873,19 @@ span.delete:hover {
 .font-size-desktop.noresponsive {
     display: flex !important;
 }
+
+/*
+ * Upsell
+ */
+.customize-control-botiga-upsell-features {
+    border-top: 1px solid #CCC;
+}
+
+.botiga-upsell-feature-wrapper {
+    display: flex;
+    align-items: center;
+    p {
+        font-weight: 500;
+        padding-right: 5px;
+    }
+}

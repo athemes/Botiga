@@ -79,7 +79,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'shop_archi
 $wp_customize->add_setting(
 	'shop_archive_sidebar',
 	array(
-		'default'           => 'layout1',
+		'default'           => 'no-sidebar',
 		'sanitize_callback' => 'sanitize_key',
 	)
 );

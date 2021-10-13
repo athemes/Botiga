@@ -37,7 +37,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		 * Ajax callbacks
 		 */
 		function customize_wp_init() {
-			require get_template_directory() . '/inc/customizer/ajax-callbacks.php';
+			require get_template_directory() . '/inc/customizer/ajax-callbacks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		}
 
 		/**
@@ -61,6 +61,9 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/color-palettes/class_botiga_color_palettes_control.php';
 			require get_template_directory() . '/inc/customizer/controls/color-palettes/class_botiga_custom_palettes_control.php';
 			require get_template_directory() . '/inc/customizer/controls/accordion/class_botiga_accordion_control.php';
+			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
+			}
 			// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 			$wp_customize->register_control_type( '\Kirki\Control\sortable' );
@@ -95,6 +98,9 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 				require get_template_directory() . '/inc/customizer/options/woocommerce-single.php';
 			}
 			require get_template_directory() . '/inc/customizer/options/typography.php';
+			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+				require get_template_directory() . '/inc/customizer/options/upsell.php';
+			}
 			// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound	
 
 

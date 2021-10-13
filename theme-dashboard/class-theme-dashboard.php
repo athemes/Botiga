@@ -647,7 +647,7 @@ class Botiga_Theme_Dashboard {
 									</div>
 								</div>
 
-								<?php if ( ! $this->pro_status && $this->has_pro ) { ?>
+								<?php if ( ! $this->pro_status ) { ?>
 									<div class="thd-conttent-secondary">
 										<div class="thd-title">
 											<?php echo wp_kses_post( __( 'Priority Support', 'botiga' ) ); ?>

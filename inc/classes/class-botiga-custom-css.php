@@ -487,7 +487,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 
 			if( 'sidebar-top' === $shop_archive_sidebar ) {
-				$css .= $this->get_background_color_css( 'content_cards_background', '', '.sidebar-top+.widget-area .sidebar-wrapper' );
+				$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.sidebar-top+.widget-area .sidebar-wrapper' );
 			}
 			
 			//Woocommerce single
@@ -739,8 +739,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if ( is_null( $wp_filesystem ) ) {
 				WP_Filesystem();
 			}
-
-			$wp_filesystem->mkdir( $this->dynamic_css_path );
+			
+			if ( ! file_exists( $this->dynamic_css_path ) ) {
+				$wp_filesystem->mkdir( $this->dynamic_css_path );
+			}
 
 			if ( $wp_filesystem->put_contents( $this->dynamic_css_path . 'custom-styles.css', $css ) ) {
 				$this->clean_cache();
@@ -762,7 +764,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			require_once ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php'; // phpcs:ignore
 
 			global $wp_filesystem;
-
 			// Check if the the global filesystem isn't setup yet.
 			if ( is_null( $wp_filesystem ) ) {
 				WP_Filesystem();
@@ -828,7 +829,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			// Clean OpCache.
-			if ( function_exists( 'opcache_reset' ) ) {
+			if ( function_exists( 'opcache_reset' ) && ! ini_get( 'opcache.restrict_api' ) ) {
 				opcache_reset(); // phpcs:ignore PHPCompatibility.FunctionUse.NewFunctions.opcache_resetFound
 			}
 

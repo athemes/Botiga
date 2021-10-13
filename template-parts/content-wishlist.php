@@ -5,7 +5,7 @@
  * @package Botiga
  */
 
-$products = isset( $_COOKIE['botiga_wishlist_products'] ) ? $_COOKIE['botiga_wishlist_products'] : false;
+$products = isset( $_COOKIE['botiga_wishlist_products'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) ) : false;
 
 if( $products ) : 
     $products = explode( ',', $products ); ?>
@@ -23,8 +23,6 @@ if( $products ) :
                 </tr>
             </thead>
             <tbody>
-                <?php do_action( 'woocommerce_before_cart_contents' ); ?>
-
                 <?php
                 foreach ( $products as $product_id ) {
                     $_product = wc_get_product( $product_id );
@@ -51,9 +49,9 @@ if( $products ) :
                                 $thumbnail = $_product->get_image();
 
                                 if ( ! $product_permalink ) {
-                                    echo $thumbnail; // PHPCS: XSS ok.
+                                    echo $thumbnail; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 } else {
-                                    printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
+                                    printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 } ?>
                             </td>
 
@@ -68,7 +66,7 @@ if( $products ) :
 
                             <td class="product-price" data-title="<?php esc_attr_e( 'Price', 'botiga' ); ?>">
                                 <?php
-                                    echo wc_price( $_product->get_price() );
+                                    echo wp_kses_post( wc_price( $_product->get_price() ) );
                                 ?>
                             </td>
 

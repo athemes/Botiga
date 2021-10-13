@@ -1067,17 +1067,70 @@ span.onsale {
 	.botiga-variation-type-color {
 		display: flex;
 		> a {
-			width: 30px;
-			height: 30px;
+			width: 35px;
+			height: 35px;
 			border-radius: 100%;
-			border: 1px solid transparent;
+			border: 2px solid transparent;
 			cursor: pointer;
+			text-indent: -99999px;
+			transition: ease border-color 300ms;
 			& + a {
 				margin-left: 8px;
 			}
 			&:hover,
 			&.active {
 				border-color: $color__primary;
+			}
+		}
+	}
+	.botiga-variation-type-button {
+		display: flex;
+		> a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.9rem;
+			font-weight: 600;
+			line-height: 1;
+			padding: 9px 15px;
+			min-width: 30px;
+			min-height: 30px;
+			border: 2px solid $color__primary;
+			cursor: pointer;
+			opacity: 0.4;
+			overflow: hidden;
+			transition: ease opacity 300ms;
+			& + a {
+				margin-left: 8px;
+			}
+			&:hover,
+			&.active {
+				opacity: 1;
+				color: $color__primary;
+			}
+		}
+	}
+	.botiga-variation-type-color,
+	.botiga-variation-type-button {
+		> a {
+			&.disabled {
+				position: relative;
+				pointer-events: none;
+				opacity: 0.5;
+				&:before,
+				&:after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: calc(100% + 10px);
+					height: 2px;
+					background: red;
+					transform: translate3d(-50%, -50%, 0) rotate(45deg);
+				}
+				&:after {
+					transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+				}
 			}
 		}
 	}

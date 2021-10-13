@@ -1000,3 +1000,24 @@ span.delete:hover {
   display: -ms-flexbox !important;
   display: flex !important;
 }
+
+/*
+ * Upsell
+ */
+.customize-control-botiga-upsell-features {
+  border-top: 1px solid #CCC;
+}
+
+.botiga-upsell-feature-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-upsell-feature-wrapper p {
+  font-weight: 500;
+  padding-right: 5px;
+}

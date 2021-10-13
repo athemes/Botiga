@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.0.6' );
+	define( 'BOTIGA_VERSION', '1.0.7' );
 }
 
 if ( ! function_exists( 'botiga_setup' ) ) :
@@ -314,10 +314,24 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
+ * Load Max Mega Menu compatibility file.
+ */
+if ( class_exists( 'Mega_Menu' ) ) {
+	require get_template_directory() . '/inc/max-mega-menu.php';
+}
+
+/**
  * Load WooCommerce compatibility file.
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
+}
+
+/**
+ * Upsell
+ */
+if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+	require get_template_directory() . '/inc/customizer/upsell/class-customize.php';
 }
 
 /**

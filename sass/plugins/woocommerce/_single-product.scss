@@ -148,7 +148,6 @@
 
 .product-gallery-summary {
 	display: flex;
-	align-items: flex-start;
 
 	.woocommerce-product-gallery,
 	.entry-summary {
@@ -615,8 +614,13 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 .variations_form.cart {
 	.variations {
 		tbody {
-			> tr + tr > td.value > select {
-				margin-top: 10px;
+			> tr + tr > td {
+				padding-top: 15px;
+			}
+		}
+		.label {
+			label {
+				vertical-align: middle;
 			}
 		}
 	}
@@ -816,6 +820,13 @@ form.cart .quantity.hidden {
 						td {
 							border: none;
 						}
+					}
+				}
+
+				.variations_form.cart {
+					align-items: center;
+					.variations tbody > tr + tr > td {
+						padding-top: 0;
 					}
 				}
 			}

@@ -214,7 +214,57 @@ function botiga_dashboard_settings( $settings ) {
 					'name'          => esc_html__( 'Scroll to Top', 'botiga' ),
 					'type'          => 'free',
 					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_scrolltotop' ),
-				),																					
+				),
+				array(
+					'name'          => esc_html__( 'Wishlist', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+				),
+				array(
+					'name'          => esc_html__( 'Product Swatch', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_product_swatch' ),
+				),
+				array(
+					'name'          => esc_html__( 'More Header Layouts', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_main_header' ),
+				),
+				array(
+					'name'          => esc_html__( 'Shop Header Styles', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+				),
+				array(
+					'name'          => esc_html__( 'More Single Product Gallery Styles', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product' ),
+				),
+				array(
+					'name'          => esc_html__( 'Single Product Sticky Add to Cart', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product' ),
+				),
+				array(
+					'name'          => esc_html__( 'Single Product Tab Styles', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product' ),
+				),
+				array(
+					'name'          => esc_html__( 'More Sidebar Layouts', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+				),
+				array(
+					'name'          => esc_html__( 'Distraction Free Checkout', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_checkout' ),
+				),
+				array(
+					'name'          => esc_html__( 'More Footer Copyright Elements', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_footer_credits' ),
+				),																		
 			),
 		),
 		array(

@@ -404,7 +404,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							</div>
 							<div class="col-8 header-elements valign align-right">
 								<?php $this->render_components( 'mobile' ); ?>
-								<?php $this->trigger(); ?>
+								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
+									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
+								<?php else: ?>	
+									<?php $this->trigger(); ?>
+								<?php endif; ?>
 							</div>						
 						</div>
 					</div>
@@ -429,7 +433,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 								<?php $this->logo(); ?>
 							</div>
 							<div class="col-4 align-right">
-								<?php $this->trigger(); ?>
+								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
+									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
+								<?php else: ?>	
+									<?php $this->trigger(); ?>
+								<?php endif; ?>
 							</div>						
 						</div>
 					</div>
@@ -448,7 +456,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign">
 							<div class="col-4">
-								<?php $this->trigger(); ?>
+								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
+									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
+								<?php else: ?>	
+									<?php $this->trigger(); ?>
+								<?php endif; ?>
 							</div>														
 							<div class="col-4 align-center">
 								<?php $this->logo(); ?>

@@ -1,4 +1,13 @@
 // Sidebar slide
+.admin-bar {
+    .sidebar-slide {
+        & + .widget-area {
+            top: 32px;
+            height: calc( 100vh - 32px );
+        }
+    }
+}
+
 .sidebar-slide {
     &.site-main {
         width: 100%;
