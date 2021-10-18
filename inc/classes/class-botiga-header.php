@@ -398,11 +398,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<header id="masthead-mobile" class="site-header mobile-header">
 					<div class="<?php echo esc_attr( $container ); ?>">
-						<div class="row valign">
-							<div class="col-4">
+						<div class="row valign flex-nowrap">
+							<div class="col-sm-6 col-md-4 col-grow-mobile">
 								<?php $this->logo(); ?>
 							</div>
-							<div class="col-8 header-elements valign align-right">
+							<div class="col-auto col-sm-6 col-md-8 col-grow-mobile header-elements valign align-right">
 								<?php $this->render_components( 'mobile' ); ?>
 								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
 									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
@@ -425,14 +425,14 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<header id="masthead-mobile" class="site-header mobile-header">
 					<div class="<?php echo esc_attr( $container ); ?>">
-						<div class="row valign">
-							<div class="col-4 header-elements valign">
+						<div class="row valign flex-nowrap">
+							<div class="col-md-4 header-elements valign">
 								<?php $this->render_components( 'mobile' ); ?>
 							</div>							
-							<div class="col-4 align-center">
+							<div class="col-md-4 align-center">
 								<?php $this->logo(); ?>
 							</div>
-							<div class="col-4 align-right">
+							<div class="col-md-4 align-right">
 								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
 									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
 								<?php else: ?>	
@@ -454,18 +454,18 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<header id="masthead-mobile" class="site-header mobile-header">
 					<div class="<?php echo esc_attr( $container ); ?>">
-						<div class="row valign">
-							<div class="col-4">
+						<div class="row valign flex-nowrap">
+							<div class="col-md-4">
 								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
 									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
 								<?php else: ?>	
 									<?php $this->trigger(); ?>
 								<?php endif; ?>
 							</div>														
-							<div class="col-4 align-center">
+							<div class="col-md-4 align-center">
 								<?php $this->logo(); ?>
 							</div>
-							<div class="col-4 header-elements valign align-right">
+							<div class="col-md-4 header-elements valign align-right">
 								<?php $this->render_components( 'mobile' ); ?>
 							</div>						
 						</div>
@@ -620,8 +620,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		/**
 		 * Desktop menu trigger
 		 */
-		public function hamburguer_btn() { ?>
-			<a href="#" class="desktop-menu-toggle">
+		public function hamburger_btn() { ?>
+			<a href="#" class="desktop-menu-toggle header-item">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( 'mobile-icon2', true ); ?></i>
 			</a>
 			<?php

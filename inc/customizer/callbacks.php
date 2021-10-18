@@ -521,6 +521,19 @@ function botiga_callback_shop_cart_layout() {
 }
 
 /**
+ * WooCommerce checkout sticky totals box
+ */
+function botiga_callback_shop_checkout_layout() {
+	$layout = get_theme_mod( 'shop_checkout_layout', 'layout1' );
+
+	if ( $layout === 'layout1' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
  * WooCommerce single sticky add to cart
  */
 function botiga_callback_single_sticky_add_to_cart() {

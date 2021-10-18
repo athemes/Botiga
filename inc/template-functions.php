@@ -424,7 +424,7 @@ function botiga_get_default_header_components() {
 		'l5topright'=> array( 'woocommerce_icons' ),
 		'l5bottom'	=> array( 'search' ),
 		'l7left'    => array( 'contact_info' ),
-		'l7right'   => array( 'search', 'woocommerce_icons', 'hamburguer_btn' ),
+		'l7right'   => array( 'search', 'woocommerce_icons', 'hamburger_btn' ),
 		'desktop_offcanvas' => array(),
 		'mobile'	=> array( 'woocommerce_icons' ),
 		'offcanvas'	=> array()
@@ -507,7 +507,7 @@ function botiga_header_elements_layout_7_8() {
 		'woocommerce_icons' => esc_html__( 'Cart &amp; account icons', 'botiga' ),
 		'button' 			=> esc_html__( 'Button', 'botiga' ),
 		'contact_info' 		=> esc_html__( 'Contact info', 'botiga' ),
-		'hamburguer_btn'    => esc_html__( 'Hamburguer button', 'botiga' )
+		'hamburger_btn'    => esc_html__( 'Hamburger button', 'botiga' )
 	);
 
 	return apply_filters( 'botiga_header_elements_layout_7_8', $elements );

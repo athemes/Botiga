@@ -2,22 +2,6 @@
  * Header cart
  */
 .site-header-cart {
-	position: relative;
-
-	.count-number {
-		position: absolute;
-		top: -8px;
-		right: -8px;
-		width: 18px;
-		height: 18px;
-		line-height: 17px;
-		border: 1px solid $color__primary;
-		text-align: center;
-		border-radius: 50%;
-		background: #fff;
-		@include font-size(10);
-	}
-
 	.cart-contents {
 		text-decoration: none;
 	}
@@ -32,6 +16,26 @@
 		padding: 0;
 	}
 }
+
+/**
+ * Header cart & Wishlist count number
+ */ 
+ .site-header-cart,
+ .header-wishlist-icon {
+	position: relative;
+	.count-number {
+		position: absolute;
+		top: -8px;
+		right: -8px;
+		width: 18px;
+		height: 18px;
+		line-height: 17px;
+		border: 1px solid $color__primary;
+		text-align: center;
+		border-radius: 50%;
+		@include font-size(10);
+	}
+ }
 
 /**
  * Quantity
@@ -1056,6 +1060,40 @@ span.onsale {
 	}
 	.footer-buttons {
 		text-align: right;
+	}
+
+	@media(max-width: 767px) {
+		.botiga_wishlist_table {
+			.botiga-wishlist-row-item {
+				position: relative;
+				td {
+					border: 0;
+					&:before {
+						margin-right: 10px;
+					}
+				}
+				.product-remove {
+					border: 0;
+					> a {
+						position: absolute;
+						top: 0;
+						right: 0;
+					}
+				}
+				.product-thumbnail {
+					padding-top: 20px;
+					&:before {
+						content: none;
+					}
+				}
+				.product-name {
+					text-align: right;
+				}
+				.product-addtocart {
+					padding-bottom: 20px;
+				}
+			}
+		}
 	}
 }
 

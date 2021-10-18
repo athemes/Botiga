@@ -218,12 +218,12 @@ function botiga_dashboard_settings( $settings ) {
 				array(
 					'name'          => esc_html__( 'Wishlist', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_wishlist' ),
 				),
 				array(
 					'name'          => esc_html__( 'Product Swatch', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_product_swatch' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product&control=customize-control-accordion_single_product_swatch' ),
 				),
 				array(
 					'name'          => esc_html__( 'More Header Layouts', 'botiga' ),
@@ -233,27 +233,27 @@ function botiga_dashboard_settings( $settings ) {
 				array(
 					'name'          => esc_html__( 'Shop Header Styles', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog&control=customize-control-accordion_shop_layout' ),
 				),
 				array(
 					'name'          => esc_html__( 'More Single Product Gallery Styles', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product&control=customize-control-accordion_single_product_layout' ),
 				),
 				array(
 					'name'          => esc_html__( 'Single Product Sticky Add to Cart', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product&control=customize-control-accordion_single_product_sticky_add_to_cart' ),
 				),
 				array(
 					'name'          => esc_html__( 'Single Product Tab Styles', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product&control=customize-control-accordion_single_product_tabs' ),
 				),
 				array(
 					'name'          => esc_html__( 'More Sidebar Layouts', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog&control=customize-control-accordion_shop_layout' ),
 				),
 				array(
 					'name'          => esc_html__( 'Distraction Free Checkout', 'botiga' ),

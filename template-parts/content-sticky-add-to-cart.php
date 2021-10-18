@@ -9,7 +9,7 @@ global $product;
 
 //Options
 $single_sticky_add_to_cart_position          = get_theme_mod( 'single_sticky_add_to_cart_position', 'bottom' );
-$single_sticky_add_to_cart_elements          = get_theme_mod( 'single_sticky_add_to_cart_elements', array( 'botiga_sticky_add_to_cart_product_image', 'botiga_sticky_add_to_cart_product_title', 'woocommerce_template_single_price', 'woocommerce_template_single_add_to_cart' ) ); 
+$single_sticky_add_to_cart_elements          = get_theme_mod( 'single_sticky_add_to_cart_elements', array( 'botiga_sticky_add_to_cart_product_image', 'botiga_sticky_add_to_cart_product_title', 'botiga_single_product_price', 'botiga_sticky_add_to_cart_product_addtocart' ) ); 
 $single_sticky_add_to_cart_scroll_hide       = get_theme_mod( 'single_sticky_add_to_cart_scroll_hide', 0 );
 $single_sticky_add_to_cart_device_visibility = get_theme_mod( 'single_sticky_add_to_cart_device_visibility', 'desktop-only' );
 

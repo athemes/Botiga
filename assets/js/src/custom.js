@@ -301,7 +301,7 @@ botiga.headerSearch = {
 /**
  * Sticky header
  */
- botiga.stickyHeader = {
+botiga.stickyHeader = {
 	init: function() {
 		const sticky 	= document.getElementsByClassName( 'sticky-header' )[0],
 		body            = document.getElementsByTagName( 'body' )[0];
@@ -340,6 +340,7 @@ botiga.headerSearch = {
 
 	},
 };
+
 /**
  * Botiga scroll direction
  */
@@ -410,6 +411,10 @@ botiga.scrollDirection = {
 
 				ajax.onload = function() {
 					if (this.status >= 200 && this.status < 400) {
+						var response = JSON.parse( this.response ),
+							icons    = document.querySelectorAll( '.header-wishlist-icon' ),
+							qty      = response.qty;
+
 						if( 'add' === type ) {
 							button.classList.add( 'active' );
 							
@@ -422,6 +427,12 @@ botiga.scrollDirection = {
 							setTimeout(function(){
 								button.closest('tr').remove();
 							}, 800);	
+						}
+
+						if( icons.length ) {
+							for( var i=0;i<icons.length;i++ ) {
+								icons[i].querySelector( '.count-number' ).innerHTML = qty;
+							}
 						}
 					}
 				};

@@ -967,13 +967,15 @@ form.cart .quantity.hidden {
 
 body {
 	&.admin-bar {
-		.botiga-single-sticky-add-to-cart-wrapper {
-			top: 32px;
-		}
-	
-		&.sticky-header-active {
+		@media(min-width: 601px) {
 			.botiga-single-sticky-add-to-cart-wrapper {
-				top: 108px;
+				top: 32px;
+			}
+		
+			&.sticky-header-active {
+				.botiga-single-sticky-add-to-cart-wrapper {
+					top: 108px;
+				}
 			}
 		}
 	} 
@@ -991,6 +993,13 @@ body {
 	}
 
 	//Hide when scroll
+	&:not(.botiga-scrolling-up) {
+		.botiga-single-sticky-add-to-cart-wrapper {
+			&.hide-when-scroll.position-bottom {
+				bottom: -180px !important;
+			}
+		}
+	}
 	&.botiga-scrolling-up {
 		.botiga-single-sticky-add-to-cart-wrapper {
 			&.hide-when-scroll.position-top {
@@ -1008,6 +1017,21 @@ body {
 				}
 				&.hide-when-scroll.position-bottom {
 					bottom: -300px !important;
+				}
+			}
+		}
+	}
+	&.botiga-scrolling-down {
+		.botiga-single-sticky-add-to-cart-wrapper {
+			&.hide-when-scroll.position-bottom {
+				bottom: 0 !important;
+			}
+		}
+
+		@media(max-width: 767px) {
+			.botiga-single-sticky-add-to-cart-wrapper {
+				&.hide-when-scroll.position-bottom {
+					bottom: 0 !important;
 				}
 			}
 		}

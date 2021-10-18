@@ -44,7 +44,6 @@
                     height: 20px;
                     path {
                         transform: scale(0.75);
-                        fill: $color__primary;
                     }
                 }
             }
@@ -57,6 +56,11 @@
     }
 
     .sidebar-open-wrapper {
+        &:not(.has-text) {
+            position: relative;
+            top: 2px;
+            float: left;
+        }
         .sidebar-open {
             display: inline-flex;
             align-items: center;

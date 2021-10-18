@@ -81,7 +81,7 @@ function botiga_sanitize_header_components_layout_7_8( $input ) {
 function botiga_sanitize_product_loop_components( $input ) {
     $input      = (array) $input;
     $sanitized  = array();
-    $elements   = array( 'woocommerce_template_loop_product_title', 'woocommerce_template_loop_rating', 'woocommerce_template_loop_price', 'botiga_loop_product_category', 'botiga_loop_product_description' );
+    $elements   = array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_rating', 'woocommerce_template_loop_price', 'botiga_loop_product_category', 'botiga_loop_product_description' );
 
     foreach ( $input as $sub_value ) {
         if ( in_array( $sub_value, $elements, true ) ) {

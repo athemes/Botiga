@@ -357,7 +357,7 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting( 'shop_card_elements', array(
-	'default'  	=> array( 'woocommerce_template_loop_product_title', 'woocommerce_template_loop_price' ),
+	'default'  	=> array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ),
 	'sanitize_callback'	=> 'botiga_sanitize_product_loop_components'
 ) );
 
@@ -365,7 +365,7 @@ $wp_customize->add_control( new \Kirki\Control\Sortable( $wp_customize, 'shop_ca
 	'label'   			=> esc_html__( 'Card elements', 'botiga' ),
 	'section' 			=> 'woocommerce_product_catalog',
 	'choices' 			=> array(
-		'woocommerce_template_loop_product_title' 	=> esc_html__( 'Title', 'botiga' ),
+		'botiga_shop_loop_product_title'         	=> esc_html__( 'Title', 'botiga' ),
 		'woocommerce_template_loop_rating' 			=> esc_html__( 'Reviews', 'botiga' ),
 		'woocommerce_template_loop_price' 			=> esc_html__( 'Price', 'botiga' ),
 		'botiga_loop_product_category' 				=> esc_html__( 'Category', 'botiga' ),

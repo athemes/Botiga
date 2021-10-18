@@ -18,6 +18,10 @@ class Botiga_Text_Control extends WP_Customize_Control {
 	 */
 	public $type = 'botiga-text-control';
 
+	public $link_title = '';
+
+	public $link = '';
+
 	public $controls_general;
 
 	public $controls_design;
@@ -40,7 +44,10 @@ class Botiga_Text_Control extends WP_Customize_Control {
 		<?php } ?>
 		<?php if( !empty( $this->description ) ) { ?>
 			<span class="customize-control-description"><?php echo $this->description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-		<?php } ?>		
+		<?php } ?>
+		<?php if( !empty( $this->link_title ) && !empty( $this->link ) ) { ?>
+			<a href="<?php echo esc_url( $this->link ); ?>" target="_blank"><?php echo $this->link_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+		<?php } ?>
 	<?php
 	}
 }

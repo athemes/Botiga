@@ -299,7 +299,7 @@ function botiga_wc_single_layout() {
  * Loop product structure
  */
 function botiga_loop_product_structure() {
-	$elements 	= get_theme_mod( 'shop_card_elements', array( 'woocommerce_template_loop_product_title', 'woocommerce_template_loop_price' ) );
+	$elements 	= get_theme_mod( 'shop_card_elements', array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ) );
 	$layout		= get_theme_mod( 'shop_product_card_layout', 'layout1' );
 
 	if ( 'layout1' === $layout ) {
@@ -490,7 +490,7 @@ function botiga_wc_hooks() {
 				$text = $shop_archive_sidebar_open_button_text;
 			}
 
-			echo '<div class="sidebar-open-wrapper">';
+			echo '<div class="sidebar-open-wrapper'. ( $text ? ' has-text' : '' ) .'">';
 			echo '    <a href="#" role="button" class="sidebar-open" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-open\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. $icon . esc_html( $text ) .'</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 			
@@ -604,6 +604,15 @@ function botiga_wc_hooks() {
 	}
 }
 add_action( 'wp', 'botiga_wc_hooks' );
+
+/**
+ * Loop shop product title
+ */
+function botiga_shop_loop_product_title() {
+	global $post;
+	
+	echo the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' );
+}
 
 /**
  * Single add to cart wrapper
@@ -833,8 +842,10 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 	 * @return void
 	 */
 	function botiga_woocommerce_header_cart() {
-		$show_cart 		= get_theme_mod( 'enable_header_cart', 1 );
-		$show_account 	= get_theme_mod( 'enable_header_account', 1 );
+		$show_cart 		   = get_theme_mod( 'enable_header_cart', 1 );
+		$show_account      = get_theme_mod( 'enable_header_account', 1 );
+		$show_wishlist     = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) !== 'layout1' ? true : false;
+		$enable_header_wishlist_icon = get_theme_mod( 'enable_header_wishlist_icon', 1 );
 
 		if ( is_cart() ) {
 			$class = 'current-menu-item';
@@ -860,6 +871,13 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 			the_widget( 'WC_Widget_Cart', $instance );
 			?>
 		</div>
+		<?php endif; ?>
+		<?php if( $show_wishlist && $enable_header_wishlist_icon ) : 
+			$wishlist_count = isset( $_COOKIE['botiga_wishlist_products'] ) ? count( explode( ',', sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) ) ) ) - 1 : 0; ?>
+			<a class="header-item header-wishlist-icon" href="<?php echo esc_url( get_permalink( get_option('botiga_wishlist_page_id') ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
+				<span class="count-number"><?php echo esc_html( $wishlist_count ); ?></span>
+				<i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-wishlist', true ); ?></i>
+			</a>
 		<?php endif; ?>
 		<?php
 	}
@@ -1273,11 +1291,14 @@ function botiga_button_wishlist_callback_function(){
 		return;
 	}
 
+	$qty = 1;
+
 	if( isset( $_POST['type'] ) && 'add' === $_POST['type'] ) {
 		if( isset( $_COOKIE['botiga_wishlist_products'] ) ) {
 			$wishlist_products = sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) );
 			$arr               = explode( ',', $wishlist_products );
 			$newvalue          = $wishlist_products . ',' . absint( $_POST['product_id'] );
+			$qty               = count( $arr );
 	
 			if( !in_array( $_POST['product_id'], $arr ) ) {
 				setcookie( 'botiga_wishlist_products', $newvalue, apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
@@ -1294,10 +1315,15 @@ function botiga_button_wishlist_callback_function(){
 
 		$newvalue = implode( ',', $arr );
 
+		$qty = count( $arr ) - 1;
+
 		setcookie( 'botiga_wishlist_products', $newvalue, apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
 	}
 
-	wp_die();
+	wp_send_json( array(
+		'status' => 'success',
+		'qty'    => absint( $qty )
+	) );
 }
 add_action('wp_ajax_botiga_button_wishlist', 'botiga_button_wishlist_callback_function');
 add_action( 'wp_ajax_nopriv_botiga_button_wishlist', 'botiga_button_wishlist_callback_function' );

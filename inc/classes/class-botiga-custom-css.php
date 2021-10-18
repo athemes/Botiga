@@ -115,7 +115,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'site_title_color', '', '.site-header .site-title a' );
 			$css .= $this->get_color_css( 'site_description_color', '', '.site-description' );
 			$css .= $this->get_color_css( 'color_body_text', '', 'body,.wp-block-columns p a,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.widget a' );
-			$css .= $this->get_color_css( 'color_link_default', '', 'a,.woocommerce-pagination li .page-numbers' );
+			$css .= $this->get_fill_css( 'color_body_text', '', '.sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg' );
+			$css .= $this->get_color_css( 'color_link_default', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):hover,.woocommerce-pagination li .page-numbers,ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title:hover' );
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover' );
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
@@ -134,7 +135,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= ":-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 			$css .= "::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 
-			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.checkout_coupon,.woocommerce-checkout .woocommerce-form-login' );
+			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.sidebar-slide+.widget-area' );
 
 			$background_color 	= get_theme_mod( 'background_color' );
 			$css .= ".checkout-wrapper .wc_payment_methods,.site-header-cart .widget_shopping_cart { background-color:#" . esc_attr( $background_color ) . ";}" . "\n";
@@ -179,8 +180,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= ".top-bar-inner > .row { display:block;} .top-bar-inner .col,.top-bar-inner .col:last-of-type {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}" . "\n";
 			}
 
-			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
-			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .main-navigation .menu > li > a, .site-header .header-contact a' );
+			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form, .site-header-cart .count-number, .header-wishlist-icon .count-number' );
+			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .site-header-cart .count-number, .header-wishlist-icon .count-number' );
+			$css .= $this->get_border_color_css( 'main_header_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header .header-item svg, .site-header .dropdown-symbol .ws-svg-icon svg' );
 
 			$css .= $this->get_background_color_css( 'main_header_bottom_background', '', '.bottom-header-row' );
@@ -206,7 +208,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$main_header_padding             = get_theme_mod( 'main_header_padding', 15 );
 
 				$css .= '.header_layout_6 .botiga-desktop-offcanvas > .row > div { margin-top: '. esc_attr( $main_header_areas_spacing_l6 ) .'px; }';
-				$css .= '.header_layout_6 .header-item, .header_layout_6 .header-item.header-contact a + a { margin-top: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
+				$css .= '.header_layout_6 .header-item { margin-bottom: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
+				$css .= '.header_layout_6 .header-item.header-contact a + a { margin-top: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
 				$css .= '.header_layout_6 .botiga-desktop-offcanvas { padding: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
 			}
 
@@ -216,22 +219,31 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$desktop_offcanvas_menu_link_separator = get_theme_mod( 'desktop_offcanvas_menu_link_separator', 0 );
 				$desktop_offcanvas_content_areas_spacing = get_theme_mod( 'desktop_offcanvas_content_areas_spacing', 15 );
 				$header_components_desktop_offcanvas_elements_spacing = get_theme_mod( 'header_components_desktop_offcanvas_elements_spacing', 15 );
+				$desktop_offcanvas_menu_text_color = get_theme_mod( 'desktop_offcanvas_menu_text_color', '#212121' );
 
 				$css .= $this->get_background_color_css( 'desktop_offcanvas_menu_background_color', '#FFF', '.botiga-desktop-offcanvas' );
 				$css .= '.header_layout_7 .botiga-desktop-offcanvas, .header_layout_8 .botiga-desktop-offcanvas { padding: '. esc_attr( $desktop_offcanvas_padding ) .'px; }';
 				$css .= '.header_layout_7 .botiga-desktop-offcanvas > .row > div, .header_layout_8 .botiga-desktop-offcanvas > .row > div { margin-top: '. esc_attr( $desktop_offcanvas_content_areas_spacing ) .'px; }';
-				$css .= '.header_layout_7 .botiga-desktop-offcanvas .header-item:not(:first-child), .header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item:not(:first-child), .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a { margin-top: '. esc_attr( $header_components_desktop_offcanvas_elements_spacing ) .'px; }';
-				$css .= '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li > a, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li > a { padding-top: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; padding-bottom: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; }';
+				$css .= '.header_layout_7 .botiga-desktop-offcanvas .header-item, .header_layout_8 .botiga-desktop-offcanvas .header-item { margin-bottom: '. esc_attr( $header_components_desktop_offcanvas_elements_spacing ) .'px; }';
+				$css .= '.header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a { margin-top: '. esc_attr( $header_components_desktop_offcanvas_elements_spacing ) .'px; }';
+				$css .= '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li > a, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li > a { padding-top: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; padding-bottom: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; }';
 
 				if( $desktop_offcanvas_menu_link_separator ) {
 					$desktop_offcanvas_link_separator_color = get_theme_mod( 'desktop_offcanvas_link_separator_color', '#212121' );
 
 					$css .= '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li { border-top: 1px solid '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_link_separator_color, '0.1' ) ) .'; }';
 				}
+
+				$css .= $this->get_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .main-navigation .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number, .botiga-desktop-offcanvas .header-contact a' );
+				$css .= '.botiga-desktop-offcanvas .main-navigation .menu li a:hover, .botiga-desktop-offcanvas .header-contact a:hover { color: '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_menu_text_color, '0.7' ) ) .'; }';
+				$css .= $this->get_fill_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg, .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg' );
+				$css .= $this->get_border_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number' );
+				$css .= $this->get_background_color_css( 'desktop_offcanvas_menu_background_color', '#FFF', '.botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number' );
+				
 			}
 
 			//Header mini cart
-			$css .= $this->get_color_css( 'color_body_text', '', '.site-header-cart .count-number' );
+			// $css .= $this->get_color_css( 'color_body_text', '', '.site-header-cart .count-number' );
 			$css .= $this->get_background_color_rgba_css( 'color_body_text', '#212121', '.site-header-cart .widget_shopping_cart .widgettitle:after, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons:before', '0.1' );
 
 			//Mobile menu
@@ -462,7 +474,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_color_css( 'single_product_sale_color', '', '.wc-block-grid__product-onsale, span.onsale' );
 			$css .= $this->get_background_color_css( 'single_product_sale_background_color', '', '.wc-block-grid__product-onsale, span.onsale' );
-			$css .= $this->get_color_css( 'shop_product_product_title', '', 'ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, ul.wc-block-grid__products li.product .wc-block-grid__product-title, ul.wc-block-grid__products li.product .woocommerce-loop-product__title, ul.products li.wc-block-grid__product .wc-block-grid__product-title, ul.products li.wc-block-grid__product .woocommerce-loop-product__title, ul.products li.product .wc-block-grid__product-title, ul.products li.product .woocommerce-loop-product__title, ul.products li.product .woocommerce-loop-category__title' );
+			$css .= $this->get_color_css( 'shop_product_product_title', '', 'ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, ul.wc-block-grid__products li.product .wc-block-grid__product-title, ul.wc-block-grid__products li.product .woocommerce-loop-product__title, ul.products li.wc-block-grid__product .wc-block-grid__product-title, ul.products li.wc-block-grid__product .woocommerce-loop-product__title, ul.products li.product .wc-block-grid__product-title, ul.products li.product .woocommerce-loop-product__title, ul.products li.product .woocommerce-loop-category__title, .woocommerce-loop-product__title .botiga-wc-loop-product__title' );
 
 			$css .= $this->get_color_css( 'color_body_text', '', 'a.wc-forward:not(.checkout-button)' );
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a.wc-forward:not(.checkout-button):hover' );
@@ -473,6 +485,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
 			if( 'layout1' !== $wishlist_layout ) {
 				// wishlist buttons/icons
+				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-wishlist-wrapper .botiga-wishlist-button' );
 				$css .= $this->get_stroke_css( 'color_link_default', '', '.botiga-wishlist-button svg path, .botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
 				$css .= $this->get_fill_css( 'color_link_default', '', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
 				$css .= '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):after { border-left-color: '. get_theme_mod( 'color_link_default', '#212121' ) .'; }';
@@ -539,14 +552,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $this->get_border_color_css( 'single_product_tabs_border_color_active', '', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style4 .woocommerce-tabs ul.tabs li:hover a' );
 					$css .= $this->get_background_color_css( 'single_product_tabs_background_color', '#f5f5f5', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a' );
 					$css .= $this->get_background_color_css( 'single_product_tabs_background_color_active', '#f5f5f5', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li.active a' );
-					$css .= $this->get_border_color_css( 'single_product_tabs_background_color_active', '', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a' );
-					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs:before', '0.3' );
+					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style4 .woocommerce-tabs ul.tabs:before, .botiga-tabs-style4 .woocommerce-tabs ul.tabs li:not(.active) a', '0.3' );
 					break;
 				case 'style5':
 					$color_rgba = Botiga_Custom_CSS::get_instance()->to_rgba( get_theme_mod( 'single_product_tabs_remaining_borders', '#212121' ), '0.3' );
 
-					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color', '#f5f5f5', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a', '0.5' );
-					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color_active', '#f5f5f5', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style5 .woocommerce-tabs .panel', '0.7' );
+					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color', '#f5f5f5', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a', '0.4' );
+					$css .= $this->get_background_color_rgba_css( 'single_product_tabs_background_color_active', '#f5f5f5', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li.active a, .botiga-tabs-style5 .woocommerce-tabs .panel', '1' );
 					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li a, .botiga-tabs-style5 .woocommerce-tabs .panel', '0.3' );
 					$css .= '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a { border-right: 1px solid '.  esc_attr( $color_rgba ) .' }';
 					$css .= '.botiga-tabs-style5.botiga-tabs-align-center .woocommerce-tabs ul.tabs li+li a { border-top-color: '.  esc_attr( $color_rgba ) .'; border-right-color: '.  esc_attr( $color_rgba ) .' }';
@@ -594,6 +606,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= '.woocommerce-checkout .woocommerce-form-coupon-toggle { display: none; }';
 			}
 
+			// Checkout
+			$checkout_sticky_totals_box = get_theme_mod( 'checkout_sticky_totals_box', 0 );
+			if( $checkout_sticky_totals_box ) {
+				$css .= '.woocommerce-checkout .woocommerce-checkout-review-order { position: sticky; top: 45px; } .admin-bar .woocommerce-checkout .woocommerce-checkout-review-order { top: 77px; }';
+			}
+
 			//My account
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a' );
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a' );
@@ -629,6 +647,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { border-radius:" . intval( $button_border_radius ) . "px;}" . "\n";
 
 			$css .= $this->get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), 'button,a.button,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"]' );
+			$css .= $this->get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), '.wp-block-button__link', true );
 			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$css .= "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
 
@@ -921,7 +940,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}		
 
 		//Font sizes
-		public static function get_font_sizes_css( $setting, $defaults = array(), $selector ) {
+		public static function get_font_sizes_css( $setting, $defaults = array(), $selector, $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -932,7 +951,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { font-size:' . intval( $mod ) . 'px;} }' . "\n";	
+				$css .= $media . ' { ' . $selector . ' { font-size:' . intval( $mod ) . 'px' . ( ( $important ) ? ' !important' : '' ) .';} }' . "\n";	
 			}
 
 			return $css;

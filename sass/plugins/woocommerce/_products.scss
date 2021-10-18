@@ -61,6 +61,7 @@ ul.products {
 			@include font-size(16);
 			font-weight: 400;
 			color: $color__primary;
+			transition: ease color 300ms;
 		}
 
 		.wc-block-grid__product-link {

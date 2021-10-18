@@ -580,6 +580,12 @@ html {
 	}
 }
 
+@media only screen and (max-width: 767px) {
+    .col-grow-mobile {
+        flex-grow: 1;
+    }
+}
+
 .valign {
     @include valign;
 }
@@ -590,4 +596,8 @@ html {
 
 .text-align-center {
     text-align: center;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
 }

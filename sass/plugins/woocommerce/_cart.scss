@@ -48,11 +48,18 @@
 	}
 	th.product-name,
 	td.product-name {
-
 		padding-left: 30px !important;
 		padding-right: 15px !important;
 		text-align: left;
 	}
+
+	@media(max-width: 767px) {
+		th.product-name,
+		td.product-name {
+			padding-left: 10px !important;
+		}	
+	}
+
 	.product-remove {
 		@include font-size(22);
 		text-align: center;

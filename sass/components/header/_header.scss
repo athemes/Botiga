@@ -47,7 +47,7 @@
     }
 }
 .site-title {
-    @include font-size(24);
+    @include font-size(20);
     margin: 0;
 
     a,
@@ -186,6 +186,7 @@
     .header-header_layout_6 {
         .content-wrapper,
         .top-bar,
+        .page-header,
         .woocommerce-page-header,
         .botiga-single-sticky-add-to-cart-wrapper,
         .footer-widgets,
@@ -216,7 +217,7 @@
     display: flex;
     opacity: 0;
     visibility: hidden;
-    z-index: 999;
+    z-index: 9999999;
     transform: translate3d(-100%, 0, 0);
     transition: ease all 300ms;
     &.botiga-desktop-offcanvas-show {
