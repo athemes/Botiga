@@ -31,7 +31,7 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 	 * Render the control in the customizer
 	 */
 	public function render_content() { 
-		$this->button_title = __( 'Go PRO!', 'botiga' ); ?>
+		$this->button_title = __( 'Learn More', 'botiga' ); ?>
 
 		<div class="botiga-upsell-feature-wrapper">
 			<p><?php echo esc_html( $this->description ); ?></p>

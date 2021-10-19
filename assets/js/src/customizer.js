@@ -82,7 +82,7 @@
 	});
 
 	//Fill
-	var $fill_options = { "offcanvas_menu_color":".botiga-offcanvas-menu svg","mobile_header_color":"#masthead-mobile svg","main_header_bottom_color":".bottom-header-row .header-item svg,.dropdown-symbol .ws-svg-icon svg","main_header_color":".site-header .header-item svg, .site-header .dropdown-symbol .ws-svg-icon svg", "topbar_color":".top-bar svg","footer_credits_text_color":".site-info .ws-svg-icon svg","desktop_offcanvas_menu_text_color":".botiga-desktop-offcanvas .header-item svg, .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg"};
+	var $fill_options = { "offcanvas_menu_color":".botiga-offcanvas-menu svg","mobile_header_color":"#masthead-mobile svg","main_header_bottom_color":".bottom-header-row .header-item svg,.dropdown-symbol .ws-svg-icon svg","main_header_color":".site-header .header-item svg, .site-header .dropdown-symbol .ws-svg-icon svg", "topbar_color":".top-bar svg","footer_credits_text_color":".site-info .ws-svg-icon svg","desktop_offcanvas_menu_text_color":".botiga-desktop-offcanvas .header-item svg, .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg","color_body_text":".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg"};
 
 	$.each( $fill_options, function( option, selector ) {
 		wp.customize( option, function( value ) {

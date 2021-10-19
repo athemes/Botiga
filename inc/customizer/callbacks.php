@@ -406,9 +406,10 @@ function botiga_callback_header_bottom() {
  * Sticky header
  */
 function botiga_callback_sticky_header() {
-	$enable = get_theme_mod( 'enable_sticky_header', 0 );
+	$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	$enable        = get_theme_mod( 'enable_sticky_header', 0 );
 
-	if ( $enable ) {
+	if ( $enable && $header_layout !== 'header_layout_6' ) {
 		return true;
 	} else {
 		return false;

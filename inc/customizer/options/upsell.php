@@ -26,7 +26,7 @@ $wp_customize->add_control(
         'botiga_upsell_main_header',
         array(
             'section'     => 'botiga_section_main_header',
-            'description' => __( 'More header features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More header options available in PRO.', 'botiga' ),
             'priority'    => 999
         )
     ) 
@@ -53,7 +53,7 @@ $wp_customize->add_control(
         'botiga_upsell_blog_single',
         array(
             'section'     => 'botiga_section_blog_singles',
-            'description' => __( 'More blog single posts features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More blog single posts options available in PRO.', 'botiga' ),
             'priority'    => 999
         )
     ) 
@@ -80,7 +80,7 @@ $wp_customize->add_control(
         'botiga_upsell_single_product',
         array(
             'section'     => 'botiga_section_single_product',
-            'description' => __( 'More single products features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More single products options available in PRO.', 'botiga' ),
             'priority'    => 999
         )
     ) 
@@ -107,7 +107,7 @@ $wp_customize->add_control(
         'botiga_upsell_product_catalog',
         array(
             'section'     => 'woocommerce_product_catalog',
-            'description' => __( 'More product catalog features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More product catalog options available in PRO.', 'botiga' ),
             'priority'    => 999
         )
     ) 
@@ -130,7 +130,7 @@ $wp_customize->add_control(
         'botiga_upsell_cart',
         array(
             'section'     => 'botiga_section_shop_cart',
-            'description' => __( 'More cart features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More cart options available in PRO.', 'botiga' ),
             'priority'    => 999
         )
     ) 
@@ -153,7 +153,7 @@ $wp_customize->add_control(
         'botiga_upsell_checkout',
         array(
             'section'     => 'woocommerce_checkout',
-            'description' => __( 'More checkout features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More checkout options available in PRO.', 'botiga' ),
             'priority'    => 999
         )
     ) 
@@ -180,7 +180,7 @@ $wp_customize->add_control(
         'botiga_upsell_footer_copyright',
         array(
             'section'     => 'botiga_section_footer_credits',
-            'description' => __( 'More footer copyright features availabe in the PRO version.', 'botiga' ),
+            'description' => __( 'More footer copyright options available in PRO version.', 'botiga' ),
             'priority'    => 999
         )
     ) 
