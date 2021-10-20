@@ -420,6 +420,7 @@ div.editor-styles-wrapper .header-wishlist-icon .count-number {
   width: 18px;
   height: 18px;
   line-height: 17px;
+  background: #FFF;
   border: 1px solid #212121;
   text-align: center;
   border-radius: 50%;
@@ -2189,7 +2190,7 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
   z-index: 1;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (min-height: 800px) {
   div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content {
     max-width: 1110px;
   }
@@ -2230,6 +2231,19 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
   display: block;
   max-height: 75vh;
   overflow-y: auto;
+  padding-right: 10px;
+}
+
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary::-webkit-scrollbar {
+  width: 7px;
+}
+
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary::-webkit-scrollbar-track {
+  background: #e2e2e2;
+}
+
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary::-webkit-scrollbar-thumb {
+  background-color: #CCC;
 }
 
 div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery {
@@ -2239,6 +2253,10 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
 
 div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery .flex-direction-nav {
   display: none;
+}
+
+div.editor-styles-wrapper .admin-bar .botiga-quick-view-popup .botiga-quick-view-popup-content {
+  margin-top: 32px;
 }
 
 @media only screen and (max-width: 850px) {

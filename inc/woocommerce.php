@@ -706,7 +706,7 @@ function botiga_woocommerce_page_header() {
 								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
 							} ?>
 						</div>
-					</div>
+					<!-- </div> -->
 				<?php endif; ?>
 				<?php if( $shop_archive_header_style_show_sub_categories && ( is_product_category() || is_product_tag() ) ) : ?>
 					</div>
@@ -873,7 +873,7 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 		</div>
 		<?php endif; ?>
 		<?php if( $show_wishlist && $enable_header_wishlist_icon ) : 
-			$wishlist_count = isset( $_COOKIE['botiga_wishlist_products'] ) ? count( explode( ',', sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) ) ) ) - 1 : 0; ?>
+			$wishlist_count = isset( $_COOKIE['botiga_wishlist_products'] ) ? count( explode( ',', sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) ) ) ) : 0; ?>
 			<a class="header-item header-wishlist-icon" href="<?php echo esc_url( get_permalink( get_option('botiga_wishlist_page_id') ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
 				<span class="count-number"><?php echo esc_html( $wishlist_count ); ?></span>
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-wishlist', true ); ?></i>
@@ -1298,7 +1298,7 @@ function botiga_button_wishlist_callback_function(){
 			$wishlist_products = sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) );
 			$arr               = explode( ',', $wishlist_products );
 			$newvalue          = $wishlist_products . ',' . absint( $_POST['product_id'] );
-			$qty               = count( $arr );
+			$qty               = count( $arr ) + 1;
 	
 			if( !in_array( $_POST['product_id'], $arr ) ) {
 				setcookie( 'botiga_wishlist_products', $newvalue, apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
@@ -1315,7 +1315,7 @@ function botiga_button_wishlist_callback_function(){
 
 		$newvalue = implode( ',', $arr );
 
-		$qty = count( $arr ) - 1;
+		$qty = count( $arr );
 
 		setcookie( 'botiga_wishlist_products', $newvalue, apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
 	}

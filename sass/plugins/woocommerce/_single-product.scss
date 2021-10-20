@@ -514,6 +514,19 @@
 		}
 	}
 }
+
+.sticky-header-active {
+	.product-gallery-summary {
+		&.gallery-grid,
+		&.gallery-scrolling,
+		&.gallery-showcase {
+			.sticky-entry-summary {
+				top: 115px;
+			}
+		}
+	}
+}
+
 .woocommerce-product-gallery__wrapper {
 	margin: 0;
 }
@@ -525,6 +538,18 @@
 		&.gallery-showcase {
 			.sticky-entry-summary {
 				top: 70px;
+			}
+		}
+	}
+
+	&.sticky-header-active {
+		.product-gallery-summary {
+			&.gallery-grid,
+			&.gallery-scrolling,
+			&.gallery-showcase {
+				.sticky-entry-summary {
+					top: 155px;
+				}
 			}
 		}
 	}

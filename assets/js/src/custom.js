@@ -196,7 +196,11 @@ botiga.helpers = {
 			buttons[i].addEventListener( 'click', function(e){
 				e.preventDefault();
 
-				offcanvas.classList.add( 'botiga-desktop-offcanvas-show' );
+				if( offcanvas.classList.contains( 'botiga-desktop-offcanvas-show' ) ) {
+					offcanvas.classList.remove( 'botiga-desktop-offcanvas-show' );
+				} else {
+					offcanvas.classList.add( 'botiga-desktop-offcanvas-show' );
+				}
 			} );
 		}
 

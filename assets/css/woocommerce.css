@@ -1038,7 +1038,7 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   z-index: 1;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (min-height: 800px) {
   .botiga-quick-view-popup .botiga-quick-view-popup-content {
     max-width: 1110px;
   }
@@ -1079,6 +1079,19 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   display: block;
   max-height: 75vh;
   overflow-y: auto;
+  padding-right: 10px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary::-webkit-scrollbar {
+  width: 7px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary::-webkit-scrollbar-track {
+  background: #e2e2e2;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .botiga-quick-view-summary::-webkit-scrollbar-thumb {
+  background-color: #CCC;
 }
 
 .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery {
@@ -1088,6 +1101,10 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 
 .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery .flex-direction-nav {
   display: none;
+}
+
+.admin-bar .botiga-quick-view-popup .botiga-quick-view-popup-content {
+  margin-top: 32px;
 }
 
 @media only screen and (max-width: 850px) {
@@ -1686,12 +1703,20 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   top: 30px;
 }
 
+.sticky-header-active .product-gallery-summary.gallery-grid .sticky-entry-summary, .sticky-header-active .product-gallery-summary.gallery-scrolling .sticky-entry-summary, .sticky-header-active .product-gallery-summary.gallery-showcase .sticky-entry-summary {
+  top: 115px;
+}
+
 .woocommerce-product-gallery__wrapper {
   margin: 0;
 }
 
 .admin-bar .product-gallery-summary.gallery-grid .sticky-entry-summary, .admin-bar .product-gallery-summary.gallery-scrolling .sticky-entry-summary, .admin-bar .product-gallery-summary.gallery-showcase .sticky-entry-summary {
   top: 70px;
+}
+
+.admin-bar.sticky-header-active .product-gallery-summary.gallery-grid .sticky-entry-summary, .admin-bar.sticky-header-active .product-gallery-summary.gallery-scrolling .sticky-entry-summary, .admin-bar.sticky-header-active .product-gallery-summary.gallery-showcase .sticky-entry-summary {
+  top: 155px;
 }
 
 .related.products,
@@ -3043,6 +3068,7 @@ form.woocommerce-checkout {
   width: 18px;
   height: 18px;
   line-height: 17px;
+  background: #FFF;
   border: 1px solid #212121;
   text-align: center;
   border-radius: 50%;

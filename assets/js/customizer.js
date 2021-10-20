@@ -52,7 +52,7 @@
     "single_product_sale_background_color": ".wc-block-grid__product-onsale, span.onsale",
     "shop_product_card_background": "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product",
     "main_header_bottom_background": ".bottom-header-row",
-    "main_header_background": ".site-header,.header-search-form, .site-header-cart .count-number, .header-wishlist-icon .count-number",
+    "main_header_background": ".site-header,.header-search-form",
     "scrolltop_bg_color": ".back-to-top",
     "topbar_background": ".top-bar",
     "footer_credits_background": ".site-footer",
@@ -62,7 +62,8 @@
     "header_bottom_row_background": ".header-bottom",
     "color_body_text": ".widget_price_filter .ui-slider .ui-slider-range",
     "single_sticky_add_to_cart_style_color_background": ".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select",
-    "desktop_offcanvas_menu_background_color": ".botiga-desktop-offcanvas, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number"
+    "desktop_offcanvas_menu_background_color": ".botiga-desktop-offcanvas, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number",
+    "main_header_sticky_active_background": ".sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number"
   };
   $.each($bg_color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -112,7 +113,7 @@
     "single_post_meta_color": ".single .entry-meta a",
     "single_post_title_color": ".single .entry-header .entry-title",
     "main_header_bottom_color": ".bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .main-navigation .menu > li > a",
-    "main_header_color": ".site-header .site-title a,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .site-header-cart .count-number, .header-wishlist-icon .count-number",
+    "main_header_color": ".site-header .site-title a,.site-header .main-navigation .menu > li > a, .site-header .header-contact a",
     "scrolltop_color": ".back-to-top",
     "topbar_color": ".top-bar, .top-bar a",
     "footer_credits_text_color": ".site-info",
@@ -122,7 +123,8 @@
     "footer_widgets_text_color": ".widget-column .widget",
     "footer_widgets_title_color": ".widget-column .widget .widget-title",
     "single_sticky_add_to_cart_style_color_content": ".botiga-single-sticky-add-to-cart-wrapper h5, .botiga-single-sticky-add-to-cart-wrapper .price, .botiga-single-sticky-add-to-cart-wrapper .price del, .botiga-single-sticky-add-to-cart-wrapper form.cart .quantity .botiga-quantity-minus, .botiga-single-sticky-add-to-cart-wrapper form.cart .quantity .botiga-quantity-plus, .botiga-single-sticky-add-to-cart-wrapper .quantity .qty, .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form table.variations .label, .botiga-single-sticky-add-to-cart-wrapper select",
-    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .main-navigation .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number, .botiga-desktop-offcanvas .header-contact a"
+    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .main-navigation .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number, .botiga-desktop-offcanvas .header-contact a",
+    "main_header_sticky_active_color": ".sticky-header-active .site-header .site-title a, .sticky-header-active .site-header .site-description, .sticky-header-active .site-header .main-navigation .menu > li > a, .sticky-header-active .site-header .header-contact a, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number"
   };
   $.each($color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -140,7 +142,8 @@
     "topbar_color": ".top-bar svg",
     "footer_credits_text_color": ".site-info .ws-svg-icon svg",
     "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .header-item svg, .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg",
-    "color_body_text": ".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg"
+    "color_body_text": ".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg",
+    "main_header_sticky_active_color": ".sticky-header-active .site-header .header-item svg, .sticky-header-active .site-header .dropdown-symbol .ws-svg-icon svg"
   };
   $.each($fill_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -174,7 +177,8 @@
     "single_sticky_add_to_cart_style_color_border": ".botiga-single-sticky-add-to-cart-wrapper",
     "single_sticky_add_to_cart_style_color_content": ".botiga-single-sticky-add-to-cart-wrapper form.cart .quantity, .botiga-single-sticky-add-to-cart-wrapper select",
     "main_header_color": ".site-header-cart .count-number, .header-wishlist-icon .count-number",
-    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number"
+    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number",
+    "main_header_sticky_active_color": ".sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number"
   };
   $.each($border_color_options, function (option, selector) {
     wp.customize(option, function (value) {

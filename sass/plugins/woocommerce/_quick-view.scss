@@ -184,7 +184,7 @@ ul.wc-block-grid__products {
 		transition: ease opacity 300ms 600ms;
 		z-index: 1;
 
-		@media(min-width: 1025px) {
+		@media(min-width: 1025px) and (min-height: 800px) {
 			max-width: 1110px;
 		}
 		
@@ -220,6 +220,18 @@ ul.wc-block-grid__products {
 			display: block;
 			max-height: 75vh;
 			overflow-y: auto;
+			padding-right: 10px;
+			&::-webkit-scrollbar {
+				width: 7px;
+			}
+			 
+			&::-webkit-scrollbar-track {
+				background: #e2e2e2;
+			}
+			 
+			&::-webkit-scrollbar-thumb {
+				background-color: #CCC;
+			}
 		}
 		.woocommerce-product-gallery {
 			width: 100%;
@@ -227,6 +239,14 @@ ul.wc-block-grid__products {
 			.flex-direction-nav {
 				display: none;
 			}
+		}
+	}
+}
+
+.admin-bar {
+	.botiga-quick-view-popup {
+		.botiga-quick-view-popup-content {
+			margin-top: 32px;
 		}
 	}
 }

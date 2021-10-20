@@ -59,105 +59,109 @@ $wp_customize->add_control(
     ) 
 );
 
-/**
- * Woocommerce Single
- */
-$botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general );
-$botiga_new_controls_general = array( '#customize-control-botiga_upsell_single_product' );
-$wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general = json_encode( array_merge( $botiga_controls_general, $botiga_new_controls_general ) );
+if( class_exists( 'Woocommerce' ) ) {
 
-$wp_customize->add_setting( 
-    'botiga_upsell_single_product',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'botiga_sanitize_text'
-	)
-);
+    /**
+     * Woocommerce Single
+     */
+    $botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general );
+    $botiga_new_controls_general = array( '#customize-control-botiga_upsell_single_product' );
+    $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general = json_encode( array_merge( $botiga_controls_general, $botiga_new_controls_general ) );
 
-$wp_customize->add_control( 
-    new Botiga_Upsell_Message( 
-        $wp_customize, 
+    $wp_customize->add_setting( 
         'botiga_upsell_single_product',
         array(
-            'section'     => 'botiga_section_single_product',
-            'description' => __( 'More single products options available in PRO.', 'botiga' ),
-            'priority'    => 999
+            'default'           => '',
+            'sanitize_callback' => 'botiga_sanitize_text'
         )
-    ) 
-);
+    );
 
-/**
- * Woocommerce Product Catalog
- */
-$botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general );
-$botiga_new_controls_general = array( '#customize-control-botiga_upsell_product_catalog' );
-$wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general = json_encode( array_merge( $botiga_controls_general, $botiga_new_controls_general ) );
+    $wp_customize->add_control( 
+        new Botiga_Upsell_Message( 
+            $wp_customize, 
+            'botiga_upsell_single_product',
+            array(
+                'section'     => 'botiga_section_single_product',
+                'description' => __( 'More single products options available in PRO.', 'botiga' ),
+                'priority'    => 999
+            )
+        ) 
+    );
 
-$wp_customize->add_setting( 
-    'botiga_upsell_product_catalog',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'botiga_sanitize_text'
-	)
-);
+    /**
+     * Woocommerce Product Catalog
+     */
+    $botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general );
+    $botiga_new_controls_general = array( '#customize-control-botiga_upsell_product_catalog' );
+    $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general = json_encode( array_merge( $botiga_controls_general, $botiga_new_controls_general ) );
 
-$wp_customize->add_control( 
-    new Botiga_Upsell_Message( 
-        $wp_customize, 
+    $wp_customize->add_setting( 
         'botiga_upsell_product_catalog',
         array(
-            'section'     => 'woocommerce_product_catalog',
-            'description' => __( 'More product catalog options available in PRO.', 'botiga' ),
-            'priority'    => 999
+            'default'           => '',
+            'sanitize_callback' => 'botiga_sanitize_text'
         )
-    ) 
-);
+    );
 
-/**
- * Woocommerce Cart
- */
-$wp_customize->add_setting( 
-    'botiga_upsell_cart',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'botiga_sanitize_text'
-	)
-);
+    $wp_customize->add_control( 
+        new Botiga_Upsell_Message( 
+            $wp_customize, 
+            'botiga_upsell_product_catalog',
+            array(
+                'section'     => 'woocommerce_product_catalog',
+                'description' => __( 'More product catalog options available in PRO.', 'botiga' ),
+                'priority'    => 999
+            )
+        ) 
+    );
 
-$wp_customize->add_control( 
-    new Botiga_Upsell_Message( 
-        $wp_customize, 
+    /**
+     * Woocommerce Cart
+     */
+    $wp_customize->add_setting( 
         'botiga_upsell_cart',
         array(
-            'section'     => 'botiga_section_shop_cart',
-            'description' => __( 'More cart options available in PRO.', 'botiga' ),
-            'priority'    => 999
+            'default'           => '',
+            'sanitize_callback' => 'botiga_sanitize_text'
         )
-    ) 
-);
+    );
 
-/**
- * Woocommerce Checkout
- */
-$wp_customize->add_setting( 
-    'botiga_upsell_checkout',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'botiga_sanitize_text'
-	)
-);
+    $wp_customize->add_control( 
+        new Botiga_Upsell_Message( 
+            $wp_customize, 
+            'botiga_upsell_cart',
+            array(
+                'section'     => 'botiga_section_shop_cart',
+                'description' => __( 'More cart options available in PRO.', 'botiga' ),
+                'priority'    => 999
+            )
+        ) 
+    );
 
-$wp_customize->add_control( 
-    new Botiga_Upsell_Message( 
-        $wp_customize, 
+    /**
+     * Woocommerce Checkout
+     */
+    $wp_customize->add_setting( 
         'botiga_upsell_checkout',
         array(
-            'section'     => 'woocommerce_checkout',
-            'description' => __( 'More checkout options available in PRO.', 'botiga' ),
-            'priority'    => 999
+            'default'           => '',
+            'sanitize_callback' => 'botiga_sanitize_text'
         )
-    ) 
-);
+    );
+
+    $wp_customize->add_control( 
+        new Botiga_Upsell_Message( 
+            $wp_customize, 
+            'botiga_upsell_checkout',
+            array(
+                'section'     => 'woocommerce_checkout',
+                'description' => __( 'More checkout options available in PRO.', 'botiga' ),
+                'priority'    => 999
+            )
+        ) 
+    );
+    
+}
 
 /**
  * Footer Copyright
