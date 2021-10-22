@@ -14,6 +14,10 @@
     .page-header {
         padding-bottom: 30px;
     }
+    .woocommerce-page-header + .content-wrapper {
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
     h1,
     .has-gigantic-font-size,
     .woocommerce-account .entry-title,

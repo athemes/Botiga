@@ -5,7 +5,7 @@
  * @package Botiga
  */
 
-$products = isset( $_COOKIE['botiga_wishlist_products'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['botiga_wishlist_products'] ) ) : false;
+$products = isset( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ) : false;
 
 if( $products ) : 
     $products = explode( ',', $products ); ?>

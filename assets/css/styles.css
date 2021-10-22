@@ -1889,7 +1889,7 @@ body.mobile-menu-visible {
 
 .site-header-inner {
   padding-top: 15px;
-  padding-bottom: 155px;
+  padding-bottom: 15px;
 }
 
 .botiga-offcanvas-menu,
@@ -2861,6 +2861,11 @@ body.mobile-menu-visible {
   margin-bottom: -60px;
 }
 
+.woocommerce-page-header + .content-wrapper {
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
 .woocommerce-page-header h1 {
   margin: 0;
 }
@@ -2893,6 +2898,12 @@ body.mobile-menu-visible {
   margin-bottom: 10px;
   -webkit-transition: ease background 300ms, ease color 300ms;
   transition: ease background 300ms, ease color 300ms;
+}
+
+@media (max-width: 1024px) {
+  .woocommerce-page-header .category-button {
+    margin-left: 10px;
+  }
 }
 
 .woocommerce-page-header .category-button:hover {
@@ -4167,6 +4178,10 @@ input.wc-block-components-price-slider__range-input {
   }
   .page-header {
     padding-bottom: 30px;
+  }
+  .woocommerce-page-header + .content-wrapper {
+    margin-top: 100px;
+    margin-bottom: 40px;
   }
   h1,
   .has-gigantic-font-size,

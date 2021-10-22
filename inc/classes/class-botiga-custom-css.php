@@ -84,7 +84,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 			
 			if ( 'System default' !== $headings_font['font'] ) {
-				$css .= 'h1,h2,h3,h4,h5,h6,.site-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . ';}' . "\n";
+				$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . ';}' . "\n";
 			}
 
 			$headings_font_style 		= get_theme_mod( 'headings_font_style' );
@@ -203,10 +203,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$sticky_header = get_theme_mod( 'enable_sticky_header', 0 );
 			if( $sticky_header ) {
 				$css .= '.site-header { -webkit-transition: ease all 300ms; transition: ease all 300ms; }';
-				$css .= $this->get_background_color_css( 'main_header_sticky_active_background', '', '.sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number' );
-				$css .= $this->get_color_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-title a, .sticky-header-active .site-header .site-description, .sticky-header-active .site-header .main-navigation .menu > li > a, .sticky-header-active .site-header .header-contact a, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number' );
-				$css .= $this->get_border_color_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number' );
-				$css .= $this->get_fill_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .header-item svg, .sticky-header-active .site-header .dropdown-symbol .ws-svg-icon svg' );
+				$css .= '@media only screen and (min-width: 1025px) {';
+					$css .= $this->get_background_color_css( 'main_header_sticky_active_background', '', '.sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number' );
+					$css .= $this->get_color_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .site-title a, .sticky-header-active .site-header .site-header-inner .site-description, .sticky-header-active .site-header .site-header-inner .main-navigation .menu > li > a, .sticky-header-active .site-header .site-header-inner .header-contact a, .sticky-header-active .site-header .site-header-inner .site-header-cart .count-number, .sticky-header-active .site-header .site-header-inner .header-wishlist-icon .count-number' );
+					$css .= $this->get_border_color_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .site-header-cart .count-number, .sticky-header-active .site-header .site-header-inner .header-wishlist-icon .count-number' );
+					$css .= $this->get_fill_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .header-item svg, .sticky-header-active .site-header .site-header-inner .dropdown-symbol .ws-svg-icon svg' );
+				$css .= '}';
 			}
 
 			//Header Layout 6

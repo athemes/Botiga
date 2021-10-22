@@ -348,6 +348,11 @@
 	padding-bottom: 80px;
 	margin-bottom: -60px;
 
+	& + .content-wrapper {
+        margin-top: 100px;
+        margin-bottom: 80px;
+    }
+
 	h1 {
 		margin: 0;
 	}
@@ -378,6 +383,11 @@
 		padding: 7px 22px;
 		margin-bottom: 10px;
 		transition: ease background 300ms, ease color 300ms;
+
+		@media(max-width: 1024px) {
+			margin-left: 10px;
+		}
+
 		&:hover {
 			background: $color__primary;
 			color: #FFF;
