@@ -18,7 +18,7 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 	 */
 	public $type 		 = 'botiga-upsell-features';
 	public $button_title = '';
-	public $button_link  = 'https://athemes.com/theme/botiga/';
+	public $button_link  = 'https://athemes.com/theme/botiga-pro/';
 
 	/**
 	 * Constructor
