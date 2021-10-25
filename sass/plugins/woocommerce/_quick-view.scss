@@ -72,6 +72,20 @@
 			}
 		}
 	}
+	&.botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 {
+		> .button:not(.botiga-quick-view) {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			min-width: 145px;
+			text-align: center;;
+			opacity: 0;
+			visibility: hidden;
+			white-space: nowrap;
+			transform: translate3d(-50%, -10%, 0);
+			transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		}
+	}
 }
 
 ul.products,
@@ -83,6 +97,13 @@ ul.wc-block-grid__products {
 				opacity: 1;
 				visibility: visible;
 				transform: translate3d(-50%, -50%, 0);
+			}
+			.botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 {
+				.button:not(.botiga-quick-view) {
+					opacity: 1;
+					visibility: visible;
+					transform: translate3d(-50%, 0%, 0);
+				}
 			}
 			.botiga-quick-view-layout3 {
 				transform: translate3d(0, 0, 0);

@@ -314,6 +314,12 @@ botiga.stickyHeader = {
 			return;
 		}
 
+		var topOffset = window.pageYOffset || document.documentElement.scrollTop;
+		if( topOffset > 10 ) {
+			sticky.classList.add( 'is-sticky' );
+			body.classList.add( 'sticky-header-active' );
+		}
+
 		if ( sticky.classList.contains( 'sticky-scrolltop' ) ) {
 			var lastScrollTop = 0;
 
@@ -342,7 +348,7 @@ botiga.stickyHeader = {
 			}, false);
 		}
 
-	},
+	}
 };
 
 /**
@@ -855,7 +861,7 @@ botiga.productSwatch = {
 			}
 
 			arr = arr.filter( e => e);
-console.log(arr);
+
 			for( var a=0;a<items.length;a++ ) {
 				if( arr.includes( items[a].getAttribute( 'value' ) ) ) {
 					items[a].classList.remove( 'disabled' );

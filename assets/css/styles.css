@@ -3748,8 +3748,8 @@ input.wc-block-components-price-slider__range-input {
   height: 35px;
   opacity: 0;
   visibility: hidden;
-  -webkit-transform: translate3d(20px, -170%, 0);
-          transform: translate3d(20px, -170%, 0);
+  -webkit-transform: translate3d(20px, -210%, 0);
+          transform: translate3d(20px, -210%, 0);
   -webkit-transition: ease transform 300ms, ease opacity 300ms;
   transition: ease transform 300ms, ease opacity 300ms;
 }
@@ -3817,6 +3817,13 @@ input.wc-block-components-price-slider__range-input {
     -webkit-transform: translate3d(50%, 0, 0);
             transform: translate3d(50%, 0, 0);
   }
+}
+
+/* Contact Form 7
+--------------------------------------------- */
+/* Contact Form 7 */
+.wpcf7 form .wpcf7-response-output {
+  margin: 0;
 }
 
 /* Footer

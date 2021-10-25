@@ -765,11 +765,16 @@ form.cart .quantity.hidden {
 		transition: ease bottom 300ms;
 	}
 
+	.botiga-single-sticky-add-to-cart-wrapper-content-mobile {
+		display: none;
+	}
+
 	.botiga-single-sticky-add-to-cart-wrapper-content {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: row;
+		padding: 0 20px;
 		.botiga-single-sticky-add-to-cart-item {
 			&:last-child {
 				margin-right: 0 !important;
@@ -909,7 +914,16 @@ form.cart .quantity.hidden {
 		&.visible-desktop-only {
 			display: none;
 		}
+		.botiga-single-sticky-add-to-cart-wrapper-content-mobile {
+			display: block;
+			text-align: center;
+			.botiga-mobile-sticky-close-button {
+				display: none;
+				text-transform: uppercase;
+			}
+		}
 		.botiga-single-sticky-add-to-cart-wrapper-content {
+			display: none;
 			padding: 0 15px;
 			.botiga-single-sticky-add-to-cart-item {
 				margin-right: 20px !important;
@@ -943,7 +957,6 @@ form.cart .quantity.hidden {
 						}
 					}
 					.single_add_to_cart_button {
-						text-indent: -9999px;
 						background-repeat: no-repeat;
 						background-position: center;
 					}
@@ -951,6 +964,67 @@ form.cart .quantity.hidden {
 					select {
 						padding: 10px;
 						min-height: 35px;
+					}
+				}
+			}
+		}
+
+		&.botiga-sticky-addtocart-mobile-active {
+			position: fixed;
+			top: 0 !important;
+			width: 100%;
+			padding-top: 0;
+			transition: ease all 300ms;
+			.botiga-mobile-sticky-addtocart-button {
+				display: none;
+			}
+			.botiga-mobile-sticky-close-button {
+				display: block;
+			}
+			.botiga-single-sticky-add-to-cart-wrapper-content {
+				display: flex;
+				flex-wrap: nowrap;
+				flex-direction: column;
+				align-items: flex-start;
+				padding-top: 30px;
+				.botiga-single-sticky-add-to-cart-item {
+					text-align: left !important;
+					margin-right: 0 !important;
+					&:not(.product-image) {
+						width: 100%;
+						max-width: none;
+						text-align: center;
+					}
+					&.product-title {
+						margin-top: 20px;
+					}
+					&.product-addtocart {
+						.variations_form {
+							&.cart {
+								justify-content: flex-start;
+							}
+							.single_variation_wrap {
+								display: block;
+								margin: 20px 0 0;
+								.woocommerce-variation-price {
+									margin: 25px 0 10px;
+								}
+							}
+						}
+					}
+				}
+				.variations_form {
+					display: block;
+					table.variations {
+						tbody {
+							display: block;
+						}
+						tr {
+							padding: 0;
+							& + tr td {
+								padding-top: 20px !important;
+							}
+						}
 					}
 				}
 			}

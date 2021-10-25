@@ -371,6 +371,13 @@ botiga.stickyHeader = {
       return;
     }
 
+    var topOffset = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (topOffset > 10) {
+      sticky.classList.add('is-sticky');
+      body.classList.add('sticky-header-active');
+    }
+
     if (sticky.classList.contains('sticky-scrolltop')) {
       var lastScrollTop = 0;
       window.addEventListener('scroll', function () {
@@ -898,7 +905,6 @@ botiga.productSwatch = {
       arr = arr.filter(function (e) {
         return e;
       });
-      console.log(arr);
 
       for (var a = 0; a < items.length; a++) {
         if (arr.includes(items[a].getAttribute('value'))) {

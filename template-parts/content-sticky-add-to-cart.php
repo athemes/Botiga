@@ -36,6 +36,14 @@ if( $single_sticky_add_to_cart_device_visibility === 'mobile-only' ) {
 } ?>
 
 <div class="<?php echo esc_attr( $wrapper_class ); ?>">
+    <div class="botiga-single-sticky-add-to-cart-wrapper-content-mobile">
+        <a href="#" class="button botiga-mobile-sticky-addtocart-button" onclick="botiga.toggleClass.init(event, this, false);" data-botiga-toggle-class="botiga-sticky-addtocart-mobile-active" data-botiga-selector=".botiga-single-sticky-add-to-cart-wrapper">
+            <?php echo esc_html__( 'Add to Cart', 'botiga' ); ?>
+        </a>
+        <a href="#" class="button botiga-mobile-sticky-close-button" onclick="botiga.toggleClass.init(event, this, false);" data-botiga-toggle-class="botiga-sticky-addtocart-mobile-active" data-botiga-selector=".botiga-single-sticky-add-to-cart-wrapper">
+                <?php echo esc_html__( 'Close', 'botiga' ); ?>
+        </a>
+    </div>
     <div class="botiga-single-sticky-add-to-cart-wrapper-content">
         
         <?php foreach( $single_sticky_add_to_cart_elements as $element ) {

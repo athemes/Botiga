@@ -574,7 +574,7 @@ class Botiga_Theme_Dashboard {
 									foreach ( $this->settings['tabs'] as $tab ) {
 										$counter++;
 
-										if ( 'html' === $tab['type'] && !$this->has_pro ) {
+										if ( 'html' === $tab['type'] && $this->has_pro ) {
 											continue;
 										}
 
@@ -593,10 +593,11 @@ class Botiga_Theme_Dashboard {
 								<div class="thd-panel-content thd-panel-content-tabs">
 									<?php
 									$counter = 0;
+									
 									foreach ( $this->settings['tabs'] as $tab ) {
 										$counter++;
-
-										if ( 'html' === $tab['type'] && !$this->has_pro ) {
+										
+										if ( 'html' === $tab['type'] && $this->has_pro ) {
 											continue;
 										}
 

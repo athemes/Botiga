@@ -1079,6 +1079,8 @@ span.onsale {
 		.botiga_wishlist_table {
 			.botiga-wishlist-row-item {
 				position: relative;
+				display: flex;
+				flex-direction: column;
 				td {
 					border: 0;
 					&:before {
@@ -1087,11 +1089,9 @@ span.onsale {
 				}
 				.product-remove {
 					border: 0;
-					> a {
-						position: absolute;
-						top: 0;
-						right: 0;
-					}
+					position: absolute;
+					top: 0;
+					right: 0;
 				}
 				.product-thumbnail {
 					padding-top: 20px;

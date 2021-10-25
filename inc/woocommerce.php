@@ -566,7 +566,7 @@ function botiga_wc_hooks() {
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
 	}
 
-	//Quick view button & add to car button
+	//Quick view button & add to cart button
 	if ( 
 		( 'layout4' === $button_layout && 'layout3' === $quick_view_layout ) || 
 		( 'layout3' === $button_layout && 'layout2' === $quick_view_layout ) 
@@ -611,7 +611,7 @@ add_action( 'wp', 'botiga_wc_hooks' );
 function botiga_shop_loop_product_title() {
 	global $post;
 	
-	echo the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' );
+	echo wp_kses_post( the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' ) );
 }
 
 /**
@@ -726,7 +726,7 @@ function botiga_woocommerce_page_header() {
 								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
 							} ?>
 						</div>
-					</div>
+					<!-- </div> -->
 				<?php endif; ?>
 			</div>
 		</header>

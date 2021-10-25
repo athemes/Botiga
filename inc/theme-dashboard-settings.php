@@ -34,7 +34,12 @@ function botiga_free_vs_pro_html() {
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Native AMP support', 'botiga' ); ?></td>
+				<td><?php esc_html_e( 'Color Palettes', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Typography Controls', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
@@ -48,57 +53,80 @@ function botiga_free_vs_pro_html() {
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
-
-
 			<tr>
-				<td><?php esc_html_e( 'Type of starter sites', 'botiga' ); ?></td>
-				<td><span class="thd-badge">Free</span></td>
-				<td><span class="thd-badge">Premium</span></td>
+				<td><?php esc_html_e( 'Multiple header layouts', 'botiga' ); ?></td>
+				<td>5</td>
+				<td>8</td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Starter sites', 'botiga' ); ?></td>
-				<td><span class="thd-badge">5</span></td>
-				<td><span class="thd-badge">16</span></td>
-			</tr>
-			<tr>
-				<td><?php esc_html_e( 'Header support for shortcodes', 'botiga' ); ?></td>
+				<td><?php esc_html_e( 'Product Swatch', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Transparent menu bar', 'botiga' ); ?></td>
+				<td><?php esc_html_e( 'Wishlist', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Footer credits', 'botiga' ); ?></td>
+				<td><?php esc_html_e( 'Shop Header Styles', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'WooCommerce support', 'botiga' ); ?></td>
-				<td><span class="thd-badge">Basic</span></td>
-				<td><span class="thd-badge">Extended</span></td>
+				<td><?php esc_html_e( 'Single Product Gallery Styles', 'botiga' ); ?></td>
+				<td>3</td>
+				<td>7</td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Cart and account icons in the menu', 'botiga' ); ?></td>
-				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
-				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
-			</tr>	
-			<tr>
-				<td><?php esc_html_e( 'Sidebar minicart', 'botiga' ); ?></td>
-				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
-				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
-			</tr>						
-			<tr>
-				<td><?php esc_html_e( 'Hooks system', 'botiga' ); ?></td>
+				<td><?php esc_html_e( 'Single Product Sticky Add to Cart', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Custom Elementor widgets', 'botiga' ); ?></td>
-				<td><span class="thd-badge">5</span></td>
-				<td><span class="thd-badge">9</span></td>
+				<td><?php esc_html_e( 'Single Product Tab Styles', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'New Shop Sidebar Positions', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Distraction Free Checkout', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Fixed Totals Box in Cart & Checkout Pages', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Single Blog Post Reading Time', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Single Blog Post Author Profile Info', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Single Blog Post Share Box', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Single Blog Related Posts Slider', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'New Footer Copyright Bar Elements - Payment Icons, Navigation Menu, HTML and Shortcode', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 		</tbody>
 	</table>
@@ -106,7 +134,7 @@ function botiga_free_vs_pro_html() {
 	<div class="thd-separator"></div>
 
 	<h4>
-		<a href="https://docs.athemes.com/article/226-differences-between-botiga-and-botiga-pro" target="_blank">
+		<a href="https://docs.athemes.com/article/397-differences-between-botiga-and-botiga-pro" target="_blank">
 			<?php esc_html_e( 'Full list of differences between Botiga and Botiga Pro', 'botiga' ); ?>
 		</a>
 	</h4>
