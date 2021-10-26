@@ -135,15 +135,15 @@
   }); //Fill
 
   var $fill_options = {
-    "offcanvas_menu_color": ".botiga-offcanvas-menu svg",
-    "mobile_header_color": "#masthead-mobile svg",
-    "main_header_bottom_color": ".bottom-header-row .header-item svg,.dropdown-symbol .ws-svg-icon svg",
-    "main_header_color": ".site-header .header-item svg, .site-header .dropdown-symbol .ws-svg-icon svg",
+    "offcanvas_menu_color": ".botiga-offcanvas-menu svg:not(.stroke-based)",
+    "mobile_header_color": "#masthead-mobile svg:not(.stroke-based)",
+    "main_header_bottom_color": ".bottom-header-row .header-item svg:not(.stroke-based),.dropdown-symbol .ws-svg-icon svg",
+    "main_header_color": ".site-header .header-item svg:not(.stroke-based), .site-header .dropdown-symbol .ws-svg-icon svg",
     "topbar_color": ".top-bar svg",
     "footer_credits_text_color": ".site-info .ws-svg-icon svg",
-    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .header-item svg, .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg",
+    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .header-item svg:not(.stroke-based), .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg",
     "color_body_text": ".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg",
-    "main_header_sticky_active_color": ".sticky-header-active .site-header .header-item svg, .sticky-header-active .site-header .dropdown-symbol .ws-svg-icon svg"
+    "main_header_sticky_active_color": ".sticky-header-active .site-header .header-item svg:not(.stroke-based), .sticky-header-active .site-header .dropdown-symbol .ws-svg-icon svg"
   };
   $.each($fill_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -155,7 +155,13 @@
 
   var $stroke_options = {
     "scrolltop_color": ".back-to-top svg",
-    "color_link_hover": ".has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav svg path"
+    "color_link_hover": ".has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav svg path",
+    "main_header_color": ".site-header .header-item svg.stroke-based",
+    "offcanvas_menu_color": ".botiga-offcanvas-menu svg.stroke-based",
+    "mobile_header_color": "#masthead-mobile svg.stroke-based",
+    "main_header_bottom_color": ".bottom-header-row .header-item svg.stroke-based",
+    "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .header-item svg.stroke-based",
+    "main_header_sticky_active_color": ".sticky-header-active .site-header .header-item svg.stroke-based"
   };
   $.each($stroke_options, function (option, selector) {
     wp.customize(option, function (value) {

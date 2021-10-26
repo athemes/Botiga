@@ -804,10 +804,12 @@ if ( ! function_exists( 'botiga_woocommerce_cart_link_fragment' ) ) {
 	 * @return array Fragments to refresh via AJAX.
 	 */
 	function botiga_woocommerce_cart_link_fragment( $fragments ) {
+		$cart_icon = get_theme_mod( 'cart_icon', 'icon-cart' );
+
 		ob_start();
 		?>
 
-		<span class="cart-count"><i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-cart', true ); ?></i><span class="count-number"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span></span>
+		<span class="cart-count"><i class="ws-svg-icon"><?php botiga_get_svg_icon( $cart_icon, true ); ?></i><span class="count-number"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span></span>
 
 		<?php
 		$fragments['.cart-count'] = ob_get_clean();
@@ -826,9 +828,10 @@ if ( ! function_exists( 'botiga_woocommerce_cart_link' ) ) {
 	 * @return void
 	 */
 	function botiga_woocommerce_cart_link() {
+		$cart_icon = get_theme_mod( 'cart_icon', 'icon-cart' );
 
 		$link = '<a class="cart-contents" href="' . esc_url( wc_get_cart_url() ) . '" title="' . esc_attr__( 'View your shopping cart', 'botiga' ) . '">';
-		$link .= '<span class="cart-count"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-cart', false ) . '</i><span class="count-number">' . esc_html( WC()->cart->get_cart_contents_count() ) . '</span></span>';
+		$link .= '<span class="cart-count"><i class="ws-svg-icon">' . botiga_get_svg_icon( $cart_icon, false ) . '</i><span class="count-number">' . esc_html( WC()->cart->get_cart_contents_count() ) . '</span></span>';
 		$link .= '</a>';
 
 		return $link;

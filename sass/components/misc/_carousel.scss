@@ -92,7 +92,7 @@
         .botiga-carousel-nav-prev {
             right: auto;
             left: 0;
-            transform: translate3d(-20px, -170%, 0);
+            transform: translate3d(-20px, -210%, 0);
         }
 
         &:hover,
@@ -101,7 +101,7 @@
             .botiga-carousel-nav-prev {
                 opacity: 1;
                 visibility: visible;
-                transform: translate3d(0, -170%, 0);
+                transform: translate3d(0, -210%, 0);
             }   
         }
     }
@@ -114,7 +114,7 @@
             .botiga-carousel-nav-prev {
                 opacity: 1;
                 visibility: visible;
-                transform: translate3d(0, -170%, 0);
+                transform: translate3d(0, -210%, 0);
             }
         }
     }

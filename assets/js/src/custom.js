@@ -909,3 +909,11 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.carousel.init();
 	botiga.productSwatch.init();
 } );
+
+window.onload = function() {
+	var cart_count = document.querySelectorAll( '.cart-count' );
+
+	if( cart_count.length ) {
+		jQuery( document.body ).trigger( 'wc_fragment_refresh' );
+	}
+}

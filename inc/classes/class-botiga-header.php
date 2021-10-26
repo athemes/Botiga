@@ -311,7 +311,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_layout_7() {
 			$layout 						   = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
-			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'left' );
+			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'center' );
 			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
@@ -355,7 +355,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_layout_8() {
 			$layout 						   = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
-			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'left' );
+			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'center' );
 			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">

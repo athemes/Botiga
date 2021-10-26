@@ -4,7 +4,12 @@ body {
 }
 .ws-svg-icon {
 	svg {
-		fill: $color__primary;
+		&:not(.stroke-based) {
+			fill: $color__primary;
+		}
+		&.stroke-based {
+			stroke: $color__primary;
+		}
 	}
 
 	.back-to-top & {
