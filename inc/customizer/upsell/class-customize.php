@@ -75,7 +75,7 @@ final class Botiga_Customize_Upsell {
 				array(
 					'title'    => esc_html__( 'Ready for more?', 'botiga' ),
 					'pro_text' => esc_html__( 'Get Botiga Pro',  'botiga' ),
-					'pro_url'  => 'https://athemes.com/theme/botiga-pro/?utm_source=theme_customizer&utm_medium=botiga_customizer&utm_campaign=Botiga',
+					'pro_url'  => 'https://athemes.com/theme/botiga?utm_source=theme_customizer&utm_medium=botiga_customizer&utm_campaign=Botiga#pro',
 					'priority' => -999,
 				)
 			)

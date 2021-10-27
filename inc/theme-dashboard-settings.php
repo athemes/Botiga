@@ -142,7 +142,7 @@ function botiga_free_vs_pro_html() {
 	<div class="thd-separator"></div>
 
 	<p>
-		<a href="https://athemes.com/theme/botiga-pro/?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga" class="thd-button button">
+		<a href="https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro" class="thd-button button">
 			<?php esc_html_e( 'Get Botiga Pro Today', 'botiga' ); ?>
 		</a>
 	</p>
@@ -315,7 +315,7 @@ function botiga_dashboard_settings( $settings ) {
 	$settings['promo_title']  = esc_html__( 'Upgrade to Pro', 'botiga' );
 	$settings['promo_desc']   = esc_html__( 'Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga' );
 	$settings['promo_button'] = esc_html__( 'Discover Botiga Pro', 'botiga' );
-	$settings['promo_link']   = 'https://athemes.com/theme/botiga-pro/?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
+	$settings['promo_link']   = 'https://athemes.com/theme/botiga?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga#pro';
 
 	// Review.
 	$settings['review_link']       = 'https://wordpress.org/support/theme/botiga/reviews/';
@@ -323,7 +323,7 @@ function botiga_dashboard_settings( $settings ) {
 
 	// Support.
 	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
-	$settings['support_pro_link'] = 'https://athemes.com/theme/botiga-pro/?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
+	$settings['support_pro_link'] = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro';
 
 	// Community.
 	$settings['community_link'] = 'https://www.facebook.com/groups/athemes/';
@@ -360,7 +360,7 @@ function botiga_demos_settings( $settings ) {
 
 	// Pro.
 	$settings['pro_label'] = esc_html__( 'Get Botiga Pro', 'botiga' );
-	$settings['pro_link']  = 'https://athemes.com/theme/botiga-pro/?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
+	$settings['pro_link']  = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro';
 
 	return $settings;
 }
