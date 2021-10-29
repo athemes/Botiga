@@ -145,7 +145,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_max_width_css( 'site_logo_size', $defaults = array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), '.custom-logo-link img' );
 			$css .= $this->get_background_color_css( 'topbar_background', '', '.top-bar' );
 			$css .= $this->get_color_css( 'topbar_color', '', '.top-bar, .top-bar a' );
-			$css .= $this->get_fill_css( 'topbar_color', '', '.top-bar svg' );
+			$css .= $this->get_fill_css( 'topbar_color', '', '.top-bar svg:not(.stroke-based)' );
 			$topbar_padding 	= get_theme_mod( 'topbar_padding', 15 );
 			$css .= ".top-bar-inner { padding-top:" . esc_attr( $topbar_padding ) . 'px;padding-bottom:' . esc_attr( $topbar_padding ) . "px;}" . "\n";
 			$topbar_divider_width 	= get_theme_mod( 'topbar_divider_width', 'fullwidth' );
