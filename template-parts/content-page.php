@@ -19,6 +19,8 @@
 
 	<?php botiga_post_thumbnail(); ?>
 
+	<?php do_action( 'botiga_before_page_entry_content' ); ?>
+
 	<div class="entry-content">
 		<?php
 		the_content();
@@ -31,6 +33,8 @@
 		);
 		?>
 	</div><!-- .entry-content -->
+
+	<?php do_action( 'botiga_after_page_entry_content' ); ?>
 
 	<?php if ( get_edit_post_link() && apply_filters( 'botiga_entry_footer', true ) ) : ?>
 		<footer class="entry-footer">

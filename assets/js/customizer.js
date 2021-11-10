@@ -139,7 +139,7 @@
     "mobile_header_color": "#masthead-mobile svg:not(.stroke-based)",
     "main_header_bottom_color": ".bottom-header-row .header-item svg:not(.stroke-based),.dropdown-symbol .ws-svg-icon svg",
     "main_header_color": ".site-header .header-item svg:not(.stroke-based), .site-header .dropdown-symbol .ws-svg-icon svg",
-    "topbar_color": ".top-bar svg",
+    "topbar_color": ".top-bar svg:not(.stroke-based)",
     "footer_credits_text_color": ".site-info .ws-svg-icon svg",
     "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .header-item svg:not(.stroke-based), .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg",
     "color_body_text": ".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg",

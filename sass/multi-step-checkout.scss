@@ -1,0 +1,86 @@
+/**
+ * Multi Step Checkout
+ */
+
+// Import variables and mixins
+@import "abstracts/abstracts";
+
+.woocommerce-checkout {
+
+    .woocommerce-form-coupon-toggle,
+    .woocommerce-form-login,
+    #customer_details,
+    .checkout-wrapper {
+        display: none;
+
+        &.show {
+            display: block !important;
+        }
+    }
+
+}
+
+.botiga-mstepc-wrapper {
+
+    .entry-content {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    #customer_details,
+    .checkout-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .botiga-mstepc-tabs-nav {
+        display: flex;
+        position: relative;
+        justify-content: space-around;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0;
+            width: 100%;
+            border-top: 2px solid $color__primary;
+        }
+
+        .botiga-mstepc-tabs-nav-item {
+            text-align: center;
+            .step {
+                position: relative;
+                display: block;
+                width: 45px;
+                height: 45px;
+                margin: 0 auto 10px;
+                background-color: #FFF;
+                border: 2px solid #CCC;
+                border-radius: 100%;
+                transition: ease border-color 300ms;
+                .step-number,
+                .step-completed {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate3d(-50%, -50%, 0);
+                }
+                .step-completed {
+                    display: none;
+                }
+                svg {
+                    width: 17px;
+                    height: auto;
+                }
+            }
+
+            &:hover {
+                .step {
+                    border-color: $color__primary;
+                }
+            }
+        }
+    }
+
+}

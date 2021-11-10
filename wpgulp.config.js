@@ -29,6 +29,8 @@ const editorStyleSRC = './sass/editor.scss';
 
 const woocommerceSRC = './sass/woocommerce.scss';
 
+const multiStepCheckoutSRC = './sass/multi-step-checkout.scss';
+
 // Path to place the compiled CSS file. Default set to root folder.
 const styleDestination = './assets/css';
 
@@ -69,6 +71,9 @@ const custScriptsFile = 'customizer-scripts';
 // Path to JS carousel.
 const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
 
+// Path to JS multi step checkout.
+const jsMultiStepCheckoutSRC = './assets/js/src/botiga-multi-step-checkout.js';
+
 // Path to JS sidebar.
 const jsSidebarSRC = './assets/js/src/botiga-sidebar.js';
 
@@ -83,6 +88,9 @@ const jsCustomFile = 'custom';
 
 // Compiled JS carousel file name.
 const jsCarouselFile = 'botiga-carousel';
+
+// Compiled JS multi step checkout file name.
+const jsMultiStepCheckoutFile = 'botiga-multi-step-checkout';
 
 // Compiled JS sidebar file name.
 const jsSidebarFile = 'botiga-sidebar';
@@ -111,6 +119,9 @@ const watchJsCustom = './assets/js/src/custom.js';
 
 // Path to all carousel JS files.
 const watchJsCarousel = './assets/js/src/botiga-carousel.js';
+
+// Path to all multi step checkout JS files.
+const watchJsMultiStepCheckout = './assets/js/src/botiga-multi-step-checkout.js';
 
 // Path to all sidebar JS files.
 const watchJsSidebar = './assets/js/src/botiga-sidebar.js';
@@ -187,6 +198,7 @@ module.exports = {
 	customizerSRC,
 	editorStyleSRC,
 	woocommerceSRC,
+	multiStepCheckoutSRC,
 	styleDestination,
 	outputStyle,
 	errLogToConsole,
@@ -200,11 +212,13 @@ module.exports = {
 	custScriptsFile,
 	custFile,
 	jsCarouselSRC,
+	jsMultiStepCheckoutSRC,
 	jsSidebarSRC,
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,
 	jsCarouselFile,
+	jsMultiStepCheckoutFile,
 	jsSidebarFile,
 	jsCustomFile,
 	imgSRC,
@@ -213,6 +227,7 @@ module.exports = {
 	watchEditorStyles,
 	watchJsVendor,
 	watchJsCarousel,
+	watchJsMultiStepCheckout,
 	watchJsSidebar,
 	watchJsCustom,
 	watchJsCustomizer,
