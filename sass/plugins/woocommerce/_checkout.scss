@@ -41,8 +41,9 @@
 		padding: 0;
 	}
 
-	.col-1 {
-		input {
+	.col-1,
+	.col-2 {
+		input:not([type="checkbox"]) {
 			width: 100%;
 		}
 	}

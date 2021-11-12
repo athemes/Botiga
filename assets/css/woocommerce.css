@@ -2930,7 +2930,8 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   padding: 0;
 }
 
-#customer_details .col-1 input {
+#customer_details .col-1 input:not([type="checkbox"]),
+#customer_details .col-2 input:not([type="checkbox"]) {
   width: 100%;
 }
 
