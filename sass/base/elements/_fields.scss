@@ -45,11 +45,60 @@ select {
 textarea {
 	width: 100%;
 }
+
+label {
+	&.error {
+		margin-top: 10px;
+		color: #dd3434;
+	}
+}
+
 .woocommerce .select2-container .select2-selection--single,
 .woocommerce-page .select2-container .select2-selection--single {
 	height: 100%;
 
 	.select2-selection__arrow {
 		top: 15px;
+	}
+}
+
+.woocommerce-form__label-for-checkbox {
+	position: relative;
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+		&:checked + span:before {
+			opacity: 1;
+		}
+	}
+	span {
+		position: relative;
+		display: flex;
+		padding-left: 20px;
+		&:before {
+			content: '';
+			position: relative;
+			opacity: 0;
+			left: -14px;
+			top: 7px;
+			width: 5px;
+			height: 10px;
+			border: solid $color__primary;
+			border-width: 0 3px 3px 0;
+			transform: rotate(45deg);
+			transition: ease opacity 200ms;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 4px;
+			width: 18px;
+			height: 18px;
+			border: 1px solid $color__primary;
+		}
 	}
 }

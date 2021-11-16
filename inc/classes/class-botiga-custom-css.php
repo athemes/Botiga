@@ -646,7 +646,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			
 
 			//Order Received
-			$css .= $this->get_background_color_css( 'content_cards_background', '', '.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders' );
+			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders, .woocommerce-thankyou-order-received, .woocommerce-thankyou-order-details' );
 			$css .= $this->get_color_css( 'color_body_text', '', '.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders' );
 
 			//View order

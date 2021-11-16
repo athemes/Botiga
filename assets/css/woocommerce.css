@@ -2913,6 +2913,22 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   }
 }
 
+#ship-to-different-address {
+  font-size: 1.4rem;
+}
+
+#ship-to-different-address label {
+  cursor: pointer;
+}
+
+#ship-to-different-address span {
+  padding-left: 25px;
+}
+
+#ship-to-different-address span:before {
+  left: -18px;
+}
+
 #customer_details {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50%;
@@ -3134,6 +3150,46 @@ form.woocommerce-checkout {
 
 .woocommerce-NoticeGroup-checkout ul {
   list-style: none;
+}
+
+/* 
+ * Order Received 
+ */
+.woocommerce-thankyou-order-received {
+  padding: 20px 30px;
+}
+
+.woocommerce-thankyou-order-details {
+  padding: 30px 30px 30px 50px;
+}
+
+.woocommerce-customer-details .woocommerce-columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.woocommerce-customer-details .woocommerce-columns .col-1,
+.woocommerce-customer-details .woocommerce-columns .col-2 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .woocommerce-customer-details .woocommerce-columns {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .woocommerce-customer-details .woocommerce-columns .col-1,
+  .woocommerce-customer-details .woocommerce-columns .col-2 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 /**

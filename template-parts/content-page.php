@@ -23,7 +23,12 @@
 
 	<div class="entry-content">
 		<?php
+
+		do_action( 'botiga_before_page_the_content' );
+
 		the_content();
+
+		do_action( 'botiga_after_page_the_content' );
 
 		wp_link_pages(
 			array(

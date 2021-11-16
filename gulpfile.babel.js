@@ -328,60 +328,6 @@ gulp.task('woocommerceStylesMin', () => {
 			 })
 		 );
 });
-
-gulp.task('multiStepCheckoutStyles', () => {
-	return gulp
-		.src(config.multiStepCheckoutSRC, {allowEmpty: true})
-		.pipe(plumber(errorHandler))
-		.pipe(
-			sass({
-				errLogToConsole: config.errLogToConsole,
-				outputStyle: 'expanded',
-				precision: config.precision
-			})
-		)
-		.on('error', sass.logError)
-		.pipe(autoprefixer(config.BROWSERS_LIST))
-		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
-		.pipe(rename({prefix: 'botiga-'}))
-		.pipe(gulp.dest(config.styleDestination))
-		.pipe(filter('**/*.css')) // Filtering stream to only css files.
-		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
-		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
-		.pipe(
-			notify({
-				message: '\n\n✅  ===> Multi Step Checkout Styles Expanded — completed!\n',
-				onLast: true
-			})
-		);
-});
-
-gulp.task('multiStepCheckoutStylesMin', () => {
-	return gulp
-		.src(config.multiStepCheckoutSRC, {allowEmpty: true})
-		.pipe(plumber(errorHandler))
-		.pipe(
-			sass({
-				errLogToConsole: config.errLogToConsole,
-				outputStyle: 'compressed',
-				precision: config.precision
-			})
-		)
-		.on('error', sass.logError)
-		.pipe(autoprefixer(config.BROWSERS_LIST))
-		.pipe(rename({prefix: 'botiga-', suffix: '.min'}))
-		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
-		.pipe(gulp.dest(config.styleDestination))
-		.pipe(filter('**/*.css')) // Filtering stream to only css files.
-		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
-		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
-		.pipe(
-			notify({
-				message: '\n\n✅  ===> Multi Step Checkout Styles Minified — completed!\n',
-				onLast: true
-			})
-		);
-});
  
  /**
   * Task: `stylesRTL`.
@@ -649,46 +595,6 @@ gulp.task('multiStepCheckoutStylesMin', () => {
 });
 
 /**
-  * Task: `botigaMultiStepCheckoutJS`.
-  *
-  * Concatenate and uglify custom JS scripts.
-  *
-  * This task does the following:
-  *     1. Gets the source folder for JS custom files
-  *     2. Concatenates all the files and generates custom.js
-  *     3. Renames the JS file with suffix .min.js
-  *     4. Uglifes/Minifies the JS file and generates custom.min.js
-  */
- gulp.task('botigaMultiStepCheckoutJS', () => {
-	return gulp
-		.src(config.jsMultiStepCheckoutSRC, {since: gulp.lastRun('botigaMultiStepCheckoutJS')}) // Only run on changed files.
-		.pipe(plumber(errorHandler))
-		.pipe(remember(config.jsMultiStepCheckoutSRC)) // Bring all files back to stream.
-		.pipe(concat(config.jsMultiStepCheckoutFile + '.js'))
-		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
-		.pipe(gulp.dest(config.jsCustomDestination))
-		.pipe(
-			rename({
-				basename: config.jsMultiStepCheckoutFile,
-				suffix: '.min'
-			})
-		)
-		.pipe(uglify({
-			output: {
-				comments: 'some'
-			}
-		}))
-		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
-		.pipe(gulp.dest(config.jsCustomDestination))
-		.pipe(
-			notify({
-				message: '\n\n✅  ===> CAROUSEL JS — completed!\n',
-				onLast: true
-			})
-		);
-});
-
-/**
   * Task: `botigaSidebarJS`.
   *
   * Concatenate and uglify custom JS scripts.
@@ -829,7 +735,7 @@ gulp.task('multiStepCheckoutStylesMin', () => {
   */
  gulp.task(
 	 'default',
-	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaCarouselJS', 'botigaMultiStepCheckoutJS', 'botigaSidebarJS', 'images', browsersync, () => {
+	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaCarouselJS', 'botigaSidebarJS', 'images', browsersync, () => {
 		 gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
@@ -837,14 +743,11 @@ gulp.task('multiStepCheckoutStylesMin', () => {
 		 gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
 		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStyles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('multiStepCheckoutStyles')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('multiStepCheckoutStylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStyles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchJsVendor, gulp.series('vendorsJS', reload)); // Reload on vendorsJS file changes.
 		 gulp.watch(config.watchJsCustom, gulp.series('customJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.watchJsCarousel, gulp.series('botigaCarouselJS', reload)); // Reload on carousel file changes.
-		 gulp.watch(config.watchJsMultiStepCheckout, gulp.series('botigaMultiStepCheckoutJS', reload)); // Reload on carousel file changes.
 		 gulp.watch(config.watchJsSidebar, gulp.series('botigaSidebarJS', reload)); // Reload on sidebar file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
