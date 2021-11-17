@@ -248,10 +248,6 @@ function botiga_scripts() {
 
 	wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), BOTIGA_VERSION );
 
-	wp_enqueue_style( 'botiga-style', get_stylesheet_uri(), array(), BOTIGA_VERSION );
-
-	wp_enqueue_style( 'botiga-style-min', get_template_directory_uri() . '/assets/css/styles.min.css', array(), BOTIGA_VERSION );
-
 	wp_enqueue_script( 'botiga-custom', get_template_directory_uri() . '/assets/js/custom.min.js', array( 'jquery', 'jquery-ui-core' ), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-custom', 'botiga', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -267,7 +263,18 @@ function botiga_scripts() {
 
 	wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION );
 }
-add_action( 'wp_enqueue_scripts', 'botiga_scripts' );
+add_action( 'wp_enqueue_scripts', 'botiga_scripts', 10 );
+
+/**
+ * Enqueue style css
+ * Ensure compatibility with Botiga Pro, since pro scripts are enqueued with order "10"
+ * We always need the custom.min.css as the last stylesheet enqueued
+ */
+function botiga_style_css() {
+	wp_enqueue_style( 'botiga-style', get_stylesheet_uri(), array(), BOTIGA_VERSION );
+	wp_enqueue_style( 'botiga-style-min', get_template_directory_uri() . '/assets/css/styles.min.css', array(), BOTIGA_VERSION );
+}
+add_action( 'wp_enqueue_scripts', 'botiga_style_css', 11 );
 
 /**
  * Page Templates

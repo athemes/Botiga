@@ -2921,12 +2921,12 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   cursor: pointer;
 }
 
-#ship-to-different-address span {
-  padding-left: 25px;
+#ship-to-different-address span:before {
+  top: 8px;
 }
 
-#ship-to-different-address span:before {
-  left: -18px;
+#ship-to-different-address span:after {
+  top: 5px;
 }
 
 #customer_details {

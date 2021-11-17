@@ -779,8 +779,7 @@ $wp_customize->add_setting(
 	'shop_checkout_show_coupon_form',
 	array(
 		'default'           => 1,
-		'sanitize_callback' => 'botiga_sanitize_checkbox',
-		'transport'         => 'postMessage'
+		'sanitize_callback' => 'botiga_sanitize_checkbox'
 	)
 );
 $wp_customize->add_control(

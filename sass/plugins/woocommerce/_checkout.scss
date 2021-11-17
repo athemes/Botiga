@@ -35,9 +35,11 @@
 		cursor: pointer;
 	}
 	span {
-		padding-left: 25px;
 		&:before {
-			left: -18px;
+			top: 8px;
+		}
+		&:after {
+			top: 5px;
 		}
 	}
 }
