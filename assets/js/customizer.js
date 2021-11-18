@@ -63,8 +63,7 @@
     "color_body_text": ".widget_price_filter .ui-slider .ui-slider-range",
     "single_sticky_add_to_cart_style_color_background": ".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select",
     "desktop_offcanvas_menu_background_color": ".botiga-desktop-offcanvas, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number",
-    "main_header_sticky_active_background": ".sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number",
-    "color_link_default": ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.current-step .step, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.completed .step"
+    "main_header_sticky_active_background": ".sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number"
   };
   $.each($bg_color_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -95,7 +94,7 @@
     "site_title_color": ".site-header .site-title a",
     "color_body_text": "body,.site-header-cart .count-number, .woocommerce-cart-form .quantity .botiga-quantity-plus, form.cart .quantity .botiga-quantity-plus, .woocommerce-cart-form .quantity .botiga-quantity-minus, form.cart .quantity .botiga-quantity-minus, .wp-block-columns p a, .woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.mini_cart_item a:nth-child(2),.woocommerce-cart .product-name a,.woocommerce-cart .product-remove a,.widget a:not(.wc-forward),.botiga-related-posts .related-post h3 a, .botiga-mstepc-wrapper a",
     "color_link_default": "a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.botiga-wc-loop-product__title),.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.woocommerce-table__product-name.product-name a,.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout),.botiga-related-posts .related-post .posted-on a",
-    "color_heading_1": "h1,.botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item:hover .step .step-number",
+    "color_heading_1": "h1",
     "color_heading_2": "h2,.wp-block-search .wp-block-search__label",
     "color_heading_3": "h3",
     "color_heading_4": "h4,.product-gallery-summary .product_meta,.product-gallery-summary .product_meta a,.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.woocommerce-tabs ul.tabs li a,.product-gallery-summary .woocommerce-Price-amount,.woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total .woocommerce-Price-amount,.order-total .woocommerce-Price-amount",
@@ -180,7 +179,7 @@
     "footer_credits_divider_color": ".site-info,.site-footer",
     "footer_widgets_divider_color": ".footer-widgets,.footer-widgets-grid",
     "color_body_text": ".woocommerce-cart-form .quantity, form.cart .quantity",
-    "color_link_default": ".single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item:hover .step, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.completed .step, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.current-step .step",
+    "color_link_default": ".single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active",
     "single_sticky_add_to_cart_style_color_border": ".botiga-single-sticky-add-to-cart-wrapper",
     "single_sticky_add_to_cart_style_color_content": ".botiga-single-sticky-add-to-cart-wrapper form.cart .quantity, .botiga-single-sticky-add-to-cart-wrapper select",
     "main_header_color": ".site-header-cart .count-number, .header-wishlist-icon .count-number",
@@ -933,81 +932,122 @@
       $('body').css('text-decoration', to);
     });
   });
-  var $color_options = {
-    //Woocommerce header style
-    "shop_archive_header_background_color": {
-      selector: ".woocommerce-page-header",
-      prop: "background-color"
-    },
-    "shop_archive_header_title_color": {
-      selector: ".woocommerce-page-header h1",
-      prop: "color"
-    },
-    "shop_archive_header_description_color": {
-      selector: ".woocommerce-page-header .page-description, .woocommerce-page-header .term-description",
-      prop: "color"
-    },
-    "shop_archive_header_button_color": {
-      selector: ".woocommerce-page-header .category-button",
-      prop: "color"
-    },
-    "shop_archive_header_button_color_hover": {
-      selector: ".woocommerce-page-header .category-button:hover",
-      prop: "color",
-      pseudo: true
-    },
-    "shop_archive_header_button_background_color": {
-      selector: ".woocommerce-page-header .category-button",
-      prop: "background-color"
-    },
-    "shop_archive_header_button_background_color_hover": {
-      selector: ".woocommerce-page-header .category-button:hover",
-      prop: "background-color",
-      pseudo: true
-    },
-    "shop_archive_header_button_border_color": {
-      selector: ".woocommerce-page-header .category-button",
-      prop: "border-color"
-    },
-    "shop_archive_header_button_border_color_hover": {
-      selector: ".woocommerce-page-header .category-button:hover",
-      prop: "border-color",
-      pseudo: true
-    },
-    "shop_archive_header_button_border_radius": {
-      selector: ".woocommerce-page-header .category-button",
-      prop: "border-radius",
-      unit: "px"
-    },
-    // Multi Step Checkout
-    "color_link_default": {
-      selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.current-step:before, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.completed:before",
-      prop: "border-top-color",
-      pseudo: true
-    },
-    "color_body_text": {
-      selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item:before",
-      prop: "border-top-color",
-      pseudo: true
-    },
-    "background_color": {
-      selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item .step svg",
-      prop: "fill"
-    }
-  };
-  $.each($color_options, function (option, css) {
+  var $color_options = [//Woocommerce header style
+  {
+    option: "shop_archive_header_background_color",
+    selector: ".woocommerce-page-header",
+    prop: "background-color"
+  }, {
+    option: "shop_archive_header_title_color",
+    selector: ".woocommerce-page-header h1",
+    prop: "color"
+  }, {
+    option: "shop_archive_header_description_color",
+    selector: ".woocommerce-page-header .page-description, .woocommerce-page-header .term-description",
+    prop: "color"
+  }, {
+    option: "shop_archive_header_button_color",
+    selector: ".woocommerce-page-header .category-button",
+    prop: "color"
+  }, {
+    option: "shop_archive_header_button_color_hover",
+    selector: ".woocommerce-page-header .category-button:hover",
+    prop: "color",
+    pseudo: true
+  }, {
+    option: "shop_archive_header_button_background_color",
+    selector: ".woocommerce-page-header .category-button",
+    prop: "background-color"
+  }, {
+    option: "shop_archive_header_button_background_color_hover",
+    selector: ".woocommerce-page-header .category-button:hover",
+    prop: "background-color",
+    pseudo: true
+  }, {
+    option: "shop_archive_header_button_border_color",
+    selector: ".woocommerce-page-header .category-button",
+    prop: "border-color"
+  }, {
+    option: "shop_archive_header_button_border_color_hover",
+    selector: ".woocommerce-page-header .category-button:hover",
+    prop: "border-color",
+    pseudo: true
+  }, {
+    option: "shop_archive_header_button_border_radius",
+    selector: ".woocommerce-page-header .category-button",
+    prop: "border-radius",
+    unit: "px"
+  }, // Multi Step Checkout
+  {
+    option: "color_link_default",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.current-step:before, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.completed:before",
+    prop: "border-top-color",
+    pseudo: true
+  }, {
+    option: "color_link_default",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item:hover .step, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.current-step .step",
+    prop: "border-color",
+    pseudo: true,
+    optsuffix: "2"
+  }, {
+    option: "color_link_default",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.current-step .step",
+    prop: "background-color",
+    pseudo: true,
+    optsuffix: "3"
+  }, {
+    option: "color_link_default",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item.completed .step",
+    prop: ["background-color", "border-color"],
+    pseudo: true,
+    optsuffix: "4"
+  }, {
+    option: "color_heading_1",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item:not(.current-step):not(.completed):hover .step .step-number",
+    prop: "color",
+    pseudo: true,
+    optsuffix: "2"
+  }, {
+    option: "color_body_text",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item:before",
+    prop: "border-top-color",
+    rgba: 0.1,
+    pseudo: true
+  }, {
+    option: "background_color",
+    selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item .step svg",
+    prop: "fill",
+    pseudo: true
+  }];
+  $.each($color_options, function (key, css) {
     var unit = typeof css.unit !== 'undefined' ? css.unit : '';
-    wp.customize(option, function (value) {
+    wp.customize(css.option, function (value) {
       value.bind(function (to) {
+        to = css.rgba !== 'undefined' ? hexToRGB(to, css.rgba) : to;
+
         if (typeof css.pseudo === 'undefined') {
-          $(css.selector).css(css.prop, to + unit);
+          if (typeof css.prop === 'string') {
+            $(css.selector).css(css.prop, to + unit);
+          } else {
+            $.each(css.prop, function (propkey, propvalue) {
+              $(css.selector).css(propvalue, to + unit);
+            });
+          }
         } else {
-          $('head').find('#botiga-customizer-styles-misc-' + option).remove();
+          var optsuffix = css.optsuffix ? css.optsuffix : '';
+          $('head').find('#botiga-customizer-styles-misc-' + css.option + optsuffix).remove();
           var output = '';
-          output += css.selector + '{ ' + css.prop + ': ' + to + '!important; }';
+
+          if (typeof css.prop === 'string') {
+            output += css.selector + '{ ' + css.prop + ': ' + to + '!important; }';
+          } else {
+            $.each(css.prop, function (propkey, propvalue) {
+              output += css.selector + '{ ' + propvalue + ': ' + to + '!important; }';
+            });
+          }
 
           if (output) {
-            $('head').append('<style id="botiga-customizer-styles-misc-' + option + '">' + output + '</style>');
+            $('head').append('<style id="botiga-customizer-styles-misc-' + css.option + optsuffix + '">' + output + '</style>');
           }
         }
       });

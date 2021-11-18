@@ -895,6 +895,29 @@ botiga.productSwatch = {
 
 }
 
+/**
+ * Misc
+ */
+botiga.misc = {
+	init: function() {
+		this.checkout();
+	},
+	checkout: function() {
+		var is_checkout_page = document.querySelector( 'body.woocommerce-checkout' );
+		
+		if( is_checkout_page === null ) {
+			return false;
+		}
+
+		// There's no woo hook for that, so we need do that with js
+		if( typeof jQuery === 'function' ) {
+			jQuery( document ).on( 'updated_checkout', function() {
+				document.querySelector( '#order_review .woocommerce-shipping-totals > td' ).setAttribute( 'colspan', 2 );
+			});
+		}
+	}
+}
+
 botiga.helpers.botigaDomReady( function() {
 	botiga.navigation.init();
 	botiga.desktopOffcanvasNav.init();
@@ -908,6 +931,7 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.qtyButton.init();
 	botiga.carousel.init();
 	botiga.productSwatch.init();
+	botiga.misc.init();
 } );
 
 window.onload = function() {

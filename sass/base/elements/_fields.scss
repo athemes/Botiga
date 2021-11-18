@@ -76,7 +76,7 @@ label {
 		}
 		&[required] + .error {
 			position: absolute;
-			top: 20px;
+			bottom: -30px;
 		}
 	}
 	span:not(.required) {

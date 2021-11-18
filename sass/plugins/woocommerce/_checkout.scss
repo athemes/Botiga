@@ -116,6 +116,20 @@ form.woocommerce-checkout {
 		}
 	}
 
+	.woocommerce-shipping-totals {
+		> th {
+			display: none;
+		}
+		> td {
+			text-align: left;
+			&:before {
+				content: attr( data-title );
+				display: block;
+				margin-bottom: 20px;
+			} 
+		}
+	}
+
 	.wc_payment_methods {
 		padding: 24px;
 		background-color: #fff;
@@ -156,9 +170,18 @@ form.woocommerce-checkout {
 	}
 
 	#shipping_method {
-		display: table;
+		display: flex;
+		flex-direction: column;
 		text-align: left;
-		margin-left: auto;
+		> li {
+			position: relative;
+			padding-right: 100px;
+		}
+		.woocommerce-Price-amount {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
 	}
 
 	[type="radio"] {

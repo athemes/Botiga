@@ -841,7 +841,7 @@ label.error {
 
 .woocommerce-form__label-for-checkbox input[required] + .error {
   position: absolute;
-  top: 20px;
+  bottom: -30px;
 }
 
 .woocommerce-form__label-for-checkbox span:not(.required) {
