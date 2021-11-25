@@ -210,7 +210,8 @@
     "button_color_hover": "button:hover,a.button:not(.wc-forward):hover,.a.button.checkout,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover,.widget_product_tag_cloud .tag-cloud-link:hover,.woocommerce-pagination li .page-numbers:hover,.botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover, .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover",
     "scrolltop_color_hover": ".back-to-top:hover",
     "footer_widgets_links_hover_color": ".widget-column .widget a:hover",
-    "footer_credits_links_color_hover": ".site-info a:hover"
+    "footer_credits_links_color_hover": ".site-info a:hover",
+    "shop_product_product_title_hover": "ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title:hover, ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title:hover, ul.wc-block-grid__products li.product .wc-block-grid__product-title:hover, ul.wc-block-grid__products li.product .woocommerce-loop-product__title:hover, ul.products li.wc-block-grid__product .wc-block-grid__product-title:hover, ul.products li.wc-block-grid__product .woocommerce-loop-product__title:hover, ul.products li.product .wc-block-grid__product-title:hover, ul.products li.product .woocommerce-loop-product__title:hover, ul.products li.product .woocommerce-loop-category__title:hover, .woocommerce-loop-product__title .botiga-wc-loop-product__title:hover"
   };
   $.each($color_hover_options, function (option, selector) {
     wp.customize(option, function (value) {
@@ -854,6 +855,20 @@
         });
       });
     });
+  });
+  var $shop_archive_columns_gap = {
+    "shop_archive_columns_gap": "ul.wc-block-grid__products, ul.products"
+  };
+  $.each($shop_archive_columns_gap, function (option, selector) {
+    $.each($devices, function (device, mediaSize) {
+      wp.customize(option + '_' + device, function (value) {
+        value.bind(function (to) {
+          $('head').find('#botiga-customizer-styles-' + option + '_' + device).remove();
+          var output = '@media ' + mediaSize + ' {' + selector + ' { gap:' + to + 'px; } }';
+          $('head').append('<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>');
+        });
+      });
+    });
   }); //Placeholders
 
   wp.customize('color_forms_placeholder', function (value) {
@@ -1023,7 +1038,9 @@
     var unit = typeof css.unit !== 'undefined' ? css.unit : '';
     wp.customize(css.option, function (value) {
       value.bind(function (to) {
-        to = css.rgba !== 'undefined' ? hexToRGB(to, css.rgba) : to;
+        if (!unit) {
+          to = css.rgba !== 'undefined' ? hexToRGB(to, css.rgba) : to;
+        }
 
         if (typeof css.pseudo === 'undefined') {
           if (typeof css.prop === 'string') {

@@ -32,8 +32,8 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'woocommerce_product_catalog',
-			'controls_general'		=> json_encode( array( '#customize-control-shop_breadcrumbs','#customize-control-woocommerce_catalog_rows','#customize-control-woocommerce_catalog_columns','#customize-control-accordion_shop_layout','#customize-control-shop_archive_layout','#customize-control-shop_archive_sidebar','#customize-control-shop_archive_divider_1','#customize-control-shop_page_elements_title','#customize-control-shop_page_title','#customize-control-shop_page_description','#customize-control-shop_product_sorting','#customize-control-shop_results_count','#customize-control-accordion_shop_product_card','#customize-control-shop_product_card_layout','#customize-control-shop_product_add_to_cart_layout','#customize-control-shop_product_quickview_layout','#customize-control-shop_card_elements','#customize-control-shop_product_alignment','#customize-control-shop_product_element_spacing','#customize-control-accordion_shop_sale_tag','#customize-control-shop_product_sale_tag_layout','#customize-control-shop_sale_tag_spacing','#customize-control-shop_sale_tag_radius','#customize-control-sale_badge_text','#customize-control-sale_badge_percent','#customize-control-sale_percentage_text','#customize-control-accordion_shop_categories','#customize-control-shop_categories_layout','#customize-control-shop_categories_alignment','#customize-control-shop_categories_radius','#customize-control-shop_cart_layout','#customize-control-shop_checkout_layout', ) ),
-			'controls_design'		=> json_encode( array( '#customize-control-shop_product_product_title','#customize-control-accordion_shop_styling_card','#customize-control-shop_product_card_style','#customize-control-shop_product_card_radius','#customize-control-shop_product_card_thumb_radius','#customize-control-shop_product_card_background','#customize-control-shop_product_card_border_size','#customize-control-shop_product_card_border_color','#customize-control-accordion_shop_styling_sale','#customize-control-single_product_sale_background_color','#customize-control-single_product_sale_color', ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-shop_breadcrumbs','#customize-control-woocommerce_catalog_rows','#customize-control-woocommerce_catalog_columns','#customize-control-shop_woocommerce_catalog_columns_desktop','#customize-control-accordion_shop_layout','#customize-control-shop_archive_layout','#customize-control-shop_archive_sidebar','#customize-control-shop_archive_divider_1','#customize-control-shop_page_elements_title','#customize-control-shop_page_title','#customize-control-shop_page_description','#customize-control-shop_product_sorting','#customize-control-shop_results_count','#customize-control-accordion_shop_product_card','#customize-control-shop_product_card_layout','#customize-control-shop_product_add_to_cart_layout','#customize-control-shop_product_quickview_layout','#customize-control-shop_card_elements','#customize-control-shop_product_alignment','#customize-control-shop_product_element_spacing','#customize-control-accordion_shop_sale_tag','#customize-control-shop_product_sale_tag_layout','#customize-control-shop_sale_tag_spacing','#customize-control-shop_sale_tag_radius','#customize-control-sale_badge_text','#customize-control-sale_badge_percent','#customize-control-sale_percentage_text','#customize-control-accordion_shop_categories','#customize-control-shop_categories_layout','#customize-control-shop_categories_alignment','#customize-control-shop_categories_radius','#customize-control-shop_cart_layout','#customize-control-shop_checkout_layout', ) ),
+			'controls_design'		=> json_encode( array( '#customize-control-shop_product_product_title','#customize-control-shop_product_product_title_hover','#customize-control-accordion_shop_styling_card','#customize-control-shop_product_card_style','#customize-control-shop_product_card_radius','#customize-control-shop_product_card_thumb_radius','#customize-control-shop_product_card_background','#customize-control-shop_product_card_border_size','#customize-control-shop_product_card_border_color','#customize-control-accordion_shop_styling_sale','#customize-control-single_product_sale_background_color','#customize-control-single_product_sale_color', ) ),
 			'priority' 				=>	-10
 		)
 	)
@@ -58,6 +58,51 @@ $wp_customize->add_control(
         )
     )
 );
+
+$wp_customize->add_setting( 
+	'shop_woocommerce_catalog_columns_desktop', 
+	array(
+		'default'   		=> 4,
+		'sanitize_callback' => 'absint'
+	) 
+);
+$wp_customize->add_setting( 
+	'shop_woocommerce_catalog_columns_tablet', 
+	array(
+		'default'   		=> 3,
+		'sanitize_callback' => 'absint'
+	) 
+);
+$wp_customize->add_setting( 
+	'shop_woocommerce_catalog_columns_mobile', 
+	array(
+		'default'   		=> 1,
+		'sanitize_callback' => 'absint'
+	) 
+);			
+$wp_customize->add_control( 
+	new Botiga_Responsive_Slider( 
+		$wp_customize, 
+		'shop_woocommerce_catalog_columns_desktop',
+		array(
+			'label' 		=> esc_html__( 'Products Per Row', 'botiga' ),
+			'section' 		=> 'woocommerce_product_catalog',
+			'is_responsive'	=> 1,
+			'settings' 		=> array (
+				'size_desktop' 		=> 'shop_woocommerce_catalog_columns_desktop',
+				'size_tablet' 		=> 'shop_woocommerce_catalog_columns_tablet',
+				'size_mobile' 		=> 'shop_woocommerce_catalog_columns_mobile'
+			),
+			'input_attrs' => array (
+				'min'	=> 1,
+				'max'	=> 6,
+				'step'  => 1
+			),
+			'priority'      => 1
+		)
+	) 
+);
+
 $wp_customize->add_setting( 'shop_archive_layout',
 	array(
 		'default' 			=> 'product-grid',
@@ -927,6 +972,26 @@ $wp_customize->add_control(
 		'shop_product_product_title',
 		array(
 			'label'         	=> esc_html__( 'Product title', 'botiga' ),
+			'section'       	=> 'woocommerce_product_catalog',
+			'priority'	 		=> 340
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'shop_product_product_title_hover',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'shop_product_product_title_hover',
+		array(
+			'label'         	=> esc_html__( 'Product Title Hover', 'botiga' ),
 			'section'       	=> 'woocommerce_product_catalog',
 			'priority'	 		=> 340
 		)

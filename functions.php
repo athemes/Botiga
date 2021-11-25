@@ -48,6 +48,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'botiga-extra-large', 1140, 9999 );
 		add_image_size( 'botiga-large', 920, 9999 );
+		add_image_size( 'botiga-big', 575, 9999 );
 		add_image_size( 'botiga-medium', 380, 9999 );
 
 		// This theme uses wp_nav_menu() in one location.
@@ -371,6 +372,11 @@ require get_template_directory() . '/inc/theme-dashboard-settings.php';
  * Review notice
  */
 require get_template_directory() . '/inc/notices/class-botiga-review.php';
+
+/**
+ * Theme update migration functions
+ */
+require get_template_directory() . '/inc/theme-update.php';
 
 /**
  * Botiga custom get template part

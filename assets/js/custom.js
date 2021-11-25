@@ -383,7 +383,7 @@ botiga.stickyHeader = {
       window.addEventListener('scroll', function () {
         var scroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scroll > lastScrollTop) {
+        if (scroll > lastScrollTop || scroll < 10) {
           sticky.classList.remove('is-sticky');
           body.classList.remove('sticky-header-active');
         } else {

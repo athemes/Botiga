@@ -620,6 +620,33 @@ function botiga_callback_shop_archive_sidebar_top() {
 }
 
 /**
+ * Woocommerce single show related products
+ */
+function botiga_callback_shop_single_show_related_products() {
+    $enable = get_theme_mod( 'single_related_products', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	}   	
+}
+
+/**
+ * Woocommerce single related products slider show
+ */
+function botiga_callback_shop_single_related_products_slider_navigation() {
+    $related_products = get_theme_mod( 'single_related_products', 0 );
+	$slider           = get_theme_mod( 'shop_single_related_products_slider', 0 );
+
+	if ( $related_products && $slider ) {
+		return true;
+	} else {
+		return false;
+	}   	
+}
+
+/**
  * WooCommerce product catalog page header style
  */
 function botiga_callback_shop_archive_header_style_alignment() {
