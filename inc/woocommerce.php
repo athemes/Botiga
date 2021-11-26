@@ -229,9 +229,12 @@ add_filter( 'body_class', 'botiga_woocommerce_active_body_class' );
  * @return array $args related products args.
  */
 function botiga_woocommerce_related_products_args( $args ) {
+	$posts_per_page = get_theme_mod( 'shop_single_related_products_number', 3 );
+	$columns        = get_theme_mod( 'shop_single_related_products_columns_number', 3 );
+
 	$defaults = array(
-		'posts_per_page' => 3,
-		'columns'        => 3,
+		'posts_per_page' => $posts_per_page,
+		'columns'        => $columns,
 	);
 
 	$args = wp_parse_args( $defaults, $args );
@@ -342,6 +345,9 @@ function botiga_wc_hooks() {
 	//Main woocommerce filters
 	add_filter( 'loop_shop_columns', 'botiga_loop_shop_columns', 11 );
 
+	//Woocommerce post class
+	add_filter( 'woocommerce_post_class', 'botiga_woocommerce_post_class' );
+
 	//Loop image wrapper extra class
 	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
 	if( 'layout1' !== $quick_view_layout ) {
@@ -451,7 +457,13 @@ function botiga_wc_hooks() {
 		//Related products
 		if ( !$single_related ) {
 			remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-		}	
+		} else {
+			$single_related_products_slider = get_theme_mod( 'shop_single_related_products_slider', 0 );
+			if( $single_related_products_slider ) {
+				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+				add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_related_products_slider', 20 );
+			}
+		}
 		
 		//Upsell products
 		if ( !$single_upsell ) {
@@ -629,11 +641,23 @@ function botiga_wc_hooks() {
 add_action( 'wp', 'botiga_wc_hooks' );
 
 /**
- * Loop shop columns
+ * Loop shop columns callback
  */
 function botiga_loop_shop_columns() {
 	$columns_desktop = get_theme_mod( 'shop_woocommerce_catalog_columns_desktop', 4 );
 	return $columns_desktop;
+}
+
+/**
+ * Woocommerce post class callback
+ */
+function botiga_woocommerce_post_class( $classes ) {
+	$wishlist_icon_show_on_hover = get_theme_mod( 'shop_product_wishlist_show_on_hover', 0 );
+	if( $wishlist_icon_show_on_hover ) {
+		$classes[] = 'botiga-wishlist-show-on-hover';
+	}
+
+	return $classes;
 }
 
 /**
@@ -1116,6 +1140,8 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
 
+	$wc_block_grid_item_class = '';
+
 	//Check for gb option to hide or show add to cart button
 	if( strpos( $html, 'wp-block-button' ) === FALSE ) {
 		$button_layout = 'layout1';
@@ -1129,9 +1155,14 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	if( 'layout1' !== $wishlist_layout ) {
 		$loop_image_wrap_extra_class .= ' botiga-wishlist-button-'. $wishlist_layout;
+
+		$wishlist_icon_show_on_hover = get_theme_mod( 'shop_product_wishlist_show_on_hover', 0 );
+		if( $wishlist_icon_show_on_hover ) {
+			$wc_block_grid_item_class .= 'botiga-wishlist-show-on-hover';
+		}
 	}
 
-	$markup = "<li class=\"wc-block-grid__product product-grid\">
+	$markup = "<li class=\"wc-block-grid__product product-grid $wc_block_grid_item_class\">
 				<div class=\"loop-image-wrap $loop_image_wrap_extra_class\">
 					<a href=\"{$data->permalink}\" class=\"wc-block-grid__product-link\">
 						{$data->image}
@@ -1259,7 +1290,7 @@ function botiga_wishlist_button( $product = false, $echo = true  ) {
 	} ?>
 
 	<a href="#" class="botiga-wishlist-button<?php echo ( $shop_product_wishlist_tooltip ) ? ' botiga-wishlist-button-tooltip' : ''; ?><?php echo ( botiga_product_is_inthe_wishlist( $product_id ) ) ? ' active' : ''; ?>" data-type="add" data-wishlist-link="<?php echo esc_url( $wishlist_page_link ); ?>" aria-label="<?php /* translators: %s: add to wishlist product title */ echo esc_attr( sprintf( __( 'Add to wishlist the %s product', 'botiga' ), get_the_title( $product_id ) ) ); ?>" data-product-id="<?php echo absint( $product_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-wishlist-nonce' ) ); ?>" data-botiga-wishlist-tooltip="<?php echo esc_attr( $tooltip_text ); ?>">
-		<svg width="20" height="17" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg width="17" height="17" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M13.8213 2.50804L13.8216 2.5078C16.1161 0.140222 19.7976 -0.212946 22.2492 1.87607C25.093 4.30325 25.2444 8.66651 22.6933 11.2992L22.6932 11.2993L13.245 21.055C13.245 21.0551 13.245 21.0551 13.2449 21.0551C12.8311 21.4822 12.1652 21.4822 11.7514 21.0551C11.7513 21.0551 11.7513 21.0551 11.7513 21.055L2.30334 11.2995C-0.243225 8.66684 -0.0918835 4.30344 2.75181 1.8762C5.20368 -0.213127 8.88985 0.140465 11.1793 2.50744L11.1799 2.50804L12.1418 3.49925L12.5006 3.86899L12.8594 3.49925L13.8213 2.50804Z" stroke-width="1" stroke="#212121" fill="transparent"/>
 		</svg>
 	</a>
@@ -1294,7 +1325,7 @@ function botiga_single_wishlist_button( $product = false, $echo = true  ) {
 
 	<div class="botiga-wishlist-wrapper">
 		<a href="#" class="botiga-wishlist-button<?php echo ( $product_is_inthe_wishlist ) ? ' active' : ''; ?>" data-type="add" data-wishlist-link="<?php echo esc_url( $wishlist_page_link ); ?>" aria-label="<?php /* translators: %s: add to wishlist product title */ echo esc_attr( sprintf( __( 'Add to wishlist the %s product', 'botiga' ), get_the_title( $product_id ) ) ); ?>" data-product-id="<?php echo absint( $product_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-wishlist-nonce' ) ); ?>">
-			<svg width="20" height="17" viewBox="-2 -2 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<svg width="17" height="17" viewBox="-2 -2 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M13.8213 2.50804L13.8216 2.5078C16.1161 0.140222 19.7976 -0.212946 22.2492 1.87607C25.093 4.30325 25.2444 8.66651 22.6933 11.2992L22.6932 11.2993L13.245 21.055C13.245 21.0551 13.245 21.0551 13.2449 21.0551C12.8311 21.4822 12.1652 21.4822 11.7514 21.0551C11.7513 21.0551 11.7513 21.0551 11.7513 21.055L2.30334 11.2995C-0.243225 8.66684 -0.0918835 4.30344 2.75181 1.8762C5.20368 -0.213127 8.88985 0.140465 11.1793 2.50744L11.1799 2.50804L12.1418 3.49925L12.5006 3.86899L12.8594 3.49925L13.8213 2.50804Z" stroke-width="3" stroke="#212121" fill="transparent"/>
 			</svg>
 			<span class="botiga-wishlist-text" data-wishlist-view-text="<?php echo esc_attr__( 'View Wishlist', 'botiga' ); ?>">
@@ -1333,7 +1364,7 @@ add_action( 'woocommerce_init', 'botiga_set_nocache_headers' );
 
 /**
  * Wishlist button ajax callback
- * The cookie name need to contain "woocommerce_items_in_cart" to avoid caching issues in some servers like kinsta. 
+ * The cookie name needs to contain "woocommerce_items_in_cart" to avoid caching issues in some servers like kinsta. 
  * Reference: https://kinsta.com/blog/wordpress-cookies-php-sessions/#3-exclude-pages-from-cache-when-the-cookie-is-present
  */
 function botiga_button_wishlist_callback_function(){
@@ -1846,4 +1877,80 @@ function botiga_sticky_add_to_cart_product_addtocart() {
 			botiga_simple_add_to_cart( $product, 'single_sticky_addtocart' );
 			break;
 	}
+}
+
+/**
+ * Botiga related products as slider
+ */
+function botiga_woocommerce_output_related_products_slider( $args = array() ) { 
+	global $product;
+
+	if ( ! $product ) {
+		return;
+	}
+
+	$posts_per_page = get_theme_mod( 'shop_single_related_products_number', 3 );
+	$columns        = get_theme_mod( 'shop_single_related_products_columns_number', 3 );
+	$shop_single_related_products_slider_nav = get_theme_mod( 'shop_single_related_products_slider_nav', 'always-show' );
+
+	$defaults = array(
+		'posts_per_page' => $posts_per_page,
+		'orderby'        => 'rand',
+		'order'          => 'desc'
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	// Get visible related products then sort them at random.
+	$args['related_products'] = array_filter( array_map( 'wc_get_product', wc_get_related_products( $product->get_id(), $args['posts_per_page'], $product->get_upsell_ids() ) ), 'wc_products_array_filter_visible' );
+
+	// Handle orderby.
+	$related_products = wc_products_array_orderby( $args['related_products'], $args['orderby'], $args['order'] ); ?>
+	
+	<section class="related products">
+
+		<?php
+		$heading = apply_filters( 'botiga_woocommerce_product_related_products_heading', __( 'Related products', 'botiga' ) );
+
+		if ( $heading ) : ?>
+			<h2><?php echo esc_html( $heading ); ?></h2>
+		<?php endif; ?>
+		
+		<?php
+
+		$wrapper_atts = array();
+		$wrapper_classes = array( 'botiga-related-posts' );
+
+		wp_enqueue_script( 'botiga-carousel' );
+		wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() );	
+
+		$wrapper_classes[] = 'botiga-carousel botiga-carousel-nav2';
+
+		if( $shop_single_related_products_slider_nav === 'always-show' ) {
+			$wrapper_classes[] = 'botiga-carousel-nav2-always-show';
+		}
+
+		$wrapper_atts[] = 'data-per-page="'. absint( $columns ) .'"';
+
+		// Mount related posts wrapper class
+		$wrapper_atts[] = 'class="'. esc_attr( implode( ' ', $wrapper_classes ) ) .'"';
+
+		echo '<div '. implode( ' ', $wrapper_atts ) .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
+			echo '<ul class="products columns-'. esc_attr( $columns ) .' row botiga-carousel-stage">';
+				foreach ( $related_products as $related_product ) :
+	
+					$post_object = get_post( $related_product->get_id() );
+
+					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+					wc_get_template_part( 'content', 'product' );
+
+				endforeach;
+			echo '</ul>';
+		echo '</div>';
+		?>
+
+	</section>
+	
+	<?php
 }

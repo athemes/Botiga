@@ -3735,16 +3735,17 @@ input.wc-block-components-price-slider__range-input {
 .botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage,
 .cross-sells .botiga-carousel-wrapper .products,
 .cross-sells .botiga-carousel-wrapper .botiga-carousel-stage {
+  margin: 0;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: ease opacity 300ms 300ms;
   transition: ease opacity 300ms 300ms;
 }
 
-.botiga-carousel .botiga-carousel-wrapper .products.row,
-.botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage.row,
-.cross-sells .botiga-carousel-wrapper .products.row,
-.cross-sells .botiga-carousel-wrapper .botiga-carousel-stage.row {
+.botiga-carousel .botiga-carousel-wrapper .products.row:not(.products),
+.botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage.row:not(.products),
+.cross-sells .botiga-carousel-wrapper .products.row:not(.products),
+.cross-sells .botiga-carousel-wrapper .botiga-carousel-stage.row:not(.products) {
   display: block;
 }
 
@@ -3813,7 +3814,7 @@ input.wc-block-components-price-slider__range-input {
       -ms-flex-pack: center;
           justify-content: center;
   top: 50%;
-  right: 0;
+  right: 15px;
   background: #212121;
   width: 35px;
   height: 35px;
@@ -3843,7 +3844,7 @@ input.wc-block-components-price-slider__range-input {
 
 .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev {
   right: auto;
-  left: 0;
+  left: 15px;
   -webkit-transform: translate3d(-20px, -210%, 0);
           transform: translate3d(-20px, -210%, 0);
 }

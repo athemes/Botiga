@@ -4214,6 +4214,20 @@ span.onsale {
 }
 
 /* Wishlist Button */
+.botiga-wishlist-show-on-hover > .loop-image-wrap .botiga-wishlist-button {
+  opacity: 0;
+  -webkit-transform: translate3d(15px, 0, 0);
+          transform: translate3d(15px, 0, 0);
+  -webkit-transition: ease transform 300ms, ease opacity 300ms;
+  transition: ease transform 300ms, ease opacity 300ms;
+}
+
+.botiga-wishlist-show-on-hover:hover > .loop-image-wrap .botiga-wishlist-button {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
 .botiga-wishlist-button {
   position: absolute;
   top: 20px;

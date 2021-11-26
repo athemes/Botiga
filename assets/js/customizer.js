@@ -556,12 +556,22 @@
       $('head').find('#botiga-customizer-styles-wishlist-color_link_default').remove();
       var output = '';
       output += '.botiga-wishlist-button svg path { stroke: ' + to + '; }';
-      output += '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path { fill: ' + to + '; stroke: ' + to + '; }';
       output += '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):after { border-left-color: ' + to + '; }';
       output += '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):before { background-color: ' + to + '; }';
 
       if (output) {
         $('head').append('<style id="botiga-customizer-styles-wishlist-color_link_default">' + output + '</style>');
+      }
+    });
+  });
+  wp.customize('shop_product_wishlist_icon_active_color', function (value) {
+    value.bind(function (to) {
+      $('head').find('#botiga-customizer-styles-wishlist-shop_product_wishlist_icon_active_color').remove();
+      var output = '';
+      output += '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path { fill: ' + to + '; stroke: ' + to + '; }';
+
+      if (output) {
+        $('head').append('<style id="botiga-customizer-styles-wishlist-shop_product_wishlist_icon_active_color">' + output + '</style>');
       }
     });
   }); //Woocommerce single image gallery

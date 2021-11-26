@@ -16,10 +16,11 @@
 		position: relative;
 		.products,
 		.botiga-carousel-stage {
+			margin: 0;
 			opacity: 0;
 			visibility: hidden;
 			transition: ease opacity 300ms 300ms;
-			&.row {
+			&.row:not(.products) {
 				display: block;
 			}
 			&.show {
@@ -70,7 +71,7 @@
             align-items: center;
             justify-content: center;
             top: 50%;
-            right: 0;
+            right: 15px;
             background: $color__primary;
             width: 35px;
             height: 35px;
@@ -91,7 +92,7 @@
         }
         .botiga-carousel-nav-prev {
             right: auto;
-            left: 0;
+            left: 15px;
             transform: translate3d(-20px, -210%, 0);
         }
 
@@ -105,7 +106,7 @@
             }   
         }
     }
-}
+} 
 
 @media (max-width: 991px) {
     .botiga-carousel {

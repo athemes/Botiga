@@ -955,6 +955,24 @@ span.onsale {
 }
 
 /* Wishlist Button */
+.botiga-wishlist-show-on-hover {
+	> .loop-image-wrap {
+		.botiga-wishlist-button {
+			opacity: 0;
+			transform: translate3d( 15px, 0, 0 );
+			transition: ease transform 300ms, ease opacity 300ms;
+		}
+	}
+	&:hover {
+		> .loop-image-wrap {
+			.botiga-wishlist-button {
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+}
+
 .botiga-wishlist-button {
 	position: absolute;
 	top: 20px;

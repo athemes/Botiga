@@ -1260,6 +1260,20 @@ div.editor-styles-wrapper .product-gallery-summary del .amount {
   opacity: 0.5;
 }
 
+div.editor-styles-wrapper .botiga-wishlist-show-on-hover > .loop-image-wrap .botiga-wishlist-button {
+  opacity: 0;
+  -webkit-transform: translate3d(15px, 0, 0);
+          transform: translate3d(15px, 0, 0);
+  -webkit-transition: ease transform 300ms, ease opacity 300ms;
+  transition: ease transform 300ms, ease opacity 300ms;
+}
+
+div.editor-styles-wrapper .botiga-wishlist-show-on-hover:hover > .loop-image-wrap .botiga-wishlist-button {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
 div.editor-styles-wrapper .botiga-wishlist-button {
   position: absolute;
   top: 20px;
@@ -1774,6 +1788,10 @@ div.editor-styles-wrapper .woocommerce-sorting-wrapper select {
   min-height: auto;
 }
 
+div.editor-styles-wrapper .product-list ul.products {
+  grid-template-columns: 1fr;
+}
+
 div.editor-styles-wrapper .product-list ul.products li.product {
   width: 100% !important;
   margin-right: 0;
@@ -1954,7 +1972,7 @@ div.editor-styles-wrapper .product-category-item-layout2 ul.products li.product-
   bottom: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.6);
-  padding: 20px 0px;
+  padding: 20px;
   margin: 0;
 }
 
@@ -1969,7 +1987,7 @@ div.editor-styles-wrapper .product-category-item-layout3 ul.products li.product-
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 20px 0px;
+  padding: 20px;
   margin: 0;
   color: #FFF;
   z-index: 1;
@@ -1998,7 +2016,7 @@ div.editor-styles-wrapper .product-category-item-layout4 ul.products li.product-
   bottom: 0;
   width: calc( 100% - 30px);
   background: #FFF;
-  padding: 20px 0px;
+  padding: 20px;
   margin: 0 0 15px 15px;
 }
 

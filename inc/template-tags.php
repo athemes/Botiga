@@ -374,7 +374,7 @@ function botiga_related_posts() {
 	$wrapper_atts = array();
 	$wrapper_classes = array( 'botiga-related-posts' );
 
-	if( $single_post_related_posts_slider ) {
+	if( $single_post_related_posts_slider && $single_post_related_posts_number > $single_post_related_posts_columns_number ) {
 		wp_enqueue_script( 'botiga-carousel' );
 
 		$wrapper_classes[] = 'botiga-carousel botiga-carousel-nav2';

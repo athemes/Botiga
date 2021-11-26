@@ -509,7 +509,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				// wishlist buttons/icons
 				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-wishlist-wrapper .botiga-wishlist-button' );
 				$css .= $this->get_stroke_css( 'color_link_default', '', '.botiga-wishlist-button svg path, .botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
-				$css .= $this->get_fill_css( 'color_link_default', '', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= $this->get_fill_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= $this->get_stroke_css( 'shop_product_wishlist_icon_active_color', '', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
 				$css .= '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):after { border-left-color: '. get_theme_mod( 'color_link_default', '#212121' ) .'; }';
 				$css .= $this->get_background_color_css( 'color_link_default', '', '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):before' );
 
@@ -1061,6 +1062,24 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
 				$css .= $media . ' { ' . $selector . ' { gap:' . intval( $mod ) . 'px; } }' . "\n";	
+			}
+
+			return $css;
+		}	
+
+		//Right margin
+		public static function get_right_margin_css( $setting, $defaults = array(), $selector, $important = false ) {
+			$devices 	= array( 
+				'desktop' 	=> '@media (min-width: 992px)',
+				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
+				'mobile'	=> '@media (max-width: 575px)'
+			);
+
+			$css = '';
+
+			foreach ( $devices as $device => $media ) {
+				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
+				$css .= $media . ' { ' . $selector . ' { margin-right:' . intval( $mod ) . 'px'. ( ( $important ) ? ' !important' : '' ) .'; } }' . "\n";	
 			}
 
 			return $css;

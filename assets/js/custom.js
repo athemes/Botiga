@@ -799,7 +799,7 @@ botiga.carousel = {
       threshold: 20,
       loop: true,
       rtl: false,
-      margin: 30,
+      margin: typeof botiga_carousel !== 'undefined' ? parseInt(botiga_carousel.margin_desktop) : 30,
       onInit: function onInit() {
         // Show the carousel
         this.selector.classList.add('show');
