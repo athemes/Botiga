@@ -700,6 +700,7 @@ function botiga_get_social_share_url( $social ) {
 function botiga_localize_carousel_options() {
 	$woo_columns_gap = get_theme_mod( 'shop_archive_columns_gap_desktop', 30 );
 	return array(
-		'margin_desktop' => $woo_columns_gap
+		'margin_desktop' => $woo_columns_gap,
+		'autoplayTimeout' => 5000
 	);
 }

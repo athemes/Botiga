@@ -63,7 +63,8 @@
     "color_body_text": ".widget_price_filter .ui-slider .ui-slider-range",
     "single_sticky_add_to_cart_style_color_background": ".botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type=\"number\"] ,.botiga-single-sticky-add-to-cart-wrapper select",
     "desktop_offcanvas_menu_background_color": ".botiga-desktop-offcanvas, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number",
-    "main_header_sticky_active_background": ".sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number"
+    "main_header_sticky_active_background": ".sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number",
+    "shop_product_wishlist_icon_background_color": ".botiga-wishlist-button"
   };
   $.each($bg_color_options, function (option, selector) {
     wp.customize(option, function (value) {

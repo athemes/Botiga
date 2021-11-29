@@ -1026,10 +1026,3 @@ span.delete:hover {
   font-weight: 500;
   padding-right: 5px;
 }
-
-/*
- * Hide controls
- */
-#customize-control-woocommerce_catalog_columns {
-  display: none;
-}

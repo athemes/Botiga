@@ -731,6 +731,11 @@ botiga.carousel = {
 			wrapper.append( prev );
 		}
 
+		var margin = typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30;
+		if( window.matchMedia( '(max-width: 767px)' ).matches ) {
+			margin = 0;
+		}
+
 		var carousel = new Siema({
 			selector: document.querySelector( '.cross-sells' ) !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
 			duration: 200,
@@ -741,15 +746,24 @@ botiga.carousel = {
 				1025: parseInt( perPage )
 			} : 2,
 			startIndex: 0,
-			draggable: false,
-			multipleDrag: false,
+			draggable: true,
+			multipleDrag: true,
 			threshold: 20,
 			loop: true,
 			rtl: false,
-			margin: typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30,
+			margin: margin,
+			autoplayTimeout: 5000,
 			onInit: function() {
 				// Show the carousel
 				this.selector.classList.add( 'show' );
+
+				// to do (autoplay)
+				// var _this = this;				
+				// var st = function() {
+				// 	_this.next(1);
+				// 	setTimeout(st, 1000);
+				// }
+				// st();
 			}
 		});
 	}

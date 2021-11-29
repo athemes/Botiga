@@ -508,11 +508,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( 'layout1' !== $wishlist_layout ) {
 				// wishlist buttons/icons
 				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-wishlist-wrapper .botiga-wishlist-button' );
-				$css .= $this->get_stroke_css( 'color_link_default', '', '.botiga-wishlist-button svg path, .botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= $this->get_stroke_css( 'color_link_default', '#212121', '.botiga-wishlist-button svg path, .botiga-wishlist-button:hover svg path' );
 				$css .= $this->get_fill_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
-				$css .= $this->get_stroke_css( 'shop_product_wishlist_icon_active_color', '', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= $this->get_stroke_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
 				$css .= '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):after { border-left-color: '. get_theme_mod( 'color_link_default', '#212121' ) .'; }';
 				$css .= $this->get_background_color_css( 'color_link_default', '', '.botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):before' );
+				$css .= $this->get_background_color_css( 'shop_product_wishlist_icon_background_color', 'rgba(255,255,255,0)', '.botiga-wishlist-button' );
+				
 
 				// wishlist page
 				$css .= $this->get_color_css( 'color_link_default', '', 'a.botiga-custom-addtocart, .botiga_wishlist_table .product-addtocart strong a' );
