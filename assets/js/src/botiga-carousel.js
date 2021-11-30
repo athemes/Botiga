@@ -101,12 +101,12 @@ Siema.prototype.touchmoveHandler = function(e) {
 
     if (this.pointerDown && this.drag.letItGo) {
       e.preventDefault();
-      this.drag.endX = e.touches[0].pageX - ( this.currentSlide * this.config.margin );
+      this.drag.endX = e.touches[0].pageX;
       this.sliderFrame.style.webkitTransition = `all 0ms ${this.config.easing}`;
       this.sliderFrame.style.transition = `all 0ms ${this.config.easing}`;
 
       const currentSlide = this.config.loop ? this.currentSlide + this.perPage : this.currentSlide;
-      const currentOffset = currentSlide * (this.selectorWidth / this.perPage);
+      const currentOffset = currentSlide * ((this.selectorWidth + this.config.margin) / this.perPage);
       const dragOffset = (this.drag.endX - this.drag.startX);
       const offset = this.config.rtl ? currentOffset + dragOffset : currentOffset - dragOffset;
       this.sliderFrame.style[this.transformProperty] = `translate3d(${(this.config.rtl ? 1 : -1) * offset}px, 0, 0)`;
@@ -129,7 +129,7 @@ Siema.prototype.mousemoveHandler = function(e) {
       this.sliderFrame.style.transition = `all 0ms ${this.config.easing}`;
 
       const currentSlide = this.config.loop ? this.currentSlide + this.perPage : this.currentSlide;
-      const currentOffset = currentSlide * (this.selectorWidth / this.perPage);
+      const currentOffset = currentSlide * ((this.selectorWidth + this.config.margin) / this.perPage);
       const dragOffset = (this.drag.endX - this.drag.startX);
       const offset = this.config.rtl ? currentOffset + dragOffset : currentOffset - dragOffset;
       this.sliderFrame.style[this.transformProperty] = `translate3d(${(this.config.rtl ? 1 : -1) * offset}px, 0, 0)`;

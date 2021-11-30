@@ -1276,10 +1276,20 @@ div.editor-styles-wrapper .botiga-wishlist-show-on-hover:hover > .loop-image-wra
 
 div.editor-styles-wrapper .botiga-wishlist-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 20px;
-  height: 21px;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 100%;
 }
 
 div.editor-styles-wrapper .botiga-wishlist-button.botiga-wishlist-button-tooltip:not(.active):before {
@@ -1329,11 +1339,6 @@ div.editor-styles-wrapper .botiga-wishlist-button:hover.botiga-wishlist-button-t
   visibility: visible;
 }
 
-div.editor-styles-wrapper .botiga-wishlist-button:hover svg path, div.editor-styles-wrapper .botiga-wishlist-button.active svg path {
-  fill: #212121;
-  stroke: #212121;
-}
-
 div.editor-styles-wrapper .botiga-wishlist-button-layout3 .botiga-wishlist-button {
   top: auto;
   bottom: 20px;
@@ -1355,8 +1360,13 @@ div.editor-styles-wrapper .single-product .botiga-wishlist-wrapper .botiga-wishl
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   font-size: 0.9rem;
   font-weight: 600;
+  border-radius: 0;
+  background-color: transparent !important;
 }
 
 div.editor-styles-wrapper .single-product .botiga-wishlist-wrapper .botiga-wishlist-button svg {
@@ -1538,7 +1548,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-butt
 
 div.editor-styles-wrapper ul.wc-block-grid__products,
 div.editor-styles-wrapper ul.products {
-  display: grid;
+  display: grid !important;
   gap: 30px;
   margin: 0;
   padding: 0;
@@ -1672,6 +1682,10 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.product .wc-block-grid__
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .wc-block-grid__product-link,
 div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-link {
   text-decoration: none;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products {
+  padding: 0 15px;
 }
 
 @media screen and (min-width: 48em) {

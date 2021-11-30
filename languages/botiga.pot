@@ -115,7 +115,7 @@ msgctxt "Font size"
 msgid "XXXL"
 msgstr ""
 
-#: functions.php:216, inc/customizer/options/woocommerce.php:136
+#: functions.php:216, inc/customizer/options/woocommerce.php:164
 msgid "Sidebar"
 msgstr ""
 
@@ -185,11 +185,11 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: inc/classes/class-botiga-page-metabox.php:94, inc/customizer/options/blog-single.php:107, inc/customizer/options/blog-single.php:157, inc/customizer/options/blog.php:121, inc/customizer/options/blog.php:188, inc/customizer/options/footer.php:599, inc/customizer/options/footer.php:680, inc/customizer/options/footer.php:738, inc/customizer/options/general.php:185, inc/customizer/options/header.php:215, inc/customizer/options/header.php:336, inc/customizer/options/woocommerce.php:145
+#: inc/classes/class-botiga-page-metabox.php:94, inc/customizer/options/blog-single.php:107, inc/customizer/options/blog-single.php:157, inc/customizer/options/blog.php:121, inc/customizer/options/blog.php:188, inc/customizer/options/footer.php:599, inc/customizer/options/footer.php:680, inc/customizer/options/footer.php:738, inc/customizer/options/general.php:185, inc/customizer/options/header.php:215, inc/customizer/options/header.php:336, inc/customizer/options/woocommerce.php:173
 msgid "Left"
 msgstr ""
 
-#: inc/classes/class-botiga-page-metabox.php:95, inc/customizer/options/blog-single.php:108, inc/customizer/options/blog.php:122, inc/customizer/options/blog.php:189, inc/customizer/options/footer.php:601, inc/customizer/options/footer.php:681, inc/customizer/options/footer.php:739, inc/customizer/options/general.php:186, inc/customizer/options/header.php:217, inc/customizer/options/header.php:349, inc/customizer/options/woocommerce.php:149
+#: inc/classes/class-botiga-page-metabox.php:95, inc/customizer/options/blog-single.php:108, inc/customizer/options/blog.php:122, inc/customizer/options/blog.php:189, inc/customizer/options/footer.php:601, inc/customizer/options/footer.php:681, inc/customizer/options/footer.php:739, inc/customizer/options/general.php:186, inc/customizer/options/header.php:217, inc/customizer/options/header.php:349, inc/customizer/options/woocommerce.php:177
 msgid "Right"
 msgstr ""
 
@@ -360,7 +360,7 @@ msgstr ""
 msgid "Post comments"
 msgstr ""
 
-#: inc/customizer/options/blog-single.php:353, inc/customizer/options/blog.php:227, inc/customizer/options/blog.php:483, inc/customizer/options/woocommerce.php:518
+#: inc/customizer/options/blog-single.php:353, inc/customizer/options/blog.php:227, inc/customizer/options/blog.php:483, inc/customizer/options/woocommerce.php:546
 msgid "Spacing"
 msgstr ""
 
@@ -456,7 +456,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: inc/customizer/options/blog.php:277, inc/customizer/options/woocommerce.php:430, inc/customizer/options/woocommerce.php:671
+#: inc/customizer/options/blog.php:277, inc/customizer/options/woocommerce.php:458, inc/customizer/options/woocommerce.php:699
 msgid "Text alignment"
 msgstr ""
 
@@ -584,11 +584,11 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: inc/customizer/options/colors.php:407, inc/customizer/options/footer.php:226, inc/customizer/options/footer.php:760, inc/customizer/options/general.php:302, inc/customizer/options/general.php:618, inc/customizer/options/general.php:703, inc/customizer/options/header-mobile.php:251, inc/customizer/options/header-mobile.php:340, inc/customizer/options/header.php:661, inc/customizer/options/header.php:945, inc/customizer/options/topbar.php:401, inc/customizer/options/woocommerce.php:1074
+#: inc/customizer/options/colors.php:407, inc/customizer/options/footer.php:226, inc/customizer/options/footer.php:760, inc/customizer/options/general.php:302, inc/customizer/options/general.php:618, inc/customizer/options/general.php:703, inc/customizer/options/header-mobile.php:251, inc/customizer/options/header-mobile.php:340, inc/customizer/options/header.php:661, inc/customizer/options/header.php:945, inc/customizer/options/topbar.php:401, inc/customizer/options/woocommerce.php:1102
 msgid "Background color"
 msgstr ""
 
-#: inc/customizer/options/colors.php:426, inc/customizer/options/header.php:871, inc/customizer/options/topbar.php:498, inc/customizer/options/woocommerce.php:1036
+#: inc/customizer/options/colors.php:426, inc/customizer/options/header.php:871, inc/customizer/options/topbar.php:498, inc/customizer/options/woocommerce.php:1064
 msgid "Border color"
 msgstr ""
 
@@ -864,7 +864,7 @@ msgstr ""
 msgid "Mobile header"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:54, inc/customizer/options/header.php:164, inc/customizer/options/woocommerce.php:53, inc/customizer/options/woocommerce.php:314, inc/customizer/options/woocommerce.php:493, inc/customizer/options/woocommerce.php:633, inc/customizer/options/woocommerce.php:726, inc/customizer/options/woocommerce.php:806
+#: inc/customizer/options/header-mobile.php:54, inc/customizer/options/header.php:164, inc/customizer/options/woocommerce.php:53, inc/customizer/options/woocommerce.php:342, inc/customizer/options/woocommerce.php:521, inc/customizer/options/woocommerce.php:661, inc/customizer/options/woocommerce.php:754, inc/customizer/options/woocommerce.php:834
 msgid "Layout"
 msgstr ""
 
@@ -876,11 +876,11 @@ msgstr ""
 msgid "Offcanvas mode"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:106, inc/customizer/options/woocommerce-single.php:57, inc/customizer/options/woocommerce.php:319, inc/customizer/options/woocommerce.php:349, inc/customizer/options/woocommerce.php:387, inc/customizer/options/woocommerce.php:498, inc/customizer/options/woocommerce.php:638, inc/customizer/options/woocommerce.php:731, inc/customizer/options/woocommerce.php:811, inc/customizer/options/woocommerce.php:880, inc/template-functions.php:442, inc/template-functions.php:472
+#: inc/customizer/options/header-mobile.php:106, inc/customizer/options/woocommerce-single.php:57, inc/customizer/options/woocommerce.php:347, inc/customizer/options/woocommerce.php:377, inc/customizer/options/woocommerce.php:415, inc/customizer/options/woocommerce.php:526, inc/customizer/options/woocommerce.php:666, inc/customizer/options/woocommerce.php:759, inc/customizer/options/woocommerce.php:839, inc/customizer/options/woocommerce.php:908, inc/template-functions.php:442, inc/template-functions.php:472
 msgid "Layout 1"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:110, inc/customizer/options/woocommerce-single.php:61, inc/customizer/options/woocommerce.php:323, inc/customizer/options/woocommerce.php:353, inc/customizer/options/woocommerce.php:391, inc/customizer/options/woocommerce.php:502, inc/customizer/options/woocommerce.php:642, inc/customizer/options/woocommerce.php:735, inc/customizer/options/woocommerce.php:815, inc/customizer/options/woocommerce.php:884, inc/template-functions.php:446, inc/template-functions.php:476
+#: inc/customizer/options/header-mobile.php:110, inc/customizer/options/woocommerce-single.php:61, inc/customizer/options/woocommerce.php:351, inc/customizer/options/woocommerce.php:381, inc/customizer/options/woocommerce.php:419, inc/customizer/options/woocommerce.php:530, inc/customizer/options/woocommerce.php:670, inc/customizer/options/woocommerce.php:763, inc/customizer/options/woocommerce.php:843, inc/customizer/options/woocommerce.php:912, inc/template-functions.php:446, inc/template-functions.php:476
 msgid "Layout 2"
 msgstr ""
 
@@ -916,7 +916,7 @@ msgstr ""
 msgid "Offcanvas menu"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:359, inc/customizer/options/woocommerce.php:1094
+#: inc/customizer/options/header-mobile.php:359, inc/customizer/options/woocommerce.php:1122
 msgid "Color"
 msgstr ""
 
@@ -1048,7 +1048,7 @@ msgstr ""
 msgid "Bottom row padding"
 msgstr ""
 
-#: inc/customizer/options/header.php:853, inc/customizer/options/topbar.php:482, inc/customizer/options/woocommerce.php:1009
+#: inc/customizer/options/header.php:853, inc/customizer/options/topbar.php:482, inc/customizer/options/woocommerce.php:1037
 msgid "Border size"
 msgstr ""
 
@@ -1164,7 +1164,7 @@ msgstr ""
 msgid "Product Image"
 msgstr ""
 
-#: inc/customizer/options/woocommerce-single.php:65, inc/customizer/options/woocommerce.php:357, inc/customizer/options/woocommerce.php:395, inc/customizer/options/woocommerce.php:646, inc/customizer/options/woocommerce.php:888, inc/template-functions.php:450, inc/template-functions.php:480
+#: inc/customizer/options/woocommerce-single.php:65, inc/customizer/options/woocommerce.php:385, inc/customizer/options/woocommerce.php:423, inc/customizer/options/woocommerce.php:674, inc/customizer/options/woocommerce.php:916, inc/template-functions.php:450, inc/template-functions.php:480
 msgid "Layout 3"
 msgstr ""
 
@@ -1188,7 +1188,7 @@ msgstr ""
 msgid "SKU"
 msgstr ""
 
-#: inc/customizer/options/woocommerce-single.php:164, inc/customizer/options/woocommerce.php:614
+#: inc/customizer/options/woocommerce-single.php:164, inc/customizer/options/woocommerce.php:642
 msgid "Categories"
 msgstr ""
 
@@ -1204,7 +1204,7 @@ msgstr ""
 msgid "Upsell products"
 msgstr ""
 
-#: inc/customizer/options/woocommerce-single.php:240, inc/woocommerce.php:1913
+#: inc/customizer/options/woocommerce-single.php:240, inc/woocommerce.php:1929
 msgid "Related products"
 msgstr ""
 
@@ -1224,155 +1224,159 @@ msgstr ""
 msgid "Products Per Row"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:114
+#: inc/customizer/options/woocommerce.php:118
+msgid "Rows Per Page"
+msgstr ""
+
+#: inc/customizer/options/woocommerce.php:142
 msgid "Layout type"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:117
+#: inc/customizer/options/woocommerce.php:145
 msgid "Grid"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:118
+#: inc/customizer/options/woocommerce.php:146
 msgid "List"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:141
+#: inc/customizer/options/woocommerce.php:169
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:182
+#: inc/customizer/options/woocommerce.php:210
 msgid "Page elements"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:201
+#: inc/customizer/options/woocommerce.php:229
 msgid "Page title"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:220
+#: inc/customizer/options/woocommerce.php:248
 msgid "Page Description"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:239
+#: inc/customizer/options/woocommerce.php:267
 msgid "Product sorting"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:258
+#: inc/customizer/options/woocommerce.php:286
 msgid "Results count"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:277
+#: inc/customizer/options/woocommerce.php:305
 msgid "Display breadcrumbs"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:295, inc/customizer/options/woocommerce.php:856
+#: inc/customizer/options/woocommerce.php:323, inc/customizer/options/woocommerce.php:884
 msgid "Product card"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:344
+#: inc/customizer/options/woocommerce.php:372
 msgid "Add to cart button"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:361, inc/customizer/options/woocommerce.php:650, inc/template-functions.php:454
+#: inc/customizer/options/woocommerce.php:389, inc/customizer/options/woocommerce.php:678, inc/template-functions.php:454
 msgid "Layout 4"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:382
+#: inc/customizer/options/woocommerce.php:410
 msgid "Quick view"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:410
+#: inc/customizer/options/woocommerce.php:438
 msgid "Card elements"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:413
+#: inc/customizer/options/woocommerce.php:441
 msgid "Title"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:414
+#: inc/customizer/options/woocommerce.php:442
 msgid "Reviews"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:415, template-parts/content-wishlist.php:67
+#: inc/customizer/options/woocommerce.php:443, template-parts/content-wishlist.php:67
 msgid "Price"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:416
+#: inc/customizer/options/woocommerce.php:444
 msgid "Category"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:417
+#: inc/customizer/options/woocommerce.php:445
 msgid "Short description"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:449
+#: inc/customizer/options/woocommerce.php:477
 msgid "Elements spacing"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:474, inc/customizer/options/woocommerce.php:1054
+#: inc/customizer/options/woocommerce.php:502, inc/customizer/options/woocommerce.php:1082
 msgid "Sale tag"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:540, inc/customizer/options/woocommerce.php:690
+#: inc/customizer/options/woocommerce.php:568, inc/customizer/options/woocommerce.php:718
 msgid "Border radius"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:558, inc/woocommerce.php:1076, template-parts/content-quick-view.php:35
+#: inc/customizer/options/woocommerce.php:586, inc/woocommerce.php:1092, template-parts/content-quick-view.php:35
 msgid "Sale!"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:562
+#: inc/customizer/options/woocommerce.php:590
 msgid "Badge text"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:580
+#: inc/customizer/options/woocommerce.php:608
 msgid "Display sale percentage"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:595
+#: inc/customizer/options/woocommerce.php:623
 msgid "Sale percentage text"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:596
+#: inc/customizer/options/woocommerce.php:624
 msgid "You may use the {value} tag. E.g. <strong>{value}% OFF!</strong>"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:654, inc/template-functions.php:458
+#: inc/customizer/options/woocommerce.php:682, inc/template-functions.php:458
 msgid "Layout 5"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:708
+#: inc/customizer/options/woocommerce.php:736
 msgid "Cart"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:767
+#: inc/customizer/options/woocommerce.php:795
 msgid "Cross Sell"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:786, inc/customizer/options/woocommerce.php:835
+#: inc/customizer/options/woocommerce.php:814, inc/customizer/options/woocommerce.php:863
 msgid "Display Coupon Form"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:875
+#: inc/customizer/options/woocommerce.php:903
 msgid "Card Style"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:905
+#: inc/customizer/options/woocommerce.php:933
 msgid "Card radius"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:927
+#: inc/customizer/options/woocommerce.php:955
 msgid "Image radius"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:954
+#: inc/customizer/options/woocommerce.php:982
 msgid "Card background"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:974
+#: inc/customizer/options/woocommerce.php:1002
 msgid "Product title"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:994
+#: inc/customizer/options/woocommerce.php:1022
 msgid "Product Title Hover"
 msgstr ""
 
@@ -1688,50 +1692,50 @@ msgstr ""
 msgid "Discover Botiga Pro"
 msgstr ""
 
-#: inc/woocommerce.php:888
+#: inc/woocommerce.php:904
 msgid "View your shopping cart"
 msgstr ""
 
-#: inc/woocommerce.php:916
+#: inc/woocommerce.php:932
 msgid "Your account"
 msgstr ""
 
-#: inc/woocommerce.php:926
+#: inc/woocommerce.php:942
 msgid "Your Cart"
 msgstr ""
 
-#: inc/woocommerce.php:935
+#: inc/woocommerce.php:951
 msgid "Your wishlist"
 msgstr ""
 
 #. translators: %s: add to wishlist product title
 #. translators: %s: add to wishlist product title
-#: inc/woocommerce.php:1292, inc/woocommerce.php:1327
+#: inc/woocommerce.php:1308, inc/woocommerce.php:1343
 msgid "Add to wishlist the %s product"
 msgstr ""
 
-#: inc/woocommerce.php:1331, inc/woocommerce.php:1334
+#: inc/woocommerce.php:1347, inc/woocommerce.php:1350
 msgid "View Wishlist"
 msgstr ""
 
-#: inc/woocommerce.php:1336
+#: inc/woocommerce.php:1352
 msgid "Add to Wishlist"
 msgstr ""
 
 #. translators: %s: quick view product title
-#: inc/woocommerce.php:1466
+#: inc/woocommerce.php:1482
 msgid "Quick view the %s product"
 msgstr ""
 
-#: inc/woocommerce.php:1467
+#: inc/woocommerce.php:1483
 msgid "Quick View"
 msgstr ""
 
-#: inc/woocommerce.php:1726
+#: inc/woocommerce.php:1742
 msgid "Clear"
 msgstr ""
 
-#: inc/woocommerce.php:1710
+#: inc/woocommerce.php:1726
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 

@@ -153,7 +153,7 @@ table.shop_table_responsive tr td.download-actions .button {
  */
 ul.wc-block-grid__products,
 ul.products {
-  display: grid;
+  display: grid !important;
   gap: 30px;
   margin: 0;
   padding: 0;
@@ -287,6 +287,10 @@ ul.wc-block-grid__products li.product .wc-block-grid__product-link,
 ul.products li.wc-block-grid__product .wc-block-grid__product-link,
 ul.products li.product .wc-block-grid__product-link {
   text-decoration: none;
+}
+
+ul.wc-block-grid__products {
+  padding: 0 15px;
 }
 
 /* Responsive shop columns */
@@ -4314,8 +4318,13 @@ span.onsale {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   font-size: 0.9rem;
   font-weight: 600;
+  border-radius: 0;
+  background-color: transparent !important;
 }
 
 .single-product .botiga-wishlist-wrapper .botiga-wishlist-button svg {

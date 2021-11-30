@@ -3333,6 +3333,11 @@ body.mobile-menu-visible {
   max-width: 1300px;
 }
 
+.botiga-page-builder-mode .entry-content > p {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 /* Comments
 --------------------------------------------- */
 .comment-content a {
@@ -3714,6 +3719,13 @@ input.wc-block-components-price-slider__range-input {
 
 .gallery-caption {
   display: block;
+}
+
+/* Layout
+--------------------------------------------- */
+.wp-block-columns {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Carousel

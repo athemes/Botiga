@@ -1,6 +1,6 @@
 ul.wc-block-grid__products,
 ul.products {
-	display: grid;
+	display: grid !important;
 	gap: 30px;
 	margin: 0;
 	padding: 0;
@@ -72,6 +72,10 @@ ul.products {
 			text-decoration: none;
 		}		
 	}
+}
+
+ul.wc-block-grid__products {
+	padding: 0 15px;
 }
 
 /* Responsive shop columns */

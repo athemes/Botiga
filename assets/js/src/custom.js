@@ -747,12 +747,11 @@ botiga.carousel = {
 			} : 2,
 			startIndex: 0,
 			draggable: true,
-			multipleDrag: true,
+			multipleDrag: false,
 			threshold: 20,
 			loop: true,
 			rtl: false,
-			margin: margin,
-			autoplayTimeout: 5000,
+			margin: typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30,
 			onInit: function() {
 				// Show the carousel
 				this.selector.classList.add( 'show' );

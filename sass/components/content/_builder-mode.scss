@@ -25,7 +25,12 @@
 
 		& > .alignwide {
 			max-width: 1300px;
-		}	
+		}
+
+		& > p {
+			padding-right: 15px;
+			padding-left: 15px;
+		}
 
 	}
 }

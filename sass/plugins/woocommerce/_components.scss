@@ -1051,8 +1051,11 @@ span.onsale {
 			width: 100%;
 			height: auto;
 			align-items: center;
+			justify-content: flex-start;
 			font-size: 0.9rem;
 			font-weight: 600;
+			border-radius: 0;
+			background-color: transparent !important;
 			svg {
 				width: 17px;
 				margin-right: 5px;
