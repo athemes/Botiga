@@ -5,7 +5,6 @@
  * @package Botiga
  */
 
-
 /**
  * Footer widgets divider
  */
@@ -64,33 +63,6 @@ function botiga_callback_single_post_show_author_box() {
     $enable = get_theme_mod( 'single_post_show_author_box', 0 );
 
 	if ( $enable ) {
-		return true;
-	} else {
-		return false;
-	}   	
-}
-
-/**
- * Single post show related posts
- */
-function botiga_callback_single_post_show_related_posts() {
-    $enable = get_theme_mod( 'single_post_show_related_posts', 0 );
-
-	if ( $enable ) {
-		return true;
-	} else {
-		return false;
-	}   	
-}
-
-/**
- * Single post related posts slider show
- */
-function botiga_callback_single_post_related_posts_slider_navigation() {
-    $related_posts = get_theme_mod( 'single_post_show_related_posts', 0 );
-	$slider        = get_theme_mod( 'single_post_related_posts_slider', 0 );
-
-	if ( $related_posts && $slider ) {
 		return true;
 	} else {
 		return false;
@@ -262,7 +234,6 @@ function botiga_callback_list_general_archives() {
 	}
 }
 
-
 /**
  * Author avatar
  */
@@ -361,36 +332,6 @@ function botiga_callback_header_layout_not_7_8() {
 	}
 }
 
-function botiga_callback_header_layout_is_6() {
-	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-	
-	if ( 'header_layout_6' === $layout ) {
-		return true;
-	} else { 
-		return false;
-	}
-}
-
-function botiga_callback_header_layout_is_7() {
-	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-	
-	if ( 'header_layout_7' === $layout ) {
-		return true;
-	} else { 
-		return false;
-	}
-}
-
-function botiga_callback_header_layout_is_7_8() {
-	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-	
-	if ( 'header_layout_7' === $layout || 'header_layout_8' === $layout ) {
-		return true;
-	} else { 
-		return false;
-	}
-}
-
 function botiga_callback_header_bottom() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 
@@ -400,7 +341,6 @@ function botiga_callback_header_bottom() {
 		return false;
 	}
 }
-
 
 /**
  * Sticky header
@@ -415,7 +355,6 @@ function botiga_callback_sticky_header() {
 		return false;
 	}
 }
-
 
 /**
  * Header elements
@@ -506,179 +445,4 @@ function botiga_callback_topbar_center_contents() {
 	} else {
 		return false;
 	}	
-}
-
-/**
- * WooCommerce cart sticky totals box
- */
-function botiga_callback_shop_cart_layout() {
-	$layout = get_theme_mod( 'shop_cart_layout', 'layout1' );
-
-	if ( $layout !== 'layout1' ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * WooCommerce checkout sticky totals box
- */
-function botiga_callback_shop_checkout_layout() {
-	$layout = get_theme_mod( 'shop_checkout_layout', 'layout1' );
-
-	if ( $layout === 'layout1' ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * WooCommerce single sticky add to cart
- */
-function botiga_callback_single_sticky_add_to_cart() {
-	$enable = get_theme_mod( 'single_sticky_add_to_cart', 0 );
-
-	if ( $enable ) {
-		return true;
-	} else {
-		return false;
-	}	
-}
-
-/**
- * WooCommerce single product image layout
- */
-function botiga_callback_single_product_gallery_image_layout() {
-	$layout = get_theme_mod( 'single_product_gallery', 'gallery-default' );
-
-	if ( 'gallery-showcase' === $layout || 'gallery-full-width' === $layout ) {
-		return true;
-	} else {
-		return false;
-	}	
-}
-
-/**
- * WooCommerce single tabs
- */
-function botiga_callback_single_tabs_border_color_active() {
-	$layout = get_theme_mod( 'single_product_tabs_layout', 'style1' );
-
-	if( ! in_array( $layout, array( 'style3', 'style5' ) ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function botiga_callback_single_tabs_background_color() {
-	$layout = get_theme_mod( 'single_product_tabs_layout', 'style1' );
-
-	if( ! in_array( $layout, array( 'style1', 'style2' ) ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * WooCommerce single image gallery
- */
-function botiga_callback_single_product_gallery_layout() {
-	$layout = get_theme_mod( 'single_product_gallery', 'gallery-default' );
-
-	if( ! in_array( $layout, array( 'gallery-grid', 'gallery-scrolling', 'gallery-showcase', 'gallery-full-width' ) ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * WooCommerce product catalog sidebar
- */
-function botiga_callback_shop_archive_sidebar_slide() {
-	$sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
-
-	if ( 'sidebar-slide' === $sidebar ) {
-		return true;
-	} else {
-		return false;
-	}	
-}
-
-function botiga_callback_shop_archive_sidebar_top() {
-	$sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
-
-	if ( 'sidebar-top' === $sidebar ) {
-		return true;
-	} else {
-		return false;
-	}	
-}
-
-/**
- * Woocommerce single show related products
- */
-function botiga_callback_shop_single_show_related_products() {
-    $enable = get_theme_mod( 'single_related_products', 0 );
-
-	if ( $enable ) {
-		return true;
-	} else {
-		return false;
-	}   	
-}
-
-/**
- * Woocommerce single related products slider show
- */
-function botiga_callback_shop_single_related_products_slider_navigation() {
-    $related_products = get_theme_mod( 'single_related_products', 0 );
-	$slider           = get_theme_mod( 'shop_single_related_products_slider', 0 );
-
-	if ( $related_products && $slider ) {
-		return true;
-	} else {
-		return false;
-	}   	
-}
-
-/**
- * WooCommerce product catalog page header style
- */
-function botiga_callback_shop_archive_header_style_alignment() {
-	$style = get_theme_mod( 'shop_archive_header_style', 'style1' );
-
-	if ( 'style2' !== $style ) {
-		return true;
-	} else {
-		return false;
-	}	
-}
-
-/**
- * WooCommerce product catalog wishlist
- */
-function botiga_callback_shop_product_wishlist_layout() {
-	$layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-
-	if( 'layout1' !== $layout ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function botiga_callback_shop_product_wishlist_tooltip() {
-	$layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-	$enable = get_theme_mod( 'shop_product_wishlist_tooltip', 0 );
-
-	if( $enable && 'layout1' !== $layout ) {
-		return true;
-	} else {
-		return false;
-	}
 }

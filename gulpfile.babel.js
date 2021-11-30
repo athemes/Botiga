@@ -523,14 +523,14 @@ gulp.task('woocommerceStylesMin', () => {
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 babel({
-				 presets: [
+				presets: [
 					 [
 						 '@babel/preset-env', // Preset to compile your modern JS to ES5.
 						 {
-							 targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
 						 }
 					 ]
-				 ]
+				]
 			 })
 		 )
 		 .pipe(remember(config.jsCustomSRC)) // Bring all files back to stream.
@@ -569,6 +569,18 @@ gulp.task('woocommerceStylesMin', () => {
 	return gulp
 		.src(config.jsCarouselSRC, {since: gulp.lastRun('botigaCarouselJS')}) // Only run on changed files.
 		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
 		.pipe(remember(config.jsCarouselSRC)) // Bring all files back to stream.
 		.pipe(concat(config.jsCarouselFile + '.js'))
 		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
