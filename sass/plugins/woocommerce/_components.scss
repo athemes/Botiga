@@ -736,6 +736,9 @@ p.no-comments {
 			margin: 0 auto;
 			padding: 30px 0 0;
 			visibility: hidden;
+			opacity: 0;
+			transform: translate3d(0, 15px, 0);
+			transition: ease opacity 300ms, ease transform 300ms;
 
 			.woocommerce-mini-cart__empty-message {
 				padding: 30px;
@@ -756,6 +759,21 @@ p.no-comments {
 					left: 30px;
 					background-color: #eee;					
 				}				
+			}
+
+			.widget_shopping_cart_content {
+				display: flex;
+				flex-direction: column;
+
+				.product_list_widget {
+					order: 5;
+				}
+				.woocommerce-mini-cart__total {
+					order: 10;
+				}
+				.woocommerce-mini-cart__buttons {
+					order: 15;
+				}
 			}
 
 			.woocommerce-mini-cart__total,
@@ -832,6 +850,8 @@ p.no-comments {
 				right: 0;
 				display: block;
 				visibility: visible;
+				opacity: 1;
+				transform: none;
 			}
 		}
 
@@ -841,13 +861,27 @@ p.no-comments {
 			position: static;
 			box-shadow: none;
 			max-width: 100%;
+			max-height: 30vh;
+			min-height: 300px;
+			overflow-y: auto;
+			&::-webkit-scrollbar {
+				width: 7px;
+			}
+			 
+			&::-webkit-scrollbar-track {
+				background: #e2e2e2;
+			}
+			 
+			&::-webkit-scrollbar-thumb {
+				background-color: #CCC;
+			}
 	
 			li {
 				display: flex;
 				align-items: center;
 				flex-wrap: wrap;
-				padding: 30px 30px 30px 145px;
-				min-height: 160px;
+				padding: 20px 30px 20px 105px;
+				min-height: 115px;
 				background: transparent;
 				position: relative;
 				max-width: 100%;
@@ -871,10 +905,10 @@ p.no-comments {
 				}
 	
 				img {
-					max-width: 100px;
-					max-height: 100px;
+					width: auto;
+					max-height: 75px;
 					position: absolute;
-					top: 30px;
+					top: 20px;
 					left: 30px;
 				}
 	

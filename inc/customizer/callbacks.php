@@ -422,6 +422,19 @@ function botiga_callback_header_elements( $element ) {
 }
 
 /**
+ * Header Mini Cart
+ */
+function botiga_callback_header_show_minicart() {
+	$enable = get_theme_mod( 'enable_header_cart', 1 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	} 
+}
+
+/**
  * Top bar elements
  */
 function botiga_callback_topbar_elements( $element ) {

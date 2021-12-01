@@ -160,11 +160,14 @@ function botiga_woocommerce_scripts() {
 	}
 
 	//Cross sell
-	$layout                    = get_theme_mod( 'shop_cart_layout', 'layout1' );
-	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+	$layout                      = get_theme_mod( 'shop_cart_layout', 'layout1' );
+	$shop_cart_show_cross_sell   = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+	$enable_mini_cart_cross_sell = get_theme_mod( 'enable_mini_cart_cross_sell', 0 );
 
-	if( is_cart() && $layout === 'layout1' && $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) {
-
+	if( 
+		( is_cart() && $layout === 'layout1' && $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) ||
+		( ! is_cart() && $enable_mini_cart_cross_sell ) 
+	) {
 		// We need register this script again because the order of 'wp_enqueue_scripts'
 		wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION );
 		wp_enqueue_script( 'botiga-carousel' );
@@ -337,10 +340,11 @@ function botiga_loop_product_structure() {
  * Hook into Woocommerce
  */
 function botiga_wc_hooks() {
-	$layout			   		= get_theme_mod( 'shop_archive_layout', 'product-grid' );	
-	$button_layout     		= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$quick_view_layout 		= get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
-	$wishlist_layout 		= get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+	$layout			   			 = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$button_layout     			 = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$quick_view_layout 			 = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	$wishlist_layout 			 = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+	$enable_mini_cart_cross_sell = get_theme_mod( 'enable_mini_cart_cross_sell', 0 );
 
 	//Loop image wrapper extra class
 	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
@@ -371,6 +375,12 @@ function botiga_wc_hooks() {
 	} elseif( is_account_page() ) {
 		add_filter( 'botiga_content_class', function() { return 'no-sidebar'; } );
 		add_filter( 'botiga_sidebar', '__return_false' );
+	} elseif ( $enable_mini_cart_cross_sell ) {
+		add_filter( 'botiga_content_class', function() { 
+			if( count( WC()->cart->get_cross_sells() ) > 2 ) {
+				return 'has-cross-sells-carousel'; 
+			}
+		} );
 	}
 
 	//Archive layout
@@ -956,6 +966,27 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+/**
+ * Mini cart cross sell
+ */
+function botiga_mini_cart_cross_sell() {
+	if( is_cart() ) {
+		return;
+	}
+
+	$enable_mini_cart_cross_sell = get_theme_mod( 'enable_mini_cart_cross_sell', 0 );
+	if( ! $enable_mini_cart_cross_sell ) {
+		return;
+	} ?>
+	
+	<div class="botiga-woocommerce-mini-cart__cross-sell">
+		<?php woocommerce_cross_sell_display(); ?>
+	</div>
+
+	<?php
+}
+add_action( 'woocommerce_widget_shopping_cart_before_buttons', 'botiga_mini_cart_cross_sell' );
 
 /**
  * Wrap products results and ordering before

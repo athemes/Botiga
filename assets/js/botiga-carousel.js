@@ -17,6 +17,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  *
  * Released under the MIT License
  * 
+ * Modified by aThemes
+ * 
  * @cc_on 
  */
 var Siema = /*#__PURE__*/function () {
@@ -36,6 +38,10 @@ var Siema = /*#__PURE__*/function () {
 
     if (this.selector === null) {
       throw new Error('Something wrong with your selector 😭');
+    }
+
+    if (this.selector.getAttribute('data-initialized') === 'true') {
+      return false;
     } // update perPage number dependable of user value
 
 
@@ -124,6 +130,7 @@ var Siema = /*#__PURE__*/function () {
 
       this.buildSliderFrame();
       this.config.onInit.call(this);
+      this.selector.setAttribute('data-initialized', true);
     }
     /**
      * Build a sliderFrame and slide to a current item.

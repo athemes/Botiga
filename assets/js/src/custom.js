@@ -669,6 +669,12 @@ botiga.qtyButton = {
 botiga.carousel = {
 	init: function() {
 
+		this.build();
+		this.events();
+
+		return this;
+	},
+	build: function() {
 		if( document.querySelector( '.botiga-carousel' ) === null && document.querySelector( '.has-cross-sells-carousel' ) === null ) {
 			return false;
 		}
@@ -691,6 +697,8 @@ botiga.carousel = {
 			}
 
 			carouselEl.append( wrapper );
+
+			console.log(carouselEl);
 
 			// Next button
 			next.role = 'button';
@@ -729,42 +737,62 @@ botiga.carousel = {
 
 			prev.append( prevSVG );
 			wrapper.append( prev );
-		}
-
-		var margin = typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30;
-		if( window.matchMedia( '(max-width: 767px)' ).matches ) {
-			margin = 0;
-		}
-
-		var carousel = new Siema({
-			selector: document.querySelector( '.cross-sells' ) !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
-			duration: 200,
-			easing: 'ease-out',
-			perPage: perPage !== null ? {
-				0: 1,
-				768: 2,
-				1025: parseInt( perPage )
-			} : 2,
-			startIndex: 0,
-			draggable: true,
-			multipleDrag: false,
-			threshold: 20,
-			loop: true,
-			rtl: false,
-			margin: typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30,
-			onInit: function() {
-				// Show the carousel
-				this.selector.classList.add( 'show' );
-
-				// to do (autoplay)
-				// var _this = this;				
-				// var st = function() {
-				// 	_this.next(1);
-				// 	setTimeout(st, 1000);
-				// }
-				// st();
+			
+			var carouselSelector = '.' + carouselEl.className.replace(/[\s]/g,'.');
+			if( carouselEl.classList.contains( 'cross-sells' ) ) {
+				carouselSelector += ' .products';
+			} else {
+				carouselSelector += ' .botiga-carousel-stage';
 			}
-		});
+
+			var carousel = new Siema({
+				// selector: document.querySelector( '.cross-sells' ) !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
+				selector: document.querySelector( carouselSelector ),
+				duration: 200,
+				easing: 'ease-out',
+				perPage: perPage !== null ? {
+					0: 1,
+					768: 2,
+					1025: parseInt( perPage )
+				} : 2,
+				startIndex: 0,
+				draggable: true,
+				multipleDrag: false,
+				threshold: 20,
+				loop: true,
+				rtl: false,
+				margin: typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30,
+				onInit: function() {
+					// Show the carousel
+					this.selector.classList.add( 'show' );
+					
+					this.initialized = true;
+					// to do (autoplay)
+					// var _this = this;				
+					// var st = function() {
+					// 	_this.next(1);
+					// 	setTimeout(st, 1000);
+					// }
+					// st();
+				}
+			});
+
+			console.log(carousel);
+		}
+
+
+		return this;
+	},
+	events: function() {
+		var _this = this;
+
+		if( typeof jQuery !== 'undefined' ) {
+			jQuery( document.body ).on( 'wc_fragment_refresh', function(){
+				// _this.build();
+			});
+		}
+
+		return this;
 	}
 }
 /**

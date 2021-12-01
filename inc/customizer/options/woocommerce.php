@@ -798,6 +798,27 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+$wp_customize->add_setting(
+	'enable_mini_cart_cross_sell',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'enable_mini_cart_cross_sell',
+		array(
+			'label'         	=> esc_html__( 'Mini Cart Cross Sell', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_cart',
+			'active_callback' 	=> 'botiga_callback_header_show_minicart',
+			'priority'			=> 41
+		)
+	)
+);
+
 $wp_customize->add_setting(
 	'shop_cart_show_coupon_form',
 	array(

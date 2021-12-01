@@ -45,5 +45,6 @@
 		"translate": "gulp translate",
 		"styles-rtl": "gulp stylesRTL",
 		"cache-clear": "gulp clearCache"
-	}
+	},
+	"dependencies": {}
 }

@@ -7,6 +7,8 @@
  *
  * Released under the MIT License
  * 
+ * Modified by aThemes
+ * 
  * @cc_on 
  */
 class Siema {
@@ -15,6 +17,7 @@ class Siema {
      * @param {Object} options - Optional settings object.
      */
     constructor(options) {
+
         // Merge defaults with user's settings
         this.config = Siema.mergeSettings(options);
 
@@ -24,6 +27,10 @@ class Siema {
         // Early throw if selector doesn't exists
         if (this.selector === null) {
             throw new Error('Something wrong with your selector 😭');
+        }
+
+        if (this.selector.getAttribute( 'data-initialized' ) === 'true') {
+            return false;
         }
 
         // update perPage number dependable of user value
@@ -154,6 +161,8 @@ class Siema {
         this.buildSliderFrame();
 
         this.config.onInit.call(this);
+
+        this.selector.setAttribute( 'data-initialized', true );
     }
 
     /**
@@ -523,7 +532,6 @@ class Siema {
         if ( typeof e.target.closest( 'a' ) !== 'null' ) {
             this.drag.preventClick = true;
         }
-
         this.drag.endX = e.pageX;
         this.selector.style.cursor = '-webkit-grabbing';
         this.sliderFrame.style.webkitTransition = `all 0ms ${this.config.easing}`;

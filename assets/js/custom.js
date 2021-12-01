@@ -708,6 +708,11 @@ botiga.qtyButton = {
 
 botiga.carousel = {
   init: function init() {
+    this.build();
+    this.events();
+    return this;
+  },
+  build: function build() {
     if (document.querySelector('.botiga-carousel') === null && document.querySelector('.has-cross-sells-carousel') === null) {
       return false;
     }
@@ -744,7 +749,8 @@ botiga.carousel = {
           _iterator9.f();
         }
 
-        carouselEl.append(wrapper); // Next button
+        carouselEl.append(wrapper);
+        console.log(carouselEl); // Next button
 
         next.role = 'button';
         next.href = '#';
@@ -777,6 +783,44 @@ botiga.carousel = {
         prevSVG.innerHTML = '<path d="M8.5 1.33301L1.83333 7.99967L8.5 14.6663" stroke="#242021" stroke-width="1.5"></path>';
         prev.append(prevSVG);
         wrapper.append(prev);
+        var carouselSelector = '.' + carouselEl.className.replace(/[\s]/g, '.');
+
+        if (carouselEl.classList.contains('cross-sells')) {
+          carouselSelector += ' .products';
+        } else {
+          carouselSelector += ' .botiga-carousel-stage';
+        }
+
+        var carousel = new Siema({
+          // selector: document.querySelector( '.cross-sells' ) !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
+          selector: document.querySelector(carouselSelector),
+          duration: 200,
+          easing: 'ease-out',
+          perPage: perPage !== null ? {
+            0: 1,
+            768: 2,
+            1025: parseInt(perPage)
+          } : 2,
+          startIndex: 0,
+          draggable: true,
+          multipleDrag: false,
+          threshold: 20,
+          loop: true,
+          rtl: false,
+          margin: typeof botiga_carousel !== 'undefined' ? parseInt(botiga_carousel.margin_desktop) : 30,
+          onInit: function onInit() {
+            // Show the carousel
+            this.selector.classList.add('show');
+            this.initialized = true; // to do (autoplay)
+            // var _this = this;				
+            // var st = function() {
+            // 	_this.next(1);
+            // 	setTimeout(st, 1000);
+            // }
+            // st();
+          }
+        });
+        console.log(carousel);
       }
     } catch (err) {
       _iterator8.e(err);
@@ -784,39 +828,17 @@ botiga.carousel = {
       _iterator8.f();
     }
 
-    var margin = typeof botiga_carousel !== 'undefined' ? parseInt(botiga_carousel.margin_desktop) : 30;
+    return this;
+  },
+  events: function events() {
+    var _this = this;
 
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      margin = 0;
+    if (typeof jQuery !== 'undefined') {
+      jQuery(document.body).on('wc_fragment_refresh', function () {// _this.build();
+      });
     }
 
-    var carousel = new Siema({
-      selector: document.querySelector('.cross-sells') !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
-      duration: 200,
-      easing: 'ease-out',
-      perPage: perPage !== null ? {
-        0: 1,
-        768: 2,
-        1025: parseInt(perPage)
-      } : 2,
-      startIndex: 0,
-      draggable: true,
-      multipleDrag: false,
-      threshold: 20,
-      loop: true,
-      rtl: false,
-      margin: typeof botiga_carousel !== 'undefined' ? parseInt(botiga_carousel.margin_desktop) : 30,
-      onInit: function onInit() {
-        // Show the carousel
-        this.selector.classList.add('show'); // to do (autoplay)
-        // var _this = this;				
-        // var st = function() {
-        // 	_this.next(1);
-        // 	setTimeout(st, 1000);
-        // }
-        // st();
-      }
-    });
+    return this;
   }
 };
 /**
