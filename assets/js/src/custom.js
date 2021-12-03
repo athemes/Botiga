@@ -384,10 +384,11 @@ botiga.scrollDirection = {
  * Botiga wishlist
  */
  botiga.wishList = {
-	init: function init() {
-		this.addRemoveButton();	
+	init: function() {
+		this.build();
+		this.events();
 	},
-	addRemoveButton: function() {
+	build: function() {
 		var button = document.querySelectorAll('.botiga-wishlist-button, .botiga-wishlist-remove-item');
 
 		if( ! button.length ) {
@@ -451,7 +452,13 @@ botiga.scrollDirection = {
 			});
 		}
 	},
+	events: function() {
+		var _this = this;
 
+		window.addEventListener( 'botiga.carousel.initialized', function(){
+			_this.build();
+		} );
+	}
 };
 
 /**
@@ -504,11 +511,16 @@ botiga.scrollDirection = {
  * Botiga quick view
  */
 botiga.quickView = {
-	init: function init() {
-		var button = document.querySelectorAll('.botiga-quick-view'),
-				popup = document.querySelector('.botiga-quick-view-popup'),
-				closeButton = document.querySelector('.botiga-quick-view-popup-close-button'),
-				popupContent = document.querySelector('.botiga-quick-view-popup-content-ajax'); // If quick view is not enabled
+	init: function() {
+		this.build();
+		this.events();
+	},
+
+	build: function() {
+		var button 		 = document.querySelectorAll('.botiga-quick-view'),
+			popup  		 = document.querySelector('.botiga-quick-view-popup'),
+			closeButton  = document.querySelector('.botiga-quick-view-popup-close-button'),
+			popupContent = document.querySelector('.botiga-quick-view-popup-content-ajax');
 
 		if (null === popup) {
 			return false;
@@ -561,6 +573,14 @@ botiga.quickView = {
 				ajax.send('action=botiga_quick_view_content&product_id=' + productId + '&nonce=' + nonce);
 			});
 		}
+	},
+
+	events: function() {
+		var _this = this;
+		
+		window.addEventListener( 'botiga.carousel.initialized', function(){
+			_this.build();
+		} );
 	}
 };
 
@@ -668,131 +688,83 @@ botiga.qtyButton = {
  */
 botiga.carousel = {
 	init: function() {
-
 		this.build();
 		this.events();
-
-		return this;
 	},
 	build: function() {
-		if( document.querySelector( '.botiga-carousel' ) === null && document.querySelector( '.has-cross-sells-carousel' ) === null ) {
+		if( document.querySelector( '.botiga-carousel' ) === null && document.querySelector( '.has-cross-sells-carousel' ) === null && document.querySelector( '.botiga-woocommerce-mini-cart__cross-sell' ) === null ) {
 			return false;
 		}
 
-		var carouselEls  = document.querySelectorAll( '.botiga-carousel, .cross-sells' ),
-			products   = document.querySelectorAll( '.botiga-carousel .botiga-carousel-stage, .cross-sells .products' );
-
+		var carouselEls  = document.querySelectorAll( '.botiga-carousel, #masthead .cross-sells, .cart-collaterals .cross-sells' );
 		for( var carouselEl of carouselEls ) {
-			var perPage    = carouselEl.getAttribute( 'data-per-page' ),
-				wrapper    = document.createElement('div'),
-				next       = document.createElement('a'),
-				nextSVG    = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
-				prev       = document.createElement('a'),
-				prevSVG    = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+			if( carouselEl.querySelector( '.botiga-carousel-stage' ) === null ) {
+				carouselEl.querySelector( '.products' ).classList.add( 'botiga-carousel-stage' );
+			} 
 
-			for( var product of products ) {
+			if( carouselEl.getAttribute( 'data-initialized' ) !== 'true' ) {
+				
+				var perPage = carouselEl.getAttribute( 'data-per-page' );
+				
+				// Mount carousel wrapper
+				var	wrapper = document.createElement('div'),
+					stage 	= carouselEl.querySelector( '.botiga-carousel-stage' );
+
 				wrapper.className = 'botiga-carousel-wrapper';
-				wrapper.innerHTML = product.outerHTML;
-				product.remove();
-			}
+				wrapper.innerHTML = stage.outerHTML;
+				stage.remove();
 
-			carouselEl.append( wrapper );
+				carouselEl.append( wrapper );
 
-			console.log(carouselEl);
-
-			// Next button
-			next.role = 'button';
-			next.href = '#';
-			next.className = 'botiga-carousel-nav botiga-carousel-nav-next';
-			next.addEventListener('click', function(e){
-				e.preventDefault();
-				carousel.next();
-			});
-
-			nextSVG.setAttribute( 'width', 18 );
-			nextSVG.setAttribute( 'height', 18 );
-			nextSVG.setAttribute( 'viewBox', '0 0 10 16' );
-			nextSVG.setAttribute( 'fill', 'none' );
-			nextSVG.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
-			nextSVG.innerHTML = '<path d="M1.5 14.667L8.16667 8.00033L1.5 1.33366" stroke="#242021" stroke-width="1.5"></path>';
-			
-			next.append( nextSVG );
-			wrapper.append( next );
-
-			// Prev button
-			prev.role = 'button';
-			prev.href = '#';
-			prev.className = 'botiga-carousel-nav botiga-carousel-nav-prev';
-			prev.addEventListener('click', function(e){
-				e.preventDefault();
-				carousel.prev();
-			});
-
-			prevSVG.setAttribute( 'width', 18 );
-			prevSVG.setAttribute( 'height', 18 );
-			prevSVG.setAttribute( 'viewBox', '0 0 10 16' );
-			prevSVG.setAttribute( 'fill', 'none' );
-			prevSVG.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
-			prevSVG.innerHTML = '<path d="M8.5 1.33301L1.83333 7.99967L8.5 14.6663" stroke="#242021" stroke-width="1.5"></path>';
-
-			prev.append( prevSVG );
-			wrapper.append( prev );
-			
-			var carouselSelector = '.' + carouselEl.className.replace(/[\s]/g,'.');
-			if( carouselEl.classList.contains( 'cross-sells' ) ) {
-				carouselSelector += ' .products';
-			} else {
-				carouselSelector += ' .botiga-carousel-stage';
-			}
-
-			var carousel = new Siema({
-				// selector: document.querySelector( '.cross-sells' ) !== null ? '.cross-sells .products' : '.botiga-carousel .botiga-carousel-stage',
-				selector: document.querySelector( carouselSelector ),
-				duration: 200,
-				easing: 'ease-out',
-				perPage: perPage !== null ? {
-					0: 1,
-					768: 2,
-					1025: parseInt( perPage )
-				} : 2,
-				startIndex: 0,
-				draggable: true,
-				multipleDrag: false,
-				threshold: 20,
-				loop: true,
-				rtl: false,
-				margin: typeof botiga_carousel !== 'undefined' ? parseInt( botiga_carousel.margin_desktop ) : 30,
-				onInit: function() {
-					// Show the carousel
-					this.selector.classList.add( 'show' );
-					
-					this.initialized = true;
-					// to do (autoplay)
-					// var _this = this;				
-					// var st = function() {
-					// 	_this.next(1);
-					// 	setTimeout(st, 1000);
-					// }
-					// st();
+				// Margin
+				var margin = 30;
+				if( typeof botiga_carousel !== 'undefined' ) {
+					margin = parseInt( botiga_carousel.margin_desktop );
+				} else if( carouselEl.closest( '.botiga-woocommerce-mini-cart__cross-sell' ) !== null ) {
+					margin = 15;
 				}
-			});
 
-			console.log(carousel);
+				// Initialize
+				var carousel = new Siema({
+					parentSelector: carouselEl,
+					selector: '.botiga-carousel-stage',
+					duration: 200,
+					easing: 'ease-out',
+					perPage: perPage !== null ? {
+						0: 1,
+						768: 2,
+						1025: parseInt( perPage )
+					} : 2,
+					startIndex: 0,
+					draggable: true,
+					multipleDrag: false,
+					threshold: 20,
+					loop: true,
+					rtl: false,
+					// autoplay: true, TO DO
+					margin: margin,
+					onInit: function() {
+						window.dispatchEvent( new Event( 'botiga.carousel.initialized' ) );
+					}
+				});
+			}
+
 		}
-
-
-		return this;
 	},
 	events: function() {
 		var _this = this;
 
 		if( typeof jQuery !== 'undefined' ) {
-			jQuery( document.body ).on( 'wc_fragment_refresh', function(){
-				// _this.build();
+			var onpageload = true;
+
+			jQuery( document.body ).on( 'wc_fragment_refresh added_to_cart removed_from_cart', function(){
+				setTimeout(function(){
+					_this.build();
+
+					onpageload = false;
+				}, onpageload ? 1000 : 0 );
 			});
 		}
-
-		return this;
 	}
 }
 /**

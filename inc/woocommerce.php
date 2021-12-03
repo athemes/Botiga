@@ -375,12 +375,6 @@ function botiga_wc_hooks() {
 	} elseif( is_account_page() ) {
 		add_filter( 'botiga_content_class', function() { return 'no-sidebar'; } );
 		add_filter( 'botiga_sidebar', '__return_false' );
-	} elseif ( $enable_mini_cart_cross_sell ) {
-		add_filter( 'botiga_content_class', function() { 
-			if( count( WC()->cart->get_cross_sells() ) > 2 ) {
-				return 'has-cross-sells-carousel'; 
-			}
-		} );
 	}
 
 	//Archive layout
@@ -943,7 +937,7 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 		<?php endif; ?>	
 
 		<?php if ( $show_cart ) : ?>
-		<div id="site-header-cart" class="site-header-cart header-item">
+		<div id="site-header-cart" class="site-header-cart header-item mini-cart-<?php echo ( count( WC()->cart->get_cart() ) > 3 ? 'has-scroll' : 'has-no-scroll' ); ?>">
 			<div class="<?php echo esc_attr( $class ); ?>">
 				<?php echo botiga_woocommerce_cart_link();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
@@ -976,7 +970,7 @@ function botiga_mini_cart_cross_sell() {
 	}
 
 	$enable_mini_cart_cross_sell = get_theme_mod( 'enable_mini_cart_cross_sell', 0 );
-	if( ! $enable_mini_cart_cross_sell ) {
+	if( ! $enable_mini_cart_cross_sell || count( WC()->cart->get_cross_sells() ) === 0 ) {
 		return;
 	} ?>
 	

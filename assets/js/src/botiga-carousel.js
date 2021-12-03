@@ -11,6 +11,7 @@
  * 
  * @cc_on 
  */
+
 class Siema {
     /**
      * Create a Siema.
@@ -21,6 +22,9 @@ class Siema {
         // Merge defaults with user's settings
         this.config = Siema.mergeSettings(options);
 
+        // Resolve parent selector's type
+        this.parentSelector = typeof this.config.parentSelector === 'string' ? document.querySelector(this.config.parentSelector) : this.config.parentSelector;
+
         // Resolve selector's type
         this.selector = typeof this.config.selector === 'string' ? document.querySelector(this.config.selector) : this.config.selector;
 
@@ -29,7 +33,7 @@ class Siema {
             throw new Error('Something wrong with your selector 😭');
         }
 
-        if (this.selector.getAttribute( 'data-initialized' ) === 'true') {
+        if( this.parentSelector.getAttribute( 'data-initialized' ) === 'true' ) {
             return false;
         }
 
@@ -45,7 +49,7 @@ class Siema {
         this.transformProperty = Siema.webkitOrNot();
 
         // Bind all event handlers for referencability
-        ['resizeHandler', 'touchstartHandler', 'touchendHandler', 'touchmoveHandler', 'mousedownHandler', 'mouseupHandler', 'mouseleaveHandler', 'mousemoveHandler', 'clickHandler'].forEach(method => {
+        ['resizeHandler', 'touchstartHandler', 'touchendHandler', 'touchmoveHandler', 'mousedownHandler', 'mouseupHandler', 'mouseleaveHandler', 'mousemoveHandler', 'clickHandler', 'navNextHandler', 'navPrevHandler'].forEach(method => {
             this[method] = this[method].bind(this);
         });
 
@@ -127,8 +131,12 @@ class Siema {
 
             // Click
             this.selector.addEventListener('click', this.clickHandler);
+
+            // Navigation
+            this.parentSelector.querySelector( '.botiga-carousel-nav-next' ).addEventListener('click', this.navNextHandler);
+            this.parentSelector.querySelector( '.botiga-carousel-nav-prev' ).addEventListener('click', this.navPrevHandler);
         }
-    }
+    };
 
     /**
      * Detaches listeners from required events.
@@ -143,12 +151,18 @@ class Siema {
         this.selector.removeEventListener('mouseleave', this.mouseleaveHandler);
         this.selector.removeEventListener('mousemove', this.mousemoveHandler);
         this.selector.removeEventListener('click', this.clickHandler);
+        this.parentSelector.querySelector( '.botiga-carousel-nav-next' ).removeEventListener('click', this.navNextHandler);
+        this.parentSelector.querySelector( '.botiga-carousel-nav-prev' ).removeEventListener('click', this.navPrevHandler);
     }
 
     /**
      * Builds the markup and attaches listeners to required events.
      */
     init() {
+
+        // build navigation
+        this.buildNavigation();
+
         this.attachEvents();
 
         // hide everything out of selector's boundaries
@@ -162,7 +176,53 @@ class Siema {
 
         this.config.onInit.call(this);
 
-        this.selector.setAttribute( 'data-initialized', true );
+        this.parentSelector.querySelector( '.botiga-carousel-stage' ).classList.add( 'show' );
+        
+
+        if( this.parentSelector !== null ) {
+            this.parentSelector.setAttribute( 'data-initialized', true );
+        }
+
+    }
+
+    buildNavigation() {
+        var next       = document.createElement('a'),
+            nextSVG    = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
+            prev       = document.createElement('a'),
+            prevSVG    = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+        
+        // Next button
+        next.role = 'button';
+        next.href = '#';
+        next.className = 'botiga-carousel-nav botiga-carousel-nav-next';
+
+        nextSVG.setAttribute( 'width', 18 );
+        nextSVG.setAttribute( 'height', 18 );
+        nextSVG.setAttribute( 'viewBox', '0 0 10 16' );
+        nextSVG.setAttribute( 'fill', 'none' );
+        nextSVG.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
+        nextSVG.setAttribute( 'class', 'stroke-based' );
+        nextSVG.innerHTML = '<path d="M1.5 14.667L8.16667 8.00033L1.5 1.33366" stroke="#242021" stroke-width="1.5"></path>';
+        
+        next.append( nextSVG );
+        this.parentSelector.querySelector( '.botiga-carousel-wrapper' ).append( next );
+
+        // Prev button
+        prev.role = 'button';
+        prev.href = '#';
+        prev.className = 'botiga-carousel-nav botiga-carousel-nav-prev';
+
+        prevSVG.setAttribute( 'width', 18 );
+        prevSVG.setAttribute( 'height', 18 );
+        prevSVG.setAttribute( 'viewBox', '0 0 10 16' );
+        prevSVG.setAttribute( 'fill', 'none' );
+        prevSVG.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
+        prevSVG.setAttribute( 'class', 'stroke-based' );
+        prevSVG.innerHTML = '<path d="M8.5 1.33301L1.83333 7.99967L8.5 14.6663" stroke="#242021" stroke-width="1.5"></path>';
+
+        prev.append( prevSVG );
+        this.parentSelector.querySelector( '.botiga-carousel-wrapper' ).append( prev );
     }
 
     /**
@@ -170,8 +230,8 @@ class Siema {
      */
     buildSliderFrame() {
         if( this.innerElements.length <= this.perPage ) {
-            document.querySelector( '.botiga-carousel-nav-next' ).remove();
-            document.querySelector( '.botiga-carousel-nav-prev' ).remove();
+            this.parentSelector.querySelector( '.botiga-carousel-nav-next' ).remove();
+            this.parentSelector.querySelector( '.botiga-carousel-nav-prev' ).remove();
             return false;
         }
     
@@ -340,6 +400,9 @@ class Siema {
      * Enable transition on sliderFrame.
      */
     enableTransition() {
+        if( typeof this.sliderFrame === 'undefined' ) {
+            return false;
+        }
         this.sliderFrame.style.webkitTransition = `all ${this.config.duration}ms ${this.config.easing}`;
         this.sliderFrame.style.transition = `all ${this.config.duration}ms ${this.config.easing}`;
     }
@@ -373,6 +436,10 @@ class Siema {
         var _this = this;
         var currentSlide = this.config.loop ? this.currentSlide + this.perPage : this.currentSlide;
         var offset = (this.config.rtl ? 1 : -1) * currentSlide * ((this.selectorWidth + this.config.margin) / this.perPage);
+
+        if( typeof this.sliderFrame === 'undefined' ) {
+            return false;
+        }
 
         if (enableTransition) {
             requestAnimationFrame(function() {
@@ -532,6 +599,9 @@ class Siema {
         if ( typeof e.target.closest( 'a' ) !== 'null' ) {
             this.drag.preventClick = true;
         }
+        if( typeof this.sliderFrame === 'undefined' ) {
+            return false;
+        }
         this.drag.endX = e.pageX;
         this.selector.style.cursor = '-webkit-grabbing';
         this.sliderFrame.style.webkitTransition = `all 0ms ${this.config.easing}`;
@@ -570,6 +640,16 @@ class Siema {
             e.preventDefault();
         }
         this.drag.preventClick = false;
+    }
+
+    navNextHandler(e) {
+        e.preventDefault();
+        this.next(1);
+    }
+
+    navPrevHandler(e) {
+        e.preventDefault();
+        this.prev(1);
     }
 
     /**

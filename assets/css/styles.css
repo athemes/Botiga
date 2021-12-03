@@ -820,6 +820,7 @@ label.error {
 .woocommerce .select2-container .select2-selection--single .select2-selection__arrow,
 .woocommerce-page .select2-container .select2-selection--single .select2-selection__arrow {
   top: 15px;
+  right: 15px;
 }
 
 .woocommerce-form__label-for-checkbox {
@@ -3900,6 +3901,9 @@ input.wc-block-components-price-slider__range-input {
     right: 55%;
     -webkit-transform: translate3d(50%, 0, 0);
             transform: translate3d(50%, 0, 0);
+  }
+  .cross-sells .botiga-carousel-wrapper {
+    padding-bottom: 50px;
   }
 }
 

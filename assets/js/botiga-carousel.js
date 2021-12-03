@@ -32,7 +32,9 @@ var Siema = /*#__PURE__*/function () {
     _classCallCheck(this, Siema);
 
     // Merge defaults with user's settings
-    this.config = Siema.mergeSettings(options); // Resolve selector's type
+    this.config = Siema.mergeSettings(options); // Resolve parent selector's type
+
+    this.parentSelector = typeof this.config.parentSelector === 'string' ? document.querySelector(this.config.parentSelector) : this.config.parentSelector; // Resolve selector's type
 
     this.selector = typeof this.config.selector === 'string' ? document.querySelector(this.config.selector) : this.config.selector; // Early throw if selector doesn't exists
 
@@ -40,7 +42,7 @@ var Siema = /*#__PURE__*/function () {
       throw new Error('Something wrong with your selector 😭');
     }
 
-    if (this.selector.getAttribute('data-initialized') === 'true') {
+    if (this.parentSelector.getAttribute('data-initialized') === 'true') {
       return false;
     } // update perPage number dependable of user value
 
@@ -52,7 +54,7 @@ var Siema = /*#__PURE__*/function () {
     this.currentSlide = this.config.loop ? this.config.startIndex % this.innerElements.length : Math.max(0, Math.min(this.config.startIndex, this.innerElements.length - this.perPage));
     this.transformProperty = Siema.webkitOrNot(); // Bind all event handlers for referencability
 
-    ['resizeHandler', 'touchstartHandler', 'touchendHandler', 'touchmoveHandler', 'mousedownHandler', 'mouseupHandler', 'mouseleaveHandler', 'mousemoveHandler', 'clickHandler'].forEach(function (method) {
+    ['resizeHandler', 'touchstartHandler', 'touchendHandler', 'touchmoveHandler', 'mousedownHandler', 'mouseupHandler', 'mouseleaveHandler', 'mousemoveHandler', 'clickHandler', 'navNextHandler', 'navPrevHandler'].forEach(function (method) {
       _this2[method] = _this2[method].bind(_this2);
     }); // Build markup and apply required styling to elements
 
@@ -95,16 +97,19 @@ var Siema = /*#__PURE__*/function () {
         this.selector.addEventListener('mouseleave', this.mouseleaveHandler);
         this.selector.addEventListener('mousemove', this.mousemoveHandler); // Click
 
-        this.selector.addEventListener('click', this.clickHandler);
+        this.selector.addEventListener('click', this.clickHandler); // Navigation
+
+        this.parentSelector.querySelector('.botiga-carousel-nav-next').addEventListener('click', this.navNextHandler);
+        this.parentSelector.querySelector('.botiga-carousel-nav-prev').addEventListener('click', this.navPrevHandler);
       }
     }
+  }, {
+    key: "detachEvents",
+    value:
     /**
      * Detaches listeners from required events.
      */
-
-  }, {
-    key: "detachEvents",
-    value: function detachEvents() {
+    function detachEvents() {
       window.removeEventListener('resize', this.resizeHandler);
       this.selector.removeEventListener('touchstart', this.touchstartHandler);
       this.selector.removeEventListener('touchend', this.touchendHandler);
@@ -114,6 +119,8 @@ var Siema = /*#__PURE__*/function () {
       this.selector.removeEventListener('mouseleave', this.mouseleaveHandler);
       this.selector.removeEventListener('mousemove', this.mousemoveHandler);
       this.selector.removeEventListener('click', this.clickHandler);
+      this.parentSelector.querySelector('.botiga-carousel-nav-next').removeEventListener('click', this.navNextHandler);
+      this.parentSelector.querySelector('.botiga-carousel-nav-prev').removeEventListener('click', this.navPrevHandler);
     }
     /**
      * Builds the markup and attaches listeners to required events.
@@ -122,6 +129,8 @@ var Siema = /*#__PURE__*/function () {
   }, {
     key: "init",
     value: function init() {
+      // build navigation
+      this.buildNavigation();
       this.attachEvents(); // hide everything out of selector's boundaries
 
       this.selector.style.overflow = 'hidden'; // rtl or ltr
@@ -130,7 +139,45 @@ var Siema = /*#__PURE__*/function () {
 
       this.buildSliderFrame();
       this.config.onInit.call(this);
-      this.selector.setAttribute('data-initialized', true);
+      this.parentSelector.querySelector('.botiga-carousel-stage').classList.add('show');
+
+      if (this.parentSelector !== null) {
+        this.parentSelector.setAttribute('data-initialized', true);
+      }
+    }
+  }, {
+    key: "buildNavigation",
+    value: function buildNavigation() {
+      var next = document.createElement('a'),
+          nextSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
+          prev = document.createElement('a'),
+          prevSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg"); // Next button
+
+      next.role = 'button';
+      next.href = '#';
+      next.className = 'botiga-carousel-nav botiga-carousel-nav-next';
+      nextSVG.setAttribute('width', 18);
+      nextSVG.setAttribute('height', 18);
+      nextSVG.setAttribute('viewBox', '0 0 10 16');
+      nextSVG.setAttribute('fill', 'none');
+      nextSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      nextSVG.setAttribute('class', 'stroke-based');
+      nextSVG.innerHTML = '<path d="M1.5 14.667L8.16667 8.00033L1.5 1.33366" stroke="#242021" stroke-width="1.5"></path>';
+      next.append(nextSVG);
+      this.parentSelector.querySelector('.botiga-carousel-wrapper').append(next); // Prev button
+
+      prev.role = 'button';
+      prev.href = '#';
+      prev.className = 'botiga-carousel-nav botiga-carousel-nav-prev';
+      prevSVG.setAttribute('width', 18);
+      prevSVG.setAttribute('height', 18);
+      prevSVG.setAttribute('viewBox', '0 0 10 16');
+      prevSVG.setAttribute('fill', 'none');
+      prevSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      prevSVG.setAttribute('class', 'stroke-based');
+      prevSVG.innerHTML = '<path d="M8.5 1.33301L1.83333 7.99967L8.5 14.6663" stroke="#242021" stroke-width="1.5"></path>';
+      prev.append(prevSVG);
+      this.parentSelector.querySelector('.botiga-carousel-wrapper').append(prev);
     }
     /**
      * Build a sliderFrame and slide to a current item.
@@ -140,8 +187,8 @@ var Siema = /*#__PURE__*/function () {
     key: "buildSliderFrame",
     value: function buildSliderFrame() {
       if (this.innerElements.length <= this.perPage) {
-        document.querySelector('.botiga-carousel-nav-next').remove();
-        document.querySelector('.botiga-carousel-nav-prev').remove();
+        this.parentSelector.querySelector('.botiga-carousel-nav-next').remove();
+        this.parentSelector.querySelector('.botiga-carousel-nav-prev').remove();
         return false;
       }
 
@@ -327,6 +374,10 @@ var Siema = /*#__PURE__*/function () {
   }, {
     key: "enableTransition",
     value: function enableTransition() {
+      if (typeof this.sliderFrame === 'undefined') {
+        return false;
+      }
+
       this.sliderFrame.style.webkitTransition = "all ".concat(this.config.duration, "ms ").concat(this.config.easing);
       this.sliderFrame.style.transition = "all ".concat(this.config.duration, "ms ").concat(this.config.easing);
     }
@@ -366,6 +417,10 @@ var Siema = /*#__PURE__*/function () {
 
       var currentSlide = this.config.loop ? this.currentSlide + this.perPage : this.currentSlide;
       var offset = (this.config.rtl ? 1 : -1) * currentSlide * ((this.selectorWidth + this.config.margin) / this.perPage);
+
+      if (typeof this.sliderFrame === 'undefined') {
+        return false;
+      }
 
       if (enableTransition) {
         requestAnimationFrame(function () {
@@ -549,6 +604,10 @@ var Siema = /*#__PURE__*/function () {
           this.drag.preventClick = true;
         }
 
+        if (typeof this.sliderFrame === 'undefined') {
+          return false;
+        }
+
         this.drag.endX = e.pageX;
         this.selector.style.cursor = '-webkit-grabbing';
         this.sliderFrame.style.webkitTransition = "all 0ms ".concat(this.config.easing);
@@ -591,6 +650,18 @@ var Siema = /*#__PURE__*/function () {
       }
 
       this.drag.preventClick = false;
+    }
+  }, {
+    key: "navNextHandler",
+    value: function navNextHandler(e) {
+      e.preventDefault();
+      this.next(1);
+    }
+  }, {
+    key: "navPrevHandler",
+    value: function navPrevHandler(e) {
+      e.preventDefault();
+      this.prev(1);
     }
     /**
      * Remove item from carousel.

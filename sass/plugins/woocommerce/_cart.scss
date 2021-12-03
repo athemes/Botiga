@@ -468,3 +468,19 @@
 		}
 	}
 }
+
+/* Shipping Calculator */
+@media (min-width: 768px) {
+	.woocommerce-shipping-calculator {
+		position: relative;
+		width: calc( 100% + 70px );
+		left: -70px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.woocommerce-shipping-calculator {
+		width: calc( 100% + 117px );
+		left: -117px;
+	}
+}
