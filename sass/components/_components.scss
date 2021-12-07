@@ -10,6 +10,7 @@
 --------------------------------------------- */
 @import "content/posts-and-pages";
 @import "content/builder-mode";
+@import "content/search-page";
 
 /* Comments
 --------------------------------------------- */
@@ -43,6 +44,10 @@
 /* Contact Form 7
 --------------------------------------------- */
 @import "misc/wpcf7";
+
+/* Ajax Search
+--------------------------------------------- */
+@import "misc/ajax-search";
 
 /* Footer
 --------------------------------------------- */

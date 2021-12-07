@@ -743,3 +743,32 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+/**
+ * Search
+ */
+$wp_customize->add_section(
+	'botiga_section_search',
+	array(
+		'title'      => esc_html__( 'Search', 'botiga'),
+		'panel'      => 'botiga_panel_general',
+	)
+);
+
+$wp_customize->add_setting(
+	'search_enable_ajax',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'search_enable_ajax',
+		array(
+			'label'         	=> esc_html__( 'Enable AJAX Search', 'botiga' ),
+			'section'       	=> 'botiga_section_search',
+		)
+	)
+);

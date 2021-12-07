@@ -93,7 +93,7 @@
 	});	
 	
 	//Stroke
-	var $stroke_options = { "scrolltop_color": ".back-to-top svg", "color_link_hover": ".has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav svg path","main_header_color":".site-header .header-item svg.stroke-based","offcanvas_menu_color":".botiga-offcanvas-menu svg.stroke-based","mobile_header_color":"#masthead-mobile svg.stroke-based","main_header_bottom_color":".bottom-header-row .header-item svg.stroke-based","desktop_offcanvas_menu_text_color":".botiga-desktop-offcanvas .header-item svg.stroke-based","main_header_sticky_active_color":".sticky-header-active .site-header .header-item svg.stroke-based"};
+	var $stroke_options = { "scrolltop_color": ".back-to-top svg", "color_link_hover": ".has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav svg path","main_header_color":".site-header .header-item svg.stroke-based","offcanvas_menu_color":".botiga-offcanvas-menu svg.stroke-based","mobile_header_color":"#masthead-mobile svg.stroke-based","main_header_bottom_color":".bottom-header-row .header-item svg.stroke-based","desktop_offcanvas_menu_text_color":".botiga-desktop-offcanvas .header-item svg.stroke-based","main_header_sticky_active_color":".sticky-header-active .site-header .header-item svg.stroke-based","button_color":".woocommerce-product-search .search-submit svg","button_color_hover":".woocommerce-product-search .search-submit:hover svg"};
 
 	$.each( $stroke_options, function( option, selector ) {
 		wp.customize( option, function( value ) {

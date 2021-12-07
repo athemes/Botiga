@@ -1,3 +1,7 @@
+/**
+ * Botiga Sidebar
+ */
+
 'use strict';
 
 botiga.sidebar = {

@@ -16,6 +16,7 @@ input[type="color"],
 textarea,
 select,
 .wp-block-search .wp-block-search__input,
+.wc-block-product-search .wc-block-product-search__field,
 .woocommerce .select2-container .select2-selection--single,
 .woocommerce-page .select2-container .select2-selection--single {
 	color: $color__primary;
@@ -106,5 +107,12 @@ label {
 			height: 18px;
 			border: 1px solid $color__primary;
 		}
+	}
+}
+
+.woocommerce-product-search {
+	display: flex;
+	.search-submit {
+		margin-left: 10px;
 	}
 }

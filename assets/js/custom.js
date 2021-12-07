@@ -26,6 +26,26 @@ botiga.helpers = {
     }
 
     document.addEventListener('DOMContentLoaded', fn, false);
+  },
+  ajax: function ajax(action, nonce, extraParams, successCallback) {
+    var ajax = new XMLHttpRequest();
+    ajax.open('POST', botiga.ajaxurl, true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    ajax.onload = function () {
+      if (this.status >= 200 && this.status < 400) {
+        successCallback.apply(this);
+      }
+    };
+
+    var extraParamsStr = '';
+    extraParams = Object.entries(extraParams);
+
+    for (var i = 0; i < extraParams.length; i++) {
+      extraParamsStr += '&' + extraParams[i].join('=');
+    }
+
+    ajax.send('action=' + action + '&nonce=' + nonce + extraParamsStr);
   }
 };
 /**

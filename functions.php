@@ -262,7 +262,16 @@ function botiga_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION );
+	wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION, true );
+	wp_register_script( 'botiga-ajax-search', get_template_directory_uri() . '/assets/js/botiga-ajax-search.min.js', NULL, BOTIGA_VERSION, true );
+
+	$ajax_search = get_theme_mod( 'search_enable_ajax', 0 );
+	if( $ajax_search ) {
+		wp_enqueue_script( 'botiga-ajax-search' );
+		wp_localize_script( 'botiga-ajax-search', 'botiga_ajax_search', array(
+			'nonce' => wp_create_nonce( 'botiga-ajax-search-random-nonce' )
+		) );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_scripts', 10 );
 
@@ -352,6 +361,11 @@ require get_template_directory() . '/inc/classes/class-botiga-posts-archive.php'
 require get_template_directory() . '/inc/classes/class-botiga-svg-icons.php';
 require get_template_directory() . '/inc/classes/class-botiga-page-metabox.php';
 require get_template_directory() . '/inc/classes/class-botiga-custom-css.php';
+
+/**
+ * Theme ajax callbacks
+ */
+require get_template_directory() . '/inc/ajax-callbacks.php';
 
 /**
  * Autoload

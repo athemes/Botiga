@@ -1087,6 +1087,11 @@ div.editor-styles-wrapper .demo_store {
         -ms-flex-order: 5;
             order: 5;
   }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .widget_shopping_cart_content .botiga-woocommerce-mini-cart__cross-sell {
+    -webkit-box-ordinal-group: 7;
+        -ms-flex-order: 6;
+            order: 6;
+  }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .widget_shopping_cart_content .woocommerce-mini-cart__total {
     -webkit-box-ordinal-group: 11;
         -ms-flex-order: 10;
@@ -1096,6 +1101,34 @@ div.editor-styles-wrapper .demo_store {
     -webkit-box-ordinal-group: 16;
         -ms-flex-order: 15;
             order: 15;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell {
+    position: relative;
+    padding: 30px;
+    margin-top: 10px;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell h2 {
+    font-size: 1.3rem;
+    margin-bottom: 19px;
+    margin-top: 0;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .button {
+    padding: 11px 13px;
+    font-size: 0.7rem;
+    min-width: 0;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .botiga-wishlist-button-tooltip:before,
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .botiga-wishlist-button-tooltip:after {
+    content: none;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total,
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons {
@@ -1180,9 +1213,6 @@ div.editor-styles-wrapper .demo_store {
     -webkit-box-shadow: none;
             box-shadow: none;
     max-width: 100%;
-    max-height: 30vh;
-    min-height: 300px;
-    overflow-y: auto;
   }
   div.editor-styles-wrapper .site-header-cart .product_list_widget::-webkit-scrollbar {
     width: 7px;
@@ -1254,6 +1284,11 @@ div.editor-styles-wrapper .demo_store {
     width: 100%;
     font-size: 14px;
     font-size: 0.875rem;
+  }
+  div.editor-styles-wrapper .site-header-cart.mini-cart-has-scroll .product_list_widget {
+    max-height: 30vh;
+    min-height: 300px;
+    overflow-y: auto;
   }
 }
 

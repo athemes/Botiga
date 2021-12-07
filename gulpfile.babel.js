@@ -645,6 +645,58 @@ gulp.task('woocommerceStylesMin', () => {
 			})
 		);
 });
+
+/**
+  * Task: `botigaAjaxSearchJS`.
+  *
+  * Concatenate and uglify custom JS scripts.
+  *
+  * This task does the following:
+  *     1. Gets the source folder for JS custom files
+  *     2. Concatenates all the files and generates custom.js
+  *     3. Renames the JS file with suffix .min.js
+  *     4. Uglifes/Minifies the JS file and generates custom.min.js
+  */
+ gulp.task('botigaAjaxSearchJS', () => {
+	return gulp
+		.src(config.jsAjaxSearchSRC, {since: gulp.lastRun('botigaAjaxSearchJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsAjaxSearchSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsAjaxSearchFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			rename({
+				basename: config.jsAjaxSearchFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> AJAX SEARCH JS — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
   * Task: `images`.
@@ -747,7 +799,7 @@ gulp.task('woocommerceStylesMin', () => {
   */
  gulp.task(
 	 'default',
-	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaCarouselJS', 'botigaSidebarJS', 'images', browsersync, () => {
+	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaCarouselJS', 'botigaSidebarJS' ,'botigaAjaxSearchJS', 'images', browsersync, () => {
 		 gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
@@ -761,6 +813,7 @@ gulp.task('woocommerceStylesMin', () => {
 		 gulp.watch(config.watchJsCustom, gulp.series('customJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.watchJsCarousel, gulp.series('botigaCarouselJS', reload)); // Reload on carousel file changes.
 		 gulp.watch(config.watchJsSidebar, gulp.series('botigaSidebarJS', reload)); // Reload on sidebar file changes.
+		 gulp.watch(config.watchJsAjaxSearch, gulp.series('botigaAjaxSearchJS', reload)); // Reload on sidebar file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.imgSRC, gulp.series('images', reload)); // Reload on customJS file changes.
