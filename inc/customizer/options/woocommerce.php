@@ -1147,3 +1147,131 @@ $wp_customize->add_control(
 	)
 );
 
+/**
+ * Search
+ */
+$wp_customize->add_section(
+	'botiga_section_shop_search',
+	array(
+		'title'      => esc_html__( 'Search', 'botiga'),
+		'panel'      => 'woocommerce',
+	)
+);
+
+$wp_customize->add_setting(
+	'shop_search_enable_ajax',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_enable_ajax',
+		array(
+			'label'         	=> esc_html__( 'Enable AJAX On Search Fields', 'botiga' ),
+			'description'       => esc_html__( 'Allow your customers to search and get results in real time without loading other pages.', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_search',
+			'priority'	 		=> 10
+		)
+	)
+);
+
+$wp_customize->add_setting( 
+	'shop_search_ajax_posts_per_page', 
+	array(
+		'default'   		=> 15,
+		'sanitize_callback' => 'absint',
+	) 
+);			
+$wp_customize->add_control( 
+	new Botiga_Responsive_Slider( 
+		$wp_customize, 
+		'shop_search_ajax_posts_per_page',
+		array(
+			'label' 		=> esc_html__( 'Results Amount per Search', 'botiga' ),
+			'description'	=> esc_html__( 'Control the maximum amount of products to show in the search results.', 'botiga' ),
+			'section' 		=> 'botiga_section_shop_search',
+			'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+			'is_responsive'	=> 0,
+			'settings' 		=> array (
+				'size_desktop' 		=> 'shop_search_ajax_posts_per_page',
+			),
+			'input_attrs' => array (
+				'min'	=> 1,
+				'max'	=> 100
+			),
+			'priority'	 => 20
+		)
+	) 
+);
+
+$wp_customize->add_setting( 
+	'shop_search_ajax_orderby', 
+	array(
+		'sanitize_callback' => 'botiga_sanitize_select',
+		'default' 			=> 'title'
+	) 
+);
+$wp_customize->add_control( 
+	'shop_search_ajax_orderby', 
+	array(
+		'type' 		=> 'select',
+		'section' 	=> 'botiga_section_shop_search',
+		'label' 	=> esc_html__( 'Results Order By', 'botiga' ),
+		'choices' => array(
+			'none' 		=> esc_html__( 'None', 'botiga' ),
+			'title'		=> esc_html__( 'Product Name', 'botiga' ),
+			'date'		=> esc_html__( 'Published Date', 'botiga' ),
+			'modified'  => esc_html__( 'Modified Date', 'botiga' ),
+			'rand'		=> esc_html__( 'Random', 'botiga' ),
+			'price'		=> esc_html__( 'Product Price', 'botiga' )
+		),
+		'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+		'priority'	 => 30
+	) 
+);
+
+$wp_customize->add_setting( 
+	'shop_search_ajax_order', 
+	array(
+		'sanitize_callback' => 'botiga_sanitize_select',
+		'default' 			=> 'asc'
+	) 
+);
+$wp_customize->add_control( 
+	'shop_search_ajax_order', 
+	array(
+		'type' 		=> 'select',
+		'section' 	=> 'botiga_section_shop_search',
+		'label' 	=> esc_html__( 'Results Order', 'botiga' ),
+		'choices' => array(
+			'asc' 	=> esc_html__( 'Ascendant', 'botiga' ),
+			'desc' 	=> esc_html__( 'Descendant', 'botiga' )
+		),
+		'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+		'priority'	 => 40
+	) 
+);
+
+$wp_customize->add_setting(
+	'shop_search_ajax_show_categories',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_ajax_show_categories',
+		array(
+			'label'         	=> esc_html__( 'Display Categories', 'botiga' ),
+			'description'       => esc_html__( 'Display product categories in the results if the searched term matches with category name.', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_search',
+			'active_callback'   => 'botiga_shop_search_ajax_is_enabled',
+			'priority'	 		=> 50
+		)
+	)
+);

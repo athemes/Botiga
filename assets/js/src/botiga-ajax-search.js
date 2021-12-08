@@ -46,8 +46,12 @@ botiga.ajaxSearch = {
             type          = clist.contains( 'wc-block-product-search__field' ) || clist.contains( 'wc-search-field' ) ? 'product' : 'post'; 
 
         botiga.helpers.ajax( 'botiga_ajax_search_callback', botiga_ajax_search.nonce, {
-            search_term : search_term,
-            type        : type
+            search_term     : search_term,
+            type            : type,
+            posts_per_page  : botiga_ajax_search.query_args.posts_per_page,
+            order           : botiga_ajax_search.query_args.order,
+            orderby         : botiga_ajax_search.query_args.orderby,
+            show_categories : botiga_ajax_search.query_args.show_categories
         }, function(){
 
             var response = JSON.parse( this.response );
@@ -71,7 +75,7 @@ botiga.ajaxSearch = {
             }
 
             // Check if element is out of screen (horizontal)
-            if( _this.elementIsOutOfScreen( ajax_search_wrapper ) ) {
+            if( _this.elementIsOutOfScreenHorizontal( ajax_search_wrapper ) ) {
                 ajax_search_wrapper.classList.add( 'reverse' );
             }
             
@@ -101,7 +105,7 @@ botiga.ajaxSearch = {
         return el.scrollHeight > el.clientHeight;
     },
 
-    elementIsOutOfScreen: function(el) {
+    elementIsOutOfScreenHorizontal: function(el) {
         const rect = el.getBoundingClientRect();
         return ( rect.x + rect.width ) > window.innerWidth; 
     }

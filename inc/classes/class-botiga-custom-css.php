@@ -526,6 +526,16 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( 'sidebar-top' === $shop_archive_sidebar ) {
 				$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.sidebar-top+.widget-area .sidebar-wrapper' );
 			}
+
+			//Woocommerce Ajax Search
+			$shop_ajax_search = get_theme_mod( 'shop_search_enable_ajax', 0 );
+			if( $shop_ajax_search ) {
+				$css .= $this->get_background_color_css( 'content_cards_background', '#FFF', '.botiga-ajax-search__wrapper' );
+				$css .= $this->get_color_css( 'color_body_text', '#212121', '.botiga-ajax-search__item-info p, .botiga-ajax-search__item-price' );
+				$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-ajax-search__wrapper ,.botiga-ajax-search__item+.botiga-ajax-search__item:before', '0.1', true );
+				$css .= $this->get_background_color_rgba_css( 'color_body_text', '#212121', '.botiga-ajax-search__divider', '0.1', true );
+			}
+			
 			
 			//Woocommerce single
 			$single_sku 	 	= get_theme_mod( 'single_product_sku', 1 );

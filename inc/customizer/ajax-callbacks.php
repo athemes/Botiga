@@ -1,5 +1,6 @@
 <?php
 /**
+ * Customizer
  * Ajax callback functions
  *
  * @package Botiga

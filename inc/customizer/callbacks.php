@@ -459,3 +459,16 @@ function botiga_callback_topbar_center_contents() {
 		return false;
 	}	
 }
+
+/**
+ * Shop Ajax Search
+ */
+function botiga_shop_search_ajax_is_enabled() {
+	$enable = get_theme_mod( 'shop_search_enable_ajax', 0 );
+
+	if ( $enable ) {
+		return true;
+	} else {
+		return false;
+	} 
+}

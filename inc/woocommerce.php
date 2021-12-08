@@ -184,6 +184,36 @@ function botiga_woocommerce_scripts() {
 add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
 
 /**
+ * Enqueue WooCommerce specific scripts & stylesheets after custom.min.js.
+ * Useful when we need handle with custom.min.js functions
+ *
+ * @return void
+ */
+function botiga_woocommerce_scripts_after_custom_js() {
+	// Ajax Search
+	$ajax_search = get_theme_mod( 'shop_search_enable_ajax', 0 );
+	if( $ajax_search ) {
+		$posts_per_page  = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
+		$order 			 = get_theme_mod( 'shop_search_ajax_order', 'asc' );
+		$orderby 		 = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
+		$show_categories = get_theme_mod( 'shop_search_ajax_show_categories', 1 );
+
+		wp_register_script( 'botiga-ajax-search', get_template_directory_uri() . '/assets/js/botiga-ajax-search.min.js', NULL, BOTIGA_VERSION, true );
+		wp_enqueue_script( 'botiga-ajax-search' );
+		wp_localize_script( 'botiga-ajax-search', 'botiga_ajax_search', array(
+			'nonce' => wp_create_nonce( 'botiga-ajax-search-random-nonce' ),
+			'query_args' => array(
+				'posts_per_page'  => apply_filters( 'botiga_shop_ajax_search_posts_per_page', $posts_per_page ),
+				'order' 		  => apply_filters( 'botiga_shop_ajax_search_order', $order ),
+				'orderby' 		  => apply_filters( 'botiga_shop_ajax_search_orderby', $orderby ),
+				'show_categories' => apply_filters( 'botiga_shop_ajax_search_show_categories', $show_categories )
+			)
+		) );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts_after_custom_js', 11 );
+
+/**
  * Disable the default WooCommerce stylesheet.
  *
  * Removing the default WooCommerce stylesheet and enqueing your own will

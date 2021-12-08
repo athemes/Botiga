@@ -1046,6 +1046,31 @@
     selector: ".botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item .step svg",
     prop: "fill",
     pseudo: true
+  }, // Woocommerce Ajax Search
+  {
+    option: "content_cards_background",
+    selector: ".botiga-ajax-search__wrapper",
+    prop: "background-color",
+    pseudo: true
+  }, {
+    option: "color_body_text",
+    selector: ".botiga-ajax-search__item-info p, .botiga-ajax-search__item-price",
+    prop: "color",
+    pseudo: true
+  }, {
+    option: "color_body_text",
+    selector: ".botiga-ajax-search__wrapper ,.botiga-ajax-search__item+.botiga-ajax-search__item:before",
+    prop: "border-color",
+    rgba: 0.1,
+    pseudo: true,
+    optsuffix: "2"
+  }, {
+    option: "color_body_text",
+    selector: ".botiga-ajax-search__divider",
+    prop: "background-color",
+    rgba: 0.1,
+    pseudo: true,
+    optsuffix: "3"
   }];
   $.each($color_options, function (key, css) {
     var unit = typeof css.unit !== 'undefined' ? css.unit : '';
