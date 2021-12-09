@@ -548,7 +548,37 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<?php endif; ?>					
 				</div>
 			<?php
-		}		
+		}
+		
+		/**
+		 * HTML
+		 */
+		public function html() {
+			$header_html_content = get_theme_mod( 'header_html_content', '' );
+
+			if( ! $header_html_content ) {
+				return '';
+			}
+
+			echo '<div class="header-item header-html">';
+				echo wp_kses_post( $header_html_content ); 
+			echo '</div>';
+		}
+
+		/**
+		 * Shortcode
+		 */
+		public function shortcode() {
+			$header_shortcode_content  = get_theme_mod( 'header_shortcode_content' );
+
+			if( ! $header_shortcode_content ) {
+				return '';
+			}
+
+			echo '<div class="header-item header-shortcode">';
+				echo do_shortcode( $header_shortcode_content ); 
+			echo '</div>';
+		}
 
 		/**
 		 * Woocommerce icons

@@ -32,6 +32,7 @@ $wp_customize->add_control(
 			'section'       		=> 'botiga_section_top_bar',
 			'controls_general'		=> json_encode( array( '#customize-control-center_top_bar_contents','#customize-control-enable_top_bar','#customize-control-topbar_container','#customize-control-topbar_delimiter','#customize-control-topbar_visibility','#customize-control-topbar_divider_1','#customize-control-topbar_elements_title','#customize-control-topbar_components_left','#customize-control-topbar_components_right','#customize-control-topbar_divider_2','#customize-control-topbar_contact_info_title','#customize-control-topbar_contact_mail','#customize-control-topbar_contact_phone','#customize-control-topbar_divider_3','#customize-control-topbar_social_title','#customize-control-social_profiles_topbar','#customize-control-topbar_divider_4','#customize-control-topbar_text_title','#customize-control-topbar_text','#customize-control-topbar_divider_5','#customize-control-topbar_nav_title','#customize-control-topbar_nav_link', ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-topbar_divider_7','#customize-control-topbar_background','#customize-control-topbar_color','#customize-control-topbar_divider_6','#customize-control-topbar_padding','#customize-control-topbar_divider_size','#customize-control-topbar_divider_color','#customize-control-topbar_divider_width' ) ),
+			'priority' 				=> 10
 		)
 	)
 );
@@ -50,6 +51,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Enable top bar', 'botiga' ),
 			'section'       	=> 'botiga_section_top_bar',
+			'priority' 			=> 20
 		)
 	)
 );
@@ -67,7 +69,8 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'topbar_con
 		'choices' => array(
 			'container' 		=> esc_html__( 'Contained', 'botiga' ),
 			'container-fluid' 	=> esc_html__( 'Full-width', 'botiga' ),
-		)
+		),
+		'priority' 			=> 30
 	)
 ) );
 
@@ -87,6 +90,7 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'topbar_del
 			'vertical' 	=> '&#124;',
 			'horizontal'=> '&#x23AF;'
 		),
+		'priority' 			=> 40
 	)
 ) );
 
@@ -104,6 +108,7 @@ $wp_customize->add_control( 'topbar_visibility', array(
 		'desktop-only' 	=> esc_html__( 'Desktop only', 'botiga' ),
 		'mobile-only' 	=> esc_html__( 'Mobile/tablet only', 'botiga' ),
 	),
+	'priority' 			=> 50
 ) );
 
 $wp_customize->add_setting( 'topbar_divider_1',
@@ -115,6 +120,7 @@ $wp_customize->add_setting( 'topbar_divider_1',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_1',
 		array(
 			'section' 		=> 'botiga_section_top_bar',
+			'priority' 		=> 60
 		)
 	)
 );
@@ -130,11 +136,12 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_elem
 		array(
 			'label'			=> esc_html__( 'Elements', 'botiga' ),
 			'section' 		=> 'botiga_section_top_bar',
+			'priority' 		=> 70
 		)
 	)
 );
 
-$botiga_topbar_components 	= botiga_topbar_elements();
+$botiga_topbar_components  = botiga_topbar_elements();
 $botiga_default_components = botiga_get_default_topbar_components();
 
 //Left
@@ -147,6 +154,7 @@ $wp_customize->add_control( new \Kirki\Control\Sortable( $wp_customize, 'topbar_
 	'label'   			=> esc_html__( 'Left side', 'botiga' ),
 	'section' 			=> 'botiga_section_top_bar',
 	'choices' 			=> $botiga_topbar_components,
+	'priority' 			=> 80
 ) ) );
 
 //Right
@@ -159,14 +167,14 @@ $wp_customize->add_control( new \Kirki\Control\Sortable( $wp_customize, 'topbar_
 	'label'   			=> esc_html__( 'Right side', 'botiga' ),
 	'section' 			=> 'botiga_section_top_bar',
 	'choices' 			=> $botiga_topbar_components,
+	'priority' 			=> 90
 ) ) );
 
 $wp_customize->add_setting(
 	'center_top_bar_contents',
 	array(
 		'default'           => 0,
-		'sanitize_callback' => 'botiga_sanitize_checkbox',
-		'transport'         => 'postMessage'
+		'sanitize_callback' => 'botiga_sanitize_checkbox'
 	)
 );
 $wp_customize->add_control(
@@ -176,7 +184,8 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Center the content?', 'botiga' ),
 			'section'       	=> 'botiga_section_top_bar',
-			'active_callback' 	=> 'botiga_callback_topbar_center_contents'
+			'active_callback' 	=> 'botiga_callback_topbar_center_contents',
+			'priority' 			=> 100
 		)
 	)
 );
@@ -192,7 +201,8 @@ $wp_customize->add_setting( 'topbar_divider_2',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_2',
 		array(
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); },
+			'priority' 			=> 110
 		)
 	)
 );
@@ -208,7 +218,8 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_cont
 		array(
 			'label'				=> esc_html__( 'Contact info', 'botiga' ),
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); },
+			'priority' 			=> 120
 		)
 	)
 );
@@ -224,7 +235,8 @@ $wp_customize->add_control( 'topbar_contact_mail', array(
 	'label'       => esc_html__( 'Email address', 'botiga' ),
 	'type'        => 'text',
 	'section'     => 'botiga_section_top_bar',
-	'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); }
+	'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); },
+	'priority' 			=> 130
 ) );
 
 $wp_customize->add_setting(
@@ -238,7 +250,8 @@ $wp_customize->add_control( 'topbar_contact_phone', array(
 	'label'       => esc_html__( 'Phone number', 'botiga' ),
 	'type'        => 'text',
 	'section'     => 'botiga_section_top_bar',
-	'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); }
+	'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'contact_info' ); },
+	'priority' 			=> 140
 ) );
 
 
@@ -252,7 +265,8 @@ $wp_customize->add_setting( 'topbar_divider_3',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_3',
 		array(
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'social' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'social' ); },
+			'priority' 			=> 150
 		)
 	)
 );
@@ -268,7 +282,8 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_soci
 		array(
 			'label'				=> esc_html__( 'Social', 'botiga' ),
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'social' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'social' ); },
+			'priority' 			=> 160
 		)
 	)
 );
@@ -286,7 +301,8 @@ $wp_customize->add_control( new Botiga_Repeater_Control( $wp_customize, 'social_
 		'button_labels' => array(
 			'add' => esc_html__( 'Add new', 'botiga' ),
 		),
-		'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'social' ); }
+		'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'social' ); },
+		'priority' 			=> 170
 	)
 ) );
 
@@ -300,7 +316,8 @@ $wp_customize->add_setting( 'topbar_divider_4',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_4',
 		array(
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'text' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'text' ); },
+			'priority' 			=> 180
 		)
 	)
 );
@@ -316,7 +333,8 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_text
 		array(
 			'label'				=> esc_html__( 'Text', 'botiga' ),
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'text' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'text' ); },
+			'priority' 			=> 190
 		)
 	)
 );
@@ -332,7 +350,8 @@ $wp_customize->add_control( 'topbar_text', array(
 	'label'       => '',
 	'type'        => 'text',
 	'section'     => 'botiga_section_top_bar',
-	'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'text' ); }
+	'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'text' ); },
+	'priority' 			=> 200
 ) );
 
 //nav
@@ -345,7 +364,8 @@ $wp_customize->add_setting( 'topbar_divider_5',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_5',
 		array(
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); },
+			'priority' 			=> 210
 		)
 	)
 );
@@ -361,7 +381,8 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_nav_
 		array(
 			'label'				=> esc_html__( 'Secondary menu', 'botiga' ),
 			'section' 			=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); },
+			'priority' 			=> 220
 		)
 	)
 );
@@ -377,7 +398,8 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_nav_
 		array(
 			'description' 	=> '<a class="footer-widget-area-link footer-widget-area-link-1" href="javascript:wp.customize.panel( \'nav_menus\' ).focus();">' . esc_html__( 'Configure menu', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_top_bar',
-			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); }
+			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); },
+			'priority' 			=> 230
 		)
 	)
 );
@@ -400,6 +422,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Background color', 'botiga' ),
 			'section'       	=> 'botiga_section_top_bar',
+			'priority' 			=> 240
 		)
 	)
 );
@@ -419,6 +442,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Text color', 'botiga' ),
 			'section'       	=> 'botiga_section_top_bar',
+			'priority' 			=> 250
 		)
 	)
 );
@@ -432,6 +456,7 @@ $wp_customize->add_setting( 'topbar_divider_6',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_6',
 		array(
 			'section' 			=> 'botiga_section_top_bar',
+			'priority' 			=> 260
 		)
 	)
 );
@@ -453,7 +478,8 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'topbar
 		'input_attrs' => array (
 			'min'	=> 0,
 			'max'	=> 100
-		)
+		),
+		'priority' 		=> 270
 	)
 ) );
 
@@ -466,6 +492,7 @@ $wp_customize->add_setting( 'topbar_divider_7',
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'topbar_divider_7',
 		array(
 			'section' 			=> 'botiga_section_top_bar',
+			'priority' 			=> 280
 		)
 	)
 );
@@ -480,6 +507,7 @@ $wp_customize->add_control( 'topbar_divider_size', array(
 	'type' 				=> 'number',
 	'section' 			=> 'botiga_section_top_bar',
 	'label' 			=> esc_html__( 'Border size', 'botiga' ),
+	'priority' 			=> 290
 ) );
 
 $wp_customize->add_setting(
@@ -497,6 +525,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Border color', 'botiga' ),
 			'section'       	=> 'botiga_section_top_bar',
+			'priority' 			=> 300
 		)
 	)
 );
@@ -515,5 +544,6 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'topbar_div
 			'contained' 	=> esc_html__( 'Contained', 'botiga' ),
 			'fullwidth' 	=> esc_html__( 'Full-width', 'botiga' ),
 		),
+		'priority' 			=> 310
 	)
 ) );

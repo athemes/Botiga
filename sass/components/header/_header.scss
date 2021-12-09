@@ -246,6 +246,11 @@
                 &.button {
                     margin-left: 100%;
                 }
+                &.header-content,
+                &.header-html,
+                &.header-shortcode {
+                    margin-right: 0;
+                }
             }
         }
     }
@@ -285,7 +290,9 @@
                 margin-right: 100%;
                 white-space: nowrap;
             }
-            &.header-contact {
+            &.header-contact,
+            &.header-html,
+            &.header-shortcode {
                 width: 100%;
             }
             &.site-header-cart {

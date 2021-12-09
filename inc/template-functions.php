@@ -507,7 +507,7 @@ function botiga_header_elements_layout_7_8() {
 		'woocommerce_icons' => esc_html__( 'Cart &amp; account icons', 'botiga' ),
 		'button' 			=> esc_html__( 'Button', 'botiga' ),
 		'contact_info' 		=> esc_html__( 'Contact info', 'botiga' ),
-		'hamburger_btn'    => esc_html__( 'Hamburger button', 'botiga' )
+		'hamburger_btn'     => esc_html__( 'Hamburger button', 'botiga' )
 	);
 
 	return apply_filters( 'botiga_header_elements_layout_7_8', $elements );

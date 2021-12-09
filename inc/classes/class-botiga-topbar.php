@@ -49,12 +49,18 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				<div class="<?php echo esc_attr( $container ); ?>">
 					<div class="top-bar-inner">
 						<div class="row valign">
-							<div class="col header-elements delimiter-<?php echo esc_attr( $delimiter ); ?>">
-								<?php $this->render_components( 'left' ); ?>
-							</div>
-							<div class="col header-elements delimiter-<?php echo esc_attr( $delimiter ); ?>">
-								<?php $this->render_components( 'right' ); ?>
-							</div>
+
+							<?php if( ! $this->elements_empty( 'left' ) ) : ?>
+								<div class="<?php echo esc_attr( $this->get_column_class( 'left' ) ); ?> header-elements delimiter-<?php echo esc_attr( $delimiter ); ?>">
+									<?php $this->render_components( 'left' ); ?>
+								</div>
+							<?php endif; ?>
+							<?php if( ! $this->elements_empty( 'right' ) ) : ?>
+								<div class="<?php echo esc_attr( $this->get_column_class( 'right' ) ); ?> header-elements delimiter-<?php echo esc_attr( $delimiter ); ?>">
+									<?php $this->render_components( 'right' ); ?>
+								</div>
+							<?php endif; ?>
+
 						</div>
 					</div>
 				</div>
@@ -63,14 +69,62 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		}
 
 		/**
+		 * Get topbar components
+		 */
+		public function get_topbar_components( $location ) {
+			$defaults 	= botiga_get_default_topbar_components();
+			$components = get_theme_mod( 'topbar_components_' . $location, $defaults[$location] );
+
+			return $components;
+		}
+
+		/**
+		 * Check if specified elements area is empty/hidden
+		 */
+		public function elements_empty( $location ) {
+			$components = $this->get_topbar_components( $location );
+
+			if( count( $components ) === 0 ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
 		 * Render header components
 		 */
 		public function render_components( $location ) {
-			$defaults 	= botiga_get_default_topbar_components();
-			$components = get_theme_mod( 'topbar_components_' . $location, $defaults[$location] );
+			$components = $this->get_topbar_components( $location );
+
 			foreach ( $components as $component ) {
 				call_user_func( array( $this, $component ) );
 			}
+		}
+
+		/**
+		 * Get column class
+		 */
+		public function get_column_class( $location ) {
+			$center_content = get_theme_mod( 'center_top_bar_contents', 0 );
+
+			if( 'left' === $location ) {
+				$components = $this->get_topbar_components( 'right' );
+			}
+
+			if( 'right' === $location ) {
+				$components = $this->get_topbar_components( 'left' );
+			}
+			
+			if( count( $components ) === 0 && ! $center_content ) {
+				if( 'right' === $location ) {
+					return 'col-12 justify-content-end';
+				}
+
+				return 'col-12';
+			}
+
+			return 'col';
 		}
 
 		/**
@@ -98,7 +152,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		public function text() {
 			$text = get_theme_mod( 'topbar_text', esc_html__( 'Your text here', 'botiga' ) );
 			?>
-			<div class="header-item">
+			<div class="header-item top-bar-text">
 				<?php echo wp_kses_post( $text ); ?>
 			</div>
 			<?php
@@ -108,7 +162,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 * Social
 		 */
 		public function social() {
-			echo '<div class="header-item">';
+			echo '<div class="header-item top-bar-social">';
 				botiga_social_profile( 'social_profiles_topbar' );
 			echo '</div>';
 		}
@@ -120,7 +174,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) ) : ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
 			<?php else: ?>				
-			<nav class="header-item secondary-navigation">
+			<nav class="header-item top-bar-secondary-navigation secondary-navigation">
 				<?php
 				wp_nav_menu( array(
 					'theme_location'=> 'secondary',
@@ -131,6 +185,36 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				?>
 			</nav>
 			<?php endif;
+		}
+
+		/**
+		 * HTML
+		 */
+		public function html() {
+			$topbar_html_content = get_theme_mod( 'topbar_html_content', '' );
+
+			if( ! $topbar_html_content ) {
+				return '';
+			}
+
+			echo '<div class="header-item top-bar-html">';
+				echo wp_kses_post( $topbar_html_content ); 
+			echo '</div>';
+		}
+
+		/**
+		 * Shortcode
+		 */
+		public function shortcode() {
+			$topbar_shortcode_content  = get_theme_mod( 'topbar_shortcode_content' );
+
+			if( ! $topbar_shortcode_content ) {
+				return '';
+			}
+
+			echo '<div class="header-item top-bar-shortcode">';
+				echo do_shortcode( $topbar_shortcode_content ); 
+			echo '</div>';
 		}
 	}
 
