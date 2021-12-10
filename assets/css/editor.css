@@ -1752,6 +1752,7 @@ div.editor-styles-wrapper ul.products li.product .woocommerce-loop-category__tit
   font-size: 1rem;
   font-weight: 400;
   color: #212121;
+  word-break: break-word;
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
 }

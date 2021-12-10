@@ -28,6 +28,10 @@ class Siema {
         // Resolve selector's type
         this.selector = typeof this.config.selector === 'string' ? document.querySelector(this.config.selector) : this.config.selector;
 
+        if( this.parentSelector ) {
+            this.selector = this.parentSelector.querySelector( '.botiga-carousel-stage' );
+        }
+
         // Early throw if selector doesn't exists
         if (this.selector === null) {
             throw new Error('Something wrong with your selector 😭');
@@ -178,7 +182,6 @@ class Siema {
 
         this.parentSelector.querySelector( '.botiga-carousel-stage' ).classList.add( 'show' );
         
-
         if( this.parentSelector !== null ) {
             this.parentSelector.setAttribute( 'data-initialized', true );
         }
@@ -229,7 +232,9 @@ class Siema {
      * Build a sliderFrame and slide to a current item.
      */
     buildSliderFrame() {
+        console.log(this.selector);
         if( this.innerElements.length <= this.perPage ) {
+            // console.log(this.parentSelector);
             this.parentSelector.querySelector( '.botiga-carousel-nav-next' ).remove();
             this.parentSelector.querySelector( '.botiga-carousel-nav-prev' ).remove();
             return false;

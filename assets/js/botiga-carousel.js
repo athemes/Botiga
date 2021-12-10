@@ -36,7 +36,12 @@ var Siema = /*#__PURE__*/function () {
 
     this.parentSelector = typeof this.config.parentSelector === 'string' ? document.querySelector(this.config.parentSelector) : this.config.parentSelector; // Resolve selector's type
 
-    this.selector = typeof this.config.selector === 'string' ? document.querySelector(this.config.selector) : this.config.selector; // Early throw if selector doesn't exists
+    this.selector = typeof this.config.selector === 'string' ? document.querySelector(this.config.selector) : this.config.selector;
+
+    if (this.parentSelector) {
+      this.selector = this.parentSelector.querySelector('.botiga-carousel-stage');
+    } // Early throw if selector doesn't exists
+
 
     if (this.selector === null) {
       throw new Error('Something wrong with your selector 😭');
@@ -186,7 +191,10 @@ var Siema = /*#__PURE__*/function () {
   }, {
     key: "buildSliderFrame",
     value: function buildSliderFrame() {
+      console.log(this.selector);
+
       if (this.innerElements.length <= this.perPage) {
+        // console.log(this.parentSelector);
         this.parentSelector.querySelector('.botiga-carousel-nav-next').remove();
         this.parentSelector.querySelector('.botiga-carousel-nav-prev').remove();
         return false;

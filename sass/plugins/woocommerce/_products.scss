@@ -61,12 +61,13 @@ ul.products {
 
 		.wc-block-grid__product-title,
 		.woocommerce-loop-product__title,
-		.woocommerce-loop-category__title {
+		.woocommerce-loop-category__title,
+		.botiga-wc-loop-product__title {
 			@include font-size(16);
 			font-weight: 400;
-			color: $color__primary;
 			word-break: break-word;
 			transition: ease color 300ms;
+			text-decoration: none;
 		}
 
 		.wc-block-grid__product-link {
@@ -195,8 +196,6 @@ ul.wc-block-grid__products {
 		margin-left: 0 !important;
 	}
 }
-
-
 
 .loop-price-inline {
 	text-align: right;

@@ -265,22 +265,26 @@ ul.products li.product .button {
 ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title,
 ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title,
 ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-category__title,
+ul.wc-block-grid__products li.wc-block-grid__product .botiga-wc-loop-product__title,
 ul.wc-block-grid__products li.product .wc-block-grid__product-title,
 ul.wc-block-grid__products li.product .woocommerce-loop-product__title,
 ul.wc-block-grid__products li.product .woocommerce-loop-category__title,
+ul.wc-block-grid__products li.product .botiga-wc-loop-product__title,
 ul.products li.wc-block-grid__product .wc-block-grid__product-title,
 ul.products li.wc-block-grid__product .woocommerce-loop-product__title,
 ul.products li.wc-block-grid__product .woocommerce-loop-category__title,
+ul.products li.wc-block-grid__product .botiga-wc-loop-product__title,
 ul.products li.product .wc-block-grid__product-title,
 ul.products li.product .woocommerce-loop-product__title,
-ul.products li.product .woocommerce-loop-category__title {
+ul.products li.product .woocommerce-loop-category__title,
+ul.products li.product .botiga-wc-loop-product__title {
   font-size: 16px;
   font-size: 1rem;
   font-weight: 400;
-  color: #212121;
   word-break: break-word;
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
+  text-decoration: none;
 }
 
 ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-link,
@@ -1849,19 +1853,22 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 }
 
 .related.products,
-.upsells.products {
+.upsells.products,
+.recently-viewed-products {
   margin-top: 50px;
 }
 
 .related.products > h2,
-.upsells.products > h2 {
+.upsells.products > h2,
+.recently-viewed-products > h2 {
   margin: 0 0 30px;
   font-size: 32px;
   font-size: 2rem;
 }
 
 .related.products .products,
-.upsells.products .products {
+.upsells.products .products,
+.recently-viewed-products .products {
   overflow: hidden;
 }
 
@@ -4089,6 +4096,15 @@ p.no-comments {
     top: 0;
     left: 0;
     background-color: #eee;
+  }
+  .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .onsale {
+    font-size: 10px;
+    font-size: 0.625rem;
+    padding: 4px 7px;
+  }
+  .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .botiga-wishlist-button {
+    top: 8px;
+    right: 8px;
   }
   .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell h2 {
     font-size: 1.3rem;

@@ -724,6 +724,12 @@ botiga.carousel = {
 			if( carouselEl.getAttribute( 'data-initialized' ) !== 'true' ) {
 				
 				var perPage = carouselEl.getAttribute( 'data-per-page' );
+				if( perPage === null ) {
+					var stageClassList = carouselEl.querySelector( '.products' ).classList.value;
+					if( stageClassList.indexOf( 'columns-4' ) > 0 ) {
+						perPage = 4;
+					}
+				}
 				
 				// Mount carousel wrapper
 				var	wrapper = document.createElement('div'),

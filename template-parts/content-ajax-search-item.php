@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for ajax search item content
+ * Template part for displaying ajax search item content
  *
  * @package Botiga
  */
