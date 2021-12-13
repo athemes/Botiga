@@ -92,6 +92,22 @@ function botiga_sanitize_product_loop_components( $input ) {
 }
 
 /**
+ * Sanitize single product components
+ */
+function botiga_sanitize_single_product_components( $input ) {
+    $input      = (array) $input;
+    $sanitized  = array();
+    $elements   = botiga_get_default_single_product_components();
+
+    foreach ( $input as $sub_value ) {
+        if ( in_array( $sub_value, $elements, true ) ) {
+            $sanitized[] = $sub_value;
+        }
+    }
+    return $sanitized;    
+}
+
+/**
  * Sanitize single product sitcky add to cart elements
  */
 function botiga_sanitize_single_add_to_cart_elements( $input ) {

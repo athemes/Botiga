@@ -1116,6 +1116,15 @@ div.editor-styles-wrapper .demo_store {
     left: 0;
     background-color: #eee;
   }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .onsale {
+    font-size: 10px;
+    font-size: 0.625rem;
+    padding: 4px 7px;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell .botiga-wishlist-button {
+    top: 8px;
+    right: 8px;
+  }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell h2 {
     font-size: 1.3rem;
     margin-bottom: 19px;
@@ -1739,22 +1748,26 @@ div.editor-styles-wrapper ul.products li.product .button {
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-category__title,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .botiga-wc-loop-product__title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-loop-product__title,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-loop-category__title,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .botiga-wc-loop-product__title,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .woocommerce-loop-product__title,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .woocommerce-loop-category__title,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .botiga-wc-loop-product__title,
 div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.products li.product .woocommerce-loop-product__title,
-div.editor-styles-wrapper ul.products li.product .woocommerce-loop-category__title {
+div.editor-styles-wrapper ul.products li.product .woocommerce-loop-category__title,
+div.editor-styles-wrapper ul.products li.product .botiga-wc-loop-product__title {
   font-size: 16px;
   font-size: 1rem;
   font-weight: 400;
-  color: #212121;
   word-break: break-word;
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
+  text-decoration: none;
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-link,

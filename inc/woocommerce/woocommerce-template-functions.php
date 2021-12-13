@@ -6,6 +6,56 @@
  */
 
 /**
+ * Default single product components
+ */
+function botiga_get_default_single_product_components() {
+	$components = array(
+		'woocommerce_template_single_title',
+		'woocommerce_template_single_rating',
+		'woocommerce_template_single_price',
+		'woocommerce_template_single_excerpt',
+		'woocommerce_template_single_add_to_cart',
+		'botiga_divider_output',
+		'woocommerce_template_single_meta'
+	);
+
+	if( 'layout1' !== get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) ) {
+		$components[] = 'botiga_single_wishlist_button';
+	}
+
+	return apply_filters( 'botiga_default_single_product_components', $components );
+}
+
+/**
+ * Single product elements
+ */
+function botiga_single_product_elements() {
+
+	$elements = array(
+		'woocommerce_template_single_title' 	  => esc_html__( 'Product Title', 'botiga' ),
+		'woocommerce_template_single_rating' 	  => esc_html__( 'Rating', 'botiga' ),
+		'woocommerce_template_single_price'		  => esc_html__( 'Price', 'botiga' ),
+		'woocommerce_template_single_excerpt' 	  => esc_html__( 'Brief Description', 'botiga' ),
+		'woocommerce_template_single_add_to_cart' => esc_html__( 'Add to Cart', 'botiga' ),
+		'botiga_divider_output'                   => esc_Html__( 'Divider', 'botiga' ),
+		'woocommerce_template_single_meta' 		  => esc_html__( 'Meta', 'botiga' )
+	);
+
+	if( 'layout1' !== get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) ) {
+		$elements['botiga_single_wishlist_button'] = esc_html__( 'Wishlist Button', 'botiga' );
+	}
+
+	return apply_filters( 'botiga_single_product_elements', $elements );
+}
+
+/**
+ * Divider
+ */
+function botiga_divider_output() {
+	echo '<hr class="divider">';
+}
+
+/**
  * Botiga output for simple product add to cart area.
  * The purpose is avoid third party plugins hooking here
  */

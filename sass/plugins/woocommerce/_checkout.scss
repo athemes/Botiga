@@ -301,26 +301,30 @@ form.woocommerce-checkout {
 	padding: 30px 30px 30px 50px;
 }
 
-.woocommerce-customer-details {
-	.woocommerce-columns {
-		display: flex;
-		.col-1,
-		.col-2 {
-			flex: 0 0 50%;
-			max-width: 50%;
-			padding: 0;
+.woocommerce-checkout {
+	.woocommerce-customer-details {
+		.woocommerce-columns {
+			display: flex;
+			.col-1,
+			.col-2 {
+				flex: 0 0 50%;
+				max-width: 50%;
+				padding: 0;
+			}
 		}
 	}
 }
 
 @media screen and (max-width: 767px) {
-	.woocommerce-customer-details {
-		.woocommerce-columns {
-			flex-wrap: wrap;
-			.col-1,
-			.col-2 {
-				flex: 0 0 100%;
-				max-width: 100%;
+	.woocommerce-checkout {
+		.woocommerce-customer-details {
+			.woocommerce-columns {
+				flex-wrap: wrap;
+				.col-1,
+				.col-2 {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
 			}
 		}
 	}

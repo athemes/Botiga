@@ -132,12 +132,6 @@ function botiga_product_card_hooks() {
 			add_action( 'woocommerce_before_shop_loop_item_title', 'botiga_wishlist_button', 10 );
 		}
 	}
-
-	// Single product
-	if( is_product() ) {
-		//Wishlist
-		add_action( 'woocommerce_single_product_summary', 'botiga_single_wishlist_button', 31 );
-	}
 }
 add_action( 'wp', 'botiga_product_card_hooks' );
 

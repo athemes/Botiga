@@ -472,3 +472,27 @@ function botiga_shop_search_ajax_is_enabled() {
 		return false;
 	} 
 }
+
+/**
+ * Single product elements
+ */
+function botiga_single_product_elements_show() {
+	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+
+	if ( 'gallery-full-width' !== $single_product_gallery ) {
+		return true;
+	} else {
+		return false;
+	} 
+}
+
+function botiga_callback_single_product_elements( $element ) {
+
+	$elements = get_theme_mod( 'single_product_elements_order' );
+
+	if ( in_array( $element, $elements ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}

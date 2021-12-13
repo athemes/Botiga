@@ -158,10 +158,11 @@
 		padding-left: 40px;
 	}
 
-	.product_meta {
+	.divider {
 		margin-top: 40px;
-		padding-top: 32px;
-		border-top: 1px solid rgba($color__primary, 0.2);
+	}
+
+	.product_meta {
 		@include font-size(14);
 		color: $color__primary;
 
@@ -180,6 +181,10 @@
 		}
 	}
 
+	.stock {
+		margin-bottom: 20px;
+	}
+
 	.price {
 		@include font-size(24);
 		margin-bottom: 25px;
@@ -193,6 +198,10 @@
 
 	form.cart {
 		flex-wrap: wrap;
+
+		& + .product_meta {
+			margin-top: 30px;
+		}
 	}
 
 	.botiga-single-addtocart-wrapper {
@@ -627,7 +636,7 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 }
 .woocommerce-product-details__short-description {
 	p:last-of-type {
-		margin-bottom: 60px;
+		margin-bottom: 30px;
 	}
 }
 
@@ -796,6 +805,10 @@ form.cart .quantity.hidden {
 			&.product-addtocart {
 				display: flex;
 				align-items: center;
+				.stock {
+					margin-bottom: 0;
+					margin-right: 20px;
+				}
 				.quantity {
 					width: 125px;
 					max-height: 51px;

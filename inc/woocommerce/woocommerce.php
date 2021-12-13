@@ -262,6 +262,27 @@ function botiga_wc_hooks() {
 			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 		}
 
+		//Elements Order
+		$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+		if( 'gallery-full-width' !== $single_product_gallery ) {
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+	
+			$defaults 	= botiga_get_default_single_product_components();
+			$components = get_theme_mod( 'single_product_elements_order', $defaults );
+	
+			foreach ( $components as $component ) {
+				add_action( 'woocommerce_single_product_summary', $component, 99 );
+			}
+	
+			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 10 );
+		}
+
 		//Product tabs
 		if ( !$single_tabs ) {
 			remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs' );
