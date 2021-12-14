@@ -4433,6 +4433,14 @@ span.onsale {
   margin-top: 15px;
 }
 
+.single-product .botiga-wishlist-wrapper + div,
+.single-product .botiga-wishlist-wrapper + form,
+.single-product .botiga-wishlist-wrapper + .product_title,
+.single-product .botiga-wishlist-wrapper + .price,
+.single-product .botiga-wishlist-wrapper + .stock {
+  margin-top: 20px;
+}
+
 .single-product .botiga-wishlist-wrapper .botiga-wishlist-button {
   display: -webkit-box;
   display: -ms-flexbox;

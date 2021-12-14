@@ -1128,6 +1128,15 @@ span.onsale {
 .single-product {
 	.botiga-wishlist-wrapper {
 		margin-top: 15px;
+
+		& + div,
+		& + form,
+		& + .product_title,
+		& + .price,
+		& + .stock {
+			margin-top: 20px;
+		}
+
 		.botiga-wishlist-button {
 			display: flex;
 			position: relative;

@@ -577,6 +577,20 @@
         $('head').append('<style id="botiga-customizer-styles-wishlist-shop_product_wishlist_icon_active_color">' + output + '</style>');
       }
     });
+  }); // hide/show "wishlist button" choice from single product elements
+
+  $(window.parent.document).on('click', '.control-section', function (e) {
+    var $section = $(window.parent.document).find('.control-section.open');
+
+    if ($section.find('#customize-control-single_product_elements_order').length) {
+      wp.customize('shop_product_wishlist_layout', function (value) {
+        if ('layout1' === value.get()) {
+          $section.find('#customize-control-single_product_elements_order .kirki-sortable-item[data-value="botiga_single_wishlist_button"]').css('display', 'none');
+        } else {
+          $section.find('#customize-control-single_product_elements_order .kirki-sortable-item[data-value="botiga_single_wishlist_button"]').css('display', 'block');
+        }
+      });
+    }
   }); //Woocommerce single image gallery
 
   wp.customize('single_product_gallery_styles_background_color', function (value) {
