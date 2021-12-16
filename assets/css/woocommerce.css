@@ -3542,23 +3542,16 @@ form.woocommerce-checkout {
 }
 
 .quantity-button-style2 .quantity {
-  border-color: rgba(33, 33, 33, 0.3);
   border-width: 1px;
-  background-color: #f5f5f5;
 }
 
 .quantity-button-style2 .botiga-quantity-plus,
 .quantity-button-style2 .botiga-quantity-minus {
   font-size: 1.3rem !important;
-  border: 1px solid rgba(33, 33, 33, 0.3);
+  border-style: solid;
+  border-width: 1px;
   -webkit-transition: ease background-color 300ms, ease color 300ms;
   transition: ease background-color 300ms, ease color 300ms;
-}
-
-.quantity-button-style2 .botiga-quantity-plus:hover,
-.quantity-button-style2 .botiga-quantity-minus:hover {
-  background-color: #212121;
-  color: #FFF;
 }
 
 .quantity-button-style2 .botiga-quantity-plus {
@@ -3587,7 +3580,6 @@ form.woocommerce-checkout {
 }
 
 .quantity-button-style4 .quantity {
-  border-color: rgba(33, 33, 33, 0.3);
   border-width: 1px;
 }
 
@@ -3599,21 +3591,10 @@ form.woocommerce-checkout {
 
 .quantity-button-style4 .quantity .botiga-quantity-plus,
 .quantity-button-style4 .quantity .botiga-quantity-minus {
-  background-color: #212121;
-  color: #FFF;
   font-size: 1.4rem;
   max-width: 30%;
   -webkit-transition: ease background-color 300ms;
   transition: ease background-color 300ms;
-}
-
-.quantity-button-style4 .quantity .botiga-quantity-plus:hover,
-.quantity-button-style4 .quantity .botiga-quantity-minus:hover {
-  background-color: #757575;
-}
-
-.quantity-button-style4 .quantity .qty {
-  background-color: #f5f5f5 !important;
 }
 
 .quantity-button-style5 .quantity {
@@ -3628,20 +3609,10 @@ form.woocommerce-checkout {
 
 .quantity-button-style5 .quantity .botiga-quantity-plus,
 .quantity-button-style5 .quantity .botiga-quantity-minus {
-  background-color: #f5f5f5;
   font-size: 1.4rem;
   max-width: 30%;
   -webkit-transition: ease background-color 300ms;
   transition: ease background-color 300ms;
-}
-
-.quantity-button-style5 .quantity .botiga-quantity-plus:hover,
-.quantity-button-style5 .quantity .botiga-quantity-minus:hover {
-  background-color: rgba(33, 33, 33, 0.1);
-}
-
-.quantity-button-style5 .quantity .qty {
-  background-color: #f5f5f5 !important;
 }
 
 .quantity-button-style6 .quantity {
@@ -3656,17 +3627,12 @@ form.woocommerce-checkout {
 
 .quantity-button-style6 .quantity .botiga-quantity-plus,
 .quantity-button-style6 .quantity .botiga-quantity-minus {
-  background-color: #f5f5f5;
   font-size: 1.4rem;
   max-width: 30%;
-  border: 1px solid rgba(33, 33, 33, 0.3);
+  border-style: solid;
+  border-width: 1px;
   -webkit-transition: ease background-color 300ms;
   transition: ease background-color 300ms;
-}
-
-.quantity-button-style6 .quantity .botiga-quantity-plus:hover,
-.quantity-button-style6 .quantity .botiga-quantity-minus:hover {
-  background-color: rgba(33, 33, 33, 0.1);
 }
 
 .quantity-button-style6 .quantity .botiga-quantity-plus {
@@ -3678,8 +3644,8 @@ form.woocommerce-checkout {
 }
 
 .quantity-button-style6 .quantity .qty {
-  border: 1px solid rgba(33, 33, 33, 0.3);
-  background-color: #f5f5f5 !important;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .quantity-button-style6 .woocommerce-cart-form .product-price {
@@ -3696,7 +3662,6 @@ form.woocommerce-checkout {
 
 .quantity-button-style7 .quantity {
   border-width: 1px;
-  border-color: rgba(33, 33, 33, 0.3);
 }
 
 @media (min-width: 1025px) {
@@ -3709,7 +3674,6 @@ form.woocommerce-checkout {
 .quantity-button-style7 .quantity .botiga-quantity-minus {
   width: 22px;
   height: 35%;
-  background-color: rgba(33, 33, 33, 0.1);
   right: 10px;
 }
 
@@ -3746,15 +3710,8 @@ form.woocommerce-checkout {
 .quantity-button-style8 .quantity .botiga-quantity-plus,
 .quantity-button-style8 .quantity .botiga-quantity-minus {
   font-size: 1.4rem;
-  background-color: #212121;
-  color: #FFF;
   -webkit-transition: ease background-color 300ms;
   transition: ease background-color 300ms;
-}
-
-.quantity-button-style8 .quantity .botiga-quantity-plus:hover,
-.quantity-button-style8 .quantity .botiga-quantity-minus:hover {
-  background-color: rgba(33, 33, 33, 0.8);
 }
 
 .quantity-button-style9 .quantity {
@@ -4315,6 +4272,15 @@ p.no-comments {
     -webkit-transition: ease opacity 300ms, ease transform 300ms;
     transition: ease opacity 300ms, ease transform 300ms;
   }
+  .site-header-cart .widget_shopping_cart .quantity {
+    border: none;
+    height: auto;
+    background: transparent;
+    margin: 5px 0 0;
+  }
+  .site-header-cart .widget_shopping_cart .mini_cart_item a:nth-child(2) {
+    line-height: 1.4;
+  }
   .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message {
     padding: 30px;
   }
@@ -4518,7 +4484,7 @@ p.no-comments {
     background-color: rgba(33, 33, 33, 0.1);
   }
   .site-header-cart .product_list_widget li:last-of-type {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
   }
   .site-header-cart .product_list_widget li:last-of-type:after {
     display: none;

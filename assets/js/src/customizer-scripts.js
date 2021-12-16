@@ -595,7 +595,7 @@ jQuery( document ).ready(function($) {
 		}
 
 		//Color 4 Paragraph, Paragraph small, Breadcrums, Icons
-		let elements4 = ['custom_color4','footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder','topbar_color','main_header_bottom_color'];
+		let elements4 = ['custom_color4','footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder','topbar_color','main_header_bottom_color','single_sticky_add_to_cart_style_color_content'];
 		
 		for ( const element of elements4 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
@@ -605,7 +605,7 @@ jQuery( document ).ready(function($) {
 		}
 
 		//Color 5 Input, tag borders
-		let elements5 = ['custom_color5','color_forms_borders','single_product_tabs_remaining_borders'];
+		let elements5 = ['custom_color5','color_forms_borders','single_product_tabs_remaining_borders','single_sticky_add_to_cart_style_color_border'];
 		
 		for ( const element of elements5 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
@@ -615,7 +615,7 @@ jQuery( document ).ready(function($) {
 		}
 		
 		//Color 6 Footer background, Subtle backgrounds
-		let elements6 = ['custom_color6','footer_widgets_background','footer_credits_background', 'content_cards_background','single_product_tabs_background_color','single_product_tabs_background_color_active','single_product_gallery_styles_background_color'];
+		let elements6 = ['custom_color6','footer_widgets_background','footer_credits_background', 'content_cards_background','single_product_tabs_background_color','single_product_tabs_background_color_active','single_product_gallery_styles_background_color','single_sticky_add_to_cart_style_color_background'];
 		
 		for ( const element of elements6 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
@@ -680,7 +680,7 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color3', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements3 = ['main_header_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6'];
+			let elements3 = ['main_header_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6','single_sticky_add_to_cart_style_color_title'];
 		
 			for ( const element of elements3 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {

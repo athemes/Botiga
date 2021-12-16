@@ -144,20 +144,14 @@
 
 .quantity-button-style2 {
 	.quantity {
-		border-color: rgba( $color__primary, 0.3 );
 		border-width: 1px;
-		background-color: #f5f5f5;
 	}
 	.botiga-quantity-plus,
 	.botiga-quantity-minus {
 		font-size: 1.3rem !important;
-		border: 1px solid rgba( $color__primary, 0.3 );
+		border-style: solid;
+		border-width: 1px;
 		transition: ease background-color 300ms, ease color 300ms;
-
-		&:hover {
-			background-color: #212121;
-			color: #FFF;
-		}
 	}
 	.botiga-quantity-plus {
 		border-bottom: 0;
@@ -190,22 +184,12 @@
 			width: 40%;
 		}
 
-		border-color: rgba( $color__primary, 0.3 );
 		border-width: 1px;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
-			background-color: $color__primary;
-			color: #FFF;
 			font-size: 1.4rem;
 			max-width: 30%;
 			transition: ease background-color 300ms;
-			&:hover {
-				background-color: $color__hover;
-			}
-		}
-
-		.qty {
-			background-color: #f5f5f5 !important;
 		}
 	}
 }
@@ -218,17 +202,9 @@
 		border: none;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
-			background-color: #f5f5f5;
 			font-size: 1.4rem;
 			max-width: 30%;
 			transition: ease background-color 300ms;
-			&:hover {
-				background-color: rgba( $color__primary, 0.1 );
-			}
-		}
-
-		.qty {
-			background-color: #f5f5f5 !important;
 		}
 	}
 }
@@ -241,14 +217,11 @@
 		border: none;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
-			background-color: #f5f5f5;
 			font-size: 1.4rem;
 			max-width: 30%;
-			border: 1px solid rgba( $color__primary, 0.3 );
+			border-style: solid;
+			border-width: 1px;
 			transition: ease background-color 300ms;
-			&:hover {
-				background-color: rgba( $color__primary, 0.1 );
-			}
 		}
 		.botiga-quantity-plus {
 			margin-left: 6px;
@@ -258,8 +231,8 @@
 		}
 
 		.qty {
-			border: 1px solid rgba( $color__primary, 0.3 );
-			background-color: #f5f5f5 !important;
+			border-style: solid;
+			border-width: 1px;
 		}
 	}
 
@@ -282,12 +255,10 @@
 			width: 22%;
 		}
 		border-width: 1px;
-		border-color: rgba( $color__primary, 0.3 );
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			width: 22px;
 			height: 35%;
-			background-color: rgba( $color__primary, 0.1 );
 			right: 10px;
 		}
 		.botiga-quantity-plus {
@@ -322,12 +293,7 @@
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
-			background-color: $color__primary;
-			color: #FFF;
 			transition: ease background-color 300ms;
-			&:hover {
-				background-color: rgba( $color__primary, 0.8 );
-			}
 		}
 	}
 }
@@ -980,6 +946,19 @@ p.no-comments {
 			transform: translate3d(0, 15px, 0);
 			transition: ease opacity 300ms, ease transform 300ms;
 
+			.quantity {
+				border: none;
+				height: auto;
+				background: transparent;
+				margin: 5px 0 0;
+			}
+
+			.mini_cart_item {
+				a:nth-child(2) {
+					line-height: 1.4;
+				}
+			}
+
 			.woocommerce-mini-cart__empty-message {
 				padding: 30px;
 			}
@@ -1180,7 +1159,7 @@ p.no-comments {
 				}
 
 				&:last-of-type {
-					padding-bottom: 30px;
+					padding-bottom: 20px;
 
 					&:after {
 						display: none;

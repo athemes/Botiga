@@ -116,7 +116,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'site_description_color', '', '.site-description' );
 			$css .= $this->get_color_css( 'color_body_text', '', 'body,.wp-block-columns p a,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.widget a' );
 			$css .= $this->get_fill_css( 'color_body_text', '', '.sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg' );
-			$css .= $this->get_color_css( 'color_link_default', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):not(.page-numbers):hover,ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title:hover' );
+			$css .= $this->get_color_css( 'color_link_default', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):not(.page-numbers):not(.woocommerce-review-link):hover,ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title:hover' );
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover' );
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
@@ -536,7 +536,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_background_color_rgba_css( 'color_body_text', '#212121', '.botiga-ajax-search__divider', '0.1', true );
 			}
 			
-			
 			//Woocommerce single
 			$single_sku 	 	= get_theme_mod( 'single_product_sku', 1 );
 			$single_categories  = get_theme_mod( 'single_product_categories', 1 );
@@ -555,6 +554,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( !$single_sku && !$single_categories && !$single_tags ) {
 				$css .= ".single-product .product_meta { border-top: 0; }";
 			}
+
+			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-review-link' );
+			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-review-link:hover' );
 
 			//Woocommerce single product gallery
 			$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
@@ -606,10 +608,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$single_sticky_add_to_cart = get_theme_mod( 'single_sticky_add_to_cart', 0 );
 
 			if( $single_sticky_add_to_cart ) {
-				$css .= $this->get_border_color_css( 'single_sticky_add_to_cart_style_color_border', '', '.botiga-single-sticky-add-to-cart-wrapper' );
+				$css .= $this->get_border_color_rgba_css( 'single_sticky_add_to_cart_style_color_border', '', '.botiga-single-sticky-add-to-cart-wrapper', 0.1 );
 				$css .= $this->get_background_color_css( 'single_sticky_add_to_cart_style_color_background', '', '.botiga-single-sticky-add-to-cart-wrapper, .botiga-single-sticky-add-to-cart-wrapper input[type="number"], .botiga-single-sticky-add-to-cart-wrapper select' );
-				$css .= $this->get_color_css( 'single_sticky_add_to_cart_style_color_content', '', '.botiga-single-sticky-add-to-cart-wrapper h5, .botiga-single-sticky-add-to-cart-wrapper .price, .botiga-single-sticky-add-to-cart-wrapper .quantity .botiga-quantity-minus, .botiga-single-sticky-add-to-cart-wrapper .quantity .botiga-quantity-plus, .botiga-single-sticky-add-to-cart-wrapper .quantity .qty, .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form table.variations .label, .botiga-single-sticky-add-to-cart-wrapper select' );
-				$css .= $this->get_border_color_css( 'single_sticky_add_to_cart_style_color_content', '', '.botiga-single-sticky-add-to-cart-wrapper .quantity, .botiga-single-sticky-add-to-cart-wrapper select' );
+				$css .= $this->get_color_css( 'single_sticky_add_to_cart_style_color_content', '', '.botiga-single-sticky-add-to-cart-wrapper .price, .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form table.variations .label, .botiga-single-sticky-add-to-cart-wrapper select' );
+				$css .= $this->get_color_css( 'single_sticky_add_to_cart_style_color_title', '', '.botiga-single-sticky-add-to-cart-wrapper h5' );
+				$css .= $this->get_border_color_css( 'single_sticky_add_to_cart_style_color_content', '', '.botiga-single-sticky-add-to-cart-wrapper select' );
 				$css .= '.botiga-single-sticky-add-to-cart-wrapper .price del { color: '. esc_attr( get_theme_mod( 'single_sticky_add_to_cart_style_color_content', '#212121' ) ) .'; opacity: 0.8; }';
 				$css .= '.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item { margin-right: '. esc_attr( $single_sticky_add_to_cart_elements_spacing ) .'px; }';
 			}
@@ -664,8 +667,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= '.botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item .step svg { fill: #'. esc_attr( $background_color ) .'; }';
 			}
 
-			
-
 			//My account
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a' );
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a' );
@@ -681,8 +682,70 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price' );
 			$css .= $this->get_font_sizes_css( 'single_product_title_size', $defaults = array( 'desktop' => 32, 'tablet' => 32, 'mobile' => 32 ), '.product-gallery-summary .entry-title' );
 			$css .= $this->get_font_sizes_css( 'single_product_price_size', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '.product-gallery-summary .price' );
-			$css .= $this->get_border_color_css( 'color_body_text', '', '.quantity' );
-			$css .= $this->get_color_css( 'color_body_text', '', '.quantity .botiga-quantity-plus, .quantity .botiga-quantity-minus' );
+			
+			//Quantity input
+			$shop_general_quantity_style = get_theme_mod( 'shop_general_quantity_style', 'style1' );
+
+			switch ( $shop_general_quantity_style ) {
+				case 'style1':
+					$css .= $this->get_border_color_css( 'color_body_text', '', '.quantity' );
+					$css .= $this->get_color_css( 'color_body_text', '', '.quantity .botiga-quantity-plus, .quantity .botiga-quantity-minus' );		
+					break;
+
+				case 'style2':
+					$css .= $this->get_background_color_css( 'content_cards_background', '', '.quantity-button-style2 .quantity' );
+					$css .= $this->get_background_color_css( 'button_background_color', '', '.quantity-button-style2 .botiga-quantity-plus:hover, .quantity-button-style2 .botiga-quantity-minus:hover' );
+					$css .= $this->get_color_css( 'button_color', '', '.quantity-button-style2 .botiga-quantity-plus:hover, .quantity-button-style2 .botiga-quantity-minus:hover' );
+					$css .= $this->get_border_color_rgba_css( 'color_body_text', '', '.quantity-button-style2 .quantity, .quantity-button-style2 .botiga-quantity-plus, .quantity-button-style2 .botiga-quantity-minus', 0.3 );
+					$css .= $this->get_color_css( 'color_body_text', '', '.quantity .botiga-quantity-plus, .quantity .botiga-quantity-minus' );		
+					break;
+
+				case 'style3':
+					$css .= $this->get_border_color_css( 'color_body_text', '', '.quantity-button-style3 .quantity, .quantity-button-style-arrows .botiga-quantity-plus:before, .quantity-button-style-arrows .botiga-quantity-minus:before' );
+					$css .= $this->get_color_css( 'color_body_text', '', '.quantity .botiga-quantity-plus, .quantity .botiga-quantity-minus' );		
+					break;
+
+				case 'style4':
+					$css .= $this->get_border_color_rgba_css( 'color_body_text', '', '.quantity-button-style4 .quantity', 0.1 );
+					$css .= $this->get_background_color_css( 'content_cards_background', '', '.quantity-button-style4 .quantity .qty', true );
+					$css .= $this->get_background_color_css( 'button_background_color', '', '.quantity-button-style4 .quantity .botiga-quantity-plus, .quantity-button-style4 .quantity .botiga-quantity-minus' );
+					$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.quantity-button-style4 .quantity .botiga-quantity-plus:hover, .quantity-button-style4 .quantity .botiga-quantity-minus:hover' );
+					$css .= $this->get_color_css( 'button_color', '', '.quantity-button-style4 .quantity .botiga-quantity-plus, .quantity-button-style4 .quantity .botiga-quantity-minus' );
+					break;
+
+				case 'style5':
+					$css .= $this->get_background_color_css( 'content_cards_background', '', '.quantity-button-style5 .quantity .qty', true );
+					$css .= $this->get_background_color_css( 'content_cards_background', '', '.quantity-button-style5 .quantity .botiga-quantity-plus, .quantity-button-style5 .quantity .botiga-quantity-minus' );
+					$css .= $this->get_background_color_rgba_css( 'content_cards_background', '', '.quantity-button-style5 .quantity .botiga-quantity-plus:hover, .quantity-button-style5 .quantity .botiga-quantity-minus:hover', 0.3 );
+					$css .= $this->get_color_css( 'color_body_text', '', '.quantity .botiga-quantity-plus, .quantity .botiga-quantity-minus' );
+					break;
+
+				case 'style6':
+					$css .= $this->get_background_color_css( 'content_cards_background', '', '.quantity-button-style6 .quantity .qty', true );	
+					$css .= $this->get_background_color_css( 'content_cards_background', '', '.quantity-button-style6 .quantity .botiga-quantity-plus, .quantity-button-style6 .quantity .botiga-quantity-minus' );
+					$css .= $this->get_background_color_rgba_css( 'content_cards_background', '', '.quantity-button-style6 .quantity .botiga-quantity-plus:hover, .quantity-button-style6 .quantity .botiga-quantity-minus:hover', 0.3 );
+					$css .= $this->get_color_css( 'color_body_text', '', '.quantity .botiga-quantity-plus, .quantity .botiga-quantity-minus' );
+					$css .= $this->get_border_color_rgba_css( 'color_body_text', '', '.quantity-button-style6 .quantity .qty, .quantity-button-style6 .quantity .botiga-quantity-plus, .quantity-button-style6 .quantity .botiga-quantity-minus', 0.3 );
+					break;
+
+				case 'style7':
+					$css .= $this->get_border_color_rgba_css( 'color_body_text', '', '.quantity-button-style7 .quantity', 0.3 );
+					$css .= $this->get_border_color_css( 'button_color', '', '.quantity-button-style-arrows .botiga-quantity-plus:before, .quantity-button-style-arrows .botiga-quantity-minus:before' );
+					$css .= $this->get_background_color_css( 'button_background_color', '', '.quantity-button-style7 .quantity .botiga-quantity-plus, .quantity-button-style7 .quantity .botiga-quantity-minus' );
+					break;
+
+				case 'style8':
+					$css .= $this->get_border_color_rgba_css( 'color_body_text', '', '.quantity-button-style8 .quantity', 0.5 );
+					$css .= $this->get_background_color_css( 'button_background_color', '', '.quantity-button-style8 .quantity .botiga-quantity-plus, .quantity-button-style8 .quantity .botiga-quantity-minus' );
+					$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.quantity-button-style8 .quantity .botiga-quantity-plus:hover, .quantity-button-style8 .quantity .botiga-quantity-minus:hover' );
+					$css .= $this->get_color_css( 'button_color', '', '.quantity-button-style8 .quantity .botiga-quantity-plus, .quantity-button-style8 .quantity .botiga-quantity-minus' );
+					break;
+
+				case 'style9':
+					$css .= $this->get_border_color_css( 'color_body_text', '', '.quantity, .quantity-button-style-arrows .botiga-quantity-plus:before, .quantity-button-style-arrows .botiga-quantity-minus:before' );
+					break;
+				
+			}
 
 			//Tables
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.shop_table th, .shop_table td, .shop_table tr', '0.1', true );

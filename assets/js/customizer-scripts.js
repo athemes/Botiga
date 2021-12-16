@@ -526,7 +526,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 4 Paragraph, Paragraph small, Breadcrums, Icons
 
 
-    var elements4 = ['custom_color4', 'footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder', 'topbar_color', 'main_header_bottom_color'];
+    var elements4 = ['custom_color4', 'footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder', 'topbar_color', 'main_header_bottom_color', 'single_sticky_add_to_cart_style_color_content'];
 
     for (var _i4 = 0, _elements4 = elements4; _i4 < _elements4.length; _i4++) {
       var _element3 = _elements4[_i4];
@@ -538,7 +538,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 5 Input, tag borders
 
 
-    var elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders'];
+    var elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border'];
 
     for (var _i5 = 0, _elements5 = elements5; _i5 < _elements5.length; _i5++) {
       var _element4 = _elements5[_i5];
@@ -550,7 +550,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 6 Footer background, Subtle backgrounds
 
 
-    var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color'];
+    var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background'];
 
     for (var _i6 = 0, _elements6 = elements6; _i6 < _elements6.length; _i6++) {
       var _element5 = _elements6[_i6];
@@ -621,7 +621,7 @@ wp.customize.bind('ready', function () {
   });
   wp.customize('custom_color3', function (control) {
     control.bind(function (value) {
-      var elements3 = ['main_header_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6'];
+      var elements3 = ['main_header_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'single_sticky_add_to_cart_style_color_title'];
 
       for (var _i11 = 0, _elements11 = elements3; _i11 < _elements11.length; _i11++) {
         var element = _elements11[_i11];
