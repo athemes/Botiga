@@ -425,7 +425,7 @@ function botiga_get_default_header_components() {
 		'l5bottom'	=> array( 'search' ),
 		'l7left'    => array( 'contact_info' ),
 		'l7right'   => array( 'search', 'woocommerce_icons', 'hamburger_btn' ),
-		'desktop_offcanvas' => array(),
+		'desktop_offcanvas' => array( 'search', 'woocommerce_icons' ),
 		'mobile'	=> array( 'woocommerce_icons' ),
 		'offcanvas'	=> array()
 	);

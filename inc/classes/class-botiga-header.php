@@ -581,6 +581,38 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		}
 
 		/**
+		 * Login/Register
+		 */
+		public function login_register() {
+			$output = '';
+
+			if( is_user_logged_in() ) {
+				$header_login_register_show_username = get_theme_mod( 'header_login_register_show_username', 1 );
+				if( ! $header_login_register_show_username ) {
+					return;
+				}
+				
+				$current_user = wp_get_current_user();
+
+				$output .= '<span>' . sprintf( __( 'Welcome %s', 'botiga' ), esc_html( ucfirst( strtolower( $current_user->user_firstname ? $current_user->user_firstname : $current_user->user_email ) ) ) ) . '</span>'; 
+			} else {
+				$header_login_register_popup = get_theme_mod( 'header_login_register_popup', 0 );
+
+				$link_classes = array( 'botiga-login-register-link' );
+				
+				if( $header_login_register_popup ) {
+					$link_classes[] = 'has-popup';
+				}
+
+				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'" class="'. esc_attr( implode( ' ', $link_classes ) ) .'">'. esc_html__( 'Login', 'botiga' ) .'</a>';
+			}
+
+			echo '<div class="header-item top-bar-login-register">';
+				echo $output;
+			echo '</div>';
+		}
+
+		/**
 		 * Woocommerce icons
 		 */
 		function woocommerce_icons() {

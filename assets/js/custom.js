@@ -974,23 +974,7 @@ botiga.productSwatch = {
 
 botiga.misc = {
   init: function init() {
-    // this.miniCart();
     this.checkout();
-  },
-  miniCart: function miniCart() {
-    var mini_cart = document.getElementById('site-header-cart');
-
-    if (mini_cart === null) {
-      return false;
-    }
-
-    if (typeof jQuery === 'function') {
-      jQuery(document).on('wc_fragment_refresh added_to_cart removed_from_cart', function () {
-        console.log(mini_cart.querySelector('.quantity'));
-        mini_cart.querySelector('.quantity').classList.add('mini-cart-quantity');
-        mini_cart.querySelector('.quantity').classList.remove('quantity');
-      });
-    }
   },
   checkout: function checkout() {
     var is_checkout_page = document.querySelector('body.woocommerce-checkout');
