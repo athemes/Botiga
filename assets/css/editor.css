@@ -2282,6 +2282,10 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:h
   opacity: 1;
 }
 
+div.editor-styles-wrapper .wc-block-grid.has-4-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-5-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-6-columns .wc-block-grid__product {
+  font-size: 1em !important;
+}
+
 div.editor-styles-wrapper .wc-block-grid__product-link {
   display: block;
 }

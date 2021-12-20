@@ -560,6 +560,10 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .button-layout4 {
   opacity: 1;
 }
 
+.wc-block-grid.has-4-columns .wc-block-grid__product, .wc-block-grid.has-5-columns .wc-block-grid__product, .wc-block-grid.has-6-columns .wc-block-grid__product {
+  font-size: 1em !important;
+}
+
 .wc-block-grid__product-link {
   display: block;
 }

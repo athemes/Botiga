@@ -709,6 +709,10 @@ botiga.qtyButton = {
     }
 
     for (var i = 0; i < qty.length; i++) {
+      if (qty[i].classList.contains('hidden')) {
+        return false;
+      }
+
       var plus = qty[i].querySelector('.botiga-quantity-plus'),
           minus = qty[i].querySelector('.botiga-quantity-minus');
       plus.classList.add('show');

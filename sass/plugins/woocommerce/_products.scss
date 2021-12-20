@@ -289,6 +289,16 @@ ul.wc-block-grid__products {
 	}	
 }
 
+.wc-block-grid {
+	&.has-4-columns,
+	&.has-5-columns,
+	&.has-6-columns {
+		.wc-block-grid__product {
+			font-size: 1em !important;
+		}
+	}
+}
+
 .wc-block-grid__product-link {
 	display: block;
 }
