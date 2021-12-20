@@ -1026,3 +1026,10 @@ span.delete:hover {
   font-weight: 500;
   padding-right: 5px;
 }
+
+/*
+ * Hide some sections
+ */
+#accordion-section-botiga_login_register_popup {
+  display: none !important;
+}

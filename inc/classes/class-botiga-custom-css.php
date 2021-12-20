@@ -145,7 +145,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Header
 			$css .= $this->get_max_width_css( 'site_logo_size', $defaults = array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), '.custom-logo-link img' );
 			$css .= $this->get_background_color_css( 'topbar_background', '', '.top-bar' );
-			$css .= $this->get_color_css( 'topbar_color', '', '.top-bar, .top-bar a' );
+			$css .= $this->get_color_css( 'topbar_color', '', '.top-bar, .top-bar a, .top-header-row, .top-header-row a' );
 			$css .= $this->get_fill_css( 'topbar_color', '', '.top-bar svg:not(.stroke-based)' );
 			$topbar_padding 	= get_theme_mod( 'topbar_padding', 15 );
 			$css .= ".top-bar-inner { padding-top:" . esc_attr( $topbar_padding ) . 'px;padding-bottom:' . esc_attr( $topbar_padding ) . "px;}" . "\n";
@@ -744,6 +744,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				case 'style9':
 					$css .= $this->get_border_color_css( 'color_body_text', '', '.quantity, .quantity-button-style-arrows .botiga-quantity-plus:before, .quantity-button-style-arrows .botiga-quantity-minus:before' );
 					break;
+				
+			}
+
+			// Login/Register Popup
+			$login_register_popup = get_theme_mod( 'login_register_popup', 0 );
+			if( $login_register_popup ) {
+				$css .= '.botiga-popup-wrapper { background-color: #'. esc_attr( $background_color ) .'; }';
+				$css .= $this->get_color_css( 'color_body_text', '', '.botiga-popup-wrapper .woocommerce-LostPassword a, .botiga-popup-wrapper .switch-form-wrapper__link, .botiga-popup-wrapper .woocommerce-privacy-policy-link' );
+				$css .= $this->get_color_css( 'color_link_hover', '', '.botiga-popup-wrapper .woocommerce-LostPassword a:hover, .botiga-popup-wrapper .switch-form-wrapper__link:hover, .botiga-popup-wrapper .woocommerce-privacy-policy-link:hover' );
+				$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-popup-wrapper .botiga-popup-wrapper__content .switch-form-wrapper' );
+				$css .= $this->get_fill_css( 'color_body_text', '', '.botiga-popup-wrapper .botiga-popup-wrapper__close-button svg' );
 				
 			}
 

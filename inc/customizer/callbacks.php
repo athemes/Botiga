@@ -414,6 +414,19 @@ function botiga_callback_header_elements( $element ) {
 
 			break;
 
+		case 'header_layout_7':
+		case 'header_layout_8':
+			$elements 			= get_theme_mod( 'header_components_l7left' );
+			$elements_right 	= get_theme_mod( 'header_components_l7right' );
+
+			if ( in_array( $element, $elements ) || in_array( $element, $elements_right ) ) {
+				return true;
+			} else {
+				return false;
+			}
+
+			break;
+
 		default:
 			return false;
 

@@ -222,26 +222,38 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 */
 		public function login_register() {
 			$output = '';
-			
+
+			if( ! class_exists( 'Woocommerce' ) ) {
+				return '';
+			}
+
 			if( is_user_logged_in() ) {
-				$topbar_login_register_show_username = get_theme_mod( 'topbar_login_register_show_username', 1 );
-				if( ! $topbar_login_register_show_username ) {
+				$show_welcome_message = get_theme_mod( 'login_register_show_welcome_message', 0 );
+				if( ! $show_welcome_message ) {
 					return;
 				}
-				
+
 				$current_user = wp_get_current_user();
 
-				$output .= '<span>' . sprintf( __( 'Welcome %s', 'botiga' ), esc_html( ucfirst( strtolower( $current_user->user_firstname ? $current_user->user_firstname : $current_user->user_email ) ) ) ) . '</span>';
+				$welcome_message_text = get_theme_mod( 'login_register_welcome_message_text', '' );
+				$welcome_message_text = str_replace(
+					array( '{user_firstname}', '{user_lastname}', '{user_email}', '{user_login}', '{display_name}' ),
+					array($current_user->user_firstname, $current_user->user_lastname, $current_user->user_email, $current_user->user_login, $current_user->display_name ),
+					$welcome_message_text
+				);
+				
+				$output .= '<span>' . esc_html( $welcome_message_text ) . '</span>'; 
 			} else {
-				$topbar_login_register_popup = get_theme_mod( 'topbar_login_register_popup', 0 );
+				$login_register_link_text = get_theme_mod( 'login_register_link_text', '' );
+				$login_register_popup     = get_theme_mod( 'login_register_popup', 0 );
 				
 				$link_classes = array( 'botiga-login-register-link' );
 				
-				if( $topbar_login_register_popup ) {
+				if( $login_register_popup ) {
 					$link_classes[] = 'has-popup';
 				}
 
-				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'" class="'. esc_attr( implode( ' ', $link_classes ) ) .'">'. esc_html__( 'Login', 'botiga' ) .'</a>';
+				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'" class="'. esc_attr( implode( ' ', $link_classes ) ) .'">'. esc_html( $login_register_link_text ) .'</a>';
 			}
 
 			echo '<div class="header-item top-bar-login-register">';
