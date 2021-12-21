@@ -39,6 +39,7 @@ class Botiga_TinyMCE_Control extends WP_Customize_Control {
 		$this->json['botigatb1'] = isset( $this->input_attrs['toolbar1'] ) ? esc_attr( $this->input_attrs['toolbar1'] ) : 'bold italic bullist numlist alignleft aligncenter alignright link';
 		$this->json['botigatb2'] = isset( $this->input_attrs['toolbar2'] ) ? esc_attr( $this->input_attrs['toolbar2'] ) : 'formatselect outdent indent | blockquote charmap';
 		$this->json['botigamb'] = isset( $this->input_attrs['mediaButtons'] ) && ( $this->input_attrs['mediaButtons'] === true ) ? true : false;
+		$this->json['force_p_newlines '] = true;
 	}
 	/**
 	 * Render the control in the customizer

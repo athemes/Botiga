@@ -3949,6 +3949,101 @@ input.wc-block-components-price-slider__range-input {
   }
 }
 
+/* Popup
+--------------------------------------------- */
+/**
+ * Popup
+ */
+.disable-scroll {
+  overflow: hidden;
+}
+
+.botiga-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: ease all 300ms;
+  transition: ease all 300ms;
+  z-index: 9999;
+}
+
+.botiga-popup.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: visible;
+}
+
+.botiga-popup.transition-effect {
+  opacity: 1;
+}
+
+.botiga-popup.transition-effect .botiga-popup-wrapper {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.botiga-popup-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background-color: #FFF;
+  padding: 50px 40px;
+  opacity: 0;
+  max-height: 75vh;
+  overflow-y: auto;
+  -webkit-transform: translate3d(0, 20px, 0);
+          transform: translate3d(0, 20px, 0);
+  -webkit-transition: ease all 300ms 500ms;
+  transition: ease all 300ms 500ms;
+}
+
+.botiga-popup-wrapper .botiga-popup-wrapper__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50px;
+  height: 50px;
+  -webkit-transition: ease opacity 300ms;
+  transition: ease opacity 300ms;
+}
+
+.botiga-popup-wrapper .botiga-popup-wrapper__close-button svg {
+  fill: #212121;
+  width: 14px;
+}
+
+.botiga-popup-wrapper .botiga-popup-wrapper__close-button svg path {
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+}
+
+.botiga-popup-wrapper .botiga-popup-wrapper__close-button:hover {
+  opacity: 0.7;
+}
+
 /* Contact Form 7
 --------------------------------------------- */
 /* Contact Form 7 */

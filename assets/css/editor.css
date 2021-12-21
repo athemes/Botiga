@@ -2017,10 +2017,6 @@ div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-link {
   text-decoration: none;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products {
-  padding: 0 15px;
-}
-
 @media screen and (min-width: 48em) {
   div.editor-styles-wrapper ul.products.columns-1 {
     grid-template-columns: repeat(1, 1fr);

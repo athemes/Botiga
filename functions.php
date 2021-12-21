@@ -263,6 +263,7 @@ function botiga_scripts() {
 	}
 
 	wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION, true );
+	wp_register_script( 'botiga-popup', get_template_directory_uri() . '/assets/js/botiga-popup.min.js', NULL, BOTIGA_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'botiga_scripts', 10 );
 

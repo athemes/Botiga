@@ -616,7 +616,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					$link_classes[] = 'has-popup';
 				}
 
-				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'" class="'. esc_attr( implode( ' ', $link_classes ) ) .'">'. esc_html( $login_register_link_text ) .'</a>';
+				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'" data-popup-id="loginRegisterPopup" class="'. esc_attr( implode( ' ', $link_classes ) ) .'">'. esc_html( $login_register_link_text ) .'</a>';
 			}
 
 			echo '<div class="header-item header-login-register">';

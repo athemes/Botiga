@@ -507,7 +507,7 @@ jQuery( document ).ready(function($) {
 
 		wp.editor.initialize( $(this).attr('id'), {
 			tinymce: {
-				wpautop: true,
+				wpautop: false,
 				toolbar1: tinyMCEToolbar1String,
 				toolbar2: tinyMCEToolbar2String
 			},

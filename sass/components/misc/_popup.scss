@@ -1,0 +1,75 @@
+/**
+ * Popup
+ */
+
+.disable-scroll {
+    overflow: hidden;
+}
+
+.botiga-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: ease all 300ms;
+    z-index: 9999;
+
+    &.show {
+        display: flex;
+        visibility: visible;
+    }
+
+    &.transition-effect {
+        opacity: 1;
+
+        .botiga-popup-wrapper {
+            opacity: 1;
+            transform: none;
+        }
+
+    }
+}
+
+.botiga-popup-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background-color: #FFF;
+    padding: 50px 40px;
+    opacity: 0;
+    max-height: 75vh;
+    overflow-y: auto;
+    transform: translate3d(0, 20px, 0);
+    transition: ease all 300ms 500ms;
+
+    .botiga-popup-wrapper__close-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        transition: ease opacity 300ms;
+
+        svg {
+            fill: $color__primary;
+            width: 14px;
+            path {
+                transform: scale(0.75);
+            }
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

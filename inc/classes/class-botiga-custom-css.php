@@ -755,7 +755,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_color_css( 'color_link_hover', '', '.botiga-popup-wrapper .woocommerce-LostPassword a:hover, .botiga-popup-wrapper .switch-form-wrapper__link:hover, .botiga-popup-wrapper .woocommerce-privacy-policy-link:hover' );
 				$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-popup-wrapper .botiga-popup-wrapper__content .switch-form-wrapper' );
 				$css .= $this->get_fill_css( 'color_body_text', '', '.botiga-popup-wrapper .botiga-popup-wrapper__close-button svg' );
-				
+			}
+
+			// Modal Popup
+			$modal_popup_enable = get_theme_mod( 'modal_popup_enable', 0 );
+			if( $modal_popup_enable ) {
+				$css .= $this->get_max_width_css( 'modal_popup_max_width', $defaults = array( 'desktop' => 800, 'tablet' => 550, 'mobile' => 300 ), '#modalPopup .botiga-popup-wrapper' );
+				$css .= '@media(min-width: 1025px) { #modalPopup .botiga-popup-wrapper__content-side-image { max-width: '. esc_attr( get_theme_mod( 'modal_popup_side_image_max_width_desktop', 40 ) ) .'%; } }';
+				$css .= '.botiga-popup-wrapper { background-color: #'. esc_attr( $background_color ) .'; }';	
+				$css .= $this->get_fill_css( 'color_body_text', '', '.botiga-popup-wrapper .botiga-popup-wrapper__close-button svg' );			
 			}
 
 			//Tables
@@ -1084,7 +1092,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}
 		
 		//Max width
-		public static function get_max_width_css( $setting, $defaults = array(), $selector ) {
+		public static function get_max_width_css( $setting, $defaults = array(), $selector, $unit = 'px' ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1095,7 +1103,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { max-width:' . intval( $mod ) . 'px;} }' . "\n";	
+				$css .= $media . ' { ' . $selector . ' { max-width:' . intval( $mod ) . $unit . ';} }' . "\n";	
 			}
 
 			return $css;

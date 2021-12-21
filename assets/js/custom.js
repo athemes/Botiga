@@ -870,8 +870,14 @@ botiga.toggleClass = {
     event.preventDefault();
     event.stopPropagation();
     var selector = document.querySelector(el.getAttribute('data-botiga-selector')),
+        removeClass = el.getAttribute('data-botiga-toggle-class-remove'),
         classname = el.getAttribute('data-botiga-toggle-class'),
         classes = selector.classList;
+
+    if (typeof removeClass === 'string') {
+      classes.remove(removeClass);
+    }
+
     classes.toggle(classname);
 
     if (triggerEvent) {

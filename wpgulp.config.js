@@ -69,6 +69,9 @@ const custScriptsFile = 'customizer-scripts';
 // Path to JS carousel.
 const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
 
+// Path to JS popup.
+const jsPopupSRC = './assets/js/src/botiga-popup.js';
+
 // Path to JS sidebar.
 const jsSidebarSRC = './assets/js/src/botiga-sidebar.js';
 
@@ -86,6 +89,9 @@ const jsCustomFile = 'custom';
 
 // Compiled JS carousel file name.
 const jsCarouselFile = 'botiga-carousel';
+
+// Compiled JS carousel file name.
+const jsPopupFile = 'botiga-popup';
 
 // Compiled JS sidebar file name.
 const jsSidebarFile = 'botiga-sidebar';
@@ -117,6 +123,9 @@ const watchJsCustom = './assets/js/src/custom.js';
 
 // Path to all carousel JS files.
 const watchJsCarousel = './assets/js/src/botiga-carousel.js';
+
+// Path to all carousel JS files.
+const watchJsPopup = './assets/js/src/botiga-popup.js';
 
 // Path to all sidebar JS files.
 const watchJsSidebar = './assets/js/src/botiga-sidebar.js';
@@ -209,12 +218,14 @@ module.exports = {
 	custScriptsFile,
 	custFile,
 	jsCarouselSRC,
+	jsPopupSRC,
 	jsSidebarSRC,
 	jsAjaxSearchSRC,
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,
 	jsCarouselFile,
+	jsPopupFile,
 	jsSidebarFile,
 	jsAjaxSearchFile,
 	jsCustomFile,
@@ -224,6 +235,7 @@ module.exports = {
 	watchEditorStyles,
 	watchJsVendor,
 	watchJsCarousel,
+	watchJsPopup,
 	watchJsSidebar,
 	watchJsAjaxSearch,
 	watchJsCustom,

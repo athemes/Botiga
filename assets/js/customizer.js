@@ -43,7 +43,7 @@
 
   var $bg_color_options = {
     "main_header_submenu_background": ".main-navigation ul ul li",
-    "background_color": ".wc_payment_methods,.site-header-cart .widget_shopping_cart",
+    "background_color": ".wc_payment_methods,.site-header-cart .widget_shopping_cart, .botiga-popup-wrapper",
     "content_cards_background": ".checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.botiga-quick-view-popup .botiga-quick-view-popup-content,.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments,.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.sidebar-top+.widget-area .sidebar-wrapper,.woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper,.botiga-mstepc-wrapper .woocommerce-billing-fields__field-wrapper, .botiga-mstepc-wrapper .woocommerce-shipping-fields__field-wrapper, .botiga-mstepc-wrapper .woocommerce-account-fields, .botiga-mstepc-wrapper .woocommerce-additional-fields__field-wrapper, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item .step, .botiga-mstepc-wrapper .botiga-mstep-order-review",
     "color_forms_background": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]",
     "offcanvas_menu_background": ".botiga-offcanvas-menu",
@@ -144,7 +144,7 @@
     "topbar_color": ".top-bar svg:not(.stroke-based)",
     "footer_credits_text_color": ".site-info .ws-svg-icon svg",
     "desktop_offcanvas_menu_text_color": ".botiga-desktop-offcanvas .header-item svg:not(.stroke-based), .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg",
-    "color_body_text": ".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg",
+    "color_body_text": ".sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg, .botiga-popup-wrapper .botiga-popup-wrapper__close-button svg",
     "main_header_sticky_active_color": ".sticky-header-active .site-header .header-item svg:not(.stroke-based), .sticky-header-active .site-header .dropdown-symbol .ws-svg-icon svg"
   };
   $.each($fill_options, function (option, selector) {
@@ -842,7 +842,8 @@
     });
   });
   var $maxWidth = {
-    "site_logo_size": ".custom-logo-link img"
+    "site_logo_size": ".custom-logo-link img",
+    "modal_popup_max_width": "#modalPopup .botiga-popup-wrapper"
   };
   $.each($maxWidth, function (option, selector) {
     $.each($devices, function (device, mediaSize) {
@@ -850,6 +851,20 @@
         value.bind(function (to) {
           $('head').find('#botiga-customizer-styles-' + option + '_' + device).remove();
           var output = '@media ' + mediaSize + ' {' + selector + ' { max-width:' + to + 'px; } }';
+          $('head').append('<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>');
+        });
+      });
+    });
+  });
+  var $maxWidthPercent = {
+    "modal_popup_side_image_max_width": "#modalPopup .botiga-popup-wrapper__content-side-image"
+  };
+  $.each($maxWidthPercent, function (option, selector) {
+    $.each($devices, function (device, mediaSize) {
+      wp.customize(option + '_' + device, function (value) {
+        value.bind(function (to) {
+          $('head').find('#botiga-customizer-styles-' + option + '_' + device).remove();
+          var output = '@media ' + mediaSize + ' {' + selector + ' { max-width:' + to + '%; } }';
           $('head').append('<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>');
         });
       });
