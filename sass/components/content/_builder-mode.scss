@@ -14,7 +14,7 @@
 
 	.entry-content {
 		& > * {
-			max-width: 1140px;
+			max-width: calc( 1140px - 30px );
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -32,5 +32,13 @@
 			padding-left: 15px;
 		}
 
+	}
+
+	@media(max-width: 1140px) {
+		ul.wc-block-grid__products,
+		ul.products,
+		.wp-block-columns {
+			padding: 0 15px;
+		}
 	}
 }

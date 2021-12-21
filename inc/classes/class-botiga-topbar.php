@@ -235,7 +235,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 
 				$current_user = wp_get_current_user();
 
-				$welcome_message_text = get_theme_mod( 'login_register_welcome_message_text', '' );
+				$welcome_message_text = get_theme_mod( 'login_register_welcome_message_text', sprintf( esc_html__( 'Welcome %s', 'botiga' ), '{display_name}' ) );
 				$welcome_message_text = str_replace(
 					array( '{user_firstname}', '{user_lastname}', '{user_email}', '{user_login}', '{display_name}' ),
 					array($current_user->user_firstname, $current_user->user_lastname, $current_user->user_email, $current_user->user_login, $current_user->display_name ),
@@ -244,7 +244,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				
 				$output .= '<span>' . esc_html( $welcome_message_text ) . '</span>'; 
 			} else {
-				$login_register_link_text = get_theme_mod( 'login_register_link_text', '' );
+				$login_register_link_text = get_theme_mod( 'login_register_link_text', esc_html__( 'Login', 'botiga' ) );
 				$login_register_popup     = get_theme_mod( 'login_register_popup', 0 );
 				
 				$link_classes = array( 'botiga-login-register-link' );

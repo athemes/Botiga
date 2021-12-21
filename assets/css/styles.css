@@ -3355,7 +3355,7 @@ body.mobile-menu-visible {
 }
 
 .botiga-page-builder-mode .entry-content > * {
-  max-width: 1140px;
+  max-width: calc( 1140px - 30px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -3371,6 +3371,14 @@ body.mobile-menu-visible {
 .botiga-page-builder-mode .entry-content > p {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+@media (max-width: 1140px) {
+  .botiga-page-builder-mode ul.wc-block-grid__products,
+  .botiga-page-builder-mode ul.products,
+  .botiga-page-builder-mode .wp-block-columns {
+    padding: 0 15px;
+  }
 }
 
 /**
@@ -3761,13 +3769,6 @@ input.wc-block-components-price-slider__range-input {
 
 .gallery-caption {
   display: block;
-}
-
-/* Layout
---------------------------------------------- */
-.wp-block-columns {
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 /* Carousel

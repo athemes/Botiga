@@ -147,6 +147,10 @@ form.woocommerce-checkout {
 	.woocommerce-checkout-review-order {
 		background-color: #f2f2f2;
 		padding: 30px;
+
+		@media (max-width: 767px) {
+			padding: 15px;
+		}
 	}
 
 	.product-name,
