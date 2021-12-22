@@ -295,7 +295,10 @@ function botiga_wc_hooks() {
 
 	//Move cart collaterals
 	remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals' );
-	add_action( 'woocommerce_before_cart_collaterals', 'woocommerce_cart_totals' );
+	add_action( 'woocommerce_before_cart_collaterals', function() {
+		echo woocommerce_cart_totals();
+		echo '</div>';
+	} );
 
 	//Results and sorting
 	$shop_results_count 	= get_theme_mod( 'shop_results_count', 1 );
@@ -336,6 +339,7 @@ function botiga_wc_hooks() {
 
 	//Cart total sticky
 	$shop_cart_sticky_totals_box = get_theme_mod( 'shop_cart_sticky_totals_box', 0 );
+	$cart_layout                 = get_theme_mod( 'shop_cart_layout', 'layout1' ); 
 
 	if( $shop_cart_sticky_totals_box && $cart_layout === 'layout2' ) {
 		add_action( 'woocommerce_before_cart', function(){ echo '<div class="cart-totals-sticky"></div>'; }, 999 );

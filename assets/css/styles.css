@@ -4051,6 +4051,73 @@ input.wc-block-components-price-slider__range-input {
   margin: 0;
 }
 
+/* WPForms
+--------------------------------------------- */
+/* WPForms */
+.wpforms-field input[type="text"],
+.wpforms-field input[type="email"],
+.wpforms-field input[type="url"],
+.wpforms-field input[type="password"],
+.wpforms-field input[type="search"],
+.wpforms-field input[type="number"],
+.wpforms-field input[type="tel"],
+.wpforms-field input[type="date"],
+.wpforms-field input[type="month"],
+.wpforms-field input[type="week"],
+.wpforms-field input[type="time"],
+.wpforms-field input[type="datetime"],
+.wpforms-field input[type="datetime-local"],
+.wpforms-field input[type="color"],
+.wpforms-field textarea,
+.wpforms-field select {
+  border-radius: 0 !important;
+  padding: 12px 16px !important;
+  min-height: 51px !important;
+}
+
+.wpforms-field input[type="text"]:focus,
+.wpforms-field input[type="email"]:focus,
+.wpforms-field input[type="url"]:focus,
+.wpforms-field input[type="password"]:focus,
+.wpforms-field input[type="search"]:focus,
+.wpforms-field input[type="number"]:focus,
+.wpforms-field input[type="tel"]:focus,
+.wpforms-field input[type="date"]:focus,
+.wpforms-field input[type="month"]:focus,
+.wpforms-field input[type="week"]:focus,
+.wpforms-field input[type="time"]:focus,
+.wpforms-field input[type="datetime"]:focus,
+.wpforms-field input[type="datetime-local"]:focus,
+.wpforms-field input[type="color"]:focus,
+.wpforms-field textarea:focus,
+.wpforms-field select:focus {
+  outline: none !important;
+  -webkit-box-shadow: 0 0 0 1px !important;
+          box-shadow: 0 0 0 1px !important;
+}
+
+.wpforms-field input[type="range"] {
+  height: 0 !important;
+  min-height: 0;
+  border-radius: 0 !important;
+  margin-top: 22px !important;
+}
+
+.wpforms-field .wpforms-field-number-slider-hint {
+  margin-top: 15px !important;
+}
+
+.wpforms-field-label {
+  margin-bottom: 15px !important;
+}
+
+/* Editor Blocks (GB)
+--------------------------------------------- */
+/* Image Block */
+.wp-block-image figcaption {
+  text-align: center;
+}
+
 /* Ajax Search
 --------------------------------------------- */
 /**

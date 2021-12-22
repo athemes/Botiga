@@ -805,6 +805,37 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_product_tag_cloud .tag-cloud-link:hover' );
 			$css .= $this->get_background_color_css( 'button_background_color', '', '.widget_price_filter .ui-slider .ui-slider-handle' );
 			$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_price_filter .ui-slider .ui-slider-handle:hover' );
+
+			//WPForms
+			if( defined( 'WPFORMS_VERSION' ) ) {
+				$css .= $this->get_color_css( 'color_forms_text', '', '.wpforms-field input[type="text"], .wpforms-field input[type="email"], .wpforms-field input[type="url"], .wpforms-field input[type="password"], .wpforms-field input[type="search"], .wpforms-field input[type="number"], .wpforms-field input[type="tel"], .wpforms-field input[type="range"], .wpforms-field input[type="date"], .wpforms-field input[type="month"], .wpforms-field input[type="week"], .wpforms-field input[type="time"], .wpforms-field input[type="datetime"], .wpforms-field input[type="datetime-local"], .wpforms-field input[type="color"], .wpforms-field textarea, .wpforms-field select', true );
+				$css .= $this->get_background_color_css( 'color_forms_text', '', 'div.wpforms-container-full .wpforms-form .wpforms-field-number-slider input[type=range]::-webkit-slider-thumb', true );
+				$css .= $this->get_background_color_css( 'color_forms_background', '', '.wpforms-field input[type="text"], .wpforms-field input[type="email"], .wpforms-field input[type="url"], .wpforms-field input[type="password"], .wpforms-field input[type="search"], .wpforms-field input[type="number"], .wpforms-field input[type="tel"], .wpforms-field input[type="range"], .wpforms-field input[type="date"], .wpforms-field input[type="month"], .wpforms-field input[type="week"], .wpforms-field input[type="time"], .wpforms-field input[type="datetime"], .wpforms-field input[type="datetime-local"], .wpforms-field input[type="color"], .wpforms-field textarea, .wpforms-field select', true );
+				$css .= ".wpforms-field input[type=\"text\"], .wpforms-field input[type=\"email\"], .wpforms-field input[type=\"url\"], .wpforms-field input[type=\"password\"], .wpforms-field input[type=\"search\"], .wpforms-field input[type=\"number\"], .wpforms-field input[type=\"tel\"], .wpforms-field input[type=\"range\"], .wpforms-field input[type=\"date\"], .wpforms-field input[type=\"month\"], .wpforms-field input[type=\"week\"], .wpforms-field input[type=\"time\"], .wpforms-field input[type=\"datetime\"], .wpforms-field input[type=\"datetime-local\"], .wpforms-field input[type=\"color\"], .wpforms-field textarea, .wpforms-field select { border-color:" . esc_attr( $color_forms_borders ) . " !important;}" . "\n";
+				$css .= ".wpforms-field ::placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;opacity:1;}" . "\n";
+				$css .= ".wpforms-field :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
+				$css .= ".wpforms-field ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
+
+				// button
+				$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), '.wpforms-submit', true );
+				$css .= $this->get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '.wpforms-submit', true );
+
+				$css .= ".wpforms-submit { border-radius:" . intval( $button_border_radius ) . "px !important;}" . "\n";
+
+				$css .= $this->get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), '.wpforms-submit', true );
+				$css .= $this->get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), '.wpforms-submit', true );
+
+				$css .= ".wpforms-submit { text-transform:" . esc_attr( $button_text_transform ) . " !important;}" . "\n";
+
+				$css .= $this->get_background_color_css( 'button_background_color', '#212121', '.wpforms-submit', true );			
+				$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.wpforms-submit:hover', true );			
+
+				$css .= $this->get_color_css( 'button_color', '#FFF', '.wpforms-submit', true );			
+				$css .= $this->get_color_css( 'button_color_hover', '#FFF', '.wpforms-submit:hover', true );
+				
+				$css .= ".wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
+				$css .= ".wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
+			}
 			
 			//Gutenberg palettes
 			$palettes = botiga_global_color_palettes();
@@ -1110,36 +1141,40 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}			
 
 		//Top bottom padding
-		public static function get_top_bottom_padding_css( $setting, $defaults = array(), $selector ) {
+		public static function get_top_bottom_padding_css( $setting, $defaults = array(), $selector, $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
 				'mobile'	=> '@media (max-width: 575px)'
 			);
 
+			$important = $important ? ' !important' : ''; 
+
 			$css = '';
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { padding-top:' . intval( $mod ) . 'px;padding-bottom:' . intval( $mod ) . 'px;} }' . "\n";	
+				$css .= $media . ' { ' . $selector . ' { padding-top:' . intval( $mod ) . 'px'. $important .'; padding-bottom:' . intval( $mod ) . 'px'. $important .';} }' . "\n";	
 			}
 
 			return $css;
 		}	
 
 		//Left right padding
-		public static function get_left_right_padding_css( $setting, $defaults = array(), $selector ) {
+		public static function get_left_right_padding_css( $setting, $defaults = array(), $selector, $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
 				'mobile'	=> '@media (max-width: 575px)'
 			);
 
+			$important = $important ? ' !important' : '';
+
 			$css = '';
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { padding-left:' . intval( $mod ) . 'px;padding-right:' . intval( $mod ) . 'px;} }' . "\n";	
+				$css .= $media . ' { ' . $selector . ' { padding-left:' . intval( $mod ) . 'px'. $important .';padding-right:' . intval( $mod ) . 'px'. $important .';} }' . "\n";	
 			}
 
 			return $css;

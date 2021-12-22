@@ -11,7 +11,7 @@ botiga.popup = {
     init: function() {
         const _this = this,
             buttons = document.querySelectorAll( '.has-popup' );
-        
+
         if( ! buttons.length ) {
             return false;
         }
@@ -61,6 +61,25 @@ botiga.popup = {
      * Open the popup
      */
     openPopup: function( popup ) {
+        const is_customizer = document.getElementById( 'customize-preview-js' ) === null ? false : true; 
+
+        if( ! is_customizer && parseInt( popup.getAttribute( 'data-cookie' ) ) && botiga.helpers.getCookie( popup.getAttribute( 'data-cookie-name' ) ) ) {
+            return false;
+        }
+
+        // Open the popup inside customizer only when it's handling with Modal Popup customizer section
+        if( is_customizer ) {
+            const customizer_section = window.parent.window.document.querySelector( '.control-section.open' );
+            if( customizer_section === null ) {
+                return false;
+            }
+
+            const is_modal_popup_section = customizer_section.id.indexOf( 'botiga_section_modal_popup' ) > 0;
+            if( ! is_modal_popup_section ) {
+                return false;
+            }
+        }
+
         popup.classList.add( 'show' );
 
         setTimeout(function(){
@@ -76,9 +95,16 @@ botiga.popup = {
     closePopup: function() {
         event.preventDefault();
 
+        const is_customizer = document.getElementById( 'customize-preview-js' ) === null ? false : true; 
+
         const popups = document.querySelectorAll( '.botiga-popup' );
         for( let i=0;i<popups.length;i++ ) {
             const popup = popups[i];
+
+            if( ! is_customizer && parseInt( popup.getAttribute( 'data-cookie' ) ) ) {
+                botiga.helpers.setCookie( popup.getAttribute( 'data-cookie-name' ), 1, popup.getAttribute( 'data-cookie-expiration' ) );
+            }
+
             popup.classList.remove( 'transition-effect' );
 
             setTimeout(function(){

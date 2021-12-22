@@ -63,6 +63,27 @@ botiga.popup = {
    * Open the popup
    */
   openPopup: function openPopup(popup) {
+    var is_customizer = document.getElementById('customize-preview-js') === null ? false : true;
+
+    if (!is_customizer && parseInt(popup.getAttribute('data-cookie')) && botiga.helpers.getCookie(popup.getAttribute('data-cookie-name'))) {
+      return false;
+    } // Open the popup inside customizer only when it's handling with Modal Popup customizer section
+
+
+    if (is_customizer) {
+      var customizer_section = window.parent.window.document.querySelector('.control-section.open');
+
+      if (customizer_section === null) {
+        return false;
+      }
+
+      var is_modal_popup_section = customizer_section.id.indexOf('botiga_section_modal_popup') > 0;
+
+      if (!is_modal_popup_section) {
+        return false;
+      }
+    }
+
     popup.classList.add('show');
     setTimeout(function () {
       popup.classList.add('transition-effect');
@@ -75,10 +96,16 @@ botiga.popup = {
    */
   closePopup: function closePopup() {
     event.preventDefault();
+    var is_customizer = document.getElementById('customize-preview-js') === null ? false : true;
     var popups = document.querySelectorAll('.botiga-popup');
 
     var _loop2 = function _loop2(i) {
       var popup = popups[i];
+
+      if (!is_customizer && parseInt(popup.getAttribute('data-cookie'))) {
+        botiga.helpers.setCookie(popup.getAttribute('data-cookie-name'), 1, popup.getAttribute('data-cookie-expiration'));
+      }
+
       popup.classList.remove('transition-effect');
       setTimeout(function () {
         popup.classList.remove('show');

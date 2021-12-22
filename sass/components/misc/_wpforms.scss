@@ -1,0 +1,43 @@
+/* WPForms */
+.wpforms-field {
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="month"],
+    input[type="week"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="color"],
+    textarea,
+    select {
+        border-radius: 0 !important;
+        padding: 12px 16px !important;
+        min-height: 51px !important;
+    
+        &:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 1px !important;
+        }
+    }
+
+    input[type="range"] {
+        height: 0 !important;
+        min-height: 0;
+        border-radius: 0 !important;
+        margin-top: 22px !important;
+    }
+
+    .wpforms-field-number-slider-hint {
+        margin-top: 15px !important;
+    }
+}
+
+.wpforms-field-label {
+    margin-bottom: 15px !important;
+}
