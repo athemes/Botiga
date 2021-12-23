@@ -235,6 +235,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 
 				$current_user = wp_get_current_user();
 
+				/* translators: 1: display name. */
 				$welcome_message_text = get_theme_mod( 'login_register_welcome_message_text', sprintf( esc_html__( 'Welcome %s', 'botiga' ), '{display_name}' ) );
 				$welcome_message_text = str_replace(
 					array( '{user_firstname}', '{user_lastname}', '{user_email}', '{user_login}', '{display_name}' ),
@@ -242,7 +243,15 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 					$welcome_message_text
 				);
 				
-				$output .= '<span>' . esc_html( $welcome_message_text ) . '</span>'; 
+				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">' . esc_html( $welcome_message_text ) . '</a>'; 
+				$output .= '<nav>';
+					$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">'. esc_html__( 'Dashboard', 'botiga' ) .'</a>';
+					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'orders' ) ) .'">'. esc_html__( 'Orders', 'botiga' ) .'</a>';
+					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'downloads' ) ) .'">'. esc_html__( 'Downloads', 'botiga' ) .'</a>';
+					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'edit-address' ) ) .'">'. esc_html__( 'Addresses', 'botiga' ) .'</a>';
+					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'edit-account' ) ) .'">'. esc_html__( 'Account Details', 'botiga' ) .'</a>';
+					$output .= '<a href="'. esc_url( wc_logout_url() ) .'">'. esc_html__( 'Logout', 'botiga' ) .'</a>';
+				$output .= '</nav>';
 			} else {
 				$login_register_link_text = get_theme_mod( 'login_register_link_text', esc_html__( 'Login', 'botiga' ) );
 				$login_register_popup     = get_theme_mod( 'login_register_popup', 0 );
@@ -257,7 +266,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 			}
 
 			echo '<div class="header-item top-bar-login-register">';
-				echo $output;
+				echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 			echo '</div>';
 		}
 	}

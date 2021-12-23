@@ -85,7 +85,7 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 		<?php endif; ?>	
 
 		<?php if ( $show_cart ) : ?>
-		<div id="site-header-cart" class="site-header-cart header-item mini-cart-<?php echo ( count( WC()->cart->get_cart() ) > 3 ? 'has-scroll' : 'has-no-scroll' ); ?>">
+		<div id="site-header-cart" class="site-header-cart header-item mini-cart-<?php echo ( count( WC()->cart->get_cart() ) > 2 ? 'has-scroll' : 'has-no-scroll' ); ?>">
 			<div class="<?php echo esc_attr( $class ); ?>">
 				<?php echo botiga_woocommerce_cart_link();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>

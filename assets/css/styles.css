@@ -2409,6 +2409,87 @@ body.mobile-menu-visible {
   margin-right: 0;
 }
 
+.header-login-register,
+.top-bar-login-register {
+  position: relative;
+  z-index: 9999999;
+}
+
+.header-login-register > a,
+.top-bar-login-register > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0;
+}
+
+.header-login-register > a:after,
+.top-bar-login-register > a:after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid #212121;
+  border-right: 1px solid #212121;
+  margin-left: 10px;
+  margin-top: -4px;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.header-login-register nav,
+.top-bar-login-register nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.09);
+          box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.09);
+  min-width: 230px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(0, 15px, 0);
+          transform: translate3d(0, 15px, 0);
+  -webkit-transition: ease opacity 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease transform 300ms;
+}
+
+.header-login-register nav > a,
+.top-bar-login-register nav > a {
+  padding: 15px;
+}
+
+.header-login-register nav > a + a,
+.top-bar-login-register nav > a + a {
+  border-top: 1px solid rgba(33, 33, 33, 0.1);
+}
+
+.header-login-register nav.sub-menu-reverse,
+.top-bar-login-register nav.sub-menu-reverse {
+  left: auto;
+  right: 0;
+}
+
+.header-login-register:hover nav,
+.top-bar-login-register:hover nav {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.top-bar-login-register > a {
+  padding: 10px 0;
+}
+
 .top-bar-contact a i,
 .header-contact a i {
   margin-right: 5px;
@@ -4012,9 +4093,9 @@ input.wc-block-components-price-slider__range-input {
 }
 
 .botiga-popup-wrapper .botiga-popup-wrapper__close-button {
-  position: absolute;
+  position: sticky;
   top: 0;
-  right: 0;
+  margin: -50px -40px 0px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4026,6 +4107,8 @@ input.wc-block-components-price-slider__range-input {
           justify-content: center;
   width: 50px;
   height: 50px;
+  -webkit-transform: translate3d(0, -51px, 0);
+          transform: translate3d(0, -51px, 0);
   -webkit-transition: ease opacity 300ms;
   transition: ease opacity 300ms;
 }

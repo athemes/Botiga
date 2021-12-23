@@ -36,7 +36,7 @@ botiga.ajaxSearch = {
 
     searchFormHandler: function( el ){
 
-        if( el.value === '' ) {
+        if( el.value.length < 3 ) {
             return false;
         }
 

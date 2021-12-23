@@ -72,7 +72,7 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	// Get visible recently viewed products then sort them at random.
-	$args['products'] = array_filter( array_map( 'wc_get_product', explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) ), 'wc_products_array_filter_visible' );
+	$args['products'] = array_filter( array_map( 'wc_get_product', explode( '|', sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) ) ), 'wc_products_array_filter_visible' );
 
 	// Handle orderby.
 	$products = array_slice( wc_products_array_orderby( $args['products'], $args['orderby'], $args['order'] ), 0, $posts_per_page ); 
@@ -114,9 +114,9 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 
 		echo '<div '. implode( ' ', $wrapper_atts ) .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 			echo '<ul class="products columns-'. esc_attr( $columns ) .' row botiga-carousel-stage">';
-				foreach ( $products as $product ) :
+				foreach ( $products as $p ) :
 	
-					$post_object = get_post( $product->get_id() );
+					$post_object = get_post( $p->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 

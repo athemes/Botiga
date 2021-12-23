@@ -1002,6 +1002,21 @@ p.no-comments {
 				position: relative;
 				padding: 30px;
 				margin-top: 10px;
+				max-height: 24vh;
+				min-height: 224px;
+				overflow-y: auto;
+
+				&::-webkit-scrollbar {
+					width: 4px;
+				}
+				 
+				&::-webkit-scrollbar-track {
+					background: #e2e2e2;
+				}
+				 
+				&::-webkit-scrollbar-thumb {
+					background-color: #CCC;
+				}
 
 				&:before {
 					content: '';
@@ -1024,7 +1039,7 @@ p.no-comments {
 				}
 
 				h2 {
-					font-size: 1.3rem;
+					font-size: 1rem;
 					margin-bottom: 19px;
 					margin-top: 0;
 				}
@@ -1127,7 +1142,7 @@ p.no-comments {
 			box-shadow: none;
 			max-width: 100%;
 			&::-webkit-scrollbar {
-				width: 7px;
+				width: 4px;
 			}
 			 
 			&::-webkit-scrollbar-track {
@@ -1205,8 +1220,8 @@ p.no-comments {
 		
 		&.mini-cart-has-scroll {
 			.product_list_widget {
-				max-height: 30vh;
-				min-height: 300px;
+				max-height: 26vh;
+				min-height: 260px;
 				overflow-y: auto;
 			}
 		}

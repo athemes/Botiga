@@ -182,10 +182,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
-			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a' );
+			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .header-login-register>a, .header-login-register nav>a, .top-bar-login-register>a, .top-bar-login-register nav>a' );
 			$css .= $this->get_border_color_css( 'main_header_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header .header-item svg:not(.stroke-based), .site-header .dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_color', '', '.site-header .header-item svg.stroke-based' );
+			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
+			
 
 			$css .= $this->get_background_color_css( 'main_header_bottom_background', '', '.bottom-header-row' );
 			$css .= $this->get_color_css( 'main_header_bottom_color', '', '.bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .main-navigation .menu > li > a' );
@@ -199,8 +201,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$main_header_bottom_padding = get_theme_mod( 'main_header_bottom_padding', 15 );
 			$css .= ".bottom-header-inner { padding-top:" . esc_attr( $main_header_bottom_padding ) . 'px;padding-bottom:' . esc_attr( $main_header_bottom_padding ) . "px;}" . "\n";
 
-			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.main-navigation ul ul li' );
+			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.main-navigation ul ul li, .header-login-register nav, .top-bar-login-register nav' );
 			$css .= $this->get_color_css( 'main_header_submenu_color', '', '.main-navigation ul ul a' );
+
+			$main_header_color = get_theme_mod( 'main_header_color', '#212121' );
+			$css .= '.header-login-register nav>a+a, .top-bar-login-register nav>a+a { border-top-color: '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $main_header_color, '0.08' ) ) .'; }';
+			$css .= '.header-login-register >a:after, .top-bar-login-register >a:after { border-top-color: '. esc_attr( $main_header_color ) .'; border-right-color: '. esc_attr( $main_header_color ) .'; }';
 
 			//Sticky header active state
 			$sticky_header = get_theme_mod( 'enable_sticky_header', 0 );

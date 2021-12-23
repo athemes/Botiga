@@ -296,7 +296,7 @@ function botiga_wc_hooks() {
 	//Move cart collaterals
 	remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals' );
 	add_action( 'woocommerce_before_cart_collaterals', function() {
-		echo woocommerce_cart_totals();
+		echo woocommerce_cart_totals(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</div>';
 	} );
 
@@ -391,14 +391,28 @@ function botiga_single_addtocart_wrapper_close() {
  * Quantity buttons
  */
 function botiga_woocommerce_before_quantity_input_field() {
-	echo '<a href="#" class="botiga-quantity-minus" role="button">'. esc_html( '-', 'botiga' ) .'</a>';
+	echo '<a href="#" class="botiga-quantity-minus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'minus' ) ) .'</a>';
 }
 add_action( 'woocommerce_before_quantity_input_field', 'botiga_woocommerce_before_quantity_input_field' );
 
 function botiga_woocommerce_after_quantity_input_field() {
-	echo '<a href="#" class="botiga-quantity-plus" role="button">'. esc_html( '+', 'botiga' ) .'</a>';
+	echo '<a href="#" class="botiga-quantity-plus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'plus' ) ) .'</a>';
 }
 add_action( 'woocommerce_after_quantity_input_field', 'botiga_woocommerce_after_quantity_input_field' );
+
+function botiga_get_quantity_symbols_output( $type = 'plus' ) {
+	$qty_style = get_theme_mod( 'shop_general_quantity_style', 'style1' );
+
+	if( in_array( $qty_style, array( 'style1', 'style2', 'style4', 'style5', 'style6', 'style8' ) ) ) {
+		if( $type === 'plus' ) {
+			return '+';
+		} else {
+			return '-';
+		}
+	}
+
+	return '';
+}
 
 /**
  * Loop product category
@@ -520,74 +534,74 @@ add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
 /**
  * Header Mini Cart
  */
-require get_template_directory() . '/inc/woocommerce/features/mini-cart.php';
+require get_template_directory() . '/inc/woocommerce/features/mini-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Shop Page Header
  */
-require get_template_directory() . '/inc/woocommerce/features/wc-page-header.php';
+require get_template_directory() . '/inc/woocommerce/features/wc-page-header.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Sale Badge
  */
-require get_template_directory() . '/inc/woocommerce/features/sale-badge.php';
+require get_template_directory() . '/inc/woocommerce/features/sale-badge.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Quick View
  */
-require get_template_directory() . '/inc/woocommerce/features/quick-view.php';
+require get_template_directory() . '/inc/woocommerce/features/quick-view.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Quick View
  */
-require get_template_directory() . '/inc/woocommerce/features/wishlist.php';
+require get_template_directory() . '/inc/woocommerce/features/wishlist.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Cross Sell
  */
-require get_template_directory() . '/inc/woocommerce/features/cross-sell.php';
+require get_template_directory() . '/inc/woocommerce/features/cross-sell.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Sticky Add To Cart
  */
-require get_template_directory() . '/inc/woocommerce/features/sticky-add-to-cart.php';
+require get_template_directory() . '/inc/woocommerce/features/sticky-add-to-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Product Card
  */
-require get_template_directory() . '/inc/woocommerce/features/product-card.php';
+require get_template_directory() . '/inc/woocommerce/features/product-card.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Single Product Gallery
  */
-require get_template_directory() . '/inc/woocommerce/features/single-product-gallery.php';
+require get_template_directory() . '/inc/woocommerce/features/single-product-gallery.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Upsell Products
  */
-require get_template_directory() . '/inc/woocommerce/features/upsell-products.php';
+require get_template_directory() . '/inc/woocommerce/features/upsell-products.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Related Products
  */
-require get_template_directory() . '/inc/woocommerce/features/related-products.php';
+require get_template_directory() . '/inc/woocommerce/features/related-products.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Recently viewed products
  */
-require get_template_directory() . '/inc/woocommerce/features/recently-viewed-products.php';
+require get_template_directory() . '/inc/woocommerce/features/recently-viewed-products.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * WooCommerce GB Blocks
  */
-require get_template_directory() . '/inc/woocommerce/features/wc-editor-blocks.php';
+require get_template_directory() . '/inc/woocommerce/features/wc-editor-blocks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * WooCommerce Template Functions
  */
-require get_template_directory() . '/inc/woocommerce/woocommerce-template-functions.php';
+require get_template_directory() . '/inc/woocommerce/woocommerce-template-functions.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * WooCommerce Ajax Callbacks
  */
-require get_template_directory() . '/inc/woocommerce/woocommerce-ajax-callbacks.php';
+require get_template_directory() . '/inc/woocommerce/woocommerce-ajax-callbacks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

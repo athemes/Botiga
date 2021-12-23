@@ -158,13 +158,23 @@
 		padding-left: 40px;
 	}
 
+	.product_title {
+		margin-bottom: 20px;
+	}
+
 	.divider {
-		margin-top: 40px;
+		margin-top: 25px;
+	}
+
+	.woocommerce-product-rating {
+		margin-top: 0;
+		margin-bottom: 20px;
 	}
 
 	.product_meta {
 		@include font-size(14);
 		color: $color__primary;
+		margin-bottom: 20px;
 
 		a {
 			color: $color__primary;
@@ -187,7 +197,7 @@
 
 	.price {
 		@include font-size(24);
-		margin-bottom: 25px;
+		margin-bottom: 20px;
 
 		del {
 			@include font-size(16);
@@ -198,6 +208,7 @@
 
 	form.cart {
 		flex-wrap: wrap;
+		margin-bottom: 25px;
 
 		& + .product_meta {
 			margin-top: 30px;
@@ -577,6 +588,19 @@
 
 	.products {
 		overflow: hidden;
+	}
+}
+
+.upsells.products {
+	& + .related.products,
+	& + .recently-viewed-products {
+		margin-top: 80px;
+	}
+}
+
+.related.products {
+	& + .recently-viewed-products {
+		margin-top: 80px;
 	}
 }
 

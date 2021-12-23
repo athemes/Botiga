@@ -130,13 +130,13 @@ $wp_customize->add_control(
 	)
 );
 
-$defaults = botiga_get_default_single_product_components();
-$choices  = botiga_single_product_elements();
+$botiga_defaults = botiga_get_default_single_product_components();
+$botiga_choices  = botiga_single_product_elements();
 
 $wp_customize->add_setting( 
 	'single_product_elements_order', 
 	array(
-		'default'  			=> $defaults,
+		'default'  			=> $botiga_defaults,
 		'sanitize_callback'	=> 'botiga_sanitize_single_product_components'
 	) 
 );
@@ -147,7 +147,7 @@ $wp_customize->add_control( new \Kirki\Control\Sortable(
 	array(
 		'label'   		=> esc_html__( 'Elements', 'botiga' ),
 		'section' => 'botiga_section_single_product',
-		'choices' => $choices,
+		'choices' => $botiga_choices,
 		'active_callback' => 'botiga_single_product_elements_show',
 		'priority'     => 51
 	) ) 

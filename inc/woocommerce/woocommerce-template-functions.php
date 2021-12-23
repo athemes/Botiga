@@ -35,7 +35,7 @@ function botiga_single_product_elements() {
 		'woocommerce_template_single_title' 	  => esc_html__( 'Product Title', 'botiga' ),
 		'woocommerce_template_single_rating' 	  => esc_html__( 'Rating', 'botiga' ),
 		'woocommerce_template_single_price'		  => esc_html__( 'Price', 'botiga' ),
-		'woocommerce_template_single_excerpt' 	  => esc_html__( 'Brief Description', 'botiga' ),
+		'woocommerce_template_single_excerpt' 	  => esc_html__( 'Short Description', 'botiga' ),
 		'woocommerce_template_single_add_to_cart' => esc_html__( 'Add to Cart', 'botiga' ),
 		'botiga_divider_output'                   => esc_Html__( 'Divider', 'botiga' ),
 		'woocommerce_template_single_meta' 		  => esc_html__( 'Meta', 'botiga' )

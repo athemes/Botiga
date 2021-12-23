@@ -42,7 +42,7 @@
   }); //Background colors
 
   var $bg_color_options = {
-    "main_header_submenu_background": ".main-navigation ul ul li",
+    "main_header_submenu_background": ".main-navigation ul ul li, .main-navigation ul ul li, .header-login-register nav, .top-bar-login-register nav",
     "background_color": ".wc_payment_methods,.site-header-cart .widget_shopping_cart, .botiga-popup-wrapper",
     "content_cards_background": ".checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p,.shop_table.order_details, .shop_table.woocommerce-MyAccount-orders,.botiga-quick-view-popup .botiga-quick-view-popup-content,.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments,.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.sidebar-top+.widget-area .sidebar-wrapper,.woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper,.botiga-mstepc-wrapper .woocommerce-billing-fields__field-wrapper, .botiga-mstepc-wrapper .woocommerce-shipping-fields__field-wrapper, .botiga-mstepc-wrapper .woocommerce-account-fields, .botiga-mstepc-wrapper .woocommerce-additional-fields__field-wrapper, .botiga-mstepc-wrapper .botiga-mstepc-tabs-nav .botiga-mstepc-tabs-nav-item .step, .botiga-mstepc-wrapper .botiga-mstep-order-review",
     "color_forms_background": "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"]",
@@ -114,7 +114,7 @@
     "single_post_meta_color": ".single .entry-meta a",
     "single_post_title_color": ".single .entry-header .entry-title",
     "main_header_bottom_color": ".bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .main-navigation .menu > li > a",
-    "main_header_color": ".site-header .site-title a,.site-header .main-navigation .menu > li > a, .site-header .header-contact a",
+    "main_header_color": ".site-header .site-title a,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .header-login-register>a, .header-login-register nav>a, .top-bar-login-register>a, .top-bar-login-register nav>a",
     "scrolltop_color": ".back-to-top",
     "topbar_color": ".top-bar, .top-bar a",
     "footer_credits_text_color": ".site-info",
@@ -1297,6 +1297,18 @@
     prop: "border-color",
     condition: "shop_general_quantity_style",
     cond_value: "style9",
+    pseudo: true
+  }, // Header Login/Register
+  {
+    option: "main_header_color",
+    selector: ".header-login-register nav>a+a, .top-bar-login-register nav>a+a",
+    prop: "border-top-color",
+    pseudo: true,
+    rgba: 0.08
+  }, {
+    option: "main_header_color",
+    selector: ".header-login-register>a:after, .top-bar-login-register>a:after",
+    prop: ["border-top-color", "border-right-color"],
     pseudo: true
   }];
   $.each($color_options, function (key, css) {

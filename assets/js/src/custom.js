@@ -216,7 +216,42 @@ botiga.helpers = {
 				menuItem.classList.toggle( 'focus' );
 			}
 		}
+
+		// Menu reverse
+		this.checkMenuReverse();
+
 	},
+
+	/* 
+	* Check if sub-menu items are visible. If not, reverse the item position 
+	*/
+	checkMenuReverse: function() {	
+		const items = document.querySelectorAll( '.header-login-register, .top-bar-login-register' );
+		for( let i=0;i<items.length;i++ ) {
+			items[i].removeEventListener( 'mouseover', this.menuReverseEventHandler );
+			items[i].addEventListener( 'mouseover', this.menuReverseEventHandler );
+		}
+	},
+
+	menuReverseEventHandler: function() {
+		var submenus = event.currentTarget.querySelectorAll( '.header-login-register>nav, .top-bar-login-register>nav' );
+		for( let i=0;i<submenus.length;i++ ) {
+			if( isInViewport( submenus[i] ) == false ) {
+				submenus[i].classList.add( 'sub-menu-reverse' );
+			}
+		}
+
+		function isInViewport(el) {
+			const rect = el.getBoundingClientRect();
+			return (
+				rect.top >= 0 &&
+				rect.left >= 0 &&
+				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+				rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+			);
+		}
+	}
+
 };
 
 /**
@@ -810,6 +845,18 @@ botiga.carousel = {
 
 			jQuery( document.body ).on( 'wc_fragment_refresh added_to_cart removed_from_cart', function(){
 				setTimeout(function(){
+					var mini_cart 	   = document.getElementById( 'site-header-cart' ),
+						mini_cart_list = mini_cart.querySelector( '.cart_list' ); 
+
+					if( mini_cart_list !== null ) {
+						if( mini_cart_list.children.length > 2 ) {
+							mini_cart.classList.remove( 'mini-cart-has-no-scroll' );
+							mini_cart.classList.add( 'mini-cart-has-scroll' );
+						} else {
+							mini_cart.classList.remove( 'mini-cart-has-scroll' );
+							mini_cart.classList.add( 'mini-cart-has-no-scroll' );
+						}
+					}
 					_this.build();
 
 					onpageload = false;
