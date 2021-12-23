@@ -177,12 +177,36 @@ msgstr ""
 msgid "111222333"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:610, inc/classes/class-botiga-topbar.php:247
+#: inc/classes/class-botiga-header.php:619, inc/classes/class-botiga-topbar.php:256
 msgid "Login"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:601, inc/classes/class-botiga-topbar.php:238
+#: inc/classes/class-botiga-header.php:602, inc/classes/class-botiga-topbar.php:239
 msgid "Welcome %s"
+msgstr ""
+
+#: inc/classes/class-botiga-header.php:611, inc/classes/class-botiga-topbar.php:248
+msgid "Dashboard"
+msgstr ""
+
+#: inc/classes/class-botiga-header.php:612, inc/classes/class-botiga-topbar.php:249
+msgid "Orders"
+msgstr ""
+
+#: inc/classes/class-botiga-header.php:613, inc/classes/class-botiga-topbar.php:250
+msgid "Downloads"
+msgstr ""
+
+#: inc/classes/class-botiga-header.php:614, inc/classes/class-botiga-topbar.php:251
+msgid "Addresses"
+msgstr ""
+
+#: inc/classes/class-botiga-header.php:615, inc/classes/class-botiga-topbar.php:252
+msgid "Account Details"
+msgstr ""
+
+#: inc/classes/class-botiga-header.php:616, inc/classes/class-botiga-topbar.php:253
+msgid "Logout"
 msgstr ""
 
 #: inc/classes/class-botiga-page-metabox.php:40
@@ -1828,7 +1852,7 @@ msgid "Rating"
 msgstr ""
 
 #: inc/woocommerce/woocommerce-template-functions.php:38
-msgid "Brief Description"
+msgid "Short Description"
 msgstr ""
 
 #: inc/woocommerce/woocommerce-template-functions.php:39, template-parts/content-sticky-add-to-cart.php:41, template-parts/content-wishlist.php:82, template-parts/content-wishlist.php:105
