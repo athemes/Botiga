@@ -47,3 +47,17 @@ a.wc-backward {
 		border-radius: 0;
 	}
 }
+
+#coupon_code {
+	& + .button {
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+}
+
+.checkout_coupon.woocommerce-form-coupon {
+	.button[name="apply_coupon"] {
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+}

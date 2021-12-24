@@ -415,7 +415,7 @@
 .top-bar-login-register {
     position: relative;
     z-index: 9999999;
-    > a {
+    > a:not(.botiga-login-register-link) {
         display: flex;
         align-items: center;
         padding: 20px 0;
@@ -466,7 +466,7 @@
 
 .top-bar-login-register {
     > a {
-        padding: 10px 0;
+        padding: 4px !important;
     }
 }
 

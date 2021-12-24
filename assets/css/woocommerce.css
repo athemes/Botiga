@@ -3391,6 +3391,28 @@ form.woocommerce-checkout {
   }
 }
 
+/* Coupon */
+.checkout_coupon.woocommerce-form-coupon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.checkout_coupon.woocommerce-form-coupon > p:first-child {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.checkout_coupon.woocommerce-form-coupon > p.form-row-first, .checkout_coupon.woocommerce-form-coupon > p.form-row-last {
+  margin-bottom: 10px;
+}
+
+.checkout_coupon.woocommerce-form-coupon #coupon_code {
+  height: 100%;
+}
+
 /**
  * General WooCommerce components
  */

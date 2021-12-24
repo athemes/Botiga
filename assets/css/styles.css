@@ -737,6 +737,16 @@ a.wc-backward {
   border-radius: 0;
 }
 
+#coupon_code + .button {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.checkout_coupon.woocommerce-form-coupon .button[name="apply_coupon"] {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -2415,8 +2425,8 @@ body.mobile-menu-visible {
   z-index: 9999999;
 }
 
-.header-login-register > a,
-.top-bar-login-register > a {
+.header-login-register > a:not(.botiga-login-register-link),
+.top-bar-login-register > a:not(.botiga-login-register-link) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2426,8 +2436,8 @@ body.mobile-menu-visible {
   padding: 20px 0;
 }
 
-.header-login-register > a:after,
-.top-bar-login-register > a:after {
+.header-login-register > a:not(.botiga-login-register-link):after,
+.top-bar-login-register > a:not(.botiga-login-register-link):after {
   content: '';
   width: 7px;
   height: 7px;
@@ -2487,7 +2497,7 @@ body.mobile-menu-visible {
 }
 
 .top-bar-login-register > a {
-  padding: 10px 0;
+  padding: 4px !important;
 }
 
 .top-bar-contact a i,

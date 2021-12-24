@@ -83,7 +83,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 				'botiga_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
-					'default-image' => '',
+					'default-image' => ''
 				)
 			)
 		);

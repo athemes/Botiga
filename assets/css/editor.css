@@ -1338,6 +1338,18 @@ div.editor-styles-wrapper .demo_store {
     position: relative;
     padding: 30px;
     margin-top: 10px;
+    max-height: 24vh;
+    min-height: 224px;
+    overflow-y: auto;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell::-webkit-scrollbar {
+    width: 4px;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell::-webkit-scrollbar-track {
+    background: #e2e2e2;
+  }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell::-webkit-scrollbar-thumb {
+    background-color: #CCC;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell:before {
     content: '';
@@ -1358,7 +1370,7 @@ div.editor-styles-wrapper .demo_store {
     right: 8px;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell h2 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin-bottom: 19px;
     margin-top: 0;
   }
@@ -1456,7 +1468,7 @@ div.editor-styles-wrapper .demo_store {
     max-width: 100%;
   }
   div.editor-styles-wrapper .site-header-cart .product_list_widget::-webkit-scrollbar {
-    width: 7px;
+    width: 4px;
   }
   div.editor-styles-wrapper .site-header-cart .product_list_widget::-webkit-scrollbar-track {
     background: #e2e2e2;
@@ -1527,8 +1539,8 @@ div.editor-styles-wrapper .demo_store {
     font-size: 0.875rem;
   }
   div.editor-styles-wrapper .site-header-cart.mini-cart-has-scroll .product_list_widget {
-    max-height: 30vh;
-    min-height: 300px;
+    max-height: 26vh;
+    min-height: 260px;
     overflow-y: auto;
   }
 }
