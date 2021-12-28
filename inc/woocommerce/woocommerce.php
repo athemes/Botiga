@@ -277,10 +277,10 @@ function botiga_wc_hooks() {
 			$components = get_theme_mod( 'single_product_elements_order', $defaults );
 	
 			foreach ( $components as $component ) {
-				add_action( 'woocommerce_single_product_summary', $component, 99 );
+				add_action( 'woocommerce_single_product_summary', $component, 5 );
 			}
 	
-			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 10 );
+			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 5 );
 		}
 
 		//Product tabs

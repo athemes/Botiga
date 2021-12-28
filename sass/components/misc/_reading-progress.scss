@@ -1,0 +1,81 @@
+/**
+ * Reading Progress
+ */
+
+body {
+    --botiga-reading-progress: 0%;
+}
+
+.botiga-reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    &.botiga-reading-progress-bottom {
+        top: auto;
+        bottom: 0;
+    }
+}
+
+.botiga-reading-progress__bar {
+    width: var(--botiga-reading-progress);
+    height: 6px;
+    background-color: $color__primary;
+    transition: ease width 300ms, ease height 300ms;
+}
+
+// Header
+@media(min-width: 1025px) {
+    .site-header.sticky-header,
+    .bottom-header-row.sticky-header {
+        &.sticky-always {
+            .botiga-reading-progress {
+                position: relative;   
+            }
+        }
+        &.sticky-scrolltop.is-sticky {
+            .botiga-reading-progress {
+                position: relative;   
+            }
+        }
+    }
+    .site-header.header_layout_6 {
+        .botiga-reading-progress {
+            left: 300px;
+            width: calc( 100% - 300px );
+        }
+    }
+}
+
+// Admin bar
+.admin-bar {
+    .botiga-reading-progress {
+        top: 0;
+    }
+
+    @media(min-width: 600px) {
+        .botiga-reading-progress {
+            top: 46px;
+        }
+    }
+
+    @media(min-width: 1025px) {
+        .botiga-reading-progress {
+            top: 32px;
+        }
+
+        .site-header.sticky-header,
+        .bottom-header-row.sticky-header {
+            &.sticky-always {
+                .botiga-reading-progress {
+                    top: 0;   
+                }
+            }
+            &.sticky-scrolltop.is-sticky {
+                .botiga-reading-progress {
+                    top: 0;
+                }
+            }
+        }
+    }
+}

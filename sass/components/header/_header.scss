@@ -574,6 +574,12 @@
         opacity: 1;
         left: 0;
         visibility: visible;
+
+        & + .botiga-reading-progress {
+            .botiga-reading-progress__bar {
+                height: 0;
+            }
+        }
     }
 }
 .search-overlay {

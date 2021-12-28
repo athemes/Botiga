@@ -2604,6 +2604,10 @@ body.mobile-menu-visible {
   visibility: visible;
 }
 
+.header-search-form.active + .botiga-reading-progress .botiga-reading-progress__bar {
+  height: 0;
+}
+
 .search-overlay {
   position: fixed;
   top: 0;
@@ -4202,6 +4206,74 @@ input.wc-block-components-price-slider__range-input {
 
 .wpforms-field-label {
   margin-bottom: 15px !important;
+}
+
+/* Reading Progress
+--------------------------------------------- */
+/**
+ * Reading Progress
+ */
+body {
+  --botiga-reading-progress: 0%;
+}
+
+.botiga-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.botiga-reading-progress.botiga-reading-progress-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.botiga-reading-progress__bar {
+  width: var(--botiga-reading-progress);
+  height: 6px;
+  background-color: #212121;
+  -webkit-transition: ease width 300ms, ease height 300ms;
+  transition: ease width 300ms, ease height 300ms;
+}
+
+@media (min-width: 1025px) {
+  .site-header.sticky-header.sticky-always .botiga-reading-progress,
+  .bottom-header-row.sticky-header.sticky-always .botiga-reading-progress {
+    position: relative;
+  }
+  .site-header.sticky-header.sticky-scrolltop.is-sticky .botiga-reading-progress,
+  .bottom-header-row.sticky-header.sticky-scrolltop.is-sticky .botiga-reading-progress {
+    position: relative;
+  }
+  .site-header.header_layout_6 .botiga-reading-progress {
+    left: 300px;
+    width: calc( 100% - 300px);
+  }
+}
+
+.admin-bar .botiga-reading-progress {
+  top: 0;
+}
+
+@media (min-width: 600px) {
+  .admin-bar .botiga-reading-progress {
+    top: 46px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .admin-bar .botiga-reading-progress {
+    top: 32px;
+  }
+  .admin-bar .site-header.sticky-header.sticky-always .botiga-reading-progress,
+  .admin-bar .bottom-header-row.sticky-header.sticky-always .botiga-reading-progress {
+    top: 0;
+  }
+  .admin-bar .site-header.sticky-header.sticky-scrolltop.is-sticky .botiga-reading-progress,
+  .admin-bar .bottom-header-row.sticky-header.sticky-scrolltop.is-sticky .botiga-reading-progress {
+    top: 0;
+  }
 }
 
 /* Editor Blocks (GB)
