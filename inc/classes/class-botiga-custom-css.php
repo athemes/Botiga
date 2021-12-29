@@ -354,6 +354,16 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_fill_css( 'color_link_hover', '', '.botiga-share-box-item svg' );
 			$css .= $this->get_fill_css( 'color_link_default', '', '.botiga-share-box-item:hover svg' );
+
+			// Single post reading progress
+			$single_post_reading_progress = get_theme_mod( 'single_post_reading_progress', 0 );
+			if( $single_post_reading_progress ) {
+				$single_post_reading_progress_height = get_theme_mod( 'single_post_reading_progress_height', 6 );
+
+				$css .= '.botiga-reading-progress__bar { height: '. absint( $single_post_reading_progress_height ) .'px; }';
+				$css .= $this->get_background_color_css( 'single_post_reading_progress_background_color', 'transparent', '.botiga-reading-progress' );
+				$css .= $this->get_background_color_css( 'single_post_reading_progress_foreground_color', '#212121', '.botiga-reading-progress__bar' );
+			}
 			
 			//Back to top
 			$scrolltop_radius 			= get_theme_mod( 'scrolltop_radius', 30 );

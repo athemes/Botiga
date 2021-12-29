@@ -1310,6 +1310,20 @@
     selector: ".header-login-register>a:after, .top-bar-login-register>a:after",
     prop: ["border-top-color", "border-right-color"],
     pseudo: true
+  }, // Single Post Reading Progress
+  {
+    option: "single_post_reading_progress_height",
+    selector: ".botiga-reading-progress__bar",
+    prop: "height",
+    unit: "px"
+  }, {
+    option: "single_post_reading_progress_background_color",
+    selector: ".botiga-reading-progress",
+    prop: "background-color"
+  }, {
+    option: "single_post_reading_progress_foreground_color",
+    selector: ".botiga-reading-progress__bar",
+    prop: "background-color"
   }];
   $.each($color_options, function (key, css) {
     var unit = typeof css.unit !== 'undefined' ? css.unit : '';
