@@ -37,7 +37,7 @@ class Botiga_Page_Metabox {
         if ( in_array( $post_type, $types ) && ( 'attachment' !== $post_type ) ) {
 			add_meta_box(
 				'botiga_single_page_metabox'
-				,__( 'Botiga page options', 'botiga' )
+				,__( 'Botiga Page Options', 'botiga' )
 				,array( $this, 'render_meta_box_content' )
 				,$types
 				,'side'
