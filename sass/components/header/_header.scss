@@ -569,16 +569,19 @@
             font-size: 14px !important;
         }
     }
-
-    &.active {
+}
+.header-search-form-active {
+    .header-search-form {
         opacity: 1;
         left: 0;
         visibility: visible;
-
-        & + .botiga-reading-progress {
-            .botiga-reading-progress__bar {
-                height: 0;
-            }
+    }
+}
+.header-search-form-active,
+.hide-reading-progress {
+    .botiga-reading-progress {
+        .botiga-reading-progress__bar {
+            height: 0;
         }
     }
 }

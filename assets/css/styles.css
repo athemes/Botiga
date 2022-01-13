@@ -2598,13 +2598,14 @@ body.mobile-menu-visible {
   font-size: 14px !important;
 }
 
-.header-search-form.active {
+.header-search-form-active .header-search-form {
   opacity: 1;
   left: 0;
   visibility: visible;
 }
 
-.header-search-form.active + .botiga-reading-progress .botiga-reading-progress__bar {
+.header-search-form-active .botiga-reading-progress .botiga-reading-progress__bar,
+.hide-reading-progress .botiga-reading-progress .botiga-reading-progress__bar {
   height: 0;
 }
 

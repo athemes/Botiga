@@ -362,6 +362,7 @@ botiga.headerSearch = {
 
           form.classList.toggle('active');
           overlay.classList.toggle('active');
+          document.body.classList.toggle('header-search-form-active');
           e.target.closest('.header-search').getElementsByClassName('icon-search')[0].classList.toggle('active');
           e.target.closest('.header-search').getElementsByClassName('icon-cancel')[0].classList.toggle('active');
           e.target.closest('.header-search').classList.add('active');
@@ -381,7 +382,8 @@ botiga.headerSearch = {
 
     overlay.addEventListener('click', function () {
       form.classList.remove('active');
-      overlay.classList.remove('active'); // Back buttons to default state
+      overlay.classList.remove('active');
+      document.body.classList.remove('header-search-form-active'); // Back buttons to default state
 
       self.backButtonsToDefaultState(button);
     });
@@ -393,7 +395,8 @@ botiga.headerSearch = {
       }
 
       form.classList.remove('active');
-      overlay.classList.remove('active'); // Back buttons to default state
+      overlay.classList.remove('active');
+      document.body.classList.remove('header-search-form-active'); // Back buttons to default state
 
       self.backButtonsToDefaultState(button);
       button.focus();
@@ -404,7 +407,8 @@ botiga.headerSearch = {
       desktop_offcanvas.addEventListener('click', function (e) {
         if (e.target.closest('.header-search') === null) {
           form.classList.remove('active');
-          overlay.classList.remove('active'); // Back buttons to default state
+          overlay.classList.remove('active');
+          document.body.classList.remove('header-search-form-active'); // Back buttons to default state
 
           self.backButtonsToDefaultState(button);
         }
