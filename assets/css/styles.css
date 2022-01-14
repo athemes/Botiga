@@ -4803,6 +4803,37 @@ body {
           animation-duration: 1.5s;
 }
 
+/* Fade In Short */
+@-webkit-keyframes botigaFadeInShort {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20px, 0);
+            transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes botigaFadeInShort {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20px, 0);
+            transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.botigaFadeInShort {
+  -webkit-animation-name: botigaFadeInShort;
+          animation-name: botigaFadeInShort;
+}
+
 .botiga-anim-infinite {
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
@@ -4811,6 +4842,36 @@ body {
 .botiga-anim-fowards {
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+}
+
+.botiga-anim-timing-linear {
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+.botiga-anim-duration-300ms {
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+}
+
+.botiga-anim-delay-300ms:nth-of-type(1) {
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
+}
+
+.botiga-anim-delay-300ms:nth-of-type(2) {
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
+.botiga-anim-delay-300ms:nth-of-type(3) {
+  -webkit-animation-delay: 700ms;
+          animation-delay: 700ms;
+}
+
+.botiga-anim-delay-300ms:nth-of-type(4) {
+  -webkit-animation-delay: 900ms;
+          animation-delay: 900ms;
 }
 
 /* Misc

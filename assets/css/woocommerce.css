@@ -5309,3 +5309,62 @@ span.onsale {
     padding: 45px;
   }
 }
+
+/**
+ * Misc
+ */
+/*
+ * Pagination Button
+ */
+.botiga-woo-pagination-wrapper {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.botiga-woo-pagination-button {
+  position: relative;
+  display: -webkit-inline-box !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-woo-pagination-button .botiga-woo-pagination-button__label {
+  display: inline-block;
+  -webkit-transition: ease all 300ms;
+  transition: ease all 300ms;
+}
+
+.botiga-woo-pagination-button .botiga-woo-pagination-button__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.botiga-woo-pagination-button svg {
+  opacity: 0;
+  -webkit-animation-name: rotateAnim;
+          animation-name: rotateAnim;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transition: ease all 300ms 300ms;
+  transition: ease all 300ms 300ms;
+}
+
+.botiga-woo-pagination-button.loading .botiga-woo-pagination-button__label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.botiga-woo-pagination-button.loading svg {
+  display: block;
+  opacity: 0.7;
+}

@@ -209,7 +209,7 @@ function botiga_loop_product_structure() {
 			call_user_func( $element );
 		}
 	} else {
-		$elements = array_diff( $elements, array( 'woocommerce_template_loop_price' ) );
+		$elements = array_diff( $elements, array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ) );
 
 		echo '<div class="row">';
 		echo '<div class="col-md-7">';
