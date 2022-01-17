@@ -30,6 +30,10 @@
     animation-name: botigaFadeInShort;
 }
 
+.botiga-animated {
+    opacity: 0;
+}
+
 .botiga-anim-infinite {
     animation-iteration-count: infinite;
 }
@@ -44,19 +48,4 @@
 
 .botiga-anim-duration-300ms {
     animation-duration: 600ms;
-}
-
-.botiga-anim-delay-300ms {
-    &:nth-of-type(1) {
-        animation-delay: 300ms;
-    }
-    &:nth-of-type(2) {
-        animation-delay: 500ms;
-    }
-    &:nth-of-type(3) {
-        animation-delay: 700ms;
-    }
-    &:nth-of-type(4) {
-        animation-delay: 900ms;
-    }
 }

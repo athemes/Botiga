@@ -1829,6 +1829,64 @@ html {
   background-color: #212121;
 }
 
+.botiga-pagination-load-more .navigation.pagination,
+.botiga-pagination-load-more .woocommerce-pagination {
+  display: none;
+}
+
+.botiga-pagination-wrapper {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.botiga-pagination-button {
+  position: relative;
+  display: -webkit-inline-box !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-pagination-button .botiga-pagination-button__label {
+  display: inline-block;
+  -webkit-transition: ease all 300ms;
+  transition: ease all 300ms;
+}
+
+.botiga-pagination-button .botiga-pagination-button__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.botiga-pagination-button svg {
+  opacity: 0;
+  -webkit-animation-name: rotateAnim;
+          animation-name: rotateAnim;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transition: ease all 300ms 300ms;
+  transition: ease all 300ms 300ms;
+}
+
+.botiga-pagination-button.loading .botiga-pagination-button__label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.botiga-pagination-button.loading svg {
+  display: block;
+  opacity: 0.7;
+}
+
 .botiga-offcanvas-menu {
   position: fixed;
   left: -100%;
@@ -4834,6 +4892,10 @@ body {
           animation-name: botigaFadeInShort;
 }
 
+.botiga-animated {
+  opacity: 0;
+}
+
 .botiga-anim-infinite {
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
@@ -4852,26 +4914,6 @@ body {
 .botiga-anim-duration-300ms {
   -webkit-animation-duration: 600ms;
           animation-duration: 600ms;
-}
-
-.botiga-anim-delay-300ms:nth-of-type(1) {
-  -webkit-animation-delay: 300ms;
-          animation-delay: 300ms;
-}
-
-.botiga-anim-delay-300ms:nth-of-type(2) {
-  -webkit-animation-delay: 500ms;
-          animation-delay: 500ms;
-}
-
-.botiga-anim-delay-300ms:nth-of-type(3) {
-  -webkit-animation-delay: 700ms;
-          animation-delay: 700ms;
-}
-
-.botiga-anim-delay-300ms:nth-of-type(4) {
-  -webkit-animation-delay: 900ms;
-          animation-delay: 900ms;
 }
 
 /* Misc

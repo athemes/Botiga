@@ -45,6 +45,8 @@ get_header();
 			'next_text' => '&gt;',
 		) );
 
+		do_action( 'botiga_after_the_posts_pagination' );
+
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );
