@@ -149,7 +149,7 @@ function botiga_callback_custom_palette() {
  * Excerpt
  */
 function botiga_callback_excerpt() {
-    $enable = get_theme_mod( 'show_excerpt', 0 );
+    $enable = get_theme_mod( 'show_excerpt', 1 );
 
 	if ( $enable ) {
 		return true;

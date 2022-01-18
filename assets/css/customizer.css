@@ -1033,3 +1033,10 @@ span.delete:hover {
 #accordion-section-botiga_login_register_popup {
   display: none !important;
 }
+
+/*
+ * Select Control
+ */
+.customize-control-description + select {
+  margin-top: 8px;
+}

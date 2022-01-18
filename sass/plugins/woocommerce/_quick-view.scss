@@ -187,7 +187,7 @@ ul.wc-block-grid__products {
 	&.opened {
 		opacity: 1;
 		visibility: visible;
-		.botiga-quick-view-popup-content {
+		&:not(.loading) .botiga-quick-view-popup-content {
 			opacity: 1;
 			visibility: visible;
 		}

@@ -1132,7 +1132,7 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   visibility: visible;
 }
 
-.botiga-quick-view-popup.opened .botiga-quick-view-popup-content {
+.botiga-quick-view-popup.opened:not(.loading) .botiga-quick-view-popup-content {
   opacity: 1;
   visibility: visible;
 }

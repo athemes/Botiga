@@ -380,7 +380,7 @@ function botiga_excerpt_length( $length ) {
 		return $length;
 	}
 
-	$length = get_theme_mod( 'excerpt_length', '12' );
+	$length = get_theme_mod( 'excerpt_length', 30 );
 
 	return $length;
 }

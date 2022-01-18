@@ -213,7 +213,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 * Post excerpt
 		 */
 		public function post_excerpt() {
-			$excerpt 	= get_theme_mod( 'show_excerpt', 0 );
+			$excerpt 	= get_theme_mod( 'show_excerpt', 1 );
 			$read_more 	= get_theme_mod( 'read_more_link', 0 );
 
 			if ( !$excerpt ) {

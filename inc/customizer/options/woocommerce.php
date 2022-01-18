@@ -1208,6 +1208,58 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting( 
+	'shop_search_ajax_desc_content', 
+	array(
+		'sanitize_callback' => 'botiga_sanitize_select',
+		'default' 			=> 'product-post-content'
+	) 
+);
+$wp_customize->add_control( 
+	'shop_search_ajax_desc_content', 
+	array(
+		'type' 		  => 'select',
+		'section' 	  => 'botiga_section_shop_search',
+		'label' 	  => esc_html__( 'Results Description', 'botiga' ),
+		'description' => esc_html__( 'Save/publish the changes is required to see this option working in the customizer preview.', 'botiga' ),
+		'choices' 	  => array(
+			'product-post-content' 		=> esc_html__( 'Product Description', 'botiga' ),
+			'product-short-description' => esc_html__( 'Product Short Description', 'botiga' )
+		),
+		'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+		'priority'	 => 30
+	) 
+);
+
+$wp_customize->add_setting( 
+	'shop_search_ajax_desc_excerpt_length', 
+	array(
+		'default'   		=> 10,
+		'sanitize_callback' => 'absint',
+	) 
+);			
+$wp_customize->add_control( 
+	new Botiga_Responsive_Slider( 
+		$wp_customize, 
+		'shop_search_ajax_desc_excerpt_length',
+		array(
+			'label' 		=> esc_html__( 'Results Description Length', 'botiga' ),
+			'description'	=> esc_html__( 'The number of words to show in the results description. Save/publish the changes is required to see this option working in the customizer preview.', 'botiga' ),
+			'section' 		=> 'botiga_section_shop_search',
+			'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+			'is_responsive'	=> 0,
+			'settings' 		=> array (
+				'size_desktop' 		=> 'shop_search_ajax_desc_excerpt_length',
+			),
+			'input_attrs' => array (
+				'min'	=> 1,
+				'max'	=> 100
+			),
+			'priority'	 => 30
+		)
+	) 
+);
+
+$wp_customize->add_setting( 
 	'shop_search_ajax_orderby', 
 	array(
 		'sanitize_callback' => 'botiga_sanitize_select',

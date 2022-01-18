@@ -340,13 +340,10 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'archiv
 	)
 ) );
 
-// Show excerpt by default only for new users
-$botiga_excerpt_default = version_compare( wp_get_theme( 'botiga' )->Version, '1.0.5', '>=' ) ? 1 : 0;
-
 $wp_customize->add_setting(
 	'show_excerpt',
 	array(
-		'default'           => $botiga_excerpt_default,
+		'default'           => 1,
 		'sanitize_callback' => 'botiga_sanitize_checkbox',
 	)
 );
@@ -362,11 +359,8 @@ $wp_customize->add_control(
 	)
 );
 
-// Change excerpt length only for new users
-$botiga_excerpt_length_default = version_compare( wp_get_theme( 'botiga' )->Version, '1.0.5', '>=' ) ? 30 : 12;
-
 $wp_customize->add_setting( 'excerpt_length', array(
-	'default'   		=> $botiga_excerpt_length_default,
+	'default'   		=> 30,
 	'sanitize_callback' => 'absint',
 ) );			
 

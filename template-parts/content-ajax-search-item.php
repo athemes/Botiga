@@ -11,7 +11,8 @@ if( $args['type'] === 'product' ) {
     $item_permalink = get_the_permalink( $item_post_id );
     $item_image     = wp_get_attachment_image( $product->get_image_id() );
     $item_title     = get_the_title( $item_post_id );
-    $description    = wp_trim_words( $product->get_description(), 10 );
+    $desc_length    = get_theme_mod( 'shop_search_ajax_desc_excerpt_length', 10 ); 
+    $description    = wp_trim_words( get_theme_mod( 'shop_search_ajax_desc_content', 'product-post-content' ) === 'product-post-content' ? $product->get_description() : $product->get_short_description(), $desc_length );
     $price          = $product->get_price_html();
 } else {
     $item_term_id   = $args['term_id'];

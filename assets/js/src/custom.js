@@ -322,7 +322,10 @@ botiga.headerSearch = {
 				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
 				e.target.closest( '.header-search' ).classList.add( 'active' );
 				e.target.closest( '.header-search' ).classList.remove( 'hide' );
-				searchInput.focus();
+
+				if( typeof searchInput !== 'undefined' ) {
+					searchInput.focus();
+				}
 
 				if( e.target.closest( '.botiga-offcanvas-menu' ) !== null ) {
 					e.target.closest( '.botiga-offcanvas-menu' ).classList.remove( 'toggled' );
@@ -339,23 +342,24 @@ botiga.headerSearch = {
 			self.backButtonsToDefaultState( button );
 		} );	
 
-		searchBtn.addEventListener('keydown', function(e) {
-			var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
-
-			if (!isTabPressed) { 
-				return; 
-			}
-			form.classList.remove( 'active' );
-			overlay.classList.remove( 'active' );
-			document.body.classList.remove( 'header-search-form-active' );
-
-			// Back buttons to default state
-			self.backButtonsToDefaultState( button );
-			button.focus();
-		});
+		if( typeof searchBtn !== 'undefined' ) {
+			searchBtn.addEventListener('keydown', function(e) {
+				var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+	
+				if (!isTabPressed) { 
+					return; 
+				}
+				form.classList.remove( 'active' );
+				overlay.classList.remove( 'active' );
+				document.body.classList.remove( 'header-search-form-active' );
+	
+				// Back buttons to default state
+				self.backButtonsToDefaultState( button );
+				button.focus();
+			});
+		}
 
 		var desktop_offcanvas = document.getElementsByClassName( 'header-desktop-offcanvas-layout2' )[0] !== null ? document.getElementsByClassName( 'botiga-desktop-offcanvas' )[0] : false;
-
 		if( desktop_offcanvas ) {
 			desktop_offcanvas.addEventListener( 'click', function(e){
 				if( e.target.closest( '.header-search' ) === null ) {
@@ -620,6 +624,7 @@ botiga.quickView = {
 				var productId = e.target.getAttribute('data-product-id'),
 						nonce = e.target.getAttribute('data-nonce');
 				popup.classList.add('opened');
+				popup.classList.add('loading');
 				var ajax = new XMLHttpRequest();
 				ajax.open('POST', botiga.ajaxurl, true);
 				ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -646,6 +651,8 @@ botiga.quickView = {
 						botiga.qtyButton.init( 'quick-view' );
 						botiga.wishList.init();
 						botiga.productSwatch.init();
+
+						popup.classList.remove('loading');
 					}
 				};
 

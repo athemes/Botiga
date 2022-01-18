@@ -235,6 +235,8 @@
     align-items: center;
     .botiga-pagination-button__label {
         display: inline-block;
+		font-size: 0.9em;
+		text-transform: uppercase;
         transition: ease all 300ms;
     }
     .botiga-pagination-button__loader {
