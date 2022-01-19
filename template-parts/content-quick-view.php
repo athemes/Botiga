@@ -64,76 +64,14 @@ $product_id = $product->get_id(); ?>
         </div>
         <div class="col-lg-6">
             <div class="botiga-quick-view-summary product-gallery-summary">
-                <h2 class="product_title entry-title">
-                    <?php echo esc_html( get_the_title( $product_id ) ); ?>
-                </h2>
-                <?php if ( wc_review_ratings_enabled() ) :
-                    $rating_count = $product->get_rating_count();
-                    $review_count = $product->get_review_count();
-                    $average      = $product->get_average_rating();
-
-                    if ( $rating_count > 0 ) : ?>
-
-                        <div class="woocommerce-product-rating">
-                            <?php echo wc_get_rating_html( $average, $rating_count ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                            <?php if ( comments_open( $product_id ) ) : ?>
-                                <a href="<?php echo esc_url( get_permalink( $product_id ) ); ?>#reviews" class="woocommerce-review-link" rel="nofollow">(<?php /* translators: %s: customer review text */ printf( _n( '%s customer review', '%s customer reviews', $review_count, 'botiga' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>)</a>
-                            <?php endif ?>
-                        </div>
-
-                    <?php endif; ?>
-                <?php endif; ?>
-                
-                <p class="<?php echo esc_attr( apply_filters( 'botiga_quick_view_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
                 <?php
-                $short_description = apply_filters( 'botiga_quick_view_short_description', $product->get_short_description() );
-                if ( $short_description ) : ?>
-                    <div class="woocommerce-product-details__short-description">
-                        <p><?php echo wp_kses_post( $short_description ); ?></p>
-                    </div>
-                <?php endif; ?>
-                
-                <?php 
-                switch ( $product->get_type() ) {
-                    case 'grouped':
-                        botiga_grouped_add_to_cart( $product, 'quick_view' );
-                        break;
-                    
-                    case 'variable':
-                        botiga_variable_add_to_cart( $product, 'quick_view' );
-                        break;
+                $defaults 	= botiga_get_default_single_product_components();
+                $components = botiga_get_quick_view_summary_components( get_theme_mod( 'single_product_elements_order', $defaults ) );
 
-                    case 'external':
-                        botiga_external_add_to_cart( $product, 'quick_view' );
-                        break;
-                    
-                    default:
-                        botiga_simple_add_to_cart( $product, 'quick_view' );
-                        break;
+                foreach( $components as $component ) {
+                    call_user_func( $component, $product );
                 } ?>
-
-                <?php
-                $wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-                if( 'layout1' !== $wishlist_layout ) {
-                    botiga_single_wishlist_button( $product, true );
-                } ?>
-
-                <div class="product_meta">
-                    <?php do_action( 'botiga_quick_view_product_meta_start' ); ?>
-
-                    <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-
-                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'botiga' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? esc_html( $sku ) : esc_html__( 'N/A', 'botiga' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span></span>
-
-                    <?php endif; ?>
-
-                    <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'botiga' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-
-                    <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'botiga' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-
-                    <?php do_action( 'botiga_quick_view_product_meta_end' ); ?>
-                </div>
 
                 <?php do_action( 'botiga_quick_view_share' ); ?>
             </div>

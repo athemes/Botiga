@@ -49,6 +49,23 @@ function botiga_single_product_elements() {
 }
 
 /**
+ * Map and replace default woo template functions with quick view functions
+ */
+function botiga_get_quick_view_summary_components( $components = array() ) {
+	$components = array_map( function( $component ){
+		$suffix = str_replace( 'woocommerce_template_single_', '', $component );
+
+		if( $component === "woocommerce_template_single_$suffix" ) {
+			return "botiga_quick_view_summary_$suffix";
+		}
+
+		return $component;
+	}, $components );
+
+	return apply_filters( 'botiga_quick_view_product_components', $components );
+}
+
+/**
  * Divider
  */
 function botiga_divider_output() {
