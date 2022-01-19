@@ -1632,12 +1632,14 @@ html {
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   float: left;
   position: absolute;
-  top: calc(100% + 20px);
-  -webkit-transition: top 0.4s;
-  transition: top 0.4s;
+  -webkit-transform: translate3d(0, 15px, 0);
+          transform: translate3d(0, 15px, 0);
+  -webkit-transition: ease transform 300ms, ease opacity 300ms;
+  transition: ease transform 300ms, ease opacity 300ms;
   left: -999em;
   z-index: 99999;
   display: block;
+  opacity: 0;
 }
 
 .main-navigation ul ul ul {
@@ -1683,6 +1685,9 @@ html {
 .main-navigation ul li.focus > ul {
   left: auto;
   top: 100%;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .main-navigation ul li:hover > ul ul,
@@ -1714,8 +1719,15 @@ html {
 
 .bottom-header-row .dropdown-symbol .ws-svg-icon,
 .site-header .dropdown-symbol .ws-svg-icon {
-  width: 13px;
-  height: 13px;
+  width: 0.8em;
+  height: 0.8em;
+  margin-top: -2px;
+}
+
+.bottom-header-row .dropdown-symbol .ws-svg-icon svg,
+.site-header .dropdown-symbol .ws-svg-icon svg {
+  -webkit-transition: ease all 300ms;
+  transition: ease all 300ms;
 }
 
 /* Small menu. */
@@ -3431,7 +3443,7 @@ body.mobile-menu-visible {
   margin-bottom: 25px;
 }
 
-.search-no-results .woocommerce-products-header__title.page-title {
+.search-no-results .page-title {
   font-size: 32px;
   font-size: 2rem;
 }
@@ -3540,8 +3552,17 @@ body.mobile-menu-visible {
 /**
  * Search Page
  */
+.search .page-header {
+  padding: 0;
+  margin-bottom: 80px;
+}
+
 .search .not-found .page-title {
   margin-bottom: 30px;
+}
+
+.search.search-results article.page {
+  margin-bottom: 40px;
 }
 
 /* Comments
@@ -3777,6 +3798,10 @@ body.mobile-menu-visible {
   padding: 7px 14px;
   -webkit-transition: ease background 300ms;
   transition: ease background 300ms;
+}
+
+.widget_recent_reviews li .reviewer {
+  font-size: 0.8em;
 }
 
 .widget_block h3 {
@@ -4343,6 +4368,15 @@ body {
 /* Image Block */
 .wp-block-image figcaption {
   text-align: center;
+}
+
+/* Latest Comments Blocks */
+.wp-block-latest-comments__comment {
+  line-height: 1.6;
+}
+
+.wp-block-latest-comments__comment-author {
+  text-decoration: underline;
 }
 
 /* Ajax Search

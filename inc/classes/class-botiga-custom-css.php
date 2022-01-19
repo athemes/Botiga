@@ -117,7 +117,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_body_text', '', 'body,.wp-block-columns p a,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.widget a' );
 			$css .= $this->get_fill_css( 'color_body_text', '', '.sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg' );
 			$css .= $this->get_color_css( 'color_link_default', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):not(.page-numbers):not(.woocommerce-review-link):not(.comment-reply-link):hover,ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title:hover' );
-			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover' );
+			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li:hover > a, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover, .main-navigation ul ul > li:hover > a' );
+			$css .= $this->get_fill_css( 'color_link_default', '', '.site-header .main-navigation .menu > li:hover > .dropdown-symbol svg, .main-navigation ul ul > li:hover > .dropdown-symbol svg' );
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
 			$css .= $this->get_color_css( 'color_heading_3', '', 'h3' );

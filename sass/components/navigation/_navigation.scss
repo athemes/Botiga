@@ -12,11 +12,12 @@
 			box-shadow: 0 0 15px rgba(0,0,0,.1);
 			float: left;
 			position: absolute;
-			top: calc(100% + 20px);
-			transition: top 0.4s;
+			transform: translate3d(0, 15px, 0);
+			transition: ease transform 300ms, ease opacity 300ms;
 			left: -999em;
 			z-index: 99999;
 			display: block;
+			opacity: 0;
 
 			ul {
 				left: -999em;
@@ -69,6 +70,8 @@
 		li.focus > ul {
 			left: auto;
 			top: 100%;
+			opacity: 1;
+			transform: translate3d( 0, 0, 0 );
 
 			ul {
 				top: 0;
@@ -109,8 +112,12 @@
 		cursor: pointer;
 	
 		.ws-svg-icon {
-			width: 13px;
-			height: 13px;
+			width: 0.8em;
+			height: 0.8em;
+			margin-top: -2px;
+			svg {
+				transition: ease all 300ms;
+			}
 		}
 	}
 }

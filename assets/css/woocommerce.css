@@ -5036,6 +5036,9 @@ span.onsale {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-bottom: 10px;
@@ -5050,9 +5053,10 @@ span.onsale {
 .widget-column .widget_recently_viewed_products li img,
 .widget-column .widget_recent_reviews li img {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 10%;
-          flex: 0 0 10%;
-  max-width: 10%;
+      -ms-flex: 0 0 15%;
+          flex: 0 0 15%;
+  max-width: 15%;
+  margin-top: 5px;
 }
 
 .widget-area .widget_products li .product-title,
@@ -5064,9 +5068,9 @@ span.onsale {
 .widget-column .widget_recently_viewed_products li .product-title,
 .widget-column .widget_recent_reviews li .product-title {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 90%;
-          flex: 0 0 90%;
-  max-width: 90%;
+      -ms-flex: 0 0 85%;
+          flex: 0 0 85%;
+  max-width: 85%;
   padding-left: 15px;
 }
 
@@ -5094,7 +5098,7 @@ span.onsale {
 .widget-column .widget_recent_reviews li .reviewer,
 .widget-column .widget_recent_reviews li .amount,
 .widget-column .widget_recent_reviews li .star-rating {
-  margin-left: calc(10% + 15px);
+  margin-left: calc(15% + 15px);
 }
 
 .widget-area .widget_products li ins .amount,

@@ -83,22 +83,24 @@
 			margin-bottom: 15px;
 			a {
 				display: flex;
+				align-items: flex-start;
 				flex-wrap: wrap;
 				margin-bottom: 10px;
 			}
 			img {
-				flex: 0 0 10%;
-				max-width: 10%;
+				flex: 0 0 15%;
+				max-width: 15%;
+				margin-top: 5px;
 			}
 			.product-title {
-				flex: 0 0 90%;
-				max-width: 90%;
+				flex: 0 0 85%;
+				max-width: 85%;
 				padding-left: 15px;
 			}
 			.reviewer,
 			.amount,
 			.star-rating {
-				margin-left: calc(10% + 15px);
+				margin-left: calc(15% + 15px);
 			}
 			ins .amount {
 				margin-left: 0 !important;

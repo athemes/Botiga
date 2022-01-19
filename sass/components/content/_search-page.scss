@@ -2,9 +2,19 @@
  * Search Page
  */
 .search {
+    .page-header {
+        padding: 0;
+        margin-bottom: 80px;
+    }
     .not-found {
         .page-title {
             margin-bottom: 30px;
+        }
+    }
+
+    &.search-results {
+        article.page {
+            margin-bottom: 40px;
         }
     }
 }
