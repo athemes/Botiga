@@ -2673,7 +2673,7 @@ div.editor-styles-wrapper .botiga-quick-view-popup.opened {
   visibility: visible;
 }
 
-div.editor-styles-wrapper .botiga-quick-view-popup.opened .botiga-quick-view-popup-content {
+div.editor-styles-wrapper .botiga-quick-view-popup.opened:not(.loading) .botiga-quick-view-popup-content {
   opacity: 1;
   visibility: visible;
 }

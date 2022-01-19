@@ -280,7 +280,7 @@ function botiga_wc_hooks() {
 				add_action( 'woocommerce_single_product_summary', $component, 5 );
 			}
 	
-			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 5 );
+			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 		}
 
 		//Product tabs
