@@ -62,6 +62,11 @@
 
 						li {
 							padding-bottom: 0;
+							&:last-child {
+								a {
+									border-bottom: none;
+								}
+							}
 						}
 	
 						a {
@@ -82,13 +87,7 @@
 				.button {
 					color: #fff;
 				}
-	
-				.col-1,
-				.col-2 {
-					flex: 0 0 100%;
-					max-width: 100%;		
-					padding: 0;		
-				}
+
 			}
 		}
 	}
@@ -113,15 +112,7 @@
 		input[type="password"] {
 			width: 100%;
 		}
-	}
-
-	//View order
-	.botiga-wc-account-view-order + .woocommerce-notices-wrapper + p {
-		padding: 25px;
-		mark {
-			padding: 2px 5px;
-		}
-	}
+	}	
 }
 
 @media only screen and (max-width: 991px) {

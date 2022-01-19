@@ -518,14 +518,14 @@ add_filter( 'woocommerce_product_description_heading', '__return_false' );
  * Identify the page and insert html so we can style some elements
  */
 function botiga_myaccount_html_insert() {
-    if( !isset( $_SERVER['REQUEST_URI'] ) ) {
+    if( !isset( $_SERVER['REQUEST_URI'] ) && is_account_page() ) {
 		return;
 	}
 
 	$request_url = wc_clean( wp_unslash( $_SERVER['REQUEST_URI'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
     
 	// view-order
-    if( strpos( $request_url, '/my-account/view-order' ) !== FALSE || strpos( $request_url, '&view-order=' ) !== FALSE ) {
+    if( strpos( $request_url, '/view-order' ) !== FALSE || strpos( $request_url, '&view-order=' ) !== FALSE ) {
         echo '<div class="botiga-wc-account-view-order"></div>';
     }
 }

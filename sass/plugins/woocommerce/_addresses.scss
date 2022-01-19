@@ -1,0 +1,17 @@
+/**
+ * Address
+ */
+.woocommerce {
+
+    .woocommerce-Addresses,
+    .woocommerce-columns--addresses {
+        .col-1,
+        .col-2 {
+            flex: 0 0 100%;
+            max-width: 100%;		
+            padding: 0;		
+        }
+
+    }
+
+}

@@ -432,7 +432,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting(
 	'color_forms_placeholder',
 	array(
-		'default'           => '',
+		'default'           => '#848484',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
 		'transport'         => 'postMessage'
 	)

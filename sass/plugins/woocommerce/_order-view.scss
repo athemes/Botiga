@@ -1,0 +1,47 @@
+/**
+ * View Order
+ */
+.woocommerce {
+    
+    .botiga-wc-account-view-order + .woocommerce-notices-wrapper + p,
+    .order-info {
+        padding: 25px;
+        mark {
+            padding: 2px 5px;
+        }
+    }
+
+    .notes {
+        padding: 40px;
+        background-color: #f5f5f5;
+
+        .note {
+            margin-left: 15px;
+
+            &::marker {
+                font-size: 0.9em;
+                font-weight: 600;
+            }
+
+            & + .note {
+                margin-top: 30px;
+            }
+
+            .meta {
+                font-size: 0.9em;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .description {
+                border-top: 1px solid rgba( $color__primary, 0.1 );
+                padding-top: 15px;
+                p {
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

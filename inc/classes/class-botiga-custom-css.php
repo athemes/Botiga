@@ -131,7 +131,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'color_forms_background', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"]' );
 			$color_forms_borders 	= get_theme_mod( 'color_forms_borders' );
 			$css .= "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-account fieldset,.woocommerce-account .woocommerce-form-login, .woocommerce-account .woocommerce-form-register,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"],.wp-block-search .wp-block-search__input, .woocommerce-form__label-for-checkbox span:not(.required):after, .select2-dropdown { border-color:" . esc_attr( $color_forms_borders ) . ";}" . "\n";
-			$color_forms_placeholder 	= get_theme_mod( 'color_forms_placeholder' );
+			$color_forms_placeholder 	= get_theme_mod( 'color_forms_placeholder', '#848484' );
 			$css .= "::placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";opacity:1;}" . "\n";
 			$css .= ":-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 			$css .= "::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
@@ -708,9 +708,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-orders-table__cell-order-number a,.woocommerce-MyAccount-content p a' );
 			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-orders-table__cell-order-number a:hover,.woocommerce-MyAccount-content p a:hover' );
 
-			//View order
-			$css .= $this->get_background_color_css( 'content_cards_background', '', '.woocommerce-account .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p' );
-
+			//Order View
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.woocommerce .botiga-wc-account-view-order+.woocommerce-notices-wrapper+p, .woocommerce .order-info, .woocommerce .notes' );
+			
+			//Order Tracking
+			$css .= $this->get_background_color_css( 'content_cards_background', '', '.woocommerce-form-track-order' );
+			
 			//Single product options
 			$css .= $this->get_border_color_css( 'color_link_default', '', '.single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active' );
 			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments, .botiga-quick-view-popup form.cart .qty, .woocommerce-Reviews #comments .review .comment_container .comment-text .description, .woocommerce-Reviews #review_form_wrapper' );

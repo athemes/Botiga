@@ -61,3 +61,18 @@ $woocommerce__color-info: #3d9cd2;
  * Account
  */
  @import "plugins/woocommerce/account";
+
+/**
+ * Order Tracking
+ */
+ @import "plugins/woocommerce/order-tracking";
+
+/**
+ * View Order
+ */
+ @import "plugins/woocommerce/order-view";
+
+/**
+ * Addresses
+ */
+ @import "plugins/woocommerce/addresses";
