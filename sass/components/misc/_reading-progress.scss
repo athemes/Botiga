@@ -51,6 +51,9 @@ body {
 .admin-bar {
     .botiga-reading-progress {
         top: 0;
+        &.botiga-reading-progress-bottom {
+            top: auto !important;
+        }
     }
 
     @media(min-width: 600px) {

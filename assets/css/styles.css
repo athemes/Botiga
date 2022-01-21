@@ -1887,18 +1887,22 @@ html {
           animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  -webkit-transition: ease all 300ms 300ms;
-  transition: ease all 300ms 300ms;
+  -webkit-transition: ease all 300ms;
+  transition: ease all 300ms;
 }
 
-.botiga-pagination-button.loading .botiga-pagination-button__label {
+.botiga-pagination-button.loading .botiga-pagination-button__label, .botiga-pagination-button.loading-anim .botiga-pagination-button__label {
   opacity: 0;
   visibility: hidden;
 }
 
-.botiga-pagination-button.loading svg {
+.botiga-pagination-button.loading svg, .botiga-pagination-button.loading-anim svg {
   display: block;
   opacity: 0.7;
+}
+
+.botiga-pagination-button.loading-anim .botiga-pagination-button__label {
+  display: none;
 }
 
 .botiga-offcanvas-menu {
@@ -3561,7 +3565,8 @@ body.mobile-menu-visible {
   margin-bottom: 30px;
 }
 
-.search.search-results article.page {
+.search.search-results article.page,
+.search.search-results article.product {
   margin-bottom: 40px;
 }
 
@@ -4341,6 +4346,10 @@ body {
 
 .admin-bar .botiga-reading-progress {
   top: 0;
+}
+
+.admin-bar .botiga-reading-progress.botiga-reading-progress-bottom {
+  top: auto !important;
 }
 
 @media (min-width: 600px) {

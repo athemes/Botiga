@@ -539,6 +539,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'button_color_hover', '', '.woocommerce-pagination li .page-numbers:hover' );
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.woocommerce-sorting-wrapper', '0.1' );
 
+			// Pagination infinite scroll
+			$blog_archive_pagination_type = get_theme_mod( 'blog_archive_pagination_type', 'default' ); 
+			if( $blog_archive_pagination_type === 'infinite-scroll' ) {
+				$css .= $this->get_fill_css( 'color_body_text', '#212121', '.botiga-pagination-button.loading-anim svg path' );
+			}
+
 			//Wishlist
 			$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
 			if( 'layout1' !== $wishlist_layout ) {
