@@ -1632,14 +1632,19 @@ html {
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   float: left;
   position: absolute;
-  -webkit-transform: translate3d(0, 15px, 0);
-          transform: translate3d(0, 15px, 0);
   -webkit-transition: ease transform 300ms, ease opacity 300ms;
   transition: ease transform 300ms, ease opacity 300ms;
   left: -999em;
   z-index: 99999;
   display: block;
-  opacity: 0;
+}
+
+@media (min-width: 1025px) {
+  .main-navigation ul ul {
+    -webkit-transform: translate3d(0, 15px, 0);
+            transform: translate3d(0, 15px, 0);
+    opacity: 0;
+  }
 }
 
 .main-navigation ul ul ul {
@@ -2191,6 +2196,9 @@ body.mobile-menu-visible {
 
 .bottom-header_layout_4 .row-menu,
 .bottom-header_layout_5 .row-menu {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -2581,6 +2589,12 @@ body.mobile-menu-visible {
   margin-right: 5px;
 }
 
+.top-bar-contact a i.ws-svg-icon,
+.header-contact a i.ws-svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
 .top-bar-contact a {
   margin-right: 15px;
 }
@@ -2635,7 +2649,7 @@ body.mobile-menu-visible {
   width: 100%;
   top: 100%;
   background-color: #fff;
-  padding: 40px 15px 60px;
+  padding: 40px 15px;
   z-index: 999999;
   left: -9999em;
   opacity: 0;
@@ -2755,6 +2769,27 @@ body.mobile-menu-visible {
 
 .custom-logo-link + .site-title {
   margin-top: 10px;
+}
+
+@media (min-width: 1025px) {
+  .header-floating .header-floating-wrapper {
+    position: absolute;
+    top: auto;
+    width: 100%;
+    z-index: 12;
+  }
+  .header-floating .header-floating-wrapper .top-bar {
+    position: relative;
+    z-index: 1;
+  }
+  .header-floating.sticky-header-active .header-floating-wrapper .sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .header-floating.sticky-header-active.admin-bar .header-floating-wrapper .sticky-header {
+    top: 32px;
+  }
 }
 
 /* Posts and pages

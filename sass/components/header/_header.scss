@@ -121,6 +121,7 @@
 .bottom-header_layout_4,
 .bottom-header_layout_5 {
     .row-menu {
+        align-items: center;
         justify-content: space-between;
         .main-navigation > div > ul {
             display: flex;
@@ -475,6 +476,10 @@
     a {
         i {
             margin-right: 5px;
+            &.ws-svg-icon {
+                width: 1em;
+                height: 1em;
+            }
         }
     }
 }
@@ -537,7 +542,7 @@
     width: 100%;
     top: 100%;
     background-color: #fff;
-    padding: 40px 15px 60px;
+    padding: 40px 15px;
     z-index: 999999;
     left: -9999em;
     opacity: 0;
@@ -652,4 +657,41 @@
     & + .site-title {
         margin-top: 10px;
     }
+}
+
+// Header Floating
+.header-floating {
+
+    @media(min-width: 1025px) {
+        .header-floating-wrapper {
+            position: absolute;
+            top: auto;
+            width: 100%;
+            z-index: 12;
+
+            .top-bar {
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        &.sticky-header-active {
+            .header-floating-wrapper {
+                .sticky-header {
+                    position: fixed;
+                    top: 0;
+                    width: 100%;
+                }
+            }
+
+            &.admin-bar {
+                .header-floating-wrapper {
+                    .sticky-header {
+                        top: 32px;
+                    }
+                }   
+            }
+        }
+    }
+
 }

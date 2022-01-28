@@ -34,6 +34,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$upload_dir = wp_upload_dir();
 
+			$this->customizer_js = array();
+
 			$this->dynamic_css_uri  = trailingslashit( set_url_scheme( $upload_dir['baseurl'] ) ) . 'botiga/';
 			$this->dynamic_css_path = trailingslashit( set_url_scheme( $upload_dir['basedir'] ) ) . 'botiga/';
 
@@ -54,6 +56,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			add_action( 'switch_theme', array( $this, 'delete_custom_css_file' ) );
 
 			add_action( 'init', array( $this, 'init' ) );
+
+			
 		}
 
 		/**
@@ -116,8 +120,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'site_description_color', '', '.site-description' );
 			$css .= $this->get_color_css( 'color_body_text', '', 'body,.wp-block-columns p a,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.widget a' );
 			$css .= $this->get_fill_css( 'color_body_text', '', '.sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg' );
-			$css .= $this->get_color_css( 'color_link_default', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):not(.page-numbers):not(.woocommerce-review-link):not(.comment-reply-link):hover,ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title:hover' );
-			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover,.site-header .main-navigation .menu > li:hover > a, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover, .main-navigation ul ul > li:hover > a' );
+			$css .= $this->get_color_css( 'color_link_default', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):not(.page-numbers):not(.woocommerce-review-link):not(.comment-reply-link)' );
+			$css .= $this->get_color_css( 'color_link_hover', '', 'a:not(.button):not(.wc-forward):not(.wp-block-button__link):not(.botiga-quantity-plus):not(.botiga-quantity-minus):not(.remove_from_cart_button):not(.category-button):not(.page-numbers):not(.woocommerce-review-link):not(.comment-reply-link):hover, .site-header .main-navigation .menu > li:hover > a, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover, .main-navigation ul ul > li:hover > a' );
 			$css .= $this->get_fill_css( 'color_link_default', '', '.site-header .main-navigation .menu > li:hover > .dropdown-symbol svg, .main-navigation ul ul > li:hover > .dropdown-symbol svg' );
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
@@ -140,10 +144,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.sidebar-slide+.widget-area' );
 
 			$background_color 	= get_theme_mod( 'background_color' );
-			$css .= ".checkout-wrapper .wc_payment_methods,.site-header-cart .widget_shopping_cart { background-color:#" . esc_attr( $background_color ) . ";}" . "\n";
-			$css .= ".site-header-cart .product_list_widget li a.remove { color:#" . esc_attr( $background_color ) . ";}" . "\n";
+			$css .= $this->get_background_color_css( 'background_color', '#FFF', '.checkout-wrapper .wc_payment_methods,.site-header-cart .widget_shopping_cart' );
+			$css .= $this->get_color_css( 'background_color', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
 
 			//Header
+			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+
 			$css .= $this->get_max_width_css( 'site_logo_size', $defaults = array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), '.custom-logo-link img' );
 			$css .= $this->get_background_color_css( 'topbar_background', '', '.top-bar' );
 			$css .= $this->get_color_css( 'topbar_color', '', '.top-bar, .top-bar a, .top-header-row, .top-header-row a' );
@@ -183,8 +189,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
-			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .header-login-register>a, .header-login-register nav>a, .top-bar-login-register>a, .top-bar-login-register nav>a' );
-			$css .= $this->get_border_color_css( 'main_header_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
+			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .header-login-register>a, .header-login-register nav>a, .top-bar-login-register>a, .top-bar-login-register nav>a', true );
+			$css .= $this->get_background_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
+			$css .= $this->get_border_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
+			$css .= $this->get_color_css( 'main_header_minicart_count_text_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header .header-item svg:not(.stroke-based), .site-header .dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_color', '', '.site-header .header-item svg.stroke-based' );
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
@@ -212,19 +220,32 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Sticky header active state
 			$sticky_header = get_theme_mod( 'enable_sticky_header', 0 );
 			if( $sticky_header ) {
-				$css .= '.site-header { -webkit-transition: ease all 300ms; transition: ease all 300ms; }';
+
+				$site_header_inner_selector = '.site-header-inner';
+				if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ) ) ) {
+					$site_header_inner_selector = '.bottom-header-inner';
+				}
+
+				$css .= '.sticky-header, .sticky-header .ws-svg-icon svg { -webkit-transition: ease all 300ms; transition: ease all 300ms; }';
 				$css .= '@media only screen and (min-width: 1025px) {';
-					$css .= $this->get_background_color_css( 'main_header_sticky_active_background', '', '.sticky-header-active .site-header, .sticky-header-active .header-search-form, .sticky-header-active .site-header-cart .count-number, .sticky-header-active .header-wishlist-icon .count-number' );
-					$css .= $this->get_color_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .site-title a, .sticky-header-active .site-header .site-header-inner .site-description, .sticky-header-active .site-header .site-header-inner .main-navigation .menu > li > a, .sticky-header-active .site-header .site-header-inner .header-contact a, .sticky-header-active .site-header .site-header-inner .site-header-cart .count-number, .sticky-header-active .site-header .site-header-inner .header-wishlist-icon .count-number' );
-					$css .= $this->get_border_color_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .site-header-cart .count-number, .sticky-header-active .site-header .site-header-inner .header-wishlist-icon .count-number' );
-					$css .= $this->get_fill_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .header-item svg:not(.stroke-based), .sticky-header-active .site-header .site-header-inner .dropdown-symbol .ws-svg-icon svg' );
-					$css .= $this->get_stroke_css( 'main_header_sticky_active_color', '', '.sticky-header-active .site-header .site-header-inner .header-item svg.stroke-based' );
+					// background color
+					$css .= $this->get_background_color_css( 'main_header_sticky_active_background', '', '.sticky-header-active .sticky-header, .header-search-form' );
+
+					// text color
+					$css .= $this->get_color_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .site-title a, .sticky-header-active .sticky-header $site_header_inner_selector .site-description, .sticky-header-active .sticky-header $site_header_inner_selector .main-navigation .menu > li > a, .sticky-header-active .sticky-header $site_header_inner_selector .header-contact a, .sticky-header-active .sticky-header .header-login-register>a", true );
+					$css .= $this->get_border_color_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header .header-login-register>a:not(.botiga-login-register-link):after" );
+					$css .= $this->get_fill_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item svg:not(.stroke-based), .sticky-header-active .sticky-header $site_header_inner_selector .dropdown-symbol .ws-svg-icon svg" );
+					$css .= $this->get_stroke_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item svg.stroke-based" );
+
+					// text color hover
+					$css .= $this->get_color_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .site-title a:hover, .sticky-header-active .sticky-header $site_header_inner_selector .main-navigation .menu > li > a:hover, .sticky-header-active .sticky-header $site_header_inner_selector .header-contact a:hover, .sticky-header-active .sticky-header .header-login-register>a:hover", true );
+					$css .= $this->get_border_color_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header .header-login-register>a:not(.botiga-login-register-link):hover:after" );
+					$css .= $this->get_fill_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item:not(.header-contact):hover svg:not(.stroke-based)" );
+					$css .= $this->get_stroke_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item:hover svg.stroke-based" );
 				$css .= '}';
 			}
 
 			//Header Layout 6
-			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-
 			if( 'header_layout_6' === $header_layout ) {
 				$main_header_areas_spacing_l6    = get_theme_mod( 'main_header_areas_spacing_l6', 15 );
 				$main_header_elements_spacing_l6 = get_theme_mod( 'main_header_elements_spacing_l6', 15 );
@@ -236,6 +257,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= '.header_layout_6 .botiga-desktop-offcanvas { padding: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
 			}
 
+			// Header Layout 7
 			if( 'header_layout_7' === $header_layout || 'header_layout_8' === $header_layout ) {
 				$desktop_offcanvas_padding = get_theme_mod( 'desktop_offcanvas_padding', 30 );
 				$desktop_offcanvas_menu_link_spacing = get_theme_mod( 'desktop_offcanvas_menu_link_spacing', 10 );
@@ -257,13 +279,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li { border-top: 1px solid '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_link_separator_color, '0.1' ) ) .'; }';
 				}
 
-				$css .= $this->get_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .main-navigation .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description, .botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number, .botiga-desktop-offcanvas .header-contact a' );
+				$css .= $this->get_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .main-navigation .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description .botiga-desktop-offcanvas .header-contact a' );
 				$css .= '.botiga-desktop-offcanvas .main-navigation .menu li a:hover, .botiga-desktop-offcanvas .header-contact a:hover { color: '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_menu_text_color, '0.7' ) ) .'; }';
 				$css .= $this->get_fill_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg:not(.stroke-based), .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg' );
-				$css .= $this->get_stroke_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg.stroke-based' );
-				$css .= $this->get_border_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number' );
-				$css .= $this->get_background_color_css( 'desktop_offcanvas_menu_background_color', '#FFF', '.botiga-desktop-offcanvas .site-header-cart .count-number, .botiga-desktop-offcanvas .header-wishlist-icon .count-number' );
-				
+				$css .= $this->get_stroke_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg.stroke-based' );				
 			}
 
 			//Header mini cart
@@ -839,8 +858,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$button_border_color = get_theme_mod( 'button_border_color', '#212121' );
 			$button_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
-			$css .= ".is-style-outline .wp-block-button__link, .wp-block-button__link.is-style-outline,.wp-block-search .wp-block-search__button,button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { border-color:" . esc_attr( $button_border_color ) . ";}" . "\n";
-			$css .= "button:hover,a.button:hover,.wp-block-button__link:hover,.wp-block-search .wp-block-search__button:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover { border-color:" . esc_attr( $button_border_color_hover ) . ";}" . "\n";
+			$css .= $this->get_border_color_css( 'button_border_color', '#212121', '.is-style-outline .wp-block-button__link, .wp-block-button__link.is-style-outline,.wp-block-search .wp-block-search__button,button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]' );
+			$css .= $this->get_border_color_css( 'button_border_color_hover', '#757575', 'button:hover,a.button:hover,.wp-block-button__link:hover,.wp-block-search .wp-block-search__button:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover' );
 
 			//Widgets
 			$css .= $this->get_background_color_css( 'color_body_text', '', '.widget_price_filter .ui-slider .ui-slider-range' );
@@ -901,7 +920,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			$css = $this->minify( $css );
-
+			
 			return $css;
 		}
 
@@ -913,6 +932,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css = $this->output_css();
 
 			wp_add_inline_style( 'botiga-style-min', $css );
+			wp_localize_script( 'botiga-customizer', 'botiga_theme_options', $this->customizer_js );
 		}
 
 		/**
@@ -1075,6 +1095,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_background_color_css( $setting, $default, $selector, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
+			if( $setting === 'background_color' ) {
+				$mod = "#$mod";
+			}
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'background-color', '', $important );
+
 			return $selector . '{ background-color:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) . ';}' . "\n";
 		}
 
@@ -1084,6 +1110,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_background_color_rgba_css( $setting, $default, $selector, $opacity ) {
 			$mod = get_theme_mod( $setting, $default );
 
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'background-color', $opacity );
+
 			return $selector . '{ background-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ';}' . "\n";
 		}
 
@@ -1092,7 +1120,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public static function get_color_css( $setting, $default, $selector, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
-
+			
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'color', '', $important );
+			
 			return $selector . '{ color:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
 		
@@ -1101,6 +1131,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public static function get_border_color_css( $setting, $default, $selector, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-color', '', $important );
 
 			return $selector . '{ border-color:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) . ';}' . "\n";
 		}
@@ -1111,6 +1143,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_border_top_color_css( $setting, $default, $selector ) {
 			$mod = get_theme_mod( $setting, $default );
 
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-top-color' );
+
 			return $selector . '{ border-top-color:' . esc_attr( $mod ) . ';}' . "\n";
 		}
 
@@ -1119,6 +1153,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public static function get_border_color_rgba_css( $setting, $default, $selector, $opacity, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-color', $opacity, $important );
 
 			return $selector . '{ border-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
@@ -1129,6 +1165,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_border_bottom_color_rgba_css( $setting, $default, $selector, $opacity, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-bottom-color', $opacity, $important );
+
 			return $selector . '{ border-bottom-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
 		
@@ -1138,6 +1176,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_fill_css( $setting, $default, $selector ) {
 			$mod = get_theme_mod( $setting, $default );
 
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'fill' );
+
 			return $selector . '{ fill:' . esc_attr( $mod ) . ';}' . "\n";
 		}	
 		
@@ -1146,6 +1186,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public static function get_stroke_css( $setting, $default, $selector ) {
 			$mod = get_theme_mod( $setting, $default );
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'stroke' );
 
 			return $selector . '{ stroke:' . esc_attr( $mod ) . ';}' . "\n";
 		}		
@@ -1292,6 +1334,24 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 		
 			return $output;
+		}
+
+		public static function mount_customizer_js_options( $selector = '', $setting = '', $prop = '', $opacity = '', $important = false ) {
+			$options = array(
+				'option'   => $setting,
+				'selector' => $selector,
+				'prop'     => $prop
+			);
+
+			if( $opacity ) {
+				$options[ 'rgba' ] = $opacity;
+			}
+
+			// if( strpos( $selector, ':after' ) !== FALSE || strpos( $selector, ':before' ) !== FALSE || strpos( $selector, ':hover' ) !== FALSE || $important ) {
+				$options[ 'pseudo' ] = true;
+			// }
+			
+			Botiga_Custom_CSS::get_instance()->customizer_js[] = $options;
 		}
 	}
 

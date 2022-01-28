@@ -12,12 +12,15 @@
 			box-shadow: 0 0 15px rgba(0,0,0,.1);
 			float: left;
 			position: absolute;
-			transform: translate3d(0, 15px, 0);
 			transition: ease transform 300ms, ease opacity 300ms;
 			left: -999em;
 			z-index: 99999;
 			display: block;
-			opacity: 0;
+			
+			@media(min-width: 1025px) {
+				transform: translate3d(0, 15px, 0);
+				opacity: 0;
+			}
 
 			ul {
 				left: -999em;

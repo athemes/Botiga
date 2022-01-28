@@ -254,6 +254,12 @@ botiga.helpers = {
 
 };
 
+botiga.headerTransparent = {
+	init: function() {
+		
+	}
+}
+
 /**
  * Desktop offcanvas menu navigation
  */
@@ -403,6 +409,12 @@ botiga.stickyHeader = {
 			body.classList.add( 'sticky-header-active' );
 		}
 
+		var header_offset_y = document.querySelector( '.sticky-header' ).getBoundingClientRect().y;
+
+		if( document.body.classList.contains( 'admin-bar' ) ) {
+			header_offset_y = header_offset_y - 32;
+		}
+
 		if ( sticky.classList.contains( 'sticky-scrolltop' ) ) {
 			var lastScrollTop = 0;
 
@@ -421,7 +433,7 @@ botiga.stickyHeader = {
 			window.addEventListener( 'scroll', function() {
 				var vertDist = window.scrollY;
 
-				if ( vertDist > 1 ) {
+				if ( vertDist > header_offset_y ) {
 					sticky.classList.add( 'sticky-shadow' );
 					body.classList.add( 'sticky-header-active' );
 				} else {

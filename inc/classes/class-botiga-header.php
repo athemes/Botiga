@@ -27,9 +27,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Constructor
 		 */
 		public function __construct() {
-			add_action( 'botiga_header', array( $this, 'header_markup' ) );
-			add_action( 'botiga_header', array( $this, 'header_mobile_markup' ) );
-			add_action( 'botiga_header', array( $this, 'header_image' ) );
+			add_action( 'wp', array( $this, 'floating_header' ) );
+
+			add_action( 'botiga_header', array( $this, 'header_markup' ), 10 );
+			add_action( 'botiga_header', array( $this, 'header_mobile_markup'), 20 );
+			add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
 		}
 
 		/**
@@ -106,7 +108,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -141,7 +143,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -199,7 +201,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 				<?php do_action( 'botiga_after_header' ); ?>
 
-				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="bottom-header-inner">
 							<div class="row">
@@ -246,7 +248,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 				<?php do_action( 'botiga_after_header' ); ?>
 
-				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="bottom-header-inner">
 							<div class="row row-menu menu-<?php echo esc_attr( $menu_position ); ?>">
@@ -298,7 +300,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 				<?php do_action( 'botiga_after_header' ); ?>
 
-				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="bottom-header-inner">
 							<div class="row row-menu menu-<?php echo esc_attr( $menu_position ); ?>">
@@ -361,7 +363,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -411,7 +413,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?> <?php echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -632,7 +634,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Shortcode
 		 */
 		public function shortcode() {
-			$header_shortcode_content  = get_theme_mod( 'header_shortcode_content' );
+			$header_shortcode_content = get_theme_mod( 'header_shortcode_content' );
 
 			if( ! $header_shortcode_content ) {
 				return '';
@@ -793,10 +795,47 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			$sticky		= '';
 
 			if ( $enabled ) {
-				$sticky = 'sticky-header sticky-' . esc_html( $type );
+				$sticky = ' sticky-header sticky-' . esc_html( $type );
 			}
 
 			return $sticky;
+		}
+
+		/**
+		 * Header Floating
+		 */
+		public function floating_header() {
+			$topbar_floating = get_theme_mod( 'topbar_floating', 1 );
+			$header_floating = get_theme_mod( 'header_floating', 1 );
+
+			if( ! $header_floating ) {
+				return;
+			}
+
+			if( $topbar_floating ) {
+				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_open' ), -1 );
+			} else {
+				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_open' ), 9 );
+			}
+
+			if( $header_floating ) {
+				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_close' ), 11 );
+			} else {
+				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_close' ), 6 );
+			}
+
+			add_filter( 'body_class', function( $classes ){
+				$classes[] = 'header-floating';
+				return $classes;
+			} );
+		}
+
+		public function floating_header_wrapper_open() {
+			echo '<div class="header-floating-wrapper">';
+		}
+
+		public function floating_header_wrapper_close() {
+			echo '</div>';
 		}
 
 	}
