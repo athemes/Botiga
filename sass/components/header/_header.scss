@@ -2,6 +2,13 @@
     background-color: #fff;
     position: relative;
     z-index: 999;
+
+    a {
+        transition: ease color 300ms;
+        svg {
+            transition: ease stroke 300ms, ease fill 300ms;
+        }
+    }
 }
 .site-header-inner {
     padding-top: 15px;
@@ -415,6 +422,7 @@
 .header-login-register,
 .top-bar-login-register {
     position: relative;
+    text-align: left;
     z-index: 9991;
     > a:not(.botiga-login-register-link) {
         display: flex;
@@ -663,6 +671,10 @@
 .header-floating {
 
     @media(min-width: 1025px) {
+        .content-wrapper {
+            margin-top: 0;
+        }
+
         .header-floating-wrapper {
             position: absolute;
             top: auto;

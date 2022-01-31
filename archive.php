@@ -41,8 +41,8 @@ get_header();
 		<?php	
 		the_posts_pagination( array(
 			'mid_size'  => 1,
-			'prev_text' => '&lt;',
-			'next_text' => '&gt;',
+			'prev_text' => '&#x2190;',
+			'next_text' => '&#x2192;',
 		) );
 
 		do_action( 'botiga_after_the_posts_pagination' );

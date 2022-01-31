@@ -1797,16 +1797,11 @@ html {
   margin-right: 7px;
   border-radius: 50%;
   background: transparent;
-  color: #212121;
+  color: inherit;
 }
 
 .navigation.pagination .page-numbers:last-child {
   margin-right: 0;
-}
-
-.navigation.pagination .page-numbers:focus, .navigation.pagination .page-numbers:hover, .navigation.pagination .page-numbers.current {
-  color: #fff;
-  background-color: #212121;
 }
 
 .woocommerce-pagination {
@@ -1839,11 +1834,7 @@ html {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   border-radius: 50%;
-}
-
-.woocommerce-pagination li .page-numbers:hover, .woocommerce-pagination li .page-numbers.current {
-  color: #fff;
-  background-color: #212121;
+  color: inherit;
 }
 
 .botiga-pagination-load-more .navigation.pagination,
@@ -2060,6 +2051,16 @@ body.mobile-menu-visible {
   background-color: #fff;
   position: relative;
   z-index: 999;
+}
+
+.site-header a {
+  -webkit-transition: ease color 300ms;
+  transition: ease color 300ms;
+}
+
+.site-header a svg {
+  -webkit-transition: ease stroke 300ms, ease fill 300ms;
+  transition: ease stroke 300ms, ease fill 300ms;
 }
 
 .site-header-inner {
@@ -2506,6 +2507,7 @@ body.mobile-menu-visible {
 .header-login-register,
 .top-bar-login-register {
   position: relative;
+  text-align: left;
   z-index: 9991;
 }
 
@@ -2772,6 +2774,9 @@ body.mobile-menu-visible {
 }
 
 @media (min-width: 1025px) {
+  .header-floating .content-wrapper {
+    margin-top: 0;
+  }
   .header-floating .header-floating-wrapper {
     position: absolute;
     top: auto;

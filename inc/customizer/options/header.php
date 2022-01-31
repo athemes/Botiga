@@ -140,8 +140,8 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_main_header',
-			'controls_general'		=> json_encode( array( '#customize-control-header_layout_desktop','#customize-control-header_divider_1','#customize-control-main_header_settings_title','#customize-control-main_header_menu_position','#customize-control-header_container','#customize-control-enable_sticky_header','#customize-control-sticky_header_type','#customize-control-header_divider_2','#customize-control-main_header_elements_title','#customize-control-header_components_l1','#customize-control-header_components_l3left','#customize-control-header_components_l3right','#customize-control-header_components_l4top','#customize-control-header_components_l4bottom','#customize-control-header_components_l5topleft','#customize-control-header_components_l5topright','#customize-control-header_components_l5bottom','#customize-control-header_divider_3','#customize-control-main_header_cart_account_title','#customize-control-enable_header_cart','#customize-control-enable_header_account','#customize-control-header_divider_4','#customize-control-main_header_button_title','#customize-control-header_button_text','#customize-control-header_button_link','#customize-control-header_button_newtab','#customize-control-header_divider_5','#customize-control-main_header_contact_info_title','#customize-control-header_contact_mail','#customize-control-header_contact_phone', ) ),
-			'controls_design'		=> json_encode( array( '#customize-control-main_header_submenu_color','#customize-control-main_header_minicart_count_background_color','#customize-control-main_header_minicart_count_text_color','#customize-control-main_header_submenu_background','#customize-control-main_header_bottom_padding','#customize-control-main_header_bottom_background', '#customize-control-main_header_bottom_color','#customize-control-main_header_divider_7','#customize-control-main_header_background','#customize-control-main_header_color','#customize-control-main_header_divider_6','#customize-control-main_header_padding','#customize-control-main_header_divider_size','#customize-control-main_header_divider_color','#customize-control-main_header_divider_width','#customize-control-main_header_sticky_active_divider','#customize-control-main_header_sticky_active_title_1','#customize-control-main_header_sticky_active_background','#customize-control-main_header_sticky_active_color','#customize-control-main_header_sticky_active_color_hover' ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-header_layout_desktop','#customize-control-header_floating','#customize-control-header_divider_1','#customize-control-main_header_settings_title','#customize-control-main_header_menu_position','#customize-control-header_container','#customize-control-enable_sticky_header','#customize-control-sticky_header_type','#customize-control-sitcky_header_logo','#customize-control-header_divider_2','#customize-control-main_header_elements_title','#customize-control-header_components_l1','#customize-control-header_components_l3left','#customize-control-header_components_l3right','#customize-control-header_components_l4top','#customize-control-header_components_l4bottom','#customize-control-header_components_l5topleft','#customize-control-header_components_l5topright','#customize-control-header_components_l5bottom','#customize-control-header_divider_3','#customize-control-main_header_cart_account_title','#customize-control-enable_header_cart','#customize-control-enable_header_account','#customize-control-header_divider_4','#customize-control-main_header_button_title','#customize-control-header_button_text','#customize-control-header_button_link','#customize-control-header_button_newtab','#customize-control-header_divider_5','#customize-control-main_header_contact_info_title','#customize-control-header_contact_mail','#customize-control-header_contact_phone', ) ),
+			'controls_design'		=> json_encode( array( '#customize-control-main_header_submenu_color','#customize-control-main_header_submenu_color_hover','#customize-control-main_header_divider_10','#customize-control-main_header_minicart_count_background_color','#customize-control-main_header_minicart_count_text_color','#customize-control-main_header_submenu_background','#customize-control-main_header_bottom_padding','#customize-control-main_header_bottom_background', '#customize-control-main_header_bottom_color','#customize-control-main_header_bottom_color_hover','#customize-control-main_header_divider_9','#customize-control-main_header_divider_7','#customize-control-main_header_background','#customize-control-main_header_color','#customize-control-main_header_color_hover','#customize-control-main_header_divider_11','#customize-control-main_header_divider_6','#customize-control-main_header_padding','#customize-control-main_header_divider_size','#customize-control-main_header_divider_color','#customize-control-main_header_divider_width','#customize-control-main_header_sticky_active_divider','#customize-control-main_header_sticky_active_title_1','#customize-control-main_header_sticky_active_background','#customize-control-main_header_sticky_active_color','#customize-control-main_header_sticky_active_color_hover','#customize-control-main_header_sticky_active_submenu_background_color','#customize-control-main_header_sticky_active_submenu_color','#customize-control-main_header_sticky_active_submenu_color_hover' ) ),
 		)
 	)
 );
@@ -168,7 +168,27 @@ $wp_customize->add_control(
 			'priority'	=> 20
 		)
 	)
-); 
+);
+
+$wp_customize->add_setting(
+	'header_floating',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'header_floating',
+		array(
+			'label'         	=> esc_html__( 'Enable floating header', 'botiga' ),
+			'description'       => esc_html__( 'The header stay floating over the content.', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'priority'		    => 21
+		)
+	)
+);
 
 $wp_customize->add_setting( 'header_divider_1',
 	array(
@@ -278,6 +298,27 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'sticky_hea
 		'priority'		  => 80
 	)
 ) );
+
+$wp_customize->add_setting( 
+	'sitcky_header_logo',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'absint',
+	) 
+);
+$wp_customize->add_control( 
+	new WP_Customize_Media_Control( 
+		$wp_customize, 
+		'sitcky_header_logo',
+		array(
+			'label'           => __( 'Sticky Header Logo', 'botiga' ),
+			'section'         => 'botiga_section_main_header',
+			'mime_type'       => 'image',
+			'active_callback' => 'botiga_callback_sticky_header_logo',
+			'priority'	      => 81
+		)
+	)
+);
 
 $wp_customize->add_setting( 'header_divider_2',
 	array(
@@ -686,6 +727,40 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'main_header_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'main_header_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Text color hover', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'priority'			=> 330
+		)
+	)
+);
+
+$wp_customize->add_setting( 'main_header_divider_11',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+
+$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'main_header_divider_11',
+		array(
+			'section' 			=> 'botiga_section_main_header',
+			'priority'			=> 331
+		)
+	)
+);
+
+$wp_customize->add_setting(
 	'main_header_bottom_background',
 	array(
 		'default'           => '#fff',
@@ -728,6 +803,42 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'main_header_bottom_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'main_header_bottom_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Bottom row text color hover', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+            'active_callback'   => 'botiga_callback_header_bottom',
+			'priority'			=> 350
+		)
+	)
+);
+
+$wp_customize->add_setting( 'main_header_divider_9',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+
+$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'main_header_divider_9',
+		array(
+			'section' 			=> 'botiga_section_main_header',
+			'active_callback'   => 'botiga_callback_header_bottom',
+			'priority'			=> 351
+		)
+	)
+);
+
+$wp_customize->add_setting(
 	'main_header_submenu_background',
 	array(
 		'default'           => '#ffffff',
@@ -763,6 +874,40 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Submenu color', 'botiga' ),
 			'section'       	=> 'botiga_section_main_header',
 			'priority'			=> 370
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'main_header_submenu_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'main_header_submenu_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Submenu color hover', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'priority'			=> 370
+		)
+	)
+);
+
+$wp_customize->add_setting( 'main_header_divider_10',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+
+$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'main_header_divider_10',
+		array(
+			'section' 			=> 'botiga_section_main_header',
+			'priority'			=> 371
 		)
 	)
 );
@@ -1028,6 +1173,69 @@ $wp_customize->add_control(
 			'section'       	=> 'botiga_section_main_header',
 			'active_callback'   => 'botiga_callback_sticky_header',
 			'priority'			=> 450
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'main_header_sticky_active_submenu_background_color',
+	array(
+		'default'           => '#ffffff',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'main_header_sticky_active_submenu_background_color',
+		array(
+			'label'         	=> esc_html__( 'Submenu Background', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'active_callback'   => 'botiga_callback_sticky_header',
+			'priority'			=> 560
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'main_header_sticky_active_submenu_color',
+	array(
+		'default'           => '#212121',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'main_header_sticky_active_submenu_color',
+		array(
+			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'active_callback'   => 'botiga_callback_sticky_header',
+			'priority'			=> 560
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'main_header_sticky_active_submenu_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'main_header_sticky_active_submenu_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'active_callback'   => 'botiga_callback_sticky_header',
+			'priority'			=> 560
 		)
 	)
 );

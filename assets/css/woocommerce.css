@@ -1448,10 +1448,6 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   margin-bottom: 20px;
 }
 
-.product-gallery-summary .product_meta a {
-  color: #212121;
-}
-
 .product-gallery-summary .product_meta > * {
   display: block;
   margin-bottom: 8px;
@@ -4566,7 +4562,7 @@ p.no-comments {
     text-align: center;
     border-radius: 50%;
     position: absolute;
-    top: 22px;
+    top: 15px;
     left: 22px;
     z-index: 11;
   }

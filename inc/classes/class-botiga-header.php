@@ -28,10 +28,30 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'wp', array( $this, 'floating_header' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'sticky_header_logo' ) );
 
 			add_action( 'botiga_header', array( $this, 'header_markup' ), 10 );
 			add_action( 'botiga_header', array( $this, 'header_mobile_markup'), 20 );
 			add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
+		}
+
+		/**
+		 * Sticky Header Logo
+		 */
+		public function sticky_header_logo() {
+			$enabled       = get_theme_mod( 'enable_sticky_header', 0 );
+			$logo          = get_theme_mod( 'sitcky_header_logo', 0 );
+
+			if( ! $enabled || ! $logo ) {
+				return;
+			}
+
+			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ) ) ) {
+				return;
+			}
+
+			wp_localize_script( 'botiga-custom', 'botiga_sticky_header_logo', wp_get_attachment_image_src( $logo, 'full' ) );
 		}
 
 		/**
@@ -805,8 +825,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Header Floating
 		 */
 		public function floating_header() {
-			$topbar_floating = get_theme_mod( 'topbar_floating', 1 );
-			$header_floating = get_theme_mod( 'header_floating', 1 );
+			$topbar_floating = get_theme_mod( 'topbar_floating', 0 );
+			$header_floating = get_theme_mod( 'header_floating', 0 );
 
 			if( ! $header_floating ) {
 				return;

@@ -177,17 +177,10 @@
 		margin-right: 7px;
 		border-radius: 50%;
 		background: transparent;
-		color: $color__primary;
+		color: inherit;
 
 		&:last-child {
 			margin-right: 0;
-		}
-
-		&:focus,
-		&:hover,
-		&.current {
-			color: #fff;
-			background-color: $color__primary;
 		}
 	}
 }
@@ -218,12 +211,7 @@
 			background: transparent;
 			transition: background-color 0.3s;
 			border-radius: 50%;
-
-			&:hover,
-			&.current {
-				color: #fff;
-				background-color: $color__primary;
-			}		
+			color: inherit;	
 		}
 	}
 }

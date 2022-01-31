@@ -342,6 +342,16 @@ function botiga_callback_header_bottom() {
 	}
 }
 
+function botiga_floating_header_enabled() {
+	$enabled = get_theme_mod( 'header_floating', 0 );
+
+	if ( $enabled ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 /**
  * Sticky header
  */
@@ -350,6 +360,17 @@ function botiga_callback_sticky_header() {
 	$enable        = get_theme_mod( 'enable_sticky_header', 0 );
 
 	if ( $enable && $header_layout !== 'header_layout_6' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function botiga_callback_sticky_header_logo() {
+	$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+	$enable        = get_theme_mod( 'enable_sticky_header', 0 );
+
+	if ( $enable && ! in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ) ) ) {
 		return true;
 	} else {
 		return false;
