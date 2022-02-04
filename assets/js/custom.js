@@ -176,6 +176,13 @@ botiga.navigation = {
       button.classList.remove('open');
       offCanvas.classList.remove('toggled');
       document.body.classList.remove('mobile-menu-visible');
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.botiga-offcanvas-menu') === null && !e.target.classList.contains('menu-toggle') && e.target.closest('.menu-toggle') === null) {
+        button.classList.remove('open');
+        offCanvas.classList.remove('toggled');
+        document.body.classList.remove('mobile-menu-visible');
+      }
     }); // Get all the link elements within the menu.
 
     var links = menu.getElementsByTagName('a'); // Get all the link elements with children within the menu.

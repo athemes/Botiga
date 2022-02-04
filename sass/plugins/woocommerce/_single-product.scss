@@ -1,5 +1,9 @@
 .single-product {
 
+	.header-image:not(:empty) {
+		margin-bottom: 80px;
+	}
+
 	div.product {
 		position: relative;
 

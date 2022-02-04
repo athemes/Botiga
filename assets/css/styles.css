@@ -2383,12 +2383,6 @@ body.mobile-menu-visible {
   margin: 0;
 }
 
-.botiga-desktop-offcanvas .main-navigation > div > ul > li:hover > ul {
-  left: 50%;
-  -webkit-transform: translate3d(-50%, 0, 0);
-          transform: translate3d(-50%, 0, 0);
-}
-
 .botiga-desktop-offcanvas .header-elements {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -2580,6 +2574,14 @@ body.mobile-menu-visible {
   opacity: 1;
   -webkit-transform: none;
           transform: none;
+}
+
+@media screen and (min-width: 1025px) {
+  .header-search-form-active .header-login-register,
+  .header-search-form-active .top-bar-login-register,
+  .header-search-form-active .main-navigation {
+    pointer-events: none;
+  }
 }
 
 .top-bar-login-register > a {
@@ -2775,7 +2777,11 @@ body.mobile-menu-visible {
 
 @media (min-width: 1025px) {
   .header-floating .content-wrapper {
-    margin-top: 0;
+    margin-top: 0 !important;
+  }
+  .header-floating .page-header + .content-wrapper,
+  .header-floating .woocommerce-page-header + .content-wrapper {
+    margin-top: 80px !important;
   }
   .header-floating .header-floating-wrapper {
     position: absolute;
@@ -2785,7 +2791,7 @@ body.mobile-menu-visible {
   }
   .header-floating .header-floating-wrapper .top-bar {
     position: relative;
-    z-index: 1;
+    z-index: 1000;
   }
   .header-floating.sticky-header-active .header-floating-wrapper .sticky-header {
     position: fixed;
@@ -2855,6 +2861,10 @@ body.mobile-menu-visible {
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.single-post .header-image:not(:empty) {
+  margin-bottom: 80px;
 }
 
 .single-post.blog-single-layout3 .content-wrapper {
@@ -3492,6 +3502,10 @@ body.mobile-menu-visible {
   font-size: 2rem;
 }
 
+.error404 .header-image:not(:empty) {
+  margin-bottom: 80px;
+}
+
 .error404 .site-main {
   padding-right: 15px;
   width: 100%;
@@ -3553,6 +3567,10 @@ body.mobile-menu-visible {
   margin-bottom: 10px;
 }
 
+.page:not(.botiga-page-builder-mode) .header-image:not(:empty) {
+  margin-bottom: 80px;
+}
+
 .botiga-page-builder-mode .content-wrapper {
   margin-top: 0;
   margin-bottom: 0;
@@ -3596,6 +3614,10 @@ body.mobile-menu-visible {
 /**
  * Search Page
  */
+.search .header-image:not(:empty) {
+  margin-bottom: 80px;
+}
+
 .search .page-header {
   padding: 0;
   margin-bottom: 80px;

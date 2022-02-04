@@ -20,6 +20,19 @@
   z-index: 500000 !important;
 }
 
+/* Select 2 Control */
+.select2-container .botiga-select2 .select2-search {
+  display: none;
+}
+
+.select2-container .botiga-select2.select2-selection {
+  border-color: #d0d0d0;
+}
+
+.select2-container.select2-container--focus .botiga-select2.select2-selection {
+  border-color: #2271b1;
+}
+
 #customize-control-botiga_body_font,
 #customize-control-body_font_style,
 #customize-control-body_letter_spacing,

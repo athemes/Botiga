@@ -121,9 +121,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_body_text', '', 'body,.wp-block-columns p a,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul a,.widget a' );
 			$css .= $this->get_fill_css( 'color_body_text', '', '.sidebar-slide .sidebar-open-wrapper .sidebar-open svg, .sidebar-slide+.widget-area .sidebar-wrapper .close-sidebar svg' );
 
-			$css .= $this->get_color_css( 'color_link_default', '', 'a, .main-navigation ul ul > li > a' );
-			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover, .site-header .main-navigation .menu > li:hover > a, .site-header .header-contact a:hover,.wp-block-columns p a:hover,.widget a:hover, .main-navigation ul ul > li:hover > a' );
-			$css .= $this->get_fill_css( 'color_link_default', '', '.site-header .main-navigation .menu > li:hover > .dropdown-symbol svg, .main-navigation ul ul > li:hover > .dropdown-symbol svg' );
+			$css .= $this->get_color_css( 'color_link_default', '', 'a' );
+			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover, .wp-block-columns p a:hover,.widget a:hover' );
 			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
 			$css .= $this->get_color_css( 'color_heading_3', '', 'h3' );
@@ -198,14 +197,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
 			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .site-header .header-login-register>a, .site-header .header-login-register nav>a' );
-			$css .= $this->get_color_css( 'main_header_color_hover', '', '.site-header .site-title a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover, .site-header .header-login-register>a:hover, .site-header .header-login-register nav>a:hover' );
+			$css .= $this->get_color_css( 'main_header_color_hover', '', '.site-header .site-title a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover, .site-header .header-login-register>a:hover, .site-header .header-login-register nav>a:hover, .site-header .main-navigation .menu > li:hover > a, .site-header .header-contact a:hover' );
 			$css .= $this->get_background_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_border_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_color_css( 'main_header_minicart_count_text_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header a svg:not(.stroke-based), .site-header a .dropdown-symbol .ws-svg-icon svg' );
-			$css .= $this->get_fill_css( 'main_header_color_hover', '', '.site-header a:hover svg:not(.stroke-based), .site-header a:hover .dropdown-symbol .ws-svg-icon svg' );
+			$css .= $this->get_fill_css( 'main_header_color_hover', '', '.site-header .main-navigation .menu > li:hover > .dropdown-symbol svg, .site-header a:hover svg:not(.stroke-based), .site-header a:hover .dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_color', '', '.site-header .header-item svg.stroke-based' );
-			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
 			
 			// Bottom header row
 			$css .= $this->get_background_color_css( 'main_header_bottom_background', '', '.bottom-header-row' );
@@ -230,11 +228,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$main_header_bottom_padding = get_theme_mod( 'main_header_bottom_padding', 15 );
 			$css .= ".bottom-header-inner { padding-top:" . esc_attr( $main_header_bottom_padding ) . 'px;padding-bottom:' . esc_attr( $main_header_bottom_padding ) . "px;}" . "\n";
 
-			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.main-navigation ul ul li, .header-login-register nav' );
-			$css .= $this->get_color_css( 'main_header_submenu_color', '#212121', '.main-navigation ul ul a, .site-header .header-login-register nav>a, .bottom-header-row .header-login-register nav>a' );
-			$css .= $this->get_color_css( 'main_header_submenu_color_hover', '#757575', '.main-navigation ul ul li:hover > a, .site-header .header-login-register nav>a:hover, .bottom-header-row .header-login-register nav>a:hover' );
-			$css .= $this->get_fill_css( 'main_header_submenu_color', '#212121', '.main-navigation ul ul li > .dropdown-symbol svg' );
-			$css .= $this->get_fill_css( 'main_header_submenu_color_hover', '#757575', '.main-navigation ul ul li:hover > .dropdown-symbol svg' );
+			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .main-navigation ul ul li, .site-header .header-login-register nav' );
+			$css .= $this->get_color_css( 'main_header_submenu_color', '#212121', '.site-header .main-navigation ul ul a, .site-header .main-navigation ul ul > li:hover > .dropdown-symbol svg, .site-header .header-login-register nav>a, .bottom-header-row .header-login-register nav>a' );
+			$css .= $this->get_color_css( 'main_header_submenu_color_hover', '#757575', '.site-header .main-navigation ul ul li:hover > a, .site-header .header-login-register nav>a:hover, .bottom-header-row .header-login-register nav>a:hover' );
+			$css .= $this->get_fill_css( 'main_header_submenu_color', '#212121', '.site-header .main-navigation ul ul li > .dropdown-symbol svg' );
+			$css .= $this->get_fill_css( 'main_header_submenu_color_hover', '#757575', '.site-header .main-navigation ul ul li:hover > .dropdown-symbol svg' );
 
 			$css .= $this->get_color_css( 'main_header_color', '#212121', '.site-header .header-login-register>a' );
 			$css .= $this->get_border_color_rgba_css( 'main_header_color', '#212121', '.site-header .header-login-register nav>a+a', 0.08 );
@@ -1131,7 +1129,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get background color CSS
 		 */
-		public static function get_background_color_css( $setting, $default, $selector, $important = false ) {
+		public static function get_background_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
 			if( $setting === 'background_color' ) {
@@ -1157,7 +1155,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get color CSS
 		 */
-		public static function get_color_css( $setting, $default, $selector, $important = false ) {
+		public static function get_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 			
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'color', '', $important );
@@ -1168,7 +1166,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get border color CSS
 		 */
-		public static function get_border_color_css( $setting, $default, $selector, $important = false ) {
+		public static function get_border_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-color', '', $important );
@@ -1190,7 +1188,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get border color rgba CSS
 		 */
-		public static function get_border_color_rgba_css( $setting, $default, $selector, $opacity, $important = false ) {
+		public static function get_border_color_rgba_css( $setting = '', $default = '', $selector = '', $opacity = 1, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-color', $opacity, $important );
@@ -1201,7 +1199,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get border bottom color rgba CSS
 		 */
-		public static function get_border_bottom_color_rgba_css( $setting, $default, $selector, $opacity, $important = false ) {
+		public static function get_border_bottom_color_rgba_css( $setting = '', $default = '', $selector = '', $opacity = 1, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-bottom-color', $opacity, $important );
@@ -1232,7 +1230,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}		
 
 		//Font sizes
-		public static function get_font_sizes_css( $setting, $defaults = array(), $selector, $important = false ) {
+		public static function get_font_sizes_css( $setting = '', $defaults = array(), $selector = '', $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1250,7 +1248,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}
 		
 		//Max width
-		public static function get_max_width_css( $setting, $defaults = array(), $selector, $unit = 'px' ) {
+		public static function get_max_width_css( $setting = '', $defaults = array(), $selector = '', $unit = 'px' ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1268,7 +1266,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}			
 
 		//Top bottom padding
-		public static function get_top_bottom_padding_css( $setting, $defaults = array(), $selector, $important = false ) {
+		public static function get_top_bottom_padding_css( $setting = '', $defaults = array(), $selector = '', $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1288,7 +1286,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}	
 
 		//Left right padding
-		public static function get_left_right_padding_css( $setting, $defaults = array(), $selector, $important = false ) {
+		public static function get_left_right_padding_css( $setting = '', $defaults = array(), $selector = '', $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1308,7 +1306,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}	
 
 		//Gap
-		public static function get_gap_css( $setting, $defaults = array(), $selector ) {
+		public static function get_gap_css( $setting = '', $defaults = array(), $selector = '' ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1326,7 +1324,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}	
 
 		//Right margin
-		public static function get_right_margin_css( $setting, $defaults = array(), $selector, $important = false ) {
+		public static function get_right_margin_css( $setting = '', $defaults = array(), $selector = '', $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1344,7 +1342,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}	
 		
 		//Convert hex to rgba
-		public static function to_rgba( $color, $opacity = false ) {
+		public static function to_rgba( $color = '', $opacity = false ) {
 
 			$default = 'rgb(0,0,0)';
 		 

@@ -2,6 +2,9 @@
  * Search Page
  */
 .search {
+    .header-image:not(:empty) {
+		margin-bottom: 80px;
+	}
     .page-header {
         padding: 0;
         margin-bottom: 80px;

@@ -49,6 +49,9 @@
 }
 
 .single-post {
+	.header-image:not(:empty) {
+		margin-bottom: 80px;
+	}
 	&.blog-single-layout3 {
 		.content-wrapper {
 			max-width: 95vw;
@@ -653,6 +656,9 @@
 }
 
 .error404 {
+	.header-image:not(:empty) {
+		margin-bottom: 80px;
+	}
 	.site-main {
 		padding-right: 15px;
 		width:100%;
@@ -705,5 +711,13 @@
 	label {
 		display: block;
 		margin-bottom: 10px;
+	}
+}
+
+.page {
+	&:not(.botiga-page-builder-mode) {
+		.header-image:not(:empty) {
+			margin-bottom: 80px;
+		}
 	}
 }

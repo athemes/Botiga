@@ -1,6 +1,20 @@
 "use strict";
 
+/* Select 2 Control */
+jQuery(document).ready(function ($) {
+  "use strict";
+
+  $('.botiga-select2').each(function () {
+    var options = $(this).data('select2-options');
+    $(this).select2(options);
+  });
+  $('.botiga-select2').on('change', function () {
+    var hidden_input = $(this).prev();
+    hidden_input.val($(this).val()).trigger('change');
+  });
+});
 /* Typography */
+
 jQuery(document).ready(function ($) {
   "use strict";
 

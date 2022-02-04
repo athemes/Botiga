@@ -832,6 +832,78 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				return;
 			}
 
+			$display_on = get_theme_mod( 'header_floating_display_on', 'front-page' );
+			if( ! $display_on ) {
+				return;
+			}
+
+			$display_on = explode( ',', $display_on );
+
+			// Include on Front Page
+			if( is_front_page() && ! in_array( 'front-page', $display_on ) ) {
+				return;
+			}
+
+			// Include on Front Pages
+			if( is_page() && ! in_array( 'pages', $display_on ) ) {
+				return;
+			}
+
+			// Include on Blog Archive
+			if( ( is_home() || is_category() || is_tag() ) && ! in_array( 'blog-archive', $display_on ) ) {
+				return;
+			}
+
+			// Include on Blog Posts
+			if( is_singular( 'post' ) && ! in_array( 'blog-posts', $display_on ) ) {
+				return;
+			}
+
+			if( class_exists( 'Woocommerce' ) ) {
+				
+				// Include on Shop Catalog
+				if( ( is_shop() || is_product_category() || is_product_tag() ) && ! in_array( 'shop-catalog', $display_on ) ) {
+					return;
+				}
+
+				// Include on Shop Products
+				if( is_singular( 'product' ) && ! in_array( 'shop-products', $display_on ) ) {
+					return;
+				}
+
+				// Include on Shop Cart
+				if( is_cart() && ! in_array( 'shop-cart', $display_on ) ) {
+					return;
+				}
+
+				// Include on Shop Checkout
+				// we need to check if "is_singular" to avoid extra "Buy Now" plugins conflict
+				if( is_checkout() && ! is_singular( 'product' ) && ! in_array( 'shop-checkout', $display_on ) ) {
+					return;
+				}
+
+				// Include on Shop My Account
+				if( is_account_page() && ! in_array( 'shop-my-account', $display_on ) ) {
+					return;
+				}
+
+				// Include on Wishlist page
+				if( is_page_template( 'page-templates/template-wishlist.php' ) && ! in_array( 'shop-wishlist', $display_on ) ) {
+					return;
+				}
+
+			}
+
+			// Include on Search Page
+			if( is_search() && ! in_array( 'post-search', $display_on ) ) {
+				return;
+			}
+
+			// Include on 404 Page
+			if( is_404() && ! in_array( '404', $display_on ) ) {
+				return;
+			}
+
 			if( $topbar_floating ) {
 				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_open' ), -1 );
 			} else {

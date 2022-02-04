@@ -30,7 +30,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_top_bar',
-			'controls_general'		=> json_encode( array( '#customize-control-center_top_bar_contents','#customize-control-enable_top_bar','#customize-control-topbar_floating','#customize-control-topbar_container','#customize-control-topbar_delimiter','#customize-control-topbar_visibility','#customize-control-topbar_divider_1','#customize-control-topbar_elements_title','#customize-control-topbar_components_left','#customize-control-topbar_components_right','#customize-control-topbar_divider_2','#customize-control-topbar_contact_info_title','#customize-control-topbar_contact_mail','#customize-control-topbar_contact_phone','#customize-control-topbar_divider_3','#customize-control-topbar_social_title','#customize-control-social_profiles_topbar','#customize-control-topbar_divider_4','#customize-control-topbar_text_title','#customize-control-topbar_text','#customize-control-topbar_divider_5','#customize-control-topbar_nav_title','#customize-control-topbar_nav_link', ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-center_top_bar_contents','#customize-control-enable_top_bar','#customize-control-topbar_container','#customize-control-topbar_delimiter','#customize-control-topbar_visibility','#customize-control-topbar_divider_1','#customize-control-topbar_elements_title','#customize-control-topbar_components_left','#customize-control-topbar_components_right','#customize-control-topbar_divider_2','#customize-control-topbar_contact_info_title','#customize-control-topbar_contact_mail','#customize-control-topbar_contact_phone','#customize-control-topbar_divider_3','#customize-control-topbar_social_title','#customize-control-social_profiles_topbar','#customize-control-topbar_divider_4','#customize-control-topbar_text_title','#customize-control-topbar_text','#customize-control-topbar_divider_5','#customize-control-topbar_nav_title','#customize-control-topbar_nav_link', ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-topbar_divider_7','#customize-control-topbar_background','#customize-control-topbar_color','#customize-control-topbar_color_hover','#customize-control-topbar_submenu_background_color','#customize-control-topbar_divider_6','#customize-control-topbar_padding','#customize-control-topbar_divider_size','#customize-control-topbar_divider_color','#customize-control-topbar_divider_width' ) ),
 			'priority' 				=> 10
 		)
@@ -52,27 +52,6 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Enable top bar', 'botiga' ),
 			'section'       	=> 'botiga_section_top_bar',
 			'priority' 			=> 20
-		)
-	)
-);
-
-$wp_customize->add_setting(
-	'topbar_floating',
-	array(
-		'default'           => 0,
-		'sanitize_callback' => 'botiga_sanitize_checkbox',
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Toggle_Control(
-		$wp_customize,
-		'topbar_floating',
-		array(
-			'label'         	=> esc_html__( 'Enable floating top bar', 'botiga' ),
-			'description'       => esc_html__( 'The top bar stay floating over the content.', 'botiga' ),
-			'section'       	=> 'botiga_section_top_bar',
-			'active_callback'   => 'botiga_floating_header_enabled',
-			'priority'		    => 21
 		)
 	)
 );
