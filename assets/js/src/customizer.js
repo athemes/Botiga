@@ -804,9 +804,6 @@
 		wp.customize( css.option, function( value ) {
 			
 			value.bind( function( to, prev ) {
-				
-				// Store selected color value
-				var selected_color = to;
 
 				var output = '';
 
@@ -822,7 +819,9 @@
 							}
 						}
 
-						to = selected_color;
+						if( ! to ) {
+							to = 'transparent';
+						}
 
 						if( ! unit ) {
 							to = typeof css2.rgba !== 'undefined' ? hexToRGB( to, css2.rgba ) : to;

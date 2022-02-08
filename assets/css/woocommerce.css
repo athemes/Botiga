@@ -404,8 +404,8 @@ ul.products li.product .wc-block-grid__product-link {
 
 .woocommerce-sorting-wrapper select {
   border: 0;
-  padding: 0;
-  max-width: 150px;
+  padding: 0 25px 0 0;
+  max-width: 220px;
   min-height: auto;
 }
 
@@ -3456,6 +3456,7 @@ form.woocommerce-checkout {
   border-radius: 50%;
   font-size: 10px;
   font-size: 0.625rem;
+  letter-spacing: 0;
 }
 
 /**
@@ -3878,6 +3879,7 @@ form.woocommerce-checkout {
   font-weight: 400;
   margin-left: auto;
   margin-right: auto;
+  letter-spacing: 0;
 }
 
 .star-rating::before {

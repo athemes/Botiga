@@ -839,13 +839,20 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 			$display_on = explode( ',', $display_on );
 
+			// Page/Post meta disable floating header
+			global $post;
+			$post_meta_disable = get_post_meta( $post->ID, '_botiga_disable_floating_header', true );
+			if( $post_meta_disable ) {
+				return;
+			} 
+
 			// Include on Front Page
 			if( is_front_page() && ! in_array( 'front-page', $display_on ) ) {
 				return;
 			}
-
+			
 			// Include on Front Pages
-			if( is_page() && ! in_array( 'pages', $display_on ) ) {
+			if( ( is_page() && ! is_front_page() ) && ! in_array( 'pages', $display_on ) ) {
 				return;
 			}
 

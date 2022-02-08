@@ -540,7 +540,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 4 Paragraph, Paragraph small, Breadcrums, Icons
 
 
-    var elements4 = ['custom_color4', 'footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder', 'topbar_color', 'main_header_bottom_color', 'single_sticky_add_to_cart_style_color_content'];
+    var elements4 = ['custom_color4', 'footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder', 'topbar_color', 'main_header_bottom_color', 'single_sticky_add_to_cart_style_color_content', 'loop_post_text_color'];
 
     for (var _i4 = 0, _elements4 = elements4; _i4 < _elements4.length; _i4++) {
       var _element3 = _elements4[_i4];

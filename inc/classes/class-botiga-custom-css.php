@@ -551,9 +551,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$shop_product_card_thumb_radius = get_theme_mod( 'shop_product_card_thumb_radius' );
 
 			if ( 'layout2' === $shop_product_card_style || 'layout3' === $shop_product_card_style ) {
-				$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { background-color: " . esc_attr( $shop_product_card_background ) . ";border-radius: " . intval( $shop_product_card_radius ) . "px; border: " . intval( $shop_product_card_border_size ) . "px solid " . esc_attr( $shop_product_card_border_color ) . ";padding:30px;}" . "\n";			
+				$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { border-radius: " . intval( $shop_product_card_radius ) . "px; border-width: " . intval( $shop_product_card_border_size ) . "px; border-style: solid;padding:30px;}" . "\n";			
 				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap, ul.wc-block-grid__products li.product .loop-image-wrap, ul.products li.wc-block-grid__product .loop-image-wrap, ul.products li.product .loop-image-wrap { overflow:hidden;border-radius:" . esc_attr( $shop_product_card_thumb_radius ) . "px;}" . "\n";
-				$css .= $this->get_border_color_rgba_css( 'color_body_text', '#eee', 'ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product', '0.1' );
+				$css .= $this->get_background_color_css( 'shop_product_card_background', '', 'ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product' );
+				$css .= $this->get_border_color_css( 'shop_product_card_border_color', '#eee', 'ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product' );
 			}
 
 			if ( 'layout3' === $shop_product_card_style ) {
@@ -594,7 +595,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			// Pagination infinite scroll
 			$blog_archive_pagination_type = get_theme_mod( 'blog_archive_pagination_type', 'default' ); 
-			if( $blog_archive_pagination_type === 'infinite-scroll' ) {
+			$shop_archive_pagination_type = get_theme_mod( 'shop_archive_pagination_type', 'default' );
+			if( $blog_archive_pagination_type === 'infinite-scroll' || $shop_archive_pagination_type === 'infinite-scroll' ) {
 				$css .= $this->get_fill_css( 'color_body_text', '#212121', '.botiga-pagination-button.loading-anim svg path' );
 			}
 
@@ -650,6 +652,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( !$single_sku && !$single_categories && !$single_tags ) {
 				$css .= ".single-product .product_meta { border-top: 0; }";
 			}
+
+			$css .= $this->get_color_css( 'color_body_text', '#212121', '.product-gallery-summary .product_meta' );
 
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-review-link' );
 			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-review-link:hover' );
@@ -781,6 +785,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price' );
 			$css .= $this->get_font_sizes_css( 'single_product_title_size', $defaults = array( 'desktop' => 32, 'tablet' => 32, 'mobile' => 32 ), '.product-gallery-summary .entry-title' );
 			$css .= $this->get_font_sizes_css( 'single_product_price_size', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '.product-gallery-summary .price' );
+			$css .= $this->get_color_css( 'color_body_text', '#212121', 'p.stars a::before' );
 			
 			//Quantity input
 			$shop_general_quantity_style = get_theme_mod( 'shop_general_quantity_style', 'style1' );

@@ -275,7 +275,7 @@ add_action( 'wp', 'botiga_page_builder_mode' );
  */
 function botiga_get_social_network( $social ) {
 
-	$networks = array( 'facebook', 'twitter', 'instagram', 'github', 'linkedin', 'youtube', 'xing', 'flickr', 'dribbble', 'vk', 'weibo', 'vimeo', 'mix', 'behance', 'spotify', 'soundcloud', 'twitch', 'bandcamp', 'etsy', 'pinterest' );
+	$networks = array( 'facebook', 'twitter', 'instagram', 'github', 'linkedin', 'youtube', 'xing', 'flickr', 'dribbble', 'vk', 'weibo', 'vimeo', 'mix', 'behance', 'spotify', 'soundcloud', 'twitch', 'bandcamp', 'etsy', 'pinterest', 'tiktok' );
 
 	foreach ( $networks as $network ) {
 		$found = strpos( $social, $network );
@@ -538,6 +538,38 @@ function botiga_topbar_elements() {
 	);
 
 	return apply_filters( 'botiga_topbar_elements', $elements );
+}
+
+/**
+ * Floating header customizer choices
+ */
+function botiga_floating_header_choices() {
+
+	$choices = array(
+		'front-page' 		=> __( 'Front Page', 'botiga' ),
+		'pages' 		    => __( 'Pages', 'botiga' ),
+		'blog-archive'  	=> __( 'Blog Archive', 'botiga' ),
+		'blog-posts' 		=> __( 'Blog Posts', 'botiga' ),
+		'post-search' 		=> __( 'Posts Search Results', 'botiga' ),
+		'404' 				=> __( '404 Page', 'botiga' )
+	);
+
+	// Shop
+	if( class_exists( 'Woocommerce' ) ) {
+		$choices['shop-catalog'] = __( 'Shop Catalog', 'botiga' );
+		$choices['shop-products'] = __( 'Shop Products', 'botiga' );
+		$choices['shop-cart'] = __( 'Shop Cart', 'botiga' );
+		$choices['shop-checkout'] = __( 'Shop Checkout', 'botiga' );
+		$choices['shop-my-account'] = __( 'Shop My Account', 'botiga' );
+
+		// Wishlist
+		$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+		if( 'layout1' !== $wishlist_layout ) {
+			$choices['shop-wishlist'] = __( 'Shop Wishlist', 'botiga' );
+		}
+	}
+
+	return apply_filters( 'botiga_floating_header_choices', $choices );
 }
 
 /**

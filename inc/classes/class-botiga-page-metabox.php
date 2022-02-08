@@ -23,10 +23,6 @@ class Botiga_Page_Metabox {
 	}
 
 	public function add_meta_box( $post_type ) {
-
-		if( $post_type === 'product' ) {
-			return;
-		}
 		
 		$types = get_post_types(
 			array(
@@ -74,29 +70,60 @@ class Botiga_Page_Metabox {
 		$sidebar_layout_choices = array( 'customizer', 'sidebar-left', 'sidebar-right', 'no-sidebar' );
 		$sidebar_layout 		= $this->sanitize_selects( sanitize_key( $_POST['botiga_sidebar_layout'] ), $sidebar_layout_choices ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		update_post_meta( $post_id, '_botiga_sidebar_layout', $sidebar_layout );
+
+		//Disable floating header
+		$disable_floating_header = ( isset( $_POST['botiga_disable_floating_header'] ) && '1' === $_POST['botiga_disable_floating_header'] ) ? 1 : 0;
+		update_post_meta( $post_id, '_botiga_disable_floating_header', $disable_floating_header );	
 	}
 
 	public function render_meta_box_content( $post ) {
-	
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'botiga_single_page_box', 'botiga_single_page_box_nonce' );
+
+		// Render generic content in all post types
+		$this->render_meta_box_content_specific_pts( $post );
+
+		// Render content in specific post types
+		$this->render_meta_box_content_all_pts( $post );
+	}
+
+	/**
+	 * Render generic content in all post types
+	 */
+	public function render_meta_box_content_all_pts( $post ) {
+		$disable_floating_header 	= get_post_meta( $post->ID, '_botiga_disable_floating_header', true ); ?>
+
+		<p>
+			<label><input type="checkbox" name="botiga_disable_floating_header" value="1" <?php checked( $disable_floating_header, 1 ); ?> /><?php esc_html_e( 'Disable floating header', 'botiga' ); ?></label>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Render content in specific post types
+	 */
+	public function render_meta_box_content_specific_pts( $post ) {
+		if( get_post_type() === 'product' ) {
+			return;
+		}
+
 		$page_builder_mode 	= get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
-		$sidebar_layout		= get_post_meta( $post->ID, '_botiga_sidebar_layout', true );
-	?>
-	<p>
-		<label><input type="checkbox" name="botiga_page_builder_mode" value="1" <?php checked( $page_builder_mode, 1 ); ?> /><?php esc_html_e( 'Page builder mode', 'botiga' ); ?></label>
-		<div style="display:block;"><?php echo esc_html__( 'This mode activates a simplified canvas for building custom pages with either the WP editor or a page builder plugin.', 'botiga' ); ?></div>
-	</p>
-	<p>
-		<label for="botiga_sidebar_layout"><?php esc_html_e( 'Sidebar layout', 'botiga' ); ?></label>	
-		<select style="max-width:200px;" name="botiga_sidebar_layout">
-			<option value="customizer" <?php selected( $sidebar_layout, 'customizer' ); ?>><?php esc_html_e( 'Default', 'botiga' ); ?></option>
-			<option value="sidebar-left" <?php selected( $sidebar_layout, 'sidebar-left' ); ?>><?php esc_html_e( 'Left', 'botiga' ); ?></option>
-			<option value="sidebar-right" <?php selected( $sidebar_layout, 'sidebar-right' ); ?>><?php esc_html_e( 'Right', 'botiga' ); ?></option>
-			<option value="no-sidebar" <?php selected( $sidebar_layout, 'no-sidebar' ); ?>><?php esc_html_e( 'Disable sidebar for this page', 'botiga' ); ?></option>
-		</select>
-	</p>
-	<?php
+		$sidebar_layout		= get_post_meta( $post->ID, '_botiga_sidebar_layout', true ); ?>
+
+		<p>
+			<label><input type="checkbox" name="botiga_page_builder_mode" value="1" <?php checked( $page_builder_mode, 1 ); ?> /><?php esc_html_e( 'Page builder mode', 'botiga' ); ?></label>
+			<div style="display:block;"><?php echo esc_html__( 'This mode activates a simplified canvas for building custom pages with either the WP editor or a page builder plugin.', 'botiga' ); ?></div>
+		</p>
+		<p>
+			<label for="botiga_sidebar_layout"><?php esc_html_e( 'Sidebar layout', 'botiga' ); ?></label>	
+			<select style="max-width:200px;" name="botiga_sidebar_layout">
+				<option value="customizer" <?php selected( $sidebar_layout, 'customizer' ); ?>><?php esc_html_e( 'Default', 'botiga' ); ?></option>
+				<option value="sidebar-left" <?php selected( $sidebar_layout, 'sidebar-left' ); ?>><?php esc_html_e( 'Left', 'botiga' ); ?></option>
+				<option value="sidebar-right" <?php selected( $sidebar_layout, 'sidebar-right' ); ?>><?php esc_html_e( 'Right', 'botiga' ); ?></option>
+				<option value="no-sidebar" <?php selected( $sidebar_layout, 'no-sidebar' ); ?>><?php esc_html_e( 'Disable sidebar for this page', 'botiga' ); ?></option>
+			</select>
+		</p>
+		<?php
 	}
 
 	/**

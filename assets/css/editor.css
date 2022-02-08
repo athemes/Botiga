@@ -428,6 +428,7 @@ div.editor-styles-wrapper .header-wishlist-icon .count-number {
   border-radius: 50%;
   font-size: 10px;
   font-size: 0.625rem;
+  letter-spacing: 0;
 }
 
 div.editor-styles-wrapper .botiga-quantity-plus,
@@ -844,6 +845,7 @@ div.editor-styles-wrapper .star-rating {
   font-weight: 400;
   margin-left: auto;
   margin-right: auto;
+  letter-spacing: 0;
 }
 
 div.editor-styles-wrapper .star-rating::before {
@@ -2138,8 +2140,8 @@ div.editor-styles-wrapper .woocommerce-sorting-wrapper p {
 
 div.editor-styles-wrapper .woocommerce-sorting-wrapper select {
   border: 0;
-  padding: 0;
-  max-width: 150px;
+  padding: 0 25px 0 0;
+  max-width: 220px;
   min-height: auto;
 }
 
