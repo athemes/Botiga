@@ -1116,7 +1116,30 @@ botiga.productSwatch = {
 
 botiga.misc = {
   init: function init() {
+    this.wcExpressPayButtons();
     this.checkout();
+  },
+  wcExpressPayButtons: function wcExpressPayButtons() {
+    var is_checkout_page = document.querySelector('body.woocommerce-checkout'),
+        is_cart_page = document.querySelector('body.woocommerce-cart'),
+        is_single_product = document.querySelector('body.single-product');
+
+    if (is_single_product === null && is_checkout_page === null && is_cart_page === null) {
+      return false;
+    }
+
+    if (typeof jQuery === 'function') {
+      (function ($) {
+        if (typeof $('#wc-stripe-payment-request-button-separator, #wcpay-payment-request-wrapper').get(0) === 'undefined') {
+          return false;
+        }
+
+        if (is_checkout_page === null) {
+          $('#wc-stripe-payment-request-button-separator, #wcpay-payment-request-button-separator').appendTo('form.cart');
+          $('#wc-stripe-payment-request-wrapper, #wcpay-payment-request-wrapper').appendTo('form.cart');
+        }
+      })(jQuery);
+    }
   },
   checkout: function checkout() {
     var is_checkout_page = document.querySelector('body.woocommerce-checkout');
