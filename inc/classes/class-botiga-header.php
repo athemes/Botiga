@@ -27,7 +27,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Constructor
 		 */
 		public function __construct() {
-			add_action( 'wp', array( $this, 'floating_header' ) );
+			add_action( 'wp', array( $this, 'header_transparent' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'sticky_header_logo' ) );
 
 			add_action( 'botiga_header', array( $this, 'header_markup' ), 10 );
@@ -822,26 +822,26 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		}
 
 		/**
-		 * Header Floating
+		 * Header Transparent
 		 */
-		public function floating_header() {
-			$topbar_floating = get_theme_mod( 'topbar_floating', 0 );
-			$header_floating = get_theme_mod( 'header_floating', 0 );
+		public function header_transparent() {
+			$topbar_transparent = get_theme_mod( 'topbar_transparent', 0 );
+			$header_transparent = get_theme_mod( 'header_transparent', 0 );
 
-			if( ! $header_floating ) {
+			if( ! $header_transparent ) {
 				return;
 			}
 
-			$display_on = get_theme_mod( 'header_floating_display_on', 'front-page' );
+			$display_on = get_theme_mod( 'header_transparent_display_on', 'front-page' );
 			if( ! $display_on ) {
 				return;
 			}
 
 			$display_on = explode( ',', $display_on );
 
-			// Page/Post meta disable floating header
+			// Page/Post meta disable transparent header
 			global $post;
-			$post_meta_disable = get_post_meta( $post->ID, '_botiga_disable_floating_header', true );
+			$post_meta_disable = get_post_meta( $post->ID, '_botiga_disable_header_transparent', true );
 			if( $post_meta_disable ) {
 				return;
 			} 
@@ -911,29 +911,29 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				return;
 			}
 
-			if( $topbar_floating ) {
-				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_open' ), -1 );
+			if( $topbar_transparent ) {
+				add_action( 'botiga_header', array( $this, 'header_transparent_wrapper_open' ), -1 );
 			} else {
-				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_open' ), 9 );
+				add_action( 'botiga_header', array( $this, 'header_transparent_wrapper_open' ), 9 );
 			}
 
-			if( $header_floating ) {
-				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_close' ), 11 );
+			if( $header_transparent ) {
+				add_action( 'botiga_header', array( $this, 'header_transparent_wrapper_close' ), 11 );
 			} else {
-				add_action( 'botiga_header', array( $this, 'floating_header_wrapper_close' ), 6 );
+				add_action( 'botiga_header', array( $this, 'header_transparent_wrapper_close' ), 6 );
 			}
 
 			add_filter( 'body_class', function( $classes ){
-				$classes[] = 'header-floating';
+				$classes[] = 'header-transparent';
 				return $classes;
 			} );
 		}
 
-		public function floating_header_wrapper_open() {
-			echo '<div class="header-floating-wrapper">';
+		public function header_transparent_wrapper_open() {
+			echo '<div class="header-transparent-wrapper">';
 		}
 
-		public function floating_header_wrapper_close() {
+		public function header_transparent_wrapper_close() {
 			echo '</div>';
 		}
 

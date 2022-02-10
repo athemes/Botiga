@@ -669,8 +669,8 @@
     }
 }
 
-// Header Floating
-.header-floating {
+// Header Transparent
+.header-transparent {
 
     @media(min-width: 1025px) {
         .content-wrapper {
@@ -684,7 +684,7 @@
             }
         }
 
-        .header-floating-wrapper {
+        .header-transparent-wrapper {
             position: absolute;
             top: auto;
             width: 100%;
@@ -697,7 +697,7 @@
         }
 
         &.sticky-header-active {
-            .header-floating-wrapper {
+            .header-transparent-wrapper {
                 .sticky-header {
                     position: fixed;
                     top: 0;
@@ -706,7 +706,7 @@
             }
 
             &.admin-bar {
-                .header-floating-wrapper {
+                .header-transparent-wrapper {
                     .sticky-header {
                         top: 32px;
                     }

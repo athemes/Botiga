@@ -388,6 +388,9 @@ div.editor-styles-wrapper {
   /* Wishlist Button */
   /* Wishlist Table */
   /* Product swatch */
+  /**
+ * Express Pay Buttons (Google and Apple)
+ */
   /* Responsive shop columns */
   /**
  * Photoswipe
@@ -1886,6 +1889,18 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after {
   -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
           transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+div.editor-styles-wrapper #wc-stripe-payment-request-button-separator,
+div.editor-styles-wrapper #wcpay-payment-request-button-separator {
+  width: 100%;
+  margin: 20px 0 !important;
+}
+
+div.editor-styles-wrapper #wc-stripe-payment-request-wrapper,
+div.editor-styles-wrapper #wcpay-payment-request-wrapper {
+  width: 100%;
+  padding: 0 !important;
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products,

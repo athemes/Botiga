@@ -71,9 +71,9 @@ class Botiga_Page_Metabox {
 		$sidebar_layout 		= $this->sanitize_selects( sanitize_key( $_POST['botiga_sidebar_layout'] ), $sidebar_layout_choices ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		update_post_meta( $post_id, '_botiga_sidebar_layout', $sidebar_layout );
 
-		//Disable floating header
-		$disable_floating_header = ( isset( $_POST['botiga_disable_floating_header'] ) && '1' === $_POST['botiga_disable_floating_header'] ) ? 1 : 0;
-		update_post_meta( $post_id, '_botiga_disable_floating_header', $disable_floating_header );	
+		//Disable transparent header
+		$disable_header_transparent = ( isset( $_POST['botiga_disable_header_transparent'] ) && '1' === $_POST['botiga_disable_header_transparent'] ) ? 1 : 0;
+		update_post_meta( $post_id, '_botiga_disable_header_transparent', $disable_header_transparent );	
 	}
 
 	public function render_meta_box_content( $post ) {
@@ -91,10 +91,10 @@ class Botiga_Page_Metabox {
 	 * Render generic content in all post types
 	 */
 	public function render_meta_box_content_all_pts( $post ) {
-		$disable_floating_header 	= get_post_meta( $post->ID, '_botiga_disable_floating_header', true ); ?>
+		$disable_header_transparent = get_post_meta( $post->ID, '_botiga_disable_header_transparent', true ); ?>
 
 		<p>
-			<label><input type="checkbox" name="botiga_disable_floating_header" value="1" <?php checked( $disable_floating_header, 1 ); ?> /><?php esc_html_e( 'Disable floating header', 'botiga' ); ?></label>
+			<label><input type="checkbox" name="botiga_disable_header_transparent" value="1" <?php checked( $disable_header_transparent, 1 ); ?> /><?php esc_html_e( 'Disable transparent header', 'botiga' ); ?></label>
 		</p>
 		<?php
 	}

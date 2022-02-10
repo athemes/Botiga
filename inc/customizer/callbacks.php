@@ -342,8 +342,8 @@ function botiga_callback_header_bottom() {
 	}
 }
 
-function botiga_floating_header_enabled() {
-	$enabled = get_theme_mod( 'header_floating', 0 );
+function botiga_header_transparent_enabled() {
+	$enabled = get_theme_mod( 'header_transparent', 0 );
 
 	if ( $enabled ) {
 		return true;

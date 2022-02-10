@@ -541,9 +541,9 @@ function botiga_topbar_elements() {
 }
 
 /**
- * Floating header customizer choices
+ * Header transparent customizer choices
  */
-function botiga_floating_header_choices() {
+function botiga_header_transparent_choices() {
 
 	$choices = array(
 		'front-page' 		=> __( 'Front Page', 'botiga' ),
@@ -569,7 +569,7 @@ function botiga_floating_header_choices() {
 		}
 	}
 
-	return apply_filters( 'botiga_floating_header_choices', $choices );
+	return apply_filters( 'botiga_header_transparent_choices', $choices );
 }
 
 /**

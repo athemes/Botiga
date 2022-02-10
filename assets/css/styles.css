@@ -2776,29 +2776,29 @@ body.mobile-menu-visible {
 }
 
 @media (min-width: 1025px) {
-  .header-floating .content-wrapper {
+  .header-transparent .content-wrapper {
     margin-top: 0 !important;
   }
-  .header-floating .page-header + .content-wrapper,
-  .header-floating .woocommerce-page-header + .content-wrapper {
+  .header-transparent .page-header + .content-wrapper,
+  .header-transparent .woocommerce-page-header + .content-wrapper {
     margin-top: 80px !important;
   }
-  .header-floating .header-floating-wrapper {
+  .header-transparent .header-transparent-wrapper {
     position: absolute;
     top: auto;
     width: 100%;
     z-index: 12;
   }
-  .header-floating .header-floating-wrapper .top-bar {
+  .header-transparent .header-transparent-wrapper .top-bar {
     position: relative;
     z-index: 1000;
   }
-  .header-floating.sticky-header-active .header-floating-wrapper .sticky-header {
+  .header-transparent.sticky-header-active .header-transparent-wrapper .sticky-header {
     position: fixed;
     top: 0;
     width: 100%;
   }
-  .header-floating.sticky-header-active.admin-bar .header-floating-wrapper .sticky-header {
+  .header-transparent.sticky-header-active.admin-bar .header-transparent-wrapper .sticky-header {
     top: 32px;
   }
 }
