@@ -851,7 +851,7 @@ gulp.task('woocommerceStylesMin', () => {
   */
  gulp.task(
 	 'default',
-	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaPopupJS', 'botigaCarouselJS', 'botigaSidebarJS' ,'botigaAjaxSearchJS', 'images', browsersync, () => {
+	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaPopupJS', 'botigaCarouselJS', 'botigaSidebarJS', 'botigaAjaxSearchJS', 'images', browsersync, () => {
 		 gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.

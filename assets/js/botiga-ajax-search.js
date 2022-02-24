@@ -73,6 +73,8 @@ botiga.ajaxSearch = {
       if (_this.elementIsOutOfScreenHorizontal(ajax_search_wrapper)) {
         ajax_search_wrapper.classList.add('reverse');
       }
+
+      window.dispatchEvent(new Event('botiga.ajax.search.results.loaded'));
     });
   },
   destroy: function destroy() {

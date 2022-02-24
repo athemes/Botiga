@@ -1,0 +1,44 @@
+/**
+ * Accordion
+ */
+ 
+.botiga-accordion {
+    
+}
+
+.botiga-accordion__item {
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 0;
+        &:after {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border: 2px solid $color__primary;
+            border-bottom: 0;
+            border-left: 0;
+            margin-top: -3px;
+            margin-right: 3px;
+            transform: rotate(135deg);
+            transition: ease transform 300ms;
+        }
+
+        &.active {
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    & + .botiga-accordion__item {
+        border-top: 0;
+    }
+}
+
+.botiga-accordion__body-content {
+    padding: 15px 0;
+}

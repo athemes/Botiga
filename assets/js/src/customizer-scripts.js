@@ -862,8 +862,10 @@ jQuery( document ).ready(function($) {
 					$section.find('.botiga-accordion-title').each(function(){
 						self.showOrHide( $(this), 'hide' );
 						$(this).removeClass('expanded');
-						self.firstTime = false;
 					});
+					setTimeout(function(){
+						self.firstTime = false;
+					}, 300);
 				}
 			});
 			// Reset the first time
@@ -873,6 +875,7 @@ jQuery( document ).ready(function($) {
 			return this;
 		},
 		showOrHide: function( $this, status ) {
+			var self = this;
 			var current = '';
 			current = $this.closest('.customize-control').next();
 			var elements = [];
@@ -906,52 +909,57 @@ jQuery( document ).ready(function($) {
 				}
 			}
 			return this;
+		},
+		focusAccordionOpenControl: function() {
+			var self      = this,
+				urlParams = document.location.search,
+				paramsArr = urlParams.split( '&' ),
+				newString = '';
+	
+			paramsArr.shift();
+			newString = paramsArr.join( '&' );
+	
+			var params = self.getQueryParams( newString );
+			if( $('.control-section.open').get(0) ) {
+				self.firstTime = false;
+
+				$('.control-section.open').find( '.botiga-accordion-title' ).trigger('click');
+	
+				if( typeof params.control !== 'undefined' ) {
+					$('.control-section.open').find( '#' + params.control + ' > a' ).trigger('click');
+				}
+				return;
+			}
+	
+			setTimeout(function(){
+				self.focusAccordionOpenControl();
+			}, 300);
+
+			return this;
+		},
+		getQueryParams: function(qs) {
+			qs = qs.split('+').join(' ');
+		
+			var params = {},
+				tokens,
+				re = /[?&]?([^=]+)=([^&]*)/g;
+		
+			while (tokens = re.exec(qs)) {
+				params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+			}
+		
+			return params;
 		}
 	}
 
 	$( document ).ready(function($) {
-		Botiga_Accordion.init();	
+		Botiga_Accordion.init();
 	} );
 
-	wp.customize.bind( 'ready', function () {	
-		focusAccordionOpenControl();
-	});
-
-	function focusAccordionOpenControl() {
-		var urlParams = document.location.search,
-			paramsArr = urlParams.split( '&' ),
-			newString = '';
-
-		paramsArr.shift();
-		newString = paramsArr.join( '&' );
-
-		var params = getQueryParams( newString );
-		if( $('.control-section.open').get(0) ) {
-			$('.control-section.open').find( '.botiga-accordion-title' ).trigger('click');
-
-			if( typeof params.control !== 'undefined' ) {
-				$('.control-section.open').find( '#' + params.control + ' > a' ).trigger('click');
-			}
-			return;
-		}
-
-		setTimeout(function(){
-			focusAccordionOpenControl();
-		}, 300);
-	}
-
-	function getQueryParams(qs) {
-		qs = qs.split('+').join(' ');
-	
-		var params = {},
-			tokens,
-			re = /[?&]?([^=]+)=([^&]*)/g;
-	
-		while (tokens = re.exec(qs)) {
-			params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
-		}
-	
-		return params;
+	if( window.location.href.indexOf( '?autofocus' ) > 0 ) {
+		wp.customize.bind( 'ready', function () {	
+			Botiga_Accordion.focusAccordionOpenControl();
+		});
 	}
 
 })(jQuery);

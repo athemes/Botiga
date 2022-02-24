@@ -807,6 +807,12 @@ p.stars {
 	}
 }
 
+.botiga-tabs-position-product-summary {
+	.woocommerce-tabs {
+		margin-top: 0;
+	}
+}
+
 /**
  * Password strength meter
  */
@@ -947,6 +953,13 @@ p.no-comments {
 			opacity: 0;
 			transform: translate3d(0, 15px, 0);
 			transition: ease opacity 300ms, ease transform 300ms;
+
+			.variation {
+				width: 100%;
+				margin: 7px 0 9px;
+				padding-left: 15px;
+				line-height: 1.5;
+			}
 
 			.quantity {
 				border: none;
@@ -1099,16 +1112,11 @@ p.no-comments {
 
 				.button.checkout {
 					order: -1;
-					color: #fff;
 					width: 100%;
 					text-align: center;
 					text-transform: uppercase;
 					letter-spacing: 2px;
 					margin-bottom: 20px;
-
-					&:hover {
-						color: #fff;
-					}
 				}
 
 				.button:not(.checkout) {
@@ -1454,6 +1462,29 @@ span.onsale {
 				}
 			}
 		}
+	}
+}
+
+/* Variations */
+dl.variation {
+	font-size: 0.85em;
+	margin-bottom: 0;
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	dt, dd {
+		float: left;
+	}
+	dt {
+		clear: both;
+	}
+	dd {
+		margin: 0 5px 0 5px;
+	}
+	p {
+		margin-bottom: 0;
 	}
 }
 

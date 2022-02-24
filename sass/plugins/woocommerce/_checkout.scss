@@ -302,7 +302,10 @@ form.woocommerce-checkout {
 }
 
 .woocommerce-thankyou-order-details {
-	padding: 30px 30px 30px 50px;
+	padding: 30px 30px 30px 35px;
+	li {
+		list-style: none;
+	}
 }
 
 .woocommerce-checkout {

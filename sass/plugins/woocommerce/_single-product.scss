@@ -160,6 +160,9 @@
 	}
 	.entry-summary {
 		padding-left: 40px;
+		> *:last-of-type {
+			margin-top: 15px;
+		}
 	}
 
 	.product_title {
@@ -275,7 +278,7 @@
 		ul.flex-direction-nav {
 			position: absolute;
 			top: calc( 50% - 20px);
-			z-index: 9999;
+			z-index: 998;
 			width: 100%;
 			left: 0;
 			margin: 0;
@@ -678,6 +681,8 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 			}
 		}
 		.label {
+			text-align: left;
+			padding-left: 0;
 			label {
 				vertical-align: middle;
 			}

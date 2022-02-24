@@ -1161,6 +1161,10 @@ div.editor-styles-wrapper .botiga-tabs-align-right .woocommerce-tabs .wc-tabs {
   text-align: right;
 }
 
+div.editor-styles-wrapper .botiga-tabs-position-product-summary .woocommerce-tabs {
+  margin-top: 0;
+}
+
 div.editor-styles-wrapper .woocommerce-password-strength {
   text-align: right;
 }
@@ -1434,15 +1438,11 @@ div.editor-styles-wrapper .demo_store {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
-    color: #fff;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 20px;
-  }
-  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button.checkout:hover {
-    color: #fff;
   }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout) {
     font-size: 16px;

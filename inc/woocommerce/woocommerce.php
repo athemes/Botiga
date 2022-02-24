@@ -211,10 +211,7 @@ function botiga_wc_archive_layout() {
  * Layout single product
  */
 function botiga_wc_single_layout() {
-	$single_product_tabs_layout    = get_theme_mod( 'single_product_tabs_layout', 'style1' );
-	$single_product_tabs_alignment = get_theme_mod( 'single_product_tabs_alignment', 'left' );
-
-	return 'no-sidebar' . ' botiga-tabs-' . $single_product_tabs_layout . ' botiga-tabs-align-' . $single_product_tabs_alignment;
+	return 'no-sidebar';
 }
 
 /**
@@ -245,7 +242,6 @@ function botiga_wc_hooks() {
 	//Single product settings
 	if ( is_product() ) {
 		$single_breadcrumbs 			= get_theme_mod( 'single_breadcrumbs', 1 );
-		$single_tabs					= get_theme_mod( 'single_product_tabs', 1 );
 
 		//Content class
 		add_filter( 'botiga_content_class', 'botiga_wc_single_layout' );
@@ -279,15 +275,11 @@ function botiga_wc_hooks() {
 			foreach ( $components as $component ) {
 				add_action( 'woocommerce_single_product_summary', $component, 5 );
 			}
-	
+			
+			add_action( 'woocommerce_single_product_summary', function(){ echo '<div class="elements-order-end"></div>'; }, 50 );
 			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 		}
 
-		//Product tabs
-		if ( !$single_tabs ) {
-			remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs' );
-		}
-		
 		//Move sale tag
 		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
 		add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', 99 );
@@ -427,7 +419,7 @@ function botiga_loop_product_category() {
 function botiga_loop_product_description() {
 	$content = get_the_excerpt();
 
-	echo wp_kses_post( wp_trim_words( $content, 12, '&hellip;' ) );
+	echo '<div class="product-description">' . wp_kses_post( wp_trim_words( $content, 12, '&hellip;' ) ) . '</div>';
 }
 
 if ( ! function_exists( 'botiga_woocommerce_wrapper_before' ) ) {
@@ -466,6 +458,10 @@ add_action( 'woocommerce_after_main_content', 'botiga_woocommerce_wrapper_after'
  * Wrap products results and ordering before
  */
 function botiga_wrap_products_results_ordering_before() {
+	if( ! botiga_has_woocommerce_sorting_wrapper() ) {
+		return;
+	}
+
 	echo '<div class="woocommerce-sorting-wrapper">';
 	echo '<div class="row">';
 	echo '<div class="col-md-6 col-6">';
@@ -476,6 +472,10 @@ add_action( 'woocommerce_before_shop_loop', 'botiga_wrap_products_results_orderi
  * Add a button to toggle filters on shop archives
  */
 function botiga_add_filters_button() {
+	if( ! botiga_has_woocommerce_sorting_wrapper() ) {
+		return;
+	}
+
 	echo '</div>';
 	echo '<div class="col-md-6 col-6 text-align-right">';
 }
@@ -485,11 +485,30 @@ add_action( 'woocommerce_before_shop_loop', 'botiga_add_filters_button', 22 );
  * Wrap products results and ordering after
  */
 function botiga_wrap_products_results_ordering_after() {
+	if( ! botiga_has_woocommerce_sorting_wrapper() ) {
+		return;
+	}
+	
 	echo '</div>';
 	echo '</div>';
 	echo '</div>';
 }
 add_action( 'woocommerce_before_shop_loop', 'botiga_wrap_products_results_ordering_after', 31 );
+
+/**
+ * Check if has "woocommerce-sorting-wrapper"
+ */
+function botiga_has_woocommerce_sorting_wrapper() {
+	$shop_product_sorting = get_theme_mod( 'shop_product_sorting', 1 );
+	$shop_results_count   = get_theme_mod( 'shop_results_count', 1 );
+	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+
+	if( ! $shop_product_sorting && ! $shop_results_count && $shop_archive_sidebar !== 'sidebar-slide' ) {
+		return false;
+	}
+
+	return true;
+}
 
 /**
  * Checkout wrapper
@@ -506,12 +525,6 @@ function botiga_wrap_order_review_after() {
 	echo '</div>';
 }
 add_action( 'woocommerce_checkout_after_order_review', 'botiga_wrap_order_review_after', 15 );
-
-/**
- * Woocommerce tabs titles
- */
-add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
-add_filter( 'woocommerce_product_description_heading', '__return_false' );
 
 /**
  * My account page 
@@ -575,6 +588,11 @@ require get_template_directory() . '/inc/woocommerce/features/product-card.php';
  * Single Product Gallery
  */
 require get_template_directory() . '/inc/woocommerce/features/single-product-gallery.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
+ * Single Product Tabs
+ */
+require get_template_directory() . '/inc/woocommerce/features/single-product-tabs.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Upsell Products

@@ -172,6 +172,24 @@ table.shop_table_responsive {
 		}
 	}
 
+	.wc-item-meta {
+		padding-left: 15px;
+		margin-top: 7px;
+		margin-bottom: -7px;
+		li {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			font-size: 0.85em;
+			strong {
+				margin-right: 6px;
+			}
+			p {
+				margin-bottom: 0;
+			}
+		}
+	}
+
 }
 
 @media only screen and (max-width: 767px) {

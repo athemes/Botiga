@@ -387,7 +387,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
-								<div class="col-md-5 header-elements">
+								<div class="col-md-5 header-elements header-elements-left">
 									<?php $this->render_components( 'l7left' ); ?>
 								</div>
 								<div class="col-md-2 text-align-center">

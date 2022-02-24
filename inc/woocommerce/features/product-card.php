@@ -213,17 +213,24 @@ function botiga_loop_product_structure() {
 			call_user_func( $element );
 		}
 	} else {
-		$elements = array_diff( $elements, array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ) );
+		$left_elements = array_diff( $elements, array( 'woocommerce_template_loop_price', 'botiga_loop_product_description' ) );
 
 		echo '<div class="row">';
-		echo '<div class="col-md-7">';
-		foreach ( $elements as $element ) {
-			call_user_func( $element );
-		}		
-		echo '</div>';
-		echo '<div class="col-md-5 loop-price-inline">';
-			woocommerce_template_loop_price();
-		echo '</div>';
+			echo '<div class="col-md-7">';
+			foreach ( $left_elements as $element ) {
+				call_user_func( $element );
+			}		
+			echo '</div>';
+			echo '<div class="col-md-5 loop-price-inline">';
+				if( in_array( 'woocommerce_template_loop_price', $elements ) ) {
+					woocommerce_template_loop_price();
+				}
+			echo '</div>';
+			echo '<div class="col-12 product-description-column">';
+				if( in_array( 'botiga_loop_product_description', $elements ) ) {
+					botiga_loop_product_description();
+				}
+			echo '</div>';
 		echo '</div>';
 	}
 }

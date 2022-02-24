@@ -264,12 +264,6 @@ botiga.helpers = {
 
 };
 
-botiga.headerTransparent = {
-	init: function() {
-		
-	}
-}
-
 /**
  * Desktop offcanvas menu navigation
  */
@@ -596,6 +590,8 @@ botiga.scrollDirection = {
 								icons[i].querySelector( '.count-number' ).innerHTML = qty;
 							}
 						}
+
+						window.dispatchEvent( new Event( 'botiga.wishlist.ajax.loaded' ) );
 					}
 				};
 
@@ -649,6 +645,8 @@ botiga.scrollDirection = {
 						}, 1500);
 
 						jQuery(document.body).trigger('wc_fragment_refresh');
+
+						window.dispatchEvent( new Event( 'botiga.custom_add_to_cart.ajax.loaded' ) );
 					}
 				};
 
@@ -721,6 +719,8 @@ botiga.quickView = {
 						botiga.productSwatch.init();
 
 						popup.classList.remove('loading');
+
+						window.dispatchEvent( new Event( 'botiga.quickview.ajax.loaded' ) );
 					}
 				};
 
@@ -1091,6 +1091,44 @@ botiga.productSwatch = {
 }
 
 /**
+ * Collapse
+ */
+botiga.collapse = {
+    init: function() {
+        const 
+            elements = document.querySelectorAll( '[data-botiga-collapse]' );
+
+        if( ! elements.length ) {
+            return false;
+        }
+
+        for( let i=0;i<elements.length;i++ ) {
+
+            elements[i].addEventListener( 'click', function(e){
+                e.preventDefault();
+
+                const 
+                    targetSelectorId = this.getAttribute( 'href' ).replace( '#', '' ),
+                    target           = document.getElementById( targetSelectorId ),
+                    targetContent    = target.querySelector( '.botiga-collapse__content' );
+
+                if( ! elements[i].classList.contains( 'active' ) ) {
+                    target.style = 'max-height: '+ targetContent.clientHeight +'px;';
+                    elements[i].classList.add( 'active' );
+                    target.classList.add( 'active' );
+                } else {
+                    target.style = 'max-height: 0px;';
+                    elements[i].classList.remove( 'active' );
+                    target.classList.remove( 'active' );
+                }
+
+            } );
+
+        }
+    }
+}
+
+/**
  * Misc
  */
 botiga.misc = {
@@ -1116,6 +1154,8 @@ botiga.misc = {
 				if( is_checkout_page === null ) {
 					$( '#wc-stripe-payment-request-button-separator, #wcpay-payment-request-button-separator' ).appendTo( 'form.cart' );
 					$( '#wc-stripe-payment-request-wrapper, #wcpay-payment-request-wrapper' ).appendTo( 'form.cart' );
+
+					$( window ).trigger( 'botiga.wcexpresspaybtns.appended' );
 				}
 			})(jQuery);
 		}
@@ -1130,7 +1170,10 @@ botiga.misc = {
 		// There's no woo hook for that, so we need do that with js
 		if( typeof jQuery === 'function' ) {
 			jQuery( document ).on( 'updated_checkout', function() {
-				document.querySelector( '#order_review .woocommerce-shipping-totals > td' ).setAttribute( 'colspan', 2 );
+				const shipping_totals_table_column = document.querySelector( '#order_review .woocommerce-shipping-totals > td' );
+				if( shipping_totals_table_column !== null ) {
+					document.querySelector( '#order_review .woocommerce-shipping-totals > td' ).setAttribute( 'colspan', 2 );
+				}
 			});
 		}
 	}
@@ -1149,6 +1192,7 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.qtyButton.init();
 	botiga.carousel.init();
 	botiga.productSwatch.init();
+	botiga.collapse.init();
 	botiga.misc.init();
 } );
 

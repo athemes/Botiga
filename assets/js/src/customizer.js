@@ -252,7 +252,13 @@
 	} );
 	wp.customize( 'footer_credits_divider_size', function( value ) {
 		value.bind( function( to ) {
-			$( '.site-info,.site-footer' ).css( 'border-width', to );
+			const footer_width = window.parent.window.wp.customize.control('footer_credits_divider_width').setting.get();
+
+			if( footer_width === 'contained' ) {
+				$( '.site-info' ).css( 'border-width', to );
+			} else {
+				$( '.site-footer' ).css( 'border-width', to );
+			}
 		} );
 	} );	
 	wp.customize( 'footer_credits_padding_desktop', function( value ) {
@@ -315,6 +321,7 @@
 	wp.customize( 'shop_product_element_spacing', function( value ) {
 		value.bind( function( to ) {
 			$( 'ul.wc-block-grid__products li.wc-block-grid__product .col-md-7>*, ul.wc-block-grid__products li.wc-block-grid__product .col-md-8>*, ul.wc-block-grid__products li.wc-block-grid__product>*, ul.wc-block-grid__products li.product .col-md-7>*, ul.wc-block-grid__products li.product .col-md-8>*, ul.wc-block-grid__products li.product>*, ul.products li.wc-block-grid__product .col-md-7>*, ul.products li.wc-block-grid__product .col-md-8>*, ul.products li.wc-block-grid__product>*, ul.products li.product .col-md-7>*, ul.products li.product .col-md-8>*, ul.products li.product>*' ).css( 'margin-bottom', to + 'px' );
+			$( 'ul.products li.product .product-description-column:not(:empty), ul.products li.wc-block-grid__product .product-description-column:not(:empty), ul.wc-block-grid__products li.wc-block-grid__product .product-description-column:not(:empty)' ).css( 'margin-top', to + 'px' );
 		} );
 	} );
 
@@ -794,6 +801,25 @@
 	wp.customize( 'body_text_decoration', function( value ) {
 		value.bind( function( to ) {
 			$( 'body' ).css( 'text-decoration', to );
+		} );
+	} );
+
+	// Shop Header Style
+	wp.customize( 'shop_archive_header_padding_top', function( value ) {
+		value.bind( function( to ) {
+			$( '.woocommerce-page-header' ).css( 'padding-top', to + 'px' );
+		} );
+	} );
+
+	wp.customize( 'shop_archive_header_padding_bottom', function( value ) {
+		value.bind( function( to ) {
+			$( '.woocommerce-page-header' ).css( 'padding-bottom', to + 'px' );
+		} );
+	} );
+
+	wp.customize( 'shop_archive_header_button_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.woocommerce-page-header .category-button' ).css( 'border-radius', to + 'px' );
 		} );
 	} );
 	

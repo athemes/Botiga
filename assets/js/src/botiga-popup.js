@@ -84,6 +84,8 @@ botiga.popup = {
 
         setTimeout(function(){
             popup.classList.add( 'transition-effect' );
+
+            window.dispatchEvent( new Event( 'botiga.popup.opened' ) );
         }, 300);
 
         document.body.classList.add( 'disable-scroll' );
@@ -110,6 +112,8 @@ botiga.popup = {
             setTimeout(function(){
                 popup.classList.remove( 'show' );
                 document.body.classList.remove( 'disable-scroll' );
+
+                window.dispatchEvent( new Event( 'botiga.popup.closed' ) );
             }, 300);
         }
     
