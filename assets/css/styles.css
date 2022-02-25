@@ -652,6 +652,7 @@ a:hover, a:focus, a:active {
 
 a:focus {
   outline: thin dotted;
+  outline-offset: 5px;
 }
 
 a:hover, a:active {
@@ -4674,6 +4675,10 @@ body {
   transition: all 300ms;
 }
 
+.botiga-collapse.active {
+  max-height: none;
+}
+
 /* Accordion
 --------------------------------------------- */
 /**
@@ -4701,20 +4706,25 @@ body {
   content: '';
   width: 7px;
   height: 7px;
-  border: 2px solid #212121;
+  border: 2px solid rgba(33, 33, 33, 0.5);
   border-bottom: 0;
   border-left: 0;
   margin-top: -3px;
   margin-right: 3px;
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
-  -webkit-transition: ease transform 300ms;
-  transition: ease transform 300ms;
+  -webkit-transition: ease transform 300ms, ease border-color 300ms;
+  transition: ease transform 300ms, ease border-color 300ms;
 }
 
 .botiga-accordion__item > a.active:after {
+  border-color: #212121;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+.botiga-accordion__item > a:hover:after {
+  border-color: #212121;
 }
 
 .botiga-accordion__item + .botiga-accordion__item {

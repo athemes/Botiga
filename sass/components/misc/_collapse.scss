@@ -6,4 +6,7 @@
     max-height: 0;
     overflow: hidden;
     transition: all 300ms;
+    &.active {
+        max-height: none;
+    }
 }

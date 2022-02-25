@@ -1104,25 +1104,55 @@ botiga.collapse = {
 
         for( let i=0;i<elements.length;i++ ) {
 
+			const
+				collapse_options = elements[i].getAttribute( 'data-botiga-collapse' ), 
+				collapse 		 = JSON.parse(collapse_options.replace(/'/g,'"').replace(';',''));
+
+			if( ! collapse.enable ) {
+				return false;
+			}
+
             elements[i].addEventListener( 'click', function(e){
                 e.preventDefault();
 
                 const 
-                    targetSelectorId = this.getAttribute( 'href' ).replace( '#', '' ),
+                    targetSelectorId = collapse.id,
                     target           = document.getElementById( targetSelectorId ),
                     targetContent    = target.querySelector( '.botiga-collapse__content' );
 
+				this.dispatchEvent( new Event( 'botiga.collapse.before' ) );
+
                 if( ! elements[i].classList.contains( 'active' ) ) {
-                    target.style = 'max-height: '+ targetContent.clientHeight +'px;';
+					target.style = 'max-height: '+ targetContent.clientHeight +'px;';
                     elements[i].classList.add( 'active' );
                     target.classList.add( 'active' );
+
+					this.dispatchEvent( new Event( 'botiga.collapse.expanded' ) );
                 } else {
                     target.style = 'max-height: 0px;';
                     elements[i].classList.remove( 'active' );
                     target.classList.remove( 'active' );
+
+					this.dispatchEvent( new Event( 'botiga.collapse.collapsed' ) );
                 }
 
+				this.dispatchEvent( new Event( 'botiga.collapse.after' ) );
+
             } );
+
+			if( collapse.options.oneAtTime ) {
+				elements[i].addEventListener( 'botiga.collapse.before', function(){
+					const botiga_collapse = document.querySelectorAll( '.botiga-collapse' );
+
+					for( let u=0;u<botiga_collapse.length;u++ ) {
+						// if( botiga_collapse[u].classList.contains( 'active' ) ) {
+							botiga_collapse[u].style = 'max-height: 0px;';
+							botiga_collapse[u].classList.remove( 'active' );
+							botiga_collapse[u].previousElementSibling.classList.remove( 'active' );
+						// }
+					}
+				});
+			}
 
         }
     }

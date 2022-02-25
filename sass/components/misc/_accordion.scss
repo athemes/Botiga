@@ -2,10 +2,6 @@
  * Accordion
  */
  
-.botiga-accordion {
-    
-}
-
 .botiga-accordion__item {
     border-top: 1px solid #CCC;
     border-bottom: 1px solid #CCC;
@@ -18,18 +14,25 @@
             content: '';
             width: 7px;
             height: 7px;
-            border: 2px solid $color__primary;
+            border: 2px solid rgba( $color__primary, 0.5 );
             border-bottom: 0;
             border-left: 0;
             margin-top: -3px;
             margin-right: 3px;
             transform: rotate(135deg);
-            transition: ease transform 300ms;
+            transition: ease transform 300ms, ease border-color 300ms;
         }
 
         &.active {
             &:after {
+                border-color: $color__primary;
                 transform: rotate(-45deg);
+            }
+        }
+
+        &:hover {
+            &:after {
+                border-color: $color__primary;
             }
         }
     }

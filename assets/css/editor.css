@@ -387,6 +387,7 @@ div.editor-styles-wrapper {
   /* Prices */
   /* Wishlist Button */
   /* Wishlist Table */
+  /* Variations */
   /* Product swatch */
   /**
  * Express Pay Buttons (Google and Apple)
@@ -1286,6 +1287,12 @@ div.editor-styles-wrapper .demo_store {
     -webkit-transition: ease opacity 300ms, ease transform 300ms;
     transition: ease opacity 300ms, ease transform 300ms;
   }
+  div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .variation {
+    width: 100%;
+    margin: 7px 0 9px;
+    padding-left: 15px;
+    line-height: 1.5;
+  }
   div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .quantity {
     border: none;
     height: auto;
@@ -1782,6 +1789,33 @@ div.editor-styles-wrapper .botiga-wishlist-wrapper .footer-buttons {
   div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table .botiga-wishlist-row-item .product-addtocart {
     padding-bottom: 20px;
   }
+}
+
+div.editor-styles-wrapper dl.variation {
+  font-size: 0.85em;
+  margin-bottom: 0;
+}
+
+div.editor-styles-wrapper dl.variation:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+div.editor-styles-wrapper dl.variation dt, div.editor-styles-wrapper dl.variation dd {
+  float: left;
+}
+
+div.editor-styles-wrapper dl.variation dt {
+  clear: both;
+}
+
+div.editor-styles-wrapper dl.variation dd {
+  margin: 0 5px 0 5px;
+}
+
+div.editor-styles-wrapper dl.variation p {
+  margin-bottom: 0;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper select {

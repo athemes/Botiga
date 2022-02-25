@@ -711,7 +711,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li a, .botiga-tabs-style5 .woocommerce-tabs .panel', '0.3' );
 					$css .= '.botiga-tabs-style5 .woocommerce-tabs ul.tabs li:not(.active) a { border-right: 1px solid '.  esc_attr( $color_rgba ) .' }';
 					$css .= '.botiga-tabs-style5.botiga-tabs-align-center .woocommerce-tabs ul.tabs li+li a { border-top-color: '.  esc_attr( $color_rgba ) .'; border-right-color: '.  esc_attr( $color_rgba ) .' }';
-					break;		
+					break;
+					
+				case 'style6':
+					$css .= $this->get_color_css( 'color_link_default', '#212121', '.botiga-accordion__item>a' );
+					break;
+					
 			}
 
 			$css .= $this->get_color_css( 'single_product_tabs_text_color', '', '.woocommerce-tabs ul.tabs li:not(.active) a ,.woocommerce-tabs ul.tabs li:not(.active) a:hover' );

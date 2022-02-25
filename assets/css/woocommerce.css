@@ -4238,6 +4238,19 @@ p.stars.selected a:not(.active)::before {
 }
 
 /**
+ * Tabs as Accordion
+ */
+.botiga-tabs-position-default .botiga-accordion {
+  margin-top: 70px;
+  margin-bottom: 60px;
+}
+
+.botiga-accordion .woocommerce-Reviews-title,
+.botiga-accordion [class*="tab-title"] {
+  display: none;
+}
+
+/**
  * Password strength meter
  */
 .woocommerce-password-strength {

@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -1124,26 +1126,55 @@ botiga.collapse = {
     }
 
     var _loop = function _loop(i) {
+      var collapse_options = elements[i].getAttribute('data-botiga-collapse'),
+          collapse = JSON.parse(collapse_options.replace(/'/g, '"').replace(';', ''));
+
+      if (!collapse.enable) {
+        return {
+          v: false
+        };
+      }
+
       elements[i].addEventListener('click', function (e) {
         e.preventDefault();
-        var targetSelectorId = this.getAttribute('href').replace('#', ''),
+        var targetSelectorId = collapse.id,
             target = document.getElementById(targetSelectorId),
             targetContent = target.querySelector('.botiga-collapse__content');
+        this.dispatchEvent(new Event('botiga.collapse.before'));
 
         if (!elements[i].classList.contains('active')) {
           target.style = 'max-height: ' + targetContent.clientHeight + 'px;';
           elements[i].classList.add('active');
           target.classList.add('active');
+          this.dispatchEvent(new Event('botiga.collapse.expanded'));
         } else {
           target.style = 'max-height: 0px;';
           elements[i].classList.remove('active');
           target.classList.remove('active');
+          this.dispatchEvent(new Event('botiga.collapse.collapsed'));
         }
+
+        this.dispatchEvent(new Event('botiga.collapse.after'));
       });
+
+      if (collapse.options.oneAtTime) {
+        elements[i].addEventListener('botiga.collapse.before', function () {
+          var botiga_collapse = document.querySelectorAll('.botiga-collapse');
+
+          for (var u = 0; u < botiga_collapse.length; u++) {
+            // if( botiga_collapse[u].classList.contains( 'active' ) ) {
+            botiga_collapse[u].style = 'max-height: 0px;';
+            botiga_collapse[u].classList.remove('active');
+            botiga_collapse[u].previousElementSibling.classList.remove('active'); // }
+          }
+        });
+      }
     };
 
     for (var i = 0; i < elements.length; i++) {
-      _loop(i);
+      var _ret = _loop(i);
+
+      if (_typeof(_ret) === "object") return _ret.v;
     }
   }
 };

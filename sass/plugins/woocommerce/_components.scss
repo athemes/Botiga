@@ -814,6 +814,23 @@ p.stars {
 }
 
 /**
+ * Tabs as Accordion
+ */
+.botiga-tabs-position-default {
+	.botiga-accordion {
+		margin-top: 70px;
+		margin-bottom: 60px;
+	}
+}
+
+.botiga-accordion {
+	.woocommerce-Reviews-title,
+	[class*="tab-title"] {
+		display: none;
+	}
+}
+
+/**
  * Password strength meter
  */
 .woocommerce-password-strength {
