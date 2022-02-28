@@ -286,6 +286,7 @@ div.editor-styles-wrapper a:hover, div.editor-styles-wrapper a:focus, div.editor
 
 div.editor-styles-wrapper a:focus {
   outline: thin dotted;
+  outline-offset: 5px;
 }
 
 div.editor-styles-wrapper a:hover, div.editor-styles-wrapper a:active {
@@ -374,6 +375,9 @@ div.editor-styles-wrapper {
  */
   /**
  * Tabs
+ */
+  /**
+ * Tabs as Accordion
  */
   /**
  * Password strength meter
@@ -1164,6 +1168,16 @@ div.editor-styles-wrapper .botiga-tabs-align-right .woocommerce-tabs .wc-tabs {
 
 div.editor-styles-wrapper .botiga-tabs-position-product-summary .woocommerce-tabs {
   margin-top: 0;
+}
+
+div.editor-styles-wrapper .botiga-tabs-position-default .botiga-accordion {
+  margin-top: 70px;
+  margin-bottom: 60px;
+}
+
+div.editor-styles-wrapper .botiga-accordion .woocommerce-Reviews-title,
+div.editor-styles-wrapper .botiga-accordion [class*="tab-title"] {
+  display: none;
 }
 
 div.editor-styles-wrapper .woocommerce-password-strength {

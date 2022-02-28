@@ -1125,47 +1125,39 @@ botiga.collapse = {
       return false;
     }
 
-    var _loop = function _loop(i) {
-      var collapse_options = elements[i].getAttribute('data-botiga-collapse'),
-          collapse = JSON.parse(collapse_options.replace(/'/g, '"').replace(';', ''));
+    var _this = this;
 
-      if (!collapse.enable) {
+    var _loop = function _loop(i) {
+      var opts = elements[i].getAttribute('data-botiga-collapse'),
+          options = JSON.parse(opts.replace(/'/g, '"').replace(';', ''));
+
+      if (!options.enable) {
         return {
           v: false
         };
       }
 
+      _this.expand(elements[i], options, true);
+
       elements[i].addEventListener('click', function (e) {
         e.preventDefault();
-        var targetSelectorId = collapse.id,
-            target = document.getElementById(targetSelectorId),
-            targetContent = target.querySelector('.botiga-collapse__content');
-        this.dispatchEvent(new Event('botiga.collapse.before'));
+        this.dispatchEvent(new Event('botiga.collapse.before.expand'));
 
         if (!elements[i].classList.contains('active')) {
-          target.style = 'max-height: ' + targetContent.clientHeight + 'px;';
-          elements[i].classList.add('active');
-          target.classList.add('active');
-          this.dispatchEvent(new Event('botiga.collapse.expanded'));
+          _this.expand(elements[i], options);
         } else {
-          target.style = 'max-height: 0px;';
-          elements[i].classList.remove('active');
-          target.classList.remove('active');
-          this.dispatchEvent(new Event('botiga.collapse.collapsed'));
+          _this.collapse(elements[i], options);
         }
 
-        this.dispatchEvent(new Event('botiga.collapse.after'));
+        this.dispatchEvent(new Event('botiga.collapse.after.collapse'));
       });
 
-      if (collapse.options.oneAtTime) {
-        elements[i].addEventListener('botiga.collapse.before', function () {
-          var botiga_collapse = document.querySelectorAll('.botiga-collapse');
+      if (options.options.oneAtTime) {
+        elements[i].addEventListener('botiga.collapse.before.expand', function () {
+          var botiga_collapse = document.querySelectorAll(options.options.oneAtTimeParentSelector + ' [data-botiga-collapse]');
 
           for (var u = 0; u < botiga_collapse.length; u++) {
-            // if( botiga_collapse[u].classList.contains( 'active' ) ) {
-            botiga_collapse[u].style = 'max-height: 0px;';
-            botiga_collapse[u].classList.remove('active');
-            botiga_collapse[u].previousElementSibling.classList.remove('active'); // }
+            _this.collapseAll(botiga_collapse[u], options);
           }
         });
       }
@@ -1176,6 +1168,32 @@ botiga.collapse = {
 
       if (_typeof(_ret) === "object") return _ret.v;
     }
+  },
+  expand: function expand(el, options, first_load) {
+    if (first_load && !el.classList.contains('active')) {
+      return false;
+    }
+
+    var targetSelectorId = options.id,
+        target = document.getElementById(targetSelectorId),
+        targetContent = target.querySelector('.botiga-collapse__content');
+    target.style = 'max-height: ' + targetContent.clientHeight + 'px;';
+    el.classList.add('active');
+    target.classList.add('active');
+    el.dispatchEvent(new Event('botiga.collapse.expanded'));
+  },
+  collapse: function collapse(el, options, a) {
+    var targetSelectorId = options.id,
+        target = document.getElementById(targetSelectorId);
+    target.style = 'max-height: 0px;';
+    el.classList.remove('active');
+    target.classList.remove('active');
+    el.dispatchEvent(new Event('botiga.collapse.collapsed'));
+  },
+  collapseAll: function collapseAll(el, options) {
+    el.classList.remove('active');
+    el.nextElementSibling.classList.remove('active');
+    el.nextElementSibling.style = 'max-height: 0px;';
   }
 };
 /**

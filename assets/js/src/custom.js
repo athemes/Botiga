@@ -1102,60 +1102,84 @@ botiga.collapse = {
             return false;
         }
 
+		const _this = this;
+
         for( let i=0;i<elements.length;i++ ) {
 
 			const
-				collapse_options = elements[i].getAttribute( 'data-botiga-collapse' ), 
-				collapse 		 = JSON.parse(collapse_options.replace(/'/g,'"').replace(';',''));
+				opts    = elements[i].getAttribute( 'data-botiga-collapse' ), 
+				options = JSON.parse(opts.replace(/'/g,'"').replace(';',''));
 
-			if( ! collapse.enable ) {
+			if( ! options.enable ) {
 				return false;
 			}
+
+			_this.expand( elements[i], options, true );
 
             elements[i].addEventListener( 'click', function(e){
                 e.preventDefault();
 
-                const 
-                    targetSelectorId = collapse.id,
-                    target           = document.getElementById( targetSelectorId ),
-                    targetContent    = target.querySelector( '.botiga-collapse__content' );
-
-				this.dispatchEvent( new Event( 'botiga.collapse.before' ) );
+				this.dispatchEvent( new Event( 'botiga.collapse.before.expand' ) );
 
                 if( ! elements[i].classList.contains( 'active' ) ) {
-					target.style = 'max-height: '+ targetContent.clientHeight +'px;';
-                    elements[i].classList.add( 'active' );
-                    target.classList.add( 'active' );
-
-					this.dispatchEvent( new Event( 'botiga.collapse.expanded' ) );
+					_this.expand( elements[i], options );
                 } else {
-                    target.style = 'max-height: 0px;';
-                    elements[i].classList.remove( 'active' );
-                    target.classList.remove( 'active' );
-
-					this.dispatchEvent( new Event( 'botiga.collapse.collapsed' ) );
+                    _this.collapse( elements[i], options );
                 }
-
-				this.dispatchEvent( new Event( 'botiga.collapse.after' ) );
+				
+				this.dispatchEvent( new Event( 'botiga.collapse.after.collapse' ) );
 
             } );
 
-			if( collapse.options.oneAtTime ) {
-				elements[i].addEventListener( 'botiga.collapse.before', function(){
-					const botiga_collapse = document.querySelectorAll( '.botiga-collapse' );
+			if( options.options.oneAtTime ) {
+				elements[i].addEventListener( 'botiga.collapse.before.expand', function(){
 
+					const botiga_collapse = document.querySelectorAll( options.options.oneAtTimeParentSelector + ' [data-botiga-collapse]' );
 					for( let u=0;u<botiga_collapse.length;u++ ) {
-						// if( botiga_collapse[u].classList.contains( 'active' ) ) {
-							botiga_collapse[u].style = 'max-height: 0px;';
-							botiga_collapse[u].classList.remove( 'active' );
-							botiga_collapse[u].previousElementSibling.classList.remove( 'active' );
-						// }
+						_this.collapseAll( botiga_collapse[u], options );
 					}
+
 				});
 			}
 
         }
-    }
+    },
+
+	expand: function( el, options, first_load ) {
+
+		if( first_load && ! el.classList.contains( 'active' ) ) {
+			return false;
+		} 
+
+		const 
+			targetSelectorId = options.id,
+			target           = document.getElementById( targetSelectorId ),
+			targetContent    = target.querySelector( '.botiga-collapse__content' );
+
+		target.style = 'max-height: '+ targetContent.clientHeight +'px;';
+		el.classList.add( 'active' );
+		target.classList.add( 'active' );
+		
+		el.dispatchEvent( new Event( 'botiga.collapse.expanded' ) );
+	},
+
+	collapse: function( el, options, a ) {
+		const 
+			targetSelectorId = options.id,
+			target           = document.getElementById( targetSelectorId );
+			
+		target.style = 'max-height: 0px;';
+		el.classList.remove( 'active' );
+		target.classList.remove( 'active' );
+
+		el.dispatchEvent( new Event( 'botiga.collapse.collapsed' ) );
+	},
+
+	collapseAll: function( el, options ) {
+		el.classList.remove( 'active' );
+		el.nextElementSibling.classList.remove( 'active' );
+		el.nextElementSibling.style = 'max-height: 0px;';
+	}
 }
 
 /**
