@@ -192,6 +192,7 @@ table.woocommerce-product-attributes th, table.woocommerce-product-attributes td
   text-align: left;
   border-left: 0;
   border-right: 0;
+  font-weight: 400;
 }
 
 table.woocommerce-product-attributes p {

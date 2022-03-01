@@ -6,22 +6,6 @@
  */
 
 /**
- * Enqueue CSS and JS
- */
-function botiga_single_product_tabs_enqueue_scripts() {
-    if( ! is_product() ) {
-        return;
-    }
-
-    $single_product_tabs_layout = get_theme_mod( 'single_product_tabs_layout', 'style6' );
-    $single_product_tabs_layout = 'style6';
-    if( $single_product_tabs_layout !== 'style6' ) {
-        return;
-    }
-}
-add_action( 'wp_enqueue_scripts', 'botiga_single_product_tabs_enqueue_scripts', 10 );
-
-/**
  * WC Hooks 
  */
 function botiga_single_product_tabs_wc_hooks() {
@@ -83,7 +67,7 @@ function botiga_single_product_tabs_output() {
 }
 
 function botiga_single_product_tabs_as_accordion_output() {
-    $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 1 );
+    $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 0 );
 
     /**
      * Filter tabs and allow third parties to add their own.

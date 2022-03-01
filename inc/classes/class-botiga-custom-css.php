@@ -417,7 +417,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			// Single post elements divider color
-			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-share-box, .botiga-related-posts, .botiga-related-products, .botiga-recently-viewed-products, .post-navigation, .single-post-author, .comments-area', 0.1 );
+			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-share-box, .botiga-related-posts, .botiga-related-products, .botiga-upsell-products, .botiga-recently-viewed-products, .post-navigation, .single-post-author, .comments-area', 0.1 );
 
 			// Single post toc
 			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.botiga-single-post-toc' );
@@ -897,7 +897,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-table__product-name.product-name a' );
 
 			// Additional Information (Variations) Table
-			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.5 );
+			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.3 );
 
 			//Buttons
 			$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'button,a.button,.wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );

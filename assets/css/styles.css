@@ -3035,6 +3035,7 @@ body.mobile-menu-visible {
 .botiga-share-box,
 .botiga-related-posts,
 .botiga-related-products,
+.botiga-upsell-products,
 .botiga-recently-viewed-products,
 .post-navigation,
 .single-post-author,
@@ -4104,14 +4105,14 @@ input.wc-block-components-price-slider__range-input {
   display: flex;
 }
 
-.botiga-carousel .botiga-carousel-wrapper .products .product,
-.botiga-carousel .botiga-carousel-wrapper .products div[class*="col-"],
-.botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage .product,
-.botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage div[class*="col-"],
-.cross-sells .botiga-carousel-wrapper .products .product,
-.cross-sells .botiga-carousel-wrapper .products div[class*="col-"],
-.cross-sells .botiga-carousel-wrapper .botiga-carousel-stage .product,
-.cross-sells .botiga-carousel-wrapper .botiga-carousel-stage div[class*="col-"] {
+.botiga-carousel .botiga-carousel-wrapper .products > div > div > .product,
+.botiga-carousel .botiga-carousel-wrapper .products > div > div > div[class*="col-"],
+.botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage > div > div > .product,
+.botiga-carousel .botiga-carousel-wrapper .botiga-carousel-stage > div > div > div[class*="col-"],
+.cross-sells .botiga-carousel-wrapper .products > div > div > .product,
+.cross-sells .botiga-carousel-wrapper .products > div > div > div[class*="col-"],
+.cross-sells .botiga-carousel-wrapper .botiga-carousel-stage > div > div > .product,
+.cross-sells .botiga-carousel-wrapper .botiga-carousel-stage > div > div > div[class*="col-"] {
   width: 100%;
   max-width: none;
   margin-right: 0;

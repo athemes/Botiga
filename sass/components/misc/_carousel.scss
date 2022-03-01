@@ -30,15 +30,17 @@
 
 			> div {
 				display: flex;
+				> div {
+					> .product,
+					> div[class*="col-"] {
+						width: 100%;
+						max-width: none;
+						margin-right: 0;
+						padding: 0;
+					}
+				}
 			}
 
-			.product,
-			div[class*="col-"] {
-				width: 100%;
-				max-width: none;
-				margin-right: 0;
-				padding: 0;
-			}
 		}
 
 		.botiga-carousel-nav-next {

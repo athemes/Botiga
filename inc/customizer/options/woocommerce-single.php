@@ -31,7 +31,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_single_product',
-			'controls_general'		=> json_encode( array( '#customize-control-single_gallery_slider','#customize-control-single_product_gallery','#customize-control-single_zoom_effects','#customize-control-single_breadcrumbs','#customize-control-single_product_elements_order','#customize-control-single_product_tabs','#customize-control-single_upsell_products','#customize-control-single_recently_viewed_top_divider','#customize-control-single_recently_viewed_products','#customize-control-single_recently_viewed_bottom_divider','#customize-control-single_related_products','#customize-control-single_product_sku','#customize-control-single_product_categories','#customize-control-single_product_tags' ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-single_gallery_slider','#customize-control-single_product_gallery','#customize-control-single_zoom_effects','#customize-control-single_breadcrumbs','#customize-control-single_product_elements_order','#customize-control-single_product_tabs','#customize-control-single_upsell_products_top_divider','#customize-control-single_upsell_products','#customize-control-single_recently_viewed_top_divider','#customize-control-single_recently_viewed_products','#customize-control-single_recently_viewed_bottom_divider','#customize-control-single_related_products','#customize-control-single_product_sku','#customize-control-single_product_categories','#customize-control-single_product_tags' ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-single_product_title_color','#customize-control-single_product_title_size','#customize-control-single_product_styling_divider_1','#customize-control-single_product_price_color','#customize-control-single_product_price_size', ) ),
 		)
 	)
@@ -232,6 +232,23 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting( 
+	'single_upsell_products_top_divider',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+
+$wp_customize->add_control( new Botiga_Divider_Control( 
+	$wp_customize, 
+	'single_upsell_products_top_divider',
+		array(
+			'section' 		=> 'botiga_section_single_product',
+			'priority'	 	=> 100
+		)
+	)
+);
+
 $wp_customize->add_setting(
 	'single_upsell_products',
 	array(
@@ -246,7 +263,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Upsell products', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
-			'priority'	 		=> 100
+			'priority'	 		=> 101
 		)
 	)
 );
@@ -263,7 +280,7 @@ $wp_customize->add_control( new Botiga_Divider_Control(
 	'single_recently_viewed_top_divider',
 		array(
 			'section' 		=> 'botiga_section_single_product',
-			'priority'	 	=> 100
+			'priority'	 	=> 103
 		)
 	)
 );
@@ -282,7 +299,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Recently Viewed Products', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
-			'priority'	 		=> 100
+			'priority'	 		=> 104
 		)
 	)
 );
@@ -299,7 +316,7 @@ $wp_customize->add_control( new Botiga_Divider_Control(
 	'single_recently_viewed_bottom_divider',
 		array(
 			'section' 		=> 'botiga_section_single_product',
-			'priority'	 	=> 102
+			'priority'	 	=> 105
 		)
 	)
 );
