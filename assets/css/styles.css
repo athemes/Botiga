@@ -4735,6 +4735,10 @@ body {
   padding: 15px 0;
 }
 
+.botiga-accordion__body-content #comments {
+  margin-top: 0;
+}
+
 /* Footer
 --------------------------------------------- */
 .site-footer {

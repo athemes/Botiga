@@ -172,6 +172,32 @@ table.shop_table_responsive tr td.download-actions .button {
   }
 }
 
+table.woocommerce-product-attributes {
+  border: 0;
+}
+
+table.woocommerce-product-attributes tr {
+  border: 0;
+}
+
+table.woocommerce-product-attributes tr:first-child th, table.woocommerce-product-attributes tr:first-child td {
+  border-top: 0;
+}
+
+table.woocommerce-product-attributes tr:last-child th, table.woocommerce-product-attributes tr:last-child td {
+  border-bottom: 0;
+}
+
+table.woocommerce-product-attributes th, table.woocommerce-product-attributes td {
+  text-align: left;
+  border-left: 0;
+  border-right: 0;
+}
+
+table.woocommerce-product-attributes p {
+  margin-bottom: 0;
+}
+
 /**
  * Products
  */

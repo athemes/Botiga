@@ -668,8 +668,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_color_css( 'color_body_text', '#212121', '.product-gallery-summary .product_meta' );
 
-			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-review-link' );
-			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-review-link:hover' );
+			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-product-rating .woocommerce-review-link' );
+			$css .= $this->get_color_css( 'color_link_hover', '', '.woocommerce-product-rating .woocommerce-review-link:hover' );
 
 			//Woocommerce single product gallery
 			$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
@@ -714,7 +714,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					break;
 					
 				case 'style6':
-					$css .= $this->get_color_css( 'color_link_default', '#212121', '.botiga-accordion__item>a' );
+					$css .= $this->get_color_css( 'single_product_tabs_text_color', '#212121', '.botiga-accordion__item>a' );
+					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_text_color', '#212121', '.botiga-accordion__item>a:after', 0.5 );
+					$css .= $this->get_color_css( 'single_product_tabs_text_color_active', '#212121', '.botiga-accordion__item>a.active, .botiga-accordion__item>a:hover, .botiga-accordion__item>a:focus' );
+					$css .= $this->get_border_color_css( 'single_product_tabs_text_color_active', '#212121', '.botiga-accordion__item>a.active:after, .botiga-accordion__item>a:hover:after, .botiga-accordion__item>a:focus:after' );
+					$css .= $this->get_border_color_rgba_css( 'single_product_tabs_remaining_borders', '#212121', '.botiga-accordion__item', 0.5 );
 					break;
 					
 			}
@@ -891,6 +895,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Tables
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.shop_table th, .shop_table td, .shop_table tr', '0.1', true );
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-table__product-name.product-name a' );
+
+			// Additional Information (Variations) Table
+			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.5 );
 
 			//Buttons
 			$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'button,a.button,.wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );

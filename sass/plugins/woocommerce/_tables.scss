@@ -227,3 +227,28 @@ table.shop_table_responsive {
 		}
 	}
 }
+
+table.woocommerce-product-attributes {
+	border: 0;
+	tr {
+		border: 0;
+		&:first-child {
+			th, td {
+				border-top: 0;
+			}
+		}
+		&:last-child {
+			th, td {
+				border-bottom: 0;
+			}
+		}
+	}
+	th, td {
+		text-align: left;
+		border-left: 0;
+		border-right: 0;
+	}
+	p {
+		margin-bottom: 0;
+	}
+}
