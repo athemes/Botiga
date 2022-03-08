@@ -131,4 +131,4 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 	
 	<?php
 }
-add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_recently_viewed_products', 21 );
+add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_recently_viewed_products', apply_filters( 'botiga_woocommerce_after_single_product_summary_recently_viewed_products_order', 21 ) );

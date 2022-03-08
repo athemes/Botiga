@@ -10,9 +10,10 @@
  */
 function botiga_related_products_hooks() {
     $single_related = get_theme_mod( 'single_related_products', 1 );
+	$hook_order     = apply_filters( 'botiga_woocommerce_after_single_product_summary_related_products_order', 20 );
 
     if ( !$single_related ) {
-        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', $hook_order );
     } else {
         $shop_single_related_products_columns_number = get_theme_mod( 'shop_single_related_products_columns_number', 3 );
         $single_related_products_slider 			 = get_theme_mod( 'shop_single_related_products_slider', 0 );
@@ -26,8 +27,8 @@ function botiga_related_products_hooks() {
         }
         
         if( $single_related_products_slider ) {
-            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-            add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_related_products_slider', 20 );
+            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', $hook_order );
+            add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_related_products_slider', $hook_order );
         }
     }
 }

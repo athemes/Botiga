@@ -726,6 +726,22 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'single_product_tabs_text_color', '', '.woocommerce-tabs ul.tabs li:not(.active) a ,.woocommerce-tabs ul.tabs li:not(.active) a:hover' );
 			$css .= $this->get_color_css( 'single_product_tabs_text_color_active', '', '.woocommerce-tabs ul.tabs li.active a,.woocommerce-tabs ul.tabs li.active a:hover' );
 
+			//Woocommerce single upsell, related and recently viewed products section
+			$single_upsell_products = get_theme_mod( 'single_upsell_products', 1 );
+			if( $single_upsell_products ) {
+				$css .= $this->get_background_color_css( 'single_product_upsell_section_background_color', '', '.single-product .upsells.products:after', true );
+			}
+
+			$single_related_products = get_theme_mod( 'single_related_products', 1 );
+			if( $single_related_products ) {
+				$css .= $this->get_background_color_css( 'single_product_related_section_background_color', '', '.single-product .related.products:after', true );
+			}
+
+			$single_recently_viewed_products = get_theme_mod( 'single_recently_viewed_products', 0 );
+			if( $single_recently_viewed_products ) {
+				$css .= $this->get_background_color_css( 'single_product_recently_section_background_color', '', '.single-product .recently-viewed-products.products:after', true );
+			}
+
 			//Woocommerce single sticky add to cart
 			$single_sticky_add_to_cart = get_theme_mod( 'single_sticky_add_to_cart', 0 );
 
@@ -808,6 +824,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_font_sizes_css( 'single_product_title_size', $defaults = array( 'desktop' => 32, 'tablet' => 32, 'mobile' => 32 ), '.product-gallery-summary .entry-title' );
 			$css .= $this->get_font_sizes_css( 'single_product_price_size', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '.product-gallery-summary .price' );
 			$css .= $this->get_color_css( 'color_body_text', '#212121', 'p.stars a::before' );
+			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', '.single-product .site-main>.product>section.products:nth-child(even):after', 0.5 );
 			
 			//Quantity input
 			$shop_general_quantity_style = get_theme_mod( 'shop_general_quantity_style', 'style1' );

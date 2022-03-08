@@ -23,12 +23,28 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
+<?php do_action( 'botiga_before_site' ); ?>
+
 <div id="page" class="site">
 
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'botiga' ); ?></a>
 
-	<?php do_action( 'botiga_header' ); ?>
+	<?php 
+	/**
+	 * Header
+	 */
+	do_action( 'botiga_header' );
 
-	<?php do_action( 'botiga_page_header' ); ?>
+	/**
+	 * Page Header
+	 */
+	do_action( 'botiga_before_page_header' );
+	do_action( 'botiga_page_header' );
+	do_action( 'botiga_after_page_header' );
 	
-	<?php do_action( 'botiga_main_wrapper_start' ); ?>			
+	/**
+	 * Main Wrapper
+	 */
+	do_action( 'botiga_before_main_wrapper' );
+	do_action( 'botiga_main_wrapper_start' ); ?>			

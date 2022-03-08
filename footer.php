@@ -11,15 +11,23 @@
 
 ?>
 
-	<?php do_action( 'botiga_main_wrapper_end' ); ?>			
-
-	<?php do_action( 'botiga_footer_before' ); ?>
-
-	<?php do_action( 'botiga_footer' ); ?>
-
-	<?php do_action( 'botiga_footer_after' ); ?>
+	<?php 
+	/**
+	 * Main Wrapper
+	 */
+	do_action( 'botiga_main_wrapper_end' );
+	do_action( 'botiga_after_main_wrapper' ); 
+	
+	/**
+	 * Footer
+	 */
+	do_action( 'botiga_footer_before' );
+	do_action( 'botiga_footer' ); 
+	do_action( 'botiga_footer_after' ); ?>
 
 </div><!-- #page -->
+
+<?php do_action( 'botiga_after_site' ); ?>
 
 <?php wp_footer(); ?>
 

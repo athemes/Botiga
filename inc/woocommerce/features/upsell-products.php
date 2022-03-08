@@ -10,9 +10,10 @@
  */
 function botiga_upsell_products_hooks() {
     $single_upsell = get_theme_mod( 'single_upsell_products', 1 );
+	$hook_order    = apply_filters( 'botiga_woocommerce_after_single_product_summary_upsell_products_order', 15 );
 
     if ( !$single_upsell ) {
-        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+        remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', $hook_order );
     } else {
         $shop_single_upsell_products_number         = get_theme_mod( 'shop_single_upsell_products_number', 3 );
         $shop_single_upsell_products_columns_number = get_theme_mod( 'shop_single_upsell_products_columns_number', 3 );
@@ -27,7 +28,7 @@ function botiga_upsell_products_hooks() {
         }
         
         if( $single_upsell_products_slider ) {
-            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+            remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', $hook_order );
             add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_upsell_products_slider', 15 );
         }
 
@@ -54,14 +55,13 @@ function botiga_woocommerce_output_upsell_products_slider( $args = array() ) {
 		return;
 	}
 
-    $limit = '-1';
-
+	
 	$posts_per_page = get_theme_mod( 'shop_single_upsell_products_number', 3 );
 	$columns        = get_theme_mod( 'shop_single_upsell_products_columns_number', 3 );
 	$shop_single_upsell_products_slider_nav = get_theme_mod( 'shop_single_upsell_products_slider_nav', 'always-show' );
-
+	
+    $limit = $posts_per_page;
 	$defaults = array(
-		'posts_per_page' => $posts_per_page,
 		'orderby'        => 'rand',
 		'order'          => 'desc'
 	);
