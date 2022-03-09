@@ -90,11 +90,17 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 				<?php echo botiga_woocommerce_cart_link();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
 			<?php
-			$instance = array(
-				'title' => esc_html__( 'Your Cart', 'botiga' ),
-			);
-
-			the_widget( 'WC_Widget_Cart', $instance );
+			
+			// Side Mini Cart
+			$side_mini_cart = get_theme_mod( 'enable_side_mini_cart', 1 );
+			if( ! $side_mini_cart ) {
+				$instance = array(
+					'title' => esc_html__( 'Your Cart', 'botiga' ),
+				);
+	
+				the_widget( 'WC_Widget_Cart', $instance );
+			}
+			
 			?>
 		</div>
 		<?php endif; ?>
