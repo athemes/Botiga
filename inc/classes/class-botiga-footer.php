@@ -75,7 +75,13 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 			}
 
 			?>
+
+			<?php do_action( 'botiga_before_footer_widgets' ); ?>
+
 			<div class="footer-widgets visibility-<?php echo esc_attr( $visibility ); ?>">
+
+				<?php do_action( 'botiga_footer_widgets_content_start' ); ?>
+
 				<div class="<?php echo esc_attr( $container ); ?>">
 					<div class="footer-widgets-grid <?php echo esc_attr( $layout ); ?> align-<?php echo esc_attr( $alignment ); ?>">
 					<?php for ( $i = 1; $i <= $column_no; $i++ ) { ?>
@@ -87,7 +93,13 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 					<?php } ?>
 					</div>
 				</div>
+
+				<?php do_action( 'botiga_footer_widgets_content_end' ); ?>
+
 			</div>
+			
+			<?php do_action( 'botiga_after_footer_widgets' ); ?>
+
 			<?php
 		}
 
@@ -99,7 +111,13 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 			$container 	= get_theme_mod( 'footer_credits_container', 'container' );
 			$elements   = get_theme_mod( 'footer_copyright_elements', array( 'footer_credits', 'footer_social_profiles' ) );
 			?>
+
+			<?php do_action( 'botiga_before_footer_copyright' ); ?>
+
 			<footer id="colophon" class="site-footer">
+
+				<?php do_action( 'botiga_footer_copyright_content_start' ); ?>
+
 				<div class="<?php echo esc_attr( $container ); ?>">
 					<div class="site-info">
 						<div class="row">
@@ -137,7 +155,13 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 						</div>
 					</div>
 				</div><!-- .site-info -->
+
+				<?php do_action( 'botiga_footer_copyright_content_end' ); ?>
+
 			</footer><!-- #colophon -->
+
+			<?php do_action( 'botiga_after_footer_copyright' ); ?>
+
 			<?php
 		}
 

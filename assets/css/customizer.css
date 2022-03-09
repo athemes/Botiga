@@ -819,6 +819,19 @@ span.delete:hover {
   right: 3px;
 }
 
+.customize-section-description {
+  padding: 0 12px;
+}
+
+.customize-section-description ul {
+  margin-top: 10px;
+  margin-left: 0;
+}
+
+.customize-section-description ul > li {
+  list-style: none;
+}
+
 .customize-control-number:not(#customize-control-woocommerce_catalog_columns):not(#customize-control-woocommerce_catalog_rows) {
   display: -webkit-box;
   display: -ms-flexbox;
