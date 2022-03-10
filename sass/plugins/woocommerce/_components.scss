@@ -390,10 +390,6 @@
 				font-size: 1.7rem;
 			}
 		}
-
-		.qty {
-			width: 35px;
-		}
 	}
 }
 
@@ -954,6 +950,11 @@ p.no-comments {
 	opacity: 0;
 	transform: translate3d(0, 15px, 0);
 	transition: ease opacity 300ms, ease transform 300ms;
+
+	&.widget {
+		padding-bottom: 0;
+		margin: 0;
+	}
 
 	.variation {
 		width: 100%;

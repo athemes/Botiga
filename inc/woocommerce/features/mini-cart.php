@@ -51,9 +51,15 @@ if ( ! function_exists( 'botiga_woocommerce_cart_link' ) ) {
 	 * @return void
 	 */
 	function botiga_woocommerce_cart_link() {
-		$cart_icon = get_theme_mod( 'cart_icon', 'icon-cart' );
+		$cart_icon       = get_theme_mod( 'cart_icon', 'icon-cart' );
+		$mini_cart_style = get_theme_mod( 'mini_cart_style', 'default' );
 
-		$link = '<a class="cart-contents" href="' . esc_url( wc_get_cart_url() ) . '" title="' . esc_attr__( 'View your shopping cart', 'botiga' ) . '">';
+		$extra_atts = '';
+		if( $mini_cart_style === 'side' && ! is_cart() && ! is_checkout() ) {
+			$extra_atts = ' onclick="botiga.toggleClass.init(event, this, \'side-mini-cart-toggle\');" data-botiga-selector=".botiga-side-mini-cart" data-botiga-toggle-class="show"';
+		}
+
+		$link = '<a class="cart-contents" href="' . esc_url( wc_get_cart_url() ) . '" title="' . esc_attr__( 'View your shopping cart', 'botiga' ) . '"'. $extra_atts .'>';
 		$link .= '<span class="cart-count"><i class="ws-svg-icon">' . botiga_get_svg_icon( $cart_icon, false ) . '</i><span class="count-number">' . esc_html( WC()->cart->get_cart_contents_count() ) . '</span></span>';
 		$link .= '</a>';
 
@@ -92,8 +98,8 @@ if ( ! function_exists( 'botiga_woocommerce_header_cart' ) ) {
 			<?php
 			
 			// Side Mini Cart
-			$side_mini_cart = get_theme_mod( 'enable_side_mini_cart', 1 );
-			if( ! $side_mini_cart ) {
+			$mini_cart_style = get_theme_mod( 'mini_cart_style', 'default' );
+			if( $mini_cart_style === 'default' ) {
 				$instance = array(
 					'title' => esc_html__( 'Your Cart', 'botiga' ),
 				);

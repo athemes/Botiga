@@ -689,7 +689,8 @@ botiga.customAddToCartButton = {
               button.innerHTML = initial_text;
             }, 1500);
             jQuery(document.body).trigger('wc_fragment_refresh');
-            window.dispatchEvent(new Event('botiga.custom_add_to_cart.ajax.loaded'));
+            jQuery(document.body).trigger('added_to_cart');
+            document.body.dispatchEvent(new Event('botiga.custom_added_to_cart'));
           }
         };
 
@@ -881,7 +882,7 @@ botiga.carousel = {
       return false;
     }
 
-    var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .cart-collaterals .cross-sells');
+    var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
 
     var _iterator8 = _createForOfIteratorHelper(carouselEls),
         _step8;

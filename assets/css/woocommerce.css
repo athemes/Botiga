@@ -3932,9 +3932,6 @@ form.woocommerce-checkout {
   .botiga-quick-view-popup .quantity .botiga-quantity-minus {
     font-size: 1.7rem;
   }
-  .botiga-quick-view-popup .qty {
-    width: 35px;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -4417,6 +4414,11 @@ p.no-comments {
           transform: translate3d(0, 15px, 0);
   -webkit-transition: ease opacity 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease transform 300ms;
+}
+
+.widget_shopping_cart.widget {
+  padding-bottom: 0;
+  margin: 0;
 }
 
 .widget_shopping_cart .variation {
