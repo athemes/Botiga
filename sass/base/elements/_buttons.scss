@@ -61,3 +61,33 @@ a.wc-backward {
 		border-bottom-left-radius: 0 !important;
 	}
 }
+
+// Add To Cart Button
+ul.products {
+	li.product {
+		.button {
+			&.loading:after {
+				font-family: WooCommerce;
+				content: "";
+				-webkit-animation: spin 2s linear infinite;
+				animation: spin 2s linear infinite;
+				margin-left: 0.5em;
+				display: inline-block;
+				width: auto;
+				height: auto;
+			}
+			&.loading {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+			&.added:after {
+				font-family: WooCommerce;
+				content: "";
+				margin-left: 0.5em;
+				display: inline-block;
+				width: auto;
+				height: auto;
+			}
+		}
+	}
+}

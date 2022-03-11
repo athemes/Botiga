@@ -114,7 +114,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= "body { text-decoration:" . esc_attr( $body_text_decoration ) . ";text-transform:" . esc_attr( $body_text_transform ) . ";font-style:" . esc_attr( $body_font_style ) . ";line-height:" . esc_attr( $body_line_height ) . ";letter-spacing:" . esc_attr( $body_letter_spacing ) . "px;}" . "\n";
 			$css .= ".site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message { line-height: " . esc_attr( $body_line_height ) . "; }";
-			$css .= $this->get_font_sizes_css( 'body_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'body' );
+			$css .= $this->get_font_sizes_css( 'body_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'html, body' );
 
 			//Global colors
 			$css .= $this->get_color_css( 'site_title_color', '', '.site-header .site-title a' );
@@ -128,7 +128,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
 			$css .= $this->get_color_css( 'color_heading_3', '', 'h3' );
 			$css .= $this->get_color_css( 'color_heading_4', '', 'h4,.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a:hover,.product-gallery-summary .woocommerce-Price-amount,.order-total .woocommerce-Price-amount, .woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total,.woocommerce-mini-cart__total .woocommerce-Price-amount' );
-			$css .= $this->get_background_color_css( 'color_heading_4', '', '.site-header-cart .product_list_widget li a.remove' );
 			$css .= $this->get_border_color_css( 'color_heading_4', '', '.botiga-tabs-style1 .woocommerce-tabs ul.tabs li.active a' );
 			$css .= $this->get_color_css( 'color_heading_5', '', 'h5' );
 			$css .= $this->get_color_css( 'color_heading_6', '', 'h6' );
@@ -144,9 +143,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.comments-area,.woocommerce-cart .cart_totals,.checkout-wrapper .woocommerce-checkout-review-order,.woocommerce-info, .woocommerce-noreviews, p.no-comments,.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total, .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.botiga-side-mini-cart .widget_shopping_cart .woocommerce-mini-cart__total, .botiga-side-mini-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,.woocommerce-account.logged-in .entry-content>.woocommerce .woocommerce-MyAccount-navigation ul .is-active a,.checkout_coupon,.woocommerce-checkout .woocommerce-form-login,.sidebar-slide+.widget-area' );
 
-			$background_color 	= get_theme_mod( 'background_color' );
+			$background_color = get_theme_mod( 'background_color' );
 			$css .= $this->get_background_color_css( 'background_color', '#FFF', '.checkout-wrapper .wc_payment_methods,.site-header-cart .widget_shopping_cart' );
 			$css .= $this->get_color_css( 'background_color', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
+			$css .= $this->get_background_color_css( 'color_heading_4', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
 
 			//Header
 			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
@@ -759,13 +759,18 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-quick-view-popup .botiga-quick-view-popup-content' );
 
 			//Mini cart
-			$css .= $this->get_color_css( 'color_body_text', '', '.mini_cart_item a:nth-child(2)' );
+			$css .= $this->get_color_css( 'color_heading_4', '', '.mini_cart_item a:nth-child(2)' );
 			$css .= $this->get_color_css( 'color_link_default', '', '.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout)' );
 
 			//Side Mini Cart
 			$mini_cart_style = get_theme_mod( 'mini_cart_style', 'default' );
 			if( $mini_cart_style === 'side' ) {
 				$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-side-mini-cart .widgettitle' );
+				$css .= $this->get_background_color_css( 'background_color', '', '.botiga-side-mini-cart' );
+				$css .= $this->get_background_color_rgba_css( 'color_body_text', '#212121', '.botiga-side-mini-cart .widget_shopping_cart .woocommerce-mini-cart__buttons:before, .botiga-side-mini-cart .widget_shopping_cart .botiga-woocommerce-mini-cart__cross-sell:before', '0.1' );
+				$css .= $this->get_color_css( 'background_color', '#FFF', '.botiga-side-mini-cart .product_list_widget li a.remove' );
+				$css .= $this->get_background_color_css( 'color_heading_4', '#212121', '.botiga-side-mini-cart .product_list_widget li a.remove' );
+				$css .= $this->get_fill_css( 'color_heading_4', '#212121', '.botiga-side-mini-cart__close-button .ws-svg-icon svg' );
 			}
 
 			//Cart
@@ -1210,6 +1215,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public static function get_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
+
+			if( $setting === 'background_color' ) {
+				$mod = "#$mod";
+			}
 			
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'color', '', $important );
 			

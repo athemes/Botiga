@@ -19,10 +19,7 @@
         margin-bottom: 40px;
     }
     h1,
-    .has-gigantic-font-size,
-    .woocommerce-account .entry-title,
-    .woocommerce-checkout .entry-title,
-    .woocommerce-cart .entry-title {
+    .has-gigantic-font-size {
         @include font-size(42);
     }
     h2,
