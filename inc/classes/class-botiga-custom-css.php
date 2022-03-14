@@ -923,6 +923,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Tables
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.shop_table th, .shop_table td, .shop_table tr', '0.1', true );
 			$css .= $this->get_color_css( 'color_link_default', '', '.woocommerce-table__product-name.product-name a' );
+			$css .= $this->get_border_color_css( 'color_link_default', '#212121', '.shop-table-layout2 .shop_table .botiga-qty-remove-wrapper .remove:after' );
 
 			// Additional Information (Variations) Table
 			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.3 );

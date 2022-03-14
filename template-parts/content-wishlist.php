@@ -34,12 +34,15 @@ if( $products ) :
 
                             <td class="product-remove">
                                 <?php
-                                    echo sprintf(
-                                        '<a href="#" class="botiga-wishlist-remove-item remove" data-type="remove" aria-label="%s" data-product-id="%s" data-product_sku="%s" data-nonce="%s">&times;</a>',
-                                        esc_html__( 'Remove this item', 'botiga' ),
-                                        esc_attr( $product_id ),
-                                        esc_attr( $_product->get_sku() ),
-                                        esc_attr( wp_create_nonce( 'botiga-wishlist-nonce' ) )
+                                    echo apply_filters(
+                                        'botiga_wishlist_remove_item_button',
+                                        sprintf(
+                                            '<a href="#" class="botiga-wishlist-remove-item remove" data-type="remove" aria-label="%s" data-product-id="%s" data-product_sku="%s" data-nonce="%s">&times;</a>',
+                                            esc_html__( 'Remove this item', 'botiga' ),
+                                            esc_attr( $product_id ),
+                                            esc_attr( $_product->get_sku() ),
+                                            esc_attr( wp_create_nonce( 'botiga-wishlist-nonce' ) )
+                                        )
                                     );
                                 ?>
                             </td>
@@ -61,7 +64,9 @@ if( $products ) :
                                     echo wp_kses_post( $_product->get_name() . '&nbsp;' );
                                 } else {
                                     echo wp_kses_post( sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ) );
-                                } ?>
+                                } 
+                                
+                                do_action( 'botiga_wishlist_after_item_name', $_product, $product_id ); ?>
                             </td>
 
                             <td class="product-price" data-title="<?php esc_attr_e( 'Price', 'botiga' ); ?>">
@@ -73,10 +78,11 @@ if( $products ) :
                             <td class="product-stock" data-title="<?php esc_attr_e( 'Stock', 'botiga' ); ?>">
                                 <?php
                                 if ( ! $_product->is_in_stock() ) {
-                                    echo esc_html__( 'Out of Stock', 'botiga' );
+                                    echo apply_filters( 'botiga_wishlist_out_of_stock', esc_html__( 'Out of Stock', 'botiga' ) );
                                 } else {
-                                    echo esc_html__( 'In Stock', 'botiga' );
-                                } ?>
+                                    echo apply_filters( 'botiga_wishlist_in_stock', esc_html__( 'In Stock', 'botiga' ) );
+                                } 
+                                ?>
                             </td>
 
                             <td class="product-addtocart" data-title="<?php esc_attr_e( 'Add to Cart', 'botiga' ); ?>">
