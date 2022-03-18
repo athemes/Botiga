@@ -51,40 +51,48 @@ function botiga_woocommerce_page_header() {
 				if( is_shop() && $shop_archive_header_style_show_categories ) : ?>
 					</div>
 					<div class="container">
-						<div class="categories-wrapper">
-							<?php  
-							$args = array(
-								'taxonomy' => 'product_cat',
-								'fields'   => 'id=>name',
-								'parent'   => 0
-							);
-							$categories = get_terms( $args );
-							
-							foreach( $categories as $cat_id => $cat_name ) {
-								$cat_link = get_term_link( $cat_id );
-								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
-							} ?>
-						</div>
+
+						<?php 
+						$args = array(
+							'taxonomy' => 'product_cat',
+							'fields'   => 'id=>name',
+							'parent'   => 0
+						);
+						$categories = get_terms( $args ); 
+						
+						if( count( $categories ) > 0 ) : ?>
+							<div class="categories-wrapper">
+								<?php  
+								foreach( $categories as $cat_id => $cat_name ) {
+									$cat_link = get_term_link( $cat_id );
+									echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
+								} ?>
+							</div>
+						<?php endif; ?>
 					<!-- </div> -->
 				<?php endif; ?>
 				<?php if( $shop_archive_header_style_show_sub_categories && ( is_product_category() || is_product_tag() ) ) : ?>
 					</div>
 					<div class="container">
-						<div class="categories-wrapper">
-							<?php 
-							$category = get_category( $GLOBALS['wp_query']->get_queried_object() );
-							$args = array(
-								'taxonomy' => 'product_cat',
-								'parent'   => $category->term_id,
-								'fields'   => 'id=>name'
-							);
-							$categories = get_terms( $args );
 
-							foreach( $categories as $cat_id => $cat_name ) {
-								$cat_link = get_term_link( $cat_id );
-								echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
-							} ?>
-						</div>
+						<?php 
+						$category = get_category( $GLOBALS['wp_query']->get_queried_object() );
+						$args = array(
+							'taxonomy' => 'product_cat',
+							'parent'   => $category->term_id,
+							'fields'   => 'id=>name'
+						);
+						$categories = get_terms( $args ); 
+						
+						if( count( $categories ) > 0 ) : ?>
+							<div class="categories-wrapper">
+								<?php 
+								foreach( $categories as $cat_id => $cat_name ) {
+									$cat_link = get_term_link( $cat_id );
+									echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
+								} ?>
+							</div>
+						<?php endif; ?>
 					<!-- </div> -->
 				<?php endif; ?>
 			</div>

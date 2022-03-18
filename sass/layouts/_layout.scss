@@ -586,6 +586,14 @@ html {
     }
 }
 
+.d-flex {
+    display: flex;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
 .valign {
     @include valign;
 }

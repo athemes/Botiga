@@ -54,25 +54,66 @@ function botiga_single_product_tabs_wc_single_layout( $class ) {
 }
 
 /**
- * Tabs Accordion Style
+ * Tabs output
  */
 function botiga_single_product_tabs_output() { 
     $single_product_tabs_layout = get_theme_mod( 'single_product_tabs_layout', 'style1' );
 
     if( $single_product_tabs_layout !== 'style6' ) {
-        woocommerce_output_product_data_tabs();
+        botiga_woocommerce_output_product_data_tabs();
     } else {
         botiga_single_product_tabs_as_accordion_output();
     } 
 }
 
+/**
+ * Tabs default style
+ */
+function botiga_woocommerce_output_product_data_tabs() {
+
+    /**
+     * Filter tabs and allow third parties to add their own.
+     */
+    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+
+    if ( ! empty( $product_tabs ) ) : ?>
+
+        <div class="woocommerce-tabs wc-tabs-wrapper">
+            <ul class="tabs wc-tabs" role="tablist">
+                <?php foreach ( $product_tabs as $key => $product_tab ) : ?>
+                    <li class="<?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
+                        <a href="#tab-<?php echo esc_attr( $key ); ?>">
+                            <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php foreach ( $product_tabs as $key => $product_tab ) : ?>
+                <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+                    <?php
+                    if ( isset( $product_tab['callback'] ) ) {
+                        call_user_func( $product_tab['callback'], $key, $product_tab );
+                    }
+                    ?>
+                </div>
+            <?php endforeach; ?>
+
+            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+        </div>
+
+    <?php endif;
+}
+
+/**
+ * Tabs Accordion Style
+ */
 function botiga_single_product_tabs_as_accordion_output() {
     $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 0 );
 
     /**
      * Filter tabs and allow third parties to add their own.
      */
-    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
+    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
     if ( ! empty( $product_tabs ) ) : ?>
 
@@ -82,7 +123,7 @@ function botiga_single_product_tabs_as_accordion_output() {
             foreach ( $product_tabs as $key => $product_tab ) : ?>
             <div class="botiga-accordion__item">
                 <a href="#" class="botiga-accordion__toggle botiga-collapse-toggle<?php echo ( $counter == 0 ? ' active' : '' ); ?>" data-botiga-collapse="{'enable': true, 'id': 'botiga-accordion-<?php echo esc_attr( $key ); ?>', 'options': { 'oneAtTime': <?php echo ( $accordion_one_at_time ? 'true' : 'false' ); ?>, 'oneAtTimeParentSelector': '.botiga-accordion' }}">
-                    <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
+                    <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                 </a>
                 <div id="botiga-accordion-<?php echo esc_attr( $key ); ?>" class="botiga-accordion__body botiga-collapse<?php echo ( $counter == 0 ? ' active' : '' ); ?>">
                     <div class="botiga-accordion__body-content botiga-collapse__content">
@@ -97,7 +138,7 @@ function botiga_single_product_tabs_as_accordion_output() {
             $counter++;
             endforeach; ?>
 
-            <?php do_action( 'woocommerce_product_after_tabs' ); ?>
+            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
         </div>
 
     <?php endif; ?>

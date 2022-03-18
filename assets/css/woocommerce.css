@@ -196,6 +196,10 @@ table.woocommerce-product-attributes th, table.woocommerce-product-attributes td
   font-weight: 400;
 }
 
+table.woocommerce-product-attributes a {
+  text-decoration: none;
+}
+
 table.woocommerce-product-attributes p {
   margin-bottom: 0;
 }
@@ -1649,6 +1653,8 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .product-gallery-summary .woocommerce-product-gallery,

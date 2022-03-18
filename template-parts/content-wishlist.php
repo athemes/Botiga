@@ -34,6 +34,7 @@ if( $products ) :
 
                             <td class="product-remove">
                                 <?php
+                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                     echo apply_filters(
                                         'botiga_wishlist_remove_item_button',
                                         sprintf(
@@ -78,9 +79,9 @@ if( $products ) :
                             <td class="product-stock" data-title="<?php esc_attr_e( 'Stock', 'botiga' ); ?>">
                                 <?php
                                 if ( ! $_product->is_in_stock() ) {
-                                    echo apply_filters( 'botiga_wishlist_out_of_stock', esc_html__( 'Out of Stock', 'botiga' ) );
+                                    echo apply_filters( 'botiga_wishlist_out_of_stock', esc_html__( 'Out of Stock', 'botiga' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 } else {
-                                    echo apply_filters( 'botiga_wishlist_in_stock', esc_html__( 'In Stock', 'botiga' ) );
+                                    echo apply_filters( 'botiga_wishlist_in_stock', esc_html__( 'In Stock', 'botiga' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 } 
                                 ?>
                             </td>

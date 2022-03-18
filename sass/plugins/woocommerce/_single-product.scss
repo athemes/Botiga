@@ -152,6 +152,7 @@
 
 .product-gallery-summary {
 	display: flex;
+	flex-wrap: wrap;
 
 	.woocommerce-product-gallery,
 	.entry-summary {
