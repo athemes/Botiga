@@ -11,7 +11,7 @@ global $_product; ?>
     <div class="botiga-adv-reviews-modal-body">
         <a href="#" class="botiga-adv-reviews-modal-close">
             <i class="ws-svg-icon icon-cancel">
-                <?php echo botiga_get_svg_icon( 'icon-cancel' ); ?>
+                <?php echo botiga_get_svg_icon( 'icon-cancel' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </i>
         </a>
         <div class="botiga-adv-reviews-modal-content">

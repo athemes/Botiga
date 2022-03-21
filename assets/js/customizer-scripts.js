@@ -576,7 +576,7 @@ wp.customize('color_palettes', function (control) {
     } //Color 7 Default background, Text on dark BG
 
 
-    var elements7 = ['custom_color7', 'background_color', 'button_color', 'button_color_hover', 'scrolltop_color', 'scrolltop_color_hover', 'color_forms_background', 'topbar_background'];
+    var elements7 = ['custom_color7', 'background_color', 'button_color', 'button_color_hover', 'scrolltop_color', 'scrolltop_color_hover', 'color_forms_background', 'topbar_background', 'single_product_reviews_advanced_section_bg_color'];
 
     for (var _i7 = 0, _elements7 = elements7; _i7 < _elements7.length; _i7++) {
       var _element6 = _elements7[_i7];

@@ -644,7 +644,7 @@ jQuery( document ).ready(function($) {
 		}		
 
 		//Color 7 Default background, Text on dark BG
-		let elements7 = ['custom_color7','background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background','topbar_background'];
+		let elements7 = ['custom_color7','background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background','topbar_background','single_product_reviews_advanced_section_bg_color'];
 		
 		for ( const element of elements7 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {

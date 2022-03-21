@@ -2833,6 +2833,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   margin-bottom: 0;
 }
 
+.woocommerce-Reviews #comments .woocommerce-pagination li .page-numbers {
+  text-decoration: none;
+}
+
 /**
  * Cart
  */
@@ -4207,13 +4211,13 @@ p.stars a:hover ~ a::before {
 
 p.stars:hover a::before {
   content: "\53";
-  color: #4169e1;
+  color: #FFA441;
   opacity: 1;
 }
 
 p.stars.selected a.active::before {
   content: "\53";
-  color: #4169e1;
+  color: #FFA441;
   opacity: 1;
 }
 
@@ -4225,7 +4229,7 @@ p.stars.selected a.active ~ a::before {
 
 p.stars.selected a:not(.active)::before {
   content: "\53";
-  color: #4169e1;
+  color: #FFA441;
   opacity: 1;
 }
 

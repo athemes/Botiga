@@ -1254,5 +1254,13 @@ body {
 				}
 			}
 		}
+
+		.woocommerce-pagination {
+			li {
+				.page-numbers {
+					text-decoration: none;
+				}
+			}
+		}
 	}
 }

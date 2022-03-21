@@ -726,6 +726,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'single_product_tabs_text_color', '', '.woocommerce-tabs ul.tabs li:not(.active) a ,.woocommerce-tabs ul.tabs li:not(.active) a:hover' );
 			$css .= $this->get_color_css( 'single_product_tabs_text_color_active', '', '.woocommerce-tabs ul.tabs li.active a,.woocommerce-tabs ul.tabs li.active a:hover' );
 
+			//Single Product - Reviews Advanced
+			$single_product_reviews_advanced_enable = get_theme_mod( 'single_product_reviews_advanced_enable', 0 );
+			if( $single_product_reviews_advanced_enable ) {
+				$css .= $this->get_background_color_css( 'single_product_reviews_advanced_section_bg_color', '#FFF', '.single-product .site-main>.product>section.products.botiga-adv-reviews:after, .botiga-reviews-orderby', true );
+				$css .= $this->get_color_css( 'single_product_reviews_advanced_stars_bg_color', '#777', '.star-rating.botiga-star-rating-style2:before, .star-rating::before' );
+				$css .= $this->get_color_css( 'single_product_reviews_advanced_stars_color', '#FFA441', '.star-rating.botiga-star-rating-style2 span:before, .star-rating span::before, .botiga-adv-reviews-modal .botiga-adv-reviews-modal-body .botiga-adv-reviews-modal-content .stars:hover a:before' );
+				$css .= $this->get_background_color_css( 'color_link_default', '#212121', '.botiga-star-rating-bars .botiga-star-rating-bar-item .item-bar .item-bar-inner' );
+				$css .= $this->get_background_color_css( 'content_cards_background', '#F2F2F2', '.botiga-star-rating-bars .botiga-star-rating-bar-item .item-bar, .botiga-adv-reviews-modal .botiga-adv-reviews-modal-body' );
+				$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-reviews-list-wrapper .botiga-reviews-list-item+.botiga-reviews-list-item', 0.15 );
+			}
+
 			//Woocommerce single upsell, related and recently viewed products section
 			$single_upsell_products = get_theme_mod( 'single_upsell_products', 1 );
 			if( $single_upsell_products ) {
