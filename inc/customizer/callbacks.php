@@ -456,6 +456,36 @@ function botiga_callback_header_elements( $element ) {
 }
 
 /**
+ * Mobile Header Elements
+ */
+function botiga_callback_mobile_header_elements( $element ) {
+	$default_components = botiga_get_default_header_components();
+
+	$elements = get_theme_mod( 'header_components_mobile', $default_components[ 'mobile' ] );
+
+	if ( in_array( $element, $elements ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Mobile Header Offcanvas Elements
+ */
+function botiga_callback_mobile_header_offcanvas_elements( $element ) {
+	$default_components = botiga_get_default_header_components();
+
+	$elements = get_theme_mod( 'header_components_offcanvas', $default_components[ 'mobile' ] );
+
+	if ( in_array( $element, $elements ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
  * Header Mini Cart
  */
 function botiga_callback_header_show_minicart() {

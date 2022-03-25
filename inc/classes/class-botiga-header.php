@@ -728,7 +728,31 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 			
 			echo botiga_woocommerce_header_cart(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}		
+		}
+		
+		/**
+		 * Mobile Woocommerce icons
+		 */
+		function mobile_woocommerce_icons() {
+
+			if ( !class_exists( 'WooCommerce' ) ) {
+				return;
+			}
+			
+			get_template_part( 'template-parts/header-mobile/content-header-mobile', 'icons' );
+		}
+
+		/**
+		 * Mobile Offcanvas Woocommerce icons
+		 */
+		function mobile_offcanvas_woocommerce_icons() {
+
+			if ( !class_exists( 'WooCommerce' ) ) {
+				return;
+			}
+			
+			get_template_part( 'template-parts/header-mobile/content-header-mobile-offcanvas', 'icons' );
+		}
 
 		/**
 		 * Search icon
@@ -851,9 +875,16 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				return;
 			}
 			
-			// Include on Front Pages
-			if( ( is_page() && ! is_front_page() ) && ! in_array( 'pages', $display_on ) ) {
-				return;
+			// Include on normal pages
+			// we need check for WooCommerce here because "is_cart()", "is_checkout", etc... are functions created by WooCommerce
+			if( class_exists( 'Woocommerce' ) ) {
+				if( ( is_page() && ! is_front_page() && ! is_cart() && ! is_checkout() && ! is_account_page() && ! is_shop() ) && ! in_array( 'pages', $display_on ) ) {
+					return;
+				}
+			} else {
+				if( ( is_page() && ! is_front_page() ) && ! in_array( 'pages', $display_on ) ) {
+					return;
+				}
 			}
 
 			// Include on Blog Archive

@@ -16,6 +16,49 @@
 }
 
 /*
+* Spacing
+*/
+div.editor-styles-wrapper .bt-mt-0 {
+  margin-top: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-mr-0 {
+  margin-right: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-ml-0 {
+  margin-left: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-m-0 {
+  margin: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-pt-0 {
+  padding-top: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-pr-0 {
+  padding-right: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-pb-0 {
+  padding-bottom: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-pl-0 {
+  padding-left: 0 !important;
+}
+
+div.editor-styles-wrapper .bt-p-0 {
+  padding: 0 !important;
+}
+
+/*
 * Typography
 */
 div.editor-styles-wrapper body,
@@ -1158,6 +1201,10 @@ div.editor-styles-wrapper .botiga-tabs-align-right .woocommerce-tabs .wc-tabs {
   text-align: right;
 }
 
+div.editor-styles-wrapper .botiga-tabs-position-product-summary .product-gallery-summary {
+  margin-bottom: 80px;
+}
+
 div.editor-styles-wrapper .botiga-tabs-position-product-summary .woocommerce-tabs {
   margin-top: 0;
 }
@@ -1896,14 +1943,14 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   right: -6px;
   bottom: -6px;
   left: -6px;
-  border: 2px solid rgba(33, 33, 33, 0.4);
+  border: 2px solid transparent;
   border-radius: 100%;
   -webkit-transition: ease border-color 300ms;
   transition: ease border-color 300ms;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a + a {
-  margin-left: 12px;
+  margin-left: 8px;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before {

@@ -1,0 +1,74 @@
+// Mobile
+.bt-d-none {
+    display: none;
+}
+
+.bt-d-block {
+    display: block;
+}
+
+.bt-d-flex {
+    display: flex;
+}
+
+.bt-d-inline-flex {
+    display: inline-flex;
+}
+
+.bt-flex-no-wrap {
+    flex-wrap: nowrap;
+}
+
+.bt-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.bt-visibility-hidden {
+    visibility: hidden;
+}
+
+// Tablet
+@media screen and (min-width: 768px) {
+    .bt-md-d-none {
+        display: none;
+    }
+
+    .bt-md-d-block {
+        display: block;
+    }
+
+    .bt-md-d-flex {
+        display: flex;
+    }
+
+    .bt-md-flex-no-wrap {
+        flex-wrap: nowrap;
+    }
+
+    .bt-md-flex-wrap {
+        flex-wrap: wrap;
+    }
+}
+
+// Desktop
+@media screen and (min-width: 768px) {
+    .bt-lg-d-none {
+        display: none;
+    }
+
+    .bt-lg-d-block {
+        display: block;
+    }
+
+    .bt-lg-d-flex {
+        display: flex;
+    }
+
+    .bt-lg-flex-no-wrap {
+        flex-wrap: nowrap;
+    }
+
+    .bt-lg-flex-wrap {
+        flex-wrap: wrap;
+    }
+}

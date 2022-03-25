@@ -60,7 +60,7 @@ function botiga_enqueue_gutenberg_assets() {
 	$headings_font 	= json_decode( $headings_font, true );
 	
 	if ( 'System default' !== $body_font['font'] ) {
-		$css .= 'div.editor-styles-wrapper body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . ';}' . "\n";	
+		$css .= 'div.editor-styles-wrapper body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( Botiga_Custom_CSS::get_google_font_weight_value( $headings_font['regularweight'] ) ) .'}' . "\n";	
 	}
 	
 	if ( 'System default' !== $headings_font['font'] ) {
@@ -113,6 +113,9 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= "div.editor-styles-wrapper ::placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";opacity:1;}" . "\n";
 	$css .= "div.editor-styles-wrapper :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 	$css .= "div.editor-styles-wrapper ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
+
+	// Additional CSS (from customizer)
+	$css .= wp_get_custom_css();
 
 	wp_add_inline_style( 'botiga-block-editor-styles', $css );	
 }

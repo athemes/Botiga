@@ -76,6 +76,38 @@ function botiga_sanitize_header_components_layout_7_8( $input ) {
 }
 
 /**
+ * Sanitize mobile header components
+ */
+function botiga_sanitize_mobile_header_components( $input ) {
+    $input      = (array) $input;
+    $sanitized  = array();
+    $elements   = array_keys( botiga_mobile_header_elements() );
+
+    foreach ( $input as $sub_value ) {
+        if ( in_array( $sub_value, $elements, true ) ) {
+            $sanitized[] = $sub_value;
+        }
+    }
+    return $sanitized;    
+}
+
+/**
+ * Sanitize mobile off-canvas header components
+ */
+function botiga_sanitize_mobile_offcanvas_header_components( $input ) {
+    $input      = (array) $input;
+    $sanitized  = array();
+    $elements   = array_keys( botiga_mobile_offcanvas_header_elements() );
+
+    foreach ( $input as $sub_value ) {
+        if ( in_array( $sub_value, $elements, true ) ) {
+            $sanitized[] = $sub_value;
+        }
+    }
+    return $sanitized;    
+}
+
+/**
  * Sanitize loop product components
  */
 function botiga_sanitize_product_loop_components( $input ) {

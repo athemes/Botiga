@@ -217,9 +217,11 @@
 }
 .botiga-share-box,
 .botiga-related-posts,
-.botiga-related-products,
-.botiga-upsell-products,
+.upsells.products .botiga-upsell-products,
+.upsells.products > .products,
 .botiga-recently-viewed-products,
+.related.products .botiga-related-products,
+.related.products > .products,
 .post-navigation,
 .single-post-author,
 .comments-area {
@@ -485,6 +487,9 @@
 		.categories-wrapper {
 			.category-button {
 				margin-right: 10px;
+				&:first-child {
+					margin-left: 0;
+				}
 				&:last-child {
 					margin-right: 0;
 				}
@@ -496,7 +501,7 @@
 	}
 }
 
-@media(max-width: 1024px) {
+@media screen and (max-width: 1024px) {
 	.woocommerce-page-header {
 		&.woocommerce-page-header-style2 {
 			> .container {
@@ -517,6 +522,24 @@
 				border-bottom-width: 0;
 				.category-button {
 					margin-bottom: 3px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.woocommerce-page-header {
+		&.woocommerce-page-header-style3 {
+			.categories-wrapper {
+				justify-content: center;
+				border-bottom-width: 0;
+				.category-button {
+					width: 100%;
+					margin: 0;
+					& + .category-button {
+						margin-left: 0 !important;
+					}
 				}
 			}
 		}

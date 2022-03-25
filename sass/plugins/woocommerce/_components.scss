@@ -804,6 +804,9 @@ p.stars {
 }
 
 .botiga-tabs-position-product-summary {
+	.product-gallery-summary {
+		margin-bottom: 80px;
+	}
 	.woocommerce-tabs {
 		margin-top: 0;
 	}
@@ -1538,12 +1541,12 @@ dl.variation {
 				right: -6px;
 				bottom: -6px;
 				left: -6px;
-				border: 2px solid rgba( $color__primary, 0.4 );
+				border: 2px solid transparent;
 				border-radius: 100%;
 				transition: ease border-color 300ms;
 			}
 			& + a {
-				margin-left: 12px;
+				margin-left: 8px;
 			}
 			&:hover,
 			&.active {

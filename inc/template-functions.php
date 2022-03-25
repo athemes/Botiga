@@ -426,7 +426,7 @@ function botiga_get_default_header_components() {
 		'l7left'    => array( 'contact_info' ),
 		'l7right'   => array( 'search', 'woocommerce_icons', 'hamburger_btn' ),
 		'desktop_offcanvas' => array( 'search', 'woocommerce_icons' ),
-		'mobile'	=> array( 'woocommerce_icons' ),
+		'mobile'	=> array( 'mobile_woocommerce_icons' ),
 		'offcanvas'	=> array()
 	);
 
@@ -511,6 +511,36 @@ function botiga_header_elements_layout_7_8() {
 	);
 
 	return apply_filters( 'botiga_header_elements_layout_7_8', $elements );
+}
+
+/**
+ * Mobile Header elements
+ */
+function botiga_mobile_header_elements() {
+
+	$elements = array(
+		'search' 				   => esc_html__( 'Search', 'botiga' ),
+		'mobile_woocommerce_icons' => esc_html__( 'Cart &amp; account icons', 'botiga' ),
+		'button' 				   => esc_html__( 'Button', 'botiga' ),
+		'contact_info' 			   => esc_html__( 'Contact info', 'botiga' )
+	);
+
+	return apply_filters( 'botiga_mobile_header_elements', $elements );
+}
+
+/**
+ * Mobile Offcanvas Header elements
+ */
+function botiga_mobile_offcanvas_header_elements() {
+
+	$elements = array(
+		'search' 							 => esc_html__( 'Search', 'botiga' ),
+		'mobile_offcanvas_woocommerce_icons' => esc_html__( 'Cart &amp; account icons', 'botiga' ),
+		'button' 							 => esc_html__( 'Button', 'botiga' ),
+		'contact_info' 						 => esc_html__( 'Contact info', 'botiga' )
+	);
+
+	return apply_filters( 'botiga_mobile_offcanvas_header_elements', $elements );
 }
 
 /**

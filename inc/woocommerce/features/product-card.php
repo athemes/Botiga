@@ -221,7 +221,7 @@ function botiga_loop_product_structure() {
 				call_user_func( $element );
 			}		
 			echo '</div>';
-			echo '<div class="col-md-5 loop-price-inline">';
+			echo '<div class="col-md-5 loop-price-inline text-sm-left">';
 				if( in_array( 'woocommerce_template_loop_price', $elements ) ) {
 					woocommerce_template_loop_price();
 				}

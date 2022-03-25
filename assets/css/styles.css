@@ -3066,9 +3066,11 @@ body.mobile-menu-visible {
 
 .botiga-share-box,
 .botiga-related-posts,
-.botiga-related-products,
-.botiga-upsell-products,
+.upsells.products .botiga-upsell-products,
+.upsells.products > .products,
 .botiga-recently-viewed-products,
+.related.products .botiga-related-products,
+.related.products > .products,
 .post-navigation,
 .single-post-author,
 .comments-area {
@@ -3369,6 +3371,10 @@ body.mobile-menu-visible {
   margin-right: 10px;
 }
 
+.woocommerce-page-header.woocommerce-page-header-alignment-left .categories-wrapper .category-button:first-child {
+  margin-left: 0;
+}
+
 .woocommerce-page-header.woocommerce-page-header-alignment-left .categories-wrapper .category-button:last-child {
   margin-right: 0;
 }
@@ -3377,7 +3383,7 @@ body.mobile-menu-visible {
   margin-left: 0;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .woocommerce-page-header.woocommerce-page-header-style2 > .container {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -3394,6 +3400,22 @@ body.mobile-menu-visible {
   }
   .woocommerce-page-header.woocommerce-page-header-style3 .categories-wrapper .category-button {
     margin-bottom: 3px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .woocommerce-page-header.woocommerce-page-header-style3 .categories-wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-bottom-width: 0;
+  }
+  .woocommerce-page-header.woocommerce-page-header-style3 .categories-wrapper .category-button {
+    width: 100%;
+    margin: 0;
+  }
+  .woocommerce-page-header.woocommerce-page-header-style3 .categories-wrapper .category-button + .category-button {
+    margin-left: 0 !important;
   }
 }
 
@@ -4885,7 +4907,7 @@ body {
 }
 
 .footer-copyright-elements .botiga-credits {
-  line-height: 1;
+  line-height: 1.7;
 }
 
 .footer-copyright-elements .botiga-html p:last-child {
@@ -5106,6 +5128,12 @@ body {
   text-align: right;
 }
 
+@media screen and (max-width: 767px) {
+  .text-sm-left {
+    text-align: left;
+  }
+}
+
 /* Animations
 --------------------------------------------- */
 /* Rotate */
@@ -5194,6 +5222,128 @@ body {
           animation-duration: 600ms;
 }
 
+/* Display
+--------------------------------------------- */
+.bt-d-none {
+  display: none;
+}
+
+.bt-d-block {
+  display: block;
+}
+
+.bt-d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bt-d-inline-flex {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.bt-flex-no-wrap {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.bt-flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.bt-visibility-hidden {
+  visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .bt-md-d-none {
+    display: none;
+  }
+  .bt-md-d-block {
+    display: block;
+  }
+  .bt-md-d-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .bt-md-flex-no-wrap {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .bt-md-flex-wrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bt-lg-d-none {
+    display: none;
+  }
+  .bt-lg-d-block {
+    display: block;
+  }
+  .bt-lg-d-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .bt-lg-flex-no-wrap {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .bt-lg-flex-wrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+/* Spacing
+--------------------------------------------- */
+.bt-mt-0 {
+  margin-top: 0 !important;
+}
+
+.bt-mr-0 {
+  margin-right: 0 !important;
+}
+
+.bt-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.bt-ml-0 {
+  margin-left: 0 !important;
+}
+
+.bt-m-0 {
+  margin: 0 !important;
+}
+
+.bt-pt-0 {
+  padding-top: 0 !important;
+}
+
+.bt-pr-0 {
+  padding-right: 0 !important;
+}
+
+.bt-pb-0 {
+  padding-bottom: 0 !important;
+}
+
+.bt-pl-0 {
+  padding-left: 0 !important;
+}
+
+.bt-p-0 {
+  padding: 0 !important;
+}
+
 /* Misc
 --------------------------------------------- */
 .disabled {
@@ -5207,6 +5357,14 @@ body {
 
 .botiga-overflow-hidden {
   overflow: hidden;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.text-decoration-underline {
+  text-decoration: underline;
 }
 
 /* Responsive

@@ -212,7 +212,7 @@
 
 	form.cart {
 		flex-wrap: wrap;
-		margin-bottom: 25px;
+		margin-bottom: 30px;
 
 		& + .product_meta {
 			margin-top: 30px;
@@ -712,8 +712,10 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 			}
 		}
 		.label {
+			width: 125px;
 			text-align: left;
 			padding-left: 0;
+			padding-right: 15px;
 			label {
 				vertical-align: middle;
 			}
@@ -958,6 +960,7 @@ form.cart .quantity.hidden {
 					}
 				}
 				.label {
+					width: auto;
 					padding-right: 10px;
 				}
 
