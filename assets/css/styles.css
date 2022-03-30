@@ -2836,6 +2836,22 @@ body.mobile-menu-visible {
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .botiga-offcanvas-menu .header-item.button {
+    margin-right: 0;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .botiga-offcanvas-menu .header-item.header-login-register .sub-menu-reverse {
+    display: none;
+  }
+  .botiga-offcanvas-menu .header-item.header-login-register:hover .sub-menu-reverse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 /* Posts and pages
 --------------------------------------------- */
 .sticky {
@@ -5230,6 +5246,10 @@ body {
 
 .bt-d-block {
   display: block;
+}
+
+.bt-d-inline-block {
+  display: inline-block;
 }
 
 .bt-d-flex {

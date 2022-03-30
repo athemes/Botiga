@@ -21,7 +21,7 @@ if ( is_cart() ) {
 <?php endif; ?>	
 
 <?php if ( $show_cart ) : ?>
-<div id="site-header-cart" class="bt-d-inline-flex site-header-cart header-item mini-cart-<?php echo ( count( WC()->cart->get_cart() ) > 2 ? 'has-scroll' : 'has-no-scroll' ); ?>">
+<div id="site-header-cart" class="bt-d-inline-block site-header-cart header-item mini-cart-<?php echo ( count( WC()->cart->get_cart() ) > 2 ? 'has-scroll' : 'has-no-scroll' ); ?>">
     <div class="<?php echo esc_attr( $class ); ?>">
         <?php echo botiga_woocommerce_cart_link();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     </div>
@@ -42,7 +42,7 @@ if ( is_cart() ) {
 <?php endif; ?>
 <?php if( $show_wishlist && $enable_header_wishlist_icon ) : 
     $wishlist_count = isset( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ? count( explode( ',', sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ) ) ) : 0; ?>
-    <a class="header-item header-wishlist-icon bt-d-inline-flex" href="<?php echo esc_url( get_permalink( get_option('botiga_wishlist_page_id') ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
+    <a class="header-item header-wishlist-icon bt-d-inline-block" href="<?php echo esc_url( get_permalink( get_option('botiga_wishlist_page_id') ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
         <span class="count-number"><?php echo esc_html( $wishlist_count ); ?></span>
         <i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-wishlist', true ); ?></i>
     </a>

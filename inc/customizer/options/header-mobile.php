@@ -30,7 +30,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_mobile_header',
-			'controls_general'		=> json_encode( array( '#customize-control-header_layout_mobile','#customize-control-header_components_mobile','#customize-control-mobile_header_cart_account_title','#customize-control-enable_mobile_header_cart','#customize-control-enable_mobile_header_account','#customize-control-mobile_header_divider_1','#customize-control-header_offcanvas_mode','#customize-control-header_components_offcanvas','#customize-control-mobile_header_offcanvas_cart_account_title','#customize-control-enable_mobile_header_offcanvas_cart','#customize-control-enable_mobile_header_offcanvas_account','#customize-control-mobile_header_divider_2','#customize-control-mobile_menu_alignment','#customize-control-mobile_menu_link_separator','#customize-control-mobile_menu_link_spacing','#customize-control-mobile_menu_icon', ) ),
+			'controls_general'		=> json_encode( array( '#customize-control-header_layout_mobile','#customize-control-header_components_mobile','#customize-control-mobile_header_cart_account_title','#customize-control-enable_mobile_header_cart','#customize-control-enable_mobile_header_account','#customize-control-mobile_header_divider_1','#customize-control-header_offcanvas_mode','#customize-control-header_components_offcanvas','#customize-control-mobile_header_offcanvas_cart_account_title','#customize-control-enable_mobile_header_offcanvas_cart','#customize-control-enable_mobile_header_offcanvas_account','#customize-control-mobile_header_divider_2','#customize-control-mobile_menu_alignment','#customize-control-mobile_menu_link_separator','#customize-control-mobile_menu_link_spacing','#customize-control-mobile_menu_elements_spacing','#customize-control-mobile_menu_icon', ) ),
 			'controls_design'		=> json_encode( array( '#customize-control-mobile_header_bar_title','#customize-control-mobile_header_offcanvas_title','#customize-control-mobile_header_separator_title','#customize-control-mobile_header_background','#customize-control-mobile_header_color','#customize-control-mobile_header_padding','#customize-control-mobile_header_divider_3','#customize-control-offcanvas_menu_background','#customize-control-offcanvas_menu_color','#customize-control-mobile_header_divider_4','#customize-control-mobile_header_separator_width','#customize-control-link_separator_color', ) ),
 		)
 	)
@@ -320,6 +320,29 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'mobile
 			'step'  => 1
 		),
 		'priority'  => 160
+	)
+) );
+
+$wp_customize->add_setting( 'mobile_menu_elements_spacing', array(
+	'default'   		=> 20,
+	'sanitize_callback' => 'absint',
+	'transport'			=> 'postMessage'
+) );			
+
+$wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'mobile_menu_elements_spacing',
+	array(
+		'label' 		=> esc_html__( 'Elements spacing', 'botiga' ),
+		'section' 		=> 'botiga_section_mobile_header',
+		'is_responsive'	=> 0,
+		'settings' 		=> array (
+			'size_desktop' 		=> 'mobile_menu_elements_spacing',
+		),
+		'input_attrs' => array (
+			'min'	=> 0,
+			'max'	=> 200,
+			'step'  => 1
+		),
+		'priority'  => 161
 	)
 ) );
 

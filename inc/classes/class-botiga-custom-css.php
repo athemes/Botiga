@@ -334,6 +334,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$mobile_menu_link_spacing = get_theme_mod( 'mobile_menu_link_spacing', 20 );
 			$css .= ".botiga-offcanvas-menu .main-navigation a { padding:" . esc_attr( $mobile_menu_link_spacing )/2 . "px 0;}" . "\n";
 
+			$mobile_menu_elements_spacing = get_theme_mod( 'mobile_menu_elements_spacing', 20 );
+			$css .= ".botiga-offcanvas-menu .header-item + .header-item:not(.separator) { margin-top:" . esc_attr( $mobile_menu_elements_spacing ) . "px;}" . "\n";
+
 			$css .= $this->get_background_color_css( 'mobile_header_background', '', '#masthead-mobile' );
 			$css .= $this->get_color_css( 'mobile_header_color', '', '#masthead-mobile a:not(.button)' );
 			$css .= $this->get_fill_css( 'mobile_header_color', '', '#masthead-mobile svg:not(.stroke-based)' );

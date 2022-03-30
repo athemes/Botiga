@@ -104,6 +104,11 @@
       $('.botiga-offcanvas-menu .main-navigation a').css('padding-bottom', to / 2);
     });
   });
+  wp.customize('mobile_menu_elements_spacing', function (value) {
+    value.bind(function (to) {
+      $('.botiga-offcanvas-menu .header-item + .header-item:not(.separator)').css('margin-top', to + 'px');
+    });
+  });
   wp.customize('mobile_header_padding', function (value) {
     value.bind(function (to) {
       $('.mobile-header').css({

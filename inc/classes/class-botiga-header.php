@@ -566,9 +566,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function render_components( $location ) {
 			$defaults 	= botiga_get_default_header_components();
 			$components = get_theme_mod( 'header_components_' . $location, $defaults[$location] );
-
+			
 			foreach ( $components as $component ) {
-				call_user_func( array( $this, $component ) );
+				call_user_func( array( $this, $component ), $location );
 			}
 		}
 
@@ -602,13 +602,17 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		/**
 		 * Button
 		 */
-		public function button() {
+		public function button( $location ) {
 			$text 	= get_theme_mod( 'header_button_text', esc_html__( 'Click me', 'botiga' ) );
 			$url	= get_theme_mod( 'header_button_link', '#' );
 			$newtab = get_theme_mod( 'header_button_newtab', 0 );
 			$open	= '';
 			if ( $newtab ) {
 				$open = 'target="_blank"';
+			}
+
+			if( $location === 'offcanvas' ) {
+				echo '<div class="header-item separator"></div>';
 			}
 
 			?>

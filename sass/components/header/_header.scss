@@ -716,3 +716,30 @@
     }
 
 }
+
+// Mobile Header Offcanvas
+@media screen and (max-width: 1024px) {
+    .botiga-offcanvas-menu {
+
+        .header-item {
+            &.button {
+                margin-right: 0;
+                line-height: 1.4;
+                text-align: center;
+            }
+
+            &.header-login-register {
+                .sub-menu-reverse {
+                    display: none;
+                }
+
+                &:hover {
+                    .sub-menu-reverse {
+                        display: flex;
+                    }
+                }
+            }
+        }
+
+    }
+}
