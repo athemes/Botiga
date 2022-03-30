@@ -566,7 +566,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function render_components( $location ) {
 			$defaults 	= botiga_get_default_header_components();
 			$components = get_theme_mod( 'header_components_' . $location, $defaults[$location] );
-			
+
 			foreach ( $components as $component ) {
 				call_user_func( array( $this, $component ), $location );
 			}
@@ -605,7 +605,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function button( $location ) {
 			$text 	= get_theme_mod( 'header_button_text', esc_html__( 'Click me', 'botiga' ) );
 			$url	= get_theme_mod( 'header_button_link', '#' );
+			$class  = get_theme_mod( 'header_button_class', '' ); 
 			$newtab = get_theme_mod( 'header_button_newtab', 0 );
+
 			$open	= '';
 			if ( $newtab ) {
 				$open = 'target="_blank"';
@@ -616,7 +618,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 
 			?>
-				<a <?php echo esc_html( $open ); ?> class="button header-item" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $text ); ?></a>
+				<a <?php echo esc_html( $open ); ?> class="button header-item<?php echo ( $class ? ' '. esc_attr( $class ) : '' ); ?>" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $text ); ?></a>
 			<?php
 		}
 
