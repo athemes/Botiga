@@ -14,6 +14,57 @@ $wp_customize->add_panel(
 );
 
 /**
+ * General
+ */
+$wp_customize->add_section(
+	'botiga_section_typography_general',
+	array(
+		'title'      => esc_html__( 'General', 'botiga'),
+		'panel'      => 'botiga_panel_typography',
+	)
+);
+
+$wp_customize->add_setting( 
+	'fonts_library', 
+	array(
+		'sanitize_callback' => 'botiga_sanitize_select',
+		'default' 			=> 'google'
+	) 
+);
+$wp_customize->add_control( 
+	'fonts_library', 
+	array(
+		'type' 		=> 'select',
+		'section' 	=> 'botiga_section_typography_general',
+		'label' 	=> esc_html__( 'Fonts Library', 'botiga' ),
+		'choices'   => array(
+			'google' 	=> esc_html__( 'Google Fonts', 'botiga' ),
+			'adobe' 	=> esc_html__( 'Adobe Type Kit', 'botiga' )
+		),
+	) 
+);
+
+$wp_customize->add_setting( 
+	'adobe_fonts_kits_generator',
+	array(
+		'default'           => 'defualt_value',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'	 		=> 'postMessage'
+	)
+);
+
+$wp_customize->add_control( 
+	new Botiga_Typography_Adobe_Kits_Control( 
+		$wp_customize, 
+		'adobe_fonts_kits_generator',
+		array(
+			'section' 			=> 'botiga_section_typography_general',
+			'active_callback' 	=> 'botiga_font_library_adobe'
+		)
+	) 
+);
+
+/**
  * Headings
  */
 $wp_customize->add_section(

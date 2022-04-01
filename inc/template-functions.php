@@ -628,7 +628,7 @@ function botiga_google_fonts_url() {
 	$defaults = json_encode(
 		array(
 			'font' 			=> 'System default',
-			'regularweight' => 'regular',
+			'regularweight' => '400',
 			'category' 		=> 'sans-serif'
 		)
 	);	
@@ -644,21 +644,41 @@ function botiga_google_fonts_url() {
 		return; //return early if defaults are active
 	}
 
-	$font_families = array();
-
-	$font_families[] = $body_font['font'] . ':' . $body_font['regularweight'];
-		
-	$font_families[] = $headings_font['font'] . ':' . $headings_font['regularweight'];
-
-	$query_args = array(
-		'family' => urlencode( implode( '|', $font_families ) ),
-		'subset' => urlencode( $subsets ),
-		'display' => urlencode( 'swap' ),
+	$font_families = array(
+		$body_font['font'] . ':wght@' . $body_font['regularweight'],
+		$headings_font['font'] . ':wght@' . $headings_font['regularweight']
 	);
+	
+	$fonts_url = add_query_arg( array(
+		'family' => implode( '&family=', $font_families ),
+		'display' => 'swap',
+	), 'https://fonts.googleapis.com/css2' );
 
-	$fonts_url = add_query_arg( $query_args, "//fonts.googleapis.com/css" );
+	// Load google fonts locally
+	$load_locally = get_theme_mod( 'perf_google_fonts_local', 0 );
+	if( $load_locally ) {
+		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' );
+
+		return wptt_get_webfont_url( $fonts_url );
+	}
 
 	return esc_url_raw( $fonts_url );
+}
+
+/**
+ * Check if google fonts is being either locally load or not and insert
+ * the needed stylesheet version. That's needed because the new google API (css2)
+ * isn't compatible with wp_enqueue_style().
+ * 
+ * Reference: https://core.trac.wordpress.org/ticket/49742#comment:7
+ */
+function botiga_google_fonts_version() {
+	$load_locally = get_theme_mod( 'perf_google_fonts_local', 0 );
+	if( $load_locally ) {
+		return BOTIGA_VERSION;
+	}
+
+	return NULL;
 }
 
 /**
@@ -669,7 +689,7 @@ function botiga_preconnect_google_fonts() {
 	$defaults = json_encode(
 		array(
 			'font' 			=> 'System default',
-			'regularweight' => 'regular',
+			'regularweight' => '400',
 			'category' 		=> 'sans-serif'
 		)
 	);	

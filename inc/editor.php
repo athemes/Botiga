@@ -60,7 +60,7 @@ function botiga_enqueue_gutenberg_assets() {
 	$headings_font 	= json_decode( $headings_font, true );
 	
 	if ( 'System default' !== $body_font['font'] ) {
-		$css .= 'div.editor-styles-wrapper body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( Botiga_Custom_CSS::get_google_font_weight_value( $headings_font['regularweight'] ) ) .'}' . "\n";	
+		$css .= 'div.editor-styles-wrapper body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .'}' . "\n";	
 	}
 	
 	if ( 'System default' !== $headings_font['font'] ) {

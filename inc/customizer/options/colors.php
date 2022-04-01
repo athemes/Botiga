@@ -22,7 +22,6 @@ $wp_customize->add_control( new Botiga_Color_Palettes_Control($wp_customize, 'co
 	'priority'		=> -1,
 )));
 
-
 $wp_customize->add_setting(
 	'custom_palette_toggle',
 	array(

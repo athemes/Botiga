@@ -1035,3 +1035,36 @@ jQuery( document ).ready(function($) {
 		});
 	});
 });
+
+/**
+ * Typography adobe type kits control
+ */
+jQuery( document ).ready(function($) {
+	$( document ).on( 'click', '.botiga-adobe_fonts_kits_submit_token', function(e){
+		e.preventDefault();
+
+		var $this 		 = $(this),
+			token 		 = $( '#adobe_fonts_kits_generator' ).val(),
+			ajax_wrapper = $( '.botiga-adobe_fonts_kits_ajax_wrapper' ),
+			nonce 		 = $this.data( 'nonce' );
+		
+		$(this).text( $this.data( 'loading-text' ) );
+		$(this).attr( 'disabled', true );
+
+		$.ajax({
+			type: 'post',
+			url: ajaxurl,
+			data: {
+				action: 'botiga_typography_adobe_kits_control',
+				token: token,
+				nonce: nonce
+			},
+			success: function(response) {
+				ajax_wrapper.html( response.output );
+
+				$this.text( $this.data( 'default-text' ) );
+				$this.attr( 'disabled', false );
+			}
+		});
+	});
+});

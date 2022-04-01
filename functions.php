@@ -246,8 +246,20 @@ add_action( 'widgets_init', 'botiga_widgets_init' );
  * Enqueue scripts and styles.
  */
 function botiga_scripts() {
+	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
+	if( $fonts_library === 'google' ) {
+		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
+	} else {
+		$kits = get_option( 'botiga_adobe_fonts_kits', array() );
+		foreach ( $kits as $kit_id => $kit_data ) {
 
-	wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), BOTIGA_VERSION );
+			if ( $kit_data['enable'] === false ) {
+				continue;
+			}
+
+			wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.com/' . $kit_id . '.css', array(), BOTIGA_VERSION );
+		}
+	}
 
 	wp_enqueue_script( 'botiga-custom', get_template_directory_uri() . '/assets/js/custom.min.js', array(), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-custom', 'botiga', array(

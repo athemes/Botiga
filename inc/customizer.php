@@ -47,6 +47,8 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 
 			// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			require get_template_directory() . '/inc/customizer/controls/typography/class_botiga_typography.php';
+			require get_template_directory() . '/inc/customizer/controls/typography-adobe/class_botiga_typography_adobe.php';
+			require get_template_directory() . '/inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php';
 			require get_template_directory() . '/inc/customizer/controls/repeater/class_botiga_repeater.php';
 			require get_template_directory() . '/inc/customizer/controls/alpha-color/class_botiga_alpha_color.php';
 			require get_template_directory() . '/inc/customizer/controls/radio-images/class_botiga_radio_images.php';
@@ -94,6 +96,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/options/general.php';
 			require get_template_directory() . '/inc/customizer/options/footer.php';
 			require get_template_directory() . '/inc/customizer/options/colors.php';
+			require get_template_directory() . '/inc/customizer/options/performance.php';
 			if ( class_exists( 'WooCommerce' ) ) {
 				require get_template_directory() . '/inc/customizer/options/woocommerce.php';
 				require get_template_directory() . '/inc/customizer/options/woocommerce-single.php';
@@ -186,4 +189,56 @@ function botiga_customize_partial_blogdescription() {
 function botiga_customize_partial_footer_credits() {
 	$footer = new Botiga_Footer();
 	echo wp_kses_post( $footer->footer_credits() );
+}
+
+/**
+ * Render adobe fonts control kits
+ *
+ */
+function botiga_customize_control_adobe_font_kits_output( $kits = false, $echo = true ) {
+	if( $kits ) {
+
+		if( ! $echo ) {
+			ob_start();
+		} ?>
+		
+		<div class="botiga-adobe_fonts_kits_wrapper" style="margin-bottom: 25px;">
+
+			<p><?php echo esc_html__( 'You have the following data in your Adobe Type Kit account.', 'botiga' ); ?></p>
+
+			<?php foreach( $kits as $kit_id => $project ) : ?>
+
+				<div class="botiga-adobe_fonts_kits_wrapper-item">
+					<ul>
+						<li><strong><?php echo esc_html__( sprintf( 'Kit ID: %s', $kit_id ) ); ?></strong></li>
+						<li><?php echo esc_html__( sprintf( 'Project Name: %s', $project[ 'project_name' ] ) ); ?></li>
+						<li>
+							<?php 
+							$fonts_name = array();
+							foreach( $project[ 'families' ] as $family ) {
+								$fonts_name[] = $family[ 'name' ];
+							}
+
+							echo esc_html__( implode( ', ', $fonts_name ), 'botiga' ); ?>
+						</li>
+						<li>
+							<?php 
+							if( $project[ 'enable' ] ) : ?>
+								<a href="#" class="botiga-adobe_fonts_kit_disable"><?php echo esc_html__( 'Disable', 'botiga' ); ?></a>
+							<?php else : ?>
+								<a href="#" class="botiga-adobe_fonts_kit_enable"><?php echo esc_html__( 'Enable', 'botiga' ); ?></a>
+							<?php endif; ?>
+						</li>
+					</ul>
+				</div>
+
+			<?php endforeach; ?>
+
+		</div>
+
+	<?php 
+		if( ! $echo ) {
+			return ob_get_clean();
+		}
+	}
 }

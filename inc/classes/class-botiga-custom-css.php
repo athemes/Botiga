@@ -72,7 +72,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$typography_defaults = json_encode(
 				array(
 					'font' 			=> 'System default',
-					'regularweight' => 'regular',
+					'regularweight' => '400',
 					'category' 		=> 'sans-serif'
 				)
 			);	
@@ -84,11 +84,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$headings_font 	= json_decode( $headings_font, true );
 			
 			if ( 'System default' !== $body_font['font'] ) {
-				$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . ';}' . "\n";	
+				$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $body_font['regularweight'] ) .';}' . "\n";	
 			}
 			
 			if ( 'System default' !== $headings_font['font'] ) {
-				$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . '; font-weight: '. esc_attr( $this->get_google_font_weight_value( $headings_font['regularweight'] ) ) .';}' . "\n";
+				$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .';}' . "\n";
 			}
 
 			$headings_font_style 		= get_theme_mod( 'headings_font_style' );
@@ -1197,17 +1197,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if ( function_exists( 'wp_cache_flush' ) ) {
 				wp_cache_flush();
 			}
-		}
-
-		/**
-		 * Get google font weight
-		 */
-		public static function get_google_font_weight_value( $value ) {
-			if( $value === 'regular' ) {
-				$value = '400';
-			}
-
-			return $value;
 		}
 		
 		/**

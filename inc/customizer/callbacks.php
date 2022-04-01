@@ -6,10 +6,22 @@
  */
 
 /**
+ * Typography adobe font library
+ */
+function botiga_font_library_adobe() {
+	$lib = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $lib === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
  * Footer widgets divider
  */
 function botiga_callback_footer_widgets_divider() {
-    
     $divider = get_theme_mod( 'footer_widgets_divider' );
 
 	if ( $divider ) {

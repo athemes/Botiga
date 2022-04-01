@@ -190,7 +190,6 @@ $wp_customize->add_control(
 	)
 );
 
-
 //Contact info
 $wp_customize->add_setting( 'topbar_divider_2',
 	array(

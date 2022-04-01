@@ -946,3 +946,17 @@ span.delete:hover {
         margin-top: 8px;
     }
 }
+
+/*
+ * Adobe Fonts Kits Control
+ */
+.botiga-adobe_fonts_kits_wrapper-item {
+    background: #e5e5e5;
+    padding: 15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    
+    & + .botiga-adobe_fonts_kits_wrapper-item {
+        margin-top: 15px;
+    }
+}
