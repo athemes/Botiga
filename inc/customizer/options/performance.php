@@ -8,7 +8,7 @@
 $wp_customize->add_section(
     'botiga_section_performance',
     array(
-        'title'      => esc_html__( 'Performance', 'botiga-pro' ),
+        'title'      => esc_html__( 'Performance', 'botiga' ),
         'panel'      => '',
         'priority'   => 41
     )

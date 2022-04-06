@@ -69,6 +69,56 @@ jQuery(document).ready(function ($) {
     $element.find('.customize-control-google-font-selection').val(JSON.stringify(selectedFont)).trigger('change');
   }
 });
+/* Typography - Adobe Type Kit Fonts */
+
+jQuery(document).ready(function ($) {
+  $('.adobe-font-family').each(function (i, obj) {
+    if (!$(this).hasClass('select2-hidden-accessible')) {
+      $(this).select2();
+    }
+  });
+  $('.adobe-font-family').on('change', function () {
+    var $el = $(this).closest('.adobe_fonts_select_control');
+    var selected_css_name = $(this).val();
+    var variations = '';
+
+    for (var i = 0; i < botiga_adobe_fonts.length; i++) {
+      if (botiga_adobe_fonts[i].css_name == selected_css_name) {
+        variations = botiga_adobe_fonts[i].variations;
+        break;
+      }
+    }
+
+    $el.find('.adobe-font-weight').html('');
+
+    for (var _i = 0; _i < variations.length; _i++) {
+      // exclude italic variations
+      if (variations[_i].indexOf('i') === -1) {
+        $el.find('.adobe-font-weight').append('<option value="' + botiga_standardize_font_variations(variations[_i]) + '">' + botiga_standardize_font_variations(variations[_i]) + '</option>');
+      }
+    }
+
+    $el.find('.customize-control-adobe-font-selection').val($el.find('.adobe-font-family').val() + '|' + $el.find('.adobe-font-weight').val()).trigger('change');
+  });
+  $('.adobe-font-weight').on('change', function () {
+    var $el = $(this).closest('.adobe_fonts_select_control');
+    $el.find('.customize-control-adobe-font-selection').val($el.find('.adobe-font-family').val() + '|' + $el.find('.adobe-font-weight').val()).trigger('change');
+  });
+
+  function botiga_standardize_font_variations(variation) {
+    var variations = []; // normal format
+
+    for (var i = 1; i <= 9; i++) {
+      variations['n' + i] = i * 100;
+    }
+
+    if (variations.hasOwnProperty(variation)) {
+      return variations[variation];
+    } else {
+      return '400';
+    }
+  }
+});
 jQuery(document).ready(function ($) {
   "use strict";
 
@@ -506,8 +556,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color'];
 
-    for (var _i = 0, _elements = elements1; _i < _elements.length; _i++) {
-      var element = _elements[_i];
+    for (var _i2 = 0, _elements = elements1; _i2 < _elements.length; _i2++) {
+      var element = _elements[_i2];
 
       if (typeof wp.customize(element) !== 'undefined') {
         wp.customize(element).set(palettes[palette][0]);
@@ -518,8 +568,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover'];
 
-    for (var _i2 = 0, _elements2 = elements2; _i2 < _elements2.length; _i2++) {
-      var _element = _elements2[_i2];
+    for (var _i3 = 0, _elements2 = elements2; _i3 < _elements2.length; _i3++) {
+      var _element = _elements2[_i3];
 
       if (typeof wp.customize(_element) !== 'undefined') {
         wp.customize(_element).set(palettes[palette][1]);
@@ -530,8 +580,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color'];
 
-    for (var _i3 = 0, _elements3 = elements3; _i3 < _elements3.length; _i3++) {
-      var _element2 = _elements3[_i3];
+    for (var _i4 = 0, _elements3 = elements3; _i4 < _elements3.length; _i4++) {
+      var _element2 = _elements3[_i4];
 
       if (typeof wp.customize(_element2) !== 'undefined') {
         wp.customize(_element2).set(palettes[palette][2]);
@@ -542,8 +592,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements4 = ['custom_color4', 'footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder', 'topbar_color', 'main_header_bottom_color', 'single_sticky_add_to_cart_style_color_content', 'loop_post_text_color'];
 
-    for (var _i4 = 0, _elements4 = elements4; _i4 < _elements4.length; _i4++) {
-      var _element3 = _elements4[_i4];
+    for (var _i5 = 0, _elements4 = elements4; _i5 < _elements4.length; _i5++) {
+      var _element3 = _elements4[_i5];
 
       if (typeof wp.customize(_element3) !== 'undefined') {
         wp.customize(_element3).set(palettes[palette][3]);
@@ -554,8 +604,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border'];
 
-    for (var _i5 = 0, _elements5 = elements5; _i5 < _elements5.length; _i5++) {
-      var _element4 = _elements5[_i5];
+    for (var _i6 = 0, _elements5 = elements5; _i6 < _elements5.length; _i6++) {
+      var _element4 = _elements5[_i6];
 
       if (typeof wp.customize(_element4) !== 'undefined') {
         wp.customize(_element4).set(palettes[palette][4]);
@@ -566,8 +616,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background'];
 
-    for (var _i6 = 0, _elements6 = elements6; _i6 < _elements6.length; _i6++) {
-      var _element5 = _elements6[_i6];
+    for (var _i7 = 0, _elements6 = elements6; _i7 < _elements6.length; _i7++) {
+      var _element5 = _elements6[_i7];
 
       if (typeof wp.customize(_element5) !== 'undefined') {
         wp.customize(_element5).set(palettes[palette][5]);
@@ -578,8 +628,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements7 = ['custom_color7', 'background_color', 'button_color', 'button_color_hover', 'scrolltop_color', 'scrolltop_color_hover', 'color_forms_background', 'topbar_background', 'single_product_reviews_advanced_section_bg_color'];
 
-    for (var _i7 = 0, _elements7 = elements7; _i7 < _elements7.length; _i7++) {
-      var _element6 = _elements7[_i7];
+    for (var _i8 = 0, _elements7 = elements7; _i8 < _elements7.length; _i8++) {
+      var _element6 = _elements7[_i8];
 
       if (typeof wp.customize(_element6) !== 'undefined') {
         wp.customize(_element6).set(palettes[palette][6]);
@@ -590,8 +640,8 @@ wp.customize('color_palettes', function (control) {
 
     var elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover'];
 
-    for (var _i8 = 0, _elements8 = elements8; _i8 < _elements8.length; _i8++) {
-      var _element7 = _elements8[_i8];
+    for (var _i9 = 0, _elements8 = elements8; _i9 < _elements8.length; _i9++) {
+      var _element7 = _elements8[_i9];
 
       if (typeof wp.customize(_element7) !== 'undefined') {
         wp.customize(_element7).set(palettes[palette][7]);
@@ -609,8 +659,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements1 = ['scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default'];
 
-      for (var _i9 = 0, _elements9 = elements1; _i9 < _elements9.length; _i9++) {
-        var element = _elements9[_i9];
+      for (var _i10 = 0, _elements9 = elements1; _i10 < _elements9.length; _i10++) {
+        var element = _elements9[_i10];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -623,8 +673,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements2 = ['footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover'];
 
-      for (var _i10 = 0, _elements10 = elements2; _i10 < _elements10.length; _i10++) {
-        var element = _elements10[_i10];
+      for (var _i11 = 0, _elements10 = elements2; _i11 < _elements10.length; _i11++) {
+        var element = _elements10[_i11];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -637,8 +687,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements3 = ['main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'single_sticky_add_to_cart_style_color_title'];
 
-      for (var _i11 = 0, _elements11 = elements3; _i11 < _elements11.length; _i11++) {
-        var element = _elements11[_i11];
+      for (var _i12 = 0, _elements11 = elements3; _i12 < _elements11.length; _i12++) {
+        var element = _elements11[_i12];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -651,8 +701,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements4 = ['footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder'];
 
-      for (var _i12 = 0, _elements12 = elements4; _i12 < _elements12.length; _i12++) {
-        var element = _elements12[_i12];
+      for (var _i13 = 0, _elements12 = elements4; _i13 < _elements12.length; _i13++) {
+        var element = _elements12[_i13];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -665,8 +715,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements5 = ['color_forms_borders'];
 
-      for (var _i13 = 0, _elements13 = elements5; _i13 < _elements13.length; _i13++) {
-        var element = _elements13[_i13];
+      for (var _i14 = 0, _elements13 = elements5; _i14 < _elements13.length; _i14++) {
+        var element = _elements13[_i14];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -679,8 +729,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements6 = ['footer_widgets_background', 'footer_credits_background', 'content_cards_background'];
 
-      for (var _i14 = 0, _elements14 = elements6; _i14 < _elements14.length; _i14++) {
-        var element = _elements14[_i14];
+      for (var _i15 = 0, _elements14 = elements6; _i15 < _elements14.length; _i15++) {
+        var element = _elements14[_i15];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -693,8 +743,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements7 = ['background_color', 'button_color', 'button_color_hover', 'scrolltop_color', 'scrolltop_color_hover', 'color_forms_background'];
 
-      for (var _i15 = 0, _elements15 = elements7; _i15 < _elements15.length; _i15++) {
-        var element = _elements15[_i15];
+      for (var _i16 = 0, _elements15 = elements7; _i16 < _elements15.length; _i16++) {
+        var element = _elements15[_i16];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -707,8 +757,8 @@ wp.customize.bind('ready', function () {
     control.bind(function (value) {
       var elements8 = ['main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background'];
 
-      for (var _i16 = 0, _elements16 = elements8; _i16 < _elements16.length; _i16++) {
-        var element = _elements16[_i16];
+      for (var _i17 = 0, _elements16 = elements8; _i17 < _elements16.length; _i17++) {
+        var element = _elements16[_i17];
 
         if (typeof wp.customize(element) !== 'undefined') {
           wp.customize(element).set(value);
@@ -974,6 +1024,7 @@ jQuery(document).ready(function ($) {
  */
 
 jQuery(document).ready(function ($) {
+  // Get Kits from API
   $(document).on('click', '.botiga-adobe_fonts_kits_submit_token', function (e) {
     e.preventDefault();
     var $this = $(this),
@@ -993,6 +1044,36 @@ jQuery(document).ready(function ($) {
       success: function success(response) {
         ajax_wrapper.html(response.output);
         $this.text($this.data('default-text'));
+        $this.attr('disabled', false);
+      }
+    });
+  }); // Enable or disable specific kits
+
+  $(document).on('click', '.botiga-adobe_fonts_kit_onoff', function (e) {
+    e.preventDefault();
+    var $this = $(this),
+        kit_id = $this.data('kit'),
+        nonce = $this.data('nonce');
+    $(this).text($this.data('loading-text'));
+    $(this).attr('disabled', true);
+    $.ajax({
+      type: 'post',
+      url: ajaxurl,
+      data: {
+        action: 'botiga_typography_adobe_kits_control_enable_disable',
+        kit: kit_id,
+        nonce: nonce
+      },
+      success: function success(response) {
+        if (response.kit_enabled) {
+          $this.text($this.data('disable-text'));
+          $this.closest('.botiga-adobe_fonts_kits_wrapper-item').removeClass('disabled');
+        } else {
+          $this.text($this.data('enable-text'));
+          $this.closest('.botiga-adobe_fonts_kits_wrapper-item').addClass('disabled');
+        }
+
+        $this.closest('.botiga-adobe_fonts_kits_wrapper-item').find('.reload-message').addClass('show');
         $this.attr('disabled', false);
       }
     });

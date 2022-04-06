@@ -11,9 +11,11 @@
  */
 function botiga_typography_adobe_kits_control() {
 	check_ajax_referer( 'customize-typography-adobe-kits-control-nonce', 'nonce' );
+
+    $token = isset( $_POST['token'] ) ? wp_strip_all_tags( wp_unslash( $_POST['token'] ) ) : '';
     
     $url       = 'https://typekit.com/api/v1/json/kits/';
-    $response  = wp_remote_request( $url . '?token=' . esc_attr( $_POST[ 'token' ] ), array() );
+    $response  = wp_remote_request( $url . '?token=' . esc_attr( $token ), array() );
 
     if ( wp_remote_retrieve_response_code( $response ) != '200' ) {
         update_option( 'botiga_adobe_fonts_kits', array() );
@@ -27,7 +29,7 @@ function botiga_typography_adobe_kits_control() {
     $fonts = array();
     $response_body = json_decode( wp_remote_retrieve_body( $response ) );
     foreach( $response_body->kits as $kit ) {
-        $url       = 'https://typekit.com/api/v1/json/kits/' . esc_attr( $kit->id ) . '?token=' . esc_attr( $_POST[ 'token' ] );
+        $url       = 'https://typekit.com/api/v1/json/kits/' . esc_attr( $kit->id ) . '?token=' . esc_attr( $token );
 		$response  = wp_remote_request( $url, array() );
 
 		if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
@@ -52,13 +54,38 @@ function botiga_typography_adobe_kits_control() {
 		}
     }
 
-    // print_r( get_option( 'botiga_adobe_fonts_kits' ) );
     wp_send_json( array(
         'status'  => 'success',
         'output'  => botiga_customize_control_adobe_font_kits_output( get_option( 'botiga_adobe_fonts_kits' ), false )
     ) );
 }
 add_action('wp_ajax_botiga_typography_adobe_kits_control', 'botiga_typography_adobe_kits_control');
+
+/**
+ * Adobe fonts control enable/disable kits ajax callback
+ */
+function botiga_typography_adobe_kits_control_enable_disable() {
+	check_ajax_referer( 'customize-typography-adobe-kits-control-onoff-nonce', 'nonce' );
+
+    $kit_id = isset( $_POST['kit'] ) ? wp_strip_all_tags( wp_unslash( $_POST['kit'] ) ) : '';
+    
+    $kits = get_option( 'botiga_adobe_fonts_kits', false );
+
+    if( $kits[ $kit_id ]['enable'] ) {
+        $kits[ $kit_id ]['enable'] = 0;
+    } else {
+        $kits[ $kit_id ]['enable'] = 1;
+    }
+
+    update_option( 'botiga_adobe_fonts_kits', $kits );
+
+    wp_send_json( array(
+        'status'      => 'success',
+        'kit_id'      => $kit_id,
+        'kit_enabled' => $kits[ $kit_id ]['enable']
+    ) );
+}
+add_action('wp_ajax_botiga_typography_adobe_kits_control_enable_disable', 'botiga_typography_adobe_kits_control_enable_disable');
 
 /**
  * Create page control ajax callback

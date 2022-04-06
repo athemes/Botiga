@@ -75,6 +75,22 @@ $wp_customize->add_section(
 	)
 );
 
+// Adobe Type Kit Fonts
+$wp_customize->add_setting( 'botiga_headings_adobe_font',
+	array(
+		'default'           => 'system-default|n4',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'	 		=> 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 'botiga_headings_adobe_font',
+	array(
+		'section' => 'botiga_section_typography_headings',
+		'active_callback' => 'botiga_font_library_adobe'
+	)
+) );
+
+// Google Fonts
 $wp_customize->add_setting( 'botiga_headings_font',
 	array(
 		'default'           => '{"font":"System default","regularweight":"bold","category":"sans-serif"}',
@@ -82,7 +98,6 @@ $wp_customize->add_setting( 'botiga_headings_font',
 		'transport'	 		=> 'postMessage'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'botiga_headings_font',
 	array(
 		'section' => 'botiga_section_typography_headings',
@@ -94,6 +109,7 @@ $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'botig
 			'orderby'       => 'alpha',
 			'disableRegular' => false,
 		),
+		'active_callback' => 'botiga_font_library_google'
 	)
 ) );
 
@@ -102,7 +118,6 @@ $wp_customize->add_setting( 'headings_font_style', array(
 	'default' 			=> 'normal',
 	'transport'			=> 'postMessage',
 ) );
-
 $wp_customize->add_control( 'headings_font_style', array(
 	'type' 		=> 'select',
 	'section' 	=> 'botiga_section_typography_headings',
@@ -119,7 +134,6 @@ $wp_customize->add_setting( 'headings_line_height', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'botiga_sanitize_text',
 ) );			
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'headings_line_height',
 	array(
 		'label' 		=> esc_html__( 'Line height', 'botiga' ),
@@ -141,7 +155,6 @@ $wp_customize->add_setting( 'headings_letter_spacing', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'botiga_sanitize_text',
 ) );			
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'headings_letter_spacing',
 	array(
 		'label' 		=> esc_html__( 'Letter spacing', 'botiga' ),
@@ -202,7 +215,6 @@ $wp_customize->add_setting( 'typography_divider_1',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'typography_divider_1',
 		array(
 			'section' 		=> 'botiga_section_typography_headings',
@@ -216,7 +228,6 @@ $wp_customize->add_setting( 'h1_title',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'h1_title',
 		array(
 			'label'			=> esc_html__( 'Heading 1', 'botiga' ),
@@ -230,19 +241,16 @@ $wp_customize->add_setting( 'h1_font_size_desktop', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h1_font_size_tablet', array(
 	'default'   		=> 42,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h1_font_size_mobile', array(
 	'default'   		=> 32,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h1_font_size',
 	array(
 		'label' 		=> esc_html__( 'Font size', 'botiga' ),
@@ -267,7 +275,6 @@ $wp_customize->add_setting( 'h2_title',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'h2_title',
 		array(
 			'label'			=> esc_html__( 'Heading 2', 'botiga' ),
@@ -281,19 +288,16 @@ $wp_customize->add_setting( 'h2_font_size_desktop', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h2_font_size_tablet', array(
 	'default'   		=> 32,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h2_font_size_mobile', array(
 	'default'   		=> 24,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h2_font_size',
 	array(
 		'label' 		=> esc_html__( 'Font size', 'botiga' ),
@@ -318,7 +322,6 @@ $wp_customize->add_setting( 'h3_title',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'h3_title',
 		array(
 			'label'			=> esc_html__( 'Heading 3', 'botiga' ),
@@ -332,19 +335,16 @@ $wp_customize->add_setting( 'h3_font_size_desktop', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h3_font_size_tablet', array(
 	'default'   		=> 24,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h3_font_size_mobile', array(
 	'default'   		=> 20,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h3_font_size',
 	array(
 		'label' 		=> esc_html__( 'Font size', 'botiga' ),
@@ -369,7 +369,6 @@ $wp_customize->add_setting( 'h4_title',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'h4_title',
 		array(
 			'label'			=> esc_html__( 'Heading 4', 'botiga' ),
@@ -383,19 +382,16 @@ $wp_customize->add_setting( 'h4_font_size_desktop', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h4_font_size_tablet', array(
 	'default'   		=> 18,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h4_font_size_mobile', array(
 	'default'   		=> 16,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h4_font_size',
 	array(
 		'label' 		=> esc_html__( 'Font size', 'botiga' ),
@@ -420,7 +416,6 @@ $wp_customize->add_setting( 'h5_title',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'h5_title',
 		array(
 			'label'			=> esc_html__( 'Heading 5', 'botiga' ),
@@ -434,19 +429,16 @@ $wp_customize->add_setting( 'h5_font_size_desktop', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h5_font_size_tablet', array(
 	'default'   		=> 16,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h5_font_size_mobile', array(
 	'default'   		=> 16,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h5_font_size',
 	array(
 		'label' 		=> esc_html__( 'Font size', 'botiga' ),
@@ -471,7 +463,6 @@ $wp_customize->add_setting( 'h6_title',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'h6_title',
 		array(
 			'label'			=> esc_html__( 'Heading 6', 'botiga' ),
@@ -485,19 +476,16 @@ $wp_customize->add_setting( 'h6_font_size_desktop', array(
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h6_font_size_tablet', array(
 	'default'   		=> 16,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_setting( 'h6_font_size_mobile', array(
 	'default'   		=> 16,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h6_font_size',
 	array(
 		'label' 		=> esc_html__( 'Font size', 'botiga' ),
@@ -535,7 +523,6 @@ $wp_customize->add_setting( 'botiga_body_font',
 		'transport'			=> 'postMessage'
 	)
 );
-
 $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'botiga_body_font',
 	array(
 		'section' => 'botiga_section_typography_body',
@@ -547,12 +534,29 @@ $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'botig
 			'orderby'       => 'alpha',
 			'disableRegular' => false,
 		),
+		'active_callback' => 'botiga_font_library_google'
+	)
+) );
+
+// Adobe Type Kit Fonts
+$wp_customize->add_setting( 'botiga_body_adobe_font',
+	array(
+		'default'           => 'system-default|n4',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'	 		=> 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 'botiga_body_adobe_font',
+	array(
+		'section' => 'botiga_section_typography_body',
+		'active_callback' => 'botiga_font_library_adobe'
 	)
 ) );
 
 $wp_customize->add_setting( 'body_font_style', array(
 	'sanitize_callback' => 'botiga_sanitize_select',
 	'default' 			=> 'normal',
+	'transport'	 		=> 'postMessage'
 ) );
 
 $wp_customize->add_control( 'body_font_style', array(

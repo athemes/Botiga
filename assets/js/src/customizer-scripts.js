@@ -87,6 +87,63 @@ jQuery( document ).ready(function($) {
   
 });
 
+/* Typography - Adobe Type Kit Fonts */
+jQuery( document ).ready(function($) {
+
+	$( '.adobe-font-family' ).each( function (i, obj) {
+		if (!$( this ).hasClass( 'select2-hidden-accessible' )) {
+			$( this ).select2();
+		}
+	} );
+
+	$( '.adobe-font-family' ).on( 'change', function(){
+		const $el = $(this).closest( '.adobe_fonts_select_control' );
+		const selected_css_name = $(this).val();
+		let variations = '';
+
+		for( let i=0;i<botiga_adobe_fonts.length;i++ ) {
+			if( botiga_adobe_fonts[i].css_name == selected_css_name ) {
+				variations = botiga_adobe_fonts[i].variations;
+				break;
+			}
+
+		}
+
+		$el.find( '.adobe-font-weight' ).html( '' );
+		for( let i=0;i<variations.length;i++ ) {
+
+			// exclude italic variations
+			if( variations[i].indexOf( 'i' ) === -1 ) {
+				$el.find( '.adobe-font-weight' ).append( '<option value="'+ botiga_standardize_font_variations( variations[i] ) +'">'+ botiga_standardize_font_variations( variations[i] ) +'</option>' );
+			}
+
+		}
+
+		$el.find( '.customize-control-adobe-font-selection' ).val( $el.find( '.adobe-font-family' ).val() + '|' + $el.find( '.adobe-font-weight' ).val() ).trigger( 'change' );
+	} );
+
+	$( '.adobe-font-weight' ).on( 'change', function(){
+		const $el = $(this).closest( '.adobe_fonts_select_control' );
+
+		$el.find( '.customize-control-adobe-font-selection' ).val( $el.find( '.adobe-font-family' ).val() + '|' + $el.find( '.adobe-font-weight' ).val() ).trigger( 'change' );
+	} );
+
+	function botiga_standardize_font_variations( variation ) {
+		let variations = [];
+
+		// normal format
+		for( let i=1;i<=9;i++ ) {
+			variations[ 'n' + i ] = i * 100 ;
+		}
+
+		if ( variations.hasOwnProperty( variation ) ) {
+			return variations[ variation ];
+		} else {
+			return '400';
+		}
+	}
+
+});	
 
 jQuery( document ).ready(function($) {
 	"use strict";
@@ -1040,6 +1097,8 @@ jQuery( document ).ready(function($) {
  * Typography adobe type kits control
  */
 jQuery( document ).ready(function($) {
+
+	// Get Kits from API
 	$( document ).on( 'click', '.botiga-adobe_fonts_kits_submit_token', function(e){
 		e.preventDefault();
 
@@ -1063,6 +1122,40 @@ jQuery( document ).ready(function($) {
 				ajax_wrapper.html( response.output );
 
 				$this.text( $this.data( 'default-text' ) );
+				$this.attr( 'disabled', false );
+			}
+		});
+	});
+
+	// Enable or disable specific kits
+	$( document ).on( 'click', '.botiga-adobe_fonts_kit_onoff', function(e){
+		e.preventDefault();
+
+		var $this 		 = $(this),
+			kit_id 		 = $this.data( 'kit' ),
+			nonce 		 = $this.data( 'nonce' );
+		
+		$(this).text( $this.data( 'loading-text' ) );
+		$(this).attr( 'disabled', true );
+
+		$.ajax({
+			type: 'post',
+			url: ajaxurl,
+			data: {
+				action: 'botiga_typography_adobe_kits_control_enable_disable',
+				kit: kit_id,
+				nonce: nonce
+			},
+			success: function(response) {
+				if( response.kit_enabled ) {
+					$this.text( $this.data( 'disable-text' ) );
+					$this.closest( '.botiga-adobe_fonts_kits_wrapper-item' ).removeClass( 'disabled' );
+				} else {
+					$this.text( $this.data( 'enable-text' ) );
+					$this.closest( '.botiga-adobe_fonts_kits_wrapper-item' ).addClass( 'disabled' );
+				}
+
+				$this.closest( '.botiga-adobe_fonts_kits_wrapper-item' ).find( '.reload-message' ).addClass( 'show' );
 				$this.attr( 'disabled', false );
 			}
 		});

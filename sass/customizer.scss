@@ -959,4 +959,27 @@ span.delete:hover {
     & + .botiga-adobe_fonts_kits_wrapper-item {
         margin-top: 15px;
     }
+
+    &.disabled {
+        background: rgba( #e5e5e5, 0.7 );
+        ul {
+            opacity: 0.7;
+        }
+    }
+
+    .reload-message {
+        display: none;
+        padding: 10px;
+        background: #fff1cb;
+        margin-top: 14px;
+        &.show {
+            display: list-item;
+        }
+    }
+}
+
+.adobe-fonts {
+    .select2-container + .font-control-title {
+        margin-top: 20px;
+    }
 }

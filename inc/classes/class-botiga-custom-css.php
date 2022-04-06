@@ -69,26 +69,56 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css = '';
 
 			//Typography 
-			$typography_defaults = json_encode(
-				array(
-					'font' 			=> 'System default',
-					'regularweight' => '400',
-					'category' 		=> 'sans-serif'
-				)
-			);	
+			$fonts_library = get_theme_mod( 'fonts_library', 'google' );
 
-			$body_font		= get_theme_mod( 'botiga_body_font', $typography_defaults );
-			$headings_font 	= get_theme_mod( 'botiga_headings_font', $typography_defaults );
-		
-			$body_font 		= json_decode( $body_font, true );
-			$headings_font 	= json_decode( $headings_font, true );
+			//Google Fonts
+			if( $fonts_library === 'google' ) {
+				$typography_defaults = json_encode(
+					array(
+						'font' 			=> 'System default',
+						'regularweight' => '400',
+						'category' 		=> 'sans-serif'
+					)
+				);	
+	
+				$body_font		= get_theme_mod( 'botiga_body_font', $typography_defaults );
+				$headings_font 	= get_theme_mod( 'botiga_headings_font', $typography_defaults );
 			
-			if ( 'System default' !== $body_font['font'] ) {
-				$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $body_font['regularweight'] ) .';}' . "\n";	
+				$body_font 		= json_decode( $body_font, true );
+				$headings_font 	= json_decode( $headings_font, true );
+				
+				if ( 'System default' !== $body_font['font'] ) {
+					$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $body_font['regularweight'] ) .';}' . "\n";	
+				}
+				
+				if ( 'System default' !== $headings_font['font'] ) {
+					$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .';}' . "\n";
+				}
 			}
+
+			if( $fonts_library === 'adobe' ) {
+				$body_font		= get_theme_mod( 'botiga_body_adobe_font', 'system-default|n4' );
+				$headings_font 	= get_theme_mod( 'botiga_headings_adobe_font', 'system-default|n4' );
 			
-			if ( 'System default' !== $headings_font['font'] ) {
-				$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .';}' . "\n";
+				$body_font = explode( '|', $body_font );
+				$body_font = array(
+					'font'   => $body_font[0],
+					'weight' => $body_font[1]
+				);
+
+				$headings_font = explode( '|', $headings_font );
+				$headings_font = array(
+					'font'   => $headings_font[0],
+					'weight' => $headings_font[1]
+				);
+				
+				if ( 'System default' !== $body_font['font'] ) {
+					$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . '; font-weight: '. esc_attr( $body_font['weight'] ) .';}' . "\n";	
+				}
+				
+				if ( 'System default' !== $headings_font['font'] ) {
+					$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . '; font-weight: '. esc_attr( $headings_font['weight'] ) .';}' . "\n";
+				}
 			}
 
 			$headings_font_style 		= get_theme_mod( 'headings_font_style' );

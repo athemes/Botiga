@@ -618,7 +618,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 
 			?>
-				<a <?php echo esc_html( $open ); ?> class="button header-item<?php echo ( $class ? ' '. esc_attr( $class ) : '' ); ?>" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $text ); ?></a>
+				<a <?php echo esc_html( $open ); ?> class="button header-item<?php echo esc_attr( ( $class ? ' '. $class : '' ) ); ?>" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $text ); ?></a>
 			<?php
 		}
 

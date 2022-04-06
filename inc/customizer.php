@@ -208,10 +208,25 @@ function botiga_customize_control_adobe_font_kits_output( $kits = false, $echo =
 
 			<?php foreach( $kits as $kit_id => $project ) : ?>
 
-				<div class="botiga-adobe_fonts_kits_wrapper-item">
+				<div class="botiga-adobe_fonts_kits_wrapper-item<?php echo ( $project[ 'enable' ] ? '' : ' disabled' ); ?>">
 					<ul>
-						<li><strong><?php echo esc_html__( sprintf( 'Kit ID: %s', $kit_id ) ); ?></strong></li>
-						<li><?php echo esc_html__( sprintf( 'Project Name: %s', $project[ 'project_name' ] ) ); ?></li>
+						<li>
+							<strong>
+								<?php 
+								echo sprintf( 
+									/* translators: 1: Adobe fonts kit id */
+									esc_html__( 'Kit ID: %s', 'botiga' ), 
+									esc_html( $kit_id ) 
+								); ?>
+							</strong>
+						</li>
+						<li>
+							<?php echo sprintf( 
+								/* translators: 1: Adobe fonts project name */
+								esc_html__( 'Project Name: %s', 'botiga' ), 
+								esc_html( $project[ 'project_name' ] ) 
+							); ?>
+						</li>
 						<li>
 							<?php 
 							$fonts_name = array();
@@ -219,17 +234,25 @@ function botiga_customize_control_adobe_font_kits_output( $kits = false, $echo =
 								$fonts_name[] = $family[ 'name' ];
 							}
 
-							echo esc_html__( implode( ', ', $fonts_name ), 'botiga' ); ?>
-						</li>
-						<li>
-							<?php 
-							if( $project[ 'enable' ] ) : ?>
-								<a href="#" class="botiga-adobe_fonts_kit_disable"><?php echo esc_html__( 'Disable', 'botiga' ); ?></a>
-							<?php else : ?>
-								<a href="#" class="botiga-adobe_fonts_kit_enable"><?php echo esc_html__( 'Enable', 'botiga' ); ?></a>
-							<?php endif; ?>
+							echo esc_html( implode( ', ', $fonts_name ) ); ?>
 						</li>
 					</ul>
+					<div>
+						<?php 
+						if( $project[ 'enable' ] ) : ?>
+							<a href="#" class="botiga-adobe_fonts_kit_onoff" data-kit="<?php echo esc_attr( $kit_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'customize-typography-adobe-kits-control-onoff-nonce' ) ); ?>" data-loading-text="<?php echo esc_attr__( 'Loading...', 'botiga' ); ?>" data-enable-text="<?php echo esc_attr__( 'Enable', 'botiga' ); ?>" data-disable-text="<?php echo esc_attr__( 'Disable', 'botiga' ); ?>"><?php echo esc_html__( 'Disable', 'botiga' ); ?></a>
+						<?php else : ?>
+							<a href="#" class="botiga-adobe_fonts_kit_onoff" data-kit="<?php echo esc_attr( $kit_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'customize-typography-adobe-kits-control-onoff-nonce' ) ); ?>" data-loading-text="<?php echo esc_attr__( 'Loading...', 'botiga' ); ?>" data-enable-text="<?php echo esc_attr__( 'Enable', 'botiga' ); ?>" data-disable-text="<?php echo esc_attr__( 'Disable', 'botiga' ); ?>"><?php echo esc_html__( 'Enable', 'botiga' ); ?></a>
+						<?php endif; ?>
+					</div>
+					<div class="reload-message">
+						<em>
+							<?php echo wp_kses_post(
+								/* Translators:  */
+								sprintf( __( 'Reload the page is required to get it working across all typography options. <a href="%s">Click here</a> to reload the page.', 'botiga' ), admin_url( '/customize.php?autofocus[section]=botiga_section_typography_general' ) )
+							); ?>
+						</em>
+					</div>
 				</div>
 
 			<?php endforeach; ?>

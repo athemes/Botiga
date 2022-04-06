@@ -657,7 +657,7 @@ function botiga_google_fonts_url() {
 	// Load google fonts locally
 	$load_locally = get_theme_mod( 'perf_google_fonts_local', 0 );
 	if( $load_locally ) {
-		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' );
+		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 		return wptt_get_webfont_url( $fonts_url );
 	}
@@ -685,6 +685,12 @@ function botiga_google_fonts_version() {
  * Google fonts preconnect
  */
 function botiga_preconnect_google_fonts() {
+
+	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
+	$load_locally  = get_theme_mod( 'perf_google_fonts_local', 0 );
+	if( $fonts_library !== 'google' || $load_locally ) {
+		return;
+	}
 
 	$defaults = json_encode(
 		array(

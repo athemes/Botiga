@@ -6,7 +6,20 @@
  */
 
 /**
- * Typography adobe font library
+ * Typography Adobe Type Kit Fonts library
+ */
+function botiga_font_library_google() {
+	$lib = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $lib === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Typography Google Fonts library
  */
 function botiga_font_library_adobe() {
 	$lib = get_theme_mod( 'fonts_library', 'google' );

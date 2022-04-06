@@ -699,6 +699,23 @@
       $('h1,h2,h3,h4,h5,h6,.site-title').css('font-family', jQuery.parseJSON(to)['font']);
       $('h1,h2,h3,h4,h5,h6,.site-title').css('font-weight', jQuery.parseJSON(to)['regularweight']);
     });
+  }); //Typography - Adobe Type Kit Fonts
+
+  wp.customize('botiga_headings_adobe_font', function (value) {
+    value.bind(function (to) {
+      var family = to.split('|')[0],
+          weight = to.split('|')[1];
+      $('h1,h2,h3,h4,h5,h6,.site-title').css('font-family', family);
+      $('h1,h2,h3,h4,h5,h6,.site-title').css('font-weight', weight);
+    });
+  });
+  wp.customize('botiga_body_adobe_font', function (value) {
+    value.bind(function (to) {
+      var family = to.split('|')[0],
+          weight = to.split('|')[1];
+      $('body').css('font-family', family);
+      $('body').css('font-weight', weight);
+    });
   });
   wp.customize('headings_font_style', function (value) {
     value.bind(function (to) {

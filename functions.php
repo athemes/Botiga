@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.1.2' );
+	define( 'BOTIGA_VERSION', '1.1.3' );
 }
 
 if ( ! function_exists( 'botiga_setup' ) ) :
@@ -247,13 +247,15 @@ add_action( 'widgets_init', 'botiga_widgets_init' );
  */
 function botiga_scripts() {
 	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
+	
 	if( $fonts_library === 'google' ) {
 		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
 	} else {
 		$kits = get_option( 'botiga_adobe_fonts_kits', array() );
+
 		foreach ( $kits as $kit_id => $kit_data ) {
 
-			if ( $kit_data['enable'] === false ) {
+			if ( $kit_data['enable'] == false ) {
 				continue;
 			}
 
