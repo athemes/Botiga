@@ -5245,6 +5245,8 @@ dl.variation p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-button > a {
@@ -5261,9 +5263,12 @@ dl.variation p {
   font-weight: 600;
   line-height: 1;
   padding: 9px 15px;
+  margin-right: 8px;
+  margin-bottom: 8px;
   min-width: 30px;
   min-height: 30px;
   border: 2px solid #212121;
+  text-align: center;
   cursor: pointer;
   opacity: 0.4;
   overflow: hidden;
@@ -5271,13 +5276,13 @@ dl.variation p {
   transition: ease opacity 300ms;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-button > a + a {
-  margin-left: 8px;
-}
-
 .botiga-variations-wrapper .botiga-variation-type-button > a:hover, .botiga-variations-wrapper .botiga-variation-type-button > a.active {
   opacity: 1;
   color: #212121;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-button > a:last-child {
+  margin-right: 0;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-color > a.disabled,

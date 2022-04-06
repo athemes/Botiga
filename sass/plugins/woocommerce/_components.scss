@@ -1558,6 +1558,7 @@ dl.variation {
 	}
 	.botiga-variation-type-button {
 		display: flex;
+		flex-wrap: wrap;
 		> a {
 			display: flex;
 			align-items: center;
@@ -1566,20 +1567,25 @@ dl.variation {
 			font-weight: 600;
 			line-height: 1;
 			padding: 9px 15px;
+			margin-right: 8px;
+			margin-bottom: 8px;
 			min-width: 30px;
 			min-height: 30px;
 			border: 2px solid $color__primary;
+			text-align: center;
 			cursor: pointer;
 			opacity: 0.4;
 			overflow: hidden;
 			transition: ease opacity 300ms;
-			& + a {
-				margin-left: 8px;
-			}
+
 			&:hover,
 			&.active {
 				opacity: 1;
 				color: $color__primary;
+			}
+
+			&:last-child {
+				margin-right: 0;
 			}
 		}
 	}
