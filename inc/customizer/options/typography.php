@@ -47,7 +47,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting( 
 	'adobe_fonts_kits_generator',
 	array(
-		'default'           => 'defualt_value',
+		'default'           => '',
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'	 		=> 'postMessage'
 	)
@@ -93,7 +93,7 @@ $wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 
 // Google Fonts
 $wp_customize->add_setting( 'botiga_headings_font',
 	array(
-		'default'           => '{"font":"System default","regularweight":"bold","category":"sans-serif"}',
+		'default'           => '{"font":"System default","regularweight":"700","category":"sans-serif"}',
 		'sanitize_callback' => 'botiga_google_fonts_sanitize',
 		'transport'	 		=> 'postMessage'
 	)
@@ -518,7 +518,7 @@ $wp_customize->add_section(
 
 $wp_customize->add_setting( 'botiga_body_font',
 	array(
-		'default'           => '{"font":"System default","regularweight":"regular","category":"sans-serif"}',
+		'default'           => '{"font":"System default","regularweight":"400","category":"sans-serif"}',
 		'sanitize_callback' => 'botiga_google_fonts_sanitize',
 		'transport'			=> 'postMessage'
 	)

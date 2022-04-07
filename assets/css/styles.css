@@ -1991,6 +1991,10 @@ html {
   margin-right: 0;
 }
 
+.botiga-offcanvas-menu .main-navigation ul li:last-child {
+  border-bottom: 0;
+}
+
 .botiga-offcanvas-menu .main-navigation ul ul ul {
   position: static;
 }
@@ -2116,6 +2120,11 @@ body.mobile-menu-visible {
 
 .mobile-header-item .align-right {
   text-align: right;
+}
+
+.mobile-header-item .header-item .ws-svg-icon {
+  width: 24px;
+  height: 24px;
 }
 
 @media (max-width: 1024px) {

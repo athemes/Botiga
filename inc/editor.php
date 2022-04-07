@@ -48,7 +48,7 @@ function botiga_enqueue_gutenberg_assets() {
 	$typography_defaults = json_encode(
 		array(
 			'font' 			=> 'System default',
-			'regularweight' => 'regular',
+			'regularweight' => '400',
 			'category' 		=> 'sans-serif'
 		)
 	);	

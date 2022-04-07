@@ -28,6 +28,13 @@
     .align-right {
         text-align: right;
     }
+
+    .header-item {
+        .ws-svg-icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
 }
 
 @media ( max-width: 1024px ) {

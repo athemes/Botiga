@@ -31,6 +31,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			add_action( 'wp_enqueue_scripts', array( $this, 'sticky_header_logo' ) );
 
 			add_action( 'botiga_header', array( $this, 'header_markup' ), 10 );
+			add_action( 'botiga_header', array( $this, 'header_mobile_offcanvas' ), 19 );
 			add_action( 'botiga_header', array( $this, 'header_mobile_markup'), 20 );
 			add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
 		}
@@ -81,10 +82,42 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function header_markup() {
 			$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			?>
-
-			<?php call_user_func( array( $this, $layout ) ); ?>
+			
+			call_user_func( array( $this, $layout ) ); ?>
 			<div class="search-overlay"></div>
+			<?php
+		}
+
+		/**
+		 * Mobile header offcanvas
+		 */
+		public function header_mobile_offcanvas() { 
+			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) && ! has_nav_menu( 'mobile' ) ) {
+				return;
+			} ?>
+
+			<div class="botiga-offcanvas-menu">
+				<div class="mobile-header-item">
+					<div class="row">
+						<div class="col">
+							<?php 
+							$hide_offcanvas_logo = get_theme_mod( 'mobile_offcanvas_hide_logo', 0 );
+							if( ! $hide_offcanvas_logo ) {
+								$this->logo();
+							} ?>
+						</div>
+						<div class="col align-right">
+							<a class="mobile-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="mobile-header-item">
+					<?php $this->mobile_menu(); ?>
+				</div>
+				<div class="mobile-header-item">
+					<?php $this->render_components( 'offcanvas' ); ?>
+				</div>			
+			</div>
 			<?php
 		}
 
@@ -93,28 +126,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */		
 		public function header_mobile_markup() {
 			$layout = get_theme_mod( 'header_layout_mobile', 'header_mobile_layout_1' );
-			?>
 
-			<div class="botiga-offcanvas-menu">
-				<div class="mobile-header-item">
-					<div class="row">
-						<div class="col">
-							<?php $this->logo(); ?>
-						</div>
-						<div class="col align-right">
-							<a class="mobile-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="mobile-header-item">
-					<?php $this->menu(); ?>
-				</div>
-				<div class="mobile-header-item">
-					<?php $this->render_components( 'offcanvas' ); ?>
-				</div>			
-			</div>
-			
-			<?php call_user_func( array( $this, $layout ) ); ?>
+			call_user_func( array( $this, $layout ) ); ?>
+
 			<div class="search-overlay"></div>
 			<?php
 		}
@@ -483,11 +497,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							</div>
 							<div class="col-auto col-sm-6 col-md-8 col-grow-mobile header-elements valign align-right">
 								<?php $this->render_components( 'mobile' ); ?>
-								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
-									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
-								<?php else: ?>	
-									<?php $this->trigger(); ?>
-								<?php endif; ?>
+							
+								<?php $this->trigger(); ?>
 							</div>						
 						</div>
 					</div>
@@ -513,12 +524,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							<div class="col-md-4 align-center">
 								<?php $this->logo(); ?>
 							</div>
-							<div class="col-md-4 align-right">
-								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
-									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
-								<?php else: ?>	
-									<?php $this->trigger(); ?>
-								<?php endif; ?>
+							<div class="col-md-4 align-right">	
+								<?php $this->trigger(); ?>
 							</div>						
 						</div>
 					</div>
@@ -539,11 +546,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-md-4">
-								<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
-									<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
-								<?php else: ?>	
-									<?php $this->trigger(); ?>
-								<?php endif; ?>
+								<?php $this->trigger(); ?>
 							</div>														
 							<div class="col-md-4 align-center">
 								<?php $this->logo(); ?>
@@ -586,17 +589,40 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
 			<?php else: ?>	
+				<nav id="site-navigation" class="main-navigation">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary',
+							'menu_id'        => 'primary-menu',
+						)
+					);
+					?>
+				</nav><!-- #site-navigation -->
+			<?php endif;
+		}
+
+		/**
+		 * Mobile navigation
+		 */
+		public function mobile_menu() {
+			$location = 'primary';
+			if( has_nav_menu( 'mobile' ) ) {
+				$location = 'mobile';
+			} ?>
+
 			<nav id="site-navigation" class="main-navigation">
 				<?php
 				wp_nav_menu(
 					array(
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
+						'theme_location' => $location,
+						'menu_id'        => "$location-menu",
 					)
 				);
 				?>
 			</nav><!-- #site-navigation -->
-			<?php endif;
+			
+			<?php
 		}
 
 		/**
@@ -828,8 +854,12 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		/**
 		 * Mobile menu trigger
 		 */
-		public function trigger() { ?>
-			<?php $icon = get_theme_mod( 'mobile_menu_icon', 'mobile-icon2' ); ?>
+		public function trigger() { 
+			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) && ! has_nav_menu( 'mobile' ) ) {
+				return wp_nav_menu( array( 'theme_location' => 'primary') );
+			}
+			
+			$icon = get_theme_mod( 'mobile_menu_icon', 'mobile-icon2' ); ?>
 			<a href="#" class="menu-toggle">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( $icon, true ); ?></i>
 			</a>
@@ -855,6 +885,10 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Header Transparent
 		 */
 		public function header_transparent() {
+			if( is_admin() ) {
+				return;
+			}
+
 			$topbar_transparent = get_theme_mod( 'topbar_transparent', 0 );
 			$header_transparent = get_theme_mod( 'header_transparent', 0 );
 

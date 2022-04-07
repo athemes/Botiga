@@ -81,14 +81,14 @@ botiga.helpers = {
 
 botiga.navigation = {
   init: function init() {
-    var siteNavigation = document.getElementById('site-navigation');
-    var offCanvas = document.getElementsByClassName('botiga-offcanvas-menu')[0]; // Return early if the navigation don't exist.
+    var siteNavigation = document.getElementById('site-navigation'),
+        offCanvas = document.getElementsByClassName('botiga-offcanvas-menu')[0],
+        button = document.getElementsByClassName('menu-toggle')[0]; // Return early if the navigation don't exist.
 
-    if (!siteNavigation) {
+    if (!siteNavigation && typeof button === 'undefined') {
       return;
     }
 
-    var button = document.getElementsByClassName('menu-toggle')[0];
     var closeButton = document.getElementsByClassName('mobile-menu-close')[0]; // Return early if the button don't exist.
 
     if ('undefined' === typeof button) {
