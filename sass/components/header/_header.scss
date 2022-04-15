@@ -95,11 +95,11 @@
         flex-grow: 1;
     }
 
-    .menu-center .main-navigation > div > ul {
+    .menu-center .botiga-dropdown > div > ul {
         justify-content: center;
     }
 
-    .menu-right .main-navigation > div > ul {
+    .menu-right .botiga-dropdown > div > ul {
         justify-content: flex-end;
     }    
     
@@ -124,11 +124,11 @@
 }
 .bottom-header_layout_3,
 .bottom-header_layout_4 {
-    .menu-center .main-navigation > div > ul {
+    .menu-center .botiga-dropdown > div > ul {
         justify-content: center;
     }
 
-    .menu-right .main-navigation > div > ul {
+    .menu-right .botiga-dropdown > div > ul {
         justify-content: flex-end;
     }   
 }
@@ -137,15 +137,15 @@
     .row-menu {
         align-items: center;
         justify-content: space-between;
-        .main-navigation > div > ul {
+        .botiga-dropdown > div > ul {
             display: flex;
         }
 
-        &.menu-center .main-navigation > div > ul {
+        &.menu-center .botiga-dropdown > div > ul {
             justify-content: center;
         }
     
-        &.menu-right .main-navigation > div > ul {
+        &.menu-right .botiga-dropdown > div > ul {
             justify-content: flex-end;
         } 
     }
@@ -283,7 +283,7 @@
             }
         }
     }
-    .main-navigation {
+    .botiga-dropdown {
         li {
             width: 100%;
             margin: 0;
@@ -338,13 +338,13 @@
         &.botiga-desktop-offcanvas-show {
             transform: none;
             &.content-align-left {
-                .main-navigation {
+                .botiga-dropdown {
                     margin-right: auto;
                     margin-left: 0;
                 }
             }
             &.content-align-right {
-                .main-navigation {
+                .botiga-dropdown {
                     margin-left: auto;
                     margin-right: 0;
                 }
@@ -353,7 +353,7 @@
         > .row {
             width: 100%;
         }
-        .main-navigation {
+        .botiga-dropdown {
             max-width: 300px;
             margin: 0 auto;
         }
@@ -424,6 +424,7 @@
     text-align: left;
     z-index: 9991;
     > a:not(.botiga-login-register-link) {
+        position: relative;
         display: flex;
         align-items: center;
         padding: 20px 0;
@@ -437,6 +438,14 @@
             margin-top: -4px;
             transform: rotate( 135deg );
         }
+        &:before {
+            content: '';
+            width: 100%;
+            height: 15px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
     }
     nav {
         position: absolute;
@@ -448,7 +457,7 @@
         min-width: 230px;
         opacity: 0;
         visibility: hidden;
-        transform: translate3d(0, 15px, 0);
+        transform: translate3d(0, 30px, 0);
         transition: ease opacity 300ms, ease transform 300ms;
         > a {
             padding: 15px;
@@ -467,7 +476,7 @@
         nav {
             visibility: visible;
             opacity: 1;
-            transform: none;
+            transform: translate3d(0, 15px, 0);
         }
     }
 }
@@ -476,7 +485,7 @@
     .header-search-form-active {
         .header-login-register,
         .top-bar-login-register,
-        .main-navigation {
+        .botiga-dropdown {
             pointer-events: none;
         }
     }

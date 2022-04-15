@@ -589,7 +589,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
 			<?php else: ?>	
-				<nav id="site-navigation" class="main-navigation">
+				<nav id="site-navigation" class="botiga-dropdown main-navigation">
 					<?php
 					wp_nav_menu(
 						array(
@@ -611,7 +611,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				$location = 'mobile';
 			} ?>
 
-			<nav id="site-navigation" class="main-navigation">
+			<nav id="site-navigation" class="botiga-dropdown main-navigation">
 				<?php
 				wp_nav_menu(
 					array(

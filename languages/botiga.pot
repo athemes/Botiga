@@ -49,7 +49,7 @@ msgid "Primary"
 msgstr ""
 
 #: functions.php:58
-msgid "Top bar menu"
+msgid "Top Bar Menu"
 msgstr ""
 
 #. translators: %s: color palette
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Botiga"
 msgstr ""
 
-#: inc/classes/class-botiga-footer.php:293, inc/customizer/options/general.php:90
+#: inc/classes/class-botiga-footer.php:294, inc/customizer/options/general.php:90
 msgid "Back to top"
 msgstr ""
 
@@ -169,43 +169,43 @@ msgstr ""
 msgid "Click me"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:655, inc/classes/class-botiga-topbar.php:134, inc/customizer/options/header.php:735, inc/customizer/options/topbar.php:230
+#: inc/classes/class-botiga-header.php:655, inc/classes/class-botiga-topbar.php:138, inc/customizer/options/header.php:735, inc/customizer/options/topbar.php:230
 msgid "office@example.org"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:656, inc/classes/class-botiga-topbar.php:135, inc/customizer/options/header.php:750, inc/customizer/options/topbar.php:245
+#: inc/classes/class-botiga-header.php:656, inc/classes/class-botiga-topbar.php:139, inc/customizer/options/header.php:750, inc/customizer/options/topbar.php:245
 msgid "111222333"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:736, inc/classes/class-botiga-topbar.php:256
+#: inc/classes/class-botiga-header.php:736, inc/classes/class-botiga-topbar.php:282
 msgid "Login"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:719, inc/classes/class-botiga-topbar.php:239
+#: inc/classes/class-botiga-header.php:719, inc/classes/class-botiga-topbar.php:265
 msgid "Welcome %s"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:728, inc/classes/class-botiga-topbar.php:248
+#: inc/classes/class-botiga-header.php:728, inc/classes/class-botiga-topbar.php:274
 msgid "Dashboard"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:729, inc/classes/class-botiga-topbar.php:249
+#: inc/classes/class-botiga-header.php:729, inc/classes/class-botiga-topbar.php:275
 msgid "Orders"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:730, inc/classes/class-botiga-topbar.php:250
+#: inc/classes/class-botiga-header.php:730, inc/classes/class-botiga-topbar.php:276
 msgid "Downloads"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:731, inc/classes/class-botiga-topbar.php:251
+#: inc/classes/class-botiga-header.php:731, inc/classes/class-botiga-topbar.php:277
 msgid "Addresses"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:732, inc/classes/class-botiga-topbar.php:252
+#: inc/classes/class-botiga-header.php:732, inc/classes/class-botiga-topbar.php:278
 msgid "Account Details"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:733, inc/classes/class-botiga-topbar.php:253
+#: inc/classes/class-botiga-header.php:733, inc/classes/class-botiga-topbar.php:279
 msgid "Logout"
 msgstr ""
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:153, inc/customizer/options/topbar.php:345
+#: inc/classes/class-botiga-topbar.php:157, inc/customizer/options/topbar.php:345
 msgid "Your text here"
 msgstr ""
 

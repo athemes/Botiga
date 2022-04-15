@@ -286,9 +286,34 @@ span.delete:hover {
     color: #000;
 }
 /* ==========================================================================
+   Botiga Alpha Color Picker
+   ========================================================================== */
+.customize-control-botiga-alpha-color {
+    .alpha-color-control {
+        &:not(.wp-color-picker) {
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            min-height: 24px;
+            padding: 0;
+            border: 0;
+            -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            text-indent: -999999px;
+            cursor: pointer;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        &.wp-color-picker {
+            background-color: transparent !important;
+        }
+    }
+}
+
+/* ==========================================================================
    Alpha Color Picker
    ========================================================================== */
-   .customize-control-alpha-color .wp-picker-container .iris-picker {
+.customize-control-alpha-color .wp-picker-container .iris-picker {
 	border-bottom:none;
 }
 

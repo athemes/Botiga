@@ -236,6 +236,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 					array(
 						'theme_location' => 'footer-copyright-menu',
 						'menu_id'        => 'footer-copyright-menu',
+						'depth'			 => 1
 					)
 				); ?>
 			</div>

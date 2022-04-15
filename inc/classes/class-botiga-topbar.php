@@ -97,6 +97,10 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		public function render_components( $location ) {
 			$components = $this->get_topbar_components( $location );
 
+			if( has_nav_menu( 'top-bar-mobile' ) ) {
+				array_splice( $components, array_search( 'secondary_nav', $components ), 0,'secondary_nav_mobile' );
+			}
+
 			foreach ( $components as $component ) {
 				call_user_func( array( $this, $component ) );
 			}
@@ -172,15 +176,37 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 */
 		public function secondary_nav() {
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) ) : ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
+				<nav class="header-item secondary-navigation">
+					<?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
+				</nav>
 			<?php else: ?>				
-			<nav class="header-item top-bar-secondary-navigation secondary-navigation">
+			<nav class="header-item top-bar-secondary-navigation secondary-navigation botiga-dropdown">
 				<?php
 				wp_nav_menu( array(
 					'theme_location'=> 'secondary',
 					'menu_id'       => 'secondary',
 					'fallback_cb'	=> false,
-					'depth'			=> 1
+					'depth'			=> 0
+				) );
+				?>
+			</nav>
+			<?php endif;
+		}
+
+		/**
+		 * Secondary menu mobile
+		 */
+		public function secondary_nav_mobile() {
+			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) && ! has_nav_menu( 'top-bar-mobile' ) ) : ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
+			<?php else: ?>				
+			<nav class="header-item top-bar-secondary-navigation secondary-navigation top-bar-mobile-navigation botiga-dropdown">
+				<?php
+				wp_nav_menu( array(
+					'theme_location'=> 'top-bar-mobile',
+					'menu_id'       => 'top-bar-mobile',
+					'fallback_cb'	=> false,
+					'depth'			=> 0
 				) );
 				?>
 			</nav>

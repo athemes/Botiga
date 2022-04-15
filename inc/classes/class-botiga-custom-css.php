@@ -183,10 +183,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_max_width_css( 'site_logo_size', $defaults = array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), '.custom-logo-link img' );
 
 			$css .= $this->get_background_color_css( 'topbar_background', '', '.top-bar' );
-			$css .= $this->get_background_color_css( 'topbar_submenu_background_color', '', '.top-bar .top-bar-login-register nav' );
+			$css .= $this->get_background_color_css( 'topbar_submenu_background_color', '', '.top-bar .top-bar-login-register nav, .top-bar .botiga-dropdown .sub-menu li' );
 			$css .= $this->get_color_css( 'topbar_color', '#212121', '.top-bar, .top-bar a, .top-header-row, .top-header-row a, .top-bar .top-bar-login-register nav > a' );
 			$css .= $this->get_color_css( 'topbar_color_hover', '#757575', '.top-bar a:hover, .top-header-row a:hover, .top-bar .top-bar-login-register nav > a:hover' );
-			$css .= $this->get_fill_css( 'topbar_color', '', '.top-bar svg:not(.stroke-based)' );
+			$css .= $this->get_fill_css( 'topbar_color', '', '.top-bar svg:not(.stroke-based), .top-bar .dropdown-symbol .ws-svg-icon svg' );
+			$css .= $this->get_fill_css( 'topbar_color_hover', '', '.top-bar .botiga-dropdown li:hover > .dropdown-symbol .ws-svg-icon svg' );
 
 			$css .= $this->get_border_color_rgba_css( 'topbar_color', '#212121', '.top-bar .top-bar-login-register nav>a+a', 0.08 );
 			$css .= $this->get_border_color_css( 'topbar_color', '#212121', '.top-bar .top-bar-login-register >a:after' );
@@ -227,19 +228,19 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			$css .= $this->get_background_color_css( 'main_header_background', '', '.site-header,.header-search-form' );
-			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .main-navigation .menu > li > a, .site-header .header-contact a, .site-header .header-login-register>a, .site-header .header-login-register nav>a' );
-			$css .= $this->get_color_css( 'main_header_color_hover', '', '.site-header .site-title a:hover,.site-header .main-navigation .menu > li > a:hover, .site-header .header-contact a:hover, .site-header .header-login-register>a:hover, .site-header .header-login-register nav>a:hover, .site-header .main-navigation .menu > li:hover > a, .site-header .header-contact a:hover' );
+			$css .= $this->get_color_css( 'main_header_color', '', '.site-header .site-title a,.site-header .site-description,.site-header .botiga-dropdown .menu > li > a, .site-header .header-contact a, .site-header .header-login-register>a, .site-header .header-login-register nav>a' );
+			$css .= $this->get_color_css( 'main_header_color_hover', '', '.site-header .site-title a:hover,.site-header .botiga-dropdown .menu > li > a:hover, .site-header .header-contact a:hover, .site-header .header-login-register>a:hover, .site-header .header-login-register nav>a:hover, .site-header .botiga-dropdown .menu > li:hover > a, .site-header .header-contact a:hover' );
 			$css .= $this->get_background_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_border_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_color_css( 'main_header_minicart_count_text_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header a svg:not(.stroke-based), .site-header a .dropdown-symbol .ws-svg-icon svg' );
-			$css .= $this->get_fill_css( 'main_header_color_hover', '', '.site-header .main-navigation .menu > li:hover > .dropdown-symbol svg, .site-header a:hover svg:not(.stroke-based), .site-header a:hover .dropdown-symbol .ws-svg-icon svg' );
+			$css .= $this->get_fill_css( 'main_header_color_hover', '', '.site-header .botiga-dropdown .menu > li:hover > .dropdown-symbol svg, .site-header a:hover svg:not(.stroke-based), .site-header a:hover .dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_color', '', '.site-header .header-item svg.stroke-based' );
 			
 			// Bottom header row
 			$css .= $this->get_background_color_css( 'main_header_bottom_background', '', '.bottom-header-row' );
-			$css .= $this->get_color_css( 'main_header_bottom_color', '#212121', '.bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .main-navigation .menu > li > a' );
-			$css .= $this->get_color_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row .header-contact a:hover,.bottom-header-row .main-navigation .menu > li:hover > a' );
+			$css .= $this->get_color_css( 'main_header_bottom_color', '#212121', '.bottom-header-row, .bottom-header-row .header-contact a,.bottom-header-row .botiga-dropdown .menu > li > a' );
+			$css .= $this->get_color_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row .header-contact a:hover,.bottom-header-row .botiga-dropdown .menu > li:hover > a' );
 
 			$css .= $this->get_color_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-login-register>a' );
 			$css .= $this->get_color_css( 'main_header_bottom_color_hover', '#212121', '.bottom-header-row .header-login-register>a:hover' );
@@ -247,7 +248,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_border_color_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-login-register >a:after', true );
 			$css .= $this->get_border_color_css( 'main_header_bottom_color_hover', '#212121', '.bottom-header-row .header-login-register >a:hover:after', true );
 
-			$css .= $this->get_fill_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row .main-navigation .menu > li:hover > .dropdown-symbol svg' );
+			$css .= $this->get_fill_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row .botiga-dropdown .menu > li:hover > .dropdown-symbol svg' );
 			$css .= $this->get_fill_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-item svg:not(.stroke-based),.dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_fill_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row a:hover svg:not(.stroke-based),.bottom-header-row .dropdown-symbol:hover .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-item svg.stroke-based' );
@@ -259,11 +260,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$main_header_bottom_padding = get_theme_mod( 'main_header_bottom_padding', 15 );
 			$css .= ".bottom-header-inner { padding-top:" . esc_attr( $main_header_bottom_padding ) . 'px;padding-bottom:' . esc_attr( $main_header_bottom_padding ) . "px;}" . "\n";
 
-			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .main-navigation ul ul li, .site-header .header-login-register nav' );
-			$css .= $this->get_color_css( 'main_header_submenu_color', '#212121', '.site-header .main-navigation ul ul a, .site-header .main-navigation ul ul > li:hover > .dropdown-symbol svg, .site-header .header-login-register nav>a, .bottom-header-row .header-login-register nav>a' );
-			$css .= $this->get_color_css( 'main_header_submenu_color_hover', '#757575', '.site-header .main-navigation ul ul li:hover > a, .site-header .header-login-register nav>a:hover, .bottom-header-row .header-login-register nav>a:hover' );
-			$css .= $this->get_fill_css( 'main_header_submenu_color', '#212121', '.site-header .main-navigation ul ul li > .dropdown-symbol svg' );
-			$css .= $this->get_fill_css( 'main_header_submenu_color_hover', '#757575', '.site-header .main-navigation ul ul li:hover > .dropdown-symbol svg' );
+			$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .botiga-dropdown ul ul li, .site-header .header-login-register nav' );
+			$css .= $this->get_color_css( 'main_header_submenu_color', '#212121', '.site-header .botiga-dropdown ul ul a, .site-header .botiga-dropdown ul ul > li:hover > .dropdown-symbol svg, .site-header .header-login-register nav>a, .bottom-header-row .header-login-register nav>a' );
+			$css .= $this->get_color_css( 'main_header_submenu_color_hover', '#757575', '.site-header .botiga-dropdown ul ul li:hover > a, .site-header .header-login-register nav>a:hover, .bottom-header-row .header-login-register nav>a:hover' );
+			$css .= $this->get_fill_css( 'main_header_submenu_color', '#212121', '.site-header .botiga-dropdown ul ul li > .dropdown-symbol svg' );
+			$css .= $this->get_fill_css( 'main_header_submenu_color_hover', '#757575', '.site-header .botiga-dropdown ul ul li:hover > .dropdown-symbol svg' );
 
 			$css .= $this->get_color_css( 'main_header_color', '#212121', '.site-header .header-login-register>a' );
 			$css .= $this->get_border_color_rgba_css( 'main_header_color', '#212121', '.site-header .header-login-register nav>a+a', 0.08 );
@@ -285,23 +286,23 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $this->get_background_color_css( 'main_header_sticky_active_background', '', '.sticky-header-active .sticky-header, .header-search-form' );
 
 					// text color
-					$css .= $this->get_color_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .site-title a, .sticky-header-active .sticky-header $site_header_inner_selector .site-description, .sticky-header-active .sticky-header $site_header_inner_selector .main-navigation .menu > li > a, .sticky-header-active .sticky-header $site_header_inner_selector .header-contact a, .sticky-header-active .sticky-header .header-login-register>a", true );
+					$css .= $this->get_color_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .site-title a, .sticky-header-active .sticky-header $site_header_inner_selector .site-description, .sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown .menu > li > a, .sticky-header-active .sticky-header $site_header_inner_selector .header-contact a, .sticky-header-active .sticky-header .header-login-register>a", true );
 					$css .= $this->get_border_color_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-login-register>a:after", true );
 					$css .= $this->get_fill_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item svg:not(.stroke-based), .sticky-header-active .sticky-header $site_header_inner_selector .dropdown-symbol .ws-svg-icon svg" );
 					$css .= $this->get_stroke_css( 'main_header_sticky_active_color', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item svg.stroke-based" );
 
 					// text color hover
-					$css .= $this->get_color_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .site-title a:hover, .sticky-header-active .sticky-header $site_header_inner_selector .main-navigation .menu > li:hover > a, .sticky-header-active .sticky-header $site_header_inner_selector .header-contact a:hover, .sticky-header-active .sticky-header .header-login-register>a:hover", true );
+					$css .= $this->get_color_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .site-title a:hover, .sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown .menu > li:hover > a, .sticky-header-active .sticky-header $site_header_inner_selector .header-contact a:hover, .sticky-header-active .sticky-header .header-login-register>a:hover", true );
 					$css .= $this->get_border_color_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-login-register>a:hover:after", true );
-					$css .= $this->get_fill_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .main-navigation .menu > li:hover > .dropdown-symbol svg, .sticky-header-active .sticky-header $site_header_inner_selector .header-item:not(.header-contact):hover svg:not(.stroke-based)" );
+					$css .= $this->get_fill_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown .menu > li:hover > .dropdown-symbol svg, .sticky-header-active .sticky-header $site_header_inner_selector .header-item:not(.header-contact):hover svg:not(.stroke-based)" );
 					$css .= $this->get_stroke_css( 'main_header_sticky_active_color_hover', '', ".sticky-header-active .sticky-header $site_header_inner_selector .header-item:hover svg.stroke-based" );
 
 					// Submenu 
-					$css .= $this->get_background_color_css( 'main_header_sticky_active_submenu_background_color', '#FFF', ".sticky-header-active .sticky-header $site_header_inner_selector .main-navigation ul ul li, .header-login-register nav" );
-					$css .= $this->get_color_css( 'main_header_sticky_active_submenu_color', '#212121', ".sticky-header-active .sticky-header $site_header_inner_selector .main-navigation ul ul li > a, .header-login-register nav>a", true );
-					$css .= $this->get_fill_css( 'main_header_sticky_active_submenu_color', '#212121', ".sticky-header-active .sticky-header $site_header_inner_selector .main-navigation ul ul li > .dropdown-symbol svg" );
-					$css .= $this->get_fill_css( 'main_header_sticky_active_submenu_color_hover', '#757575', ".sticky-header-active .sticky-header $site_header_inner_selector .main-navigation ul ul li:hover > .dropdown-symbol svg" );
-					$css .= $this->get_color_css( 'main_header_sticky_active_submenu_color_hover', '#757575', ".sticky-header-active .sticky-header $site_header_inner_selector .main-navigation ul ul li:hover > a, .header-login-register nav>a:hover", true );
+					$css .= $this->get_background_color_css( 'main_header_sticky_active_submenu_background_color', '#FFF', ".sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown ul ul li, .header-login-register nav" );
+					$css .= $this->get_color_css( 'main_header_sticky_active_submenu_color', '#212121', ".sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown ul ul li > a, .header-login-register nav>a", true );
+					$css .= $this->get_fill_css( 'main_header_sticky_active_submenu_color', '#212121', ".sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown ul ul li > .dropdown-symbol svg" );
+					$css .= $this->get_fill_css( 'main_header_sticky_active_submenu_color_hover', '#757575', ".sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown ul ul li:hover > .dropdown-symbol svg" );
+					$css .= $this->get_color_css( 'main_header_sticky_active_submenu_color_hover', '#757575', ".sticky-header-active .sticky-header $site_header_inner_selector .botiga-dropdown ul ul li:hover > a, .header-login-register nav>a:hover", true );
 					
 				$css .= '}';
 			}
@@ -332,16 +333,16 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= '.header_layout_7 .botiga-desktop-offcanvas > .row > div, .header_layout_8 .botiga-desktop-offcanvas > .row > div { margin-top: '. esc_attr( $desktop_offcanvas_content_areas_spacing ) .'px; }';
 				$css .= '.header_layout_7 .botiga-desktop-offcanvas .header-item, .header_layout_8 .botiga-desktop-offcanvas .header-item { margin-bottom: '. esc_attr( $header_components_desktop_offcanvas_elements_spacing ) .'px; }';
 				$css .= '.header_layout_7 .botiga-desktop-offcanvas .header-item.header-contact a + a, .header_layout_8 .botiga-desktop-offcanvas .header-item.header-contact a + a { margin-top: '. esc_attr( $header_components_desktop_offcanvas_elements_spacing ) .'px; }';
-				$css .= '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li > a, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li > a { padding-top: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; padding-bottom: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; }';
+				$css .= '.header_layout_7 .botiga-desktop-offcanvas .botiga-dropdown .menu > li > a, .header_layout_8 .botiga-desktop-offcanvas .botiga-dropdown .menu > li > a { padding-top: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; padding-bottom: '. esc_attr( $desktop_offcanvas_menu_link_spacing ) .'px; }';
 
 				if( $desktop_offcanvas_menu_link_separator ) {
 					$desktop_offcanvas_link_separator_color = get_theme_mod( 'desktop_offcanvas_link_separator_color', '#212121' );
 
-					$css .= '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li { border-top: 1px solid '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_link_separator_color, '0.1' ) ) .'; }';
+					$css .= '.header_layout_7 .botiga-desktop-offcanvas .botiga-dropdown .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .botiga-dropdown .menu > li + li { border-top: 1px solid '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_link_separator_color, '0.1' ) ) .'; }';
 				}
 
-				$css .= $this->get_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .main-navigation .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description .botiga-desktop-offcanvas .header-contact a' );
-				$css .= '.botiga-desktop-offcanvas .main-navigation .menu li a:hover, .botiga-desktop-offcanvas .header-contact a:hover { color: '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_menu_text_color, '0.7' ) ) .'; }';
+				$css .= $this->get_color_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .botiga-dropdown .menu li a, .botiga-desktop-offcanvas .site-title a, .botiga-desktop-offcanvas .site-description .botiga-desktop-offcanvas .header-contact a' );
+				$css .= '.botiga-desktop-offcanvas .botiga-dropdown .menu li a:hover, .botiga-desktop-offcanvas .header-contact a:hover { color: '. esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $desktop_offcanvas_menu_text_color, '0.7' ) ) .'; }';
 				$css .= $this->get_fill_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg:not(.stroke-based), .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg' );
 				$css .= $this->get_stroke_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg.stroke-based' );				
 			}
@@ -351,18 +352,18 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			//Mobile menu
 			$mobile_menu_alignment = get_theme_mod( 'mobile_menu_alignment', 'left' );
-			$css .= ".botiga-offcanvas-menu .main-navigation ul li { text-align:" . esc_attr( $mobile_menu_alignment ) . ";}" . "\n";
+			$css .= ".botiga-offcanvas-menu .botiga-dropdown ul li { text-align:" . esc_attr( $mobile_menu_alignment ) . ";}" . "\n";
 
 			$mobile_menu_link_separator 	= get_theme_mod( 'mobile_menu_link_separator', 0 );
 			$link_separator_color 			= get_theme_mod( 'link_separator_color', '#eeeeee' );
 			$mobile_header_separator_width	= get_theme_mod( 'mobile_header_separator_width', 1 );
 
 			if ( $mobile_menu_link_separator ) {
-				$css .= ".botiga-offcanvas-menu .main-navigation ul li { padding-top:5px;border-bottom: " . intval( $mobile_header_separator_width ) . "px solid " . esc_attr( $link_separator_color ) . ";}" . "\n";
+				$css .= ".botiga-offcanvas-menu .botiga-dropdown ul li { padding-top:5px;border-bottom: " . intval( $mobile_header_separator_width ) . "px solid " . esc_attr( $link_separator_color ) . ";}" . "\n";
 			}
 
 			$mobile_menu_link_spacing = get_theme_mod( 'mobile_menu_link_spacing', 20 );
-			$css .= ".botiga-offcanvas-menu .main-navigation a { padding:" . esc_attr( $mobile_menu_link_spacing )/2 . "px 0;}" . "\n";
+			$css .= ".botiga-offcanvas-menu .botiga-dropdown a { padding:" . esc_attr( $mobile_menu_link_spacing )/2 . "px 0;}" . "\n";
 
 			$mobile_menu_elements_spacing = get_theme_mod( 'mobile_menu_elements_spacing', 20 );
 			$css .= ".botiga-offcanvas-menu .header-item + .header-item:not(.separator) { margin-top:" . esc_attr( $mobile_menu_elements_spacing ) . "px;}" . "\n";

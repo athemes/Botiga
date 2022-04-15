@@ -55,7 +55,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		register_nav_menus(
 			array(
 				'primary'	=> esc_html__( 'Primary', 'botiga' ),
-				'secondary' => esc_html__( 'Top bar menu', 'botiga' ),
+				'secondary' => esc_html__( 'Top Bar Menu', 'botiga' ),
 			)
 		);
 

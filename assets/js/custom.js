@@ -273,20 +273,25 @@ botiga.navigation = {
   * Check if sub-menu items are visible. If not, reverse the item position 
   */
   checkMenuReverse: function checkMenuReverse() {
-    var items = document.querySelectorAll('.header-login-register, .top-bar-login-register');
+    var items = document.querySelectorAll('.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li');
 
     for (var i = 0; i < items.length; i++) {
       items[i].removeEventListener('mouseover', this.menuReverseEventHandler);
       items[i].addEventListener('mouseover', this.menuReverseEventHandler);
+      items[i].removeEventListener('touchstart', this.menuReverseEventHandler);
+      items[i].addEventListener('touchstart', this.menuReverseEventHandler);
     }
   },
   menuReverseEventHandler: function menuReverseEventHandler() {
-    var submenus = event.currentTarget.querySelectorAll('.header-login-register>nav, .top-bar-login-register>nav');
+    event.stopPropagation();
+    var submenu = event.currentTarget.querySelector('.header-login-register>nav, .top-bar-login-register>nav, .sub-menu');
 
-    for (var i = 0; i < submenus.length; i++) {
-      if (isInViewport(submenus[i]) == false) {
-        submenus[i].classList.add('sub-menu-reverse');
-      }
+    if (submenu === null) {
+      return false;
+    }
+
+    if (isInViewport(submenu) == false) {
+      submenu.classList.add('sub-menu-reverse');
     }
 
     function isInViewport(el) {

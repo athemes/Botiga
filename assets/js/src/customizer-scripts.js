@@ -339,117 +339,159 @@ jQuery( document ).ready(function($) {
 			palettes: palette // Use the passed in palette.
 		};
 
-		// Create the colorpicker.
-		$control.wpColorPicker( colorPickerOptions );
-
 		$container = $control.parents( '.wp-picker-container:first' );
 
-		// Insert our opacity slider.
-		$( '<div class="alpha-color-picker-container">' +
+		// Create the color picker only when we click on it
+		//
+		// This event will trigger only the first time because
+		// after it, the DOM structure changes. Thus, any other event handlers
+		// inside this one don't need to be removed and won't generate performance bottleneck
+		$control.on( 'click', function(){
+			var picker = $( this ),
+				colors = [];
+
+			$( '#customize-control-color_palettes .saved-palette > span > div, #customize-control-color_palettes .saved-palette span.palette > div' ).each( function(){
+				var color = $( this ).css( 'background-color' );
+				colors.push( color );
+			} );
+
+			var colorPickerOptionsNew = { ...colorPickerOptions, palettes: colors }
+			picker.wpColorPicker( colorPickerOptionsNew );
+
+			// Set new container
+			$container = picker.closest( '.wp-picker-container' );
+
+			// Move color picker text field in popup
+			$container.find( '.wp-picker-input-wrap' ).prependTo( $container.find( '.wp-picker-holder' ) );
+
+			var $wpColorResult = picker.closest( '.wp-picker-container' ).find( '.wp-color-result' );
+			$wpColorResult.on( 'click', function(e){
+				var $this = $( this ).closest( '.wp-picker-container' ).find( 'input.wp-color-picker' ),
+					colors = [];
+				$( '#customize-control-color_palettes .saved-palette > span > div, #customize-control-color_palettes .saved-palette span.palette > div' ).each( function(){
+					var color = $( this ).css( 'background-color' );
+					colors.push( color );
+				} );
+
+				$this.data('a8cIris').option( 'palettes', colors );
+			});
+
+			// Insert our opacity slider.
+			$( '<div class="alpha-color-picker-container">' +
 				'<div class="min-click-zone click-zone"></div>' +
 				'<div class="max-click-zone click-zone"></div>' +
 				'<div class="alpha-slider"></div>' +
 				'<div class="transparency"></div>' +
 			'</div>' ).appendTo( $container.find( '.wp-picker-holder' ) );
 
-		$alphaSlider = $container.find( '.alpha-slider' );
+			$alphaSlider = $container.find( '.alpha-slider' );
 
-		// If starting value is in format RGBa, grab the alpha channel.
-		alphaVal = acp_get_alpha_value_from_color( startingColor );
+			// If starting value is in format RGBa, grab the alpha channel.
+			alphaVal = acp_get_alpha_value_from_color( startingColor );
 
-		// Set up jQuery UI slider() options.
-		sliderOptions = {
-			create: function( event, ui ) {
-				var value = $( this ).slider( 'value' );
+			// Set up jQuery UI slider() options.
+			sliderOptions = {
+				create: function( event, ui ) {
+					var value = $( this ).slider( 'value' );
 
-				// Set up initial values.
-				$( this ).find( '.ui-slider-handle' ).text( value );
-				$( this ).siblings( '.transparency ').css( 'background-color', startingColor );
-			},
-			value: alphaVal,
-			range: 'max',
-			step: 1,
-			min: 0,
-			max: 100,
-			animate: 300
-		};
+					// Set up initial values.
+					$( this ).find( '.ui-slider-handle' ).text( value );
+					$( this ).siblings( '.transparency ').css( 'background-color', startingColor );
+				},
+				value: alphaVal,
+				range: 'max',
+				step: 1,
+				min: 0,
+				max: 100,
+				animate: 300
+			};
 
-		// Initialize jQuery UI slider with our options.
-		$alphaSlider.slider( sliderOptions );
+			// Initialize jQuery UI slider with our options.
+			$alphaSlider.slider( sliderOptions );
 
-		// Maybe show the opacity on the handle.
-		if ( 'true' == showOpacity ) {
-			$alphaSlider.find( '.ui-slider-handle' ).addClass( 'show-opacity' );
-		}
-
-		// Bind event handlers for the click zones.
-		$container.find( '.min-click-zone' ).on( 'click', function() {
-			acp_update_alpha_value_on_color_control( 0, $control, $alphaSlider, true );
-		});
-		$container.find( '.max-click-zone' ).on( 'click', function() {
-			acp_update_alpha_value_on_color_control( 100, $control, $alphaSlider, true );
-		});
-
-		// Bind event handler for clicking on a palette color.
-		$container.find( '.iris-palette' ).on( 'click', function() {
-			var color, alpha;
-
-			color = $( this ).css( 'background-color' );
-			alpha = acp_get_alpha_value_from_color( color );
-
-			acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
-
-			// Sometimes Iris doesn't set a perfect background-color on the palette,
-			// for example rgba(20, 80, 100, 0.3) becomes rgba(20, 80, 100, 0.298039).
-			// To compensante for this we round the opacity value on RGBa colors here
-			// and save it a second time to the color picker object.
-			if ( alpha != 100 ) {
-				color = color.replace( /[^,]+(?=\))/, ( alpha / 100 ).toFixed( 2 ) );
+			// Maybe show the opacity on the handle.
+			if ( 'true' == showOpacity ) {
+				$alphaSlider.find( '.ui-slider-handle' ).addClass( 'show-opacity' );
 			}
 
-			$control.wpColorPicker( 'color', color );
-		});
-
-		// Bind event handler for clicking on the 'Clear' button.
-		$container.find( '.button.wp-picker-clear' ).on( 'click', function() {
-			var key = $control.attr( 'data-customize-setting-link' );
-
-			// The #fff color is delibrate here. This sets the color picker to white instead of the
-			// defult black, which puts the color picker in a better place to visually represent empty.
-			$control.wpColorPicker( 'color', '#ffffff' );
-
-			// Set the actual option value to empty string.
-			wp.customize( key, function( obj ) {
-				obj.set( '' );
+			// Bind event handlers for the click zones.
+			$container.find( '.min-click-zone' ).on( 'click', function() {
+				acp_update_alpha_value_on_color_control( 0, $control, $alphaSlider, true );
+			});
+			$container.find( '.max-click-zone' ).on( 'click', function() {
+				acp_update_alpha_value_on_color_control( 100, $control, $alphaSlider, true );
 			});
 
-			acp_update_alpha_value_on_alpha_slider( 100, $alphaSlider );
-		});
+			// Bind event handler for clicking on a palette color.
+			$container.find( '.iris-palette' ).on( 'click', function() {
+				var color, alpha;
 
-		// Bind event handler for clicking on the 'Default' button.
-		$container.find( '.button.wp-picker-default' ).on( 'click', function() {
-			var alpha = acp_get_alpha_value_from_color( defaultColor );
+				color = $( this ).css( 'background-color' );
+				alpha = acp_get_alpha_value_from_color( color );
 
-			acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
-		});
+				acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
 
-		// Bind event handler for typing or pasting into the input.
-		$control.on( 'input', function() {
-			var value = $( this ).val();
-			var alpha = acp_get_alpha_value_from_color( value );
+				// Sometimes Iris doesn't set a perfect background-color on the palette,
+				// for example rgba(20, 80, 100, 0.3) becomes rgba(20, 80, 100, 0.298039).
+				// To compensante for this we round the opacity value on RGBa colors here
+				// and save it a second time to the color picker object.
+				if ( alpha != 100 ) {
+					color = color.replace( /[^,]+(?=\))/, ( alpha / 100 ).toFixed( 2 ) );
+				}
 
-			acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
-		});
+				$control.wpColorPicker( 'color', color );
+			});
 
-		// Update all the things when the slider is interacted with.
-		$alphaSlider.slider().on( 'slide', function( event, ui ) {
-			var alpha = parseFloat( ui.value ) / 100.0;
+			// Bind event handler for clicking on the 'Clear' button.
+			$container.find( '.button.wp-picker-clear' ).on( 'click', function() {
+				var key = $control.attr( 'data-customize-setting-link' );
 
-			acp_update_alpha_value_on_color_control( alpha, $control, $alphaSlider, false );
+				// The #fff color is delibrate here. This sets the color picker to white instead of the
+				// defult black, which puts the color picker in a better place to visually represent empty.
+				$control.wpColorPicker( 'color', '#ffffff' );
 
-			// Change value shown on slider handle.
-			$( this ).find( '.ui-slider-handle' ).text( ui.value );
-		});
+				// Set the actual option value to empty string.
+				wp.customize( key, function( obj ) {
+					obj.set( '' );
+				});
+
+				acp_update_alpha_value_on_alpha_slider( 100, $alphaSlider );
+			});
+
+			// Bind event handler for clicking on the 'Default' button.
+			$container.find( '.button.wp-picker-default' ).on( 'click', function() {
+				var alpha = acp_get_alpha_value_from_color( defaultColor );
+
+				acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
+			});
+
+			// Bind event handler for typing or pasting into the input.
+			$control.on( 'input', function() {
+				var value = $( this ).val();
+				var alpha = acp_get_alpha_value_from_color( value );
+
+				acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
+			});
+
+			// Update all the things when the slider is interacted with.
+			$alphaSlider.slider().on( 'slide', function( event, ui ) {
+				var alpha = parseFloat( ui.value ) / 100.0;
+
+				acp_update_alpha_value_on_color_control( alpha, $control, $alphaSlider, false );
+
+				// Change value shown on slider handle.
+				$( this ).find( '.ui-slider-handle' ).text( ui.value );
+			});
+
+			// Open the color picker after the above intialization
+			setTimeout(function(){
+				$wpColorResult.trigger( 'click' );
+			}, 100);
+
+			// Remove event handler from the control since 
+			// we need it running just one time
+			$control.off( 'click' );
+		} );
 
 	});
 
@@ -847,15 +889,6 @@ wp.customize.bind( 'ready', function () {
             control.active.set( value );
         } );
     } );
-} );
-
-/**
- * Move color picker text field in popup
- */
-jQuery( document ).ready(function($) {
-	$( '.wp-picker-input-wrap' ).each(function() {
-		$( this ).prependTo( $( this ).next( '.wp-picker-holder' ) );
-	} );
 } );	
 
 /**

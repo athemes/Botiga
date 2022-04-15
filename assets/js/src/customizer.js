@@ -99,14 +99,14 @@
 
 	wp.customize( 'mobile_menu_alignment', function( value ) {
 		value.bind( function( to ) {
-			$( '.botiga-offcanvas-menu .main-navigation ul li' ).css( 'text-align', to );
+			$( '.botiga-offcanvas-menu .botiga-dropdown ul li' ).css( 'text-align', to );
 		} );
 	} );	
 
 	wp.customize( 'mobile_menu_link_spacing', function( value ) {
 		value.bind( function( to ) {
-			$( '.botiga-offcanvas-menu .main-navigation a' ).css( 'padding-top', to/2 );
-			$( '.botiga-offcanvas-menu .main-navigation a' ).css( 'padding-bottom', to/2 );
+			$( '.botiga-offcanvas-menu .botiga-dropdown a' ).css( 'padding-top', to/2 );
+			$( '.botiga-offcanvas-menu .botiga-dropdown a' ).css( 'padding-bottom', to/2 );
 		} );
 	} );
 	
@@ -126,7 +126,7 @@
 	} );	
 	wp.customize( 'mobile_header_separator_width', function( value ) {
 		value.bind( function( to ) {
-			$( '.botiga-offcanvas-menu .main-navigation ul li' ).css( 'border-bottom-width', to + 'px' );
+			$( '.botiga-offcanvas-menu .botiga-dropdown ul li' ).css( 'border-bottom-width', to + 'px' );
 		} );
 	} );	
 
@@ -167,7 +167,7 @@
 
 	wp.customize( 'desktop_offcanvas_menu_link_spacing', function( value ) {
 		value.bind( function( to ) {
-			$( '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li > a, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li > a' ).css( {
+			$( '.header_layout_7 .botiga-desktop-offcanvas .botiga-dropdown .menu > li > a, .header_layout_8 .botiga-desktop-offcanvas .botiga-dropdown .menu > li > a' ).css( {
 				'padding-top':  to + 'px',
 				'padding-bottom':  to + 'px'
 			} );
@@ -179,7 +179,7 @@
 			var desktop_offcanvas_menu_link_separator = window.parent.window.wp.customize.control('desktop_offcanvas_menu_link_separator').setting.get();
 
 			if( desktop_offcanvas_menu_link_separator ) {
-				$( '.header_layout_7 .botiga-desktop-offcanvas .main-navigation .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .main-navigation .menu > li + li' ).css( {
+				$( '.header_layout_7 .botiga-desktop-offcanvas .botiga-dropdown .menu > li + li, .header_layout_8 .botiga-desktop-offcanvas .botiga-dropdown .menu > li + li' ).css( {
 					'border-top': '1px solid ' + hexToRGB(to, 0.1)
 				} );
 			}

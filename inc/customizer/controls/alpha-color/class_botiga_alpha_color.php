@@ -43,7 +43,7 @@ class Botiga_Alpha_Color extends WP_Customize_Control {
 					echo '<span class="description customize-control-description">' . esc_html( $this->description ) . '</span>';
 				} ?>
 			</label>
-			<input data-color-val="<?php echo esc_attr( $this->value() ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" class="alpha-color-control" type="text" data-show-opacity="<?php echo esc_attr( $show_opacity ); ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
+			<input data-color-val="<?php echo esc_attr( $this->value() ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" class="alpha-color-control" type="text" data-show-opacity="<?php echo esc_attr( $show_opacity ); ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" style="background-color: <?php echo esc_attr( $this->value() ); ?>;" <?php $this->link(); ?>  />
 	<?php 
 	}
 
