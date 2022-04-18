@@ -25,8 +25,11 @@ class Botiga_Custom_Palettes_Control extends WP_Customize_Control {
 				<?php } ?>
 
 				<div class="custom-palettes">
-					<?php for ( $i = 1; $i < 9 ; $i++ ) { ?>
-						<input data-color-val="<?php echo esc_attr( $this->value( 'custom_color' . $i ) ); ?>" value="<?php echo esc_attr( $this->value( 'custom_color' . $i ) ); ?>" class="alpha-color-control" type="text" data-show-opacity="true" data-palette="true" data-default-color="<?php echo esc_attr( $this->settings['custom_color' . $i]->default ); ?>" <?php $this->link( 'custom_color' . $i ); ?>  />
+					<?php for ( $i = 1; $i < 9 ; $i++ ) { 
+						$val = $this->value( 'custom_color' . $i ) ? $this->value( 'custom_color' . $i ) : $this->settings['custom_color' . $i]->default; ?>
+
+						<input data-color-val="<?php echo esc_attr( $this->value( 'custom_color' . $i ) ); ?>" value="<?php echo esc_attr( $this->value( 'custom_color' . $i ) ); ?>" class="alpha-color-control" type="text" data-show-opacity="true" data-palette="true" data-default-color="<?php echo esc_attr( $this->settings['custom_color' . $i]->default ); ?>" style="background-color: <?php echo esc_attr( $val ); ?>;" <?php $this->link( 'custom_color' . $i ); ?>  />
+
 					<?php } ?>
 				</div>
 			</div>

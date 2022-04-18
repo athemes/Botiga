@@ -903,7 +903,6 @@
 									output += css2.selector + '{ '+ propvalue +': '+ to +'!important; }';
 								} );
 							}
-
 						}
 					}
 				});

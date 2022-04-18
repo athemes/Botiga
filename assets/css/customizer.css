@@ -318,22 +318,25 @@ span.delete:hover {
 /* ==========================================================================
    Botiga Alpha Color Picker
    ========================================================================== */
-.customize-control-botiga-alpha-color .alpha-color-control:not(.wp-color-picker) {
+.customize-control-botiga-alpha-color .alpha-color-control:not(.wp-color-picker),
+.custom-palettes .alpha-color-control:not(.wp-color-picker) {
   border-radius: 50%;
   width: 24px;
   height: 24px;
   min-height: 24px;
+  font-size: 5px;
   padding: 0;
   border: 0;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  text-indent: -999999px;
+  text-indent: -999999999px;
   cursor: pointer;
   margin-right: 6px;
   margin-bottom: 6px;
 }
 
-.customize-control-botiga-alpha-color .alpha-color-control.wp-color-picker {
+.customize-control-botiga-alpha-color .alpha-color-control.wp-color-picker,
+.custom-palettes .alpha-color-control.wp-color-picker {
   background-color: transparent !important;
 }
 
@@ -477,8 +480,8 @@ span.delete:hover {
 }
 
 .wp-picker-holder .iris-picker .iris-palette {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .wp-picker-container .iris-picker,

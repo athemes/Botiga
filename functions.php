@@ -117,17 +117,30 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 */
 		$selected_palette 	= get_theme_mod( 'color_palettes', 'palette1' );
 		$palettes 			= botiga_global_color_palettes();
-		
-		$colors = array();
 
-		for ( $i = 0; $i < 8; $i++ ) { 
-			$colors[] = array(
-				/* translators: %s: color palette */
-				'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
-				'slug'  => $selected_palette . '-color-' . $i,
-				'color' => $palettes[$selected_palette][$i],
-			);
+		$colors = array();
+		
+		$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
+		if( $custom_palette_toggle ) {
+			for ( $i = 1; $i < 9; $i++ ) { 
+				$colors[] = array(
+					/* translators: %s: color palette */
+					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
+					'slug'  => 'palette' . $i . '-color-' . $i,
+					'color' => get_theme_mod( 'custom_color' . $i, '#212121' )
+				);
+			}
+		} else {
+			for ( $i = 0; $i < 8; $i++ ) { 
+				$colors[] = array(
+					/* translators: %s: color palette */
+					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
+					'slug'  => $selected_palette . '-color-' . $i,
+					'color' => $palettes[$selected_palette][$i],
+				);
+			}
 		}
+		
 
 		add_theme_support(
 			'editor-color-palette',

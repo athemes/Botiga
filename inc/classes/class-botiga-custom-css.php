@@ -460,7 +460,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_border_color_css( 'color_body_text', '#212121', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-arrows .botiga-single-post-toc__list-item:before' );
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-single-post-toc__list-item+.botiga-single-post-toc__list-item', 0.1 );
 			$css .= $this->get_color_css( 'button_color', '#757575', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-numbers .botiga-single-post-toc__list-item:before' );
-			$css .= $this->get_background_color_rgba_css( 'button_background_color', '#212121', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-numbers .botiga-single-post-toc__list-item:before', 0.7 );
+			$css .= $this->get_background_color_rgba_css( 'button_background_color', '#212121', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-numbers .botiga-single-post-toc__list-item:before', 1 );
 			
 			// Single post nav
 			$css .= $this->get_color_css( 'color_body_text', '#212121', '.post-navigation .nav-next a, .post-navigation .nav-previous a' );
@@ -974,10 +974,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.3 );
 
 			//Buttons
-			$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'button,a.button,.wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );
+			$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );
 			$css .= $this->get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), 'button,a.button,.wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );
-			$css .= $this->get_border_color_css( 'button_border_color', '#212121', "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]" );
-			$css .= $this->get_border_color_css( 'button_border_color_hover', '#757575', "button:hover,a.button:hover,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover" );
+			$css .= $this->get_border_color_css( 'button_border_color', '#212121', "button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]" );
+			$css .= $this->get_border_color_css( 'button_border_color_hover', '#757575', "button:hover,a.button:hover,.wp-block-button .wp-block-button__link:hover,.wp-block-button__link:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover" );
 
 
 			$button_border_radius = get_theme_mod( 'button_border_radius' );
@@ -988,11 +988,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$css .= "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
 
-			$css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button,a.button,.wp-block-button__link,.wp-block-search .wp-block-search__button,input[type="button"],input[type="reset"],input[type="submit"],.comments-area .comment-reply-link' );			
-			$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', 'button:hover,a.button:hover,.wp-block-button__link:hover,.wp-block-search .wp-block-search__button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.comments-area .comment-reply-link:hover' );			
+			$css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,.wp-block-search .wp-block-search__button,input[type="button"],input[type="reset"],input[type="submit"],.comments-area .comment-reply-link' );			
+			$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', 'button:hover,a.button:hover,.wp-block-button .wp-block-button__link:hover,.wp-block-button__link:hover,.wp-block-search .wp-block-search__button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.comments-area .comment-reply-link:hover' );			
 
-			$css .= $this->get_color_css( 'button_color', '#FFF', 'button,a.button:not(.wc-forward),a.button.checkout,.checkout-button.button,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"],.woocommerce-message .button.wc-forward,.comments-area .comment-reply-link, .wp-block-search .wp-block-search__button' );			
-			$css .= $this->get_color_css( 'button_color_hover', '#FFF', 'button:hover,a.button:not(.wc-forward):hover,a.button.checkout:hover,.wp-block-button__link:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.woocommerce-message .button.wc-forward:hover,.comments-area .comment-reply-link:hover, .wp-block-search .wp-block-search__button:hover' );
+			$css .= $this->get_color_css( 'button_color', '#FFF', 'button,a.button:not(.wc-forward),a.button.checkout,.checkout-button.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"],.woocommerce-message .button.wc-forward,.comments-area .comment-reply-link, .wp-block-search .wp-block-search__button' );			
+			$css .= $this->get_color_css( 'button_color_hover', '#FFF', 'button:hover,a.button:not(.wc-forward):hover,a.button.checkout:hover,.wp-block-button .wp-block-button__link:hover,.wp-block-button__link:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.woocommerce-message .button.wc-forward:hover,.comments-area .comment-reply-link:hover, .wp-block-search .wp-block-search__button:hover' );
 			
 			$css .= $this->get_fill_css( 'button_color', '#FFF', '.woocommerce-product-search .search-submit svg, #masthead-mobile .search-submit svg:not(.stroke-based), ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link svg, ul.wc-block-grid__products li.product .wp-block-button__link svg, ul.products li.wc-block-grid__product .wp-block-button__link svg, ul.products li.product .button svg' );
 			$css .= $this->get_fill_css( 'button_color_hover', '#FFF', '.woocommerce-product-search .search-submit:hover svg, #masthead-mobile .search-submit:hover svg:not(.stroke-based), ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link:hover svg, ul.wc-block-grid__products li.product .wp-block-button__link:hover svg, ul.products li.wc-block-grid__product .wp-block-button__link:hover svg, ul.products li.product .button:hover svg' );

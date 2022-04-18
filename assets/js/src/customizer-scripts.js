@@ -348,12 +348,7 @@ jQuery( document ).ready(function($) {
 		// inside this one don't need to be removed and won't generate performance bottleneck
 		$control.on( 'click', function(){
 			var picker = $( this ),
-				colors = [];
-
-			$( '#customize-control-color_palettes .saved-palette > span > div, #customize-control-color_palettes .saved-palette span.palette > div' ).each( function(){
-				var color = $( this ).css( 'background-color' );
-				colors.push( color );
-			} );
+				colors = get_color_palette_array();
 
 			var colorPickerOptionsNew = { ...colorPickerOptions, palettes: colors }
 			picker.wpColorPicker( colorPickerOptionsNew );
@@ -366,12 +361,8 @@ jQuery( document ).ready(function($) {
 
 			var $wpColorResult = picker.closest( '.wp-picker-container' ).find( '.wp-color-result' );
 			$wpColorResult.on( 'click', function(e){
-				var $this = $( this ).closest( '.wp-picker-container' ).find( 'input.wp-color-picker' ),
-					colors = [];
-				$( '#customize-control-color_palettes .saved-palette > span > div, #customize-control-color_palettes .saved-palette span.palette > div' ).each( function(){
-					var color = $( this ).css( 'background-color' );
-					colors.push( color );
-				} );
+				var $this  = $( this ).closest( '.wp-picker-container' ).find( 'input.wp-color-picker' ),
+					colors = get_color_palette_array();
 
 				$this.data('a8cIris').option( 'palettes', colors );
 			});
@@ -494,6 +485,28 @@ jQuery( document ).ready(function($) {
 		} );
 
 	});
+
+	/**
+	 * Get color palette array 
+	 */
+	function get_color_palette_array() {
+		var has_own_palette = wp.customize.control( 'custom_palette_toggle' ).setting.get(),
+			colors = [];
+
+		if( has_own_palette ) {
+			$( '#customize-control-custom_palette .custom-palettes > input, #customize-control-custom_palette .custom-palettes .wp-color-result' ).each( function(){
+				var color = $( this ).css( 'background-color' );
+				colors.push( color );
+			} );
+		} else {
+			$( '#customize-control-color_palettes .saved-palette > span > div, #customize-control-color_palettes .saved-palette span.palette > div' ).each( function(){
+				var color = $( this ).css( 'background-color' );
+				colors.push( color );
+			} );
+		}
+
+		return colors;
+	}
 
 	/**
 	 * Override the stock color.js toString() method to add support for outputting RGBa or Hex.
@@ -688,7 +701,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements1 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][0] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][0] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][0] );
 			}
 		}
 
@@ -698,7 +711,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements2 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][1] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][1] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][1] );
 			}
 		}
 
@@ -708,7 +721,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements3 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][2] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][2] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][2] );
 			}
 		}
 
@@ -718,7 +731,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements4 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][3] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][3] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][3] );
 			}
 		}
 
@@ -728,7 +741,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements5 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][4] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][4] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][4] );
 			}
 		}
 		
@@ -738,7 +751,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements6 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][5] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][5] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][5] );
 			}
 		}		
 
@@ -748,7 +761,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements7 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][6] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][6] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][6] );
 			}
 		}	
 		
@@ -758,7 +771,7 @@ jQuery( document ).ready(function($) {
 		for ( const element of elements8 ) {
 			if( typeof wp.customize( element ) !== 'undefined' ) {
 				wp.customize( element ).set( palettes[palette][7] );
-				jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', palettes[palette][7] );
+				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][7] );
 			}
 		}				
 		
@@ -772,12 +785,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color1', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements1 = ['scrolltop_bg_color','button_background_color','button_border_color','color_link_default'];
+			let elements1 = ['scrolltop_bg_color','button_background_color','button_border_color','color_link_default','footer_credits_links_color','single_product_tabs_border_color_active','single_product_tabs_text_color_active','single_product_tabs_text_color','shop_archive_header_button_color','shop_archive_header_button_border_color'];
 			
 			for ( const element of elements1 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}
 		} );
@@ -785,12 +798,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color2', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements2 = ['footer_widgets_links_hover_color','scrolltop_bg_color_hover','button_background_color_hover','button_border_color_hover','color_link_hover','main_header_color_hover','main_header_sticky_active_submenu_color_hover','main_header_submenu_color_hover'];
+			let elements2 = ['footer_widgets_links_hover_color','scrolltop_bg_color_hover','button_background_color_hover','button_border_color_hover','color_link_hover','footer_credits_links_color_hover','shop_archive_header_button_background_color_hover','shop_archive_header_button_border_color_hover','main_header_sticky_active_color_hover','main_header_color_hover','main_header_sticky_active_submenu_color_hover','main_header_submenu_color_hover'];
 		
 			for ( const element of elements2 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}
 		} );
@@ -798,12 +811,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color3', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements3 = ['main_header_submenu_color','main_header_sticky_active_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','main_header_sticky_active_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6','single_sticky_add_to_cart_style_color_title'];
+			let elements3 = ['single_post_title_color','main_header_submenu_color','main_header_sticky_active_submenu_color','offcanvas_menu_color','mobile_header_color','footer_widgets_title_color','single_product_title_color','color_forms_text','shop_product_product_title','loop_post_meta_color','loop_post_title_color','main_header_color','main_header_sticky_active_color','site_title_color','site_description_color','color_heading_1','color_heading_2','color_heading_3','color_heading_4','color_heading_5','color_heading_6','shop_archive_header_title_color','shop_archive_header_description_color'];
 		
 			for ( const element of elements3 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}
 	
@@ -812,12 +825,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color4', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements4 = ['footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder'];
+			let elements4 = ['footer_widgets_links_color','footer_widgets_text_color','color_body_text','footer_credits_text_color','color_forms_placeholder','topbar_color','main_header_bottom_color','single_sticky_add_to_cart_style_color_content','loop_post_text_color'];
 		
 			for ( const element of elements4 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}
 		} );
@@ -826,12 +839,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color5', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements5 = ['color_forms_borders'];
+			let elements5 = ['color_forms_borders','single_product_tabs_remaining_borders','single_sticky_add_to_cart_style_color_border'];
 		
 			for ( const element of elements5 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}
 		} );
@@ -840,12 +853,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color6', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements6 = ['footer_widgets_background','footer_credits_background', 'content_cards_background'];
+			let elements6 = ['footer_widgets_background','footer_credits_background', 'content_cards_background','single_product_tabs_background_color','single_product_tabs_background_color_active','single_product_gallery_styles_background_color','single_sticky_add_to_cart_style_color_background'];
 		
 			for ( const element of elements6 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}	
 		} );
@@ -854,12 +867,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color7', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements7 = ['background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background'];
+			let elements7 = ['background_color','button_color','button_color_hover','scrolltop_color','scrolltop_color_hover','color_forms_background','topbar_background','single_product_reviews_advanced_section_bg_color'];
 		
 			for ( const element of elements7 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}	
 		} );
@@ -868,12 +881,12 @@ wp.customize.bind( 'ready', function () {
 	wp.customize( 'custom_color8', function( control ) { 
 		control.bind( function( value ) {
 
-			let elements8 = ['main_header_submenu_background','main_header_sticky_active_submenu_background_color','main_header_background','main_header_sticky_active_background','main_header_bottom_background','mobile_header_background','offcanvas_menu_background'];
+			let elements8 = ['main_header_submenu_background','main_header_sticky_active_submenu_background_color','main_header_background','main_header_sticky_active_background','main_header_bottom_background','mobile_header_background','offcanvas_menu_background','shop_archive_header_background_color','shop_archive_header_button_background_color','shop_archive_header_button_color_hover'];
 		
 			for ( const element of elements8 ) {
 				if( typeof wp.customize( element ) !== 'undefined' ) {
 					wp.customize( element ).set( value );
-					jQuery( '#customize-control-' + element ).find( '.wp-color-result' ).css( 'background-color', value );
+					jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', value );
 				}
 			}		
 		} );
