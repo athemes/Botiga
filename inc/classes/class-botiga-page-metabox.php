@@ -74,17 +74,21 @@ class Botiga_Page_Metabox {
 		//Disable transparent header
 		$disable_header_transparent = ( isset( $_POST['botiga_disable_header_transparent'] ) && '1' === $_POST['botiga_disable_header_transparent'] ) ? 1 : 0;
 		update_post_meta( $post_id, '_botiga_disable_header_transparent', $disable_header_transparent );	
+
+		//Hide page title
+		$hide_page_title = ( isset( $_POST['botiga_hide_page_title'] ) && '1' === $_POST['botiga_hide_page_title'] ) ? 1 : 0;
+		update_post_meta( $post_id, '_botiga_hide_page_title', $hide_page_title );	
 	}
 
 	public function render_meta_box_content( $post ) {
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'botiga_single_page_box', 'botiga_single_page_box_nonce' );
 
-		// Render generic content in all post types
-		$this->render_meta_box_content_specific_pts( $post );
-
 		// Render content in specific post types
 		$this->render_meta_box_content_all_pts( $post );
+
+		// Render generic content in all post types
+		$this->render_meta_box_content_specific_pts( $post );
 	}
 
 	/**
@@ -108,7 +112,8 @@ class Botiga_Page_Metabox {
 		}
 
 		$page_builder_mode 	= get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
-		$sidebar_layout		= get_post_meta( $post->ID, '_botiga_sidebar_layout', true ); ?>
+		$sidebar_layout		= get_post_meta( $post->ID, '_botiga_sidebar_layout', true ); 
+		$hide_page_title	= get_post_meta( $post->ID, '_botiga_hide_page_title', true ); ?>
 
 		<p>
 			<label><input type="checkbox" name="botiga_page_builder_mode" value="1" <?php checked( $page_builder_mode, 1 ); ?> /><?php esc_html_e( 'Page builder mode', 'botiga' ); ?></label>
@@ -123,7 +128,13 @@ class Botiga_Page_Metabox {
 				<option value="no-sidebar" <?php selected( $sidebar_layout, 'no-sidebar' ); ?>><?php esc_html_e( 'Disable sidebar for this page', 'botiga' ); ?></option>
 			</select>
 		</p>
-		<?php
+		<?php 
+		if( get_post_type() === 'page' ) : ?>
+			<p>
+				<label><input type="checkbox" name="botiga_hide_page_title" value="1" <?php checked( $hide_page_title, 1 ); ?> /><?php esc_html_e( 'Hide page title', 'botiga' ); ?></label>
+			</p>
+	<?php
+		endif;
 	}
 
 	/**

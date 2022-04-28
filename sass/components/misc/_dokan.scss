@@ -1,0 +1,15 @@
+/* 
+ * Dokan Misc
+ * This file should be as smallest possible.
+ * The purpose is handle with simple things. eg. single product pages vendor info.
+ * This way we avoid unnecessary dokan CSS
+ */
+
+// Single Product
+.seller-rating {
+    display: block;
+    height: 26px;
+    .width + span strong {
+        visibility: hidden;
+    }
+}

@@ -29,6 +29,8 @@ const editorStyleSRC = './sass/editor.scss';
 
 const woocommerceSRC = './sass/woocommerce.scss';
 
+const dokanSRC = './sass/dokan.scss';
+
 // Path to place the compiled CSS file. Default set to root folder.
 const styleDestination = './assets/css';
 
@@ -205,6 +207,7 @@ module.exports = {
 	customizerSRC,
 	editorStyleSRC,
 	woocommerceSRC,
+	dokanSRC,
 	styleDestination,
 	outputStyle,
 	errLogToConsole,

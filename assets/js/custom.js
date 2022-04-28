@@ -275,11 +275,21 @@ botiga.navigation = {
   checkMenuReverse: function checkMenuReverse() {
     var items = document.querySelectorAll('.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li');
 
-    for (var i = 0; i < items.length; i++) {
-      items[i].removeEventListener('mouseover', this.menuReverseEventHandler);
-      items[i].addEventListener('mouseover', this.menuReverseEventHandler);
-      items[i].removeEventListener('touchstart', this.menuReverseEventHandler);
-      items[i].addEventListener('touchstart', this.menuReverseEventHandler);
+    var _iterator5 = _createForOfIteratorHelper(items),
+        _step5;
+
+    try {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var element = _step5.value;
+        element.removeEventListener('mouseover', this.menuReverseEventHandler);
+        element.addEventListener('mouseover', this.menuReverseEventHandler);
+        element.removeEventListener('touchstart', this.menuReverseEventHandler);
+        element.addEventListener('touchstart', this.menuReverseEventHandler);
+      }
+    } catch (err) {
+      _iterator5.e(err);
+    } finally {
+      _iterator5.f();
     }
   },
   menuReverseEventHandler: function menuReverseEventHandler() {
@@ -349,28 +359,28 @@ botiga.headerSearch = {
       return;
     }
 
-    var _iterator5 = _createForOfIteratorHelper(button),
-        _step5;
+    var _iterator6 = _createForOfIteratorHelper(button),
+        _step6;
 
     try {
-      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-        var buttonEl = _step5.value;
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var buttonEl = _step6.value;
         buttonEl.addEventListener('click', function (e) {
           e.preventDefault(); // Hide other search icons 
 
           if (button.length > 1) {
-            var _iterator6 = _createForOfIteratorHelper(button),
-                _step6;
+            var _iterator7 = _createForOfIteratorHelper(button),
+                _step7;
 
             try {
-              for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-                var btn = _step6.value;
+              for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+                var btn = _step7.value;
                 btn.classList.toggle('hide');
               }
             } catch (err) {
-              _iterator6.e(err);
+              _iterator7.e(err);
             } finally {
-              _iterator6.f();
+              _iterator7.f();
             }
           }
 
@@ -392,9 +402,9 @@ botiga.headerSearch = {
         });
       }
     } catch (err) {
-      _iterator5.e(err);
+      _iterator6.e(err);
     } finally {
-      _iterator5.f();
+      _iterator6.f();
     }
 
     overlay.addEventListener('click', function () {
@@ -439,20 +449,20 @@ botiga.headerSearch = {
     return this;
   },
   backButtonsToDefaultState: function backButtonsToDefaultState(button) {
-    var _iterator7 = _createForOfIteratorHelper(button),
-        _step7;
+    var _iterator8 = _createForOfIteratorHelper(button),
+        _step8;
 
     try {
-      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-        var btn = _step7.value;
+      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+        var btn = _step8.value;
         btn.classList.remove('hide');
         btn.querySelector('.icon-cancel').classList.remove('active');
         btn.querySelector('.icon-search').classList.add('active');
       }
     } catch (err) {
-      _iterator7.e(err);
+      _iterator8.e(err);
     } finally {
-      _iterator7.f();
+      _iterator8.f();
     }
   }
 };
@@ -889,12 +899,12 @@ botiga.carousel = {
 
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
 
-    var _iterator8 = _createForOfIteratorHelper(carouselEls),
-        _step8;
+    var _iterator9 = _createForOfIteratorHelper(carouselEls),
+        _step9;
 
     try {
-      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-        var carouselEl = _step8.value;
+      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+        var carouselEl = _step9.value;
 
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
@@ -953,9 +963,9 @@ botiga.carousel = {
         }
       }
     } catch (err) {
-      _iterator8.e(err);
+      _iterator9.e(err);
     } finally {
-      _iterator8.f();
+      _iterator9.f();
     }
   },
   events: function events() {

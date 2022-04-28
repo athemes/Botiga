@@ -237,12 +237,12 @@ botiga.helpers = {
 	*/
 	checkMenuReverse: function() {	
 		const items = document.querySelectorAll( '.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li' );
-		for( let i=0;i<items.length;i++ ) {
-			items[i].removeEventListener( 'mouseover', this.menuReverseEventHandler );
-			items[i].addEventListener( 'mouseover', this.menuReverseEventHandler );
+		for(const element of items) {
+			element.removeEventListener( 'mouseover', this.menuReverseEventHandler );
+			element.addEventListener( 'mouseover', this.menuReverseEventHandler );
 
-			items[i].removeEventListener( 'touchstart', this.menuReverseEventHandler );
-			items[i].addEventListener( 'touchstart', this.menuReverseEventHandler );
+			element.removeEventListener( 'touchstart', this.menuReverseEventHandler );
+			element.addEventListener( 'touchstart', this.menuReverseEventHandler );
 		}
 	},
 

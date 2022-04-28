@@ -198,6 +198,11 @@
 			width: 100%;
 			text-align: center;
 			text-transform: uppercase;
+
+			// PayPal Button (extra plugin)
+			& + #ppc-button {
+				margin-top: 25px;
+			}
 		}
 	}
 

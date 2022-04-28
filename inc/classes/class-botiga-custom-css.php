@@ -121,11 +121,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				}
 			}
 
-			$headings_font_style 		= get_theme_mod( 'headings_font_style' );
+			$headings_font_style 		= get_theme_mod( 'headings_font_style', 'normal' );
 			$headings_line_height 		= get_theme_mod( 'headings_line_height', 1.2 );
-			$headings_letter_spacing 	= get_theme_mod( 'headings_letter_spacing' );
-			$headings_text_transform 	= get_theme_mod( 'headings_text_transform' );
-			$headings_text_decoration 	= get_theme_mod( 'headings_text_decoration' );
+			$headings_letter_spacing 	= get_theme_mod( 'headings_letter_spacing', 0 );
+			$headings_text_transform 	= get_theme_mod( 'headings_text_transform', 'none' );
+			$headings_text_decoration 	= get_theme_mod( 'headings_text_decoration', 'none' );
 
 			$css .= "h1,h2,h3,h4,h5,h6,.site-title { text-decoration:" . esc_attr( $headings_text_decoration ) . ";text-transform:" . esc_attr( $headings_text_transform ) . ";font-style:" . esc_attr( $headings_font_style ) . ";line-height:" . esc_attr( $headings_line_height ) . ";letter-spacing:" . esc_attr( $headings_letter_spacing ) . "px;}" . "\n";	
 
@@ -136,11 +136,11 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_font_sizes_css( 'h5_font_size', $defaults = array( 'desktop' => 18, 'tablet' => 16, 'mobile' => 16 ), 'h5' );
 			$css .= $this->get_font_sizes_css( 'h6_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'h6' );
 
-            $body_font_style 		= get_theme_mod( 'body_font_style' );
+            $body_font_style 		= get_theme_mod( 'body_font_style', 'normal' );
 			$body_line_height 		= get_theme_mod( 'body_line_height', 1.68 );
-			$body_letter_spacing 	= get_theme_mod( 'body_letter_spacing' );
-			$body_text_transform 	= get_theme_mod( 'body_text_transform' );
-			$body_text_decoration 	= get_theme_mod( 'body_text_decoration' );
+			$body_letter_spacing 	= get_theme_mod( 'body_letter_spacing', 0 );
+			$body_text_transform 	= get_theme_mod( 'body_text_transform', 'none' );
+			$body_text_decoration 	= get_theme_mod( 'body_text_decoration', 'none' );
 
 			$css .= "body { text-decoration:" . esc_attr( $body_text_decoration ) . ";text-transform:" . esc_attr( $body_text_transform ) . ";font-style:" . esc_attr( $body_font_style ) . ";line-height:" . esc_attr( $body_line_height ) . ";letter-spacing:" . esc_attr( $body_letter_spacing ) . "px;}" . "\n";
 			$css .= ".site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message { line-height: " . esc_attr( $body_line_height ) . "; }";
@@ -233,9 +233,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_border_color_css( 'main_header_minicart_count_background_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
 			$css .= $this->get_color_css( 'main_header_minicart_count_text_color', '', '.site-header-cart .count-number, .header-wishlist-icon .count-number' );
-			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header a svg:not(.stroke-based), .site-header a .dropdown-symbol .ws-svg-icon svg' );
-			$css .= $this->get_fill_css( 'main_header_color_hover', '', '.site-header .botiga-dropdown .menu > li:hover > .dropdown-symbol svg, .site-header a:hover svg:not(.stroke-based), .site-header a:hover .dropdown-symbol .ws-svg-icon svg' );
+			$css .= $this->get_fill_css( 'main_header_color', '', '.site-header a svg:not(.stroke-based), .site-header a svg:not(.stroke-based), .site-header a .dropdown-symbol .ws-svg-icon svg, .site-header .dropdown-symbol .ws-svg-icon svg' );
+			$css .= $this->get_fill_css( 'main_header_color_hover', '', '.site-header .botiga-dropdown .menu > li:hover > .dropdown-symbol svg, .site-header a:hover svg:not(.stroke-based), .site-header a:hover svg:not(.stroke-based), .site-header a:hover .dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_color', '', '.site-header .header-item svg.stroke-based' );
+			$css .= $this->get_stroke_css( 'main_header_color_hover', '', '.site-header .header-item a:hover svg.stroke-based' );
 			
 			// Bottom header row
 			$css .= $this->get_background_color_css( 'main_header_bottom_background', '', '.bottom-header-row' );
@@ -249,7 +250,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_border_color_css( 'main_header_bottom_color_hover', '#212121', '.bottom-header-row .header-login-register >a:hover:after', true );
 
 			$css .= $this->get_fill_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row .botiga-dropdown .menu > li:hover > .dropdown-symbol svg' );
-			$css .= $this->get_fill_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-item svg:not(.stroke-based),.dropdown-symbol .ws-svg-icon svg' );
+			$css .= $this->get_fill_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-item svg:not(.stroke-based),.bottom-header-row .dropdown-symbol .ws-svg-icon svg' );
 			$css .= $this->get_fill_css( 'main_header_bottom_color_hover', '#757575', '.bottom-header-row a:hover svg:not(.stroke-based),.bottom-header-row .dropdown-symbol:hover .ws-svg-icon svg' );
 			$css .= $this->get_stroke_css( 'main_header_bottom_color', '#212121', '.bottom-header-row .header-item svg.stroke-based' );
 			$css .= $this->get_stroke_css( 'main_header_bottom_color_hover', '#212121', '.bottom-header-row a:hover svg.stroke-based' );

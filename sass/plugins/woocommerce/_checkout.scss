@@ -27,6 +27,21 @@
 			}
 		}
 	}
+
+	fieldset {
+		border-width: 1px;
+		border-color: rgba($color__primary, 0.2);
+		border-style: solid;
+		padding: 20px;
+
+		& + fieldset {
+			margin-top: 25px;
+		}
+
+		&.wc-credit-card-form {
+			margin-top: 25px;
+		}
+	}
 }
 
 #ship-to-different-address {

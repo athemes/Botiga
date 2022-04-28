@@ -183,7 +183,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                         <?php foreach( $p_comments as $p_comment ) : ?>
                             <div id="comment-<?php echo esc_attr( $p_comment->comment_ID ); ?>" class="botiga-reviews-list-item">
                                 <div class="row">
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <div class="d-flex align-items-center">
 
                                             <?php 
@@ -214,7 +214,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                             </strong>
                                         </div>
                                     </div>
-                                    <div class="col-3 text-right">
+                                    <div class="col-md-3 botiga-review-date-wrapper">
                                         <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( 'c', $p_comment ) ); ?>"><?php echo esc_html( get_comment_date( 'F j, Y', $p_comment ) ); ?></time>
                                     </div>
                                     <div class="col-12">

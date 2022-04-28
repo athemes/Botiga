@@ -134,7 +134,7 @@ function botiga_free_vs_pro_html() {
 	<div class="thd-separator"></div>
 
 	<h4>
-		<a href="https://docs.athemes.com/article/397-differences-between-botiga-and-botiga-pro" target="_blank">
+		<a href="https://athemes.com/botiga-upgrade#see-all-features" target="_blank">
 			<?php esc_html_e( 'Full list of differences between Botiga and Botiga Pro', 'botiga' ); ?>
 		</a>
 	</h4>
@@ -142,7 +142,7 @@ function botiga_free_vs_pro_html() {
 	<div class="thd-separator"></div>
 
 	<p>
-		<a href="https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro" class="thd-button button">
+		<a href="https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro" class="thd-button button">
 			<?php esc_html_e( 'Get Botiga Pro Today', 'botiga' ); ?>
 		</a>
 	</p>
@@ -315,7 +315,7 @@ function botiga_dashboard_settings( $settings ) {
 	$settings['promo_title']  = esc_html__( 'Upgrade to Pro', 'botiga' );
 	$settings['promo_desc']   = esc_html__( 'Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga' );
 	$settings['promo_button'] = esc_html__( 'Discover Botiga Pro', 'botiga' );
-	$settings['promo_link']   = 'https://athemes.com/theme/botiga?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga#pro';
+	$settings['promo_link']   = 'https://athemes.com/botiga-upgrade?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
 
 	// Review.
 	$settings['review_link']       = 'https://wordpress.org/support/theme/botiga/reviews/';
@@ -323,7 +323,7 @@ function botiga_dashboard_settings( $settings ) {
 
 	// Support.
 	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
-	$settings['support_pro_link'] = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro';
+	$settings['support_pro_link'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
 
 	// Community.
 	$settings['community_link'] = 'https://www.facebook.com/groups/athemes/';

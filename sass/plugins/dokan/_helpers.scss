@@ -1,0 +1,98 @@
+/* Float */
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+/* Forms */
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+input,
+select,
+textarea,
+.select2-dropdown {
+    padding: 7px !important;
+    min-height: 0 !important;
+    line-height: 1 !important;
+    border-color: #EDEDED !important;
+}
+
+.select2-container .select2-selection--multiple {
+    min-height: 0 !important;
+}
+
+.select2-search__field {
+    font-size: 0.9rem !important;
+    padding: 0 5px !important;
+}
+
+.select2-container--open .select2-dropdown--below {
+    margin-top: 29px !important;
+}
+
+.form-label {
+    font-size: 0.85rem;
+}
+
+.form-row {
+    width: 100%;
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .form-row-first {
+        float:left;
+        margin-right: 3.8%;
+    }
+
+    .form-row-last {
+        float: right;
+        margin-right: 0;
+    }
+
+    .form-row-first,
+    .form-row-last {
+        width: 48.1%;
+    }
+}
+
+/* Buttons */
+button {
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+}
+
+.dokan-btn,
+.btn-theme {
+    padding: 7px 15px !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 6px !important;
+    &:hover {
+        color: #FFF;
+    }
+}
+
+.dokan-btn-theme {
+    color: #FFF !important;
+    text-decoration: none !important;
+}
+
+.dokan-btn-default {
+    &:hover {
+        color: #212121;
+    }
+}

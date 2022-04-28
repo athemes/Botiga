@@ -67,11 +67,11 @@ function botiga_enqueue_gutenberg_assets() {
 		$css .= 'div.editor-styles-wrapper .editor-post-title .editor-post-title__input, div.editor-styles-wrapper h1,div.editor-styles-wrapper h2,div.editor-styles-wrapper h3,div.editor-styles-wrapper h4,div.editor-styles-wrapper h5,div.editor-styles-wrapper h6 { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . ';}' . "\n";
 	}
 
-	$headings_font_style 		= get_theme_mod( 'headings_font_style' );
+	$headings_font_style 		= get_theme_mod( 'headings_font_style', 'normal' );
 	$headings_line_height 		= get_theme_mod( 'headings_line_height', 1.2 );
-	$headings_letter_spacing 	= get_theme_mod( 'headings_letter_spacing' );
-	$headings_text_transform 	= get_theme_mod( 'headings_text_transform' );
-	$headings_text_decoration 	= get_theme_mod( 'headings_text_decoration' );
+	$headings_letter_spacing 	= get_theme_mod( 'headings_letter_spacing', 0 );
+	$headings_text_transform 	= get_theme_mod( 'headings_text_transform', 'none' );
+	$headings_text_decoration 	= get_theme_mod( 'headings_text_decoration', 'none' );
 
 	$css .= "div.editor-styles-wrapper h1,div.editor-styles-wrapper h2,div.editor-styles-wrapper h3,div.editor-styles-wrapper h4,div.editor-styles-wrapper h5,div.editor-styles-wrapper h6 { text-decoration:" . esc_attr( $headings_text_decoration ) . ";text-transform:" . esc_attr( $headings_text_transform ) . ";font-style:" . esc_attr( $headings_font_style ) . ";line-height:" . esc_attr( $headings_line_height ) . ";letter-spacing:" . esc_attr( $headings_letter_spacing ) . "px;}" . "\n";	
 
@@ -82,11 +82,11 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'h5_font_size', $defaults = array( 'desktop' => 18, 'tablet' => 16, 'mobile' => 16 ), 'div.editor-styles-wrapper h5' );
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'h6_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'div.editor-styles-wrapper h6' );
 
-	$body_font_style 		= get_theme_mod( 'body_font_style' );
+	$body_font_style 		= get_theme_mod( 'body_font_style', 'normal' );
 	$body_line_height 		= get_theme_mod( 'body_line_height', 1.68 );
-	$body_letter_spacing 	= get_theme_mod( 'body_letter_spacing' );
-	$body_text_transform 	= get_theme_mod( 'body_text_transform' );
-	$body_text_decoration 	= get_theme_mod( 'body_text_decoration' );
+	$body_letter_spacing 	= get_theme_mod( 'body_letter_spacing', 0 );
+	$body_text_transform 	= get_theme_mod( 'body_text_transform', 'none' );
+	$body_text_decoration 	= get_theme_mod( 'body_text_decoration', 'none' );
 
 	$css .= "div.editor-styles-wrapper { text-decoration:" . esc_attr( $body_text_decoration ) . ";text-transform:" . esc_attr( $body_text_transform ) . ";font-style:" . esc_attr( $body_font_style ) . ";line-height:" . esc_attr( $body_line_height ) . ";letter-spacing:" . esc_attr( $body_letter_spacing ) . "px;}" . "\n";	
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'body_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'div.editor-styles-wrapper' );	

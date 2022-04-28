@@ -1770,6 +1770,10 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   margin-top: 15px;
 }
 
+.product-gallery-summary .botiga-accordion .price {
+  font-size: inherit !important;
+}
+
 .product-gallery-summary.gallery-side .flex-viewport {
   width: calc( 100% - 80px);
   float: right;
@@ -3051,6 +3055,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   text-transform: uppercase;
 }
 
+.woocommerce-cart .cart_totals .checkout-button + #ppc-button {
+  margin-top: 25px;
+}
+
 .woocommerce-cart .cart-collaterals {
   margin-top: 30px;
 }
@@ -3345,6 +3353,21 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   .woocommerce-checkout .woocommerce-form-login .form-row.form-row-last {
     padding-left: 10px;
   }
+}
+
+.woocommerce-checkout fieldset {
+  border-width: 1px;
+  border-color: rgba(33, 33, 33, 0.2);
+  border-style: solid;
+  padding: 20px;
+}
+
+.woocommerce-checkout fieldset + fieldset {
+  margin-top: 25px;
+}
+
+.woocommerce-checkout fieldset.wc-credit-card-form {
+  margin-top: 25px;
 }
 
 #ship-to-different-address {

@@ -328,6 +328,59 @@ gulp.task('woocommerceStylesMin', () => {
 			 })
 		 );
 });
+
+gulp.task('dokanStyles', () => {
+	return gulp
+		.src(config.dokanSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Dokan Styles Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('dokanStylesMin', () => {
+	return gulp
+		.src(config.dokanSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Dokan Styles Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
   * Task: `stylesRTL`.
@@ -859,6 +912,8 @@ gulp.task('woocommerceStylesMin', () => {
 		 gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
 		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStyles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin')); // Reload on SCSS file changes.
+		 gulp.watch(config.watchStyles, gulp.parallel('dokanStyles')); // Reload on SCSS file changes.
+		 gulp.watch(config.watchStyles, gulp.parallel('dokanStylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStyles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchJsVendor, gulp.series('vendorsJS', reload)); // Reload on vendorsJS file changes.

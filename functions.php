@@ -314,8 +314,16 @@ function botiga_remove_page_templates( $page_templates ) {
 	}
    
 	return $page_templates;
-  }
-  add_filter( 'theme_page_templates', 'botiga_remove_page_templates' );
+}
+add_filter( 'theme_page_templates', 'botiga_remove_page_templates' );
+
+/**
+ * Deactivate Elementor Wizard
+ */
+function botiga_deactivate_ele_onboarding() {
+	update_option( 'elementor_onboarded', true );
+}
+add_action( 'after_switch_theme', 'botiga_deactivate_ele_onboarding' );
 
 /**
  * Gutenberg editor
@@ -346,21 +354,28 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+	require get_template_directory() . '/inc/plugins/jetpack/jetpack.php';
 }
 
 /**
  * Load Max Mega Menu compatibility file.
  */
 if ( class_exists( 'Mega_Menu' ) ) {
-	require get_template_directory() . '/inc/max-mega-menu.php';
+	require get_template_directory() . '/inc/plugins/max-mega-menu/max-mega-menu.php';
 }
 
 /**
  * Load WooCommerce compatibility file.
  */
 if ( class_exists( 'WooCommerce' ) ) {
-	require get_template_directory() . '/inc/woocommerce/woocommerce.php';
+	require get_template_directory() . '/inc/plugins/woocommerce/woocommerce.php';
+}
+
+/**
+ * Load Dokan compatibility file.
+ */
+if( defined( 'DOKAN_PLUGIN_VERSION' ) ) {
+	require get_template_directory() . '/inc/plugins/dokan/dokan.php';
 }
 
 /**

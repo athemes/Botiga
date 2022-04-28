@@ -1,0 +1,61 @@
+.is-dokan-store-listing {
+
+    &.botiga-page-builder-mode {
+        .entry-content > * {
+            max-width: 100%;
+        }
+
+        #dokan-store-listing-filter-wrap,
+        #dokan-store-listing-filter-form-wrap {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        #dokan-seller-listing-wrap {
+            padding-right: 25px;
+            padding-left: 25px;
+            margin: 0;
+        }
+    }
+
+    .dokan-store-list-filter-button {
+        padding-left: 35px !important;
+    }
+
+    #dokan-store-listing-filter-form-wrap {
+        display: flex;
+        padding-top: 20px;
+        .store-search {
+            width: 100%;
+            margin-right: 15px;
+        }
+        .apply-filter {
+            margin-top: 0;
+        }
+    }
+
+    #dokan-seller-listing-wrap {
+        .dokan-single-seller {
+            .store-wrapper {
+                .store-header {
+                    .store-banner {
+                        min-height: 300px;
+                        img {
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                }
+            }
+        }
+        &.list-view {
+            .store-data {
+                h2 {
+                    font-size: 1.7rem !important;
+                    margin-bottom: 5px !important;
+                }
+            }
+        }
+    }
+
+}

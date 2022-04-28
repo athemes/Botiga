@@ -1,0 +1,31 @@
+/**
+ * Dokan styles override
+ */
+
+// Import variables and mixins
+@import "abstracts/abstracts";
+
+/**
+ * Helpers
+ */
+ @import "plugins/dokan/helpers";
+
+/**
+ * Dashboard
+ */
+@import "plugins/dokan/dashboard";
+
+/**
+ * Settings
+ */
+ @import "plugins/dokan/settings";
+
+/**
+ * Store Template
+ */
+ @import "plugins/dokan/store";
+
+/**
+ * Store Listing
+ */
+ @import "plugins/dokan/store-listing";

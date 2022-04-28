@@ -245,7 +245,6 @@ function botiga_main_wrapper_end() {
 }
 add_action( 'botiga_main_wrapper_end', 'botiga_main_wrapper_end' );
 
-
 /**
  * Page builder mode filters
  */
@@ -269,6 +268,28 @@ function botiga_page_builder_mode() {
 	}
 }
 add_action( 'wp', 'botiga_page_builder_mode' );
+
+/**
+ * Botiga page options
+ * 
+ */
+function botiga_page_options() {
+
+	global $post;
+
+	if( is_singular( 'product' ) ) {
+		return;
+	}
+
+	if ( isset( $post ) && is_singular() ) {
+		$hide_page_title	= get_post_meta( $post->ID, '_botiga_hide_page_title', true );
+
+		if ( $hide_page_title ) {
+			add_filter( 'botiga_entry_header', '__return_false' );
+		}
+	}
+}
+add_action( 'wp', 'botiga_page_options' );
 
 /**
  * Get social network

@@ -44,6 +44,9 @@
 
 .botiga-accordion__body-content {
     padding: 15px 0;
+    > h2 {
+        display: none;
+    }
     #comments {
         margin-top: 0;
     }

@@ -596,6 +596,11 @@ dd {
   margin: 0 1.5em 1.5em;
 }
 
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
 /* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
@@ -4917,8 +4922,29 @@ body {
   padding: 15px 0;
 }
 
+.botiga-accordion__body-content > h2 {
+  display: none;
+}
+
 .botiga-accordion__body-content #comments {
   margin-top: 0;
+}
+
+/* Dokan
+--------------------------------------------- */
+/* 
+ * Dokan Misc
+ * This file should be as smallest possible.
+ * The purpose is handle with simple things. eg. single product pages vendor info.
+ * This way we avoid unnecessary dokan CSS
+ */
+.seller-rating {
+  display: block;
+  height: 26px;
+}
+
+.seller-rating .width + span strong {
+  visibility: hidden;
 }
 
 /* Footer

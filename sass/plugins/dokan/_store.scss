@@ -1,0 +1,70 @@
+.dokan-store {
+
+    .content-wrapper {
+        max-width: 1500px;
+    }
+
+    // Sidebar
+    .dokan-store-menu {
+        .caret-icon {
+            float: right;
+        }
+    }
+
+    .dokan-store-sidebar {
+        .dokan-widget-area {
+            .widget {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                margin: 0 0 55px;
+                padding-bottom: 50px;
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // Store Time Popover
+    .store-times-heading {
+        h4 {
+            font-size: 1rem !important;
+            margin-top: 0;
+        }
+    }
+
+    .store-close {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+    }
+
+    // Tabs
+    .dokan-store-tabs {
+        ul {
+            li {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    // Search Area
+    .orderby {
+        margin-top: 15px;
+    }
+
+    .dokan-store-products-filter-search {
+        width: calc( 100% - 79px );
+    }
+
+    @media(min-width: 768px) {
+        .orderby {
+            max-width: 300px;
+            margin-top: 0;
+        }
+
+        .dokan-store-products-filter-search {
+            width: 250px;
+        }
+    }
+
+}
