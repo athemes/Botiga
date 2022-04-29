@@ -374,6 +374,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 /**
  * Load Dokan compatibility file.
  */
+if( defined( 'ELEMENTOR_VERSION' ) ) {
+	require get_template_directory() . '/inc/plugins/elementor/elementor.php';
+}
+
+/**
+ * Load Elementor compatibility file.
+ */
 if( defined( 'DOKAN_PLUGIN_VERSION' ) ) {
 	require get_template_directory() . '/inc/plugins/dokan/dokan.php';
 }

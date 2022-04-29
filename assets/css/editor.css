@@ -379,6 +379,11 @@ div.editor-styles-wrapper dd {
   margin: 0 1.5em 1.5em;
 }
 
+div.editor-styles-wrapper .list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
 div.editor-styles-wrapper table {
   margin: 0 0 30px;
   width: 100%;

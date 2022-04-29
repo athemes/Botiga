@@ -34,7 +34,9 @@
 	/**
 	 * Header
 	 */
-	do_action( 'botiga_header' );
+	if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) {
+		do_action( 'botiga_header' );
+	}
 
 	/**
 	 * Page Header

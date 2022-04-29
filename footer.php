@@ -22,7 +22,9 @@
 	 * Footer
 	 */
 	do_action( 'botiga_footer_before' );
-	do_action( 'botiga_footer' ); 
+	if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'footer' ) ) {
+		do_action( 'botiga_footer' );
+	}
 	do_action( 'botiga_footer_after' ); ?>
 
 </div><!-- #page -->

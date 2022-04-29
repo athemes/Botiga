@@ -352,8 +352,8 @@ botiga.headerSearch = {
         button = document.querySelectorAll('.header-search'),
         form = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('#masthead-mobile .header-search-form') : document.querySelector('#masthead .header-search-form'),
         overlay = document.getElementsByClassName('search-overlay')[0],
-        searchInput = form.getElementsByClassName('search-field')[0],
-        searchBtn = form.getElementsByClassName('search-submit')[0];
+        searchInput = form !== null ? form.getElementsByClassName('search-field')[0] : undefined,
+        searchBtn = form !== null ? form.getElementsByClassName('search-submit')[0] : undefined;
 
     if (button.length === 0) {
       return;
