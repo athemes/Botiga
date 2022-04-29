@@ -16,7 +16,7 @@ function botiga_get_default_single_product_components() {
 		'woocommerce_template_single_excerpt',
 		'woocommerce_template_single_add_to_cart',
 		'botiga_divider_output',
-		'woocommerce_template_single_meta'
+		'woocommerce_template_single_meta',
 	);
 
 	if( 'layout1' !== get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) ) {
@@ -66,7 +66,7 @@ function botiga_get_quick_view_summary_components( $components = array() ) {
 }
 
 /**
- * Divider
+ * Divider output
  */
 function botiga_divider_output() {
 	echo '<hr class="divider">';
@@ -371,4 +371,26 @@ function botiga_single_product_price( $hook_prefix = '' ) {
 	<p class="<?php echo esc_attr( apply_filters( "botiga_{$hook_prefix}_product_price_class", 'price' ) ); ?>"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
 <?php
+}
+
+/**
+ * Single product elements HTML output
+ */
+function botiga_single_product_html() {
+	$html = get_theme_mod( 'botiga_single_product_html_content', '' );
+
+	echo '<div class="html-content">';
+		echo wp_kses_post( $html );
+	echo '</div>';
+}
+
+/**
+ * Single product elements Shortcode output
+ */
+function botiga_single_product_shortcode() {
+	$shortcode = get_theme_mod( 'botiga_single_product_shortcode_content', '' );
+
+	echo '<div class="shortcode-content">';
+		echo do_shortcode( $shortcode );
+	echo '</div>';
 }
