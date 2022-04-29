@@ -394,6 +394,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
 			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'center' );
 			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
+			$hide_offcanvas_logo               = get_theme_mod( 'desktop_offcanvas_hide_logo', 0 );
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
@@ -417,9 +418,13 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<div class="botiga-desktop-offcanvas vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
 						<a class="desktop-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						<div class="row">
+							
+							<?php if( ! $hide_offcanvas_logo ) : ?>
 							<div class="col-12">
 								<?php $this->logo(); ?>
 							</div>
+							<?php endif; ?>
+
 							<div class="col-12">
 								<?php $this->menu(); ?>
 							</div>
@@ -444,6 +449,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
 			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'center' );
 			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
+			$hide_offcanvas_logo               = get_theme_mod( 'desktop_offcanvas_hide_logo', 0 );
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
@@ -464,9 +470,13 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<div class="botiga-desktop-offcanvas vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
 						<a class="desktop-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						<div class="row">
+
+							<?php if( ! $hide_offcanvas_logo ) : ?>
 							<div class="col-12">
 								<?php $this->logo(); ?>
 							</div>
+							<?php endif; ?>
+
 							<div class="col-12">
 								<?php $this->menu(); ?>
 							</div>
