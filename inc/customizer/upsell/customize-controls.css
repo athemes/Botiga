@@ -21,6 +21,8 @@
 }
 
 #customize-theme-controls #accordion-section-botiga_upsell h3 {
+	display: flex;
+    align-items: center;
 	background-color: #f7f7f7;
 	padding: 25px 14px;
 }

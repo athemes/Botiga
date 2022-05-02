@@ -73,8 +73,8 @@ final class Botiga_Customize_Upsell {
 				$manager,
 				'botiga_upsell',
 				array(
-					'title'    => esc_html__( 'Ready for more?', 'botiga' ),
-					'pro_text' => esc_html__( 'Get Botiga Pro',  'botiga' ),
+					'title'    => esc_html__( 'Want More Customization Options?', 'botiga' ),
+					'pro_text' => esc_html__( 'Buy Botiga Pro',  'botiga' ),
 					'pro_url'  => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer&utm_medium=botiga_customizer&utm_campaign=Botiga',
 					'priority' => -999,
 				)

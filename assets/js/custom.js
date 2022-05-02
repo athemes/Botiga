@@ -803,6 +803,7 @@ botiga.backToTop = {
     window.addEventListener('scroll', function () {
       this.backToTop();
     }.bind(this));
+    this.safariDoubleClickFix();
   },
   backToTop: function backToTop() {
     var button = document.getElementsByClassName('back-to-top')[0];
@@ -816,13 +817,24 @@ botiga.backToTop = {
         button.classList.remove('display');
       }
 
-      button.addEventListener('click', function () {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        });
-      });
+      button.removeEventListener('click', this.scrollToTop);
+      button.addEventListener('click', this.scrollToTop);
+    }
+  },
+  scrollToTop: function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  },
+  // Unknown safari issue. If we add a 'touchend' event listener to the button the problem is resolved.
+  // Fixes: https://wordpress.org/support/topic/double-tap-issue-on-mobile/
+  safariDoubleClickFix: function safariDoubleClickFix() {
+    var add_to_cart = document.querySelector('.product-gallery-summary .botiga-single-addtocart-wrapper .button');
+
+    if (add_to_cart !== null) {
+      add_to_cart.addEventListener('touchend', function () {});
     }
   }
 };

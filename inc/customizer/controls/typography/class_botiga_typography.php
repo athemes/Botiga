@@ -67,7 +67,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 			$isFontInList = false;
 			$fontListStr = '';
 
-			if( !empty($this->fontList) ) {
+			if( !empty($this->fontList) && $this->fontList !== 'error' ) {
 				?>
 				<?php if( !empty( $this->label ) ) { ?>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
@@ -118,6 +118,14 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 					<input type="hidden" class="google-fonts-category" value="<?php echo esc_html( $this->fontValues->category ); ?>">
 				</div>
 				<?php
+			} else if( $this->fontList === 'error' ) {
+                echo wp_kses_post( 
+                    sprintf(
+                        /* translators: 1: How to use adobe fonts docs link */
+                        __( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded. Please contact our support <a href="%s" target="_blank">here</a> to get help.', 'botiga' ),
+                        'https://athemes.com/support/'
+                    )
+                );
 			}
 		}
 
@@ -125,11 +133,16 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 		 * Find the index of the saved font in our multidimensional array of Google Fonts
 		 */
 		public function get_font_index( $haystack, $needle ) {
+			if( 'error' === $haystack ) {
+				return false;
+			}
+
 			foreach( $haystack as $key => $value ) {
 				if( $value->family == $needle ) {
 					return $key;
 				}
 			}
+
 			return false;
 		}
 
@@ -140,8 +153,10 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 			$fontFile = get_template_directory_uri() . '/inc/customizer/controls/typography/google-fonts-alphabetical.json';
 
 			$request = wp_remote_get( $fontFile );
-			if( is_wp_error( $request ) ) {
-				return "";
+			$status  = wp_remote_retrieve_response_code( $request );
+
+			if( is_wp_error( $request ) || $status !== 200 ) {
+				return "error";
 			}
 
 			$body = wp_remote_retrieve_body( $request );

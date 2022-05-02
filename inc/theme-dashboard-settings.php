@@ -142,7 +142,7 @@ function botiga_free_vs_pro_html() {
 	<div class="thd-separator"></div>
 
 	<p>
-		<a href="https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro" class="thd-button button">
+		<a href="https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro" class="thd-button thd-button-success button">
 			<?php esc_html_e( 'Get Botiga Pro Today', 'botiga' ); ?>
 		</a>
 	</p>
@@ -311,6 +311,9 @@ function botiga_dashboard_settings( $settings ) {
 	// Documentation.
 	$settings['documentation_link'] = 'https://docs.athemes.com/collection/318-botiga';
 
+	// Upgrade to Pro.
+	$settings['upgrade_pro']   = 'https://athemes.com/botiga-upgrade?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
+
 	// Promo.
 	$settings['promo_title']  = esc_html__( 'Upgrade to Pro', 'botiga' );
 	$settings['promo_desc']   = esc_html__( 'Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga' );
@@ -323,7 +326,7 @@ function botiga_dashboard_settings( $settings ) {
 
 	// Support.
 	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
-	$settings['support_pro_link'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
+	$settings['support_pro_link'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_support&utm_medium=button&utm_campaign=Botiga';
 
 	// Community.
 	$settings['community_link'] = 'https://www.facebook.com/groups/athemes/';

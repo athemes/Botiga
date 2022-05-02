@@ -656,11 +656,11 @@ class Botiga_Theme_Dashboard {
 											<div class="thd-badge"><?php esc_html_e( 'pro', 'botiga' ); ?></div>
 										</div>
 
-										<div class="thd-description"><?php esc_html_e( 'Want your questions answered faster? Go Pro to be first in the queue!', 'botiga' ); ?></div>
+										<div class="thd-description"><?php esc_html_e( 'Get direct support from our developers via email. We aim to answer all priority support requests within 24 hours.', 'botiga' ); ?></div>
 
 										<div class="thd-button-wrap">
 											<a href="<?php echo esc_url( $this->settings['support_pro_link'] ); ?>" class="thd-button button" target="_blank">
-												<?php echo esc_html_e( 'Go PRO', 'botiga' ); ?>
+												<?php echo esc_html_e( 'Get Priority Support with Botiga Pro', 'botiga' ); ?>
 											</a>
 										</div>
 									</div>
@@ -708,6 +708,21 @@ class Botiga_Theme_Dashboard {
 								</div>
 							</div>
 						<?php } ?>
+
+						<div class="thd-panel thd-panel-upgrade-pro">
+							<div class="thd-panel-head">
+								<h3 class="thd-panel-title"><?php esc_html_e( 'Upgrade to Pro', 'botiga' ); ?></h3>
+							</div>
+							<div class="thd-panel-content">
+								<div class="thd-description"><?php esc_html_e( 'Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga' ); ?></div>
+
+								<div class="thd-button-wrap">
+									<a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="thd-button button" target="_blank">
+										<?php echo esc_html_e( 'Discover Botiga Pro', 'botiga' ); ?>
+									</a>
+								</div>
+							</div>
+						</div>
 
 						<div class="thd-panel thd-panel-review">
 							<div class="thd-panel-head">

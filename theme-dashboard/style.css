@@ -287,20 +287,16 @@
     align-items: flex-start;
     padding: 24px; }
   .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary {
-    background: linear-gradient(116.29deg, #335EEA 0%, #2143B1 100%);
-    color: #FFFFFF; }
+    background: #F8F9FD; }
     .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary .thd-title {
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      color: #FFFFFF; }
+      justify-content: space-between; }
     .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary .thd-badge {
-      background: #FFFFFF;
-      color: #007CBA;
+      background: #007CBA;
+      color: #FFF;
       font-weight: normal; }
-    .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary .thd-description {
-      color: #FFFFFF; }
     .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary .thd-button {
       border-color: #3FB28F;
       background: #3FB28F;
@@ -559,3 +555,25 @@
     .notice.thd-theme-dashboard-notice .notice-dismiss {
       z-index: 19;
     }
+
+.thd-theme-dashboard .thd-panel-upgrade-pro {
+  background: #F8F9FD;}
+  .thd-theme-dashboard .thd-panel-upgrade-pro .thd-button-wrap {
+    margin-top: 1.5rem;}
+  .thd-theme-dashboard .thd-panel-upgrade-pro .thd-button {
+    border-color: #3FB28F;
+    background: #3FB28F;
+    color: #FFFFFF; }
+    .thd-theme-dashboard .thd-panel-upgrade-pro .thd-button:hover {
+      border-color: #FFFFFF;
+      background: #FFFFFF;
+      color: #3FB28F; }
+
+.thd-button-success {
+  border-color: #3FB28F !important;
+  background: #3FB28F !important;
+  color: #FFFFFF !important; }
+  .thd-button-success:hover {
+    border-color: #4cc5a1 !important;
+    background: #4cc5a1 !important;
+    color: #FFF !important; }

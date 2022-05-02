@@ -3712,6 +3712,12 @@ form.woocommerce-checkout {
   height: 100%;
 }
 
+/* WooCommerce Amazon Pay compatibility */
+#amazon_customer_details .col-1,
+#amazon_customer_details .col-2 {
+  max-width: 100%;
+}
+
 /**
  * General WooCommerce components
  */
