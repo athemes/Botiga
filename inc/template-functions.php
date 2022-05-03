@@ -813,3 +813,144 @@ function botiga_localize_carousel_options() {
 		'autoplayTimeout' => 5000
 	);
 }
+
+/**
+ * Allowed HTML
+ */
+function botiga_allowed_html() {
+	return array(
+		'i' => array(
+			'class' => true
+		),
+		'svg'     => array(
+			'class'       => true,
+			'xmlns'       => true,
+			'width'       => true,
+			'height'      => true,
+			'viewbox'     => true,
+			'aria-hidden' => true,
+			'role'        => true,
+			'focusable'   => true,
+			'fill'      => true,
+		),
+		'path'    => array(
+			'fill'      => true,
+			'fill-rule' => true,
+			'd'         => true,
+			'transform' => true,
+			'stroke'	=> true,
+			'stroke-width' => true,
+			'stroke-linejoin' => true
+		),
+		'polygon' => array(
+			'fill'      => true,
+			'fill-rule' => true,
+			'points'    => true,
+			'transform' => true,
+			'focusable' => true,
+		),
+		'rect'    => array(
+			'x'      => true,
+			'y'      => true,
+			'width'  => true,
+			'height' => true,
+			'transform' => true
+		),				
+	);
+}
+
+/**
+ * Get Header Search Icon
+ */
+function botiga_get_header_search_icon( $echo = false ) {
+	$icon = get_theme_mod( 'search_icon', 'icon-search' );
+
+	$output = '';
+	if( $icon !== 'icon-custom' ) {
+		$output .= '<i class="ws-svg-icon icon-search active">' . botiga_get_svg_icon( $icon ) . '</i>';
+	} else {
+		$type = get_theme_mod( 'search_icon_custom_type', 'image' );
+
+		if( $type === 'image' ) {
+			$image_id = get_theme_mod( 'search_icon_custom_image', 0 );
+
+			$output .= '<i class="ws-svg-icon icon-search active">' . wp_get_attachment_image( $image_id, 'botiga-header-icons' ) . '</i>';
+		} else {
+			$html_content = get_theme_mod( 'search_icon_custom_html', '' );
+
+			$output .= '<i class="ws-svg-icon icon-search active">';
+			$output .= wp_kses(
+				$html_content,
+				array_merge(
+					wp_kses_allowed_html(),
+					botiga_allowed_html()
+				)
+			);
+			$output .= '</i>';
+		}
+	}
+
+	$output .= '<i class="ws-svg-icon icon-cancel">' . botiga_get_svg_icon( 'icon-cancel' ) . '</i>';
+
+	if ( $echo != false ) {
+		echo $output; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} else {
+		return $output;
+	}
+}
+
+/**
+ * Get Header Icon
+ */
+function botiga_get_header_icon( $identifier = '', $echo = false ) {
+	if( ! $identifier ) {
+		return '';
+	}
+
+	switch ( $identifier ) {
+		case 'cart':
+			$icon     	  = get_theme_mod( 'cart_icon', 'icon-cart' );
+			$type 		  = get_theme_mod( 'cart_icon_custom_type', 'image' );
+			$image_id 	  = get_theme_mod( 'cart_icon_custom_image', 0 );
+			$html_content = get_theme_mod( 'cart_icon_custom_html', '' );
+			break;
+
+		case 'account':
+			$icon 	  	  = get_theme_mod( 'account_icon', 'icon-user' );
+			$type 		  = get_theme_mod( 'account_icon_custom_type', 'image' );
+			$image_id 	  = get_theme_mod( 'account_icon_custom_image', 0 );
+			$html_content = get_theme_mod( 'account_icon_custom_html', '' );
+			break;
+
+		case 'wishlist':
+			$icon 	  	  = get_theme_mod( 'wishlist_icon', 'icon-user' );
+			$type 		  = get_theme_mod( 'wishlist_icon_custom_type', 'image' );
+			$image_id 	  = get_theme_mod( 'wishlist_icon_custom_image', 0 );
+			$html_content = get_theme_mod( 'wishlist_icon_custom_html', '' );
+			break;
+		
+	}
+
+	$output = '';
+	if( $icon !== 'icon-custom' ) {
+		$output .= botiga_get_svg_icon( $icon );
+	} else {
+		if( $type === 'image' ) {
+			$output .= wp_get_attachment_image( $image_id, apply_filters( 'botiga_header_icons_image_size', 'botiga-header-icons' ) );
+		} else {
+			$output .= wp_kses(
+				$html_content,
+				array_merge(
+					wp_kses_allowed_html(),
+					botiga_allowed_html()
+				)
+			);
+		}
+	}
+
+	if ( $echo != false ) {
+		echo $output; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} else {
+		return $output;
+	}
+}

@@ -17,7 +17,7 @@ if ( is_cart() ) {
 ?>
 
 <?php if ( $show_account ) : ?>
-<?php echo '<a class="header-item wc-account-link" href="' . esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ) . '" title="' . esc_html__( 'Your account', 'botiga' ) . '"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-user', false ) . '</i></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+<?php echo '<a class="header-item wc-account-link" href="' . esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ) . '" title="' . esc_html__( 'Your account', 'botiga' ) . '"><i class="ws-svg-icon">' . botiga_get_header_icon( 'account' ) . '</i></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 <?php endif; ?>	
 
 <?php if ( $show_cart ) : ?>
@@ -44,6 +44,6 @@ if ( is_cart() ) {
     $wishlist_count = isset( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ? count( explode( ',', sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ) ) ) : 0; ?>
     <a class="header-item header-wishlist-icon bt-d-inline-block" href="<?php echo esc_url( get_permalink( get_option('botiga_wishlist_page_id') ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
         <span class="count-number"><?php echo esc_html( $wishlist_count ); ?></span>
-        <i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-wishlist', true ); ?></i>
+        <i class="ws-svg-icon"><?php botiga_get_header_icon( 'wishlist', true ); ?></i>
     </a>
 <?php endif; ?>

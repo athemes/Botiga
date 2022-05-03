@@ -802,8 +802,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function search() {
 			?>
 				<a href="#" class="header-search header-item">
-					<i class="ws-svg-icon icon-search active"><?php botiga_get_svg_icon( 'icon-search', true ); ?></i>
-					<i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i>
+					<?php botiga_get_header_search_icon( true ); ?>
 				</a>
 			<?php
 		}

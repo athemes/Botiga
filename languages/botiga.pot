@@ -1698,7 +1698,7 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/mini-cart.php:62
+#: inc/plugins/woocommerce/features/mini-cart.php:59
 msgid "View your shopping cart"
 msgstr ""
 
@@ -2231,15 +2231,15 @@ msgstr ""
 msgid "View Cart"
 msgstr ""
 
-#: template-parts/header-mobile/content-header-mobile-icons.php:20, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:20, template-parts/header/content-header-icons.php:22
+#: template-parts/header-mobile/content-header-mobile-icons.php:20, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:20, template-parts/header/content-header-icons.php:20
 msgid "Your account"
 msgstr ""
 
-#: template-parts/header-mobile/content-header-mobile-icons.php:34, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:34, template-parts/header/content-header-icons.php:36
+#: template-parts/header-mobile/content-header-mobile-icons.php:34, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:34, template-parts/header/content-header-icons.php:34
 msgid "Your Cart"
 msgstr ""
 
-#: template-parts/header-mobile/content-header-mobile-icons.php:45, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:45, template-parts/header/content-header-icons.php:47
+#: template-parts/header-mobile/content-header-mobile-icons.php:45, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:45, template-parts/header/content-header-icons.php:45
 msgid "Your wishlist"
 msgstr ""
 

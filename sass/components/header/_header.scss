@@ -416,6 +416,12 @@
     &:last-child {
         margin-right: 0;
     }
+
+    .ws-svg-icon {
+        img {
+            max-width: 26px;
+        }
+    }
 }
 
 .header-login-register,

@@ -279,3 +279,16 @@ function botiga_google_fonts_sanitize( $input ) {
     }
     return $input;
 }
+
+/**
+ * Sanitize HTML with SVG
+ */
+function botiga_html_svg_sanitize( $input ) {
+    return wp_kses(
+        $input,
+        array_merge(
+            wp_kses_allowed_html(),
+            botiga_allowed_html()
+        )
+    );
+}

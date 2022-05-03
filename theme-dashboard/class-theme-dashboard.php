@@ -708,21 +708,23 @@ class Botiga_Theme_Dashboard {
 								</div>
 							</div>
 						<?php } ?>
+						
+						<?php if ( ! $this->has_pro ) { ?>
+							<div class="thd-panel thd-panel-upgrade-pro">
+								<div class="thd-panel-head">
+									<h3 class="thd-panel-title"><?php esc_html_e( 'Upgrade to Pro', 'botiga' ); ?></h3>
+								</div>
+								<div class="thd-panel-content">
+									<div class="thd-description"><?php esc_html_e( 'Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga' ); ?></div>
 
-						<div class="thd-panel thd-panel-upgrade-pro">
-							<div class="thd-panel-head">
-								<h3 class="thd-panel-title"><?php esc_html_e( 'Upgrade to Pro', 'botiga' ); ?></h3>
-							</div>
-							<div class="thd-panel-content">
-								<div class="thd-description"><?php esc_html_e( 'Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga' ); ?></div>
-
-								<div class="thd-button-wrap">
-									<a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="thd-button button" target="_blank">
-										<?php echo esc_html_e( 'Discover Botiga Pro', 'botiga' ); ?>
-									</a>
+									<div class="thd-button-wrap">
+										<a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="thd-button button" target="_blank">
+											<?php echo esc_html_e( 'Discover Botiga Pro', 'botiga' ); ?>
+										</a>
+									</div>
 								</div>
 							</div>
-						</div>
+						<?php } ?>
 
 						<div class="thd-panel thd-panel-review">
 							<div class="thd-panel-head">

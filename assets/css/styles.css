@@ -2637,6 +2637,10 @@ body.mobile-menu-visible {
   margin-right: 0;
 }
 
+.header-item .ws-svg-icon img {
+  max-width: 26px;
+}
+
 .header-login-register,
 .top-bar-login-register {
   position: relative;

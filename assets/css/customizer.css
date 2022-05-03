@@ -774,6 +774,7 @@ span.delete:hover {
 }
 
 .botiga-radio-images-wrapper {
+  position: relative;
   margin: 0 -5px;
 }
 
@@ -1135,4 +1136,8 @@ span.delete:hover {
   padding: 15px 18px;
   border: 1px solid #ffc0c0;
   border-radius: 6px;
+}
+
+.customize-control-botiga-radio-image .ui-helper-hidden-accessible {
+  top: 0;
 }
