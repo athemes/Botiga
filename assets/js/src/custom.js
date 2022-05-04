@@ -765,7 +765,7 @@ botiga.quickView = {
 		var button 		= document.getElementsByClassName( 'back-to-top' )[0];
 
 		if ( 'undefined' !== typeof button ) {
-			var scrolled 	= window.scrollY;
+			var scrolled 	= window.pageYOffset;
 
 			if ( scrolled > 300 ) {
 				button.classList.add( 'display' );

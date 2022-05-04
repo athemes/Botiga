@@ -39,7 +39,7 @@ $wp_customize->add_control(
 		'label' 	=> esc_html__( 'Fonts Library', 'botiga' ),
 		'choices'   => array(
 			'google' 	=> esc_html__( 'Google Fonts', 'botiga' ),
-			'adobe' 	=> esc_html__( 'Adobe Type Kit', 'botiga' )
+			'adobe' 	=> esc_html__( 'Adobe Fonts', 'botiga' )
 		),
 	) 
 );
@@ -75,7 +75,7 @@ $wp_customize->add_section(
 	)
 );
 
-// Adobe Type Kit Fonts
+// Adobe Fonts
 $wp_customize->add_setting( 'botiga_headings_adobe_font',
 	array(
 		'default'           => 'system-default|n4',
@@ -538,7 +538,7 @@ $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'botig
 	)
 ) );
 
-// Adobe Type Kit Fonts
+// Adobe Fonts
 $wp_customize->add_setting( 'botiga_body_adobe_font',
 	array(
 		'default'           => 'system-default|n4',

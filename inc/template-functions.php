@@ -815,48 +815,31 @@ function botiga_localize_carousel_options() {
 }
 
 /**
- * Allowed HTML
+ * Botiga get image
  */
-function botiga_allowed_html() {
-	return array(
-		'i' => array(
-			'class' => true
-		),
-		'svg'     => array(
-			'class'       => true,
-			'xmlns'       => true,
-			'width'       => true,
-			'height'      => true,
-			'viewbox'     => true,
-			'aria-hidden' => true,
-			'role'        => true,
-			'focusable'   => true,
-			'fill'      => true,
-		),
-		'path'    => array(
-			'fill'      => true,
-			'fill-rule' => true,
-			'd'         => true,
-			'transform' => true,
-			'stroke'	=> true,
-			'stroke-width' => true,
-			'stroke-linejoin' => true
-		),
-		'polygon' => array(
-			'fill'      => true,
-			'fill-rule' => true,
-			'points'    => true,
-			'transform' => true,
-			'focusable' => true,
-		),
-		'rect'    => array(
-			'x'      => true,
-			'y'      => true,
-			'width'  => true,
-			'height' => true,
-			'transform' => true
-		),				
-	);
+function botiga_get_image( $image_id = '', $size = 'thumbnail', $echo = false ) {
+	if( ! $image_id ) {
+		return '';
+	}
+
+	$output = '';
+	
+	// check file type
+	$image_src = wp_get_attachment_image_src( $image_id );
+
+	if( strpos( $image_src[0], '.svg' ) !== FALSE ) {
+		$output .= '<div class="botiga-image is-svg" style="mask: url('. esc_attr( $image_src[0] ) .') no-repeat center / contain; -webkit-mask: url('. esc_attr( $image_src[0] ) .') no-repeat center / contain">';
+			$output .= wp_get_attachment_image( $image_id, $size, false, array( 'style' => 'opacity: 0;' ) );
+		$output .= '</div>';
+	} else {
+		$output .= wp_get_attachment_image( $image_id, $size );
+	}
+
+	if ( $echo != false ) {
+		echo $output; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} else {
+		return $output;
+	}
 }
 
 /**
@@ -869,25 +852,8 @@ function botiga_get_header_search_icon( $echo = false ) {
 	if( $icon !== 'icon-custom' ) {
 		$output .= '<i class="ws-svg-icon icon-search active">' . botiga_get_svg_icon( $icon ) . '</i>';
 	} else {
-		$type = get_theme_mod( 'search_icon_custom_type', 'image' );
-
-		if( $type === 'image' ) {
-			$image_id = get_theme_mod( 'search_icon_custom_image', 0 );
-
-			$output .= '<i class="ws-svg-icon icon-search active">' . wp_get_attachment_image( $image_id, 'botiga-header-icons' ) . '</i>';
-		} else {
-			$html_content = get_theme_mod( 'search_icon_custom_html', '' );
-
-			$output .= '<i class="ws-svg-icon icon-search active">';
-			$output .= wp_kses(
-				$html_content,
-				array_merge(
-					wp_kses_allowed_html(),
-					botiga_allowed_html()
-				)
-			);
-			$output .= '</i>';
-		}
+		$image_id = get_theme_mod( 'search_icon_custom_image', 0 );
+		$output .= '<i class="ws-svg-icon icon-search active">' . botiga_get_image( $image_id, apply_filters( 'botiga_header_icons_image_size', 'botiga-header-icons' ) ) . '</i>';
 	}
 
 	$output .= '<i class="ws-svg-icon icon-cancel">' . botiga_get_svg_icon( 'icon-cancel' ) . '</i>';
@@ -910,23 +876,17 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
 	switch ( $identifier ) {
 		case 'cart':
 			$icon     	  = get_theme_mod( 'cart_icon', 'icon-cart' );
-			$type 		  = get_theme_mod( 'cart_icon_custom_type', 'image' );
 			$image_id 	  = get_theme_mod( 'cart_icon_custom_image', 0 );
-			$html_content = get_theme_mod( 'cart_icon_custom_html', '' );
 			break;
 
 		case 'account':
 			$icon 	  	  = get_theme_mod( 'account_icon', 'icon-user' );
-			$type 		  = get_theme_mod( 'account_icon_custom_type', 'image' );
 			$image_id 	  = get_theme_mod( 'account_icon_custom_image', 0 );
-			$html_content = get_theme_mod( 'account_icon_custom_html', '' );
 			break;
 
 		case 'wishlist':
 			$icon 	  	  = get_theme_mod( 'wishlist_icon', 'icon-user' );
-			$type 		  = get_theme_mod( 'wishlist_icon_custom_type', 'image' );
 			$image_id 	  = get_theme_mod( 'wishlist_icon_custom_image', 0 );
-			$html_content = get_theme_mod( 'wishlist_icon_custom_html', '' );
 			break;
 		
 	}
@@ -935,17 +895,7 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
 	if( $icon !== 'icon-custom' ) {
 		$output .= botiga_get_svg_icon( $icon );
 	} else {
-		if( $type === 'image' ) {
-			$output .= wp_get_attachment_image( $image_id, apply_filters( 'botiga_header_icons_image_size', 'botiga-header-icons' ) );
-		} else {
-			$output .= wp_kses(
-				$html_content,
-				array_merge(
-					wp_kses_allowed_html(),
-					botiga_allowed_html()
-				)
-			);
-		}
+		$output .= botiga_get_image( $image_id, apply_filters( 'botiga_header_icons_image_size', 'botiga-header-icons' ) );
 	}
 
 	if ( $echo != false ) {

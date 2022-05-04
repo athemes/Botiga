@@ -204,7 +204,7 @@ function botiga_customize_control_adobe_font_kits_output( $kits = false, $echo =
 		
 		<div class="botiga-adobe_fonts_kits_wrapper" style="margin-bottom: 25px;">
 
-			<p><?php echo esc_html__( 'You have the following data in your Adobe Type Kit account.', 'botiga' ); ?></p>
+			<p><?php echo esc_html__( 'You have the following data in your Adobe Fonts account.', 'botiga' ); ?></p>
 
 			<?php foreach( $kits as $kit_id => $project ) : ?>
 

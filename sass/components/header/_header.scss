@@ -422,6 +422,16 @@
             max-width: 26px;
         }
     }
+
+    .botiga-image {
+        &.is-svg {
+            transition: ease background-color 300ms;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
 }
 
 .header-login-register,

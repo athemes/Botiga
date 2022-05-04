@@ -2641,6 +2641,16 @@ body.mobile-menu-visible {
   max-width: 26px;
 }
 
+.header-item .botiga-image.is-svg {
+  -webkit-transition: ease background-color 300ms;
+  transition: ease background-color 300ms;
+}
+
+.header-item .botiga-image.is-svg img {
+  width: 100%;
+  height: auto;
+}
+
 .header-login-register,
 .top-bar-login-register {
   position: relative;

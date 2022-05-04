@@ -258,7 +258,7 @@ msgid "Your text here"
 msgstr ""
 
 #: inc/customizer.php:207
-msgid "You have the following data in your Adobe Type Kit account."
+msgid "You have the following data in your Adobe Fonts account."
 msgstr ""
 
 #. translators: 1: Adobe fonts kit id
@@ -289,6 +289,11 @@ msgstr ""
 
 #: inc/customizer/ajax-callbacks.php:25
 msgid "Invalid API token."
+msgstr ""
+
+#. translators: 1: Adobe Fonts docs link
+#: inc/customizer/ajax-callbacks.php:65
+msgid "Your API token is valid but you don't have fonts attached to this token. Click <a href=\"%s\" target=\"_blank\">here</a> to learn more about that."
 msgstr ""
 
 #. translators: 1: page name
@@ -344,14 +349,14 @@ msgstr ""
 
 #. translators: 1: How to use adobe fonts docs link
 #: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:37
-msgid "To use fonts from Adobe Type Kit some steps are required. Learn more aboout that <a href=\"%s\" target=\"_blank\">here</a>."
+msgid "To use fonts from Adobe some steps are required. Learn more about that <a href=\"%s\" target=\"_blank\">here</a>."
 msgstr ""
 
 #: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:42
 msgid "API Token"
 msgstr ""
 
-#. translators: 1: Adobe Type Kit account website link
+#. translators: 1: Adobe Fonts account website link
 #: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:50
 msgid "You can get your Adobe Fonts API Token by clicking <a href=\"%s\" target=\"_blank\">here</a>."
 msgstr ""
@@ -1298,7 +1303,7 @@ msgid "Google Fonts"
 msgstr ""
 
 #: inc/customizer/options/typography.php:42
-msgid "Adobe Type Kit"
+msgid "Adobe Fonts"
 msgstr ""
 
 #: inc/customizer/options/typography.php:124, inc/customizer/options/typography.php:565
@@ -2103,15 +2108,15 @@ msgstr ""
 msgid "Free vs PRO"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:318, theme-dashboard/class-theme-dashboard.php:714
+#: inc/theme-dashboard-settings.php:318, theme-dashboard/class-theme-dashboard.php:715
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:319, theme-dashboard/class-theme-dashboard.php:717
+#: inc/theme-dashboard-settings.php:319, theme-dashboard/class-theme-dashboard.php:718
 msgid "Take Botiga to a whole other level by upgrading to the Pro version."
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:320, theme-dashboard/class-theme-dashboard.php:721
+#: inc/theme-dashboard-settings.php:320, theme-dashboard/class-theme-dashboard.php:722
 msgid "Discover Botiga Pro"
 msgstr ""
 
@@ -2494,38 +2499,38 @@ msgstr ""
 msgid "Join Now"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:729
+#: theme-dashboard/class-theme-dashboard.php:731
 msgid "Review"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:734
+#: theme-dashboard/class-theme-dashboard.php:736
 msgid "It makes us happy to hear from our users. We would appreciate a review."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:738
+#: theme-dashboard/class-theme-dashboard.php:740
 msgid "Submit a Review"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:744
+#: theme-dashboard/class-theme-dashboard.php:746
 msgid "Have an idea or feedback?"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:746
+#: theme-dashboard/class-theme-dashboard.php:748
 msgid "Let us know. We'd love to hear from you."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:749
+#: theme-dashboard/class-theme-dashboard.php:751
 msgid "Suggest an idea"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:756
+#: theme-dashboard/class-theme-dashboard.php:758
 msgid "Changelog"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:763
+#: theme-dashboard/class-theme-dashboard.php:765
 msgid "Keep informed with the latest changes about each theme."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:766
+#: theme-dashboard/class-theme-dashboard.php:768
 msgid "See the Changelog"
 msgstr ""

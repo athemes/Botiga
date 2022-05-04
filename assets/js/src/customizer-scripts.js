@@ -1140,7 +1140,7 @@ jQuery( document ).ready(function($) {
 });
 
 /**
- * Typography adobe type kits control
+ * Typography adobe fonts kits control
  */
 jQuery( document ).ready(function($) {
 
@@ -1169,6 +1169,15 @@ jQuery( document ).ready(function($) {
 
 				$this.text( $this.data( 'default-text' ) );
 				$this.attr( 'disabled', false );
+
+				if( response.status === 'success' && response.output !== null ) {
+					wp.customize.bind( 'saved', function(){
+						var href = $( '.botiga-adobe_fonts_kits_wrapper-item .reload-message a' ).attr( 'href' );
+						window.location.href = href;
+					} );
+	
+					$( '#customize-save-button-wrapper > .save' ).trigger( 'click' );
+				}
 			}
 		});
 	});

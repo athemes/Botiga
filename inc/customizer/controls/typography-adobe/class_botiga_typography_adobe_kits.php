@@ -34,8 +34,8 @@ class Botiga_Typography_Adobe_Kits_Control extends WP_Customize_Control {
                 echo wp_kses_post( 
                     sprintf(
                         /* translators: 1: How to use adobe fonts docs link */
-                        __( 'To use fonts from Adobe Type Kit some steps are required. Learn more aboout that <a href="%s" target="_blank">here</a>.', 'botiga' ),
-                        'https://docs.athemes.com/article/441-how-to-use-adobe-type-kit-fonts'
+                        __( 'To use fonts from Adobe some steps are required. Learn more about that <a href="%s" target="_blank">here</a>.', 'botiga' ),
+                        'https://docs.athemes.com/article/441-how-to-use-adobe-fonts'
                     )
                 ); ?>
             </p>
@@ -46,14 +46,14 @@ class Botiga_Typography_Adobe_Kits_Control extends WP_Customize_Control {
                 <?php 
                 echo wp_kses_post( 
                     sprintf(
-                        /* translators: 1: Adobe Type Kit account website link */
+                        /* translators: 1: Adobe Fonts account website link */
                         __( 'You can get your Adobe Fonts API Token by clicking <a href="%s" target="_blank">here</a>.', 'botiga' ),
                         'https://fonts.adobe.com/account/tokens/'
                     )
                 ); ?>
             </span>
 
-            <a href="#" class="button button-primary botiga-adobe_fonts_kits_submit_token" data-nonce="<?php echo esc_attr( wp_create_nonce( 'customize-typography-adobe-kits-control-nonce' ) ); ?>" data-loading-text="<?php echo esc_attr__( 'Loading...', 'botiga' ); ?>" data-default-text="<?php echo esc_attr__( 'Get Fonts', 'botiga' ); ?>"><?php echo esc_html__( 'Get Fonts', 'botiga' ); ?></a>
+            <a href="#" class="button button-secondary botiga-adobe_fonts_kits_submit_token" data-nonce="<?php echo esc_attr( wp_create_nonce( 'customize-typography-adobe-kits-control-nonce' ) ); ?>" data-loading-text="<?php echo esc_attr__( 'Loading...', 'botiga' ); ?>" data-default-text="<?php echo esc_attr__( 'Get Fonts', 'botiga' ); ?>"><?php echo esc_html__( 'Get Fonts', 'botiga' ); ?></a>
         </div>
         
         <div class="botiga-adobe_fonts_kits_ajax_wrapper">

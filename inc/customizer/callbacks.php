@@ -6,7 +6,7 @@
  */
 
 /**
- * Typography Adobe Type Kit Fonts library
+ * Typography Adobe Fonts library
  */
 function botiga_font_library_google() {
 	$lib = get_theme_mod( 'fonts_library', 'google' );

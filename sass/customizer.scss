@@ -873,6 +873,27 @@ span.delete:hover {
     }
 }
 
+#customize-control-search_icon_custom_image,
+#customize-control-cart_icon_custom_image,
+#customize-control-account_icon_custom_image,
+#customize-control-wishlist_icon_custom_image {
+    .attachment-thumb {
+        max-width: 70px;
+    }
+}
+
+label {
+    &[for="search_icon-icon-custom"],
+    &[for="cart_icon-icon-custom"],
+    &[for="account_icon-icon-custom"],
+    &[for="wishlist_icon-icon-custom"] {
+        .img-cont {
+            border: 2px dashed #cdcdcd;
+            border-radius: 4px;
+        }
+    }
+}
+
 /*
 * Accordion
 */
