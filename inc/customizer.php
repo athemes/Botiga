@@ -140,7 +140,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 						'render_callback'   => 'botiga_customize_partial_footer_credits',
 						'container_inclusive' => false
 					) 
-				);  
+				); 
 			}
 
 		}

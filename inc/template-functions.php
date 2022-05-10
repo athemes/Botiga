@@ -885,7 +885,7 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
 			break;
 
 		case 'wishlist':
-			$icon 	  	  = get_theme_mod( 'wishlist_icon', 'icon-user' );
+			$icon 	  	  = get_theme_mod( 'wishlist_icon', 'icon-wishlist' );
 			$image_id 	  = get_theme_mod( 'wishlist_icon_custom_image', 0 );
 			break;
 		
