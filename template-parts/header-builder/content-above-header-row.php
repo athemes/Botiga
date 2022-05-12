@@ -8,24 +8,32 @@
  */
 
 $elements = $args[ 'elements' ]; 
+$row      = $args[ 'row' ]; 
 
 // Get instance from bhfb class
-$bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
+$bhfb = Botiga_Header_Footer_Builder::get_instance(); 
+
+$cols_number = botiga_bhfb_get_number_of_columns( $elements, $row ); ?>
 
 <div class="container">
-    <div class="row valign bt-d-flex justify-content-between">
-        <?php foreach( $elements as $column ) : ?>
-        
-            <?php if( count( $column->elements ) > 0 ) : ?>
-                <div class="col-auto bt-d-flex align-items-center">
+    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?>">
+        <?php 
+        foreach( $elements as $col_class => $column ) :
+
+            if( count( $column->elements ) > 0 ) : ?>
+
+                <div class="bhfb-column bhfb-<?php echo esc_attr( $col_class ); ?>">
                     
                     <?php foreach( $column->elements as $element ) {
                         call_user_func( array( $bhfb, $element ) );
                     } ?>
 
                 </div>
-            <?php endif; ?>
 
-        <?php endforeach; ?>
+            <?php 
+            endif; ?>
+
+        <?php 
+        endforeach; ?>
     </div>
 </div>
