@@ -2984,6 +2984,17 @@ body.mobile-menu-visible {
 }
 
 /* Header Builder */
+.bhfb-above_header_row,
+.bhfb-main_header_row,
+.bhfb-below_header_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .bhfb-row {
   display: grid;
   gap: 20px;

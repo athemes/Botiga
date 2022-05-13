@@ -1,4 +1,11 @@
 /* Header Builder */
+.bhfb-above_header_row,
+.bhfb-main_header_row,
+.bhfb-below_header_row {
+    display: flex;
+    align-items: center;
+}
+
 .bhfb-row {
     display: grid;
     gap: 20px;

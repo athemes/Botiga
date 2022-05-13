@@ -8,12 +8,11 @@
  */
 
 $elements = $args[ 'elements' ]; 
-$row      = $args[ 'row' ]; 
 
 // Get instance from bhfb class
 $bhfb = Botiga_Header_Footer_Builder::get_instance(); 
 
-$cols_number = botiga_bhfb_get_number_of_columns( $elements, $row ); ?>
+$cols_number = botiga_bhfb_get_number_of_columns( $elements ); ?>
 
 <div class="container">
     <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?>">

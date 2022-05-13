@@ -911,7 +911,7 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
  * Header/Footer Builder get number of columns
  * 
  */
-function botiga_bhfb_get_number_of_columns( $elements, $row ) {
+function botiga_bhfb_get_number_of_columns( $elements ) {
 	$cols = 0;
 	
 	if( count( $elements->col_left->elements ) > 0 ) {
