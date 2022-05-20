@@ -1,4 +1,17 @@
 /* Header Builder */
+.bhfb-desktop {
+    display: none;
+}
+
+@media(min-width: 1025px) {
+    .bhfb-desktop {
+        display: block;
+    }
+    .bhfb-mobile {
+        display: none;
+    }
+}
+
 .bhfb-above_header_row,
 .bhfb-main_header_row,
 .bhfb-below_header_row {

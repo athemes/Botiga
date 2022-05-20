@@ -2151,8 +2151,6 @@ div.editor-styles-wrapper ul.products li.product .wp-block-button__link,
 div.editor-styles-wrapper ul.products li.product .button {
   display: table;
   margin: 17px auto 0;
-  text-transform: uppercase;
-  padding: 11px 24px;
   line-height: 1;
 }
 
