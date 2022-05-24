@@ -8,24 +8,24 @@
  */
 
 $device   = $args[ 'device' ]; 
-$elements = $args[ 'elements' ];
-
+$row_data = $args[ 'row_data' ];
+// var_dump( $row_data );
 // Get instance from bhfb class
 $bhfb = Botiga_Header_Footer_Builder::get_instance(); 
 
-$cols_number = botiga_bhfb_get_number_of_columns( $elements->$device ); ?>
+$cols_number = $bhfb->get_row_number_of_columns( $row_data->$device ); ?>
 
 <div class="container">
     <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?>">
         <?php 
-        foreach( $elements->$device as $col_class => $column ) :
+        foreach( $row_data->$device as $col_class => $column ) :
             
             if( count( $column->elements ) > 0 ) : ?>
 
                 <div class="bhfb-column bhfb-<?php echo esc_attr( $col_class ); ?>">
                     
-                    <?php foreach( $column->elements as $element ) {
-                        call_user_func( array( $bhfb, $element ) );
+                    <?php foreach( $column->elements as $component_callback ) {
+                        call_user_func( array( $bhfb, $component_callback ) );
                     } ?>
 
                 </div>

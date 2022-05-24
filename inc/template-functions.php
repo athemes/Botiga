@@ -906,25 +906,3 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
 		return $output;
 	}
 }
-
-/**
- * Header/Footer Builder get number of columns
- * 
- */
-function botiga_bhfb_get_number_of_columns( $elements ) {
-	$cols = 0;
-	
-	if( count( $elements->col_left->elements ) > 0 ) {
-		$cols++;
-	}
-
-	if( count( $elements->col_center->elements ) > 0 ) {
-		$cols++;
-	}
-
-	if( count( $elements->col_right->elements ) > 0 ) {
-		$cols++;
-	}
- 
-	return $cols; 
-}

@@ -148,7 +148,15 @@ jQuery( document ).ready(function($) {
 jQuery( document ).ready(function($) {
 	"use strict";
 
+	let clickFlag = false;
+
 	$( '.botiga-devices-preview' ).find( 'button' ).on( 'click', function( event ) {
+		if( clickFlag ) {
+			clickFlag = false;
+			return false;
+		}
+
+		clickFlag = true;
 
 		if ( $( this ).hasClass( 'preview-desktop' ) ) {
 			$( '.botiga-devices-preview' ).find( '.preview-desktop' ).addClass( 'active' );
@@ -178,11 +186,14 @@ jQuery( document ).ready(function($) {
 	});
 
 	$(' .wp-full-overlay-footer .devices button ').on('click', function() {
+		if( clickFlag ) {
+			clickFlag = false;
+			return false;
+		}
 
 		var device = $(this).attr('data-device');
 		
 		$( '.botiga-devices-preview' ).find( '.preview-' + device ).trigger( 'click' );
-
 	});	
 
 });

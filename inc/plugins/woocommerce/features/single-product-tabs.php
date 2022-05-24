@@ -108,7 +108,7 @@ function botiga_woocommerce_output_product_data_tabs() {
  * Tabs Accordion Style
  */
 function botiga_single_product_tabs_as_accordion_output() {
-    $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 0 );
+    $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 1 );
 
     /**
      * Filter tabs and allow third parties to add their own.
