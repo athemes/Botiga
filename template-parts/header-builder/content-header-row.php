@@ -9,7 +9,7 @@
 
 $device   = $args[ 'device' ]; 
 $row_data = $args[ 'row_data' ];
-// var_dump( $row_data );
+
 // Get instance from bhfb class
 $bhfb = Botiga_Header_Footer_Builder::get_instance(); 
 

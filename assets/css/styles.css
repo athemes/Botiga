@@ -3049,6 +3049,32 @@ body.mobile-menu-visible {
           justify-content: flex-end;
 }
 
+.bhfb .social-profile a {
+  margin-right: 0;
+}
+
+.bhfb .social-profile a + a {
+  margin-left: 20px;
+}
+
+.bhfb .header-builder-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bhfb .header-builder-item + .header-builder-item {
+  margin-left: 20px;
+}
+
+.bhfb .header-builder-item.bhfb-component-search .ws-svg-icon, .bhfb .header-builder-item.bhfb-component-woo_icons .ws-svg-icon {
+  width: auto;
+  height: auto;
+}
+
 /* Posts and pages
 --------------------------------------------- */
 .sticky {

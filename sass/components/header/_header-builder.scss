@@ -49,3 +49,31 @@
         justify-content: flex-end;
     }
 }
+
+.bhfb {
+    .social-profile {
+        a {
+            margin-right: 0;
+            & + a {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .header-builder-item {
+        display: flex;
+        align-items: center;
+        & + .header-builder-item {
+            margin-left: 20px;
+        }
+
+        // Icons
+        &.bhfb-component-search,
+        &.bhfb-component-woo_icons {
+            .ws-svg-icon {
+                width: auto;
+                height: auto;
+            }
+        }
+    }
+}
