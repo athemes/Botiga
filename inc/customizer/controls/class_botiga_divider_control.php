@@ -18,6 +18,8 @@ class Botiga_Divider_Control extends WP_Customize_Control {
 	 */
 	public $type = 'botiga-divider-control';
 
+	public $check_white_label = false;
+
 	/**
 	 * Constructor
 	 */
@@ -29,7 +31,9 @@ class Botiga_Divider_Control extends WP_Customize_Control {
 	 * Render the control in the customizer
 	 */
 	public function render_content() {
-	?>
+		if( $this->check_white_label && defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+			return '';
+		} ?>
 		<hr class="botiga-cust-divider">
 	<?php
 	}

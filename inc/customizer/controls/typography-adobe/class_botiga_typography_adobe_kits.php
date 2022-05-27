@@ -29,16 +29,18 @@ class Botiga_Typography_Adobe_Kits_Control extends WP_Customize_Control {
         <?php } ?>							
         
         <div style="margin-bottom: 25px;">
-            <p style="margin-top: 0;">
-                <?php 
-                echo wp_kses_post( 
-                    sprintf(
-                        /* translators: 1: How to use adobe fonts docs link */
-                        __( 'To use fonts from Adobe some steps are required. Learn more about that <a href="%s" target="_blank">here</a>.', 'botiga' ),
-                        'https://docs.athemes.com/article/441-how-to-use-adobe-fonts'
-                    )
-                ); ?>
-            </p>
+            <?php if( ! defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) : ?>
+                <p style="margin-top: 0;">
+                    <?php 
+                    echo wp_kses_post( 
+                        sprintf(
+                            /* translators: 1: How to use adobe fonts docs link */
+                            __( 'To use fonts from Adobe some steps are required. Learn more about that <a href="%s" target="_blank">here</a>.', 'botiga' ),
+                            'https://docs.athemes.com/article/441-how-to-use-adobe-fonts'
+                        )
+                    ); ?>
+                </p>
+            <?php endif; ?>
             <label for="<?php echo esc_attr( $this->id ); ?>" class="customize-control-title"><?php echo esc_html__( 'API Token', 'botiga' ); ?></label>
             <input id="<?php echo esc_attr( $this->id ); ?>" type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 

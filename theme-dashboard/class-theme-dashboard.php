@@ -76,6 +76,10 @@ class Botiga_Theme_Dashboard {
 	public function __construct() {
 		$self = $this;
 
+		if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+			return;
+		}
+
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		}
@@ -326,6 +330,12 @@ class Botiga_Theme_Dashboard {
 				}
 				?>
 				<div class="thd-theme-feature <?php echo esc_attr( $feature_status ); ?>">
+					
+					<?php if ( isset( $feature['text'] ) && $feature['text'] ) : ?>
+						<div class="thd-feature-help"></div>
+						<div class="thd-feature-help-text"><?php echo $feature['text']; ?></div>
+					<?php endif; ?>
+
 					<div class="thd-theme-feature-row">
 						<?php if ( isset( $feature['name'] ) && $feature['name'] ) { ?>
 							<div class="thd-theme-feature-name">
@@ -352,9 +362,31 @@ class Botiga_Theme_Dashboard {
 							</div>
 						<?php } ?>
 					</div>
-					<div class="thd-theme-feature-row">
+					<div class="thd-theme-feature-row thd-action-row">
 						<?php
-						if ( isset( $feature['customize_uri'] ) && $feature['customize_uri'] ) {
+						if ( isset( $feature['activate_uri'] ) && $feature['activate_uri'] ) {
+
+							$activate_uri = $feature['activate_uri'];
+
+							if ( isset( $feature['type'] ) && 'pro' === $feature['type'] ) {
+								$activate_uri = $this->pro_status ? $activate_uri : 'javascript:void(0);';
+							}
+							?>
+							<?php if ( ! Botiga_Modules::is_module_active( $feature['slug'] ) ) : ?>
+								<a href="?page=theme-dashboard<?php echo esc_attr( $activate_uri ); ?>=1" class="thd-theme-feature-customize">
+									<?php esc_html_e( 'Activate', 'botiga' ); ?>
+								</a>
+							<?php else : ?>
+								<a href="?page=theme-dashboard<?php echo esc_attr( $activate_uri ); ?>=0" class="thd-theme-feature-customize">
+									<?php esc_html_e( 'Deactivate', 'botiga' ); ?>
+								</a>
+								<?php if ( $feature['link'] ) : ?>
+									<a class="thd-theme-feature-customize thd-theme-feature-proceed" href="<?php echo esc_url( $feature['link'] ); ?>"><?php echo esc_html( $feature['link_label'] ); ?></a>
+								<?php endif; ?>								
+							<?php endif; ?>
+
+						<?php
+						} elseif ( isset( $feature['customize_uri'] ) && $feature['customize_uri'] ) {
 
 							$customize_uri = $feature['customize_uri'];
 
@@ -362,7 +394,7 @@ class Botiga_Theme_Dashboard {
 								$customize_uri = $this->pro_status ? $customize_uri : 'javascript:void(0);';
 							}
 							?>
-							<a href="<?php echo esc_url( $customize_uri ); ?>" class="thd-theme-feature-customize" target="_blank">
+							<a href="<?php echo esc_attr( $customize_uri ); ?>" class="thd-theme-feature-customize" target="_blank">
 								<?php esc_html_e( 'Customize', 'botiga' ); ?>
 							</a>
 						<?php } ?>

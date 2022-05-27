@@ -26,6 +26,10 @@ class Botiga_Text_Control extends WP_Customize_Control {
 
 	public $controls_design;
 
+	public $check_white_label = false;
+
+	public $white_label_desc = '';
+
 	
 	/**
 	 * Constructor
@@ -38,7 +42,16 @@ class Botiga_Text_Control extends WP_Customize_Control {
 	 * Render the control in the customizer
 	 */
 	public function render_content() {
-	?>
+		if( $this->check_white_label && defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+			if( $this->white_label_desc ) {
+				$this->description = $this->white_label_desc;
+				$this->link_title  = '';
+				$this->link        = '';
+			} else {
+				return '';
+			}
+		} ?>
+
 		<?php if( !empty( $this->label ) ) { ?>
 			<span class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></span>
 		<?php } ?>

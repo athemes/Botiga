@@ -452,3 +452,5 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
+
+add_filter( 'botiga_theme_dashboard', false );

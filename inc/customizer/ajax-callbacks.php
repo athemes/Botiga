@@ -57,15 +57,19 @@ function botiga_typography_adobe_kits_control() {
     // Token is valid 
     // But there's no fonts attached to the token
     if( count( $fonts ) === 0 ) {
+        $output = sprintf(
+            /* translators: 1: Adobe Fonts docs link */
+            __( 'Your API token is valid but you don\'t have fonts attached to this token. Click <a href="%s" target="_blank">here</a> to learn more about that.', 'botiga' ),
+            'https://docs.athemes.com/article/441-how-to-use-adobe-fonts'
+        );
+
+        if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+            $output = __( 'Your API token is valid but you don\'t have fonts attached to this token.', 'botiga' );
+        }
+
         wp_send_json( array(
             'status'  => 'error',
-            'output'  => '<p>' . wp_kses_post( 
-				sprintf(
-					/* translators: 1: Adobe Fonts docs link */
-					__( 'Your API token is valid but you don\'t have fonts attached to this token. Click <a href="%s" target="_blank">here</a> to learn more about that.', 'botiga' ),
-					'https://docs.athemes.com/article/441-how-to-use-adobe-fonts'
-				)
-			) . '</p>'
+            'output'  => '<p>' . wp_kses_post( $output ) . '</p>'
         ) );
     }
 

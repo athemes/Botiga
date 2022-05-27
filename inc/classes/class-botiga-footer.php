@@ -181,6 +181,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 			$tags 		= array( '{theme_author}', '{site_title}', '{copyright}', '{year}' );
 			$replace 	= array( '<a rel="nofollow" href="https://athemes.com/theme/botiga/">' . esc_html__( 'Botiga', 'botiga' ) . '</a>', get_bloginfo( 'name' ), '&copy;', date('Y') );
 
+			// White Label
+			if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+				$replace[0] = '<a rel="nofollow" href="'. esc_url( get_bloginfo( 'uri' ) ) .'">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
+			}
+
 			$credits 	= str_replace( $tags, $replace, $credits );
 
 			return '<div class="botiga-credits">' . $credits . '</div>';

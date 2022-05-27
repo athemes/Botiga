@@ -88,4 +88,12 @@
 		}
 	} );
 
+	/*
+	 * Help toggle
+	 */
+		$( document ).on( 'click', '.thd-feature-help', function( e ) {
+			$( this ).toggleClass( 'is-active' );
+			$( this ).next( '.thd-feature-help-text' ).fadeToggle( 'fast' );
+		} );	
+
 } )( jQuery );

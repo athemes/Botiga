@@ -119,13 +119,17 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 				</div>
 				<?php
 			} else if( $this->fontList === 'error' ) {
-                echo wp_kses_post( 
-                    sprintf(
-                        /* translators: 1: How to use adobe fonts docs link */
-                        __( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded. Please contact our support <a href="%s" target="_blank">here</a> to get help.', 'botiga' ),
-                        'https://athemes.com/support/'
-                    )
-                );
+				$error_message = sprintf(
+					/* translators: 1: How to use adobe fonts docs link */
+					__( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded. Please contact our support <a href="%s" target="_blank">here</a> to get help.', 'botiga' ),
+					'https://athemes.com/support/'
+				);
+
+				if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+					$error_message = __( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded.', 'botiga' );
+				}
+
+                echo wp_kses_post( $error_message );
 			}
 		}
 
