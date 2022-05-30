@@ -179,7 +179,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'color_heading_4', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
 
 			//Header
-			if( class_exists( ! 'Botiga_Header_Footer_Builder' ) ) {
+			if( ! class_exists( 'Botiga_Header_Footer_Builder' ) ) {
 
 				$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 				$css .= $this->get_max_width_css( 'site_logo_size', $defaults = array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), '.custom-logo-link img' );

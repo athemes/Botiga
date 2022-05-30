@@ -77,6 +77,10 @@ botiga.helpers = {
 		if ( ! siteNavigation && typeof button === 'undefined'  ) {
 			return;
 		}
+
+		if( typeof offCanvas === 'undefined' ) {
+			return;
+		}
 	
 		const closeButton 	= document.getElementsByClassName( 'mobile-menu-close' )[ 0 ];
 
@@ -321,43 +325,49 @@ botiga.headerSearch = {
 			return;
 		}
 
-		for ( var buttonEl of button ) {
-			buttonEl.addEventListener( 'click', function(e){
-				e.preventDefault();
-
-				// Hide other search icons 
-				if( button.length > 1 ) {
-					for ( var btn of button ) {
-						btn.classList.toggle( 'hide' );
-					}
-				}
-
-				form.classList.toggle( 'active' );
-				overlay.classList.toggle( 'active' );
-				document.body.classList.toggle( 'header-search-form-active' );
-				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
-				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
-				e.target.closest( '.header-search' ).classList.add( 'active' );
-				e.target.closest( '.header-search' ).classList.remove( 'hide' );
-
-				if( typeof searchInput !== 'undefined' ) {
-					searchInput.focus();
-				}
-
-				if( e.target.closest( '.botiga-offcanvas-menu' ) !== null ) {
-					e.target.closest( '.botiga-offcanvas-menu' ).classList.remove( 'toggled' );
-				}
-			} );	
+		if( document.body.classList.contains( 'has-bhfb-builder' ) ) {
+			form = document.querySelector( '.header-search-form' );
 		}
 
-		overlay.addEventListener( 'click', function() {
-			form.classList.remove( 'active' );
-			overlay.classList.remove( 'active' );
-			document.body.classList.remove( 'header-search-form-active' );
-			
-			// Back buttons to default state
-			self.backButtonsToDefaultState( button );
-		} );	
+		if( typeof overlay !== 'undefined' ) {
+			for ( var buttonEl of button ) {
+				buttonEl.addEventListener( 'click', function(e){
+					e.preventDefault();
+
+					// Hide other search icons 
+					if( button.length > 1 ) {
+						for ( var btn of button ) {
+							btn.classList.toggle( 'hide' );
+						}
+					}
+
+					form.classList.toggle( 'active' );
+					overlay.classList.toggle( 'active' );
+					document.body.classList.toggle( 'header-search-form-active' );
+					e.target.closest( '.header-search' ).getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
+					e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
+					e.target.closest( '.header-search' ).classList.add( 'active' );
+					e.target.closest( '.header-search' ).classList.remove( 'hide' );
+
+					if( typeof searchInput !== 'undefined' ) {
+						searchInput.focus();
+					}
+
+					if( e.target.closest( '.botiga-offcanvas-menu' ) !== null ) {
+						e.target.closest( '.botiga-offcanvas-menu' ).classList.remove( 'toggled' );
+					}
+				} );	
+			}
+
+			overlay.addEventListener( 'click', function() {
+				form.classList.remove( 'active' );
+				overlay.classList.remove( 'active' );
+				document.body.classList.remove( 'header-search-form-active' );
+				
+				// Back buttons to default state
+				self.backButtonsToDefaultState( button );
+			} );	
+		}
 
 		if( typeof searchBtn !== 'undefined' ) {
 			searchBtn.addEventListener('keydown', function(e) {

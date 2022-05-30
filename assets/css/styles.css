@@ -2984,6 +2984,11 @@ body.mobile-menu-visible {
 }
 
 /* Header Builder */
+.bhfb-desktop,
+.bhfb-mobile {
+  position: relative;
+}
+
 .bhfb-desktop {
   display: none;
 }

@@ -89,6 +89,10 @@ botiga.navigation = {
       return;
     }
 
+    if (typeof offCanvas === 'undefined') {
+      return;
+    }
+
     var closeButton = document.getElementsByClassName('mobile-menu-close')[0]; // Return early if the button don't exist.
 
     if ('undefined' === typeof button) {
@@ -359,61 +363,67 @@ botiga.headerSearch = {
       return;
     }
 
-    var _iterator6 = _createForOfIteratorHelper(button),
-        _step6;
-
-    try {
-      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-        var buttonEl = _step6.value;
-        buttonEl.addEventListener('click', function (e) {
-          e.preventDefault(); // Hide other search icons 
-
-          if (button.length > 1) {
-            var _iterator7 = _createForOfIteratorHelper(button),
-                _step7;
-
-            try {
-              for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-                var btn = _step7.value;
-                btn.classList.toggle('hide');
-              }
-            } catch (err) {
-              _iterator7.e(err);
-            } finally {
-              _iterator7.f();
-            }
-          }
-
-          form.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.classList.toggle('header-search-form-active');
-          e.target.closest('.header-search').getElementsByClassName('icon-search')[0].classList.toggle('active');
-          e.target.closest('.header-search').getElementsByClassName('icon-cancel')[0].classList.toggle('active');
-          e.target.closest('.header-search').classList.add('active');
-          e.target.closest('.header-search').classList.remove('hide');
-
-          if (typeof searchInput !== 'undefined') {
-            searchInput.focus();
-          }
-
-          if (e.target.closest('.botiga-offcanvas-menu') !== null) {
-            e.target.closest('.botiga-offcanvas-menu').classList.remove('toggled');
-          }
-        });
-      }
-    } catch (err) {
-      _iterator6.e(err);
-    } finally {
-      _iterator6.f();
+    if (document.body.classList.contains('has-bhfb-builder')) {
+      form = document.querySelector('.header-search-form');
     }
 
-    overlay.addEventListener('click', function () {
-      form.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.classList.remove('header-search-form-active'); // Back buttons to default state
+    if (typeof overlay !== 'undefined') {
+      var _iterator6 = _createForOfIteratorHelper(button),
+          _step6;
 
-      self.backButtonsToDefaultState(button);
-    });
+      try {
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var buttonEl = _step6.value;
+          buttonEl.addEventListener('click', function (e) {
+            e.preventDefault(); // Hide other search icons 
+
+            if (button.length > 1) {
+              var _iterator7 = _createForOfIteratorHelper(button),
+                  _step7;
+
+              try {
+                for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+                  var btn = _step7.value;
+                  btn.classList.toggle('hide');
+                }
+              } catch (err) {
+                _iterator7.e(err);
+              } finally {
+                _iterator7.f();
+              }
+            }
+
+            form.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('header-search-form-active');
+            e.target.closest('.header-search').getElementsByClassName('icon-search')[0].classList.toggle('active');
+            e.target.closest('.header-search').getElementsByClassName('icon-cancel')[0].classList.toggle('active');
+            e.target.closest('.header-search').classList.add('active');
+            e.target.closest('.header-search').classList.remove('hide');
+
+            if (typeof searchInput !== 'undefined') {
+              searchInput.focus();
+            }
+
+            if (e.target.closest('.botiga-offcanvas-menu') !== null) {
+              e.target.closest('.botiga-offcanvas-menu').classList.remove('toggled');
+            }
+          });
+        }
+      } catch (err) {
+        _iterator6.e(err);
+      } finally {
+        _iterator6.f();
+      }
+
+      overlay.addEventListener('click', function () {
+        form.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('header-search-form-active'); // Back buttons to default state
+
+        self.backButtonsToDefaultState(button);
+      });
+    }
 
     if (typeof searchBtn !== 'undefined') {
       searchBtn.addEventListener('keydown', function (e) {
