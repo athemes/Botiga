@@ -355,41 +355,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				}
 			} else {
 
-				// ---- Header Builder ------
-				// Rows.
-				$rows = array( 'above_header_row', 'main_header_row', 'below_header_row' );
-
-				foreach( $rows as $row ) {
-
-					// Height
-					$css .= $this->get_responsive_css( 
-						"botiga_header_row__${row}_height", 
-						array( 'desktop' => 100, 'tablet' => 100, 'mobile' => 100 ), 
-						".bhfb-$row",
-						'min-height',
-						'px' 
-					);
-
-					// Background Color
-					$css .= $this->get_background_color_css( "botiga_header_row__${row}_background_color", '#FFF', ".bhfb-$row" ); 
-
-					// Border Bottom
-					$css .= $this->get_css( 
-						"botiga_header_row__${row}_border_bottom_desktop",
-						1, 
-						".bhfb-$row",
-						array(
-							array(
-								'prop' => 'border-bottom-width',
-								'unit' => 'px'
-							)
-						)
-					);
-					$css .= ".bhfb-$row { border-bottom-style: solid; }";
-					$css .= $this->get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", 'rgba(33,33,33,0.1)', ".bhfb-$row", '1' );
-
-				}
-
+				// Header/Footer Builder Custom CSS 
+				$css .= apply_filters( 'botiga_bhfb_custom_css', Botiga_Header_Footer_Builder::custom_css() );
 			}
 
 			//Header mini cart
@@ -1503,7 +1470,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css_output = '';
 
 				foreach( $css_prop as $css ) {
-					$css_output .= $selector . '{ '. $css['prop'] .':' . esc_attr( $mod ) . ( $css['unit'] ? $css['unit'] : '' ) . ( $important ? '!important' : '' ) . ';}' . "\n";
+					$css_output .= $selector . '{ '. $css['prop'] .':' . esc_attr( $mod ) . ( isset( $css['unit'] ) ? $css['unit'] : '' ) . ( $important ? '!important' : '' ) . ';}' . "\n";
 				}
 
 				return $css_output;
@@ -1535,6 +1502,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function to_rgba( $color = '', $opacity = false ) {
 
 			$default = 'rgb(0,0,0)';
+
+			if( strpos( $color, 'rgba' ) !== FALSE ) {
+				return $color;
+			}
 		 
 			if ( $color ) {
 				if ( $color[0] == '#' ) {
