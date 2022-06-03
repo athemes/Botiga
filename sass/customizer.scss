@@ -868,7 +868,7 @@ span.delete:hover {
 }
 
 .customize-control-botiga-tab-control {
-    & + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config) {
+    & + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title) {
         margin: 20px 0 30px !important;
     }
 }
