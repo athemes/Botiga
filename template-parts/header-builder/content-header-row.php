@@ -13,9 +13,13 @@ $row_data = $args[ 'row_data' ];
 // Get instance from bhfb class
 $bhfb = Botiga_Header_Footer_Builder::get_instance(); 
 
-$cols_number = $bhfb->get_row_number_of_columns( $row_data->$device ); ?>
+// Get columns number
+$cols_number = $bhfb->get_row_number_of_columns( $row_data->$device ); 
 
-<div class="container">
+// General options
+$container 	        = get_theme_mod( 'header_container', 'container-fluid' ); ?>
+
+<div class="<?php echo esc_attr( $container ); ?>">
     <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?>">
         <?php 
         foreach( $row_data->$device as $col_class => $column ) :
