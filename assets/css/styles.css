@@ -4680,6 +4680,10 @@ body {
     left: 300px;
     width: calc( 100% - 300px);
   }
+  .bhfb .botiga-reading-progress {
+    position: relative;
+    top: 0 !important;
+  }
 }
 
 .admin-bar .botiga-reading-progress {

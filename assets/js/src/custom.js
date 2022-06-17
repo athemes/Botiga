@@ -417,25 +417,171 @@ botiga.headerSearch = {
  */
 botiga.stickyHeader = {
 	init: function() {
-		const sticky 	= document.getElementsByClassName( 'sticky-header' )[0],
-		body            = document.getElementsByTagName( 'body' )[0];
+		let 
+			_this       = this,
+			sticky 		= document.getElementsByClassName( 'sticky-header' )[0],
+			bhfb_sticky = document.getElementsByClassName( 'bhfb-sticky-header' )[0],
+			body   		= document.getElementsByTagName( 'body' )[0];
 
-		let sticky_flag = false;
-
-		if ( 'undefined' === typeof sticky ) {
+		if ( 'undefined' === typeof sticky && 'undefined' === typeof bhfb_sticky ) {
 			return;
 		}
 
-		// Sticky Header Change Logo
+		const sticky_selector = 'undefined' !== typeof sticky ? '.sticky-header' : '.bhfb-sticky-header'; 
+
+		if( 'undefined' === typeof sticky ) {
+			sticky = bhfb_sticky;
+		}
+
+		this.stickyChangeLogo();
+
+		var topOffset = window.pageYOffset || document.documentElement.scrollTop;
+		if( topOffset > 10 ) {
+			sticky.classList.add( 'is-sticky' );
+			body.classList.add( 'sticky-header-active' );
+
+			window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
+		}
+
+		var header_offset_y = document.querySelector( sticky_selector ).getBoundingClientRect().y;
+
+		if( document.body.classList.contains( 'admin-bar' ) ) {
+			header_offset_y = header_offset_y - 32;
+		}
+		
+		if ( sticky.classList.contains( 'sticky-scrolltop' ) || document.querySelector( '.bhfb.sticky-scrolltop' ) !== null ) {
+			var lastScrollTop = 0;
+
+			window.addEventListener( 'scroll', function() {
+			    var scroll    = window.pageYOffset || document.documentElement.scrollTop,
+					is_sticky = scroll > lastScrollTop || scroll < 10;
+
+				if( document.querySelector( '.bhfb.sticky-scrolltop' ) !== null ) {
+					var bhfb_header_height = document.querySelector( '.bhfb.sticky-scrolltop' ).getBoundingClientRect().height;
+					is_sticky = scroll < bhfb_header_height;
+				}
+				
+			    if ( is_sticky ) {
+					sticky.classList.remove( 'is-sticky' );
+					body.classList.remove( 'sticky-header-active' );
+					
+					_this.isStickyDeactivated( 'scrolltop' );
+
+					body.classList.add( 'on-header-area' );
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
+				} else {
+					sticky.classList.add( 'is-sticky' );
+					body.classList.add( 'sticky-header-active' );
+					
+					_this.isStickyActive( 'scrolltop' );
+					
+					body.classList.remove( 'on-header-area' );
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
+				}
+				lastScrollTop = scroll <= 0 ? 0 : scroll;
+			}, false);
+		} else {
+			window.addEventListener( 'scroll', function() {
+				var vertDist = window.scrollY;
+
+				if ( vertDist > header_offset_y ) {
+					sticky.classList.add( 'sticky-shadow' );
+					body.classList.add( 'sticky-header-active' );
+
+					_this.isStickyActive();
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
+				} else {
+					sticky.classList.remove( 'sticky-shadow' );
+					body.classList.remove( 'sticky-header-active' );
+
+					_this.isStickyDeactivated();
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
+				}
+			}, false);
+		}
+
+	},
+
+	isStickyActive: function( effect ) {
+		const 
+			bhfb 		  = document.querySelector( 'header.bhfb' ),
+			has_admin_bar = document.body.classList.contains( 'admin-bar' ),
+			above_header_row = document.querySelector( '.bhfb-above_header_row' ),
+			below_header_row = document.querySelector( '.bhfb-below_header_row' );
+
+		let topVal = 0;
+
+		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
+			
+			if( ! above_header_row.classList.contains( 'bt-d-none' ) ) {
+				topVal = document.body.classList.contains( 'admin-bar' ) ? above_header_row.clientHeight - 32 : above_header_row.clientHeight;
+
+				bhfb.style.top = `-${ topVal }px`;
+			}
+			
+		}
+
+		if( bhfb.classList.contains( 'sticky-row-below-header-row' ) ) {
+			
+			if( ! below_header_row.classList.contains( 'bt-d-none' ) ) {
+				if( has_admin_bar ) {
+					topVal = ( ( bhfb.clientHeight - below_header_row.clientHeight ) - 32 ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
+					console.log( topVal );
+				} else {
+					topVal = ( bhfb.clientHeight - below_header_row.clientHeight ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
+				}
+
+				bhfb.style.top = `-${ topVal }px`;
+			}
+			
+		}
+
+		if( effect === 'scrolltop' && document.body.classList.contains( 'on-header-area' ) ) {
+			bhfb.classList.add( 'bhfb-no-transition' );
+			setTimeout(function(){
+				bhfb.classList.remove( 'bhfb-no-transition' );
+			}, 500);
+		}
+	},
+
+	isStickyDeactivated: function( effect ) {
+		const bhfb = document.querySelector( 'header.bhfb' );
+
+		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
+			
+			if( ! document.querySelector( '.bhfb-above_header_row' ).classList.contains( 'bt-d-none' ) ) {
+				bhfb.style.top = '0px';
+			}
+			
+		}
+
+		if( bhfb.classList.contains( 'sticky-row-below-header-row' ) ) {
+			
+			if( ! document.querySelector( '.bhfb-below_header_row' ).classList.contains( 'bt-d-none' ) ) {
+				bhfb.style.top = '0px';
+			}
+			
+		}
+	},
+
+	stickyChangeLogo: function() {
+		let sticky_flag = false;
+
 		if( window.matchMedia( 'screen and (min-width: 1024px)' ).matches ) {
 			if( typeof botiga_sticky_header_logo !== 'undefined' ) {
-				const logo    = document.querySelector( '.sticky-header .site-branding img' ),
-				initialSrc    = logo.getAttribute( 'src' ),
-				initialHeight = logo.clientHeight;
+				const logo    = document.querySelector( '.sticky-header .site-branding img' );
 	
 				if( logo === null ) {
 					return false;
 				}
+
+				const 
+					initialSrc    = logo.getAttribute( 'src' ),
+					initialHeight = logo.clientHeight;
 	
 				window.addEventListener( 'botiga.sticky.header.activated', function(){
 					if( sticky_flag ) {
@@ -459,57 +605,6 @@ botiga.stickyHeader = {
 				} );
 			}
 		}
-
-		var topOffset = window.pageYOffset || document.documentElement.scrollTop;
-		if( topOffset > 10 ) {
-			sticky.classList.add( 'is-sticky' );
-			body.classList.add( 'sticky-header-active' );
-
-			window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
-		}
-
-		var header_offset_y = document.querySelector( '.sticky-header' ).getBoundingClientRect().y;
-
-		if( document.body.classList.contains( 'admin-bar' ) ) {
-			header_offset_y = header_offset_y - 32;
-		}
-
-		if ( sticky.classList.contains( 'sticky-scrolltop' ) ) {
-			var lastScrollTop = 0;
-
-			window.addEventListener( 'scroll', function() {
-			    var scroll = window.pageYOffset || document.documentElement.scrollTop;
-			    if ( scroll > lastScrollTop || scroll < 10 ) {
-					sticky.classList.remove( 'is-sticky' );
-					body.classList.remove( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
-				} else {
-					sticky.classList.add( 'is-sticky' );
-					body.classList.add( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
-				}
-				lastScrollTop = scroll <= 0 ? 0 : scroll;
-			}, false);
-		} else {
-			window.addEventListener( 'scroll', function() {
-				var vertDist = window.scrollY;
-
-				if ( vertDist > header_offset_y ) {
-					sticky.classList.add( 'sticky-shadow' );
-					body.classList.add( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
-				} else {
-					sticky.classList.remove( 'sticky-shadow' );
-					body.classList.remove( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
-				}
-			}, false);
-		}
-
 	}
 };
 

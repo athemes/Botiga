@@ -254,7 +254,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 			}
 
 			if( is_user_logged_in() ) {
-				$show_welcome_message = get_theme_mod( 'login_register_show_welcome_message', 0 );
+				$show_welcome_message = get_theme_mod( 'login_register_show_welcome_message', 1 );
 				if( ! $show_welcome_message ) {
 					return;
 				}
