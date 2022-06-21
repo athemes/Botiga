@@ -310,7 +310,7 @@ function botiga_wc_hooks() {
 	if( 'sidebar-slide' === $shop_archive_sidebar ) {
 		add_action( 'woocommerce_before_shop_loop', function() {
 			$shop_archive_sidebar_open_button_text = get_theme_mod( 'shop_archive_sidebar_open_button_text', '' );
-			$shop_archive_sidebar_open_icon        = get_theme_mod( 'shop_archive_sidebar_open_icon', 0 );
+			$shop_archive_sidebar_open_icon        = get_theme_mod( 'shop_archive_sidebar_open_icon', 1 );
 
 			$icon = '';
 			if( $shop_archive_sidebar_open_icon ) {

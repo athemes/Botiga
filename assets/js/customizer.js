@@ -569,7 +569,13 @@
 
   wp.customize('single_sticky_add_to_cart_elements_spacing', function (value) {
     value.bind(function (to) {
-      $('.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item').css('margin-right', to + 'px');
+      var margin_side = 'right';
+
+      if ($('html[dir="rtl"]').length) {
+        margin_side = 'left';
+      }
+
+      $('.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item').css("margin-".concat(margin_side), to + 'px');
     });
   }); //Cart
 

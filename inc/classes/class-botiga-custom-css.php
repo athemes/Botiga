@@ -179,9 +179,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'color_heading_4', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
 
 			//Header
-			if( ! class_exists( 'Botiga_Header_Footer_Builder' ) ) {
+			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 
-				$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			if ( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'hf-builder' ) ) {
+				
+				// Header/Footer Builder Custom CSS 
+				$css .= apply_filters( 'botiga_bhfb_custom_css', Botiga_Header_Footer_Builder::custom_css() );
+
+			} else {
 				$css .= $this->get_max_width_css( 'site_logo_size', $defaults = array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), '.custom-logo-link img' );
 
 				$css .= $this->get_background_color_css( 'topbar_background', '', '.top-bar' );
@@ -323,7 +328,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= '.header_layout_6 .botiga-desktop-offcanvas > .row > div { margin-top: '. esc_attr( $main_header_areas_spacing_l6 ) .'px; }';
 					$css .= '.header_layout_6 .header-item { margin-bottom: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
 					$css .= '.header_layout_6 .header-item.header-contact a + a { margin-top: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
-					$css .= '.header_layout_6 .botiga-desktop-offcanvas { padding: '. esc_attr( $main_header_elements_spacing_l6 ) .'px; }';
+					$css .= '.header_layout_6 .botiga-desktop-offcanvas { padding: '. esc_attr( $main_header_padding ) .'px; }';
 				}
 
 				// Header Layout 7
@@ -353,10 +358,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $this->get_fill_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg:not(.stroke-based), .botiga-desktop-offcanvas .dropdown-symbol .ws-svg-icon svg, .desktop-menu-close svg' );
 					$css .= $this->get_stroke_css( 'desktop_offcanvas_menu_text_color', '#212121', '.botiga-desktop-offcanvas .header-item svg.stroke-based' );				
 				}
-			} else {
-
-				// Header/Footer Builder Custom CSS 
-				$css .= apply_filters( 'botiga_bhfb_custom_css', Botiga_Header_Footer_Builder::custom_css() );
 			}
 
 			//Header mini cart
@@ -810,7 +811,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_color_css( 'single_sticky_add_to_cart_style_color_title', '', '.botiga-single-sticky-add-to-cart-wrapper h5' );
 				$css .= $this->get_border_color_css( 'single_sticky_add_to_cart_style_color_content', '', '.botiga-single-sticky-add-to-cart-wrapper select' );
 				$css .= '.botiga-single-sticky-add-to-cart-wrapper .price del { color: '. esc_attr( get_theme_mod( 'single_sticky_add_to_cart_style_color_content', '#212121' ) ) .'; opacity: 0.8; }';
-				$css .= '.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item { margin-right: '. esc_attr( $single_sticky_add_to_cart_elements_spacing ) .'px; }';
+
+				$margin_side = is_rtl() ? 'left' : 'right';
+				$css .= '.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item { margin-'. esc_attr( $margin_side ) .': '. esc_attr( $single_sticky_add_to_cart_elements_spacing ) .'px; }';
 			}
 
 			//Quick view

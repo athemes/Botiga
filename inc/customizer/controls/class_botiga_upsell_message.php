@@ -16,9 +16,9 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 	/**
 	 * The type of control being rendered
 	 */
-	public $type 		 = 'botiga-upsell-features';
-	public $button_title = '';
-	public $button_link  = 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga#pro';
+	public $type 		 	  = 'botiga-upsell-features';
+	public $button_title 	  = '';
+	public $button_link  	  = 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga#pro';
 
 	/**
 	 * Constructor
@@ -30,7 +30,11 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 	/**
 	 * Render the control in the customizer
 	 */
-	public function render_content() { 
+	public function render_content() {
+		if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
+			return '';
+		}
+
 		$this->button_title = __( 'Learn More', 'botiga' ); ?>
 
 		<div class="botiga-upsell-feature-wrapper">

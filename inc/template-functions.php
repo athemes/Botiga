@@ -678,7 +678,7 @@ function botiga_google_fonts_url() {
 	), 'https://fonts.googleapis.com/css2' );
 
 	// Load google fonts locally
-	$load_locally = get_theme_mod( 'perf_google_fonts_local', 0 );
+	$load_locally = get_theme_mod( 'perf_google_fonts_local', 1 );
 	if( $load_locally ) {
 		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
@@ -696,7 +696,7 @@ function botiga_google_fonts_url() {
  * Reference: https://core.trac.wordpress.org/ticket/49742#comment:7
  */
 function botiga_google_fonts_version() {
-	$load_locally = get_theme_mod( 'perf_google_fonts_local', 0 );
+	$load_locally = get_theme_mod( 'perf_google_fonts_local', 1 );
 	if( $load_locally ) {
 		return BOTIGA_VERSION;
 	}
@@ -710,7 +710,7 @@ function botiga_google_fonts_version() {
 function botiga_preconnect_google_fonts() {
 
 	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
-	$load_locally  = get_theme_mod( 'perf_google_fonts_local', 0 );
+	$load_locally  = get_theme_mod( 'perf_google_fonts_local', 1 );
 	if( $fonts_library !== 'google' || $load_locally ) {
 		return;
 	}

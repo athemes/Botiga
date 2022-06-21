@@ -465,7 +465,7 @@ botiga.stickyHeader = {
 					sticky.classList.remove( 'is-sticky' );
 					body.classList.remove( 'sticky-header-active' );
 					
-					_this.isStickyDeactivated( 'scrolltop' );
+					_this.isHBStickyDeactivated( 'scrolltop' );
 
 					body.classList.add( 'on-header-area' );
 
@@ -474,7 +474,7 @@ botiga.stickyHeader = {
 					sticky.classList.add( 'is-sticky' );
 					body.classList.add( 'sticky-header-active' );
 					
-					_this.isStickyActive( 'scrolltop' );
+					_this.isHBStickyActive( 'scrolltop' );
 					
 					body.classList.remove( 'on-header-area' );
 
@@ -490,14 +490,14 @@ botiga.stickyHeader = {
 					sticky.classList.add( 'sticky-shadow' );
 					body.classList.add( 'sticky-header-active' );
 
-					_this.isStickyActive();
+					_this.isHBStickyActive();
 
 					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
 				} else {
 					sticky.classList.remove( 'sticky-shadow' );
 					body.classList.remove( 'sticky-header-active' );
 
-					_this.isStickyDeactivated();
+					_this.isHBStickyDeactivated();
 
 					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
 				}
@@ -506,12 +506,16 @@ botiga.stickyHeader = {
 
 	},
 
-	isStickyActive: function( effect ) {
+	isHBStickyActive: function( effect ) {
 		const 
 			bhfb 		  = document.querySelector( 'header.bhfb' ),
 			has_admin_bar = document.body.classList.contains( 'admin-bar' ),
 			above_header_row = document.querySelector( '.bhfb-above_header_row' ),
 			below_header_row = document.querySelector( '.bhfb-below_header_row' );
+
+		if( bhfb === null ) {
+			return false;
+		}
 
 		let topVal = 0;
 
@@ -530,7 +534,6 @@ botiga.stickyHeader = {
 			if( ! below_header_row.classList.contains( 'bt-d-none' ) ) {
 				if( has_admin_bar ) {
 					topVal = ( ( bhfb.clientHeight - below_header_row.clientHeight ) - 32 ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
-					console.log( topVal );
 				} else {
 					topVal = ( bhfb.clientHeight - below_header_row.clientHeight ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
 				}
@@ -548,8 +551,12 @@ botiga.stickyHeader = {
 		}
 	},
 
-	isStickyDeactivated: function( effect ) {
+	isHBStickyDeactivated: function( effect ) {
 		const bhfb = document.querySelector( 'header.bhfb' );
+
+		if( bhfb === null ) {
+			return false;
+		}
 
 		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
 			

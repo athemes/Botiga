@@ -44,6 +44,10 @@ final class Botiga_Customize_Upsell {
 	 */
 	private function setup_actions() {
 
+		if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
+			return;
+		}
+
 		// Register panels, sections, settings, controls, and partials.
 		add_action( 'customize_register', array( $this, 'sections' ) );
 

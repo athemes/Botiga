@@ -76,7 +76,7 @@ class Botiga_Theme_Dashboard {
 	public function __construct() {
 		$self = $this;
 
-		if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+		if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
 			return;
 		}
 

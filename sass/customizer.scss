@@ -6,6 +6,18 @@
 .customize-control textarea {
     padding: 12px;
 }
+
+.customize-control input[type=range] {
+    margin-right: 10px;
+}
+
+html[dir="rtl"] {
+    .customize-control input[type=range] {
+        margin-right: 0;
+        margin-left: 10px;
+    }
+}
+
 /* Typography */
 .select2-container {
     z-index: 999999 !important;
@@ -217,6 +229,22 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 36px;
+}
+
+/* Sortable Control */
+html[dir="rtl"] {
+    .customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-menu {
+        float: left;
+    }
+    .customize-control-kirki-sortable ul.ui-sortable li .dashicons.visibility {
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid #d0d0d0;
+
+        margin-right: 0;
+        padding-right: 0;
+        border-right: 0 solid #d0d0d0;
+    }
 }
 
 /* Repeater control */
@@ -691,6 +719,8 @@ span.delete:hover {
 .botiga-radio-images-wrapper {
     position: relative;
     margin: 0 -5px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .customize-control-title {
     color: #191E23;
@@ -708,6 +738,12 @@ span.delete:hover {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	float: right;
+}
+
+html[dir="rtl"] {
+    .toggle-switch {
+        float: left;
+    }
 }
 
 .toggle-switch .toggle-switch-checkbox {
@@ -929,6 +965,11 @@ label {
     width: 5px;
     height: 5px;
     transform-origin: 50% 0%;
+}
+
+html[dir="rtl"] .botiga-accordion-title:after {
+    right: auto;
+    left: 20px;
 }
 
 .botiga-accordion-title.expanded:after {

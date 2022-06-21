@@ -12,6 +12,15 @@ if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	define( 'BOTIGA_VERSION', '1.1.3' );
 }
 
+// aThemes White Label Compatibility
+if( function_exists( 'athemes_wl_get_data' ) ) {
+	$awl_data = athemes_wl_get_data();
+
+	if( $awl_data[ 'activate_white_label' ] ) {
+		define( 'BOTIGA_AWL_ACTIVE', true );
+	}
+}
+
 if ( ! function_exists( 'botiga_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

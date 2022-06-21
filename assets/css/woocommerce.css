@@ -916,6 +916,7 @@ ul.products li.product-category mark {
 
 .sidebar-slide.site-main {
   width: 100%;
+  padding-left: 15px;
 }
 
 .sidebar-slide + .widget-area {
