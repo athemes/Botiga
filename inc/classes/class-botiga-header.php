@@ -914,7 +914,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 			// Page/Post meta disable transparent header
 			global $post;
-			$post_meta_disable = get_post_meta( $post->ID, '_botiga_disable_header_transparent', true );
+			$post_meta_disable = isset( $post->ID ) ? get_post_meta( $post->ID, '_botiga_disable_header_transparent', true ) : false;
 			if( $post_meta_disable ) {
 				return;
 			} 
@@ -949,7 +949,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			if( class_exists( 'Woocommerce' ) ) {
 				
 				// Include on Shop Catalog
-				if( ( is_shop() || is_product_category() || is_product_tag() ) && ! in_array( 'shop-catalog', $display_on ) ) {
+				if( ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) && ! in_array( 'shop-catalog', $display_on ) ) {
 					return;
 				}
 

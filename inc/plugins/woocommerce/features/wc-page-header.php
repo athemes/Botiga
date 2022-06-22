@@ -9,7 +9,7 @@
  * Page header
  */
 function botiga_woocommerce_page_header() {
-	if ( !is_shop() && !is_product_category() && !is_product_tag() ) {
+	if ( !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {
 		return;
 	}
 
@@ -40,11 +40,11 @@ function botiga_woocommerce_page_header() {
 					<div class="container">
 				<?php
 				}
-				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() ) ) || !is_shop() && !is_product_category() && !is_product_tag() ) : ?>
+				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) : ?>
 					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 				<?php endif;
 
-				if( ( $shop_page_description && ( is_shop() || is_product_category() || is_product_tag() ) ) || !is_shop() && !is_product_category() && !is_product_tag() ) {
+				if( ( $shop_page_description && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {
 					woocommerce_taxonomy_archive_description();
 					woocommerce_product_archive_description();
 				}

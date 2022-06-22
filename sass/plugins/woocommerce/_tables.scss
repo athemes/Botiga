@@ -431,3 +431,38 @@ table.woocommerce-product-attributes {
 		}
 	}
 }
+
+// Wishlist Shop Table Layout 2
+@media (max-width: 991px) {
+	.shop-table-layout2 {
+		.botiga_wishlist_table {
+			.botiga-qty-remove-wrapper {
+				position: absolute;
+				top: 25px;
+				right: 0;
+				margin: 0;
+			}
+
+			tr {
+				td {
+					text-align: left !important;
+					padding-left: 0 !important;
+					padding-right: 0 !important;
+
+					&::before {
+						content: none;
+					}
+
+					&.product-name {
+						padding-top: 10px;
+					}
+
+					&.product-price {
+						padding-top: 10px;
+						padding-bottom: 10px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -936,8 +936,18 @@ form.cart .quantity.hidden {
 
 				.variations_form.cart {
 					align-items: center;
+					.variations {
+						line-height: 4;
+					}
 					.variations tbody > tr + tr > td {
 						padding-top: 0;
+					}
+					.botiga-variations-wrapper { 
+						.botiga-variation-type-button {
+							> a {
+								margin-bottom: 0;
+							}
+						}
 					}
 				}
 			}
@@ -1023,6 +1033,7 @@ form.cart .quantity.hidden {
 						justify-content: flex-end;
 						.variations {
 							width: auto;
+							line-height: 1 !important;
 							.reset_variations {
 								right: auto;
 								left: 40px;
@@ -1087,8 +1098,9 @@ form.cart .quantity.hidden {
 							}
 							.single_variation_wrap {
 								display: block;
-								margin: 20px 0 0;
+								margin: 50px 0 0;
 								.woocommerce-variation-price {
+									font-size: 1.5rem;
 									margin: 25px 0 10px;
 								}
 							}
@@ -1270,5 +1282,15 @@ body {
 				}
 			}
 		}
+	}
+}
+
+/**
+ * Product Video Gallery for Woocommerce — Compatibility
+ */
+.product-gallery-summary {
+	.nickx_product_images_with_video {
+		max-width: 50%;
+		flex-basis: 50%;
 	}
 }

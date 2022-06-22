@@ -901,9 +901,14 @@ botiga.quickView = {
 	// Unknown safari issue. If we add a 'touchend' event listener to the button the problem is resolved.
 	// Fixes: https://wordpress.org/support/topic/double-tap-issue-on-mobile/
 	safariDoubleClickFix: function() {
-		var add_to_cart = document.querySelector( '.product-gallery-summary .botiga-single-addtocart-wrapper .button' );
-		if( add_to_cart !== null ) {
-			add_to_cart.addEventListener( 'touchend', () => {} );
+		var links = document.querySelectorAll('.product-gallery-summary .botiga-single-addtocart-wrapper .button, .single-product .content-wrapper a, .single-product .footer-widgets a, .single-product .site-footer a');
+
+		if( ! links.length ) {
+			return false;
+		}
+	
+		for( const link of links ) {
+			link.addEventListener( 'touchend', () => {} );
 		}
 	}
 };

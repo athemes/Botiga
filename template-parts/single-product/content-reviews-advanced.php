@@ -22,10 +22,10 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
     <p class="text-center"><?php echo esc_html__( 'High-quality, ethically sourced products at affordable prices', 'botiga' ); ?></p>
 
     <div class="botiga-adv-reviews-header">
-        <div class="row justify-content-between">
+        <div class="row justify-content-between<?php echo ( $bars_data[ 'total' ] === 0 ) ? ' align-items-center' : ''; ?>">
             <div class="col-12 col-md-auto">
 
-                <?php if( wc_review_ratings_enabled() ) : ?>
+                <?php if( wc_review_ratings_enabled() && $bars_data[ 'total' ] > 0 ) : ?>
                 <div class="botiga-adv-reviews-rating-wrapper">
                     <strong class="botiga-adv-reviews-rating"><?php echo esc_html( $average ); ?></strong>
                     <div class="star-rating botiga-star-rating-style2" role="img" aria-label="Rated <?php echo esc_attr( $average ); ?> out of 5">
@@ -38,15 +38,19 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                     </div>
                 </div>
                 <?php endif; ?>
-
+                
                 <p class="botiga-adv-reviews-total">
                     <?php 
-                    /* translators: %s is review count */
-                    $review_count_text = sprintf( esc_html__( '%s Reviews', 'botiga' ), $review_count );
-                    echo esc_html( $review_count_text ); ?>
+                    if( $review_count > 0 ) {
+                        /* translators: %s is review count */
+                        $review_count_text = sprintf( _nx( '%s Review', '%s Reviews', $review_count, 'review count', 'botiga' ), number_format_i18n( $review_count ) );
+                        echo esc_html( $review_count_text );
+                    } else {
+                        echo esc_html__( 'Be the first to leave a review.', 'botiga' );
+                    } ?>
                 </p>
 
-                <?php if( wc_review_ratings_enabled() ) : ?>
+                <?php if( wc_review_ratings_enabled() && $bars_data[ 'total' ] > 0 ) : ?>
                 <div class="botiga-star-rating-bars">
                     <div class="botiga-star-rating-bar-item">
                         <p class="item-rating"><?php echo esc_html__( '5 Stars', 'botiga' ); ?></p>
@@ -114,6 +118,8 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
             </div>
             <div class="col-12 col-md-auto d-flex flex-direction-column">
                 <a href="#" class="button botiga-adv-review-write-button"><?php echo esc_html__( 'Write a Review', 'botiga' ); ?></a>
+
+                <?php if( $review_count > 0 ) : ?>
                 <form class="botiga-reviews-orderby-form" method="get" action="<?php echo esc_url( get_the_permalink( $product_id ) ); ?>#reviews-stars">
                     <select class="botiga-reviews-orderby" name="orderby" onChange="this.parentNode.submit();">
                         <option value="newest"<?php echo selected( $sort_orderby, 'newest' ); ?>><?php echo esc_html__( 'Newest', 'botiga' ); ?></option>
@@ -122,6 +128,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                         <option value="low-rated"<?php echo selected( $sort_orderby, 'low-rated' ); ?>><?php echo esc_html__( 'Low rated', 'botiga' ); ?></option>
                     </select>
                 </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>

@@ -928,10 +928,24 @@ botiga.backToTop = {
   // Unknown safari issue. If we add a 'touchend' event listener to the button the problem is resolved.
   // Fixes: https://wordpress.org/support/topic/double-tap-issue-on-mobile/
   safariDoubleClickFix: function safariDoubleClickFix() {
-    var add_to_cart = document.querySelector('.product-gallery-summary .botiga-single-addtocart-wrapper .button');
+    var links = document.querySelectorAll('.product-gallery-summary .botiga-single-addtocart-wrapper .button, .single-product .content-wrapper a, .single-product .footer-widgets a, .single-product .site-footer a');
 
-    if (add_to_cart !== null) {
-      add_to_cart.addEventListener('touchend', function () {});
+    if (!links.length) {
+      return false;
+    }
+
+    var _iterator9 = _createForOfIteratorHelper(links),
+        _step9;
+
+    try {
+      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+        var link = _step9.value;
+        link.addEventListener('touchend', function () {});
+      }
+    } catch (err) {
+      _iterator9.e(err);
+    } finally {
+      _iterator9.f();
     }
   }
 };
@@ -1008,12 +1022,12 @@ botiga.carousel = {
 
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
 
-    var _iterator9 = _createForOfIteratorHelper(carouselEls),
-        _step9;
+    var _iterator10 = _createForOfIteratorHelper(carouselEls),
+        _step10;
 
     try {
-      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-        var carouselEl = _step9.value;
+      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+        var carouselEl = _step10.value;
 
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
@@ -1072,9 +1086,9 @@ botiga.carousel = {
         }
       }
     } catch (err) {
-      _iterator9.e(err);
+      _iterator10.e(err);
     } finally {
-      _iterator9.f();
+      _iterator10.f();
     }
   },
   events: function events() {

@@ -383,6 +383,30 @@ table.woocommerce-product-attributes p {
   }
 }
 
+@media (max-width: 991px) {
+  .shop-table-layout2 .botiga_wishlist_table .botiga-qty-remove-wrapper {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    margin: 0;
+  }
+  .shop-table-layout2 .botiga_wishlist_table tr td {
+    text-align: left !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .shop-table-layout2 .botiga_wishlist_table tr td::before {
+    content: none;
+  }
+  .shop-table-layout2 .botiga_wishlist_table tr td.product-name {
+    padding-top: 10px;
+  }
+  .shop-table-layout2 .botiga_wishlist_table tr td.product-price {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
 /**
  * Products
  */
@@ -2501,8 +2525,16 @@ form.cart .quantity.hidden {
           align-items: center;
 }
 
+.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .variations_form.cart .variations {
+  line-height: 4;
+}
+
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .variations_form.cart .variations tbody > tr + tr > td {
   padding-top: 0;
+}
+
+.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .variations_form.cart .botiga-variations-wrapper .botiga-variation-type-button > a {
+  margin-bottom: 0;
 }
 
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form {
@@ -2609,6 +2641,7 @@ form.cart .quantity.hidden {
   }
   .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart > .variations_form .variations {
     width: auto;
+    line-height: 1 !important;
   }
   .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart > .variations_form .variations .reset_variations {
     right: auto;
@@ -2685,9 +2718,10 @@ form.cart .quantity.hidden {
   }
   .botiga-single-sticky-add-to-cart-wrapper.botiga-sticky-addtocart-mobile-active .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .variations_form .single_variation_wrap {
     display: block;
-    margin: 20px 0 0;
+    margin: 50px 0 0;
   }
   .botiga-single-sticky-add-to-cart-wrapper.botiga-sticky-addtocart-mobile-active .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .variations_form .single_variation_wrap .woocommerce-variation-price {
+    font-size: 1.5rem;
     margin: 25px 0 10px;
   }
   .botiga-single-sticky-add-to-cart-wrapper.botiga-sticky-addtocart-mobile-active .botiga-single-sticky-add-to-cart-wrapper-content .variations_form {
@@ -2841,6 +2875,15 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 
 .woocommerce-Reviews #comments .woocommerce-pagination li .page-numbers {
   text-decoration: none;
+}
+
+/**
+ * Product Video Gallery for Woocommerce — Compatibility
+ */
+.product-gallery-summary .nickx_product_images_with_video {
+  max-width: 50%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 /**

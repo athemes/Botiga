@@ -97,7 +97,7 @@ function botiga_woocommerce_scripts() {
 	// Sidebar
 	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 
-	if( 'sidebar-slide' === $shop_archive_sidebar && ( is_shop() || is_product_category() || is_product_tag() ) ) {
+	if( 'sidebar-slide' === $shop_archive_sidebar && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) {
 		wp_register_script( 'botiga-sidebar', get_template_directory_uri() . '/assets/js/botiga-sidebar.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
 		wp_enqueue_script( 'botiga-sidebar' );
 	}
@@ -218,6 +218,7 @@ function botiga_wc_single_layout() {
  * Hook into Woocommerce
  */
 function botiga_wc_hooks() {
+
 	//No sidebar for checkout, cart, account
 	if ( is_cart() ) {
 		add_filter( 'botiga_content_class', function() { 
@@ -235,13 +236,13 @@ function botiga_wc_hooks() {
 	}
 
 	//Archive layout
-	if ( is_shop() || is_product_category() || is_product_tag()	) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
 		add_filter( 'botiga_content_class', 'botiga_wc_archive_layout' );
 	}
 
 	//Single product settings
 	if ( is_product() ) {
-		$single_breadcrumbs 			= get_theme_mod( 'single_breadcrumbs', 1 );
+		$single_breadcrumbs = get_theme_mod( 'single_breadcrumbs', 1 );
 
 		//Content class
 		add_filter( 'botiga_content_class', 'botiga_wc_single_layout' );

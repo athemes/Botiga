@@ -13,7 +13,7 @@ function botiga_quick_view_scripts() {
     //Enqueue gallery scripts for quick view
 	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
 	
-	if ( is_shop() || is_product_category() || is_product_tag() || botiga_wc_has_blocks() || is_cart() || $shop_cart_show_cross_sell ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || botiga_wc_has_blocks() || is_cart() || is_404() || $shop_cart_show_cross_sell ) {
 		$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 		
 		if( 'layout1' !== $quick_view_layout ) {
