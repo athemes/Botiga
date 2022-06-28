@@ -303,7 +303,7 @@ if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
 						<?php foreach ( $enabled_networks as $network ) : 
 							if( $network !== 'copyclipboard' ) : ?>
 								<div class="botiga-share-box-item">
-									<a href="<?php echo $networks[ $network ]['url']; ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $networks[ $network ][ 'tooltip' ] ); ?>">
+									<a href="<?php echo esc_url( $networks[ $network ]['url'] ); ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $networks[ $network ][ 'tooltip' ] ); ?>">
 										<?php botiga_get_svg_icon( 'icon-'. $network, true ); ?>
 									</a>
 								</div>

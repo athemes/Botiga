@@ -17,7 +17,7 @@ $wp_customize->add_section(
 $wp_customize->add_setting(
 	'perf_google_fonts_local',
 	array(
-		'default'           => 1,
+		'default'           => 0,
 		'sanitize_callback' => 'botiga_sanitize_checkbox'
 	)
 );

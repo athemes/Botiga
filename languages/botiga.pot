@@ -44,95 +44,95 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:57
+#: functions.php:66
 msgid "Primary"
 msgstr ""
 
-#: functions.php:58
-msgid "Top Bar Menu"
+#: functions.php:67
+msgid "Secondary Menu"
 msgstr ""
 
 #. translators: %s: color palette
-#: functions.php:137, functions.php:128
+#: functions.php:146, functions.php:137
 msgid "Color %s"
 msgstr ""
 
-#: functions.php:157
+#: functions.php:166
 msgid "Small"
 msgstr ""
 
-#: functions.php:158
+#: functions.php:167
 msgctxt "Font size"
 msgid "S"
 msgstr ""
 
-#: functions.php:163, inc/customizer/options/typography.php:126, inc/customizer/options/typography.php:567
+#: functions.php:172, inc/customizer/options/typography.php:126, inc/customizer/options/typography.php:567
 msgid "Normal"
 msgstr ""
 
-#: functions.php:164
+#: functions.php:173
 msgctxt "Font size"
 msgid "N"
 msgstr ""
 
-#: functions.php:169
+#: functions.php:178
 msgid "Large"
 msgstr ""
 
-#: functions.php:170, functions.php:176
+#: functions.php:179, functions.php:185
 msgctxt "Font size"
 msgid "L"
 msgstr ""
 
-#: functions.php:175
+#: functions.php:184
 msgid "Larger"
 msgstr ""
 
-#: functions.php:181
+#: functions.php:190
 msgid "Extra large"
 msgstr ""
 
-#: functions.php:182
+#: functions.php:191
 msgctxt "Font size"
 msgid "XL"
 msgstr ""
 
-#: functions.php:187
+#: functions.php:196
 msgid "Huge"
 msgstr ""
 
-#: functions.php:188
+#: functions.php:197
 msgctxt "Font size"
 msgid "XXL"
 msgstr ""
 
-#: functions.php:193
+#: functions.php:202
 msgid "Gigantic"
 msgstr ""
 
-#: functions.php:194
+#: functions.php:203
 msgctxt "Font size"
 msgid "XXXL"
 msgstr ""
 
-#: functions.php:229, inc/customizer/options/woocommerce.php:164
+#: functions.php:238, inc/customizer/options/woocommerce.php:164
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:231, functions.php:247
+#: functions.php:240, functions.php:256
 msgid "Add widgets here."
 msgstr ""
 
 #. translators: %s = footer widget area number
-#: functions.php:245
+#: functions.php:254
 msgid "Footer %s"
 msgstr ""
 
-#: functions.php:283, inc/template-tags.php:261
+#: functions.php:292
 msgid "Copy link"
 msgstr ""
 
-#: functions.php:284
+#: functions.php:293
 msgid "Copied!"
 msgstr ""
 
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Botiga"
 msgstr ""
 
-#: inc/classes/class-botiga-footer.php:294, inc/customizer/options/general.php:90
+#: inc/classes/class-botiga-footer.php:300, inc/customizer/options/general.php:90
 msgid "Back to top"
 msgstr ""
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Hide page title"
 msgstr ""
 
-#: inc/classes/class-botiga-posts-archive.php:227, theme-dashboard/class-theme-dashboard.php:399, theme-dashboard/class-theme-dashboard.php:419, theme-dashboard/class-theme-dashboard.php:439
+#: inc/classes/class-botiga-posts-archive.php:227, theme-dashboard/class-theme-dashboard.php:431, theme-dashboard/class-theme-dashboard.php:451, theme-dashboard/class-theme-dashboard.php:471
 msgid "Read more"
 msgstr ""
 
@@ -271,7 +271,7 @@ msgstr ""
 msgid "Project Name: %s"
 msgstr ""
 
-#: inc/customizer.php:245, inc/customizer.php:243, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:56, template-parts/content-wishlist.php:116
+#: inc/customizer.php:245, inc/customizer.php:243, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58, template-parts/content-wishlist.php:116
 msgid "Loading..."
 msgstr ""
 
@@ -292,8 +292,12 @@ msgid "Invalid API token."
 msgstr ""
 
 #. translators: 1: Adobe Fonts docs link
-#: inc/customizer/ajax-callbacks.php:65
+#: inc/customizer/ajax-callbacks.php:62
 msgid "Your API token is valid but you don't have fonts attached to this token. Click <a href=\"%s\" target=\"_blank\">here</a> to learn more about that."
+msgstr ""
+
+#: inc/customizer/ajax-callbacks.php:67
+msgid "Your API token is valid but you don't have fonts attached to this token."
 msgstr ""
 
 #. translators: 1: page name
@@ -331,7 +335,7 @@ msgstr ""
 msgid "Style"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_upsell_message.php:34
+#: inc/customizer/controls/class_botiga_upsell_message.php:38
 msgid "Learn More"
 msgstr ""
 
@@ -348,26 +352,30 @@ msgid "Font weight"
 msgstr ""
 
 #. translators: 1: How to use adobe fonts docs link
-#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:37
+#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:38
 msgid "To use fonts from Adobe some steps are required. Learn more about that <a href=\"%s\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:42
+#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:44
 msgid "API Token"
 msgstr ""
 
 #. translators: 1: Adobe Fonts account website link
-#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:50
+#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:52
 msgid "You can get your Adobe Fonts API Token by clicking <a href=\"%s\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:56, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:56
+#: inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58
 msgid "Get Fonts"
 msgstr ""
 
 #. translators: 1: How to use adobe fonts docs link
-#: inc/customizer/controls/typography/class_botiga_typography.php:125
+#: inc/customizer/controls/typography/class_botiga_typography.php:124
 msgid "<p class=\"botiga-customize-error\">Something went wrong and the Google Fonts couldn't be loaded. Please contact our support <a href=\"%s\" target=\"_blank\">here</a> to get help."
+msgstr ""
+
+#: inc/customizer/controls/typography/class_botiga_typography.php:129
+msgid "<p class=\"botiga-customize-error\">Something went wrong and the Google Fonts couldn't be loaded."
 msgstr ""
 
 #: inc/customizer/options/blog-single.php:14
@@ -566,7 +574,7 @@ msgstr ""
 msgid "Image size"
 msgstr ""
 
-#: inc/customizer/options/blog.php:274, inc/customizer/options/general.php:94, inc/customizer/options/topbar.php:333, inc/template-functions.php:586
+#: inc/customizer/options/blog.php:274, inc/customizer/options/general.php:94, inc/customizer/options/topbar.php:333, inc/template-functions.php:588
 msgid "Text"
 msgstr ""
 
@@ -986,7 +994,7 @@ msgstr ""
 msgid "Additional elements"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:86, inc/customizer/options/header.php:552, inc/template-functions.php:516, inc/template-functions.php:528, inc/template-functions.php:544, inc/template-functions.php:559
+#: inc/customizer/options/header-mobile.php:86, inc/customizer/options/header.php:552, inc/template-functions.php:518, inc/template-functions.php:530, inc/template-functions.php:546, inc/template-functions.php:561
 msgid "Cart &amp; account icons"
 msgstr ""
 
@@ -1002,11 +1010,11 @@ msgstr ""
 msgid "Offcanvas mode"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:165, inc/customizer/options/woocommerce-single.php:57, inc/customizer/options/woocommerce.php:347, inc/customizer/options/woocommerce.php:377, inc/customizer/options/woocommerce.php:415, inc/customizer/options/woocommerce.php:526, inc/customizer/options/woocommerce.php:666, inc/customizer/options/woocommerce.php:759, inc/customizer/options/woocommerce.php:878, inc/customizer/options/woocommerce.php:947, inc/template-functions.php:463, inc/template-functions.php:493
+#: inc/customizer/options/header-mobile.php:165, inc/customizer/options/woocommerce-single.php:57, inc/customizer/options/woocommerce.php:347, inc/customizer/options/woocommerce.php:377, inc/customizer/options/woocommerce.php:415, inc/customizer/options/woocommerce.php:526, inc/customizer/options/woocommerce.php:666, inc/customizer/options/woocommerce.php:759, inc/customizer/options/woocommerce.php:878, inc/customizer/options/woocommerce.php:947, inc/template-functions.php:465, inc/template-functions.php:495
 msgid "Layout 1"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:169, inc/customizer/options/woocommerce-single.php:61, inc/customizer/options/woocommerce.php:351, inc/customizer/options/woocommerce.php:381, inc/customizer/options/woocommerce.php:419, inc/customizer/options/woocommerce.php:530, inc/customizer/options/woocommerce.php:670, inc/customizer/options/woocommerce.php:763, inc/customizer/options/woocommerce.php:882, inc/customizer/options/woocommerce.php:951, inc/template-functions.php:467, inc/template-functions.php:497
+#: inc/customizer/options/header-mobile.php:169, inc/customizer/options/woocommerce-single.php:61, inc/customizer/options/woocommerce.php:351, inc/customizer/options/woocommerce.php:381, inc/customizer/options/woocommerce.php:419, inc/customizer/options/woocommerce.php:530, inc/customizer/options/woocommerce.php:670, inc/customizer/options/woocommerce.php:763, inc/customizer/options/woocommerce.php:882, inc/customizer/options/woocommerce.php:951, inc/template-functions.php:469, inc/template-functions.php:499
 msgid "Layout 2"
 msgstr ""
 
@@ -1146,7 +1154,7 @@ msgstr ""
 msgid "Top right"
 msgstr ""
 
-#: inc/customizer/options/header.php:625, inc/template-functions.php:517, inc/template-functions.php:529, inc/template-functions.php:545, inc/template-functions.php:560
+#: inc/customizer/options/header.php:625, inc/template-functions.php:519, inc/template-functions.php:531, inc/template-functions.php:547, inc/template-functions.php:562
 msgid "Button"
 msgstr ""
 
@@ -1166,7 +1174,7 @@ msgstr ""
 msgid "Open in a new tab?"
 msgstr ""
 
-#: inc/customizer/options/header.php:723, inc/customizer/options/topbar.php:218, inc/template-functions.php:518, inc/template-functions.php:530, inc/template-functions.php:546, inc/template-functions.php:561, inc/template-functions.php:588
+#: inc/customizer/options/header.php:723, inc/customizer/options/topbar.php:218, inc/template-functions.php:520, inc/template-functions.php:532, inc/template-functions.php:548, inc/template-functions.php:563, inc/template-functions.php:590
 msgid "Contact info"
 msgstr ""
 
@@ -1274,11 +1282,11 @@ msgstr ""
 msgid "Center the content?"
 msgstr ""
 
-#: inc/customizer/options/topbar.php:282, inc/template-functions.php:585
+#: inc/customizer/options/topbar.php:282, inc/template-functions.php:587
 msgid "Social"
 msgstr ""
 
-#: inc/customizer/options/topbar.php:381, inc/template-functions.php:587
+#: inc/customizer/options/topbar.php:381, inc/template-functions.php:589
 msgid "Secondary menu"
 msgstr ""
 
@@ -1370,7 +1378,7 @@ msgstr ""
 msgid "Product Image"
 msgstr ""
 
-#: inc/customizer/options/woocommerce-single.php:65, inc/customizer/options/woocommerce.php:385, inc/customizer/options/woocommerce.php:423, inc/customizer/options/woocommerce.php:674, inc/customizer/options/woocommerce.php:955, inc/template-functions.php:471, inc/template-functions.php:501
+#: inc/customizer/options/woocommerce-single.php:65, inc/customizer/options/woocommerce.php:385, inc/customizer/options/woocommerce.php:423, inc/customizer/options/woocommerce.php:674, inc/customizer/options/woocommerce.php:955, inc/template-functions.php:473, inc/template-functions.php:503
 msgid "Layout 3"
 msgstr ""
 
@@ -1482,7 +1490,7 @@ msgstr ""
 msgid "Add to cart button"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:389, inc/customizer/options/woocommerce.php:678, inc/template-functions.php:475
+#: inc/customizer/options/woocommerce.php:389, inc/customizer/options/woocommerce.php:678, inc/template-functions.php:477
 msgid "Layout 4"
 msgstr ""
 
@@ -1542,7 +1550,7 @@ msgstr ""
 msgid "You may use the {value} tag. E.g. <strong>{value}% OFF!</strong>"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:682, inc/template-functions.php:479
+#: inc/customizer/options/woocommerce.php:682, inc/template-functions.php:481
 msgid "Layout 5"
 msgstr ""
 
@@ -1590,7 +1598,7 @@ msgstr ""
 msgid "Product Title Hover"
 msgstr ""
 
-#: inc/customizer/options/woocommerce.php:1174, inc/template-functions.php:515, inc/template-functions.php:527, inc/template-functions.php:543, inc/template-functions.php:558
+#: inc/customizer/options/woocommerce.php:1174, inc/template-functions.php:517, inc/template-functions.php:529, inc/template-functions.php:545, inc/template-functions.php:560
 msgid "Search"
 msgstr ""
 
@@ -1678,28 +1686,28 @@ msgstr ""
 msgid "Display product categories in the results if the searched term matches with category name."
 msgstr ""
 
-#: inc/customizer/upsell/class-customize.php:76
+#: inc/customizer/upsell/class-customize.php:80
 msgid "Want More Customization Options?"
 msgstr ""
 
-#: inc/customizer/upsell/class-customize.php:77
+#: inc/customizer/upsell/class-customize.php:81
 msgid "Buy Botiga Pro"
 msgstr ""
 
 #. translators: %1$s current user display name.
-#: inc/notices/class-botiga-review.php:54
+#: inc/notices/class-botiga-review.php:59
 msgid "Hey, %1$s! You've been using Botiga for more than two weeks now and we hope you're happy with it. If you have a few minutes, we would love to get a 5 star review from you."
 msgstr ""
 
-#: inc/notices/class-botiga-review.php:63
+#: inc/notices/class-botiga-review.php:68
 msgid "Sure"
 msgstr ""
 
-#: inc/notices/class-botiga-review.php:65
+#: inc/notices/class-botiga-review.php:70
 msgid "Maybe later"
 msgstr ""
 
-#: inc/notices/class-botiga-review.php:67
+#: inc/notices/class-botiga-review.php:72
 msgid "I already did"
 msgstr ""
 
@@ -1793,55 +1801,55 @@ msgstr ""
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
-#: inc/template-functions.php:531
+#: inc/template-functions.php:533
 msgid "Hamburger button"
 msgstr ""
 
-#: inc/template-functions.php:600
+#: inc/template-functions.php:602
 msgid "Front Page"
 msgstr ""
 
-#: inc/template-functions.php:601
+#: inc/template-functions.php:603
 msgid "Pages"
 msgstr ""
 
-#: inc/template-functions.php:602
+#: inc/template-functions.php:604
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/template-functions.php:603
+#: inc/template-functions.php:605
 msgid "Blog Posts"
 msgstr ""
 
-#: inc/template-functions.php:604
+#: inc/template-functions.php:606
 msgid "Posts Search Results"
 msgstr ""
 
-#: inc/template-functions.php:605
+#: inc/template-functions.php:607
 msgid "404 Page"
 msgstr ""
 
-#: inc/template-functions.php:610
+#: inc/template-functions.php:612
 msgid "Shop Catalog"
 msgstr ""
 
-#: inc/template-functions.php:611
+#: inc/template-functions.php:613
 msgid "Shop Products"
 msgstr ""
 
-#: inc/template-functions.php:612
+#: inc/template-functions.php:614
 msgid "Shop Cart"
 msgstr ""
 
-#: inc/template-functions.php:613
+#: inc/template-functions.php:615
 msgid "Shop Checkout"
 msgstr ""
 
-#: inc/template-functions.php:614
+#: inc/template-functions.php:616
 msgid "Shop My Account"
 msgstr ""
 
-#: inc/template-functions.php:619
+#: inc/template-functions.php:621
 msgid "Shop Wishlist"
 msgstr ""
 
@@ -1878,37 +1886,77 @@ msgstr ""
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
-#: inc/template-tags.php:232
-msgid "Twitter"
+#: inc/template-tags.php:234
+msgid "SHARE:"
 msgstr ""
 
-#: inc/template-tags.php:235
+#: inc/template-tags.php:241
 msgid "Facebook"
 msgstr ""
 
-#: inc/template-tags.php:238
+#: inc/template-tags.php:245
+msgid "Twitter"
+msgstr ""
+
+#: inc/template-tags.php:249
 msgid "Linkedin"
 msgstr ""
 
-#: inc/template-tags.php:245
-msgid "SHARE"
+#: inc/template-tags.php:253
+msgid "Reddit"
 msgstr ""
 
-#: inc/template-tags.php:290
+#: inc/template-tags.php:257
+msgid "WhatsApp"
+msgstr ""
+
+#: inc/template-tags.php:261
+msgid "Pinterest"
+msgstr ""
+
+#: inc/template-tags.php:265
+msgid "Telegram"
+msgstr ""
+
+#: inc/template-tags.php:269
+msgid "Weibo"
+msgstr ""
+
+#: inc/template-tags.php:273
+msgid "VK"
+msgstr ""
+
+#: inc/template-tags.php:277
+msgid "OK"
+msgstr ""
+
+#: inc/template-tags.php:281
+msgid "Xing"
+msgstr ""
+
+#: inc/template-tags.php:285
+msgid "Mail"
+msgstr ""
+
+#: inc/template-tags.php:289
+msgid "Copy Link"
+msgstr ""
+
+#: inc/template-tags.php:344
 msgid "Previous:"
 msgstr ""
 
-#: inc/template-tags.php:291
+#: inc/template-tags.php:345
 msgid "Next:"
 msgstr ""
 
 #. translators: %s: Author name
-#: inc/template-tags.php:320
+#: inc/template-tags.php:374
 msgid "By %s"
 msgstr ""
 
 #. translators: %s: Author name
-#: inc/template-tags.php:330
+#: inc/template-tags.php:384
 msgid "See all posts by %s <span aria-hidden=\"true\">&rarr;</span>"
 msgstr ""
 
@@ -2108,15 +2156,15 @@ msgstr ""
 msgid "Free vs PRO"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:318, theme-dashboard/class-theme-dashboard.php:715
+#: inc/theme-dashboard-settings.php:318, theme-dashboard/class-theme-dashboard.php:747
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:319, theme-dashboard/class-theme-dashboard.php:718
+#: inc/theme-dashboard-settings.php:319, theme-dashboard/class-theme-dashboard.php:750
 msgid "Take Botiga to a whole other level by upgrading to the Pro version."
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:320, theme-dashboard/class-theme-dashboard.php:722
+#: inc/theme-dashboard-settings.php:320, theme-dashboard/class-theme-dashboard.php:754
 msgid "Discover Botiga Pro"
 msgstr ""
 
@@ -2313,16 +2361,22 @@ msgid "High-quality, ethically sourced products at affordable prices"
 msgstr ""
 
 #. translators: %s is average rating value
-#: template-parts/single-product/content-reviews-advanced.php:35, template-parts/single-product/content-reviews-advanced.php:197
+#: template-parts/single-product/content-reviews-advanced.php:35, template-parts/single-product/content-reviews-advanced.php:252, template-parts/single-product/content-reviews-advanced.php:206
 msgid "Rated %s out of 5 based on customer ratings."
 msgstr ""
 
-#. translators: %s is review count
-#: template-parts/single-product/content-reviews-advanced.php:45
-msgid "%s Reviews"
+#: template-parts/single-product/content-reviews-advanced.php:49
+msgid "Be the first to leave a review."
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:52
+#: template-parts/single-product/content-reviews-advanced.php:46
+msgctxt "review count"
+msgid "%s Review"
+msgid_plural "%s Reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/single-product/content-reviews-advanced.php:56
 msgid "5 Stars"
 msgstr ""
 
@@ -2331,206 +2385,218 @@ msgstr ""
 #. translators: %s is stars quantity
 #. translators: %s is stars quantity
 #. translators: %s is stars quantity
-#: template-parts/single-product/content-reviews-advanced.php:59, template-parts/single-product/content-reviews-advanced.php:71, template-parts/single-product/content-reviews-advanced.php:83, template-parts/single-product/content-reviews-advanced.php:95, template-parts/single-product/content-reviews-advanced.php:107
+#: template-parts/single-product/content-reviews-advanced.php:63, template-parts/single-product/content-reviews-advanced.php:75, template-parts/single-product/content-reviews-advanced.php:87, template-parts/single-product/content-reviews-advanced.php:99, template-parts/single-product/content-reviews-advanced.php:111
 msgid "(%s)"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:64
+#: template-parts/single-product/content-reviews-advanced.php:68
 msgid "4 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:76
+#: template-parts/single-product/content-reviews-advanced.php:80
 msgid "3 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:88
+#: template-parts/single-product/content-reviews-advanced.php:92
 msgid "2 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:100
+#: template-parts/single-product/content-reviews-advanced.php:104
 msgid "1 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:116
+#: template-parts/single-product/content-reviews-advanced.php:120
 msgid "Write a Review"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:119
+#: template-parts/single-product/content-reviews-advanced.php:125
 msgid "Newest"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:120
+#: template-parts/single-product/content-reviews-advanced.php:126
 msgid "Oldest"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:121
+#: template-parts/single-product/content-reviews-advanced.php:127
 msgid "Top rated"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:122
+#: template-parts/single-product/content-reviews-advanced.php:128
 msgid "Low rated"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:233
+#: template-parts/single-product/content-reviews-advanced.php:283
 msgid "There are no reviews yet."
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:212
+#: template-parts/single-product/content-reviews-advanced.php:267, template-parts/single-product/content-reviews-advanced.php:221
 msgid " — verified owner"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:110, theme-dashboard/class-theme-dashboard.php:110, theme-dashboard/class-theme-dashboard.php:511, theme-dashboard/class-theme-dashboard.php:563
+#: template-parts/single-product/content-reviews-advanced.php:272
+msgid "Your review is awaiting approval."
+msgstr ""
+
+#: theme-dashboard/class-theme-dashboard.php:114, theme-dashboard/class-theme-dashboard.php:114, theme-dashboard/class-theme-dashboard.php:543, theme-dashboard/class-theme-dashboard.php:595
 msgid "Theme Dashboard"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:125
+#: theme-dashboard/class-theme-dashboard.php:129
 msgid "Something went wrong, contact support."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:284
+#: theme-dashboard/class-theme-dashboard.php:288
 msgid "Insufficient permissions to install the plugin."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:303
+#: theme-dashboard/class-theme-dashboard.php:307
 msgid "Failed to initialize or activate importer plugin."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:366
+#: theme-dashboard/class-theme-dashboard.php:398
 msgid "Customize"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:391
+#: theme-dashboard/class-theme-dashboard.php:381
+msgid "Deactivate"
+msgstr ""
+
+#: theme-dashboard/class-theme-dashboard.php:377
+msgid "Activate"
+msgstr ""
+
+#: theme-dashboard/class-theme-dashboard.php:423
 msgid "Best WordPress Speed Optimization Plugins"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:395
+#: theme-dashboard/class-theme-dashboard.php:427
 msgid "We run through the top 10 WordPress performance plugins to keep your site running fast. Goes beyond just caching plugins (though those are on there too!). A must-read for all WordPress site owners."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:411
+#: theme-dashboard/class-theme-dashboard.php:443
 msgid "WP Rocket Review"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:415
+#: theme-dashboard/class-theme-dashboard.php:447
 msgid "Every site that is serious about speed (and should be pretty much all sites these days) needs a caching plugin and WP Rocket is our pick of the bunch. Get the lowdown on why we recommend it n our data-backed review: "
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:431
+#: theme-dashboard/class-theme-dashboard.php:463
 msgid "Fastest WordPress Hosts"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:435
+#: theme-dashboard/class-theme-dashboard.php:467
 msgid "A slow host can really put a drag on your site’s performance, even an optimized one. Make sure you get a host that won’t hold you back by reading our review, complete with real speed tests, of the fastest WordPress hosts. "
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:461
+#: theme-dashboard/class-theme-dashboard.php:493
 msgid "Hello, "
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:469
+#: theme-dashboard/class-theme-dashboard.php:501
 msgid "👋🏻"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:506
+#: theme-dashboard/class-theme-dashboard.php:538
 msgid "Starter Sites"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:518
+#: theme-dashboard/class-theme-dashboard.php:550
 msgid "Clicking “Starter Sites” button will install and activate the demo importer plugin."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:546
+#: theme-dashboard/class-theme-dashboard.php:578
 msgid "aThemes"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:554
+#: theme-dashboard/class-theme-dashboard.php:586
 msgid "Documentation"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:630
+#: theme-dashboard/class-theme-dashboard.php:662
 msgid "Support"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:633
+#: theme-dashboard/class-theme-dashboard.php:665
 msgid "Priority Status"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:639
+#: theme-dashboard/class-theme-dashboard.php:671
 msgid "Need help? We're here for you!"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:642
+#: theme-dashboard/class-theme-dashboard.php:674
 msgid "Have a question? Hit a bug? Get the help you need, when you need it from our friendly support staff."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:646
+#: theme-dashboard/class-theme-dashboard.php:678
 msgid "Get Support"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:654
+#: theme-dashboard/class-theme-dashboard.php:686
 msgid "Priority Support"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:656
+#: theme-dashboard/class-theme-dashboard.php:688
 msgid "pro"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:659
+#: theme-dashboard/class-theme-dashboard.php:691
 msgid "Get direct support from our developers via email. We aim to answer all priority support requests within 24 hours."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:663
+#: theme-dashboard/class-theme-dashboard.php:695
 msgid "Get Priority Support with Botiga Pro"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:673
+#: theme-dashboard/class-theme-dashboard.php:705
 msgid "Community"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:677
+#: theme-dashboard/class-theme-dashboard.php:709
 msgid "Join our community"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:680
+#: theme-dashboard/class-theme-dashboard.php:712
 msgid "Discuss products and ask for community support or help the community."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:684
+#: theme-dashboard/class-theme-dashboard.php:716
 msgid "Join Now"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:731
+#: theme-dashboard/class-theme-dashboard.php:763
 msgid "Review"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:736
+#: theme-dashboard/class-theme-dashboard.php:768
 msgid "It makes us happy to hear from our users. We would appreciate a review."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:740
+#: theme-dashboard/class-theme-dashboard.php:772
 msgid "Submit a Review"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:746
+#: theme-dashboard/class-theme-dashboard.php:778
 msgid "Have an idea or feedback?"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:748
+#: theme-dashboard/class-theme-dashboard.php:780
 msgid "Let us know. We'd love to hear from you."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:751
+#: theme-dashboard/class-theme-dashboard.php:783
 msgid "Suggest an idea"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:758
+#: theme-dashboard/class-theme-dashboard.php:790
 msgid "Changelog"
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:765
+#: theme-dashboard/class-theme-dashboard.php:797
 msgid "Keep informed with the latest changes about each theme."
 msgstr ""
 
-#: theme-dashboard/class-theme-dashboard.php:768
+#: theme-dashboard/class-theme-dashboard.php:800
 msgid "See the Changelog"
 msgstr ""
