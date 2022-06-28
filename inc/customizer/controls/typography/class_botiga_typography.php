@@ -125,7 +125,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 					'https://athemes.com/support/'
 				);
 
-				if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+				if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
 					$error_message = __( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded.', 'botiga' );
 				}
 

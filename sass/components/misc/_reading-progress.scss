@@ -45,6 +45,14 @@ body {
             width: calc( 100% - 300px );
         }
     }
+
+    // Header Builder
+    .bhfb {
+        .botiga-reading-progress {
+            position: relative;
+            top: 0 !important;
+        }
+    }
 }
 
 // Admin bar

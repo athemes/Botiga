@@ -380,6 +380,18 @@ function botiga_header_transparent_enabled() {
 /**
  * Sticky header
  */
+if( ! function_exists( 'botiga_sticky_header_enabled' ) ) {
+	function botiga_sticky_header_enabled() {
+		$enable = get_theme_mod( 'enable_sticky_header', 0 );
+
+		if ( $enable ) {
+			return true;
+		} else {
+			return false;
+		} 
+	}
+}
+
 function botiga_callback_sticky_header() {
 	$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	$enable        = get_theme_mod( 'enable_sticky_header', 0 );

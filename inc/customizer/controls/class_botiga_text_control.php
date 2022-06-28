@@ -42,7 +42,7 @@ class Botiga_Text_Control extends WP_Customize_Control {
 	 * Render the control in the customizer
 	 */
 	public function render_content() {
-		if( $this->check_white_label && defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+		if( $this->check_white_label && defined( 'BOTIGA_AWL_ACTIVE' ) ) {
 			if( $this->white_label_desc ) {
 				$this->description = $this->white_label_desc;
 				$this->link_title  = '';

@@ -77,6 +77,10 @@ botiga.helpers = {
 		if ( ! siteNavigation && typeof button === 'undefined'  ) {
 			return;
 		}
+
+		if( typeof offCanvas === 'undefined' ) {
+			return;
+		}
 	
 		const closeButton 	= document.getElementsByClassName( 'mobile-menu-close' )[ 0 ];
 
@@ -321,43 +325,49 @@ botiga.headerSearch = {
 			return;
 		}
 
-		for ( var buttonEl of button ) {
-			buttonEl.addEventListener( 'click', function(e){
-				e.preventDefault();
-
-				// Hide other search icons 
-				if( button.length > 1 ) {
-					for ( var btn of button ) {
-						btn.classList.toggle( 'hide' );
-					}
-				}
-
-				form.classList.toggle( 'active' );
-				overlay.classList.toggle( 'active' );
-				document.body.classList.toggle( 'header-search-form-active' );
-				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
-				e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
-				e.target.closest( '.header-search' ).classList.add( 'active' );
-				e.target.closest( '.header-search' ).classList.remove( 'hide' );
-
-				if( typeof searchInput !== 'undefined' ) {
-					searchInput.focus();
-				}
-
-				if( e.target.closest( '.botiga-offcanvas-menu' ) !== null ) {
-					e.target.closest( '.botiga-offcanvas-menu' ).classList.remove( 'toggled' );
-				}
-			} );	
+		if( document.body.classList.contains( 'has-bhfb-builder' ) ) {
+			form = document.querySelector( '.header-search-form' );
 		}
 
-		overlay.addEventListener( 'click', function() {
-			form.classList.remove( 'active' );
-			overlay.classList.remove( 'active' );
-			document.body.classList.remove( 'header-search-form-active' );
-			
-			// Back buttons to default state
-			self.backButtonsToDefaultState( button );
-		} );	
+		if( typeof overlay !== 'undefined' ) {
+			for ( var buttonEl of button ) {
+				buttonEl.addEventListener( 'click', function(e){
+					e.preventDefault();
+
+					// Hide other search icons 
+					if( button.length > 1 ) {
+						for ( var btn of button ) {
+							btn.classList.toggle( 'hide' );
+						}
+					}
+
+					form.classList.toggle( 'active' );
+					overlay.classList.toggle( 'active' );
+					document.body.classList.toggle( 'header-search-form-active' );
+					e.target.closest( '.header-search' ).getElementsByClassName( 'icon-search' )[0].classList.toggle( 'active' );
+					e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
+					e.target.closest( '.header-search' ).classList.add( 'active' );
+					e.target.closest( '.header-search' ).classList.remove( 'hide' );
+
+					if( typeof searchInput !== 'undefined' ) {
+						searchInput.focus();
+					}
+
+					if( e.target.closest( '.botiga-offcanvas-menu' ) !== null ) {
+						e.target.closest( '.botiga-offcanvas-menu' ).classList.remove( 'toggled' );
+					}
+				} );	
+			}
+
+			overlay.addEventListener( 'click', function() {
+				form.classList.remove( 'active' );
+				overlay.classList.remove( 'active' );
+				document.body.classList.remove( 'header-search-form-active' );
+				
+				// Back buttons to default state
+				self.backButtonsToDefaultState( button );
+			} );	
+		}
 
 		if( typeof searchBtn !== 'undefined' ) {
 			searchBtn.addEventListener('keydown', function(e) {
@@ -407,25 +417,178 @@ botiga.headerSearch = {
  */
 botiga.stickyHeader = {
 	init: function() {
-		const sticky 	= document.getElementsByClassName( 'sticky-header' )[0],
-		body            = document.getElementsByTagName( 'body' )[0];
+		let 
+			_this       = this,
+			sticky 		= document.getElementsByClassName( 'sticky-header' )[0],
+			bhfb_sticky = document.getElementsByClassName( 'bhfb-sticky-header' )[0],
+			body   		= document.getElementsByTagName( 'body' )[0];
 
-		let sticky_flag = false;
-
-		if ( 'undefined' === typeof sticky ) {
+		if ( 'undefined' === typeof sticky && 'undefined' === typeof bhfb_sticky ) {
 			return;
 		}
 
-		// Sticky Header Change Logo
+		const sticky_selector = 'undefined' !== typeof sticky ? '.sticky-header' : '.bhfb-sticky-header'; 
+
+		if( 'undefined' === typeof sticky ) {
+			sticky = bhfb_sticky;
+		}
+
+		this.stickyChangeLogo();
+
+		var topOffset = window.pageYOffset || document.documentElement.scrollTop;
+		if( topOffset > 10 ) {
+			sticky.classList.add( 'is-sticky' );
+			body.classList.add( 'sticky-header-active' );
+
+			window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
+		}
+
+		var header_offset_y = document.querySelector( sticky_selector ).getBoundingClientRect().y;
+
+		if( document.body.classList.contains( 'admin-bar' ) ) {
+			header_offset_y = header_offset_y - 32;
+		}
+		
+		if ( sticky.classList.contains( 'sticky-scrolltop' ) || document.querySelector( '.bhfb.sticky-scrolltop' ) !== null ) {
+			var lastScrollTop = 0;
+
+			window.addEventListener( 'scroll', function() {
+			    var scroll    = window.pageYOffset || document.documentElement.scrollTop,
+					is_sticky = scroll > lastScrollTop || scroll < 10;
+
+				if( document.querySelector( '.bhfb.sticky-scrolltop' ) !== null ) {
+					var bhfb_header_height = document.querySelector( '.bhfb.sticky-scrolltop' ).getBoundingClientRect().height;
+					is_sticky = scroll < bhfb_header_height;
+				}
+				
+			    if ( is_sticky ) {
+					sticky.classList.remove( 'is-sticky' );
+					body.classList.remove( 'sticky-header-active' );
+					
+					_this.isHBStickyDeactivated( 'scrolltop' );
+
+					body.classList.add( 'on-header-area' );
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
+				} else {
+					sticky.classList.add( 'is-sticky' );
+					body.classList.add( 'sticky-header-active' );
+					
+					_this.isHBStickyActive( 'scrolltop' );
+					
+					body.classList.remove( 'on-header-area' );
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
+				}
+				lastScrollTop = scroll <= 0 ? 0 : scroll;
+			}, false);
+		} else {
+			window.addEventListener( 'scroll', function() {
+				var vertDist = window.scrollY;
+
+				if ( vertDist > header_offset_y ) {
+					sticky.classList.add( 'sticky-shadow' );
+					body.classList.add( 'sticky-header-active' );
+
+					_this.isHBStickyActive();
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
+				} else {
+					sticky.classList.remove( 'sticky-shadow' );
+					body.classList.remove( 'sticky-header-active' );
+
+					_this.isHBStickyDeactivated();
+
+					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
+				}
+			}, false);
+		}
+
+	},
+
+	isHBStickyActive: function( effect ) {
+		const 
+			bhfb 		  = document.querySelector( 'header.bhfb' ),
+			has_admin_bar = document.body.classList.contains( 'admin-bar' ),
+			above_header_row = document.querySelector( '.bhfb-above_header_row' ),
+			below_header_row = document.querySelector( '.bhfb-below_header_row' );
+
+		if( bhfb === null ) {
+			return false;
+		}
+
+		let topVal = 0;
+
+		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
+			
+			if( ! above_header_row.classList.contains( 'bt-d-none' ) ) {
+				topVal = document.body.classList.contains( 'admin-bar' ) ? above_header_row.clientHeight - 32 : above_header_row.clientHeight;
+
+				bhfb.style.top = `-${ topVal }px`;
+			}
+			
+		}
+
+		if( bhfb.classList.contains( 'sticky-row-below-header-row' ) ) {
+			
+			if( ! below_header_row.classList.contains( 'bt-d-none' ) ) {
+				if( has_admin_bar ) {
+					topVal = ( ( bhfb.clientHeight - below_header_row.clientHeight ) - 32 ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
+				} else {
+					topVal = ( bhfb.clientHeight - below_header_row.clientHeight ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
+				}
+
+				bhfb.style.top = `-${ topVal }px`;
+			}
+			
+		}
+
+		if( effect === 'scrolltop' && document.body.classList.contains( 'on-header-area' ) ) {
+			bhfb.classList.add( 'bhfb-no-transition' );
+			setTimeout(function(){
+				bhfb.classList.remove( 'bhfb-no-transition' );
+			}, 500);
+		}
+	},
+
+	isHBStickyDeactivated: function( effect ) {
+		const bhfb = document.querySelector( 'header.bhfb' );
+
+		if( bhfb === null ) {
+			return false;
+		}
+
+		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
+			
+			if( ! document.querySelector( '.bhfb-above_header_row' ).classList.contains( 'bt-d-none' ) ) {
+				bhfb.style.top = '0px';
+			}
+			
+		}
+
+		if( bhfb.classList.contains( 'sticky-row-below-header-row' ) ) {
+			
+			if( ! document.querySelector( '.bhfb-below_header_row' ).classList.contains( 'bt-d-none' ) ) {
+				bhfb.style.top = '0px';
+			}
+			
+		}
+	},
+
+	stickyChangeLogo: function() {
+		let sticky_flag = false;
+
 		if( window.matchMedia( 'screen and (min-width: 1024px)' ).matches ) {
 			if( typeof botiga_sticky_header_logo !== 'undefined' ) {
-				const logo    = document.querySelector( '.sticky-header .site-branding img' ),
-				initialSrc    = logo.getAttribute( 'src' ),
-				initialHeight = logo.clientHeight;
+				const logo    = document.querySelector( '.sticky-header .site-branding img' );
 	
 				if( logo === null ) {
 					return false;
 				}
+
+				const 
+					initialSrc    = logo.getAttribute( 'src' ),
+					initialHeight = logo.clientHeight;
 	
 				window.addEventListener( 'botiga.sticky.header.activated', function(){
 					if( sticky_flag ) {
@@ -449,57 +612,6 @@ botiga.stickyHeader = {
 				} );
 			}
 		}
-
-		var topOffset = window.pageYOffset || document.documentElement.scrollTop;
-		if( topOffset > 10 ) {
-			sticky.classList.add( 'is-sticky' );
-			body.classList.add( 'sticky-header-active' );
-
-			window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
-		}
-
-		var header_offset_y = document.querySelector( '.sticky-header' ).getBoundingClientRect().y;
-
-		if( document.body.classList.contains( 'admin-bar' ) ) {
-			header_offset_y = header_offset_y - 32;
-		}
-
-		if ( sticky.classList.contains( 'sticky-scrolltop' ) ) {
-			var lastScrollTop = 0;
-
-			window.addEventListener( 'scroll', function() {
-			    var scroll = window.pageYOffset || document.documentElement.scrollTop;
-			    if ( scroll > lastScrollTop || scroll < 10 ) {
-					sticky.classList.remove( 'is-sticky' );
-					body.classList.remove( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
-				} else {
-					sticky.classList.add( 'is-sticky' );
-					body.classList.add( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
-				}
-				lastScrollTop = scroll <= 0 ? 0 : scroll;
-			}, false);
-		} else {
-			window.addEventListener( 'scroll', function() {
-				var vertDist = window.scrollY;
-
-				if ( vertDist > header_offset_y ) {
-					sticky.classList.add( 'sticky-shadow' );
-					body.classList.add( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.activated' ) );
-				} else {
-					sticky.classList.remove( 'sticky-shadow' );
-					body.classList.remove( 'sticky-header-active' );
-
-					window.dispatchEvent( new Event( 'botiga.sticky.header.deactivated' ) );
-				}
-			}, false);
-		}
-
 	}
 };
 
@@ -789,9 +901,14 @@ botiga.quickView = {
 	// Unknown safari issue. If we add a 'touchend' event listener to the button the problem is resolved.
 	// Fixes: https://wordpress.org/support/topic/double-tap-issue-on-mobile/
 	safariDoubleClickFix: function() {
-		var add_to_cart = document.querySelector( '.product-gallery-summary .botiga-single-addtocart-wrapper .button' );
-		if( add_to_cart !== null ) {
-			add_to_cart.addEventListener( 'touchend', () => {} );
+		var links = document.querySelectorAll('.product-gallery-summary .botiga-single-addtocart-wrapper .button, .single-product .content-wrapper a, .single-product .footer-widgets a, .single-product .site-footer a');
+
+		if( ! links.length ) {
+			return false;
+		}
+	
+		for( const link of links ) {
+			link.addEventListener( 'touchend', () => {} );
 		}
 	}
 };

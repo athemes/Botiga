@@ -76,7 +76,7 @@ class Botiga_Theme_Dashboard {
 	public function __construct() {
 		$self = $this;
 
-		if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+		if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
 			return;
 		}
 
@@ -333,7 +333,7 @@ class Botiga_Theme_Dashboard {
 					
 					<?php if ( isset( $feature['text'] ) && $feature['text'] ) : ?>
 						<div class="thd-feature-help"></div>
-						<div class="thd-feature-help-text"><?php echo $feature['text']; ?></div>
+						<div class="thd-feature-help-text"><?php echo wp_kses_post( $feature['text'] ); ?></div>
 					<?php endif; ?>
 
 					<div class="thd-theme-feature-row">

@@ -74,6 +74,11 @@ function botiga_free_vs_pro_html() {
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
+				<td><?php esc_html_e( 'Header Builder', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
 				<td><?php esc_html_e( 'Single Product Gallery Styles', 'botiga' ); ?></td>
 				<td>3</td>
 				<td>7</td>

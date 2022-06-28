@@ -9,7 +9,16 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.1.3' );
+	define( 'BOTIGA_VERSION', '1.1.5' );
+}
+
+// aThemes White Label Compatibility
+if( function_exists( 'athemes_wl_get_data' ) ) {
+	$botiga_awl_data = athemes_wl_get_data();
+
+	if( $botiga_awl_data[ 'activate_white_label' ] ) {
+		define( 'BOTIGA_AWL_ACTIVE', true );
+	}
 }
 
 if ( ! function_exists( 'botiga_setup' ) ) :
@@ -55,7 +64,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		register_nav_menus(
 			array(
 				'primary'	=> esc_html__( 'Primary', 'botiga' ),
-				'secondary' => esc_html__( 'Top Bar Menu', 'botiga' ),
+				'secondary' => esc_html__( 'Secondary Menu', 'botiga' ),
 			)
 		);
 
@@ -452,5 +461,3 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
-
-add_filter( 'botiga_theme_dashboard', false );

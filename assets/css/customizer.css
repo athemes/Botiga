@@ -8,6 +8,15 @@
   padding: 12px;
 }
 
+.customize-control input[type=range] {
+  margin-right: 10px;
+}
+
+html[dir="rtl"] .customize-control input[type=range] {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
 /* Typography */
 .select2-container {
   z-index: 999999 !important;
@@ -245,6 +254,20 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 36px;
+}
+
+/* Sortable Control */
+html[dir="rtl"] .customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-menu {
+  float: left;
+}
+
+html[dir="rtl"] .customize-control-kirki-sortable ul.ui-sortable li .dashicons.visibility {
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #d0d0d0;
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0 solid #d0d0d0;
 }
 
 /* Repeater control */
@@ -776,6 +799,11 @@ span.delete:hover {
 .botiga-radio-images-wrapper {
   position: relative;
   margin: 0 -5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .customize-control-title {
@@ -796,6 +824,10 @@ span.delete:hover {
   -moz-user-select: none;
   -ms-user-select: none;
   float: right;
+}
+
+html[dir="rtl"] .toggle-switch {
+  float: left;
 }
 
 .toggle-switch .toggle-switch-checkbox {
@@ -977,7 +1009,7 @@ span.delete:hover {
   font-size: 16px;
 }
 
-.customize-control-botiga-tab-control + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config) {
+.customize-control-botiga-tab-control + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title) {
   margin: 20px 0 30px !important;
 }
 
@@ -1032,6 +1064,11 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
   height: 5px;
   -webkit-transform-origin: 50% 0%;
           transform-origin: 50% 0%;
+}
+
+html[dir="rtl"] .botiga-accordion-title:after {
+  right: auto;
+  left: 20px;
 }
 
 .botiga-accordion-title.expanded:after {
@@ -1152,4 +1189,12 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
 
 .customize-control-botiga-radio-image .ui-helper-hidden-accessible {
   top: 0;
+}
+
+#customize-control-topbar_nav_title,
+#customize-control-botiga_section_hb_component__shortcode_title,
+#customize-control-botiga_section_hb_component__html_title,
+#customize-control-botiga_section_hb_component__html2_title,
+#customize-control-botiga_section_hb_component__html2_title {
+  margin-bottom: 5px !important;
 }

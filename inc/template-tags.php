@@ -221,49 +221,103 @@ if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
 	 * Single post share box
 	 */
 	function botiga_single_post_share_box() {
-		$single_post_share_box = get_theme_mod( 'single_post_share_box', 0 );
+		$enable = get_theme_mod( 'single_post_share_box', 0 );
 
-		if ( !$single_post_share_box ) {
+		if ( !$enable ) {
 			return;
 		}
 
-		$socials = array(
-			'twitter' => array(
-				'tooltip' => __( 'Twitter', 'botiga' )
+		global $post;
+
+		$post_url   	= urlencode( esc_url( get_permalink($post->ID) ) );
+		$post_title 	= urlencode( $post->post_title );
+		$sharing_title 	= get_theme_mod( 'single_post_share_box_title', esc_html__( 'SHARE:', 'botiga' ) );
+
+		$enabled_networks = get_theme_mod( 'single_post_share_box_networks', array( 'facebook', 'twitter', 'linkedin' ) );
+
+		$networks = array(
+			'facebook' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.facebook.com/sharer.php?u={url}' ) ),
+				'tooltip'   => esc_html__( 'Facebook', 'botiga' )
 			),
-			'facebook' => array(
-				'tooltip' => __( 'Facebook', 'botiga' )
+			'twitter' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://twitter.com/intent/tweet?url={url}&text={title}' ) ),
+				'tooltip'   => esc_html__( 'Twitter', 'botiga' )
 			),
-			'linkedin' => array(
-				'tooltip' => __( 'Linkedin', 'botiga' )
-			)
+			'linkedin' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.linkedin.com/sharing/share-offsite/?url={url}' ) ),
+				'tooltip'   => esc_html__( 'Linkedin', 'botiga' )
+			),
+			'reddit' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://reddit.com/submit?url={url}&title={title}' ) ),
+				'tooltip'   => esc_html__( 'Reddit', 'botiga' )
+			),
+			'whatsapp' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'whatsapp://send/?text={url}' ) ),
+				'tooltip'   => esc_html__( 'WhatsApp', 'botiga' )
+			),
+			'pinterest' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://pinterest.com/pin/create/link/?url={url}' ) ),
+				'tooltip'   => esc_html__( 'Pinterest', 'botiga' )
+			),
+			'telegram' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://t.me/share/url?url={url}&text={title}' ) ),
+				'tooltip'   => esc_html__( 'Telegram', 'botiga' )
+			),
+			'weibo' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://service.weibo.com/share/share.php?url={url}&appkey=&title={title}&pic=&ralateUid=' ) ),
+				'tooltip'   => esc_html__( 'Weibo', 'botiga' )
+			),
+			'vk' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://vk.com/share.php?url={url}&title={title}&comment={text}' ) ),
+				'tooltip'   => esc_html__( 'VK', 'botiga' )
+			),
+			'ok' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl={url}' ) ),
+				'tooltip'   => esc_html__( 'OK', 'botiga' )
+			),		
+			'xing' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.xing.com/spi/shares/new?url={url}' ) ),
+				'tooltip'   => esc_html__( 'Xing', 'botiga' )
+			),		
+			'mail' 	=> array(
+				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'mailto:?subject=' . $post->post_title . '&body={url}' ) ),
+				'tooltip'   => esc_html__( 'Mail', 'botiga' )
+			),
+			'copyclipboard' => array(
+				'url' 		=> $post_url,
+				'tooltip'   => esc_html__( 'Copy Link', 'botiga' )
+			),
 		); ?>
 
 		<div class="botiga-share-box">
 			<div class="row">
-				<div class="col-auto">
-					<strong><?php echo esc_html__( 'SHARE', 'botiga' ); ?></strong>
-				</div>
+				<?php if( $sharing_title ) : ?>
+					<div class="col-auto">
+						<strong><?php echo esc_html( $sharing_title ); ?></strong>
+					</div>
+				<?php endif; ?>
 				<div class="col-auto">
 					<div class="botiga-share-box-items-wrapper">
 
-						<?php foreach( $socials as $key => $social ) : ?>
-
-							<div class="botiga-share-box-item">
-								<a href="<?php echo esc_url( botiga_get_social_share_url( $key ) ); ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $social['tooltip'] ); ?>">
-									<?php botiga_get_svg_icon( 'icon-'. $key, true ); ?>
-								</a>
-							</div>
-
+						<?php foreach ( $enabled_networks as $network ) : 
+							if( $network !== 'copyclipboard' ) : ?>
+								<div class="botiga-share-box-item">
+									<a href="<?php echo esc_url( $networks[ $network ]['url'] ); ?>" target="_blank" data-botiga-tooltip="<?php echo esc_attr( $networks[ $network ][ 'tooltip' ] ); ?>">
+										<?php botiga_get_svg_icon( 'icon-'. $network, true ); ?>
+									</a>
+								</div>
+							<?php else : ?>
+								<div class="botiga-share-box-item">
+									<a href="#" onclick="botiga.copyLinkToClipboard.init(event, this);" data-botiga-tooltip="<?php echo esc_attr( $networks[ $network ][ 'tooltip' ] ); ?>">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+											<path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+										</svg>
+									</a>
+								</div>
+							<?php endif; ?>
 						<?php endforeach; ?>
 
-						<div class="botiga-share-box-item">
-							<a href="#" onclick="botiga.copyLinkToClipboard.init(event, this);" data-botiga-tooltip="<?php echo esc_attr__( 'Copy link', 'botiga' ); ?>">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
-								</svg>
-							</a>
-						</div>
 					</div>	
 				</div>
 			</div>

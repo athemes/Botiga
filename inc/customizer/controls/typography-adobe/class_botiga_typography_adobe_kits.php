@@ -29,7 +29,7 @@ class Botiga_Typography_Adobe_Kits_Control extends WP_Customize_Control {
         <?php } ?>							
         
         <div style="margin-bottom: 25px;">
-            <?php if( ! defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) : ?>
+            <?php if( ! defined( 'BOTIGA_AWL_ACTIVE' ) ) : ?>
                 <p style="margin-top: 0;">
                     <?php 
                     echo wp_kses_post( 

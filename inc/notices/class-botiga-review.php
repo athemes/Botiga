@@ -17,6 +17,11 @@ class Botiga_Theme_Review_Notice {
 	 * Constructor
 	 */
 	public function __construct() {
+
+		if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
+			return;
+		}
+
 		add_action( 'after_setup_theme', array( $this, 'review_notice' ) );
 		add_action( 'admin_notices', array( $this, 'review_notice_markup' ), 0 );
 		add_action( 'admin_init', array( $this, 'ignore_theme_review_notice' ), 0 );

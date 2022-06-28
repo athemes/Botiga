@@ -63,7 +63,7 @@ function botiga_typography_adobe_kits_control() {
             'https://docs.athemes.com/article/441-how-to-use-adobe-fonts'
         );
 
-        if( defined( 'ATHEMES_WHITE_LABEL_ACTIVE' ) ) {
+        if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
             $output = __( 'Your API token is valid but you don\'t have fonts attached to this token.', 'botiga' );
         }
 
