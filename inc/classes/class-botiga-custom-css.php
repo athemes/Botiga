@@ -53,10 +53,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			add_action( 'after_switch_theme', array( $this, 'update_custom_css_file' ) );
 
-			// Update the custom css file when save menu items
-			// to ensure mega menu custom dynamic css is applied
-			add_action( 'wp_update_nav_menu', array( $this, 'update_custom_css_file' ) );
-
 			add_action( 'switch_theme', array( $this, 'delete_custom_css_file' ) );
 
 			add_action( 'init', array( $this, 'init' ) );
