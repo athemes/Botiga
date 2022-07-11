@@ -1410,3 +1410,41 @@ window.onload = function () {
     jQuery(document.body).trigger('wc_fragment_refresh');
   }
 };
+
+(function ($) {
+  $(document).ready(function () {
+    if (typeof wc_add_to_cart_variation_params !== 'undefined') {
+      $('.products .variations_form').each(function () {
+        var $form = $(this);
+        var $product = $form.closest('.product');
+        var $price = $product.find('.price').first();
+        var $image = $product.find('img').first();
+        var $quantity = $product.find('.quantity');
+        var $clonedPrice = $price.clone();
+        var $clonedImage = $image.clone();
+        var foundVariation = false;
+        $form.on('found_variation', function (event, variation) {
+          $image.attr({
+            'src': variation.image.thumb_src,
+            'srcset': variation.image.srcset,
+            'sizes': variation.image.sizes
+          });
+          $price.html($(variation.price_html).html());
+          $quantity.hide();
+          foundVariation = true;
+        });
+        $form.on('reset_data', function () {
+          if (foundVariation) {
+            $image.attr({
+              'src': $clonedImage.attr('src'),
+              'srcset': $clonedImage.attr('srcset'),
+              'sizes': $clonedImage.attr('sizes')
+            });
+            $price.html($clonedPrice.html());
+            foundVariation = false;
+          }
+        });
+      });
+    }
+  });
+})(jQuery);

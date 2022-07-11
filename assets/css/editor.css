@@ -2097,6 +2097,69 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-with-tool
   visibility: visible;
 }
 
+div.editor-styles-wrapper ul.wc-block-grid__products .quantity,
+div.editor-styles-wrapper ul.products .quantity {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products .woocommerce-variation-price,
+div.editor-styles-wrapper ul.wc-block-grid__products .woocommerce-variation-description,
+div.editor-styles-wrapper ul.products .woocommerce-variation-price,
+div.editor-styles-wrapper ul.products .woocommerce-variation-description {
+  display: none;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products .woocommerce-variation-availability p,
+div.editor-styles-wrapper ul.products .woocommerce-variation-availability p {
+  margin: 10px 0 0 0;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products table.variations,
+div.editor-styles-wrapper ul.products table.variations {
+  margin: 0;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products table.variations th.label,
+div.editor-styles-wrapper ul.products table.variations th.label {
+  display: none;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products table.variations .botiga-variations-wrapper,
+div.editor-styles-wrapper ul.products table.variations .botiga-variations-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products table.variations .reset_variations,
+div.editor-styles-wrapper ul.products table.variations .reset_variations {
+  visibility: hidden;
+  z-index: 1;
+  top: -20px !important;
+  bottom: auto !important;
+  text-align: center;
+  margin-left: 0;
+}
+
 div.editor-styles-wrapper #wc-stripe-payment-request-button-separator,
 div.editor-styles-wrapper #wcpay-payment-request-button-separator {
   width: 100%;

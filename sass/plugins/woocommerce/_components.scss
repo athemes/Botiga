@@ -1664,6 +1664,59 @@ dl.variation {
 	}
 }
 
+ul.wc-block-grid__products,
+ul.products{
+
+	li.product{
+
+		.quantity{
+			position: absolute;
+			width: 0;
+			height: 0;
+			overflow: hidden;
+			visibility: hidden;
+			user-select: none;
+			pointer-events: none;
+		}
+
+		.woocommerce-variation-price,
+		.woocommerce-variation-description{
+			display: none;
+		}
+
+		.woocommerce-variation-availability{
+
+			p{
+				margin: 10px 0 0 0;
+			}
+		}
+
+		table.variations{
+			margin: 0;
+
+			th.label{
+				display: none;
+			}
+
+			.botiga-variations-wrapper{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.reset_variations{
+				visibility: hidden;
+				z-index: 1;
+				top: -20px !important;
+				bottom: auto !important;
+				text-align: center;
+				margin-left: 0;
+			}
+		}
+	}
+}
+
 /**
  * Express Pay Buttons (Google and Apple)
  */
