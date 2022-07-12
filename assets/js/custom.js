@@ -1389,6 +1389,78 @@ botiga.misc = {
     }
   }
 };
+/**
+ * Archive Product Swatches
+ */
+
+botiga.archiveProductSwatch = {
+  init: function init() {
+    if (typeof jQuery !== 'function') {
+      return;
+    }
+
+    var $forms = jQuery('.botiga-product-swatches .variations_form');
+
+    if (!$forms.length || typeof wc_add_to_cart_variation_params === 'undefined') {
+      return;
+    }
+
+    $forms.each(function () {
+      var $form = jQuery(this);
+      var $product = $form.closest('.product');
+      var $price = $product.find('.price').first();
+      var $image = $product.find('img').first();
+      var $button = $product.find('.add_to_cart_button');
+      var $clonedPrice = $price.clone();
+      var $clonedImage = $image.clone();
+      var foundVariation = false;
+      $form.on('found_variation', function (event, variation) {
+        $image.attr({
+          'src': variation.image.thumb_src,
+          'srcset': variation.image.srcset,
+          'sizes': variation.image.sizes
+        });
+        $price.html(jQuery(variation.price_html).html());
+
+        if ($button.hasClass('added')) {
+          $button.removeClass('added');
+          $button.next().remove();
+        }
+
+        if (variation.is_in_stock || variation.backorders_allowed) {
+          $button.attr({
+            'data-quantity': 1,
+            'data-product_id': variation.variation_id,
+            'data-product_sku': variation.variation_sku
+          });
+          $button.html($button.data('button-add-text')).addClass('ajax_add_to_cart');
+        } else {
+          $button.html($button.data('button-select-text')).removeClass('ajax_add_to_cart');
+        }
+
+        foundVariation = true;
+      });
+      $form.on('reset_data', function () {
+        if (foundVariation) {
+          $image.attr({
+            'src': $clonedImage.attr('src'),
+            'srcset': $clonedImage.attr('srcset'),
+            'sizes': $clonedImage.attr('sizes')
+          });
+          $price.html($clonedPrice.html());
+          $button.html($button.data('button-select-text')).removeClass('ajax_add_to_cart');
+
+          if ($button.hasClass('added')) {
+            $button.removeClass('added');
+            $button.next().remove();
+          }
+
+          foundVariation = false;
+        }
+      });
+    });
+  }
+};
 botiga.helpers.botigaDomReady(function () {
   botiga.navigation.init();
   botiga.desktopOffcanvasNav.init();
@@ -1404,6 +1476,7 @@ botiga.helpers.botigaDomReady(function () {
   botiga.productSwatch.init();
   botiga.collapse.init();
   botiga.misc.init();
+  botiga.archiveProductSwatch.init();
 });
 
 window.onload = function () {
@@ -1413,64 +1486,3 @@ window.onload = function () {
     jQuery(document.body).trigger('wc_fragment_refresh');
   }
 };
-
-(function ($) {
-  $(document).ready(function () {
-    if (typeof wc_add_to_cart_variation_params !== 'undefined') {
-      $('.botiga-product-swatches .variations_form').each(function () {
-        var $form = $(this);
-        var $product = $form.closest('.product');
-        var $price = $product.find('.price').first();
-        var $image = $product.find('img').first();
-        var $button = $product.find('.add_to_cart_button');
-        var $clonedPrice = $price.clone();
-        var $clonedImage = $image.clone();
-        var foundVariation = false;
-        $form.on('found_variation', function (event, variation) {
-          $image.attr({
-            'src': variation.image.thumb_src,
-            'srcset': variation.image.srcset,
-            'sizes': variation.image.sizes
-          });
-          $price.html($(variation.price_html).html());
-
-          if ($button.hasClass('added')) {
-            $button.removeClass('added');
-            $button.next().remove();
-          }
-
-          if (variation.is_in_stock || variation.backorders_allowed) {
-            $button.attr({
-              'data-quantity': 1,
-              'data-product_id': variation.variation_id,
-              'data-product_sku': variation.variation_sku
-            });
-            $button.html($button.data('button-add-text')).addClass('ajax_add_to_cart');
-          } else {
-            $button.html($button.data('button-select-text')).removeClass('ajax_add_to_cart');
-          }
-
-          foundVariation = true;
-        });
-        $form.on('reset_data', function () {
-          if (foundVariation) {
-            $image.attr({
-              'src': $clonedImage.attr('src'),
-              'srcset': $clonedImage.attr('srcset'),
-              'sizes': $clonedImage.attr('sizes')
-            });
-            $price.html($clonedPrice.html());
-            $button.html($button.data('button-select-text')).removeClass('ajax_add_to_cart');
-
-            if ($button.hasClass('added')) {
-              $button.removeClass('added');
-              $button.next().remove();
-            }
-
-            foundVariation = false;
-          }
-        });
-      });
-    }
-  });
-})(jQuery);
