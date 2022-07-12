@@ -1144,6 +1144,15 @@ botiga.productSwatch = {
 		}
 
 		this.resetVariationsEvent();
+
+		var wrapper = document.querySelectorAll( '.botiga-variations-wrapper' );
+
+		this.addToCart();
+
+	},
+
+	addToCart: function( wrapper ) {
+
 	},
 
 	variations: function( wrapper ) {
@@ -1403,13 +1412,13 @@ window.onload = function() {
 
 		if ( typeof wc_add_to_cart_variation_params !== 'undefined' ) {
 
-			$('.products .variations_form').each( function() {
+			$('.botiga-product-swatches .variations_form').each( function() {
 
 				var $form          = $(this);
 				var $product       = $form.closest( '.product' );
 				var $price         = $product.find('.price').first();
 				var $image         = $product.find('img').first();
-				var $quantity      = $product.find('.quantity');
+				var $button        = $product.find('.add_to_cart_button');
 				var $clonedPrice   = $price.clone();
 				var $clonedImage   = $image.clone();
 				var foundVariation = false;
@@ -1424,7 +1433,26 @@ window.onload = function() {
 
 					$price.html( $(variation.price_html).html() );
 
-		      $quantity.hide();
+		      if ( $button.hasClass('added') ) {
+		      	$button.removeClass('added');
+		      	$button.next().remove();
+		      }
+
+					if ( variation.is_in_stock || variation.backorders_allowed ) {
+
+			      $button.attr({
+			      	'data-quantity': 1,
+			      	'data-product_id': variation.variation_id,
+			      	'data-product_sku': variation.variation_sku,
+			      });
+
+			      $button.html( $button.data('button-add-text') ).addClass('ajax_add_to_cart');
+
+					} else {
+
+			      $button.html( $button.data('button-select-text') ).removeClass('ajax_add_to_cart');
+
+					}
 
 					foundVariation = true;
 
@@ -1441,6 +1469,13 @@ window.onload = function() {
 						});
 
 						$price.html( $clonedPrice.html() );
+
+			      $button.html( $button.data('button-select-text') ).removeClass('ajax_add_to_cart');
+
+			      if ( $button.hasClass('added') ) {
+			      	$button.removeClass('added');
+			      	$button.next().remove();
+			      }
 
 						foundVariation = false;
 
