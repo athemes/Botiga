@@ -1632,33 +1632,51 @@ dl.variation {
 		}
 	}
 
-	.botiga-variation-with-tooltip {
+	.botiga-variation-tooltip{
+		position: absolute;
+		bottom: 100%;
+    left: 50%;
+		min-width: 100px;
+    margin-left: -50px;
+    margin-bottom: 10px;
+    white-space: normal;
+		color: #fff;
+		background-color: $color__primary;
+		font-size: 12px;
+		line-height: 1.5em;
+		text-align: center;
+		text-indent: 0;
+		padding: 4px 8px;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: all .3s;
+
+		&:after{
+			content: "";
+	    position: absolute;
+	    left: 50%;
+	    bottom: -5px;
+	    margin-left: -5px;
+	    border-left: 5px solid transparent;
+	    border-right: 5px solid transparent;
+	    border-top: 5px solid $color__primary;
+		}
+	}
+
+	.botiga-variation-type-color,
+	.botiga-variation-type-image{
 
 		> a{
 			position: relative;
 
-			&:after{
-				content: attr(title);
-				position: absolute;
-				bottom: 100%;
-				margin-bottom: 0;
-		    white-space: normal;
-				color: #fff;
-				background-color: #212121;
-				font-size: 13px;
-				min-width: 100px;
-				text-align: center;
-				padding: 5px;
-				opacity: 0;
-				visibility: hidden;
-				pointer-events: none;
-				transition: all .3s;
-			}
+			&:hover{
 
-			&:hover:after{
-				opacity: 1;
-				margin-bottom: 10px;
-				visibility: visible;
+				.botiga-variation-tooltip{
+					opacity: 1;
+					margin-bottom: 15px;
+					visibility: visible;
+				}
 			}
 		}
 	}

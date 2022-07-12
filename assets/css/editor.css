@@ -2097,44 +2097,16 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-with-tool
   visibility: visible;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.product .quantity,
-div.editor-styles-wrapper ul.products li.product .quantity {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  pointer-events: none;
-}
-
-div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-variation-price,
-div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-variation-description,
-div.editor-styles-wrapper ul.products li.product .woocommerce-variation-price,
-div.editor-styles-wrapper ul.products li.product .woocommerce-variation-description {
+div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-price,
+div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-description {
   display: none;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-variation-availability p,
-div.editor-styles-wrapper ul.products li.product .woocommerce-variation-availability p {
+div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-availability p {
   margin: 10px 0 0 0;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.product table.variations,
-div.editor-styles-wrapper ul.products li.product table.variations {
-  margin: 0;
-}
-
-div.editor-styles-wrapper ul.wc-block-grid__products li.product table.variations th.label,
-div.editor-styles-wrapper ul.products li.product table.variations th.label {
-  display: none;
-}
-
-div.editor-styles-wrapper ul.wc-block-grid__products li.product table.variations .botiga-variations-wrapper,
-div.editor-styles-wrapper ul.products li.product table.variations .botiga-variations-wrapper {
+div.editor-styles-wrapper .botiga-product-swatches .botiga-variations-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2150,14 +2122,21 @@ div.editor-styles-wrapper ul.products li.product table.variations .botiga-variat
           align-items: center;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.product table.variations .reset_variations,
-div.editor-styles-wrapper ul.products li.product table.variations .reset_variations {
+div.editor-styles-wrapper .botiga-product-swatches .reset_variations {
   visibility: hidden;
   z-index: 1;
   top: -20px !important;
   bottom: auto !important;
   text-align: center;
   margin-left: 0;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches table.variations {
+  margin: 0;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches table.variations th.label {
+  display: none;
 }
 
 div.editor-styles-wrapper #wc-stripe-payment-request-button-separator,

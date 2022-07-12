@@ -5418,22 +5418,21 @@ dl.variation p {
   border-radius: 100%;
 }
 
-.botiga-variations-wrapper .botiga-variation-with-tooltip > a {
-  position: relative;
-}
-
-.botiga-variations-wrapper .botiga-variation-with-tooltip > a:after {
-  content: attr(title);
+.botiga-variations-wrapper .botiga-variation-tooltip {
   position: absolute;
   bottom: 100%;
-  margin-bottom: 0;
+  left: 50%;
+  min-width: 100px;
+  margin-left: -50px;
+  margin-bottom: 10px;
   white-space: normal;
   color: #fff;
   background-color: #212121;
-  font-size: 13px;
-  min-width: 100px;
+  font-size: 12px;
+  line-height: 1.5em;
   text-align: center;
-  padding: 5px;
+  text-indent: 0;
+  padding: 4px 8px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -5441,9 +5440,26 @@ dl.variation p {
   transition: all .3s;
 }
 
-.botiga-variations-wrapper .botiga-variation-with-tooltip > a:hover:after {
+.botiga-variations-wrapper .botiga-variation-tooltip:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #212121;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a,
+.botiga-variations-wrapper .botiga-variation-type-image > a {
+  position: relative;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a:hover .botiga-variation-tooltip,
+.botiga-variations-wrapper .botiga-variation-type-image > a:hover .botiga-variation-tooltip {
   opacity: 1;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   visibility: visible;
 }
 
