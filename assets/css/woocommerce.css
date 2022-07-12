@@ -5447,44 +5447,16 @@ dl.variation p {
   visibility: visible;
 }
 
-ul.wc-block-grid__products li.product .quantity,
-ul.products li.product .quantity {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  pointer-events: none;
-}
-
-ul.wc-block-grid__products li.product .woocommerce-variation-price,
-ul.wc-block-grid__products li.product .woocommerce-variation-description,
-ul.products li.product .woocommerce-variation-price,
-ul.products li.product .woocommerce-variation-description {
+.botiga-product-swatches .woocommerce-variation-price,
+.botiga-product-swatches .woocommerce-variation-description {
   display: none;
 }
 
-ul.wc-block-grid__products li.product .woocommerce-variation-availability p,
-ul.products li.product .woocommerce-variation-availability p {
+.botiga-product-swatches .woocommerce-variation-availability p {
   margin: 10px 0 0 0;
 }
 
-ul.wc-block-grid__products li.product table.variations,
-ul.products li.product table.variations {
-  margin: 0;
-}
-
-ul.wc-block-grid__products li.product table.variations th.label,
-ul.products li.product table.variations th.label {
-  display: none;
-}
-
-ul.wc-block-grid__products li.product table.variations .botiga-variations-wrapper,
-ul.products li.product table.variations .botiga-variations-wrapper {
+.botiga-product-swatches .botiga-variations-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5500,14 +5472,21 @@ ul.products li.product table.variations .botiga-variations-wrapper {
           align-items: center;
 }
 
-ul.wc-block-grid__products li.product table.variations .reset_variations,
-ul.products li.product table.variations .reset_variations {
+.botiga-product-swatches .reset_variations {
   visibility: hidden;
   z-index: 1;
   top: -20px !important;
   bottom: auto !important;
   text-align: center;
   margin-left: 0;
+}
+
+.botiga-product-swatches table.variations {
+  margin: 0;
+}
+
+.botiga-product-swatches table.variations th.label {
+  display: none;
 }
 
 /**
