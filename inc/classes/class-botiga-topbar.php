@@ -186,7 +186,8 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 					'theme_location'=> 'secondary',
 					'menu_id'       => 'secondary',
 					'fallback_cb'	=> false,
-					'depth'			=> 0
+					'depth'			=> 0,
+					'walker'        => apply_filters( 'botiga_secondary_wp_nav_menu_walker', '' )
 				) );
 				?>
 			</nav>

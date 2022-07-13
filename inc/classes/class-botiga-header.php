@@ -605,6 +605,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						array(
 							'theme_location' => 'primary',
 							'menu_id'        => 'primary-menu',
+							'walker'         => apply_filters( 'botiga_primary_wp_nav_menu_walker', '' )
 						)
 					);
 					?>
