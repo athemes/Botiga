@@ -1167,7 +1167,7 @@ botiga.toggleClass = {
 
 botiga.productSwatch = {
   init: function init() {
-    var wrapper = document.querySelectorAll('.botiga-variations-wrapper');
+    var wrapper = document.querySelectorAll('.product .botiga-variations-wrapper');
 
     if (!wrapper.length) {
       return false;
@@ -1178,7 +1178,7 @@ botiga.productSwatch = {
     }
 
     this.resetVariationsEvent();
-    var wrapper = document.querySelectorAll('.botiga-variations-wrapper');
+    var wrapper = document.querySelectorAll('.product .botiga-variations-wrapper');
     this.addToCart();
   },
   addToCart: function addToCart(wrapper) {},
@@ -1212,7 +1212,7 @@ botiga.productSwatch = {
     }
   },
   matchVariations: function matchVariations(variation) {
-    var wrapper = variation.closest('.variations').querySelectorAll('.botiga-variations-wrapper');
+    var wrapper = variation.closest('.variations').querySelectorAll('.product .botiga-variations-wrapper');
     var arr = [];
 
     for (var i = 0; i < wrapper.length; i++) {
@@ -1237,7 +1237,7 @@ botiga.productSwatch = {
     }
   },
   removeActiveClass: function removeActiveClass(item) {
-    var items = typeof item !== 'undefined' ? item.closest('div').querySelectorAll('.botiga-variation-item') : document.querySelectorAll('.botiga-variations-wrapper .botiga-variation-item');
+    var items = typeof item !== 'undefined' ? item.closest('div').querySelectorAll('.botiga-variation-item') : document.querySelectorAll('.product .botiga-variations-wrapper .botiga-variation-item');
 
     for (var u = 0; u < items.length; u++) {
       items[u].classList.remove('active');

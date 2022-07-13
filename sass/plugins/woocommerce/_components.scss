@@ -1521,12 +1521,16 @@ dl.variation {
 
 /* Product swatch */
 .botiga-variations-wrapper {
+
 	select {
 		display: none;
 	}
+
 	.botiga-variation-type-image,
 	.botiga-variation-type-color {
 		display: flex;
+		grid-gap: 2px;
+
 		> a {
 			position: relative;
 			width: 30px;
@@ -1535,6 +1539,7 @@ dl.variation {
 			border: 2px solid transparent;
 			cursor: pointer;
 			text-indent: -99999px;
+
 			&:not(.disabled):before {
 				content: '';
 				position: absolute;
@@ -1546,20 +1551,26 @@ dl.variation {
 				border-radius: 100%;
 				transition: ease border-color 300ms;
 			}
+
 			& + a {
 				margin-left: 8px;
 			}
+
 			&:hover,
 			&.active {
+
 				&:not(.disabled):before {
 					border-color: $color__primary;
 				}
 			}
 		}
 	}
-	.botiga-variation-type-button {
+
+	.botiga-variation-type-button,
+	.botiga-variation-type-select {
 		display: flex;
 		flex-wrap: wrap;
+
 		> a {
 			display: flex;
 			align-items: center;
@@ -1590,10 +1601,14 @@ dl.variation {
 			}
 		}
 	}
+
 	.botiga-variation-type-color,
 	.botiga-variation-type-image,
-	.botiga-variation-type-button {
+	.botiga-variation-type-button,
+	.botiga-variation-type-select {
+
 		> a {
+
 			&.disabled {
 				position: relative;
 				pointer-events: none;
@@ -1616,7 +1631,7 @@ dl.variation {
 		}
 	}
 
-	.botiga-variation-type-image {
+	.botiga-variation-type-image{
 		display: flex;
 		flex-wrap: wrap;
 

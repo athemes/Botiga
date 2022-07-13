@@ -121,3 +121,70 @@
 		}
 	}
 }
+
+.botiga_widget_product_swatch_active_filter {
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			margin: 0;
+
+			&:last-child {
+
+				a {
+					justify-content: flex-end;
+					text-transform: uppercase;
+					font-size: 13px;
+					font-weight: bold;
+
+					&:hover{
+						opacity: 0.75;
+					}
+				}
+			}
+
+			a {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				&:hover{
+
+					i {
+						opacity: 0.75;
+					}
+				}
+
+				i {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					width: 18px;
+					height: 18px;
+					background-color: #e5e5e5;
+					border-radius: 100%;
+
+					&:after,
+					&:before {
+				    content: "";
+				    display: block;
+				    position: absolute;
+				    width: 10px;
+				    height: 1px;
+				    background-color: currentColor;
+				    transform: rotate(45deg);
+				    border-radius: 5px;
+					}
+
+					&:after {
+				    transform: rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+}
