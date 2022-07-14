@@ -1167,7 +1167,7 @@ botiga.toggleClass = {
 
 botiga.productSwatch = {
   init: function init() {
-    var wrapper = document.querySelectorAll('.product .botiga-variations-wrapper');
+    var wrapper = document.querySelectorAll('.botiga-variations-wrapper:not(.botiga-widget-variations)');
 
     if (!wrapper.length) {
       return false;
@@ -1178,7 +1178,6 @@ botiga.productSwatch = {
     }
 
     this.resetVariationsEvent();
-    var wrapper = document.querySelectorAll('.product .botiga-variations-wrapper');
     this.addToCart();
   },
   addToCart: function addToCart(wrapper) {},
@@ -1197,9 +1196,15 @@ botiga.productSwatch = {
       items[i].addEventListener('click', function (e) {
         e.preventDefault();
         var value = this.getAttribute('value');
-        jQuery(select).val(value).trigger('change');
         self.removeActiveClass(this);
-        this.classList.add('active');
+
+        if (value === select.value) {
+          value = '';
+        } else {
+          this.classList.add('active');
+        }
+
+        jQuery(select).val(value).trigger('change');
         self.matchVariations(this);
       });
       items[i].addEventListener('botiga.variations.selected', function (e) {
@@ -1212,7 +1217,7 @@ botiga.productSwatch = {
     }
   },
   matchVariations: function matchVariations(variation) {
-    var wrapper = variation.closest('.variations').querySelectorAll('.product .botiga-variations-wrapper');
+    var wrapper = variation.closest('.variations').querySelectorAll('.botiga-variations-wrapper');
     var arr = [];
 
     for (var i = 0; i < wrapper.length; i++) {
@@ -1237,7 +1242,7 @@ botiga.productSwatch = {
     }
   },
   removeActiveClass: function removeActiveClass(item) {
-    var items = typeof item !== 'undefined' ? item.closest('div').querySelectorAll('.botiga-variation-item') : document.querySelectorAll('.product .botiga-variations-wrapper .botiga-variation-item');
+    var items = typeof item !== 'undefined' ? item.closest('div').querySelectorAll('.botiga-variation-item') : document.querySelectorAll('.botiga-variations-wrapper .botiga-variation-item');
 
     for (var u = 0; u < items.length; u++) {
       items[u].classList.remove('active');
@@ -1410,10 +1415,19 @@ botiga.archiveProductSwatch = {
       var $product = $form.closest('.product');
       var $price = $product.find('.price').first();
       var $image = $product.find('img').first();
-      var $button = $product.find('.add_to_cart_button');
+      var $button = $product.find('.add_to_cart_button').first();
+      var $swatches = $product.find('.botiga-product-swatches');
       var $clonedPrice = $price.clone();
       var $clonedImage = $image.clone();
+      var buttonLayout = $swatches.data('button-layout');
       var foundVariation = false;
+
+      if (buttonLayout === 'layout3' || buttonLayout === 'layout4') {
+        jQuery(document).on('added_to_cart', function () {
+          jQuery('.added_to_cart').remove();
+        });
+      }
+
       $form.on('found_variation', function (event, variation) {
         $image.attr({
           'src': variation.image.thumb_src,
@@ -1424,18 +1438,20 @@ botiga.archiveProductSwatch = {
 
         if ($button.hasClass('added')) {
           $button.removeClass('added');
-          $button.next().remove();
+          $button.next('.added_to_cart').remove();
         }
 
-        if (variation.is_in_stock || variation.backorders_allowed) {
-          $button.attr({
-            'data-quantity': 1,
-            'data-product_id': variation.variation_id,
-            'data-product_sku': variation.variation_sku
-          });
-          $button.html($button.data('button-add-text')).addClass('ajax_add_to_cart');
-        } else {
-          $button.html($button.data('button-select-text')).removeClass('ajax_add_to_cart');
+        if (buttonLayout !== 'layout4') {
+          if (variation.is_in_stock || variation.backorders_allowed) {
+            $button.attr({
+              'data-quantity': 1,
+              'data-product_id': variation.variation_id,
+              'data-product_sku': variation.variation_sku
+            });
+            $button.html($swatches.data('button-add-text')).addClass('ajax_add_to_cart');
+          } else {
+            $button.html($swatches.data('button-select-text')).removeClass('ajax_add_to_cart');
+          }
         }
 
         foundVariation = true;
@@ -1448,11 +1464,14 @@ botiga.archiveProductSwatch = {
             'sizes': $clonedImage.attr('sizes')
           });
           $price.html($clonedPrice.html());
-          $button.html($button.data('button-select-text')).removeClass('ajax_add_to_cart');
+
+          if (buttonLayout !== 'layout4') {
+            $button.html($swatches.data('button-select-text')).removeClass('ajax_add_to_cart');
+          }
 
           if ($button.hasClass('added')) {
             $button.removeClass('added');
-            $button.next().remove();
+            $button.next('.added_to_cart').remove();
           }
 
           foundVariation = false;

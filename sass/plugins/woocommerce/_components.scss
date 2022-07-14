@@ -1651,17 +1651,16 @@ dl.variation {
 		position: absolute;
 		bottom: 100%;
     left: 50%;
-		min-width: 100px;
-    margin-left: -50px;
+    transform: translateX(-50%);
     margin-bottom: 10px;
-    white-space: normal;
+    white-space: nowrap;
 		color: #fff;
 		background-color: $color__primary;
 		font-size: 12px;
 		line-height: 1.5em;
 		text-align: center;
 		text-indent: 0;
-		padding: 4px 8px;
+		padding: 4px 10px;
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;
@@ -1709,19 +1708,10 @@ dl.variation {
 	}
 
 	.botiga-variations-wrapper{
-		display: flex;
+		display: inline-flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	}
-
-	.reset_variations{
-		visibility: hidden;
-		z-index: 1;
-		top: -20px !important;
-		bottom: auto !important;
-		text-align: center;
-		margin-left: 0;
 	}
 
 	table.variations{
