@@ -1410,6 +1410,7 @@ botiga.archiveProductSwatch = {
       return;
     }
 
+    var ajaxAddToCart = typeof wc_add_to_cart_params !== 'undefined' ? true : false;
     $forms.each(function () {
       var $form = jQuery(this);
       var $product = $form.closest('.product');
@@ -1419,6 +1420,7 @@ botiga.archiveProductSwatch = {
       var $swatches = $product.find('.botiga-product-swatches');
       var $clonedPrice = $price.clone();
       var $clonedImage = $image.clone();
+      var $clonedButton = $button.clone();
       var buttonLayout = $swatches.data('button-layout');
       var foundVariation = false;
 
@@ -1443,13 +1445,22 @@ botiga.archiveProductSwatch = {
 
         if (buttonLayout !== 'layout4') {
           if (variation.is_in_stock || variation.backorders_allowed) {
-            $button.attr({
-              'data-quantity': 1,
-              'data-product_id': variation.variation_id,
-              'data-product_sku': variation.variation_sku
-            });
+            if (ajaxAddToCart) {
+              $button.attr({
+                'data-quantity': 1,
+                'data-product_id': variation.variation_id,
+                'data-product_sku': variation.variation_sku
+              });
+            } else {
+              $button.attr('href', '?add-to-cart=' + variation.variation_id);
+            }
+
             $button.html($swatches.data('button-add-text')).addClass('ajax_add_to_cart');
           } else {
+            if (!ajaxAddToCart) {
+              $button.attr('href', $clonedButton.attr('href'));
+            }
+
             $button.html($swatches.data('button-select-text')).removeClass('ajax_add_to_cart');
           }
         }
@@ -1467,6 +1478,10 @@ botiga.archiveProductSwatch = {
 
           if (buttonLayout !== 'layout4') {
             $button.html($swatches.data('button-select-text')).removeClass('ajax_add_to_cart');
+          }
+
+          if (!ajaxAddToCart) {
+            $button.attr('href', $clonedButton.attr('href'));
           }
 
           if ($button.hasClass('added')) {

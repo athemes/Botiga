@@ -2082,17 +2082,17 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-tooltip {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  min-width: 100px;
-  margin-left: -50px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   margin-bottom: 10px;
-  white-space: normal;
+  white-space: nowrap;
   color: #fff;
   background-color: #212121;
   font-size: 12px;
   line-height: 1.5em;
   text-align: center;
   text-indent: 0;
-  padding: 4px 8px;
+  padding: 4px 10px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -2133,9 +2133,9 @@ div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-availa
 }
 
 div.editor-styles-wrapper .botiga-product-swatches .botiga-variations-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -2146,15 +2146,6 @@ div.editor-styles-wrapper .botiga-product-swatches .botiga-variations-wrapper {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-div.editor-styles-wrapper .botiga-product-swatches .reset_variations {
-  visibility: hidden;
-  z-index: 1;
-  top: -20px !important;
-  bottom: auto !important;
-  text-align: center;
-  margin-left: 0;
 }
 
 div.editor-styles-wrapper .botiga-product-swatches table.variations {
