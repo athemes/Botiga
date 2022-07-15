@@ -461,3 +461,7 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
+
+// add_filter( 'woocommerce_product_add_to_cart_text', function( $default, $product ){
+// 	return 'test';
+// }, 9999, 2 );

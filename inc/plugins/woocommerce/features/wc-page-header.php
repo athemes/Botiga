@@ -56,7 +56,8 @@ function botiga_woocommerce_page_header() {
 						$args = array(
 							'taxonomy' => 'product_cat',
 							'fields'   => 'id=>name',
-							'parent'   => 0
+							'parent'   => 0,
+							'hide_empty' => true
 						);
 						$categories = get_terms( $args ); 
 						
@@ -80,7 +81,8 @@ function botiga_woocommerce_page_header() {
 						$args = array(
 							'taxonomy' => 'product_cat',
 							'parent'   => $category->term_id,
-							'fields'   => 'id=>name'
+							'fields'   => 'id=>name',
+							'hide_empty' => true
 						);
 						$categories = get_terms( $args ); 
 						

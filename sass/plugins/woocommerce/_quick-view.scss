@@ -22,6 +22,7 @@
 		white-space: nowrap;
 		transform: translate3d(-50%, -40%, 0);
 		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		z-index: 3;
 	}
 	&.botiga-quick-view-layout3 {
 		position: absolute;
@@ -32,6 +33,7 @@
 		text-align: center;
 		transform: translate3d(0, 100%, 0);
 		transition: ease transform 300ms;
+		z-index: 3;
 	}
 }
 
@@ -90,6 +92,7 @@
 			white-space: nowrap;
 			transform: translate3d(-50%, -10%, 0);
 			transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+			z-index: 3;
 		}
 	}
 }

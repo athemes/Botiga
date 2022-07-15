@@ -689,6 +689,7 @@ ul.products li.product .wc-block-grid__product-link {
           transform: translate3d(-50%, -40%, 0);
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 .product-list ul.products li.product .loop-button-wrap.button-layout4 {
@@ -699,6 +700,7 @@ ul.products li.product .wc-block-grid__product-link {
   visibility: hidden;
   -webkit-transition: ease opacity 300ms, ease visibility 300ms;
   transition: ease opacity 300ms, ease visibility 300ms;
+  z-index: 3;
 }
 
 .product-list ul.products li.product:hover .loop-button-wrap.button-layout3 {
@@ -742,6 +744,7 @@ ul.products li.product .wc-block-grid__product-link {
   opacity: 0;
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 .related.products .button-layout3,
@@ -1160,6 +1163,7 @@ body.sidebar-slide-opened:before {
           transform: translate3d(-50%, -40%, 0);
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 .button.botiga-quick-view.botiga-quick-view-layout3 {
@@ -1173,6 +1177,7 @@ body.sidebar-slide-opened:before {
           transform: translate3d(0, 100%, 0);
   -webkit-transition: ease transform 300ms;
   transition: ease transform 300ms;
+  z-index: 3;
 }
 
 .loop-image-wrap > .add_to_cart_button,
@@ -1243,6 +1248,7 @@ body.sidebar-slide-opened:before {
           transform: translate3d(-50%, -10%, 0);
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 ul.products li.product:hover .botiga-quick-view-layout2,
