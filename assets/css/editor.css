@@ -2323,6 +2323,7 @@ div.editor-styles-wrapper .product-list ul.products li.product .loop-button-wrap
           transform: translate3d(-50%, -40%, 0);
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper .product-list ul.products li.product .loop-button-wrap.button-layout4 {
@@ -2333,6 +2334,7 @@ div.editor-styles-wrapper .product-list ul.products li.product .loop-button-wrap
   visibility: hidden;
   -webkit-transition: ease opacity 300ms, ease visibility 300ms;
   transition: ease opacity 300ms, ease visibility 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper .product-list ul.products li.product:hover .loop-button-wrap.button-layout3 {
@@ -2376,6 +2378,7 @@ div.editor-styles-wrapper .product-grid .button-layout4 {
   opacity: 0;
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper .related.products .button-layout3,
@@ -2600,6 +2603,7 @@ div.editor-styles-wrapper .button.botiga-quick-view.botiga-quick-view-layout2 {
           transform: translate3d(-50%, -40%, 0);
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper .button.botiga-quick-view.botiga-quick-view-layout3 {
@@ -2613,6 +2617,7 @@ div.editor-styles-wrapper .button.botiga-quick-view.botiga-quick-view-layout3 {
           transform: translate3d(0, 100%, 0);
   -webkit-transition: ease transform 300ms;
   transition: ease transform 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper .loop-image-wrap > .add_to_cart_button,
@@ -2683,6 +2688,7 @@ div.editor-styles-wrapper .loop-image-wrap.botiga-add-to-cart-button-layout3.bot
           transform: translate3d(-50%, -10%, 0);
   -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper ul.products li.product:hover .botiga-quick-view-layout2,
