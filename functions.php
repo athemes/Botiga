@@ -381,6 +381,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
+ * Load WooCommerce Brands compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
+	require get_template_directory() . '/inc/plugins/woocommerce-brands/woocommerce-brands.php';
+}
+
+/**
  * Load Dokan compatibility file.
  */
 if( defined( 'ELEMENTOR_VERSION' ) ) {
@@ -461,7 +468,3 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
-
-// add_filter( 'woocommerce_product_add_to_cart_text', function( $default, $product ){
-// 	return 'test';
-// }, 9999, 2 );

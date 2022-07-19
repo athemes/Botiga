@@ -59,7 +59,7 @@ function botiga_woocommerce_page_header() {
 							'parent'   => 0,
 							'hide_empty' => true
 						);
-						$categories = get_terms( $args ); 
+						$categories = get_terms( apply_filters( 'botiga_shop_page_header_cats_query_args', $args ) ); 
 						
 						if( count( $categories ) > 0 ) : ?>
 							<div class="categories-wrapper">
@@ -72,7 +72,7 @@ function botiga_woocommerce_page_header() {
 						<?php endif; ?>
 					<!-- </div> -->
 				<?php endif; ?>
-				<?php if( $shop_archive_header_style_show_sub_categories && ( is_product_category() || is_product_tag() ) ) : ?>
+				<?php if( $shop_archive_header_style_show_sub_categories && ( is_product_category() || is_product_tag() || is_product_taxonomy() ) ) : ?>
 					</div>
 					<div class="container">
 
@@ -84,7 +84,7 @@ function botiga_woocommerce_page_header() {
 							'fields'   => 'id=>name',
 							'hide_empty' => true
 						);
-						$categories = get_terms( $args ); 
+						$categories = get_terms( apply_filters( 'botiga_shop_page_header_sub_cats_query_args', $args ) ); 
 						
 						if( count( $categories ) > 0 ) : ?>
 							<div class="categories-wrapper">
