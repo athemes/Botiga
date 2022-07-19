@@ -381,6 +381,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
+ * Load WooCommerce Brands compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
+	require get_template_directory() . '/inc/plugins/woocommerce-brands/woocommerce-brands.php';
+}
+
+/**
  * Load Dokan compatibility file.
  */
 if( defined( 'ELEMENTOR_VERSION' ) ) {

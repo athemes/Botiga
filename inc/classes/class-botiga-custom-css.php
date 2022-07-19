@@ -466,15 +466,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			// Single post elements divider color
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-share-box, .botiga-related-posts, .botiga-related-products, .botiga-upsell-products, .botiga-recently-viewed-products, .post-navigation, .single-post-author, .comments-area', 0.1 );
-
-			// Single post toc
-			$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.botiga-single-post-toc' );
-			$css .= $this->get_color_css( 'color_body_text', '#212121', 'a.botiga-single-post-toc__list-link' );
-			$css .= $this->get_color_css( 'color_link_default', '#757575', 'a.botiga-single-post-toc__list-link:hover', true );
-			$css .= $this->get_border_color_css( 'color_body_text', '#212121', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-arrows .botiga-single-post-toc__list-item:before' );
-			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-single-post-toc__list-item+.botiga-single-post-toc__list-item', 0.1 );
-			$css .= $this->get_color_css( 'button_color', '#757575', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-numbers .botiga-single-post-toc__list-item:before' );
-			$css .= $this->get_background_color_rgba_css( 'button_background_color', '#212121', '.botiga-single-post-toc__list.botiga-single-post-toc__list--style-numbers .botiga-single-post-toc__list-item:before', 1 );
 			
 			// Single post nav
 			$css .= $this->get_color_css( 'color_body_text', '#212121', '.post-navigation .nav-next a, .post-navigation .nav-previous a' );
