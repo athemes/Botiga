@@ -1162,97 +1162,6 @@ botiga.toggleClass = {
   }
 };
 /**
- * Product Swatch
- */
-
-botiga.productSwatch = {
-  init: function init() {
-    var wrapper = document.querySelectorAll('.botiga-variations-wrapper');
-
-    if (!wrapper.length) {
-      return false;
-    }
-
-    for (var i = 0; i < wrapper.length; i++) {
-      this.variations(wrapper[i]);
-    }
-
-    this.resetVariationsEvent();
-  },
-  variations: function variations(wrapper) {
-    var self = this,
-        select = wrapper.querySelector('select'),
-        items = wrapper.querySelectorAll('.botiga-variation-item');
-
-    for (var i = 0; i < items.length; i++) {
-      if (select.value) {
-        var variation_item_selected = wrapper.querySelector('.botiga-variation-item[value="' + select.value + '"]');
-        variation_item_selected.classList.add('active');
-        variation_item_selected.dispatchEvent(new Event('botiga.variations.selected'));
-      }
-
-      items[i].addEventListener('click', function (e) {
-        e.preventDefault();
-        var value = this.getAttribute('value');
-        jQuery(select).val(value).trigger('change');
-        self.removeActiveClass(this);
-        this.classList.add('active');
-        self.matchVariations(this);
-      });
-      items[i].addEventListener('botiga.variations.selected', function (e) {
-        var _self = this;
-
-        setTimeout(function () {
-          self.matchVariations(_self);
-        }, 300);
-      });
-    }
-  },
-  matchVariations: function matchVariations(variation) {
-    var wrapper = variation.closest('.variations').querySelectorAll('.botiga-variations-wrapper');
-    var arr = [];
-
-    for (var i = 0; i < wrapper.length; i++) {
-      var items = wrapper[i].querySelectorAll('.botiga-variation-item'),
-          selectOptions = wrapper[i].querySelector('select').options;
-
-      for (var u = 0; u < selectOptions.length; u++) {
-        arr.push(selectOptions[u].value);
-      }
-
-      arr = arr.filter(function (e) {
-        return e;
-      });
-
-      for (var a = 0; a < items.length; a++) {
-        if (arr.includes(items[a].getAttribute('value'))) {
-          items[a].classList.remove('disabled');
-        } else {
-          items[a].classList.add('disabled');
-        }
-      }
-    }
-  },
-  removeActiveClass: function removeActiveClass(item) {
-    var items = typeof item !== 'undefined' ? item.closest('div').querySelectorAll('.botiga-variation-item') : document.querySelectorAll('.botiga-variations-wrapper .botiga-variation-item');
-
-    for (var u = 0; u < items.length; u++) {
-      items[u].classList.remove('active');
-      items[u].classList.remove('disabled');
-    }
-  },
-  resetVariationsEvent: function resetVariationsEvent() {
-    var self = this,
-        resetbtn = document.querySelectorAll('.reset_variations');
-
-    for (var i = 0; i < resetbtn.length; i++) {
-      resetbtn[i].addEventListener('click', function () {
-        self.removeActiveClass(this);
-      });
-    }
-  }
-};
-/**
  * Collapse
  */
 
@@ -1398,7 +1307,6 @@ botiga.helpers.botigaDomReady(function () {
   botiga.backToTop.init();
   botiga.qtyButton.init();
   botiga.carousel.init();
-  botiga.productSwatch.init();
   botiga.collapse.init();
   botiga.misc.init();
 });

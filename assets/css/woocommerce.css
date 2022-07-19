@@ -5275,12 +5275,15 @@ dl.variation p {
   display: none;
 }
 
+.botiga-variations-wrapper .botiga-variation-type-image,
 .botiga-variations-wrapper .botiga-variation-type-color {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  grid-gap: 2px;
 }
 
+.botiga-variations-wrapper .botiga-variation-type-image > a,
 .botiga-variations-wrapper .botiga-variation-type-color > a {
   position: relative;
   width: 30px;
@@ -5291,6 +5294,7 @@ dl.variation p {
   text-indent: -99999px;
 }
 
+.botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before,
 .botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before {
   content: '';
   position: absolute;
@@ -5304,15 +5308,19 @@ dl.variation p {
   transition: ease border-color 300ms;
 }
 
+.botiga-variations-wrapper .botiga-variation-type-image > a + a,
 .botiga-variations-wrapper .botiga-variation-type-color > a + a {
   margin-left: 8px;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before, .botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before {
+.botiga-variations-wrapper .botiga-variation-type-image > a:hover:not(.disabled):before, .botiga-variations-wrapper .botiga-variation-type-image > a.active:not(.disabled):before,
+.botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before,
+.botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before {
   border-color: #212121;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-button {
+.botiga-variations-wrapper .botiga-variation-type-button,
+.botiga-variations-wrapper .botiga-variation-type-select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5320,7 +5328,8 @@ dl.variation p {
       flex-wrap: wrap;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-button > a {
+.botiga-variations-wrapper .botiga-variation-type-button > a,
+.botiga-variations-wrapper .botiga-variation-type-select > a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5347,25 +5356,34 @@ dl.variation p {
   transition: ease opacity 300ms;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-button > a:hover, .botiga-variations-wrapper .botiga-variation-type-button > a.active {
+.botiga-variations-wrapper .botiga-variation-type-button > a:hover, .botiga-variations-wrapper .botiga-variation-type-button > a.active,
+.botiga-variations-wrapper .botiga-variation-type-select > a:hover,
+.botiga-variations-wrapper .botiga-variation-type-select > a.active {
   opacity: 1;
   color: #212121;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-button > a:last-child {
+.botiga-variations-wrapper .botiga-variation-type-button > a:last-child,
+.botiga-variations-wrapper .botiga-variation-type-select > a:last-child {
   margin-right: 0;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-color > a.disabled,
-.botiga-variations-wrapper .botiga-variation-type-button > a.disabled {
+.botiga-variations-wrapper .botiga-variation-type-image > a.disabled,
+.botiga-variations-wrapper .botiga-variation-type-button > a.disabled,
+.botiga-variations-wrapper .botiga-variation-type-select > a.disabled {
   position: relative;
   pointer-events: none;
   opacity: 0.5;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-color > a.disabled:before, .botiga-variations-wrapper .botiga-variation-type-color > a.disabled:after,
+.botiga-variations-wrapper .botiga-variation-type-image > a.disabled:before,
+.botiga-variations-wrapper .botiga-variation-type-image > a.disabled:after,
 .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:before,
-.botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after {
+.botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after,
+.botiga-variations-wrapper .botiga-variation-type-select > a.disabled:before,
+.botiga-variations-wrapper .botiga-variation-type-select > a.disabled:after {
   content: '';
   position: absolute;
   top: 50%;
@@ -5378,9 +5396,114 @@ dl.variation p {
 }
 
 .botiga-variations-wrapper .botiga-variation-type-color > a.disabled:after,
-.botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after {
+.botiga-variations-wrapper .botiga-variation-type-image > a.disabled:after,
+.botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after,
+.botiga-variations-wrapper .botiga-variation-type-select > a.disabled:after {
   -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
           transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+.botiga-variations-wrapper .botiga-variation-type-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-image > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-indent: 0;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-image > a img {
+  border-radius: 100%;
+}
+
+.botiga-variations-wrapper .botiga-variation-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-bottom: 10px;
+  white-space: nowrap;
+  color: #fff;
+  background-color: #212121;
+  font-size: 12px;
+  line-height: 1.5em;
+  text-align: center;
+  text-indent: 0;
+  padding: 4px 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.botiga-variations-wrapper .botiga-variation-tooltip:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #212121;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a,
+.botiga-variations-wrapper .botiga-variation-type-image > a {
+  position: relative;
+}
+
+.botiga-variations-wrapper .botiga-variation-type-color > a:hover .botiga-variation-tooltip,
+.botiga-variations-wrapper .botiga-variation-type-image > a:hover .botiga-variation-tooltip {
+  opacity: 1;
+  margin-bottom: 15px;
+  visibility: visible;
+}
+
+.botiga-product-swatches .woocommerce-variation-price,
+.botiga-product-swatches .woocommerce-variation-description {
+  display: none;
+}
+
+.botiga-product-swatches .woocommerce-variation-availability p {
+  margin: 10px 0 0 0;
+}
+
+.botiga-product-swatches .botiga-variations-wrapper {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-product-swatches table.variations {
+  margin: 0;
+}
+
+.botiga-product-swatches table.variations th.label {
+  display: none;
 }
 
 /**
@@ -5602,6 +5725,83 @@ dl.variation p {
 
 .widget_rating_filter a .star-rating {
   margin-left: 0;
+}
+
+.botiga_widget_product_swatch_active_filter:empty {
+  display: none;
+}
+
+.botiga_widget_product_swatch_active_filter ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.botiga_widget_product_swatch_active_filter ul li {
+  margin: 0;
+}
+
+.botiga_widget_product_swatch_active_filter ul li:last-child a {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.botiga_widget_product_swatch_active_filter ul li:last-child a:hover {
+  opacity: 0.75;
+}
+
+.botiga_widget_product_swatch_active_filter ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga_widget_product_swatch_active_filter ul li a:hover i {
+  opacity: 0.75;
+}
+
+.botiga_widget_product_swatch_active_filter ul li a i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  background-color: #e5e5e5;
+  border-radius: 100%;
+}
+
+.botiga_widget_product_swatch_active_filter ul li a i:after, .botiga_widget_product_swatch_active_filter ul li a i:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  background-color: currentColor;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-radius: 5px;
+}
+
+.botiga_widget_product_swatch_active_filter ul li a i:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 /**

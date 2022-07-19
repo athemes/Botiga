@@ -1925,12 +1925,15 @@ div.editor-styles-wrapper .botiga-variations-wrapper select {
   display: none;
 }
 
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  grid-gap: 2px;
 }
 
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a {
   position: relative;
   width: 30px;
@@ -1941,6 +1944,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   text-indent: -99999px;
 }
 
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before {
   content: '';
   position: absolute;
@@ -1954,15 +1958,19 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   transition: ease border-color 300ms;
 }
 
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a + a,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a + a {
   margin-left: 8px;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover:not(.disabled):before, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.active:not(.disabled):before,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before {
   border-color: #212121;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1970,7 +1978,8 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-butt
       flex-wrap: wrap;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1997,25 +2006,34 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-butt
   transition: ease opacity 300ms;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a:hover, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.active {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a:hover, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.active,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a:hover,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a.active {
   opacity: 1;
   color: #212121;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a:last-child {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a:last-child,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a:last-child {
   margin-right: 0;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.disabled,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.disabled,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a.disabled {
   position: relative;
   pointer-events: none;
   opacity: 0.5;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.disabled:before, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.disabled:after,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.disabled:before,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.disabled:after,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:before,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a.disabled:before,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a.disabled:after {
   content: '';
   position: absolute;
   top: 50%;
@@ -2028,9 +2046,114 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-butt
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.disabled:after,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.disabled:after,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a.disabled:after,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-select > a.disabled:after {
   -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
           transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-indent: 0;
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a img {
+  border-radius: 100%;
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-bottom: 10px;
+  white-space: nowrap;
+  color: #fff;
+  background-color: #212121;
+  font-size: 12px;
+  line-height: 1.5em;
+  text-align: center;
+  text-indent: 0;
+  padding: 4px 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-tooltip:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #212121;
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a {
+  position: relative;
+}
+
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover .botiga-variation-tooltip,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover .botiga-variation-tooltip {
+  opacity: 1;
+  margin-bottom: 15px;
+  visibility: visible;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-price,
+div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-description {
+  display: none;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches .woocommerce-variation-availability p {
+  margin: 10px 0 0 0;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches .botiga-variations-wrapper {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches table.variations {
+  margin: 0;
+}
+
+div.editor-styles-wrapper .botiga-product-swatches table.variations th.label {
+  display: none;
 }
 
 div.editor-styles-wrapper #wc-stripe-payment-request-button-separator,
