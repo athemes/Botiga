@@ -258,7 +258,7 @@ botiga.helpers = {
 			return false;
 		}
 
-		if( isInViewport( submenu ) == false ) {
+		if( isInViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
 			submenu.classList.add( 'sub-menu-reverse' );
 		}
 
