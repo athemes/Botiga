@@ -125,7 +125,7 @@ function botiga_gb_add_to_cart_button( $_product ) {
 
 	global $product;
 
-	$product = $_product;
+	$product = $_product; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
 	$button_layout 	= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 
