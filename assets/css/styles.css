@@ -534,6 +534,15 @@ big {
 
 /* Elements
 --------------------------------------------- */
+.botiga-badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 5px 7px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
 body {
   background: #fff;
   overflow-x: hidden;

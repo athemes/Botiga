@@ -272,8 +272,12 @@ function botiga_wc_hooks() {
 	
 			$defaults 	= botiga_get_default_single_product_components();
 			$components = get_theme_mod( 'single_product_elements_order', $defaults );
-	
+
 			foreach ( $components as $component ) {
+				if( ! function_exists( $component ) ) {
+					continue;
+				}
+
 				add_action( 'woocommerce_single_product_summary', $component, 5 );
 			}
 			

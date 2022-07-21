@@ -154,6 +154,7 @@ ul.products {
 				visibility: hidden;
 				transform: translate3d(-50%, -40%, 0);
 				transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+				z-index: 3;
 			}
 			&.button-layout4 {
 				position: absolute;
@@ -162,6 +163,7 @@ ul.products {
 				opacity: 0;
 				visibility: hidden;
 				transition: ease opacity 300ms, ease visibility 300ms;
+				z-index: 3;
 			}
 		}
 		&:hover {
@@ -209,6 +211,7 @@ ul.products {
 		position: absolute;
 		opacity: 0;
 		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		z-index: 3;
 	}
 
 	.button-layout3 {

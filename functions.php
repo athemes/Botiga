@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.1.5' );
+	define( 'BOTIGA_VERSION', '1.1.6' );
 }
 
 // aThemes White Label Compatibility
@@ -378,6 +378,13 @@ if ( class_exists( 'Mega_Menu' ) ) {
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/woocommerce/woocommerce.php';
+}
+
+/**
+ * Load WooCommerce Brands compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
+	require get_template_directory() . '/inc/plugins/woocommerce-brands/woocommerce-brands.php';
 }
 
 /**

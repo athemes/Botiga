@@ -42,7 +42,7 @@ function botiga_single_product_elements() {
 	);
 
 	if( 'layout1' !== get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) ) {
-		$elements['botiga_single_wishlist_button'] = esc_html__( 'Wishlist Button', 'botiga' );
+		$elements[ 'botiga_single_wishlist_button' ] = esc_html__( 'Wishlist Button', 'botiga' );
 	}
 
 	return apply_filters( 'botiga_single_product_elements', $elements );
@@ -385,7 +385,7 @@ function botiga_single_product_html() {
 }
 
 /**
- * Single product elements Shortcode output
+ * Single product elements 'Shortcode' output
  */
 function botiga_single_product_shortcode() {
 	$shortcode = get_theme_mod( 'botiga_single_product_shortcode_content', '' );

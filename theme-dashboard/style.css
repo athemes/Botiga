@@ -300,7 +300,9 @@
     .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary .thd-button {
       border-color: #3FB28F;
       background: #3FB28F;
-      color: #FFFFFF; }
+      color: #FFFFFF;
+      white-space: normal;
+      text-align: center; }
       .thd-theme-dashboard .thd-panel-support .thd-conttent-secondary .thd-button:hover {
         border-color: #FFFFFF;
         background: #FFFFFF;
