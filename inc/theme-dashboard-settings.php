@@ -79,6 +79,16 @@ function botiga_free_vs_pro_html() {
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
+				<td><?php esc_html_e( 'Mega Menu', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Multi Step Checkout', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
 				<td><?php esc_html_e( 'Single Product Gallery Styles', 'botiga' ); ?></td>
 				<td>3</td>
 				<td>7</td>
@@ -256,7 +266,7 @@ function botiga_dashboard_settings( $settings ) {
 				array(
 					'name'          => esc_html__( 'Product Swatch', 'botiga' ),
 					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_single_product&control=customize-control-accordion_single_product_swatch' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_product_swatches' ),
 				),
 				array(
 					'name'          => esc_html__( 'More Header Layouts', 'botiga' ),
@@ -297,7 +307,17 @@ function botiga_dashboard_settings( $settings ) {
 					'name'          => esc_html__( 'More Footer Copyright Elements', 'botiga' ),
 					'type'          => 'pro',
 					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_footer_credits' ),
-				),																		
+				),
+				array(
+					'name'          => esc_html__( 'Header Builder', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_hb_wrapper' ),
+				),
+				array(
+					'name'          => esc_html__( 'Mega Menu', 'botiga' ),
+					'type'          => 'pro',
+					'customize_uri' => admin_url( '/nav-menus.php' ),
+				)															
 			),
 		),
 		array(
