@@ -307,17 +307,7 @@ function botiga_dashboard_settings( $settings ) {
 					'name'          => esc_html__( 'More Footer Copyright Elements', 'botiga' ),
 					'type'          => 'pro',
 					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_footer_credits' ),
-				),
-				array(
-					'name'          => esc_html__( 'Header Builder', 'botiga' ),
-					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_hb_wrapper' ),
-				),
-				array(
-					'name'          => esc_html__( 'Mega Menu', 'botiga' ),
-					'type'          => 'pro',
-					'customize_uri' => admin_url( '/nav-menus.php' ),
-				)															
+				),														
 			),
 		),
 		array(
@@ -332,6 +322,20 @@ function botiga_dashboard_settings( $settings ) {
 			'visible' => array( 'free', 'pro' ),
 		),
 	);
+
+	if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+		$settings['tabs'][0]['data'][] = array(
+			'name'          => esc_html__( 'Header Builder', 'botiga' ),
+			'type'          => 'pro',
+			'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_hb_wrapper' ),
+		);
+
+		$settings['tabs'][0]['data'][] = array(
+			'name'          => esc_html__( 'Mega Menu', 'botiga' ),
+			'type'          => 'pro',
+			'customize_uri' => admin_url( '/nav-menus.php' ),
+		);
+	}
 
 	// Documentation.
 	$settings['documentation_link'] = 'https://docs.athemes.com/collection/318-botiga';

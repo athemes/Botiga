@@ -1254,7 +1254,7 @@ msgstr ""
 msgid "Submenu Text Color Hover"
 msgstr ""
 
-#: inc/customizer/options/performance.php:11, inc/theme-dashboard-settings.php:310
+#: inc/customizer/options/performance.php:11, inc/theme-dashboard-settings.php:330
 msgid "Performance"
 msgstr ""
 
@@ -1298,7 +1298,7 @@ msgstr ""
 msgid "Top &amp; bottom padding"
 msgstr ""
 
-#: inc/customizer/options/typography.php:11, inc/theme-dashboard-settings.php:187
+#: inc/customizer/options/typography.php:11, inc/theme-dashboard-settings.php:197
 msgid "Typography"
 msgstr ""
 
@@ -2032,175 +2032,183 @@ msgstr ""
 msgid "Multiple header layouts"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:62, inc/theme-dashboard-settings.php:257
+#: inc/theme-dashboard-settings.php:62, inc/theme-dashboard-settings.php:267
 msgid "Product Swatch"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:67, inc/theme-dashboard-settings.php:252
+#: inc/theme-dashboard-settings.php:67, inc/theme-dashboard-settings.php:262
 msgid "Wishlist"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:72, inc/theme-dashboard-settings.php:267
+#: inc/theme-dashboard-settings.php:72, inc/theme-dashboard-settings.php:277
 msgid "Shop Header Styles"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:77
+#: inc/theme-dashboard-settings.php:77, inc/theme-dashboard-settings.php:312
 msgid "Header Builder"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:82
+#: inc/theme-dashboard-settings.php:82, inc/theme-dashboard-settings.php:317
+msgid "Mega Menu"
+msgstr ""
+
+#: inc/theme-dashboard-settings.php:87
+msgid "Multi Step Checkout"
+msgstr ""
+
+#: inc/theme-dashboard-settings.php:92
 msgid "Single Product Gallery Styles"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:87, inc/theme-dashboard-settings.php:277
+#: inc/theme-dashboard-settings.php:97, inc/theme-dashboard-settings.php:287
 msgid "Single Product Sticky Add to Cart"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:92, inc/theme-dashboard-settings.php:282
+#: inc/theme-dashboard-settings.php:102, inc/theme-dashboard-settings.php:292
 msgid "Single Product Tab Styles"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:97
+#: inc/theme-dashboard-settings.php:107
 msgid "New Shop Sidebar Positions"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:102, inc/theme-dashboard-settings.php:292
+#: inc/theme-dashboard-settings.php:112, inc/theme-dashboard-settings.php:302
 msgid "Distraction Free Checkout"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:107
+#: inc/theme-dashboard-settings.php:117
 msgid "Fixed Totals Box in Cart & Checkout Pages"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:112
+#: inc/theme-dashboard-settings.php:122
 msgid "Single Blog Post Reading Time"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:117
+#: inc/theme-dashboard-settings.php:127
 msgid "Single Blog Post Author Profile Info"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:122
+#: inc/theme-dashboard-settings.php:132
 msgid "Single Blog Post Share Box"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:127
+#: inc/theme-dashboard-settings.php:137
 msgid "Single Blog Related Posts Slider"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:132
+#: inc/theme-dashboard-settings.php:142
 msgid "New Footer Copyright Bar Elements - Payment Icons, Navigation Menu, HTML and Shortcode"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:143
+#: inc/theme-dashboard-settings.php:153
 msgid "Full list of differences between Botiga and Botiga Pro"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:151
+#: inc/theme-dashboard-settings.php:161
 msgid "Get Botiga Pro Today"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:169
+#: inc/theme-dashboard-settings.php:179
 msgid "Welcome to Botiga"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:170
+#: inc/theme-dashboard-settings.php:180
 msgid "Botiga is now installed and ready to use. Click on Starter Sites to get off to a flying start with one of our pre-made templates, or go to Theme Dashboard to get an overview of everything."
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:171
+#: inc/theme-dashboard-settings.php:181
 msgid "Botiga is now installed and ready to go. To help you with the next step, we've gathered together on this page all the resources you might need. We hope you enjoy using Botiga."
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:177
+#: inc/theme-dashboard-settings.php:187
 msgid "Theme Features"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:182
+#: inc/theme-dashboard-settings.php:192
 msgid "Change Site Title or Logo"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:192
+#: inc/theme-dashboard-settings.php:202
 msgid "Color Options"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:197
+#: inc/theme-dashboard-settings.php:207
 msgid "Main Header"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:202
+#: inc/theme-dashboard-settings.php:212
 msgid "Mobile Header"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:207
+#: inc/theme-dashboard-settings.php:217
 msgid "Footer Copyright"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:212
+#: inc/theme-dashboard-settings.php:222
 msgid "Blog Archives"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:217
+#: inc/theme-dashboard-settings.php:227
 msgid "Single Posts"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:222
+#: inc/theme-dashboard-settings.php:232
 msgid "Button Options"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:227
+#: inc/theme-dashboard-settings.php:237
 msgid "Product Catalog"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:232
+#: inc/theme-dashboard-settings.php:242
 msgid "Single Products"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:237
+#: inc/theme-dashboard-settings.php:247
 msgid "Cart Layout"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:242
+#: inc/theme-dashboard-settings.php:252
 msgid "Checkout Options"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:247
+#: inc/theme-dashboard-settings.php:257
 msgid "Scroll to Top"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:262
+#: inc/theme-dashboard-settings.php:272
 msgid "More Header Layouts"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:272
+#: inc/theme-dashboard-settings.php:282
 msgid "More Single Product Gallery Styles"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:287
+#: inc/theme-dashboard-settings.php:297
 msgid "More Sidebar Layouts"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:297
+#: inc/theme-dashboard-settings.php:307
 msgid "More Footer Copyright Elements"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:304
+#: inc/theme-dashboard-settings.php:324
 msgid "Free vs PRO"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:323, theme-dashboard/class-theme-dashboard.php:747
+#: inc/theme-dashboard-settings.php:343, theme-dashboard/class-theme-dashboard.php:747
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:324, theme-dashboard/class-theme-dashboard.php:750
+#: inc/theme-dashboard-settings.php:344, theme-dashboard/class-theme-dashboard.php:750
 msgid "Take Botiga to a whole other level by upgrading to the Pro version."
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:325, theme-dashboard/class-theme-dashboard.php:754
+#: inc/theme-dashboard-settings.php:345, theme-dashboard/class-theme-dashboard.php:754
 msgid "Discover Botiga Pro"
 msgstr ""
 
-#: inc/theme-dashboard-settings.php:370
+#: inc/theme-dashboard-settings.php:390
 msgid "Get Botiga Pro"
 msgstr ""
 
