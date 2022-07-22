@@ -836,11 +836,11 @@ botiga.quickView = {
 
 						botiga.qtyButton.init( 'quick-view' );
 						botiga.wishList.init();
-						botiga.productSwatch.init();
+
+						window.dispatchEvent( new Event( 'botiga.quickview.ajax.loaded' ) );
 
 						popup.classList.remove('loading');
 
-						window.dispatchEvent( new Event( 'botiga.quickview.ajax.loaded' ) );
 					}
 				};
 

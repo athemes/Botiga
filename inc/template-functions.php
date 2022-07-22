@@ -659,7 +659,7 @@ function botiga_google_fonts_url() {
 	//Get and decode options
 	$body_font		= get_theme_mod( 'botiga_body_font', $defaults );
 	$headings_font 	= get_theme_mod( 'botiga_headings_font', $defaults );
-
+	
 	$body_font 		= json_decode( $body_font, true );
 	$headings_font 	= json_decode( $headings_font, true );
 
@@ -668,20 +668,27 @@ function botiga_google_fonts_url() {
 	}
 
 	/**
-	 * Remove ':' from font weight.
+	 * Convert old values of font-weight.
 	 * This avoid issues with old Botiga users that imported demos with 
 	 * old customizer settings (google fonts v1 pattern).
 	 * 
-	 * @since 1.1.6
+	 * @since 1.1.7
 	 */
-	$body_font['regularweight']     = str_replace( ':', '', $body_font['regularweight'] );
-	$headings_font['regularweight'] = str_replace( ':', '', $headings_font['regularweight'] );
+	$body_font['regularweight']     = str_replace( 
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$body_font['regularweight'] 
+	);
+	$headings_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$headings_font['regularweight'] 
+	);
 
 	$font_families = array(
 		$body_font['font'] . ':wght@' . $body_font['regularweight'],
 		$headings_font['font'] . ':wght@' . $headings_font['regularweight']
 	);
-	
 
 	$fonts_url = add_query_arg( array(
 		'family' => implode( '&family=', $font_families ),

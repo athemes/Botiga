@@ -794,7 +794,7 @@ class Botiga_Theme_Dashboard {
 								<?php } ?>
 							</div>
 							<div class="thd-panel-content">
-								<div class="thd-description"><?php esc_html_e( 'Keep informed with the latest changes about each theme.', 'botiga' ); ?></div>
+								<div class="thd-description"><?php esc_html_e( 'Keep up to date with the latest changes.', 'botiga' ); ?></div>
 
 								<a href="<?php echo esc_url( $this->settings['changelog_link'] ); ?>" class="thd-changelog-link" target="_blank">
 									<?php echo esc_html_e( 'See the Changelog', 'botiga' ); ?>

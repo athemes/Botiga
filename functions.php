@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.1.6' );
+	define( 'BOTIGA_VERSION', '1.1.7' );
 }
 
 // aThemes White Label Compatibility
