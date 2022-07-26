@@ -35,13 +35,17 @@ function botiga_product_card_hooks() {
 
 		if ( 'product-grid' === $layout ) {
 			$shop_woocommerce_catalog_columns_desktop = get_theme_mod( 'shop_woocommerce_catalog_columns_desktop', 4 );
-
-			if( $shop_woocommerce_catalog_columns_desktop == 2 ) {
+		
+			if( $shop_woocommerce_catalog_columns_desktop === 2 ) {
 				add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-large'; } );
+				add_filter( 'subcategory_archive_thumbnail_size', function(){ return 'botiga-large'; } );
+				add_filter( 'woocommerce_get_image_size_botiga-large', function( $size ){ $size[ 'width' ] = 920; return $size; } );
 			}
-
-			if( $shop_woocommerce_catalog_columns_desktop == 1 ) {
+		
+			if( $shop_woocommerce_catalog_columns_desktop === 1 ) {
 				add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-extra-large'; } );
+				add_filter( 'subcategory_archive_thumbnail_size', function(){ return 'botiga-extra-large'; } );
+				add_filter( 'woocommerce_get_image_size_botiga-extra-large', function( $size ){ $size[ 'width' ] = 1140; return $size; } );
 			}
 		}
 	}
