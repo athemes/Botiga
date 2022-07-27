@@ -107,7 +107,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							} ?>
 						</div>
 						<div class="col align-right">
-							<a class="mobile-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
+							<a class="mobile-menu-close" href="#" title="<?php echo esc_attr( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						</div>
 					</div>
 				</div>
@@ -871,7 +871,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 			
 			$icon = get_theme_mod( 'mobile_menu_icon', 'mobile-icon2' ); ?>
-			<a href="#" class="menu-toggle">
+			<a href="#" class="menu-toggle" title="<?php echo esc_attr( 'Open mobile offcanvas menu', 'botiga' ); ?>">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( $icon, true ); ?></i>
 			</a>
 			<?php

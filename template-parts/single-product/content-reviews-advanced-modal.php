@@ -9,7 +9,7 @@ global $_product; ?>
 
 <div class="botiga-adv-reviews-modal">
     <div class="botiga-adv-reviews-modal-body">
-        <a href="#" class="botiga-adv-reviews-modal-close">
+        <a href="#" class="botiga-adv-reviews-modal-close" title="<?php echo esc_attr__( 'Close popup', 'botiga' ); ?>">
             <i class="ws-svg-icon icon-cancel">
                 <?php echo botiga_get_svg_icon( 'icon-cancel' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </i>

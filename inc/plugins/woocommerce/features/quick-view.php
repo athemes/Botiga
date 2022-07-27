@@ -13,7 +13,7 @@ function botiga_quick_view_scripts() {
     //Enqueue gallery scripts for quick view
 	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
 	
-	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || botiga_wc_has_blocks() || is_cart() || is_404() || $shop_cart_show_cross_sell ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || botiga_page_has_woo_blocks() || is_cart() || is_404() || $shop_cart_show_cross_sell ) {
 		$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 		
 		if( 'layout1' !== $quick_view_layout ) {
@@ -116,7 +116,7 @@ function botiga_quick_view_popup() { ?>
 			</svg>
 		</div>
 		<div class="botiga-quick-view-popup-content">
-			<a href="#" class="botiga-quick-view-popup-close-button">
+			<a href="#" class="botiga-quick-view-popup-close-button" title="<?php echo esc_attr__( 'Close quick view popup', 'botiga' ); ?>">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i>
 			</a>
 			<div class="botiga-quick-view-popup-content-ajax"></div>
