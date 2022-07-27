@@ -999,6 +999,19 @@ form.cart .quantity.hidden {
 			}
 		}
 	}
+
+	// Hide gpay and applepay buttons from sitcky add to cart
+	// WooCommerce payments
+	div[id*="wcpay-"],
+	p[id*="wcpay-"] {
+		display: none !important;
+	}
+
+	// Stripe payments
+	div[id*="wc-stripe-payment-"],
+	p[id*="wc-stripe-payment-"] {
+		display: none !important;
+	}
 }
 
 @media(max-width: 1024px) {
