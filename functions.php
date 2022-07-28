@@ -131,20 +131,20 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		
 		$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
 		if( $custom_palette_toggle ) {
-			for ( $i = 1; $i < 9; $i++ ) { 
+			for ( $i = 0; $i < 8; $i++ ) {
 				$colors[] = array(
 					/* translators: %s: color palette */
-					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
-					'slug'  => 'palette' . $i . '-color-' . $i,
-					'color' => get_theme_mod( 'custom_color' . $i, '#212121' )
+					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
+					'slug'  => 'color-' . $i,
+					'color' => get_theme_mod( 'custom_color' . ($i+1), '#212121' )
 				);
 			}
 		} else {
 			for ( $i = 0; $i < 8; $i++ ) { 
 				$colors[] = array(
 					/* translators: %s: color palette */
-					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
-					'slug'  => $selected_palette . '-color-' . $i,
+					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
+					'slug'  => 'color-' . $i,
 					'color' => $palettes[$selected_palette][$i],
 				);
 			}
