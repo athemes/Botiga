@@ -1,0 +1,462 @@
+<?php
+/**
+ *
+ * Metabox
+ *
+ * @package Botiga
+ */
+class Botiga_Metabox {
+
+	public $options = array();
+
+	public function __construct() {
+    add_action( 'load-post.php', array( $this, 'init_metabox' ) );
+    add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
+	}
+
+	public function init_metabox() {
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_metabox_scripts' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_metabox' ) );
+		add_action( 'save_post', array( $this, 'save_metabox' ) );
+	}
+
+	public function enqueue_metabox_scripts( $hook ) {
+		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', BOTIGA_VERSION );
+		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
+	}
+
+	public function metabox_options() {
+
+		//
+		// Begin: Fields
+		//
+		$this->add_section( array(
+			'id'        => 'field',
+			'title'     => esc_html__( 'Fields', 'botiga' ),
+		) );
+
+		$this->add_field( array(
+			'section' => 'field',
+			'id'      => '__botiga_text',
+			'type'    => 'text',
+			'title'   => esc_html__( 'Text', 'botiga' ),
+		) );
+
+		$this->add_field( array(
+			'section'  => 'field',
+			'id'       => '__botiga_textarea',
+			'type'     => 'textarea',
+			'title'    => esc_html__( '@param title Textarea', 'botiga' ),
+			'subtitle' => '@param subtitle - Learn more about manual excerpts.',
+			'desc'     => '@param desc - Excerpts are optional hand-crafted summaries of your content that can be used in your theme. Learn more about manual excerpts.',
+		) );
+
+		$this->add_field( array(
+			'section' => 'field',
+			'id'      => '__botiga_number',
+			'type'    => 'number',
+			'title'   => esc_html__( 'Number', 'botiga' ),
+		) );
+
+		$this->add_field( array(
+			'section' => 'field',
+			'id'      => '__botiga_checkbox',
+			'type'    => 'checkbox',
+			'title'   => esc_html__( 'Checkbox', 'botiga' ),
+			'label'   => 'Yes, Please count me.',
+		) );
+
+		$this->add_field( array(
+			'section' => 'field',
+			'id'      => '__botiga_switcher',
+			'type'    => 'switcher',
+			'title'   => esc_html__( 'Switcher', 'botiga' ),
+			'label'   => 'Yes, Please count me.',
+		) );
+
+		$this->add_field( array(
+			'section' => 'field',
+			'id'      => '__botiga_select',
+			'type'    => 'select',
+			'title'   => esc_html__( 'Select', 'botiga' ),
+			'options' => array(
+				''         => 'Select an option',
+				'option-1' => 'Option 1',
+				'option-2' => 'Option 2',
+				'option-3' => 'Option 3',
+				'option-4' => 'Option 4',
+				'option-5' => 'Option 5',
+			),
+		) );
+
+		$this->add_field( array(
+			'section' => 'field',
+			'id'      => '__botiga_choices',
+			'type'    => 'choices',
+			'title'   => esc_html__( 'Choices', 'botiga' ),
+			'options'         => array(
+				'customizer'    => array(
+					'label'       => esc_html__( 'Default', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-default.svg',
+				),
+				'sidebar-left'  => array(
+					'label'       => esc_html__( 'Left', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-left.svg',
+				),
+				'sidebar-right' => array(
+					'label'       => esc_html__( 'Right', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-right.svg',
+				),
+				'no-sidebar'    => array(
+					'label'       => esc_html__( 'No Sidebar', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-none.svg',
+				),
+			),
+		) );
+		//
+		// End: Fields
+		//
+
+		//
+		// Begin: Another
+		//
+		$this->add_section( array(
+			'id'        => 'another',
+			'title'     => esc_html__( 'Another', 'botiga' ),
+		) );
+
+		$this->add_field( array(
+			'section'   => 'another',
+			'id'        => '_botiga_another_text',
+			'type'      => 'text',
+			'title'     => esc_html__( 'Another Text', 'botiga' ),
+		) );
+		//
+		// End: Another
+		//
+
+		return apply_filters( 'botiga_metabox_options', $this->options );
+
+	}
+
+	public function add_section( $args ) {
+
+		if ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) {
+			return;
+		}
+
+		$args = wp_parse_args( $args, array(
+			'id'     => '',
+			'title'  => '',
+			'fields' => array(),
+		) );
+
+		$this->options[ $args['id'] ] = $args;
+
+	}
+
+	public function add_field( $args ) {
+
+		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) || empty( $this->options[ $args['section'] ] ) ) {
+			return;
+		}
+
+		$this->options[ $args['section'] ]['fields'][ $args['id'] ] = $args;
+
+	}
+
+	public function add_metabox( $post_type ) {
+
+		if ( $post_type === 'attachment' ) {
+			return;
+		}
+
+		$types = get_post_types( array(
+			'public' => true,
+		) );
+
+		if ( ! in_array( $post_type, $types ) ) {
+			return;
+		}
+
+		switch ( $post_type ) {
+
+			case 'post':
+				$metabox_title = esc_html__( 'Botiga Post Options', 'botiga' );
+			break;
+
+			case 'page':
+				$metabox_title = esc_html__( 'Botiga Page Options', 'botiga' );
+			break;
+
+			case 'product':
+				$metabox_title = esc_html__( 'Botiga Product Options', 'botiga' );
+			break;
+
+		}
+
+		add_meta_box( 'botiga_metabox', $metabox_title, array( $this, 'render_metabox_content' ), $types, 'normal', 'low' );
+
+	}
+
+	public function render_metabox_content( $post ) {
+
+		$options = $this->metabox_options();
+
+		$post_type = get_post_type( $post );
+
+    wp_nonce_field( 'botiga_metabox', 'botiga_metabox_nonce' );
+
+    echo '<div class="botiga-metabox">';
+
+    	echo '<div class="botiga-metabox-tabs">';
+
+    		$num = 0;
+
+	    	foreach ( $options as $option ) {
+
+    			$active = ( $num === 0 ) ? ' active' : '';
+
+    			if ( empty( $option['title'] ) ) {
+    				var_dump( $option );
+    			}
+
+	    		echo '<a href="#" class="botiga-metabox-tab'. esc_attr( $active ) .'">'. esc_html( $option['title'] ) .'</a>';
+
+	    		$num++;
+
+	    	}
+
+    	echo '</div>';
+
+    	echo '<div class="botiga-metabox-contents">';
+
+    		$num = 0;
+
+    		foreach ( $options as $option ) {
+
+    			$active = ( $num === 0 ) ? ' active' : '';
+
+	    		echo '<div class="botiga-metabox-content'. esc_attr( $active ) .'">';
+
+		    		if ( ! empty( $option['fields'] ) ) {
+
+		    			foreach ( $option['fields'] as $field ) {
+
+		    				echo '<div class="botiga-metabox-field botiga-metabox-field-'. esc_attr( $field['type'] ).'">';
+
+		    					if ( ! empty( $field['title'] ) || ! empty( $field['subtitle'] ) ) {
+
+		    						echo '<div class="botiga-metabox-field-title">';
+
+		    							if ( ! empty( $field['title'] ) ) {
+		    								echo '<h4>'. esc_html( $field['title'] ) .'</h4>';
+		    							}
+
+		    							if ( ! empty( $field['subtitle'] ) ) {
+		    								echo '<small class="botiga-metabox-field-subtitle">'. esc_html( $field['subtitle'] ) .'</small>';
+		    							}
+
+		    						echo '</div>';
+
+		    					}
+
+		    					echo '<div class="botiga-metabox-field-content">';
+
+					          $meta    = get_post_meta( $post->ID, $field['id'] );
+		                $default = ( isset( $field['default'] ) ) ? $field['default'] : null;
+										$value   = ( isset( $meta[0] ) ) ? $meta[0] : $default;
+
+					    			$this->get_field( $field, $value );
+
+	    							if ( ! empty( $field['desc'] ) ) {
+	    								echo '<div class="botiga-metabox-field-description">'. esc_html( $field['desc'] ) .'</div>';
+	    							}
+
+		    					echo '</div>';
+
+		    				echo '</div>';
+
+
+					    }
+
+		    		}
+
+	    		echo '</div>';
+
+    			$num++;
+
+	    	}
+
+    	echo '</div>';
+
+
+    echo '</div>';
+
+	}
+
+	public function save_metabox( $post_id ) {
+
+		if ( ! isset( $_POST['botiga_metabox_nonce'] ) ) {
+			return $post_id;
+		}
+
+		$nonce = sanitize_key( wp_unslash( $_POST['botiga_metabox_nonce'] ) );
+
+		if ( ! wp_verify_nonce( $nonce, 'botiga_metabox' ) ) {
+			return $post_id;
+		}
+
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return $post_id;
+		}
+
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return $post_id;
+		}
+
+		$options = $this->metabox_options();
+
+		if ( empty( $options ) ) {
+			return $post_id;
+		}
+
+		foreach ( $options as $option ) {
+
+			if ( ! empty( $option['fields'] ) ) {
+
+				foreach ( $option['fields'] as $field ) {
+
+					if ( ! empty( $field['id'] ) ) {
+
+						$value = ( isset( $_POST[ $field['id'] ] ) ) ? wp_unslash( $_POST[ $field['id'] ] ) : null;
+
+						$value = $this->sanitize( $field, $value );
+
+						update_post_meta( $post_id, $field['id'], $value );
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public function sanitize( $field, $value ) {
+
+		switch ( $field['type'] ) {
+
+			case 'text':
+				return sanitize_text_field( $value );
+			break;
+
+			case 'textarea':
+				return sanitize_textarea_field( $value );
+			break;
+
+			case 'checkbox':
+			case 'switcher':
+				return ( $value === '1' ) ? 1 : 0;
+			break;
+
+			case 'number':
+				return absint( $value );
+			break;
+
+			case 'select':
+			case 'choices':
+				return ( in_array( $value, array_keys( $field['options'] ) ) ) ? sanitize_key( $value ) : '';
+			break;
+
+		}
+
+		return $value;
+
+	}
+
+	public function get_field( $field, $value ) {
+
+		switch ( $field['type'] ) {
+
+			case 'text':
+				echo '<input type="text" name="'. esc_attr( $field['id'] ) .'" value="'. esc_attr( $value ) .'" />';
+			break;
+
+			case 'number':
+				echo '<input type="number" name="'. esc_attr( $field['id'] ) .'" value="'. esc_attr( $value ) .'" />';
+			break;
+
+			case 'textarea':
+				echo '<textarea name="'. esc_attr( $field['id'] ) .'">'. esc_textarea( $value ) .'</textarea>';
+			break;
+
+			case 'checkbox':
+			case 'switcher':
+
+				$field = wp_parse_args( $field, array(
+					'label' => '',
+				) );
+
+				echo '<label>';
+
+					echo '<input type="checkbox" name="'. esc_attr( $field['id'] ) .'" value="1"'. checked( $value, true, false ) .' />';
+
+					if ( $field['type'] === 'switcher' ) {
+						echo '<i></i>';
+					}
+
+					if ( ! empty( $field['label'] ) ) {
+						echo '<span>'. esc_html( $field['label'] ) .'</span>';
+					}
+
+				echo '</label>';
+
+			break;
+
+			case 'select':
+
+				$field = wp_parse_args( $field, array(
+					'options' => array(),
+				) );
+
+				echo '<select name="'. esc_attr( $field['id'] ) .'">';
+
+					foreach ( $field['options'] as $key => $option ) {
+						echo '<option value="'. $key .'"'. selected( $key, $value, false ) .'>'. $option .'</option>';
+					}
+
+				echo '</select>';
+
+			break;
+
+			case 'choices':
+
+				$field = wp_parse_args( $field, array(
+					'options' => array(),
+				) );
+
+				echo '<div class="botiga-metabox-field-choices-images">';
+
+				foreach ( $field['options'] as $key => $option ) {
+
+					echo '<label>';
+					echo '<input type="radio" name="'. esc_attr( $field['id'] ) .'" value="'. esc_attr( $key ) .'"'. checked( $value, $key, false ) .' />';
+					echo '<figure><img src="'. esc_url( sprintf( $option['image'], get_stylesheet_directory_uri() ) ) .'" title="'. esc_attr( $option['label'] ) .'" alt="'. esc_attr( $option['label'] ) .'" /></figure>';
+					echo '</label>';
+
+				}
+
+				echo '</div>';
+
+			break;
+
+		}
+
+	}
+
+}
+
+new Botiga_Metabox();

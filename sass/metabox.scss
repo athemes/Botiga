@@ -1,0 +1,223 @@
+.botiga-metabox{
+	display: flex;
+}
+
+.botiga-metabox-tabs{
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	padding: 15px 0;
+	background-color: #1e1e1e;
+
+	a{
+		position: relative;
+		display: flex;
+		color: #777;
+		padding: 10px 20px;
+		text-decoration: none;
+
+		&:focus{
+			box-shadow: none;
+		}
+
+		&.active:after{
+			content: "";
+			position: absolute;
+			top: calc(50% - 6px);
+			right: -1px;
+	    pointer-events: none;
+	    border: solid transparent;
+	    border-right-color: #fff;
+	    border-width: 6px;
+		}
+
+		&:hover,
+		&.active{
+			color: #fff;
+		}
+	}
+}
+
+.botiga-metabox-contents{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #e5e5e5;
+	border-left: 0;
+	min-height: 300px;
+}
+
+.botiga-metabox-content{
+	display: flex;
+	flex-direction: column;
+
+	&:not(.active){
+		display: none;
+	}
+}
+
+.botiga-metabox-field{
+	display: flex;
+	grid-gap: 20px;
+	padding: 20px;
+
+	+ .botiga-metabox-field{
+		border-top: 1px solid #eee;
+	}
+}
+
+.botiga-metabox-field-title{
+	width: 300px;
+	display: flex;
+	grid-gap: 5px;
+	flex-direction: column;
+
+	h4{
+		margin: 0;
+		color: #1e1e1e;
+	}
+
+	small{
+		opacity: 0.75;
+	}
+}
+
+.botiga-metabox-field-content{
+	flex: 1
+}
+
+.botiga-metabox-field-description{
+	font-size: 80%;
+	opacity: 0.75;
+	margin-top: 10px;
+}
+
+.botiga-metabox-field-text{
+
+	input{
+		min-width: 50%;
+		max-width: 100%;
+	}
+}
+
+.botiga-metabox-field-number{
+
+	input{
+		width: 100px;
+		max-width: 100%;
+	}
+}
+
+.botiga-metabox-field-textarea{
+
+	textarea{
+		width: 100%;
+		max-width: 100%;
+		min-height: 100px;
+		vertical-align: top;
+	}
+}
+
+.botiga-metabox-field-checkbox{
+
+	label{
+		display: flex;
+		grid-gap: 6px;
+		align-items: center;
+		user-select: none;
+
+		input{
+			margin: 0;
+		}
+	}
+}
+
+.botiga-metabox-field-switcher{
+
+	label{
+		display: flex;
+		grid-gap: 6px;
+		align-items: center;
+		user-select: none;
+	}
+
+	i{
+		position: relative;
+    overflow: hidden;
+		display: flex;
+		width: 45px;
+    height: 22px;
+    background-color: #c8c8c8;
+    border-radius: 20px;
+    transition: all 0.2s;
+
+    &:before{
+    	content: "";
+	    position: absolute;
+    	display: block;
+	    width: 14px;
+	    height: 14px;
+	    top: 4px;
+	    left: 6px;
+	    background-color: #fff;
+	    border-radius: 20px;
+	    transition: all 0.1s;
+    }
+	}
+
+	input{
+		display: none;
+
+		&:checked{
+
+			+ i{
+				background-color: #2271b1;
+
+				&:before{
+	    		left: 26px;
+				}
+			}
+		}
+	}
+}
+
+.botiga-metabox-field-choices-images{
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 2px;
+
+	label{
+		display: flex;
+		user-select: none;
+	}
+
+	figure{
+		padding: 4px;
+		margin: 0;
+		border: 2px solid transparent;
+		border-radius: 4px;
+		transition: all .2s;
+		max-width: 80px;
+		max-height: 80px;
+
+		img{
+			width: 100%;
+			vertical-align: top;
+		}
+	}
+
+	input{
+		display: none;
+
+		&:checked{
+
+			+ figure{
+				border-color: #1e1e1e;
+
+				&:before{
+	    		left: 26px;
+				}
+			}
+		}
+	}
+}
