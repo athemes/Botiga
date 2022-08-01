@@ -13,6 +13,7 @@
 
 	<?php if ( apply_filters( 'botiga_entry_header', true ) ) : ?>
 	<header class="entry-header">
+		<?php do_action( 'botiga_before_title' ); ?>
 		<?php the_title( '<h1 class="entry-title page-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 	<?php endif; ?>

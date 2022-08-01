@@ -34,12 +34,16 @@ function botiga_woocommerce_page_header() {
 		<header class="woocommerce-page-header woocommerce-page-header-<?php echo esc_attr( $shop_archive_header_style ); ?> woocommerce-page-header-alignment-<?php echo esc_attr( $shop_archive_header_style_alignment ); ?>">
 			<div class="container">
 				<?php 
-				if ( $shop_breadcrumbs ) { ?>
+
+				if ( $shop_breadcrumbs && apply_filters( 'botiga_show_woo_page_header_breadcrumbs', true )) { ?>
 					<?php woocommerce_breadcrumb(); ?>
 					</div>
 					<div class="container">
 				<?php
 				}
+
+				do_action( 'botiga_before_shop_archive_title' );
+
 				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) : ?>
 					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 				<?php endif;
