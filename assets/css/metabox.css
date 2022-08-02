@@ -12,7 +12,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 250px;
+  width: 225px;
   padding: 15px 0;
   background-color: #1e1e1e;
 }
@@ -35,12 +35,12 @@
 .botiga-metabox-tabs a.active:after {
   content: "";
   position: absolute;
-  top: calc(50% - 6px);
-  right: -1px;
+  top: calc(50% - 8px);
+  right: 0;
   pointer-events: none;
   border: solid transparent;
   border-right-color: #fff;
-  border-width: 6px;
+  border-width: 8px;
 }
 
 .botiga-metabox-tabs a:hover, .botiga-metabox-tabs a.active {
@@ -60,7 +60,6 @@
           flex-direction: column;
   border: 1px solid #e5e5e5;
   border-left: 0;
-  min-height: 300px;
 }
 
 .botiga-metabox-content {
@@ -75,6 +74,14 @@
 
 .botiga-metabox-content:not(.active) {
   display: none;
+}
+
+.botiga-metabox-content-title {
+  display: none;
+  margin: 0;
+  padding: 10px 15px;
+  color: #1e1e1e;
+  background-color: #eee;
 }
 
 .botiga-metabox-field {
@@ -256,4 +263,75 @@
 
 .botiga-metabox-field-choices-images input:checked + figure:before {
   left: 26px;
+}
+
+#side-sortables .botiga-metabox-tabs {
+  display: none;
+}
+
+#side-sortables .botiga-metabox-content-title,
+#side-sortables .botiga-metabox-content:not(.active) {
+  display: block;
+}
+
+#side-sortables .botiga-metabox-field {
+  grid-gap: 8px;
+  padding: 10px 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#side-sortables .botiga-metabox-field-title {
+  width: auto;
+  font-size: 12px;
+}
+
+#side-sortables .botiga-metabox-contents {
+  border-left: none;
+  border-right: none;
+}
+
+#side-sortables #botiga_metabox .postbox-header {
+  border-top: none;
+}
+
+#side-sortables #botiga_metabox .postbox-header h2 {
+  color: #1e1e1e;
+  padding: 0 0 0 15px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#side-sortables #botiga_metabox .inside {
+  padding: 0;
+}
+
+@media only screen and (max-width: 991px) {
+  .botiga-metabox-tabs {
+    display: none;
+  }
+  .botiga-metabox-content-title,
+  .botiga-metabox-content:not(.active) {
+    display: block;
+  }
+  .botiga-metabox-field {
+    grid-gap: 8px;
+    padding: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .botiga-metabox-field-title {
+    width: auto;
+  }
+  .botiga-metabox-contents {
+    border-left: none;
+    border-right: none;
+  }
+  #botiga_metabox .inside {
+    padding: 0;
+  }
 }

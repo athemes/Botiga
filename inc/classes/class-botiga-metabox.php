@@ -1,13 +1,12 @@
 <?php
 /**
- *
  * Metabox
  *
  * @package Botiga
  */
 class Botiga_Metabox {
 
-	public $options = array();
+	public static $options = array();
 
 	public function __construct() {
     add_action( 'load-post.php', array( $this, 'init_metabox' ) );
@@ -20,7 +19,7 @@ class Botiga_Metabox {
 		add_action( 'save_post', array( $this, 'save_metabox' ) );
 	}
 
-	public function enqueue_metabox_scripts( $hook ) {
+	public function enqueue_metabox_scripts() {
 		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', BOTIGA_VERSION );
 		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 	}
@@ -28,55 +27,110 @@ class Botiga_Metabox {
 	public function metabox_options() {
 
 		//
-		// Begin: Fields
-		//
-		$this->add_section( array(
-			'id'        => 'field',
-			'title'     => esc_html__( 'Fields', 'botiga' ),
+		// Begin: General Options
+		$this->add_section( 'general', array(
+			'title' => esc_html__( 'General', 'botiga' ),
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_hide_page_title', array(
+			'post_type' => array( 'page' ),
+			'section'   => 'general',
+			'type'      => 'switcher',
+			'title'     => esc_html__( 'Hide Page Title', 'botiga' ),
+		) );
+
+		$this->add_field( '_botiga_disable_header_transparent', array(
+			'section' => 'general',
+			'type'    => 'switcher',
+			'title'   => esc_html__( 'Disable Transparent Header', 'botiga' ),
+		) );
+
+		$this->add_field( '_botiga_page_builder_mode', array(
+			'post_type' => array( 'post', 'page' ),
+			'section'   => 'general',
+			'type'      => 'switcher',
+			'title'     => esc_html__( 'Page Builder Mode', 'botiga' ),
+			'subtitle'  => esc_html__( 'This mode activates a simplified canvas for building custom pages with either the WP editor or a page builder plugin.', 'botiga' ),
+		) );
+		// End: General Options
+		//
+
+		//
+		// Begin: Sidebar Options
+		$this->add_section( 'sidebar', array(
+			'post_type' => array( 'post', 'page' ),
+			'title'     => esc_html__( 'Sidebar', 'botiga' ),
+		) );
+
+		$this->add_field( '_botiga_sidebar_layout', array(
+			'section' => 'sidebar',
+			'type'    => 'choices',
+			'title'   => esc_html__( 'Sidebar Layout', 'botiga' ),
+			'options'         => array(
+				'customizer'    => array(
+					'label'       => esc_html__( 'Default', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-default.svg',
+				),
+				'sidebar-left'  => array(
+					'label'       => esc_html__( 'Left', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-left.svg',
+				),
+				'sidebar-right' => array(
+					'label'       => esc_html__( 'Right', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-right.svg',
+				),
+				'no-sidebar'    => array(
+					'label'       => esc_html__( 'No Sidebar', 'botiga' ),
+					'image'       => '%s/assets/img/meta-sidebar-none.svg',
+				),
+			),
+		) );
+		// End: Sidebar Options
+		//
+
+		//
+		// Begin: Fields
+		$this->add_section( 'field', array(
+			'priority' => 9999,
+			'title'    => esc_html__( 'Fields', 'botiga' ),
+		) );
+
+		$this->add_field( '_botiga_text', array(
 			'section' => 'field',
-			'id'      => '__botiga_text',
 			'type'    => 'text',
 			'title'   => esc_html__( 'Text', 'botiga' ),
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_textarea', array(
 			'section'  => 'field',
-			'id'       => '__botiga_textarea',
 			'type'     => 'textarea',
 			'title'    => esc_html__( '@param title Textarea', 'botiga' ),
 			'subtitle' => '@param subtitle - Learn more about manual excerpts.',
 			'desc'     => '@param desc - Excerpts are optional hand-crafted summaries of your content that can be used in your theme. Learn more about manual excerpts.',
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_number', array(
 			'section' => 'field',
-			'id'      => '__botiga_number',
 			'type'    => 'number',
 			'title'   => esc_html__( 'Number', 'botiga' ),
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_checkbox', array(
 			'section' => 'field',
-			'id'      => '__botiga_checkbox',
 			'type'    => 'checkbox',
 			'title'   => esc_html__( 'Checkbox', 'botiga' ),
 			'label'   => 'Yes, Please count me.',
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_switcher', array(
 			'section' => 'field',
-			'id'      => '__botiga_switcher',
 			'type'    => 'switcher',
 			'title'   => esc_html__( 'Switcher', 'botiga' ),
 			'label'   => 'Yes, Please count me.',
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_select', array(
 			'section' => 'field',
-			'id'      => '__botiga_select',
 			'type'    => 'select',
 			'title'   => esc_html__( 'Select', 'botiga' ),
 			'options' => array(
@@ -89,9 +143,8 @@ class Botiga_Metabox {
 			),
 		) );
 
-		$this->add_field( array(
+		$this->add_field( '_botiga_choices', array(
 			'section' => 'field',
-			'id'      => '__botiga_choices',
 			'type'    => 'choices',
 			'title'   => esc_html__( 'Choices', 'botiga' ),
 			'options'         => array(
@@ -113,55 +166,60 @@ class Botiga_Metabox {
 				),
 			),
 		) );
-		//
+
+		$this->add_field( '_botiga_content', array(
+			'section' => 'field',
+			'type'    => 'content',
+			'title'   => esc_html__( 'Content', 'botiga' ),
+			'content' => '<strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+		) );
 		// End: Fields
 		//
 
-		//
-		// Begin: Another
-		//
-		$this->add_section( array(
-			'id'        => 'another',
-			'title'     => esc_html__( 'Another', 'botiga' ),
-		) );
+		do_action( 'botiga_metabox_options', self::$options );
 
-		$this->add_field( array(
-			'section'   => 'another',
-			'id'        => '_botiga_another_text',
-			'type'      => 'text',
-			'title'     => esc_html__( 'Another Text', 'botiga' ),
-		) );
-		//
-		// End: Another
-		//
+		self::$options = apply_filters( 'botiga_metabox_options_filter', self::$options );
 
-		return apply_filters( 'botiga_metabox_options', $this->options );
+		//
+		// Set priority order
+		//
+  	self::$options = wp_list_sort( self::$options, array( 'priority' => 'ASC' ), 'ASC', true );
+
+		foreach ( self::$options as $key => $value ) {
+    	self::$options[ $key ]['fields'] = wp_list_sort( $value['fields'], array( 'priority' => 'ASC' ), 'ASC', true );
+		}
+
+		return self::$options;
 
 	}
 
-	public function add_section( $args ) {
+	public function add_section( $id, $args ) {
 
 		if ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) {
 			return;
 		}
 
 		$args = wp_parse_args( $args, array(
-			'id'     => '',
-			'title'  => '',
-			'fields' => array(),
+			'title'    => '',
+			'fields'   => array(),
+			'priority' => ( count( self::$options ) + 1 ) * 10,
 		) );
 
-		$this->options[ $args['id'] ] = $args;
+		self::$options[ $id ] = $args;
 
 	}
 
-	public function add_field( $args ) {
+	public function add_field( $id, $args ) {
 
-		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) || empty( $this->options[ $args['section'] ] ) ) {
+		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) || empty( self::$options[ $args['section'] ] ) ) {
 			return;
 		}
 
-		$this->options[ $args['section'] ]['fields'][ $args['id'] ] = $args;
+		$args = wp_parse_args( $args, array(
+			'priority' => ( count( self::$options[ $args['section'] ]['fields'] ) + 1 ) * 10,
+		) );
+
+		self::$options[ $args['section'] ]['fields'][ $id ] = $args;
 
 	}
 
@@ -195,6 +253,8 @@ class Botiga_Metabox {
 
 		}
 
+		$metabox_title = apply_filters( 'botiga_metabox_title', $metabox_title, $post_type );
+
 		add_meta_box( 'botiga_metabox', $metabox_title, array( $this, 'render_metabox_content' ), $types, 'normal', 'low' );
 
 	}
@@ -217,10 +277,6 @@ class Botiga_Metabox {
 
     			$active = ( $num === 0 ) ? ' active' : '';
 
-    			if ( empty( $option['title'] ) ) {
-    				var_dump( $option );
-    			}
-
 	    		echo '<a href="#" class="botiga-metabox-tab'. esc_attr( $active ) .'">'. esc_html( $option['title'] ) .'</a>';
 
 	    		$num++;
@@ -239,9 +295,11 @@ class Botiga_Metabox {
 
 	    		echo '<div class="botiga-metabox-content'. esc_attr( $active ) .'">';
 
+		    		echo '<h4 class="botiga-metabox-content-title">'. esc_html( $option['title'] ) .'</h4>';
+
 		    		if ( ! empty( $option['fields'] ) ) {
 
-		    			foreach ( $option['fields'] as $field ) {
+		    			foreach ( $option['fields'] as $field_id => $field ) {
 
 		    				echo '<div class="botiga-metabox-field botiga-metabox-field-'. esc_attr( $field['type'] ).'">';
 
@@ -263,11 +321,11 @@ class Botiga_Metabox {
 
 		    					echo '<div class="botiga-metabox-field-content">';
 
-					          $meta    = get_post_meta( $post->ID, $field['id'] );
+					          $meta    = get_post_meta( $post->ID, $field_id );
 		                $default = ( isset( $field['default'] ) ) ? $field['default'] : null;
 										$value   = ( isset( $meta[0] ) ) ? $meta[0] : $default;
 
-					    			$this->get_field( $field, $value );
+					    			$this->get_field( $field_id, $field, $value );
 
 	    							if ( ! empty( $field['desc'] ) ) {
 	    								echo '<div class="botiga-metabox-field-description">'. esc_html( $field['desc'] ) .'</div>';
@@ -325,17 +383,17 @@ class Botiga_Metabox {
 
 			if ( ! empty( $option['fields'] ) ) {
 
-				foreach ( $option['fields'] as $field ) {
+				foreach ( $option['fields'] as $field_id => $field ) {
 
-					if ( ! empty( $field['id'] ) ) {
-
-						$value = ( isset( $_POST[ $field['id'] ] ) ) ? wp_unslash( $_POST[ $field['id'] ] ) : null;
-
-						$value = $this->sanitize( $field, $value );
-
-						update_post_meta( $post_id, $field['id'], $value );
-
+					if ( in_array( $field['type'], array( 'content' ) ) ) {
+						continue;
 					}
+
+					$value = ( isset( $_POST[ $field_id ] ) ) ? wp_unslash( $_POST[ $field_id ] ) : null;
+
+					$value = $this->sanitize( $field, $value );
+
+					update_post_meta( $post_id, $field_id, $value );
 
 				}
 
@@ -377,20 +435,20 @@ class Botiga_Metabox {
 
 	}
 
-	public function get_field( $field, $value ) {
+	public function get_field( $field_id, $field, $value ) {
 
 		switch ( $field['type'] ) {
 
 			case 'text':
-				echo '<input type="text" name="'. esc_attr( $field['id'] ) .'" value="'. esc_attr( $value ) .'" />';
+				echo '<input type="text" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $value ) .'" />';
 			break;
 
 			case 'number':
-				echo '<input type="number" name="'. esc_attr( $field['id'] ) .'" value="'. esc_attr( $value ) .'" />';
+				echo '<input type="number" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $value ) .'" />';
 			break;
 
 			case 'textarea':
-				echo '<textarea name="'. esc_attr( $field['id'] ) .'">'. esc_textarea( $value ) .'</textarea>';
+				echo '<textarea name="'. esc_attr( $field_id ) .'">'. esc_textarea( $value ) .'</textarea>';
 			break;
 
 			case 'checkbox':
@@ -402,7 +460,7 @@ class Botiga_Metabox {
 
 				echo '<label>';
 
-					echo '<input type="checkbox" name="'. esc_attr( $field['id'] ) .'" value="1"'. checked( $value, true, false ) .' />';
+					echo '<input type="checkbox" name="'. esc_attr( $field_id ) .'" value="1"'. checked( $value, true, false ) .' />';
 
 					if ( $field['type'] === 'switcher' ) {
 						echo '<i></i>';
@@ -418,11 +476,7 @@ class Botiga_Metabox {
 
 			case 'select':
 
-				$field = wp_parse_args( $field, array(
-					'options' => array(),
-				) );
-
-				echo '<select name="'. esc_attr( $field['id'] ) .'">';
+				echo '<select name="'. esc_attr( $field_id ) .'">';
 
 					foreach ( $field['options'] as $key => $option ) {
 						echo '<option value="'. $key .'"'. selected( $key, $value, false ) .'>'. $option .'</option>';
@@ -434,22 +488,24 @@ class Botiga_Metabox {
 
 			case 'choices':
 
-				$field = wp_parse_args( $field, array(
-					'options' => array(),
-				) );
-
 				echo '<div class="botiga-metabox-field-choices-images">';
 
 				foreach ( $field['options'] as $key => $option ) {
 
 					echo '<label>';
-					echo '<input type="radio" name="'. esc_attr( $field['id'] ) .'" value="'. esc_attr( $key ) .'"'. checked( $value, $key, false ) .' />';
+					echo '<input type="radio" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $key ) .'"'. checked( $value, $key, false ) .' />';
 					echo '<figure><img src="'. esc_url( sprintf( $option['image'], get_stylesheet_directory_uri() ) ) .'" title="'. esc_attr( $option['label'] ) .'" alt="'. esc_attr( $option['label'] ) .'" /></figure>';
 					echo '</label>';
 
 				}
 
 				echo '</div>';
+
+			break;
+
+			case 'content':
+
+				echo '<div class="botiga-metabox-field-content">'. wp_kses_post( $field['content'] ) .'</div>';
 
 			break;
 
