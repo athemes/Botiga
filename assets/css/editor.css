@@ -1931,6 +1931,8 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   display: -ms-flexbox;
   display: flex;
   grid-gap: 2px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a,
@@ -1939,6 +1941,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   width: 30px;
   height: 30px;
   border-radius: 100%;
+  margin: 5px 8px 5px 0px;
   border: 2px solid transparent;
   cursor: pointer;
   text-indent: -99999px;
@@ -1958,9 +1961,9 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   transition: ease border-color 300ms;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a + a,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a + a {
-  margin-left: 8px;
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:last-child,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:last-child {
+  margin-right: 0;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover:not(.disabled):before, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.active:not(.disabled):before,

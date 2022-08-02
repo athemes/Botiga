@@ -1530,12 +1530,14 @@ dl.variation {
 	.botiga-variation-type-color {
 		display: flex;
 		grid-gap: 2px;
+		flex-wrap: wrap;
 
 		> a {
 			position: relative;
 			width: 30px;
 			height: 30px;
 			border-radius: 100%;
+			margin: 5px 8px 5px 0px;
 			border: 2px solid transparent;
 			cursor: pointer;
 			text-indent: -99999px;
@@ -1552,8 +1554,8 @@ dl.variation {
 				transition: ease border-color 300ms;
 			}
 
-			& + a {
-				margin-left: 8px;
+			&:last-child {
+				margin-right: 0;
 			}
 
 			&:hover,
@@ -1635,13 +1637,13 @@ dl.variation {
 		display: flex;
 		flex-wrap: wrap;
 
-		>a {
+		> a {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			text-indent: 0;
 
-			img{
+			img {
 				border-radius: 100%;
 			}
 		}
@@ -1650,10 +1652,10 @@ dl.variation {
 	.botiga-variation-tooltip{
 		position: absolute;
 		bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 10px;
-    white-space: nowrap;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-bottom: 10px;
+		white-space: nowrap;
 		color: #fff;
 		background-color: $color__primary;
 		font-size: 12px;
@@ -1668,24 +1670,23 @@ dl.variation {
 
 		&:after{
 			content: "";
-	    position: absolute;
-	    left: 50%;
-	    bottom: -5px;
-	    margin-left: -5px;
-	    border-left: 5px solid transparent;
-	    border-right: 5px solid transparent;
-	    border-top: 5px solid $color__primary;
+			position: absolute;
+			left: 50%;
+			bottom: -5px;
+			margin-left: -5px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 5px solid $color__primary;
 		}
 	}
 
 	.botiga-variation-type-color,
 	.botiga-variation-type-image{
 
-		> a{
+		> a {
 			position: relative;
 
 			&:hover{
-
 				.botiga-variation-tooltip{
 					opacity: 1;
 					margin-bottom: 15px;
