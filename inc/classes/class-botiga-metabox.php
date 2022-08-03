@@ -301,7 +301,7 @@ class Botiga_Metabox {
 						continue;
 					}
 
-					$value = ( isset( $_POST[ $field_id ] ) ) ? wp_unslash( $_POST[ $field_id ] ) : null;
+					$value = ( isset( $_POST[ $field_id ] ) ) ? wp_unslash( $_POST[ $field_id ] ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 					$value = $this->sanitize( $field, $value );
 
@@ -391,7 +391,7 @@ class Botiga_Metabox {
 				echo '<select name="'. esc_attr( $field_id ) .'">';
 
 					foreach ( $field['options'] as $key => $option ) {
-						echo '<option value="'. $key .'"'. selected( $key, $value, false ) .'>'. $option .'</option>';
+						echo '<option value="'. esc_attr( $key ) .'"'. selected( $key, $value, false ) .'>'. esc_html( $option ) .'</option>';
 					}
 
 				echo '</select>';
