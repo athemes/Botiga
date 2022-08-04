@@ -13,8 +13,8 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 225px;
-  padding: 15px 0;
-  background-color: #1e1e1e;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
 }
 
 .botiga-metabox-tabs a {
@@ -22,29 +22,43 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #777;
-  padding: 10px 20px;
+  color: #1a1a1a;
+  padding: 15px 20px;
   text-decoration: none;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+  border-bottom: 1px solid #ddd;
 }
 
-.botiga-metabox-tabs a:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.botiga-metabox-tabs a:last-child {
+  border-bottom: 0;
 }
 
 .botiga-metabox-tabs a.active:after {
   content: "";
   position: absolute;
+  z-index: 1;
   top: calc(50% - 8px);
-  right: 0;
+  right: -1px;
   pointer-events: none;
   border: solid transparent;
   border-right-color: #fff;
   border-width: 8px;
 }
 
-.botiga-metabox-tabs a:hover, .botiga-metabox-tabs a.active {
+.botiga-metabox-tabs a:focus, .botiga-metabox-tabs a:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.botiga-metabox-tabs a:hover {
+  background-color: #eee;
+}
+
+.botiga-metabox-tabs a.active {
   color: #fff;
+  background-color: #007cba;
 }
 
 .botiga-metabox-contents {
@@ -58,7 +72,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #ddd;
   border-left: 0;
 }
 
