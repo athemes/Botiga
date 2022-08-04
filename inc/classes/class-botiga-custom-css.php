@@ -1049,7 +1049,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= ".wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
 				$css .= ".wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
 			}
-			
+
+			// Layout
+			$content_max_width = get_theme_mod( 'content_max_width', 1140 );
+
+			$css .= ".container{ max-width:" . esc_attr( $content_max_width ) . "px;}" . "\n";
+
 			//Gutenberg palettes
 			$palettes = botiga_global_color_palettes();
 
