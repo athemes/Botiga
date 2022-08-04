@@ -315,6 +315,55 @@ botiga.navigation = {
   }
 };
 /**
+ * Desktop off canvas toggle navigation
+ */
+
+botiga.desktopOffCanvasToggleNav = {
+  init: function init() {
+    var siteNavigation = document.getElementById('site-navigation'),
+        offCanvas = document.getElementsByClassName('botiga-desktop-offcanvas-menu')[0]; // Return early if the navigation don't exist.
+
+    if (!siteNavigation || typeof offCanvas === 'undefined') {
+      return;
+    } //Toggle submenus
+
+
+    var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
+
+    var _iterator6 = _createForOfIteratorHelper(submenuToggles),
+        _step6;
+
+    try {
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var submenuToggle = _step6.value;
+        submenuToggle.addEventListener('touchstart', submenuToggleHandler);
+        submenuToggle.addEventListener('click', submenuToggleHandler);
+        submenuToggle.addEventListener('keydown', function (e) {
+          var isTabPressed = e.key === 'Enter' || e.keyCode === 13;
+
+          if (!isTabPressed) {
+            return;
+          }
+
+          e.preventDefault();
+          var parent = submenuToggle.parentNode.parentNode;
+          parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
+        });
+      }
+    } catch (err) {
+      _iterator6.e(err);
+    } finally {
+      _iterator6.f();
+    }
+
+    function submenuToggleHandler(e) {
+      e.preventDefault();
+      var parent = e.target.closest('li');
+      parent.querySelector('.sub-menu').classList.toggle('toggled');
+    }
+  }
+};
+/**
  * Desktop offcanvas menu navigation
  */
 
@@ -368,28 +417,28 @@ botiga.headerSearch = {
     }
 
     if (typeof overlay !== 'undefined') {
-      var _iterator6 = _createForOfIteratorHelper(button),
-          _step6;
+      var _iterator7 = _createForOfIteratorHelper(button),
+          _step7;
 
       try {
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-          var buttonEl = _step6.value;
+        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+          var buttonEl = _step7.value;
           buttonEl.addEventListener('click', function (e) {
             e.preventDefault(); // Hide other search icons 
 
             if (button.length > 1) {
-              var _iterator7 = _createForOfIteratorHelper(button),
-                  _step7;
+              var _iterator8 = _createForOfIteratorHelper(button),
+                  _step8;
 
               try {
-                for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-                  var btn = _step7.value;
+                for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+                  var btn = _step8.value;
                   btn.classList.toggle('hide');
                 }
               } catch (err) {
-                _iterator7.e(err);
+                _iterator8.e(err);
               } finally {
-                _iterator7.f();
+                _iterator8.f();
               }
             }
 
@@ -411,9 +460,9 @@ botiga.headerSearch = {
           });
         }
       } catch (err) {
-        _iterator6.e(err);
+        _iterator7.e(err);
       } finally {
-        _iterator6.f();
+        _iterator7.f();
       }
 
       overlay.addEventListener('click', function () {
@@ -459,20 +508,20 @@ botiga.headerSearch = {
     return this;
   },
   backButtonsToDefaultState: function backButtonsToDefaultState(button) {
-    var _iterator8 = _createForOfIteratorHelper(button),
-        _step8;
+    var _iterator9 = _createForOfIteratorHelper(button),
+        _step9;
 
     try {
-      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-        var btn = _step8.value;
+      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+        var btn = _step9.value;
         btn.classList.remove('hide');
         btn.querySelector('.icon-cancel').classList.remove('active');
         btn.querySelector('.icon-search').classList.add('active');
       }
     } catch (err) {
-      _iterator8.e(err);
+      _iterator9.e(err);
     } finally {
-      _iterator8.f();
+      _iterator9.f();
     }
   }
 };
@@ -933,18 +982,18 @@ botiga.backToTop = {
       return false;
     }
 
-    var _iterator9 = _createForOfIteratorHelper(links),
-        _step9;
+    var _iterator10 = _createForOfIteratorHelper(links),
+        _step10;
 
     try {
-      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-        var link = _step9.value;
+      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+        var link = _step10.value;
         link.addEventListener('touchend', function () {});
       }
     } catch (err) {
-      _iterator9.e(err);
+      _iterator10.e(err);
     } finally {
-      _iterator9.f();
+      _iterator10.f();
     }
   }
 };
@@ -1021,12 +1070,12 @@ botiga.carousel = {
 
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
 
-    var _iterator10 = _createForOfIteratorHelper(carouselEls),
-        _step10;
+    var _iterator11 = _createForOfIteratorHelper(carouselEls),
+        _step11;
 
     try {
-      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-        var carouselEl = _step10.value;
+      for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+        var carouselEl = _step11.value;
 
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
@@ -1085,9 +1134,9 @@ botiga.carousel = {
         }
       }
     } catch (err) {
-      _iterator10.e(err);
+      _iterator11.e(err);
     } finally {
-      _iterator10.f();
+      _iterator11.f();
     }
   },
   events: function events() {
@@ -1297,6 +1346,7 @@ botiga.misc = {
 botiga.helpers.botigaDomReady(function () {
   botiga.navigation.init();
   botiga.desktopOffcanvasNav.init();
+  botiga.desktopOffCanvasToggleNav.init();
   botiga.headerSearch.init();
   botiga.customAddToCartButton.init();
   botiga.wishList.init();

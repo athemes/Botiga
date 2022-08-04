@@ -2079,6 +2079,85 @@ html {
   display: block;
 }
 
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul {
+  width: 100%;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul a {
+  width: auto;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul li {
+  display: block;
+  padding: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul li .dropdown-symbol {
+  position: relative;
+  left: 10px;
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul li .dropdown-symbol svg {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown > ul > li:first-child > a {
+  padding-top: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown > ul > li:last-child {
+  border-bottom: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown > ul > li:last-child > a {
+  padding-bottom: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul li {
+  margin-right: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul li:last-child {
+  border-bottom: 0;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul ul {
+  position: static;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown ul ul li:hover > ul {
+  display: none;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu {
+  display: none;
+  width: 100%;
+  position: static;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
+  display: block;
+}
+
+.botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled li {
+  background-color: transparent;
+}
+
 @media screen and (max-width: 1024px) {
   .botiga-offcanvas-menu .botiga-dropdown ul ul {
     -webkit-transform: none;

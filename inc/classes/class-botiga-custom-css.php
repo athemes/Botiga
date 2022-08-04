@@ -154,13 +154,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$css .= $this->get_color_css( 'color_link_default', '', 'a' );
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover, .wp-block-columns p a:hover,.widget a:hover' );
-			$css .= $this->get_color_css( 'color_heading_1', '', 'h1' );
-			$css .= $this->get_color_css( 'color_heading_2', '', 'h2,.wp-block-search .wp-block-search__label' );
-			$css .= $this->get_color_css( 'color_heading_3', '', 'h3' );
-			$css .= $this->get_color_css( 'color_heading_4', '', 'h4,.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a:hover,.product-gallery-summary .woocommerce-Price-amount,.order-total .woocommerce-Price-amount, .woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total,.woocommerce-mini-cart__total .woocommerce-Price-amount' );
+			$css .= $this->get_color_css( 'color_heading_1', '', 'h1:not(.has-text-color)' );
+			$css .= $this->get_color_css( 'color_heading_2', '', 'h2:not(.has-text-color),.wp-block-search .wp-block-search__label' );
+			$css .= $this->get_color_css( 'color_heading_3', '', 'h3:not(.has-text-color)' );
+			$css .= $this->get_color_css( 'color_heading_4', '', 'h4:not(.has-text-color),.woocommerce-breadcrumb,.woocommerce-breadcrumb a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a,.botiga-tabs-style1 .woocommerce-tabs ul.tabs li a:hover,.product-gallery-summary .woocommerce-Price-amount,.order-total .woocommerce-Price-amount, .woocommerce-mini-cart-item .quantity,.woocommerce-mini-cart__total,.woocommerce-mini-cart__total .woocommerce-Price-amount' );
 			$css .= $this->get_border_color_css( 'color_heading_4', '', '.botiga-tabs-style1 .woocommerce-tabs ul.tabs li.active a' );
-			$css .= $this->get_color_css( 'color_heading_5', '', 'h5' );
-			$css .= $this->get_color_css( 'color_heading_6', '', 'h6' );
+			$css .= $this->get_color_css( 'color_heading_5', '', 'h5:not(.has-text-color)' );
+			$css .= $this->get_color_css( 'color_heading_6', '', 'h6:not(.has-text-color)' );
 			$css .= $this->get_color_css( 'color_forms_text', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus, select:focus, .woocommerce .select2-container .select2-selection--single:focus, .woocommerce-page .select2-container .select2-selection--single:focus,.select2-container--default .select2-selection--single .select2-selection__rendered,.wp-block-search .wp-block-search__input,.wp-block-search .wp-block-search__input:focus' );
 			$css .= $this->get_border_color_css( 'color_forms_text', '', '.woocommerce-form__label-for-checkbox span:not(.required):before' );
 			$css .= $this->get_background_color_css( 'color_forms_background', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"]' );
@@ -1052,11 +1052,19 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			
 			//Gutenberg palettes
 			$palettes = botiga_global_color_palettes();
+		  $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
+			$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
 
-			foreach ( $palettes as $key => $palette ) {
-				for ( $i = 0; $i < 8; $i++ ) { 
-					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
-					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+			if ( $custom_palette_toggle ) {
+				for ( $i = 0; $i < 8; $i++ ) {
+					$color = get_theme_mod( 'custom_color' . ($i+1), '#212121' );
+					$css .= ".has-color-" . $i . "-color { color:" . esc_attr( $color ) . ";}" . "\n";
+					$css .= ".has-color-" . $i . "-background-color { background-color:" . esc_attr( $color ) . ";}" . "\n";
+				}
+			} else {
+				for ( $i = 0; $i < 8; $i++ ) {
+					$css .= ".has-color-" . $i . "-color { color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
+					$css .= ".has-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
 				}
 			}
 
@@ -1091,7 +1099,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$exists = file_exists( $this->dynamic_css_path . 'custom-styles.css' );
 
-			if ( !$exists ) {
+			if ( ! $exists ) {
 				$exists = $this->update_custom_css_file();
 			}
 
