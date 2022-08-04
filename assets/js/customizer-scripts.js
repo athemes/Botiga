@@ -231,7 +231,7 @@ jQuery(document).ready(function ($) {
     botigaGetAllInputs($(this).parent());
   }); // Add https:// to the start of the URL if it doesn't have it
 
-  $('.botiga-sortable_repeater.sortable').on('blur', '.repeater-input', function () {
+  $('.botiga-sortable_repeater.sortable:not(.regular-field)').on('blur', '.repeater-input', function () {
     var url = $(this);
     var val = url.val();
 
@@ -243,7 +243,9 @@ jQuery(document).ready(function ($) {
 
   function botigaAppendRow($element) {
     var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    var newRow = '<div class="repeater" style="display:none"><input type="text" value="' + defaultValue + '" class="repeater-input" placeholder="https://" /><span class="dashicons dashicons-menu"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a></div>';
+    var is_regular = $element.find('.botiga-sortable_repeater.sortable').hasClass('regular-field') ? true : false,
+        placeholder = is_regular ? '' : 'https://';
+    var newRow = '<div class="repeater" style="display:none"><input type="text" value="' + defaultValue + '" class="repeater-input" placeholder="' + placeholder + '" /><span class="dashicons dashicons-menu"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a></div>';
     $element.find('.sortable').append(newRow);
     $element.find('.sortable').find('.repeater:last').slideDown('slow', function () {
       $(this).find('input').focus();

@@ -1703,6 +1703,7 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 }
 
 .product-gallery-summary .product_title {
+  margin-top: 0 !important;
   margin-bottom: 20px;
 }
 
@@ -1801,6 +1802,21 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 
 .product-gallery-summary .botiga-accordion .price {
   font-size: inherit !important;
+}
+
+.product-gallery-summary .botiga-trust-badge-wrapper + div,
+.product-gallery-summary .botiga-reasons-list + div {
+  margin-top: 15px;
+}
+
+.product-gallery-summary .botiga-trust-badge-wrapper + div.botiga-trust-badge-wrapper,
+.product-gallery-summary .botiga-reasons-list + div.botiga-trust-badge-wrapper {
+  margin-top: 30px;
+}
+
+.product-gallery-summary .shortcode-content + div,
+.product-gallery-summary .html-content + div {
+  margin-top: 15px;
 }
 
 .product-gallery-summary.gallery-side .flex-viewport {
@@ -2605,6 +2621,16 @@ form.cart .quantity.hidden {
 
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form .single_variation_wrap .quantity {
   max-height: 51px;
+}
+
+.botiga-single-sticky-add-to-cart-wrapper div[id*="wcpay-"],
+.botiga-single-sticky-add-to-cart-wrapper p[id*="wcpay-"] {
+  display: none !important;
+}
+
+.botiga-single-sticky-add-to-cart-wrapper div[id*="wc-stripe-payment-"],
+.botiga-single-sticky-add-to-cart-wrapper p[id*="wc-stripe-payment-"] {
+  display: none !important;
 }
 
 @media (max-width: 1024px) {
@@ -5287,6 +5313,8 @@ dl.variation p {
   display: -ms-flexbox;
   display: flex;
   grid-gap: 2px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-image > a,
@@ -5295,6 +5323,7 @@ dl.variation p {
   width: 30px;
   height: 30px;
   border-radius: 100%;
+  margin: 5px 8px 5px 0px;
   border: 2px solid transparent;
   cursor: pointer;
   text-indent: -99999px;
@@ -5314,9 +5343,9 @@ dl.variation p {
   transition: ease border-color 300ms;
 }
 
-.botiga-variations-wrapper .botiga-variation-type-image > a + a,
-.botiga-variations-wrapper .botiga-variation-type-color > a + a {
-  margin-left: 8px;
+.botiga-variations-wrapper .botiga-variation-type-image > a:last-child,
+.botiga-variations-wrapper .botiga-variation-type-color > a:last-child {
+  margin-right: 0;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-image > a:hover:not(.disabled):before, .botiga-variations-wrapper .botiga-variation-type-image > a.active:not(.disabled):before,

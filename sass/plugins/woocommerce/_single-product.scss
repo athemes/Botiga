@@ -167,6 +167,7 @@
 	}
 
 	.product_title {
+		margin-top: 0 !important;
 		margin-bottom: 20px;
 	}
 
@@ -253,6 +254,23 @@
 	.botiga-accordion {
 		.price {
 			font-size: inherit !important;
+		}
+	}
+
+	.botiga-trust-badge-wrapper,
+	.botiga-reasons-list {
+		& + div {
+			margin-top: 15px;
+			&.botiga-trust-badge-wrapper {
+				margin-top: 30px;
+			}
+		}
+	}
+
+	.shortcode-content,
+	.html-content {
+		& + div {
+			margin-top: 15px;
 		}
 	}
 
@@ -998,6 +1016,19 @@ form.cart .quantity.hidden {
 				}
 			}
 		}
+	}
+
+	// Hide gpay and applepay buttons from sitcky add to cart
+	// WooCommerce payments
+	div[id*="wcpay-"],
+	p[id*="wcpay-"] {
+		display: none !important;
+	}
+
+	// Stripe payments
+	div[id*="wc-stripe-payment-"],
+	p[id*="wc-stripe-payment-"] {
+		display: none !important;
 	}
 }
 

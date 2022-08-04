@@ -17,10 +17,17 @@ class Botiga_Repeater_Control extends WP_Customize_Control {
 	 * The type of control being rendered
 	 */
 	public $type = 'botiga-sortable_repeater';
+
 	/**
 	 * Button labels
 	 */
 	public $button_labels = array();
+
+	/**
+	 * Regular field
+	 */
+	public $regular_field = false;
+
 	/**
 	 * Constructor
 	 */
@@ -47,7 +54,7 @@ class Botiga_Repeater_Control extends WP_Customize_Control {
 				<span class="customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 			<?php } ?>
 			<input type="hidden" id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" class="customize-control-sortable-repeater" <?php $this->link(); ?> />
-			<div class="botiga-sortable_repeater sortable">
+			<div class="botiga-sortable_repeater sortable<?php echo ( $this->regular_field ? ' regular-field' : '' ); ?>">
 				<div class="repeater">
 					<input type="text" value="" class="repeater-input"/><span class="dashicons dashicons-menu"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a>
 				</div>
