@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns
 
 Requires at least: 5.4
-Tested up to: 6.0
+Tested up to: 6.0.1
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
