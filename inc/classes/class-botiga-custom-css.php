@@ -1099,9 +1099,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$exists = file_exists( $this->dynamic_css_path . 'custom-styles.css' );
 
-			// if ( !$exists ) {
+			if ( ! $exists ) {
 				$exists = $this->update_custom_css_file();
-			// }
+			}
 
 			if ( $exists ) {
 				wp_enqueue_style(

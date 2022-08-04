@@ -19,19 +19,9 @@
 			transform: translate3d(0, 15px, 0);
 			opacity: 0;
 
-			// &.sub-menu-reverse {
-			// 	left: auto !important;
-			// 	right: 0;
-			// }
-
 			ul {
 				left: -999em;
 				top: 0;
-
-				// &.sub-menu-reverse {
-				// 	left: auto !important;
-				// 	right: 100%;
-				// }
 			}
 
 			li {
@@ -395,24 +385,12 @@
 .botiga-desktop-offcanvas-menu {
 
 	.botiga-dropdown {
-
-		a {
-			// width: 100%;
-		}
-
-		.menu-item-has-children {
-			a {
-				// width: calc(100% - 23px);
-			}
-		}
-
 		ul ul {
 			width: 100%;
 			a {
 				width: auto;
 				padding-right: 0;
 				padding-left: 0;
-				// width: calc(100% - 23px);
 			}
 			li {
 				display: block;
