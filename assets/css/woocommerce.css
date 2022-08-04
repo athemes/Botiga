@@ -3018,6 +3018,21 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 }
 
 /**
+ * Product Stock
+ */
+.botiga-product-stock {
+  color: green;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-top: 15px !important;
+}
+
+.botiga-product-stock-low {
+  color: red;
+}
+
+/**
  * Cart
  */
 /*

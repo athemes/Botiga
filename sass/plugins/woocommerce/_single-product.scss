@@ -1400,3 +1400,18 @@ body {
 		margin: 0;
 	}
 }
+
+/**
+ * Product Stock
+ */
+.botiga-product-stock{
+	color: green;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: capitalize;
+	margin-top: 15px !important;
+}
+
+.botiga-product-stock-low{
+	color: red;
+}
