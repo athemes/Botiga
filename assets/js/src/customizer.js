@@ -859,6 +859,27 @@
 			$( '.woocommerce-page-header .category-button' ).css( 'border-radius', to + 'px' );
 		} );
 	} );
+
+	// Predefined palettes listener.
+	wp.customize( 'color_palettes', function( value ) {
+		value.bind( function( to ) {
+			var palettes = $( '#customize-control-color_palettes', window.parent.document ).find( '.radio-buttons' ).data( 'palettes' );
+			for (var i = 0; i < 8; i++) {
+				$('.has-color-'+ i +'-color').css('color', palettes[to][i]);
+				$('.has-color-'+ i +'-background-color').css('background-color', palettes[to][i]);
+			}
+		} );
+	} );
+
+	// Custom color palette listener.
+	$.each( [0,1,2,3,4,5,6,7,8], function( i ) {
+		wp.customize( 'custom_color'+ (i+1), function( value ) {
+			value.bind( function( to ) {
+				$('.has-color-'+ i +'-color').css('color', to);
+				$('.has-color-'+ i +'-background-color').css('background-color', to);
+			} );
+		} );
+	});
 	
 	// Color options
 	var $color_options = botiga_theme_options;

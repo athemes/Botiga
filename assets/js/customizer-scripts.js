@@ -719,6 +719,16 @@ wp.customize('color_palettes', function (control) {
         wp.customize(_element7).set(palettes[palette][7]);
         jQuery('#customize-control-' + _element7).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][7]);
       }
+    } // Custom palette update.
+
+
+    var custom_palette = jQuery('#customize-control-custom_palette');
+
+    for (var i = 0; i < 8; i++) {
+      var color = palettes[palette][i];
+      var input = custom_palette.find('input[data-customize-setting-link="custom_color' + (i + 1) + '"]');
+      input.css('background-color', color).attr('data-color-val', color).attr('value', color);
+      input.closest('.wp-picker-container').find('.wp-color-result').css('background-color', color);
     }
   });
 });
