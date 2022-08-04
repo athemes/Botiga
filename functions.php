@@ -69,6 +69,21 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		);
 
 		/*
+		 * Add post formats
+		 */
+		add_theme_support(
+			'post-formats',
+			array(
+				'aside',
+				'image',
+				'video',
+				'quote',
+				'link',
+				'status',
+			)
+		);
+
+		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
 		 */
