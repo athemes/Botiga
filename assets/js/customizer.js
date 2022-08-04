@@ -595,6 +595,7 @@
     "mobile": "(max-width: 575px)"
   };
   var $topBottPad = {
+    "breadcrumbs_padding": ".botiga-breadcrumb-trail",
     "footer_widgets_padding": ".footer-widgets-grid"
   };
   $.each($topBottPad, function (option, selector) {
@@ -603,6 +604,20 @@
         value.bind(function (to) {
           $('head').find('#botiga-customizer-styles-' + option + '_' + device).remove();
           var output = '@media ' + mediaSize + ' {' + selector + ' { padding-top:' + to + 'px;padding-bottom:' + to + 'px; } }';
+          $('head').append('<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>');
+        });
+      });
+    });
+  });
+  var $marginBottom = {
+    "breadcrumbs_margin_bottom": ".botiga-breadcrumb-trail"
+  };
+  $.each($marginBottom, function (option, selector) {
+    $.each($devices, function (device, mediaSize) {
+      wp.customize(option + '_' + device, function (value) {
+        value.bind(function (to) {
+          $('head').find('#botiga-customizer-styles-' + option + '_' + device).remove();
+          var output = '@media ' + mediaSize + ' {' + selector + ' { margin-bottom:' + to + 'px; } }';
           $('head').append('<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>');
         });
       });
@@ -787,6 +802,32 @@
   wp.customize('shop_archive_header_button_border_radius', function (value) {
     value.bind(function (to) {
       $('.woocommerce-page-header .category-button').css('border-radius', to + 'px');
+    });
+  }); //Breadcrumbs
+
+  wp.customize('breadcrumbs_align', function (value) {
+    value.bind(function (to) {
+      $('.botiga-breadcrumb-trail').css('text-align', to);
+
+  }); // Predefined palettes listener.
+
+  wp.customize('color_palettes', function (value) {
+    value.bind(function (to) {
+      var palettes = $('#customize-control-color_palettes', window.parent.document).find('.radio-buttons').data('palettes');
+
+      for (var i = 0; i < 8; i++) {
+        $('.has-color-' + i + '-color').css('color', palettes[to][i]);
+        $('.has-color-' + i + '-background-color').css('background-color', palettes[to][i]);
+      }
+    });
+  }); // Custom color palette listener.
+
+  $.each([0, 1, 2, 3, 4, 5, 6, 7, 8], function (i) {
+    wp.customize('custom_color' + (i + 1), function (value) {
+      value.bind(function (to) {
+        $('.has-color-' + i + '-color').css('color', to);
+        $('.has-color-' + i + '-background-color').css('background-color', to);
+      });
     });
   }); // Color options
 

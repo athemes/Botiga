@@ -19,19 +19,9 @@
 			transform: translate3d(0, 15px, 0);
 			opacity: 0;
 
-			// &.sub-menu-reverse {
-			// 	left: auto !important;
-			// 	right: 0;
-			// }
-
 			ul {
 				left: -999em;
 				top: 0;
-
-				// &.sub-menu-reverse {
-				// 	left: auto !important;
-				// 	right: 100%;
-				// }
 			}
 
 			li {
@@ -386,6 +376,87 @@
 	
 			&.toggled {
 				display: block;
+			}
+		}
+	}
+}
+
+// Offcanvas menu
+.botiga-desktop-offcanvas-menu {
+
+	.botiga-dropdown {
+		ul ul {
+			width: 100%;
+			a {
+				width: auto;
+				padding-right: 0;
+				padding-left: 0;
+			}
+			li {
+				display: block;
+				padding: 0;
+
+				.dropdown-symbol {
+					position: relative;
+					left: 10px;
+					margin-left: 0;
+					margin-right: 10px;
+
+					svg {
+						transform: none;
+					}
+				}
+			}
+		}
+
+		> ul > li {
+			&:first-child {
+				> a {
+					padding-top: 0;
+				}
+			}
+			&:last-child {
+				border-bottom: 0;
+				> a {
+					padding-bottom: 0;
+				}
+			}
+		}
+
+		ul li {
+			margin-right: 0;
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		ul ul ul {
+			position: static;
+		}
+
+		ul ul li:hover>ul {
+			display: none;
+		}
+
+		.sub-menu {
+			display: none;
+			width: 100%;
+			position: static;
+			left: 0;
+			z-index: 1;
+			opacity: 1;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin: 0;
+			transform: translate3d(0,0,0);
+			box-shadow: none;
+
+			&.toggled {
+				display: block;
+
+				li{
+					background-color: transparent;
+				}
 			}
 		}
 	}

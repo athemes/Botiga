@@ -276,6 +276,49 @@ botiga.helpers = {
 };
 
 /**
+ * Desktop off canvas toggle navigation
+ */
+ botiga.desktopOffCanvasToggleNav = {
+
+	init: function() {
+		const
+			siteNavigation = document.getElementById( 'site-navigation' ),
+			offCanvas 	   = document.getElementsByClassName( 'botiga-desktop-offcanvas-menu' )[0];
+
+		// Return early if the navigation don't exist.
+		if( ! siteNavigation || typeof offCanvas === 'undefined' ) {
+			return;
+		}
+
+		//Toggle submenus
+		var submenuToggles = offCanvas.querySelectorAll( '.dropdown-symbol, .menu-item-has-children > a[href="#"]' );
+		for ( var submenuToggle of submenuToggles ) {
+			submenuToggle.addEventListener( 'touchstart', submenuToggleHandler );
+			submenuToggle.addEventListener( 'click', submenuToggleHandler );
+
+			submenuToggle.addEventListener('keydown', function(e) {
+				var isTabPressed = (e.key === 'Enter' || e.keyCode === 13);
+
+				if (!isTabPressed) {
+					return;
+				}
+				e.preventDefault();
+				var parent = submenuToggle.parentNode.parentNode;
+				parent.getElementsByClassName( 'sub-menu' )[0].classList.toggle( 'toggled' );
+			});
+		}
+
+		function submenuToggleHandler(e) {
+			e.preventDefault();
+			var parent = e.target.closest( 'li' );
+			parent.querySelector( '.sub-menu' ).classList.toggle( 'toggled' );
+		}
+
+	},
+
+};
+
+/**
  * Desktop offcanvas menu navigation
  */
  botiga.desktopOffcanvasNav = {
@@ -1274,6 +1317,7 @@ botiga.misc = {
 botiga.helpers.botigaDomReady( function() {
 	botiga.navigation.init();
 	botiga.desktopOffcanvasNav.init();
+	botiga.desktopOffCanvasToggleNav.init();
 	botiga.headerSearch.init();
 	botiga.customAddToCartButton.init();
   	botiga.wishList.init();

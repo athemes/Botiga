@@ -181,6 +181,10 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_meta() {
 
+			if ( in_array( get_post_format(), array( 'aside', 'status' ) ) ) {
+				return;
+			}
+
 			$elements 				= get_theme_mod( 'archive_meta_elements', $this->default_meta_elements() );
 			$archive_meta_delimiter = get_theme_mod( 'archive_meta_delimiter', 'none' );
 
@@ -199,11 +203,23 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 * Post title
 		 */
 		public function post_title() {
+
+			if ( in_array( get_post_format(), array( 'aside', 'status' ) ) ) {
+				return;
+			}
+
+			if ( in_array( get_post_format(), array( 'link' ) ) ) {
+				$content_url = get_url_in_content( get_the_content() );
+				$post_url = ( ! empty( $content_url ) ) ? $content_url : get_permalink();
+			} else {
+				$post_url = get_permalink();
+			}
+
 			?>
 
 			<header class="entry-header">
 				<?php
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2 class="entry-title"><a href="' . esc_url( $post_url ) . '" rel="bookmark">', '</a></h2>' );
 				?>
 			</header><!-- .entry-header -->
 			<?php
@@ -213,20 +229,34 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 * Post excerpt
 		 */
 		public function post_excerpt() {
-			$excerpt 	= get_theme_mod( 'show_excerpt', 1 );
-			$read_more 	= get_theme_mod( 'read_more_link', 0 );
 
-			if ( !$excerpt ) {
-				return;
-			}
-			
-			echo '<div class="entry-content">';
-			the_excerpt();
+			if ( in_array( get_post_format(), array( 'aside', 'quote', 'link', 'image', 'video', 'status' ) ) ) {
 
-			if ( $read_more ) {
-				echo '<a title="' . esc_attr( strip_tags( get_the_title() ) ) . '" href="' . esc_url( get_permalink() ) . '">' . esc_html__( 'Read more', 'botiga' ) . '</a>';
+				echo '<div class="entry-content">';
+
+					the_content();
+
+				echo '</div>';
+
+			} else {
+
+				$excerpt 	= get_theme_mod( 'show_excerpt', 1 );
+				$read_more 	= get_theme_mod( 'read_more_link', 0 );
+
+				if ( !$excerpt ) {
+					return;
+				}
+
+				echo '<div class="entry-content">';
+				the_excerpt();
+
+				if ( $read_more ) {
+					echo '<a title="' . esc_attr( strip_tags( get_the_title() ) ) . '" href="' . esc_url( get_permalink() ) . '">' . esc_html__( 'Read more', 'botiga' ) . '</a>';
+				}
+				echo '</div>';
+
 			}
-			echo '</div>';
+
 		}
 		
 		/**

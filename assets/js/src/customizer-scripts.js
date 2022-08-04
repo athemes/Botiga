@@ -788,8 +788,21 @@ jQuery( document ).ready(function($) {
 				jQuery( '#customize-control-' + element ).find( '.wp-color-result, .alpha-color-control' ).css( 'background-color', palettes[palette][7] );
 			}
 		}				
-		
-    });
+
+		// Custom palette update.
+		const custom_palette = jQuery( '#customize-control-custom_palette' );
+
+		for (let i = 0; i < 8; i++) {
+
+			const color = palettes[palette][i];
+			const input = custom_palette.find( 'input[data-customize-setting-link="custom_color'+ (i+1) +'"]' );
+
+			input.css( 'background-color', color ).attr( 'data-color-val', color ).attr( 'value', color );
+			input.closest('.wp-picker-container').find('.wp-color-result').css( 'background-color', color );
+
+		}
+
+  });
 });
 
 /**
