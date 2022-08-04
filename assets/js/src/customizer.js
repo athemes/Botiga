@@ -632,7 +632,7 @@
 	//Responsive
 	var $devices 	= { "desktop": "(min-width: 992px)", "tablet": "(min-width: 576px) and (max-width: 991px)", "mobile": "(max-width: 575px)" };
 
-	var $topBottPad = { "footer_widgets_padding":".footer-widgets-grid", };
+	var $topBottPad = { "breadcrumbs_padding":".botiga-breadcrumb-trail","footer_widgets_padding":".footer-widgets-grid", };
 	$.each( $topBottPad, function( option, selector ) {
 		$.each( $devices, function( device, mediaSize ) {
 			wp.customize( option + '_' + device, function( value ) {
@@ -641,6 +641,22 @@
 					$( 'head' ).find( '#botiga-customizer-styles-' + option + '_' + device ).remove();
 		
 					var output = '@media ' + mediaSize + ' {' + selector + ' { padding-top:' + to + 'px;padding-bottom:' + to + 'px; } }';
+		
+					$( 'head' ).append( '<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>' );
+				} );
+			} );
+		});
+	});
+
+	var $marginBottom = { "breadcrumbs_margin_bottom":".botiga-breadcrumb-trail" };
+	$.each( $marginBottom, function( option, selector ) {
+		$.each( $devices, function( device, mediaSize ) {
+			wp.customize( option + '_' + device, function( value ) {
+				value.bind( function( to ) {
+				
+					$( 'head' ).find( '#botiga-customizer-styles-' + option + '_' + device ).remove();
+		
+					var output = '@media ' + mediaSize + ' {' + selector + ' { margin-bottom:' + to + 'px; } }';
 		
 					$( 'head' ).append( '<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>' );
 				} );
@@ -857,6 +873,13 @@
 	wp.customize( 'shop_archive_header_button_border_radius', function( value ) {
 		value.bind( function( to ) {
 			$( '.woocommerce-page-header .category-button' ).css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	//Breadcrumbs
+	wp.customize( 'breadcrumbs_align', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-breadcrumb-trail' ).css( 'text-align', to );
 		} );
 	} );
 
