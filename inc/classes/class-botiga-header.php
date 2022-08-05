@@ -107,7 +107,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							} ?>
 						</div>
 						<div class="col align-right">
-							<a class="mobile-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
+							<a class="mobile-menu-close" href="#" title="<?php echo esc_attr( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						</div>
 					</div>
 				</div>
@@ -364,7 +364,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				<?php do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
-					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-show vertical-align-<?php echo esc_attr( $vertical_alignment ); ?> content-align-<?php echo esc_attr( $content_alignment ); ?>">
+					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-menu botiga-desktop-offcanvas-show vertical-align-<?php echo esc_attr( $vertical_alignment ); ?> content-align-<?php echo esc_attr( $content_alignment ); ?>">
 						<div class="row">
 							<div class="col-12">
 								<?php $this->logo(); ?>
@@ -415,7 +415,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>
 					</div>
 					<?php $this->search_form(); ?>
-					<div class="botiga-desktop-offcanvas vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
+					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-menu vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
 						<a class="desktop-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						<div class="row">
 							
@@ -467,7 +467,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>
 					</div>
 					<?php $this->search_form(); ?>
-					<div class="botiga-desktop-offcanvas vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
+					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-menu vertical-align-<?php echo esc_attr( $desk_offcanvas_vertical_alignment ); ?> content-align-<?php echo esc_attr( $desk_offcanvas_content_alignment ); ?>">
 						<a class="desktop-menu-close" href="#"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						<div class="row">
 
@@ -871,7 +871,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 			
 			$icon = get_theme_mod( 'mobile_menu_icon', 'mobile-icon2' ); ?>
-			<a href="#" class="menu-toggle">
+			<a href="#" class="menu-toggle" title="<?php echo esc_attr( 'Open mobile offcanvas menu', 'botiga' ); ?>">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( $icon, true ); ?></i>
 			</a>
 			<?php

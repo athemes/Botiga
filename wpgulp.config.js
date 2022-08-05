@@ -23,6 +23,8 @@ const injectChanges = true;
 // Path to main .scss file.
 const customizerSRC = './sass/customizer.scss';
 
+const metaboxSRC = './sass/metabox.scss';
+
 const styleSRC = './sass/styles.scss';
 
 const editorStyleSRC = './sass/editor.scss';
@@ -56,6 +58,12 @@ const custScriptsSRC = './assets/js/src/customizer-scripts.js';
 // Path to place the customizer scripts file.
 const custScriptsDestination = './assets/js/';
 
+//Path to metabox-scripts js file
+const metaboxScriptsSRC = './assets/js/src/metabox.js';
+
+// Path to place the metabox scripts file.
+const metaboxScriptsDestination = './assets/js/';
+
 // Path to place the compiled JS vendors file.
 const jsVendorDestination = './assets/js/';
 
@@ -65,6 +73,8 @@ const jsVendorFile = 'vendor';
 const custFile = 'customizer';
 
 const custScriptsFile = 'customizer-scripts';
+
+const metaboxScriptsFile = 'metabox';
 
 // JS Custom options.
 
@@ -205,6 +215,7 @@ module.exports = {
 	injectChanges,
 	styleSRC,
 	customizerSRC,
+	metaboxSRC,
 	editorStyleSRC,
 	woocommerceSRC,
 	dokanSRC,
@@ -216,9 +227,11 @@ module.exports = {
 	custSRC,
 	custDestination,
 	custScriptsSRC,
+	metaboxScriptsSRC,
 	jsVendorDestination,
 	jsVendorFile,
 	custScriptsFile,
+	metaboxScriptsFile,
 	custFile,
 	jsCarouselSRC,
 	jsPopupSRC,
@@ -227,6 +240,7 @@ module.exports = {
 	jsCustomSRC,
 	jsCustomDestination,
 	custScriptsDestination,
+	metaboxScriptsDestination,
 	jsCarouselFile,
 	jsPopupFile,
 	jsSidebarFile,

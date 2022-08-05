@@ -27,7 +27,6 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '',
 		'sanitize_callback' => 'botiga_sanitize_checkbox',
-		'transport'			=> 'postMessage',
 	)
 );
 $wp_customize->add_control(
