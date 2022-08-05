@@ -482,7 +482,7 @@ function botiga_add_filters_button() {
 	}
 
 	echo '</div>';
-	echo '<div class="col-md-6 col-6 text-align-right">';
+	echo '<div class="col-md-6 col-6 botiga-sorting-wrapper-right">';
 }
 add_action( 'woocommerce_before_shop_loop', 'botiga_add_filters_button', 22 );
 
@@ -504,11 +504,12 @@ add_action( 'woocommerce_before_shop_loop', 'botiga_wrap_products_results_orderi
  * Check if has "woocommerce-sorting-wrapper"
  */
 function botiga_has_woocommerce_sorting_wrapper() {
+	$shop_grid_list_view  = get_theme_mod( 'shop_grid_list_view', 1 );
 	$shop_product_sorting = get_theme_mod( 'shop_product_sorting', 1 );
 	$shop_results_count   = get_theme_mod( 'shop_results_count', 1 );
 	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 
-	if( ! $shop_product_sorting && ! $shop_results_count && $shop_archive_sidebar !== 'sidebar-slide' ) {
+	if( ! $shop_grid_list_view && ! $shop_product_sorting && ! $shop_results_count && $shop_archive_sidebar !== 'sidebar-slide' ) {
 		return false;
 	}
 

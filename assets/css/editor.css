@@ -442,6 +442,9 @@ div.editor-styles-wrapper {
  */
   /* Responsive shop columns */
   /**
+ *
+ */
+  /**
  * Photoswipe
  */
 }
@@ -2688,6 +2691,62 @@ div.editor-styles-wrapper .product-category-item-layout5 ul.products li.product-
   -webkit-transform: translate3d(-50%, -50%, 0);
           transform: translate3d(-50%, -50%, 0);
   z-index: 1;
+}
+
+div.editor-styles-wrapper .botiga-grid-list-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+div.editor-styles-wrapper .botiga-grid-list-view a {
+  opacity: 0.3;
+  padding: 6px;
+  color: #212121;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+div.editor-styles-wrapper .botiga-grid-list-view a:hover, div.editor-styles-wrapper .botiga-grid-list-view a:focus, div.editor-styles-wrapper .botiga-grid-list-view a:active {
+  opacity: 0.6;
+  color: #212121;
+}
+
+div.editor-styles-wrapper .botiga-grid-list-view a svg {
+  font-size: 18px;
+  line-height: 1.68;
+  color: currentColor;
+  fill: currentColor;
+}
+
+div.editor-styles-wrapper .botiga-grid-list-view a.active {
+  opacity: 1;
+}
+
+div.editor-styles-wrapper .botiga-grid-list-view svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  margin-top: -1px;
+}
+
+div.editor-styles-wrapper .botiga-sorting-wrapper-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  grid-gap: 10px;
+  text-align: right;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 @-webkit-keyframes rotateAnim {
