@@ -995,6 +995,10 @@ ul.products li.product-category mark {
 /**
  * Sidebar
  */
+.close-sidebar {
+  display: none;
+}
+
 .admin-bar .sidebar-slide + .widget-area {
   top: 32px;
   height: calc( 100vh - 32px);
@@ -1035,6 +1039,7 @@ ul.products li.product-category mark {
 }
 
 .sidebar-slide + .widget-area .sidebar-wrapper .close-sidebar {
+  display: block;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -1114,10 +1119,6 @@ body.sidebar-slide-opened:before {
 .sidebar-top + .widget-area .sidebar-wrapper {
   padding: 40px 25px 0px;
   margin-bottom: 30px;
-}
-
-.sidebar-top + .widget-area .sidebar-wrapper .close-sidebar {
-  display: none;
 }
 
 .sidebar-top + .widget-area .sidebar-wrapper .widget.woocommerce.widget_layered_nav_filters > ul, .sidebar-top + .widget-area .sidebar-wrapper .widget.woocommerce.widget_layered_nav > ul {

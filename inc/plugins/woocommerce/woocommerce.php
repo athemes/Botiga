@@ -189,6 +189,11 @@ function botiga_wc_archive_layout() {
 
 	$archive_sidebar 	    = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 	$shop_categories_layout = get_theme_mod( 'shop_categories_layout', 'layout1' );
+	$shop_archive_sidebar_filter_in_desktop = get_theme_mod( 'shop_archive_sidebar_filter_in_desktop', 1 );
+
+	if ( $archive_sidebar === 'sidebar-slide' && $shop_archive_sidebar_filter_in_desktop ) {
+		$archive_sidebar .= ' sidebar-desktop';
+	}
 
 	if ( 'no-sidebar' === $archive_sidebar ) {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
