@@ -9,8 +9,8 @@ class Botiga_Metabox {
 	public static $options = array();
 
 	public function __construct() {
-    add_action( 'load-post.php', array( $this, 'init_metabox' ) );
-    add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
+		add_action( 'load-post.php', array( $this, 'init_metabox' ) );
+		add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
 	}
 
 	public function init_metabox() {
@@ -95,10 +95,10 @@ class Botiga_Metabox {
 		//
 		// Set priority order
 		//
-  	self::$options = wp_list_sort( self::$options, array( 'priority' => 'ASC' ), 'ASC', true );
+  		self::$options = wp_list_sort( self::$options, array( 'priority' => 'ASC' ), 'ASC', true );
 
 		foreach ( self::$options as $key => $value ) {
-    	self::$options[ $key ]['fields'] = wp_list_sort( $value['fields'], array( 'priority' => 'ASC' ), 'ASC', true );
+    		self::$options[ $key ]['fields'] = wp_list_sort( $value['fields'], array( 'priority' => 'ASC' ), 'ASC', true );
 		}
 
 		return self::$options;
@@ -177,91 +177,89 @@ class Botiga_Metabox {
 
 		$post_type = get_post_type( $post );
 
-    wp_nonce_field( 'botiga_metabox', 'botiga_metabox_nonce' );
+		wp_nonce_field( 'botiga_metabox', 'botiga_metabox_nonce' );
 
-    echo '<div class="botiga-metabox">';
+		echo '<div class="botiga-metabox">';
 
-    	echo '<div class="botiga-metabox-tabs">';
+			echo '<div class="botiga-metabox-tabs">';
 
-    		$num = 0;
+				$num = 0;
 
-	    	foreach ( $options as $option ) {
+				foreach ( $options as $option ) {
 
-    			$active = ( $num === 0 ) ? ' active' : '';
+					$active = ( $num === 0 ) ? ' active' : '';
 
-	    		echo '<a href="#" class="botiga-metabox-tab'. esc_attr( $active ) .'">'. esc_html( $option['title'] ) .'</a>';
+					echo '<a href="#" class="botiga-metabox-tab'. esc_attr( $active ) .'">'. esc_html( $option['title'] ) .'</a>';
 
-	    		$num++;
+					$num++;
 
-	    	}
+				}
 
-    	echo '</div>';
+			echo '</div>';
 
-    	echo '<div class="botiga-metabox-contents">';
+			echo '<div class="botiga-metabox-contents">';
 
-    		$num = 0;
+				$num = 0;
 
-    		foreach ( $options as $option ) {
+				foreach ( $options as $option ) {
 
-    			$active = ( $num === 0 ) ? ' active' : '';
+					$active = ( $num === 0 ) ? ' active' : '';
 
-	    		echo '<div class="botiga-metabox-content'. esc_attr( $active ) .'">';
+					echo '<div class="botiga-metabox-content'. esc_attr( $active ) .'">';
 
-		    		echo '<h4 class="botiga-metabox-content-title">'. esc_html( $option['title'] ) .'</h4>';
+						echo '<h4 class="botiga-metabox-content-title">'. esc_html( $option['title'] ) .'</h4>';
 
-		    		if ( ! empty( $option['fields'] ) ) {
+						if ( ! empty( $option['fields'] ) ) {
 
-		    			foreach ( $option['fields'] as $field_id => $field ) {
+							foreach ( $option['fields'] as $field_id => $field ) {
 
-		    				echo '<div class="botiga-metabox-field botiga-metabox-field-'. esc_attr( $field['type'] ).'">';
+								echo '<div class="botiga-metabox-field botiga-metabox-field-'. esc_attr( $field['type'] ).'">';
 
-		    					if ( ! empty( $field['title'] ) || ! empty( $field['subtitle'] ) ) {
+									if ( ! empty( $field['title'] ) || ! empty( $field['subtitle'] ) ) {
 
-		    						echo '<div class="botiga-metabox-field-title">';
+										echo '<div class="botiga-metabox-field-title">';
 
-		    							if ( ! empty( $field['title'] ) ) {
-		    								echo '<h4>'. esc_html( $field['title'] ) .'</h4>';
-		    							}
+											if ( ! empty( $field['title'] ) ) {
+												echo '<h4>'. esc_html( $field['title'] ) .'</h4>';
+											}
 
-		    							if ( ! empty( $field['subtitle'] ) ) {
-		    								echo '<small class="botiga-metabox-field-subtitle">'. esc_html( $field['subtitle'] ) .'</small>';
-		    							}
+											if ( ! empty( $field['subtitle'] ) ) {
+												echo '<small class="botiga-metabox-field-subtitle">'. esc_html( $field['subtitle'] ) .'</small>';
+											}
 
-		    						echo '</div>';
+										echo '</div>';
 
-		    					}
+									}
 
-		    					echo '<div class="botiga-metabox-field-content">';
+									echo '<div class="botiga-metabox-field-content">';
 
-					          $meta    = get_post_meta( $post->ID, $field_id );
-		                $default = ( isset( $field['default'] ) ) ? $field['default'] : null;
+										$meta    = get_post_meta( $post->ID, $field_id );
+										$default = ( isset( $field['default'] ) ) ? $field['default'] : null;
 										$value   = ( isset( $meta[0] ) ) ? $meta[0] : $default;
 
-					    			$this->get_field( $field_id, $field, $value );
+										$this->get_field( $field_id, $field, $value );
 
-	    							if ( ! empty( $field['desc'] ) ) {
-	    								echo '<div class="botiga-metabox-field-description">'. esc_html( $field['desc'] ) .'</div>';
-	    							}
+										if ( ! empty( $field['desc'] ) ) {
+											echo '<div class="botiga-metabox-field-description">'. esc_html( $field['desc'] ) .'</div>';
+										}
 
-		    					echo '</div>';
+									echo '</div>';
 
-		    				echo '</div>';
+								echo '</div>';
 
+							}
 
-					    }
+						}
 
-		    		}
+					echo '</div>';
 
-	    		echo '</div>';
+					$num++;
 
-    			$num++;
+				}
 
-	    	}
+			echo '</div>';
 
-    	echo '</div>';
-
-
-    echo '</div>';
+		echo '</div>';
 
 	}
 
