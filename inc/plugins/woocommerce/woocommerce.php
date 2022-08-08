@@ -69,7 +69,12 @@ add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
  */
 function botiga_woocommerce_scripts() {
 
-	wp_enqueue_script( 'botiga-woocommerce-swiper', get_template_directory_uri() . '/assets/js/botiga-swiper.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
+	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+
+	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-default', 'gallery-vertical' ) ) ) {
+		wp_register_script( 'botiga-swiper', get_template_directory_uri() . '/assets/js/botiga-swiper.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
+		wp_enqueue_script( 'botiga-swiper' );
+	}
 
 	wp_enqueue_style( 'botiga-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css', array(), BOTIGA_VERSION );
 
