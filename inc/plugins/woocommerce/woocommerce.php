@@ -68,6 +68,9 @@ add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
  * @return void
  */
 function botiga_woocommerce_scripts() {
+
+	wp_enqueue_script( 'botiga-woocommerce-swiper', get_template_directory_uri() . '/assets/js/botiga-swiper.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
+
 	wp_enqueue_style( 'botiga-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css', array(), BOTIGA_VERSION );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';

@@ -20,16 +20,22 @@
 			}
 
 			.flex-control-thumbs {
-				margin: 0 -10px;
 				padding: 0;
+
+				&:not(.swiper-wrapper){
+					margin: 0 -10px;
+
+					li{
+						margin: 10px 0;
+						width: 20%;
+						padding: 0 10px;
+					}
+				}
 
 				li {
 					list-style: none;
 					cursor: pointer;
 					float: left;
-					margin: 10px 0;
-					width: 20%;
-					padding: 0 10px;
 
 					img {
 						opacity: 0.5;
@@ -79,26 +85,20 @@
 				}
 				.flex-control-thumbs {
 					order: -1;
-					margin: 0 15px 0 0;
+
+					&:not(.swiper-wrapper){
+						margin: 0 15px 0 0;
+
+						li{
+							min-width: 65px;
+							margin: 0 0 15px;
+							padding: 0;
+						}
+					}
 	
 					li {
 						float: none;
 						width: 100%;
-						min-width: 65px;
-						margin: 0 0 15px;
-						padding: 0;
-
-						img {
-							border: 1px solid transparent;
-							padding: 4px;
-							opacity: 1;
-							transition: border-color 0.3s;
-
-							&:hover,
-							&.flex-active {
-								border: 1px solid $color__primary;
-							}
-						}
 					}
 				}
 			}
@@ -1300,7 +1300,7 @@ body {
  */
 .botiga-product-navigation{
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;
@@ -1414,4 +1414,165 @@ body {
 
 .botiga-product-stock-low{
 	color: red;
+}
+
+/**
+ * Swiper for Gallery Thumbnails
+ */
+.botiga-swiper{
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 20px;
+
+  ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+  }
+
+  &.swiper-vertical .swiper-wrapper{
+    flex-direction: column;
+  }
+
+  &.swiper-backface-hidden .swiper-slide{
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .swiper-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+    transform: translate3d(0px, 0, 0);
+  }
+
+  .swiper-pointer-events {
+    touch-action: pan-y;
+  }
+
+  .swiper-pointer-events.swiper-vertical{
+    touch-action: pan-x;
+  }
+
+  .swiper-slide{
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+
+    img{
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.botiga-swiper-button{
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 26px;
+  color: #555;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all .2s;
+
+  &:before{
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+  }
+
+  &:focus{
+  	outline: none;
+  }
+
+  &:active{
+    opacity: 0.3;
+  }
+
+  &.swiper-button-disabled{
+    cursor: inherit;
+    opacity: 0.3;
+  }
+
+  &.swiper-button-lock{
+    display: none;
+  }
+}
+
+.botiga-swiper-button-prev{
+  left: 8px;
+
+  &:before{
+    transform: translateX(2px) rotate(-45deg);
+  }
+}
+
+.botiga-swiper-button-next{
+  right: 8px;
+
+  &:before{
+    transform: translateX(-2px) rotate(135deg);
+  }
+}
+
+.swiper-vertical{
+  order: -1;
+  flex-shrink: 0;
+  width: 65px;
+  height: 500px;
+  margin-top: 0;
+  margin-right: 20px;
+
+  .botiga-swiper-button{
+    top: auto;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .botiga-swiper-button-prev{
+    top: 10px;
+
+    &:before{
+      transform: translateY(1px) rotate(45deg);
+    }
+  }
+
+  .botiga-swiper-button-next{
+    bottom: 10px;
+
+    &:before{
+      transform: translateY(-1px) rotate(-135deg);
+    }
+  }
 }
