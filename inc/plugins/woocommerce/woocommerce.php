@@ -71,7 +71,7 @@ function botiga_woocommerce_scripts() {
 
 	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
-	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-default', 'gallery-vertical' ) ) ) {
+	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-vertical' ) ) ) {
 		wp_register_script( 'botiga-swiper', get_template_directory_uri() . '/assets/js/botiga-swiper.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
 		wp_enqueue_script( 'botiga-swiper' );
 	}

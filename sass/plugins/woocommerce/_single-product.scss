@@ -22,7 +22,7 @@
 			.flex-control-thumbs {
 				padding: 0;
 
-				&:not(.swiper-wrapper){
+				&:not(.botiga-slides){
 					margin: 0 -10px;
 
 					li{
@@ -86,7 +86,7 @@
 				.flex-control-thumbs {
 					order: -1;
 
-					&:not(.swiper-wrapper){
+					&:not(.botiga-slides){
 						margin: 0 15px 0 0;
 
 						li{
@@ -1417,7 +1417,7 @@ body {
 }
 
 /**
- * Swiper for Gallery Thumbnails
+ * Swiper for Product Thumbnails Carousel (Vertical)
  */
 .botiga-swiper{
   width: 100%;
@@ -1520,8 +1520,10 @@ body {
   }
 
   &.swiper-button-disabled{
+  	user-select: none;
+  	pointer-events: none;
     cursor: inherit;
-    opacity: 0.3;
+    opacity: 0;
   }
 
   &.swiper-button-lock{
@@ -1549,7 +1551,7 @@ body {
   order: -1;
   flex-shrink: 0;
   width: 65px;
-  height: 500px;
+  height: 490px;
   margin-top: 0;
   margin-right: 20px;
 
@@ -1561,7 +1563,7 @@ body {
   }
 
   .botiga-swiper-button-prev{
-    top: 10px;
+    top: 8px;
 
     &:before{
       transform: translateY(1px) rotate(45deg);
@@ -1569,10 +1571,101 @@ body {
   }
 
   .botiga-swiper-button-next{
-    bottom: 10px;
+    bottom: 8px;
 
     &:before{
       transform: translateY(-1px) rotate(-135deg);
     }
   }
+}
+
+/**
+ * Flexslider for Product Thumbnails Carousel (Horizontal)
+ */
+.botiga-flexslider{
+	position: relative;
+	user-select: none;
+	display: flex;
+	margin-top: 20px;
+
+	ol{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li{
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+.botiga-flex-direction-nav{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	a{
+ 		cursor: pointer;
+	  position: absolute;
+	  z-index: 1;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  width: 26px;
+	  height: 26px;
+	  border-radius: 26px;
+	  color: #555;
+	  background-color: #fff;
+	  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	  text-indent: -1000px;
+	  transition: all .2s;
+
+    &:before{
+	    content: '';
+	    width: 8px;
+	    height: 8px;
+	    border-top: 2px solid currentColor;
+	    border-left: 2px solid currentColor;
+	  }
+
+	  &:focus{
+	  	outline: none;
+	  }
+
+	  &:active{
+	    opacity: 0.3;
+	  }
+
+	  &.botiga-flex-disabled{
+	  	user-select: none;
+	  	pointer-events: none;
+	    cursor: inherit;
+	    opacity: 0;
+	  }
+	}
+}
+
+.botiga-flex-nav-prev{
+
+	a{
+	  left: 8px;
+
+	  &:before{
+	    transform: translateX(2px) rotate(-45deg);
+	  }
+  }
+}
+
+.botiga-flex-nav-next{
+
+	a{
+	  right: 8px;
+
+	  &:before{
+	    transform: translateX(-2px) rotate(135deg);
+	  }
+	}
 }

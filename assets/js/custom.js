@@ -1322,29 +1322,23 @@ botiga.productGallery = {
 
       var $flexThumbs = $gallery.find('.flex-control-thumbs');
       var isVertical = $gallery.parent().hasClass('gallery-vertical') ? true : false;
-      $flexThumbs.addClass('swiper-wrapper');
-      $flexThumbs.find('li').addClass('swiper-slide');
-      $flexThumbs.wrapAll('<div class="swiper botiga-swiper"></div>');
-      var $swiper = $gallery.find('.botiga-swiper');
-      $swiper.append('<div class="botiga-swiper-button botiga-swiper-button-next"></div>');
-      $swiper.append('<div class="botiga-swiper-button botiga-swiper-button-prev"></div>');
-      var options = {
-        slidesPerView: 5,
-        spaceBetween: 20,
-        navigation: {
-          nextEl: '.botiga-swiper-button-next',
-          prevEl: '.botiga-swiper-button-prev'
-        }
-      };
 
-      if (isVertical) {
-        options.direction = 'vertical';
-        options.slidesPerView = 6;
-      }
-
-      var swiper = new Swiper($swiper.get(0), options);
-
-      if (isVertical) {
+      if ($gallery.parent().is('.gallery-vertical')) {
+        $flexThumbs.addClass('swiper-wrapper botiga-slides');
+        $flexThumbs.find('li').addClass('swiper-slide');
+        $flexThumbs.wrapAll('<div class="swiper botiga-swiper"></div>');
+        var $swiper = $gallery.find('.botiga-swiper');
+        $swiper.append('<div class="botiga-swiper-button botiga-swiper-button-next"></div>');
+        $swiper.append('<div class="botiga-swiper-button botiga-swiper-button-prev"></div>');
+        var swiper = new Swiper($swiper.get(0), {
+          direction: 'vertical',
+          slidesPerView: 6,
+          spaceBetween: 20,
+          navigation: {
+            nextEl: '.botiga-swiper-button-next',
+            prevEl: '.botiga-swiper-button-prev'
+          }
+        });
         jQuery(window).on('resize botiga.resize', function () {
           var winWidth = window.innerWidth || document.documentElement.clientWidth;
 
@@ -1358,6 +1352,22 @@ botiga.productGallery = {
             swiper.update();
           }
         }).trigger('botiga.resize');
+      } else if ($gallery.parent().is('.gallery-default, .gallery-quickview')) {
+        $flexThumbs.addClass('botiga-slides');
+        $flexThumbs.wrapAll('<div class="botiga-flexslider"></div>');
+        var $slider = $gallery.find('.botiga-flexslider');
+        $slider.flexslider({
+          namespace: 'botiga-flex-',
+          selector: '.botiga-slides > li',
+          animation: 'slide',
+          controlNav: false,
+          animationLoop: false,
+          slideshow: false,
+          itemWidth: 95,
+          itemMargin: 20,
+          keyboard: false,
+          asNavFor: $gallery.get(0)
+        });
       }
     });
   }
