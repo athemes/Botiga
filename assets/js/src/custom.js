@@ -1341,7 +1341,7 @@ botiga.productGallery = {
 		$gallery.on('wc-product-gallery-after-init', function() {
 
 			var galleryData = $gallery.data('product_gallery');
-			var totalImages = galleryData.$images.length;
+			var totalImages = ( galleryData ) ? galleryData.$images.length : 0;
 
 			// pass if less than 5 items
 			if ( totalImages <= 5 ) {

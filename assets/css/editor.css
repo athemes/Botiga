@@ -440,6 +440,9 @@ div.editor-styles-wrapper {
   /**
  * Express Pay Buttons (Google and Apple)
  */
+  /**
+ * Product Video
+ */
   /* Responsive shop columns */
   /**
  *
@@ -2172,6 +2175,50 @@ div.editor-styles-wrapper #wc-stripe-payment-request-wrapper,
 div.editor-styles-wrapper #wcpay-payment-request-wrapper {
   width: 100%;
   padding: 0 !important;
+}
+
+div.editor-styles-wrapper .botiga-product-video {
+  position: relative;
+  z-index: 15;
+  overflow: hidden;
+  width: 100%;
+  padding-top: calc((9/16) * 100%);
+  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+div.editor-styles-wrapper .botiga-product-video + .loop-image-wrap {
+  display: none;
+}
+
+div.editor-styles-wrapper .botiga-product-video + a {
+  display: none;
+}
+
+div.editor-styles-wrapper .botiga-product-video object,
+div.editor-styles-wrapper .botiga-product-video embed,
+div.editor-styles-wrapper .botiga-product-video video,
+div.editor-styles-wrapper .botiga-product-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+div.editor-styles-wrapper .botiga-has-product-video {
+  border: 2px solid red;
+}
+
+div.editor-styles-wrapper .botiga-has-product-video .flex-control-thumbs li {
+  position: relative;
+}
+
+div.editor-styles-wrapper .botiga-has-product-video .flex-control-thumbs li:first-child:before {
+  content: ">";
+  top: 0;
+  left: 0;
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products,
