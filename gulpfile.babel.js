@@ -222,6 +222,62 @@
 			 })
 		 );
  });
+
+ /*
+ * Metabox Styles
+ */
+ gulp.task('metaboxStyles', () => {
+	 return gulp
+		 .src(config.metaboxSRC, {allowEmpty: true})
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 sass({
+				 errLogToConsole: config.errLogToConsole,
+				 outputStyle: 'expanded',
+				 precision: config.precision
+			 })
+		 )
+		 .on('error', sass.logError)
+		 .pipe(autoprefixer(config.BROWSERS_LIST))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(gulp.dest(config.styleDestination))
+		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
+		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Metabox Expanded — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
+
+ gulp.task('metaboxStylesMin', () => {
+	 return gulp
+		 .src(config.metaboxSRC, {allowEmpty: true})
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 sass({
+				 errLogToConsole: config.errLogToConsole,
+				 outputStyle: 'compressed',
+				 precision: config.precision
+			 })
+		 )
+		 .on('error', sass.logError)
+		 .pipe(autoprefixer(config.BROWSERS_LIST))
+		 .pipe(rename({suffix: '.min'}))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(gulp.dest(config.styleDestination))
+		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
+		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Metabox Minified — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
  
  gulp.task('editorStyles', () => {
 	 return gulp
@@ -554,6 +610,44 @@ gulp.task('dokanStylesMin', () => {
 		 .pipe(
 			 notify({
 				 message: '\n\n✅  ===> Customizer Scripts JS — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
+
+ //Metabox JS
+ gulp.task('metaboxJS', () => {
+	 return gulp
+		 .src(config.metaboxScriptsSRC, {since: gulp.lastRun('metaboxJS')}) // Only run on changed files.
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 babel({
+				 presets: [
+					 [
+						 '@babel/preset-env', // Preset to compile your modern JS to ES5.
+						 {
+							 targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						 }
+					 ]
+				 ]
+			 })
+		 )
+		 .pipe(remember(config.metaboxScriptsSRC)) // Bring all files back to stream.
+		 .pipe(concat(config.metaboxScriptsFile + '.js'))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(gulp.dest(config.metaboxScriptsDestination))
+		 .pipe(
+			 rename({
+				 basename: config.metaboxScriptsFile,
+				 suffix: '.min'
+			 })
+		 )
+		 .pipe(uglify())
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(gulp.dest(config.metaboxScriptsDestination))
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Metabox JS — completed!\n',
 				 onLast: true
 			 })
 		 );
@@ -954,6 +1048,8 @@ gulp.task('dokanStylesMin', () => {
 		 gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('customizerStyles'));
 		 gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
+		 gulp.watch(config.watchStyles, gulp.parallel('metaboxStyles'));
+		 gulp.watch(config.watchStyles, gulp.parallel('metaboxStylesMin'));
 		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStyles')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin')); // Reload on SCSS file changes.
 		 gulp.watch(config.watchStyles, gulp.parallel('dokanStyles')); // Reload on SCSS file changes.
@@ -969,6 +1065,7 @@ gulp.task('dokanStylesMin', () => {
 		 gulp.watch(config.watchJsAjaxSearch, gulp.series('botigaAjaxSearchJS', reload)); // Reload on sidebar file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
+		 gulp.watch(config.watchJsCustomizer, gulp.series('metaboxJS', reload)); // Reload on customJS file changes.
 		 gulp.watch(config.imgSRC, gulp.series('images', reload)); // Reload on customJS file changes.
 	 })
  ); 

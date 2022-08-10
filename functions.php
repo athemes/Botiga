@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.1.7' );
+	define( 'BOTIGA_VERSION', '1.1.8' );
 }
 
 // aThemes White Label Compatibility
@@ -65,6 +65,21 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 			array(
 				'primary'	=> esc_html__( 'Primary', 'botiga' ),
 				'secondary' => esc_html__( 'Secondary Menu', 'botiga' ),
+			)
+		);
+
+		/*
+		 * Add post formats
+		 */
+		add_theme_support(
+			'post-formats',
+			array(
+				'aside',
+				'image',
+				'video',
+				'quote',
+				'link',
+				'status',
 			)
 		);
 
@@ -131,20 +146,20 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		
 		$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
 		if( $custom_palette_toggle ) {
-			for ( $i = 1; $i < 9; $i++ ) { 
+			for ( $i = 0; $i < 8; $i++ ) {
 				$colors[] = array(
 					/* translators: %s: color palette */
-					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
-					'slug'  => 'palette' . $i . '-color-' . $i,
-					'color' => get_theme_mod( 'custom_color' . $i, '#212121' )
+					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
+					'slug'  => 'color-' . $i,
+					'color' => get_theme_mod( 'custom_color' . ($i+1), '#212121' )
 				);
 			}
 		} else {
 			for ( $i = 0; $i < 8; $i++ ) { 
 				$colors[] = array(
 					/* translators: %s: color palette */
-					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i ),
-					'slug'  => $selected_palette . '-color-' . $i,
+					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
+					'slug'  => 'color-' . $i,
 					'color' => $palettes[$selected_palette][$i],
 				);
 			}
@@ -242,7 +257,7 @@ function botiga_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-			'before_sidebar' => '<div class="sidebar-wrapper"><a href="#" role="button" class="close-sidebar" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-close\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. botiga_get_svg_icon( 'icon-cancel' ) .'</a>',
+			'before_sidebar' => '<div class="sidebar-wrapper"><a href="#" role="button" class="close-sidebar" title="'. esc_attr__( 'Close sidebar', 'botiga' ) .'" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-close\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. botiga_get_svg_icon( 'icon-cancel' ) .'</a>',
 				'after_sidebar'  => '</div>'
 		)
 	);
@@ -416,7 +431,7 @@ require get_template_directory() . '/inc/classes/class-botiga-header.php';
 require get_template_directory() . '/inc/classes/class-botiga-footer.php';
 require get_template_directory() . '/inc/classes/class-botiga-posts-archive.php';
 require get_template_directory() . '/inc/classes/class-botiga-svg-icons.php';
-require get_template_directory() . '/inc/classes/class-botiga-page-metabox.php';
+require get_template_directory() . '/inc/classes/class-botiga-metabox.php';
 require get_template_directory() . '/inc/classes/class-botiga-custom-css.php';
 
 /**

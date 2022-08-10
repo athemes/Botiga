@@ -22,6 +22,8 @@
 	
 	<header class="entry-header">
 		
+		<?php do_action( 'botiga_before_title' ); ?>
+
 		<?php if ( 'post' === get_post_type() && 'above-title' === $single_post_meta_position ) : ?>
 			<?php botiga_single_post_meta( 'entry-meta-above' ); ?>
 		<?php endif; ?>

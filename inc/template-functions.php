@@ -323,8 +323,10 @@ function botiga_social_profile( $location ) {
 	$items = '<div class="social-profile">';
 	foreach ( $social_links as $social ) {
 		$network = botiga_get_social_network( $social );
+
 		if ( $network ) {
-			$items .= '<a target="_blank" href="' . esc_url( $social ) . '"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-' . esc_html( $network ), false ) . '</i></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			/* translators: 1: social network link. */
+			$items .= '<a target="_blank" href="' . esc_url( $social ) . '" title="' . sprintf( esc_attr__( 'Social network %s link.', 'botiga' ), $network ) . '"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-' . esc_html( $network ), false ) . '</i></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 	$items .= '</div>';

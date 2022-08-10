@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns
 
 Requires at least: 5.4
-Tested up to: 6.0
+Tested up to: 6.0.1
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
@@ -30,40 +30,53 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.1.8 =
+Added – Support to Post Formats.
+Changed – WCAG accessibility non compliance error (search icon on header).
+Fixed – Product Catalog: Wrong category item layout when 'Layout Type' is 'List'.
+Fixed – Product Catalog: Wrong category image size when products per row is 1 or 2.
+Fixed – Colors: Custom pallete colors are not being added to custom-style.css.
+
 = 1.0.6 - September 24 2021 =
-* Added: New option to hide/show the cart and checkout coupon form
-* Added: Button to back to theme dashboard while previewing the demo
-* Fixed: Huge font size when shop catalog is set to show products and categories
-* Fixed: Changelog link in the theme dashboard
-* Fixed: Mobile single product page gallery layout with arrows issue
+Added – New option to hide/show the cart and checkout coupon form
+Added – Button to back to theme dashboard while previewing the demo
+Fixed – Huge font size when shop catalog is set to show products and categories
+Fixed – Changelog link in the theme dashboard
+Fixed – Mobile single product page gallery layout with arrows issue
+
 = 1.0.5 - September 08 2021 =
-* Added: New options to hide products meta (SKU, categories or tags)
-* Added: New option to show "Header Image" only in the home page
-* Added: 2 new blog post layouts
-* Improved: Better compatibility with "Buy Now" buttons 3rd party plugins
-* Fixed: Minor issues
+Added – New options to hide products meta (SKU, categories or tags)
+Added – New option to show "Header Image" only in the home page
+Added – 2 new blog post layouts
+Improved – Better compatibility with "Buy Now" buttons 3rd party plugins
+Fixed – Minor issues
+
 = 1.0.4 - August 27 2021 =
-* Improved: Checkout - Returning Customer Login Not Styled
-* Fixed: Two or More Search Icons Not Working In The Second Button
-* Fixed: Product Variable Quantity Breaking Layout. Grouped Product Too
-* Fixed: No Space Between Variation Options
-* Fixed: Color Pallete Issues
-* Fixed: Sticky Header Mini Cart and Search Box Issues (with some header layouts)
-* Fixed: Offcanvas Mobile Menu Dropdowns Issue
-* Fixed: Menu Position Working Only With Header Layout 2
-* Fixed: Checkout Create Account - Layout Issue
+Improved – Checkout - Returning Customer Login Not Styled
+Fixed – Two or More Search Icons Not Working In The Second Button
+Fixed – Product Variable Quantity Breaking Layout. Grouped Product Too
+Fixed – No Space Between Variation Options
+Fixed – Color Pallete Issues
+Fixed – Sticky Header Mini Cart and Search Box Issues (with some header layouts)
+Fixed – Offcanvas Mobile Menu Dropdowns Issue
+Fixed – Menu Position Working Only With Header Layout 2
+Fixed – Checkout Create Account: Layout Issue
+
 = 1.0.3 - August 20 2021 =
-* Added: New option to toggle the display of product cross sells in cart page
-* Added: New option to align blog author box
-* Added: Product quantity input with increase and decrease buttons
-* Fixed: Header Layout 3 Issue
-* Fixed: Contact Form not being rendered after import
+Added – New option to toggle the display of product cross sells in cart page
+Added – New option to align blog author box
+Added – Product quantity input with increase and decrease buttons
+Fixed – Header Layout 3 Issue
+Fixed – Contact Form not being rendered after import
+
 = 1.0.2 - August 11 2021 =
-* Changed description
+Changed description
+
 = 1.0.1 - August 6 2021 =
-* Improved: Accessibility
+Improved – Accessibility
+
 = 1.0.0 - July 26 2021 =
-* Initial release
+Initial release
 
 == Credits ==
 

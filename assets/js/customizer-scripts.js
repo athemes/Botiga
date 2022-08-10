@@ -231,7 +231,7 @@ jQuery(document).ready(function ($) {
     botigaGetAllInputs($(this).parent());
   }); // Add https:// to the start of the URL if it doesn't have it
 
-  $('.botiga-sortable_repeater.sortable').on('blur', '.repeater-input', function () {
+  $('.botiga-sortable_repeater.sortable:not(.regular-field)').on('blur', '.repeater-input', function () {
     var url = $(this);
     var val = url.val();
 
@@ -243,7 +243,9 @@ jQuery(document).ready(function ($) {
 
   function botigaAppendRow($element) {
     var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    var newRow = '<div class="repeater" style="display:none"><input type="text" value="' + defaultValue + '" class="repeater-input" placeholder="https://" /><span class="dashicons dashicons-menu"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a></div>';
+    var is_regular = $element.find('.botiga-sortable_repeater.sortable').hasClass('regular-field') ? true : false,
+        placeholder = is_regular ? '' : 'https://';
+    var newRow = '<div class="repeater" style="display:none"><input type="text" value="' + defaultValue + '" class="repeater-input" placeholder="' + placeholder + '" /><span class="dashicons dashicons-menu"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a></div>';
     $element.find('.sortable').append(newRow);
     $element.find('.sortable').find('.repeater:last').slideDown('slow', function () {
       $(this).find('input').focus();
@@ -719,6 +721,16 @@ wp.customize('color_palettes', function (control) {
         wp.customize(_element7).set(palettes[palette][7]);
         jQuery('#customize-control-' + _element7).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][7]);
       }
+    } // Custom palette update.
+
+
+    var custom_palette = jQuery('#customize-control-custom_palette');
+
+    for (var i = 0; i < 8; i++) {
+      var color = palettes[palette][i];
+      var input = custom_palette.find('input[data-customize-setting-link="custom_color' + (i + 1) + '"]');
+      input.css('background-color', color).attr('data-color-val', color).attr('value', color);
+      input.closest('.wp-picker-container').find('.wp-color-result').css('background-color', color);
     }
   });
 });
