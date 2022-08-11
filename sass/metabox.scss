@@ -81,9 +81,21 @@
 	grid-gap: 20px;
 	padding: 20px;
 
-	+.botiga-metabox-field {
-		border-top: 1px solid #eee;
+	&:first-child {
+		border-top: none;
 	}
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.botiga-metabox-field-separator-before {
+	border-top: 1px solid #eee;
+}
+
+.botiga-metabox-field-separator-after {
+	border-bottom: 1px solid #eee;
 }
 
 .botiga-metabox-field-title {

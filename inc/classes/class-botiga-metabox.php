@@ -213,7 +213,9 @@ class Botiga_Metabox {
 
 							foreach ( $option['fields'] as $field_id => $field ) {
 
-								echo '<div class="botiga-metabox-field botiga-metabox-field-'. esc_attr( $field['type'] ).'">';
+								$separator = ( ! empty( $field['separator'] ) ) ? $field['separator'] : 'after';
+
+								echo '<div class="botiga-metabox-field botiga-metabox-field-separator-' . esc_attr( $separator ) .' botiga-metabox-field-'. esc_attr( $field['type'] ) .'">';
 
 									if ( ! empty( $field['title'] ) || ! empty( $field['subtitle'] ) ) {
 

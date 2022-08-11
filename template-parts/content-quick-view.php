@@ -6,6 +6,8 @@
  * @var array $args Contains product id
  */
 
+global $product;
+
 $product    = wc_get_product( $args['product_id'] ); 
 $product_id = $product->get_id(); ?>
 

@@ -2177,27 +2177,19 @@ div.editor-styles-wrapper #wcpay-payment-request-wrapper {
   padding: 0 !important;
 }
 
-div.editor-styles-wrapper .botiga-product-video {
+div.editor-styles-wrapper .botiga-video-ratio {
   position: relative;
-  z-index: 15;
+  z-index: 1;
   overflow: hidden;
   width: 100%;
   padding-top: calc((9/16) * 100%);
-  /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 
-div.editor-styles-wrapper .botiga-product-video + .loop-image-wrap {
-  display: none;
-}
-
-div.editor-styles-wrapper .botiga-product-video + a {
-  display: none;
-}
-
-div.editor-styles-wrapper .botiga-product-video object,
-div.editor-styles-wrapper .botiga-product-video embed,
-div.editor-styles-wrapper .botiga-product-video video,
-div.editor-styles-wrapper .botiga-product-video iframe {
+div.editor-styles-wrapper .botiga-video-ratio embed,
+div.editor-styles-wrapper .botiga-video-ratio audio,
+div.editor-styles-wrapper .botiga-video-ratio video,
+div.editor-styles-wrapper .botiga-video-ratio iframe {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
@@ -2207,18 +2199,102 @@ div.editor-styles-wrapper .botiga-product-video iframe {
   height: 100%;
 }
 
-div.editor-styles-wrapper .botiga-has-product-video {
-  border: 2px solid red;
+div.editor-styles-wrapper .botiga-video-ratio-16-9 {
+  padding-top: calc((9/16) * 100%);
 }
 
-div.editor-styles-wrapper .botiga-has-product-video .flex-control-thumbs li {
+div.editor-styles-wrapper .botiga-video-ratio-9-16 {
+  padding-top: calc((16/9) * 100%);
+}
+
+div.editor-styles-wrapper .botiga-video-ratio-4-3 {
+  padding-top: calc((3/4) * 100%);
+}
+
+div.editor-styles-wrapper .botiga-video-ratio-3-2 {
+  padding-top: calc((2/3) * 100%);
+}
+
+div.editor-styles-wrapper .botiga-video-ratio-1-1 {
+  padding-top: 100%;
+}
+
+div.editor-styles-wrapper .botiga-video-ratio-auto embed,
+div.editor-styles-wrapper .botiga-video-ratio-auto audio,
+div.editor-styles-wrapper .botiga-video-ratio-auto video,
+div.editor-styles-wrapper .botiga-video-ratio-auto iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+div.editor-styles-wrapper .botiga-product-audio audio {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+div.editor-styles-wrapper .botiga-product-video-gallery .onsale {
+  display: none;
+}
+
+div.editor-styles-wrapper .botiga-flex-video-thumb {
   position: relative;
 }
 
-div.editor-styles-wrapper .botiga-has-product-video .flex-control-thumbs li:first-child:before {
-  content: ">";
-  top: 0;
-  left: 0;
+div.editor-styles-wrapper .botiga-flex-video-thumb:after, div.editor-styles-wrapper .botiga-flex-video-thumb:before {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+div.editor-styles-wrapper .botiga-flex-video-thumb:before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+div.editor-styles-wrapper .botiga-flex-video-thumb:after {
+  border-left: 12px solid #fff;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  margin-left: 1px;
+}
+
+@media (max-width: 768px) {
+  div.editor-styles-wrapper .botiga-flex-video-thumb:before {
+    width: 24px;
+    height: 24px;
+  }
+  div.editor-styles-wrapper .botiga-flex-video-thumb:after {
+    border-left-width: 6px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+  }
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products,
@@ -3165,7 +3241,10 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-cont
 
 div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery {
   width: 100%;
-  float: none !important;
+}
+
+div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery .flex-viewport {
+  margin-bottom: 20px;
 }
 
 div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery .flex-direction-nav {
