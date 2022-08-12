@@ -760,7 +760,8 @@ span.delete:hover {
   color: #fff;
 }
 
-.footer-widget-area-link {
+.footer-widget-area-link,
+.to-widget-area-link {
   display: block;
   border: 1px solid #d0d0d0;
   background: #fff;
@@ -774,12 +775,14 @@ span.delete:hover {
   transition: border-color 0.3s;
 }
 
-.footer-widget-area-link:hover {
+.footer-widget-area-link:hover,
+.to-widget-area-link:hover {
   color: #50575e;
   border-color: #333;
 }
 
-.footer-widget-area-link .dashicons {
+.footer-widget-area-link .dashicons,
+.to-widget-area-link .dashicons {
   float: right;
 }
 

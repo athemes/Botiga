@@ -29,7 +29,7 @@ $container 	        = get_theme_mod( 'header_container', 'container-fluid' ); ?>
                 <div class="bhfb-column bhfb-<?php echo esc_attr( $col_class ); ?>">
                     
                     <?php foreach( $column->elements as $component_callback ) {
-                        call_user_func( array( $bhfb, $component_callback ) );
+                        call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
                     } ?>
 
                 </div>

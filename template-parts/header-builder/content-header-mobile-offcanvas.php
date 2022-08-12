@@ -20,7 +20,7 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
 
             <div class="bhfb-column bhfb-mobile-offcanvas-col">
                 <?php foreach( $components->elements as $component_callback ) {
-                    call_user_func( array( $bhfb, $component_callback ) );
+                    call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
                 } ?>
 
             </div>
