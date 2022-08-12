@@ -1796,6 +1796,15 @@ dl.variation {
   }
 }
 
+.botiga-product-video,
+.botiga-product-audio{
+
+	+ .loop-image-wrap,
+	+ .woocommerce-loop-product__link{
+		display: none !important;
+	}
+}
+
 .botiga-product-audio{
 
 	audio{

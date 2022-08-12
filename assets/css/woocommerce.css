@@ -6106,6 +6106,13 @@ dl.variation p {
   max-width: 100%;
 }
 
+.botiga-product-video + .loop-image-wrap,
+.botiga-product-video + .woocommerce-loop-product__link,
+.botiga-product-audio + .loop-image-wrap,
+.botiga-product-audio + .woocommerce-loop-product__link {
+  display: none !important;
+}
+
 .botiga-product-audio audio {
   display: block;
   width: 100%;

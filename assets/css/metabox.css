@@ -102,6 +102,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   grid-gap: 20px;
   padding: 20px;
 }
@@ -112,6 +114,10 @@
 
 .botiga-metabox-field:last-child {
   border-bottom: none;
+}
+
+.botiga-metabox-field-hidden {
+  display: none;
 }
 
 .botiga-metabox-field-separator-before {
@@ -291,6 +297,90 @@
   left: 26px;
 }
 
+.botiga-metabox-field-uploads-content,
+.botiga-metabox-field-repeater-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.botiga-metabox-field-uploads-content ul,
+.botiga-metabox-field-repeater-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.botiga-metabox-field-uploads-content ul li,
+.botiga-metabox-field-repeater-content ul li {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.botiga-metabox-field-uploads-content ul li.hidden,
+.botiga-metabox-field-repeater-content ul li.hidden {
+  display: none;
+}
+
+.botiga-metabox-field-uploads-content ul li span,
+.botiga-metabox-field-repeater-content ul li span {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  width: auto;
+  height: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #1e1e1e;
+  opacity: 0.5;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.botiga-metabox-field-uploads-content ul li span:hover,
+.botiga-metabox-field-repeater-content ul li span:hover {
+  opacity: 1;
+}
+
+.botiga-metabox-field-uploads-content ul li span.dashicons-trash,
+.botiga-metabox-field-repeater-content ul li span.dashicons-trash {
+  color: #a00;
+  font-size: 18px;
+}
+
+.botiga-metabox-field-uploads-content input,
+.botiga-metabox-field-repeater-content input {
+  width: 50%;
+  max-width: 100%;
+  max-width: 100%;
+  margin-right: 5px;
+}
+
+.botiga-metabox-field-no-padding {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 #side-sortables .botiga-metabox-tabs {
   display: none;
 }
@@ -334,6 +424,11 @@
   padding: 0;
 }
 
+#side-sortables .botiga-metabox-field-uploads-content input,
+#side-sortables .botiga-metabox-field-repeater-content input {
+  width: 100%;
+}
+
 @media only screen and (max-width: 991px) {
   .botiga-metabox-tabs {
     display: none;
@@ -359,5 +454,9 @@
   }
   #botiga_metabox .inside {
     padding: 0;
+  }
+  .botiga-metabox-field-uploads-content input,
+  .botiga-metabox-field-repeater-content input {
+    width: 100%;
   }
 }

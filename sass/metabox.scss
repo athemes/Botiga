@@ -78,6 +78,7 @@
 
 .botiga-metabox-field {
 	display: flex;
+	flex-wrap: wrap;
 	grid-gap: 20px;
 	padding: 20px;
 
@@ -88,6 +89,10 @@
 	&:last-child {
 		border-bottom: none;
 	}
+}
+
+.botiga-metabox-field-hidden{
+	display: none;
 }
 
 .botiga-metabox-field-separator-before {
@@ -254,6 +259,66 @@
 	}
 }
 
+.botiga-metabox-field-uploads-content,
+.botiga-metabox-field-repeater-content{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		width: 100%;
+
+		li{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin-bottom: 10px;
+
+			&.hidden{
+				display: none;
+			}
+
+			span{
+				cursor: pointer;
+				font-size: 20px;
+				padding: 5px;
+				width: auto;
+				height: auto;
+				user-select: none;
+				color: #1e1e1e;
+				opacity: 0.5;
+				transition: all .2s;
+
+				&:hover{
+					opacity: 1;
+				}
+
+				&.dashicons-trash{
+					color: #a00;
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
+	input{
+		width: 50%;
+		max-width: 100%;
+		max-width: 100%;
+		margin-right: 5px;
+	}
+}
+
+.botiga-metabox-field-no-padding{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 #side-sortables {
 
 	.botiga-metabox-tabs {
@@ -298,6 +363,14 @@
 			padding: 0;
 		}
 	}
+
+	.botiga-metabox-field-uploads-content,
+	.botiga-metabox-field-repeater-content{
+
+		input{
+			width: 100%;
+		}
+	}
 }
 
 @media only screen and (max-width: 991px) {
@@ -330,6 +403,14 @@
 
 		.inside {
 			padding: 0;
+		}
+	}
+
+	.botiga-metabox-field-uploads-content,
+	.botiga-metabox-field-repeater-content{
+
+		input{
+			width: 100%;
 		}
 	}
 }

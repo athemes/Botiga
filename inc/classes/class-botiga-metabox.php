@@ -20,8 +20,10 @@ class Botiga_Metabox {
 	}
 
 	public function enqueue_metabox_scripts() {
+
 		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', BOTIGA_VERSION );
-		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
+		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery', 'jquery-ui-sortable' ), BOTIGA_VERSION, true );
+	
 	}
 
 	public function metabox_options() {
@@ -215,7 +217,30 @@ class Botiga_Metabox {
 
 								$separator = ( ! empty( $field['separator'] ) ) ? $field['separator'] : 'after';
 
-								echo '<div class="botiga-metabox-field botiga-metabox-field-separator-' . esc_attr( $separator ) .' botiga-metabox-field-'. esc_attr( $field['type'] ) .'">';
+								$classes   = array();
+								$classes[] = 'botiga-metabox-field';
+								$classes[] = 'botiga-metabox-field-separator-'. $separator;
+								$classes[] = 'botiga-metabox-field-'. $field['type'];
+
+								if ( ! empty( $field['class'] ) ) {
+									$classes[] = $field['class'];
+								}
+
+								if ( ! empty( $field['depend'] ) ) {
+
+									$depend_meta = get_post_meta( $post->ID, $field['depend'], true );
+
+									if ( empty( $depend_meta ) ) {
+										$classes[] = 'botiga-metabox-field-hidden';
+									}
+								
+									echo '<div class="'. esc_attr( join( ' ', $classes ) ) .'" data-depend-on="'. esc_attr( $field['depend'] ) .'">';
+								
+								} else {
+
+									echo '<div class="'. esc_attr( join( ' ', $classes ) ) .'">';
+
+								}
 
 									if ( ! empty( $field['title'] ) || ! empty( $field['subtitle'] ) ) {
 
@@ -341,6 +366,11 @@ class Botiga_Metabox {
 				return ( in_array( $value, array_keys( $field['options'] ) ) ) ? sanitize_key( $value ) : '';
 			break;
 
+			case 'repeater':
+			case 'uploads':
+				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( array_map( 'sanitize_text_field', $value ) ) : array();
+			break;
+
 		}
 
 		return $value;
@@ -417,7 +447,78 @@ class Botiga_Metabox {
 
 			case 'content':
 
-				echo '<div class="botiga-metabox-field-content">'. wp_kses_post( $field['content'] ) .'</div>';
+				echo wp_kses_post( $field['content'] );
+
+			break;
+
+			case 'repeater':
+
+				$field = wp_parse_args( $field, array(
+					'button' => '',
+				) );
+
+				echo '<div class="botiga-metabox-field-repeater-content">';
+
+					$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
+
+					echo '<ul class="botiga-metabox-field-repeater-list">';
+
+						echo '<li class="botiga-metabox-field-repeater-list-item hidden">';
+						echo '<input type="text" name="" value="" data-name="'. esc_attr( $field_id ) .'[]" />';
+						echo '<span class="botiga-metabox-field-repeater-move dashicons dashicons-menu"></span>';
+						echo '<span class="botiga-metabox-field-repeater-remove dashicons dashicons-trash"></span>';
+						echo '</li>';
+
+						foreach ( $values as $key => $value ) {
+							echo '<li class="botiga-metabox-field-repeater-list-item">';
+							echo '<input type="text" name="'. esc_attr( $field_id ) .'[]" value="'. esc_attr( $value ) .'" />';
+							echo '<span class="botiga-metabox-field-repeater-move dashicons dashicons-menu"></span>';
+							echo '<span class="botiga-metabox-field-repeater-remove dashicons dashicons-trash"></span>';
+							echo '</li>';
+						}
+	
+					echo '</ul>';
+
+					echo '<button class="botiga-metabox-field-repeater-add button button-primary">'. esc_html( $field['button'] ) .'</button>';
+
+				echo '</div>';
+
+			break;
+
+			case 'uploads':
+
+				$field = wp_parse_args( $field, array(
+					'button'  => '',
+					'library' => 'image',
+				) );
+
+				echo '<div class="botiga-metabox-field-uploads-content">';
+
+					$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
+
+					echo '<ul class="botiga-metabox-field-uploads-list" data-library="'. esc_attr( $field['library'] ) .'">';
+
+						echo '<li class="botiga-metabox-field-uploads-list-item hidden">';
+						echo '<input type="text" name="" value="" data-name="'. esc_attr( $field_id ) .'[]" />';
+						echo '<button class="botiga-metabox-field-uploads-upload button">'. esc_html__( 'Upload', 'botiga' ) .'</button>';
+						echo '<span class="botiga-metabox-field-uploads-move dashicons dashicons-menu"></span>';
+						echo '<span class="botiga-metabox-field-uploads-remove dashicons dashicons-trash"></span>';
+						echo '</li>';
+
+						foreach ( $values as $key => $value ) {
+							echo '<li class="botiga-metabox-field-uploads-list-item">';
+							echo '<input type="text" name="'. esc_attr( $field_id ) .'[]" value="'. esc_attr( $value ) .'" />';
+							echo '<button class="botiga-metabox-field-uploads-upload button">'. esc_html__( 'Upload', 'botiga' ) .'</button>';
+							echo '<span class="botiga-metabox-field-uploads-move dashicons dashicons-menu"></span>';
+							echo '<span class="botiga-metabox-field-uploads-remove dashicons dashicons-trash"></span>';
+							echo '</li>';
+						}
+	
+					echo '</ul>';
+
+					echo '<button class="botiga-metabox-field-uploads-add button button-primary">'. esc_html( $field['button'] ) .'</button>';
+
+				echo '</div>';
 
 			break;
 
