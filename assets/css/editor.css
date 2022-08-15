@@ -2228,6 +2228,13 @@ div.editor-styles-wrapper .botiga-video-ratio-auto iframe {
   max-width: 100%;
 }
 
+div.editor-styles-wrapper .botiga-product-video + .loop-image-wrap,
+div.editor-styles-wrapper .botiga-product-video + .woocommerce-loop-product__link,
+div.editor-styles-wrapper .botiga-product-audio + .loop-image-wrap,
+div.editor-styles-wrapper .botiga-product-audio + .woocommerce-loop-product__link {
+  display: none !important;
+}
+
 div.editor-styles-wrapper .botiga-product-audio audio {
   display: block;
   width: 100%;

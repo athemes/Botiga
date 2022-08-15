@@ -242,7 +242,7 @@ class Botiga_Metabox {
 
 								}
 
-									if ( ! empty( $field['title'] ) || ! empty( $field['subtitle'] ) ) {
+									if ( isset( $field['title'] ) || isset( $field['subtitle'] ) ) {
 
 										echo '<div class="botiga-metabox-field-title">';
 
