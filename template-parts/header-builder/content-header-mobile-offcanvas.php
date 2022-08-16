@@ -8,7 +8,7 @@
  */
 
 $row_data   = $args[ 'row_data' ];
-$components = $row_data->mobile->col_left;
+$elements = $row_data->mobile_offcanvas;
 
 // Get instance from bhfb class
 $bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
@@ -16,10 +16,10 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
 <div class="container">
     <div class="bhfb-row bhfb-cols-1">
         <?php 
-        if( count( $components->elements ) > 0 ) : ?>
+        if( count( $elements[0] ) > 0 ) : ?>
 
             <div class="bhfb-column bhfb-mobile-offcanvas-col">
-                <?php foreach( $components->elements as $component_callback ) {
+                <?php foreach( $elements[0] as $component_callback ) {
                     call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
                 } ?>
 

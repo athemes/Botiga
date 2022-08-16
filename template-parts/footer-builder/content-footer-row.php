@@ -17,18 +17,18 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance();
 $cols_number = $bhfb->get_row_number_of_columns( $row_data->$device ); 
 
 // General options
-$container 	        = get_theme_mod( 'header_container', 'container-fluid' ); ?>
+$container 	        = get_theme_mod( 'footer_container', 'container' ); ?>
 
 <div class="<?php echo esc_attr( $container ); ?>">
     <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?>">
         <?php 
-        foreach( $row_data->$device as $col_class => $column ) :
+        foreach( $row_data->$device as $col_class => $elements ) :
             
-            if( count( $column->elements ) > 0 ) : ?>
+            if( count( $elements ) > 0 ) : ?>
 
-                <div class="bhfb-column bhfb-<?php echo esc_attr( $col_class ); ?>">
+                <div class="bhfb-column bhfb-column-<?php echo absint( $col_class + 1 ); ?>">
                     
-                    <?php foreach( $column->elements as $component_callback ) {
+                    <?php foreach( $elements as $component_callback ) {
                         call_user_func( array( $bhfb, $component_callback ), array( 'footer' ) );
                     } ?>
 
