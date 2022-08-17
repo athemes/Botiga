@@ -91,6 +91,93 @@
         });
       }
 
+      var $sizeChart = $contents.find('.botiga-metabox-field-size-chart');
+
+      if ($sizeChart.length) {
+        $sizeChart.on('multidimensional', function (event, $table) {
+          var $wrap = $table || $sizeChart;
+          $wrap.find('input').each(function () {
+            var $input = $(this);
+            var liIndex = Math.max(0, $input.closest('li').index() - 1);
+            var trIndex = Math.max(0, $input.closest('tr').index() - 1);
+            var tdIndex = Math.max(0, $input.closest('td').index());
+            this.name = this.name.replace(/(\[\d+\])\[sizes\](\[\d+\])(\[\d+\])/, '[' + liIndex + '][sizes][' + trIndex + '][' + tdIndex + ']');
+            this.name = this.name.replace(/(\[\d+\])\[name\]/, '[' + liIndex + '][name]');
+          });
+        });
+        $sizeChart.each(function () {
+          var $list = $(this).find('ul');
+          $sizeChart.on('click', '.botiga-add', function (e) {
+            e.preventDefault();
+            var $item = $list.find('li').first().clone(true);
+            var $input = $item.find('input');
+            $input.each(function () {
+              $(this).attr('name', $(this).data('name'));
+              $(this).removeAttr('data-name');
+            });
+            $item.removeClass('hidden');
+            $list.append($item);
+            $sizeChart.trigger('multidimensional', [$item]);
+          });
+          $sizeChart.on('click', '.botiga-add-col', function (e) {
+            e.preventDefault();
+            var $td = $(this).closest('td');
+            var $table = $(this).closest('table');
+            var $columns = $(this).closest('tbody').find('tr td:nth-child(' + ($td.index() + 1) + ')');
+            $columns.each(function () {
+              var $column = $(this);
+              var $clone = $column.clone(true);
+              $clone.find('input').val('');
+              $column.after($clone);
+            });
+            $sizeChart.trigger('multidimensional', [$table]);
+          });
+          $sizeChart.on('click', '.botiga-del-col', function (e) {
+            e.preventDefault();
+            var $td = $(this).closest('td');
+            var $table = $(this).closest('table');
+            var $count = $(this).closest('tr').find('td').length;
+            var $target = $(this).closest('tbody').find('tr td:nth-child(' + ($td.index() + 1) + ')');
+
+            if ($count > 2) {
+              $target.remove();
+            } else {
+              $target.find('input').val('');
+            }
+
+            $sizeChart.trigger('multidimensional', [$table]);
+          });
+          $sizeChart.on('click', '.botiga-add-row', function (e) {
+            e.preventDefault();
+            var $tr = $(this).closest('tr');
+            var $table = $(this).closest('table');
+            var $clone = $tr.clone(true);
+            $clone.find('input').val('');
+            $tr.after($clone);
+            $sizeChart.trigger('multidimensional', [$table]);
+          });
+          $sizeChart.on('click', '.botiga-del-row', function (e) {
+            e.preventDefault();
+            var $tr = $(this).closest('tr');
+            var $table = $(this).closest('table');
+            var $count = $(this).closest('tbody').find('tr').length;
+
+            if ($count > 2) {
+              $tr.remove();
+            } else {
+              $tr.find('input').val('');
+            }
+
+            $sizeChart.trigger('multidimensional', [$table]);
+          });
+          $sizeChart.on('click', '.botiga-remove', function (e) {
+            e.preventDefault();
+            $(this).closest('li').remove();
+            $sizeChart.trigger('multidimensional');
+          });
+        });
+      }
+
       var $depends = $contents.find('[data-depend-on]');
 
       if ($depends.length) {

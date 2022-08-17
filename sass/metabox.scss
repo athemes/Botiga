@@ -103,9 +103,13 @@
 	border-bottom: 1px solid #eee;
 }
 
+.botiga-metabox-field-inline {
+	flex-direction: column;
+}
+
 .botiga-metabox-field-title {
-	width: 30%;
-	max-width: 300px;
+	width: 20%;
+	max-width: 275px;
 	display: flex;
 	flex-wrap: wrap;
 	grid-gap: 5px;
@@ -316,6 +320,133 @@
 	}
 }
 
+.botiga-metabox-field-size-chart{
+
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li{
+			margin-bottom: 20px;
+
+			&.hidden{
+				display: none;
+			}
+		}
+	}
+
+	table{
+		width: 100%;
+    border-spacing: 0;
+		border-collapse: collapse;
+		background-color: #fff;
+
+		th,
+		td{
+			padding: 10px;
+			border: 1px solid #eee;
+
+			&:last-child{
+				width: 1%;
+				min-width: 75px;
+			}
+		}
+
+		input{
+			text-align: center;
+		}
+
+		thead{
+			text-align: center;
+		}
+
+		tbody{
+
+			input{
+				width: 100%;
+				max-width: 100%;
+			}
+
+			tr{
+
+				td:first-child,
+				&:nth-child(2){
+
+					input{
+						font-weight: 700;
+					}
+				}
+			}
+		}
+
+		tfoot{
+			text-align: right;
+		}
+	}
+
+	.botiga-buttons{
+		display: flex;
+		grid-gap: 10px;
+		justify-content: center;
+		align-items: center;
+
+		a{
+			user-select: none;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 16px;
+			height: 16px;
+			font-size: 14px;
+			line-height: 1em;
+			font-weight: bold;
+			padding: 2px;
+			border-radius: 4px;
+			box-shadow: none;
+			text-decoration: none;
+
+			&:active{
+				opacity: 0.5;
+			}
+		}
+	}
+
+	.botiga-add-col,
+	.botiga-add-row{
+		color: #27ae60;
+		background-color: #d5f5e3;
+	}
+
+	.botiga-del-col,
+	.botiga-del-row{
+		color: #e74c3c;
+		background-color: #f2d7d5;
+	}
+
+	.botiga-remove{
+	  color: #fff;
+	  border-color: #d50204;
+	  background: #d50204;
+
+	  &:hover,
+	  &:focus{
+	    border-color: #b32d2e;
+	    background: #b32d2e;
+	  }
+
+	  &:focus{
+	    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #b32d2e;
+	  }
+
+	  &:active{
+	    border-color: #b32d2e;
+	    background: #b32d2e;
+	  }
+	}
+}
+
 .botiga-metabox-field-no-padding{
 	padding-top: 0;
 	padding-bottom: 0;
@@ -372,7 +503,7 @@
 
 	.botiga-metabox-field-text,
 	.botiga-metabox-field-uploads-content,
-	.botiga-metabox-field-repeater-content{
+	.botiga-metabox-field-repeater-content {
 
 		input{
 			width: 100%;
@@ -419,7 +550,7 @@
 
 	.botiga-metabox-field-text,
 	.botiga-metabox-field-uploads-content,
-	.botiga-metabox-field-repeater-content{
+	.botiga-metabox-field-repeater-content {
 
 		input{
 			width: 100%;

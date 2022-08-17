@@ -1873,3 +1873,206 @@ dl.variation {
 		}
 	}
 }
+
+/**
+ * Size Chart
+ */
+.botiga-product-size-chart{
+	margin-bottom: 20px;
+}
+
+.botiga-product-size-chart-button{
+	display: flex;
+	font-size: 0.9rem;
+	
+	a{
+		display: flex;
+		grid-gap: 5px;
+		align-items: center;
+		font-weight: bold;
+	}
+
+	svg{
+		width: 18px;
+		height: 18px;
+		fill: currentColor;
+	}
+}
+
+.botiga-product-size-chart-modal{
+	display: none;
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.85);
+}
+
+.botiga-product-size-chart-modal-open{
+	overflow: hidden;
+
+	.botiga-product-size-chart-modal{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.botiga-product-size-chart-modal-inner{
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 30px 40px;
+	width: 600px;
+	max-width: 100%;
+	max-height: calc(100% - 100px);
+	overflow-y: auto;
+	font-size: 14px;
+	color: #212121;
+	background-color: #fff;
+
+
+	> *:last-child{
+		margin-bottom: 0;
+	}
+}
+
+.botiga-product-size-chart-modal-title{
+	margin-bottom: 20px;
+}
+
+.botiga-product-size-chart-modal-tabs{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 15px;
+
+	&:empty{
+		display: none;
+	}
+}
+
+.botiga-product-size-chart-modal-tab{
+	cursor: pointer;
+	margin: 0;
+	padding: 10px 15px;
+	font-size: 14px;
+	line-height: 1em;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	width: 100px;
+	max-width: 100%;
+	border-bottom: 3px solid #eee;
+
+	&.active{
+		border-bottom-color: #212121;
+	}
+}
+
+.botiga-product-size-chart-modal-tables{
+	margin-bottom: 30px;
+}
+
+.botiga-product-size-chart-modal-table{
+	display: none;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
+	table-layout: fixed;
+
+	&.active{
+		display: table;
+	}
+
+	tr,
+	th,
+	td{
+		padding: 7px;
+		border: 1px solid #e5e5e5;
+	}
+
+	thead{
+
+		tr,
+		th{
+			border: 0;
+			background-color: transparent;
+		}
+	}
+
+	tbody{
+
+		tr{
+
+			&:nth-child(1n) {
+			
+				td{
+
+					&:first-child{
+						font-weight: bold;
+						background: rgba(0, 0, 0, 0.03);
+					}
+				}
+			}
+	
+			&:nth-child(2n) {
+		  	background: rgba(0, 0, 0, 0.03);
+			}
+
+			td{
+
+				&:nth-child(2n+1) {
+					background: rgba(0, 0, 0, 0.05);
+				}
+			}
+		}
+	}
+}
+
+.botiga-product-size-chart-modal-close{
+	user-select: none;
+	cursor: pointer;
+	position: absolute;
+	z-index: 1;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	line-height: 1em;
+	color: #fff;
+	background-color: #212121;
+
+	svg{
+		fill: #fff;
+		width: 1em;
+		height: 1em;
+
+		path{
+			transform: scale(0.75);
+		}
+	}
+}
+
+.botiga-product-size-chart-modal-title{
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+}
+
+@media (max-width: 768px){
+	
+	.botiga-product-size-chart-modal-inner{
+		max-height: 100%;
+	}
+}

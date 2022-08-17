@@ -6183,6 +6183,221 @@ dl.variation p {
 }
 
 /**
+ * Size Chart
+ */
+.botiga-product-size-chart {
+  margin-bottom: 20px;
+}
+
+.botiga-product-size-chart-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.9rem;
+}
+
+.botiga-product-size-chart-button a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+}
+
+.botiga-product-size-chart-button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.botiga-product-size-chart-modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.botiga-product-size-chart-modal-open {
+  overflow: hidden;
+}
+
+.botiga-product-size-chart-modal-open .botiga-product-size-chart-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-product-size-chart-modal-inner {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px 40px;
+  width: 600px;
+  max-width: 100%;
+  max-height: calc(100% - 100px);
+  overflow-y: auto;
+  font-size: 14px;
+  color: #212121;
+  background-color: #fff;
+}
+
+.botiga-product-size-chart-modal-inner > *:last-child {
+  margin-bottom: 0;
+}
+
+.botiga-product-size-chart-modal-title {
+  margin-bottom: 20px;
+}
+
+.botiga-product-size-chart-modal-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 15px;
+}
+
+.botiga-product-size-chart-modal-tabs:empty {
+  display: none;
+}
+
+.botiga-product-size-chart-modal-tab {
+  cursor: pointer;
+  margin: 0;
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100px;
+  max-width: 100%;
+  border-bottom: 3px solid #eee;
+}
+
+.botiga-product-size-chart-modal-tab.active {
+  border-bottom-color: #212121;
+}
+
+.botiga-product-size-chart-modal-tables {
+  margin-bottom: 30px;
+}
+
+.botiga-product-size-chart-modal-table {
+  display: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  table-layout: fixed;
+}
+
+.botiga-product-size-chart-modal-table.active {
+  display: table;
+}
+
+.botiga-product-size-chart-modal-table tr,
+.botiga-product-size-chart-modal-table th,
+.botiga-product-size-chart-modal-table td {
+  padding: 7px;
+  border: 1px solid #e5e5e5;
+}
+
+.botiga-product-size-chart-modal-table thead tr,
+.botiga-product-size-chart-modal-table thead th {
+  border: 0;
+  background-color: transparent;
+}
+
+.botiga-product-size-chart-modal-table tbody tr:nth-child(1n) td:first-child {
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.botiga-product-size-chart-modal-table tbody tr:nth-child(2n) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.botiga-product-size-chart-modal-table tbody tr td:nth-child(2n+1) {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.botiga-product-size-chart-modal-close {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  line-height: 1em;
+  color: #fff;
+  background-color: #212121;
+}
+
+.botiga-product-size-chart-modal-close svg {
+  fill: #fff;
+  width: 1em;
+  height: 1em;
+}
+
+.botiga-product-size-chart-modal-close svg path {
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+}
+
+.botiga-product-size-chart-modal-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .botiga-product-size-chart-modal-inner {
+    max-height: 100%;
+  }
+}
+
+/**
  * WooCommerce widgets
  */
 /**

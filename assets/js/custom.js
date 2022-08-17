@@ -1491,6 +1491,49 @@ botiga.productVideoGallery = {
     });
   }
 };
+/**
+ * Product Size Chart
+ */
+
+botiga.productSizeChart = {
+  init: function init() {
+    var $sizeChart = jQuery('.botiga-product-size-chart');
+
+    if (!$sizeChart.length) {
+      return;
+    }
+
+    var $body = jQuery('body');
+    var $button = $sizeChart.find('.botiga-product-size-chart-button a');
+    var $modal = $sizeChart.find('.botiga-product-size-chart-modal');
+    $button.on('click', function (e) {
+      e.preventDefault();
+      $body.addClass('botiga-product-size-chart-modal-open');
+    });
+    $modal.on('click', function (e) {
+      e.preventDefault();
+      var $target = jQuery(e.target);
+      var $content = $sizeChart.find('.botiga-product-size-chart-modal-content');
+
+      if ($target.is($modal) || $target.closest('.botiga-product-size-chart-modal-close').length) {
+        $content.scrollTop(0);
+        $body.removeClass('botiga-product-size-chart-modal-open');
+      }
+    });
+    var $tabs = $sizeChart.find('.botiga-product-size-chart-modal-tab');
+    var $tables = $sizeChart.find('.botiga-product-size-chart-modal-table');
+
+    if ($tabs.length && $tables.length) {
+      $tabs.each(function () {
+        var $tab = jQuery(this);
+        $tab.on('click', function () {
+          $tab.addClass('active').siblings().removeClass('active');
+          $tables.eq($tab.index()).addClass('active').siblings().removeClass('active');
+        });
+      });
+    }
+  }
+};
 botiga.helpers.botigaDomReady(function () {
   botiga.navigation.init();
   botiga.desktopOffcanvasNav.init();
@@ -1508,6 +1551,7 @@ botiga.helpers.botigaDomReady(function () {
   botiga.misc.init();
   botiga.productGallery.init();
   botiga.productVideoGallery.init();
+  botiga.productSizeChart.init();
 });
 
 window.onload = function () {

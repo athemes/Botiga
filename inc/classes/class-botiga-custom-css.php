@@ -652,6 +652,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_fill_css( 'color_body_text', '#212121', '.botiga-pagination-button.loading-anim svg path' );
 			}
 
+			//Size Chart
+    	$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+			if( $single_size_chart ) {
+				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button a' );
+				$css .= $this->get_fill_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button svg path' );
+			}
+
 			//Wishlist
 			$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
 			if( 'layout1' !== $wishlist_layout ) {
