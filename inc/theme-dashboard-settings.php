@@ -54,9 +54,9 @@ function botiga_free_vs_pro_html() {
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Multiple header layouts', 'botiga' ); ?></td>
-				<td>5</td>
-				<td>8</td>
+				<td><?php esc_html_e( 'Header Builder', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
 				<td><?php esc_html_e( 'Product Swatch', 'botiga' ); ?></td>
@@ -70,11 +70,6 @@ function botiga_free_vs_pro_html() {
 			</tr>
 			<tr>
 				<td><?php esc_html_e( 'Shop Header Styles', 'botiga' ); ?></td>
-				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
-				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
-			</tr>
-			<tr>
-				<td><?php esc_html_e( 'Header Builder', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
@@ -325,16 +320,42 @@ function botiga_dashboard_settings( $settings ) {
 
 	if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 		$settings['tabs'][0]['data'][] = array(
-			'name'          => esc_html__( 'Header Builder', 'botiga' ),
-			'type'          => 'pro',
-			'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_hb_wrapper' ),
-		);
-
-		$settings['tabs'][0]['data'][] = array(
 			'name'          => esc_html__( 'Mega Menu', 'botiga' ),
 			'type'          => 'pro',
 			'customize_uri' => admin_url( '/nav-menus.php' ),
 		);
+
+		$settings['tabs'][0]['data'][] = array(
+			'name'          => esc_html__( 'Breadcrumbs', 'botiga' ),
+			'type'          => 'pro',
+			'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_breadcrumbs' ),
+		);
+	}
+
+	// Modules
+	// To do: map theme dashboard settings array to search for 
+	// array item location based on string, so we might remove/add items from the array
+	// locating by the array string instead of e.g '$settings['tabs'][0]['data'][3] .... ['data'][4] ... ['data'][5]'
+	if( class_exists( 'Botiga_Modules' ) ) {
+
+		if( Botiga_Modules::is_module_active( 'hf-builder' ) ) {
+
+			// Replace 'Main Menu' ([3]) with HF in the theme dashboard
+			$settings['tabs'][0]['data'][3] = Botiga_Modules::get_modules()[0];
+	
+			// Remove 'Mobile Header' from theme dashboard.
+			unset( $settings['tabs'][0]['data'][4] );
+	
+			// Remove 'Footer Copyright' from theme dashboard.
+			unset( $settings['tabs'][0]['data'][5] );
+
+		} else {
+
+			// Adds HF Builder theme dashboard item before 'Main Header'.
+			$new = array( Botiga_Modules::get_modules()[0] );
+			array_splice( $settings['tabs'][0]['data'], 3, 0, $new );
+
+		}
 	}
 
 	// Documentation.

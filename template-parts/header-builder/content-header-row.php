@@ -11,7 +11,7 @@ $device   = $args[ 'device' ];
 $row_data = $args[ 'row_data' ];
 
 // Get instance from bhfb class
-$bhfb = Botiga_Header_Footer_Builder::get_instance(); 
+$bhfb = Botiga_Header_Footer_Builder::get_instance();
 
 // Get columns number
 $cols_number = $bhfb->get_row_number_of_columns( $row_data->$device ); 
@@ -30,7 +30,11 @@ $container = get_theme_mod( 'header_container', 'container-fluid' ); ?>
                 <div class="bhfb-column bhfb-column-<?php echo esc_attr( $col_class + 1 ); ?>">
                     
                     <?php foreach( $elements as $component_callback ) {
-                        call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
+                        if( method_exists( $bhfb, $component_callback  ) ) {
+                            call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
+                        } else if( function_exists( $component_callback ) ) {
+                            call_user_func( $component_callback );
+                        }
                     } ?>
 
                 </div>

@@ -490,6 +490,164 @@ gulp.task('dokanStylesMin', () => {
 			 })
 		 );
  });
+
+ /**
+ * Header/Footer Builder Styles
+ */
+  gulp.task('BHFBStyles', () => {
+	return gulp
+		.src(config.BHFBSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Header/Footer Builder Expanded — completed!\n',
+				onLast: true
+			})
+		)
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+
+		// Minify
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({prefix: '', suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Header/Footer Builder Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
+ * Admin Files.
+ * Header Footer Builder
+ */
+ gulp.task('adminBHFBSRC', () => {
+	return gulp
+		.src(config.adminBHFBSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> BHFB Expanded — completed!\n',
+				onLast: true
+			})
+		)
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+
+		// Minify
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({prefix: '', suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> BHFB Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
+ * Admin Files.
+ * Header Footer Builder
+ */
+ gulp.task('adminCustPrevBHFBSRC', () => {
+	return gulp
+		.src(config.adminCustPrevBHFBSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> BHFB Customize Preview Expanded — completed!\n',
+				onLast: true
+			})
+		)
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+
+		// Minify
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({prefix: '', suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> BHFB Customize Preview Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
   * Task: `vendorsJS`.
@@ -652,6 +810,44 @@ gulp.task('dokanStylesMin', () => {
 			 })
 		 );
  });
+
+ //Admin Functions JS
+ gulp.task('adminFunctionsJS', () => {
+	return gulp
+		.src(config.jsAdminFunctionsSRC, {since: gulp.lastRun('adminFunctionsJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsAdminFunctionsSRC)) // Bring all files back to stream.
+		.pipe(concat(config.adminFunctionsScriptsFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.adminFunctionsDestination))
+		.pipe(
+			rename({
+				basename: config.adminFunctionsScriptsFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify())
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.adminFunctionsDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Admin Functions JS — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
   * Task: `customJS`.
@@ -896,6 +1092,72 @@ gulp.task('dokanStylesMin', () => {
 			})
 		);
 });
+
+/**
+  * Admin Files.
+  * Task: `botigaAdminBHFBJS`.
+  */
+ gulp.task('botigaAdminBHFBJS', () => {
+	return gulp
+		.src(config.jsAdminBHFBSRC, {since: gulp.lastRun('botigaAdminBHFBJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(remember(config.jsAdminBHFBSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsAdminBHFBFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsAdminDestination))
+		.pipe(
+			rename({
+				basename: config.jsAdminBHFBFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsAdminDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> BHFB JS — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
+  * Admin Files.
+  * Task: `botigaAdminCustPrevBHFBJS`.
+  */
+ gulp.task('botigaAdminCustPrevBHFBJS', () => {
+	return gulp
+		.src(config.jsAdminCustPrevBHFBSRC, {since: gulp.lastRun('botigaAdminCustPrevBHFBJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(remember(config.jsAdminCustPrevBHFBSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsAdminCustPrevBHFBFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsAdminDestination))
+		.pipe(
+			rename({
+				basename: config.jsAdminCustPrevBHFBFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsAdminDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> BHFB Customize Preview JS — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
   * Task: `images`.
@@ -996,31 +1258,42 @@ gulp.task('dokanStylesMin', () => {
   *
   * Watches for file changes and runs specific tasks.
   */
- gulp.task(
-	 'default',
-	 gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'botigaPopupJS', 'botigaCarouselJS', 'botigaSidebarJS', 'botigaAjaxSearchJS', 'images', browsersync, () => {
-		 gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('customizerStyles'));
-		 gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
-		 gulp.watch(config.watchStyles, gulp.parallel('metaboxStyles'));
-		 gulp.watch(config.watchStyles, gulp.parallel('metaboxStylesMin'));
-		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStyles')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('dokanStyles')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchStyles, gulp.parallel('dokanStylesMin')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStyles')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchEditorStyles, gulp.parallel('editorStylesMin')); // Reload on SCSS file changes.
-		 gulp.watch(config.watchJsVendor, gulp.series('vendorsJS', reload)); // Reload on vendorsJS file changes.
-		 gulp.watch(config.watchJsCustom, gulp.series('customJS', reload)); // Reload on customJS file changes.
-		 gulp.watch(config.watchJsPopup, gulp.series('botigaPopupJS', reload)); // Reload on popup file changes.
-		 gulp.watch(config.watchJsCarousel, gulp.series('botigaCarouselJS', reload)); // Reload on carousel file changes.
-		 gulp.watch(config.watchJsSidebar, gulp.series('botigaSidebarJS', reload)); // Reload on sidebar file changes.
-		 gulp.watch(config.watchJsAjaxSearch, gulp.series('botigaAjaxSearchJS', reload)); // Reload on sidebar file changes.
-		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
-		 gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
-		 gulp.watch(config.watchJsCustomizer, gulp.series('metaboxJS', reload)); // Reload on customJS file changes.
-		 gulp.watch(config.imgSRC, gulp.series('images', reload)); // Reload on customJS file changes.
-	 })
- ); 
+gulp.task(
+	'default',
+	gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'adminFunctionsJS', 'botigaPopupJS', 'botigaCarouselJS', 'botigaSidebarJS', 'botigaAjaxSearchJS', 'botigaAdminBHFBJS', 'botigaAdminCustPrevBHFBJS', 'images', browsersync, () => {
+		gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('customizerStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('metaboxStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('metaboxStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('woocommerceStyles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('dokanStyles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('dokanStylesMin')); // Reload on SCSS file changes.
+		gulp.watch(config.watchEditorStyles, gulp.parallel('editorStyles')); // Reload on SCSS file changes.
+		gulp.watch(config.watchEditorStyles, gulp.parallel('editorStylesMin')); // Reload on SCSS file changes.
+		gulp.watch(config.watchStyles, gulp.parallel('BHFBStyles'));
+
+		// Admin CSS
+		gulp.watch(config.watchStyles, gulp.parallel('adminBHFBSRC'));
+		gulp.watch(config.watchStyles, gulp.parallel('adminCustPrevBHFBSRC'));
+
+		gulp.watch(config.watchJsVendor, gulp.series('vendorsJS', reload)); // Reload on vendorsJS file changes.
+		gulp.watch(config.watchJsCustom, gulp.series('customJS', reload)); // Reload on customJS file changes.
+		gulp.watch(config.watchJsAdminFunctions, gulp.series('adminFunctionsJS', reload)); // Reload on customJS file changes.
+		gulp.watch(config.watchJsPopup, gulp.series('botigaPopupJS', reload)); // Reload on popup file changes.
+		gulp.watch(config.watchJsCarousel, gulp.series('botigaCarouselJS', reload)); // Reload on carousel file changes.
+		gulp.watch(config.watchJsSidebar, gulp.series('botigaSidebarJS', reload)); // Reload on sidebar file changes.
+		gulp.watch(config.watchJsAjaxSearch, gulp.series('botigaAjaxSearchJS', reload)); // Reload on sidebar file changes.
+		gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.
+		gulp.watch(config.watchJsCustomizer, gulp.series('customizerScriptsJS', reload)); // Reload on customJS file changes.
+		gulp.watch(config.watchJsCustomizer, gulp.series('metaboxJS', reload)); // Reload on customJS file changes.
+		gulp.watch(config.imgSRC, gulp.series('images', reload)); // Reload on customJS file changes.
+
+		// Admin JS
+		gulp.watch(config.watchJsAdminBHFB, gulp.series('botigaAdminBHFBJS'));
+		gulp.watch(config.watchJsAdminCustPrevBHFB, gulp.series('botigaAdminCustPrevBHFBJS'));
+ 	})
+);

@@ -7,6 +7,7 @@
  * @var array $args Contains above header row data
  */
 
+$row      = $args[ 'row' ];
 $device   = $args[ 'device' ]; 
 $row_data = $args[ 'row_data' ];
 
@@ -17,10 +18,12 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance();
 $cols_number = $bhfb->get_row_number_of_columns( $row_data->$device ); 
 
 // General options
-$container 	        = get_theme_mod( 'footer_container', 'container' ); ?>
+$container 	        = get_theme_mod( 'footer_container', 'container' ); 
+$vertical_alignment = get_theme_mod( 'botiga_footer_row__' . $row . '_vertical_alignment', 'top' );
+$inner_layout       = get_theme_mod( 'botiga_footer_row__' . $row . '_inner_layout', 'stack' ); ?>
 
 <div class="<?php echo esc_attr( $container ); ?>">
-    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?>">
+    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?> bhfb-cols-valign-<?php echo esc_attr( $vertical_alignment ); ?> bhfb-cols-inner-layout-<?php echo esc_attr( $inner_layout ); ?>">
         <?php 
         foreach( $row_data->$device as $col_class => $elements ) :
             
