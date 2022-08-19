@@ -657,17 +657,17 @@ class Botiga_Metabox {
 			case 'size-chart-select':
 
 				$options = array();
-
-        $query = new WP_Query( array(
+				
+			  $posts = get_posts( array(
 					'post_type'   => 'size_chart',
-          'post_status' => 'publish',
-        ) );
+			    'post_status' => 'publish',
+			  ) );
 
-        if ( ! is_wp_error( $query ) && ! empty( $query->posts ) ) {
-          foreach ( $query->posts as $_post ) {
-            $options[ $_post->ID ] = $_post->post_title;
-          }
-        }
+			  if ( ! is_wp_error( $posts ) && ! empty( $posts ) ) {
+			    foreach ( $posts as $_post ) {
+			      $options[ $_post->ID ] = $_post->post_title;
+			    }
+			  }
 
 				echo '<select name="'. esc_attr( $field_id ) .'">';
 					echo '<option value="">'. esc_html__( 'Select a size chart', 'botiga' ) .'</option>';
