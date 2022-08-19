@@ -73,6 +73,9 @@
       -ms-flex-direction: column;
           flex-direction: column;
   border: 1px solid #ddd;
+}
+
+.botiga-metabox-tabs + .botiga-metabox-contents {
   border-left: 0;
 }
 
@@ -409,8 +412,8 @@
 
 .botiga-metabox-field-size-chart table th,
 .botiga-metabox-field-size-chart table td {
-  padding: 10px;
-  border: 1px solid #eee;
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .botiga-metabox-field-size-chart table th:last-child,
@@ -419,21 +422,31 @@
   min-width: 75px;
 }
 
-.botiga-metabox-field-size-chart table input {
+.botiga-metabox-field-size-chart table thead {
   text-align: center;
 }
 
-.botiga-metabox-field-size-chart table thead {
-  text-align: center;
+.botiga-metabox-field-size-chart table thead label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  grid-gap: 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .botiga-metabox-field-size-chart table tbody input {
   width: 100%;
   max-width: 100%;
+  text-align: center;
 }
 
-.botiga-metabox-field-size-chart table tbody tr td:first-child input, .botiga-metabox-field-size-chart table tbody tr:nth-child(2) input {
-  font-weight: 700;
+.botiga-metabox-field-size-chart table tbody tr:nth-child(2) td:not(:last-child) {
+  background-color: #eee;
 }
 
 .botiga-metabox-field-size-chart table tfoot {
@@ -454,11 +467,6 @@
 }
 
 .botiga-metabox-field-size-chart .botiga-buttons a {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -475,6 +483,10 @@
   font-weight: bold;
   padding: 2px;
   border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-box-shadow: none;
           box-shadow: none;
   text-decoration: none;
@@ -515,6 +527,35 @@
 .botiga-metabox-field-size-chart .botiga-remove:active {
   border-color: #b32d2e;
   background: #b32d2e;
+}
+
+.botiga-metabox-field-size-chart .botiga-duplicate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  text-decoration: none;
+}
+
+.botiga-metabox-field-size-chart .botiga-duplicate:active {
+  opacity: 0.5;
+}
+
+.botiga-metabox-field-size-chart .botiga-duplicate svg {
+  width: 16px;
+  height: 16px;
+  fill: #000;
 }
 
 .botiga-metabox-field-no-padding {

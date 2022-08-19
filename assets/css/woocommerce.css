@@ -6251,7 +6251,7 @@ dl.variation p {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 30px 40px;
-  width: 600px;
+  width: 750px;
   max-width: 100%;
   max-height: calc(100% - 100px);
   overflow-y: auto;
@@ -6277,7 +6277,7 @@ dl.variation p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .botiga-product-size-chart-modal-tabs:empty {
@@ -6289,11 +6289,9 @@ dl.variation p {
   margin: 0;
   padding: 10px 15px;
   font-size: 14px;
-  line-height: 1em;
   font-weight: bold;
-  text-transform: uppercase;
   text-align: center;
-  width: 100px;
+  min-width: 100px;
   max-width: 100%;
   border-bottom: 3px solid #eee;
 }
@@ -6312,7 +6310,6 @@ dl.variation p {
   margin: 0;
   padding: 0;
   text-align: center;
-  text-transform: uppercase;
   table-layout: fixed;
 }
 
@@ -6324,26 +6321,15 @@ dl.variation p {
 .botiga-product-size-chart-modal-table th,
 .botiga-product-size-chart-modal-table td {
   padding: 7px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .botiga-product-size-chart-modal-table thead tr,
 .botiga-product-size-chart-modal-table thead th {
   border: 0;
-  background-color: transparent;
-}
-
-.botiga-product-size-chart-modal-table tbody tr:nth-child(1n) td:first-child {
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.03);
-}
-
-.botiga-product-size-chart-modal-table tbody tr:nth-child(2n) {
-  background: rgba(0, 0, 0, 0.03);
-}
-
-.botiga-product-size-chart-modal-table tbody tr td:nth-child(2n+1) {
-  background: rgba(0, 0, 0, 0.05);
+  color: #fff;
+  background-color: #212121;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .botiga-product-size-chart-modal-close {
@@ -6389,6 +6375,10 @@ dl.variation p {
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+}
+
+.botiga-product-size-chart-modal-content > *:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {

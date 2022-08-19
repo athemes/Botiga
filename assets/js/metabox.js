@@ -175,6 +175,13 @@
             $(this).closest('li').remove();
             $sizeChart.trigger('multidimensional');
           });
+          $sizeChart.on('click', '.botiga-duplicate', function (e) {
+            e.preventDefault();
+            var $li = $(this).closest('li');
+            var $clone = $li.clone(true);
+            $li.after($clone);
+            $sizeChart.trigger('multidimensional');
+          });
         });
       }
 
