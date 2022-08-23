@@ -481,3 +481,31 @@ ul.products {
 	justify-content: flex-end;
 	align-items: flex-start;
 }
+
+/**
+ * Product Equal Height
+ */
+.product-equal-height{
+	ul.wc-block-grid__products,
+	ul.products {
+
+		li.wc-block-grid__product,
+		li.product {
+			display: flex;
+			flex-direction: column;
+
+			.loop-button-wrap{
+				flex: 1;
+			}
+
+			.variations_form{
+				margin-bottom: 7px;
+			}
+
+			.wp-block-button__link,
+			.button {
+				align-self: flex-start;
+			}
+		}
+	}
+}

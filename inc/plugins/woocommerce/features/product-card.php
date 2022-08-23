@@ -41,7 +41,7 @@ function botiga_product_card_hooks() {
 			add_action( 'woocommerce_after_subcategory', function() { echo '</div>'; }, PHP_INT_MAX );
 		}
 
-		if ( 'product-grid' === $layout ) {
+		if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) ) {
 			$shop_woocommerce_catalog_columns_desktop = get_theme_mod( 'shop_woocommerce_catalog_columns_desktop', 4 );
 		
 			if( $shop_woocommerce_catalog_columns_desktop === 2 ) {
@@ -67,13 +67,13 @@ function botiga_product_card_hooks() {
 	add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 12 );
 
 	//Wrap loop image
-	if ( 'product-grid' === $layout || is_product() ) {
+	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) || is_product() ) {
 		//Wrap loop image
 		add_action( 'woocommerce_before_shop_loop_item_title', function() use ($loop_image_wrap_extra_class) { echo '<div class="loop-image-wrap '. esc_attr( apply_filters( 'botiga_wc_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ) .'">'; }, 9 );
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div>'; }, 11 );
 	}
 
-	if ( 'product-grid' === $layout ) {
+	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) ) {
 		//Move button inside image wrap
 		if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );

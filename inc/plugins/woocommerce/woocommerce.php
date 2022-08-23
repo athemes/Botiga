@@ -69,6 +69,12 @@ add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
  */
 function botiga_woocommerce_scripts() {
 
+	$shop_archive_layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );
+
+	if ( $shop_archive_layout === 'product-masonry' ) {
+		wp_enqueue_script( 'jquery-masonry' );
+	}
+	
 	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
 	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-vertical' ) ) ) {
@@ -217,7 +223,11 @@ function botiga_wc_archive_layout() {
 	
 	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
 
-	return $archive_sidebar . ' ' . $layout;
+	$button_layout      = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$equal_height       = get_theme_mod( 'shop_product_equal_height', 0 );
+	$equal_height_class = ( ! empty( $equal_height ) && $button_layout === 'layout2' && $layout === 'product-grid' ) ? ' product-equal-height' : '';
+
+	return $archive_sidebar . ' ' . $layout . $equal_height_class;
 }
 
 /**

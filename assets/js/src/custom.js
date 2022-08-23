@@ -1511,7 +1511,6 @@ botiga.productVideoGallery = {
 
 }
 
-
 /**
  * Product Size Chart
  */
@@ -1577,6 +1576,56 @@ botiga.productSizeChart = {
 
 }
 
+/**
+ * Product Masonry Layout
+ */
+botiga.productMasonryLayout = {
+
+	init: function() {
+		
+		var self     = this;
+		var $masonry = jQuery('.product-masonry');
+
+		if ( ! $masonry.length ) {
+			return;
+		}
+
+		var $wrapper  = $masonry.find('.products');
+		var $products = $masonry.find('.product');
+
+		jQuery(window).on('resize botiga.masonry', function() {
+			self.reLayout( $wrapper, $products );
+		}).trigger('botiga.masonry');
+
+	},
+	
+	reLayout: function( $wrapper, $products ) {
+
+		var itemColumns = $wrapper.css('grid-template-columns').split(' ').length;
+		var itemGap     = parseInt( $wrapper.css('gap') );
+		var itemWidth   = (100 / itemColumns);
+		var itemSpacing = (itemGap / itemColumns) * (itemColumns-1);
+
+		$products.css({
+			'width': 'calc('+ itemWidth +'% - '+ itemSpacing +'px)',
+			'margin-bottom': itemGap,
+		});
+
+		$wrapper.imagesLoaded(function() {
+
+			$wrapper.masonry({
+				itemSelector: '.product',
+		    gutter: itemGap,
+			});
+
+			$wrapper.masonry('layout');
+
+		});
+
+	},
+
+}
+
 botiga.helpers.botigaDomReady( function() {
 	botiga.navigation.init();
 	botiga.desktopOffcanvasNav.init();
@@ -1595,6 +1644,7 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.productGallery.init();
 	botiga.productVideoGallery.init();
 	botiga.productSizeChart.init();
+	botiga.productMasonryLayout.init();
 } );
 
 window.onload = function() {

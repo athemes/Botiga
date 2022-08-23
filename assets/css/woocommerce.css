@@ -993,6 +993,50 @@ ul.products li.product-category mark {
 }
 
 /**
+ * Product Equal Height
+ */
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product,
+.product-equal-height ul.wc-block-grid__products li.product,
+.product-equal-height ul.products li.wc-block-grid__product,
+.product-equal-height ul.products li.product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .loop-button-wrap,
+.product-equal-height ul.wc-block-grid__products li.product .loop-button-wrap,
+.product-equal-height ul.products li.wc-block-grid__product .loop-button-wrap,
+.product-equal-height ul.products li.product .loop-button-wrap {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .variations_form,
+.product-equal-height ul.wc-block-grid__products li.product .variations_form,
+.product-equal-height ul.products li.wc-block-grid__product .variations_form,
+.product-equal-height ul.products li.product .variations_form {
+  margin-bottom: 7px;
+}
+
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .button,
+.product-equal-height ul.wc-block-grid__products li.product .wp-block-button__link,
+.product-equal-height ul.wc-block-grid__products li.product .button,
+.product-equal-height ul.products li.wc-block-grid__product .wp-block-button__link,
+.product-equal-height ul.products li.wc-block-grid__product .button,
+.product-equal-height ul.products li.product .wp-block-button__link,
+.product-equal-height ul.products li.product .button {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+/**
  * Sidebar
  */
 .close-sidebar {
@@ -6002,6 +6046,10 @@ dl.variation p {
   opacity: 1;
   margin-bottom: 15px;
   visibility: visible;
+}
+
+.botiga-product-swatches {
+  margin-bottom: 0 !important;
 }
 
 .botiga-product-swatches .woocommerce-variation-price,
