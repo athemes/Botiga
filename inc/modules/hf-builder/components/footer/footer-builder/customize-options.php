@@ -14,10 +14,31 @@ $opts_to_move = array(
     'style'   => array()
 );
 
+// Available Footer Components Area
+$wp_customize->add_setting( 'botiga_section_fb_wrapper__footer_builder_available_footer_components',
+	array(
+		'default' 			=> '',
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_fb_wrapper__footer_builder_available_footer_components',
+		array(
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">'. esc_html__( 'Available Components', 'botiga' ) .'</span><div class="bhfb-available-components botiga-footer-builder-available-footer-components botiga-bhfb-area"></div>',
+			'section' 		=> 'botiga_section_fb_wrapper',
+            'priority' 		=> 40
+		)
+	)
+);
+
 // Move existing options.
 $priority = 25;
 foreach( $opts_to_move as $tabs ) {
     foreach( $tabs as $option_name ) {
+
+        if( $wp_customize->get_control( $option_name ) === NULL ) {
+            continue;
+        }
+        
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_fb_wrapper';
         $wp_customize->get_control( $option_name )->priority = $priority;
         

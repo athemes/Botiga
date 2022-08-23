@@ -80,7 +80,7 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_section_hb_component__menu_config',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Configure Menu', 'botiga-pro' ) . '</span><a class="footer-widget-area-link" href="javascript:wp.customize.section( \'menu_locations\' ).focus();">' . esc_html__( 'Configure Menu', 'botiga-pro' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Configure Menu', 'botiga-pro' ) . '</span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'menu_locations\' ).focus();">' . esc_html__( 'Configure Menu', 'botiga-pro' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_hb_component__menu',
             'priority'      => 20
 		)
@@ -91,6 +91,11 @@ $wp_customize->add_control(
 $priority = 30;
 foreach( $opts_to_move as $tabs ) {
     foreach( $tabs as $option_name ) {
+
+        if( $wp_customize->get_control( $option_name ) === NULL ) {
+            continue;
+        }
+        
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__menu';
         $wp_customize->get_control( $option_name )->priority = $priority;
         

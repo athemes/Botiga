@@ -33,6 +33,7 @@
             this.elementsSortable();
 
             this.builderCustomColumns();
+            this.builderColumnsLayout();
             this.footerCustomizerOptions();
 
             this.showHideBuilder();
@@ -46,6 +47,7 @@
         customizeNavigation: function() {
             const
                 sections = [
+                    'sub-accordion-section-botiga_section_hb_presets',
                     'sub-accordion-section-botiga_section_hb_above_header_row',
                     'sub-accordion-section-botiga_section_hb_main_header_row',
                     'sub-accordion-section-botiga_section_hb_below_header_row',
@@ -62,7 +64,7 @@
                     'sub-accordion-section-botiga_section_hb_component__html',
                     'sub-accordion-section-botiga_section_hb_component__html2',
                     'sub-accordion-section-botiga_section_hb_component__shortcode',
-                    'sub-accordion-section-botiga_section_hb_component__botiga_pro_hb_login_register',
+                    'sub-accordion-section-botiga_section_hb_component__login_register',
                     'sub-accordion-section-botiga_section_hb_component__woo_icons',
                     'sub-accordion-section-botiga_section_hb_component__pll_switcher',
                     'sub-accordion-section-botiga_section_hb_component__wpml_switcher',
@@ -236,7 +238,7 @@
             const 
                 _this   = this;
 
-            $( document ).on( 'click', '.botiga-bhfb-area', function(e){
+            $( document ).on( 'click', '.botiga-bhfb-area:not(.bhfb-available-components)', function(e){
                 const 
                     popup = _this.currentBuilder.find( '#botiga-bhfb-elements' ),
                     rect  = $(this)[0].getBoundingClientRect(),
@@ -348,6 +350,30 @@
 
         },
 
+        updateAvailableComponents: function() {
+            const _this = this;
+
+            if( _this.currentBuilderType === 'header' ) {
+
+                // Header Desktop Components.
+                $( '.botiga-header-builder-available-components' ).html( '' );
+                $( '.botiga-header-builder-available-components' ).html( $( '.botiga-bhfb-header .botiga-bhfb-elements-desktop' ).html() );
+
+                // Header Mobile Components.
+                $( '.botiga-header-builder-available-mobile-components' ).html( '' );
+                $( '.botiga-header-builder-available-mobile-components' ).html( $( '.botiga-bhfb-header .botiga-bhfb-elements-mobile' ).html() );
+            }
+
+            if( _this.currentBuilderType === 'footer' ) {
+
+                // Footer Components.
+                $( '.botiga-footer-builder-available-footer-components' ).html( '' );
+                $( '.botiga-footer-builder-available-footer-components' ).html( $( '.botiga-bhfb-footer .botiga-bhfb-elements-desktop' ).html() );
+
+            }
+            
+        },
+
         elementsButton: function() {
 
             const 
@@ -381,7 +407,7 @@
             const 
                 _this = this;
 
-            let 
+                let 
                 current_value = _this.jsonDecode( _this.currentRowInput.val() ),
                 value_wrapper = _this.currentDevice;
 
@@ -465,6 +491,7 @@
                     placeholder: "botiga-bhfb-element bhfb-ui-state-highlight",
                     connectWith: '.botiga-bhfb-area',
                     change: function(e, ui) {
+                        console.log('change!');
                         _this.currentRow      = ! $( ui.placeholder[0] ).closest( '.botiga-bhfb-row' ).length ? $( ui.placeholder[0] ).closest( '.botiga-bhfb-area-offcanvas' ) : $( ui.placeholder[0] ).closest( '.botiga-bhfb-row' );
                         _this.currentRowInput = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__' + ui.placeholder.closest( '.botiga-bhfb-area' ).data( 'bhfb-row' ) );
 
@@ -486,9 +513,11 @@
 
                     },
                     update: function(e, ui) {
+                        
                         // When we use "connectWith" param this condition is needed 
                         // to prevent the code being running twice because the 'update' event runs twice
                         if (this === ui.item.parent()[0]) {
+                            console.log('update!');
                             const 
                                 component_id = ui.item.find( '> .bhfb-button' ).data( 'bhfb-id' ),
                                 row          = ui.item.closest( '.botiga-bhfb-area' ).data( 'bhfb-row' ),
@@ -504,11 +533,15 @@
                                 return false;
                             }
 
-                            _this.currentRowInput  = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__' + prevRow );
+                            if( ! ui.sender.hasClass( 'bhfb-available-components' ) ) {
+                                _this.currentRowInput = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__' + prevRow );
+                            }
                             _this.currentColumnPos = prevColumn;
                             _this.elementsButtonRemove( component_id, true );
                             
-                            _this.currentRowInput  = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__' + row );
+                            if( ! ui.sender.hasClass( 'bhfb-available-components' ) ) {
+                                _this.currentRowInput  = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__' + row );
+                            }
                             _this.currentColumnPos = column;
                             _this.elementsButtonAdd( component_id, true );
                         }
@@ -664,6 +697,8 @@
                     _this.currentBuilder.css( 'height', 0 );
                 }
 
+                _this.updateAvailableComponents();
+
                 _this.elementsSortable();
 
                 $( window ).trigger( 'bhfb.grid.ready' );
@@ -702,6 +737,7 @@
 
                 // Header
                 'botiga_section_hb_wrapper', 
+                'botiga_section_hb_presets',
                 'botiga_section_hb_above_header_row', 
                 'botiga_section_hb_main_header_row', 
                 'botiga_section_hb_below_header_row', 
@@ -718,7 +754,7 @@
                 'botiga_section_hb_component__html',
                 'botiga_section_hb_component__html2',
                 'botiga_section_hb_component__shortcode',
-                'botiga_section_hb_component__botiga_pro_hb_login_register',
+                'botiga_section_hb_component__login_register',
                 'botiga_section_hb_component__woo_icons',
                 'botiga_section_hb_component__pll_switcher',
                 'botiga_section_hb_component__wpml_switcher',
@@ -797,44 +833,47 @@
 
         builderCustomColumns: function() {
             const 
-                _this           = this,
-                options        = [ 'botiga_footer_row__above_footer_row_columns', 'botiga_footer_row__main_footer_row_columns', 'botiga_footer_row__below_footer_row_columns' ];
-
+                _this          = this,
+                options        = [ 
+                    'botiga_header_row__above_header_row_columns', 
+                    'botiga_header_row__main_header_row_columns', 
+                    'botiga_header_row__below_header_row_columns',
+                    'botiga_footer_row__above_footer_row_columns', 
+                    'botiga_footer_row__main_footer_row_columns', 
+                    'botiga_footer_row__below_footer_row_columns' 
+                ];
 
             options.forEach( function( optionID ){
                 if( typeof wp.customize.control( optionID ) !== 'undefined' ) {
                     wp.customize( optionID, function( option ) {
                         option.bind( function( to ) {
                             let 
-                                rowSelector = '',
-                                $rowInput   = '';
-                                
-                            if( optionID.indexOf( 'botiga_footer_row__above_footer' ) !== -1 ) {
-                                rowSelector = 'botiga-bhfb-above-row';
-                                $rowInput   = $( '#_customize-input-botiga_footer_row__above_footer_row' );
-                            }
+                                rows                = [ 'above', 'main', 'below' ],
+                                rowSelector         = '',
+                                $rowInput           = '';
+                            
+                            for( const row of rows ) {
 
-                            if( optionID.indexOf( 'botiga_footer_row__main_footer' ) !== -1 ) {
-                                rowSelector = 'botiga-bhfb-main-row';
-                                $rowInput   = $( '#_customize-input-botiga_footer_row__main_footer_row' );
-                            }
+                                // Header.
+                                if( optionID.indexOf( 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType ) !== -1 ) {
+                                    rowSelector         = 'botiga-bhfb-'+ row +'-row';
+                                    $rowInput           = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row' );
+                                    _this.currentRow    = row;
+                                }
 
-                            if( optionID.indexOf( 'botiga_footer_row__below_footer' ) !== -1 ) {
-                                rowSelector = 'botiga-bhfb-below-row';
-                                $rowInput   = $( '#_customize-input-botiga_footer_row__below_footer_row' );
                             }
 
                             if( rowSelector === '' ) {
                                 return false;
                             }
 
-                            // Remove all columns class.
+                            // Remove all possible columns class.
                             for( let i=1; i<=6; i++ ) {
-                                $( '.botiga-bhfb-footer .botiga-bhfb-row.' + rowSelector ).removeClass( 'botiga-bhfb-row-' + i + '-columns' );
+                                $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).removeClass( 'botiga-bhfb-row-' + i + '-columns' );
                             }
 
                             // Add new columns class.
-                            $( '.botiga-bhfb-footer .botiga-bhfb-row.' + rowSelector ).addClass( 'botiga-bhfb-row-' + to + '-columns' );
+                            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).addClass( 'botiga-bhfb-row-' + to + '-columns' );
 
                             // Update row input value.
                             let 
@@ -856,6 +895,9 @@
                             // Update the value in the customizer field.
                             $rowInput.val( JSON.stringify( current_value ) );
 
+                            // Update the respective row columns layout customizer field.
+                            _this.updateColumnsLayoutOption( to );
+
                             // Trigger change in the customizer field (desktop).
                             $rowInput.trigger( 'change' );
                             
@@ -866,6 +908,113 @@
                     } );
                 }
             } );
+
+            // Main purpose of the below code is update 'Columns Layout' options on the first load.
+            const 
+                areas = [ 'header', 'footer' ],
+                rows  = [ 'above', 'main', 'below' ];
+
+            for( const area of areas ) {
+                const prefix = area === 'header' ? 'hb' : 'fb'; 
+                for( const row of rows ) {
+                    const sectionID = 'botiga_section_'+ prefix +'_'+ row +'_'+ area +'_row';
+
+                    if( typeof wp.customize.section( sectionID ) !== 'undefined' ) {
+                        wp.customize.section( sectionID ).expanded.bind( 
+                            function( is_active ){
+                                if( is_active ) {
+                                    setTimeout(function(){
+                                        _this.currentRow = row;
+            
+                                        _this.updateColumnsLayoutOption( wp.customize( 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns' ).get() );
+                                    }, 50);
+                                }
+                            }
+                        );
+                    }
+                }
+            }
+
+        },
+
+        updateColumnsLayoutOption: function( val ) {
+            const 
+                _this      = this,
+                setting_id = 'botiga_'+ _this.currentBuilderType +'_row__'+ _this.currentRow +'_'+ _this.currentBuilderType +'_row_columns_layout',
+                selector   = setting_id +'-'+ wp.customize( setting_id ).get();
+
+            // Hide the column layout options that doesn't match with 'columns' value.
+            $( 'label[for*="'+ setting_id +'"]' ).css( 'display', 'none' );
+            $( 'label[for*="'+ setting_id +'-'+ val +'col-"]' ).css( 'display', 'block' );
+
+            if( $( 'label[for="'+ selector +'"]' ).parent().hasClass( 'bhfb-option-updated' ) ) {
+                return false;
+            }
+
+            // Remove active class from current option.
+            $( 'label[for="'+ selector +'"]' ).removeClass( 'ui-state-active' );
+
+            // Set new value and change active class.
+            wp.customize( setting_id ).set( val + 'col-equal' );
+            $( 'label[for="'+ setting_id +'-'+ val +'col-equal"]' ).trigger( 'click' ).addClass( 'ui-state-active' );
+            
+            // Add class as a flag.
+            $( 'label[for="'+ selector +'"]' ).parent().addClass( 'bhfb-option-updated' );
+            
+        },
+
+        builderColumnsLayout: function() {
+            const 
+                _this = this,
+                options        = [ 
+                    'botiga_header_row__above_header_row_columns_layout', 
+                    'botiga_header_row__main_header_row_columns_layout', 
+                    'botiga_header_row__below_header_row_columns_layout',
+                    'botiga_footer_row__above_footer_row_columns_layout', 
+                    'botiga_footer_row__main_footer_row_columns_layout', 
+                    'botiga_footer_row__below_footer_row_columns_layout' 
+                ];
+
+            options.forEach( function( optionID ){
+                if( typeof wp.customize.control( optionID ) !== 'undefined' ) {
+                    wp.customize( optionID, function( option ) {
+                        option.bind( function( to ) {
+                            let current_row = 'above';
+
+                            if( optionID.indexOf( 'main' ) !== -1 ) {
+                                current_row = 'main';
+                            } else if( optionID.indexOf( 'below' ) !== -1 ) {
+                                current_row = 'below';
+                            }
+
+                            _this.currentRowInput = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ current_row +'_'+ _this.currentBuilderType +'_row' );
+
+                            const $builderRow = $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.botiga-bhfb-' + current_row + '-row' );
+
+                            $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-equal' );
+                            $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-bigleft' );
+                            $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-bigright' );
+
+                            if( to.indexOf( 'equal' ) !== -1 ) {
+                                $builderRow.addClass( 'botiga-bhfb-row-columns-layout-equal');
+                            }
+
+                            if( to.indexOf( 'bigleft' ) !== -1 ) {
+                                $builderRow.addClass( 'botiga-bhfb-row-columns-layout-bigleft');
+                            }
+
+                            if( to.indexOf( 'bigright' ) !== -1 ) {
+                                $builderRow.addClass( 'botiga-bhfb-row-columns-layout-bigright');
+                            }
+
+                            // Trigger change in the customizer field to run the selective refresh on the respective row.
+                            const inputValue = _this.currentRowInput.val();
+                            _this.currentRowInput.val( '' ).trigger( 'change' );
+                            _this.currentRowInput.val( inputValue ).trigger( 'change' );
+                        });
+                    });
+                }
+            });
         },
 
         footerCustomizerOptions: function() {

@@ -77,6 +77,11 @@ $wp_customize->add_control(
 $priority = 30;
 foreach( $opts_to_move as $tabs ) {
     foreach( $tabs as $option_name ) {
+
+        if( $wp_customize->get_control( $option_name ) === NULL ) {
+            continue;
+        }
+        
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__mobile_hamburger';
         $wp_customize->get_control( $option_name )->priority = $priority;
         

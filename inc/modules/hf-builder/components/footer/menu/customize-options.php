@@ -96,6 +96,11 @@ $wp_customize->add_control(
 $priority = 50;
 foreach( $opts_to_move as $tabs ) {
     foreach( $tabs as $option_name ) {
+
+		if( $wp_customize->get_control( $option_name ) === NULL ) {
+            continue;
+        }
+		
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_fb_component__footer_menu';
         $wp_customize->get_control( $option_name )->priority = $priority;
         $wp_customize->get_control( $option_name )->active_callback  = function(){};

@@ -71,15 +71,7 @@ class Botiga_Header_Footer_Builder {
             array(
                 'id'    => 'html2',
                 'label' => esc_html__( 'HTML 2', 'botiga-pro' )
-            ),
-            array(
-                'id'    => 'shortcode',
-                'label' => esc_html__( 'Shortcode', 'botiga-pro' )
-            ),
-            // array(
-            //     'id'    => 'login_register',
-            //     'label' => esc_html__( 'Login/Register', 'botiga-pro' )
-            // )
+            )
         );
 
         // Mobile components.
@@ -127,15 +119,7 @@ class Botiga_Header_Footer_Builder {
             array(
                 'id'    => 'html2',
                 'label' => esc_html__( 'HTML 2', 'botiga-pro' )
-            ),
-            array(
-                'id'    => 'shortcode',
-                'label' => esc_html__( 'Shortcode', 'botiga-pro' )
-            ),
-            // array(
-            //     'id'    => 'login_register',
-            //     'label' => esc_html__( 'Login/Register', 'botiga-pro' )
-            // )
+            )
         );
 
         // WooCommerce components.
@@ -198,10 +182,6 @@ class Botiga_Header_Footer_Builder {
             array(
                 'id'    => 'button2',
                 'label' => esc_html__( 'Button 2', 'botiga-pro' )
-            ),
-            array(
-                'id'    => 'shortcode',
-                'label' => esc_html__( 'Shortcode', 'botiga-pro' )
             ),
             array(
                 'id'    => 'html',
@@ -415,13 +395,8 @@ class Botiga_Header_Footer_Builder {
         require 'components/header/wc-icons/customize-options.php';
         require 'components/header/html/customize-options.php';
         require 'components/header/html-2/customize-options.php';
-        require 'components/header/shortcode/customize-options.php';
         require 'components/header/mobile-hamburger/customize-options.php';
         require 'components/header/mobile-offcanvas-menu/customize-options.php';
-
-        if( class_exists( 'Woocommerce' ) ) {
-            require 'components/header/login-register/customize-options.php';
-        }
 
         if ( function_exists( 'SitePress' ) ) {
             require 'components/header/wpml/customize-options.php';
@@ -487,7 +462,6 @@ class Botiga_Header_Footer_Builder {
         require 'components/footer/button-2/customize-options.php';
         require 'components/footer/html/customize-options.php';
         require 'components/footer/html-2/customize-options.php';
-        require 'components/footer/shortcode/customize-options.php';
         require 'components/footer/widget-1/customize-options.php';
         require 'components/footer/widget-2/customize-options.php';
         require 'components/footer/widget-3/customize-options.php';
@@ -758,8 +732,8 @@ class Botiga_Header_Footer_Builder {
                         $classes[] = 'bhfb-' . esc_attr( $row['id'] );
 
                         // Hide row if there's no component inside
-                        $hide_row = (int) $this->get_row_number_of_columns( $this->get_row_data( $row['id'], 'header' )->$device );
-                        if( ! $hide_row ) {
+                        $hide_row = (int) $this->is_row_empty( $this->get_row_data( $row['id'], 'header' )->$device );
+                        if( $hide_row ) {
                             $classes[] = 'bt-d-none';
                         }
 
@@ -829,8 +803,8 @@ class Botiga_Header_Footer_Builder {
                         $classes[] = 'bhfb-' . esc_attr( $row['id'] );
 
                         // Hide row if there's no component inside
-                        $hide_row = (int) $this->get_row_number_of_columns( $this->get_row_data( $row['id'], 'footer' )->$device );
-                        if( ! $hide_row ) {
+                        $hide_row = (int) $this->is_row_empty( $this->get_row_data( $row['id'], 'footer' )->$device );
+                        if( $hide_row ) {
                             $classes[] = 'bt-d-none';
                         }
                         
@@ -862,12 +836,44 @@ class Botiga_Header_Footer_Builder {
         $cols = 0;
 
         foreach( $columns as $columnComponents ) {
-            if( count( $columnComponents ) > 0 ) {
+            // if( count( $columnComponents ) > 0 ) {
                 $cols++;
-            }
+            // }
         }
     
         return $cols; 
+    }
+
+    /**
+     * Check if row is empty (without any component)
+     */
+    public static function is_row_empty( $columns ) {
+        $empty = true;
+
+        foreach( $columns as $columnComponents ) {
+            if( count( $columnComponents ) > 0 ) {
+                $empty = false;
+            }
+        }
+    
+        return $empty; 
+    }
+
+    /**
+     * Get columns layout class
+     */
+    public static function get_columns_layout_class( $val ) {
+        if( strpos( $val, 'equal' ) !== FALSE ) {
+            return 'equal';
+        }
+
+        if( strpos( $val, 'bigleft' ) !== FALSE ) {
+            return 'bigleft';
+        }
+
+        if( strpos( $val, 'bigright' ) !== FALSE ) {
+            return 'bigright';
+        }
     }
 
     /**
@@ -969,13 +975,6 @@ class Botiga_Header_Footer_Builder {
     }
 
     /**
-     * Shortcode
-    */		
-    public function shortcode( $params ) {
-        require 'components/'. $params[0] .'/shortcode/shortcode.php';
-    }
-
-    /**
      * Widget(s)
      */		
     public function widget1( $params ) {
@@ -1046,7 +1045,6 @@ class Botiga_Header_Footer_Builder {
         require 'components/header/button/css.php';
         require 'components/header/button-2/css.php';
         require 'components/header/contact-info/css.php';
-        require 'components/header/login-register/css.php';
         require 'components/header/mobile-hamburger/css.php';
         require 'components/header/mobile-offcanvas-menu/css.php';
 
@@ -1065,7 +1063,7 @@ class Botiga_Header_Footer_Builder {
         require 'components/footer/widget-3/css.php';
         require 'components/footer/widget-4/css.php';
 
-        return $css;
+        return apply_filters( 'botiga_hf_builder_custom_css', $css );
     }
 }
 

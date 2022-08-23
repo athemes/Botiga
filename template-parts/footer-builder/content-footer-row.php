@@ -32,7 +32,15 @@ $inner_layout       = get_theme_mod( 'botiga_footer_row__' . $row . '_inner_layo
                 <div class="bhfb-column bhfb-column-<?php echo absint( $col_class + 1 ); ?>">
                     
                     <?php foreach( $elements as $component_callback ) {
-                        call_user_func( array( $bhfb, $component_callback ), array( 'footer' ) );
+                        if( method_exists( $bhfb, $component_callback  ) ) {
+                            call_user_func( array( $bhfb, $component_callback ), array( 'footer' ) );
+                        } else if( class_exists( 'Botiga_Pro_HF_Builder_Components' ) ) {
+                            $bp_bphfbc = Botiga_Pro_HF_Builder_Components::get_instance();
+
+                            if( method_exists( $bp_bphfbc, $component_callback  ) ) {
+                                call_user_func( array( $bp_bphfbc, $component_callback ), array( 'footer' ) );
+                            }
+                        }
                     } ?>
 
                 </div>

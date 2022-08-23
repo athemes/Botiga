@@ -37,7 +37,7 @@
 
 .bhfb-row {
     display: grid;
-    gap: 20px;
+    gap: 0;
     align-items: center;
     overflow-wrap: anywhere;
 
@@ -53,6 +53,18 @@
         grid-template-columns: 1fr auto 1fr;
     }
 
+    &.bhfb-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &.bhfb-cols-5 {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    &.bhfb-cols-6 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
     &.bhfb-cols-valign-top {
         align-items: flex-start;
     }
@@ -63,6 +75,35 @@
 
     &.bhfb-cols-valign-bottom {
         align-items: flex-end;
+    }
+
+    // Columns Layout.
+    &.bhfb-cols-layout-bigleft {
+        &.bhfb-cols-2 {
+            grid-template-columns: 75% 25%;
+        }
+
+        &.bhfb-cols-3 {
+            grid-template-columns: 55% 25% 25%;
+        }
+
+        &.bhfb-cols-4 {
+            grid-template-columns: 40% 20% 20% 20%;
+        }
+    }
+
+    &.bhfb-cols-layout-bigright {
+        &.bhfb-cols-2 {
+            grid-template-columns: 25% 75%;
+        }
+
+        &.bhfb-cols-3 {
+            grid-template-columns: 25% 25% 50%;
+        }
+
+        &.bhfb-cols-4 {
+            grid-template-columns: 20% 20% 20% 40%;
+        }
     }
 }
 
@@ -161,17 +202,17 @@
     }
 }
 
-.bhfb.bhfb-header {
-    .bhfb-column-2 {
-        justify-content: center;
-        text-align: center;
-    }
+// .bhfb.bhfb-header {
+//     .bhfb-column-2 {
+//         justify-content: center;
+//         text-align: center;
+//     }
 
-    .bhfb-column-3 {
-        justify-content: flex-end;
-        text-align: right;
-    }
-}
+//     .bhfb-column-3 {
+//         justify-content: flex-end;
+//         text-align: right;
+//     }
+// }
 
 .bhfb.bhfb-header,
 .bhfb-mobile_offcanvas {

@@ -121,7 +121,7 @@ foreach( $this->footer_rows as $row ) {
     // Columns.
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_columns',
         array(
-            'default' 			=> '1',
+            'default' 			=> '3',
             'sanitize_callback' => 'botiga_sanitize_text',
             'transport'         => 'postMessage'
         )

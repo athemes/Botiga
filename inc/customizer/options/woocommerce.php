@@ -265,6 +265,7 @@ $wp_customize->add_control(
 		'shop_product_sorting',
 		array(
 			'label'         	=> esc_html__( 'Product sorting', 'botiga' ),
+			'description'       => esc_html__( 'Show options for sorting products.', 'botiga' ),
 			'section'       	=> 'woocommerce_product_catalog',
 			'priority'	 		=> 70
 		)

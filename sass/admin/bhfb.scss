@@ -67,6 +67,15 @@ body {
     display: none !important;
 }
 
+#customize-control-botiga_section_hb_wrapper__header_builder_goto_presets {
+    margin-left: -25px;
+    width: calc( 100% + 50px );
+    .to-widget-area-link {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
 .bhfb-ui-state-highlight {
     display: inline-flex;
     height: 1.5em;
@@ -112,17 +121,18 @@ body {
     // Devices
     .botiga-bhfb-devices {
         position: absolute;
-        bottom: 100%;
+        bottom: 0;
         left: 0;
         display: flex;
         max-width: 200px;
         background-color: #f7f7f7;
+        z-index: 2;
         .botiga-bhfb-device-link {
             display: flex;
             align-items: center;
             background-color: #dddddd;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             color: #777;
             span {
                 margin-right: 10px;
@@ -137,15 +147,7 @@ body {
 
     &.botiga-bhfb-footer {
         .botiga-bhfb-devices {
-            transition: ease opacity 300ms;
-            opacity: 0;
-            visibility: hidden;
-        }
-        &:hover {
-            .botiga-bhfb-devices {
-                opacity: 1;
-                visibility: visible;
-            }
+            display: none;
         }
     }
 
@@ -530,6 +532,83 @@ body {
         }
         .botiga-bhfb-rows-wrapper {
             width: 80%;
+        }
+    }
+}
+
+/*
+ * Columns Layout
+ */
+.botiga-bhfb-row-columns-layout-bigleft {
+    &.botiga-bhfb-row-2-columns {
+        > .botiga-bhfb-area:nth-child(2) {
+            flex: 0 0 75%;
+        }
+    }
+}
+
+.botiga-bhfb-row-columns-layout-bigright {
+    &.botiga-bhfb-row-2-columns {
+        > .botiga-bhfb-area:nth-child(2) {
+            flex: 0 0 25%;
+        }
+    }
+}
+
+/*
+ * Available Components Areas
+ */
+.bhfb-available-components {
+    .botiga-bhfb-element {
+        &.ui-sortable-helper {
+            width: 0 !important;
+            .bhfb-button {
+                position: fixed;
+            }
+        }
+    }
+}
+
+.bhfb-available-components {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    border: 1px dashed #CCC;
+    padding: 10px;
+    margin-top: 10px;
+    .bhfb-button {
+        display: flex;
+        background: #FFF;
+        color: #212121;
+        text-decoration: none;
+        font-style: normal;
+        padding: 10px;
+        border: 1px solid #CCC;
+
+        &:hover {
+            border-color: #212121;    
+        }
+    }
+}
+
+.preview-desktop {
+    #customize-control-botiga_section_hb_wrapper__header_builder_available_mobile_components {
+        display: none;
+    }
+}
+
+.preview-tablet,
+.preview-mobile {
+    #customize-control-botiga_section_hb_wrapper__header_builder_available_components {
+        display: none;
+    }
+}
+
+.preview-tablet,
+.preview-mobile {
+    .bhfb-available-components {
+        &.botiga-header-builder-available-mobile-components {
+            display: grid;
         }
     }
 }

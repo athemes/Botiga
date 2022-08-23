@@ -195,9 +195,15 @@ $wp_customize->selective_refresh->add_partial(
 $priority = 35;
 foreach( $opts_to_move as $tabs ) {
     foreach( $tabs as $option_name ) {
+        
+        if( $wp_customize->get_control( $option_name ) === NULL ) {
+            continue;
+        }
+
         if( $option_name === 'social_profiles_topbar' ) {
             $wp_customize->get_setting( $option_name )->transport = 'postMessage';
         }
+
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__social';
         $wp_customize->get_control( $option_name )->priority = $priority;
         $wp_customize->get_control( $option_name )->active_callback  = function(){};
