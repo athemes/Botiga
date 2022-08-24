@@ -90,6 +90,15 @@
                     'sub-accordion-section-botiga_section_fb_component__widget4'
                 ];
 
+            // Append columns to the sections array.
+            const rows = [ 'above', 'main', 'below' ];
+            for( const row of rows ) {
+                for( let i=1; i<=6; i++ ) {
+                    sections.push( 'sub-accordion-section-botiga_header_row__'+ row +'_header_row_column' + i );
+                    sections.push( 'sub-accordion-section-botiga_footer_row__'+ row +'_footer_row_column' + i );
+                }
+            }
+
             let
                 current_section_id = '';
 
@@ -99,7 +108,7 @@
 
             $( document ).on( 'click keydown', '.customize-section-back', function(e){
                 if( sections.includes( current_section_id ) ) {
-                    if( current_section_id.indexOf( '_hb_' ) !== -1 ) {
+                    if( current_section_id.indexOf( '_hb_' ) !== -1 || current_section_id.indexOf( '_header_' ) !== -1 ) {
                         wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
                     } else {
                         wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
@@ -601,9 +610,10 @@
 
                     // Desktop. 
                     if( _this.currentDevice === 'desktop' ) {
+                        let column_id = 1;
                         for( const columns of value.desktop ) {
 
-                            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-' + current_row + '-row' ).append( '<div class="botiga-bhfb-area" data-bhfb-row="'+ current_row +'_'+ _this.currentBuilderType +'_row">' );
+                            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-' + current_row + '-row' ).append( '<div class="botiga-bhfb-area" data-bhfb-row="'+ current_row +'_'+ _this.currentBuilderType +'_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_header_row__'+ current_row +'_'+ _this.currentBuilderType +'_row_column'+ column_id +'\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>' );
     
                             const column = $( '.botiga-bhfb-' + current_row + '-row' ).find( '.botiga-bhfb-area:last-child' );
     
@@ -624,7 +634,8 @@
                                 }
         
                             }
-    
+                            
+                            column_id++;
                         }
                     }
 
@@ -781,6 +792,15 @@
                 'botiga_section_fb_component__widget4'
             ];
 
+            // Append columns to the sections array.
+            const rows = [ 'above', 'main', 'below' ];
+            for( const row of rows ) {
+                for( let i=1; i<=6; i++ ) {
+                    sections.push( 'botiga_header_row__'+ row +'_header_row_column' + i );
+                    sections.push( 'botiga_footer_row__'+ row +'_footer_row_column' + i );
+                }
+            }
+
             sections.forEach( function( section ){
                 if( typeof wp.customize.section( section ) !== 'undefined' ) {
                     wp.customize.section( section ).expanded.bind( 
@@ -807,9 +827,9 @@
         },
 
         getCurrentBuilderByComponent: function( component ) {
-            if( component.indexOf( '_hb_' ) !== -1 ) {
+            if( component.indexOf( '_hb_' ) !== -1 || component.indexOf( '_header_' ) !== -1 ) {
                 return $( '.botiga-bhfb-header' );
-            } else if( component.indexOf( '_fb_' ) !== -1 ) {
+            } else if( component.indexOf( '_fb_' ) !== -1 || component.indexOf( '_footer_' ) !== -1 ) {
                 return $( '.botiga-bhfb-footer' );
             }
 
@@ -853,27 +873,24 @@
                                 $rowInput           = '';
                             
                             for( const row of rows ) {
+                                const
+                                    rowOptionID      = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType,
+                                    rowInputSelector = '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row';
 
-                                // Header.
-                                if( optionID.indexOf( 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType ) !== -1 ) {
+                                if( optionID.indexOf( rowOptionID ) !== -1 ) {
                                     rowSelector         = 'botiga-bhfb-'+ row +'-row';
-                                    $rowInput           = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row' );
+                                    $rowInput           = $( rowInputSelector );
                                     _this.currentRow    = row;
                                 }
 
                             }
 
-                            if( rowSelector === '' ) {
+                            if( rowSelector === '' || $rowInput === '' ) {
                                 return false;
                             }
 
-                            // Remove all possible columns class.
-                            for( let i=1; i<=6; i++ ) {
-                                $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).removeClass( 'botiga-bhfb-row-' + i + '-columns' );
-                            }
-
-                            // Add new columns class.
-                            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).addClass( 'botiga-bhfb-row-' + to + '-columns' );
+                            // Update builder row columns class.
+                            _this.addBuilderRowColumnsClass( rowSelector, to );
 
                             // Update row input value.
                             let 
@@ -924,9 +941,17 @@
                             function( is_active ){
                                 if( is_active ) {
                                     setTimeout(function(){
+                                        const 
+                                            rowSelector           = 'botiga-bhfb-'+ row +'-row',
+                                            columnsOptionID       = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns';
+                                        
                                         _this.currentRow = row;
-            
-                                        _this.updateColumnsLayoutOption( wp.customize( 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns' ).get() );
+
+                                        // Update builder row columns class.
+                                        _this.addBuilderRowColumnsClass( rowSelector, wp.customize( columnsOptionID ).get() );
+                                        
+                                        // Update 'Columns Layout' options.
+                                        _this.updateColumnsLayoutOption( wp.customize( columnsOptionID ).get() );
                                     }, 50);
                                 }
                             }
@@ -935,6 +960,18 @@
                 }
             }
 
+        },
+
+        addBuilderRowColumnsClass: function( rowSelector, to ) {
+            const _this = this;
+
+            // Remove all possible columns class.
+            for( let i=1; i<=6; i++ ) {
+                $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).removeClass( 'botiga-bhfb-row-' + i + '-columns' );
+            }
+
+            // Add new columns class.
+            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).addClass( 'botiga-bhfb-row-' + to + '-columns' );
         },
 
         updateColumnsLayoutOption: function( val ) {
@@ -965,8 +1002,8 @@
 
         builderColumnsLayout: function() {
             const 
-                _this = this,
-                options        = [ 
+                _this   = this,
+                options = [ 
                     'botiga_header_row__above_header_row_columns_layout', 
                     'botiga_header_row__main_header_row_columns_layout', 
                     'botiga_header_row__below_header_row_columns_layout',

@@ -72,7 +72,7 @@
      */
     function bhfb_hide_empty_rows() {
         $( '.bhfb-row' ).each(function() {
-            if( $(this).hasClass( 'bhfb-cols-0' ) ) {
+            if( $(this).hasClass( 'bhfb-is-row-empty' ) ) {
                 $( this ).parent().parent().addClass( 'bt-d-none' );
             } else {
                 $( this ).parent().parent().removeClass( 'bt-d-none' );
@@ -141,24 +141,69 @@
                 'prop'      : 'border-bottom-color'
             },
 
-            // Contact Info Component
+            // Contact Info Component.
             'bhfb_contact_info_display_inline' : {
                 'selector'    : '.bhfb-component-contact_info .header-contact',
                 'toggleClass' : 'header-contact-inline'
             },
 
-            // Copyright Component
+            // Copyright Component.
             'botiga_section_fb_component__copyright_text_alignment' : {
                 'selector'  : '.bhfb-component-copyright .botiga-credits',
                 'prop'      : 'text-align',
             }
         };
 
+    // Columns.
+    const
+        builders = [ 'header', 'footer' ],
+        rows     = [ 'above', 'main', 'below' ],
+        opts     = [ 'vertical_alignment', 'inner_layout', 'horizontal_alignment' ];
+
+    for( let i=1; i<=6; i++ ) {
+        for( const [index, opt] of opts.entries() ) {
+            for( const builder of builders ) {
+                for( const row of rows ) {
+                    
+                    const
+                        optionID       = 'botiga_'+ builder +'_row__'+ row +'_'+ builder +'_row_column'+ i +'_' + opt, 
+                        columnSelector = '.bhfb-'+ builder +' .bhfb-'+ row +'_'+ builder +'_row .bhfb-column-' + i;
+    
+                    css[ optionID ] = {
+                        'selector': columnSelector,
+                        'addClass'    : getClassToAdd( optionID ),
+                        'removeClass' : getClassToRemove( optionID )
+                    };
+            
+                }
+            }
+        }
+    }
+
     $.each( css, function( option, props ) {
         wp.customize( option, function( value ) {
             value.bind( function( to ) {
                 if( typeof props.toggleClass !== 'undefined' ) {
                     $( props.selector ).toggleClass( props.toggleClass );
+
+                    return false;
+                }
+
+                if( typeof props.addClass !== 'undefined' ) {
+
+                    // Remove Class.
+                    if( typeof props.removeClass !== 'undefined' ) {
+                        if( typeof props.removeClass === 'string' ) {
+                            $( props.selector ).removeClass( props.removeClass );
+                        } else {
+                            $.each( props.removeClass, function( index, value ) {
+                                $( props.selector ).removeClass( value );
+                            });
+                        }
+                    }
+
+                    // Add class.
+                    $( props.selector ).addClass( props.addClass + to );
 
                     return false;
                 }
@@ -246,5 +291,70 @@
             } );
         });
     });
+
+    /**
+     * Get column number from the option name.
+     */
+     function getColumnNumber( optionID ) {
+        if( optionID.indexOf( 'column1' ) !== -1 ) {
+            return 1;
+        }
+
+        if( optionID.indexOf( 'column2' ) !== -1 ) {
+            return 2;
+        }
+
+        if( optionID.indexOf( 'column3' ) !== -1 ) {
+            return 3;
+        }
+
+        if( optionID.indexOf( 'column4' ) !== -1 ) {
+            return 4;
+        }
+
+        if( optionID.indexOf( 'column5' ) !== -1 ) {
+            return 5;
+        }
+
+        if( optionID.indexOf( 'column6' ) !== -1 ) {
+            return 6;
+        }
+    }
+
+    /**
+     * Get class to add
+     */
+    function getClassToAdd( optionID ) {
+        if( optionID.indexOf( 'vertical_alignment' ) !== -1 ) {
+            return 'bhfb-vertical-align-';
+        }
+
+        if( optionID.indexOf( 'inner_layout' ) !== -1 ) {
+            return 'bhfb-inner-layout-';
+        }
+
+        if( optionID.indexOf( 'horizontal_alignment' ) !== -1 ) {
+            return 'bhfb-horizontal-align-';
+        }
+    }
+
+    /**
+     * Get class to remove
+     */
+     function getClassToRemove( optionID ) {
+        if( optionID.indexOf( 'vertical_alignment' ) !== -1 ) {
+            return [ 'bhfb-vertical-align-top', 'bhfb-vertical-align-middle', 'bhfb-vertical-align-bottom' ];
+        }
+
+        if( optionID.indexOf( 'inner_layout' ) !== -1 ) {
+            return [ 'bhfb-inner-layout-inline', 'bhfb-inner-layout-stack' ];
+        }
+
+        if( optionID.indexOf( 'horizontal_alignment' ) !== -1 ) {
+            return [ 'bhfb-horizontal-align-start', 'bhfb-horizontal-align-center', 'bhfb-horizontal-align-end' ];
+        }
+    }
+
+    
 
 })(jQuery);

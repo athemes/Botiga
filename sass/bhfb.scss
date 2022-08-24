@@ -31,15 +31,14 @@
 .bhfb-main_header_row,
 .bhfb-below_header_row {
     display: flex;
-    align-items: center;
     transition: ease background-color 300ms, ease border-bottom-color 300ms, ease height 300ms;
 }
 
 .bhfb-row {
     display: grid;
     gap: 0;
-    align-items: center;
     overflow-wrap: anywhere;
+    height: 100%;
 
     &.bhfb-cols-1 {
         grid-template-columns: auto;
@@ -162,7 +161,6 @@
         }
 
         
-
         // Inner Elements Layout.
         &.bhfb-cols-inner-layout-stack {
             .bhfb-column {
@@ -202,17 +200,60 @@
     }
 }
 
-// .bhfb.bhfb-header {
-//     .bhfb-column-2 {
-//         justify-content: center;
-//         text-align: center;
-//     }
+// Vertical Align.
+.bhfb-vertical-align-top {
+    align-items: flex-start;
+}
+.bhfb-vertical-align-middle {
+    align-items: center;
+}
+.bhfb-vertical-align-bottom {
+    align-items: flex-end;
+}
 
-//     .bhfb-column-3 {
-//         justify-content: flex-end;
-//         text-align: right;
-//     }
-// }
+// Inner Elements Layout.
+.bhfb-inner-layout-inline {
+    flex-direction: row;
+}
+
+.bhfb-inner-layout-stack {
+    flex-direction: column;
+    .bhfb-builder-item {
+        & + .bhfb-builder-item {
+            margin-top: 15px;
+        }
+    }
+}
+
+// Horizontal Align.
+.bhfb-horizontal-align-start {
+    justify-content: flex-start;
+}
+
+.bhfb-horizontal-align-center {
+    justify-content: center;
+}
+
+.bhfb-horizontal-align-end {
+    justify-content: flex-end;
+}
+
+.bhfb-row-iel-stack {
+    .bhfb-horizontal-align-start {
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    
+    .bhfb-horizontal-align-center {
+        align-items: center;
+        justify-content: normal;
+    }
+    
+    .bhfb-horizontal-align-end {
+        align-items: flex-end;
+        justify-content: normal;
+    }
+}
 
 .bhfb.bhfb-header,
 .bhfb-mobile_offcanvas {
@@ -228,13 +269,13 @@
     .bhfb-builder-item {
         display: flex;
         align-items: center;
-        & + .bhfb-builder-item {
-            margin-left: 20px;
-        }
-        &.bhfb-component-search + .bhfb-component-woo_icons,
-        &.bhfb-component-woo_icons + .bhfb-component-search {
-            margin-left: 25px;
-        }
+        // & + .bhfb-builder-item {
+        //     margin-left: 20px;
+        // }
+        // &.bhfb-component-search + .bhfb-component-woo_icons,
+        // &.bhfb-component-woo_icons + .bhfb-component-search {
+        //     margin-left: 25px;
+        // }
 
         // Icons
         &.bhfb-component-search,

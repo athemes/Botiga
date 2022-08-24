@@ -7,7 +7,7 @@
  */
 
 /**
- * All Controls 
+ * Rows
  */
 
 foreach( $this->header_rows as $row ) {
@@ -66,8 +66,9 @@ foreach( $this->header_rows as $row ) {
                     '#customize-control-botiga_header_row__' . $row['id'] . '_columns',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_columns_layout',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_vertical_alignment',
-                    '#customize-control-botiga_header_row__' . $row['id'] . '_inner_layout' ) 
-                ),
+                    '#customize-control-botiga_header_row__' . $row['id'] . '_inner_layout',
+                    '#customize-control-botiga_header_row__' . $row['id'] . '_inner_alignment' 
+                ) ),
                 'controls_design'		=> json_encode( array( 
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_color',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_border_bottom',
@@ -109,7 +110,7 @@ foreach( $this->header_rows as $row ) {
     
     $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'botiga_header_row__' . $row['id'] . '_height',
         array(
-            'label' 		=> esc_html__( 'Height', 'botiga-pro' ),
+            'label' 		=> esc_html__( 'Height', 'botiga' ),
             'section' 		=> $row['section'],
             'is_responsive'	=> 1,
             'settings' 		=> array (
@@ -135,7 +136,7 @@ foreach( $this->header_rows as $row ) {
     );
     $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_header_row__' . $row['id'] . '_columns',
         array(
-            'label'   => esc_html__( 'Columns', 'botiga-pro' ),
+            'label'   => esc_html__( 'Columns', 'botiga' ),
             'section' => $row['section'],
             'choices' => array(
                 '1' => '1',
@@ -209,58 +210,17 @@ foreach( $this->header_rows as $row ) {
                     ),
                     '5col-equal' => array(
                         'label' => esc_html__( 'Equal Width', 'botiga' ),
-                        'url'   => '%s/assets/img/fl10.svg'
+                        'url'   => '%s/assets/img/fl11.svg'
                     ),
                     '6col-equal' => array(
                         'label' => esc_html__( 'Equal Width', 'botiga' ),
-                        'url'   => '%s/assets/img/fl10.svg'
+                        'url'   => '%s/assets/img/fl12.svg'
                     ),
                 ),
                 'priority' => 35
             )
         )
     );
-
-    // Vertical Alignment.
-    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_vertical_alignment',
-        array(
-            'default' 			=> 'top',
-            'sanitize_callback' => 'botiga_sanitize_text',
-            'transport'         => 'postMessage'
-        )
-    );
-    $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_header_row__' . $row['id'] . '_vertical_alignment',
-        array(
-            'label'   => esc_html__( 'Vertical Alignment', 'botiga-pro' ),
-            'section' => $row['section'],
-            'choices' => array(
-                'top'    => esc_html__( 'Top', 'botiga-pro' ),
-                'middle' => esc_html__( 'Middle', 'botiga-pro' ),
-                'bottom' => esc_html__( 'Bottom', 'botiga-pro' )
-            ),
-            'priority'              => 35
-        )
-    ) );
-
-    // Inner Elements Layout.
-    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_inner_layout',
-        array(
-            'default' 			=> 'stack',
-            'sanitize_callback' => 'botiga_sanitize_text',
-            'transport'         => 'postMessage'
-        )
-    );
-    $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_header_row__' . $row['id'] . '_inner_layout',
-        array(
-            'label'   => esc_html__( 'Inner Elements Layout', 'botiga-pro' ),
-            'section' => $row['section'],
-            'choices' => array(
-                'stack'  => esc_html__( 'Stack', 'botiga-pro' ),
-                'inline' => esc_html__( 'Inline', 'botiga-pro' )
-            ),
-            'priority'              => 35
-        )
-    ) );
 
     /**
      * Styling
@@ -280,7 +240,7 @@ foreach( $this->header_rows as $row ) {
             $wp_customize,
             'botiga_header_row__' . $row['id'] . '_background_color',
             array(
-                'label'         	=> esc_html__( 'Background Color', 'botiga-pro' ),
+                'label'         	=> esc_html__( 'Background Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 32
             )
@@ -295,7 +255,7 @@ foreach( $this->header_rows as $row ) {
     ) );						
     $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'botiga_header_row__' . $row['id'] . '_border_bottom',
         array(
-            'label' 		=> esc_html__( 'Border Bottom Size', 'botiga-pro' ),
+            'label' 		=> esc_html__( 'Border Bottom Size', 'botiga' ),
             'section' 		=> $row['section'],
             'is_responsive'	=> 0,
             'settings' 		=> array (
@@ -323,7 +283,7 @@ foreach( $this->header_rows as $row ) {
             $wp_customize,
             'botiga_header_row__' . $row['id'] . '_border_bottom_color',
             array(
-                'label'         	=> esc_html__( 'Border Bottom Color', 'botiga-pro' ),
+                'label'         	=> esc_html__( 'Border Bottom Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 36
             )
@@ -358,8 +318,8 @@ foreach( $this->header_rows as $row ) {
             $wp_customize, 
             'botiga_header_row__' . $row['id'] . '_sticky_title',
             array(
-                'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga-pro' ),
-                'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga-pro' ),
+                'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
+                'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
                 'section' 		  => $row['section'],
                 'active_callback' => 'botiga_sticky_header_enabled',
                 'priority'	 	  => 38
@@ -381,7 +341,7 @@ foreach( $this->header_rows as $row ) {
             $wp_customize,
             'botiga_header_row__' . $row['id'] . '_sticky_background_color',
             array(
-                'label'         	=> esc_html__( 'Background Color', 'botiga-pro' ),
+                'label'         	=> esc_html__( 'Background Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 39
             )
@@ -402,7 +362,7 @@ foreach( $this->header_rows as $row ) {
             $wp_customize,
             'botiga_header_row__' . $row['id'] . '_sticky_border_bottom_color',
             array(
-                'label'         	=> esc_html__( 'Border Bottom Color', 'botiga-pro' ),
+                'label'         	=> esc_html__( 'Border Bottom Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 40
             )
@@ -430,7 +390,7 @@ foreach( $this->header_rows as $row ) {
         'botiga_header_row__mobile_' . $row['id'],
         array(
             'type'     => 'text',
-            'label'    => sprintf( esc_html__( 'Mobile - %s', 'botiga-pro' ), $row['label'] ),
+            'label'    => sprintf( esc_html__( 'Mobile - %s', 'botiga' ), $row['label'] ),
             'section'  => $row['section'],
             'settings' => 'botiga_header_row__mobile_' . $row['id'],
             'priority' => 10

@@ -11,6 +11,8 @@ class Botiga_Radio_Buttons extends WP_Customize_Control {
 
 	public $cols;
 
+	public $desc_position = 'before-buttons';
+
 	public function render_content() {
 
 		$allowed_tags = array(
@@ -43,7 +45,7 @@ class Botiga_Radio_Buttons extends WP_Customize_Control {
 				<?php if( !empty( $this->label ) ) { ?>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php } ?>
-				<?php if( !empty( $this->description ) ) { ?>
+				<?php if( !empty( $this->description ) && $this->desc_position === 'before-buttons' ) { ?>
 					<span class="customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 				<?php } ?>
 
@@ -55,6 +57,10 @@ class Botiga_Radio_Buttons extends WP_Customize_Control {
 						</label>
 					<?php	} ?>
 				</div>
+
+				<?php if( !empty( $this->description ) && $this->desc_position === 'after-buttons' ) { ?>
+					<span class="customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+				<?php } ?>
 			</div>
 		<?php
 	}

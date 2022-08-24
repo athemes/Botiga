@@ -409,6 +409,7 @@ class Botiga_Header_Footer_Builder {
         // Structure Components.
         require 'components/header/header-builder/customize-options.php';
         require 'components/header/row/customize-options.php';
+        require 'components/header/columns/customize-options.php';
         require 'components/header/mobile-offcanvas/customize-options.php';
     }
 

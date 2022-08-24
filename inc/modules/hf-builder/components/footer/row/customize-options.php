@@ -65,6 +65,7 @@ foreach( $this->footer_rows as $row ) {
                     '#customize-control-botiga_footer_row__' . $row['id'] ,
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_height',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_columns',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_layout',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_vertical_alignment',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_inner_layout'
                 ) ),
@@ -141,6 +142,78 @@ foreach( $this->footer_rows as $row ) {
             'priority'              => 35
         )
     ) );
+
+    // Columns Layout.
+    $wp_customize->add_setting(
+        'botiga_footer_row__' . $row['id'] . '_columns_layout',
+        array(
+            'default'           => 'equal',
+            'sanitize_callback' => 'sanitize_key',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new Botiga_Radio_Images(
+            $wp_customize,
+            'botiga_footer_row__' . $row['id'] . '_columns_layout',
+            array(
+                'label'    => esc_html__( 'Columns Layout', 'botiga' ),
+                'section'  => $row['section'],
+                'cols' 		=> 4,
+                'choices'  => array(			
+                    '1col-equal' => array(
+                        'label' => esc_html__( 'Equal Width', 'botiga' ),
+                        'url'   => '%s/assets/img/fl1.svg'
+                    ),
+                    '2col-equal' => array(
+                        'label' => esc_html__( 'Equal Width', 'botiga' ),
+                        'url'   => '%s/assets/img/fl2.svg'
+                    ),		
+                    '2col-bigleft' => array(
+                        'label' => esc_html__( 'Big Left', 'botiga' ),
+                        'url'   => '%s/assets/img/fl3.svg'
+                    ),				
+                    '2col-bigright' => array(
+                        'label' => esc_html__( 'Big Right', 'botiga' ),
+                        'url'   => '%s/assets/img/fl4.svg'
+                    ),
+                    '3col-equal' => array(
+                        'label' => esc_html__( 'Equal Width', 'botiga' ),
+                        'url'   => '%s/assets/img/fl5.svg'
+                    ),	
+                    '3col-bigleft' => array(
+                        'label' => esc_html__( 'Big Left', 'botiga' ),
+                        'url'   => '%s/assets/img/fl6.svg'
+                    ),
+                    '3col-bigright' => array(
+                        'label' => esc_html__( 'Big Right', 'botiga' ),
+                        'url'   => '%s/assets/img/fl7.svg'
+                    ),	
+                    '4col-equal' => array(
+                        'label' => esc_html__( 'Equal', 'botiga' ),
+                        'url'   => '%s/assets/img/fl8.svg'
+                    ),	
+                    '4col-bigleft' => array(
+                        'label' => esc_html__( 'Big Left', 'botiga' ),
+                        'url'   => '%s/assets/img/fl9.svg'
+                    ),
+                    '4col-bigright' => array(
+                        'label' => esc_html__( 'Big Right', 'botiga' ),
+                        'url'   => '%s/assets/img/fl10.svg'
+                    ),
+                    '5col-equal' => array(
+                        'label' => esc_html__( 'Equal Width', 'botiga' ),
+                        'url'   => '%s/assets/img/fl11.svg'
+                    ),
+                    '6col-equal' => array(
+                        'label' => esc_html__( 'Equal Width', 'botiga' ),
+                        'url'   => '%s/assets/img/fl12.svg'
+                    ),
+                ),
+                'priority' => 35
+            )
+        )
+    );
 
     // Vertical Alignment.
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_vertical_alignment',

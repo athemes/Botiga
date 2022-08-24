@@ -683,6 +683,10 @@ span.delete:hover {
   border: 1px solid #f9f9fe;
 }
 
+.text_radio_button_control .radio-buttons + .customize-control-description {
+  margin-top: 10px;
+}
+
 .text_radio_button_control .radio-button-label {
   cursor: pointer;
   -webkit-box-flex: 1;

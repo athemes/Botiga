@@ -612,6 +612,10 @@ span.delete:hover {
 .text_radio_button_control .radio-buttons {
 	display: flex;
 	border: 1px solid #f9f9fe;
+
+    & + .customize-control-description {
+        margin-top: 10px;
+    }
 }
 
 .text_radio_button_control .radio-button-label {
