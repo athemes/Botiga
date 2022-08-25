@@ -84,6 +84,9 @@ const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
 // Path to JS swiper.
 const jsSwiperSRC = './assets/js/src/botiga-swiper.js';
 
+// Path to JS gallery.
+const jsGallerySRC = './assets/js/src/botiga-gallery.js';
+
 // Path to JS popup.
 const jsPopupSRC = './assets/js/src/botiga-popup.js';
 
@@ -107,6 +110,9 @@ const jsCarouselFile = 'botiga-carousel';
 
 // Compiled JS swiper file name.
 const jsSwiperFile = 'botiga-swiper';
+
+// Compiled JS gallery file name.
+const jsGalleryFile = 'botiga-gallery';
 
 // Compiled JS popup file name.
 const jsPopupFile = 'botiga-popup';
@@ -144,6 +150,9 @@ const watchJsCarousel = './assets/js/src/botiga-carousel.js';
 
 // Path to all swiper JS files.
 const watchJsSwiper = './assets/js/src/botiga-swiper.js';
+
+// Path to all gallery JS files.
+const watchJsGallery = './assets/js/src/botiga-gallery.js';
 
 // Path to all carousel JS files.
 const watchJsPopup = './assets/js/src/botiga-popup.js';
@@ -244,6 +253,7 @@ module.exports = {
 	custFile,
 	jsCarouselSRC,
 	jsSwiperSRC,
+	jsGallerySRC,
 	jsPopupSRC,
 	jsSidebarSRC,
 	jsAjaxSearchSRC,
@@ -253,6 +263,7 @@ module.exports = {
 	metaboxScriptsDestination,
 	jsCarouselFile,
 	jsSwiperFile,
+	jsGalleryFile,
 	jsPopupFile,
 	jsSidebarFile,
 	jsAjaxSearchFile,
@@ -264,6 +275,7 @@ module.exports = {
 	watchJsVendor,
 	watchJsCarousel,
 	watchJsSwiper,
+	watchJsGallery,
 	watchJsPopup,
 	watchJsSidebar,
 	watchJsAjaxSearch,

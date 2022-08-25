@@ -146,6 +146,10 @@
 		display: flex;
 		grid-gap: 20px;
 		flex-direction: column;
+
+		&.hidden{
+			display: none;
+		}
 	}
 
 	.woocommerce-product-gallery,

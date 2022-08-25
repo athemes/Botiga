@@ -861,23 +861,32 @@ botiga.quickView = {
 				ajax.onload = function () {
 					if (this.status >= 200 && this.status < 400) {
 						// If successful
-						popupContent.innerHTML = this.response; // Initialize gallery 
+						popupContent.innerHTML = this.response; 
 
-						var productGallery = document.querySelector('.woocommerce-product-gallery');
+						var $wrapper = jQuery(popupContent);
 
-						if ('undefined' !== typeof productGallery) {
+						// Initialize gallery 
+						var $gallery = $wrapper.find('.woocommerce-product-gallery');
 
-							botiga.productGallery.init( jQuery(productGallery) );
-							botiga.productVideoGallery.init( jQuery(productGallery) );
+						if ( $gallery.length ) {
 
-							productGallery.dispatchEvent(new Event('wc-product-gallery-before-init'));
+              $gallery.trigger( 'wc-product-gallery-before-init', [ $gallery.get(0), wc_single_product_params ] );
+              $gallery.wc_product_gallery( wc_single_product_params );
+              $gallery.trigger( 'wc-product-gallery-after-init', [ $gallery.get(0), wc_single_product_params ] );
+						
+						}
 
-							jQuery(productGallery).wc_product_gallery(wc_single_product_params);
+						// Initialize variation gallery 
+						if ( botiga.variationGallery ) {
+							botiga.variationGallery.init( $wrapper );
+						}
 
-							productGallery.dispatchEvent(new Event('wc-product-gallery-after-init'));
+						// Initialize size chart 
+						if ( botiga.sizeChart ) {
+							botiga.sizeChart.init( $wrapper );
+						}
 
-						} // Initialize product variable
-
+						// Initialize product variable
 						var variationsForm = document.querySelector('.botiga-quick-view-summary .variations_form');
 
 						if (typeof wc_add_to_cart_variation_params !== 'undefined') {
@@ -1321,311 +1330,6 @@ botiga.misc = {
 	}
 }
 
-/**
- * Product Gallery
- */
-botiga.productGallery = {
-
-	init: function( $gallery ) {
-
-		$gallery = $gallery || jQuery('.woocommerce-product-gallery');
-
-		if ( ! $gallery.length ) {
-			return;
-		}
-
-		// just work on specific galleries
-		if ( ! $gallery.parent().is('.gallery-default, .gallery-vertical, .gallery-quickview') ) {
-			return;
-		}
-
-		// fix quickview gallery thumbnails in "layout 2" mode
-		if ( $gallery.parent().is('.gallery-quickview') ) {
-			$gallery.on('wc-product-gallery-before-init', function() {
-				wc_single_product_params.flexslider.controlNav = 'thumbnails';
-			});
-		}
-
-		$gallery.on('wc-product-gallery-after-init', function() {
-
-			var flexdata = $gallery.data('product_gallery');
-
-			if ( ! flexdata || ! flexdata.$images ) {
-				return;
-			}
-
-			var $flexItems  = flexdata.$images;
-			var $flexThumbs = $gallery.find('.flex-control-thumbs');
-
-			// pass carousel sliders if less than 5 items
-			if ( $flexItems.length <= 5 ) {
-				return;
-			}
-
-			if ( $gallery.parent().is('.gallery-vertical') ) {
-
-	      $flexThumbs.addClass('swiper-wrapper botiga-slides');
-	      $flexThumbs.find('li').addClass('swiper-slide');
-	      $flexThumbs.wrapAll('<div class="swiper botiga-swiper"></div>');
-
-	      var $swiper = $gallery.find('.botiga-swiper');
-
-				$swiper.append( '<div class="botiga-swiper-button botiga-swiper-button-next"></div>' );
-				$swiper.append( '<div class="botiga-swiper-button botiga-swiper-button-prev"></div>' );
-
-	      var swiper = new Swiper($swiper.get(0), {
-	        direction: 'vertical',
-	        slidesPerView: 6,
-	        spaceBetween: 20,
-	        navigation: {
-	          nextEl: '.botiga-swiper-button-next',
-	          prevEl: '.botiga-swiper-button-prev',
-	        },
-	      });
-
-        jQuery(window).on('resize botiga.resize', function() {
-
-          var winWidth = ( window.innerWidth || document.documentElement.clientWidth );
-
-         if( winWidth < 991 && swiper.params.direction !== 'horizontal' ) {
-
-            swiper.changeDirection('horizontal');
-            swiper.params.slidesPerView = 5;
-            swiper.update();
-
-         } else if ( winWidth > 991 && swiper.params.direction !== 'vertical' ) {
-
-						swiper.changeDirection('vertical');
-						swiper.params.slidesPerView = 6;
-						swiper.update();
-
-         }
-
-        }).trigger('botiga.resize');
-
-			} else if ( $gallery.parent().is('.gallery-default, .gallery-quickview') ) {
-
-	      $flexThumbs.addClass('botiga-slides');
-	      $flexThumbs.wrapAll('<div class="botiga-flexslider"></div>');
-
-	      var $slider   = $gallery.find('.botiga-flexslider');
-        var itemWidth = ( $gallery.parent().is('.gallery-quickview') ) ? 85 : 95;
-
-				$slider.flexslider({
-				  namespace: 'botiga-flex-',
-				  selector: '.botiga-slides > li',
-				  animation: 'slide',
-				  controlNav: false,
-				  animationLoop: false,
-				  slideshow: false,
-				  itemWidth: itemWidth,
-				  itemMargin: 20,
-				  keyboard: false,
-				  asNavFor: $gallery.get(0),
-				});
-
-			}
-
-		});
-
-	},
-
-}
-
-/**
- * Product Video Gallery
- */
-botiga.productVideoGallery = {
-
-	init: function( $gallery ) {
-
-		$gallery = $gallery || jQuery('.woocommerce-product-gallery');
-
-		if ( ! $gallery.length && ! $gallery.hasClass('botiga-product-video-gallery') ) {
-			return;
-		}
-
-		var $prevSlide;
-
-		$gallery.on('wc-product-gallery-before-init', function() {
-
-			wc_single_product_params.zoom_enabled = false;
-
-			wc_single_product_params.flexslider.before = function( slider ) {
-				$prevSlide = slider.slides.eq( slider.currentSlide );
-			};
-
-			wc_single_product_params.flexslider.after = function( slider ) {
-
-				if ( $prevSlide.data('video') === 'oembed' ) {
-
-					var $frame = $prevSlide.find('iframe');
-
-					if ( $frame.length ) {
-
-						var $clone = $frame.clone();
-						$frame.find('iframe').remove();
-						$frame.parent().append( $frame );
-						
-					}
-
-				} else if ( $prevSlide.data('video') === 'html5' ) {
-
-					var $html5 = $prevSlide.find('video,audio');
-
-					if ( $html5.length ) {
-						$html5.get(0).pause();
-					}
-
-				}
-
-			};
-
-		});
-
-		$gallery.on('wc-product-gallery-after-init', function() {
-
-			var flexdata = $gallery.data('product_gallery');
-
-			if ( ! flexdata || ! flexdata.$images ) {
-				return;
-			}
-
-			var $flexItems     = flexdata.$images;
-			var $flexThumbs    = $gallery.find('.flex-control-thumbs');
-			var $flexThumbList = $flexThumbs.find('li');
-
-      $flexItems.each( function() {
-
-      	var $flexItem = jQuery(this);
-
-      	if ( $flexItem.data('video') ) {
-      		$flexThumbList.eq( $flexItem.index() ).addClass('botiga-flex-video-thumb');
-      	}
-
-      });
-
-		});
-
-	},
-
-}
-
-/**
- * Product Size Chart
- */
-botiga.productSizeChart = {
-	
-	init: function() {
-		
-		var $sizeChart = jQuery('.botiga-product-size-chart');
-
-		if ( ! $sizeChart.length ) {
-			return;
-		}
-
-		var $body    = jQuery('body');
-		var $button  = $sizeChart.find('.botiga-product-size-chart-button a');
-		var $modal   = $sizeChart.find('.botiga-product-size-chart-modal');
-
-		$button.on('click', function( e ) {
-
-			e.preventDefault();
-			$body.addClass('botiga-product-size-chart-modal-open');
-
-		});
-
-		$modal.on('click', function( e ) {
-
-			e.preventDefault();
-
-      var $target  = jQuery(e.target);
-			var $content = $sizeChart.find('.botiga-product-size-chart-modal-content');
-
-      if ( $target.is( $modal ) || $target.closest('.botiga-product-size-chart-modal-close').length ) {
-
-				$content.scrollTop(0);
-				$body.removeClass('botiga-product-size-chart-modal-open');
-      
-      }
-
-		});
-
-		var $tabs   = $sizeChart.find('.botiga-product-size-chart-modal-tab');
-		var $tables = $sizeChart.find('.botiga-product-size-chart-modal-table');
-
-		if ( $tabs.length && $tables.length ) {
-
-			$tabs.each( function() {
-
-				var $tab = jQuery(this);
-
-				$tab.on('click', function() {
-
-					$tab.addClass('active').siblings().removeClass('active');
-
-					$tables.eq($tab.index()).addClass('active').siblings().removeClass('active');
-
-				});
-
-			});
-
-		}
-
-	},
-
-}
-
-/**
- * Product Masonry Layout
- */
-botiga.productMasonryLayout = {
-
-	init: function() {
-		
-		var self     = this;
-		var $masonry = jQuery('.product-masonry');
-
-		if ( ! $masonry.length ) {
-			return;
-		}
-
-		var $wrapper  = $masonry.find('.products');
-		var $products = $masonry.find('.product');
-
-		jQuery(window).on('resize botiga.masonry', function() {
-			self.reLayout( $wrapper, $products );
-		}).trigger('botiga.masonry');
-
-	},
-	
-	reLayout: function( $wrapper, $products ) {
-
-		var itemColumns = $wrapper.css('grid-template-columns').split(' ').length;
-		var itemGap     = parseInt( $wrapper.css('gap') );
-		var itemWidth   = (100 / itemColumns);
-		var itemSpacing = (itemGap / itemColumns) * (itemColumns-1);
-
-		$products.css({
-			'width': 'calc('+ itemWidth +'% - '+ itemSpacing +'px)',
-			'margin-bottom': itemGap,
-		});
-
-		$wrapper.imagesLoaded(function() {
-
-			$wrapper.masonry({
-				itemSelector: '.product',
-		    gutter: itemGap,
-			});
-
-			$wrapper.masonry('layout');
-
-		});
-
-	},
-
-}
-
 botiga.helpers.botigaDomReady( function() {
 	botiga.navigation.init();
 	botiga.desktopOffcanvasNav.init();
@@ -1641,10 +1345,6 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.carousel.init();
 	botiga.collapse.init();
 	botiga.misc.init();
-	botiga.productGallery.init();
-	botiga.productVideoGallery.init();
-	botiga.productSizeChart.init();
-	botiga.productMasonryLayout.init();
 } );
 
 window.onload = function() {

@@ -496,6 +496,10 @@ ul.products {
 
 			.loop-button-wrap{
 				flex: 1;
+
+				&:empty{
+					margin-bottom: 0;
+				}
 			}
 
 			.variations_form{

@@ -272,6 +272,10 @@ ul.wc-block-grid__products {
 		.woocommerce-product-gallery {
 			width: 100%;
 
+			&.hidden{
+				display: none;
+			}
+
 			.flex-viewport {
 				margin-bottom: 20px;
 			}

@@ -582,7 +582,7 @@ class Botiga_Metabox {
 										for ( $a = 0; $a < 4 ; $a++ ) { 
 											echo '<td><div class="botiga-buttons"><a href="#" class="botiga-add-col">+</a><a href="#" class="botiga-del-col">-</a></div></td>';
 										}
-										echo '<td><a href="#" class="botiga-duplicate" title="'. esc_html__( 'Duplicate', 'botiga' ) .'">'. botiga_get_svg_icon( 'icon-duplicate' ) .'</td>';
+										echo '<td><a href="#" class="botiga-duplicate" title="'. esc_attr__( 'Duplicate', 'botiga' ) .'">'. botiga_get_svg_icon( 'icon-duplicate' ) .'</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									echo '</tr>';
 									for ( $b = 0; $b < 4 ; $b++ ) { 
 										echo '<tr>';
@@ -626,7 +626,7 @@ class Botiga_Metabox {
 														for ( $i = 0; $i < count( $rows ); $i++ ) { 
 															echo '<td><div class="botiga-buttons"><a href="#" class="botiga-add-col">+</a><a href="#" class="botiga-del-col">-</a></div></td>';
 														}
-													echo '<td><a href="#" class="botiga-duplicate" title="'. esc_html__( 'Duplicate', 'botiga' ) .'">'. botiga_get_svg_icon( 'icon-duplicate' ) .'</td>';
+													echo '<td><a href="#" class="botiga-duplicate" title="'. esc_attr__( 'Duplicate', 'botiga' ) .'">'. botiga_get_svg_icon( 'icon-duplicate' ) .'</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 													echo '</tr>';
 												}
 												echo '<tr>';

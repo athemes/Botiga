@@ -423,7 +423,7 @@ $wp_customize->add_control(
         $wp_customize,
         'shop_product_equal_height',
         array(
-            'label'    => esc_html__( 'Product Equal Height', 'botiga-pro' ),
+            'label'    => esc_html__( 'Product Equal Height', 'botiga' ),
             'section'  => 'woocommerce_product_catalog',
             'priority' => 120
         )
