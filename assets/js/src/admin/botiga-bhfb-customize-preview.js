@@ -11,6 +11,12 @@
             e.preventDefault();
             e.stopPropagation();
 
+            // Go to section.
+            if( $( this ).parent().data( 'section-id' ) ) {
+                window.parent.wp.customize.section( $( this ).parent().data( 'section-id' ) ).focus();
+                return false;
+            }
+
             const 
                 id = $( this ).closest( '.bhfb-builder-item' ).data( 'component-id' );
 
@@ -101,6 +107,28 @@
                 'unit'      : 'px'
             },
 
+            // Header Rows Elements Spacing
+            'botiga_header_row__above_header_row_elements_spacing' : {
+                'cssvariable' : true
+            },
+            'botiga_header_row__main_header_row_elements_spacing' : {
+                'cssvariable' : true
+            },
+            'botiga_header_row__below_header_row_elements_spacing' : {
+                'cssvariable' : true
+            },
+
+            // Footer Rows Elements Spacing
+            'botiga_footer_row__above_footer_row_elements_spacing' : {
+                'cssvariable' : true
+            },
+            'botiga_footer_row__main_footer_row_elements_spacing' : {
+                'cssvariable' : true
+            },
+            'botiga_footer_row__below_footer_row_elements_spacing' : {
+                'cssvariable' : true
+            },
+
             // Footer Rows Border
             'botiga_footer_row__above_footer_row_border_top_desktop' : {
                 'selector'  : '.bhfb-above_footer_row',
@@ -183,6 +211,12 @@
     $.each( css, function( option, props ) {
         wp.customize( option, function( value ) {
             value.bind( function( to ) {
+                if( typeof props.cssvariable !== 'undefined' ) {
+                    document.querySelector(":root").style.setProperty('--' + option, to + 'px');
+
+                    return false;
+                }
+
                 if( typeof props.toggleClass !== 'undefined' ) {
                     $( props.selector ).toggleClass( props.toggleClass );
 

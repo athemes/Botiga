@@ -25,10 +25,28 @@ $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$devic
 <div class="<?php echo esc_attr( $container ); ?>">
     <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?> bhfb-cols-layout-<?php echo esc_attr( $columns_layout ); ?><?php echo esc_attr( $row_empty_class ); ?>">
         <?php 
-        foreach( $row_data->$device as $col_class => $elements ) : ?>
+        foreach( $row_data->$device as $col_id => $elements ) : 
+
+            // Get customizer column options.
+            $column_option_id     = 'botiga_header_row__'. $row .'_column' . ( $col_id + 1 );
+
+            $vertical_alignment   = get_theme_mod( $column_option_id . '_vertical_alignment', 'middle' );
+            $inner_layout         = get_theme_mod( $column_option_id . '_inner_layout', 'inline' );
+            $horizontal_alignment = get_theme_mod( $column_option_id . '_horizontal_alignment', 'start' );
             
-            <div class="bhfb-column bhfb-column-<?php echo esc_attr( $col_class + 1 ); ?>">
+            // Column class.
+            $column_classes = array( 'bhfb-column' );
+            $column_classes[] = 'bhfb-column-' . esc_attr( $col_id + 1 );
+            $column_classes[] = 'bhfb-vertical-align-' . esc_attr( $vertical_alignment ); 
+            $column_classes[] = 'bhfb-horizontal-align-' . esc_attr( $horizontal_alignment );
+            $column_classes[] = 'bhfb-inner-layout-' . esc_attr( $inner_layout );
+            
+            ?>
+            
+            <div class="<?php echo implode( ' ', $column_classes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
                 
+                <?php Botiga_Header_Footer_Builder::customizer_edit_column_button( 'header', $row, $col_id + 1 ); ?>
+
                 <?php foreach( $elements as $component_callback ) {
                     if( method_exists( $bhfb, $component_callback  ) ) {
                         call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );

@@ -611,6 +611,7 @@ body {
             width: 0 !important;
             .bhfb-button {
                 position: fixed;
+                height: auto;
             }
         }
     }
@@ -629,8 +630,11 @@ body {
         color: #212121;
         text-decoration: none;
         font-style: normal;
-        padding: 10px;
+        padding: 6px 12px;
         border: 1px solid #CCC;
+        height: 100%;
+        box-sizing: border-box;
+        align-items: center;
 
         &:hover {
             border-color: #212121;    

@@ -108,6 +108,40 @@
 
             $( document ).on( 'click keydown', '.customize-section-back', function(e){
                 if( sections.includes( current_section_id ) ) {
+
+                    // header columns.
+                    if( current_section_id.indexOf( 'above_header_row_column' ) !== -1 ) {
+                        wp.customize.section( 'botiga_section_hb_above_header_row' ).focus();
+                        return false;
+                    }
+
+                    if( current_section_id.indexOf( 'main_header_row_column' ) !== -1 ) {
+                        wp.customize.section( 'botiga_section_hb_main_header_row' ).focus();
+                        return false;
+                    }
+
+                    if( current_section_id.indexOf( 'below_header_row_column' ) !== -1 ) {
+                        wp.customize.section( 'botiga_section_hb_below_header_row' ).focus();
+                        return false;
+                    }
+
+                    // footer columns.
+                    if( current_section_id.indexOf( 'above_footer_row_column' ) !== -1 ) {
+                        wp.customize.section( 'botiga_section_fb_above_footer_row' ).focus();
+                        return false;
+                    }
+
+                    if( current_section_id.indexOf( 'main_footer_row_column' ) !== -1 ) {
+                        wp.customize.section( 'botiga_section_fb_main_footer_row' ).focus();
+                        return false;
+                    }
+
+                    if( current_section_id.indexOf( 'below_footer_row_column' ) !== -1 ) {
+                        wp.customize.section( 'botiga_section_fb_below_footer_row' ).focus();
+                        return false;
+                    }
+
+                    // header/footer row and components.
                     if( current_section_id.indexOf( '_hb_' ) !== -1 || current_section_id.indexOf( '_header_' ) !== -1 ) {
                         wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
                     } else {
@@ -613,7 +647,7 @@
                         let column_id = 1;
                         for( const columns of value.desktop ) {
 
-                            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-' + current_row + '-row' ).append( '<div class="botiga-bhfb-area" data-bhfb-row="'+ current_row +'_'+ _this.currentBuilderType +'_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_header_row__'+ current_row +'_'+ _this.currentBuilderType +'_row_column'+ column_id +'\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>' );
+                            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-' + current_row + '-row' ).append( '<div class="botiga-bhfb-area" data-bhfb-row="'+ current_row +'_'+ _this.currentBuilderType +'_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_'+ _this.currentBuilderType +'_row__'+ current_row +'_'+ _this.currentBuilderType +'_row_column'+ column_id +'\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>' );
     
                             const column = $( '.botiga-bhfb-' + current_row + '-row' ).find( '.botiga-bhfb-area:last-child' );
     

@@ -65,9 +65,7 @@ foreach( $this->header_rows as $row ) {
                     '#customize-control-botiga_header_row__' . $row['id'] . '_height',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_columns',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_columns_layout',
-                    '#customize-control-botiga_header_row__' . $row['id'] . '_vertical_alignment',
-                    '#customize-control-botiga_header_row__' . $row['id'] . '_inner_layout',
-                    '#customize-control-botiga_header_row__' . $row['id'] . '_inner_alignment' 
+                    '#customize-control-botiga_header_row__' . $row['id'] . '_elements_spacing' 
                 ) ),
                 'controls_design'		=> json_encode( array( 
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_color',
@@ -221,6 +219,30 @@ foreach( $this->header_rows as $row ) {
             )
         )
     );
+
+    // Elements Spacing.
+    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_elements_spacing', array(
+        'default'   		=> 25,
+        'transport'			=> 'postMessage',
+        'sanitize_callback' => 'absint',
+    ) );			
+    
+    $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'botiga_header_row__' . $row['id'] . '_elements_spacing',
+        array(
+            'label' 		=> esc_html__( 'Elements Spacing', 'botiga' ),
+            'section' 		=> $row['section'],
+            'is_responsive'	=> 0,
+            'settings' 		=> array (
+                'size_desktop' 		=> 'botiga_header_row__' . $row['id'] . '_elements_spacing',
+            ),
+            'input_attrs' => array (
+                'min'	=> 0,
+                'max'	=> 150,
+                'step'  => 1
+            ),
+            'priority'     => 36
+        )
+    ) );
 
     /**
      * Styling

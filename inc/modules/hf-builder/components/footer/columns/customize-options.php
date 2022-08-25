@@ -1,6 +1,6 @@
 <?php
 /**
- * Header Builder
+ * Footer Builder
  * Columns
  * 
  * @package Botiga_Pro
@@ -10,18 +10,18 @@
  * Columns
  */
 
-foreach( $this->header_rows as $row ) {
+foreach( $this->footer_rows as $row ) {
 
     // Up to 6 columns.
     for( $i=1; $i<=6; $i++ ) {
-        $section_id = 'botiga_header_row__' . $row['id'] . '_column' . $i;
+        $section_id = 'botiga_footer_row__' . $row['id'] . '_column' . $i;
 
         // Section.
         $wp_customize->add_section(
             $section_id,
             array(
                 'title'      => sprintf( esc_html__( 'Column %s', 'botiga' ), $i ),
-                'panel'      => 'botiga_panel_header'
+                'panel'      => 'botiga_panel_footer'
             )
         );
 

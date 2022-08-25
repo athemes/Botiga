@@ -36,4 +36,8 @@ foreach( $rows as $row ) {
     $css .= ".bhfb-$row { border-top-style: solid; }";
     $css .= Botiga_Custom_CSS::get_border_top_color_css( "botiga_footer_row__${row}_border_top_color", '#EAEAEA', ".bhfb-$row" );
 
+    // Elements Spacing.
+    $elements_spacing = get_theme_mod( "botiga_footer_row__${row}_elements_spacing", '25' );
+    $css .= ":root { --botiga_footer_row__${row}_elements_spacing: ${elements_spacing}px; }";
+
 }

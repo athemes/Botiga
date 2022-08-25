@@ -471,6 +471,7 @@ class Botiga_Header_Footer_Builder {
         // Structure Components.
         require 'components/footer/footer-builder/customize-options.php';
         require 'components/footer/row/customize-options.php';
+        require 'components/footer/columns/customize-options.php';
 
     }
 
@@ -555,6 +556,27 @@ class Botiga_Header_Footer_Builder {
                     title="<?php esc_attr_e( 'Click to edit this element.', 'botiga-pro' ); ?>"
                     class="customize-partial-edit-shortcut-button bhfb-item-customizer-focus">
                 <?php echo botiga_get_svg_icon( 'icon-edit' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            </button>
+        </div>
+        <?php
+    }
+
+    /**
+     * Edit column icon inside customizer.
+     */
+    public static function customizer_edit_column_button( $builderType, $row, $column_id ) {
+        if( !is_customize_preview() ) {
+            return;
+        } 
+        
+        // Mount customize column setting id.
+        $columnOptionID = 'botiga_'. $builderType .'_row__'. $row .'_column' . $column_id; ?>
+
+        <div class="customize-partial-edit-shortcut bhfb-customize-partial-edit-column-shortcut" data-section-id="<?php echo esc_attr( $columnOptionID ); ?>">
+            <button aria-label="<?php esc_attr_e( 'Click to edit this element.', 'botiga-pro' ); ?>"
+                    title="<?php esc_attr_e( 'Click to edit this element.', 'botiga-pro' ); ?>"
+                    class="customize-partial-edit-shortcut-button bhfb-item-customizer-focus">
+            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg>
             </button>
         </div>
         <?php

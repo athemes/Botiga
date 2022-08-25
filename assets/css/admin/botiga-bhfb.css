@@ -686,6 +686,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 
 .bhfb-available-components .botiga-bhfb-element.ui-sortable-helper .bhfb-button {
   position: fixed;
+  height: auto;
 }
 
 .bhfb-available-components {
@@ -705,8 +706,14 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   color: #212121;
   text-decoration: none;
   font-style: normal;
-  padding: 10px;
+  padding: 6px 12px;
   border: 1px solid #CCC;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .bhfb-available-components .bhfb-button:hover {
