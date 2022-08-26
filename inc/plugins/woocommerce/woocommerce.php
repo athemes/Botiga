@@ -68,13 +68,6 @@ add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
  * @return void
  */
 function botiga_woocommerce_scripts() {
-
-	$shop_archive_layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );
-
-	if ( $shop_archive_layout === 'product-masonry' ) {
-		wp_enqueue_script( 'jquery-masonry' );
-	}
-	
 	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
 	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-vertical' ) ) ) {
