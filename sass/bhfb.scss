@@ -172,6 +172,7 @@
 .bhfb-column {
     display: flex;
     flex-wrap: nowrap;
+    min-width: 110px;
 
     &.bhfb-col_center {
         justify-content: center;

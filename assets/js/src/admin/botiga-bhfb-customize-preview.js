@@ -182,32 +182,6 @@
             }
         };
 
-    // Columns.
-    const
-        builders = [ 'header', 'footer' ],
-        rows     = [ 'above', 'main', 'below' ],
-        opts     = [ 'vertical_alignment', 'inner_layout', 'horizontal_alignment' ];
-
-    for( let i=1; i<=6; i++ ) {
-        for( const [index, opt] of opts.entries() ) {
-            for( const builder of builders ) {
-                for( const row of rows ) {
-                    
-                    const
-                        optionID       = 'botiga_'+ builder +'_row__'+ row +'_'+ builder +'_row_column'+ i +'_' + opt, 
-                        columnSelector = '.bhfb-'+ builder +' .bhfb-'+ row +'_'+ builder +'_row .bhfb-column-' + i;
-    
-                    css[ optionID ] = {
-                        'selector': columnSelector,
-                        'addClass'    : getClassToAdd( optionID ),
-                        'removeClass' : getClassToRemove( optionID )
-                    };
-            
-                }
-            }
-        }
-    }
-
     $.each( css, function( option, props ) {
         wp.customize( option, function( value ) {
             value.bind( function( to ) {
@@ -253,7 +227,6 @@
                         output += props.selector + '{ '+ cssProp +': '+ to + ( props.unit ? props.unit : '' ) + '; }';
                     } );
                 }
-
     
                 $( 'head' ).append( '<style id="botiga-customizer-styles-' + option +'">' + output + '</style>' );
             } );
@@ -311,14 +284,69 @@
             },
         };
     
+    // Columns.
+    const
+        builders = [ 'header', 'footer' ],
+        rows     = [ 'above', 'main', 'below' ],
+        opts     = [ 'vertical_alignment', 'inner_layout', 'horizontal_alignment' ];
+
+    for( let i=1; i<=6; i++ ) {
+        for( const opt of opts ) {
+            for( const builder of builders ) {
+                for( const row of rows ) {
+                    
+                    const
+                        optionID       = 'botiga_'+ builder +'_row__'+ row +'_'+ builder +'_row_column'+ i +'_' + opt, 
+                        columnSelector = '.bhfb-'+ builder +' .bhfb-'+ row +'_'+ builder +'_row .bhfb-column-' + i;
+    
+                    resp_css[ optionID ] = {
+                        'selector': columnSelector,
+                        'prop': getCSSProp( optionID )
+                    };
+            
+                }
+            }
+        }
+    }
+
     $.each( resp_css, function( option, css_data ) {
         $.each( $devices, function( device, mediaSize ) {
             wp.customize( option + '_' + device, function( value ) {
                 value.bind( function( to ) {
 
+                    let unit = typeof css_data.unit !== 'undefined' ? css_data.unit : '';
+                    
+                    switch( to ) {
+                        case 'top':
+                        case 'start':
+                            to = 'flex-start';
+                            break;
+
+                        case 'middle':
+                            to = 'center';
+                            break;
+
+                        case 'bottom':
+                        case 'end':
+                            to = 'flex-end';
+                            break;
+
+                        case 'stack':
+                            to = 'column';
+                            break;
+
+                        case 'inline':
+                            to = 'row';
+                            break;
+                    }
+
+                    // if( option.indexOf( 'vertical_alignment_' + device ) !== -1 ) {
+                        
+                    // }
+
                     $( 'head' ).find( '#botiga-customizer-styles-' + option + '_' + device ).remove();
         
-                    var output = '@media ' + mediaSize + ' {' + css_data.selector + ' { '+ css_data.prop +':' + to + css_data.unit +'; } }';
+                    var output = '@media ' + mediaSize + ' {' + css_data.selector + ' { '+ css_data.prop +':' + to + unit +'; } }';
         
                     $( 'head' ).append( '<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>' );
                 } );
@@ -356,19 +384,19 @@
     }
 
     /**
-     * Get class to add
+     * Get CSS property from the option name.
      */
-    function getClassToAdd( optionID ) {
+    function getCSSProp( optionID ) {
         if( optionID.indexOf( 'vertical_alignment' ) !== -1 ) {
-            return 'bhfb-vertical-align-';
+            return 'align-items';
         }
 
         if( optionID.indexOf( 'inner_layout' ) !== -1 ) {
-            return 'bhfb-inner-layout-';
+            return 'flex-direction';
         }
 
         if( optionID.indexOf( 'horizontal_alignment' ) !== -1 ) {
-            return 'bhfb-horizontal-align-';
+            return 'justify-content';
         }
     }
 

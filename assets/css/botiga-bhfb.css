@@ -161,6 +161,7 @@
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  min-width: 110px;
 }
 
 .bhfb-column.bhfb-col_center {

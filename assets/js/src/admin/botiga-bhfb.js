@@ -898,65 +898,80 @@
                 ];
 
             options.forEach( function( optionID ){
+                console.log(typeof wp.customize.control( optionID ));
                 if( typeof wp.customize.control( optionID ) !== 'undefined' ) {
-                    wp.customize( optionID, function( option ) {
-                        option.bind( function( to ) {
-                            let 
-                                rows                = [ 'above', 'main', 'below' ],
-                                rowSelector         = '',
-                                $rowInput           = '';
-                            
-                            for( const row of rows ) {
-                                const
-                                    rowOptionID      = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType,
-                                    rowInputSelector = '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row';
 
-                                if( optionID.indexOf( rowOptionID ) !== -1 ) {
-                                    rowSelector         = 'botiga-bhfb-'+ row +'-row';
-                                    $rowInput           = $( rowInputSelector );
-                                    _this.currentRow    = row;
+                    const devices = [ 'desktop', 'tablet' ];
+                    for( const device of devices ) {
+
+                        wp.customize( optionID + '_' + device, function( option ) {
+                            option.bind( function( to ) {
+                                let 
+                                    rows                = [ 'above', 'main', 'below' ],
+                                    rowSelector         = '',
+                                    $rowInput           = '';
+
+                                for( const row of rows ) {
+                                    const
+                                        rowOptionID      = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType,
+                                        rowInputSelector = '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row';
+
+                                    if( optionID.indexOf( rowOptionID ) !== -1 ) {
+                                        rowSelector         = 'botiga-bhfb-'+ row +'-row';
+                                        $rowInput           = $( rowInputSelector );
+                                        _this.currentRow    = row;
+                                    }
+
                                 }
 
-                            }
-
-                            if( rowSelector === '' || $rowInput === '' ) {
-                                return false;
-                            }
-
-                            // Update builder row columns class.
-                            _this.addBuilderRowColumnsClass( rowSelector, to );
-
-                            // Update row input value.
-                            let 
-                                current_value = _this.jsonDecode( $rowInput.val() );
-
-                            // Add column.
-                            if( to < current_value[_this.currentDevice].length ) {
-                                while( current_value[_this.currentDevice].length > to ) {
-                                    current_value[_this.currentDevice].pop();
+                                if( rowSelector === '' || $rowInput === '' ) {
+                                    return false;
                                 }
 
-                            // Remove column.
-                            } else if( to > current_value[_this.currentDevice].length ) {
-                                while( current_value[_this.currentDevice].length < to ) {
-                                    current_value[_this.currentDevice].push([]);
+                                // Update builder row columns class.
+                                _this.addBuilderRowColumnsClass( device, rowSelector, to );
+
+                                // Update row input value.
+                                let 
+                                    current_value = _this.jsonDecode( $rowInput.val() );
+
+                                // Add column.
+                                if( to < current_value[_this.currentDevice].length ) {
+                                    while( current_value[_this.currentDevice].length > to ) {
+                                        current_value[_this.currentDevice].pop();
+                                    }
+
+                                // Remove column.
+                                } else if( to > current_value[_this.currentDevice].length ) {
+                                    while( current_value[_this.currentDevice].length < to ) {
+                                        current_value[_this.currentDevice].push([]);
+                                    }
                                 }
-                            }
 
-                            // Update the value in the customizer field.
-                            $rowInput.val( JSON.stringify( current_value ) );
+                                // Update the value in the customizer field.
+                                $rowInput.val( JSON.stringify( current_value ) );
 
-                            // Update the respective row columns layout customizer field.
-                            _this.updateColumnsLayoutOption( to );
+                                // Update the respective row columns layout customizer field.
+                                _this.updateColumnsLayoutOption( device, to );
 
-                            // Trigger change in the customizer field (desktop).
-                            $rowInput.trigger( 'change' );
-                            
-                            // Update grid.
-                            _this.builderGridContent();
+                                // Trigger change in the customizer field (desktop).
+                                $rowInput.trigger( 'change' );
 
+                                // Trigger change in the customizer field (mobile).
+                                if( _this.currentBuilderType === 'header' && _this.currentDevice === 'mobile' ) {
+                                    $rowInput.closest( '.customize-control' ).next().find( 'input' ).val( Math.random() ).trigger( 'change' );
+                                }
+                                
+                                // Update grid.
+                                _this.builderGridContent();
+
+                            } );
                         } );
-                    } );
+
+                    }
+                    
+
+                    
                 }
             } );
 
@@ -971,47 +986,57 @@
                     const sectionID = 'botiga_section_'+ prefix +'_'+ row +'_'+ area +'_row';
 
                     if( typeof wp.customize.section( sectionID ) !== 'undefined' ) {
-                        wp.customize.section( sectionID ).expanded.bind( 
-                            function( is_active ){
-                                if( is_active ) {
-                                    setTimeout(function(){
-                                        const 
-                                            rowSelector           = 'botiga-bhfb-'+ row +'-row',
-                                            columnsOptionID       = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns';
-                                        
-                                        _this.currentRow = row;
 
-                                        // Update builder row columns class.
-                                        _this.addBuilderRowColumnsClass( rowSelector, wp.customize( columnsOptionID ).get() );
-                                        
-                                        // Update 'Columns Layout' options.
-                                        _this.updateColumnsLayoutOption( wp.customize( columnsOptionID ).get() );
-                                    }, 50);
+                        const devices = [ 'desktop', 'tablet' ];
+                        for( const device of devices ) {
+
+                            wp.customize.section( sectionID ).expanded.bind( 
+                                function( is_active ){
+                                    if( is_active ) {
+                                        setTimeout(function(){
+                                            const 
+                                                rowSelector           = 'botiga-bhfb-'+ row +'-row',
+                                                columnsOptionID       = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns_'+ device;
+                                            
+                                            _this.currentRow = row;
+    
+                                            // Update builder row columns class.
+                                            _this.addBuilderRowColumnsClass( device, rowSelector, wp.customize( columnsOptionID ).get() );
+                                            
+                                            // Update 'Columns Layout' options.
+                                            _this.updateColumnsLayoutOption( device, wp.customize( columnsOptionID ).get() );
+                                        }, 50);
+                                    }
                                 }
-                            }
-                        );
+                            );
+
+                        }
                     }
                 }
             }
 
         },
 
-        addBuilderRowColumnsClass: function( rowSelector, to ) {
+        addBuilderRowColumnsClass: function( device, rowSelector, to ) {
             const _this = this;
+
+            if( device === 'tablet' ) {
+                device = 'mobile';
+            }
 
             // Remove all possible columns class.
             for( let i=1; i<=6; i++ ) {
-                $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).removeClass( 'botiga-bhfb-row-' + i + '-columns' );
+                $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-'+ device +' .botiga-bhfb-row.' + rowSelector ).removeClass( 'botiga-bhfb-row-' + i + '-columns' );
             }
 
             // Add new columns class.
-            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.' + rowSelector ).addClass( 'botiga-bhfb-row-' + to + '-columns' );
+            $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-'+ device +' .botiga-bhfb-row.' + rowSelector ).addClass( 'botiga-bhfb-row-' + to + '-columns' );
         },
 
-        updateColumnsLayoutOption: function( val ) {
+        updateColumnsLayoutOption: function( device, val ) {
             const 
                 _this      = this,
-                setting_id = 'botiga_'+ _this.currentBuilderType +'_row__'+ _this.currentRow +'_'+ _this.currentBuilderType +'_row_columns_layout',
+                setting_id = 'botiga_'+ _this.currentBuilderType +'_row__'+ _this.currentRow +'_'+ _this.currentBuilderType +'_row_columns_layout_' + device,
                 selector   = setting_id +'-'+ wp.customize( setting_id ).get();
 
             // Hide the column layout options that doesn't match with 'columns' value.
@@ -1048,42 +1073,59 @@
 
             options.forEach( function( optionID ){
                 if( typeof wp.customize.control( optionID ) !== 'undefined' ) {
-                    wp.customize( optionID, function( option ) {
-                        option.bind( function( to ) {
-                            let current_row = 'above';
 
-                            if( optionID.indexOf( 'main' ) !== -1 ) {
-                                current_row = 'main';
-                            } else if( optionID.indexOf( 'below' ) !== -1 ) {
-                                current_row = 'below';
-                            }
+                    const devices = [ 'desktop', 'tablet' ];
+                    for( let device of devices ) {
+                        
+                        wp.customize( optionID + '_' + device, function( option ) {
+                            option.bind( function( to ) {
+                                let current_row = 'above';
+    
+                                if( optionID.indexOf( 'main' ) !== -1 ) {
+                                    current_row = 'main';
+                                } else if( optionID.indexOf( 'below' ) !== -1 ) {
+                                    current_row = 'below';
+                                }
 
-                            _this.currentRowInput = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ current_row +'_'+ _this.currentBuilderType +'_row' );
+                                // Convert 'tablet' to 'mobile' because html selectors are 'mobile' and not 'tablet'.
+                                if( device === 'tablet' ) {
+                                    device = 'mobile';
+                                }
+    
+                                _this.currentRowInput = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__'+ current_row +'_'+ _this.currentBuilderType +'_row' );
+    
+                                const $builderRow = $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-'+ device +' .botiga-bhfb-row.botiga-bhfb-' + current_row + '-row' );
 
-                            const $builderRow = $( '.botiga-bhfb-'+ _this.currentBuilderType +' .botiga-bhfb-row.botiga-bhfb-' + current_row + '-row' );
+                                $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-equal' );
+                                $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-bigleft' );
+                                $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-bigright' );
+    
+                                if( to.indexOf( 'equal' ) !== -1 ) {
+                                    $builderRow.addClass( 'botiga-bhfb-row-columns-layout-equal');
+                                }
+    
+                                if( to.indexOf( 'bigleft' ) !== -1 ) {
+                                    $builderRow.addClass( 'botiga-bhfb-row-columns-layout-bigleft');
+                                }
+    
+                                if( to.indexOf( 'bigright' ) !== -1 ) {
+                                    $builderRow.addClass( 'botiga-bhfb-row-columns-layout-bigright');
+                                }
+    
+                                // Trigger change in the customizer field to run the selective refresh on the respective row.
+                                const inputValue = _this.currentRowInput.val();
+                                _this.currentRowInput.val( '' ).trigger( 'change' );
+                                _this.currentRowInput.val( inputValue ).trigger( 'change' );
 
-                            $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-equal' );
-                            $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-bigleft' );
-                            $builderRow.removeClass( 'botiga-bhfb-row-columns-layout-bigright' );
-
-                            if( to.indexOf( 'equal' ) !== -1 ) {
-                                $builderRow.addClass( 'botiga-bhfb-row-columns-layout-equal');
-                            }
-
-                            if( to.indexOf( 'bigleft' ) !== -1 ) {
-                                $builderRow.addClass( 'botiga-bhfb-row-columns-layout-bigleft');
-                            }
-
-                            if( to.indexOf( 'bigright' ) !== -1 ) {
-                                $builderRow.addClass( 'botiga-bhfb-row-columns-layout-bigright');
-                            }
-
-                            // Trigger change in the customizer field to run the selective refresh on the respective row.
-                            const inputValue = _this.currentRowInput.val();
-                            _this.currentRowInput.val( '' ).trigger( 'change' );
-                            _this.currentRowInput.val( inputValue ).trigger( 'change' );
+                                // Trigger change on mobile row field.
+                                if( _this.currentBuilderType === 'header' && _this.currentDevice === 'mobile' ) {
+                                    _this.currentRowInput.closest( '.customize-control' ).next().find( 'input' ).val( Math.random() ).trigger( 'change' );
+                                }
+                            });
                         });
-                    });
+
+                    }
+
                 }
             });
         },

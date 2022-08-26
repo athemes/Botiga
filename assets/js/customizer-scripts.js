@@ -141,25 +141,25 @@ jQuery(document).ready(function ($) {
       $('.botiga-devices-preview').find('.preview-desktop').addClass('active');
       $('.botiga-devices-preview').find('.preview-tablet').removeClass('active');
       $('.botiga-devices-preview').find('.preview-mobile').removeClass('active');
-      $('.font-size-desktop').addClass('active');
-      $('.font-size-tablet').removeClass('active');
-      $('.font-size-mobile').removeClass('active');
+      $('.responsive-control-desktop').addClass('active');
+      $('.responsive-control-tablet').removeClass('active');
+      $('.responsive-control-mobile').removeClass('active');
       $('.wp-full-overlay-footer .devices button[data-device="desktop"]').trigger('click');
     } else if ($(this).hasClass('preview-tablet')) {
       $('.botiga-devices-preview').find('.preview-tablet').addClass('active');
       $('.botiga-devices-preview').find('.preview-desktop').removeClass('active');
       $('.botiga-devices-preview').find('.preview-mobile').removeClass('active');
-      $('.font-size-desktop').removeClass('active');
-      $('.font-size-tablet').addClass('active');
-      $('.font-size-mobile').removeClass('active');
+      $('.responsive-control-desktop').removeClass('active');
+      $('.responsive-control-tablet').addClass('active');
+      $('.responsive-control-mobile').removeClass('active');
       $('.wp-full-overlay-footer .devices button[data-device="tablet"]').trigger('click');
     } else {
       $('.botiga-devices-preview').find('.preview-mobile').addClass('active');
       $('.botiga-devices-preview').find('.preview-desktop').removeClass('active');
       $('.botiga-devices-preview').find('.preview-tablet').removeClass('active');
-      $('.font-size-desktop').removeClass('active');
-      $('.font-size-tablet').removeClass('active');
-      $('.font-size-mobile').addClass('active');
+      $('.responsive-control-desktop').removeClass('active');
+      $('.responsive-control-tablet').removeClass('active');
+      $('.responsive-control-mobile').addClass('active');
       $('.wp-full-overlay-footer .devices button[data-device="mobile"]').trigger('click');
     }
   });

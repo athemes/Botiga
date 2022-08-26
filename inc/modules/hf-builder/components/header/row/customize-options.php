@@ -125,7 +125,14 @@ foreach( $this->header_rows as $row ) {
     ) );
 
     // Columns.
-    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_columns',
+    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_columns_desktop',
+        array(
+            'default' 			=> '3',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_columns_tablet',
         array(
             'default' 			=> '3',
             'sanitize_callback' => 'botiga_sanitize_text',
@@ -134,9 +141,14 @@ foreach( $this->header_rows as $row ) {
     );
     $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_header_row__' . $row['id'] . '_columns',
         array(
-            'label'   => esc_html__( 'Columns', 'botiga' ),
-            'section' => $row['section'],
-            'choices' => array(
+            'label'         => esc_html__( 'Columns', 'botiga' ),
+            'section'       => $row['section'],
+            'is_responsive' => true,
+            'settings' 		=> array (
+                'desktop' 		=> 'botiga_header_row__' . $row['id'] . '_columns_desktop',
+                'tablet' 		=> 'botiga_header_row__' . $row['id'] . '_columns_tablet'
+            ),
+            'choices'       => array(
                 '1' => '1',
                 '2' => '2',
                 '3' => '3',
@@ -144,13 +156,21 @@ foreach( $this->header_rows as $row ) {
                 '5' => '5',
                 '6' => '6'
             ),
-            'priority'              => 35
+            'priority'      => 35
         )
     ) );
 
     // Columns Layout.
     $wp_customize->add_setting(
-        'botiga_header_row__' . $row['id'] . '_columns_layout',
+        'botiga_header_row__' . $row['id'] . '_columns_layout_desktop',
+        array(
+            'default'           => 'equal',
+            'sanitize_callback' => 'sanitize_key',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_setting(
+        'botiga_header_row__' . $row['id'] . '_columns_layout_tablet',
         array(
             'default'           => 'equal',
             'sanitize_callback' => 'sanitize_key',
@@ -165,6 +185,11 @@ foreach( $this->header_rows as $row ) {
                 'label'    => esc_html__( 'Columns Layout', 'botiga' ),
                 'section'  => $row['section'],
                 'cols' 		=> 4,
+                'is_responsive' => true,
+                'settings' 		=> array (
+                    'desktop' 		=> 'botiga_header_row__' . $row['id'] . '_columns_layout_desktop',
+                    'tablet' 		=> 'botiga_header_row__' . $row['id'] . '_columns_layout_tablet'
+                ),
                 'choices'  => array(			
                     '1col-equal' => array(
                         'label' => esc_html__( 'Equal Width', 'botiga' ),

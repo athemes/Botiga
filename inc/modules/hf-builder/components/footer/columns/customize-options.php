@@ -27,7 +27,23 @@ foreach( $this->footer_rows as $row ) {
 
         // Vertical Alignment.
         $wp_customize->add_setting( 
-            $section_id . '_vertical_alignment',
+            $section_id . '_vertical_alignment_desktop',
+            array(
+                'default' 			=> 'middle',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            )
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_vertical_alignment_tablet',
+            array(
+                'default' 			=> 'middle',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            )
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_vertical_alignment_mobile',
             array(
                 'default' 			=> 'middle',
                 'sanitize_callback' => 'botiga_sanitize_text',
@@ -41,6 +57,12 @@ foreach( $this->footer_rows as $row ) {
                 array(
                     'label'   => esc_html__( 'Vertical Alignment', 'botiga' ),
                     'section' => $section_id,
+                    'is_responsive' => true,
+                    'settings' 		=> array (
+                        'desktop' 		=> $section_id . '_vertical_alignment_desktop',
+                        'tablet' 		=> $section_id . '_vertical_alignment_tablet',
+                        'mobile' 		=> $section_id . '_vertical_alignment_mobile'
+                    ),
                     'choices' => array(
                         'top'    => esc_html__( 'Top', 'botiga' ),
                         'middle' => esc_html__( 'Middle', 'botiga' ),
@@ -53,7 +75,23 @@ foreach( $this->footer_rows as $row ) {
 
         // Inner Elements Layout.
         $wp_customize->add_setting( 
-            $section_id . '_inner_layout',
+            $section_id . '_inner_layout_desktop',
+            array(
+                'default' 			=> 'stack',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            )
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_inner_layout_tablet',
+            array(
+                'default' 			=> 'stack',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            )
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_inner_layout_mobile',
             array(
                 'default' 			=> 'stack',
                 'sanitize_callback' => 'botiga_sanitize_text',
@@ -67,6 +105,12 @@ foreach( $this->footer_rows as $row ) {
                 array(
                     'label'   => esc_html__( 'Inner Elements Layout', 'botiga' ),
                     'section' => $section_id,
+                    'is_responsive' => true,
+                    'settings' 		=> array (
+                        'desktop' 		=> $section_id . '_inner_layout_desktop',
+                        'tablet' 		=> $section_id . '_inner_layout_tablet',
+                        'mobile' 		=> $section_id . '_inner_layout_mobile'
+                    ),
                     'choices' => array(
                         'stack'  => esc_html__( 'Stack', 'botiga' ),
                         'inline' => esc_html__( 'Inline', 'botiga' )
@@ -78,7 +122,23 @@ foreach( $this->footer_rows as $row ) {
     
         // Horizontal Alignment.
         $wp_customize->add_setting( 
-            $section_id . '_horizontal_alignment',
+            $section_id . '_horizontal_alignment_desktop',
+            array(
+                'default' 			=> 'start',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            )
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_horizontal_alignment_tablet',
+            array(
+                'default' 			=> 'start',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            )
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_horizontal_alignment_mobile',
             array(
                 'default' 			=> 'start',
                 'sanitize_callback' => 'botiga_sanitize_text',
@@ -92,6 +152,12 @@ foreach( $this->footer_rows as $row ) {
                 array(
                     'label'         => esc_html__( 'Horizontal Alignment', 'botiga' ),
                     'section'       => $section_id,
+                    'is_responsive' => true,
+                    'settings' 		=> array (
+                        'desktop' 		=> $section_id . '_horizontal_alignment_desktop',
+                        'tablet' 		=> $section_id . '_horizontal_alignment_tablet',
+                        'mobile' 		=> $section_id . '_horizontal_alignment_mobile'
+                    ),
                     'choices'       => array(
                         'start'  => esc_html__( 'Start', 'botiga' ),
                         'center' => esc_html__( 'Center', 'botiga' ),

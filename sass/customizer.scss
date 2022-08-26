@@ -159,31 +159,31 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 .bold {
     font-weight: 600;
 }
-.font-size-desktop,
-.font-size-tablet,
-.font-size-mobile {
-    display: none;
+.responsive-control-desktop,
+.responsive-control-tablet,
+.responsive-control-mobile {
+    display: none !important;
 }
-.font-size-desktop.active,
-.font-size-tablet.active,
-.font-size-mobile.active {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+.responsive-control-desktop.active,
+.responsive-control-tablet.active,
+.responsive-control-mobile.active {
+    display: flex !important;
 }
 .device-heading {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+}
+.botiga-control-wrapper {
+    position: relative;
 }
 .botiga-devices-preview {
-    margin-left: 7px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &.alt-position {
+        top: -23px;
+    }
 }
 .botiga-devices-preview li {
     display: inline-block !important;
@@ -1008,7 +1008,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
     margin-top: 15px;
 }
 
-.font-size-desktop.noresponsive {
+.responsive-control-desktop.noresponsive {
     display: flex !important;
 }
 
