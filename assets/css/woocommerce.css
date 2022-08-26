@@ -934,7 +934,7 @@ ul.products li.product-category mark {
 }
 
 /**
- *
+ * Grid & List View
  */
 .botiga-grid-list-view {
   display: -webkit-box;
@@ -976,13 +976,38 @@ ul.products li.product-category mark {
   margin-top: -1px;
 }
 
-.botiga-sorting-wrapper-right {
+.botiga-sorting-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.botiga-sorting-left-inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   grid-gap: 10px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-sorting-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   text-align: right;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -990,6 +1015,21 @@ ul.products li.product-category mark {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.botiga-sorting-right-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  grid-gap: 10px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /**
@@ -1041,6 +1081,47 @@ ul.products li.product-category mark {
 .product-equal-height ul.products li.product .button {
   -ms-flex-item-align: start;
       align-self: flex-start;
+}
+
+/**
+ * Pagination PPP (Posts Per Page)
+ */
+.botiga-pagination-ppp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 1em;
+}
+
+.botiga-pagination-ppp ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.botiga-pagination-ppp ul li {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.botiga-pagination-ppp ul li:not(:last-child):after {
+  content: "/";
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.botiga-pagination-ppp ul li.active {
+  opacity: 0.5;
 }
 
 /**
@@ -1120,9 +1201,9 @@ ul.products li.product-category mark {
 }
 
 .sidebar-slide .sidebar-open-wrapper .sidebar-open {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

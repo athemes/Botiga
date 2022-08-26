@@ -448,10 +448,13 @@ div.editor-styles-wrapper {
  */
   /* Responsive shop columns */
   /**
- *
+ * Grid & List View
  */
   /**
  * Product Equal Height
+ */
+  /**
+ * Pagination PPP (Posts Per Page)
  */
   /**
  * Photoswipe
@@ -3078,13 +3081,38 @@ div.editor-styles-wrapper .botiga-grid-list-view svg {
   margin-top: -1px;
 }
 
-div.editor-styles-wrapper .botiga-sorting-wrapper-right {
+div.editor-styles-wrapper .botiga-sorting-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+div.editor-styles-wrapper .botiga-sorting-left-inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   grid-gap: 10px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.editor-styles-wrapper .botiga-sorting-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   text-align: right;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -3092,6 +3120,21 @@ div.editor-styles-wrapper .botiga-sorting-wrapper-right {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+div.editor-styles-wrapper .botiga-sorting-right-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  grid-gap: 10px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product,
@@ -3140,6 +3183,44 @@ div.editor-styles-wrapper .product-equal-height ul.products li.product .wp-block
 div.editor-styles-wrapper .product-equal-height ul.products li.product .button {
   -ms-flex-item-align: start;
       align-self: flex-start;
+}
+
+div.editor-styles-wrapper .botiga-pagination-ppp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 1em;
+}
+
+div.editor-styles-wrapper .botiga-pagination-ppp ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div.editor-styles-wrapper .botiga-pagination-ppp ul li {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div.editor-styles-wrapper .botiga-pagination-ppp ul li:not(:last-child):after {
+  content: "/";
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+div.editor-styles-wrapper .botiga-pagination-ppp ul li.active {
+  opacity: 0.5;
 }
 
 @-webkit-keyframes rotateAnim {

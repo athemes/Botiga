@@ -434,7 +434,7 @@ ul.products {
 }
 
 /**
- *
+ * Grid & List View
  */
 .botiga-grid-list-view{
 	display: flex;
@@ -473,13 +473,34 @@ ul.products {
 	}
 }
 
-.botiga-sorting-wrapper-right{
+.botiga-sorting-left{
+	display: flex;
+	text-align: left;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.botiga-sorting-left-inner{
 	display: flex;
 	flex-wrap: wrap;
 	grid-gap: 10px;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.botiga-sorting-right{
+	display: flex;
 	text-align: right;
 	justify-content: flex-end;
 	align-items: flex-start;
+}
+
+.botiga-sorting-right-inner{
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 10px;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 /**
@@ -512,4 +533,38 @@ ul.products {
 			}
 		}
 	}
+}
+
+/**
+ * Pagination PPP (Posts Per Page)
+ */
+.botiga-pagination-ppp{
+	display: flex;
+	grid-gap: 5px;
+	align-items: center;
+	line-height: 1em;
+
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+
+		li{
+			margin: 0;
+			padding: 0;
+			display: flex;
+
+			&:not(:last-child):after{
+				content: "/";
+				margin-left: 4px;
+				margin-right: 4px;
+			}
+
+			&.active{
+				opacity: 0.5;
+			}
+		}
+	}
+
 }
