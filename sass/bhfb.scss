@@ -36,6 +36,7 @@
 
 .bhfb-row {
     display: grid;
+    grid-auto-flow: column;
     gap: 0;
     overflow-wrap: anywhere;
     height: 100%;
@@ -49,19 +50,19 @@
     }
 
     &.bhfb-cols-3 {
-        grid-template-columns: 1fr auto 1fr;
+        grid-template-columns: repeat(3, auto);
     }
 
     &.bhfb-cols-4 {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, auto);
     }
 
     &.bhfb-cols-5 {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, auto);
     }
 
     &.bhfb-cols-6 {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(6, auto);
     }
 
     &.bhfb-cols-valign-top {
@@ -337,23 +338,6 @@
         }
     }
 }
-
-// .bhfb-row-iel-stack {
-//     .bhfb-horizontal-align-start {
-//         align-items: flex-start;
-//         justify-content: normal;
-//     }
-    
-//     .bhfb-horizontal-align-center {
-//         align-items: center;
-//         justify-content: normal;
-//     }
-    
-//     .bhfb-horizontal-align-end {
-//         align-items: flex-end;
-//         justify-content: normal;
-//     }
-// }
 
 .bhfb.bhfb-header,
 .bhfb-mobile_offcanvas {

@@ -315,7 +315,9 @@
                 value.bind( function( to ) {
 
                     let unit = typeof css_data.unit !== 'undefined' ? css_data.unit : '';
+                    let css_prop = '';
                     
+                    // Convert alignments to flex-alignments.
                     switch( to ) {
                         case 'top':
                         case 'start':
@@ -340,13 +342,38 @@
                             break;
                     }
 
-                    // if( option.indexOf( 'vertical_alignment_' + device ) !== -1 ) {
+                    // Change 'prop' value according the direction and only when it's needed.
+                    if( option.indexOf( 'vertical_alignment' ) !== -1 || option.indexOf( 'horizontal_alignment' ) !== -1 ) {
+                        const columnDirection = $( css_data.selector ).css( 'flex-direction' );
                         
-                    // }
+                        css_prop = css_data.prop;
+                        if( columnDirection === 'column' ) {
+                            if( css_prop === 'align-items' ) {
+                                css_prop = 'justify-content';
+                            } else if( css_prop === 'justify-content' ) {
+                                css_prop = 'align-items';
+                            }
+                        }
+                    }
+
+                    // Trigger change on vertical and horizontal settings to avoid conflicts. 
+                    if( option.indexOf( 'inner_layout' ) !== -1 ) {
+                        const opts = [ 'vertical_alignment', 'horizontal_alignment' ];
+                        for( const opt of opts ) {
+                            const
+                                optName       = option.replace( 'inner_layout', opt + '_' + device ),
+                                current_value = wp.customize( optName ).get();
+
+                            wp.customize( optName ).set( '' );
+                            setTimeout(function(){
+                                wp.customize( optName ).set( current_value );
+                            }, 1);
+                        }                        
+                    }
 
                     $( 'head' ).find( '#botiga-customizer-styles-' + option + '_' + device ).remove();
-        
-                    var output = '@media ' + mediaSize + ' {' + css_data.selector + ' { '+ css_data.prop +':' + to + unit +'; } }';
+                    console.log(typeof css_prop);
+                    var output = '@media ' + mediaSize + ' {' + css_data.selector + ' { '+ ( css_prop !== '' ? css_prop : css_data.prop ) +':' + to + unit +'; } }';
         
                     $( 'head' ).append( '<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>' );
                 } );

@@ -80,7 +80,7 @@ class Botiga_Radio_Buttons extends WP_Customize_Control {
 				</div>
 				<?php if ( $this->is_responsive ) : ?>
 					<?php if( isset( $this->settings[ 'tablet' ] ) ) : ?>
-						<div class="radio-buttons responsive-control-tablet">
+						<div class="radio-buttons responsive-control-tablet<?php echo ( ! isset( $this->settings[ 'mobile' ] ) ? ' show-mobile' : '' ); ?>">
 						<?php foreach ( $this->choices as $key => $value ) { ?>
 							<label class="radio-button-label">
 								<input type="radio" name="<?php echo esc_attr( $this->id . '_tablet' ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php $this->link( 'tablet' ); ?> <?php checked( esc_attr( $key ), $this->value( 'tablet' ) ); ?>/>

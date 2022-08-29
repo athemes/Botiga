@@ -62,9 +62,10 @@ foreach( $this->footer_rows as $row ) {
                 'controls_general'		=> json_encode( array( 
                     '#customize-control-botiga_footer_row__' . $row['id'] ,
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_height',
-                    '#customize-control-botiga_footer_row__' . $row['id'] . '_columns',
-                    '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_layout',
-                    '#customize-control-botiga_footer_row__' . $row['id'] . '_elements_spacing'
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_desktop',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_layout_desktop',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_elements_spacing',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_available_columns'
                 ) ),
                 'controls_design'		=> json_encode( array( 
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_background_color',
@@ -117,14 +118,14 @@ foreach( $this->footer_rows as $row ) {
     ) );
 
     // Columns.
-    $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_columns',
+    $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_columns_desktop',
         array(
             'default' 			=> '3',
             'sanitize_callback' => 'botiga_sanitize_text',
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_footer_row__' . $row['id'] . '_columns',
+    $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_footer_row__' . $row['id'] . '_columns_desktop',
         array(
             'label'   => esc_html__( 'Columns', 'botiga-pro' ),
             'section' => $row['section'],
@@ -142,7 +143,7 @@ foreach( $this->footer_rows as $row ) {
 
     // Columns Layout.
     $wp_customize->add_setting(
-        'botiga_footer_row__' . $row['id'] . '_columns_layout',
+        'botiga_footer_row__' . $row['id'] . '_columns_layout_desktop',
         array(
             'default'           => 'equal',
             'sanitize_callback' => 'sanitize_key',
@@ -152,7 +153,7 @@ foreach( $this->footer_rows as $row ) {
     $wp_customize->add_control(
         new Botiga_Radio_Images(
             $wp_customize,
-            'botiga_footer_row__' . $row['id'] . '_columns_layout',
+            'botiga_footer_row__' . $row['id'] . '_columns_layout_desktop',
             array(
                 'label'    => esc_html__( 'Columns Layout', 'botiga' ),
                 'section'  => $row['section'],
@@ -235,6 +236,41 @@ foreach( $this->footer_rows as $row ) {
             'priority'     => 36
         )
     ) );
+
+    // Available Columns.
+    $devices = array( 'desktop' );
+    $desc    = '';
+    foreach( $devices as $device ) {
+        $desc .= '<div class="bhfb-available-columns bhfb-available-columns-'. esc_attr( $device ) .'">';
+            $desc .= '<span class="customize-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
+            $desc .= '<div class="bhfb-available-columns-items-wrapper">';
+            for( $i=1;$i<=6;$i++ ) {
+                $col_section_id = 'botiga_footer_row__' . $row['id'] . '_column' . $i;
+
+                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+            }
+            $desc .= '</div>';
+        $desc .= '</div>';
+    }
+
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_available_columns',
+        array(
+            'default' 			=> '',
+            'sanitize_callback' => 'esc_attr'
+        )
+    );
+    $wp_customize->add_control( 
+        new Botiga_Text_Control( 
+            $wp_customize, 
+            'botiga_footer_row__' . $row['id'] . '_available_columns',
+            array(
+                'description' 	=> $desc,
+                'section' 		=> $row['section'],
+                'priority' 		=> 37
+            )
+        )
+    );
 
     /**
      * Styling

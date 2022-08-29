@@ -69,7 +69,7 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 			<?php if ( $this->is_responsive ) : ?>
 				<?php if( isset( $this->settings[ 'tablet' ] ) ) : ?>
 
-					<div id="<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>" class="botiga-radio-images-wrapper responsive-control-tablet">
+					<div id="<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>" class="botiga-radio-images-wrapper responsive-control-tablet<?php echo ( ! isset( $this->settings[ 'mobile' ] ) ? ' show-mobile' : '' ); ?>">
 						<?php foreach ( $this->choices as $value => $args ) : ?>
 
 							<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_tablet" ); ?>" id="<?php echo esc_attr( "{$this->id}_tablet-{$value}" ); ?>" <?php $this->link( 'tablet' ); ?> <?php checked( $this->value( 'tablet' ), $value ); ?> /> 

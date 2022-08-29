@@ -38,6 +38,7 @@
 
 .bhfb-row {
   display: grid;
+  grid-auto-flow: column;
   gap: 0;
   overflow-wrap: anywhere;
   height: 100%;
@@ -52,19 +53,19 @@
 }
 
 .bhfb-row.bhfb-cols-3 {
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: repeat(3, auto);
 }
 
 .bhfb-row.bhfb-cols-4 {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, auto);
 }
 
 .bhfb-row.bhfb-cols-5 {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, auto);
 }
 
 .bhfb-row.bhfb-cols-6 {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, auto);
 }
 
 .bhfb-row.bhfb-cols-valign-top {

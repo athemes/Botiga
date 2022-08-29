@@ -312,6 +312,10 @@
             } );
 
             $( document ).on( 'mouseup', function(e){
+                if( ! _this.currentBuilder ) {
+                    return false;
+                }
+
                 const 
                     popup = _this.currentBuilder.find( '#botiga-bhfb-elements' );
 
@@ -533,6 +537,9 @@
                 $( this ).sortable({
                     placeholder: "botiga-bhfb-element bhfb-ui-state-highlight",
                     connectWith: '.botiga-bhfb-area',
+                    helper: 'clone',
+                    scroll: false,
+                    cancel: '.bhfb-edit-column',
                     change: function(e, ui) {
                         console.log('change!');
                         _this.currentRow      = ! $( ui.placeholder[0] ).closest( '.botiga-bhfb-row' ).length ? $( ui.placeholder[0] ).closest( '.botiga-bhfb-area-offcanvas' ) : $( ui.placeholder[0] ).closest( '.botiga-bhfb-row' );
@@ -845,6 +852,8 @@
                             if( is_active ) {
                                 $( 'body' ).addClass( 'bhfb-active' );
                                 self.currentBuilder.addClass( 'show' );
+
+                                self.scrollToRespectiveBuilderArea();
                             } else {
                                 $( 'body' ).removeClass( 'bhfb-active' );
                                 self.currentBuilder.removeClass( 'show' );
@@ -858,6 +867,15 @@
                 }
             } );
 
+        },
+
+        scrollToRespectiveBuilderArea: function() {
+            const 
+                _this = this,
+                iframeHTMLTag = document.querySelector( '#customize-preview > iframe' ).contentWindow.document.getElementsByTagName('html')[0],
+                scrollTo      = _this.currentBuilderType === 'header' ? 0 : 99999;
+
+            $( iframeHTMLTag ).animate( { scrollTop: scrollTo }, 'fast' );
         },
 
         getCurrentBuilderByComponent: function( component ) {
@@ -892,19 +910,20 @@
                     'botiga_header_row__above_header_row_columns', 
                     'botiga_header_row__main_header_row_columns', 
                     'botiga_header_row__below_header_row_columns',
-                    'botiga_footer_row__above_footer_row_columns', 
-                    'botiga_footer_row__main_footer_row_columns', 
-                    'botiga_footer_row__below_footer_row_columns' 
+                    'botiga_footer_row__above_footer_row_columns_desktop', 
+                    'botiga_footer_row__main_footer_row_columns_desktop', 
+                    'botiga_footer_row__below_footer_row_columns_desktop' 
                 ];
 
             options.forEach( function( optionID ){
-                console.log(typeof wp.customize.control( optionID ));
                 if( typeof wp.customize.control( optionID ) !== 'undefined' ) {
 
-                    const devices = [ 'desktop', 'tablet' ];
-                    for( const device of devices ) {
+                    const devices        = optionID.indexOf( 'header' ) !== -1 ? [ 'desktop', 'tablet' ] : [ 'desktop' ];
 
-                        wp.customize( optionID + '_' + device, function( option ) {
+                    for( const device of devices ) {
+                        const deviceSelector = optionID.indexOf( 'header' ) !== -1 ? '_' + device : '';
+                        
+                        wp.customize( optionID + deviceSelector, function( option ) {
                             option.bind( function( to ) {
                                 let 
                                     rows                = [ 'above', 'main', 'below' ],
@@ -954,6 +973,9 @@
                                 // Update the respective row columns layout customizer field.
                                 _this.updateColumnsLayoutOption( device, to );
 
+                                // Update 'Available Columns' area.
+                                _this.updateAvailableColumnsArea( device, to );
+
                                 // Trigger change in the customizer field (desktop).
                                 $rowInput.trigger( 'change' );
 
@@ -987,7 +1009,7 @@
 
                     if( typeof wp.customize.section( sectionID ) !== 'undefined' ) {
 
-                        const devices = [ 'desktop', 'tablet' ];
+                        const devices = _this.currentBuilderType === 'header' ? [ 'desktop', 'tablet' ] : [ 'desktop' ];
                         for( const device of devices ) {
 
                             wp.customize.section( sectionID ).expanded.bind( 
@@ -999,12 +1021,15 @@
                                                 columnsOptionID       = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns_'+ device;
                                             
                                             _this.currentRow = row;
-    
+
                                             // Update builder row columns class.
                                             _this.addBuilderRowColumnsClass( device, rowSelector, wp.customize( columnsOptionID ).get() );
                                             
                                             // Update 'Columns Layout' options.
                                             _this.updateColumnsLayoutOption( device, wp.customize( columnsOptionID ).get() );
+
+                                            // Update 'Available Columns' area.
+                                            _this.updateAvailableColumnsArea( device, wp.customize( columnsOptionID ).get() );
                                         }, 50);
                                     }
                                 }
@@ -1066,18 +1091,20 @@
                     'botiga_header_row__above_header_row_columns_layout', 
                     'botiga_header_row__main_header_row_columns_layout', 
                     'botiga_header_row__below_header_row_columns_layout',
-                    'botiga_footer_row__above_footer_row_columns_layout', 
-                    'botiga_footer_row__main_footer_row_columns_layout', 
-                    'botiga_footer_row__below_footer_row_columns_layout' 
+                    'botiga_footer_row__above_footer_row_columns_layout_desktop', 
+                    'botiga_footer_row__main_footer_row_columns_layout_desktop', 
+                    'botiga_footer_row__below_footer_row_columns_layout_desktop' 
                 ];
 
             options.forEach( function( optionID ){
                 if( typeof wp.customize.control( optionID ) !== 'undefined' ) {
 
-                    const devices = [ 'desktop', 'tablet' ];
+                    const devices = optionID.indexOf( 'header' ) !== -1 ? [ 'desktop', 'tablet' ] : [ 'desktop' ];
+
                     for( let device of devices ) {
-                        
-                        wp.customize( optionID + '_' + device, function( option ) {
+                        const deviceSelector = optionID.indexOf( 'header' ) !== -1 ? '_' + device : '';
+
+                        wp.customize( optionID + deviceSelector, function( option ) {
                             option.bind( function( to ) {
                                 let current_row = 'above';
     
@@ -1128,6 +1155,18 @@
 
                 }
             });
+        },
+
+        updateAvailableColumnsArea: function( device, colsNumber ) {
+            const 
+                _this      = this,
+                rowSection   = _this.currentRowInput.closest( '.control-section' ),
+                avCompsItems = rowSection.find( '.bhfb-available-columns.bhfb-available-columns-'+ device +' .bhfb-available-columns-item' );
+
+            avCompsItems.addClass( 'hide' );
+            for( let i=1; i<=colsNumber; i++ ) {
+                avCompsItems.eq( i - 1 ).removeClass( 'hide' );
+            }
         },
 
         footerCustomizerOptions: function() {

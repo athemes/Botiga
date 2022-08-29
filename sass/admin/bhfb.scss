@@ -63,7 +63,9 @@ body {
 }
 
 #sub-accordion-panel-botiga_panel_header > li.accordion-section[id*="accordion-section-botiga_section_hb"]:not(#accordion-section-botiga_section_hb_wrapper),
-#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="accordion-section-botiga_section_fb"]:not(#accordion-section-botiga_section_fb_wrapper) {
+#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="accordion-section-botiga_section_fb"]:not(#accordion-section-botiga_section_fb_wrapper),
+#sub-accordion-panel-botiga_panel_header > li.accordion-section[id*="botiga_header_row__"],
+#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="botiga_footer_row__"] {
     display: none !important;
 }
 
@@ -172,6 +174,7 @@ body {
         border: 1px solid #bfbfbf;
         text-decoration: none;
         transition: ease border-color 300ms;
+        white-space: nowrap;
         &:hover {
             border-color: #1E1E1E;
         }
@@ -284,6 +287,10 @@ body {
             }
 
             .botiga-bhfb-area {
+                display: grid;
+                gap: 10px;
+                grid-auto-flow: column;
+                justify-content: flex-start;
                 flex: 1 1 0%;
                 background: #FFF;
                 padding: 10px;
@@ -309,10 +316,6 @@ body {
                     display: inline-flex;
                     align-items: center;
                     z-index: 2;
-
-                    & + .botiga-bhfb-element {
-                        margin-left: 12px;
-                    }
                 }
 
                 .bhfb-edit-column {
@@ -326,6 +329,7 @@ body {
                     opacity: 0;
                     visibility: hidden;
                     transition: ease opacity 300ms;
+                    z-index: 3;
                     svg {
                         width: 100%;
                     }
@@ -603,6 +607,35 @@ body {
 }
 
 /*
+ * Available Columns
+ */
+.bhfb-available-columns {
+    .bhfb-available-columns-items-wrapper {
+        display: grid;
+        gap: 15px;
+        .bhfb-available-columns-item {
+            margin-bottom: 0;
+            &.hide {
+                display: none;
+            }
+        }
+    }
+}
+
+.preview-desktop {
+    .bhfb-available-columns-tablet {
+        display: none;
+    }
+}
+
+.preview-tablet,
+.preview-mobile {
+    .bhfb-available-columns-desktop {
+        display: none;
+    }
+}
+
+/*
  * Available Components Areas
  */
 .bhfb-available-components {
@@ -639,6 +672,9 @@ body {
         &:hover {
             border-color: #212121;    
         }
+    }
+    .bhfb-elements-message {
+        grid-column: 3;   
     }
 }
 

@@ -179,7 +179,7 @@ jQuery( document ).ready(function($) {
 			$( '.botiga-devices-preview' ).find( '.preview-desktop' ).removeClass( 'active' );
 			$( '.botiga-devices-preview' ).find( '.preview-tablet' ).removeClass( 'active' );
 			$( '.responsive-control-desktop' ).removeClass( 'active' );
-			$( '.responsive-control-tablet' ).removeClass( 'active' );
+			$( '.responsive-control-tablet:not(.show-mobile)' ).removeClass( 'active' );
 			$( '.responsive-control-mobile' ).addClass( 'active' );			
 			$( '.wp-full-overlay-footer .devices button[data-device="mobile"]' ).trigger( 'click' );
 		}
@@ -193,7 +193,7 @@ jQuery( document ).ready(function($) {
 
 		var device = $(this).attr('data-device');
 		
-		$( '.botiga-devices-preview' ).find( '.preview-' + device ).trigger( 'click' );
+		$( '.control-section.open .botiga-devices-preview' ).find( '.preview-' + device ).trigger( 'click' );
 	});	
 
 });
