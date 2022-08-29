@@ -61,7 +61,7 @@ class Botiga_Metabox {
 		//
 		// Begin: Sidebar Options
 		$this->add_section( 'sidebar', array(
-			'post_type' => array( 'post', 'page' ),
+			'post_type' => array( 'post', 'page', 'product' ),
 			'title'     => esc_html__( 'Sidebar', 'botiga' ),
 		) );
 
