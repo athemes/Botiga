@@ -6543,6 +6543,13 @@ dl.variation p {
 }
 
 /**
+ * Brand Image
+ */
+.botiga-product-brand-image {
+  max-width: 150px;
+}
+
+/**
  * WooCommerce widgets
  */
 /**

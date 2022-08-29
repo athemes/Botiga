@@ -284,6 +284,72 @@
 
 			}
 
+			var $mediaField = $('.botiga-metabox-field-media');
+
+      if ( $mediaField.length ) {
+        
+        $mediaField.each( function() {
+
+          var $field      = $(this);
+          var $input      = $field.find('.botiga-metabox-field-media-input');
+          var $image      = $field.find('.botiga-metabox-field-media-preview img');
+          var $upload     = $field.find('.botiga-metabox-field-media-upload');
+          var $remove     = $field.find('.botiga-metabox-field-media-remove');
+          var placeholder = $image.data('placeholder');
+          var wpMediaFrame;
+
+          $upload.on('click', function( e ) {
+
+            e.preventDefault();
+
+            if ( wpMediaFrame ) {
+              wpMediaFrame.open();
+              return;
+            }
+
+            wpMediaFrame = window.wp.media({
+              library: {
+                type: 'image'
+              },
+            });
+
+            wpMediaFrame.on('select', function() {
+
+              var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
+              var thumbnail;
+
+              if ( attachment && attachment.sizes && attachment.sizes.thumbnail ) {
+                thumbnail = attachment.sizes.thumbnail.url;
+              } else {
+                thumbnail = attachment.url;
+              }
+
+              $input.val(attachment.id);
+
+              $image.attr('src', thumbnail);
+              
+              $remove.removeClass('hidden');
+
+            });
+
+            wpMediaFrame.open();
+          
+          });
+
+          $remove.on('click', function( e ) {
+
+            e.preventDefault();
+
+            $input.val('');
+            $image.attr('src', placeholder);
+            $remove.addClass('hidden');
+          
+          });
+
+        });
+
+      }
+
 			var $depends = $contents.find('[data-depend-on]');
 
 			if ( $depends.length ) {

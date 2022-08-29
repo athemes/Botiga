@@ -474,6 +474,61 @@
 	}
 }
 
+.botiga-metabox-field-media{
+
+	figure{
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  margin: 0;
+	  padding: 5px;
+	  width: 75px;
+	  height: 75px;
+	  border: 1px solid #e5e5e5;
+	  background-color: #fff;
+	  box-sizing: border-box;
+
+	  img{
+	    max-width: 100%;
+	    height: auto;
+	  }
+  }
+
+	input{
+		display: none;
+	}
+
+	.botiga-button-remove{
+	  color: #b32d2e;
+	  border-color: #b32d2e;
+	  background: #fff8f8;
+
+	  &:hover,
+	  &:focus,
+	  &:active{
+		  color: #b32d2e;
+	    border-color: #b32d2e;
+	    background: #fff0f0;
+	  }
+
+	  &:focus{
+	    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #b32d2e;
+	  }
+	}
+}
+
+.botiga-metabox-field-media-content{
+	display: flex;
+	grid-gap: 10px;
+	align-items: center;
+}
+
+.botiga-metabox-field-media-button{
+  flex: 1;
+  display: flex;
+  grid-gap: 5px;
+}
+
 .botiga-metabox-field-no-padding{
 	padding-top: 0;
 	padding-bottom: 0;

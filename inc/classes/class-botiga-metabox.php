@@ -520,6 +520,34 @@ class Botiga_Metabox {
 
 			break;
 
+			case 'media':
+
+        $placeholder  = wc_placeholder_img_src( 'thumbnail' );
+        $hidden_class = ( empty( $value ) ) ? ' hidden' : '';
+
+        if ( ! empty( $value ) ) {
+            $attachment = wp_get_attachment_image_src( $value, 'thumbnail' );
+            $thumbnail  = ( is_array( $attachment ) && ! empty( $attachment[0] ) ) ? $attachment[0] : $placeholder;
+        } else {
+            $thumbnail = $placeholder;
+        }
+
+        echo '<div class="botiga-metabox-field-media-content">';
+
+	        echo '<figure class="botiga-metabox-field-media-preview">';
+	        	echo '<img src="'. esc_url( $thumbnail ) .'" data-placeholder="'. esc_url( $placeholder ) .'" />';
+					echo '</figure>';
+
+					echo '<div class="botiga-metabox-field-media-button">';
+						echo '<a href="#" class="botiga-metabox-field-media-upload button">'. esc_html__( 'Upload/Add Image', 'botiga' ) .'</a>';
+						echo '<a href="#" class="botiga-metabox-field-media-remove botiga-button-remove button'. esc_attr( $hidden_class ) .'">'. esc_html__( 'Remove Image', 'botiga' ) .'</a>';
+						echo '<input type="hidden" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $value ) .'" class="botiga-metabox-field-media-input" />';
+					echo '</div>';
+				
+				echo '</div>';
+
+			break;
+
 			case 'uploads':
 
 				$field = wp_parse_args( $field, array(

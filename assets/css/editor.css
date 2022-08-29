@@ -446,6 +446,9 @@ div.editor-styles-wrapper {
   /**
  * Size Chart
  */
+  /**
+ * Brand Image
+ */
   /* Responsive shop columns */
   /**
  * Grid & List View
@@ -2517,6 +2520,10 @@ div.editor-styles-wrapper .botiga-product-size-chart-modal-content > *:last-chil
   div.editor-styles-wrapper .botiga-product-size-chart-modal-inner {
     max-height: 100%;
   }
+}
+
+div.editor-styles-wrapper .botiga-product-brand-image {
+  max-width: 150px;
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products,
