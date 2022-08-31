@@ -7,13 +7,10 @@
  */
 
 // List of options we'll need to move.
-$opts_to_move = array(
-    'general' => array(
-        'search_icon',
-        'search_icon_custom_image'
-    ),
+$opts_to_move = apply_filters( 'botiga_hfb_header_component_search_opts_to_move', array(
+    'general' => array(),
     'style'   => array()
-);
+) );
 
 $wp_customize->add_section(
     'botiga_section_hb_component__search',
@@ -23,40 +20,42 @@ $wp_customize->add_section(
     )
 );
 
-$wp_customize->add_setting(
-    'botiga_section_hb_component__search_tabs',
-    array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Tab_Control (
-        $wp_customize,
+if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+    $wp_customize->add_setting(
         'botiga_section_hb_component__search_tabs',
         array(
-            'label' 				=> '',
-            'section'       		=> 'botiga_section_hb_component__search',
-            'controls_general'		=> json_encode(
-                array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
-            ),
-            'controls_design'		=> json_encode(
-                array_merge(
-                    array(
-                        '#customize-control-bhfb_search_icon_color',
-                        '#customize-control-bhfb_search_icon_color_hover',
-                        '#customize-control-bhfb_search_icon_sticky_divider1',
-                        '#customize-control-bhfb_search_icon_sticky_title',
-                        '#customize-control-bhfb_search_icon_sticky_color',
-                        '#customize-control-bhfb_search_icon_sticky_color_hover'
-                    ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
-                )
-            ),
-            'priority' 				=> 20
+            'default'           => '',
+            'sanitize_callback' => 'esc_attr'
         )
-    )
-);
+    );
+    $wp_customize->add_control(
+        new Botiga_Tab_Control (
+            $wp_customize,
+            'botiga_section_hb_component__search_tabs',
+            array(
+                'label' 				=> '',
+                'section'       		=> 'botiga_section_hb_component__search',
+                'controls_general'		=> json_encode(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                ),
+                'controls_design'		=> json_encode(
+                    array_merge(
+                        array(
+                            '#customize-control-bhfb_search_icon_color',
+                            '#customize-control-bhfb_search_icon_color_hover',
+                            '#customize-control-bhfb_search_icon_sticky_divider1',
+                            '#customize-control-bhfb_search_icon_sticky_title',
+                            '#customize-control-bhfb_search_icon_sticky_color',
+                            '#customize-control-bhfb_search_icon_sticky_color_hover'
+                        ),
+                        array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
+                    )
+                ),
+                'priority' 				=> 20
+            )
+        )
+    );
+}
 
 // Icon Color
 $wp_customize->add_setting(

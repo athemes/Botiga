@@ -15,7 +15,7 @@ $css .= Botiga_Custom_CSS::get_color_css( 'site_description_color', '', '.bhfb .
 // Site Logo Size
 $css .= Botiga_Custom_CSS::get_responsive_css( 
     'site_logo_size', 
-    array( 'desktop' => 180, 'tablet' => 100, 'mobile' => 100 ), 
+    array( 'desktop' => 120, 'tablet' => 100, 'mobile' => 100 ), 
     '.custom-logo-link img',
     'width',
     'px' 

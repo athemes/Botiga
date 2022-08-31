@@ -30,6 +30,24 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_sect
 	)
 );
 
+// Upsell
+if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+	$wp_customize->add_setting( 'botiga_section_fb_wrapper__footer_builder_upsell',
+		array(
+			'default' 			=> '',
+			'sanitize_callback' => 'esc_attr'
+		)
+	);
+	$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_fb_wrapper__footer_builder_upsell',
+			array(
+				'description' 	=> '<div class="bhfb-customizer-sidebar-upsell"><p>'. esc_html__( 'Extend your footer with more components.', 'botiga' ) .'</p><a class="bhfb-upsell-button" target="_blank" href="https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga#pro">'. esc_html__( 'Get Botiga Pro!', 'botiga' ) .'</a></div>',
+				'section' 		=> 'botiga_section_fb_wrapper',
+				'priority' 		=> 40
+			)
+		)
+	);
+}
+
 // Move existing options.
 $priority = 25;
 foreach( $opts_to_move as $tabs ) {

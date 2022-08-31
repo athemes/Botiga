@@ -35,6 +35,9 @@
             this.builderCustomColumns();
             this.builderColumnsLayout();
             this.footerCustomizerOptions();
+            this.headerPresets();
+
+            // this.extraNavigation();
 
             this.showHideBuilder();
             this.showHideBuilderTop();
@@ -395,6 +398,8 @@
                 );
             }
 
+            this.addUpsellComponents();
+
         },
 
         updateAvailableComponents: function() {
@@ -419,6 +424,34 @@
 
             }
             
+        },
+
+        addUpsellComponents: function() {
+            const _this = this;
+
+            let 
+                upsellComponentsHTML = '',
+                components           = _this.currentBuilderType === 'header' ? botiga_hfb.upsell_components.header : botiga_hfb.upsell_components.footer;
+
+            for( const component of components ) {
+                upsellComponentsHTML += `
+                    <div class="botiga-bhfb-element botiga-bhfb-element-desktop">
+                        <a href="#" class="bhfb-button">${ component.label }</a> 
+                    </div>
+                `;
+            }
+
+            const upsellHTML = `
+                <div class="botiga-bhfb-upsell-components-wrapper">
+                    <h4>${ botiga_hfb.upsell_components.title }</h4>
+                    <div class="botiga-bhfb-upsell-components">${ upsellComponentsHTML }</div>
+                    <p>${ botiga_hfb.upsell_components.total }</p>
+                    <a href="${ botiga_hfb.upsell_components.link }" target="_blank" class="bhfb-upsell-button">${ botiga_hfb.upsell_components.button }</a>
+                </div>
+            `;
+
+            $( '#botiga-bhfb-elements .botiga-bhfb-elements-wrapper .botiga-bhfb-upsell-components-wrapper' ).remove();
+            $( '#botiga-bhfb-elements .botiga-bhfb-elements-wrapper' ).append( upsellHTML );
         },
 
         elementsButton: function() {
@@ -683,10 +716,10 @@
                     // Mobile.
                     if( _this.currentDevice === 'mobile' ) {
 
-                        // Mobile Rows.
+                        let column_id = 1;
                         for( const columns of value.mobile ) {
 
-                            $( '.botiga-bhfb-' + current_row + '-row' ).append( '<div class="botiga-bhfb-area" data-bhfb-row="'+ current_row +'_'+ _this.currentBuilderType +'_row">' );
+                            $( '.botiga-bhfb-' + current_row + '-row' ).append( '<div class="botiga-bhfb-area" data-bhfb-row="'+ current_row +'_'+ _this.currentBuilderType +'_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_'+ _this.currentBuilderType +'_row__'+ current_row +'_'+ _this.currentBuilderType +'_row_column'+ column_id +'\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>' );
     
                             const column = $( '.botiga-bhfb-' + current_row + '-row' ).find( '.botiga-bhfb-area:last-child' );
     
@@ -707,6 +740,8 @@
                                 }
         
                             }
+
+                            column_id++;
     
                         }
 
@@ -1020,7 +1055,8 @@
                                                 rowSelector           = 'botiga-bhfb-'+ row +'-row',
                                                 columnsOptionID       = 'botiga_'+ _this.currentBuilderType +'_row__'+ row +'_'+ _this.currentBuilderType +'_row_columns_'+ device;
                                             
-                                            _this.currentRow = row;
+                                            _this.currentRow       = row;
+                                            _this.currentRowInput  = $( '#_customize-input-botiga_' + _this.currentBuilderType + '_row__' + row + '_' + _this.currentBuilderType + '_row' );
 
                                             // Update builder row columns class.
                                             _this.addBuilderRowColumnsClass( device, rowSelector, wp.customize( columnsOptionID ).get() );
@@ -1159,7 +1195,7 @@
 
         updateAvailableColumnsArea: function( device, colsNumber ) {
             const 
-                _this      = this,
+                _this        = this,
                 rowSection   = _this.currentRowInput.closest( '.control-section' ),
                 avCompsItems = rowSection.find( '.bhfb-available-columns.bhfb-available-columns-'+ device +' .bhfb-available-columns-item' );
 
@@ -1188,6 +1224,151 @@
 
             }
             
+        },
+
+        extraNavigation: function() {
+            const _this = this;
+
+            wp.customize.panel( 'botiga_panel_footer' ).expanded.bind(function( is_active ){
+                if( is_active ) {
+                    wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
+                }
+            });
+        },
+
+        headerPresets: function() {
+            const _this = this;
+            
+            wp.customize( 'botiga_section_hb_presets__header_preset_layout', function( option ) {
+                option.bind( function( to ) {
+                    _this.updateHeaderPreset( to );
+                } );
+            } );
+        },
+
+        updateHeaderPreset: function( preset ) {
+            const 
+                _this      = this,
+                $above_row = $( '#_customize-input-botiga_header_row__above_header_row' ),
+                $main_row  = $( '#_customize-input-botiga_header_row__main_header_row' ),
+                $below_row = $( '#_customize-input-botiga_header_row__below_header_row' );
+
+            // Set some others customizer settings.
+            if( preset === 'header_layout_1' ) {
+                wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_desktop' ).set( 'center' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column3_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column3_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column3_horizontal_alignment_desktop' ).set( 'end' );
+            }
+
+            if( preset === 'header_layout_2' ) {
+                wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_desktop' ).set( 'end' );
+            }
+
+            if( preset === 'header_layout_3' ) {
+                wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_desktop' ).set( 'center' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column3_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column3_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column3_horizontal_alignment_desktop' ).set( 'end' );
+
+                wp.customize( 'botiga_header_row__below_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__below_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__below_header_row_column1_horizontal_alignment_desktop' ).set( 'center' );
+            }
+
+            if( preset === 'header_layout_4' ) {
+                wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_desktop' ).set( 'end' );
+
+                wp.customize( 'botiga_header_row__below_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__below_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__below_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__below_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__below_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__below_header_row_column2_horizontal_alignment_desktop' ).set( 'end' );
+            }
+
+            if( preset === 'header_layout_5' ) {
+                wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_desktop' ).set( 'center' );
+
+                wp.customize( 'botiga_header_row__main_header_row_column3_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__main_header_row_column3_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__main_header_row_column3_horizontal_alignment_desktop' ).set( 'end' );
+
+                wp.customize( 'botiga_header_row__below_header_row_column1_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__below_header_row_column1_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__below_header_row_column1_horizontal_alignment_desktop' ).set( 'start' );
+
+                wp.customize( 'botiga_header_row__below_header_row_column2_vertical_alignment_desktop' ).set( 'middle' );
+                wp.customize( 'botiga_header_row__below_header_row_column2_inner_layout_desktop' ).set( 'inline' );
+                wp.customize( 'botiga_header_row__below_header_row_column2_horizontal_alignment_desktop' ).set( 'end' );
+            }
+
+            // Mobile (always same layout for all presets).
+            wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_tablet' ).set( 'middle' );
+            wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_tablet' ).set( 'inline' );
+            wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_tablet' ).set( 'start' );
+            wp.customize( 'botiga_header_row__main_header_row_column1_vertical_alignment_mobile' ).set( 'middle' );
+            wp.customize( 'botiga_header_row__main_header_row_column1_inner_layout_mobile' ).set( 'inline' );
+            wp.customize( 'botiga_header_row__main_header_row_column1_horizontal_alignment_mobile' ).set( 'start' );
+
+            wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_tablet' ).set( 'middle' );
+            wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_tablet' ).set( 'inline' );
+            wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_tablet' ).set( 'center' );
+            wp.customize( 'botiga_header_row__main_header_row_column2_vertical_alignment_mobile' ).set( 'middle' );
+            wp.customize( 'botiga_header_row__main_header_row_column2_inner_layout_mobile' ).set( 'inline' );
+            wp.customize( 'botiga_header_row__main_header_row_column2_horizontal_alignment_mobile' ).set( 'center' );
+
+            wp.customize( 'botiga_header_row__main_header_row_column3_vertical_alignment_tablet' ).set( 'middle' );
+            wp.customize( 'botiga_header_row__main_header_row_column3_inner_layout_tablet' ).set( 'inline' );
+            wp.customize( 'botiga_header_row__main_header_row_column3_horizontal_alignment_tablet' ).set( 'end' );
+            wp.customize( 'botiga_header_row__main_header_row_column3_vertical_alignment_mobile' ).set( 'middle' );
+            wp.customize( 'botiga_header_row__main_header_row_column3_inner_layout_mobile' ).set( 'inline' );
+            wp.customize( 'botiga_header_row__main_header_row_column3_horizontal_alignment_mobile' ).set( 'end' );
+
+            // Set row settings and trigger change.
+            $above_row.val( botiga_hfb.header_presets[ preset ][ 'above_row' ] ).trigger( 'change' );
+            $main_row.val( botiga_hfb.header_presets[ preset ][ 'main_row' ] ).trigger( 'change' );
+            $below_row.val( botiga_hfb.header_presets[ preset ][ 'below_row' ] ).trigger( 'change' );
+
+            // Trigger change on mobile row field.
+            $above_row.closest( '.customize-control' ).next().find( 'input' ).val( Math.random() ).trigger( 'change' );
+            $main_row.closest( '.customize-control' ).next().find( 'input' ).val( Math.random() ).trigger( 'change' );
+            $below_row.closest( '.customize-control' ).next().find( 'input' ).val( Math.random() ).trigger( 'change' );
+
+            _this.builderGridContent();
         }
     }
 

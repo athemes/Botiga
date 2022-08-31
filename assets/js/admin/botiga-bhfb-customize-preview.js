@@ -107,28 +107,6 @@
                 'unit'      : 'px'
             },
 
-            // Header Rows Elements Spacing
-            'botiga_header_row__above_header_row_elements_spacing' : {
-                'cssvariable' : true
-            },
-            'botiga_header_row__main_header_row_elements_spacing' : {
-                'cssvariable' : true
-            },
-            'botiga_header_row__below_header_row_elements_spacing' : {
-                'cssvariable' : true
-            },
-
-            // Footer Rows Elements Spacing
-            'botiga_footer_row__above_footer_row_elements_spacing' : {
-                'cssvariable' : true
-            },
-            'botiga_footer_row__main_footer_row_elements_spacing' : {
-                'cssvariable' : true
-            },
-            'botiga_footer_row__below_footer_row_elements_spacing' : {
-                'cssvariable' : true
-            },
-
             // Footer Rows Border
             'botiga_footer_row__above_footer_row_border_top_desktop' : {
                 'selector'  : '.bhfb-above_footer_row',
@@ -288,22 +266,29 @@
     const
         builders = [ 'header', 'footer' ],
         rows     = [ 'above', 'main', 'below' ],
-        opts     = [ 'vertical_alignment', 'inner_layout', 'horizontal_alignment' ];
+        opts     = [ 'vertical_alignment', 'inner_layout', 'horizontal_alignment', 'elements_spacing' ];
 
     for( let i=1; i<=6; i++ ) {
         for( const opt of opts ) {
             for( const builder of builders ) {
                 for( const row of rows ) {
                     
-                    const
+                    let
                         optionID       = 'botiga_'+ builder +'_row__'+ row +'_'+ builder +'_row_column'+ i +'_' + opt, 
                         columnSelector = '.bhfb-'+ builder +' .bhfb-'+ row +'_'+ builder +'_row .bhfb-column-' + i;
+
+                    if( opt.indexOf( 'elements_spacing' ) !== -1 ) {
+                        columnSelector += ' .bhfb-builder-item + .bhfb-builder-item';
+                    }
     
                     resp_css[ optionID ] = {
                         'selector': columnSelector,
                         'prop': getCSSProp( optionID )
                     };
-            
+                    
+                    if( opt.indexOf( 'elements_spacing' ) !== -1 ) {
+                        resp_css[ optionID ].unit = 'px';
+                    }
                 }
             }
         }
@@ -314,8 +299,9 @@
             wp.customize( option + '_' + device, function( value ) {
                 value.bind( function( to ) {
 
-                    let unit = typeof css_data.unit !== 'undefined' ? css_data.unit : '';
-                    let css_prop = '';
+                    let unit = typeof css_data.unit !== 'undefined' ? css_data.unit : '',
+                        css_prop = '',
+                        extra_css = '';
                     
                     // Convert alignments to flex-alignments.
                     switch( to ) {
@@ -371,9 +357,23 @@
                         }                        
                     }
 
+                    if( option.indexOf( 'elements_spacing' ) !== -1 ) {
+                        const columnDirection = $( css_data.selector ).parent().css( 'flex-direction' );
+                        
+                        css_prop = css_data.prop;
+                        if( columnDirection === 'column' ) {
+                            if( css_prop === 'margin-left' ) {
+                                css_prop = 'margin-top';
+                                extra_css = 'margin-left: 0;';
+                            }
+                        } else {
+                            extra_css = 'margin-top: 0;';
+                        }
+                    }
+
                     $( 'head' ).find( '#botiga-customizer-styles-' + option + '_' + device ).remove();
-                    console.log(typeof css_prop);
-                    var output = '@media ' + mediaSize + ' {' + css_data.selector + ' { '+ ( css_prop !== '' ? css_prop : css_data.prop ) +':' + to + unit +'; } }';
+
+                    var output = '@media ' + mediaSize + ' {' + css_data.selector + ' { '+ ( css_prop !== '' ? css_prop : css_data.prop ) +':' + to + unit +';'+ extra_css +' } }';
         
                     $( 'head' ).append( '<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>' );
                 } );
@@ -425,25 +425,10 @@
         if( optionID.indexOf( 'horizontal_alignment' ) !== -1 ) {
             return 'justify-content';
         }
-    }
 
-    /**
-     * Get class to remove
-     */
-     function getClassToRemove( optionID ) {
-        if( optionID.indexOf( 'vertical_alignment' ) !== -1 ) {
-            return [ 'bhfb-vertical-align-top', 'bhfb-vertical-align-middle', 'bhfb-vertical-align-bottom' ];
-        }
-
-        if( optionID.indexOf( 'inner_layout' ) !== -1 ) {
-            return [ 'bhfb-inner-layout-inline', 'bhfb-inner-layout-stack' ];
-        }
-
-        if( optionID.indexOf( 'horizontal_alignment' ) !== -1 ) {
-            return [ 'bhfb-horizontal-align-start', 'bhfb-horizontal-align-center', 'bhfb-horizontal-align-end' ];
+        if( optionID.indexOf( 'elements_spacing' ) !== -1 ) {
+            return 'margin-left';
         }
     }
-
-    
 
 })(jQuery);

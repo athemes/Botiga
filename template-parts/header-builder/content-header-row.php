@@ -19,17 +19,16 @@ $cols_number = $bhfb->get_row_number_of_columns( $row_data->$device );
 
 // General options
 $container       = get_theme_mod( 'header_container', 'container-fluid' ); 
-$columns_layout  = Botiga_Header_Footer_Builder::get_columns_layout_class( get_theme_mod( "botiga_header_row__${row}_columns_layout", '3col-equal' ) ); 
+$columns_layout  = Botiga_Header_Footer_Builder::get_columns_layout_class_responsive( "botiga_header_row__${row}_columns_layout", '3col-equal' ); 
 $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$device ) ? ' bhfb-is-row-empty' : ''; ?>
 
 <div class="<?php echo esc_attr( $container ); ?>">
-    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?> bhfb-cols-layout-<?php echo esc_attr( $columns_layout ); ?><?php echo esc_attr( $row_empty_class ); ?>">
+    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?><?php echo ' ' . esc_attr( $columns_layout ); ?><?php echo esc_attr( $row_empty_class ); ?>">
         <?php 
         foreach( $row_data->$device as $col_id => $elements ) : 
 
             // Get customizer column options.
             $column_option_id     = 'botiga_header_row__'. $row .'_column' . ( $col_id + 1 );
-
             $vertical_alignment   = get_theme_mod( $column_option_id . '_vertical_alignment', 'middle' );
             $inner_layout         = get_theme_mod( $column_option_id . '_inner_layout', 'inline' );
             $horizontal_alignment = get_theme_mod( $column_option_id . '_horizontal_alignment', 'start' );

@@ -29,7 +29,7 @@ foreach( $this->footer_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_vertical_alignment_desktop',
             array(
-                'default' 			=> 'middle',
+                'default' 			=> 'top',
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -37,7 +37,7 @@ foreach( $this->footer_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_vertical_alignment_tablet',
             array(
-                'default' 			=> 'middle',
+                'default' 			=> 'top',
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -45,7 +45,7 @@ foreach( $this->footer_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_vertical_alignment_mobile',
             array(
-                'default' 			=> 'middle',
+                'default' 			=> 'top',
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -164,6 +164,55 @@ foreach( $this->footer_rows as $row ) {
                         'end'    => esc_html__( 'End', 'botiga' )
                     ),
                     'priority'      => 30
+                )
+            ) 
+        );
+
+        // Elements Spacing.
+        $wp_customize->add_setting( 
+            $section_id . '_elements_spacing_desktop',
+            array(
+                'default'   		=> 25,
+                'transport'			=> 'postMessage',
+                'sanitize_callback' => 'absint'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_elements_spacing_tablet',
+            array(
+                'default'   		=> 25,
+                'transport'			=> 'postMessage',
+                'sanitize_callback' => 'absint'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_elements_spacing_mobile',
+            array(
+                'default'   		=> 25,
+                'transport'			=> 'postMessage',
+                'sanitize_callback' => 'absint'
+            ) 
+        );
+        
+        $wp_customize->add_control( 
+            new Botiga_Responsive_Slider( 
+                $wp_customize, 
+                $section_id . '_elements_spacing',
+                array(
+                    'label' 		=> esc_html__( 'Elements Spacing', 'botiga' ),
+                    'section' 		=> $section_id,
+                    'is_responsive'	=> true,
+                    'settings' 		=> array (
+                        'size_desktop' 		=> $section_id . '_elements_spacing_desktop',
+                        'size_tablet' 		=> $section_id . '_elements_spacing_tablet',
+                        'size_mobile' 		=> $section_id . '_elements_spacing_mobile'
+                    ),
+                    'input_attrs' => array (
+                        'min'	=> 0,
+                        'max'	=> 150,
+                        'step'  => 1
+                    ),
+                    'priority'     => 30
                 )
             ) 
         );

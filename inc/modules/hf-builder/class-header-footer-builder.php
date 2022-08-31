@@ -57,20 +57,12 @@ class Botiga_Header_Footer_Builder {
                 'label' => esc_html__( 'Button', 'botiga-pro' )
             ),
             array(
-                'id'    => 'button2',
-                'label' => esc_html__( 'Button 2', 'botiga-pro' )
-            ),
-            array(
                 'id'    => 'contact_info',
                 'label' => esc_html__( 'Contact Info', 'botiga-pro' )
             ),
             array(
                 'id'    => 'html',
                 'label' => esc_html__( 'HTML', 'botiga-pro' )
-            ),
-            array(
-                'id'    => 'html2',
-                'label' => esc_html__( 'HTML 2', 'botiga-pro' )
             )
         );
 
@@ -105,20 +97,12 @@ class Botiga_Header_Footer_Builder {
                 'label' => esc_html__( 'Button', 'botiga-pro' )
             ),
             array(
-                'id'    => 'button2',
-                'label' => esc_html__( 'Button 2', 'botiga-pro' )
-            ),
-            array(
                 'id'    => 'contact_info',
                 'label' => esc_html__( 'Contact Info', 'botiga-pro' )
             ),
             array(
                 'id'    => 'html',
                 'label' => esc_html__( 'HTML', 'botiga-pro' )
-            ),
-            array(
-                'id'    => 'html2',
-                'label' => esc_html__( 'HTML 2', 'botiga-pro' )
             )
         );
 
@@ -135,38 +119,8 @@ class Botiga_Header_Footer_Builder {
             );
         }
 
-        // WPML component.
-        if ( class_exists( 'SitePress' ) ) {
-            $this->desktop_components[] = array(
-                'id'    => 'wpml_switcher',
-                'label' => esc_html__( 'WPML Language Switcher', 'botiga-pro' )
-            );
-
-            $this->mobile_components[] = array(
-                'id'    => 'wpml_switcher',
-                'label' => esc_html__( 'WPML Language Switcher', 'botiga-pro' )
-            );
-		}
-        
-        // Polylang component.
-		if ( function_exists( 'pll_the_languages' ) ) {
-            $this->desktop_components[] = array(
-                'id'    => 'pll_switcher',
-                'label' => esc_html__( 'Polylang Language Switcher', 'botiga-pro' )
-            );
-
-            $this->mobile_components[] = array(
-                'id'    => 'pll_switcher',
-                'label' => esc_html__( 'Polylang Language Switcher', 'botiga-pro' )
-            );
-		}
-
         // Footer Components.
         $this->footer_components = array(
-            array(
-                'id'    => 'footer_menu',
-                'label' => esc_html__( 'Footer Menu', 'botiga-pro' )
-            ),
             array(
                 'id'    => 'copyright',
                 'label' => esc_html__( 'Copyright', 'botiga-pro' )
@@ -180,16 +134,8 @@ class Botiga_Header_Footer_Builder {
                 'label' => esc_html__( 'Button 1', 'botiga-pro' )
             ),
             array(
-                'id'    => 'button2',
-                'label' => esc_html__( 'Button 2', 'botiga-pro' )
-            ),
-            array(
                 'id'    => 'html',
                 'label' => esc_html__( 'HTML', 'botiga-pro' )
-            ),
-            array(
-                'id'    => 'html2',
-                'label' => esc_html__( 'HTML 2', 'botiga-pro' )
             ),
             array(
                 'id'    => 'widget1',
@@ -207,6 +153,38 @@ class Botiga_Header_Footer_Builder {
                 'id'    => 'widget4',
                 'label' => esc_html__( 'Widget 4', 'botiga-pro' )
             ),
+        );
+
+        // Upsell Header Components
+        $this->header_upsell_components = array(
+            array(
+                'id'    => 'button2',
+                'label' => esc_html__( 'Button 2', 'botiga-pro' )
+            ),
+            array(
+                'id'    => 'html2',
+                'label' => esc_html__( 'HTML 2', 'botiga-pro' )
+            ),
+            array(
+                'id'    => 'social',
+                'label' => esc_html__( 'Login/Register', 'botiga-pro' )
+            )
+        );
+
+        // Upsell Footer Components
+        $this->footer_upsell_components = array(
+            array(
+                'id'    => 'footer_menu',
+                'label' => esc_html__( 'Footer Menu', 'botiga-pro' )
+            ),
+            array(
+                'id'    => 'html2',
+                'label' => esc_html__( 'HTML 2', 'botiga-pro' )
+            ),
+            array(
+                'id'    => 'button2',
+                'label' => esc_html__( 'Button 2', 'botiga-pro' )
+            )
         );
 
         // Header Rows Options
@@ -264,6 +242,11 @@ class Botiga_Header_Footer_Builder {
 
         add_action( 'customize_controls_print_footer_scripts', function(){ $this->header_builder_admin_grid( 'header' ); } );
         add_action( 'customize_controls_print_footer_scripts', function(){ $this->header_builder_admin_grid( 'footer' ); } );
+
+        add_action( 'customize_controls_print_footer_scripts', function() {
+            echo '<aside class="widget-area"></aside>';
+        });
+        
         
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         add_filter( 'body_class', array( $this, 'body_class' ) );
@@ -289,6 +272,16 @@ class Botiga_Header_Footer_Builder {
                 'mobile'  => apply_filters( 'botiga_header_builder_mobile_components', $this->mobile_components ),
                 'footer'  => apply_filters( 'botiga_header_builder_footer_components', $this->footer_components )
             ),
+            'upsell_components' => array(
+                'enable' => ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ? true : false,
+                'header' => apply_filters( 'botiga_header_builder_upsell_components', $this->header_upsell_components ),
+                'footer' => apply_filters( 'botiga_header_builder_footer_upsell_components', $this->footer_upsell_components ),
+                'title'  => esc_html__( 'PRO Components', 'botiga' ),
+                'total'  => esc_html__( '13+ Components Available', 'botiga' ),
+                'button' => esc_html__( 'Get Botiga Pro Now!', 'botiga' ),
+                'link'   => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga#pro'
+            ),
+            'header_presets' => $this->header_presets_values(),
             'i18n' => array(
                 'elementsMessage' => esc_html__( 'It looks like you already is using all available components.', 'botiga-pro' )
             )
@@ -385,7 +378,6 @@ class Botiga_Header_Footer_Builder {
 
         // Components
         require 'components/header/button/customize-options.php';
-        require 'components/header/button-2/customize-options.php';
         require 'components/header/contact-info/customize-options.php';
         require 'components/header/menu/customize-options.php';
         require 'components/header/secondary-menu/customize-options.php';
@@ -394,17 +386,8 @@ class Botiga_Header_Footer_Builder {
         require 'components/header/logo/customize-options.php';
         require 'components/header/wc-icons/customize-options.php';
         require 'components/header/html/customize-options.php';
-        require 'components/header/html-2/customize-options.php';
         require 'components/header/mobile-hamburger/customize-options.php';
         require 'components/header/mobile-offcanvas-menu/customize-options.php';
-
-        if ( function_exists( 'SitePress' ) ) {
-            require 'components/header/wpml/customize-options.php';
-        }
-
-		if ( function_exists( 'pll_the_languages' ) ) {
-            require 'components/header/polylang/customize-options.php';
-        }
 
         // Structure Components.
         require 'components/header/header-builder/customize-options.php';
@@ -456,13 +439,10 @@ class Botiga_Header_Footer_Builder {
         );
 
         // Components.
-        require 'components/footer/menu/customize-options.php';
         require 'components/footer/social/customize-options.php';
         require 'components/footer/copyright/customize-options.php';
         require 'components/footer/button/customize-options.php';
-        require 'components/footer/button-2/customize-options.php';
         require 'components/footer/html/customize-options.php';
-        require 'components/footer/html-2/customize-options.php';
         require 'components/footer/widget-1/customize-options.php';
         require 'components/footer/widget-2/customize-options.php';
         require 'components/footer/widget-3/customize-options.php';
@@ -473,6 +453,39 @@ class Botiga_Header_Footer_Builder {
         require 'components/footer/row/customize-options.php';
         require 'components/footer/columns/customize-options.php';
 
+    }
+
+    /**
+     * Header Presets Values
+     */
+    public function header_presets_values() {
+        return array(
+            'header_layout_1' => array(
+                'above_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+                'main_row'  => '{ "desktop": [["menu"], ["logo"], ["search","woo_icons"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }',
+                'below_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+            ),
+            'header_layout_2' => array(
+                'above_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+                'main_row'  => '{ "desktop": [["logo"], ["menu","search","woo_icons"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }',
+                'below_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+            ),
+            'header_layout_3' => array(
+                'above_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+                'main_row'  => '{ "desktop": [["search"], ["logo"], ["woo_icons"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }',
+                'below_row' => '{ "desktop": [["menu"]], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+            ),
+            'header_layout_4' => array(
+                'above_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+                'main_row'  => '{ "desktop": [["logo"], ["search"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }',
+                'below_row' => '{ "desktop": [["menu"],["woo_icons"]], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+            ),
+            'header_layout_5' => array(
+                'above_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+                'main_row'  => '{ "desktop": [["search"], ["logo"], ["woo_icons"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }',
+                'below_row' => '{ "desktop": [["menu"],["button"]], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
+            )
+        );
     }
 
     /**
@@ -501,6 +514,14 @@ class Botiga_Header_Footer_Builder {
 
             case 'mobile_offcanvas':
                 $default = '{ "desktop": [], "mobile": [], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }';
+                break;
+
+            case 'main_footer_row':
+                $default = '{ "desktop": [["widget1"], ["widget2"], ["widget3"]], "mobile": [[], [], []] }';
+                break;
+
+            case 'below_footer_row':
+                $default = '{ "desktop": [["social"], ["copyright"]], "mobile": [[], [], []] }';
                 break;
             
             default:
@@ -884,17 +905,255 @@ class Botiga_Header_Footer_Builder {
      * Get columns layout class
      */
     public static function get_columns_layout_class( $val ) {
+        $classes = array();
+
         if( strpos( $val, 'equal' ) !== FALSE ) {
-            return 'equal';
+            $classes[] = 'bhfb-cols-layout-equal';
         }
 
         if( strpos( $val, 'bigleft' ) !== FALSE ) {
-            return 'bigleft';
+            $classes[] = 'bhfb-cols-layout-bigleft';
         }
 
         if( strpos( $val, 'bigright' ) !== FALSE ) {
-            return 'bigright';
+            $classes[] = 'bhfb-cols-layout-bigright';
         }
+
+        return implode( ' ', $classes );
+    }
+
+    /**
+     * Get columns layout class (responsive)
+     */
+    public static function get_columns_layout_class_responsive( $mod, $default ) {
+        $classes = array();
+
+        $devices = array( 'desktop', 'tablet' );
+
+        foreach( $devices as $device ) {
+            $val = get_theme_mod( $mod . '_' . $device, $default );
+
+            if( strpos( $val, 'equal' ) !== FALSE ) {
+                $classes[] = 'bhfb-cols-layout-equal-' . $device;
+            }
+    
+            if( strpos( $val, 'bigleft' ) !== FALSE ) {
+                $classes[] = 'bhfb-cols-layout-bigleft-' . $device;
+            }
+    
+            if( strpos( $val, 'bigright' ) !== FALSE ) {
+                $classes[] = 'bhfb-cols-layout-bigright-' . $device;
+            }
+        }
+
+        return implode( ' ', $classes );
+    }
+
+    /**
+     * Get rows columns layout default customizer value
+     */
+    public static function get_row_columns_layout_default_customizer_value( $row ) {
+        $default = '3col-equal';
+
+        if( $row === 'main_footer_row' ) {
+            $default = '3col-bigleft';
+        }
+
+        return $default;
+    }
+
+    /**
+     * Get rows height default customizer value
+     */
+    public static function get_row_height_default_customizer_value( $row ) {
+        $default = 100;
+
+        if( $row === 'main_footer_row' ) {
+            $default = 280;
+        }
+
+        return $default;
+    }
+
+    /**
+     * Get rows border default customizer value
+     */
+    public static function get_row_border_default_customizer_value( $row ) {
+        $default = 0;
+
+        if( $row === 'below_footer_row' ) {
+            $default = 1;
+        }
+
+        return $default;
+    }
+
+    /**
+     * Get rows column default customizer value
+     */
+    public static function get_row_column_default_customizer_value( $row, $column_id, $setting_id ) {
+        $default = '';
+
+        // Vertical Alignment.
+        if( $setting_id === 'vertical_alignment' ) {
+            $default = 'middle';
+
+            if( strpos( $row, 'footer' ) !== FALSE ) {
+                $default = 'top';
+            }
+        }
+
+        // Inner Layout.
+        if( $setting_id === 'inner_layout' ) {
+            $default = 'inline';
+
+            if( strpos( $row, 'footer' ) !== FALSE ) {
+                $default = 'stack';
+            }
+        }
+
+        // Horizontal Alignment.
+        if( $setting_id === 'horizontal_alignment' ) {
+            $default = 'start';
+            
+            if( $row === 'main_header_row' ) {
+                if( $column_id === 2 ) {
+                    $default = 'center';
+                }
+
+                if( $column_id === 3 ) {
+                    $default = 'end';
+                }
+            }
+
+            if( $row === 'below_footer_row' && $column_id === 2 ) {
+                $default = 'end';
+            }
+        }
+
+        return $default;
+    }
+
+    /**
+     * Convert CSS value
+     */
+    public static function convert_column_css_value( $value ) {
+        switch ( $value ) {
+            case 'top':
+            case 'start':
+                $value = 'flex-start';
+                break;
+
+            case 'middle':
+                $value = 'center';
+                break;
+
+            case 'bottom':
+            case 'end':
+                $value = 'flex-end';
+                break;
+
+            case 'stack':
+                $value = 'column';
+                break;
+
+            case 'inline':
+                $value = 'row';
+                break;
+            
+        }
+
+        return $value;
+    }
+
+    /**
+     * Convert css alignment props.
+     */
+    public static function convert_column_css_alignment_prop( $prop, $row, $column ) {
+
+        // Get 'Inner Layout' to check and convert according to.
+        $default = self::get_row_column_default_customizer_value( $row, $column, 'inner_layout' );
+        $inner_layout = get_theme_mod( $column . 'inner_layout', $default );
+
+        if( $inner_layout === 'stack' ) {
+            if( $prop === 'align-items' ) {
+                $prop = 'justify-content';
+            }
+        }
+
+        return $prop;
+    }
+
+    /**
+     * Generate responsive css output (specific to header/footer builder).
+     */
+    public static function get_responsive_css( $setting = '', $defaults = array(), $selector = '', $css_prop = '', $unit = 'px', $row = '', $column = '' ) {
+        $devices 	= array( 
+            'desktop' 	=> '@media (min-width: 992px)',
+            'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
+            'mobile'	=> '@media (max-width: 575px)'
+        );
+
+        $css = '';
+        $new_css_prop = '';
+
+        // Get 'Inner Layout' default values.
+        $default = self::get_row_column_default_customizer_value( $row, $column, 'inner_layout' );
+
+        foreach ( $devices as $device => $media ) {
+            $mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
+            $mod = self::convert_column_css_value( $mod );
+
+            if( $row && $column ) {
+                
+                // Get 'Inner Layout' to check and convert according to its value.
+                $inner_layout = get_theme_mod( $column . '_inner_layout' . '_' . $device, $default );
+
+                // Stack.
+                if( $inner_layout === 'stack' ) {
+
+                    // Vertical and Horizontal alignment.
+                    if( $css_prop === 'align-items' ) {
+                        $new_css_prop = 'justify-content';
+                    } else if( $css_prop === 'justify-content' ) {
+                        $new_css_prop = 'align-items';
+                    }
+
+                    // Elements Spacing.
+                    if( $css_prop === 'margin-left' ) {
+                        $new_css_prop = 'margin-top';
+                    } else if( $css_prop === 'margin-top' ) {
+                        $new_css_prop = 'margin-left';
+                    }
+
+                // Inline.
+                } else {
+
+                    // Elements Spacing.
+                    if( $css_prop === 'margin-top' ) {
+                        $new_css_prop = 'margin-left';
+                    }
+
+                }
+                
+            }
+
+            if( ! $unit ) {
+                $mod  = esc_attr( $mod );
+                $unit = '';
+            } else {
+                $mod = intval( $mod );
+            }
+
+            // If new css prop is empty, then it should reveive the default css prop value.
+            if( ! $new_css_prop ) {
+                $new_css_prop = $css_prop;
+            }
+
+            $css .= $media . ' { ' . $selector . ' { ' . $new_css_prop . ':' . $mod . $unit . '; } }' . "\n";	
+        }
+
+        return $css;
     }
 
     /**
@@ -909,13 +1168,6 @@ class Botiga_Header_Footer_Builder {
      */
     public function secondary_menu( $params ) {
         require 'components/header/secondary-menu/secondary-menu.php';
-    }
-
-    /**
-     * Footer Menu
-     */
-    public function footer_menu( $params ) {
-        require 'components/footer/menu/menu.php';
     }
 
     /**
@@ -961,13 +1213,6 @@ class Botiga_Header_Footer_Builder {
     }
 
     /**
-     * Button 2
-     */		
-    public function button2( $params ) {
-        require 'components/'. $params[0] .'/button-2/button.php';
-    }
-
-    /**
      * Contact Info
      */		
     public function contact_info( $params ) {
@@ -983,16 +1228,9 @@ class Botiga_Header_Footer_Builder {
 
     /**
      * HTML
-    */		
+     */		
     public function html( $params ) {
         require 'components/'. $params[0] .'/html/html.php';
-    }
-
-    /**
-     * HTML 2
-    */		
-    public function html2( $params ) {
-        require 'components/'. $params[0] .'/html-2/html.php';
     }
 
     /**
@@ -1026,20 +1264,6 @@ class Botiga_Header_Footer_Builder {
     }
 
     /**
-     * Polylang Language Switcher
-     */
-    public function pll_switcher( $params ) { 
-        require 'components/header/polylang/polylang-switcher.php';
-    }
-
-    /**
-     * WPML Language Switcher
-     */
-    public function wpml_switcher( $params ) { 
-        require 'components/header/wpml/wpml-switcher.php';
-    }
-
-    /**
      * CSS Output
      */
     public static function custom_css() {
@@ -1054,6 +1278,7 @@ class Botiga_Header_Footer_Builder {
         // Structure Components.
         require 'components/header/header-builder/css.php';
         require 'components/header/row/css.php';
+        require 'components/header/columns/css.php';
         require 'components/header/mobile-offcanvas/css.php';
 
         // General Components.
@@ -1064,7 +1289,6 @@ class Botiga_Header_Footer_Builder {
         require 'components/header/wc-icons/css.php';
         require 'components/header/social/css.php';
         require 'components/header/button/css.php';
-        require 'components/header/button-2/css.php';
         require 'components/header/contact-info/css.php';
         require 'components/header/mobile-hamburger/css.php';
         require 'components/header/mobile-offcanvas-menu/css.php';
@@ -1072,13 +1296,12 @@ class Botiga_Header_Footer_Builder {
         // Footer.
         // Structure Components.
         require 'components/footer/row/css.php';
+        require 'components/footer/columns/css.php';
 
         // General Components.
-        require 'components/footer/menu/css.php';
         require 'components/footer/copyright/css.php';
         require 'components/footer/social/css.php';
         require 'components/footer/button/css.php';
-        require 'components/footer/button-2/css.php';
         require 'components/footer/widget-1/css.php';
         require 'components/footer/widget-2/css.php';
         require 'components/footer/widget-3/css.php';

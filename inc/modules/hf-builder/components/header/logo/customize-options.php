@@ -154,6 +154,10 @@ foreach( $opts_to_move as $tabs ) {
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
         }
+
+        if( $option_name === 'site_logo_size' ) {
+            $wp_customize->get_setting( $option_name . '_desktop' )->default = 120;
+        }
         
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__logo';
         $wp_customize->get_control( $option_name )->priority = $priority;

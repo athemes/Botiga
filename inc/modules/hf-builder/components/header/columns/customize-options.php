@@ -26,10 +26,12 @@ foreach( $this->header_rows as $row ) {
         );
 
         // Vertical Alignment.
+        $default = Botiga_Header_Footer_Builder::get_row_column_default_customizer_value( $row[ 'id' ], $i, 'vertical_alignment' );
+
         $wp_customize->add_setting( 
             $section_id . '_vertical_alignment_desktop',
             array(
-                'default' 			=> 'middle',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -37,7 +39,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_vertical_alignment_tablet',
             array(
-                'default' 			=> 'middle',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -45,7 +47,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_vertical_alignment_mobile',
             array(
-                'default' 			=> 'middle',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -74,10 +76,12 @@ foreach( $this->header_rows as $row ) {
         );
 
         // Inner Elements Layout.
+        $default = Botiga_Header_Footer_Builder::get_row_column_default_customizer_value( $row[ 'id' ], $i, 'inner_layout' );
+
         $wp_customize->add_setting( 
             $section_id . '_inner_layout_desktop',
             array(
-                'default' 			=> 'stack',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -85,7 +89,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_inner_layout_tablet',
             array(
-                'default' 			=> 'stack',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -93,7 +97,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_inner_layout_mobile',
             array(
-                'default' 			=> 'stack',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -121,10 +125,12 @@ foreach( $this->header_rows as $row ) {
         );
     
         // Horizontal Alignment.
+        $default = Botiga_Header_Footer_Builder::get_row_column_default_customizer_value( $row[ 'id' ], $i, 'horizontal_alignment' );
+
         $wp_customize->add_setting( 
             $section_id . '_horizontal_alignment_desktop',
             array(
-                'default' 			=> 'start',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -132,7 +138,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_horizontal_alignment_tablet',
             array(
-                'default' 			=> 'start',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -140,7 +146,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_setting( 
             $section_id . '_horizontal_alignment_mobile',
             array(
-                'default' 			=> 'start',
+                'default' 			=> $default,
                 'sanitize_callback' => 'botiga_sanitize_text',
                 'transport'         => 'postMessage'
             )
@@ -164,6 +170,55 @@ foreach( $this->header_rows as $row ) {
                         'end'    => esc_html__( 'End', 'botiga' )
                     ),
                     'priority'      => 30
+                )
+            ) 
+        );
+
+        // Elements Spacing.
+        $wp_customize->add_setting( 
+            $section_id . '_elements_spacing_desktop',
+            array(
+                'default'   		=> 25,
+                'transport'			=> 'postMessage',
+                'sanitize_callback' => 'absint'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_elements_spacing_tablet',
+            array(
+                'default'   		=> 25,
+                'transport'			=> 'postMessage',
+                'sanitize_callback' => 'absint'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_elements_spacing_mobile',
+            array(
+                'default'   		=> 25,
+                'transport'			=> 'postMessage',
+                'sanitize_callback' => 'absint'
+            ) 
+        );			
+        
+        $wp_customize->add_control( 
+            new Botiga_Responsive_Slider( 
+                $wp_customize, 
+                $section_id . '_elements_spacing',
+                array(
+                    'label' 		=> esc_html__( 'Elements Spacing', 'botiga' ),
+                    'section' 		=> $section_id,
+                    'is_responsive'	=> true,
+                    'settings' 		=> array (
+                        'size_desktop' 		=> $section_id . '_elements_spacing_desktop',
+                        'size_tablet' 		=> $section_id . '_elements_spacing_tablet',
+                        'size_mobile' 		=> $section_id . '_elements_spacing_mobile'
+                    ),
+                    'input_attrs' => array (
+                        'min'	=> 0,
+                        'max'	=> 150,
+                        'step'  => 1
+                    ),
+                    'priority'     => 30
                 )
             ) 
         );

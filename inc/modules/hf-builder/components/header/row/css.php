@@ -39,9 +39,9 @@ foreach( $rows as $row ) {
     $css .= ".bhfb-$row { border-bottom-style: solid; }";
     $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", '#EAEAEA', ".bhfb-$row" );
 
-    // Elements Spacing.
-    $elements_spacing = get_theme_mod( "botiga_header_row__${row}_elements_spacing", '25' );
-    $css .= ":root { --botiga_header_row__${row}_elements_spacing: ${elements_spacing}px; }";
+    // // Elements Spacing.
+    // $elements_spacing = get_theme_mod( "botiga_header_row__${row}_elements_spacing", '25' );
+    // $css .= ":root { --botiga_header_row__${row}_elements_spacing: ${elements_spacing}px; }";
 
     if( botiga_sticky_header_enabled() ) {
         

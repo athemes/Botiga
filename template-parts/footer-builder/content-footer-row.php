@@ -19,11 +19,11 @@ $cols_number = $bhfb->get_row_number_of_columns( $row_data->$device );
 
 // General options
 $container 	     = get_theme_mod( 'footer_container', 'container' ); 
-$columns_layout  = Botiga_Header_Footer_Builder::get_columns_layout_class( get_theme_mod( "botiga_footer_row__${row}_columns_layout", '3col-equal' ) ); 
+$columns_layout  = Botiga_Header_Footer_Builder::get_columns_layout_class( get_theme_mod( "botiga_footer_row__${row}_columns_layout_desktop", Botiga_Header_Footer_Builder::get_row_columns_layout_default_customizer_value( $row ) ) ); 
 $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$device ) ? ' bhfb-is-row-empty' : ''; ?>
 
 <div class="<?php echo esc_attr( $container ); ?>">
-    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?> bhfb-cols-layout-<?php echo esc_attr( $columns_layout ); ?><?php echo esc_attr( $row_empty_class ); ?>">
+    <div class="bhfb-row bhfb-cols-<?php echo esc_attr( $cols_number ); ?><?php echo ' ' .  esc_attr( $columns_layout ); ?><?php echo esc_attr( $row_empty_class ); ?>">
         <?php 
         foreach( $row_data->$device as $col_id => $elements ) :
 
@@ -37,9 +37,9 @@ $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$devic
             // Column class.
             $column_classes = array( 'bhfb-column' );
             $column_classes[] = 'bhfb-column-' . esc_attr( $col_id + 1 );
-            $column_classes[] = 'bhfb-vertical-align-' . esc_attr( $vertical_alignment ); 
-            $column_classes[] = 'bhfb-horizontal-align-' . esc_attr( $horizontal_alignment );
-            $column_classes[] = 'bhfb-inner-layout-' . esc_attr( $inner_layout );
+            // $column_classes[] = 'bhfb-vertical-align-' . esc_attr( $vertical_alignment ); 
+            // $column_classes[] = 'bhfb-horizontal-align-' . esc_attr( $horizontal_alignment );
+            // $column_classes[] = 'bhfb-inner-layout-' . esc_attr( $inner_layout );
             
             ?>
 

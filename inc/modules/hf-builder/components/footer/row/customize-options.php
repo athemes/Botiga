@@ -64,7 +64,6 @@ foreach( $this->footer_rows as $row ) {
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_height',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_desktop',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_layout_desktop',
-                    '#customize-control-botiga_footer_row__' . $row['id'] . '_elements_spacing',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_available_columns'
                 ) ),
                 'controls_design'		=> json_encode( array( 
@@ -83,18 +82,20 @@ foreach( $this->footer_rows as $row ) {
      */
 
     // Height.
+    $default = Botiga_Header_Footer_Builder::get_row_height_default_customizer_value( $row[ 'id' ] );
+
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_height_desktop', array(
-        'default'   		=> 100,
+        'default'   		=> $default,
         'transport'			=> 'postMessage',
         'sanitize_callback' => 'absint'
     ) );			
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_height_tablet', array(
-        'default'   		=> 100,
+        'default'   		=> $default,
         'transport'			=> 'postMessage',
         'sanitize_callback' => 'absint'
     ) );
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_height_mobile', array(
-        'default'   		=> 100,
+        'default'   		=> $default,
         'transport'			=> 'postMessage',
         'sanitize_callback' => 'absint'
     ) );			
@@ -111,7 +112,7 @@ foreach( $this->footer_rows as $row ) {
             ),
             'input_attrs' => array (
                 'min'	=> 0,
-                'max'	=> 500
+                'max'	=> 1500
             ),
             'priority'              => 30
         )
@@ -145,7 +146,7 @@ foreach( $this->footer_rows as $row ) {
     $wp_customize->add_setting(
         'botiga_footer_row__' . $row['id'] . '_columns_layout_desktop',
         array(
-            'default'           => 'equal',
+            'default'           => Botiga_Header_Footer_Builder::get_row_columns_layout_default_customizer_value( $row[ 'id' ] ),
             'sanitize_callback' => 'sanitize_key',
             'transport'         => 'postMessage'
         )
@@ -213,35 +214,11 @@ foreach( $this->footer_rows as $row ) {
         )
     );
 
-    // Elements Spacing.
-    $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_elements_spacing', array(
-        'default'   		=> 25,
-        'transport'			=> 'postMessage',
-        'sanitize_callback' => 'absint',
-    ) );			
-    
-    $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'botiga_footer_row__' . $row['id'] . '_elements_spacing',
-        array(
-            'label' 		=> esc_html__( 'Elements Spacing', 'botiga' ),
-            'section' 		=> $row['section'],
-            'is_responsive'	=> 0,
-            'settings' 		=> array (
-                'size_desktop' 		=> 'botiga_footer_row__' . $row['id'] . '_elements_spacing',
-            ),
-            'input_attrs' => array (
-                'min'	=> 0,
-                'max'	=> 150,
-                'step'  => 1
-            ),
-            'priority'     => 36
-        )
-    ) );
-
     // Available Columns.
     $devices = array( 'desktop' );
     $desc    = '';
     foreach( $devices as $device ) {
-        $desc .= '<div class="bhfb-available-columns bhfb-available-columns-'. esc_attr( $device ) .'">';
+        $desc .= '<div class="bhfb-available-columns bhfb-available-columns-'. esc_attr( $device ) .' bhfb-always-show">';
             $desc .= '<span class="customize-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
             $desc .= '<div class="bhfb-available-columns-items-wrapper">';
             for( $i=1;$i<=6;$i++ ) {
@@ -280,7 +257,7 @@ foreach( $this->footer_rows as $row ) {
     $wp_customize->add_setting(
         'botiga_footer_row__' . $row['id'] . '_background_color',
         array(
-            'default'           => '#FFF',
+            'default'           => '#F5F5F5',
             'sanitize_callback' => 'botiga_sanitize_hex_rgba',
             'transport'         => 'postMessage'
         )
@@ -299,7 +276,7 @@ foreach( $this->footer_rows as $row ) {
 
     // Border Top.
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_border_top_desktop', array(
-        'default'   		=> 1,
+        'default'   		=> Botiga_Header_Footer_Builder::get_row_border_default_customizer_value( $row[ 'id' ] ),
         'transport'			=> 'postMessage',
         'sanitize_callback' => 'absint'
     ) );						

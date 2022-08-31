@@ -5525,27 +5525,27 @@ body {
 /* Display
 --------------------------------------------- */
 .bt-d-none {
-  display: none;
+  display: none !important;
 }
 
 .bt-d-block {
-  display: block;
+  display: block !important;
 }
 
 .bt-d-inline-block {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 .bt-d-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 .bt-d-inline-flex {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-inline-box !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-flex !important;
 }
 
 .bt-flex-no-wrap {

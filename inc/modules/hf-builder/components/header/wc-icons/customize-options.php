@@ -7,25 +7,17 @@
  */
 
 // List of options we'll need to move.
-$opts_to_move = array(
+$opts_to_move = apply_filters( 'botiga_hfb_header_component_wc_icons_opts_to_move', array(
     'general' => array(
-        'cart_icon',
-        'cart_icon_custom_image',
-        'account_icon',
-        'account_icon_custom_image',
-        'wishlist_icon',
-        'wishlist_icon_custom_image',
-        'header_divider_3',
         'main_header_cart_account_title',
         'enable_header_cart',
-        'enable_header_account',
-        'enable_header_wishlist_icon'
+        'enable_header_account'
     ),
     'style'   => array(
         'main_header_minicart_count_background_color',
         'main_header_minicart_count_text_color'
     )
-);
+) );
 
 $wp_customize->add_section(
     'botiga_section_hb_component__woo_icons',
