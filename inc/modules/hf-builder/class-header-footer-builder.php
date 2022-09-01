@@ -344,7 +344,7 @@ class Botiga_Header_Footer_Builder {
         $wp_customize->add_section(
             'botiga_section_hb_above_header_row',
             array(
-                'title'      => esc_html__( 'Above Header', 'botiga-pro' ),
+                'title'      => esc_html__( 'Above Header Row', 'botiga-pro' ),
                 'panel'      => 'botiga_panel_header'
             )
         );
@@ -353,7 +353,7 @@ class Botiga_Header_Footer_Builder {
         $wp_customize->add_section(
             'botiga_section_hb_main_header_row',
             array(
-                'title'      => esc_html__( 'Main Header', 'botiga-pro' ),
+                'title'      => esc_html__( 'Main Header Row', 'botiga-pro' ),
                 'panel'      => 'botiga_panel_header'
             )
         );
@@ -362,7 +362,7 @@ class Botiga_Header_Footer_Builder {
         $wp_customize->add_section(
             'botiga_section_hb_below_header_row',
             array(
-                'title'      => esc_html__( 'Below Header', 'botiga-pro' ),
+                'title'      => esc_html__( 'Below Header Row', 'botiga-pro' ),
                 'panel'      => 'botiga_panel_header'
             )
         );
@@ -415,7 +415,7 @@ class Botiga_Header_Footer_Builder {
         $wp_customize->add_section(
             'botiga_section_fb_above_footer_row',
             array(
-                'title'      => esc_html__( 'Above Footer', 'botiga-pro' ),
+                'title'      => esc_html__( 'Above Footer Row', 'botiga-pro' ),
                 'panel'      => 'botiga_panel_footer'
             )
         );
@@ -424,7 +424,7 @@ class Botiga_Header_Footer_Builder {
         $wp_customize->add_section(
             'botiga_section_fb_main_footer_row',
             array(
-                'title'      => esc_html__( 'Main Footer', 'botiga-pro' ),
+                'title'      => esc_html__( 'Main Footer Row', 'botiga-pro' ),
                 'panel'      => 'botiga_panel_footer'
             )
         );
@@ -433,7 +433,7 @@ class Botiga_Header_Footer_Builder {
         $wp_customize->add_section(
             'botiga_section_fb_below_footer_row',
             array(
-                'title'      => esc_html__( 'Below Footer', 'botiga-pro' ),
+                'title'      => esc_html__( 'Below Footer Row', 'botiga-pro' ),
                 'panel'      => 'botiga_panel_footer'
             )
         );
@@ -506,9 +506,9 @@ class Botiga_Header_Footer_Builder {
         switch ( $row ) {
             case 'main_header_row':
                 if( class_exists( 'Woocommerce' ) ) {
-                    $default = '{ "desktop": [["menu"], ["logo"], ["search", "woo_icons"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]] }';
+                    $default = '{ "desktop": [["menu"], ["logo"], ["search", "woo_icons"]], "mobile": [["search"], ["logo"], ["woo_icons", "mobile_hamburger"]] }';
                 } else {
-                    $default = '{ "desktop": [["menu"], ["logo"], ["search"]], "mobile": [["mobile_hamburger"], ["logo"], ["search"]] }';
+                    $default = '{ "desktop": [["menu"], ["logo"], ["search"]], "mobile": [["search"], ["logo"], ["mobile_hamburger"]] }';
                 }
                 break;
 
@@ -517,11 +517,11 @@ class Botiga_Header_Footer_Builder {
                 break;
 
             case 'main_footer_row':
-                $default = '{ "desktop": [["widget1"], ["widget2"], ["widget3"]], "mobile": [[], [], []] }';
+                $default = '{ "desktop": [[], [], []], "mobile": [[], [], []] }';
                 break;
 
             case 'below_footer_row':
-                $default = '{ "desktop": [["social"], ["copyright"]], "mobile": [[], [], []] }';
+                $default = '{ "desktop": [["copyright"]], "mobile": [[], [], []] }';
                 break;
             
             default:
@@ -1026,7 +1026,7 @@ class Botiga_Header_Footer_Builder {
                 }
             }
 
-            if( $row === 'below_footer_row' && $column_id === 2 ) {
+            if( $row === 'below_footer_row' && $column_id === 1 ) {
                 $default = 'end';
             }
         }

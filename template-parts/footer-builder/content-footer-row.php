@@ -37,9 +37,6 @@ $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$devic
             // Column class.
             $column_classes = array( 'bhfb-column' );
             $column_classes[] = 'bhfb-column-' . esc_attr( $col_id + 1 );
-            // $column_classes[] = 'bhfb-vertical-align-' . esc_attr( $vertical_alignment ); 
-            // $column_classes[] = 'bhfb-horizontal-align-' . esc_attr( $horizontal_alignment );
-            // $column_classes[] = 'bhfb-inner-layout-' . esc_attr( $inner_layout );
             
             ?>
 

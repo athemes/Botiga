@@ -47,7 +47,12 @@ $wp_customize->add_control(
             'label' 				=> '',
             'section'       		=> 'botiga_section_hb_component__logo',
             'controls_general'		=> json_encode(
-                array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ) 
+                array_merge(
+                    array(
+                        '#customize-control-botiga_section_hb_component__logo_text_alignment'
+                    ),
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ) 
+                )
             ),
             'controls_design'		=> json_encode(
                 array_merge(
@@ -101,6 +106,58 @@ $wp_customize->add_control(
         )
     )
 );
+
+// Text Alignment
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_text_alignment_desktop',
+    array(
+        'default' 			=> 'center',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_text_alignment_tablet',
+    array(
+        'default' 			=> 'center',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_text_alignment_mobile',
+    array(
+        'default' 			=> 'center',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Radio_Buttons( 
+        $wp_customize, 
+        'botiga_section_hb_component__logo_text_alignment',
+        array(
+            'label'         => esc_html__( 'Text Alignment', 'botiga' ),
+            'section'       => 'botiga_section_hb_component__logo',
+            'is_responsive' => true,
+            'settings' => array(
+                'desktop' 		=> 'botiga_section_hb_component__logo_text_alignment_desktop',
+                'tablet' 		=> 'botiga_section_hb_component__logo_text_alignment_tablet',
+                'mobile' 		=> 'botiga_section_hb_component__logo_text_alignment_mobile'
+            ),
+            'choices'       => array(
+                'left' 		=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h10v1H0zM0 4h16v1H0zM0 8h10v1H0zM0 12h16v1H0z"/></svg>',
+                'center' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 0h10v1H3zM0 4h16v1H0zM3 8h10v1H3zM0 12h16v1H0z"/></svg>',
+                'right' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 0h10v1H6zM0 4h16v1H0zM6 8h10v1H6zM0 12h16v1H0z"/></svg>'
+            ),
+            'priority'      => 51
+        )
+    ) 
+);
+
+/**
+ * Styling
+ */
 
 // Sticky Header - Site TItle Color
 $wp_customize->add_setting(

@@ -55,7 +55,7 @@ $wp_customize->add_setting( 'botiga_section_fb_component__widget3_goto_edit',
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_fb_component__widget3_goto_edit',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-3\' ).focus();">' . esc_html__( 'Footer Widget Area 3', 'botiga-pro' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-3\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-3\' ).focus();">' . esc_html__( 'Footer Widget Area 3', 'botiga-pro' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_fb_component__widget3',
             'priority' 		=> 30
 		)

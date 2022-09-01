@@ -158,6 +158,8 @@ jQuery( document ).ready(function($) {
 
 		clickFlag = true;
 
+		let device = '';
+
 		if ( $( this ).hasClass( 'preview-desktop' ) ) {
 			$( '.botiga-devices-preview' ).find( '.preview-desktop' ).addClass( 'active' );
 			$( '.botiga-devices-preview' ).find( '.preview-tablet' ).removeClass( 'active' );
@@ -166,6 +168,8 @@ jQuery( document ).ready(function($) {
 			$( '.responsive-control-tablet' ).removeClass( 'active' );
 			$( '.responsive-control-mobile' ).removeClass( 'active' );
 			$( '.wp-full-overlay-footer .devices button[data-device="desktop"]' ).trigger( 'click' );
+
+			device = 'desktop';
 		} else if ( $( this ).hasClass( 'preview-tablet' ) ) {
 			$( '.botiga-devices-preview' ).find( '.preview-tablet' ).addClass( 'active' );
 			$( '.botiga-devices-preview' ).find( '.preview-desktop' ).removeClass( 'active' );
@@ -174,15 +178,26 @@ jQuery( document ).ready(function($) {
 			$( '.responsive-control-tablet' ).addClass( 'active' );
 			$( '.responsive-control-mobile' ).removeClass( 'active' );			
 			$( '.wp-full-overlay-footer .devices button[data-device="tablet"]' ).trigger( 'click' );
+
+			device = 'tablet';
 		} else {
 			$( '.botiga-devices-preview' ).find( '.preview-mobile' ).addClass( 'active' );
 			$( '.botiga-devices-preview' ).find( '.preview-desktop' ).removeClass( 'active' );
 			$( '.botiga-devices-preview' ).find( '.preview-tablet' ).removeClass( 'active' );
 			$( '.responsive-control-desktop' ).removeClass( 'active' );
-			$( '.responsive-control-tablet:not(.show-mobile)' ).removeClass( 'active' );
+			$( '.responsive-control-tablet' ).removeClass( 'active' );
 			$( '.responsive-control-mobile' ).addClass( 'active' );			
 			$( '.wp-full-overlay-footer .devices button[data-device="mobile"]' ).trigger( 'click' );
+
+			// Force show on mobile.
+			$( '.responsive-control-tablet.show-mobile' ).addClass( 'active' );
+
+			device = 'mobile';
 		}
+
+		// Trigger custom event when switching device.
+		const setting_id = $( this ).closest( '.customize-control' ).attr( 'id' ).replace( 'customize-control-', '' );
+		$( window ).trigger( 'botiga.resp.control.switched', [ setting_id, device ] );
 	});
 
 	$(' .wp-full-overlay-footer .devices button ').on('click', function() {

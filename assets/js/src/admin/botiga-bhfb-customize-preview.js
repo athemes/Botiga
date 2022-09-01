@@ -8,6 +8,7 @@
      */
     wp.customize.bind( 'preview-ready', function() {
         $( document ).on( 'click', '.bhfb-item-customizer-focus', function(e){
+            console.log(e);
             e.preventDefault();
             e.stopPropagation();
 
@@ -25,13 +26,15 @@
             if( $( this ).closest( '.bhfb-footer' ).length ) {
                 currentBuilderSelector = '.botiga-bhfb-footer';
             }
-
+            console.log(currentBuilderSelector);
             // Go to component section.
-            if( $( this ).closest( '.bhfb-header' ).length ) {
+            if( $( this ).closest( '.bhfb-header' ).length || $( this ).closest( '.bhfb-mobile_offcanvas' ).length ) {
                 window.parent.wp.customize.section( 'botiga_section_hb_component__' + id ).focus();
             } else {
                 window.parent.wp.customize.section( 'botiga_section_fb_component__' + id ).focus();
             }
+
+            
 
             // Show grid builder.
             $( window.parent.document ).find( currentBuilderSelector ).addClass( 'show' );
@@ -151,12 +154,6 @@
             'bhfb_contact_info_display_inline' : {
                 'selector'    : '.bhfb-component-contact_info .header-contact',
                 'toggleClass' : 'header-contact-inline'
-            },
-
-            // Copyright Component.
-            'botiga_section_fb_component__copyright_text_alignment' : {
-                'selector'  : '.bhfb-component-copyright .botiga-credits',
-                'prop'      : 'text-align',
             }
         };
 
@@ -259,6 +256,12 @@
                 'selector' : '.custom-logo-link img',
                 'prop'     : 'width',
                 'unit'     : 'px'
+            },
+
+            // Site Logo Text Alignment.
+            'botiga_section_hb_component__logo_text_alignment' : {
+                'selector' : '.bhfb.bhfb-header .bhfb-component-logo',
+                'prop'     : 'text-align'
             },
         };
     

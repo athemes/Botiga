@@ -20,7 +20,15 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
 
             <div class="bhfb-column bhfb-mobile-offcanvas-col">
                 <?php foreach( $elements[0] as $component_callback ) {
-                    call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
+                    if( method_exists( $bhfb, $component_callback  ) ) {
+                        call_user_func( array( $bhfb, $component_callback ), array( 'header' ) );
+                    } else if( class_exists( 'Botiga_Pro_HF_Builder_Components' ) ) {
+                        $bp_bphfbc = Botiga_Pro_HF_Builder_Components::get_instance();
+
+                        if( method_exists( $bp_bphfbc, $component_callback  ) ) {
+                            call_user_func( array( $bp_bphfbc, $component_callback ), array( 'header' ) );
+                        }
+                    }
                 } ?>
 
             </div>
