@@ -3161,9 +3161,7 @@ div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc
 div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .loop-button-wrap,
 div.editor-styles-wrapper .product-equal-height ul.products li.wc-block-grid__product .loop-button-wrap,
 div.editor-styles-wrapper .product-equal-height ul.products li.product .loop-button-wrap {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  margin-top: auto;
 }
 
 div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .loop-button-wrap:empty,
