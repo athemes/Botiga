@@ -473,26 +473,26 @@ ul.products {
 	}
 }
 
-.botiga-sorting-left{
+.botiga-sorting-left {
 	display: flex;
 	text-align: left;
 	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+.botiga-sorting-left-inner {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	grid-gap: 10px;
 	align-items: flex-start;
 }
 
-.botiga-sorting-left-inner{
-	display: flex;
-	flex-wrap: wrap;
-	grid-gap: 10px;
-	justify-content: flex-start;
-	align-items: center;
-}
-
-.botiga-sorting-right{
+.botiga-sorting-right {
 	display: flex;
 	text-align: right;
 	justify-content: flex-end;
-	align-items: flex-start;
+	align-items: flex-end;
 }
 
 .botiga-sorting-right-inner{
