@@ -808,7 +808,7 @@
   wp.customize('breadcrumbs_align', function (value) {
     value.bind(function (to) {
       $('.botiga-breadcrumb-trail').css('text-align', to);
-
+    });
   }); // Predefined palettes listener.
 
   wp.customize('color_palettes', function (value) {

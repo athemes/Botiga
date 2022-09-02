@@ -902,14 +902,25 @@ botiga.quickView = {
         ajax.onload = function () {
           if (this.status >= 200 && this.status < 400) {
             // If successful
-            popupContent.innerHTML = this.response; // Initialize gallery 
+            popupContent.innerHTML = this.response;
+            var $wrapper = jQuery(popupContent); // Initialize gallery 
 
-            var productGallery = document.querySelector('.woocommerce-product-gallery');
+            var $gallery = $wrapper.find('.woocommerce-product-gallery');
 
-            if ('undefined' !== typeof productGallery) {
-              productGallery.dispatchEvent(new Event('wc-product-gallery-before-init'));
-              jQuery(productGallery).wc_product_gallery(wc_single_product_params);
-              productGallery.dispatchEvent(new Event('wc-product-gallery-after-init'));
+            if ($gallery.length) {
+              $gallery.trigger('wc-product-gallery-before-init', [$gallery.get(0), wc_single_product_params]);
+              $gallery.wc_product_gallery(wc_single_product_params);
+              $gallery.trigger('wc-product-gallery-after-init', [$gallery.get(0), wc_single_product_params]);
+            } // Initialize variation gallery 
+
+
+            if (botiga.variationGallery) {
+              botiga.variationGallery.init($wrapper);
+            } // Initialize size chart 
+
+
+            if (botiga.sizeChart) {
+              botiga.sizeChart.init($wrapper);
             } // Initialize product variable
 
 

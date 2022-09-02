@@ -70,7 +70,8 @@ function botiga_woocommerce_page_header() {
 								<?php  
 								foreach( $categories as $cat_id => $cat_name ) {
 									$cat_link = get_term_link( $cat_id );
-									echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
+									$post_count = apply_filters( 'botiga_shop_page_header_category_post_count', '', $cat_id );
+									echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name . $post_count ) .'</a>';
 								} ?>
 							</div>
 						<?php endif; ?>
@@ -95,7 +96,8 @@ function botiga_woocommerce_page_header() {
 								<?php 
 								foreach( $categories as $cat_id => $cat_name ) {
 									$cat_link = get_term_link( $cat_id );
-									echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) .'</a>';
+									$post_count = apply_filters( 'botiga_shop_page_header_category_post_count', '', $cat_id );
+									echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name . $post_count ) .'</a>';
 								} ?>
 							</div>
 						<?php endif; ?>

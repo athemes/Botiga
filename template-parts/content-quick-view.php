@@ -6,12 +6,14 @@
  * @var array $args Contains product id
  */
 
+global $product;
+
 $product    = wc_get_product( $args['product_id'] ); 
 $product_id = $product->get_id(); ?>
 
 <div id="product-<?php echo absint( $product_id ); ?>" <?php wc_product_class( '', $product ); ?>>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 gallery-quickview">
             
             <?php
             //Gallery
