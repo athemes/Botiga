@@ -516,20 +516,13 @@ ul.products {
 			flex-direction: column;
 
 			.loop-button-wrap{
-				margin-top: auto;
-
-				&:empty{
-					margin-bottom: 0;
-				}
+				flex: 1;
+				display: flex;
+				align-items: flex-end;
 			}
 
 			.variations_form{
 				margin-bottom: 7px;
-			}
-
-			.wp-block-button__link,
-			.button {
-				align-self: flex-start;
 			}
 		}
 	}
