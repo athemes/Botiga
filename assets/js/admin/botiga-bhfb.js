@@ -517,7 +517,7 @@
             const 
                 _this = this;
 
-                let 
+            let 
                 current_value = _this.jsonDecode( _this.currentRowInput.val() ),
                 value_wrapper = _this.currentDevice;
 
@@ -600,7 +600,6 @@
                 $( this ).sortable({
                     placeholder: "botiga-bhfb-element bhfb-ui-state-highlight",
                     connectWith: '.botiga-bhfb-area',
-                    helper: 'clone',
                     scroll: false,
                     cancel: '.bhfb-edit-column',
                     change: function(e, ui) {

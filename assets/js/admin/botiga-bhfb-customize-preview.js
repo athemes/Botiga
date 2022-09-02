@@ -8,7 +8,6 @@
      */
     wp.customize.bind( 'preview-ready', function() {
         $( document ).on( 'click', '.bhfb-item-customizer-focus', function(e){
-            console.log(e);
             e.preventDefault();
             e.stopPropagation();
 
@@ -26,7 +25,7 @@
             if( $( this ).closest( '.bhfb-footer' ).length ) {
                 currentBuilderSelector = '.botiga-bhfb-footer';
             }
-            console.log(currentBuilderSelector);
+
             // Go to component section.
             if( $( this ).closest( '.bhfb-header' ).length || $( this ).closest( '.bhfb-mobile_offcanvas' ).length ) {
                 window.parent.wp.customize.section( 'botiga_section_hb_component__' + id ).focus();
