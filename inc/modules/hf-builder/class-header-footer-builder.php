@@ -78,7 +78,7 @@ class Botiga_Header_Footer_Builder {
             ),
             array(
                 'id'    => 'mobile_hamburger',
-                'label' => esc_html__( 'Mobile Hamburger', 'botiga-pro' )
+                'label' => esc_html__( 'Menu Toggle', 'botiga-pro' )
             ),
             array(
                 'id'    => 'social',
@@ -139,19 +139,19 @@ class Botiga_Header_Footer_Builder {
             ),
             array(
                 'id'    => 'widget1',
-                'label' => esc_html__( 'Widget 1', 'botiga-pro' )
+                'label' => esc_html__( 'Widget Area 1', 'botiga-pro' )
             ),
             array(
                 'id'    => 'widget2',
-                'label' => esc_html__( 'Widget 2', 'botiga-pro' )
+                'label' => esc_html__( 'Widget Area 2', 'botiga-pro' )
             ),
             array(
                 'id'    => 'widget3',
-                'label' => esc_html__( 'Widget 3', 'botiga-pro' )
+                'label' => esc_html__( 'Widget Area 3', 'botiga-pro' )
             ),
             array(
                 'id'    => 'widget4',
-                'label' => esc_html__( 'Widget 4', 'botiga-pro' )
+                'label' => esc_html__( 'Widget Area 4', 'botiga-pro' )
             ),
         );
 

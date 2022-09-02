@@ -9,7 +9,7 @@
 $wp_customize->add_section(
     'botiga_section_fb_component__widget3',
     array(
-        'title'      => esc_html__( 'Widget 3', 'botiga-pro' ),
+        'title'      => esc_html__( 'Widget Area 3', 'botiga-pro' ),
         'panel'      => 'botiga_panel_footer'
     )
 );

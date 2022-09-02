@@ -39,10 +39,6 @@ foreach( $rows as $row ) {
     $css .= ".bhfb-$row { border-bottom-style: solid; }";
     $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", '#EAEAEA', ".bhfb-$row" );
 
-    // // Elements Spacing.
-    // $elements_spacing = get_theme_mod( "botiga_header_row__${row}_elements_spacing", '25' );
-    // $css .= ":root { --botiga_header_row__${row}_elements_spacing: ${elements_spacing}px; }";
-
     if( botiga_sticky_header_enabled() ) {
         
         // Sticky Header - Background Color
@@ -61,7 +57,7 @@ if( botiga_sticky_header_enabled() ) {
     $sticky_gap = 0;
 
     foreach( $rows as $row ) {
-        if( (int) Botiga_Header_Footer_Builder::get_row_number_of_columns( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' )->desktop ) ) {
+        if( ! (int) Botiga_Header_Footer_Builder::is_row_empty( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' )->desktop ) ) {
             $sticky_gap = $sticky_gap + get_theme_mod( "botiga_header_row__${row}_height_desktop", 100 ) + get_theme_mod( "botiga_header_row__${row}_border_bottom", 1 );
         }
     }

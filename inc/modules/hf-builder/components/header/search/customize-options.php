@@ -152,6 +152,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Icon color', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__search',
+            'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 33
 		)
 	)
@@ -173,6 +174,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Icon color hover', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__search',
+            'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 34
 		)
 	)

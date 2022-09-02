@@ -206,7 +206,7 @@ body {
         border: 1px solid #CCC;
         border-radius: 5px;
         padding: 25px;
-        max-width: 380px;
+        max-width: 405px;
         z-index: 10;
         box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.2);
         opacity: 0;
@@ -221,7 +221,7 @@ body {
             > .botiga-bhfb-elements-desktop,
             > .botiga-bhfb-elements-mobile {
                 display: grid;
-                grid-template-columns: repeat(3, 100px);
+                grid-template-columns: repeat(3, 110px);
                 gap: 10px;
             }
 

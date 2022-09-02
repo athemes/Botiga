@@ -17,7 +17,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_hb_component__mobile_hamburger',
     array(
-        'title'      => esc_html__( 'Mobile Hamburger', 'botiga-pro' ),
+        'title'      => esc_html__( 'Menu Toggle', 'botiga-pro' ),
         'panel'      => 'botiga_panel_header'
     )
 );

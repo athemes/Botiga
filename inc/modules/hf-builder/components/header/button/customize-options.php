@@ -299,6 +299,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Background color', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__button',
+			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 68
 		)
 	)
@@ -320,6 +321,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Text Color', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__button',
+			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 69
 		)
 	)
@@ -341,6 +343,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Border Color', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__button',
+			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 70
 		)
 	)
@@ -362,6 +365,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Background color (Hover)', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__button',
+			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 71
 		)
 	)
@@ -383,6 +387,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Text Color (Hover)', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__button',
+			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 72
 		)
 	)
@@ -404,6 +409,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Border Color (Hover)', 'botiga-pro' ),
 			'section'       	=> 'botiga_section_hb_component__button',
+			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 73
 		)
 	)
