@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */ 
 
-$footer_html_content = get_theme_mod( 'footer_html_content', '' );
+$footer_html_content = get_theme_mod( 'footer_html_content', '' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 if( ! $footer_html_content ) {
     return '';
 } ?>

@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -20,7 +22,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_hb_component__button',
     array(
-        'title'      => esc_html__( 'Button', 'botiga-pro' ),
+        'title'      => esc_html__( 'Button', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -67,7 +69,7 @@ $wp_customize->add_control(
                         '#customize-control-bhfb_button_sticky_border_color_hover',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
-                ),
+                )
             ),
             'priority' 				=> 20
         )
@@ -83,7 +85,7 @@ $wp_customize->add_setting( 'bhfb_button_default_state_title',
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_button_default_state_title',
 		array(
-			'label'			=> esc_html__( 'Default state', 'botiga-pro' ),
+			'label'			=> esc_html__( 'Default state', 'botiga' ),
 			'section' 		=> 'botiga_section_hb_component__button',
             'priority'      => 25
 		)
@@ -104,7 +106,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_background_color',
 		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Background color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
             'priority'          => 30
 		)
@@ -125,7 +127,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_color',
 		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
             'priority'          => 35
 		)
@@ -146,7 +148,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_border_color',
 		array(
-			'label'         	=> esc_html__( 'Border Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Border Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
             'priority'          => 40
 		)
@@ -176,7 +178,7 @@ $wp_customize->add_setting( 'buttons_hover_state_title',
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'buttons_hover_state_title',
 		array(
-			'label'			=> esc_html__( 'Hover state', 'botiga-pro' ),
+			'label'			=> esc_html__( 'Hover state', 'botiga' ),
 			'section' 		=> 'botiga_section_hb_component__button',
             'priority'      => 50
 		)
@@ -197,7 +199,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_background_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Background color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
             'priority'          => 55
 		)
@@ -218,7 +220,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
             'priority'          => 60
 		)
@@ -239,7 +241,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_border_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Border Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Border Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
             'priority'          => 65
 		)
@@ -274,8 +276,8 @@ $wp_customize->add_control(
         $wp_customize, 
         'bhfb_button_sticky_title',
         array(
-            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga-pro' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga-pro' ),
+            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
+            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__button',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 67
@@ -297,7 +299,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_sticky_background_color',
 		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Background color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
 			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 68
@@ -319,7 +321,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_sticky_color',
 		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
 			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 69
@@ -341,7 +343,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_sticky_border_color',
 		array(
-			'label'         	=> esc_html__( 'Border Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Border Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
 			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 70
@@ -363,7 +365,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_sticky_background_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Background color (Hover)', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Background color (Hover)', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
 			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 71
@@ -385,7 +387,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_sticky_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Text Color (Hover)', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text Color (Hover)', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
 			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 72
@@ -407,7 +409,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_button_sticky_border_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Border Color (Hover)', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Border Color (Hover)', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__button',
 			'active_callback'   => 'botiga_sticky_header_enabled',
             'priority'          => 73
@@ -417,8 +419,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 80;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
 		if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -431,3 +433,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

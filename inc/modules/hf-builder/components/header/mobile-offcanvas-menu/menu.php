@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-component-id="mobile_offcanvas_menu">'; 
     $this->customizer_edit_button();
     $location = 'primary';
@@ -26,3 +28,5 @@ echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-c
     </nav><!-- #site-navigation -->
 <?php
 echo '</div>';
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

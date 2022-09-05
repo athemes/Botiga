@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Padding.
 $padding = get_theme_mod( 'bhfb_mobile_offcanvas_padding', 30 );
 $css .= '.bhfb-mobile_offcanvas { padding: '. esc_attr( $padding ) .'px; }';
@@ -29,3 +31,5 @@ $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_mobile_offcanvas_close_text_color
 
 // Close Icon Text Color Hover
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_mobile_offcanvas_close_text_color_hover', '#757575', '.bhfb-mobile_offcanvas .mobile-menu-close:hover svg' );
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Site TItle Color
 $css .= Botiga_Custom_CSS::get_color_css( 'site_title_color', '', '.bhfb .site-title a' );
 
@@ -37,3 +39,5 @@ if( botiga_sticky_header_enabled() ) {
     // Sticky Header - Site Description Color
     $css .= Botiga_Custom_CSS::get_color_css( 'site_description_sticky_color', '', '.sticky-header-active .bhfb .site-description' );
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

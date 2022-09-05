@@ -10,6 +10,8 @@
  * Default State
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Background Color
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_background_color', '', '.bhfb-component-button .button' );
 
@@ -64,3 +66,5 @@ if( botiga_sticky_header_enabled() ) {
     $css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_sticky_border_color_hover', '', '.sticky-header-active .bhfb-component-button .button:hover' );
 
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -27,7 +29,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_hb_component__logo',
     array(
-        'title'      => esc_html__( 'Logo', 'botiga-pro' ),
+        'title'      => esc_html__( 'Logo', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -98,8 +100,8 @@ $wp_customize->add_control(
         $wp_customize, 
         'logo_sticky_title',
         array(
-            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga-pro' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga-pro' ),
+            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
+            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__logo',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 51
@@ -173,7 +175,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'site_title_sticky_color',
 		array(
-			'label'         	=> esc_html__( 'Site Title Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Site Title Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__logo',
             'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 52
@@ -195,7 +197,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'site_description_sticky_color',
 		array(
-			'label'         	=> esc_html__( 'Site Description Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Site Description Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__logo',
             'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 53
@@ -205,8 +207,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 40;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -222,3 +224,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

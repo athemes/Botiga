@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 $sticky_header_type = get_theme_mod( 'sticky_header_type', 'always' );
 $sticky_row         = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_sticky_row', 'main-header-row' );
 
@@ -71,3 +73,5 @@ if( botiga_sticky_header_enabled() ) {
         $css .= 'body.has-bhfb-builder.sticky-header-active:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; }';
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

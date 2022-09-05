@@ -754,7 +754,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control( 
 	'footer_html_content', 
 	array(
-		'label'           => esc_html__( 'HTML Content', 'botiga-pro' ),
+		'label'           => esc_html__( 'HTML Content', 'botiga' ),
 		'type'            => 'textarea',
 		'section'         => 'botiga_section_footer_credits',
 		'active_callback' => function(){ return botiga_callback_footer_copyright_elements( 'footer_html' ); },
@@ -775,11 +775,11 @@ $wp_customize->add_control(
 		$wp_customize, 
 		'footer_html_position',
 		array(
-			'label' 	      => esc_html__( 'Position', 'botiga-pro' ),
+			'label' 	      => esc_html__( 'Position', 'botiga' ),
 			'section' 	      => 'botiga_section_footer_credits',
 			'choices'         => array(
-				'left'   => esc_html__( 'Left', 'botiga-pro' ),
-				'right'  => esc_html__( 'Right', 'botiga-pro' ),
+				'left'   => esc_html__( 'Left', 'botiga' ),
+				'right'  => esc_html__( 'Right', 'botiga' ),
 			),
 			'active_callback' => function(){ return botiga_callback_footer_copyright_elements( 'footer_html', true ); },
 			'priority'        => 61

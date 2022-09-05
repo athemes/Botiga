@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Icon Color
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_color', '', '.bhfb-component-search .header-search svg' );
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_color', '', '.bhfb-component-search .header-search .botiga-image.is-svg' );
@@ -23,3 +25,5 @@ if( botiga_sticky_header_enabled() ) {
     $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_sticky_color_hover', '', '.sticky-header-active .bhfb-component-search .header-search:hover svg' );
     $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_sticky_color_hover', '', '.sticky-header-active .bhfb-component-search .header-search:hover .botiga-image.is-svg' );
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

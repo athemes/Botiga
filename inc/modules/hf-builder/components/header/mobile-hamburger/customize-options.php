@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+ 
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -17,7 +19,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_hb_component__mobile_hamburger',
     array(
-        'title'      => esc_html__( 'Menu Toggle', 'botiga-pro' ),
+        'title'      => esc_html__( 'Menu Toggle', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -66,7 +68,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_mobile_hamburger_icon_color',
 		array(
-			'label'         	=> esc_html__( 'Icon color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icon color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__mobile_hamburger',
 			'priority'			=> 25
 		)
@@ -75,8 +77,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 30;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -98,8 +100,10 @@ if ( isset( $wp_customize->selective_refresh ) ) {
             'selector'            => '.bhfb-component-mobile_hamburger',
             'container_inclusive' => true,
             'render_callback'     => function() {
-                require 'mobile-hamburger.php';
+                require get_template_directory() . '/inc/modules/hf-builder/components/header/mobile-hamburger/mobile-hamburger.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
             }
         )
     );
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

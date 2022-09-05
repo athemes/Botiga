@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 $rows = array( 'above_footer_row', 'main_footer_row', 'below_footer_row' );
 foreach( $rows as $row ) {
 
@@ -43,3 +45,5 @@ foreach( $rows as $row ) {
     $css .= ":root { --botiga_footer_row__${row}_elements_spacing: ${elements_spacing}px; }";
 
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

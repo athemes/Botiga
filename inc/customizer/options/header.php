@@ -610,7 +610,7 @@ $wp_customize->add_control(
 		$wp_customize, 
 		'header_html_content_title',
 		array(
-			'label'			  => esc_html__( 'HTML Content', 'botiga-pro' ),
+			'label'			  => esc_html__( 'HTML Content', 'botiga' ),
 			'section' 		  => 'botiga_section_main_header',
 			'active_callback' => function() { return botiga_callback_header_elements( 'html' ); },
 			'priority'	 	  => 221

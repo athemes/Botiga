@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -31,7 +33,7 @@ $wp_customize->add_control(
     'botiga_header_row__mobile_offcanvas',
     array(
         'type'     => 'text',
-        'label'    => esc_html__( 'Mobile Offcanvas', 'botiga-pro' ),
+        'label'    => esc_html__( 'Mobile Offcanvas', 'botiga' ),
         'section'  => 'botiga_section_hb_mobile_offcanvas',
         'settings' => 'botiga_header_row__mobile_offcanvas',
         'priority' => 10
@@ -45,7 +47,7 @@ if ( isset( $wp_customize->selective_refresh ) ) {
         array(
             'selector'        => '.bhfb-mobile_offcanvas .bhfb-mobile-offcanvas-rows',
             'render_callback' => function() {
-                $this->mobile_offcanvas_callback( 'mobile_offcanvas' );
+                $this->mobile_offcanvas_callback( 'mobile_offcanvas' ); // phpcs:ignore PHPCompatibility.FunctionDeclarations.NewClosure.ThisFoundOutsideClass
             },
         )
     );
@@ -105,7 +107,7 @@ $wp_customize->add_control(
         $wp_customize, 
         'bhfb_mobile_offcanvas_padding',
         array(
-            'label' 		=> esc_html__( 'Padding', 'botiga-pro' ),
+            'label' 		=> esc_html__( 'Padding', 'botiga' ),
             'section' 		=> 'botiga_section_hb_mobile_offcanvas',
             'is_responsive'	=> 0,
             'settings' 		=> array (
@@ -135,7 +137,7 @@ $wp_customize->add_control(
         $wp_customize, 
         'bhfb_mobile_offcanvas_close_offset',
         array(
-            'label' 		=> esc_html__( 'Close Icon Offset', 'botiga-pro' ),
+            'label' 		=> esc_html__( 'Close Icon Offset', 'botiga' ),
             'section' 		=> 'botiga_section_hb_mobile_offcanvas',
             'is_responsive'	=> 0,
             'settings' 		=> array (
@@ -165,7 +167,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_mobile_offcanvas_close_background_color',
 		array(
-			'label'         	=> esc_html__( 'Close Icon Background', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Close Icon Background', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_mobile_offcanvas',
 			'priority'			=> 40
 		)
@@ -186,7 +188,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_mobile_offcanvas_close_text_color',
 		array(
-			'label'         	=> esc_html__( 'Close Icon Text', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Close Icon Text', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_mobile_offcanvas',
 			'priority'			=> 40
 		)
@@ -207,7 +209,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_mobile_offcanvas_close_text_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Close Icon Text Hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Close Icon Text Hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_mobile_offcanvas',
 			'priority'			=> 40
 		)
@@ -216,8 +218,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 25;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
         
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -229,3 +231,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

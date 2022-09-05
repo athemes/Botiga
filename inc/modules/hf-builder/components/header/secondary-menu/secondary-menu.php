@@ -10,11 +10,11 @@
     <?php $this->customizer_edit_button();
 
     if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) ) : ?>
-        <nav class="secondary-navigation" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga-pro' ); ?>">
+        <nav class="secondary-navigation" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga' ); ?>">
             <?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
         </nav>
     <?php else: ?>				
-    <nav class="top-bar-secondary-navigation secondary-navigation botiga-dropdown bhfb-navigation" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga-pro' ); ?>">
+    <nav class="top-bar-secondary-navigation secondary-navigation botiga-dropdown bhfb-navigation" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga' ); ?>">
         <?php
         wp_nav_menu( array(
             'theme_location'=> 'secondary',

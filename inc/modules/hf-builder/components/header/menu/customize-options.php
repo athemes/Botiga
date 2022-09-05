@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -35,7 +37,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_hb_component__menu',
     array(
-        'title'      => esc_html__( 'Primary Menu', 'botiga-pro' ),
+        'title'      => esc_html__( 'Primary Menu', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -80,7 +82,7 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_section_hb_component__menu_config',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Configure Menu', 'botiga-pro' ) . '</span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'menu_locations\' ).focus();">' . esc_html__( 'Configure Menu', 'botiga-pro' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Configure Menu', 'botiga' ) . '</span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'menu_locations\' ).focus();">' . esc_html__( 'Configure Menu', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_hb_component__menu',
             'priority'      => 20
 		)
@@ -89,8 +91,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 30;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -102,3 +104,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

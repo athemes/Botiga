@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -17,7 +19,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_fb_component__copyright',
     array(
-        'title'      => esc_html__( 'Copyright', 'botiga-pro' ),
+        'title'      => esc_html__( 'Copyright', 'botiga' ),
         'panel'      => 'botiga_panel_footer'
     )
 );
@@ -65,7 +67,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'botiga_section_fb_component__copyright_text_color',
 		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__copyright',
 			'priority'			=> 25
 		)
@@ -86,7 +88,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'botiga_section_fb_component__copyright_links_color',
 		array(
-			'label'         	=> esc_html__( 'Links Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Links Color', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__copyright',
 			'priority'			=> 25
 		)
@@ -107,7 +109,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'botiga_section_fb_component__copyright_links_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Links Color Hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Links Color Hover', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__copyright',
 			'priority'			=> 25
 		)
@@ -116,8 +118,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 30;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
 		if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -130,3 +132,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

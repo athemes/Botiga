@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 /**
  * All Controls 
  */
@@ -39,7 +41,7 @@ foreach( $this->footer_rows as $row ) {
                     'botiga_footer_row__' . $row['id']
                 ),
                 'render_callback' => function() use( $row ) {
-                    $this->rows_callback( 'footer', $row['id'], 'desktop' );
+                    $this->rows_callback( 'footer', $row['id'], 'desktop' ); // phpcs:ignore PHPCompatibility.FunctionDeclarations.NewClosure.ThisFoundOutsideClass
                 },
             )
         );
@@ -102,7 +104,7 @@ foreach( $this->footer_rows as $row ) {
     
     $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'botiga_footer_row__' . $row['id'] . '_height',
         array(
-            'label' 		=> esc_html__( 'Height', 'botiga-pro' ),
+            'label' 		=> esc_html__( 'Height', 'botiga' ),
             'section' 		=> $row['section'],
             'is_responsive'	=> 1,
             'settings' 		=> array (
@@ -128,7 +130,7 @@ foreach( $this->footer_rows as $row ) {
     );
     $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'botiga_footer_row__' . $row['id'] . '_columns_desktop',
         array(
-            'label'   => esc_html__( 'Columns', 'botiga-pro' ),
+            'label'   => esc_html__( 'Columns', 'botiga' ),
             'section' => $row['section'],
             'choices' => array(
                 '1' => '1',
@@ -224,7 +226,7 @@ foreach( $this->footer_rows as $row ) {
             for( $i=1;$i<=6;$i++ ) {
                 $col_section_id = 'botiga_footer_row__' . $row['id'] . '_column' . $i;
 
-                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
             }
             $desc .= '</div>';
         $desc .= '</div>';
@@ -267,7 +269,7 @@ foreach( $this->footer_rows as $row ) {
             $wp_customize,
             'botiga_footer_row__' . $row['id'] . '_background_color',
             array(
-                'label'         	=> esc_html__( 'Background Color', 'botiga-pro' ),
+                'label'         	=> esc_html__( 'Background Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 32
             )
@@ -282,7 +284,7 @@ foreach( $this->footer_rows as $row ) {
     ) );						
     $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'botiga_footer_row__' . $row['id'] . '_border_top',
         array(
-            'label' 		=> esc_html__( 'Border Top Size', 'botiga-pro' ),
+            'label' 		=> esc_html__( 'Border Top Size', 'botiga' ),
             'section' 		=> $row['section'],
             'is_responsive'	=> 0,
             'settings' 		=> array (
@@ -310,10 +312,12 @@ foreach( $this->footer_rows as $row ) {
             $wp_customize,
             'botiga_footer_row__' . $row['id'] . '_border_top_color',
             array(
-                'label'         	=> esc_html__( 'Border Top Color', 'botiga-pro' ),
+                'label'         	=> esc_html__( 'Border Top Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 36
             )
         )
     );
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

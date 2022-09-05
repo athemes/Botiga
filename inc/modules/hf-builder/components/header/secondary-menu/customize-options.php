@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -18,7 +20,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_hb_component__secondary_menu',
     array(
-        'title'      => esc_html__( 'Secondary Menu', 'botiga-pro' ),
+        'title'      => esc_html__( 'Secondary Menu', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -78,7 +80,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_color',
 		array(
-			'label'         	=> esc_html__( 'Text color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'priority'			=> 25
 		)
@@ -99,7 +101,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Text color hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text color hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'priority'			=> 30
 		)
@@ -120,7 +122,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_submenu_background',
 		array(
-			'label'         	=> esc_html__( 'Submenu Background', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Submenu Background', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'priority'			=> 35
 		)
@@ -141,7 +143,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_submenu_color',
 		array(
-			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'priority'			=> 40
 		)
@@ -162,7 +164,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_submenu_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'priority'			=> 45
 		)
@@ -197,8 +199,8 @@ $wp_customize->add_control(
         $wp_customize, 
         'secondary_menu_sticky_title',
         array(
-            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga-pro' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga-pro' ),
+            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
+            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__secondary_menu',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 47
@@ -220,7 +222,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_sticky_color',
 		array(
-			'label'         	=> esc_html__( 'Text color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 48
@@ -242,7 +244,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_sticky_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Text color hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Text color hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'active_callback' 	=> 'botiga_sticky_header_enabled',
 			'priority'			=> 49
@@ -264,7 +266,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_sticky_submenu_background',
 		array(
-			'label'         	=> esc_html__( 'Submenu Background', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Submenu Background', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'active_callback'	=> 'botiga_sticky_header_enabled',
 			'priority'			=> 50
@@ -286,7 +288,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_sticky_submenu_color',
 		array(
-			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'active_callback' 	=> 'botiga_sticky_header_enabled',
 			'priority'			=> 51
@@ -308,7 +310,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'secondary_menu_sticky_submenu_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__secondary_menu',
 			'active_callback' 	=> 'botiga_sticky_header_enabled',
 			'priority'			=> 52
@@ -318,8 +320,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 50;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
 		if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -332,3 +334,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

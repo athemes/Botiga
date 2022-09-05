@@ -66,7 +66,7 @@ final class Botiga_Customize_Upsell {
 	public function sections( $manager ) {
 
 		// Load custom sections.
-		require_once( trailingslashit( get_template_directory() ) . 'inc/customizer/upsell/section-pro.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		require_once trailingslashit( get_template_directory() ) . 'inc/customizer/upsell/section-pro.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 		// Register custom section types.
 		$manager->register_section_type( 'Botiga_Customize_Upsell_Section_Pro' );

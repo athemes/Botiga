@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Icons Color
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_color', '', '.bhfb-component-contact_info .header-contact > a svg' );
 
@@ -34,3 +36,5 @@ if( botiga_sticky_header_enabled() ) {
     $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_sticky_color_hover', '', '.sticky-header-active .bhfb-component-contact_info .header-contact > a:hover' );
 
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

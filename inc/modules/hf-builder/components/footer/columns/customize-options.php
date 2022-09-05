@@ -10,6 +10,8 @@
  * Columns
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 foreach( $this->footer_rows as $row ) {
 
     // Up to 6 columns.
@@ -20,6 +22,7 @@ foreach( $this->footer_rows as $row ) {
         $wp_customize->add_section(
             $section_id,
             array(
+                /* translators: 1: column number. */
                 'title'      => sprintf( esc_html__( 'Column %s', 'botiga' ), $i ),
                 'panel'      => 'botiga_panel_footer'
             )
@@ -220,3 +223,5 @@ foreach( $this->footer_rows as $row ) {
     }
     
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Text Color
 $css .= Botiga_Custom_CSS::get_color_css( 'main_header_color', '', '.bhfb .main-navigation a' );
 $css .= Botiga_Custom_CSS::get_fill_css( 'main_header_color', '', '.bhfb .main-navigation a + .dropdown-symbol svg' );
@@ -43,3 +45,5 @@ $css .= Botiga_Custom_CSS::get_fill_css( 'main_header_sticky_active_submenu_colo
 // Sticky Header - Submenu Text Color Hover
 $css .= Botiga_Custom_CSS::get_color_css( 'main_header_sticky_active_submenu_color_hover', '', '.sticky-header-active .bhfb .main-navigation .sub-menu a:hover' );
 $css .= Botiga_Custom_CSS::get_fill_css( 'main_header_sticky_active_submenu_color_hover', '', '.sticky-header-active .bhfb .main-navigation .sub-menu a:hover + .dropdown-symbol svg' );
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

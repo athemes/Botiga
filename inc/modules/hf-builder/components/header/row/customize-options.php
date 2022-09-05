@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 /**
  * Rows
  */
@@ -37,7 +39,7 @@ foreach( $this->header_rows as $row ) {
             array(
                 'selector'        => '.bhfb-desktop .bhfb-rows .bhfb-' . $row['id'],
                 'render_callback' => function() use( $row ) {
-                    $this->rows_callback( 'header', $row['id'], 'desktop' );
+                    $this->rows_callback( 'header', $row['id'], 'desktop' ); // phpcs:ignore PHPCompatibility.FunctionDeclarations.NewClosure.ThisFoundOutsideClass
                 },
             )
         );
@@ -255,7 +257,7 @@ foreach( $this->header_rows as $row ) {
             for( $i=1;$i<=6;$i++ ) {
                 $col_section_id = 'botiga_header_row__' . $row['id'] . '_column' . $i;
 
-                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
             }
             $desc .= '</div>';
         $desc .= '</div>';
@@ -448,6 +450,7 @@ foreach( $this->header_rows as $row ) {
         'botiga_header_row__mobile_' . $row['id'],
         array(
             'type'     => 'text',
+            /* translators: 1: Mobile row identifier. */
             'label'    => sprintf( esc_html__( 'Mobile - %s', 'botiga' ), $row['label'] ),
             'section'  => $row['section'],
             'settings' => 'botiga_header_row__mobile_' . $row['id'],
@@ -462,9 +465,11 @@ foreach( $this->header_rows as $row ) {
             array(
                 'selector'        => '.bhfb-mobile .bhfb-' . $row['id'],
                 'render_callback' => function() use( $row ) {
-                    $this->rows_callback( 'header', $row['id'], 'mobile' );
+                    $this->rows_callback( 'header', $row['id'], 'mobile' ); // phpcs:ignore PHPCompatibility.FunctionDeclarations.NewClosure.ThisFoundOutsideClass
                 },
             )
         );
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

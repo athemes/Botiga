@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Text Color
 $css .= Botiga_Custom_CSS::get_color_css( 'secondary_menu_color', '', '.bhfb .secondary-navigation a' );
 $css .= Botiga_Custom_CSS::get_fill_css( 'secondary_menu_color', '', '.bhfb .secondary-navigation a + .dropdown-symbol svg' );
@@ -45,3 +47,5 @@ if( botiga_sticky_header_enabled() ) {
     $css .= Botiga_Custom_CSS::get_color_css( 'secondary_menu_sticky_submenu_color_hover', '', '.sticky-header-active .bhfb .secondary-navigation .sub-menu a:hover' );
     $css .= Botiga_Custom_CSS::get_fill_css( 'secondary_menu_sticky_submenu_color_hover', '', '.sticky-header-active .bhfb .secondary-navigation .sub-menu a:hover + .dropdown-symbol svg' );
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

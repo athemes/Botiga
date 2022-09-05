@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -31,11 +33,11 @@ $wp_customize->add_control(
 	'botiga_section_hb_wrapper__header_builder_sticky_row', 
 	array(
 		'type' 		      => 'select',
-		'label' 	      => esc_html__( 'Header Row To Sticky', 'botiga-pro' ),
+		'label' 	      => esc_html__( 'Header Row To Sticky', 'botiga' ),
 		'choices'         => array(
-            'all' 	            => esc_html__( 'All', 'botiga-pro' ),
-			'main-header-row' 	=> esc_html__( 'Main Header Row', 'botiga-pro' ),
-            'below-header-row' 	=> esc_html__( 'Bottom Header Row', 'botiga-pro' )
+            'all' 	            => esc_html__( 'All', 'botiga' ),
+			'main-header-row' 	=> esc_html__( 'Main Header Row', 'botiga' ),
+            'below-header-row' 	=> esc_html__( 'Bottom Header Row', 'botiga' )
 		),
         'section' 	      => 'botiga_section_hb_wrapper',
         'active_callback' => 'botiga_sticky_header_enabled',
@@ -52,7 +54,7 @@ $wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_goto_pres
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_hb_wrapper__header_builder_goto_presets',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Presets', 'botiga-pro' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Presets', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_hb_wrapper',
             'priority' 		=> 35
 		)
@@ -111,8 +113,8 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 
 // Move existing options.
 $priority = 25;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
 
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -132,7 +134,7 @@ foreach( $opts_to_move as $tabs ) {
 $wp_customize->add_section(
     'botiga_section_hb_presets',
     array(
-        'title'      => esc_html__( 'Header Presets', 'botiga-pro' ),
+        'title'      => esc_html__( 'Header Presets', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -159,3 +161,5 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

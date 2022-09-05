@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 $rows = array( 'above_header_row', 'main_header_row', 'below_header_row' );
 foreach( $rows as $row ) {
 
@@ -63,3 +65,5 @@ foreach( $rows as $row ) {
     }
 
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

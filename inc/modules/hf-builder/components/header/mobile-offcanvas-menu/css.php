@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // Link Separator Color and Size.
 $mobile_menu_link_separator 	= get_theme_mod( 'mobile_menu_link_separator', 0 );
 if ( $mobile_menu_link_separator ) {
@@ -30,3 +32,5 @@ $css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color', 
 // Submenu Text Color Hover
 $css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a:hover' );
 $css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a:hover + .dropdown-symbol svg' );
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

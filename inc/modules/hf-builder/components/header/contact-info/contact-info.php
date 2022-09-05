@@ -10,9 +10,13 @@
     <?php 
     $this->customizer_edit_button();
     
-    $email 	        = get_theme_mod( 'header_contact_mail', esc_html__( 'office@example.org', 'botiga-pro' ) );
-    $phone	        = get_theme_mod( 'header_contact_phone', esc_html__( '111222333', 'botiga-pro' ) ); 
-    $display_inline = get_theme_mod( 'bhfb_contact_info_display_inline', 0 ); ?>
+    // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+    $email 	        = get_theme_mod( 'header_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
+    $phone	        = get_theme_mod( 'header_contact_phone', esc_html__( '111222333', 'botiga' ) ); 
+    $display_inline = get_theme_mod( 'bhfb_contact_info_display_inline', 0 ); 
+    // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
+    ?>
 
     <div class="header-contact<?php echo ( $display_inline ? ' header-contact-inline' : '' ); ?>">
         <?php if ( $email ) : ?>

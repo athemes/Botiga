@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = apply_filters( 'botiga_hfb_header_component_wc_icons_opts_to_move', array(
     'general' => array(
@@ -22,7 +24,7 @@ $opts_to_move = apply_filters( 'botiga_hfb_header_component_wc_icons_opts_to_mov
 $wp_customize->add_section(
     'botiga_section_hb_component__woo_icons',
     array(
-        'title'      => esc_html__( 'WooCommerce Icons', 'botiga-pro' ),
+        'title'      => esc_html__( 'WooCommerce Icons', 'botiga' ),
         'panel'      => 'botiga_panel_header'
     )
 );
@@ -76,7 +78,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_woo_icons_color',
 		array(
-			'label'         	=> esc_html__( 'Icons color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icons color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__woo_icons',
 			'priority'			=> 25
 		)
@@ -97,7 +99,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_woo_icons_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Icons color hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icons color hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__woo_icons',
 			'priority'			=> 30
 		)
@@ -132,8 +134,8 @@ $wp_customize->add_control(
         $wp_customize, 
         'bhfb_woo_icons_sticky_title',
         array(
-            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga-pro' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga-pro' ),
+            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
+            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__woo_icons',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 51
@@ -155,7 +157,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_woo_icons_sticky_color',
 		array(
-			'label'         	=> esc_html__( 'Icons color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icons color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__woo_icons',
             'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 52
@@ -177,7 +179,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_woo_icons_sticky_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Icons color hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icons color hover', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_component__woo_icons',
             'active_callback'   => 'botiga_sticky_header_enabled',
 			'priority'			=> 53
@@ -187,8 +189,8 @@ $wp_customize->add_control(
 
 // Move existing options.
 $priority = 35;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
         
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -204,3 +206,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

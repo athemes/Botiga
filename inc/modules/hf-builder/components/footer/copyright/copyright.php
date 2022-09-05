@@ -4,7 +4,9 @@
  * Copyright/credits Component
  * 
  * @package Botiga_Pro
- */ ?>
+ */ 
+
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound ?>
 
 <div class="bhfb-builder-item bhfb-component-copyright" data-component-id="copyright">
     <?php $this->customizer_edit_button(); 
@@ -25,3 +27,6 @@
         <?php echo $credits; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     </div>
 </div>
+
+<?php
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

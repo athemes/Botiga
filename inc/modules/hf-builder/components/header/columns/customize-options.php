@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 /**
  * Columns
  */
@@ -20,6 +22,7 @@ foreach( $this->header_rows as $row ) {
         $wp_customize->add_section(
             $section_id,
             array(
+                /* translators: 1: column number. */
                 'title'      => sprintf( esc_html__( 'Column %s', 'botiga' ), $i ),
                 'panel'      => 'botiga_panel_header'
             )
@@ -226,3 +229,5 @@ foreach( $this->header_rows as $row ) {
     }
     
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

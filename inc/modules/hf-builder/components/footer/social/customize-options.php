@@ -6,6 +6,8 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
@@ -17,7 +19,7 @@ $opts_to_move = array(
 $wp_customize->add_section(
     'botiga_section_fb_component__social',
     array(
-        'title'      => esc_html__( 'Social Icons', 'botiga-pro' ),
+        'title'      => esc_html__( 'Social Icons', 'botiga' ),
         'panel'      => 'botiga_panel_footer'
     )
 );
@@ -67,7 +69,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_footer_social_color',
 		array(
-			'label'         	=> esc_html__( 'Icons color', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icons color', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__social',
 			'priority'			=> 25
 		)
@@ -88,7 +90,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_footer_social_color_hover',
 		array(
-			'label'         	=> esc_html__( 'Icons color hover', 'botiga-pro' ),
+			'label'         	=> esc_html__( 'Icons color hover', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__social',
 			'priority'			=> 30
 		)
@@ -108,8 +110,8 @@ $wp_customize->selective_refresh->add_partial(
 
 // Move existing options.
 $priority = 35;
-foreach( $opts_to_move as $tabs ) {
-    foreach( $tabs as $option_name ) {
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
         
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
@@ -126,3 +128,5 @@ foreach( $opts_to_move as $tabs ) {
         $priority++;
     }
 }
+
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
