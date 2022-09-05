@@ -603,6 +603,7 @@
                     scroll: false,
                     cancel: '.bhfb-edit-column',
                     change: function(e, ui) {
+                        _this.currentComponent = $( ui.item[0] ).find( '.bhfb-button' ).data( 'bhfb-id' );
                         _this.currentRow      = ! $( ui.placeholder[0] ).closest( '.botiga-bhfb-row' ).length ? $( ui.placeholder[0] ).closest( '.botiga-bhfb-area-offcanvas' ) : $( ui.placeholder[0] ).closest( '.botiga-bhfb-row' );
                         _this.currentRowInput = $( '#_customize-input-botiga_'+ _this.currentBuilderType +'_row__' + ui.placeholder.closest( '.botiga-bhfb-area' ).data( 'bhfb-row' ) );
 

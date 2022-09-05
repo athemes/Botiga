@@ -2,8 +2,15 @@
  * Header/Footer Builder
  * Admin CSS
  */
+body .wp-full-overlay #customize-preview {
+  -webkit-transition: none;
+  transition: none;
+}
+
 body.bhfb-active .wp-full-overlay #customize-preview {
   height: calc( 100vh - 290px);
+  -webkit-transition: all 0.2s 600ms;
+  transition: all 0.2s 600ms;
 }
 
 body.bhfb-active .wp-full-overlay.preview-tablet #customize-preview {

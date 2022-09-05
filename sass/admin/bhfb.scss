@@ -4,10 +4,17 @@
  */
 
 body {
+    .wp-full-overlay {
+        #customize-preview {
+            transition: none;
+        }
+    }
+
     &.bhfb-active {
         .wp-full-overlay {
             #customize-preview {
                 height: calc( 100vh - 290px );
+                transition: all 0.2s 600ms;
             }
 
             &.preview-tablet {
