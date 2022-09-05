@@ -1,22 +1,22 @@
 // Mobile
 .bt-d-none {
-    display: none;
+    display: none !important;
 }
 
 .bt-d-block {
-    display: block;
+    display: block !important;
 }
 
 .bt-d-inline-block {
-    display: inline-block;
+    display: inline-block !important;
 }
 
 .bt-d-flex {
-    display: flex;
+    display: flex !important;
 }
 
 .bt-d-inline-flex {
-    display: inline-flex;
+    display: inline-flex !important;
 }
 
 .bt-flex-no-wrap {

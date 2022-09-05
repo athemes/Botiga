@@ -56,7 +56,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			add_action( 'switch_theme', array( $this, 'delete_custom_css_file' ) );
 
 			add_action( 'init', array( $this, 'init' ) );
-
 			
 		}
 
@@ -1064,7 +1063,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			//Gutenberg palettes
 			$palettes = botiga_global_color_palettes();
-		  $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
+		    $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
 			$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
 
 			if ( $custom_palette_toggle ) {
@@ -1506,7 +1505,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . intval( $mod ) . $unit . '; } }' . "\n";	
+				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $mod ) . ( $unit ? $unit : '' ) . '; } }' . "\n";	
 			}
 
 			return $css;

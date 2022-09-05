@@ -464,7 +464,7 @@ function botiga_related_posts() {
 		echo '</div>';
 
         wp_reset_postdata();
-     endif;
+    endif;
 
 }
 add_action( 'botiga_after_single_post_content', 'botiga_related_posts', 31 );

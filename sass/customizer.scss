@@ -159,31 +159,31 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 .bold {
     font-weight: 600;
 }
-.font-size-desktop,
-.font-size-tablet,
-.font-size-mobile {
-    display: none;
+.responsive-control-desktop,
+.responsive-control-tablet,
+.responsive-control-mobile {
+    display: none !important;
 }
-.font-size-desktop.active,
-.font-size-tablet.active,
-.font-size-mobile.active {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+.responsive-control-desktop.active,
+.responsive-control-tablet.active,
+.responsive-control-mobile.active {
+    display: flex !important;
 }
 .device-heading {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+}
+.botiga-control-wrapper {
+    position: relative;
 }
 .botiga-devices-preview {
-    margin-left: 7px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &.alt-position {
+        top: -23px;
+    }
 }
 .botiga-devices-preview li {
     display: inline-block !important;
@@ -612,6 +612,10 @@ span.delete:hover {
 .text_radio_button_control .radio-buttons {
 	display: flex;
 	border: 1px solid #f9f9fe;
+
+    & + .customize-control-description {
+        margin-top: 10px;
+    }
 }
 
 .text_radio_button_control .radio-button-label {
@@ -687,7 +691,8 @@ span.delete:hover {
 	color: #fff;
 }
 
-.footer-widget-area-link {
+.footer-widget-area-link,
+.to-widget-area-link {
     display: block;
     border: 1px solid #d0d0d0;
     background: #fff;
@@ -699,11 +704,13 @@ span.delete:hover {
     font-weight: 600;
     transition: border-color 0.3s;
 }
-.footer-widget-area-link:hover {
+.footer-widget-area-link:hover,
+.to-widget-area-link:hover {
     color: #50575e;
     border-color: #333;
 }
-.footer-widget-area-link .dashicons {
+.footer-widget-area-link .dashicons,
+.to-widget-area-link .dashicons {
     float: right;
 }
 .botiga-cust-divider {
@@ -851,7 +858,8 @@ html[dir="rtl"] {
 #sub-accordion-section-botiga_section_single_product li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title,
 #sub-accordion-section-woocommerce_product_catalog li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title,
 #customize-control-shop_archive_sidebar_filter_in_desktop .customize-control-title,
-#customize-control-shop_archive_sidebar_open_icon .customize-control-title {
+#customize-control-shop_archive_sidebar_open_icon .customize-control-title,
+li.customize-control-botiga-alpha-color .customize-control-title {
     color: #565D65;
     font-weight: 400;
 }
@@ -1002,7 +1010,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
     margin-top: 15px;
 }
 
-.font-size-desktop.noresponsive {
+.responsive-control-desktop.noresponsive {
     display: flex !important;
 }
 

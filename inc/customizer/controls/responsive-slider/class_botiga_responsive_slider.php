@@ -25,7 +25,8 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 		}
 
 		?>
-			<div class="range-slider-wrapper font-size-range">
+		<div class="botiga-control-wrapper">
+			<div class="range-slider-wrapper responsive-control-range">
 				<div class="device-heading">				
 					<div class="customize-control-title"><?php echo esc_html( $this->label ); ?></div>
 					<?php if ( $this->is_responsive ) : ?>
@@ -36,16 +37,16 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 					</ul>
 					<?php endif; ?>
 				</div>				
-				<div class="range-slider font-size-desktop active <?php echo esc_attr( $responsive ); ?>">
+				<div class="range-slider responsive-control-desktop active <?php echo esc_attr( $responsive ); ?>">
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_desktop' ) ); ?>" <?php $this->link( 'size_desktop' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_desktop' ) ); ?>" <?php $this->link( 'size_desktop' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 				</div>
 				<?php if ( $this->is_responsive ) : ?>
-				<div class="range-slider font-size-tablet">
+				<div class="range-slider responsive-control-tablet">
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_tablet' ) ); ?>" <?php $this->link( 'size_tablet' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_tablet' ) ); ?>" <?php $this->link( 'size_tablet' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 				</div>
-				<div class="range-slider font-size-mobile">
+				<div class="range-slider responsive-control-mobile">
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_mobile' ) ); ?>" <?php $this->link( 'size_mobile' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_mobile' ) ); ?>" <?php $this->link( 'size_mobile' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 				</div>		
@@ -53,7 +54,8 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 				<?php if ( $this->description ) : ?>
 					<p><?php echo esc_html( $this->description ); ?></p>
 				<?php endif; ?>									
-			</div>	
+			</div>
+		</div>
 		<?php
 	}
 }

@@ -13,7 +13,12 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 
 	public $cols;
 
+	public $is_responsive;
+
 	public function render_content() {
+
+		$responsive = $this->is_responsive ? '' : 'noresponsive';
+		$desktop = $this->is_responsive ? '_desktop' : '';
 
 		if ( empty( $this->choices ) )
 			return; ?>
@@ -26,31 +31,95 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 		<?php endif; ?>
 
-		<div id="<?php echo esc_attr( "input_{$this->id}" ); ?>" class="botiga-radio-images-wrapper">
+		<div class="botiga-control-wrapper">
+			<?php if ( $this->is_responsive ) : ?>
+				<ul class="botiga-devices-preview alt-position">
+					<?php if( isset( $this->settings[ 'desktop' ] ) ) : ?>
+					<li class="desktop"><button type="button" class="preview-desktop active" data-device="desktop"><i class="dashicons dashicons-desktop"></i></button></li>
+					<?php endif; ?>
+					<?php if( isset( $this->settings[ 'tablet' ] ) ) : ?>
+					<li class="tablet"><button type="button" class="preview-tablet" data-device="tablet"><i class="dashicons dashicons-tablet"></i></button></li>
+					<?php endif; ?>
+					<?php if( isset( $this->settings[ 'mobile' ] ) ) : ?>
+					<li class="mobile"><button type="button" class="preview-mobile" data-device="mobile"><i class="dashicons dashicons-smartphone"></i></button></li>
+					<?php endif; ?>
+				</ul>
+			<?php endif; ?>
 
-			<?php foreach ( $this->choices as $value => $args ) : ?>
+			<div id="<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>" class="botiga-radio-images-wrapper responsive-control-desktop active <?php echo esc_attr( $responsive ); ?>">
+				<?php foreach ( $this->choices as $value => $args ) : ?>
 
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}" ); ?>" id="<?php echo esc_attr( "{$this->id}-{$value}" ); ?>" <?php $this->link(); ?> <?php checked( $this->value(), $value ); ?> /> 
+					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}{$desktop}" ); ?>" id="<?php echo esc_attr( "{$this->id}{$desktop}-{$value}" ); ?>" <?php $this->is_responsive ? $this->link( 'desktop' ) : $this->link(); ?> <?php checked( $this->is_responsive ? $this->value( 'desktop' ) : $this->value(), $value ); ?> /> 
 
-				<label for="<?php echo esc_attr( "{$this->id}-{$value}" ); ?>">
-					<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-					<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
-				</label>
+					<label for="<?php echo esc_attr( "{$this->id}{$desktop}-{$value}" ); ?>">
+						<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
+						<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
+					</label>
 
-			<?php endforeach; ?>
+				<?php endforeach; ?>
 
-		</div><!-- .image -->
+				<script type="text/javascript">
+					jQuery( document ).ready( function() {
+						jQuery( '#<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>' ).buttonset();
+						jQuery( '#<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
+					} );
+				</script>
+			</div><!-- .image -->
 
-		<?php if ( !empty( $this->description ) && $this->desc_below ) : ?>
-			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
-		<?php endif; ?>
+			<?php if ( $this->is_responsive ) : ?>
+				<?php if( isset( $this->settings[ 'tablet' ] ) ) : ?>
 
-		<script type="text/javascript">
-			jQuery( document ).ready( function() {
-				jQuery( '#<?php echo esc_attr( "input_{$this->id}" ); ?>' ).buttonset();
-				jQuery( '#<?php echo esc_attr( "input_{$this->id}" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
-			} );
-		</script>
+					<div id="<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>" class="botiga-radio-images-wrapper responsive-control-tablet<?php echo ( ! isset( $this->settings[ 'mobile' ] ) ? ' show-mobile' : '' ); ?>">
+						<?php foreach ( $this->choices as $value => $args ) : ?>
+
+							<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_tablet" ); ?>" id="<?php echo esc_attr( "{$this->id}_tablet-{$value}" ); ?>" <?php $this->link( 'tablet' ); ?> <?php checked( $this->value( 'tablet' ), $value ); ?> /> 
+
+							<label for="<?php echo esc_attr( "{$this->id}_tablet-{$value}" ); ?>">
+								<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
+								<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
+							</label>
+
+						<?php endforeach; ?>
+
+						<script type="text/javascript">
+							jQuery( document ).ready( function() {
+								jQuery( '#<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>' ).buttonset();
+								jQuery( '#<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
+							} );
+						</script>
+					</div><!-- .image -->
+
+				<?php endif; ?>
+				<?php if( isset( $this->settings[ 'mobile' ] ) ) : ?>
+
+					<div id="<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>" class="botiga-radio-images-wrapper responsive-control-mobile">
+						<?php foreach ( $this->choices as $value => $args ) : ?>
+
+							<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_mobile" ); ?>" id="<?php echo esc_attr( "{$this->id}_mobile-{$value}" ); ?>" <?php $this->link( 'mobile' ); ?> <?php checked( $this->value( 'mobile' ), $value ); ?> /> 
+
+							<label for="<?php echo esc_attr( "{$this->id}_mobile-{$value}" ); ?>">
+								<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
+								<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
+							</label>
+
+						<?php endforeach; ?>
+
+						<script type="text/javascript">
+							jQuery( document ).ready( function() {
+								jQuery( '#<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>' ).buttonset();
+								jQuery( '#<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
+							} );
+						</script>
+					</div><!-- .image -->
+
+				<?php endif; ?>
+			<?php endif; ?>
+
+			<?php if ( !empty( $this->description ) && $this->desc_below ) : ?>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+			<?php endif; ?>
+		</div>
+
 	<?php }
 
 	/**

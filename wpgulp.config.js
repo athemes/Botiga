@@ -76,6 +76,30 @@ const custScriptsFile = 'customizer-scripts';
 
 const metaboxScriptsFile = 'metabox';
 
+const jsAdminDestination = './assets/js/admin/';
+
+// JS Admin Functions.
+const jsAdminFunctionsSRC = './assets/js/src/admin-functions.js';
+const adminFunctionsDestination = './assets/js/';
+const adminFunctionsScriptsFile = 'admin-functions';
+
+const adminStyleDestination = './assets/css/admin/';
+
+// Styles BHFB
+const BHFBSRC = './sass/bhfb.scss';
+const adminBHFBSRC = './sass/admin/bhfb.scss';
+const adminCustPrevBHFBSRC = './sass/admin/bhfb-customize-preview.scss';
+
+// JS BHFB
+const jsAdminBHFBSRC = './assets/js/src/admin/botiga-bhfb.js';
+const jsAdminCustPrevBHFBSRC = './assets/js/src/admin/botiga-bhfb-customize-preview.js';
+const jsAdminBHFBFile = 'botiga-bhfb';
+const jsAdminCustPrevBHFBFile = 'botiga-bhfb-customize-preview';
+
+// Watch BHFB
+const watchJsAdminBHFB = './assets/js/src/admin/botiga-bhfb.js';
+const watchJsAdminCustPrevBHFB = './assets/js/src/admin/botiga-bhfb-customize-preview.js';
+
 // JS Custom options.
 
 // Path to JS carousel.
@@ -166,6 +190,8 @@ const watchJsAjaxSearch = './assets/js/src/botiga-ajax-search.js';
 // Path to all custom JS files.
 const watchJsCustomizer = './assets/js/src/*.js';
 
+const watchJsAdminFunctions = './assets/js/src/admin-functions.js';
+
 // Path to all PHP files.
 const watchPhp = './**/*.php';
 
@@ -231,6 +257,16 @@ module.exports = {
 	productURL,
 	browserAutoOpen,
 	injectChanges,
+	adminStyleDestination,
+	BHFBSRC,
+	adminBHFBSRC,
+	adminCustPrevBHFBSRC,
+	jsAdminBHFBSRC,
+	jsAdminCustPrevBHFBSRC,
+	jsAdminBHFBFile,
+	jsAdminCustPrevBHFBFile,
+	watchJsAdminBHFB,
+	watchJsAdminCustPrevBHFB,
 	styleSRC,
 	customizerSRC,
 	metaboxSRC,
@@ -250,6 +286,7 @@ module.exports = {
 	jsVendorFile,
 	custScriptsFile,
 	metaboxScriptsFile,
+	adminFunctionsScriptsFile,
 	custFile,
 	jsCarouselSRC,
 	jsSwiperSRC,
@@ -258,9 +295,12 @@ module.exports = {
 	jsSidebarSRC,
 	jsAjaxSearchSRC,
 	jsCustomSRC,
+	jsAdminDestination,
+	jsAdminFunctionsSRC,
 	jsCustomDestination,
 	custScriptsDestination,
 	metaboxScriptsDestination,
+	adminFunctionsDestination,
 	jsCarouselFile,
 	jsSwiperFile,
 	jsGalleryFile,
@@ -281,6 +321,7 @@ module.exports = {
 	watchJsAjaxSearch,
 	watchJsCustom,
 	watchJsCustomizer,
+	watchJsAdminFunctions,
 	watchPhp,
 	zipName,
 	zipDestination,
