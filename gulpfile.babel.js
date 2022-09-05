@@ -1002,6 +1002,94 @@ gulp.task('dokanStylesMin', () => {
 });
 
 /**
+  * Task: `botigaSwiperJS`.
+  */
+  gulp.task('botigaSwiperJS', () => {
+	return gulp
+		.src(config.jsSwiperSRC, {since: gulp.lastRun('botigaSwiperJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsSwiperSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsSwiperFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			rename({
+				basename: config.jsSwiperFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> SWIPER JS — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
+  * Task: `botigaGalleryJS`.
+  */
+  gulp.task('botigaGalleryJS', () => {
+	return gulp
+		.src(config.jsGallerySRC, {since: gulp.lastRun('botigaGalleryJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsGallerySRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsGalleryFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			rename({
+				basename: config.jsGalleryFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> GALLERY JS — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
   * Task: `botigaSidebarJS`.
   *
   * Concatenate and uglify custom JS scripts.
@@ -1260,7 +1348,7 @@ gulp.task('dokanStylesMin', () => {
   */
 gulp.task(
 	'default',
-	gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'adminFunctionsJS', 'botigaPopupJS', 'botigaCarouselJS', 'botigaSidebarJS', 'botigaAjaxSearchJS', 'botigaAdminBHFBJS', 'botigaAdminCustPrevBHFBJS', 'images', browsersync, () => {
+	gulp.parallel('styles', 'editorStyles', 'vendorsJS', 'customJS', 'adminFunctionsJS', 'botigaPopupJS', 'botigaCarouselJS', 'botigaSwiperJS', 'botigaGalleryJS', 'botigaSidebarJS', 'botigaAjaxSearchJS', 'botigaAdminBHFBJS', 'botigaAdminCustPrevBHFBJS', 'images', browsersync, () => {
 		gulp.watch(config.watchPhp, reload); // Reload on PHP file changes.
 		gulp.watch(config.watchStyles, gulp.parallel('styles')); // Reload on SCSS file changes.
 		gulp.watch(config.watchStyles, gulp.parallel('stylesMin')); // Reload on SCSS file changes.
@@ -1285,6 +1373,7 @@ gulp.task(
 		gulp.watch(config.watchJsAdminFunctions, gulp.series('adminFunctionsJS', reload)); // Reload on customJS file changes.
 		gulp.watch(config.watchJsPopup, gulp.series('botigaPopupJS', reload)); // Reload on popup file changes.
 		gulp.watch(config.watchJsCarousel, gulp.series('botigaCarouselJS', reload)); // Reload on carousel file changes.
+        gulp.watch(config.watchJsSwiper, gulp.series('botigaSwiperJS', reload)); // Reload on swiper file changes.
 		gulp.watch(config.watchJsSidebar, gulp.series('botigaSidebarJS', reload)); // Reload on sidebar file changes.
 		gulp.watch(config.watchJsAjaxSearch, gulp.series('botigaAjaxSearchJS', reload)); // Reload on sidebar file changes.
 		gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.

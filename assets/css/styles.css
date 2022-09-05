@@ -3837,6 +3837,39 @@ body.mobile-menu-visible {
         -ms-flex-order: 1;
             order: 1;
   }
+  .site-main.sidebar-desktop {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    padding-left: 60px;
+    padding-right: 15px;
+    width: calc(100% - 300px);
+  }
+  .site-main.sidebar-desktop .sidebar-open-wrapper {
+    display: none;
+  }
+  .site-main.sidebar-desktop + .widget-area {
+    width: 300px;
+    position: inherit;
+    z-index: inherit;
+    top: inherit;
+    left: inherit;
+    right: inherit;
+    bottom: inherit;
+    color: inherit;
+    max-height: inherit;
+    height: inherit;
+    -webkit-transform: inherit;
+            transform: inherit;
+    background-color: inherit;
+  }
+  .site-main.sidebar-desktop + .widget-area .sidebar-wrapper {
+    padding: 0;
+    height: inherit;
+  }
+  .site-main.sidebar-desktop + .widget-area .close-sidebar {
+    display: none;
+  }
 }
 
 @media (min-width: 1024px) {
