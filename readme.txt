@@ -1,10 +1,10 @@
-=== Botiga Pro ===
+=== Botiga ===
 
 Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns
 
 Requires at least: 5.4
-Tested up to: 6.0.1
+Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
@@ -29,6 +29,13 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+
+= 1.1.9 =
+Added - New drag and drop header and footer builder.
+Added - Single Product: New option to enable carousel on product gallery thumbnails.
+Added - Ensure compatibility with 'ELEX WooCommerce Dynamic Pricing' plugin.
+Added - Option to control theme container max-width.
+Added - Option to set product catalog columns equal height.
 
 = 1.1.8 =
 Added – Support to Post Formats.

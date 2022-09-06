@@ -56,7 +56,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			add_action( 'switch_theme', array( $this, 'delete_custom_css_file' ) );
 
 			add_action( 'init', array( $this, 'init' ) );
-
 			
 		}
 
@@ -652,6 +651,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_fill_css( 'color_body_text', '#212121', '.botiga-pagination-button.loading-anim svg path' );
 			}
 
+			//Size Chart
+    	$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+			if( $single_size_chart ) {
+				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button a' );
+				$css .= $this->get_fill_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button svg path' );
+			}
+
 			//Wishlist
 			$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
 			if( 'layout1' !== $wishlist_layout ) {
@@ -1049,10 +1055,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= ".wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
 				$css .= ".wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
 			}
-			
+
+			// Layout
+			$content_max_width = get_theme_mod( 'content_max_width', 1140 );
+
+			$css .= ".container{ max-width:" . esc_attr( $content_max_width ) . "px;}" . "\n";
+
 			//Gutenberg palettes
 			$palettes = botiga_global_color_palettes();
-		  $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
+		    $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
 			$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
 
 			if ( $custom_palette_toggle ) {
@@ -1494,7 +1505,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . intval( $mod ) . $unit . '; } }' . "\n";	
+				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $mod ) . ( $unit ? $unit : '' ) . '; } }' . "\n";	
 			}
 
 			return $css;

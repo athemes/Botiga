@@ -395,7 +395,7 @@ $wp_customize->add_setting( 'topbar_nav_link',
 
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'topbar_nav_link',
 		array(
-			'description' 	=> '<a class="footer-widget-area-link footer-widget-area-link-1" href="javascript:wp.customize.panel( \'nav_menus\' ).focus();">' . esc_html__( 'Configure menu', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<a class="to-widget-area-link" href="javascript:wp.customize.panel( \'nav_menus\' ).focus();">' . esc_html__( 'Configure menu', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_top_bar',
 			'active_callback' 	=> function() { return botiga_callback_topbar_elements( 'secondary_nav' ); },
 			'priority' 			=> 230

@@ -531,7 +531,7 @@ $wp_customize->add_control(
 		array(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_footer_credits',
-			'controls_general'		=> json_encode( array( '#customize-control-footer_copyright_layout','#customize-control-footer_divider_9', '#customize-control-footer_divider_8', '#customize-control-footer_credits_container','#customize-control-footer_content_alignment','#customize-control-footer_copyright_elements', '#customize-control-footer_credits','#customize-control-footer_credits_position', '#customize-control-social_profiles_footer','#customize-control-social_profiles_footer_position') ),
+			'controls_general'		=> json_encode( array( '#customize-control-footer_copyright_layout','#customize-control-footer_divider_9', '#customize-control-footer_divider_8', '#customize-control-footer_credits_container','#customize-control-footer_content_alignment','#customize-control-footer_copyright_elements', '#customize-control-footer_credits','#customize-control-footer_credits_position', '#customize-control-social_profiles_footer','#customize-control-social_profiles_footer_position','#customize-control-footer_html_content','#customize-control-footer_html_position') ),
 			'controls_design'		=> json_encode( array( '#customize-control-footer_credits_divider', '#customize-control-footer_credits_divider_size', '#customize-control-footer_credits_divider_color', '#customize-control-footer_credits_divider_width', '#customize-control-footer_divider_7', '#customize-control-footer_divider_6', '#customize-control-footer_credits_padding_bottom', '#customize-control-footer_credits_padding', '#customize-control-footer_credits_text_color','#customize-control-footer_credits_links_color','#customize-control-footer_credits_links_color_hover', '#customize-control-footer_credits_background' ) ),
 		)
 	)
@@ -739,6 +739,50 @@ $wp_customize->add_control(
 				'right'  => esc_html__( 'Right', 'botiga' ),
 			),
 			'priority' => 60
+		)
+	) 
+);
+
+// HTML field content
+$wp_customize->add_setting(
+	'footer_html_content',
+	array(
+		'sanitize_callback' => 'botiga_sanitize_text',
+		'default'           => '',
+	)       
+);
+$wp_customize->add_control( 
+	'footer_html_content', 
+	array(
+		'label'           => esc_html__( 'HTML Content', 'botiga' ),
+		'type'            => 'textarea',
+		'section'         => 'botiga_section_footer_credits',
+		'active_callback' => function(){ return botiga_callback_footer_copyright_elements( 'footer_html' ); },
+		'priority'        => 61
+	) 
+);
+
+// HTML field position
+$wp_customize->add_setting( 
+	'footer_html_position',
+	array(
+		'default' 			=> 'right',
+		'sanitize_callback' => 'botiga_sanitize_text'
+	)
+);
+$wp_customize->add_control( 
+	new Botiga_Radio_Buttons( 
+		$wp_customize, 
+		'footer_html_position',
+		array(
+			'label' 	      => esc_html__( 'Position', 'botiga' ),
+			'section' 	      => 'botiga_section_footer_credits',
+			'choices'         => array(
+				'left'   => esc_html__( 'Left', 'botiga' ),
+				'right'  => esc_html__( 'Right', 'botiga' ),
+			),
+			'active_callback' => function(){ return botiga_callback_footer_copyright_elements( 'footer_html', true ); },
+			'priority'        => 61
 		)
 	) 
 );

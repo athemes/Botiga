@@ -743,3 +743,35 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+/**
+ * Layout
+ */
+$wp_customize->add_section(
+	'botiga_section_layout',
+	array(
+		'title' => esc_html__( 'Layout', 'botiga'),
+		'panel' => 'botiga_panel_general',
+	)
+);
+
+$wp_customize->add_setting( 'content_max_width', array(
+	'default' => 1140,
+	'sanitize_callback' => 'absint',
+) );
+
+
+$wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'content_max_width',
+	array(
+		'label'         => esc_html__( 'Content Max-Width', 'botiga' ),
+		'section'       => 'botiga_section_layout',
+		'is_responsive' => 0,
+		'settings'      => array (
+			'size_desktop' => 'content_max_width',
+		),
+		'input_attrs' => array (
+			'min'	=> 0,
+			'max'	=> 2000
+		),
+	)
+) );

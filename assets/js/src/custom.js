@@ -278,7 +278,7 @@ botiga.helpers = {
 /**
  * Desktop off canvas toggle navigation
  */
- botiga.desktopOffCanvasToggleNav = {
+botiga.desktopOffCanvasToggleNav = {
 
 	init: function() {
 		const
@@ -321,7 +321,7 @@ botiga.helpers = {
 /**
  * Desktop offcanvas menu navigation
  */
- botiga.desktopOffcanvasNav = {
+botiga.desktopOffcanvasNav = {
 	init: function(){
 		const buttons   = document.querySelectorAll( '.desktop-menu-toggle' ),
 			closeButton = document.getElementsByClassName( 'desktop-menu-close' )[0],
@@ -861,16 +861,30 @@ botiga.quickView = {
 				ajax.onload = function () {
 					if (this.status >= 200 && this.status < 400) {
 						// If successful
-						popupContent.innerHTML = this.response; // Initialize gallery 
+						popupContent.innerHTML = this.response; 
 
-						var productGallery = document.querySelector('.woocommerce-product-gallery');
+						var $wrapper = jQuery(popupContent);
 
-						if ('undefined' !== typeof productGallery) {
-							productGallery.dispatchEvent(new Event('wc-product-gallery-before-init'));
-							jQuery(productGallery).wc_product_gallery(wc_single_product_params);
-							productGallery.dispatchEvent(new Event('wc-product-gallery-after-init'));
-						} // Initialize product variable
+						// Initialize gallery 
+						var $gallery = $wrapper.find('.woocommerce-product-gallery');
 
+						if ( $gallery.length ) {
+							$gallery.trigger( 'wc-product-gallery-before-init', [ $gallery.get(0), wc_single_product_params ] );
+							$gallery.wc_product_gallery( wc_single_product_params );
+							$gallery.trigger( 'wc-product-gallery-after-init', [ $gallery.get(0), wc_single_product_params ] );
+						}
+
+						// Initialize variation gallery 
+						if ( botiga.variationGallery ) {
+							botiga.variationGallery.init( $wrapper );
+						}
+
+						// Initialize size chart 
+						if ( botiga.sizeChart ) {
+							botiga.sizeChart.init( $wrapper );
+						}
+
+						// Initialize product variable
 						var variationsForm = document.querySelector('.botiga-quick-view-summary .variations_form');
 
 						if (typeof wc_add_to_cart_variation_params !== 'undefined') {
@@ -955,6 +969,7 @@ botiga.quickView = {
 		}
 	}
 };
+
 /**
  * Quantity button
  */
@@ -1024,6 +1039,7 @@ botiga.qtyButton = {
 		}
 	} 
 }
+
 /**
  * Carousel 
  */
@@ -1126,6 +1142,7 @@ botiga.carousel = {
 		}
 	}
 }
+
 /**
  * Copy link to clipboard
  */
@@ -1143,6 +1160,7 @@ botiga.copyLinkToClipboard = {
 		}, 1000);
 	}
 }
+
 /**
  * Toggle class
  */

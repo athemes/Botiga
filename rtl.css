@@ -136,7 +136,7 @@ select {
 }
 
 @media (min-width: 992px) {
-    .single-product div.product .gallery-vertical .flex-control-thumbs, 
+    .single-product div.product .gallery-vertical .flex-control-thumbs:not(.swiper-wrapper),
     .single-product div.product .gallery-showcase .flex-control-thumbs {
         margin: 0 0 0 15px;
     }
@@ -433,6 +433,13 @@ select {
 .botiga-popup-wrapper.botiga-popup-wrapper--layout-style2 .botiga-popup-wrapper__content-side-image+.botiga-popup-wrapper__content-html {
     margin-right: 0;
     margin-left: 40px;
+}
+
+.botiga-product-navigation{
+	float: left;
+	margin-left: 0;
+	margin-right: 10px;
+	flex-direction: row-reverse;
 }
 
 /* 5. Blog */

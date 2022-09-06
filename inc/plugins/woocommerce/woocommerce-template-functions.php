@@ -83,6 +83,8 @@ function botiga_simple_add_to_cart( $product, $hook_prefix = '' ) {
 	
 	echo wc_get_stock_html( $product ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	
+	do_action( "botiga_{$hook_prefix}_before_add_to_cart", $product ); 
+
 	if ( $product->is_in_stock() ) : ?>
 	
 		<?php do_action( "botiga_{$hook_prefix}_before_add_to_cart_form" ); ?>
