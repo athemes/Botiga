@@ -1180,7 +1180,7 @@ msgid "Enable transparent header"
 msgstr ""
 
 #: inc/customizer/options/header.php:186
-msgid "The header stays over the content. You need manually change the background color from header to be transparent."
+msgid "The header stays over the content. You need to manually change the background color from header to be transparent."
 msgstr ""
 
 #: inc/customizer/options/header.php:205
