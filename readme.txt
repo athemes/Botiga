@@ -30,6 +30,13 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
+= 1.1.9 =
+Added - New drag and drop header and footer builder.
+Added - Single Product: New option to enable carousel on product gallery thumbnails.
+Added - Ensure compatibility with 'ELEX WooCommerce Dynamic Pricing' plugin.
+Added - Option to control theme container max-width.
+Added - Option to set product catalog columns equal height.
+
 = 1.1.8 =
 Added – Support to Post Formats.
 Changed – WCAG accessibility non compliance error (search icon on header).

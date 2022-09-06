@@ -1144,11 +1144,11 @@
             }
 
             // Remove active class from current option.
-            $( 'label[for="'+ selector +'"]' ).removeClass( 'ui-state-active' );
+            // $( 'label[for="'+ selector +'"]' ).removeClass( 'ui-state-active' );
 
             // Set new value and change active class.
-            wp.customize( setting_id ).set( val + 'col-equal' );
-            $( 'label[for="'+ setting_id +'-'+ val +'col-equal"]' ).trigger( 'click' ).addClass( 'ui-state-active' );
+            // wp.customize( setting_id ).set( val + 'col-equal' );
+            // $( 'label[for="'+ setting_id +'-'+ val +'col-equal"]' ).trigger( 'click' ).addClass( 'ui-state-active' );
             
             // Add class as a flag.
             $( 'label[for="'+ selector +'"]' ).parent().addClass( 'bhfb-option-updated' );

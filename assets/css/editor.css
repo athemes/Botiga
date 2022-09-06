@@ -3165,13 +3165,12 @@ div.editor-styles-wrapper .product-equal-height ul.products li.product .loop-but
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-
-div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .loop-button-wrap:empty,
-div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .loop-button-wrap:empty,
-div.editor-styles-wrapper .product-equal-height ul.products li.wc-block-grid__product .loop-button-wrap:empty,
-div.editor-styles-wrapper .product-equal-height ul.products li.product .loop-button-wrap:empty {
-  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .variations_form,

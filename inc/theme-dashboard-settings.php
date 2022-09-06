@@ -54,7 +54,7 @@ function botiga_free_vs_pro_html() {
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
 			<tr>
-				<td><?php esc_html_e( 'Header Builder', 'botiga' ); ?></td>
+				<td><?php esc_html_e( 'Header and Footer Builder', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
@@ -135,6 +135,16 @@ function botiga_free_vs_pro_html() {
 			</tr>
 			<tr>
 				<td><?php esc_html_e( 'New Footer Copyright Bar Elements - Payment Icons, Navigation Menu, HTML and Shortcode', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Size Chart', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Image Gallery to Product Variations', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>

@@ -110,7 +110,7 @@ function botiga_hf_update_notice_1_1_9() {
             /* translators: 1: documentation link. */
             echo sprintf( esc_html__( 'Want to see the new header and footer builder before upgrading? Check out our %s.', 'botiga' ), '<a target="_blank" href="https://docs.athemes.com/article/pro-header-builder/">documentation</a>' ); ?>
         </p>
-        <a href="#" class="button botiga-update-hf" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-update-hf-nonce' ) ); ?>" style="margin-top: 15px;"><?php esc_html_e( 'Upgrade Theme Header and Footer', 'botiga' ); ?></a>
+        <a href="#" class="button botiga-update-hf" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-update-hf-nonce' ) ); ?>" style="margin-top: 15px;"><?php esc_html_e( 'Update theme header and footer', 'botiga' ); ?></a>
         <a href="#" class="button botiga-update-hf-dismiss" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-update-hf-dismiss-nonce' ) ); ?>" style="margin-top: 15px;"><?php esc_html_e( 'Continue to use the old header and footer system', 'botiga' ); ?></a> 
     </div>
     <?php }
@@ -126,6 +126,11 @@ function botiga_hf_update_notice_1_1_9_callback() {
 	check_ajax_referer( 'botiga-update-hf-nonce', 'nonce' );
 
 	update_option( 'botiga-update-hf', true );
+
+    $all_modules = get_option( 'botiga-modules' );
+    $all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
+
+    update_option( 'botiga-modules', array_merge( $all_modules, array( 'hf-builder' => true ) ) );
 
 	wp_send_json( array(
 		'success' => true
