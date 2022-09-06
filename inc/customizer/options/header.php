@@ -183,7 +183,7 @@ $wp_customize->add_control(
 		'header_transparent',
 		array(
 			'label'         	=> esc_html__( 'Enable transparent header', 'botiga' ),
-			'description'       => esc_html__( 'The header stays over the content. You need manually change the background color from header to be transparent.', 'botiga' ),
+			'description'       => esc_html__( 'The header stays over the content. You need to manually change the background color from header to be transparent.', 'botiga' ),
 			'section'       	=> 'botiga_section_main_header',
 			'priority'		    => 21
 		)
