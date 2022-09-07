@@ -162,7 +162,7 @@ function botiga_free_vs_pro_html() {
 	<div class="thd-separator"></div>
 
 	<p>
-		<a href="https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro" class="thd-button thd-button-success button">
+		<a href="https://athemes.com/botiga-upgrade?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga" class="thd-button thd-button-success button">
 			<?php esc_html_e( 'Get Botiga Pro Today', 'botiga' ); ?>
 		</a>
 	</p>
@@ -423,7 +423,7 @@ function botiga_demos_settings( $settings ) {
 
 	// Pro.
 	$settings['pro_label'] = esc_html__( 'Get Botiga Pro', 'botiga' );
-	$settings['pro_link']  = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga#pro';
+	$settings['pro_link']  = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
 
 	return $settings;
 }

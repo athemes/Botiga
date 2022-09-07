@@ -152,6 +152,15 @@ msgstr ""
 msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
+#. translators: %1$s current user display name.
+#: functions.php:493
+msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
+msgstr ""
+
+#: functions.php:496
+msgid "Plugins"
+msgstr ""
+
 #: header.php:31
 msgid "Skip to content"
 msgstr ""
