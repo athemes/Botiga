@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.1.9' );
+	define( 'BOTIGA_VERSION', '1.2.0' );
 }
 
 // aThemes White Label Compatibility
@@ -476,7 +476,34 @@ require get_template_directory() . '/inc/theme-dashboard-settings.php';
  * Modules.
  */
 require get_template_directory() . '/inc/modules/class-botiga-modules.php';
-require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
+if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+	if( version_compare( BOTIGA_PRO_VERSION, '1.1.0', '>=' ) ) {
+		require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
+	} else {
+		$botiga_all_modules = get_option( 'botiga-modules' );
+		$botiga_all_modules = ( is_array( $botiga_all_modules ) ) ? $botiga_all_modules : (array) $botiga_all_modules;
+		update_option( 'botiga-modules', array_merge( $botiga_all_modules, array( 'hf-builder' => false ) ) );
+
+		add_action( 'admin_notices', function(){ ?>
+			<div class="notice notice-warning" style="position:relative;">
+				<p>
+					<?php
+					printf(
+						/* Translators: %1$s current user display name. */
+						esc_html__(
+							'It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro.', 'botiga'
+						),
+						'<a href="'. esc_url( admin_url( 'plugins.php' ) ) .'">' . esc_html__( 'Plugins', 'botiga' ) . '</a>'
+					);
+					?>
+				</p>
+			</div>
+			<?php
+		}, 0 );
+	}
+} else {
+	require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
+}
 
 /**
  * Review notice.

@@ -29,6 +29,8 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 1.2.0 =
+Fixed - PHP fatal error with some pro users after update.
 
 = 1.1.9 =
 Added - New drag and drop header and footer builder.
