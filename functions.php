@@ -164,7 +164,6 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 				);
 			}
 		}
-		
 
 		add_theme_support(
 			'editor-color-palette',
