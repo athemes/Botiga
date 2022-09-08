@@ -430,6 +430,8 @@ class Botiga_Metabox {
 		switch ( $field['type'] ) {
 
 			case 'text':
+			case 'sidebar-select':
+			case 'size-chart-select':
 				return sanitize_text_field( $value );
 			break;
 
@@ -854,6 +856,27 @@ class Botiga_Metabox {
 
 			break;
 
+			case 'sidebar-select':
+
+				$options = array();
+				
+				global $wp_registered_sidebars;
+				
+				if ( ! empty( $wp_registered_sidebars ) ) {
+					foreach ( $wp_registered_sidebars as $sidebar ) {
+						$options[ $sidebar['id'] ] = $sidebar['name'];
+					}
+				}
+
+				echo '<select name="'. esc_attr( $field_id ) .'">';
+					echo '<option value="">'. esc_html__( 'Default', 'botiga' ) .'</option>';
+					foreach ( $options as $key => $option ) {
+						echo '<option value="'. esc_attr( $key ) .'"'. selected( $key, $value, false ) .'>'. esc_html( $option ) .'</option>';
+					}
+				echo '</select>';
+
+			break;
+			
 			case 'wp-editor':
 
 				$field = wp_parse_args( $field, array(
