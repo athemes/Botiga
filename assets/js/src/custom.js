@@ -492,6 +492,10 @@ botiga.stickyHeader = {
 			header_offset_y = header_offset_y - 32;
 		}
 		
+		if( document.body.classList.contains( 'botiga-site-layout-padded' ) ) {
+			header_offset_y = header_offset_y - parseInt(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
+		}
+
 		if ( sticky.classList.contains( 'sticky-scrolltop' ) || document.querySelector( '.bhfb.sticky-scrolltop' ) !== null ) {
 			var lastScrollTop = 0;
 

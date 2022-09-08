@@ -65,9 +65,9 @@
     margin: 0;
 
     a,
-	a:visited {
-		color: $color__primary;
-	}
+    a:visited {
+        color: $color__primary;
+    }
 }
 .site-description {
     margin: 5px 0 0;
@@ -721,6 +721,7 @@
             top: auto;
             width: 100%;
             z-index: 12;
+            max-width: inherit;
 
             .top-bar {
                 position: relative;

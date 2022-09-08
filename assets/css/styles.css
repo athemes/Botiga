@@ -1657,6 +1657,68 @@ html {
       flex-wrap: nowrap;
 }
 
+/**
+ * Content Width
+ */
+.botiga-site-layout-default .container,
+.botiga-site-layout-boxed .container,
+.botiga-site-layout-padded .container {
+  max-width: var(--botiga_content_width, 1140px);
+}
+
+.botiga-site-layout-default.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block),
+.botiga-site-layout-boxed.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block),
+.botiga-site-layout-padded.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block) {
+  max-width: calc(var(--botiga_content_width, 1140px) - 30px);
+}
+
+/**
+ * Site Layouts
+ */
+.botiga-site-layout-boxed .site {
+  max-width: var(--botiga_boxed_width, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.botiga-site-layout-padded:after, .botiga-site-layout-padded:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  height: var(--botiga_padded_spacing, 25px);
+  background-color: var(--botiga_background_color, #ffffff);
+}
+
+.botiga-site-layout-padded.admin-bar:before {
+  top: 32px;
+}
+
+.botiga-site-layout-padded:before {
+  top: 0;
+}
+
+.botiga-site-layout-padded:after {
+  bottom: 0;
+}
+
+.botiga-site-layout-padded .site {
+  position: relative;
+  margin: var(--botiga_padded_spacing, 25px);
+}
+
+.botiga-site-layout-padded.sticky-header-active .site {
+  max-width: calc(100% - calc(var(--botiga_padded_spacing, 25px) * 2));
+}
+
+.botiga-site-layout-fluid.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block),
+.botiga-site-layout-fluid .container {
+  max-width: 100%;
+  padding-left: var(--botiga_fluid_spacing, 15px);
+  padding-right: var(--botiga_fluid_spacing, 15px);
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -3081,6 +3143,7 @@ body.mobile-menu-visible {
     top: auto;
     width: 100%;
     z-index: 12;
+    max-width: inherit;
   }
   .header-transparent .header-transparent-wrapper .top-bar {
     position: relative;

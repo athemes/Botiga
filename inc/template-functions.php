@@ -32,6 +32,9 @@ function botiga_body_classes( $classes ) {
 	if( is_singular( 'post' ) ) {
 		$classes[] = 'blog-single-' . get_theme_mod( 'blog_single_layout', 'layout1' );
 	}
+	
+	// Add a class for site layout.
+	$classes[] = 'botiga-site-layout-' . get_theme_mod( 'site_layout', 'default' );
 
 	return $classes;
 }
