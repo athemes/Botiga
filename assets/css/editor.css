@@ -449,6 +449,9 @@ div.editor-styles-wrapper {
   /**
  * Brand Image
  */
+  /**
+ * Linked Variations
+ */
   /* Responsive shop columns */
   /**
  * Grid & List View
@@ -2524,6 +2527,167 @@ div.editor-styles-wrapper .botiga-product-size-chart-modal-content > *:last-chil
 
 div.editor-styles-wrapper .botiga-product-brand-image {
   max-width: 150px;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations {
+  position: relative;
+  border: 0;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations tr,
+div.editor-styles-wrapper .botiga-linked-variations th,
+div.editor-styles-wrapper .botiga-linked-variations td {
+  border: 0;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations th {
+  width: 125px;
+  text-align: left;
+  padding-left: 0;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations th label {
+  vertical-align: middle;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations td {
+  border: 0;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-color,
+div.editor-styles-wrapper .botiga-linked-variations-type-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-color > a,
+div.editor-styles-wrapper .botiga-linked-variations-type-image > a {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  text-indent: -99999px;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-color > a:before,
+div.editor-styles-wrapper .botiga-linked-variations-type-image > a:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  border: 2px solid transparent;
+  border-radius: 100%;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-color > a:hover .botiga-linked-variation-tooltip,
+div.editor-styles-wrapper .botiga-linked-variations-type-image > a:hover .botiga-linked-variation-tooltip {
+  opacity: 1;
+  margin-bottom: 15px;
+  visibility: visible;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-color > a.active:before,
+div.editor-styles-wrapper .botiga-linked-variations-type-image > a.active:before {
+  border-color: #212121;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-color > a img,
+div.editor-styles-wrapper .botiga-linked-variations-type-image > a img {
+  border-radius: 100%;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-button,
+div.editor-styles-wrapper .botiga-linked-variations-type-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 8px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-button > a,
+div.editor-styles-wrapper .botiga-linked-variations-type-select > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 9px 15px;
+  min-width: 30px;
+  min-height: 30px;
+  color: #212121;
+  border: 2px solid #212121;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.4;
+  overflow: hidden;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+div.editor-styles-wrapper .botiga-linked-variations-type-button > a:hover, div.editor-styles-wrapper .botiga-linked-variations-type-button > a.active,
+div.editor-styles-wrapper .botiga-linked-variations-type-select > a:hover,
+div.editor-styles-wrapper .botiga-linked-variations-type-select > a.active {
+  opacity: 1;
+  color: #212121;
+}
+
+div.editor-styles-wrapper .botiga-linked-variation-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  font-size: 12px;
+  line-height: 1.5em;
+  text-align: center;
+  text-indent: 0;
+  white-space: nowrap;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #fff;
+  background-color: #212121;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+div.editor-styles-wrapper .botiga-linked-variation-tooltip:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #212121;
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products,

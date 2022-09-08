@@ -517,6 +517,104 @@
 	}
 }
 
+.botiga-metabox-field-select-ajax{
+
+	select{
+		display: none;
+		width: 100%;
+  }
+
+  ul{
+  	margin: 0;
+  	padding: 0;
+  	list-style: none;
+  	vertical-align: top;
+
+  	li{
+  		margin: 0;
+  		padding: 0;
+  	}
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__rendered{
+  	width: auto;
+  	display: inline;
+  	padding: 0;
+  }
+
+  .select2-container .select2-search--inline .select2-search__field{
+		margin: 0;
+		padding: 0;
+  }
+
+  .select2-container--default.select2-container--focus .select2-selection--multiple{
+  	border-color: #aaa;
+  }
+
+  .select2-container--default .select2-selection--multiple{
+  	padding: 0 5px;
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice{
+  	margin-left: 0;
+  }
+
+  .botiga-select2-clear{
+  	display: block;
+  	width: 100%;
+  	clear: both;
+  }
+
+  .botiga-metabox-field-content{
+  	min-height: 32px;
+  }
+}
+
+.botiga-metabox-field-wc-attributes{
+
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		grid-gap: 5px;
+		flex-direction: column;
+
+		li{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			max-width: 300px;
+			align-items: center;
+			border: 1px solid #e5e5e5;
+			background-color: #fdfdfd;
+			border-radius: 3px;
+
+			&:hover{
+				border-color: #ccc;
+			}
+
+			label{
+				display: flex;
+				grid-gap: 5px;
+				align-items: center;
+				flex: 1;
+				padding: 8px;
+				user-select: none;
+
+				input{
+					margin: 0;
+				}
+			}
+
+			.botiga-sortable-move{
+				cursor: pointer;
+				padding: 8px;
+			}
+		}
+	}
+}
+
 .botiga-metabox-field-media-content{
 	display: flex;
 	grid-gap: 10px;
@@ -532,6 +630,27 @@
 .botiga-metabox-field-no-padding{
 	padding-top: 0;
 	padding-bottom: 0;
+}
+
+body:not(.block-editor-page){
+	
+	#botiga_metabox{
+
+		.inside {
+			margin: 0;
+			padding: 0;
+		}
+
+		.botiga-metabox-tabs{
+			border-top: 0;
+			border-left: 0;
+			border-bottom: 0;
+		}
+
+		.botiga-metabox-contents{
+			border: 0;
+		}
+	}
 }
 
 #side-sortables {

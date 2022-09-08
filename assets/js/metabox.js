@@ -234,6 +234,57 @@
         });
       }
 
+      var $selectAjax = $('.botiga-metabox-field-select-ajax');
+
+      if ($selectAjax.length) {
+        $selectAjax.each(function () {
+          var $select = $(this).find('select');
+          var source = $select.data('source');
+          var config = window.botiga_metabox;
+          $select.select2({
+            width: '100%',
+            minimumInputLength: 1,
+            ajax: {
+              url: config.ajaxurl,
+              dataType: 'json',
+              delay: 250,
+              cache: true,
+              data: function data(params) {
+                return {
+                  action: 'botiga_select_ajax',
+                  nonce: config.ajaxnonce,
+                  term: params.term,
+                  source: source
+                };
+              },
+              processResults: function processResults(response, params) {
+                if (response.success) {
+                  return {
+                    results: response.data
+                  };
+                }
+
+                return {};
+              }
+            }
+          });
+          $selectAjax.find('.select2-selection--multiple').append('<span class="botiga-select2-clear"></span>');
+        });
+      }
+
+      var $attributes = $('.botiga-metabox-field-wc-attributes');
+
+      if ($attributes.length) {
+        $attributes.each(function () {
+          var $sortable = $(this).find('ul');
+          $sortable.sortable({
+            axis: 'y',
+            cursor: 'move',
+            helper: 'original'
+          });
+        });
+      }
+
       var $depends = $contents.find('[data-depend-on]');
 
       if ($depends.length) {

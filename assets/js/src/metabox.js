@@ -1,10 +1,10 @@
 ;(function( $ ) {
-  'use strict';
+	'use strict';
 
-  $.fn.botigaMetabox = function() {
-    return this.each( function() {
+	$.fn.botigaMetabox = function() {
+		return this.each( function() {
 
-    	var $this     = $(this);
+			var $this     = $(this);
 			var $tabs     = $this.find('.botiga-metabox-tab');
 			var $contents = $this.find('.botiga-metabox-content');
 
@@ -53,19 +53,19 @@
 					});
 
 					$repeater.find('.botiga-metabox-field-repeater-remove').on('click', function( e ) {
-						
+
 						e.preventDefault();
-						
+
 						$(this).closest('li').remove();
-					
+
 					});
 
 				});
-			
+
 			}
 
 			var $uploads = $contents.find('.botiga-metabox-field-uploads');
-			
+
 			if ( $uploads.length ) {
 
 				$uploads.each( function() {
@@ -99,28 +99,28 @@
 					$uploads.find('.botiga-metabox-field-uploads-upload').on('click', function( e ) {
 
 						e.preventDefault();
-						
+
 						wpMediaInput = $(this).closest('li').find('input');
 
-            if ( wpMediaFrame ) {
-              wpMediaFrame.open();
-              return;
-            }
+						if ( wpMediaFrame ) {
+							wpMediaFrame.open();
+							return;
+						}
 
-            wpMediaFrame = window.wp.media({
-              library: {
-                type: $list.data('library') || 'image',
-              },
-            }).open();
+						wpMediaFrame = window.wp.media({
+							library: {
+								type: $list.data('library') || 'image',
+							},
+						}).open();
 
-            wpMediaFrame.on('select', function() {
-              
-              var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
-             
-              wpMediaInput.val(attachment.url);
-            
-            });
-          
+						wpMediaFrame.on('select', function() {
+
+							var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
+
+							wpMediaInput.val(attachment.url);
+
+						});
+
 					});
 
 					$uploads.find('.botiga-metabox-field-uploads-remove').on('click', function( e ) {
@@ -143,7 +143,7 @@
 
 					var $wrap = $table || $sizeChart;
 
-		      $wrap.find('input').each( function() {
+					$wrap.find('input').each( function() {
 
 						var $input  = $(this);
 						var liIndex = Math.max(0, $input.closest('li').index()-1);
@@ -205,9 +205,9 @@
 					});
 
 					$sizeChart.on('click', '.botiga-del-col', function( e ) {
-							
+
 						e.preventDefault();
-						
+
 						var $td     = $(this).closest('td');
 						var $table  = $(this).closest('table');
 						var $count  = $(this).closest('tr').find('td').length;
@@ -242,7 +242,7 @@
 					$sizeChart.on('click', '.botiga-del-row', function( e ) {
 
 						e.preventDefault();
-						
+
 						var $tr    = $(this).closest('tr');
 						var $table = $(this).closest('table');
 						var $count = $(this).closest('tbody').find('tr').length;
@@ -252,7 +252,7 @@
 						} else {
 							$tr.find('input').val('');
 						}
-						
+
 						$sizeChart.trigger('multidimensional', [ $table ]);
 
 					});
@@ -270,7 +270,7 @@
 					$sizeChart.on('click', '.botiga-duplicate', function( e ) {
 
 						e.preventDefault();
-						
+
 						var $li    = $(this).closest('li');
 						var $clone = $li.clone(true);
 
@@ -286,69 +286,130 @@
 
 			var $mediaField = $('.botiga-metabox-field-media');
 
-      if ( $mediaField.length ) {
-        
-        $mediaField.each( function() {
+			if ( $mediaField.length ) {
 
-          var $field      = $(this);
-          var $input      = $field.find('.botiga-metabox-field-media-input');
-          var $image      = $field.find('.botiga-metabox-field-media-preview img');
-          var $upload     = $field.find('.botiga-metabox-field-media-upload');
-          var $remove     = $field.find('.botiga-metabox-field-media-remove');
-          var placeholder = $image.data('placeholder');
-          var wpMediaFrame;
+				$mediaField.each( function() {
 
-          $upload.on('click', function( e ) {
+					var $field      = $(this);
+					var $input      = $field.find('.botiga-metabox-field-media-input');
+					var $image      = $field.find('.botiga-metabox-field-media-preview img');
+					var $upload     = $field.find('.botiga-metabox-field-media-upload');
+					var $remove     = $field.find('.botiga-metabox-field-media-remove');
+					var placeholder = $image.data('placeholder');
+					var wpMediaFrame;
 
-            e.preventDefault();
+					$upload.on('click', function( e ) {
 
-            if ( wpMediaFrame ) {
-              wpMediaFrame.open();
-              return;
-            }
+						e.preventDefault();
 
-            wpMediaFrame = window.wp.media({
-              library: {
-                type: 'image'
-              },
-            });
+						if ( wpMediaFrame ) {
+							wpMediaFrame.open();
+							return;
+						}
 
-            wpMediaFrame.on('select', function() {
+						wpMediaFrame = window.wp.media({
+							library: {
+								type: 'image'
+							},
+						});
 
-              var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
-              var thumbnail;
+						wpMediaFrame.on('select', function() {
 
-              if ( attachment && attachment.sizes && attachment.sizes.thumbnail ) {
-                thumbnail = attachment.sizes.thumbnail.url;
-              } else {
-                thumbnail = attachment.url;
-              }
+							var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
+							var thumbnail;
 
-              $input.val(attachment.id);
+							if ( attachment && attachment.sizes && attachment.sizes.thumbnail ) {
+								thumbnail = attachment.sizes.thumbnail.url;
+							} else {
+								thumbnail = attachment.url;
+							}
 
-              $image.attr('src', thumbnail);
-              
-              $remove.removeClass('hidden');
+							$input.val(attachment.id);
 
-            });
+							$image.attr('src', thumbnail);
 
-            wpMediaFrame.open();
-          
-          });
+							$remove.removeClass('hidden');
 
-          $remove.on('click', function( e ) {
+						});
 
-            e.preventDefault();
+						wpMediaFrame.open();
 
-            $input.val('');
-            $image.attr('src', placeholder);
-            $remove.addClass('hidden');
-          
-          });
+					});
 
-        });
+					$remove.on('click', function( e ) {
 
-      }
+						e.preventDefault();
+
+						$input.val('');
+						$image.attr('src', placeholder);
+						$remove.addClass('hidden');
+
+					});
+
+				});
+
+			}
+
+			var $selectAjax = $('.botiga-metabox-field-select-ajax');
+
+			if ( $selectAjax.length ) {
+
+				$selectAjax.each( function() {
+
+					var $select = $(this).find('select');
+					var source  = $select.data('source');
+					var config  = window.botiga_metabox;
+
+					$select.select2({
+					  width: '100%',
+					  minimumInputLength: 1,
+						ajax: {
+							url: config.ajaxurl,
+							dataType: 'json',
+							delay: 250,
+							cache: true,
+							data: function( params ) {
+								return {
+									action: 'botiga_select_ajax',
+									nonce: config.ajaxnonce,
+									term: params.term,
+									source: source,
+								};
+							},
+							processResults: function ( response, params ) {
+								if ( response.success ) {
+									return {
+										results: response.data,
+									};
+								}
+								return {};
+							},
+						},
+					});
+
+					$selectAjax.find('.select2-selection--multiple').append('<span class="botiga-select2-clear"></span>');
+
+				});
+
+			}
+
+			var $attributes = $('.botiga-metabox-field-wc-attributes');
+
+			if ( $attributes.length ) {
+
+				$attributes.each( function() {
+
+					var $sortable = $(this).find('ul');
+
+					$sortable.sortable({
+						axis: 'y',
+						cursor: 'move',
+						helper: 'original',
+					});
+
+				});
+
+			}
 
 			var $depends = $contents.find('[data-depend-on]');
 
@@ -374,15 +435,15 @@
 						});
 
 						$target.data('depend-on', true);
-					
+
 					}
 
 				});
 
 			}
 
-    });
-  };
+		});
+	};
 
 	$(document).ready( function( $ ) {
 
