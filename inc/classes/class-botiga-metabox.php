@@ -332,11 +332,11 @@ class Botiga_Metabox {
 										echo '<div class="botiga-metabox-field-title">';
 
 											if ( ! empty( $field['title'] ) ) {
-												echo '<h4>'. esc_html( $field['title'] ) .'</h4>';
+												echo '<h4>'. wp_kses_post( $field['title'] ) .'</h4>';
 											}
 
 											if ( ! empty( $field['subtitle'] ) ) {
-												echo '<small class="botiga-metabox-field-subtitle">'. esc_html( $field['subtitle'] ) .'</small>';
+												echo '<small class="botiga-metabox-field-subtitle">'. wp_kses_post( $field['subtitle'] ) .'</small>';
 											}
 
 										echo '</div>';
@@ -352,7 +352,7 @@ class Botiga_Metabox {
 										$this->get_field( $field_id, $field, $value );
 
 										if ( ! empty( $field['desc'] ) ) {
-											echo '<div class="botiga-metabox-field-description">'. esc_html( $field['desc'] ) .'</div>';
+											echo '<div class="botiga-metabox-field-description">'. wp_kses_post( $field['desc'] ) .'</div>';
 										}
 
 									echo '</div>';

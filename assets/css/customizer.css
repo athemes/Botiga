@@ -1217,3 +1217,43 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-control-botiga_section_hb_component__html2_title {
   margin-bottom: 5px !important;
 }
+
+/*
+ * Custom Snippets
+ */
+#customize-control-code_snippet_header,
+#customize-control-code_snippet_body,
+#customize-control-code_snippet_footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#customize-control-code_snippet_header .customize-control-description,
+#customize-control-code_snippet_body .customize-control-description,
+#customize-control-code_snippet_footer .customize-control-description {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+#customize-control-code_snippet_header code,
+#customize-control-code_snippet_body code,
+#customize-control-code_snippet_footer code {
+  font-size: 0.85em;
+  padding: 2px 4px;
+}
+
+#customize-control-code_snippet_header textarea,
+#customize-control-code_snippet_body textarea,
+#customize-control-code_snippet_footer textarea {
+  padding: 8px;
+  font-size: 13px;
+  min-height: 200px;
+}

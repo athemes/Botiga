@@ -1103,3 +1103,30 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-control-botiga_section_hb_component__html2_title {
     margin-bottom: 5px !important;
 }
+
+/*
+ * Custom Snippets
+ */
+#customize-control-code_snippet_header,
+#customize-control-code_snippet_body,
+#customize-control-code_snippet_footer{
+    display: flex;
+    flex-direction: column;
+
+    .customize-control-description{
+        order: 1;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    code{
+        font-size: 0.85em;
+        padding: 2px 4px;
+    }
+
+    textarea{
+        padding: 8px;
+        font-size: 13px;
+        min-height: 200px;
+    }
+}

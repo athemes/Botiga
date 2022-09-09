@@ -162,6 +162,10 @@
   opacity: 0.75;
 }
 
+.botiga-metabox-field-title small code {
+  font-size: 1em;
+}
+
 .botiga-metabox-field-content {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -172,6 +176,10 @@
   font-size: 80%;
   opacity: 0.75;
   margin-top: 10px;
+}
+
+.botiga-metabox-field-description code {
+  font-size: 1em;
 }
 
 .botiga-metabox-field-text input {
@@ -712,6 +720,12 @@
 .botiga-metabox-field-wc-attributes ul li .botiga-sortable-move {
   cursor: pointer;
   padding: 8px;
+}
+
+.botiga-metabox-field-code-snippet textarea {
+  padding: 8px;
+  font-size: 13px;
+  min-height: 200px;
 }
 
 .botiga-metabox-field-media-content {
