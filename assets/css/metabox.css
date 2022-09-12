@@ -726,10 +726,6 @@
   border: 1px solid #eee;
 }
 
-.botiga-metabox-field-code-editor .CodeMirror-lint-markers {
-  display: none;
-}
-
 .botiga-metabox-field-media-content {
   display: -webkit-box;
   display: -ms-flexbox;

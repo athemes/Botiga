@@ -1255,9 +1255,3 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-control-code_snippet_footer .CodeMirror {
   min-height: 275px;
 }
-
-#customize-control-code_snippet_header .CodeMirror-lint-markers,
-#customize-control-code_snippet_body .CodeMirror-lint-markers,
-#customize-control-code_snippet_footer .CodeMirror-lint-markers {
-  display: none;
-}

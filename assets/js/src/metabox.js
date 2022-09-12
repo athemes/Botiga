@@ -365,8 +365,8 @@
 					var config  = window.botiga_metabox;
 
 					$select.select2({
-					  width: '100%',
-					  minimumInputLength: 1,
+						width: '100%',
+						minimumInputLength: 1,
 						ajax: {
 							url: config.ajaxurl,
 							dataType: 'json',
@@ -428,7 +428,14 @@
 						$codeEditors.each( function() {
 
 							var $textarea = $(this).find('textarea');
-							var editor = wp.codeEditor.initialize( $textarea );
+
+							var editorSettings = wp.codeEditor.defaultSettings || {};
+							
+							editorSettings.codemirror = _.extend({}, editorSettings.codemirror, {
+								gutters: [],
+							});
+
+							var editor = wp.codeEditor.initialize( $textarea, editorSettings );
 
 							editor.codemirror.on('keyup', function( instance ) {
 								instance.save();
