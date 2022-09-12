@@ -1250,10 +1250,14 @@ html[dir="rtl"] .botiga-accordion-title:after {
   padding: 2px 4px;
 }
 
-#customize-control-code_snippet_header textarea,
-#customize-control-code_snippet_body textarea,
-#customize-control-code_snippet_footer textarea {
-  padding: 8px;
-  font-size: 13px;
-  min-height: 200px;
+#customize-control-code_snippet_header .CodeMirror,
+#customize-control-code_snippet_body .CodeMirror,
+#customize-control-code_snippet_footer .CodeMirror {
+  min-height: 275px;
+}
+
+#customize-control-code_snippet_header .CodeMirror-lint-markers,
+#customize-control-code_snippet_body .CodeMirror-lint-markers,
+#customize-control-code_snippet_footer .CodeMirror-lint-markers {
+  display: none;
 }

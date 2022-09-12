@@ -1124,9 +1124,11 @@ html[dir="rtl"] .botiga-accordion-title:after {
         padding: 2px 4px;
     }
 
-    textarea{
-        padding: 8px;
-        font-size: 13px;
-        min-height: 200px;
+    .CodeMirror{
+        min-height: 275px;
+    }
+
+    .CodeMirror-lint-markers{
+        display: none;
     }
 }

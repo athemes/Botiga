@@ -66,6 +66,15 @@ class Botiga_Metabox {
 	}
 
 	public function enqueue_metabox_scripts() {
+
+		wp_enqueue_code_editor(
+			array(
+			'type'       => 'text/html',
+			'codemirror' => array(
+				'indentUnit' => 2,
+				'tabSize'    => 2,
+			),
+		) );
 	
 		wp_enqueue_script( 'botiga-select2', get_template_directory_uri() . '/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true );
 		wp_enqueue_style( 'botiga-select2', get_template_directory_uri() . '/vendor/select2/select2.min.css', array(), '4.0.13', 'all' );
@@ -887,6 +896,10 @@ class Botiga_Metabox {
 					'editor_height' => $field['height'],
 				) );
 
+			break;
+
+			case 'code-editor':
+				echo '<textarea name="'. esc_attr( $field_id ) .'">'. esc_textarea( $value ) .'</textarea>';
 			break;
 
 		}

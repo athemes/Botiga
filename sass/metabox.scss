@@ -623,12 +623,14 @@
 	}
 }
 
-.botiga-metabox-field-code-snippet{
+.botiga-metabox-field-code-editor{
 
-	textarea{
-		padding: 8px;
-    font-size: 13px;
-		min-height: 200px;
+	.CodeMirror-wrap{
+		border: 1px solid #eee;
+	}
+
+	.CodeMirror-lint-markers{
+	  display: none;
 	}
 }
 

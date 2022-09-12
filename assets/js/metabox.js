@@ -14,8 +14,10 @@
         var $tab = $(this);
         $tab.on('click', function (e) {
           e.preventDefault();
+          var $content = $contents.eq($tab.index());
           $tab.addClass('active').siblings().removeClass('active');
-          $contents.eq($tab.index()).addClass('active').siblings().removeClass('active');
+          $content.addClass('active').siblings().removeClass('active');
+          $(document).trigger('botiga-metabox-content-show', $content);
         });
       });
       var $repeater = $contents.find('.botiga-metabox-field-repeater');
@@ -285,6 +287,25 @@
         });
       }
 
+      $(document).on('botiga-metabox-content-show', function (event, content) {
+        var $content = $(content);
+
+        if (!$content.data('code-editor-initalized')) {
+          var $codeEditors = $('.botiga-metabox-field-code-editor', $content);
+
+          if ($codeEditors.length) {
+            $codeEditors.each(function () {
+              var $textarea = $(this).find('textarea');
+              var editor = wp.codeEditor.initialize($textarea);
+              editor.codemirror.on('keyup', function (instance) {
+                instance.save();
+              });
+            });
+          }
+
+          $content.data('code-editor-initalized', true);
+        }
+      });
       var $depends = $contents.find('[data-depend-on]');
 
       if ($depends.length) {
