@@ -726,6 +726,11 @@
 		max-width: 100vw;
 		width: 100vw;	
 	}
+	body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .entry-content .alignfull {
+		margin-left: calc(50% - calc(var(--botiga_boxed_width, 1200px) / 2));
+        max-width: var(--botiga_boxed_width, 1200px);
+		width: 100vw;
+	}
 	body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignwide {
 		margin: 20px calc(25% - 15vw);
 		width: auto;

@@ -2403,6 +2403,10 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   margin-bottom: -120px;
 }
 
+.single-product.botiga-site-layout-boxed .site-main > .product > section.products:after {
+  max-width: var(--botiga_boxed_width, 1200px);
+}
+
 figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
   display: inline-block;
   vertical-align: top;
