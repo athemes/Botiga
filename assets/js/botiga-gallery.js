@@ -1,8 +1,12 @@
 /**
- * Botiga Sidebar
+ * Botiga Gallery
+ * 
+ * jQuery Dependant: true
+ * 
  */
 'use strict';
 
+var botiga = botiga || {};
 botiga.gallery = {
   init: function init() {
     // fix quickview gallery thumbnails in "layout 2" mode
@@ -85,6 +89,6 @@ botiga.gallery = {
     });
   }
 };
-botiga.helpers.botigaDomReady(function () {
+jQuery(document).ready(function () {
   botiga.gallery.init();
 });
