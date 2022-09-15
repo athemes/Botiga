@@ -1,4 +1,4 @@
-// var botiga = botiga || {};
+var botiga = botiga || {};
 
 /**
  * Is the DOM ready?
