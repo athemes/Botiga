@@ -1079,6 +1079,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				}
 			}
 
+			// Gutenberg palettes backward compatibility
+			foreach ( $palettes as $key => $palette ) {
+				for ( $i = 0; $i < 8; $i++ ) { 
+					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+				}
+			}
+
 			//Filter the value
 			$css = apply_filters( 'botiga_custom_css_output', $css );
 
