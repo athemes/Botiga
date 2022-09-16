@@ -107,10 +107,6 @@ function botiga_woocommerce_scripts() {
 	// Sidebar
 	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 
-	if ( ! botiga_get_display_conditions( 'shop_archive_sidebar_display_conditions', true ) ) {
-		$shop_archive_sidebar = 'no-sidebar';
-	}
-
 	if( 'sidebar-slide' === $shop_archive_sidebar && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) {
 		wp_register_script( 'botiga-sidebar', get_template_directory_uri() . '/assets/js/botiga-sidebar.min.js', array( 'botiga-custom' ), BOTIGA_VERSION, true );
 		wp_enqueue_script( 'botiga-sidebar' );
@@ -205,10 +201,6 @@ function botiga_wc_archive_layout() {
 	$shop_categories_layout = get_theme_mod( 'shop_categories_layout', 'layout1' );
 	$shop_archive_sidebar_filter_in_desktop = get_theme_mod( 'shop_archive_sidebar_filter_in_desktop', 1 );
 
-	if ( ! botiga_get_display_conditions( 'shop_archive_sidebar_display_conditions', true ) ) {
-		$archive_sidebar = 'no-sidebar';
-	}
-
 	if ( $archive_sidebar === 'sidebar-slide' && $shop_archive_sidebar_filter_in_desktop ) {
 		$archive_sidebar .= ' sidebar-desktop';
 	}
@@ -247,10 +239,6 @@ function botiga_wc_single_layout() {
   if ( ! empty( $meta_sidebar_layout ) && $meta_sidebar_layout !== 'customizer' ) {
   	$sidebar_layout = $meta_sidebar_layout;
   }
-
-	if ( ! botiga_get_display_conditions( 'shop_single_sidebar_display_conditions', true ) ) {
-		$sidebar_layout = 'no-sidebar';
-	}
 
   // Remove sidebar
   if ( $sidebar_layout === 'no-sidebar' ) {
@@ -355,10 +343,6 @@ function botiga_wc_hooks() {
 	
 	//Shop sidebar
 	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
-
-	if ( ! botiga_get_display_conditions( 'shop_archive_sidebar_display_conditions', true ) ) {
-		$shop_archive_sidebar = 'no-sidebar';
-	}
 
 	if( 'sidebar-slide' === $shop_archive_sidebar ) {
 		add_action( 'woocommerce_before_shop_loop', function() {
@@ -560,10 +544,6 @@ function botiga_has_woocommerce_sorting_wrapper() {
 	$shop_product_sorting = get_theme_mod( 'shop_product_sorting', 1 );
 	$shop_results_count   = get_theme_mod( 'shop_results_count', 1 );
 	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
-
-	if ( ! botiga_get_display_conditions( 'shop_archive_sidebar_display_conditions', true ) ) {
-		$shop_archive_sidebar = 'no-sidebar';
-	}
 
 	if( ! $shop_grid_list_view && ! $shop_product_sorting && ! $shop_results_count && $shop_archive_sidebar !== 'sidebar-slide' ) {
 		return false;

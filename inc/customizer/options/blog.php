@@ -129,28 +129,6 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'sidebar_ar
 	)
 ) );
 
-// Display Conditions
-$wp_customize->add_setting(
-    'archives_sidebar_display_conditions',
-    array(
-        'default'           => '[]',
-        'sanitize_callback' => 'sanitize_textarea_field'
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Display_Conditions_Control(
-        $wp_customize,
-        'archives_sidebar_display_conditions',
-        array(
-            'title'           => esc_html__( 'Archives Sidebar Display Conditions', 'botiga' ),
-            'label'           => esc_html__( 'Sidebar Display Conditions', 'botiga' ),
-            'section'         => 'botiga_section_blog_archives',
-            'active_callback' => 'botiga_callback_sidebar_archives',
-            'priority'        => 45
-        )
-    )
-);
-
 $wp_customize->add_setting( 'archives_grid_columns',
 	array(
 		'default' 			=> '3',

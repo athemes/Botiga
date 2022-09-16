@@ -80,10 +80,6 @@ function botiga_page_post_sidebar() {
 
 	$sidebar_layout	= get_post_meta( $post->ID, '_botiga_sidebar_layout', true );
 
-	if ( is_singular( 'post' ) && ! botiga_get_display_conditions( 'blog_single_sidebar_display_conditions', true ) ) {
-		$sidebar_layout	= 'no-sidebar';
-	}
-
 	if ( 'no-sidebar' === $sidebar_layout ) {
 		add_filter( 'botiga_sidebar', '__return_false' );
 		add_filter( 'botiga_content_class', function() { return 'no-sidebar'; } );
@@ -100,10 +96,6 @@ add_action( 'wp', 'botiga_page_post_sidebar' );
  * Sidebar position
  */
 function botiga_sidebar_position() {
-
-	if ( is_singular( 'post' ) && ! botiga_get_display_conditions( 'blog_single_sidebar_display_conditions', true ) ) {
-		return 'no-sidebar';
-	}
 
 	$sidebar_archives_position 	= get_theme_mod( 'sidebar_archives_position', 'sidebar-right' );
 
