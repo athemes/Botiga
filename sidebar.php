@@ -7,13 +7,17 @@
  * @package Botiga
  */
 
+$sidebar_id = '';
+
 if ( is_home() && ! is_front_page() ) {
   $sidebar_id = get_theme_mod( 'blog_archive_sidebar', 'sidebar-1' );
 } else if ( is_singular( array( 'post', 'page' ) ) ) {
   $sidebar_opt  = get_theme_mod( 'blog_single_sidebar', 'sidebar-1' );
   $sidebar_meta = get_post_meta( get_the_ID(), '_botiga_sidebar', true );
   $sidebar_id   = ( ! empty( $sidebar_meta ) ) ? $sidebar_meta : $sidebar_opt;
-} else {
+}
+
+if ( empty( $sidebar_id ) ) {
   $sidebar_id = 'sidebar-1';
 }
 

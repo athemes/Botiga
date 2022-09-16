@@ -38,6 +38,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		 */
 		function customize_wp_init() {
 			require get_template_directory() . '/inc/customizer/ajax-callbacks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require get_template_directory() . '/inc/customizer/script-templates.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		}
 
 		/**
@@ -64,6 +65,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/color-palettes/class_botiga_color_palettes_control.php';
 			require get_template_directory() . '/inc/customizer/controls/color-palettes/class_botiga_custom_palettes_control.php';
 			require get_template_directory() . '/inc/customizer/controls/accordion/class_botiga_accordion_control.php';
+			require get_template_directory() . '/inc/customizer/controls/class_botiga_display_conditions_control.php';
 			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}

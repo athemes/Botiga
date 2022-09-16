@@ -1255,3 +1255,346 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-control-code_snippet_footer .CodeMirror {
   min-height: 275px;
 }
+
+/*
+ * Display Conditions Control
+ */
+.select2-container--open ul li {
+  margin-bottom: 0;
+}
+
+.select2-results__group {
+  background-color: #f5f5f5;
+}
+
+.select2-search--dropdown .select2-search__field {
+  font-size: 13px;
+  line-height: 18px;
+  min-height: auto;
+  margin: 0;
+}
+
+.select2-search--dropdown .select2-search__field:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.botiga-display-conditions-modal-button {
+  width: 100%;
+  text-align: center;
+}
+
+.botiga-display-conditions-modal {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.botiga-display-conditions-modal.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.botiga-display-conditions-modal .select2-container--default .select2-selection--single {
+  padding: 0;
+  height: 32px;
+}
+
+.botiga-display-conditions-modal .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 32px;
+}
+
+.botiga-display-conditions-modal .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 32px;
+}
+
+.botiga-display-conditions-modal .select2-container--default .select2-selection--single .select2-selection__clear {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 32px;
+  padding: 0;
+}
+
+.botiga-display-conditions-modal .select2-container--default .select2-selection--single .select2-selection__clear span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  border-radius: 14px;
+  font-weight: normal;
+  color: #777;
+  background-color: #eee;
+}
+
+.botiga-display-conditions-modal-outer {
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 600px;
+  max-height: 80vh;
+  min-height: 300px;
+  background-color: #fff;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 50px 200px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 50px 200px rgba(0, 0, 0, 0.2);
+}
+
+.botiga-display-conditions-modal-header {
+  position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 20px;
+  padding-right: 70px;
+  height: 50px;
+  border-bottom: 1px solid #eee;
+  background-color: #fdfdfd;
+}
+
+.botiga-display-conditions-modal-header h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.botiga-display-conditions-modal-header i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 50px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0.5;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.botiga-display-conditions-modal-header i:hover {
+  opacity: 1;
+}
+
+.botiga-display-conditions-modal-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-height: 80vh;
+  overflow: auto;
+  padding: 15px;
+}
+
+.botiga-display-conditions-modal-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.botiga-display-conditions-modal-content ul li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.botiga-display-conditions-modal-content ul li + li {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.botiga-display-conditions-modal-content ul li.hidden {
+  display: none;
+}
+
+.botiga-display-conditions-select2-type {
+  width: 125px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 125px;
+      flex-basis: 125px;
+}
+
+.botiga-display-conditions-select2-type .select2-selection:before {
+  content: "+";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  margin-top: -6px;
+  font-size: 12px;
+  line-height: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #e5e5e5;
+}
+
+.botiga-display-conditions-select2-type[data-type="exclude"] .select2-selection:before {
+  content: "-";
+}
+
+.botiga-display-conditions-select2-type .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 25px;
+  padding-right: 20px;
+}
+
+.botiga-display-conditions-select2-condition-id {
+  width: calc(100% - 125px - 10px - 32px);
+  -ms-flex-preferred-size: calc(100% - 125px - 10px - 32px);
+      flex-basis: calc(100% - 125px - 10px - 32px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 10px;
+  margin-left: 10px;
+}
+
+.botiga-display-conditions-select2-condition {
+  width: 100%;
+}
+
+.botiga-display-conditions-select2-id {
+  width: 100%;
+  max-width: 50%;
+}
+
+.botiga-display-conditions-modal-remove {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 32px;
+  opacity: 0.5;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.botiga-display-conditions-modal-remove:hover {
+  opacity: 1;
+}
+
+.botiga-display-conditions-modal-remove i {
+  color: #a00;
+  font-size: 15px;
+  width: auto;
+  height: auto;
+  line-height: 1em;
+}
+
+.botiga-display-conditions-modal-content-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.botiga-display-conditions-modal-footer {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: 1px solid #eee;
+  background-color: #f7f7f7;
+}
+
+.botiga-display-conditions-modal-footer .botiga-button-save {
+  padding-left: 20px;
+  padding-right: 20px;
+}

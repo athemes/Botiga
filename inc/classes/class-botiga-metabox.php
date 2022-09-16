@@ -22,9 +22,9 @@ class Botiga_Metabox {
 
 	public function botiga_select_ajax() {
 
-		$term   = ( isset( $_GET['term'] ) ) ? sanitize_key( wp_unslash( $_GET['term'] ) ) : '';
-		$nonce  = ( isset( $_GET['nonce'] ) ) ? sanitize_key( wp_unslash( $_GET['nonce'] ) ) : '';
-		$source = ( isset( $_GET['source'] ) ) ? sanitize_key( wp_unslash( $_GET['source'] ) ) : '';
+		$term   = ( isset( $_GET['term'] ) ) ? sanitize_text_field( wp_unslash( $_GET['term'] ) ) : '';
+		$nonce  = ( isset( $_GET['nonce'] ) ) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
+		$source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( wp_unslash( $_GET['source'] ) ) : '';
 
 		if ( ! empty( $term ) && ! empty( $source ) && ! empty( $nonce ) && wp_verify_nonce( $nonce, 'botiga_metabox' ) ) {
 
@@ -35,15 +35,16 @@ class Botiga_Metabox {
 				case 'post':
 				case 'product':
 					
-					$posts = get_posts( array(
+        	$query = new WP_Query( array(
 		        's'              => $term,
 						'post_type'      => $source,
 		        'post_status'    => 'publish',
-		        'posts_per_page' => 50,
+            'posts_per_page' => 25,
+          	'order'          => 'DESC',
 					) );
 
-	        if ( ! empty( $posts ) ) {
-						foreach( $posts as $post ) {
+	        if ( ! empty( $query->posts ) ) {
+	          foreach( $query->posts as $post ) {
 							$options[] = array(
 								'id'   => $post->ID,
 								'text' => $post->post_title,

@@ -1172,3 +1172,141 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+/**
+ * Display Conditions Control
+ */
+
+jQuery(document).ready(function ($) {
+  $(document).on('botiga-display-conditions-select2-initalize', function (event, item) {
+    var $item = $(item);
+    var $control = $item.closest('.botiga-display-conditions-control');
+    var $typeSelectWrap = $item.find('.botiga-display-conditions-select2-type');
+    var $typeSelect = $typeSelectWrap.find('select');
+    var $conditionSelectWrap = $item.find('.botiga-display-conditions-select2-condition');
+    var $conditionSelect = $conditionSelectWrap.find('select');
+    var $idSelectWrap = $item.find('.botiga-display-conditions-select2-id');
+    var $idSelect = $idSelectWrap.find('select');
+    $typeSelect.select2({
+      width: '100%',
+      minimumResultsForSearch: -1
+    });
+    $typeSelect.on('select2:select', function (event) {
+      $typeSelectWrap.attr('data-type', event.params.data.id);
+    });
+    $conditionSelect.select2({
+      width: '100%'
+    });
+    $conditionSelect.on('select2:select', function (event) {
+      var $element = $(event.params.data.element);
+
+      if ($element.data('ajax')) {
+        $idSelectWrap.removeClass('hidden');
+      } else {
+        $idSelectWrap.addClass('hidden');
+      }
+
+      $idSelect.val(null).trigger('change');
+    });
+    var isAjaxSelected = $conditionSelect.find(':selected').data('ajax');
+
+    if (isAjaxSelected) {
+      $idSelectWrap.removeClass('hidden');
+    }
+
+    $idSelect.select2({
+      width: '100%',
+      placeholder: '',
+      allowClear: true,
+      minimumInputLength: 1,
+      ajax: {
+        url: ajaxurl,
+        dataType: 'json',
+        delay: 250,
+        cache: true,
+        data: function data(params) {
+          return {
+            action: 'botiga_display_conditions_select_ajax',
+            term: params.term,
+            nonce: $control.data('nonce'),
+            source: $conditionSelect.val()
+          };
+        },
+        processResults: function processResults(response, params) {
+          if (response.success) {
+            return {
+              results: response.data
+            };
+          }
+
+          return {};
+        }
+      }
+    });
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-toggle', function (event) {
+    event.preventDefault();
+    var $button = $(this);
+    var template = wp.template('botiga-display-conditions-template');
+    var $control = $button.closest('.botiga-display-conditions-control');
+    var $modal = $control.find('.botiga-display-conditions-modal');
+
+    if (!$modal.data('initialized')) {
+      $control.append(template($button.data('config')));
+      var $items = $control.find('.botiga-display-conditions-modal-content-list-item').not('.hidden');
+
+      if ($items.length) {
+        $items.each(function () {
+          $(document).trigger('botiga-display-conditions-select2-initalize', this);
+        });
+      }
+
+      $modal = $control.find('.botiga-display-conditions-modal');
+      $modal.data('initialized', true);
+      $modal.addClass('open');
+    } else {
+      $modal.toggleClass('open');
+    }
+  });
+  $(document).on('click', '.botiga-display-conditions-modal', function (event) {
+    event.preventDefault();
+    var $modal = $(this);
+
+    if ($(event.target).is($modal)) {
+      $modal.removeClass('open');
+    }
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-add', function (event) {
+    event.preventDefault();
+    var $button = $(this);
+    var $control = $button.closest('.botiga-display-conditions-control');
+    var $modal = $control.find('.botiga-display-conditions-modal');
+    var $list = $modal.find('.botiga-display-conditions-modal-content-list');
+    var $item = $modal.find('.botiga-display-conditions-modal-content-list-item').first().clone();
+    $item.removeClass('hidden');
+    $list.append($item);
+    $(document).trigger('botiga-display-conditions-select2-initalize', $item);
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-remove', function (event) {
+    event.preventDefault();
+    var $item = $(this).closest('.botiga-display-conditions-modal-content-list-item');
+    $item.remove();
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-save', function (event) {
+    event.preventDefault();
+    var data = [];
+    var $button = $(this);
+    var $control = $button.closest('.botiga-display-conditions-control');
+    var $modal = $control.find('.botiga-display-conditions-modal');
+    var $textarea = $control.find('.botiga-display-conditions-textarea');
+    var $items = $modal.find('.botiga-display-conditions-modal-content-list-item').not('.hidden');
+    $items.each(function () {
+      var $item = $(this);
+      data.push({
+        type: $item.find('select[name="type"]').val(),
+        condition: $item.find('select[name="condition"]').val(),
+        id: $item.find('select[name="id"]').val()
+      });
+    });
+    $textarea.val(JSON.stringify(data)).trigger('change');
+  });
+});

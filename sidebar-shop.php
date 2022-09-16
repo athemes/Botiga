@@ -7,13 +7,17 @@
  * @package Botiga
  */
 
+$shop_sidebar_id = '';
+
 if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
   $shop_sidebar_id = get_theme_mod( 'shop_sidebar', 'shop-sidebar-1' );
 } else if ( is_singular( 'product' ) ) {
   $shop_sidebar_opt  = get_theme_mod( 'shop_single_sidebar', 'shop-sidebar-1' );
   $shop_sidebar_meta = get_post_meta( get_the_ID(), '_botiga_sidebar', true );
   $shop_sidebar_id   = ( ! empty( $shop_sidebar_meta ) ) ? $shop_sidebar_meta : $shop_sidebar_opt;
-} else {
+}
+
+if ( empty( $shop_sidebar_id ) ) {
   $shop_sidebar_id = 'shop-sidebar-1';
 }
 

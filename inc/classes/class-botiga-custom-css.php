@@ -679,6 +679,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Sidebar
 			$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 
+			if ( ! botiga_get_display_conditions( 'shop_archive_sidebar_display_conditions', true ) ) {
+				$shop_archive_sidebar = 'no-sidebar';
+			}
+
 			if( 'sidebar-top' === $shop_archive_sidebar ) {
 				$css .= $this->get_background_color_css( 'content_cards_background', '#f5f5f5', '.sidebar-top+.widget-area .sidebar-wrapper' );
 			}
