@@ -915,6 +915,10 @@ class Botiga_Header_Footer_Builder {
             $classes[] = 'bhfb-cols-layout-equal';
         }
 
+        if( strpos( $val, 'fluid' ) !== FALSE ) {
+            $classes[] = 'bhfb-cols-layout-fluid';
+        }
+
         if( strpos( $val, 'bigleft' ) !== FALSE ) {
             $classes[] = 'bhfb-cols-layout-bigleft';
         }
@@ -939,6 +943,10 @@ class Botiga_Header_Footer_Builder {
 
             if( strpos( $val, 'equal' ) !== FALSE ) {
                 $classes[] = 'bhfb-cols-layout-equal-' . $device;
+            }
+
+            if( strpos( $val, 'fluid' ) !== FALSE ) {
+                $classes[] = 'bhfb-cols-layout-fluid-' . $device;
             }
     
             if( strpos( $val, 'bigleft' ) !== FALSE ) {

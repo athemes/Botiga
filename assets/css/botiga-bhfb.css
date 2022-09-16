@@ -156,6 +156,9 @@
   .bhfb-row.bhfb-cols-layout-equal-desktop.bhfb-cols-6 {
     grid-template-columns: repeat(6, 1fr);
   }
+  .bhfb-row.bhfb-cols-layout-fluid-desktop.bhfb-cols-3 {
+    grid-template-columns: repeat(3, auto);
+  }
   .bhfb-row.bhfb-cols-layout-bigleft-desktop.bhfb-cols-2 {
     grid-template-columns: 3fr 1fr;
   }
@@ -194,6 +197,9 @@
   }
   .bhfb-row.bhfb-cols-layout-equal-tablet.bhfb-cols-6 {
     grid-template-columns: repeat(6, 1fr);
+  }
+  .bhfb-row.bhfb-cols-layout-fluid-tablet.bhfb-cols-3 {
+    grid-template-columns: repeat(3, auto);
   }
   .bhfb-row.bhfb-cols-layout-bigleft-tablet.bhfb-cols-2 {
     grid-template-columns: 3fr 1fr;
