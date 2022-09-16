@@ -32,8 +32,16 @@ html[dir="rtl"] {
 /* Select 2 Control */
 .select2-container {
     .botiga-select2 {
+        padding-bottom: 0;
+        padding-top: 5px;
+        
         .select2-search {
             display: none;
+        }
+
+        .select2-selection__choice {
+            background-color: #FFF;
+            line-height: 2.2;
         }
         
         &.select2-selection {
