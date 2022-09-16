@@ -761,6 +761,11 @@ class Botiga_Header_Footer_Builder {
      * Header Builder Front Output
      */
     public function header_front_output() {
+
+        if ( ! botiga_get_display_conditions( 'header_display_conditions', true ) ) {
+            return;
+        }
+
         $sticky_header_styles = array();
         $sticky_header        = get_theme_mod( 'enable_sticky_header', 0 );
         $sticky_header_type   = get_theme_mod( 'sticky_header_type', 'always' );
@@ -836,6 +841,10 @@ class Botiga_Header_Footer_Builder {
      * Footer Builder Front Output
      */
     public function footer_front_output() {
+
+        if ( ! botiga_get_display_conditions( 'footer_display_conditions', true ) ) {
+            return;
+        }
 
         $devices = array( 'desktop' );
         foreach( $devices as $device ) { ?>
