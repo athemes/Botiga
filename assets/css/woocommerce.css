@@ -416,6 +416,13 @@ ul.products {
   gap: 30px;
   margin: 0;
   padding: 0;
+  opacity: 1;
+}
+
+ul.wc-block-grid__products.loading,
+ul.products.loading {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 ul.wc-block-grid__products li.wc-block-grid__product,

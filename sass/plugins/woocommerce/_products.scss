@@ -4,6 +4,12 @@ ul.products {
 	gap: 30px;
 	margin: 0;
 	padding: 0;
+	opacity: 1;
+
+	&.loading{
+		opacity: 0.5;
+		pointer-events: none;
+	}
 
 	li.wc-block-grid__product,
 	li.product {
