@@ -1350,7 +1350,7 @@ jQuery(document).ready(function( $ ) {
 
 		if ( ! $modal.data('initialized') ) {
     	
-    	$control.append( template( $button.data('config') ) );
+    	$control.append( template( $control.data('settings') ) );
 
 			var $items = $control.find('.botiga-display-conditions-modal-content-list-item').not('.hidden');
 
@@ -1390,13 +1390,16 @@ jQuery(document).ready(function( $ ) {
 		
 		event.preventDefault();
 
-		var $button  = $(this);
-		var $control = $button.closest('.botiga-display-conditions-control');
-		var $modal   = $control.find('.botiga-display-conditions-modal');
-		var $list    = $modal.find('.botiga-display-conditions-modal-content-list');
-		var $item    = $modal.find('.botiga-display-conditions-modal-content-list-item').first().clone();
+		var $button        = $(this);
+		var $control       = $button.closest('.botiga-display-conditions-control');
+		var $modal         = $control.find('.botiga-display-conditions-modal');
+		var $list          = $modal.find('.botiga-display-conditions-modal-content-list');
+		var $item          = $modal.find('.botiga-display-conditions-modal-content-list-item').first().clone();
+		var conditionGroup = $button.data('condition-group');
 
 		$item.removeClass('hidden');
+
+		$item.find('.botiga-display-conditions-select2-condition').not('[data-condition-group="'+ conditionGroup +'"]').remove();
 
 		$list.append( $item );
 

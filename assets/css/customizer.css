@@ -1279,6 +1279,12 @@ html[dir="rtl"] .botiga-accordion-title:after {
           box-shadow: none;
 }
 
+.botiga-display-conditions-control-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .botiga-display-conditions-modal-button {
   width: 100%;
   text-align: center;
@@ -1334,7 +1340,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 32px;
+  height: 100%;
   padding: 0;
 }
 
@@ -1440,7 +1446,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
           flex-direction: column;
   max-height: 80vh;
   overflow: auto;
-  padding: 15px;
+  padding: 25px;
 }
 
 .botiga-display-conditions-modal-content ul {
@@ -1463,11 +1469,11 @@ html[dir="rtl"] .botiga-accordion-title:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .botiga-display-conditions-modal-content ul li + li {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   border-bottom: 1px dashed #ccc;
 }
 
@@ -1515,7 +1521,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
   padding-right: 20px;
 }
 
-.botiga-display-conditions-select2-condition-id {
+.botiga-display-conditions-select2-groupped {
   width: calc(100% - 125px - 10px - 32px);
   -ms-flex-preferred-size: calc(100% - 125px - 10px - 32px);
       flex-basis: calc(100% - 125px - 10px - 32px);
@@ -1531,7 +1537,9 @@ html[dir="rtl"] .botiga-accordion-title:after {
 }
 
 .botiga-display-conditions-select2-id {
-  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
   max-width: 50%;
 }
 
@@ -1570,9 +1578,15 @@ html[dir="rtl"] .botiga-accordion-title:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  grid-gap: 15px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.botiga-display-conditions-modal-content-footer .button {
+  width: 100%;
+  text-align: center;
 }
 
 .botiga-display-conditions-modal-footer {
@@ -1584,9 +1598,9 @@ html[dir="rtl"] .botiga-accordion-title:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 60px;
   padding-left: 20px;
   padding-right: 20px;
