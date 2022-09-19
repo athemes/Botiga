@@ -51,7 +51,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 			}
 
 			$sidebar = get_theme_mod( 'sidebar_archives', 0 );
-			if ( 0 == $sidebar ) {
+			if ( 0 == $sidebar || $sidebar === '' ) {
 				add_filter( 'botiga_content_class', function() { return 'no-sidebar'; } );
 				add_filter( 'botiga_sidebar', '__return_false' );
 			}
