@@ -654,6 +654,7 @@
   });
   var $fontSizes = {
     "body_font_size": "body",
+    "header_menu_font_size": ".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation",
     "h1_font_size": "h1:not(.site-title)",
     "h2_font_size": "h2",
     "h3_font_size": "h3",
@@ -720,6 +721,15 @@
       $('h1,h2,h3,h4,h5,h6,.site-title').css('font-family', jQuery.parseJSON(to)['font']);
       $('h1,h2,h3,h4,h5,h6,.site-title').css('font-weight', jQuery.parseJSON(to)['regularweight']);
     });
+  });
+  wp.customize('botiga_header_menu_font', function (value) {
+    value.bind(function (to) {
+      $('head').find('#botiga-preview-google-fonts-header-menu-css').remove();
+      $('head').append('<link id="botiga-preview-google-fonts-header-menu-css" href="" rel="stylesheet">');
+      $('#botiga-preview-google-fonts-header-menu-css').attr('href', 'https://fonts.googleapis.com/css?family=' + jQuery.parseJSON(to)['font'].replace(/ /g, '+') + ':' + jQuery.parseJSON(to)['regularweight'] + '&display=swap');
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-family', jQuery.parseJSON(to)['font']);
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-weight', jQuery.parseJSON(to)['regularweight']);
+    });
   }); //Typography - Adobe Type Kit Fonts
 
   wp.customize('botiga_headings_adobe_font', function (value) {
@@ -736,6 +746,14 @@
           weight = to.split('|')[1];
       $('body').css('font-family', family);
       $('body').css('font-weight', weight);
+    });
+  });
+  wp.customize('botiga_header_menu_adobe_font', function (value) {
+    value.bind(function (to) {
+      var family = to.split('|')[0],
+          weight = to.split('|')[1];
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-family', family);
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-weight', weight);
     });
   });
   wp.customize('headings_font_style', function (value) {
@@ -786,6 +804,26 @@
   wp.customize('body_text_decoration', function (value) {
     value.bind(function (to) {
       $('body').css('text-decoration', to);
+    });
+  });
+  wp.customize('header_menu_font_style', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-style', to);
+    });
+  });
+  wp.customize('header_menu_line_height', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('line-height', to);
+    });
+  });
+  wp.customize('header_menu_letter_spacing', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('letter-spacing', to + 'px');
+    });
+  });
+  wp.customize('header_menu_text_transform', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('text-transform', to);
     });
   }); // Shop Header Style
 

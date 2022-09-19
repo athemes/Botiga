@@ -659,13 +659,15 @@ function botiga_google_fonts_url() {
 	);	
 
 	//Get and decode options
-	$body_font		= get_theme_mod( 'botiga_body_font', $defaults );
-	$headings_font 	= get_theme_mod( 'botiga_headings_font', $defaults );
+	$body_font		  = get_theme_mod( 'botiga_body_font', $defaults );
+	$headings_font    = get_theme_mod( 'botiga_headings_font', $defaults );
+	$header_menu_font = get_theme_mod( 'botiga_header_menu_font', $body_font );
 	
-	$body_font 		= json_decode( $body_font, true );
-	$headings_font 	= json_decode( $headings_font, true );
+	$body_font 		  = json_decode( $body_font, true );
+	$headings_font 	  = json_decode( $headings_font, true );
+	$header_menu_font = json_decode( $header_menu_font, true );
 
-	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] ) {
+	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] && 'System default' === $header_menu_font['font'] ) {
 		return; //return early if defaults are active
 	}
 
@@ -686,10 +688,16 @@ function botiga_google_fonts_url() {
 		array( '400', '' ),
 		$headings_font['regularweight'] 
 	);
+	$header_menu_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$header_menu_font['regularweight'] 
+	);
 
 	$font_families = array(
 		$body_font['font'] . ':wght@' . $body_font['regularweight'],
-		$headings_font['font'] . ':wght@' . $headings_font['regularweight']
+		$headings_font['font'] . ':wght@' . $headings_font['regularweight'],
+		$header_menu_font['font'] . ':wght@' . $header_menu_font['regularweight']
 	);
 
 	$fonts_url = add_query_arg( array(
@@ -743,13 +751,15 @@ function botiga_preconnect_google_fonts() {
 		)
 	);	
 
-	$body_font		= get_theme_mod( 'botiga_body_font', $defaults );
-	$headings_font 	= get_theme_mod( 'botiga_headings_font', $defaults );
+	$body_font		  = get_theme_mod( 'botiga_body_font', $defaults );
+	$headings_font 	  = get_theme_mod( 'botiga_headings_font', $defaults );
+	$header_menu_font = get_theme_mod( 'botiga_headings_font', $body_font );
 
-	$body_font 		= json_decode( $body_font, true );
-	$headings_font 	= json_decode( $headings_font, true );
+	$body_font 		  = json_decode( $body_font, true );
+	$headings_font 	  = json_decode( $headings_font, true );
+	$header_menu_font = json_decode( $header_menu_font, true );
 
-	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] ) {
+	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] && 'System default' === $header_menu_font['font'] ) {
 		return;
 	}
 
