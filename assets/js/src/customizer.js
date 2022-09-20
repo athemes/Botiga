@@ -629,6 +629,61 @@
 		} );
 	} );
 
+	// Floating Mini Cart Icon Size
+	wp.customize( 'side_mini_cart_floating_icon_size', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-floating-mini-cart-icon').css( 'font-size', to + 'px' );
+		} );
+	} );
+
+	// Floating Mini Cart Icon Position
+	wp.customize( 'side_mini_cart_floating_icon_position', function( value ) {
+		value.bind( function( to ) {
+			const corner_offset = wp.customize( 'side_mini_cart_floating_icon_corner_offset' ).get();
+			if( to === 'left' ) {
+				$( '.botiga-floating-mini-cart-icon' ).css( 'bottom', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'left', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'right', 'auto' );
+			} else {
+				$( '.botiga-floating-mini-cart-icon' ).css( 'bottom', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'right', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'left', 'auto' );
+			}
+		} );
+	} );
+
+	// Floating Mini Cart Icon Corner Offset
+	wp.customize( 'side_mini_cart_floating_icon_corner_offset', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-floating-mini-cart-icon').css( 'bottom', to + 'px' );
+			if( typeof wp.customize( 'side_mini_cart_floating_icon_position' ) !== 'undefined' ) {
+				if( wp.customize( 'side_mini_cart_floating_icon_position' ).get() === 'left' ) {
+					$( '.botiga-floating-mini-cart-icon').css( 'left', to + 'px' );
+				} else {
+					$( '.botiga-floating-mini-cart-icon').css( 'right', to + 'px' );
+				}
+			}
+		} );
+	} );
+
+	// Floating Mini Cart Icon Border Radius
+	wp.customize( 'side_mini_cart_floating_icon_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	// Floating Mini Cart Icon Shadow
+	wp.customize( 'side_mini_cart_floating_icon_shadow', function( value ) {
+		value.bind( function( to ) {
+			if( to ) {
+				$( '.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css( 'box-shadow', 'inset 0 0 2px rgb(0 0 0 / 3%), 0 4px 10px rgb(0 0 0 / 17%)' );
+			} else {
+				$( '.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css( 'box-shadow', 'none' );
+			}
+		} );
+	} );
+
 	//Responsive
 	var $devices 	= { "desktop": "(min-width: 992px)", "tablet": "(min-width: 576px) and (max-width: 991px)", "mobile": "(max-width: 575px)" };
 

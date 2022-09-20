@@ -867,6 +867,8 @@ html[dir="rtl"] {
 #sub-accordion-section-woocommerce_product_catalog li:not(.customize-control-botiga-text-control):not(.customize-control-botiga-toggle-control) .customize-control-title,
 #customize-control-shop_archive_sidebar_filter_in_desktop .customize-control-title,
 #customize-control-shop_archive_sidebar_open_icon .customize-control-title,
+#customize-control-side_mini_cart_floating_icon_border_radius .customize-control-title,
+#customize-control-side_mini_cart_floating_icon_shadow .customize-control-title,
 li.customize-control-botiga-alpha-color .customize-control-title {
     color: #565D65;
     font-weight: 400;
@@ -1041,7 +1043,8 @@ html[dir="rtl"] .botiga-accordion-title:after {
 /*
  * Hide some sections
  */
-#accordion-section-botiga_login_register_popup {
+#accordion-section-botiga_login_register_popup,
+#accordion-section-side_mini_cart_floating_icon_section {
     display: none !important;
 }
 
