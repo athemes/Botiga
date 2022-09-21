@@ -1230,3 +1230,10 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-control-botiga_section_hb_component__html2_title {
   margin-bottom: 5px !important;
 }
+
+/*
+ * Reset margin top from some controls
+ */
+#customize-control-side_mini_cart_floating_icon_info {
+  margin-top: -25px;
+}
