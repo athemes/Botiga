@@ -1465,8 +1465,8 @@ jQuery(document).ready(function( $ ) {
 
 			var $item = $(this);
 
-			var name       = $item.find('input[name="name"]').val();
-			var conditions = $item.find('.botiga-display-conditions-textarea').val();
+			var name       = $item.find('input[name="sidebar_name"]').val();
+			var conditions = $item.find('textarea[name="sidebar_conditions"]').val();
 
 			if ( conditions ) {
 				conditions = JSON.parse( conditions );

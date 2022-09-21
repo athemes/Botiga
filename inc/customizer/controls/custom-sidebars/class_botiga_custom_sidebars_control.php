@@ -54,10 +54,10 @@ class Botiga_Custom_Sidebars_Control extends WP_Customize_Control {
 			<div class="botiga-custom-sidebar-list">
 				<div class="botiga-custom-sidebar-list-item hidden">
 					<div class="botiga-custom-sidebar-list-item-inner">
-						<input type="text" name="name" class="botiga-custom-sidebar-name" value="" />
+						<input type="text" name="sidebar_name" class="botiga-custom-sidebar-name" value="" />
 						<div class="botiga-custom-sidebar-icon botiga-custom-sidebar-condition botiga-display-conditions-control" title="<?php echo esc_attr_e( 'Display Conditions', 'botiga' ); ?>" data-condition-settings="<?php echo esc_attr( json_encode( $settings ) ); ?>">
 							<div class="botiga-custom-sidebar-condition-button botiga-display-conditions-modal-toggle dashicons dashicons-admin-generic"></div>
-							<textarea name="conditions" class="botiga-custom-sidebar-conditions botiga-display-conditions-textarea hidden"></textarea>
+							<textarea name="sidebar_conditions" class="botiga-custom-sidebar-conditions botiga-display-conditions-textarea hidden"></textarea>
 						</div>
 						<div class="botiga-custom-sidebar-icon botiga-custom-sidebar-move dashicons dashicons-menu"></div>
 						<div class="botiga-custom-sidebar-icon botiga-custom-sidebar-remove dashicons dashicons-no-alt"></div>
@@ -92,10 +92,10 @@ class Botiga_Custom_Sidebars_Control extends WP_Customize_Control {
 							?>
 								<div class="botiga-custom-sidebar-list-item">
 									<div class="botiga-custom-sidebar-list-item-inner">
-										<input type="text" name="name" class="botiga-custom-sidebar-name" value="<?php echo esc_attr( $value['name'] ); ?>"/>
+										<input type="text" name="sidebar_name" class="botiga-custom-sidebar-name" value="<?php echo esc_attr( $value['name'] ); ?>"/>
 										<div class="botiga-custom-sidebar-icon botiga-custom-sidebar-condition botiga-display-conditions-control" title="<?php echo esc_attr_e( 'Display Conditions', 'botiga' ); ?>" data-condition-settings="<?php echo esc_attr( json_encode( $settings ) ); ?>">
 											<div class="botiga-custom-sidebar-condition-button botiga-display-conditions-modal-toggle dashicons dashicons-admin-generic"></div>
-											<textarea name="conditions" class="botiga-custom-sidebar-conditions botiga-display-conditions-textarea hidden"><?php echo sanitize_textarea_field( json_encode( $conditions ) ); ?></textarea>
+											<textarea name="sidebar_conditions" class="botiga-custom-sidebar-conditions botiga-display-conditions-textarea hidden"><?php echo sanitize_textarea_field( json_encode( $conditions ) ); ?></textarea>
 										</div>
 										<div class="botiga-custom-sidebar-icon botiga-custom-sidebar-move dashicons dashicons-menu"></div>
 										<div class="botiga-custom-sidebar-icon botiga-custom-sidebar-remove dashicons dashicons-no-alt"></div>

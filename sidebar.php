@@ -21,6 +21,16 @@ if ( empty( $sidebar_id ) ) {
   $sidebar_id = 'sidebar-1';
 }
 
+$custom_sidebars = json_decode( get_theme_mod( 'custom_sidebars', '[]' ), true );
+
+if ( ! empty( $custom_sidebars ) ) {
+  foreach ( $custom_sidebars as $custom_sidebar ) {
+    if ( ! empty( $custom_sidebar['conditions'] ) && botiga_get_display_conditions( $custom_sidebar['conditions'], false ) ) {
+      $sidebar_id = sanitize_key( $custom_sidebar['name'] );
+    }
+  }
+}
+
 if ( ! is_active_sidebar( $sidebar_id ) ) {
 	return;
 }
