@@ -970,9 +970,10 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 
 		foreach ( $rules as $rule ) {
 
-			$object_id = intval( $rule['id'] );
-			$condition = $rule['condition'];
-			$boolean   = ( $rule['type'] === 'include' ) ? true : false;
+			$object_id = ( ! empty( $rule['id'] ) ) ? intval( $rule['id'] ) : 0;
+			$condition = ( ! empty( $rule['condition'] ) ) ? $rule['condition'] : '';
+			$boolean   = ( ! empty( $rule['type'] ) && $rule['type'] === 'include' ) ? true : false;
+			$result    = ( $boolean ) ? false : true;
 
 			// Entrie Site
 			if ( $condition === 'all' ) {
