@@ -111,27 +111,6 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 	);
 }
 
-// Display Conditions
-$wp_customize->add_setting(
-    'header_display_conditions',
-    array(
-        'default'           => '[]',
-        'sanitize_callback' => 'sanitize_textarea_field'
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Display_Conditions_Control(
-        $wp_customize,
-        'header_display_conditions',
-        array(
-            'title'    => esc_html__( 'Header Display Conditions', 'botiga' ),
-            'label'    => esc_html__( 'Display Conditions', 'botiga' ),
-            'section'  => 'botiga_section_hb_wrapper',
-            'priority' => 40
-        )
-    )
-);
-
 // Move existing options.
 $priority = 25;
 foreach( $opts_to_move as $control_tabs ) {

@@ -40,24 +40,23 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-			$values = ( ! empty( $this->value() ) ) ? json_decode( $this->value(), true ) : array();
+		$values = ( ! empty( $this->value() ) ) ? json_decode( $this->value(), true ) : array();
 
-			$ids = array();
+		$ids = array();
 
-			foreach ( $values as $value ) {
-				if ( ! empty( $value['id'] ) ) {
-					$ids[ $value['id'] ] = $this->get_option_title( $value );
-				}
+		foreach ( $values as $value ) {
+			if ( ! empty( $value['id'] ) ) {
+				$ids[ $value['id'] ] = $this->get_option_title( $value );
 			}
+		}
 
-			$settings = array(
-				'title'  => $this->title,
-				'label'  => $this->label,
-				'values' => $values,
-				'ids'    => $ids,
-			);
+		$settings = array(
+			'title'  => $this->title,
+			'label'  => $this->label,
+			'values' => $values,
+			'ids'    => $ids,
+		); ?>
 
-		?>
 		<div class="botiga-display-conditions-control" data-settings="<?php echo esc_attr( json_encode( $settings ) ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga_display_conditions_nonce' ) ); ?>">
 			<?php if( ! empty( $this->label ) ) { ?>
 				<span class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></span>
@@ -68,6 +67,7 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 			<textarea id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" class="botiga-display-conditions-textarea hidden" <?php $this->link(); ?>><?php echo sanitize_textarea_field( $this->value() ); ?></textarea>
 			<a href="#" class="button button-primary botiga-display-conditions-modal-button botiga-display-conditions-modal-toggle"><?php esc_html_e( 'Add/Edit Conditions', 'botiga' ); ?></a>
 		</div>
+
 		<?php
 	}
 
@@ -83,43 +83,38 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 			case 'product-id':
 			case 'cpt-post-id':
 				return get_the_title( $value['id'] );
-			break;
+				break;
 
 			case 'tag-id':
 			case 'category-id':
-			
-        $term = get_term( $value['id'] );
+				$term = get_term( $value['id'] );
 
-        if ( ! empty( $term ) ) {
+				if ( ! empty( $term ) ) {
 					return $term->name;
-        }
-
-			break;
+				}
+				break;
 
 			case 'cpt-term-id':
-			
-        $term = get_term( $value['id'] );
-        
-        if ( ! empty( $term ) ) {
+				$term = get_term( $value['id'] );
+				
+				if ( ! empty( $term ) ) {
 					return $term->name;
-        }
-
-			break;
+				}
+				break;
 
 			case 'cpt-taxonomy-id':
-			
-        $taxonomy = get_taxonomy( $value['id'] );
-        
-        if ( ! empty( $taxonomy ) ) {
+				$taxonomy = get_taxonomy( $value['id'] );
+				
+				if ( ! empty( $taxonomy ) ) {
 					return $taxonomy->label;
-        }
+				}
 
-			break;
+				break;
 
 			case 'author':
 			case 'author-id':
 				return get_the_author_meta( 'display_name', $value['id'] );
-			break;
+				break;
 
 		}
 
