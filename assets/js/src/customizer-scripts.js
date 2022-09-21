@@ -1515,14 +1515,18 @@ jQuery(document).ready(function( $ ) {
 		var $button  = $(this);
 		var $control = $button.closest('.botiga-custom-sidebars-control');
 		var $items   = $control.find('.botiga-custom-sidebar-list-item').not('.hidden');
-		var $item    = $button.closest('.botiga-custom-sidebar-list-item');
-		
+
+		$button.closest('.botiga-custom-sidebar-list-item').remove();
+
 		if ( $items.length === 1 ) {
-			$item.find(':input').val('');
-			$item.find('.botiga-display-conditions-modal').remove();
-			$control.find('.botiga-custom-sidebar-textarea').val('');
-		} else {
-			$item.remove();
+	
+			var $list = $control.find('.botiga-custom-sidebar-list');
+			var $item = $control.find('.botiga-custom-sidebar-list-item').first().clone();
+
+			$item.removeClass('hidden');
+
+			$list.append( $item );
+
 		}
 
 		$(document).trigger('botiga-custom-sidebar-update', [ $control ]);
