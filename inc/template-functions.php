@@ -954,11 +954,17 @@ function botiga_get_registered_sidebars() {
 /**
  * Display Conditions
  */
-function botiga_get_display_conditions( $name, $result = true ) {
+function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_default = '[]' ) {
 
-	$option = get_theme_mod( $name, '[]' );
+	$rules  = array();
+	$result = $default;
 
-	$rules = json_decode( $option, true );
+	if ( is_array( $maybe_rules ) && ! empty( $maybe_rules ) ) {
+		$rules = $maybe_rules;
+	} else {
+		$option = get_theme_mod( $maybe_rules, $mod_default );
+		$rules  = json_decode( $option, true );
+	}
 
 	if ( ! empty( $rules ) ) {
 
@@ -973,7 +979,7 @@ function botiga_get_display_conditions( $name, $result = true ) {
 				$result = $boolean;
 			}
 
-			// Common
+			// Basic
 			if ( $condition === 'singular' && is_singular() ) {
 				$result = $boolean;
 			}
