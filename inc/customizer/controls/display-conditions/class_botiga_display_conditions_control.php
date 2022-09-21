@@ -42,11 +42,11 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 
 			$values = ( ! empty( $this->value() ) ) ? json_decode( $this->value(), true ) : array();
 
-			$ids = array();
+			$labels = array();
 
 			foreach ( $values as $value ) {
 				if ( ! empty( $value['id'] ) ) {
-					$ids[ $value['id'] ] = $this->get_option_title( $value );
+					$labels[ $value['id'] ] = self::get_option_text( $value );
 				}
 			}
 
@@ -54,27 +54,21 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 				'title'  => $this->title,
 				'label'  => $this->label,
 				'values' => $values,
-				'ids'    => $ids,
+				'labels' => $labels,
 			);
 
 		?>
-		<div class="botiga-display-conditions-control" data-settings="<?php echo esc_attr( json_encode( $settings ) ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga_display_conditions_nonce' ) ); ?>">
-			<?php if( ! empty( $this->label ) ) { ?>
-				<span class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></span>
-			<?php } ?>
-			<?php if( ! empty( $this->description ) ) { ?>
-				<span class="customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
-			<?php } ?>
-			<textarea id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" class="botiga-display-conditions-textarea hidden" <?php $this->link(); ?>><?php echo sanitize_textarea_field( $this->value() ); ?></textarea>
+		<div class="botiga-display-conditions-control" data-condition-settings="<?php echo esc_attr( json_encode( $settings ) ); ?>">
 			<a href="#" class="button button-primary botiga-display-conditions-modal-button botiga-display-conditions-modal-toggle"><?php esc_html_e( 'Add/Edit Conditions', 'botiga' ); ?></a>
+			<textarea id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" class="botiga-display-conditions-textarea hidden" <?php $this->link(); ?>><?php echo sanitize_textarea_field( $this->value() ); ?></textarea>
 		</div>
 		<?php
 	}
 
 	/**
-	 * Get option title
+	 * Get option text
 	 */
-	public function get_option_title( $value ) {
+	public static function get_option_text( $value ) {
 
 		switch ( $value['condition'] ) {
 

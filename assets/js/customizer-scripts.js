@@ -1227,7 +1227,7 @@ jQuery(document).ready(function ($) {
           return {
             action: 'botiga_display_conditions_select_ajax',
             term: params.term,
-            nonce: $control.data('nonce'),
+            nonce: ajax_object.ajax_nonce,
             source: $conditionSelect.val()
           };
         },
@@ -1251,7 +1251,7 @@ jQuery(document).ready(function ($) {
     var $modal = $control.find('.botiga-display-conditions-modal');
 
     if (!$modal.data('initialized')) {
-      $control.append(template($control.data('settings')));
+      $control.append(template($control.data('condition-settings')));
       var $items = $control.find('.botiga-display-conditions-modal-content-list-item').not('.hidden');
 
       if ($items.length) {
@@ -1310,5 +1310,81 @@ jQuery(document).ready(function ($) {
       });
     });
     $textarea.val(JSON.stringify(data)).trigger('change');
+  });
+});
+/**
+ * Custom Sidebars Control
+ */
+
+jQuery(document).ready(function ($) {
+  "use strict";
+
+  $(document).on('botiga-custom-sidebar-update', function (event, control) {
+    event.preventDefault();
+    var data = [];
+    var $control = $(control);
+    var $textarea = $control.find('.botiga-custom-sidebar-textarea');
+    var $items = $control.find('.botiga-custom-sidebar-list-item').not('.hidden');
+    $items.each(function () {
+      var $item = $(this);
+      var name = $item.find('input[name="name"]').val();
+      var conditions = $item.find('.botiga-display-conditions-textarea').val();
+
+      if (conditions) {
+        conditions = JSON.parse(conditions);
+      }
+
+      if (name) {
+        data.push({
+          name: name,
+          conditions: conditions
+        });
+      }
+    });
+    $textarea.val(JSON.stringify(data)).trigger('change');
+  });
+  $('.botiga-custom-sidebars-control').each(function () {
+    var $control = $(this);
+    var $list = $control.find('.botiga-custom-sidebar-list');
+    $list.sortable({
+      axis: 'y',
+      update: function update() {
+        $(document).trigger('botiga-custom-sidebar-update', [$control]);
+      }
+    });
+  });
+  $(document).on('change', '.botiga-custom-sidebar-name, .botiga-custom-sidebar-conditions', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-sidebars-control');
+    $(document).trigger('botiga-custom-sidebar-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-sidebar-remove', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-sidebars-control');
+    var $items = $control.find('.botiga-custom-sidebar-list-item').not('.hidden');
+    var $item = $button.closest('.botiga-custom-sidebar-list-item');
+
+    if ($items.length === 1) {
+      $item.find(':input').val('');
+      $item.find('.botiga-display-conditions-modal').remove();
+      $control.find('.botiga-custom-sidebar-textarea').val('');
+    } else {
+      $item.remove();
+    }
+
+    $(document).trigger('botiga-custom-sidebar-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-sidebar-add', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-sidebars-control');
+    var $list = $control.find('.botiga-custom-sidebar-list');
+    var $item = $control.find('.botiga-custom-sidebar-list-item').first().clone();
+    $item.removeClass('hidden');
+    $list.append($item);
+    $(document).trigger('botiga-custom-sidebar-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-sidebar-condition', function (event) {
+    var $button = $(this);
+    var $item = $button.closest('.botiga-custom-sidebar-list-item');
   });
 });

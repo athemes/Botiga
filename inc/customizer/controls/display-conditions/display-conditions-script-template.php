@@ -345,7 +345,7 @@ function botiga_display_conditions_script_template() {
 										<div class="botiga-display-conditions-select2-id hidden">
 											<select name="id">
 												<# if ( ! _.isEmpty( value.id ) ) { #>
-													<option value="{{ value.id }}" selected="selected">{{ data.ids[ value.id ] }}</option>
+													<option value="{{ value.id }}" selected="selected">{{ data.labels[ value.id ] }}</option>
 												<# } #>
 											</select>
 										</div>
