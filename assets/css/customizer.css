@@ -1232,6 +1232,13 @@ html[dir="rtl"] .botiga-accordion-title:after {
 }
 
 /*
+ * Reset margin top from some controls
+ */
+#customize-control-side_mini_cart_floating_icon_info {
+  margin-top: -25px;
+}
+
+/*
  * Custom Snippets
  */
 #customize-control-code_snippet_header,

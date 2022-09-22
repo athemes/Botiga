@@ -632,7 +632,15 @@ botiga.stickyHeader = {
 
     if (bhfb.classList.contains('sticky-row-main-header-row')) {
       if (!above_header_row.classList.contains('bt-d-none')) {
-        topVal = document.body.classList.contains('admin-bar') ? above_header_row.clientHeight - 32 : above_header_row.clientHeight;
+        topVal = document.body.classList.contains('admin-bar') ? above_header_row.clientHeight - 32 : above_header_row.clientHeight; // Padded Layout
+
+        if (document.body.classList.contains('botiga-site-layout-padded')) {
+          topVal = topVal - parseInt(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
+
+          if (effect === 'scrolltop') {// topVal = 
+          }
+        }
+
         bhfb.style.top = "-".concat(topVal, "px");
       }
     }
@@ -643,6 +651,11 @@ botiga.stickyHeader = {
           topVal = bhfb.clientHeight - below_header_row.clientHeight - 32 - parseInt(getComputedStyle(below_header_row).borderBottomWidth);
         } else {
           topVal = bhfb.clientHeight - below_header_row.clientHeight - parseInt(getComputedStyle(below_header_row).borderBottomWidth);
+        } // Padded Layout
+
+
+        if (document.body.classList.contains('botiga-site-layout-padded')) {
+          topVal = topVal - parseInt(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
         }
 
         bhfb.style.top = "-".concat(topVal, "px");
