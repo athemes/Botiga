@@ -897,7 +897,7 @@ class Botiga_Header_Footer_Builder {
         $empty = true;
 
         foreach( $columns as $columnComponents ) {
-            if( count( $columnComponents ) > 0 ) {
+            if( is_array( $columnComponents ) && count( $columnComponents ) > 0 ) {
                 $empty = false;
             }
         }
