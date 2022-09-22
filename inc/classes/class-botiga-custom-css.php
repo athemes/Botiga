@@ -40,9 +40,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$this->dynamic_css_path = trailingslashit( set_url_scheme( $upload_dir['basedir'] ) ) . 'botiga/';
 
 			if ( !is_customize_preview() && wp_is_writable( trailingslashit( $upload_dir['basedir'] ) ) ) {
-				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 12 );
+				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 11 );
 			} else {
-				add_action( 'wp_enqueue_scripts', array( $this, 'print_styles' ), 11 );
+				add_action( 'wp_enqueue_scripts', array( $this, 'print_styles' ), 12 );
 			}
 
 			if ( !is_customize_preview() ) {
@@ -1174,7 +1174,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			if ( $exists ) {
-				wp_enqueue_style(
+
+				/**
+				 * Register the custom style here but enqueue is inside functions.php. 
+				 * This is required to keep the stylesheets order correct.
+				 * 
+				 */
+
+				wp_register_style(
 					'botiga-custom-styles',
 					$this->dynamic_css_uri . 'custom-styles.css',
 					false,
