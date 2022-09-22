@@ -1666,9 +1666,9 @@ html {
   max-width: var(--botiga_content_width, 1140px);
 }
 
-.botiga-site-layout-default.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block),
-.botiga-site-layout-boxed.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block),
-.botiga-site-layout-padded.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block) {
+.botiga-site-layout-default.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide),
+.botiga-site-layout-boxed.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide),
+.botiga-site-layout-padded.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide) {
   max-width: calc(var(--botiga_content_width, 1140px) - 30px);
 }
 
@@ -1741,7 +1741,7 @@ html {
   max-width: calc(100% - calc(var(--botiga_padded_spacing, 25px) * 2));
 }
 
-.botiga-site-layout-fluid.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block),
+.botiga-site-layout-fluid.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide),
 .botiga-site-layout-fluid .container {
   max-width: 100%;
   padding-left: var(--botiga_fluid_spacing, 15px);
