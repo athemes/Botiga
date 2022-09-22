@@ -213,6 +213,10 @@ foreach( $this->header_rows as $row ) {
                         'label' => esc_html__( 'Equal Width', 'botiga' ),
                         'url'   => '%s/assets/img/fl5.svg'
                     ),	
+                    '3col-fluid' => array(
+                        'label' => esc_html__( 'Fluid Width', 'botiga' ),
+                        'url'   => '%s/assets/img/fl13.svg'
+                    ),	
                     '3col-bigleft' => array(
                         'label' => esc_html__( 'Big Left', 'botiga' ),
                         'url'   => '%s/assets/img/fl6.svg'

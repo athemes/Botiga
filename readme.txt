@@ -94,6 +94,7 @@ Initial release
 * Folder vendor/kirki-framework https://github.com/kirki-framework, (C) kirki-framework, [MIT](https://opensource.org/licenses/MIT)
 * Customizer controls https://maddisondesigns.com, (C) Anthony Hortin, [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * Cross Sell Carousel https://pawelgrzybek.github.io/siema/, (C) Paweł Grzybek, [MIT](https://opensource.org/licenses/MIT)
+* Swiper https://swiperjs.com, (C) 2014-2022 Vladimir Kharlampidi, [MIT](https://opensource.org/licenses/MIT)
 * Hero screenshot image https://www.flickr.com/photos/192934727@N03/51163578540/, (C) Kamruzzaman Alam, [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)
 * Product screenshot image https://www.flickr.com/photos/192934727@N03/51330901495/, (C) Kamruzzaman Alam, [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)
 * Product screenshot image https://www.flickr.com/photos/192934727@N03/51330631769/, (C) Kamruzzaman Alam, [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)

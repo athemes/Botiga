@@ -1,8 +1,13 @@
 /**
- * Botiga Sidebar
+ * Botiga Gallery
+ * 
+ * jQuery Dependant: true
+ * 
  */
 
 'use strict';
+
+var botiga = botiga || {};
 
 botiga.gallery = {
 
@@ -113,6 +118,6 @@ botiga.gallery = {
 
 }
 
-botiga.helpers.botigaDomReady( function() {
+jQuery( document ).ready(function(){
     botiga.gallery.init();
 });

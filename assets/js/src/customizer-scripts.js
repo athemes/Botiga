@@ -1260,6 +1260,29 @@ jQuery( document ).ready(function($) {
 });
 
 /**
+ * Customizer Back Button
+ */
+jQuery( document ).ready(function($) {
+	let
+		current_section_id = '';
+
+	$( document ).on( 'mouseover focus', '.customize-section-back', function(e){
+		current_section_id = $( '.control-section.open' ).attr( 'id' );
+	});
+
+	$( document ).on( 'click keydown', '.customize-section-back', function(e){
+		
+		// Floating Mini Cart Icon
+		if( current_section_id.indexOf( 'side_mini_cart_floating_icon_section' ) !== -1 ) {
+			if( typeof wp.customize.section( 'botiga_section_shop_cart' ) !== 'undefined' ) {
+				wp.customize.section( 'botiga_section_shop_cart' ).focus();
+				return false;
+			}
+		}
+
+	} );
+
+/**
  * Display Conditions Control
  */
 jQuery(document).ready(function( $ ) {
