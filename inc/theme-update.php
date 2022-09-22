@@ -153,3 +153,72 @@ function botiga_hf_update_dismiss_notice_1_1_9_callback() {
 	) );
 }
 add_action( 'wp_ajax_botiga_hf_update_dismiss_notice_1_1_9_callback', 'botiga_hf_update_dismiss_notice_1_1_9_callback' );
+
+/**
+ * Migrate 'header transparent' and 'header image' old display conditions to the new.
+ * 
+ * @since 1.2.1
+ */
+function botiga_migrate_old_header_display_cond_to_new() {
+    $flag = get_theme_mod( 'botiga_migrate_old_header_display_cond_to_new_flag', false );
+
+    if ( true === $flag ) {
+        return;
+    }
+
+    // Header Transparent
+    $header_transparent_display_on = get_theme_mod( 'header_transparent_display_on', 'front-page' );
+    $values = explode( ',', $header_transparent_display_on );
+    $new_value = array();
+
+    foreach( $values as $val ) {
+
+        if( $val === 'pages' ) {
+            $val = 'single-page';
+        }
+
+        if( $val === 'blog-archive' ) {
+            $val = 'post-archives';
+        }
+
+        if( $val === 'blog-posts' ) {
+            $val = 'single-post';
+        }
+
+        if( $val === 'post-search' ) {
+            $val = 'search';
+        }
+
+        $new_value[] = array(
+            'type'      => 'include',
+            'condition' => $val,
+            'id'        => null
+        );
+    }
+
+    set_theme_mod( 'header_transparent_display_on', json_encode( $new_value ) );
+
+    // Header Image
+    $show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
+    if( $show_header_image_only_home ) {
+        set_theme_mod( 'header_image_display_conditions', json_encode( array(
+            array(
+                'type'      => 'include',
+                'condition' => 'front-page',
+                'id'        => null
+            )
+        ) ) );
+    } else {
+        set_theme_mod( 'header_image_display_conditions', json_encode( array(
+            array(
+                'type'      => 'include',
+                'condition' => 'all',
+                'id'        => null
+            )
+        ) ) );
+    }
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_old_header_display_cond_to_new_flag', true );
+}
+add_action( 'init', 'botiga_migrate_old_header_display_cond_to_new' );

@@ -597,3 +597,78 @@ function botiga_callback_single_product_elements( $element ) {
 		return false;
 	}
 }
+
+/**
+ * Site Layout Default & Boxed & Padded
+ */
+function botiga_callback_site_layout_default_boxed_padded() {
+
+	$site_layout = get_theme_mod( 'site_layout', 'default' );
+
+	if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ) ) ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Site Layout Boxed
+ */
+function botiga_callback_site_layout_boxed() {
+
+	$site_layout = get_theme_mod( 'site_layout', 'default' );
+
+	if ( $site_layout === 'boxed' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Site Layout Padded
+ */
+function botiga_callback_site_layout_padded() {
+
+	$site_layout = get_theme_mod( 'site_layout', 'default' );
+
+	if ( $site_layout === 'padded' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Site Layout Fluid
+ */
+function botiga_callback_site_layout_fluid() {
+
+	$site_layout = get_theme_mod( 'site_layout', 'default' );
+
+	if ( $site_layout === 'fluid' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Site Layout Boxed & Padded
+ */
+function botiga_callback_site_layout_boxed_padded() {
+
+	$site_layout = get_theme_mod( 'site_layout', 'default' );
+
+	if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}

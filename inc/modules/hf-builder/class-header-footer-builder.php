@@ -839,7 +839,6 @@ class Botiga_Header_Footer_Builder {
      * Footer Builder Front Output
      */
     public function footer_front_output() {
-
         $devices = array( 'desktop' );
         foreach( $devices as $device ) { ?>
 

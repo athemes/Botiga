@@ -92,8 +92,15 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'body_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'div.editor-styles-wrapper' );	
 
 	//Colors
-	$background_color 	= get_theme_mod( 'background_color' );
-	$css .= "div.editor-styles-wrapper { background-color:#" . esc_attr( $background_color ) . ";}" . "\n";
+	$background_color         = get_theme_mod( 'background_color' );
+	$content_background_color = get_theme_mod( 'content_background_color', '#fff' );
+	$site_layout              = get_theme_mod( 'site_layout', 'default' );
+	
+	if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
+		$css .= "div.editor-styles-wrapper { background-color:#" . ltrim( esc_attr( $content_background_color ), '#' ) . ";}" . "\n";
+	} else {
+		$css .= "div.editor-styles-wrapper { background-color:#" . ltrim( esc_attr( $background_color ), '#' ) . ";}" . "\n";
+	}
 
 	$css .= Botiga_Custom_CSS::get_color_css( 'single_post_title_color', '', 'div.editor-styles-wrapper .editor-post-title .editor-post-title__input' );
 	$css .= Botiga_Custom_CSS::get_color_css( 'color_body_text', '', 'div.editor-styles-wrapper' );

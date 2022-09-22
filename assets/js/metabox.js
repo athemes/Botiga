@@ -14,8 +14,10 @@
         var $tab = $(this);
         $tab.on('click', function (e) {
           e.preventDefault();
+          var $content = $contents.eq($tab.index());
           $tab.addClass('active').siblings().removeClass('active');
-          $contents.eq($tab.index()).addClass('active').siblings().removeClass('active');
+          $content.addClass('active').siblings().removeClass('active');
+          $(document).trigger('botiga-metabox-content-show', $content);
         });
       });
       var $repeater = $contents.find('.botiga-metabox-field-repeater');
@@ -234,6 +236,80 @@
         });
       }
 
+      var $selectAjax = $('.botiga-metabox-field-select-ajax');
+
+      if ($selectAjax.length) {
+        $selectAjax.each(function () {
+          var $select = $(this).find('select');
+          var source = $select.data('source');
+          var config = window.botiga_metabox;
+          $select.select2({
+            width: '100%',
+            minimumInputLength: 1,
+            ajax: {
+              url: config.ajaxurl,
+              dataType: 'json',
+              delay: 250,
+              cache: true,
+              data: function data(params) {
+                return {
+                  action: 'botiga_select_ajax',
+                  nonce: config.ajaxnonce,
+                  term: params.term,
+                  source: source
+                };
+              },
+              processResults: function processResults(response, params) {
+                if (response.success) {
+                  return {
+                    results: response.data
+                  };
+                }
+
+                return {};
+              }
+            }
+          });
+          $selectAjax.find('.select2-selection--multiple').append('<span class="botiga-select2-clear"></span>');
+        });
+      }
+
+      var $attributes = $('.botiga-metabox-field-wc-attributes');
+
+      if ($attributes.length) {
+        $attributes.each(function () {
+          var $sortable = $(this).find('ul');
+          $sortable.sortable({
+            axis: 'y',
+            cursor: 'move',
+            helper: 'original'
+          });
+        });
+      }
+
+      $(document).on('botiga-metabox-content-show', function (event, content) {
+        var $content = $(content);
+
+        if (!$content.data('code-editor-initalized')) {
+          var $codeEditors = $('.botiga-metabox-field-code-editor', $content);
+
+          if ($codeEditors.length) {
+            $codeEditors.each(function () {
+              var $textarea = $(this).find('textarea');
+              var editorSettings = wp.codeEditor.defaultSettings || {};
+              editorSettings.codemirror = _.extend({}, editorSettings.codemirror, {
+                gutters: []
+              });
+              var editor = wp.codeEditor.initialize($textarea, editorSettings);
+              editor.codemirror.on('keyup', function (instance) {
+                instance.save();
+              });
+            });
+          }
+
+          $content.data('code-editor-initalized', true);
+        }
+      });
       var $depends = $contents.find('[data-depend-on]');
 
       if ($depends.length) {
