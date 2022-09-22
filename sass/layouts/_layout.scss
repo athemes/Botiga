@@ -621,7 +621,7 @@ html {
         max-width: var(--botiga_content_width, 1140px);
     }
 
-    &.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block){
+    &.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide){
         max-width: calc(var(--botiga_content_width, 1140px) - 30px);
     }
 
@@ -708,7 +708,7 @@ html {
 
 .botiga-site-layout-fluid{
     
-    &.botiga-page-builder-mode .entry-content>*:not(.athemes-blocks-block),
+    &.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide),
     .container{
         max-width: 100%;
         padding-left: var(--botiga_fluid_spacing, 15px);
