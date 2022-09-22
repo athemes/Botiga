@@ -1078,6 +1078,13 @@
 		} );
 	});
 
+	// Padded Color
+	wp.customize( 'background_color', function( value ) {
+		value.bind( function( to ) {
+			$(':root').css('--botiga_background_color', to);
+		} );
+	} );
+
 }( jQuery ) );
 
 function hideControls( options ) {

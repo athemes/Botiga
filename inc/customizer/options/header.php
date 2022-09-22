@@ -19,22 +19,24 @@ $wp_customize->add_panel(
 /**
  * Header image
  */
+
+// Header Image Display Conditions
 $wp_customize->add_setting(
-	'show_header_image_only_home',
-	array(
-		'default'           => 0,
-		'sanitize_callback' => 'botiga_sanitize_checkbox',
-	)
+    'header_image_display_conditions',
+    array(
+        'default'           => '[{"type":"include","condition":"all","id":null}]',
+        'sanitize_callback' => 'sanitize_textarea_field'
+    )
 );
 $wp_customize->add_control(
-	new Botiga_Toggle_Control(
-		$wp_customize,
-		'show_header_image_only_home',
-		array(
-			'label'         	=> esc_html__( 'Show only in the homepage', 'botiga' ),
-			'section'       	=> 'header_image',
-		)
-	)
+    new Botiga_Display_Conditions_Control(
+        $wp_customize,
+        'header_image_display_conditions',
+        array(
+            'label'    		  => esc_html__( 'Header Image Display Conditions', 'botiga' ),
+            'section'  		  => 'header_image'
+        )
+    )
 );
 
 /**
@@ -211,43 +213,25 @@ $wp_customize->add_control(
 	)
 );
 
-$wp_customize->add_setting( 'header_transparent_display_rules_title',
-	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'header_transparent_display_rules_title',
-		array(
-			'label'			  => esc_html__( 'Header Transparent Display On', 'botiga' ),
-			'section' 		  => 'botiga_section_main_header',
-			'active_callback' => 'botiga_header_transparent_enabled',
-			'priority'		  => 21
-		)
-	)
-);
-
+// Header Transparent Display Conditions
 $wp_customize->add_setting(
-	'header_transparent_display_on',
-	array(
-		'default'           => 'front-page',
-		'sanitize_callback' => 'sanitize_text_field'
-	)
+    'header_transparent_display_on',
+    array(
+        'default'           => '[]',
+        'sanitize_callback' => 'sanitize_textarea_field'
+    )
 );
 $wp_customize->add_control(
-	new Botiga_Select2_Control(
-		$wp_customize,
-		'header_transparent_display_on',
-		array(
-			'label'           => '',
-			'section'         => 'botiga_section_main_header',
-			'select2_options' => '{ "selectionCssClass": "botiga-select2" }',
-			'multiple'        => true,
-			'choices'         => botiga_header_transparent_choices(),
+    new Botiga_Display_Conditions_Control(
+        $wp_customize,
+        'header_transparent_display_on',
+        array(
+            'label'    		  => esc_html__( 'Header Transparent Display Conditions', 'botiga' ),
+            'section'  		  => 'botiga_section_main_header',
 			'active_callback' => 'botiga_header_transparent_enabled',
-			'priority'		  => 21
-		)
-	)
+            'priority' 		  => 22
+        )
+    )
 );
 
 $wp_customize->add_setting( 'header_divider_1',

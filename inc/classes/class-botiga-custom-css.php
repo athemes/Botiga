@@ -1107,10 +1107,34 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= ".wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
 			}
 
-			// Layout
-			$content_max_width = get_theme_mod( 'content_max_width', 1140 );
+			// Layouts
+			$site_layout = get_theme_mod( 'site_layout', 'default' );
 
-			$css .= ".container{ max-width:" . esc_attr( $content_max_width ) . "px;}" . "\n";
+			// Default, Boxed, Padded
+			if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ) ) ) {
+				$css .= $this->get_variable_css( 'content_max_width', 1140, ':root', 'botiga_content_width', 'px' );
+			}
+
+			// Boxed
+			if ( $site_layout === 'boxed' ) {
+				$css .= $this->get_variable_css( 'boxed_max_width', 1000, ':root', 'botiga_boxed_width', 'px' );
+			}
+
+			// Padded
+			if ( $site_layout === 'padded' ) {
+				$css .= $this->get_variable_css( 'background_color', '#ffffff', ':root', 'botiga_background_color' );
+				$css .= $this->get_responsive_variable_css( 'padded_layout_spacing', array( 'desktop' => 20, 'tablet' => 10, 'mobile' => 10 ), ':root', 'botiga_padded_spacing', 'px' );
+			}
+
+			// Fluid
+			if ( $site_layout === 'fluid' ) {
+				$css .= $this->get_responsive_variable_css( 'fluid_layout_spacing', array( 'desktop' => 15, 'tablet' => 15, 'mobile' => 15 ), ':root', 'botiga_fluid_spacing', 'px' );
+			}
+
+			// Boxed, Padded
+			if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
+				$css .= $this->get_background_color_rgba_css( 'content_background_color', '#ffffff', '.site', 1 );			
+			}
 
 			//Gutenberg palettes
 			$palettes = botiga_global_color_palettes();
@@ -1576,7 +1600,46 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			return $css;
 		}
-		
+
+		// CSS Variable val()
+		public static function get_variable_css( $setting = '', $default = '', $selector = '', $prop = '', $unit = '' ) {
+
+			$mod = get_theme_mod( $setting, $default );
+
+			if ( $mod !== '' ) {
+
+				if( $setting === 'background_color' ) {
+					$mod = '#'.$mod;
+				}
+
+				return $selector . ' { --'. $prop .':' . esc_attr( $mod ) . $unit .';}' . "\n";	
+			
+			}
+
+		}	
+
+		// Responsive CSS Variable val()
+		public static function get_responsive_variable_css( $setting = '', $defaults = array(), $selector = '', $prop = '', $unit = '' ) {
+
+			$devices 	= array( 
+				'desktop' => '@media (min-width: 992px)',
+				'tablet'  => '@media (min-width: 576px) and (max-width:  991px)',
+				'mobile'  => '@media (max-width: 575px)'
+			);
+
+			$css = '';
+
+			foreach ( $devices as $device => $media ) {
+				$mod = get_theme_mod( $setting . '_' . $device, $defaults[ $device ] );
+				if ( $mod !== '' ) {
+					$css .= $media . ' { ' . $selector . ' { --'. $prop .':' . intval( $mod ) . $unit .';} }' . "\n";	
+				}
+			}
+
+			return $css;
+
+		}	
+
 		//Convert hex to rgba
 		public static function to_rgba( $color = '', $opacity = false ) {
 

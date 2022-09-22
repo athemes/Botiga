@@ -161,7 +161,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_archive_sidebar',
 		array(
-			'label'    => esc_html__( 'Sidebar', 'botiga' ),
+			'label'    => esc_html__( 'Sidebar Layout', 'botiga' ),
 			'section'  => 'woocommerce_product_catalog',
 			'cols' 		=> 2,
 			'choices'  => array(

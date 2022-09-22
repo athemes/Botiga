@@ -638,6 +638,18 @@
 			}
 		}
 	}
+
+	&.botiga-site-layout-boxed{
+		.site-main {
+			> .product {
+				> section.products {
+					&:after {
+       			max-width: var(--botiga_boxed_width, 1200px);
+					}
+				}
+			}
+		}
+	}
 }
 // .upsells.products {
 // 	& + .related.products,
