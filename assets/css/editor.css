@@ -1963,7 +1963,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   height: 30px;
   border-radius: 100%;
   margin: 5px 8px 5px 0px;
-  border: 2px solid transparent;
+  border: 1px solid #ddd;
   cursor: pointer;
   text-indent: -99999px;
 }

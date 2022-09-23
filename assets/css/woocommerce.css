@@ -6598,6 +6598,7 @@ dl.variation p {
   height: 30px;
   border-radius: 100%;
   text-indent: -99999px;
+  border: 1px solid #ddd;
 }
 
 .botiga-linked-variations-type-color > a:before,
