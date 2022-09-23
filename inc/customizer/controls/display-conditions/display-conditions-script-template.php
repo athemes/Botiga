@@ -249,8 +249,6 @@ function botiga_display_conditions_script_template() {
 			var botigaDCSettings = <?php echo json_encode( $settings ); ?>;
 		</script>
 		<script type="text/template" id="tmpl-botiga-display-conditions-template">
-			<?php
-			?>
 			<div class="botiga-display-conditions-modal">
 				<div class="botiga-display-conditions-modal-outer">
 					<div class="botiga-display-conditions-modal-header">

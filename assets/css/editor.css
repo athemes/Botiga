@@ -2580,6 +2580,7 @@ div.editor-styles-wrapper .botiga-linked-variations-type-image > a {
   height: 30px;
   border-radius: 100%;
   text-indent: -99999px;
+  border: 1px solid #ddd;
 }
 
 div.editor-styles-wrapper .botiga-linked-variations-type-color > a:before,
