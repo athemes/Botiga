@@ -97,7 +97,7 @@ function botiga_display_conditions_script_template() {
 				),
 				array(
 					'id'   => 'product-id',
-					'text' => esc_html__( 'Product ID', 'botiga' ),
+					'text' => esc_html__( 'Product Name', 'botiga' ),
 					'ajax' => true,
 				),
 			),
@@ -111,27 +111,27 @@ function botiga_display_conditions_script_template() {
 		'options' => array(
 			array(
 				'id'   => 'post-id',
-				'text' => esc_html__( 'Post ID', 'botiga' ),
+				'text' => esc_html__( 'Post Name', 'botiga' ),
 				'ajax' => true,
 			),
 			array(
 				'id'   => 'page-id',
-				'text' => esc_html__( 'Page ID', 'botiga' ),
+				'text' => esc_html__( 'Page Name', 'botiga' ),
 				'ajax' => true,
 			),
 			array(
 				'id'   => 'category-id',
-				'text' => esc_html__( 'Category ID', 'botiga' ),
+				'text' => esc_html__( 'Category Name', 'botiga' ),
 				'ajax' => true,
 			),
 			array(
 				'id'   => 'tag-id',
-				'text' => esc_html__( 'Tag ID', 'botiga' ),
+				'text' => esc_html__( 'Tag Name', 'botiga' ),
 				'ajax' => true,
 			),
 			array(
 				'id'   => 'author-id',
-				'text' => esc_html__( 'Author ID', 'botiga' ),
+				'text' => esc_html__( 'Author Name', 'botiga' ),
 				'ajax' => true,
 			),
 		),
@@ -148,17 +148,17 @@ function botiga_display_conditions_script_template() {
 			'options' => array(
 				array(
 					'id'   => 'cpt-post-id',
-					'text' => esc_html__( 'CPT: Post ID', 'botiga' ),
+					'text' => esc_html__( 'CPT: Post Name', 'botiga' ),
 					'ajax' => true,
 				),
 				array(
 					'id'   => 'cpt-term-id',
-					'text' => esc_html__( 'CPT: Term ID', 'botiga' ),
+					'text' => esc_html__( 'CPT: Term Name', 'botiga' ),
 					'ajax' => true,
 				),
 				array(
 					'id'   => 'cpt-taxonomy-id',
-					'text' => esc_html__( 'CPT: Taxonomy ID', 'botiga' ),
+					'text' => esc_html__( 'CPT: Taxonomy Name', 'botiga' ),
 					'ajax' => true,
 				),
 			),
