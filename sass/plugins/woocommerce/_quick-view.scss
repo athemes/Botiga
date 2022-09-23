@@ -328,3 +328,42 @@ ul.wc-block-grid__products {
 .pswp {
 	z-index: 9999 !important;
 }
+
+/**
+ * Site Layouts Compatiblity 
+ *
+ */
+body {
+
+    // Padded site layout
+    &.botiga-site-layout-padded {
+
+		.botiga-quick-view-popup-content-ajax {
+			> .product {
+				max-height: calc( 80vh - ( var(--botiga_padded_spacing, 25px) * 2 ) );
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+		}
+        
+    }
+
+    // Admin Bar
+    &.admin-bar {
+
+        // Padded site layout
+        &.botiga-site-layout-padded {
+
+            .botiga-quick-view-popup-content-ajax {
+				> .product {
+					max-height: calc( ( 80vh - 32px ) - ( var(--botiga_padded_spacing, 25px) * 2 ) );
+					overflow-y: auto;
+					overflow-x: hidden;
+				}
+			}
+
+        }
+
+    }
+
+}
