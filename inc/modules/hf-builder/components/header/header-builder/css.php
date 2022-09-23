@@ -6,10 +6,10 @@
  * @package Botiga_Pro
  */
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 $header_transparent         = get_theme_mod( 'header_transparent', 0 );
 $header_transparent_hb_rows = get_theme_mod( 'header_transparent_hb_rows', 'main-row' );
-
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
 // Apply Header Transparent To
 if( $header_transparent ) {
