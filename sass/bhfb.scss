@@ -524,11 +524,6 @@
                                 top: 0;
                             }
                         }
-
-                        // Sitky Main Header Row
-                        // &.sticky-row-main-header-row {
-                        //     top: var(--botiga_padded_spacing, 25px);
-                        // }
                         
                     }
                 }
@@ -548,11 +543,6 @@
                                     top: 0;
                                 }
                             }
-
-                            // Sitky Main Header Row
-                            // &.sticky-row-main-header-row {
-                            //     top: calc( var(--botiga_padded_spacing, 25px) + 32px );
-                            // }
 
                         }
                     }
@@ -745,28 +735,6 @@
             }
 
         }
-
-        // &.sticky-header-active.botiga-site-layout-padded {
-            
-        //     .bhfb {
-        //         &.bhfb-header {
-        //             &.has-sticky-header {
-                 
-        //                 // Sticky Main Row
-        //                 &.sticky-row-main-header-row {
-        //                     top: calc(var(--botiga_padded_spacing, 25px) + 32px);
-        //                 }
-    
-        //                 // Sticky Below Row
-        //                 &.sticky-row-below-header-row {
-        //                     top: calc(var(--botiga_padded_spacing, 25px) + 32px);
-        //                 }
-                        
-        //             }
-        //         }
-        //     }
-
-        // }
 
     }
 
