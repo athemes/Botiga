@@ -39,7 +39,7 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 		if( $page_id && post_exists( get_the_title( $page_id ) ) && get_post_status( $page_id ) === 'publish' ) {
 			echo wp_kses_post( 
 				sprintf(  /* translators: 1: link to edit page */
-					__( 'Your page is created!<br>Click <a href="%s" target="_blank">here</a> if you want to edit the page.<br><br>If you want to show a link to this page, assign the page to a menu by clicking <a href="#" data-goto="nav_menus" data-type="panel">here</a>', 'botiga' ), 
+					__( 'Your page is created!<br>Click <a href="%s" target="_blank">here</a> if you want to edit the page.<br><br>If you want to show a link to this page, assign the page to a menu clicking <a href="#" data-goto="nav_menus" data-type="panel">here</a>', 'botiga' ), 
 				esc_url( get_admin_url() . 'post.php?post='. $page_id .'&action=edit' )
 				) 
 			);
@@ -55,7 +55,7 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 			echo '<div class="botiga-create-page-control-success-message" style="display: none;">';
 				echo wp_kses_post( 
 					sprintf( /* translators: 1: link to edit page */	
-						__( 'Page created with success!<br>Click <a href="%s" target="_blank">here</a> if you want to edit the page.<br><br>If you want to show a link to this page, assign the page to a menu by clicking <a href="#" data-goto="nav_menus" data-type="panel">here</a>', 'botiga' ), esc_url( get_admin_url() . 'post.php?post=&action=edit' ) 
+						__( 'Page created with success!<br>Click <a href="%s" target="_blank">here</a> if you want to edit the page.<br><br>If you want to show a link to this page, assign the page to a menu clicking <a href="#" data-goto="nav_menus" data-type="panel">here</a>', 'botiga' ), esc_url( get_admin_url() . 'post.php?post=&action=edit' ) 
 					) 
 				);
 			echo '</div>';

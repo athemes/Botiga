@@ -94,7 +94,7 @@ function botiga_hf_update_notice_1_1_9() {
     <div class="notice notice-success thd-theme-dashboard-notice-success is-dismissible">
         <h3><?php esc_html_e( 'Botiga Header/Footer Update', 'botiga'); ?></h3>
         <p>
-            <?php esc_html_e( 'This version of Botiga comes with a new Header and Footer Builder. Activate it by clicking the button below and you can access new options.', 'botiga' ); ?>
+            <?php esc_html_e( 'This version of Botiga comes with a new Header and Footer Builder. Activate it clicking on the button below and you can access new options.', 'botiga' ); ?>
         </p>
         <p>
             <?php esc_html_e( 'Note 1: This upgrade is optional, there is no need to do it if you are happy with your current header and footer.', 'botiga' ); ?>

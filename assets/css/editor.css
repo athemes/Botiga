@@ -465,6 +465,10 @@ div.editor-styles-wrapper {
   /**
  * Photoswipe
  */
+  /**
+ * Site Layouts Compatiblity 
+ *
+ */
 }
 
 div.editor-styles-wrapper .site-header-cart .cart-contents {
@@ -3793,6 +3797,18 @@ div.editor-styles-wrapper .admin-bar .botiga-quick-view-popup .botiga-quick-view
 
 div.editor-styles-wrapper .pswp {
   z-index: 9999 !important;
+}
+
+div.editor-styles-wrapper body.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax > .product {
+  max-height: calc( 80vh - ( var(--botiga_padded_spacing, 25px) * 2 ));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+div.editor-styles-wrapper body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax > .product {
+  max-height: calc( ( 80vh - 32px ) - ( var(--botiga_padded_spacing, 25px) * 2 ));
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /*
