@@ -49,7 +49,7 @@ class Botiga_Typography_Adobe_Kits_Control extends WP_Customize_Control {
                 echo wp_kses_post( 
                     sprintf(
                         /* translators: 1: Adobe Fonts account website link */
-                        __( 'You can get your Adobe Fonts API Token clicking <a href="%s" target="_blank">here</a>.', 'botiga' ),
+                        __( 'You can get your Adobe Fonts API Token by clicking <a href="%s" target="_blank">here</a>.', 'botiga' ),
                         'https://fonts.adobe.com/account/tokens/'
                     )
                 ); ?>

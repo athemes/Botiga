@@ -527,14 +527,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			
 			//Back to top
 			$scrolltop_radius 			= get_theme_mod( 'scrolltop_radius', 30 );
-			$scrolltop_side_offset 		= get_theme_mod( 'scrolltop_side_offset', 30 );
-			$scrolltop_bottom_offset 	= get_theme_mod( 'scrolltop_bottom_offset', 30 );
 			$scrolltop_icon_size 		= get_theme_mod( 'scrolltop_icon_size', 18 );
 			$scrolltop_padding 			= get_theme_mod( 'scrolltop_padding', 15 );
 
-			$css .= ".back-to-top.display { border-radius:" . esc_attr( $scrolltop_radius ) . "px;bottom:" . esc_attr( $scrolltop_bottom_offset ) . "px;}" . "\n";
-			$css .= ".back-to-top.position-right { right:" . esc_attr( $scrolltop_side_offset ) . "px;}" . "\n";
-			$css .= ".back-to-top.position-left { left:" . esc_attr( $scrolltop_side_offset ) . "px;}" . "\n";
+			$css .= ".back-to-top.display { border-radius:" . esc_attr( $scrolltop_radius ) . "px;}" . "\n";
+			$css .= $this->get_responsive_css( 'scrolltop_bottom_offset', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.back-to-top.display', 'bottom' );
+			$css .= $this->get_responsive_css( 'scrolltop_side_offset', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.back-to-top.position-right', 'right' );
+			$css .= $this->get_responsive_css( 'scrolltop_side_offset', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.back-to-top.position-left', 'left' );
 			$css .= $this->get_background_color_css( 'scrolltop_bg_color', '', '.back-to-top' );
 			$css .= $this->get_background_color_css( 'scrolltop_bg_color_hover', '', '.back-to-top:hover' );
 			$css .= $this->get_color_css( 'scrolltop_color', '', '.back-to-top' );

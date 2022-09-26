@@ -1123,31 +1123,6 @@ html[dir="rtl"] .botiga-accordion-title:after {
 }
 
 /*
- * Custom Snippets
- */
-#customize-control-code_snippet_header,
-#customize-control-code_snippet_body,
-#customize-control-code_snippet_footer{
-    display: flex;
-    flex-direction: column;
-
-    .customize-control-description{
-        order: 1;
-        font-size: 12px;
-        margin-top: 5px;
-    }
-
-    code{
-        font-size: 0.85em;
-        padding: 2px 4px;
-    }
-
-    .CodeMirror{
-        min-height: 275px;
-    }
-}
-
-/*
  * Display Conditions Control
  */
 .select2-container--open ul li {

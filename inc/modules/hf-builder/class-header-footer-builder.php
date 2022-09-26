@@ -1181,11 +1181,7 @@ class Botiga_Header_Footer_Builder {
             $output .= get_header_image_tag();
         $output .= '</div>';
 
-        if( $show_header_image_only_home ) {
-            if( is_front_page() ) {
-                echo wp_kses_post( $output );
-            }
-
+        if ( ! botiga_get_display_conditions( 'header_image_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {
             return;
         }
 

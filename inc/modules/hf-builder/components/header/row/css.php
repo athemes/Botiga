@@ -64,6 +64,10 @@ if( botiga_sticky_header_enabled() ) {
         }
     }
     
+    if( get_theme_mod( 'site_layout', 'default' ) === 'padded' ) {
+        $sticky_gap = $sticky_gap + get_theme_mod( 'padded_layout_spacing_desktop', 20 );
+    }
+
     if( $sticky_row === 'all' ) {
         $css .= '@media(min-width: 1025px) { body.has-bhfb-builder:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; } }';
     }

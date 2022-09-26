@@ -944,21 +944,19 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
  * Get Registered Sidebars
  */
 function botiga_get_registered_sidebars() {
+	global $wp_registered_sidebars;
 
-  global $wp_registered_sidebars;
+	$sidebars = array(
+		'' => esc_html__( 'Default', 'botiga' ),
+	);
 
-  $sidebars = array(
-  	'' => esc_html__( 'Default', 'botiga' ),
-  );
+	if ( ! empty( $wp_registered_sidebars ) ) {
+		foreach ( $wp_registered_sidebars as $sidebar ) {
+			$sidebars[ $sidebar['id'] ] = $sidebar['name'];
+		}
+	}
 
-  if ( ! empty( $wp_registered_sidebars ) ) {
-    foreach ( $wp_registered_sidebars as $sidebar ) {
-      $sidebars[ $sidebar['id'] ] = $sidebar['name'];
-    }
-  }
-
-  return $sidebars;
-
+	return $sidebars;
 }
 
 /**

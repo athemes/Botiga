@@ -10,7 +10,13 @@
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
 (function ($) {
-  // Site title and description.
+  //Responsive Devices Variable
+  var $devices = {
+    "desktop": "(min-width: 992px)",
+    "tablet": "(min-width: 576px) and (max-width: 991px)",
+    "mobile": "(max-width: 575px)"
+  }; // Site title and description.
+
   wp.customize('blogname', function (value) {
     value.bind(function (to) {
       $('.site-title a').text(to);
@@ -280,15 +286,21 @@
       $('.back-to-top.display').css('border-radius', to + 'px');
     });
   });
-  wp.customize('scrolltop_side_offset', function (value) {
-    value.bind(function (to) {
-      $('.back-to-top.position-right').css('right', to + 'px');
-      $('.back-to-top.position-left').css('left', to + 'px');
+  $.each($devices, function (device, mediaSize) {
+    wp.customize('scrolltop_side_offset' + '_' + device, function (value) {
+      value.bind(function (to) {
+        $('head').find('#botiga-customizer-styles-scrolltop_side_offset_' + device).remove();
+        var output = '@media ' + mediaSize + ' { .back-to-top.position-right { right:' + to + 'px; } }';
+        output += '@media ' + mediaSize + ' { .back-to-top.position-left { left:' + to + 'px; } }';
+        $('head').append('<style id="botiga-customizer-styles-scrolltop_side_offset_' + device + '">' + output + '</style>');
+      });
     });
-  });
-  wp.customize('scrolltop_bottom_offset', function (value) {
-    value.bind(function (to) {
-      $('.back-to-top').css('bottom', to + 'px');
+    wp.customize('scrolltop_bottom_offset' + '_' + device, function (value) {
+      value.bind(function (to) {
+        $('head').find('#botiga-customizer-styles-scrolltop_bottom_offset_' + device).remove();
+        var output = '@media ' + mediaSize + ' { .back-to-top.display { bottom:' + to + 'px; } }';
+        $('head').append('<style id="botiga-customizer-styles-scrolltop_bottom_offset_' + device + '">' + output + '</style>');
+      });
     });
   });
   wp.customize('scrolltop_icon_size', function (value) {
@@ -611,17 +623,23 @@
     });
   }); // Floating Mini Cart Icon Corner Offset
 
-  wp.customize('side_mini_cart_floating_icon_corner_offset', function (value) {
-    value.bind(function (to) {
-      $('.botiga-floating-mini-cart-icon').css('bottom', to + 'px');
+  $.each($devices, function (device, mediaSize) {
+    wp.customize('side_mini_cart_floating_icon_corner_offset' + '_' + device, function (value) {
+      value.bind(function (to) {
+        $('head').find('#botiga-customizer-styles-side_mini_cart_floating_icon_corner_offset_' + device).remove();
+        var output = '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { bottom:' + to + 'px; } }';
 
-      if (typeof wp.customize('side_mini_cart_floating_icon_position') !== 'undefined') {
-        if (wp.customize('side_mini_cart_floating_icon_position').get() === 'left') {
-          $('.botiga-floating-mini-cart-icon').css('left', to + 'px');
-        } else {
-          $('.botiga-floating-mini-cart-icon').css('right', to + 'px');
+        if (typeof wp.customize('side_mini_cart_floating_icon_position') !== 'undefined') {
+          if (wp.customize('side_mini_cart_floating_icon_position').get() === 'left') {
+            $('.botiga-floating-mini-cart-icon').css('left', to + 'px');
+            output += '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { left:' + to + 'px; } }';
+          } else {
+            output += '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { right:' + to + 'px; } }';
+          }
         }
-      }
+
+        $('head').append('<style id="botiga-customizer-styles-side_mini_cart_floating_icon_corner_offset_' + device + '">' + output + '</style>');
+      });
     });
   }); // Floating Mini Cart Icon Border Radius
 
@@ -639,13 +657,7 @@
         $('.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css('box-shadow', 'none');
       }
     });
-  }); //Responsive
-
-  var $devices = {
-    "desktop": "(min-width: 992px)",
-    "tablet": "(min-width: 576px) and (max-width: 991px)",
-    "mobile": "(max-width: 575px)"
-  };
+  });
   var $topBottPad = {
     "breadcrumbs_padding": ".botiga-breadcrumb-trail",
     "footer_widgets_padding": ".footer-widgets-grid"

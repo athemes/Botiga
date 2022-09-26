@@ -400,6 +400,27 @@
 
 }
 
+.botiga-site-layout-padded {
+
+    #masthead {
+        &.is-sticky,
+        &.sticky-always {
+            top: var(--botiga_padded_spacing, 25px);
+        }
+    }
+
+    &.admin-bar {
+        #masthead {
+            &.is-sticky,
+            &.sticky-always {
+                top: calc( 32px + var(--botiga_padded_spacing, 25px) );
+            }
+        }
+        
+    }
+
+}
+
 .bottom-header-row {
     background-color: #fff;
     z-index: 998;
@@ -744,6 +765,17 @@
                         top: 32px;
                     }
                 }   
+            }
+
+            // Boxed layout
+            &:not(.has-bhfb-builder) {
+
+                .header-transparent-wrapper {
+                    .sticky-header {
+                        max-width: inherit;
+                    }
+                }
+
             }
         }
     }
