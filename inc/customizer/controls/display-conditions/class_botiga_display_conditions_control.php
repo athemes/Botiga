@@ -66,8 +66,8 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 			<?php if (!empty($this->description)) { ?>
 				<span class="customize-control-description"><?php echo wp_kses_post($this->description); ?></span>
 			<?php } ?>
-			<a href="#" class="button button-primary botiga-display-conditions-modal-button botiga-display-conditions-modal-toggle"><?php esc_html_e('Add/Edit Conditions', 'botiga'); ?></a>
-			<textarea id="<?php echo esc_attr($this->id); ?>" name="<?php echo esc_attr($this->id); ?>" class="botiga-display-conditions-textarea hidden" <?php $this->link(); ?>><?php echo sanitize_textarea_field($this->value()); ?></textarea>
+			<a href="#" class="button button-primary botiga-display-conditions-modal-button botiga-display-conditions-modal-toggle"><?php esc_html_e( 'Add/Edit Conditions', 'botiga' ); ?></a>
+			<textarea id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" class="botiga-display-conditions-textarea hidden" <?php $this->link(); ?>><?php echo wp_kses( $this->value(), array() ); ?></textarea>
 		</div>
 		<?php
 	}

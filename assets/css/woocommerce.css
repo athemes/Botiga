@@ -5982,7 +5982,7 @@ dl.variation p {
   height: 30px;
   border-radius: 100%;
   margin: 5px 8px 5px 0px;
-  border: 2px solid transparent;
+  border: 1px solid #ddd;
   cursor: pointer;
   text-indent: -99999px;
 }
@@ -6614,6 +6614,7 @@ dl.variation p {
   height: 30px;
   border-radius: 100%;
   text-indent: -99999px;
+  border: 1px solid #ddd;
 }
 
 .botiga-linked-variations-type-color > a:before,
