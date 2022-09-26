@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The sidebar for shop
  *
@@ -42,7 +43,7 @@ if ( ! is_active_sidebar( $botiga_shop_sidebar_id ) && ! is_active_sidebar( 'sid
 	<?php if( is_active_sidebar( $botiga_shop_sidebar_id ) ) {
 		dynamic_sidebar( $botiga_shop_sidebar_id );
 	} else {
-		dynamic_sidebar( 'sidebar-1' );
+		dynamic_sidebar('sidebar-1');
 	} ?>
-	<?php do_action( 'botiga_after_sidebar' ); ?>
+	<?php do_action('botiga_after_sidebar'); ?>
 </aside><!-- #secondary -->

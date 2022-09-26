@@ -1373,7 +1373,8 @@ gulp.task(
 		gulp.watch(config.watchJsAdminFunctions, gulp.series('adminFunctionsJS', reload)); // Reload on customJS file changes.
 		gulp.watch(config.watchJsPopup, gulp.series('botigaPopupJS', reload)); // Reload on popup file changes.
 		gulp.watch(config.watchJsCarousel, gulp.series('botigaCarouselJS', reload)); // Reload on carousel file changes.
-        gulp.watch(config.watchJsSwiper, gulp.series('botigaSwiperJS', reload)); // Reload on swiper file changes.
+        gulp.watch(config.watchJsGallery, gulp.series('botigaGalleryJS', reload)); // Reload on swiper file changes.
+		gulp.watch(config.watchJsSwiper, gulp.series('botigaSwiperJS', reload)); // Reload on swiper file changes.
 		gulp.watch(config.watchJsSidebar, gulp.series('botigaSidebarJS', reload)); // Reload on sidebar file changes.
 		gulp.watch(config.watchJsAjaxSearch, gulp.series('botigaAjaxSearchJS', reload)); // Reload on sidebar file changes.
 		gulp.watch(config.watchJsCustomizer, gulp.series('customizerJS', reload)); // Reload on customJS file changes.

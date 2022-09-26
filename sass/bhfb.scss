@@ -159,6 +159,12 @@
             }
         }
 
+        &.bhfb-cols-layout-fluid-desktop {
+            &.bhfb-cols-3 {
+                grid-template-columns: repeat(3, auto);
+            }        
+        }
+
         &.bhfb-cols-layout-bigleft-desktop {
             &.bhfb-cols-2 {
                 grid-template-columns: 3fr 1fr;
@@ -219,6 +225,12 @@
             &.bhfb-cols-6 {
                 grid-template-columns: repeat(6, 1fr);
             }
+        }
+
+        &.bhfb-cols-layout-fluid-tablet {
+            &.bhfb-cols-3 {
+                grid-template-columns: repeat(3, auto);
+            }        
         }
 
         &.bhfb-cols-layout-bigleft-tablet {
@@ -479,6 +491,7 @@
                     position: fixed;
                     width: 100%;
                     top: 0;
+                    max-width: inherit;
     
                     // Scrolltop effect
                     &.sticky-scrolltop {
@@ -492,6 +505,53 @@
     }
 
     body {
+
+        // Normal Sticky Header State
+
+        // Padded Layout
+        &.botiga-site-layout-padded {
+                
+            .bhfb {
+                &.bhfb-header {
+                    &.has-sticky-header {
+                 
+                        // Sticky All
+                        &.sticky-row-all {
+                            top: var(--botiga_padded_spacing, 25px);
+                            left: 0;
+
+                            &.sticky-scrolltop {
+                                top: 0;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            &.admin-bar {
+
+                .bhfb {
+                    &.bhfb-header {
+                        &.has-sticky-header {
+                     
+                            // Sticky All
+                            &.sticky-row-all {
+                                top: calc( var(--botiga_padded_spacing, 25px) + 32px );
+
+                                &.sticky-scrolltop {
+                                    top: 0;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+        // Sticky Header Active State
         &.sticky-header-active {
             
             .bhfb {
@@ -510,7 +570,6 @@
                             position: fixed;
                             width: 100%;
                             top: 0;
-                            max-width: inherit;
                         }
     
                         // Sticky Below Row
@@ -546,6 +605,37 @@
 
             }
 
+            // Boxed Layout
+            &.botiga-site-layout-boxed {
+
+                .bhfb {
+                    &.bhfb-header {
+                        &.has-sticky-header {
+                     
+                            // Sticky All Row
+                            &.sticky-row-all,
+                            &.sticky-row-main-header-row,
+                            &.sticky-row-below-header-row {
+                                max-width: inherit;
+                            }
+        
+                            // Sticky Main Row
+                            &.sticky-row-main-header-row {
+                                left: 50%;
+                                max-width: inherit;
+                                transform: translate3d(-50%, 0, 0);
+                            }
+        
+                        }
+                        
+                        &.bhfb-no-transition {
+                            transition: none !important;
+                        }
+                    }
+                }
+
+            }
+
             // Padded Layout
             &.botiga-site-layout-padded {
                 
@@ -553,18 +643,54 @@
                     &.bhfb-header {
                         &.has-sticky-header {
                      
+                            // Sticky All
+                            &.sticky-row-all {
+                                left: auto;
+
+                                &.sticky-scrolltop {
+                                    top: var(--botiga_padded_spacing, 25px);
+                                }
+                            }
+
                             // Sticky Main Row
-                            &.sticky-row-main-header-row {
-                                top: var(--botiga_padded_spacing, 25px);
+                            &.sticky-row-main-header-row,
+                            &.sticky-row-below-header-row {
+                                left: 0;
                             }
 
                             // Sticky Below Row
-                            &.sticky-row-below-header-row {
-                                top: var(--botiga_padded_spacing, 25px);
-                            }
+                            // &.sticky-row-below-header-row {
+                            //     top: var(--botiga_padded_spacing, 25px);
+                            // }
                             
                         }
                     }
+                }
+
+                &.admin-bar {
+
+                    .bhfb {
+                        &.bhfb-header {
+                            &.has-sticky-header {
+                         
+                                // Sticky All
+                                &.sticky-row-all {
+                                    left: auto;
+    
+                                    &.sticky-scrolltop {
+                                        top: calc( var(--botiga_padded_spacing, 25px) + 32 );
+                                    }
+                                }
+
+                                // Sticky Main Header Row
+                                // &.sticky-row-main-header-row {
+                                //     top: calc( var(--botiga_padded_spacing, 25px) + 32 );
+                                // }
+                                
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -602,28 +728,6 @@
                         // Sticky Below Row
                         &.sticky-row-below-header-row {
                             top: 32px;
-                        }
-                        
-                    }
-                }
-            }
-
-        }
-
-        &.sticky-header-active.botiga-site-layout-padded {
-            
-            .bhfb {
-                &.bhfb-header {
-                    &.has-sticky-header {
-                 
-                        // Sticky Main Row
-                        &.sticky-row-main-header-row {
-                            top: calc(var(--botiga_padded_spacing, 25px) + 32px);
-                        }
-    
-                        // Sticky Below Row
-                        &.sticky-row-below-header-row {
-                            top: calc(var(--botiga_padded_spacing, 25px) + 32px);
                         }
                         
                     }

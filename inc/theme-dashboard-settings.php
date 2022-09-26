@@ -196,7 +196,7 @@ function botiga_dashboard_settings( $settings ) {
 				array(
 					'name'          => esc_html__( 'Change Site Title or Logo', 'botiga' ),
 					'type'          => 'free',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=title_tagline' ),
+					'customize_uri' => admin_url( '/customize.php?autofocus[control]=blogname' ),
 				),
 				array(
 					'name'          => esc_html__( 'Typography', 'botiga' ),
@@ -272,11 +272,6 @@ function botiga_dashboard_settings( $settings ) {
 					'name'          => esc_html__( 'Product Swatch', 'botiga' ),
 					'type'          => 'pro',
 					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_product_swatches' ),
-				),
-				array(
-					'name'          => esc_html__( 'More Header Layouts', 'botiga' ),
-					'type'          => 'pro',
-					'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_section_main_header' ),
 				),
 				array(
 					'name'          => esc_html__( 'Shop Header Styles', 'botiga' ),
@@ -358,6 +353,9 @@ function botiga_dashboard_settings( $settings ) {
 	
 			// Remove 'Footer Copyright' from theme dashboard.
 			unset( $settings['tabs'][0]['data'][5] );
+
+			// Remove 'More Footer Copyright Elements' from theme dashboard.
+			unset( $settings['tabs'][0]['data'][22] );
 
 		} else {
 

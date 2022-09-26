@@ -1723,6 +1723,22 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
 }
 
 /**
+ * Site Layouts Compatiblity 
+ *
+ */
+body.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax > .product {
+  max-height: calc( 80vh - ( var(--botiga_padded_spacing, 25px) * 2 ));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax > .product {
+  max-height: calc( ( 80vh - 32px ) - ( var(--botiga_padded_spacing, 25px) * 2 ));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/**
  * Single product
  */
 .single-product .header-image:not(:empty) {

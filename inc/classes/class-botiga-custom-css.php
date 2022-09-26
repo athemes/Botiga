@@ -40,9 +40,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$this->dynamic_css_path = trailingslashit( set_url_scheme( $upload_dir['basedir'] ) ) . 'botiga/';
 
 			if ( !is_customize_preview() && wp_is_writable( trailingslashit( $upload_dir['basedir'] ) ) ) {
-				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 12 );
+				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 11 );
 			} else {
-				add_action( 'wp_enqueue_scripts', array( $this, 'print_styles' ), 11 );
+				add_action( 'wp_enqueue_scripts', array( $this, 'print_styles' ), 12 );
 			}
 
 			if ( !is_customize_preview() ) {
@@ -80,11 +80,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					)
 				);	
 	
-				$body_font		= get_theme_mod( 'botiga_body_font', $typography_defaults );
-				$headings_font 	= get_theme_mod( 'botiga_headings_font', $typography_defaults );
+				$body_font		  = get_theme_mod( 'botiga_body_font', $typography_defaults );
+				$headings_font 	  = get_theme_mod( 'botiga_headings_font', $typography_defaults );
+				$header_menu_font = get_theme_mod( 'botiga_header_menu_font', $body_font );
 			
-				$body_font 		= json_decode( $body_font, true );
-				$headings_font 	= json_decode( $headings_font, true );
+				$body_font 		  = json_decode( $body_font, true );
+				$headings_font 	  = json_decode( $headings_font, true );
+				$header_menu_font = json_decode( $header_menu_font, true );
 				
 				if ( 'System default' !== $body_font['font'] ) {
 					$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $body_font['regularweight'] ) .';}' . "\n";	
@@ -93,11 +95,22 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				if ( 'System default' !== $headings_font['font'] ) {
 					$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .';}' . "\n";
 				}
+
+				if ( 'System default' !== $header_menu_font['font'] ) {
+
+					if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'hf-builder' ) ) {
+						$css .= '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation { font-family:' . esc_attr( $header_menu_font['font'] ) . ',' . esc_attr( $header_menu_font['category'] ) . '; font-weight: '. esc_attr( $header_menu_font['regularweight'] ) .';}' . "\n";
+					} else {
+						$css .= '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation { font-family:' . esc_attr( $header_menu_font['font'] ) . ',' . esc_attr( $header_menu_font['category'] ) . '; font-weight: '. esc_attr( $header_menu_font['regularweight'] ) .';}' . "\n";
+					}
+
+				}
 			}
 
 			if( $fonts_library === 'adobe' ) {
-				$body_font		= get_theme_mod( 'botiga_body_adobe_font', 'system-default|n4' );
-				$headings_font 	= get_theme_mod( 'botiga_headings_adobe_font', 'system-default|n4' );
+				$body_font	    	= get_theme_mod( 'botiga_body_adobe_font', 'system-default|n4' );
+				$headings_font   	= get_theme_mod( 'botiga_headings_adobe_font', 'system-default|n4' );
+				$header_menu_font 	= get_theme_mod( 'botiga_header_menu_adobe_font', $body_font );
 			
 				$body_font = explode( '|', $body_font );
 				$body_font = array(
@@ -110,6 +123,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					'font'   => $headings_font[0],
 					'weight' => $headings_font[1]
 				);
+
+				$header_menu_font = explode( '|', $header_menu_font );
+				$header_menu_font = array(
+					'font'   => $header_menu_font[0],
+					'weight' => $header_menu_font[1]
+				);
 				
 				if ( 'System default' !== $body_font['font'] ) {
 					$css .= 'body { font-family:' . esc_attr( $body_font['font'] ) . '; font-weight: '. esc_attr( $body_font['weight'] ) .';}' . "\n";	
@@ -118,8 +137,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				if ( 'System default' !== $headings_font['font'] ) {
 					$css .= 'h1,h2,h3,h4,h5,h6,.site-title,.wc-block-grid__product-title { font-family:' . esc_attr( $headings_font['font'] ) . '; font-weight: '. esc_attr( $headings_font['weight'] ) .';}' . "\n";
 				}
+
+				if ( 'System default' !== $header_menu_font['font'] ) {
+					if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'hf-builder' ) ) {
+						$css .= '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation { font-family:' . esc_attr( $header_menu_font['font'] ) . '; font-weight: '. esc_attr( $header_menu_font['weight'] ) .';}' . "\n";
+					} else {
+						$css .= '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation { font-family:' . esc_attr( $header_menu_font['font'] ) . '; font-weight: '. esc_attr( $header_menu_font['weight'] ) .';}' . "\n";
+					}	
+				}
 			}
 
+			// Headings typography
 			$headings_font_style 		= get_theme_mod( 'headings_font_style', 'normal' );
 			$headings_line_height 		= get_theme_mod( 'headings_line_height', 1.2 );
 			$headings_letter_spacing 	= get_theme_mod( 'headings_letter_spacing', 0 );
@@ -135,6 +163,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_font_sizes_css( 'h5_font_size', $defaults = array( 'desktop' => 18, 'tablet' => 16, 'mobile' => 16 ), 'h5' );
 			$css .= $this->get_font_sizes_css( 'h6_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'h6' );
 
+			// Body typography
             $body_font_style 		= get_theme_mod( 'body_font_style', 'normal' );
 			$body_line_height 		= get_theme_mod( 'body_line_height', 1.68 );
 			$body_letter_spacing 	= get_theme_mod( 'body_letter_spacing', 0 );
@@ -144,6 +173,28 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= "body { text-decoration:" . esc_attr( $body_text_decoration ) . ";text-transform:" . esc_attr( $body_text_transform ) . ";font-style:" . esc_attr( $body_font_style ) . ";line-height:" . esc_attr( $body_line_height ) . ";letter-spacing:" . esc_attr( $body_letter_spacing ) . "px;}" . "\n";
 			$css .= ".site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message { line-height: " . esc_attr( $body_line_height ) . "; }";
 			$css .= $this->get_font_sizes_css( 'body_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'html, body' );
+
+			// Header menu typography
+			$header_menu_font_style 	 = get_theme_mod( 'header_menu_font_style', $body_font_style );
+			$header_menu_line_height 	 = get_theme_mod( 'header_menu_line_height', $body_line_height );
+			$header_menu_letter_spacing  = get_theme_mod( 'header_menu_letter_spacing', $body_letter_spacing );
+			$header_menu_text_transform  = get_theme_mod( 'header_menu_text_transform', $body_text_transform );
+
+			if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'hf-builder' ) ) {
+				$css .= ".bhfb-header .main-navigation, .bhfb-header .secondary-navigation { text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
+				$css .= $this->get_font_sizes_css( 'header_menu_font_size', $defaults = array( 
+					'desktop' => get_theme_mod( 'body_font_size_desktop', 16 ), 
+					'tablet' => get_theme_mod( 'body_font_size_tablet', 16 ), 
+					'mobile' => get_theme_mod( 'body_font_size_mobile', 16 ) 
+				), '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation' );
+			} else {
+				$css .= ".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation { text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
+				$css .= $this->get_font_sizes_css( 'header_menu_font_size', $defaults = array( 
+					'desktop' => get_theme_mod( 'body_font_size_desktop', 16 ), 
+					'tablet' => get_theme_mod( 'body_font_size_tablet', 16 ), 
+					'mobile' => get_theme_mod( 'body_font_size_mobile', 16 ) 
+				), '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation' );
+			}
 
 			//Global colors
 			$css .= $this->get_color_css( 'site_title_color', '', '.site-header .site-title a' );
@@ -1103,6 +1154,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				}
 			}
 
+			// Gutenberg palettes backward compatibility
+			foreach ( $palettes as $key => $palette ) {
+				for ( $i = 0; $i < 8; $i++ ) { 
+					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+				}
+			}
+
 			//Filter the value
 			$css = apply_filters( 'botiga_custom_css_output', $css );
 
@@ -1139,7 +1198,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			if ( $exists ) {
-				wp_enqueue_style(
+
+				/**
+				 * Register the custom style here but enqueue is inside functions.php. 
+				 * This is required to keep the stylesheets order correct.
+				 * 
+				 */
+
+				wp_register_style(
 					'botiga-custom-styles',
 					$this->dynamic_css_uri . 'custom-styles.css',
 					false,

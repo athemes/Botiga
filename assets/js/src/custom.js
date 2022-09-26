@@ -493,7 +493,7 @@ botiga.stickyHeader = {
 		}
 		
 		if( document.body.classList.contains( 'botiga-site-layout-padded' ) ) {
-			header_offset_y = header_offset_y - parseInt(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
+			header_offset_y = header_offset_y - parseInt( getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing') );
 		}
 
 		if ( sticky.classList.contains( 'sticky-scrolltop' ) || document.querySelector( '.bhfb.sticky-scrolltop' ) !== null ) {
@@ -555,24 +555,48 @@ botiga.stickyHeader = {
 
 	isHBStickyActive: function( effect ) {
 		const 
-			bhfb 		  = document.querySelector( 'header.bhfb' ),
-			has_admin_bar = document.body.classList.contains( 'admin-bar' ),
+			bhfb 		     = document.querySelector( 'header.bhfb' ),
+			has_admin_bar    = document.body.classList.contains( 'admin-bar' ),
 			above_header_row = document.querySelector( '.bhfb-above_header_row' ),
+			main_header_row = document.querySelector( '.bhfb-main_header_row' ),
 			below_header_row = document.querySelector( '.bhfb-below_header_row' );
 
 		if( bhfb === null ) {
 			return false;
 		}
 
-		let topVal = 0;
+		let topVal = 0,
+			convertToPositive = false;
 
 		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
-			
 			if( ! above_header_row.classList.contains( 'bt-d-none' ) ) {
-				topVal = document.body.classList.contains( 'admin-bar' ) ? above_header_row.clientHeight - 32 : above_header_row.clientHeight;
+				topVal = above_header_row.clientHeight;
 
-				bhfb.style.top = `-${ topVal }px`;
+				if( document.body.classList.contains( 'botiga-site-layout-padded' ) ) {
+					convertToPositive = true;
+				}
+			} else {
+				convertToPositive = true;
 			}
+
+			// Admin Bar
+			if( has_admin_bar ) {
+				topVal = topVal - 32;
+			} else {
+				if( ! above_header_row.classList.contains( 'bt-d-none' ) && document.body.classList.contains( 'botiga-site-layout-padded' ) ) {
+					convertToPositive = false;
+				}
+			}
+
+			// Padded Layout
+			if( document.body.classList.contains( 'botiga-site-layout-padded' ) ) {
+				topVal = topVal - parseFloat( getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing') );
+			}
+
+			// Conert to negative value
+			topVal = convertToPositive ? +Math.abs( topVal ) : -Math.abs( topVal );
+
+			bhfb.style.top = `${ topVal }px`;
 			
 		}
 
@@ -580,13 +604,25 @@ botiga.stickyHeader = {
 			
 			if( ! below_header_row.classList.contains( 'bt-d-none' ) ) {
 				if( has_admin_bar ) {
-					topVal = ( ( bhfb.clientHeight - below_header_row.clientHeight ) - 32 ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
+					topVal = ( ( bhfb.clientHeight - below_header_row.clientHeight ) - 32 ) - parseFloat( getComputedStyle( below_header_row ).borderBottomWidth );
 				} else {
-					topVal = ( bhfb.clientHeight - below_header_row.clientHeight ) - parseInt( getComputedStyle( below_header_row ).borderBottomWidth );
+					topVal = ( bhfb.clientHeight - below_header_row.clientHeight ) - parseFloat( getComputedStyle( below_header_row ).borderBottomWidth );
 				}
-
-				bhfb.style.top = `-${ topVal }px`;
 			}
+
+			if( above_header_row.classList.contains( 'bt-d-none' ) && main_header_row.classList.contains( 'bt-d-none' ) ) {
+				convertToPositive = true;
+			}
+
+			// Padded Layout
+			if( document.body.classList.contains( 'botiga-site-layout-padded' ) ) {
+				topVal = topVal - parseFloat( getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing') );
+			}
+
+			// Conert to negative value
+			topVal = convertToPositive ? +Math.abs( topVal ) : -Math.abs( topVal );
+
+			bhfb.style.top = `${ topVal }px`;
 			
 		}
 
@@ -606,11 +642,7 @@ botiga.stickyHeader = {
 		}
 
 		if( bhfb.classList.contains( 'sticky-row-main-header-row' ) ) {
-			
-			if( ! document.querySelector( '.bhfb-above_header_row' ).classList.contains( 'bt-d-none' ) ) {
-				bhfb.style.top = '0px';
-			}
-			
+			bhfb.style.top = '0px';
 		}
 
 		if( bhfb.classList.contains( 'sticky-row-below-header-row' ) ) {

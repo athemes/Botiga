@@ -629,6 +629,61 @@
 		} );
 	} );
 
+	// Floating Mini Cart Icon Size
+	wp.customize( 'side_mini_cart_floating_icon_size', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-floating-mini-cart-icon').css( 'font-size', to + 'px' );
+		} );
+	} );
+
+	// Floating Mini Cart Icon Position
+	wp.customize( 'side_mini_cart_floating_icon_position', function( value ) {
+		value.bind( function( to ) {
+			const corner_offset = wp.customize( 'side_mini_cart_floating_icon_corner_offset' ).get();
+			if( to === 'left' ) {
+				$( '.botiga-floating-mini-cart-icon' ).css( 'bottom', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'left', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'right', 'auto' );
+			} else {
+				$( '.botiga-floating-mini-cart-icon' ).css( 'bottom', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'right', corner_offset + 'px' );
+				$( '.botiga-floating-mini-cart-icon' ).css( 'left', 'auto' );
+			}
+		} );
+	} );
+
+	// Floating Mini Cart Icon Corner Offset
+	wp.customize( 'side_mini_cart_floating_icon_corner_offset', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-floating-mini-cart-icon').css( 'bottom', to + 'px' );
+			if( typeof wp.customize( 'side_mini_cart_floating_icon_position' ) !== 'undefined' ) {
+				if( wp.customize( 'side_mini_cart_floating_icon_position' ).get() === 'left' ) {
+					$( '.botiga-floating-mini-cart-icon').css( 'left', to + 'px' );
+				} else {
+					$( '.botiga-floating-mini-cart-icon').css( 'right', to + 'px' );
+				}
+			}
+		} );
+	} );
+
+	// Floating Mini Cart Icon Border Radius
+	wp.customize( 'side_mini_cart_floating_icon_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	// Floating Mini Cart Icon Shadow
+	wp.customize( 'side_mini_cart_floating_icon_shadow', function( value ) {
+		value.bind( function( to ) {
+			if( to ) {
+				$( '.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css( 'box-shadow', 'inset 0 0 2px rgb(0 0 0 / 3%), 0 4px 10px rgb(0 0 0 / 17%)' );
+			} else {
+				$( '.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css( 'box-shadow', 'none' );
+			}
+		} );
+	} );
+
 	//Responsive
 	var $devices 	= { "desktop": "(min-width: 992px)", "tablet": "(min-width: 576px) and (max-width: 991px)", "mobile": "(max-width: 575px)" };
 
@@ -696,7 +751,7 @@
 		});
 	});
 
-	var $fontSizes 	= {  "body_font_size":"body","h1_font_size":"h1:not(.site-title)","h2_font_size":"h2","h3_font_size":"h3","h4_font_size":"h4","h5_font_size":"h5","h6_font_size":"h6","single_product_title_size":".product-gallery-summary .entry-title","single_product_price_size":".product-gallery-summary .price","loop_post_text_size":".posts-archive .entry-content","loop_post_meta_size":".posts-archive .entry-meta","loop_post_title_size":".posts-archive .entry-title","single_post_title_size": ".single .entry-header .entry-title","single_post_meta_size": ".single .entry-meta","footer_widgets_title_size":".widget-column .widget .widget-title", };
+	var $fontSizes 	= {  "body_font_size":"body","header_menu_font_size":".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation","h1_font_size":"h1:not(.site-title)","h2_font_size":"h2","h3_font_size":"h3","h4_font_size":"h4","h5_font_size":"h5","h6_font_size":"h6","single_product_title_size":".product-gallery-summary .entry-title","single_product_price_size":".product-gallery-summary .price","loop_post_text_size":".posts-archive .entry-content","loop_post_meta_size":".posts-archive .entry-meta","loop_post_title_size":".posts-archive .entry-title","single_post_title_size": ".single .entry-header .entry-title","single_post_meta_size": ".single .entry-meta","footer_widgets_title_size":".widget-column .widget .widget-title", };
 	$.each( $fontSizes, function( option, selector ) {
 		$.each( $devices, function( device, mediaSize ) {
 			wp.customize( option + '_' + device, function( value ) {
@@ -771,6 +826,21 @@
 
 		} );
 	} );
+
+	wp.customize( 'botiga_header_menu_font', function( value ) {
+		value.bind( function( to ) {
+
+			$( 'head' ).find( '#botiga-preview-google-fonts-header-menu-css' ).remove();
+
+			$( 'head' ).append( '<link id="botiga-preview-google-fonts-header-menu-css" href="" rel="stylesheet">' );
+
+			$( '#botiga-preview-google-fonts-header-menu-css' ).attr( 'href', 'https://fonts.googleapis.com/css?family=' + jQuery.parseJSON( to )['font'].replace(/ /g, '+') + ':' + jQuery.parseJSON( to )['regularweight'] + '&display=swap' );
+
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'font-family', jQuery.parseJSON( to )['font'] );
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'font-weight', jQuery.parseJSON( to )['regularweight'] );
+
+		} );
+	} );
 	
 	//Typography - Adobe Type Kit Fonts
 	wp.customize( 'botiga_headings_adobe_font', function( value ) {
@@ -793,6 +863,18 @@
 
 			$( 'body' ).css( 'font-family', family );
 			$( 'body' ).css( 'font-weight', weight );
+
+		} );
+	} );
+
+	wp.customize( 'botiga_header_menu_adobe_font', function( value ) {
+		value.bind( function( to ) {
+			const 
+				family = to.split( '|' )[0],
+				weight = to.split( '|' )[1];
+
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'font-family', family );
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'font-weight', weight );
 
 		} );
 	} );
@@ -856,6 +938,30 @@
 			$( 'body' ).css( 'text-decoration', to );
 		} );
 	} );
+
+	wp.customize( 'header_menu_font_style', function( value ) {
+		value.bind( function( to ) {
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'font-style', to );
+		} );
+	} );
+
+	wp.customize( 'header_menu_line_height', function( value ) {
+		value.bind( function( to ) {
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'line-height', to );
+		} );
+	} );
+
+	wp.customize( 'header_menu_letter_spacing', function( value ) {
+		value.bind( function( to ) {
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'letter-spacing', to + 'px' );
+		} );
+	} );
+	
+	wp.customize( 'header_menu_text_transform', function( value ) {
+		value.bind( function( to ) {
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'text-transform', to );
+		} );
+	} );	
 
 	// Shop Header Style
 	wp.customize( 'shop_archive_header_padding_top', function( value ) {

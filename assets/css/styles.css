@@ -1697,7 +1697,7 @@ html {
   position: fixed;
   left: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 10000;
   height: var(--botiga_padded_spacing, 25px);
   background-color: var(--botiga_background_color, #ffffff);
 }
