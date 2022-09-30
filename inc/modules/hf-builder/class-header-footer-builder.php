@@ -772,7 +772,12 @@ class Botiga_Header_Footer_Builder {
         $devices = array( 'desktop', 'mobile' );
         foreach( $devices as $device ) { ?>
 
+            <?php do_action( 'botiga_before_header' ); ?>
+
             <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+
+                <?php do_action( 'botiga_bhfb_header_inner_before' ); ?>
+
                 <div class="bhfb-rows">
                     <?php
                     foreach( $this->header_rows as $row ) { 
@@ -806,7 +811,12 @@ class Botiga_Header_Footer_Builder {
                         $attributes[] = 'style="'. esc_attr( implode( ' ', $styles ) ) .'"'; ?>
 
                         <div <?php echo implode( ' ', $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+
+                            <?php do_action( "botiga_bhfb_header_{$row}_before" ); ?>
+
                             <?php $this->rows_callback( 'header', $row['id'], $device ); ?>
+
+                            <?php do_action( "botiga_bhfb_header_{$row}_after" ); ?>
                         </div>
 
                     <?php
@@ -815,8 +825,12 @@ class Botiga_Header_Footer_Builder {
 
                 <?php $this->search_form( 'header' ); ?>
 
+                <?php do_action( 'botiga_bhfb_header_inner_after' ); ?>
+
                 <?php do_action( "botiga_before_bhfb_header_output_close_$device" ); ?>
             </header>
+
+            <?php do_action( 'botiga_after_header' ); ?>
 
             <?php 
         } ?>
@@ -843,6 +857,9 @@ class Botiga_Header_Footer_Builder {
         foreach( $devices as $device ) { ?>
 
             <footer class="bhfb bhfb-footer bhfb-<?php echo esc_attr( $device ); ?>">
+
+                <?php do_action( 'botiga_bhfb_footer_inner_before' ); ?>
+
                 <div class="bhfb-rows">
                     <?php
                     foreach( $this->footer_rows as $row ) { 
@@ -865,12 +882,19 @@ class Botiga_Header_Footer_Builder {
                         $attributes[] = 'style="'. esc_attr( implode( ' ', $styles ) ) .'"'; ?>
 
                         <div <?php echo implode( ' ', $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+
+                            <?php do_action( "botiga_bhfb_footer_{$row}_before" ); ?>
+
                             <?php $this->rows_callback( 'footer', $row['id'], $device ); ?>
+
+                            <?php do_action( "botiga_bhfb_footer_{$row}_after" ); ?>
                         </div>
 
                     <?php
                     } ?>
                 </div>
+                
+                <?php do_action( 'botiga_bhfb_footer_inner_after' ); ?>
 
                 <?php do_action( "botiga_before_bhfb_footer_output_close_$device" ); ?>
             </footer>
