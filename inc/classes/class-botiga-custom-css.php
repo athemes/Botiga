@@ -702,7 +702,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			//Size Chart
-    	$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+    		$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
 			if( $single_size_chart ) {
 				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button a' );
 				$css .= $this->get_fill_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button svg path' );
