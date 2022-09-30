@@ -4,10 +4,25 @@
 
 'use strict';
 
+var botiga = botiga || {};
+
 botiga.popup = {
-    /**
-     * Initiallize
-     */
+    
+    // To ensure better compatibility with plugins like WP Rocket that has
+    // options to defer/lazy-load JS files, each JS script should have your own 
+    // 'domReady' function. This way the script has no dependecies and can be loaded standalone.
+    domReady: function( fn ) {
+		if ( typeof fn !== 'function' ) {
+			return;
+		}
+	
+		if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
+			return fn();
+		}
+	
+		document.addEventListener( 'DOMContentLoaded', fn, false );
+	},
+
     init: function() {
         const _this = this,
             buttons = document.querySelectorAll( '.has-popup' );
@@ -120,7 +135,7 @@ botiga.popup = {
     }
 }
 
-botiga.helpers.botigaDomReady( function() {
+botiga.popup.domReady( function() {
     botiga.popup.init();
 });
 

@@ -256,6 +256,9 @@ class Botiga_Header_Footer_Builder {
 
         remove_all_actions( 'botiga_footer' );
         add_action( 'botiga_footer', array( $this, 'footer_front_output' ) );
+
+        // Header Image (customize > header > header image)
+        add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
     }
 
     /**
@@ -836,7 +839,6 @@ class Botiga_Header_Footer_Builder {
      * Footer Builder Front Output
      */
     public function footer_front_output() {
-
         $devices = array( 'desktop' );
         foreach( $devices as $device ) { ?>
 
@@ -897,7 +899,7 @@ class Botiga_Header_Footer_Builder {
         $empty = true;
 
         foreach( $columns as $columnComponents ) {
-            if( count( $columnComponents ) > 0 ) {
+            if( is_array( $columnComponents ) && count( $columnComponents ) > 0 ) {
                 $empty = false;
             }
         }
@@ -913,6 +915,10 @@ class Botiga_Header_Footer_Builder {
 
         if( strpos( $val, 'equal' ) !== FALSE ) {
             $classes[] = 'bhfb-cols-layout-equal';
+        }
+
+        if( strpos( $val, 'fluid' ) !== FALSE ) {
+            $classes[] = 'bhfb-cols-layout-fluid';
         }
 
         if( strpos( $val, 'bigleft' ) !== FALSE ) {
@@ -939,6 +945,10 @@ class Botiga_Header_Footer_Builder {
 
             if( strpos( $val, 'equal' ) !== FALSE ) {
                 $classes[] = 'bhfb-cols-layout-equal-' . $device;
+            }
+
+            if( strpos( $val, 'fluid' ) !== FALSE ) {
+                $classes[] = 'bhfb-cols-layout-fluid-' . $device;
             }
     
             if( strpos( $val, 'bigleft' ) !== FALSE ) {
@@ -1158,6 +1168,24 @@ class Botiga_Header_Footer_Builder {
         }
 
         return $css;
+    }
+
+    /**
+     * Core header image
+     */
+    public function header_image() {
+        $show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
+
+        // output
+        $output = '<div class="header-image">';
+            $output .= get_header_image_tag();
+        $output .= '</div>';
+
+        if ( ! botiga_get_display_conditions( 'header_image_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {
+            return;
+        }
+
+        echo wp_kses_post( $output );
     }
 
     /**

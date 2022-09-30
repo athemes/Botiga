@@ -38,6 +38,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		 */
 		function customize_wp_init() {
 			require get_template_directory() . '/inc/customizer/ajax-callbacks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require get_template_directory() . '/inc/customizer/controls/display-conditions/display-conditions-script-template.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		}
 
 		/**
@@ -64,6 +65,8 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/color-palettes/class_botiga_color_palettes_control.php';
 			require get_template_directory() . '/inc/customizer/controls/color-palettes/class_botiga_custom_palettes_control.php';
 			require get_template_directory() . '/inc/customizer/controls/accordion/class_botiga_accordion_control.php';
+			require get_template_directory() . '/inc/customizer/controls/display-conditions/class_botiga_display_conditions_control.php';
+			require get_template_directory() . '/inc/customizer/controls/custom-sidebars/class_botiga_custom_sidebars_control.php';
 			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}
@@ -151,10 +154,16 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		}		
 
 		function scripts() {
-			wp_enqueue_script( 'botiga-customizer-scripts', get_template_directory_uri() . '/assets/js/customizer-scripts.min.js', array( 'jquery', 'jquery-ui-core' ), BOTIGA_VERSION, true );
-			wp_localize_script( 'botiga-customizer-scripts', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 			wp_enqueue_style( 'botiga-customizer-styles', get_template_directory_uri() . '/assets/css/customizer.css' );
+
+			wp_enqueue_script( 'botiga-customizer-scripts', get_template_directory_uri() . '/assets/js/customizer-scripts.min.js', array( 'jquery', 'jquery-ui-core' ), BOTIGA_VERSION, true );
+
+			wp_localize_script( 'botiga-customizer-scripts', 'ajax_object', array(
+				'ajax_url'   => admin_url( 'admin-ajax.php' ),
+				'ajax_nonce' => wp_create_nonce( 'botiga_ajax_nonce' ),
+			) );
+
 		}
 		
 	}

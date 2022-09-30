@@ -11,6 +11,7 @@ class Botiga_Metabox {
 	public function __construct() {
 		add_action( 'load-post.php', array( $this, 'init_metabox' ) );
 		add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
+		add_action( 'wp_ajax_botiga_select_ajax', array( $this, 'botiga_select_ajax' ) );
 	}
 
 	public function init_metabox() {
@@ -19,11 +20,74 @@ class Botiga_Metabox {
 		add_action( 'save_post', array( $this, 'save_metabox' ) );
 	}
 
+	public function botiga_select_ajax() {
+
+		$term   = ( isset( $_GET['term'] ) ) ? sanitize_text_field( wp_unslash( $_GET['term'] ) ) : '';
+		$nonce  = ( isset( $_GET['nonce'] ) ) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
+		$source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( wp_unslash( $_GET['source'] ) ) : '';
+
+		if ( ! empty( $term ) && ! empty( $source ) && ! empty( $nonce ) && wp_verify_nonce( $nonce, 'botiga_metabox' ) ) {
+
+			$options = array();
+
+			switch ( $source ) {
+
+				case 'post':
+				case 'product':
+					
+        	$query = new WP_Query( array(
+		        's'              => $term,
+						'post_type'      => $source,
+		        'post_status'    => 'publish',
+            'posts_per_page' => 25,
+          	'order'          => 'DESC',
+					) );
+
+	        if ( ! empty( $query->posts ) ) {
+	          foreach( $query->posts as $post ) {
+							$options[] = array(
+								'id'   => $post->ID,
+								'text' => $post->post_title,
+							);
+	        	}
+	        }
+		
+				break;
+				
+			}
+
+			wp_send_json_success( $options );
+	
+		} else {
+
+			wp_send_json_error();
+
+		}
+
+	}
+
 	public function enqueue_metabox_scripts() {
+
+		wp_enqueue_code_editor(
+			array(
+			'type'       => 'text/html',
+			'codemirror' => array(
+				'indentUnit' => 2,
+				'tabSize'    => 2,
+			),
+		) );
+	
+		wp_enqueue_script( 'botiga-select2', get_template_directory_uri() . '/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true );
+		wp_enqueue_style( 'botiga-select2', get_template_directory_uri() . '/vendor/select2/select2.min.css', array(), '4.0.13', 'all' );
 
 		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', BOTIGA_VERSION );
 		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery', 'jquery-ui-sortable' ), BOTIGA_VERSION, true );
-	
+		
+		wp_localize_script( 'botiga-metabox-scripts', 'botiga_metabox', array(
+			'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+			'ajaxnonce' => wp_create_nonce( 'botiga_metabox' ),
+		) );
+
 	}
 
 	public function metabox_options() {
@@ -32,7 +96,7 @@ class Botiga_Metabox {
 		// Begin: General Options
 		$this->add_section( 'general', array(
 			'title'   => esc_html__( 'General', 'botiga' ),
-			'exclude' => array( 'size_chart' ),
+			'exclude' => array( 'size_chart', 'linked_variation' ),
 		) );
 
 		$this->add_field( '_botiga_hide_page_title', array(
@@ -176,6 +240,10 @@ class Botiga_Metabox {
 				$metabox_title = esc_html__( 'Botiga Size Chart Options', 'botiga' );
 			break;
 
+			case 'linked_variation':
+				$metabox_title = esc_html__( 'Botiga Linked Variation Options', 'botiga' );
+			break;
+
 		}
 
 		$metabox_title = apply_filters( 'botiga_metabox_title', $metabox_title, $post_type );
@@ -274,11 +342,11 @@ class Botiga_Metabox {
 										echo '<div class="botiga-metabox-field-title">';
 
 											if ( ! empty( $field['title'] ) ) {
-												echo '<h4>'. esc_html( $field['title'] ) .'</h4>';
+												echo '<h4>'. wp_kses_post( $field['title'] ) .'</h4>';
 											}
 
 											if ( ! empty( $field['subtitle'] ) ) {
-												echo '<small class="botiga-metabox-field-subtitle">'. esc_html( $field['subtitle'] ) .'</small>';
+												echo '<small class="botiga-metabox-field-subtitle">'. wp_kses_post( $field['subtitle'] ) .'</small>';
 											}
 
 										echo '</div>';
@@ -294,7 +362,7 @@ class Botiga_Metabox {
 										$this->get_field( $field_id, $field, $value );
 
 										if ( ! empty( $field['desc'] ) ) {
-											echo '<div class="botiga-metabox-field-description">'. esc_html( $field['desc'] ) .'</div>';
+											echo '<div class="botiga-metabox-field-description">'. wp_kses_post( $field['desc'] ) .'</div>';
 										}
 
 									echo '</div>';
@@ -372,6 +440,8 @@ class Botiga_Metabox {
 		switch ( $field['type'] ) {
 
 			case 'text':
+			case 'sidebar-select':
+			case 'size-chart-select':
 				return sanitize_text_field( $value );
 			break;
 
@@ -391,6 +461,14 @@ class Botiga_Metabox {
 			case 'select':
 			case 'choices':
 				return ( in_array( $value, array_keys( $field['options'] ) ) ) ? sanitize_key( $value ) : '';
+			break;
+
+			case 'select-ajax':
+				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( array_map( 'sanitize_text_field', $value ) ) : array();
+			break;
+
+			case 'wc-attributes':
+				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( array_map( 'sanitize_text_field', $value ) ) : array();
 			break;
 
 			case 'repeater':
@@ -460,6 +538,88 @@ class Botiga_Metabox {
 					}
 
 				echo '</select>';
+
+			break;
+
+			case 'select-ajax':
+				
+				$field = wp_parse_args( $field, array(
+					'source' => 'post',
+				) );
+
+				$ids = ( is_array( $value ) && ! empty( $value ) ) ? $value : (array) $value;
+
+				echo '<select name="'. esc_attr( $field_id ) .'[]" multiple data-source="'. esc_attr( $field['source'] ) .'">';
+
+					if ( ! empty( $ids ) ) {
+
+						foreach ( $ids as $id ) {
+
+							switch ( $field['source'] ) {
+
+								case 'post':
+								case 'product':
+		
+									$post = get_post( $id );
+
+									if ( ! empty( $post ) ) {
+										echo '<option value="'. esc_attr( $post->ID ) .'" selected>'. esc_html( $post->post_title ) .'</option>';
+									}
+
+								break;
+
+							}
+						
+						}
+
+					}
+
+				echo '</select>';
+
+			break;
+
+			case 'wc-attributes':
+
+				$attributes = wp_list_pluck( wc_get_attribute_taxonomies(), 'attribute_label', 'attribute_id' );
+			
+				$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
+
+				if ( ! empty( $attributes ) ) {
+
+					echo '<div class="botiga-metabox-field-attributes">';
+
+						echo '<ul class="botiga-sortable">';
+
+							$selected_attributes = array();
+
+							foreach ( $values as $id ) {
+								if ( isset( $attributes[ $id ] ) ) {
+									$selected_attributes[ $id ] = $attributes[ $id ];
+									unset( $attributes[ $id ] );
+								}
+							}
+
+							$attributes = array_replace( $selected_attributes, $attributes );
+
+							foreach ( $attributes as $attribute_id => $attribute_label ) {
+
+								$checked = ( in_array( $attribute_id, $values ) ) ? ' checked' : '';
+
+								echo '<li class="botiga-sortable-item">';
+								echo '<label>';
+								echo '<input type="checkbox" name="'. esc_attr( $field_id ) .'[]" value="'. esc_attr( $attribute_id ) .'"'. esc_attr( $checked ) .' />';
+								echo '<span>'. esc_html( $attribute_label ) .'</span>';
+								echo '</label>';
+								echo '<span class="botiga-sortable-move dashicons dashicons-menu"></span>';
+								echo '</li>';
+
+							}
+						
+						echo '</ul>';
+				
+					echo '</div>';
+
+				}
 
 			break;
 
@@ -706,6 +866,27 @@ class Botiga_Metabox {
 
 			break;
 
+			case 'sidebar-select':
+
+				$options = array();
+				
+				global $wp_registered_sidebars;
+				
+				if ( ! empty( $wp_registered_sidebars ) ) {
+					foreach ( $wp_registered_sidebars as $sidebar ) {
+						$options[ $sidebar['id'] ] = $sidebar['name'];
+					}
+				}
+
+				echo '<select name="'. esc_attr( $field_id ) .'">';
+					echo '<option value="">'. esc_html__( 'Default', 'botiga' ) .'</option>';
+					foreach ( $options as $key => $option ) {
+						echo '<option value="'. esc_attr( $key ) .'"'. selected( $key, $value, false ) .'>'. esc_html( $option ) .'</option>';
+					}
+				echo '</select>';
+
+			break;
+			
 			case 'wp-editor':
 
 				$field = wp_parse_args( $field, array(
@@ -716,6 +897,10 @@ class Botiga_Metabox {
 					'editor_height' => $field['height'],
 				) );
 
+			break;
+
+			case 'code-editor':
+				echo '<textarea name="'. esc_attr( $field_id ) .'">'. esc_textarea( $value ) .'</textarea>';
 			break;
 
 		}

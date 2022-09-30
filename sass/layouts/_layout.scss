@@ -371,20 +371,20 @@ html {
     }
 
     .col-sm-1-5 {
-		@include flexbox(0, 0, 20%);
-	}
+        @include flexbox(0, 0, 20%);
+    }
 
-	.col-sm-2-5 {
-		@include flexbox(0, 0, 40%);
-	}
+    .col-sm-2-5 {
+        @include flexbox(0, 0, 40%);
+    }
 
-	.col-sm-3-5 {
-		@include flexbox(0, 0, 60%);
-	}
+    .col-sm-3-5 {
+        @include flexbox(0, 0, 60%);
+    }
 
-	.col-sm-4-5 {
-		@include flexbox(0, 0, 80%);
-	}
+    .col-sm-4-5 {
+        @include flexbox(0, 0, 80%);
+    }
 }
 
 @media (min-width: 768px) {
@@ -463,20 +463,20 @@ html {
     }
 
     .col-md-1-5 {
-		@include flexbox(0, 0, 20%);
-	}
+        @include flexbox(0, 0, 20%);
+    }
 
-	.col-md-2-5 {
-		@include flexbox(0, 0, 40%);
-	}
+    .col-md-2-5 {
+        @include flexbox(0, 0, 40%);
+    }
 
-	.col-md-3-5 {
-		@include flexbox(0, 0, 60%);
-	}
+    .col-md-3-5 {
+        @include flexbox(0, 0, 60%);
+    }
 
-	.col-md-4-5 {
-		@include flexbox(0, 0, 80%);
-	}
+    .col-md-4-5 {
+        @include flexbox(0, 0, 80%);
+    }
 }
 .d-md-none {
     display: none !important;
@@ -564,20 +564,20 @@ html {
     }
 
     .col-lg-1-5 {
-		@include flexbox(0, 0, 20%);
-	}
+        @include flexbox(0, 0, 20%);
+    }
 
-	.col-lg-2-5 {
-		@include flexbox(0, 0, 40%);
-	}
+    .col-lg-2-5 {
+        @include flexbox(0, 0, 40%);
+    }
 
-	.col-lg-3-5 {
-		@include flexbox(0, 0, 60%);
-	}
+    .col-lg-3-5 {
+        @include flexbox(0, 0, 60%);
+    }
 
-	.col-lg-4-5 {
-		@include flexbox(0, 0, 80%);
-	}
+    .col-lg-4-5 {
+        @include flexbox(0, 0, 80%);
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -608,4 +608,117 @@ html {
 
 .flex-nowrap {
     flex-wrap: nowrap;
+}
+
+/**
+ * Content Width
+ */
+.botiga-site-layout-default,
+.botiga-site-layout-boxed,
+.botiga-site-layout-padded{
+
+    .container{
+        max-width: var(--botiga_content_width, 1140px);
+    }
+
+    &.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide){
+        max-width: calc(var(--botiga_content_width, 1140px) - 30px);
+    }
+
+    .botiga-mega-menu.botiga-mega-menu-contained>.sub-menu{
+        max-width: var(--botiga_content_width, 1140px);
+    }
+}
+
+/**
+ * Site Layouts
+ */
+.botiga-site-layout-boxed{
+
+    .botiga-mega-menu.botiga-mega-menu-full-width>.sub-menu,
+    .botiga-mega-menu.botiga-mega-menu-contained-full-width>.sub-menu:before{
+        max-width: var(--botiga_boxed_width, 1200px);
+    }
+
+    .site{
+        max-width: var(--botiga_boxed_width, 1200px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.botiga-site-layout-padded{
+
+    &:after,
+    &:before{
+        content: "";
+        position: fixed;
+        left: 0;
+        width: 100%;
+        z-index: 10000;
+        height: var(--botiga_padded_spacing, 25px);
+        background-color: var(--botiga_background_color, #ffffff);
+    }
+
+    &:before{
+        top: 0;
+    }
+
+    &:after{
+        bottom: 0;
+    }
+
+    &.admin-bar{
+        &:before{
+            top: 32px;
+        }
+    }
+
+    .site{
+        position: relative;
+        margin: var(--botiga_padded_spacing, 25px);
+
+        &:after,
+        &:before{
+            content: "";
+            position: fixed;
+            top: 0;
+            z-index: 9999;
+            width: var(--botiga_padded_spacing, 25px);
+            height: 100%;
+            background-color: var(--botiga_background_color, #ffffff);
+        }
+
+        &:before{
+            left: 0;
+        }
+
+        &:after{
+            right: 0;
+        }
+    }
+
+    &.sticky-header-active{
+        
+        .site{
+            max-width: calc(100% - calc(var(--botiga_padded_spacing, 25px) * 2));
+        }
+    }
+}
+
+.botiga-site-layout-fluid{
+    
+    &.botiga-page-builder-mode .entry-content > *:not(.athemes-blocks-block):not(.alignfull):not(.alignwide),
+    .container{
+        max-width: 100%;
+        padding-left: var(--botiga_fluid_spacing, 15px);
+        padding-right: var(--botiga_fluid_spacing, 15px);
+    }
+
+    .botiga-mega-menu.botiga-mega-menu-contained>.sub-menu,
+    .botiga-mega-menu.botiga-mega-menu-full-width>.sub-menu,
+    .botiga-mega-menu.botiga-mega-menu-contained-full-width>.sub-menu{
+        max-width: 100%;
+        width: 100vw !important;
+    }
 }

@@ -21,7 +21,8 @@ function botiga_ajax_search_callback() {
         'posts_per_page' => $posts_per_page,
         's'              => $search_term,
         'order'          => $order,
-        'orderby'        => $orderby
+        'orderby'        => $orderby,
+        'post_status'    => array( 'publish' )
     );
     
     if( $orderby === 'price' ) {

@@ -65,9 +65,9 @@
     margin: 0;
 
     a,
-	a:visited {
-		color: $color__primary;
-	}
+    a:visited {
+        color: $color__primary;
+    }
 }
 .site-description {
     margin: 5px 0 0;
@@ -400,6 +400,27 @@
 
 }
 
+.botiga-site-layout-padded {
+
+    #masthead {
+        &.is-sticky,
+        &.sticky-always {
+            top: var(--botiga_padded_spacing, 25px);
+        }
+    }
+
+    &.admin-bar {
+        #masthead {
+            &.is-sticky,
+            &.sticky-always {
+                top: calc( 32px + var(--botiga_padded_spacing, 25px) );
+            }
+        }
+        
+    }
+
+}
+
 .bottom-header-row {
     background-color: #fff;
     z-index: 998;
@@ -721,6 +742,7 @@
             top: auto;
             width: 100%;
             z-index: 12;
+            max-width: inherit;
 
             .top-bar {
                 position: relative;
@@ -743,6 +765,17 @@
                         top: 32px;
                     }
                 }   
+            }
+
+            // Boxed layout
+            &:not(.has-bhfb-builder) {
+
+                .header-transparent-wrapper {
+                    .sticky-header {
+                        max-width: inherit;
+                    }
+                }
+
             }
         }
     }

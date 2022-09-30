@@ -44,10 +44,10 @@ foreach( $rows as $row ) {
     if( botiga_sticky_header_enabled() ) {
         
         // Sticky Header - Background Color
-        $css .= Botiga_Custom_CSS::get_background_color_css( "botiga_header_row__${row}_sticky_background_color", '#FFF', ".sticky-header-active .bhfb-$row" ); 
+        $css .= Botiga_Custom_CSS::get_background_color_css( "botiga_header_row__${row}_sticky_background_color", '#FFF', ".sticky-header-active .has-sticky-header .bhfb-$row" ); 
 
         // Sticky Header - Border Bottom Color
-        $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_sticky_border_bottom_color", '#EAEAEA', ".sticky-header-active .bhfb-$row" );
+        $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_sticky_border_bottom_color", '#EAEAEA', ".sticky-header-active .has-sticky-header .bhfb-$row" );
 
     }
 
@@ -64,13 +64,17 @@ if( botiga_sticky_header_enabled() ) {
         }
     }
     
+    if( get_theme_mod( 'site_layout', 'default' ) === 'padded' ) {
+        $sticky_gap = $sticky_gap + get_theme_mod( 'padded_layout_spacing_desktop', 20 );
+    }
+
     if( $sticky_row === 'all' ) {
-        $css .= 'body.has-bhfb-builder:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; }';
+        $css .= '@media(min-width: 1025px) { body.has-bhfb-builder:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; } }';
     }
 
     if( $sticky_row === 'main-header-row' || $sticky_row === 'below-header-row' ) {
         $sticky_gap = is_admin_bar_showing() ? $sticky_gap + 42 : $sticky_gap;
-        $css .= 'body.has-bhfb-builder.sticky-header-active:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; }';
+        $css .= '@media(min-width: 1025px) { body.has-bhfb-builder.sticky-header-active:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; } }';
     }
 }
 

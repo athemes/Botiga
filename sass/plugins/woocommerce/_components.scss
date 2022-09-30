@@ -1538,7 +1538,7 @@ dl.variation {
 			height: 30px;
 			border-radius: 100%;
 			margin: 5px 8px 5px 0px;
-			border: 2px solid transparent;
+			border: 1px solid #ddd;
 			cursor: pointer;
 			text-indent: -99999px;
 
@@ -2061,4 +2061,146 @@ dl.variation {
  */
 .botiga-product-brand-image{
 	max-width: 150px;
+}
+
+/**
+ * Linked Variations
+ */
+.botiga-linked-variations{
+  position: relative;
+  border: 0;
+
+	tr,
+	th,
+	td{
+		border: 0;
+	}
+
+	th{
+		width: 125px;
+		text-align: left;
+		padding-left: 0;
+
+		label{
+			vertical-align: middle;
+		}
+	}
+
+	td{
+		border: 0;
+	}
+}
+
+.botiga-linked-variations-type-color,
+.botiga-linked-variations-type-image{
+	display: flex;
+	grid-gap: 10px;
+	flex-wrap: wrap;
+
+	> a{
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		text-indent: -99999px;
+		border: 1px solid #ddd;
+
+		&:before{
+			content: '';
+			position: absolute;
+			top: -4px;
+			right: -4px;
+			bottom: -4px;
+			left: -4px;
+			border: 2px solid transparent;
+			border-radius: 100%;
+			transition: all .3s;
+		}
+
+		&:hover{
+			
+			.botiga-linked-variation-tooltip{
+				opacity: 1;
+				margin-bottom: 15px;
+				visibility: visible;
+			}
+		}
+
+		&.active{
+	
+			&:before{
+				border-color: $color__primary;
+			}
+		}
+
+		img{
+			border-radius: 100%;
+		}
+	}
+}
+
+.botiga-linked-variations-type-button,
+.botiga-linked-variations-type-select{
+	display: flex;
+	grid-gap: 8px;
+	flex-wrap: wrap;
+
+	> a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.9rem;
+		font-weight: 600;
+		line-height: 1;
+		padding: 9px 15px;
+		min-width: 30px;
+		min-height: 30px;
+		color: $color__primary;
+		border: 2px solid $color__primary;
+		text-align: center;
+		cursor: pointer;
+		opacity: 0.4;
+		overflow: hidden;
+		transition: all .3s;
+
+		&:hover,
+		&.active{
+			opacity: 1;
+			color: $color__primary;
+		}
+	}
+}
+
+.botiga-linked-variation-tooltip{
+	position: absolute;
+	left: 50%;
+	bottom: 100%;
+	font-size: 12px;
+	line-height: 1.5em;
+	text-align: center;
+	text-indent: 0;
+	white-space: nowrap;
+	padding: 4px 10px;
+	margin-bottom: 10px;
+	transform: translateX(-50%);
+	color: #fff;
+	background-color: $color__primary;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: all .3s;
+
+	&:after{
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: -5px;
+		margin-left: -5px;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid $color__primary;
+	}
 }

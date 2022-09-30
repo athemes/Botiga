@@ -1,10 +1,36 @@
 /**
  * Botiga Ajax Search
+ * 
+ * jQuery Dependant: true
+ * 
  */
 
 'use strict';
 
+var botiga = botiga || {};
+
 botiga.ajaxSearch = {
+
+    ajax: function( action, nonce, extraParams, successCallback ) {
+        var ajax = new XMLHttpRequest();
+        ajax.open('POST', botiga.ajaxurl, true);
+        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        ajax.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+                successCallback.apply( this );
+            }
+        };
+
+        let extraParamsStr = '';
+        extraParams = Object.entries(extraParams);
+        for( let i=0;i<extraParams.length;i++ ) {
+            extraParamsStr += '&' + extraParams[i].join( '=' );
+        }
+
+        ajax.send('action='+ action +'&nonce=' + nonce + extraParamsStr );
+    },
+
     init: function() {
         const _this = this,
             woo_search_fields = document.querySelectorAll( '.wc-search-field, .wc-block-product-search__field' );
@@ -45,7 +71,7 @@ botiga.ajaxSearch = {
             clist         = el.classList,
             type          = clist.contains( 'wc-block-product-search__field' ) || clist.contains( 'wc-search-field' ) ? 'product' : 'post'; 
 
-        botiga.helpers.ajax( 'botiga_ajax_search_callback', botiga_ajax_search.nonce, {
+        _this.ajax( 'botiga_ajax_search_callback', botiga_ajax_search.nonce, {
             search_term     : search_term,
             type            : type,
             posts_per_page  : botiga_ajax_search.query_args.posts_per_page,
@@ -113,4 +139,6 @@ botiga.ajaxSearch = {
     }
 };
 
-botiga.helpers.botigaDomReady( botiga.ajaxSearch.init() );
+jQuery( document ).ready(function(){ 
+    botiga.ajaxSearch.init()
+} );

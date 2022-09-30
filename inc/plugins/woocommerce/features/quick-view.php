@@ -157,9 +157,11 @@ add_action( 'wp_ajax_nopriv_botiga_quick_view_content', 'botiga_quick_view_conte
  * Quick View Summary Title
  */
 function botiga_quick_view_summary_title( $product = null ) { ?>
+	<?php do_action( 'botiga_quick_view_product_title_start' ); ?>
 	<h2 class="product_title entry-title">
 		<?php echo esc_html( get_the_title( $product->get_id() ) ); ?>
 	</h2>
+	<?php do_action( 'botiga_quick_view_product_title_end' ); ?>
 <?php
 }
 
@@ -167,6 +169,7 @@ function botiga_quick_view_summary_title( $product = null ) { ?>
  * Quick View Summary Rating
  */
 function botiga_quick_view_summary_rating( $product = null ) { ?>
+	<?php do_action( 'botiga_quick_view_product_rating_start' ); ?>
 	<?php if ( wc_review_ratings_enabled() ) :
 		$product_id   = $product->get_id();
 		$rating_count = $product->get_rating_count();
@@ -184,6 +187,7 @@ function botiga_quick_view_summary_rating( $product = null ) { ?>
 
 		<?php endif; ?>
 	<?php endif; ?>
+	<?php do_action( 'botiga_quick_view_product_rating_end' ); ?>
 <?php
 }
 
@@ -191,7 +195,9 @@ function botiga_quick_view_summary_rating( $product = null ) { ?>
  * Quick View Summary Price
  */
 function botiga_quick_view_summary_price( $product = null ) { ?>
+	<?php do_action( 'botiga_quick_view_product_price_start' ); ?>
 	<p class="<?php echo esc_attr( apply_filters( 'botiga_quick_view_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+	<?php do_action( 'botiga_quick_view_product_price_end' ); ?>
 <?php
 }
 
@@ -201,9 +207,11 @@ function botiga_quick_view_summary_price( $product = null ) { ?>
 function botiga_quick_view_summary_excerpt( $product = null ) {
 	$short_description = apply_filters( 'botiga_quick_view_short_description', $product->get_short_description() );
 	if ( $short_description ) : ?>
+		<?php do_action( 'botiga_quick_view_product_excerpt_start' ); ?>
 		<div class="woocommerce-product-details__short-description">
 			<p><?php echo wp_kses_post( $short_description ); ?></p>
 		</div>
+		<?php do_action( 'botiga_quick_view_product_excerpt_end' ); ?>
 	<?php endif; ?>
 <?php
 }
@@ -212,6 +220,7 @@ function botiga_quick_view_summary_excerpt( $product = null ) {
  * Quick View Summary Add To Cart
  */
 function botiga_quick_view_summary_add_to_cart( $product = null ) {
+	do_action( 'botiga_quick_view_product_add_to_cart_start' );
 	switch ( $product->get_type() ) {
 		case 'grouped':
 			botiga_grouped_add_to_cart( $product, 'quick_view' );
@@ -229,6 +238,7 @@ function botiga_quick_view_summary_add_to_cart( $product = null ) {
 			botiga_simple_add_to_cart( $product, 'quick_view' );
 			break;
 	}
+	do_action( 'botiga_quick_view_product_add_to_cart_end' );
 }
 
 /**

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.2.0' );
+	define( 'BOTIGA_VERSION', '1.2.1' );
 }
 
 // aThemes White Label Compatibility
@@ -321,12 +321,15 @@ add_action( 'wp_enqueue_scripts', 'botiga_scripts', 10 );
  * Enqueue style css
  * Ensure compatibility with Botiga Pro, since pro scripts are enqueued with order "10"
  * We always need the custom.min.css as the last stylesheet enqueued
+ * 
+ * 'botiga-custom-style' is registered at 'inc/classes/class-botiga-custom-css.php'
  */
 function botiga_style_css() {
-	wp_enqueue_style( 'botiga-style', get_stylesheet_uri(), array(), BOTIGA_VERSION );
 	wp_enqueue_style( 'botiga-style-min', get_template_directory_uri() . '/assets/css/styles.min.css', array(), BOTIGA_VERSION );
+	wp_enqueue_style( 'botiga-custom-styles' );
+	wp_enqueue_style( 'botiga-style', get_stylesheet_uri(), array(), BOTIGA_VERSION );
 }
-add_action( 'wp_enqueue_scripts', 'botiga_style_css', 11 );
+add_action( 'wp_enqueue_scripts', 'botiga_style_css', 12 );
 
 /**
  * Enqueue admin scripts and styles.

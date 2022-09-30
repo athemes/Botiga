@@ -94,7 +94,7 @@ function botiga_hf_update_notice_1_1_9() {
     <div class="notice notice-success thd-theme-dashboard-notice-success is-dismissible">
         <h3><?php esc_html_e( 'Botiga Header/Footer Update', 'botiga'); ?></h3>
         <p>
-            <?php esc_html_e( 'This version of Botiga comes with a new Header and Footer Builder. Activate it by clicking the button below and you can access new options.', 'botiga' ); ?>
+            <?php esc_html_e( 'This version of Botiga comes with a new Header and Footer Builder. Activate it by clicking on the button below and you can access new options.', 'botiga' ); ?>
         </p>
         <p>
             <?php esc_html_e( 'Note 1: This upgrade is optional, there is no need to do it if you are happy with your current header and footer.', 'botiga' ); ?>
@@ -153,3 +153,77 @@ function botiga_hf_update_dismiss_notice_1_1_9_callback() {
 	) );
 }
 add_action( 'wp_ajax_botiga_hf_update_dismiss_notice_1_1_9_callback', 'botiga_hf_update_dismiss_notice_1_1_9_callback' );
+
+/**
+ * Migrate 'header transparent' and 'header image' old display conditions to the new.
+ * Migrate scroll to top offsets.
+ * 
+ * @since 1.2.1
+ */
+function botiga_migrate_1_2_1_options() {
+    $flag = get_theme_mod( 'botiga_migrate_1_2_1_options_flag', false );
+
+    if ( true === $flag ) {
+        return;
+    }
+
+    // Scroll To Top Offsets
+    set_theme_mod( 'scrolltop_side_offset_desktop', get_theme_mod( 'scrolltop_side_offset', 30 ) );
+    set_theme_mod( 'scrolltop_bottom_offset_desktop', get_theme_mod( 'scrolltop_bottom_offset', 30 ) );
+
+    // Header Transparent
+    $header_transparent_display_on = get_theme_mod( 'header_transparent_display_on', 'front-page' );
+    $values = explode( ',', $header_transparent_display_on );
+    $new_value = array();
+
+    foreach( $values as $val ) {
+
+        if( $val === 'pages' ) {
+            $val = 'single-page';
+        }
+
+        if( $val === 'blog-archive' ) {
+            $val = 'post-archives';
+        }
+
+        if( $val === 'blog-posts' ) {
+            $val = 'single-post';
+        }
+
+        if( $val === 'post-search' ) {
+            $val = 'search';
+        }
+
+        $new_value[] = array(
+            'type'      => 'include',
+            'condition' => $val,
+            'id'        => null
+        );
+    }
+
+    set_theme_mod( 'header_transparent_display_on', json_encode( $new_value ) );
+
+    // Header Image
+    $show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
+    if( $show_header_image_only_home ) {
+        set_theme_mod( 'header_image_display_conditions', json_encode( array(
+            array(
+                'type'      => 'include',
+                'condition' => 'front-page',
+                'id'        => null
+            )
+        ) ) );
+    } else {
+        set_theme_mod( 'header_image_display_conditions', json_encode( array(
+            array(
+                'type'      => 'include',
+                'condition' => 'all',
+                'id'        => null
+            )
+        ) ) );
+    }
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_1_2_1_options_flag', true );
+}
+add_action( 'init', 'botiga_migrate_1_2_1_options' );

@@ -16,7 +16,7 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
 <div class="container">
     <div class="bhfb-row bhfb-cols-1">
         <?php 
-        if( count( $elements[0] ) > 0 ) : ?>
+        if( is_array( $elements[0] ) && count( $elements[0] ) > 0 ) : ?>
 
             <div class="bhfb-column bhfb-mobile-offcanvas-col">
                 <?php foreach( $elements[0] as $component_callback ) {

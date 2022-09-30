@@ -10,7 +10,13 @@
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
 (function ($) {
-  // Site title and description.
+  //Responsive Devices Variable
+  var $devices = {
+    "desktop": "(min-width: 992px)",
+    "tablet": "(min-width: 576px) and (max-width: 991px)",
+    "mobile": "(max-width: 575px)"
+  }; // Site title and description.
+
   wp.customize('blogname', function (value) {
     value.bind(function (to) {
       $('.site-title a').text(to);
@@ -280,15 +286,21 @@
       $('.back-to-top.display').css('border-radius', to + 'px');
     });
   });
-  wp.customize('scrolltop_side_offset', function (value) {
-    value.bind(function (to) {
-      $('.back-to-top.position-right').css('right', to + 'px');
-      $('.back-to-top.position-left').css('left', to + 'px');
+  $.each($devices, function (device, mediaSize) {
+    wp.customize('scrolltop_side_offset' + '_' + device, function (value) {
+      value.bind(function (to) {
+        $('head').find('#botiga-customizer-styles-scrolltop_side_offset_' + device).remove();
+        var output = '@media ' + mediaSize + ' { .back-to-top.position-right { right:' + to + 'px; } }';
+        output += '@media ' + mediaSize + ' { .back-to-top.position-left { left:' + to + 'px; } }';
+        $('head').append('<style id="botiga-customizer-styles-scrolltop_side_offset_' + device + '">' + output + '</style>');
+      });
     });
-  });
-  wp.customize('scrolltop_bottom_offset', function (value) {
-    value.bind(function (to) {
-      $('.back-to-top').css('bottom', to + 'px');
+    wp.customize('scrolltop_bottom_offset' + '_' + device, function (value) {
+      value.bind(function (to) {
+        $('head').find('#botiga-customizer-styles-scrolltop_bottom_offset_' + device).remove();
+        var output = '@media ' + mediaSize + ' { .back-to-top.display { bottom:' + to + 'px; } }';
+        $('head').append('<style id="botiga-customizer-styles-scrolltop_bottom_offset_' + device + '">' + output + '</style>');
+      });
     });
   });
   wp.customize('scrolltop_icon_size', function (value) {
@@ -587,13 +599,65 @@
         $('.woocommerce-cart .coupon').css('display', 'block');
       }
     });
-  }); //Responsive
+  }); // Floating Mini Cart Icon Size
 
-  var $devices = {
-    "desktop": "(min-width: 992px)",
-    "tablet": "(min-width: 576px) and (max-width: 991px)",
-    "mobile": "(max-width: 575px)"
-  };
+  wp.customize('side_mini_cart_floating_icon_size', function (value) {
+    value.bind(function (to) {
+      $('.botiga-floating-mini-cart-icon').css('font-size', to + 'px');
+    });
+  }); // Floating Mini Cart Icon Position
+
+  wp.customize('side_mini_cart_floating_icon_position', function (value) {
+    value.bind(function (to) {
+      var corner_offset = wp.customize('side_mini_cart_floating_icon_corner_offset').get();
+
+      if (to === 'left') {
+        $('.botiga-floating-mini-cart-icon').css('bottom', corner_offset + 'px');
+        $('.botiga-floating-mini-cart-icon').css('left', corner_offset + 'px');
+        $('.botiga-floating-mini-cart-icon').css('right', 'auto');
+      } else {
+        $('.botiga-floating-mini-cart-icon').css('bottom', corner_offset + 'px');
+        $('.botiga-floating-mini-cart-icon').css('right', corner_offset + 'px');
+        $('.botiga-floating-mini-cart-icon').css('left', 'auto');
+      }
+    });
+  }); // Floating Mini Cart Icon Corner Offset
+
+  $.each($devices, function (device, mediaSize) {
+    wp.customize('side_mini_cart_floating_icon_corner_offset' + '_' + device, function (value) {
+      value.bind(function (to) {
+        $('head').find('#botiga-customizer-styles-side_mini_cart_floating_icon_corner_offset_' + device).remove();
+        var output = '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { bottom:' + to + 'px; } }';
+
+        if (typeof wp.customize('side_mini_cart_floating_icon_position') !== 'undefined') {
+          if (wp.customize('side_mini_cart_floating_icon_position').get() === 'left') {
+            $('.botiga-floating-mini-cart-icon').css('left', to + 'px');
+            output += '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { left:' + to + 'px; } }';
+          } else {
+            output += '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { right:' + to + 'px; } }';
+          }
+        }
+
+        $('head').append('<style id="botiga-customizer-styles-side_mini_cart_floating_icon_corner_offset_' + device + '">' + output + '</style>');
+      });
+    });
+  }); // Floating Mini Cart Icon Border Radius
+
+  wp.customize('side_mini_cart_floating_icon_border_radius', function (value) {
+    value.bind(function (to) {
+      $('.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css('border-radius', to + 'px');
+    });
+  }); // Floating Mini Cart Icon Shadow
+
+  wp.customize('side_mini_cart_floating_icon_shadow', function (value) {
+    value.bind(function (to) {
+      if (to) {
+        $('.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css('box-shadow', 'inset 0 0 2px rgb(0 0 0 / 3%), 0 4px 10px rgb(0 0 0 / 17%)');
+      } else {
+        $('.botiga-floating-mini-cart-icon .botiga-floating-mini-cart-icon-icon').css('box-shadow', 'none');
+      }
+    });
+  });
   var $topBottPad = {
     "breadcrumbs_padding": ".botiga-breadcrumb-trail",
     "footer_widgets_padding": ".footer-widgets-grid"
@@ -654,6 +718,7 @@
   });
   var $fontSizes = {
     "body_font_size": "body",
+    "header_menu_font_size": ".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation",
     "h1_font_size": "h1:not(.site-title)",
     "h2_font_size": "h2",
     "h3_font_size": "h3",
@@ -720,6 +785,15 @@
       $('h1,h2,h3,h4,h5,h6,.site-title').css('font-family', jQuery.parseJSON(to)['font']);
       $('h1,h2,h3,h4,h5,h6,.site-title').css('font-weight', jQuery.parseJSON(to)['regularweight']);
     });
+  });
+  wp.customize('botiga_header_menu_font', function (value) {
+    value.bind(function (to) {
+      $('head').find('#botiga-preview-google-fonts-header-menu-css').remove();
+      $('head').append('<link id="botiga-preview-google-fonts-header-menu-css" href="" rel="stylesheet">');
+      $('#botiga-preview-google-fonts-header-menu-css').attr('href', 'https://fonts.googleapis.com/css?family=' + jQuery.parseJSON(to)['font'].replace(/ /g, '+') + ':' + jQuery.parseJSON(to)['regularweight'] + '&display=swap');
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-family', jQuery.parseJSON(to)['font']);
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-weight', jQuery.parseJSON(to)['regularweight']);
+    });
   }); //Typography - Adobe Type Kit Fonts
 
   wp.customize('botiga_headings_adobe_font', function (value) {
@@ -736,6 +810,14 @@
           weight = to.split('|')[1];
       $('body').css('font-family', family);
       $('body').css('font-weight', weight);
+    });
+  });
+  wp.customize('botiga_header_menu_adobe_font', function (value) {
+    value.bind(function (to) {
+      var family = to.split('|')[0],
+          weight = to.split('|')[1];
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-family', family);
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-weight', weight);
     });
   });
   wp.customize('headings_font_style', function (value) {
@@ -786,6 +868,26 @@
   wp.customize('body_text_decoration', function (value) {
     value.bind(function (to) {
       $('body').css('text-decoration', to);
+    });
+  });
+  wp.customize('header_menu_font_style', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-style', to);
+    });
+  });
+  wp.customize('header_menu_line_height', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('line-height', to);
+    });
+  });
+  wp.customize('header_menu_letter_spacing', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('letter-spacing', to + 'px');
+    });
+  });
+  wp.customize('header_menu_text_transform', function (value) {
+    value.bind(function (to) {
+      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('text-transform', to);
     });
   }); // Shop Header Style
 
@@ -884,6 +986,12 @@
           }
         }
       });
+    });
+  }); // Padded Color
+
+  wp.customize('background_color', function (value) {
+    value.bind(function (to) {
+      $(':root').css('--botiga_background_color', to);
     });
   });
 })(jQuery);

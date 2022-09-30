@@ -29,6 +29,16 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 1.2.1 =
+Added - Display Conditions
+Added - Header Builder: New 1:4:1 ratio 'Column Layout'.
+Added - Color Palettes: Backward compatibility to the old class names pattern.
+Added - New customizer controls for header menu font-size, font-weight, font-family, etc.
+Added - New custom theme hooks inside the quick view popup.
+Changed - JS: Removed 'botiga.helpers.botigaDomReady' from scripts for better compatibility with caching plugins.
+Fixed - Botiga AJAX Search Includes Products that are in draft.
+Fixed - Header Builder: Mobile bug when 'sticky header' and 'on scroll to top' effect is active.
+
 = 1.2.0 =
 Fixed - PHP fatal error with some pro users after update.
 
@@ -94,6 +104,7 @@ Initial release
 * Folder vendor/kirki-framework https://github.com/kirki-framework, (C) kirki-framework, [MIT](https://opensource.org/licenses/MIT)
 * Customizer controls https://maddisondesigns.com, (C) Anthony Hortin, [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * Cross Sell Carousel https://pawelgrzybek.github.io/siema/, (C) Paweł Grzybek, [MIT](https://opensource.org/licenses/MIT)
+* Swiper https://swiperjs.com, (C) 2014-2022 Vladimir Kharlampidi, [MIT](https://opensource.org/licenses/MIT)
 * Hero screenshot image https://www.flickr.com/photos/192934727@N03/51163578540/, (C) Kamruzzaman Alam, [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)
 * Product screenshot image https://www.flickr.com/photos/192934727@N03/51330901495/, (C) Kamruzzaman Alam, [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)
 * Product screenshot image https://www.flickr.com/photos/192934727@N03/51330631769/, (C) Kamruzzaman Alam, [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en)

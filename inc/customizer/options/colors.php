@@ -135,6 +135,26 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'content_background_color',
+	array(
+		'default'           => '#ffffff',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'content_background_color',
+		array(
+			'label'   => esc_html__( 'Content Background Color', 'botiga' ),
+			'section' => 'colors',
+			'active_callback' => 'botiga_callback_site_layout_boxed_padded',
+		)
+	)
+);
+
 $wp_customize->add_setting( 'color_divider_2',
 	array(
 		'sanitize_callback' => 'esc_attr'

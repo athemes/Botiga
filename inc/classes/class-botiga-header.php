@@ -59,21 +59,14 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Core header image
 		 */
 		public function header_image() {
-			$show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
-
-			// output
 			$output = '<div class="header-image">';
 				$output .= get_header_image_tag();
 			$output .= '</div>';
 
-			if( $show_header_image_only_home ) {
-				if( is_front_page() ) {
-					echo wp_kses_post( $output );
-				}
-
+			if ( ! botiga_get_display_conditions( 'header_image_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {
 				return;
 			}
-
+					
 			echo wp_kses_post( $output );
 		}
 
@@ -834,7 +827,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			<div class="site-branding">
 				<?php
 				the_custom_logo();
-				if ( is_front_page() && is_home() ) :
+				if ( is_front_page() || is_home() ) :
 					?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 					<?php
@@ -907,13 +900,6 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				return;
 			}
 
-			$display_on = get_theme_mod( 'header_transparent_display_on', 'front-page' );
-			if( ! $display_on ) {
-				return;
-			}
-
-			$display_on = explode( ',', $display_on );
-
 			// Page/Post meta disable transparent header
 			global $post;
 			$post_meta_disable = isset( $post->ID ) ? get_post_meta( $post->ID, '_botiga_disable_header_transparent', true ) : false;
@@ -921,75 +907,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				return;
 			} 
 
-			// Include on Front Page
-			if( is_front_page() && ! in_array( 'front-page', $display_on ) ) {
-				return;
-			}
-			
-			// Include on normal pages
-			// we need check for WooCommerce here because "is_cart()", "is_checkout", etc... are functions created by WooCommerce
-			if( class_exists( 'Woocommerce' ) ) {
-				if( ( is_page() && ! is_front_page() && ! is_cart() && ! is_checkout() && ! is_account_page() && ! is_shop() ) && ! in_array( 'pages', $display_on ) ) {
-					return;
-				}
-			} else {
-				if( ( is_page() && ! is_front_page() ) && ! in_array( 'pages', $display_on ) ) {
-					return;
-				}
-			}
-
-			// Include on Blog Archive
-			if( ( is_home() || is_category() || is_tag() ) && ! in_array( 'blog-archive', $display_on ) ) {
-				return;
-			}
-
-			// Include on Blog Posts
-			if( is_singular( 'post' ) && ! in_array( 'blog-posts', $display_on ) ) {
-				return;
-			}
-
-			if( class_exists( 'Woocommerce' ) ) {
-				
-				// Include on Shop Catalog
-				if( ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) && ! in_array( 'shop-catalog', $display_on ) ) {
-					return;
-				}
-
-				// Include on Shop Products
-				if( is_singular( 'product' ) && ! in_array( 'shop-products', $display_on ) ) {
-					return;
-				}
-
-				// Include on Shop Cart
-				if( is_cart() && ! in_array( 'shop-cart', $display_on ) ) {
-					return;
-				}
-
-				// Include on Shop Checkout
-				// we need to check if "is_singular" to avoid extra "Buy Now" plugins conflict
-				if( is_checkout() && ! is_singular( 'product' ) && ! in_array( 'shop-checkout', $display_on ) ) {
-					return;
-				}
-
-				// Include on Shop My Account
-				if( is_account_page() && ! in_array( 'shop-my-account', $display_on ) ) {
-					return;
-				}
-
-				// Include on Wishlist page
-				if( is_page_template( 'page-templates/template-wishlist.php' ) && ! in_array( 'shop-wishlist', $display_on ) ) {
-					return;
-				}
-
-			}
-
-			// Include on Search Page
-			if( is_search() && ! in_array( 'post-search', $display_on ) ) {
-				return;
-			}
-
-			// Include on 404 Page
-			if( is_404() && ! in_array( '404', $display_on ) ) {
+			// Header Transparent Display Conditions
+			if ( ! botiga_get_display_conditions( 'header_transparent_display_on', false ) ) {
 				return;
 			}
 

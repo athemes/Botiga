@@ -1172,3 +1172,237 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+/**
+ * Customizer Back Button
+ */
+
+jQuery(document).ready(function ($) {
+  var current_section_id = '';
+  $(document).on('mouseover focus', '.customize-section-back', function (e) {
+    current_section_id = $('.control-section.open').attr('id');
+  });
+  $(document).on('click keydown', '.customize-section-back', function (e) {
+    // Floating Mini Cart Icon
+    if (current_section_id.indexOf('side_mini_cart_floating_icon_section') !== -1) {
+      if (typeof wp.customize.section('botiga_section_shop_cart') !== 'undefined') {
+        wp.customize.section('botiga_section_shop_cart').focus();
+        return false;
+      }
+    }
+  });
+});
+/**
+ * Display Conditions Control
+ */
+
+jQuery(document).ready(function ($) {
+  $(document).on('botiga-display-conditions-select2-initalize', function (event, item) {
+    var $item = $(item);
+    var $control = $item.closest('.botiga-display-conditions-control');
+    var $typeSelectWrap = $item.find('.botiga-display-conditions-select2-type');
+    var $typeSelect = $typeSelectWrap.find('select');
+    var $conditionSelectWrap = $item.find('.botiga-display-conditions-select2-condition');
+    var $conditionSelect = $conditionSelectWrap.find('select');
+    var $idSelectWrap = $item.find('.botiga-display-conditions-select2-id');
+    var $idSelect = $idSelectWrap.find('select');
+    $typeSelect.select2({
+      width: '100%',
+      minimumResultsForSearch: -1
+    });
+    $typeSelect.on('select2:select', function (event) {
+      $typeSelectWrap.attr('data-type', event.params.data.id);
+    });
+    $conditionSelect.select2({
+      width: '100%'
+    });
+    $conditionSelect.on('select2:select', function (event) {
+      var $element = $(event.params.data.element);
+
+      if ($element.data('ajax')) {
+        $idSelectWrap.removeClass('hidden');
+      } else {
+        $idSelectWrap.addClass('hidden');
+      }
+
+      $idSelect.val(null).trigger('change');
+    });
+    var isAjaxSelected = $conditionSelect.find(':selected').data('ajax');
+
+    if (isAjaxSelected) {
+      $idSelectWrap.removeClass('hidden');
+    }
+
+    $idSelect.select2({
+      width: '100%',
+      placeholder: '',
+      allowClear: true,
+      minimumInputLength: 1,
+      ajax: {
+        url: ajaxurl,
+        dataType: 'json',
+        delay: 250,
+        cache: true,
+        data: function data(params) {
+          return {
+            action: 'botiga_display_conditions_select_ajax',
+            term: params.term,
+            nonce: ajax_object.ajax_nonce,
+            source: $conditionSelect.val()
+          };
+        },
+        processResults: function processResults(response, params) {
+          if (response.success) {
+            return {
+              results: response.data
+            };
+          }
+
+          return {};
+        }
+      }
+    });
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-toggle', function (event) {
+    event.preventDefault();
+    var $button = $(this);
+    var template = wp.template('botiga-display-conditions-template');
+    var $control = $button.closest('.botiga-display-conditions-control');
+    var $modal = $control.find('.botiga-display-conditions-modal');
+
+    if (!$modal.data('initialized')) {
+      $control.append(template($control.data('condition-settings')));
+      var $items = $control.find('.botiga-display-conditions-modal-content-list-item').not('.hidden');
+
+      if ($items.length) {
+        $items.each(function () {
+          $(document).trigger('botiga-display-conditions-select2-initalize', this);
+        });
+      }
+
+      $modal = $control.find('.botiga-display-conditions-modal');
+      $modal.data('initialized', true);
+      $modal.addClass('open');
+    } else {
+      $modal.toggleClass('open');
+    }
+  });
+  $(document).on('click', '.botiga-display-conditions-modal', function (event) {
+    event.preventDefault();
+    var $modal = $(this);
+
+    if ($(event.target).is($modal)) {
+      $modal.removeClass('open');
+    }
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-add', function (event) {
+    event.preventDefault();
+    var $button = $(this);
+    var $control = $button.closest('.botiga-display-conditions-control');
+    var $modal = $control.find('.botiga-display-conditions-modal');
+    var $list = $modal.find('.botiga-display-conditions-modal-content-list');
+    var $item = $modal.find('.botiga-display-conditions-modal-content-list-item').first().clone();
+    var conditionGroup = $button.data('condition-group');
+    $item.removeClass('hidden');
+    $item.find('.botiga-display-conditions-select2-condition').not('[data-condition-group="' + conditionGroup + '"]').remove();
+    $list.append($item);
+    $(document).trigger('botiga-display-conditions-select2-initalize', $item);
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-remove', function (event) {
+    event.preventDefault();
+    var $item = $(this).closest('.botiga-display-conditions-modal-content-list-item');
+    $item.remove();
+  });
+  $(document).on('click', '.botiga-display-conditions-modal-save', function (event) {
+    event.preventDefault();
+    var data = [];
+    var $button = $(this);
+    var $control = $button.closest('.botiga-display-conditions-control');
+    var $modal = $control.find('.botiga-display-conditions-modal');
+    var $textarea = $control.find('.botiga-display-conditions-textarea');
+    var $items = $modal.find('.botiga-display-conditions-modal-content-list-item').not('.hidden');
+    $items.each(function () {
+      var $item = $(this);
+      data.push({
+        type: $item.find('select[name="type"]').val(),
+        condition: $item.find('select[name="condition"]').val(),
+        id: $item.find('select[name="id"]').val()
+      });
+    });
+    $textarea.val(JSON.stringify(data)).trigger('change');
+  });
+});
+/**
+ * Custom Sidebars Control
+ */
+
+jQuery(document).ready(function ($) {
+  "use strict";
+
+  $(document).on('botiga-custom-sidebar-update', function (event, control) {
+    event.preventDefault();
+    var data = [];
+    var $control = $(control);
+    var $textarea = $control.find('.botiga-custom-sidebar-textarea');
+    var $items = $control.find('.botiga-custom-sidebar-list-item').not('.hidden');
+    $items.each(function () {
+      var $item = $(this);
+      var name = $item.find('input[name="sidebar_name"]').val();
+      var conditions = $item.find('textarea[name="sidebar_conditions"]').val();
+
+      if (conditions) {
+        conditions = JSON.parse(conditions);
+      }
+
+      if (name) {
+        data.push({
+          name: name,
+          conditions: conditions
+        });
+      }
+    });
+    $textarea.val(JSON.stringify(data)).trigger('change');
+  });
+  $('.botiga-custom-sidebars-control').each(function () {
+    var $control = $(this);
+    var $list = $control.find('.botiga-custom-sidebar-list');
+    $list.sortable({
+      axis: 'y',
+      update: function update() {
+        $(document).trigger('botiga-custom-sidebar-update', [$control]);
+      }
+    });
+  });
+  $(document).on('change', '.botiga-custom-sidebar-name, .botiga-custom-sidebar-conditions', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-sidebars-control');
+    $(document).trigger('botiga-custom-sidebar-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-sidebar-remove', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-sidebars-control');
+    var $items = $control.find('.botiga-custom-sidebar-list-item').not('.hidden');
+    $button.closest('.botiga-custom-sidebar-list-item').remove();
+
+    if ($items.length === 1) {
+      var $list = $control.find('.botiga-custom-sidebar-list');
+      var $item = $control.find('.botiga-custom-sidebar-list-item').first().clone();
+      $item.removeClass('hidden');
+      $list.append($item);
+    }
+
+    $(document).trigger('botiga-custom-sidebar-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-sidebar-add', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-sidebars-control');
+    var $list = $control.find('.botiga-custom-sidebar-list');
+    var $item = $control.find('.botiga-custom-sidebar-list-item').first().clone();
+    $item.removeClass('hidden');
+    $list.append($item);
+    $(document).trigger('botiga-custom-sidebar-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-sidebar-condition', function (event) {
+    var $button = $(this);
+    var $item = $button.closest('.botiga-custom-sidebar-list-item');
+  });
+});

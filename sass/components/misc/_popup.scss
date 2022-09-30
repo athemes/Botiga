@@ -19,7 +19,7 @@
     opacity: 0;
     visibility: hidden;
     transition: ease all 300ms;
-    z-index: 9999;
+    z-index: 99999;
 
     &.show {
         display: flex;

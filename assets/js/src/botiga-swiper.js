@@ -8,6 +8,8 @@
  * Released under the MIT License
  *
  * Released on: July 26, 2022
+ * 
+ * @cc_on 
  */
 
 (function (global, factory) {

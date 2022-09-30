@@ -21,6 +21,50 @@ $opts_to_move = array(
     'style'   => array()
 );
 
+// Header Presets
+$wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_goto_presets',
+	array(
+		'default' 			=> '',
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_hb_wrapper__header_builder_goto_presets',
+		array(
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Presets', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'section' 		=> 'botiga_section_hb_wrapper',
+            'priority' 		=> 20
+		)
+	)
+);
+
+// Header Transparent - Apply transparent header to
+$wp_customize->add_setting(
+	'header_transparent_hb_rows',
+	array(
+		'default'           => 'main-row',
+		'sanitize_callback' => 'sanitize_text_field'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Select2_Control(
+		$wp_customize,
+		'header_transparent_hb_rows',
+		array(
+			'label'           => esc_html__( 'Apply Transparent Header To', 'botiga' ),
+			'section'         => 'botiga_section_hb_wrapper',
+			'select2_options' => '{ "selectionCssClass": "botiga-select2" }',
+			'multiple'        => true,
+			'choices'         => array(
+				'main-row' 		=> __( 'Main Row', 'botiga' ),
+				'top-row' 		=> __( 'Top Row', 'botiga' ),
+				'bottom-row'  	=> __( 'Bottom Row', 'botiga' )
+			),
+			'active_callback' => 'botiga_header_transparent_enabled',
+			'priority'		  => 25
+		)
+	)
+);
+
 // Sticky Header Row
 $wp_customize->add_setting( 
 	'botiga_section_hb_wrapper__header_builder_sticky_row', 
@@ -43,22 +87,6 @@ $wp_customize->add_control(
         'active_callback' => 'botiga_sticky_header_enabled',
         'priority'        => 35
 	) 
-);
-
-// Header Presets
-$wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_goto_presets',
-	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_hb_wrapper__header_builder_goto_presets',
-		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Presets', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
-			'section' 		=> 'botiga_section_hb_wrapper',
-            'priority' 		=> 35
-		)
-	)
 );
 
 // Available Header Components Area
@@ -119,6 +147,10 @@ foreach( $opts_to_move as $control_tabs ) {
         if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
         }
+
+		if( $option_name === 'header_transparent' ) {
+			$wp_customize->get_control( $option_name )->description = esc_html__( 'The header stays over the content. You need to manually change the background color from each header builder row to be transparent.', 'botiga' );
+		}
 
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_wrapper';
         $wp_customize->get_control( $option_name )->priority = $priority;
