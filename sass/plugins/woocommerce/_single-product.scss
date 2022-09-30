@@ -548,6 +548,7 @@
 	&.gallery-grid,
 	&.gallery-scrolling,
 	&.gallery-showcase {
+		align-items: stretch;
 		.sticky-entry-summary {
 			position: sticky;
 			top: 30px;

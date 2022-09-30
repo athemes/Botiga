@@ -812,11 +812,11 @@ class Botiga_Header_Footer_Builder {
 
                         <div <?php echo implode( ' ', $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
-                            <?php do_action( "botiga_bhfb_header_{$row}_before" ); ?>
+                            <?php do_action( "botiga_bhfb_header_{$row['id']}_before" ); ?>
 
                             <?php $this->rows_callback( 'header', $row['id'], $device ); ?>
 
-                            <?php do_action( "botiga_bhfb_header_{$row}_after" ); ?>
+                            <?php do_action( "botiga_bhfb_header_{$row['id']}_after" ); ?>
                         </div>
 
                     <?php
@@ -883,11 +883,11 @@ class Botiga_Header_Footer_Builder {
 
                         <div <?php echo implode( ' ', $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
-                            <?php do_action( "botiga_bhfb_footer_{$row}_before" ); ?>
+                            <?php do_action( "botiga_bhfb_footer_{$row['id']}_before" ); ?>
 
                             <?php $this->rows_callback( 'footer', $row['id'], $device ); ?>
 
-                            <?php do_action( "botiga_bhfb_footer_{$row}_after" ); ?>
+                            <?php do_action( "botiga_bhfb_footer_{$row['id']}_after" ); ?>
                         </div>
 
                     <?php
