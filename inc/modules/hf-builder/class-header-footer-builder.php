@@ -50,7 +50,7 @@ class Botiga_Header_Footer_Builder {
             ),
             array(
                 'id'    => 'logo',
-                'label' => esc_html__( 'Site Title & Logo', 'botiga' )
+                'label' => esc_html__( 'Site Identity', 'botiga' )
             ),
             array(
                 'id'    => 'button',
@@ -90,7 +90,7 @@ class Botiga_Header_Footer_Builder {
             ),
             array(
                 'id'    => 'logo',
-                'label' => esc_html__( 'Site Title & Logo', 'botiga' )
+                'label' => esc_html__( 'Site Identity', 'botiga' )
             ),
             array(
                 'id'    => 'button',

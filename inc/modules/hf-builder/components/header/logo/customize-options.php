@@ -12,12 +12,12 @@
 $opts_to_move = array(
     'general' => array(
         'custom_logo',
+        'sitcky_header_logo',
         'blogname',
         'blogdescription',
         'site_logo_size',
         'display_header_text',
-        'site_icon',
-        'sitcky_header_logo'
+        'site_icon'
     ),
     'style'   => array(
         'site_title_color',

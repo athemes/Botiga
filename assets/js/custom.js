@@ -178,7 +178,12 @@ botiga.navigation = {
     });
     closeButton.addEventListener('click', function (e) {
       e.preventDefault();
-      button.focus();
+      var buttonRect = button.getBoundingClientRect();
+
+      if (buttonRect.top + buttonRect.height > 0) {
+        button.focus();
+      }
+
       button.classList.remove('open');
       offCanvas.classList.remove('toggled');
       document.body.classList.remove('mobile-menu-visible');

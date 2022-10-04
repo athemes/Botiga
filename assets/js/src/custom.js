@@ -65,7 +65,7 @@ botiga.helpers = {
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
- botiga.navigation = {
+botiga.navigation = {
 	
 	init: function() {
 		const 
@@ -167,7 +167,10 @@ botiga.helpers = {
 		closeButton.addEventListener( 'click', function(e) {
 			e.preventDefault();
 
-			button.focus();
+			const buttonRect = button.getBoundingClientRect();
+			if ( ( buttonRect.top + buttonRect.height ) > 0 ) {
+				button.focus();
+			}
 
 			button.classList.remove( 'open' );
 
