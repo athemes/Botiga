@@ -1084,7 +1084,7 @@ class Botiga_Header_Footer_Builder {
             }
 
             if( $row === 'below_footer_row' && $column_id === 1 ) {
-                $default = 'end';
+                $default = 'start';
             }
         }
 
