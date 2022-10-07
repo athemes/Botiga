@@ -220,6 +220,10 @@ foreach( $opts_to_move as $control_tabs ) {
         
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__logo';
         $wp_customize->get_control( $option_name )->priority = $priority;
+
+        if( $option_name === 'site_icon' ) {
+            $wp_customize->get_control( $option_name )->priority = 60;
+        }
         
         $priority++;
     }
