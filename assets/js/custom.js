@@ -155,6 +155,31 @@ botiga.navigation = {
       e.preventDefault();
       var parent = e.target.closest('li');
       parent.querySelector('.sub-menu').classList.toggle('toggled');
+    } // Close the offcanvas when a anchor that contains a hash is clicked
+
+
+    var anchors = offCanvas.querySelectorAll('a[href*="#"]');
+
+    if (anchors.length) {
+      var _iterator2 = _createForOfIteratorHelper(anchors),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var anchor = _step2.value;
+          anchor.addEventListener('click', function (e) {
+            if (e.target.hash && document.querySelector(e.target.hash) !== null) {
+              button.classList.remove('open');
+              offCanvas.classList.remove('toggled');
+              document.body.classList.remove('mobile-menu-visible');
+            }
+          });
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
     }
 
     var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
@@ -200,28 +225,28 @@ botiga.navigation = {
 
     var linksWithChildren = menu.querySelectorAll('.menu-item-has-children > a, .page_item_has_children > a'); // Toggle focus each time a menu link is focused or blurred.
 
-    var _iterator2 = _createForOfIteratorHelper(links),
-        _step2;
+    var _iterator3 = _createForOfIteratorHelper(links),
+        _step3;
 
     try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var link = _step2.value;
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var link = _step3.value;
         link.addEventListener('focus', toggleFocus, true);
         link.addEventListener('blur', toggleFocus, true);
       } // Toggle focus each time a menu link with children receive a touch event.
 
     } catch (err) {
-      _iterator2.e(err);
+      _iterator3.e(err);
     } finally {
-      _iterator2.f();
+      _iterator3.f();
     }
 
-    var _iterator3 = _createForOfIteratorHelper(linksWithChildren),
-        _step3;
+    var _iterator4 = _createForOfIteratorHelper(linksWithChildren),
+        _step4;
 
     try {
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        var _link = _step3.value;
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+        var _link = _step4.value;
 
         _link.addEventListener('touchstart', toggleFocus, false);
       }
@@ -230,9 +255,9 @@ botiga.navigation = {
        */
 
     } catch (err) {
-      _iterator3.e(err);
+      _iterator4.e(err);
     } finally {
-      _iterator3.f();
+      _iterator4.f();
     }
 
     function toggleFocus() {
@@ -253,21 +278,21 @@ botiga.navigation = {
         var menuItem = this.parentNode;
         event.preventDefault();
 
-        var _iterator4 = _createForOfIteratorHelper(menuItem.parentNode.children),
-            _step4;
+        var _iterator5 = _createForOfIteratorHelper(menuItem.parentNode.children),
+            _step5;
 
         try {
-          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-            var link = _step4.value;
+          for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+            var link = _step5.value;
 
             if (menuItem !== link) {
               link.classList.remove('focus');
             }
           }
         } catch (err) {
-          _iterator4.e(err);
+          _iterator5.e(err);
         } finally {
-          _iterator4.f();
+          _iterator5.f();
         }
 
         menuItem.classList.toggle('focus');
@@ -284,21 +309,21 @@ botiga.navigation = {
   checkMenuReverse: function checkMenuReverse() {
     var items = document.querySelectorAll('.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li');
 
-    var _iterator5 = _createForOfIteratorHelper(items),
-        _step5;
+    var _iterator6 = _createForOfIteratorHelper(items),
+        _step6;
 
     try {
-      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-        var element = _step5.value;
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var element = _step6.value;
         element.removeEventListener('mouseover', this.menuReverseEventHandler);
         element.addEventListener('mouseover', this.menuReverseEventHandler);
         element.removeEventListener('touchstart', this.menuReverseEventHandler);
         element.addEventListener('touchstart', this.menuReverseEventHandler);
       }
     } catch (err) {
-      _iterator5.e(err);
+      _iterator6.e(err);
     } finally {
-      _iterator5.f();
+      _iterator6.f();
     }
   },
   menuReverseEventHandler: function menuReverseEventHandler() {
@@ -335,12 +360,12 @@ botiga.desktopOffCanvasToggleNav = {
 
     var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
 
-    var _iterator6 = _createForOfIteratorHelper(submenuToggles),
-        _step6;
+    var _iterator7 = _createForOfIteratorHelper(submenuToggles),
+        _step7;
 
     try {
-      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-        var submenuToggle = _step6.value;
+      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+        var submenuToggle = _step7.value;
         submenuToggle.addEventListener('touchstart', submenuToggleHandler);
         submenuToggle.addEventListener('click', submenuToggleHandler);
         submenuToggle.addEventListener('keydown', function (e) {
@@ -356,9 +381,9 @@ botiga.desktopOffCanvasToggleNav = {
         });
       }
     } catch (err) {
-      _iterator6.e(err);
+      _iterator7.e(err);
     } finally {
-      _iterator6.f();
+      _iterator7.f();
     }
 
     function submenuToggleHandler(e) {
@@ -422,28 +447,28 @@ botiga.headerSearch = {
     }
 
     if (typeof overlay !== 'undefined') {
-      var _iterator7 = _createForOfIteratorHelper(button),
-          _step7;
+      var _iterator8 = _createForOfIteratorHelper(button),
+          _step8;
 
       try {
-        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-          var buttonEl = _step7.value;
+        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+          var buttonEl = _step8.value;
           buttonEl.addEventListener('click', function (e) {
             e.preventDefault(); // Hide other search icons 
 
             if (button.length > 1) {
-              var _iterator8 = _createForOfIteratorHelper(button),
-                  _step8;
+              var _iterator9 = _createForOfIteratorHelper(button),
+                  _step9;
 
               try {
-                for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-                  var btn = _step8.value;
+                for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+                  var btn = _step9.value;
                   btn.classList.toggle('hide');
                 }
               } catch (err) {
-                _iterator8.e(err);
+                _iterator9.e(err);
               } finally {
-                _iterator8.f();
+                _iterator9.f();
               }
             }
 
@@ -465,9 +490,9 @@ botiga.headerSearch = {
           });
         }
       } catch (err) {
-        _iterator7.e(err);
+        _iterator8.e(err);
       } finally {
-        _iterator7.f();
+        _iterator8.f();
       }
 
       overlay.addEventListener('click', function () {
@@ -513,20 +538,20 @@ botiga.headerSearch = {
     return this;
   },
   backButtonsToDefaultState: function backButtonsToDefaultState(button) {
-    var _iterator9 = _createForOfIteratorHelper(button),
-        _step9;
+    var _iterator10 = _createForOfIteratorHelper(button),
+        _step10;
 
     try {
-      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-        var btn = _step9.value;
+      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+        var btn = _step10.value;
         btn.classList.remove('hide');
         btn.querySelector('.icon-cancel').classList.remove('active');
         btn.querySelector('.icon-search').classList.add('active');
       }
     } catch (err) {
-      _iterator9.e(err);
+      _iterator10.e(err);
     } finally {
-      _iterator9.f();
+      _iterator10.f();
     }
   }
 };
@@ -1036,18 +1061,18 @@ botiga.backToTop = {
       return false;
     }
 
-    var _iterator10 = _createForOfIteratorHelper(links),
-        _step10;
+    var _iterator11 = _createForOfIteratorHelper(links),
+        _step11;
 
     try {
-      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-        var link = _step10.value;
+      for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+        var link = _step11.value;
         link.addEventListener('touchend', function () {});
       }
     } catch (err) {
-      _iterator10.e(err);
+      _iterator11.e(err);
     } finally {
-      _iterator10.f();
+      _iterator11.f();
     }
   }
 };
@@ -1124,12 +1149,12 @@ botiga.carousel = {
 
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
 
-    var _iterator11 = _createForOfIteratorHelper(carouselEls),
-        _step11;
+    var _iterator12 = _createForOfIteratorHelper(carouselEls),
+        _step12;
 
     try {
-      for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-        var carouselEl = _step11.value;
+      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+        var carouselEl = _step12.value;
 
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
@@ -1188,9 +1213,9 @@ botiga.carousel = {
         }
       }
     } catch (err) {
-      _iterator11.e(err);
+      _iterator12.e(err);
     } finally {
-      _iterator11.f();
+      _iterator12.f();
     }
   },
   events: function events() {

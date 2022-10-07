@@ -145,6 +145,20 @@ botiga.navigation = {
 			parent.querySelector( '.sub-menu' ).classList.toggle( 'toggled' );
 		}
 
+		// Close the offcanvas when a anchor that contains a hash is clicked
+		var anchors = offCanvas.querySelectorAll( 'a[href*="#"]' );
+		if( anchors.length ) {
+			for( var anchor of anchors ) {
+				anchor.addEventListener( 'click', function(e) {
+					if( e.target.hash && document.querySelector( e.target.hash ) !== null ) {
+						button.classList.remove( 'open' );
+						offCanvas.classList.remove( 'toggled' );
+						document.body.classList.remove( 'mobile-menu-visible' );
+					}
+				});
+			}
+		}
+
 		var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
 		var firstFocusableEl = focusableEls[0];  
 		var lastFocusableEl = focusableEls[focusableEls.length - 1];
