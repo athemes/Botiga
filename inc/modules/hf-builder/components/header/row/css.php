@@ -59,8 +59,10 @@ if( botiga_sticky_header_enabled() ) {
     $sticky_gap = 0;
 
     foreach( $rows as $row ) {
-        if( ! (int) Botiga_Header_Footer_Builder::is_row_empty( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' )->desktop ) ) {
-            $sticky_gap = $sticky_gap + get_theme_mod( "botiga_header_row__${row}_height_desktop", 100 ) + get_theme_mod( "botiga_header_row__${row}_border_bottom", 1 );
+        if( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' ) !== NULL ) {
+            if( ! (int) Botiga_Header_Footer_Builder::is_row_empty( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' )->desktop ) ) {
+                $sticky_gap = $sticky_gap + get_theme_mod( "botiga_header_row__${row}_height_desktop", 100 ) + get_theme_mod( "botiga_header_row__${row}_border_bottom", 1 );
+            }
         }
     }
     

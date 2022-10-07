@@ -21,6 +21,8 @@
 
             this.componentsOrder  = '';
 
+            this.preventEmptyRowValues();
+
             this.customizeNavigation();
 
             this.elementsPopup();
@@ -46,6 +48,30 @@
 
         jsonDecode: function( value ) {
             return JSON.parse(value.replace(/'/g,'"').replace(';',''));
+        },
+
+        // In some rare cases, the row values are empty, so we need to prevent that
+        // case it is empty, we set the default values
+        preventEmptyRowValues: function() {
+            const 
+                areas = [ 'header', 'footer' ],
+                rows  = [ 'above', 'main', 'below' ];
+
+            for( const area of areas ) {
+                for( const row of rows ) {
+                    const rowInputValue = $( '#_customize-input-botiga_'+ area +'_row__' + row + '_' + area + '_row' ).val();
+
+                    if( rowInputValue == '' ) {
+                        $( '#_customize-input-botiga_'+ area +'_row__' + row + '_' + area + '_row' ).val( botiga_hfb.rows.defaults[ row + '_' + area + '_row' ] );
+                    }
+                }
+            }
+
+            // Mobile offcanvas row
+            const mobileOffcanvasRowInputValue = $( '#_customize-input-botiga_header_row__mobile_offcanvas' ).val();        
+            if( mobileOffcanvasRowInputValue == '' ) {
+                $( '#_customize-input-botiga_header_row__mobile_offcanvas' ).val( botiga_hfb.rows.defaults[ 'mobile_offcanvas' ] );
+            }
         },
 
         customizeNavigation: function() {

@@ -270,6 +270,17 @@ class Botiga_Header_Footer_Builder {
         wp_enqueue_style( 'botiga-bhfb', get_template_directory_uri() . '/assets/css/admin/botiga-bhfb.min.css', array(), BOTIGA_VERSION );
         wp_enqueue_script( 'botiga-bhfb', get_template_directory_uri() . '/assets/js/admin/botiga-bhfb.min.js', array(), BOTIGA_VERSION, true );
         wp_localize_script( 'botiga-bhfb', 'botiga_hfb', array(
+            'rows' => array(
+                'defaults' => array(
+                    'above_header_row' => $this::get_row_default_value( 'above_header_row' ),
+                    'main_header_row'  => $this::get_row_default_value( 'main_header_row' ),
+                    'below_header_row' => $this::get_row_default_value( 'below_header_row' ),
+                    'mobile_offcanvas' => $this::get_row_default_value( 'mobile_offcanvas' ),
+                    'above_footer_row' => $this::get_row_default_value( 'above_footer_row' ),
+                    'main_footer_row'  => $this::get_row_default_value( 'main_footer_row' ),
+                    'below_footer_row' => $this::get_row_default_value( 'below_footer_row' )
+                )
+            ),
             'components' => array(
                 'desktop' => apply_filters( 'botiga_header_builder_desktop_components', $this->desktop_components ),
                 'mobile'  => apply_filters( 'botiga_header_builder_mobile_components', $this->mobile_components ),
@@ -781,6 +792,10 @@ class Botiga_Header_Footer_Builder {
                 <div class="bhfb-rows">
                     <?php
                     foreach( $this->header_rows as $row ) { 
+                        if( $this->get_row_data( $row['id'], 'header' ) === NULL ) {
+                            continue;
+                        }
+
                         $attributes = $classes  = $styles = array();
 
                         // Main row class
@@ -863,6 +878,10 @@ class Botiga_Header_Footer_Builder {
                 <div class="bhfb-rows">
                     <?php
                     foreach( $this->footer_rows as $row ) { 
+                        if( $this->get_row_data( $row['id'], 'footer' ) === NULL ) {
+                            continue;
+                        }
+                        
                         $attributes = $classes  = $styles = array();
 
                         // Main row class

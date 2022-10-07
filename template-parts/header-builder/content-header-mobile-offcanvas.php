@@ -8,6 +8,11 @@
  */
 
 $row_data   = $args[ 'row_data' ];
+
+if( $row_data === NULL ) {
+    return;
+}
+
 $elements = $row_data->mobile_offcanvas;
 
 // Get instance from bhfb class
