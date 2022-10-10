@@ -3153,7 +3153,7 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
  */
 .botiga-product-navigation {
   position: relative;
-  z-index: 10;
+  z-index: 100;
   float: right;
   margin-left: 10px;
   margin-bottom: 10px;
@@ -3260,6 +3260,14 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid #212121;
+}
+
+.botiga-product-navigation a.out-from-viewport span {
+  left: -100%;
+}
+
+.botiga-product-navigation a.out-from-viewport span:after {
+  left: 86%;
 }
 
 .botiga-product-navigation h2 {

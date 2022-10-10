@@ -29,6 +29,10 @@ botiga.helpers = {
 
     document.addEventListener('DOMContentLoaded', fn, false);
   },
+  isInViewport: function isInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+  },
   ajax: function ajax(action, nonce, extraParams, successCallback) {
     var ajax = new XMLHttpRequest();
     ajax.open('POST', botiga.ajaxurl, true);
@@ -334,13 +338,8 @@ botiga.navigation = {
       return false;
     }
 
-    if (isInViewport(submenu) == false && !submenu.closest('.menu-item').classList.contains('botiga-mega-menu')) {
+    if (botiga.helpers.isInViewport(submenu) == false && !submenu.closest('.menu-item').classList.contains('botiga-mega-menu')) {
       submenu.classList.add('sub-menu-reverse');
-    }
-
-    function isInViewport(el) {
-      var rect = el.getBoundingClientRect();
-      return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
     }
   }
 };
