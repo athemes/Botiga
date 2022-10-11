@@ -1085,23 +1085,25 @@ botiga.qtyButton = {
     this.wooEvents();
   },
   events: function events(type) {
-    var qty = document.querySelectorAll('form.cart .quantity, .botiga-quick-view-popup .quantity, .woocommerce-cart-form__cart-item.cart_item .quantity, .botiga-single-sticky-add-to-cart-wrapper-content .quantity');
-
-    if (type === 'quick-view') {
-      qty = document.querySelectorAll('.botiga-quick-view-popup .quantity');
-    }
+    var qty = document.querySelectorAll('.botiga-quantity-minus');
 
     if (qty.length < 1) {
       return false;
     }
 
     for (var i = 0; i < qty.length; i++) {
-      if (qty[i].classList.contains('hidden')) {
+      var wrapper = qty[i].closest('.quantity');
+
+      if (wrapper.dataset.qtyInitialized) {
+        continue;
+      }
+
+      if (wrapper.classList.contains('hidden')) {
         return false;
       }
 
-      var plus = qty[i].querySelector('.botiga-quantity-plus'),
-          minus = qty[i].querySelector('.botiga-quantity-minus');
+      var plus = wrapper.querySelector('.botiga-quantity-plus'),
+          minus = wrapper.querySelector('.botiga-quantity-minus');
       plus.classList.add('show');
       minus.classList.add('show');
       plus.addEventListener('click', function (e) {
@@ -1120,6 +1122,7 @@ botiga.qtyButton = {
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
       });
+      wrapper.dataset.qtyInitialized = true;
     }
   },
   wooEvents: function wooEvents() {

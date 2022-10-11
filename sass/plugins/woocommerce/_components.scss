@@ -347,10 +347,13 @@
 
 	form.cart {
 		display: flex;
+		.quantity {
+			max-width: 30%;
+		}
 	}
 
 	.quantity {
-		width: 30%;
+		width: 100%;
 		margin-bottom: 0;
 		margin-right: 20px;
 
