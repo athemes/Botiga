@@ -24,6 +24,52 @@ $wp_customize->add_section(
     )
 );
 
+$wp_customize->add_setting(
+    'botiga_section_hb_component__html_tabs',
+    array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_attr'
+    )
+);
+$wp_customize->add_control(
+    new Botiga_Tab_Control (
+        $wp_customize,
+        'botiga_section_hb_component__html_tabs',
+        array(
+            'label' 				=> '',
+            'section'       		=> 'botiga_section_hb_component__html',
+            'controls_general'		=> json_encode(
+                array_merge(
+                    array(
+                        '#customize-control-botiga_section_hb_component__html_title',
+                        '#customize-control-botiga_section_hb_component__html_text_align'
+                    ),
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                )
+            ),
+            'controls_design'		=> json_encode(
+                array_merge(
+                    array(
+                        '#customize-control-botiga_section_hb_component__html_text_color',
+                        '#customize-control-botiga_section_hb_component__html_link_color',
+                        '#customize-control-botiga_section_hb_component__html_link_color_hover',
+
+						// Sticky State
+						'#customize-control-botiga_section_hb_component__html_sticky_divider1',
+                        '#customize-control-botiga_section_hb_component__html_sticky_title',
+                        '#customize-control-botiga_section_hb_component__html_sticky_text_color',
+                        '#customize-control-botiga_section_hb_component__html_sticky_link_color',
+                        '#customize-control-botiga_section_hb_component__html_sticky_link_color_hover'
+
+                    ),
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
+                )
+            ),
+            'priority' 				=> 20
+        )
+    )
+);
+
 $wp_customize->add_setting( 
     'botiga_section_hb_component__html_title',
     array(
@@ -41,6 +87,220 @@ $wp_customize->add_control(
             'priority'	 	  => 29
         )
     )
+);
+
+// Text Alignment.
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__html_text_align_desktop',
+    array(
+        'default' 			=> 'left',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__html_text_align_tablet',
+    array(
+        'default' 			=> 'left',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__html_text_align_mobile',
+    array(
+        'default' 			=> 'left',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Radio_Buttons( 
+        $wp_customize, 
+        'botiga_section_hb_component__html_text_align',
+        array(
+            'label'         => esc_html__( 'Text Alignment', 'botiga' ),
+            'section'       => 'botiga_section_hb_component__html',
+            'is_responsive' => true,
+            'settings' => array(
+                'desktop' 		=> 'botiga_section_hb_component__html_text_align_desktop',
+                'tablet' 		=> 'botiga_section_hb_component__html_text_align_tablet',
+                'mobile' 		=> 'botiga_section_hb_component__html_text_align_mobile'
+            ),
+            'choices'       => array(
+                'left' 		=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h10v1H0zM0 4h16v1H0zM0 8h10v1H0zM0 12h16v1H0z"/></svg>',
+                'center' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 0h10v1H3zM0 4h16v1H0zM3 8h10v1H3zM0 12h16v1H0z"/></svg>',
+                'right' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 0h10v1H6zM0 4h16v1H0zM6 8h10v1H6zM0 12h16v1H0z"/></svg>'
+            ),
+            'priority'      => 30
+        )
+    ) 
+);
+
+// Text Color.
+$wp_customize->add_setting(
+	'botiga_section_hb_component__html_text_color',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_component__html_text_color',
+		array(
+			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_component__html',
+            'priority'          => 40
+		)
+	)
+);
+
+// Link Color.
+$wp_customize->add_setting(
+	'botiga_section_hb_component__html_link_color',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_component__html_link_color',
+		array(
+			'label'         	=> esc_html__( 'Link Color', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_component__html',
+            'priority'          => 41
+		)
+	)
+);
+
+// Link Color Hover.
+$wp_customize->add_setting(
+	'botiga_section_hb_component__html_link_color_hover',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_component__html_link_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Link Color Hover', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_component__html',
+            'priority'          => 42
+		)
+	)
+);
+
+// Sticky Header - Divider
+$wp_customize->add_setting( 'botiga_section_hb_component__html_sticky_divider1',
+    array(
+        'sanitize_callback' => 'esc_attr'
+    )
+);
+$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'botiga_section_hb_component__html_sticky_divider1',
+        array(
+            'section' 		  => 'botiga_section_hb_component__html',
+            'active_callback' => 'botiga_sticky_header_enabled',
+            'priority'        => 43
+        )
+    )
+);
+
+// Sticky Header - Title
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__html_sticky_title',
+    array(
+        'default' 			=> '',
+        'sanitize_callback' => 'esc_attr'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Text_Control( 
+        $wp_customize, 
+        'botiga_section_hb_component__html_sticky_title',
+        array(
+            'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
+            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
+            'section' 		  => 'botiga_section_hb_component__html',
+            'active_callback' => 'botiga_sticky_header_enabled',
+            'priority'	 	  => 44
+        )
+    )
+);
+
+// Sticky - Text Color.
+$wp_customize->add_setting(
+	'botiga_section_hb_component__html_sticky_text_color',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_component__html_sticky_text_color',
+		array(
+			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_component__html',
+            'active_callback'   => 'botiga_sticky_header_enabled',
+            'priority'          => 45
+		)
+	)
+);
+
+// Sticky - Link Color.
+$wp_customize->add_setting(
+	'botiga_section_hb_component__html_sticky_link_color',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_component__html_sticky_link_color',
+		array(
+			'label'         	=> esc_html__( 'Link Color', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_component__html',
+            'active_callback'   => 'botiga_sticky_header_enabled',
+            'priority'          => 46
+		)
+	)
+);
+
+// Sticky - Link Color Hover.
+$wp_customize->add_setting(
+	'botiga_section_hb_component__html_sticky_link_color_hover',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_component__html_sticky_link_color_hover',
+		array(
+			'label'         	=> esc_html__( 'Link Color Hover', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_component__html',
+            'active_callback'   => 'botiga_sticky_header_enabled',
+            'priority'          => 47
+		)
+	)
 );
 
 // Move existing options.

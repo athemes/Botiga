@@ -1368,6 +1368,7 @@ class Botiga_Header_Footer_Builder {
         require get_template_directory() . '/inc/modules/hf-builder/components/header/contact-info/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/header/mobile-hamburger/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/header/mobile-offcanvas-menu/css.php';
+        require get_template_directory() . '/inc/modules/hf-builder/components/header/html/css.php';
 
         // Footer.
         // Structure Components.
@@ -1382,6 +1383,7 @@ class Botiga_Header_Footer_Builder {
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/widget-2/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/widget-3/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/widget-4/css.php';
+        require get_template_directory() . '/inc/modules/hf-builder/components/footer/html/css.php';
         // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
         return apply_filters( 'botiga_hf_builder_custom_css', $css );
