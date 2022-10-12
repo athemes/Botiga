@@ -1381,6 +1381,7 @@ botiga.misc = {
   init: function init() {
     this.wcExpressPayButtons();
     this.checkout();
+    this.customizer();
   },
   wcExpressPayButtons: function wcExpressPayButtons() {
     var is_checkout_page = document.querySelector('body.woocommerce-checkout'),
@@ -1422,6 +1423,19 @@ botiga.misc = {
         }
       });
     }
+  },
+  customizer: function customizer() {
+    if (!window.parent.document.body.classList.contains('wp-customizer')) {
+      return false;
+    }
+
+    window.onload = function () {
+      var cart_count = document.querySelectorAll('.cart-count');
+
+      if (cart_count.length) {
+        jQuery(document.body).trigger('wc_fragment_refresh');
+      }
+    };
   }
 };
 botiga.helpers.botigaDomReady(function () {
@@ -1440,11 +1454,3 @@ botiga.helpers.botigaDomReady(function () {
   botiga.collapse.init();
   botiga.misc.init();
 });
-
-window.onload = function () {
-  var cart_count = document.querySelectorAll('.cart-count');
-
-  if (cart_count.length) {
-    jQuery(document.body).trigger('wc_fragment_refresh');
-  }
-};
