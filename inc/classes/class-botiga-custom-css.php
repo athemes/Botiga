@@ -902,7 +902,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			// Checkout
 			$checkout_sticky_totals_box = get_theme_mod( 'checkout_sticky_totals_box', 0 );
-			if( $checkout_sticky_totals_box ) {
+			$shop_checkout_layout = get_theme_mod( 'shop_checkout_layout', 'layout1' );
+			if( $checkout_sticky_totals_box && $shop_checkout_layout === 'layout1' ) {
 				$css .= '.woocommerce-checkout .woocommerce-checkout-review-order { position: sticky; top: 45px; } .admin-bar .woocommerce-checkout .woocommerce-checkout-review-order { top: 77px; }';
 			}
 
