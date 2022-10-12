@@ -101,12 +101,16 @@ ul.products,
 ul.wc-block-grid__products {
 	li.product,
 	li.wc-block-grid__product {
-		&:hover {
-			.botiga-quick-view-layout2 {
-				opacity: 1;
-				visibility: visible;
-				transform: translate3d(-50%, -50%, 0);
+		.botiga-quick-view-button-layout2{
+			&:hover{
+				.botiga-quick-view-layout2 {
+					opacity: 1;
+					visibility: visible;
+					transform: translate3d(-50%, -50%, 0);
+				}
 			}
+		}
+		&:hover {
 			.botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 {
 				.button:not(.botiga-quick-view) {
 					opacity: 1;

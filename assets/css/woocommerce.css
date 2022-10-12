@@ -446,10 +446,10 @@ ul.products li.product img {
   transition: opacity 0.3s;
 }
 
-ul.wc-block-grid__products li.wc-block-grid__product:hover img,
-ul.wc-block-grid__products li.product:hover img,
-ul.products li.wc-block-grid__product:hover img,
-ul.products li.product:hover img {
+ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap:hover img,
+ul.wc-block-grid__products li.product .loop-image-wrap:hover img,
+ul.products li.wc-block-grid__product .loop-image-wrap:hover img,
+ul.products li.product .loop-image-wrap:hover img {
   opacity: 0.7;
 }
 
@@ -1434,10 +1434,10 @@ body.sidebar-slide-opened:before {
   z-index: 3;
 }
 
-ul.products li.product:hover .botiga-quick-view-layout2,
-ul.products li.wc-block-grid__product:hover .botiga-quick-view-layout2,
-ul.wc-block-grid__products li.product:hover .botiga-quick-view-layout2,
-ul.wc-block-grid__products li.wc-block-grid__product:hover .botiga-quick-view-layout2 {
+ul.products li.product .botiga-quick-view-button-layout2:hover .botiga-quick-view-layout2,
+ul.products li.wc-block-grid__product .botiga-quick-view-button-layout2:hover .botiga-quick-view-layout2,
+ul.wc-block-grid__products li.product .botiga-quick-view-button-layout2:hover .botiga-quick-view-layout2,
+ul.wc-block-grid__products li.wc-block-grid__product .botiga-quick-view-button-layout2:hover .botiga-quick-view-layout2 {
   opacity: 1;
   visibility: visible;
   -webkit-transform: translate3d(-50%, -50%, 0);
