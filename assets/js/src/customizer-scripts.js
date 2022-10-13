@@ -725,7 +725,7 @@ wp.customize('color_palettes', function (control) {
 		var palette = control.get();
 
 		//Color 1 Button color, Link color
-		let elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color'];
+		let elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color','ql_item_bg_hover'];
 
 		for (const element of elements1) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -735,7 +735,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
-		let elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover'];
+		let elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover','ql_item_color_hover'];
 
 		for (const element of elements2) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -745,7 +745,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 3 Heading (1-6), Small text, Nav links, Site title, 
-		let elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color'];
+		let elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color','bhfb_search_icon_color','bhfb_woo_icons_color','bhfb_contact_info_icon_color','ql_item_color'];
 
 		for (const element of elements3) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -765,7 +765,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 5 Input, tag borders
-		let elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border'];
+		let elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border','botiga_header_row__above_header_row_border_bottom_color','botiga_header_row__main_header_row_border_bottom_color','botiga_header_row__below_header_row_border_bottom_color','botiga_footer_row__above_footer_row_border_top_color','botiga_footer_row__main_footer_row_border_top_color','botiga_footer_row__below_footer_row_border_top_color','ql_item_border_color'];
 
 		for (const element of elements5) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -775,7 +775,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 6 Footer background, Subtle backgrounds
-		let elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background'];
+		let elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background', 'botiga_footer_row__above_footer_row_background_color', 'botiga_footer_row__main_footer_row_background_color', 'botiga_footer_row__below_footer_row_background_color','ql_background_color'];
 
 		for (const element of elements6) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -795,7 +795,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 8 header background
-		let elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover'];
+		let elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color','login_register_submenu_background'];
 
 		for (const element of elements8) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -827,7 +827,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color1', function (control) {
 		control.bind(function (value) {
 
-			let elements1 = ['scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color'];
+			let elements1 = ['scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color','ql_item_bg_hover'];
 
 			for (const element of elements1) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -840,7 +840,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color2', function (control) {
 		control.bind(function (value) {
 
-			let elements2 = ['footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover'];
+			let elements2 = ['footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover','ql_item_color_hover'];
 
 			for (const element of elements2) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -853,7 +853,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color3', function (control) {
 		control.bind(function (value) {
 
-			let elements3 = ['single_post_title_color', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color'];
+			let elements3 = ['single_post_title_color', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color', 'bhfb_search_icon_color','bhfb_woo_icons_color','bhfb_contact_info_icon_color','ql_item_color'];
 
 			for (const element of elements3) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -881,7 +881,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color5', function (control) {
 		control.bind(function (value) {
 
-			let elements5 = ['color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border'];
+			let elements5 = ['color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border', 'botiga_header_row__above_header_row_border_bottom_color','botiga_header_row__main_header_row_border_bottom_color','botiga_header_row__below_header_row_border_bottom_color','botiga_footer_row__above_footer_row_border_top_color','botiga_footer_row__main_footer_row_border_top_color','botiga_footer_row__below_footer_row_border_top_color','ql_item_border_color'];
 
 			for (const element of elements5) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -895,7 +895,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color6', function (control) {
 		control.bind(function (value) {
 
-			let elements6 = ['footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background'];
+			let elements6 = ['footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background', 'botiga_footer_row__above_footer_row_background_color', 'botiga_footer_row__main_footer_row_background_color', 'botiga_footer_row__below_footer_row_background_color', 'ql_background_color'];
 
 			for (const element of elements6) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -923,7 +923,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color8', function (control) {
 		control.bind(function (value) {
 
-			let elements8 = ['main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover'];
+			let elements8 = ['main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color','login_register_submenu_background'];
 
 			for (const element of elements8) {
 				if (typeof wp.customize(element) !== 'undefined') {

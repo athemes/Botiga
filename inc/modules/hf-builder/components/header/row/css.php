@@ -39,7 +39,7 @@ foreach( $rows as $row ) {
         )
     );
     $css .= ".bhfb-$row { border-bottom-style: solid; }";
-    $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", '#EAEAEA', ".bhfb-$row" );
+    $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", '#EAEAEA', ".bhfb-$row", 0.1 );
 
     if( botiga_sticky_header_enabled() ) {
         

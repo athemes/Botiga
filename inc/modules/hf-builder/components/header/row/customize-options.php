@@ -407,6 +407,7 @@ foreach( $this->header_rows as $row ) {
             array(
                 'label'         	=> esc_html__( 'Background Color', 'botiga' ),
                 'section'       	=> $row['section'],
+                'active_callback'   => 'botiga_sticky_header_enabled',
                 'priority'			=> 39
             )
         )
@@ -428,6 +429,7 @@ foreach( $this->header_rows as $row ) {
             array(
                 'label'         	=> esc_html__( 'Border Bottom Color', 'botiga' ),
                 'section'       	=> $row['section'],
+                'active_callback'   => 'botiga_sticky_header_enabled',
                 'priority'			=> 40
             )
         )
