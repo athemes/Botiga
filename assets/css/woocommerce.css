@@ -1238,6 +1238,22 @@ ul.products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3:
   visibility: visible;
 }
 
+ul.products.columns-4 li.product .button-with-quantity.button-layout2 .quantity, ul.products.columns-5 li.product .button-with-quantity.button-layout2 .quantity, ul.products.columns-6 li.product .button-with-quantity.button-layout2 .quantity {
+  max-width: 100%;
+  height: 45px;
+}
+
+ul.products.columns-4 li.product .button-with-quantity.button-layout2 .button, ul.products.columns-5 li.product .button-with-quantity.button-layout2 .button, ul.products.columns-6 li.product .button-with-quantity.button-layout2 .button {
+  width: 100%;
+  text-align: center;
+}
+
+ul.products.columns-4 li.product .button-layout2 .button, ul.products.columns-5 li.product .button-layout2 .button, ul.products.columns-6 li.product .button-layout2 .button {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
 /**
  * Sidebar
  */

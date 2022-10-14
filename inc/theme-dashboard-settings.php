@@ -24,6 +24,11 @@ function botiga_free_vs_pro_html() {
 		</thead>
 		<tbody>
 			<tr>
+				<td><?php esc_html_e( 'Site Layouts', 'botiga' ); ?></td>
+				<td>1</td>
+				<td>4</td>
+			</tr>
+			<tr>
 				<td><?php esc_html_e( 'Access to all Google Fonts', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
@@ -80,6 +85,16 @@ function botiga_free_vs_pro_html() {
 			</tr>
 			<tr>
 				<td><?php esc_html_e( 'Multi Step Checkout', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Multi Step Checkout Layout Like Shopify', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'One Step Checkout Layout', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
@@ -145,6 +160,36 @@ function botiga_free_vs_pro_html() {
 			</tr>
 			<tr>
 				<td><?php esc_html_e( 'Image Gallery to Product Variations', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Display Conditions', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Custom Sidebars (with display conditions)', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'WooCommerce Linked Variations', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Shop Catalog Grid & List View', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Breadcrumbs Module', 'botiga' ); ?></td>
+				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
+				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
+			</tr>
+			<tr>
+				<td><?php esc_html_e( 'Quick Links Module', 'botiga' ); ?></td>
 				<td><span class="thd-badge thd-badge-warning"><i class="dashicons dashicons-no-alt"></i></span></td>
 				<td><span class="thd-badge thd-badge-success"><i class="dashicons dashicons-saved"></i></span></td>
 			</tr>
@@ -334,6 +379,12 @@ function botiga_dashboard_settings( $settings ) {
 			'name'          => esc_html__( 'Breadcrumbs', 'botiga' ),
 			'type'          => 'pro',
 			'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_breadcrumbs' ),
+		);
+
+		$settings['tabs'][0]['data'][] = array(
+			'name'          => esc_html__( 'Quick Links', 'botiga' ),
+			'type'          => 'pro',
+			'customize_uri' => admin_url( '/customize.php?autofocus[section]=botiga_quicklinks' ),
 		);
 	}
 
