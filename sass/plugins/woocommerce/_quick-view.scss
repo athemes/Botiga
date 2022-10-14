@@ -104,21 +104,21 @@ ul.wc-block-grid__products {
 	
 		.botiga-add-to-cart-button-layout1.botiga-quick-view-button-layout2:hover,
 		.botiga-add-to-cart-button-layout2.botiga-quick-view-button-layout2:hover {
-			.botiga-quick-view-layout2 {
+			.botiga-quick-view {
 				opacity: 1;
 				visibility: visible;
 				transform: translate3d(-50%, -50%, 0);
 			}
 		}
 		.botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover {
-			.button:not(.botiga-quick-view) {
+			.botiga-quick-view {
 				opacity: 1;
 				visibility: visible;
-				transform: translate3d(-50%, 0%, 0);
+				transform: translate3d(-50%, -75%, 0);
 			}
 		}
 		.botiga-quick-view-button-layout3:hover{
-			.botiga-quick-view-layout3 {
+			.botiga-quick-view {
 				transform: translate3d(0, 0, 0);
 			}
 		}
