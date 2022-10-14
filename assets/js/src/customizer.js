@@ -8,6 +8,9 @@
  */
 
 ( function( $ ) {
+
+	//Responsive Devices Variable
+	var $devices = { "desktop": "(min-width: 992px)", "tablet": "(min-width: 576px) and (max-width: 991px)", "mobile": "(max-width: 575px)" };
 	
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
@@ -300,17 +303,29 @@
 			$( '.back-to-top.display' ).css( 'border-radius', to + 'px' );
 		} );
 	} );
-	wp.customize( 'scrolltop_side_offset', function( value ) {
-		value.bind( function( to ) {
-			$( '.back-to-top.position-right' ).css( 'right', to + 'px' );
-			$( '.back-to-top.position-left' ).css( 'left', to + 'px' );
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'scrolltop_side_offset' + '_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-scrolltop_side_offset_' + device ).remove();
+		
+				var output = '@media ' + mediaSize + ' { .back-to-top.position-right { right:' + to + 'px; } }';
+				output += '@media ' + mediaSize + ' { .back-to-top.position-left { left:' + to + 'px; } }';
+				
+				$( 'head' ).append( '<style id="botiga-customizer-styles-scrolltop_side_offset_' + device + '">' + output + '</style>' );
+			} );
 		} );
-	} );
-	wp.customize( 'scrolltop_bottom_offset', function( value ) {
-		value.bind( function( to ) {
-			$( '.back-to-top' ).css( 'bottom', to + 'px' );
+
+		wp.customize( 'scrolltop_bottom_offset' + '_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-scrolltop_bottom_offset_' + device ).remove();
+		
+				var output = '@media ' + mediaSize + ' { .back-to-top.display { bottom:' + to + 'px; } }';
+				
+				$( 'head' ).append( '<style id="botiga-customizer-styles-scrolltop_bottom_offset_' + device + '">' + output + '</style>' );
+			} );
 		} );
-	} );
+	});
 	wp.customize( 'scrolltop_icon_size', function( value ) {
 		value.bind( function( to ) {
 			$( '.back-to-top .ws-svg-icon' ).css( 'width', to + 'px' );
@@ -653,18 +668,25 @@
 	} );
 
 	// Floating Mini Cart Icon Corner Offset
-	wp.customize( 'side_mini_cart_floating_icon_corner_offset', function( value ) {
-		value.bind( function( to ) {
-			$( '.botiga-floating-mini-cart-icon').css( 'bottom', to + 'px' );
-			if( typeof wp.customize( 'side_mini_cart_floating_icon_position' ) !== 'undefined' ) {
-				if( wp.customize( 'side_mini_cart_floating_icon_position' ).get() === 'left' ) {
-					$( '.botiga-floating-mini-cart-icon').css( 'left', to + 'px' );
-				} else {
-					$( '.botiga-floating-mini-cart-icon').css( 'right', to + 'px' );
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'side_mini_cart_floating_icon_corner_offset' + '_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-side_mini_cart_floating_icon_corner_offset_' + device ).remove();
+		
+				var output = '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { bottom:' + to + 'px; } }';
+				if( typeof wp.customize( 'side_mini_cart_floating_icon_position' ) !== 'undefined' ) {
+					if( wp.customize( 'side_mini_cart_floating_icon_position' ).get() === 'left' ) {
+						$( '.botiga-floating-mini-cart-icon').css( 'left', to + 'px' );
+						output += '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { left:' + to + 'px; } }';
+					} else {
+						output += '@media ' + mediaSize + ' { .botiga-floating-mini-cart-icon { right:' + to + 'px; } }';
+					}
 				}
-			}
+	
+				$( 'head' ).append( '<style id="botiga-customizer-styles-side_mini_cart_floating_icon_corner_offset_' + device + '">' + output + '</style>' );
+			} );
 		} );
-	} );
+	});
 
 	// Floating Mini Cart Icon Border Radius
 	wp.customize( 'side_mini_cart_floating_icon_border_radius', function( value ) {
@@ -683,9 +705,6 @@
 			}
 		} );
 	} );
-
-	//Responsive
-	var $devices 	= { "desktop": "(min-width: 992px)", "tablet": "(min-width: 576px) and (max-width: 991px)", "mobile": "(max-width: 575px)" };
 
 	var $topBottPad = { "breadcrumbs_padding":".botiga-breadcrumb-trail","footer_widgets_padding":".footer-widgets-grid", };
 	$.each( $topBottPad, function( option, selector ) {
@@ -982,10 +1001,30 @@
 		} );
 	} );
 
-	//Breadcrumbs
+	// Breadcrumbs
 	wp.customize( 'breadcrumbs_align', function( value ) {
 		value.bind( function( to ) {
 			$( '.botiga-breadcrumb-trail' ).css( 'text-align', to );
+		} );
+	} );
+
+	// Quick Links
+	wp.customize( 'ql_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-quick-links .quick-links-inner' ).css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+
+	// Quick Links
+	wp.customize( 'ql_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-ql_border_radius' ).remove();
+			
+			var outputBottom = '.botiga-quick-links.pos-bottom .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;} .botiga-quick-links.pos-bottom .quick-link:last-of-type {border-top-right-radius:' + to + 'px;border-bottom-right-radius:' + to + 'px;}';
+			var outputLeftRight = '.botiga-quick-links.pos-left .quick-link:first-of-type, .botiga-quick-links.pos-right .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-top-right-radius:' + to + 'px;} .botiga-quick-links.pos-left .quick-link:last-of-type, .botiga-quick-links.pos-right .quick-link:last-of-type {border-bottom-right-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;}';
+			
+			$( 'head' ).append( '<style id="botiga-customizer-styles-ql_border_radius">' + outputBottom + outputLeftRight + '</style>' )			
 		} );
 	} );
 

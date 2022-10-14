@@ -861,8 +861,11 @@ div.editor-styles-wrapper .woocommerce-cart-form .quantity .qty {
     display: -ms-flexbox;
     display: flex;
   }
+  div.editor-styles-wrapper form.cart .quantity {
+    max-width: 30%;
+  }
   div.editor-styles-wrapper .quantity {
-    width: 30%;
+    width: 100%;
     margin-bottom: 0;
     margin-right: 20px;
   }

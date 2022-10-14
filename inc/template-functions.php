@@ -944,21 +944,19 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
  * Get Registered Sidebars
  */
 function botiga_get_registered_sidebars() {
+	global $wp_registered_sidebars;
 
-  global $wp_registered_sidebars;
+	$sidebars = array(
+		'' => esc_html__( 'Default', 'botiga' ),
+	);
 
-  $sidebars = array(
-  	'' => esc_html__( 'Default', 'botiga' ),
-  );
+	if ( ! empty( $wp_registered_sidebars ) ) {
+		foreach ( $wp_registered_sidebars as $sidebar ) {
+			$sidebars[ $sidebar['id'] ] = $sidebar['name'];
+		}
+	}
 
-  if ( ! empty( $wp_registered_sidebars ) ) {
-    foreach ( $wp_registered_sidebars as $sidebar ) {
-      $sidebars[ $sidebar['id'] ] = $sidebar['name'];
-    }
-  }
-
-  return $sidebars;
-
+	return $sidebars;
 }
 
 /**
@@ -983,7 +981,6 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 			$object_id = ( ! empty( $rule['id'] ) ) ? intval( $rule['id'] ) : 0;
 			$condition = ( ! empty( $rule['condition'] ) ) ? $rule['condition'] : '';
 			$boolean   = ( ! empty( $rule['type'] ) && $rule['type'] === 'include' ) ? true : false;
-			$result    = ( $boolean ) ? false : true;
 
 			// Entrie Site
 			if ( $condition === 'all' ) {

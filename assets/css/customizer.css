@@ -1040,7 +1040,7 @@ li.customize-control-botiga-alpha-color .customize-control-title {
   font-size: 16px;
 }
 
-.customize-control-botiga-tab-control + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title) {
+.customize-control-botiga-tab-control + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title):not(#customize-control-botiga_section_hb_component__html_title):not(#customize-control-botiga_section_hb_component__html2_title):not(#customize-control-botiga_section_hb_component__shortcode_title):not(#customize-control-botiga_section_fb_component__html_title):not(#customize-control-botiga_section_fb_component__html2_title):not(#customize-control-botiga_section_fb_component__shortcode_title) {
   margin: 20px 0 30px !important;
 }
 
@@ -1236,44 +1236,6 @@ html[dir="rtl"] .botiga-accordion-title:after {
  */
 #customize-control-side_mini_cart_floating_icon_info {
   margin-top: -25px;
-}
-
-/*
- * Custom Snippets
- */
-#customize-control-code_snippet_header,
-#customize-control-code_snippet_body,
-#customize-control-code_snippet_footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-#customize-control-code_snippet_header .customize-control-description,
-#customize-control-code_snippet_body .customize-control-description,
-#customize-control-code_snippet_footer .customize-control-description {
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-#customize-control-code_snippet_header code,
-#customize-control-code_snippet_body code,
-#customize-control-code_snippet_footer code {
-  font-size: 0.85em;
-  padding: 2px 4px;
-}
-
-#customize-control-code_snippet_header .CodeMirror,
-#customize-control-code_snippet_body .CodeMirror,
-#customize-control-code_snippet_footer .CodeMirror {
-  min-height: 275px;
 }
 
 /*

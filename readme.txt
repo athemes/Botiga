@@ -29,6 +29,16 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 1.2.1 =
+Added - Display Conditions
+Added - Header Builder: New 1:4:1 ratio 'Column Layout'.
+Added - Color Palettes: Backward compatibility to the old class names pattern.
+Added - New customizer controls for header menu font-size, font-weight, font-family, etc.
+Added - New custom theme hooks inside the quick view popup.
+Changed - JS: Removed 'botiga.helpers.botigaDomReady' from scripts for better compatibility with caching plugins.
+Fixed - Botiga AJAX Search Includes Products that are in draft.
+Fixed - Header Builder: Mobile bug when 'sticky header' and 'on scroll to top' effect is active.
+
 = 1.2.0 =
 Fixed - PHP fatal error with some pro users after update.
 

@@ -189,19 +189,30 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'scrolltop_
 	)
 ) );
 
-$wp_customize->add_setting( 'scrolltop_side_offset', array(
+$wp_customize->add_setting( 'scrolltop_side_offset_desktop', array(
+	'default'   		=> 30,
+	'transport'			=> 'postMessage',
+	'sanitize_callback' => 'absint',
+) );
+$wp_customize->add_setting( 'scrolltop_side_offset_tablet', array(
+	'default'   		=> 30,
+	'transport'			=> 'postMessage',
+	'sanitize_callback' => 'absint',
+) );
+$wp_customize->add_setting( 'scrolltop_side_offset_mobile', array(
 	'default'   		=> 30,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
 ) );			
-
 $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'scrolltop_side_offset',
 	array(
 		'label' 		=> esc_html__( 'Side offset', 'botiga' ),
 		'section' 		=> 'botiga_section_scrolltotop',
-		'is_responsive'	=> 0,
+		'is_responsive'	=> 1,
 		'settings' 		=> array (
-			'size_desktop' 		=> 'scrolltop_side_offset',
+			'size_desktop' 		=> 'scrolltop_side_offset_desktop',
+			'size_tablet' 		=> 'scrolltop_side_offset_tablet',
+			'size_mobile' 		=> 'scrolltop_side_offset_mobile'
 		),
 		'input_attrs' => array (
 			'min'	=> 0,
@@ -211,7 +222,17 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'scroll
 	)
 ) );
 
-$wp_customize->add_setting( 'scrolltop_bottom_offset', array(
+$wp_customize->add_setting( 'scrolltop_bottom_offset_desktop', array(
+	'default'   		=> 30,
+	'transport'			=> 'postMessage',
+	'sanitize_callback' => 'absint',
+) );	
+$wp_customize->add_setting( 'scrolltop_bottom_offset_tablet', array(
+	'default'   		=> 30,
+	'transport'			=> 'postMessage',
+	'sanitize_callback' => 'absint',
+) );	
+$wp_customize->add_setting( 'scrolltop_bottom_offset_mobile', array(
 	'default'   		=> 30,
 	'transport'			=> 'postMessage',
 	'sanitize_callback' => 'absint',
@@ -221,9 +242,11 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'scroll
 	array(
 		'label' 		=> esc_html__( 'Bottom offset', 'botiga' ),
 		'section' 		=> 'botiga_section_scrolltotop',
-		'is_responsive'	=> 0,
+		'is_responsive'	=> 1,
 		'settings' 		=> array (
-			'size_desktop' 		=> 'scrolltop_bottom_offset',
+			'size_desktop' 		=> 'scrolltop_bottom_offset_desktop',
+			'size_tablet' 		=> 'scrolltop_bottom_offset_tablet',
+			'size_mobile' 		=> 'scrolltop_bottom_offset_mobile'
 		),
 		'input_attrs' => array (
 			'min'	=> 0,

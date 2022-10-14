@@ -2845,6 +2845,14 @@ body.mobile-menu-visible {
           box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
 }
 
+.botiga-site-layout-padded #masthead.is-sticky, .botiga-site-layout-padded #masthead.sticky-always {
+  top: var(--botiga_padded_spacing, 25px);
+}
+
+.botiga-site-layout-padded.admin-bar #masthead.is-sticky, .botiga-site-layout-padded.admin-bar #masthead.sticky-always {
+  top: calc( 32px + var(--botiga_padded_spacing, 25px));
+}
+
 .bottom-header-row {
   background-color: #fff;
   z-index: 998;
@@ -3192,6 +3200,9 @@ body.mobile-menu-visible {
   }
   .header-transparent.sticky-header-active.admin-bar .header-transparent-wrapper .sticky-header {
     top: 32px;
+  }
+  .header-transparent.sticky-header-active:not(.has-bhfb-builder) .header-transparent-wrapper .sticky-header {
+    max-width: inherit;
   }
 }
 
@@ -4726,7 +4737,7 @@ input.wc-block-components-price-slider__range-input {
   visibility: hidden;
   -webkit-transition: ease all 300ms;
   transition: ease all 300ms;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .botiga-popup.show {
