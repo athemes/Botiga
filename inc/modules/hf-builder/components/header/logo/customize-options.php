@@ -12,12 +12,12 @@
 $opts_to_move = array(
     'general' => array(
         'custom_logo',
+        'sitcky_header_logo',
         'blogname',
         'blogdescription',
         'site_logo_size',
         'display_header_text',
-        'site_icon',
-        'sitcky_header_logo'
+        'site_icon'
     ),
     'style'   => array(
         'site_title_color',
@@ -220,6 +220,10 @@ foreach( $opts_to_move as $control_tabs ) {
         
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__logo';
         $wp_customize->get_control( $option_name )->priority = $priority;
+
+        if( $option_name === 'site_icon' ) {
+            $wp_customize->get_control( $option_name )->priority = 60;
+        }
         
         $priority++;
     }

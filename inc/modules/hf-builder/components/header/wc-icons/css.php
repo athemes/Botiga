@@ -9,11 +9,11 @@
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
 // Icon Color
-$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_color', '', '.bhfb-component-woo_icons .header-item svg' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_color', '', '.bhfb-component-woo_icons .header-item svg:not(.stroke-based)' );
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_color', '', '.bhfb-component-woo_icons .header-item .botiga-image.is-svg' );
 
 // Icon Color Hover
-$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_color_hover', '', '.bhfb-component-woo_icons .header-item:hover svg' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_color_hover', '', '.bhfb-component-woo_icons .header-item:hover svg:not(.stroke-based)' );
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_color_hover', '', '.bhfb-component-woo_icons .header-item:hover .botiga-image.is-svg' );
 
 // Mini Cart Count Background Color
@@ -25,11 +25,11 @@ $css .= Botiga_Custom_CSS::get_color_css( 'main_header_minicart_count_text_color
 
 if( botiga_sticky_header_enabled() ) {
     // Sticky Header - Icon Color
-    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_sticky_color', '', '.sticky-header-active .bhfb-component-woo_icons .header-item svg' );
+    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_sticky_color', '', '.sticky-header-active .bhfb-component-woo_icons .header-item svg:not(.stroke-based)' );
     $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_sticky_color', '', '.sticky-header-active .bhfb-component-woo_icons .header-item .botiga-image.is-svg' );
 
     // Sticky Header - Icon Color Hover
-    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_sticky_color_hover', '', '.sticky-header-active .bhfb-component-woo_icons .header-item:hover svg' );
+    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_sticky_color_hover', '', '.sticky-header-active .bhfb-component-woo_icons .header-item:hover svg:not(.stroke-based)' );
     $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_sticky_color_hover', '', '.sticky-header-active .bhfb-component-woo_icons .header-item:hover .botiga-image.is-svg' );
 }
 

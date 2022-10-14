@@ -39,7 +39,7 @@ foreach( $rows as $row ) {
         )
     );
     $css .= ".bhfb-$row { border-bottom-style: solid; }";
-    $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", '#EAEAEA', ".bhfb-$row" );
+    $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_border_bottom_color", '#EAEAEA', ".bhfb-$row", 0.1 );
 
     if( botiga_sticky_header_enabled() ) {
         
@@ -59,8 +59,10 @@ if( botiga_sticky_header_enabled() ) {
     $sticky_gap = 0;
 
     foreach( $rows as $row ) {
-        if( ! (int) Botiga_Header_Footer_Builder::is_row_empty( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' )->desktop ) ) {
-            $sticky_gap = $sticky_gap + get_theme_mod( "botiga_header_row__${row}_height_desktop", 100 ) + get_theme_mod( "botiga_header_row__${row}_border_bottom", 1 );
+        if( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' ) !== NULL ) {
+            if( ! (int) Botiga_Header_Footer_Builder::is_row_empty( Botiga_Header_Footer_Builder::get_row_data( $row, 'header' )->desktop ) ) {
+                $sticky_gap = $sticky_gap + get_theme_mod( "botiga_header_row__${row}_height_desktop", 100 ) + get_theme_mod( "botiga_header_row__${row}_border_bottom", 1 );
+            }
         }
     }
     

@@ -262,6 +262,42 @@
                 'selector' : '.bhfb.bhfb-header .bhfb-component-logo',
                 'prop'     : 'text-align'
             },
+
+            // Header HTML Component Text Alignment.
+            'botiga_section_hb_component__html_text_align' : {
+                'selector' : '.bhfb.bhfb-header .bhfb-component-html',
+                'prop'     : 'text-align'
+            },
+
+            // Header HTML 2 Component Text Alignment.
+            'botiga_section_hb_component__html2_text_align' : {
+                'selector' : '.bhfb.bhfb-header .bhfb-component-html2',
+                'prop'     : 'text-align'
+            },
+
+            // Header Shortcode Component Text Alignment.
+            'botiga_section_hb_component__shortcode_text_align' : {
+                'selector' : '.bhfb.bhfb-header .bhfb-component-shortcode',
+                'prop'     : 'text-align'
+            },
+
+            // Footer HTML Component Text Alignment.
+            'botiga_section_fb_component__html_text_align' : {
+                'selector' : '.bhfb.bhfb-footer .bhfb-component-html',
+                'prop'     : 'text-align'
+            },
+
+            // Footer HTML 2 Component Text Alignment.
+            'botiga_section_fb_component__html2_text_align' : {
+                'selector' : '.bhfb.bhfb-footer .bhfb-component-html2',
+                'prop'     : 'text-align'
+            },
+
+            // Footer Shortcode Component Text Alignment.
+            'botiga_section_fb_component__shortcode_text_align' : {
+                'selector' : '.bhfb.bhfb-footer .bhfb-component-shortcode',
+                'prop'     : 'text-align'
+            },
         };
     
     // Columns.

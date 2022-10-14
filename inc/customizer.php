@@ -90,7 +90,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 
 			// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			require get_template_directory() . '/inc/customizer/sanitize.php';
-			require get_template_directory() . '/inc/customizer/callbacks.php';
+			require_once get_template_directory() . '/inc/customizer/callbacks.php';
 			require get_template_directory() . '/inc/customizer/options/blog.php';
 			require get_template_directory() . '/inc/customizer/options/blog-single.php';
 			require get_template_directory() . '/inc/customizer/options/topbar.php';

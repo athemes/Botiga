@@ -702,7 +702,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			//Size Chart
-    	$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+    		$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
 			if( $single_size_chart ) {
 				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button a' );
 				$css .= $this->get_fill_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button svg path' );
@@ -830,6 +830,28 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_background_color_css( 'color_link_default', '#212121', '.botiga-star-rating-bars .botiga-star-rating-bar-item .item-bar .item-bar-inner' );
 				$css .= $this->get_background_color_css( 'content_cards_background', '#F2F2F2', '.botiga-star-rating-bars .botiga-star-rating-bar-item .item-bar, .botiga-adv-reviews-modal .botiga-adv-reviews-modal-body' );
 				$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-reviews-list-wrapper .botiga-reviews-list-item+.botiga-reviews-list-item', 0.15 );
+			}
+
+			// Single Product - Product Navigation
+			$single_product_navigation = get_theme_mod( 'single_product_navigation', 0 );
+			if( $single_product_navigation ) {
+				$css .= $this->get_border_color_css( 'color_body_text', '#212121', '.botiga-product-navigation a' );
+				$css .= $this->get_border_color_css( 'color_heading_4', '#212121', '.botiga-product-navigation a:hover' );
+				$css .= $this->get_border_color_css( 'color_heading_4', '#212121', '.botiga-product-navigation a i:before' );
+				$css .= $this->get_background_color_css( 'background_color', '#f2f2f2', '.botiga-product-navigation a span' );
+				$css .= $this->get_border_color_css( 'color_heading_4', '#212121', '.botiga-product-navigation a span' );
+				$css .= $this->get_border_bottom_color_rgba_css( 'color_heading_4', '#212121', '.botiga-product-navigation a span:after' );
+			}
+
+			// Single Product - Size Chart
+			$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+			if( $single_size_chart ) {
+				$css .= $this->get_background_color_css( 'content_cards_background', '#f2f2f2', '.botiga-product-size-chart-modal-inner' );
+				$css .= $this->get_background_color_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
+				$css .= $this->get_color_css( 'button_color', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
+				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab.active' );
+				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab', 0.4 );
+				$css .= $this->get_color_css( 'color_heading_4', '#212121', '.botiga-product-size-chart-modal-title' );
 			}
 
 			//Woocommerce single upsell, related and recently viewed products section
@@ -1406,6 +1428,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-top-color' );
 
 			return $selector . '{ border-top-color:' . esc_attr( $mod ) . ';}' . "\n";
+		}
+
+		/**
+		 * Get border top color rgba CSS
+		 */
+		public static function get_border_top_color_rgba_css( $setting = '', $default = '', $selector = '', $opacity = 1, $important = false ) {
+			$mod = get_theme_mod( $setting, $default );
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-top-color', $opacity, $important );
+
+			return $selector . '{ border-top-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
 
 		/**
