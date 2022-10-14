@@ -25,9 +25,11 @@ ul.products {
 			transition: opacity 0.3s;
 		}
 
-		&:hover {
-			img {
-				opacity: 0.7;
+		.loop-image-wrap{
+			&:hover {
+				img {
+					opacity: 0.7;
+				}
 			}
 		}
 
