@@ -206,8 +206,19 @@ function botiga_page_has_woo_blocks() {
  * Wrap loop button
  */
 function botiga_wrap_loop_button_start() {
-	$button_layout = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	echo '<div class="loop-button-wrap button-' . esc_attr( $button_layout ) . '">';
+
+	$button_layout         = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$shop_product_quantity = get_theme_mod( 'shop_product_quantity', 0 );
+	$button_with_quantity  = '';
+
+	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
+		global $product;
+		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
+			$button_with_quantity = ' button-with-quantity';
+		}
+	}
+
+	echo '<div class="loop-button-wrap button-' . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . '">';
 }
 
 /**
