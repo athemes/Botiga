@@ -1099,6 +1099,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_price_filter .ui-slider .ui-slider-handle:hover' );
 
 			//WPForms
+			$color_forms_borders = get_theme_mod( 'color_forms_borders' );
 			if( defined( 'WPFORMS_VERSION' ) ) {
 				$css .= $this->get_color_css( 'color_forms_text', '', '.wpforms-field input[type="text"], .wpforms-field input[type="email"], .wpforms-field input[type="url"], .wpforms-field input[type="password"], .wpforms-field input[type="search"], .wpforms-field input[type="number"], .wpforms-field input[type="tel"], .wpforms-field input[type="range"], .wpforms-field input[type="date"], .wpforms-field input[type="month"], .wpforms-field input[type="week"], .wpforms-field input[type="time"], .wpforms-field input[type="datetime"], .wpforms-field input[type="datetime-local"], .wpforms-field input[type="color"], .wpforms-field textarea, .wpforms-field select', true );
 				$css .= $this->get_background_color_css( 'color_forms_text', '', 'div.wpforms-container-full .wpforms-form .wpforms-field-number-slider input[type=range]::-webkit-slider-thumb', true );
