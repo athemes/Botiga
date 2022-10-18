@@ -34,7 +34,7 @@ $product_id = $product->get_id(); ?>
                     <?php 
                     //On sale tag
                     if ( $product->is_on_sale() ) :
-                        echo apply_filters( 'botiga_quick_view_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'botiga' ) . '</span>', get_post( $product_id ), $product ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                        echo botiga_sale_badge( $html = '', get_post( $product_id ), $product ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     endif; ?>
                     
                     <figure class="woocommerce-product-gallery__wrapper">

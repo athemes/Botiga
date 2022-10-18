@@ -29,6 +29,19 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 1.2.2 =
+Added - Header/Footer Builder: New color and text alignment options to HTML and Shortcode components.
+Added - New custom theme hook to searchform.php
+Added - Support to mobile anchor links (scroll to section).
+Changed - Header Builder: Rename 'Site Title & Logo' component to 'Site identity'.
+Changed - Change on product quantity to make it works site wide (improves 3rd party plugins compatibility).
+Fixed - Show sale badge percentage text in quick view.
+Fixed - Header/Footer Builder: Fixed JS error when rows data is empty.
+Fixed - Footer Builder: Default footer credits/copyright alignment is wrong.
+Fixed - Color Palettes: Some features like header/footer builder are not changing the color on customizer.
+Fixed - Removed js code that was triggering 'wc_fragment_refresh' ajax on every request.
+
+
 = 1.2.1 =
 Added - Display Conditions
 Added - Header Builder: New 1:4:1 ratio 'Column Layout'.

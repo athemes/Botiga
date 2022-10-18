@@ -214,8 +214,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'color_forms_text', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus, select:focus, .woocommerce .select2-container .select2-selection--single:focus, .woocommerce-page .select2-container .select2-selection--single:focus,.select2-container--default .select2-selection--single .select2-selection__rendered,.wp-block-search .wp-block-search__input,.wp-block-search .wp-block-search__input:focus' );
 			$css .= $this->get_border_color_css( 'color_forms_text', '', '.woocommerce-form__label-for-checkbox span:not(.required):before' );
 			$css .= $this->get_background_color_css( 'color_forms_background', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"]' );
-			$color_forms_borders 	= get_theme_mod( 'color_forms_borders' );
-			$css .= "input[type=\"text\"],input[type=\"email\"],input[type=\"url\"],input[type=\"password\"],input[type=\"search\"],input[type=\"number\"],input[type=\"tel\"],input[type=\"range\"],input[type=\"date\"],input[type=\"month\"],input[type=\"week\"],input[type=\"time\"],input[type=\"datetime\"],input[type=\"datetime-local\"],input[type=\"color\"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-account fieldset,.woocommerce-account .woocommerce-form-login, .woocommerce-account .woocommerce-form-register,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type=\"text\"],.wp-block-search .wp-block-search__input, .woocommerce-form__label-for-checkbox span:not(.required):after, .select2-dropdown { border-color:" . esc_attr( $color_forms_borders ) . ";}" . "\n";
+			$css .= $this->get_border_color_css( 'color_forms_borders', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,.woocommerce-account fieldset,.woocommerce-account .woocommerce-form-login, .woocommerce-account .woocommerce-form-register,.woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"],.wp-block-search .wp-block-search__input, .woocommerce-form__label-for-checkbox span:not(.required):after, .select2-dropdown, .botiga-sc-cart-total tfoot tr' );
+			$css .= $this->get_border_color_css( 'color_forms_dividers', '', '.botiga-sc-order-review,.botiga-sc-cart-summary-item,.botiga-sc-detail-summary,.botiga-sc-detail-summary tr,.botiga-sc-shipping-methods ul,.botiga-sc-shipping-methods ul li,.botiga-sc-payment-methods ul,.botiga-sc-different-address ul,.botiga-sc-different-address ul li' );
 			$color_forms_placeholder 	= get_theme_mod( 'color_forms_placeholder', '#848484' );
 			$css .= "::placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";opacity:1;}" . "\n";
 			$css .= ":-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
@@ -702,7 +702,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			//Size Chart
-    	$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+    		$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
 			if( $single_size_chart ) {
 				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button a' );
 				$css .= $this->get_fill_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button svg path' );
@@ -832,6 +832,28 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-reviews-list-wrapper .botiga-reviews-list-item+.botiga-reviews-list-item', 0.15 );
 			}
 
+			// Single Product - Product Navigation
+			$single_product_navigation = get_theme_mod( 'single_product_navigation', 0 );
+			if( $single_product_navigation ) {
+				$css .= $this->get_border_color_css( 'color_body_text', '#212121', '.botiga-product-navigation a' );
+				$css .= $this->get_border_color_css( 'color_heading_4', '#212121', '.botiga-product-navigation a:hover' );
+				$css .= $this->get_border_color_css( 'color_heading_4', '#212121', '.botiga-product-navigation a i:before' );
+				$css .= $this->get_background_color_css( 'background_color', '#f2f2f2', '.botiga-product-navigation a span' );
+				$css .= $this->get_border_color_css( 'color_heading_4', '#212121', '.botiga-product-navigation a span' );
+				$css .= $this->get_border_bottom_color_rgba_css( 'color_heading_4', '#212121', '.botiga-product-navigation a span:after' );
+			}
+
+			// Single Product - Size Chart
+			$single_size_chart = get_theme_mod( 'single_size_chart', 0 );
+			if( $single_size_chart ) {
+				$css .= $this->get_background_color_css( 'content_cards_background', '#f2f2f2', '.botiga-product-size-chart-modal-inner' );
+				$css .= $this->get_background_color_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
+				$css .= $this->get_color_css( 'button_color', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
+				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab.active' );
+				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab', 0.4 );
+				$css .= $this->get_color_css( 'color_heading_4', '#212121', '.botiga-product-size-chart-modal-title' );
+			}
+
 			//Woocommerce single upsell, related and recently viewed products section
 			$single_upsell_products = get_theme_mod( 'single_upsell_products', 1 );
 			if( $single_upsell_products ) {
@@ -901,7 +923,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			// Checkout
 			$checkout_sticky_totals_box = get_theme_mod( 'checkout_sticky_totals_box', 0 );
-			if( $checkout_sticky_totals_box ) {
+			$shop_checkout_layout = get_theme_mod( 'shop_checkout_layout', 'layout1' );
+			if( $checkout_sticky_totals_box && $shop_checkout_layout === 'layout1' ) {
 				$css .= '.woocommerce-checkout .woocommerce-checkout-review-order { position: sticky; top: 45px; } .admin-bar .woocommerce-checkout .woocommerce-checkout-review-order { top: 77px; }';
 			}
 
@@ -1051,10 +1074,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$css .= "button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
 
-			$css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,.wp-block-search .wp-block-search__button,input[type="button"],input[type="reset"],input[type="submit"],.comments-area .comment-reply-link' );			
+			$css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,.wp-block-search .wp-block-search__button,input[type="button"],input[type="reset"],input[type="submit"],.comments-area .comment-reply-link,.botiga-sc-product-quantity' );			
 			$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', 'button:hover,a.button:hover,.wp-block-button .wp-block-button__link:hover,.wp-block-button__link:hover,.wp-block-search .wp-block-search__button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.comments-area .comment-reply-link:hover' );			
 
-			$css .= $this->get_color_css( 'button_color', '#FFF', 'button,a.button:not(.wc-forward),a.button.checkout,.checkout-button.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"],.woocommerce-message .button.wc-forward,.comments-area .comment-reply-link, .wp-block-search .wp-block-search__button' );			
+			$css .= $this->get_color_css( 'button_color', '#FFF', 'button,a.button:not(.wc-forward),a.button.checkout,.checkout-button.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,input[type="button"],input[type="reset"],input[type="submit"],.woocommerce-message .button.wc-forward,.comments-area .comment-reply-link, .wp-block-search .wp-block-search__button,.botiga-sc-product-quantity' );			
 			$css .= $this->get_color_css( 'button_color_hover', '#FFF', 'button:hover,a.button:not(.wc-forward):hover,a.button.checkout:hover,.wp-block-button .wp-block-button__link:hover,.wp-block-button__link:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.woocommerce-message .button.wc-forward:hover,.comments-area .comment-reply-link:hover, .wp-block-search .wp-block-search__button:hover' );
 			
 			$css .= $this->get_fill_css( 'button_color', '#FFF', '.woocommerce-product-search .search-submit svg, #masthead-mobile .search-submit svg:not(.stroke-based), ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link svg, ul.wc-block-grid__products li.product .wp-block-button__link svg, ul.products li.wc-block-grid__product .wp-block-button__link svg, ul.products li.product .button svg' );
@@ -1076,6 +1099,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_price_filter .ui-slider .ui-slider-handle:hover' );
 
 			//WPForms
+			$color_forms_borders = get_theme_mod( 'color_forms_borders' );
 			if( defined( 'WPFORMS_VERSION' ) ) {
 				$css .= $this->get_color_css( 'color_forms_text', '', '.wpforms-field input[type="text"], .wpforms-field input[type="email"], .wpforms-field input[type="url"], .wpforms-field input[type="password"], .wpforms-field input[type="search"], .wpforms-field input[type="number"], .wpforms-field input[type="tel"], .wpforms-field input[type="range"], .wpforms-field input[type="date"], .wpforms-field input[type="month"], .wpforms-field input[type="week"], .wpforms-field input[type="time"], .wpforms-field input[type="datetime"], .wpforms-field input[type="datetime-local"], .wpforms-field input[type="color"], .wpforms-field textarea, .wpforms-field select', true );
 				$css .= $this->get_background_color_css( 'color_forms_text', '', 'div.wpforms-container-full .wpforms-form .wpforms-field-number-slider input[type=range]::-webkit-slider-thumb', true );
@@ -1406,6 +1430,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-top-color' );
 
 			return $selector . '{ border-top-color:' . esc_attr( $mod ) . ';}' . "\n";
+		}
+
+		/**
+		 * Get border top color rgba CSS
+		 */
+		public static function get_border_top_color_rgba_css( $setting = '', $default = '', $selector = '', $opacity = 1, $important = false ) {
+			$mod = get_theme_mod( $setting, $default );
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'border-top-color', $opacity, $important );
+
+			return $selector . '{ border-top-color:' . esc_attr( Botiga_Custom_CSS::get_instance()->to_rgba( $mod, $opacity ) ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}
 
 		/**

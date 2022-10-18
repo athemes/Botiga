@@ -11,6 +11,10 @@ $row      = $args[ 'row' ];
 $device   = $args[ 'device' ]; 
 $row_data = $args[ 'row_data' ];
 
+if( $row_data === NULL ) {
+    return;
+}
+
 // Get instance from bhfb class
 $bhfb = Botiga_Header_Footer_Builder::get_instance(); 
 

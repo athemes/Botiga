@@ -93,7 +93,7 @@ botiga.gallery = {
 
 				$flexThumbs.addClass('botiga-slides');
 				$flexThumbs.wrapAll('<div class="botiga-flexslider"></div>');
-
+				
 				var $slider = $gallery.find('.botiga-flexslider');
 				var itemWidth = ($gallery.parent().is('.gallery-quickview')) ? 85 : 95;
 
@@ -109,6 +109,12 @@ botiga.gallery = {
 					keyboard: false,
 					asNavFor: $gallery.get(0),
 				});
+
+				var next_text = jQuery( '.botiga-flexslider .botiga-flex-next' ).text();
+				jQuery( '.botiga-flexslider .botiga-flex-next' ).text('').append( '<span>'+ next_text +'</span>' );
+
+				var prev_text = jQuery( '.botiga-flexslider .botiga-flex-prev' ).text();
+				jQuery( '.botiga-flexslider .botiga-flex-prev' ).text('').append( '<span>'+ prev_text +'</span>' );
 
 			}
 

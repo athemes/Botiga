@@ -19,6 +19,15 @@ botiga.helpers = {
 	
 		document.addEventListener( 'DOMContentLoaded', fn, false );
 	},
+	isInViewport: function( el ) {
+		const rect = el.getBoundingClientRect();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	},
 	ajax: function( action, nonce, extraParams, successCallback ) {
 		var ajax = new XMLHttpRequest();
 		ajax.open('POST', botiga.ajaxurl, true);
@@ -65,7 +74,7 @@ botiga.helpers = {
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
- botiga.navigation = {
+botiga.navigation = {
 	
 	init: function() {
 		const 
@@ -145,6 +154,20 @@ botiga.helpers = {
 			parent.querySelector( '.sub-menu' ).classList.toggle( 'toggled' );
 		}
 
+		// Close the offcanvas when a anchor that contains a hash is clicked
+		var anchors = offCanvas.querySelectorAll( 'a[href*="#"]' );
+		if( anchors.length ) {
+			for( var anchor of anchors ) {
+				anchor.addEventListener( 'click', function(e) {
+					if( e.target.hash && document.querySelector( e.target.hash ) !== null ) {
+						button.classList.remove( 'open' );
+						offCanvas.classList.remove( 'toggled' );
+						document.body.classList.remove( 'mobile-menu-visible' );
+					}
+				});
+			}
+		}
+
 		var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
 		var firstFocusableEl = focusableEls[0];  
 		var lastFocusableEl = focusableEls[focusableEls.length - 1];
@@ -167,7 +190,10 @@ botiga.helpers = {
 		closeButton.addEventListener( 'click', function(e) {
 			e.preventDefault();
 
-			button.focus();
+			const buttonRect = button.getBoundingClientRect();
+			if ( ( buttonRect.top + buttonRect.height ) > 0 ) {
+				button.focus();
+			}
 
 			button.classList.remove( 'open' );
 
@@ -258,18 +284,8 @@ botiga.helpers = {
 			return false;
 		}
 
-		if( isInViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+		if( botiga.helpers.isInViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
 			submenu.classList.add( 'sub-menu-reverse' );
-		}
-
-		function isInViewport(el) {
-			const rect = el.getBoundingClientRect();
-			return (
-				rect.top >= 0 &&
-				rect.left >= 0 &&
-				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-				rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-			);
 		}
 	}
 
@@ -1016,11 +1032,9 @@ botiga.qtyButton = {
 	},
 
 	events: function( type ) {
-		var qty = document.querySelectorAll('form.cart .quantity, .botiga-quick-view-popup .quantity, .woocommerce-cart-form__cart-item.cart_item .quantity, .botiga-single-sticky-add-to-cart-wrapper-content .quantity');
-		
-		if( type === 'quick-view' ) {
-			qty = document.querySelectorAll('.botiga-quick-view-popup .quantity');
-		} 
+
+		var self = this;
+		var qty = document.querySelectorAll( '.botiga-quantity-minus' );
 
 		if( qty.length < 1 ) {
 			return false;
@@ -1028,12 +1042,18 @@ botiga.qtyButton = {
 
 		for(var i = 0; i < qty.length; i++) {
 
-			if( qty[i].classList.contains( 'hidden' ) ) {
+			var wrapper = qty[i].closest( '.quantity' );
+
+			if( wrapper.dataset.qtyInitialized ) {
+				continue;
+			}
+
+			if( wrapper.classList.contains( 'hidden' ) ) {
 				return false;
 			}
 
-			var plus  	= qty[i].querySelector('.botiga-quantity-plus'),
-				minus 	= qty[i].querySelector('.botiga-quantity-minus');
+			var plus  	= wrapper.querySelector('.botiga-quantity-plus'),
+				minus 	= wrapper.querySelector('.botiga-quantity-minus');
 
 			plus.classList.add('show');
 			minus.classList.add('show');
@@ -1048,6 +1068,8 @@ botiga.qtyButton = {
 
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
+				self.updateAddToCartQuantity(this, input.value);
+
 			});
 	
 			minus.addEventListener( 'click', function(e){
@@ -1060,7 +1082,11 @@ botiga.qtyButton = {
 
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
+				self.updateAddToCartQuantity(this, input.value);
+
 			});
+
+			wrapper.dataset.qtyInitialized = true;
 		}
 
 	},
@@ -1073,7 +1099,23 @@ botiga.qtyButton = {
 				_self.events();
 			});
 		}
-	} 
+	},
+
+	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
+
+		var product = qtyItem.closest('.product');
+
+		if ( product ) {
+
+			var addToCartButton = product.querySelector('.add_to_cart_button');
+
+			if ( addToCartButton ) {
+				addToCartButton.setAttribute('data-quantity', qtyValue);
+			}
+
+		}
+
+	}
 }
 
 /**
@@ -1324,6 +1366,7 @@ botiga.misc = {
 	init: function() {
 		this.wcExpressPayButtons();
 		this.checkout();
+		this.customizer();
 	},
 	wcExpressPayButtons: function() {
 		var is_checkout_page  = document.querySelector( 'body.woocommerce-checkout' ),
@@ -1365,6 +1408,18 @@ botiga.misc = {
 				}
 			});
 		}
+	},
+	customizer: function() {
+		if( ! window.parent.document.body.classList.contains( 'wp-customizer' ) ) {
+			return false;
+		}
+
+		window.onload = function() {
+			var cart_count = document.querySelectorAll( '.cart-count' );
+			if( cart_count.length ) {
+				jQuery( document.body ).trigger( 'wc_fragment_refresh' );
+			}
+		}
 	}
 }
 
@@ -1384,11 +1439,3 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.collapse.init();
 	botiga.misc.init();
 } );
-
-window.onload = function() {
-	var cart_count = document.querySelectorAll( '.cart-count' );
-
-	if( cart_count.length ) {
-		jQuery( document.body ).trigger( 'wc_fragment_refresh' );
-	}
-}

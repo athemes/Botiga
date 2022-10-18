@@ -10,14 +10,7 @@
 
 // List of options we'll need to move.
 $opts_to_move = array(
-    'general' => array(
-        'custom_logo',
-        'blogname',
-        'blogdescription',
-        'site_logo_size',
-        'display_header_text',
-        'site_icon'
-    ),
+    'general' => array(),
     'style'   => array(
         'main_header_color',
         'main_header_color_hover',

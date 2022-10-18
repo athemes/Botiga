@@ -448,6 +448,25 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'color_forms_dividers',
+	array(
+		'default'           => '#dddddd',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'color_forms_dividers',
+		array(
+			'label'         	=> esc_html__( 'Divider color', 'botiga' ),
+			'section'       	=> 'colors',
+		)
+	)
+);
+
+$wp_customize->add_setting(
 	'color_forms_placeholder',
 	array(
 		'default'           => '#848484',
