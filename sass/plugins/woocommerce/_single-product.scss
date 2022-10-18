@@ -1687,6 +1687,10 @@ body {
 	  	&:before {
 			transform: translateX(2px) rotate(-45deg);
 	  	}
+
+		span {
+			display: none;
+		}
  	}
 }
 
@@ -1697,5 +1701,9 @@ body {
 	  	&:before {
 			transform: translateX(-2px) rotate(135deg);
 	  	}
+
+		span {
+			display: none;
+		}
 	}
 }

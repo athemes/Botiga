@@ -3716,6 +3716,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
           transform: translateX(2px) rotate(-45deg);
 }
 
+.botiga-flex-nav-prev a span {
+  display: none;
+}
+
 .botiga-flex-nav-next a {
   right: 8px;
 }
@@ -3723,6 +3727,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 .botiga-flex-nav-next a:before {
   -webkit-transform: translateX(-2px) rotate(135deg);
           transform: translateX(-2px) rotate(135deg);
+}
+
+.botiga-flex-nav-next a span {
+  display: none;
 }
 
 /**

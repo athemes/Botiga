@@ -3515,6 +3515,22 @@ div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout4.botiga-
   visibility: visible;
 }
 
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-layout2 .quantity, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-layout2 .quantity, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-layout2 .quantity {
+  max-width: 100%;
+  height: 45px;
+}
+
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-layout2 .button {
+  width: 100%;
+  text-align: center;
+}
+
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-layout2 .button {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
 @-webkit-keyframes rotateAnim {
   from {
     -webkit-transform: rotate(0deg);
