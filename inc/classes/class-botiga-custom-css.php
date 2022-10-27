@@ -691,8 +691,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			// Default pagination
 			$css .= $this->get_color_css( 'color_body_text', '', '.pagination .page-numbers, .woocommerce-pagination li .page-numbers' );
-			$css .= $this->get_background_color_css( 'button_background_color', '', '.pagination .page-numbers:hover, .pagination .page-numbers:focus, .pagination .page-numbers.current, .woocommerce-pagination li .page-numbers:hover, .woocommerce-pagination li .page-numbers:focus, .woocommerce-pagination li .page-numbers.current' );
-			$css .= $this->get_color_css( 'button_color_hover', '', '.pagination .page-numbers:hover, .pagination .page-numbers:focus, .pagination .page-numbers.current, .woocommerce-pagination li .page-numbers:hover, .woocommerce-pagination li .page-numbers:focus, .woocommerce-pagination li .page-numbers.current' );
+			$css .= $this->get_background_color_css( 'button_background_color', '#212121', '.pagination .page-numbers:hover, .pagination .page-numbers:focus, .pagination .page-numbers.current, .woocommerce-pagination li .page-numbers:hover, .woocommerce-pagination li .page-numbers:focus, .woocommerce-pagination li .page-numbers.current' );
+			$css .= $this->get_color_css( 'button_color_hover', '#FFF', '.pagination .page-numbers:hover, .pagination .page-numbers:focus, .pagination .page-numbers.current, .woocommerce-pagination li .page-numbers:hover, .woocommerce-pagination li .page-numbers:focus, .woocommerce-pagination li .page-numbers.current' );
 
 			// Pagination infinite scroll
 			$blog_archive_pagination_type = get_theme_mod( 'blog_archive_pagination_type', 'default' ); 

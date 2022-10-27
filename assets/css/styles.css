@@ -5646,6 +5646,130 @@ body {
           animation-name: botigaFadeInShort;
 }
 
+/* Fade In Up Shorter */
+@-webkit-keyframes fadeInUpShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, 20px);
+            transform: translate(0, 20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInUpShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, 20px);
+            transform: translate(0, 20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInUpShorter {
+  -webkit-animation-name: fadeInUpShorter;
+          animation-name: fadeInUpShorter;
+}
+
+/* Fade In Right Shorter */
+@-webkit-keyframes fadeInRightShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-20px, 0);
+            transform: translate(-20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInRightShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-20px, 0);
+            transform: translate(-20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInRightShorter {
+  -webkit-animation-name: fadeInRightShorter;
+          animation-name: fadeInRightShorter;
+}
+
+/* Fade In Left Shorter */
+@-webkit-keyframes fadeInLeftShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(20px, 0);
+            transform: translate(20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeftShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(20px, 0);
+            transform: translate(20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInLeftShorter {
+  -webkit-animation-name: fadeInLeftShorter;
+          animation-name: fadeInLeftShorter;
+}
+
+/* Fade In Down Shorter */
+@-webkit-keyframes fadeInDownShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, -20px);
+            transform: translate(0, -20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInDownShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, -20px);
+            transform: translate(0, -20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInDownShorter {
+  -webkit-animation-name: fadeInDownShorter;
+          animation-name: fadeInDownShorter;
+}
+
 .botiga-animated {
   opacity: 0;
 }
