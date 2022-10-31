@@ -144,7 +144,7 @@ function botiga_product_card_hooks() {
 	}
 
 	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
-	if( $shop_cart_show_cross_sell ) {
+	if( $shop_cart_show_cross_sell && 'layout1' !== $quick_view_layout ) {
 		//Quick view popup
 		add_action( 'wp_body_open', 'botiga_quick_view_popup' );
 	}
