@@ -16,6 +16,18 @@
 	}
 }
 
+.botiga-block-no-preview {
+    padding: 25px;
+    border: 1px solid #CCC;
+    border-left-color: #6c6c6c;
+    border-left-width: 3px;
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
 /*
 * Spacing
 */
