@@ -59,16 +59,6 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   display: none !important;
 }
 
-#customize-control-botiga_section_hb_wrapper__header_builder_goto_presets {
-  margin-left: -25px;
-  width: calc( 100% + 50px);
-}
-
-#customize-control-botiga_section_hb_wrapper__header_builder_goto_presets .to-widget-area-link {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
 #sub-accordion-section-botiga_section_fb_component__footer_menu #customize-control-footer_navigation_menu_link .footer-widget-area-link {
   display: block !important;
 }
@@ -709,13 +699,41 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
  * Available Columns
  */
 .bhfb-available-columns .bhfb-available-columns-items-wrapper {
-  display: grid;
-  gap: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item {
-  margin-bottom: 0;
-  padding: 8px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #1e1e1e;
+  font-weight: 400;
+  font-style: normal;
+  padding: 9px 15px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  margin-bottom: -1px;
+}
+
+.bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item:hover {
+  color: #3858E9;
+}
+
+.bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item.hide {
@@ -723,20 +741,28 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item .dashicons {
-  font-size: 1rem;
-  position: relative;
-  top: 2px;
-  color: #777;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
 }
 
-.bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item:hover .dashicons {
-  color: #212121;
-}
-
 .bhfb-available-columns.bhfb-always-show {
-  display: grid !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .preview-desktop .bhfb-available-columns-tablet {

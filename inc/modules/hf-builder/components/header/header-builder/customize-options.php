@@ -30,7 +30,7 @@ $wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_goto_pres
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_hb_wrapper__header_builder_goto_presets',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Presets', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Presets', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_hb_wrapper',
             'priority' 		=> 20
 		)

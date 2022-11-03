@@ -400,20 +400,6 @@ $wp_customize->add_control(
 	)
 );
 
-$wp_customize->add_setting( 'single_product_styling_divider_1',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'single_product_styling_divider_1',
-		array(
-			'section' 		=> 'botiga_section_single_product',
-			'priority'	 	=> 140
-		)
-	)
-);
-
 $wp_customize->add_setting( 'single_product_price_size_desktop', array(
 	'default'   		=> 24,
 	'transport'			=> 'postMessage',

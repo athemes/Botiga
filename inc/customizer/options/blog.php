@@ -31,7 +31,7 @@ $wp_customize->add_control(
 			'label' 				=> '',
 			'section'       		=> 'botiga_section_blog_archives',
 			'controls_general'		=> json_encode( array( '#customize-control-show_avatar', '#customize-control-archives_list_vertical_alignment','#customize-control-archive_featured_image_size','#customize-control-archive_list_image_placement','#customize-control-archives_grid_columns', '#customize-control-blog_layout','#customize-control-sidebar_archives','#customize-control-sidebar_archives_position','#customize-control-archives_sidebar_display_conditions','#customize-control-blog_divider_1','#customize-control-archive_featured_image_title','#customize-control-archive_featured_image_spacing','#customize-control-blog_divider_2','#customize-control-archive_text_title','#customize-control-archive_text_align','#customize-control-archive_title_spacing','#customize-control-show_excerpt','#customize-control-excerpt_length','#customize-control-read_more_link','#customize-control-read_more_spacing','#customize-control-blog_divider_3','#customize-control-archive_meta_title','#customize-control-archive_meta_position','#customize-control-archive_meta_elements','#customize-control-archive_meta_spacing','#customize-control-archive_meta_delimiter' ) ),
-			'controls_design'		=> json_encode( array( '#customize-control-loop_post_text_size', '#customize-control-loop_post_text_color','#customize-control-loop_post_meta_size', '#customize-control-loop_post_meta_color','#customize-control-loop_post_title_size', '#customize-control-loop_post_title_color', '#customize-control-loop_posts_divider_1', '#customize-control-loop_posts_divider_2' ) ),
+			'controls_design'		=> json_encode( array( '#customize-control-loop_post_text_size', '#customize-control-loop_post_text_color','#customize-control-loop_post_meta_size', '#customize-control-loop_post_meta_color','#customize-control-loop_post_title_size', '#customize-control-loop_post_title_color' ) ),
 			'priority'      		=> 10
 		)
 	)
@@ -585,21 +585,6 @@ $wp_customize->add_control(
 	)
 );
 
-
-$wp_customize->add_setting( 'loop_posts_divider_1',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'loop_posts_divider_1',
-		array(
-			'section' 		=> 'botiga_section_blog_archives',
-			'priority'		=> 280
-		)
-	)
-);
-
 $wp_customize->add_setting( 'loop_post_meta_size_desktop', array(
 	'default'   		=> 14,
 	'transport'			=> 'postMessage',
@@ -653,20 +638,6 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Meta color', 'botiga' ),
 			'section'       	=> 'botiga_section_blog_archives',
 			'priority'      	=> 300
-		)
-	)
-);
-
-$wp_customize->add_setting( 'loop_posts_divider_2',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'loop_posts_divider_2',
-		array(
-			'section' 		=> 'botiga_section_blog_archives',
-			'priority'		=> 310
 		)
 	)
 );

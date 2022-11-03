@@ -317,19 +317,6 @@ $wp_customize->add_control(
 	)
 );
 
-$wp_customize->add_setting( 'scrolltop_divider_3',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'scrolltop_divider_3',
-		array(
-			'section' 		=> 'botiga_section_scrolltotop',
-		)
-	)
-);
-
 $wp_customize->add_setting(
 	'scrolltop_color_hover',
 	array(
@@ -364,19 +351,6 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Background hover color', 'botiga' ),
 			'section'       	=> 'botiga_section_scrolltotop',
-		)
-	)
-);
-
-$wp_customize->add_setting( 'scrolltop_divider_4',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'scrolltop_divider_4',
-		array(
-			'section' 		=> 'botiga_section_scrolltotop',
 		)
 	)
 );

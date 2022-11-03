@@ -1327,7 +1327,7 @@ jQuery(document).ready(function ($) {
 
 	"use strict";
 
-	$('input[type="range"]').on('change input botiga.range', function(){
+	$('.range-slider__range').on('change input botiga.range', function(){
 	 	
 		var $range     = $(this);
 	 	var value      = $range.val() || 0;
@@ -1338,6 +1338,16 @@ jQuery(document).ready(function ($) {
 	 	$range.css({'background': 'linear-gradient(to right, #3858E9 0%, #3858E9 '+ percentage +'%, #ddd '+ percentage +'%, #ddd 100%)' });
 
 	}).trigger('botiga.range');
+	
+	$('.range-slider__value').on('change input', function(){
+
+		var $slider = $(this).prev();
+
+		if ( $slider.hasClass('range-slider__range') ) {
+			$slider.trigger('botiga.range');
+		}
+
+	});
 
 });
 
@@ -1544,12 +1554,3 @@ jQuery(document).ready(function ($) {
 	});
 
 });
-
-;(function ( $, window, document ) {
-  'use strict';
-
-  setInterval( function() {
-    $(window).off('beforeunload');
-  }, 500);
-
-})( jQuery, window, document );

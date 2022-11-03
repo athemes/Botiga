@@ -207,12 +207,17 @@ input::-moz-focus-inner, input::-moz-focus-outer {
     li{
         margin-bottom: 0;
     }
+}
 
-    &.alt-position {
-        position: relative;
-        top: -23px;
+.customize-control-botiga-radio-image,
+.customize-control-botiga-radio-buttons{
+
+    .botiga-devices-preview {
+        margin-top: -25px;
+        justify-content: flex-end;
     }
 }
+
 .botiga-devices-preview button {
     text-align: center;
     border: 0;
@@ -489,9 +494,6 @@ span.delete:hover {
 	color: #fff;
     fill: #fff;
 }
-.text_radio_button_control .palette-label span {
-
-}
 .text_radio_button_control .palette-label > input:checked + span {
     border-color: #317CB5;
     background: transparent;
@@ -499,6 +501,33 @@ span.delete:hover {
 
 .text_radio_button_control .radio-button-label > input:checked + span:hover {
 	color: #fff;
+}
+
+.botiga-to-widget-area-link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #1e1e1e;
+    font-weight: 400;
+    font-style: normal;
+    padding: 9px 15px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    &:hover {
+        color: #3858E9;
+    }
+    &:focus{
+        box-shadow: none;
+    }
+    &.hide {
+        display: none;
+    }
+    .dashicons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+    }
 }
 
 .footer-widget-area-link,
@@ -525,9 +554,9 @@ span.delete:hover {
 }
 .botiga-cust-divider {
     border-bottom: 0;
-    border-color: #f0f0f0;
+    border-color: #ddd;
 }
-.customize-control:not(.customize-control-botiga-tab-control) {
+.customize-control:not(.customize-control-botiga-tab-control):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor) {
     margin-bottom: 15px;
     padding: 0 12px;
     box-sizing: border-box;
@@ -685,9 +714,6 @@ html[dir="rtl"] {
 #sub-accordion-section-colors li:not(.customize-control-botiga-divider-control),
 #sub-accordion-section-botiga_section_buttons li:not(.customize-control-botiga-divider-control) {
     margin-bottom: 12px;
-}
-#sub-accordion-section-botiga_section_buttons .customize-control-botiga-divider-control {
-    margin-top: 25px;
 }
 #customize-control-color_palettes,
 #customize-control-background_color,
@@ -927,13 +953,6 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-control-botiga_section_hb_component__html2_title,
 #customize-control-botiga_section_hb_component__html2_title {
     margin-bottom: 5px !important;
-}
-
-/*
- * Reset margin top from some controls
- */
-#customize-control-side_mini_cart_floating_icon_info {
-    margin-top: -25px;
 }
 
 /*
@@ -1379,14 +1398,14 @@ html[dir="rtl"] .botiga-accordion-title:after {
 #customize-theme-controls .customize-pane-parent,
 #customize-theme-controls .customize-pane-child{
 
-    > li:not(.panel-meta):not(.section-meta):not(.control-panel-themes){
+    > li:not(.panel-meta):not(.section-meta):not(.control-panel-themes):not(.customize-control-nav_menu_locations):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor){
         padding-left: 15px;
         padding-right: 15px;
         box-sizing: border-box;
     }
 }
 
-#customize-theme-controls .control-subsection:not(.theme-section){
+#customize-theme-controls .control-subsection:not(.theme-section):not(.control-section-new_menu){
     border: 1px solid #ddd;
     border-width: 1px 1px 1px 1px;
     margin-left: 15px;
@@ -1405,7 +1424,6 @@ html[dir="rtl"] .botiga-accordion-title:after {
     border: none;
 }
 
-// #customize-theme-controls .control-panel-content:not(.control-panel-nav_menus) .control-section:nth-child(2),
 #customize-theme-controls .control-panel-nav_menus .control-section-nav_menu,
 #customize-theme-controls .control-section-nav_menu_locations .accordion-section-title{
     border: none;
@@ -1794,6 +1812,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
     }
 }
 
+.customize-control-woocommerce-cropping-control,
 .customize-control-checkbox,
 .customize-control-radio{
 
@@ -1982,8 +2001,47 @@ html[dir="rtl"] .botiga-accordion-title:after {
 .botiga-color-control{
     display: flex;
     justify-content: space-between;
+    position: relative;
+
+    &:hover{
+
+        .botiga-color-tooltip{
+            top: -35px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .botiga-color-tooltip{
+        position: absolute;
+        z-index: 1;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 10px;
+        border-radius: 2px;
+        font-size: 11px;
+        line-height: 1em;
+        opacity: 0;
+        visibility: hidden;
+        color: #fff;
+        background-color: #212121;
+        transition: all .3s;
+
+        &:after{
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            margin-left: -5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #212121;
+        }
+    }
 
     .botiga-color-picker{
+        position: relative;
         overflow: hidden;
         cursor: pointer;
         width: 20px;

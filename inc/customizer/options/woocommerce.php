@@ -95,7 +95,8 @@ $wp_customize->add_control(
 			'input_attrs' => array (
 				'min'	=> 1,
 				'max'	=> 6,
-				'step'  => 1
+				'step'  => 1,
+				'unit'  => '',
 			),
 			'priority'      => 1
 		)
@@ -123,7 +124,8 @@ $wp_customize->add_control(
 			'input_attrs' => array (
 				'min'	=> 1,
 				'max'	=> apply_filters( 'botiga_shop_woocommerce_catalog_rows_max', 20 ),
-				'step'  => 1
+				'step'  => 1,
+				'unit'  => '',
 			),
 			'priority'      => 1
 		)
