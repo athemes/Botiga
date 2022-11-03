@@ -6,13 +6,13 @@
  */
 
 /**
- * Header
+ * Header image
  */
 $wp_customize->add_panel(
 	'botiga_panel_header',
 	array(
-		'title'         => esc_html__( 'Header', 'botiga'),
-		'priority'      => 1,
+		'title'    => esc_html__( 'Header', 'botiga' ),
+		'priority' => 11,
 	)
 );
 

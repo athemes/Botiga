@@ -312,321 +312,6 @@ jQuery(document).ready(function ($) {
 });
 
 /**
- * Alpha color picker
- */
-jQuery(document).ready(function ($) {
-	$('.alpha-color-control').each(function () {
-
-		// Scope the vars.
-		var $control, startingColor, paletteInput, showOpacity, defaultColor, palette,
-			colorPickerOptions, $container, $alphaSlider, alphaVal, sliderOptions;
-
-		// Store the control instance.
-		$control = $(this);
-
-		// Get a clean starting value for the option.
-		startingColor = $control.val().replace(/\s+/g, '');
-
-		// Get some data off the control.
-		paletteInput = $control.attr('data-palette');
-		showOpacity = $control.attr('data-show-opacity');
-		defaultColor = $control.attr('data-default-color');
-
-		// Process the palette.
-		if (paletteInput.indexOf('|') !== -1) {
-			palette = paletteInput.split('|');
-		} else if ('false' == paletteInput) {
-			palette = false;
-		} else {
-			palette = true;
-		}
-
-		// Set up the options that we'll pass to wpColorPicker().
-		colorPickerOptions = {
-			change: function (event, ui) {
-				var key, value, alpha, $transparency;
-
-				key = $control.attr('data-customize-setting-link');
-				value = $control.wpColorPicker('color');
-
-				// Set the opacity value on the slider handle when the default color button is clicked.
-				if (defaultColor == value) {
-					alpha = acp_get_alpha_value_from_color(value);
-					$alphaSlider.find('.ui-slider-handle').text(alpha);
-				}
-
-				// Send ajax request to wp.customize to trigger the Save action.
-				wp.customize(key, function (obj) {
-					obj.set(value);
-				});
-
-				$transparency = $container.find('.transparency');
-
-				// Always show the background color of the opacity slider at 100% opacity.
-				$transparency.css('background-color', ui.color.toString('no-alpha'));
-			},
-			palettes: palette // Use the passed in palette.
-		};
-
-		$container = $control.parents('.wp-picker-container:first');
-
-		// Create the color picker only when we click on it
-		//
-		// This event will trigger only the first time because
-		// after it, the DOM structure changes. Thus, any other event handlers
-		// inside this one don't need to be removed and won't generate performance bottleneck
-		$control.on('click', function () {
-			var picker = $(this),
-				colors = get_color_palette_array();
-
-			var colorPickerOptionsNew = { ...colorPickerOptions, palettes: colors }
-			picker.wpColorPicker(colorPickerOptionsNew);
-
-			// Set new container
-			$container = picker.closest('.wp-picker-container');
-
-			// Move color picker text field in popup
-			$container.find('.wp-picker-input-wrap').prependTo($container.find('.wp-picker-holder'));
-
-			var $wpColorResult = picker.closest('.wp-picker-container').find('.wp-color-result');
-			$wpColorResult.on('click', function (e) {
-				var $this = $(this).closest('.wp-picker-container').find('input.wp-color-picker'),
-					colors = get_color_palette_array();
-
-				$this.data('a8cIris').option('palettes', colors);
-			});
-
-			// Insert our opacity slider.
-			$('<div class="alpha-color-picker-container">' +
-				'<div class="min-click-zone click-zone"></div>' +
-				'<div class="max-click-zone click-zone"></div>' +
-				'<div class="alpha-slider"></div>' +
-				'<div class="transparency"></div>' +
-				'</div>').appendTo($container.find('.wp-picker-holder'));
-
-			$alphaSlider = $container.find('.alpha-slider');
-
-			// If starting value is in format RGBa, grab the alpha channel.
-			alphaVal = acp_get_alpha_value_from_color(startingColor);
-
-			// Set up jQuery UI slider() options.
-			sliderOptions = {
-				create: function (event, ui) {
-					var value = $(this).slider('value');
-
-					// Set up initial values.
-					$(this).find('.ui-slider-handle').text(value);
-					$(this).siblings('.transparency ').css('background-color', startingColor);
-				},
-				value: alphaVal,
-				range: 'max',
-				step: 1,
-				min: 0,
-				max: 100,
-				animate: 300
-			};
-
-			// Initialize jQuery UI slider with our options.
-			$alphaSlider.slider(sliderOptions);
-
-			// Maybe show the opacity on the handle.
-			if ('true' == showOpacity) {
-				$alphaSlider.find('.ui-slider-handle').addClass('show-opacity');
-			}
-
-			// Bind event handlers for the click zones.
-			$container.find('.min-click-zone').on('click', function () {
-				acp_update_alpha_value_on_color_control(0, $control, $alphaSlider, true);
-			});
-			$container.find('.max-click-zone').on('click', function () {
-				acp_update_alpha_value_on_color_control(100, $control, $alphaSlider, true);
-			});
-
-			// Bind event handler for clicking on a palette color.
-			$container.find('.iris-palette').on('click', function () {
-				var color, alpha;
-
-				color = $(this).css('background-color');
-				alpha = acp_get_alpha_value_from_color(color);
-
-				acp_update_alpha_value_on_alpha_slider(alpha, $alphaSlider);
-
-				// Sometimes Iris doesn't set a perfect background-color on the palette,
-				// for example rgba(20, 80, 100, 0.3) becomes rgba(20, 80, 100, 0.298039).
-				// To compensante for this we round the opacity value on RGBa colors here
-				// and save it a second time to the color picker object.
-				if (alpha != 100) {
-					color = color.replace(/[^,]+(?=\))/, (alpha / 100).toFixed(2));
-				}
-
-				$control.wpColorPicker('color', color);
-			});
-
-			// Bind event handler for clicking on the 'Clear' button.
-			$container.find('.button.wp-picker-clear').on('click', function () {
-				var key = $control.attr('data-customize-setting-link');
-
-				// The #fff color is delibrate here. This sets the color picker to white instead of the
-				// defult black, which puts the color picker in a better place to visually represent empty.
-				$control.wpColorPicker('color', '#ffffff');
-
-				// Set the actual option value to empty string.
-				wp.customize(key, function (obj) {
-					obj.set('');
-				});
-
-				acp_update_alpha_value_on_alpha_slider(100, $alphaSlider);
-			});
-
-			// Bind event handler for clicking on the 'Default' button.
-			$container.find('.button.wp-picker-default').on('click', function () {
-				var alpha = acp_get_alpha_value_from_color(defaultColor);
-
-				acp_update_alpha_value_on_alpha_slider(alpha, $alphaSlider);
-			});
-
-			// Bind event handler for typing or pasting into the input.
-			$control.on('input', function () {
-				var value = $(this).val();
-				var alpha = acp_get_alpha_value_from_color(value);
-
-				acp_update_alpha_value_on_alpha_slider(alpha, $alphaSlider);
-			});
-
-			// Update all the things when the slider is interacted with.
-			$alphaSlider.slider().on('slide', function (event, ui) {
-				var alpha = parseFloat(ui.value) / 100.0;
-
-				acp_update_alpha_value_on_color_control(alpha, $control, $alphaSlider, false);
-
-				// Change value shown on slider handle.
-				$(this).find('.ui-slider-handle').text(ui.value);
-			});
-
-			// Open the color picker after the above intialization
-			setTimeout(function () {
-				$wpColorResult.trigger('click');
-			}, 100);
-
-			// Remove event handler from the control since 
-			// we need it running just one time
-			$control.off('click');
-		});
-
-	});
-
-	/**
-	 * Get color palette array 
-	 */
-	function get_color_palette_array() {
-		var has_own_palette = wp.customize.control('custom_palette_toggle').setting.get(),
-			colors = [];
-
-		if (has_own_palette) {
-			$('#customize-control-custom_palette .custom-palettes > input, #customize-control-custom_palette .custom-palettes .wp-color-result').each(function () {
-				var color = $(this).css('background-color');
-				colors.push(color);
-			});
-		} else {
-			$('#customize-control-color_palettes .saved-palette > span > div, #customize-control-color_palettes .saved-palette span.palette > div').each(function () {
-				var color = $(this).css('background-color');
-				colors.push(color);
-			});
-		}
-
-		return colors;
-	}
-
-	/**
-	 * Override the stock color.js toString() method to add support for outputting RGBa or Hex.
-	 */
-	Color.prototype.toString = function (flag) {
-
-		// If our no-alpha flag has been passed in, output RGBa value with 100% opacity.
-		// This is used to set the background color on the opacity slider during color changes.
-		if ('no-alpha' == flag) {
-			return this.toCSS('rgba', '1').replace(/\s+/g, '');
-		}
-
-		// If we have a proper opacity value, output RGBa.
-		if (1 > this._alpha) {
-			return this.toCSS('rgba', this._alpha).replace(/\s+/g, '');
-		}
-
-		// Proceed with stock color.js hex output.
-		var hex = parseInt(this._color, 10).toString(16);
-		if (this.error) { return ''; }
-		if (hex.length < 6) {
-			for (var i = 6 - hex.length - 1; i >= 0; i--) {
-				hex = '0' + hex;
-			}
-		}
-
-		return '#' + hex;
-	};
-
-	/**
-	 * Given an RGBa, RGB, or hex color value, return the alpha channel value.
-	 */
-	function acp_get_alpha_value_from_color(value) {
-		var alphaVal;
-
-		// Remove all spaces from the passed in value to help our RGBa regex.
-		value = value.replace(/ /g, '');
-
-		if (value.match(/rgba\(\d+\,\d+\,\d+\,([^\)]+)\)/)) {
-			alphaVal = parseFloat(value.match(/rgba\(\d+\,\d+\,\d+\,([^\)]+)\)/)[1]).toFixed(2) * 100;
-			alphaVal = parseInt(alphaVal);
-		} else {
-			alphaVal = 100;
-		}
-
-		return alphaVal;
-	}
-
-	/**
-	 * Force update the alpha value of the color picker object and maybe the alpha slider.
-	 */
-	function acp_update_alpha_value_on_color_control(alpha, $control, $alphaSlider, update_slider) {
-		var iris, colorPicker, color;
-
-		iris = $control.data('a8cIris');
-		colorPicker = $control.data('wpWpColorPicker');
-
-		// Set the alpha value on the Iris object.
-		iris._color._alpha = alpha;
-
-		// Store the new color value.
-		color = iris._color.toString();
-
-		// Set the value of the input.
-		$control.val(color);
-
-		// Update the background color of the color picker.
-		colorPicker.toggler.css({
-			'background-color': color
-		});
-
-		// Maybe update the alpha slider itself.
-		if (update_slider) {
-			acp_update_alpha_value_on_alpha_slider(alpha, $alphaSlider);
-		}
-
-		// Update the color value of the color picker object.
-		$control.wpColorPicker('color', color);
-	}
-
-	/**
-	 * Update the slider handle position and label.
-	 */
-	function acp_update_alpha_value_on_alpha_slider(alpha, $alphaSlider) {
-		$alphaSlider.slider('value', alpha);
-		$alphaSlider.find('.ui-slider-handle').text(alpha.toString());
-	}
-});
-
-
-/**
  * Tab control
  */
 jQuery(document).ready(function ($) {
@@ -714,6 +399,61 @@ jQuery(document).ready(function ($) {
 	}
 });
 
+var botigaChangeElementColors = function( element, color, palette ) {
+
+	if ( element === 'color_link_default' || element === 'color_link_hover' ) {
+
+		var $control = jQuery('#customize-control-color_link');
+
+		if ( $control.length ) {
+
+			var $color = $control.find('[data-control-id="'+ element +'"]');
+
+			if ( $color.length ) {
+
+				var $picker = $color.find('.botiga-color-picker');
+				var $input  = $color.find('.botiga-color-input');
+
+				if ( palette ) {
+					if ( element === 'color_link_default' ) {
+						color = palette[0];
+					} else if ( element === 'color_link_hover' ) {
+						color = palette[1];
+					}
+				}
+
+				if ( $picker.data('pickr') ) {
+					$picker.data('pickr').setColor(color);
+				} else {
+					$picker.css('background-color', color);
+					wp.customize(element).set(color);
+				}
+
+			}
+
+		}
+
+	} else {
+
+		var $control = jQuery('#customize-control-'+element);
+
+		if ( $control.length ) {
+
+			var $picker = $control.find('.botiga-color-picker');
+
+			if ( $picker.data('pickr') ) {
+				$picker.data('pickr').setColor(color);
+			} else {
+				$picker.css('background-color', color);
+				wp.customize(element).set(color);
+			}
+
+		}
+
+	}
+
+};
+
 /**
  * Palettes
  */
@@ -721,16 +461,20 @@ wp.customize('color_palettes', function (control) {
 
 	var palettes = jQuery('#customize-control-color_palettes').find('.radio-buttons').data('palettes');
 
-	control.bind(function () {
-		var palette = control.get();
+	control.bind(function(value) {
+
+		if ( value === '' ) {
+			return;
+		}
+
+		var palette = value;
 
 		//Color 1 Button color, Link color
 		let elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color','ql_item_bg_hover'];
 
 		for (const element of elements1) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][0]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][0]);
+				botigaChangeElementColors(element, palettes[palette][0], palettes[palette]);
 			}
 		}
 
@@ -739,8 +483,7 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements2) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][1]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][1]);
+				botigaChangeElementColors(element, palettes[palette][1], palettes[palette]);
 			}
 		}
 
@@ -749,8 +492,7 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements3) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][2]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][2]);
+				botigaChangeElementColors(element, palettes[palette][2], palettes[palette]);
 			}
 		}
 
@@ -759,8 +501,7 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements4) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][3]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][3]);
+				botigaChangeElementColors(element, palettes[palette][3], palettes[palette]);
 			}
 		}
 
@@ -769,8 +510,7 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements5) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][4]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][4]);
+				botigaChangeElementColors(element, palettes[palette][4], palettes[palette]);
 			}
 		}
 
@@ -779,8 +519,7 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements6) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][5]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][5]);
+				botigaChangeElementColors(element, palettes[palette][5], palettes[palette]);
 			}
 		}
 
@@ -789,8 +528,7 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements7) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][6]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][6]);
+				botigaChangeElementColors(element, palettes[palette][6], palettes[palette]);
 			}
 		}
 
@@ -799,25 +537,31 @@ wp.customize('color_palettes', function (control) {
 
 		for (const element of elements8) {
 			if (typeof wp.customize(element) !== 'undefined') {
-				wp.customize(element).set(palettes[palette][7]);
-				jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', palettes[palette][7]);
+				botigaChangeElementColors(element, palettes[palette][7], palettes[palette]);
 			}
 		}
 
 		// Custom palette update.
-		const custom_palette = jQuery('#customize-control-custom_palette');
+		var $customPaletteControl = jQuery('#customize-control-custom_palette');
+		if ( $customPaletteControl.length ) {
+			var $customPaletteControls = $customPaletteControl.find('.botiga-color-control');
+			if ( $customPaletteControls.length ) {
+				$customPaletteControls.each( function( index ) {
 
-		for (let i = 0; i < 8; i++) {
+					var $control = jQuery(this);
+					var $picker  = $control.find('.botiga-color-picker');
+					var $input   = $control.find('.botiga-color-input');
+					var color    = palettes[ palette ][ index ];
 
-			const color = palettes[palette][i];
-			const input = custom_palette.find('input[data-customize-setting-link="custom_color' + (i + 1) + '"]');
+					$input.attr('value', color);
+					$picker.css('background-color', color);
 
-			input.css('background-color', color).attr('data-color-val', color).attr('value', color);
-			input.closest('.wp-picker-container').find('.wp-color-result').css('background-color', color);
-
+				});
+			}
 		}
 
 	});
+
 });
 
 /**
@@ -831,8 +575,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements1) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -844,8 +587,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements2) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -857,8 +599,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements3) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 
@@ -871,8 +612,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements4) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -885,8 +625,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements5) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -899,8 +638,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements6) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -913,8 +651,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements7) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -927,8 +664,7 @@ wp.customize.bind('ready', function () {
 
 			for (const element of elements8) {
 				if (typeof wp.customize(element) !== 'undefined') {
-					wp.customize(element).set(value);
-					jQuery('#customize-control-' + element).find('.wp-color-result, .alpha-color-control').css('background-color', value);
+					botigaChangeElementColors(element, value);
 				}
 			}
 		});
@@ -1583,3 +1319,237 @@ jQuery(document).ready(function ($) {
 	});
 
 });
+
+/**
+ * HTML5 Input Range (Track Color Support)
+ */
+jQuery(document).ready(function ($) {
+
+	"use strict";
+
+	$('input[type="range"]').on('change input botiga.range', function(){
+	 	
+		var $range     = $(this);
+	 	var value      = $range.val() || 0;
+		var min        = $range.attr('min') || 0;
+		var max        = $range.attr('max') || 1;
+	 	var percentage = (((value-min)/(max- min))*100);
+
+	 	$range.css({'background': 'linear-gradient(to right, #3858E9 0%, #3858E9 '+ percentage +'%, #ddd '+ percentage +'%, #ddd 100%)' });
+
+	}).trigger('botiga.range');
+
+});
+
+/**
+ * Typography Preview
+ */
+jQuery(document).ready(function ($) {
+
+	"use strict";
+
+	var $previews = $('.botiga-typography-preview');
+
+	if ( $previews.length ) {
+
+		$previews.each(function( index ) {
+
+			var $preview = $(this);
+			var options  = $preview.data('options');
+
+			$.each( options, function(prop, option) {
+
+				if ( prop === 'google_font' ) {
+
+					wp.customize( option, function( value ) {
+						value.bind( function( to ) {
+
+							to = $.parseJSON( to );
+
+							var family = to.font || '';
+							var weight = to.regularweight || 400;
+							var elemId = family.replace(/ /g, '-').toLowerCase() +'-'+ weight;
+							var href   = 'https://fonts.googleapis.com/css?family='+ family.replace(/ /g, '+') +':'+ weight +'&display=swap';
+
+							if ( $('#'+elemId).length === 0 ) {
+								$('head').append( '<link id="'+ elemId +'" href="'+ href +'" rel="stylesheet">' );
+							}
+
+							$preview.css('font-family', family);
+							$preview.css('font-weight', weight);
+
+						});
+					});
+
+				} else if ( prop === 'adobe_font' ) {
+
+					wp.customize( option, function( value ) {
+						value.bind( function( to ) {
+							to = to.split('|');
+							if ( to[0] ) {
+								$preview.css('font-family', to[0]);
+							}
+							if ( to[1] ) {
+								$preview.css('font-weight', to[1].replace('n4', '400'));
+							}
+						});
+					});
+
+				} else {
+
+					wp.customize( option, function( value ) {
+						value.bind( function( to ) {
+							if ( to !== '' && isFinite(to) ) {
+								to = Number( to );
+							}
+							$preview.css(prop, to);
+						});
+					});
+
+				}
+
+			});
+
+		});
+
+	}
+
+});
+
+/* Color Control */
+jQuery(document).ready(function ($) {
+
+	var $colorControls = $('.botiga-color-control');
+
+	if ( $colorControls.length && Pickr ) {
+
+		var getCurrentSwatches = function() {
+			var isCustom = wp.customize.control('custom_palette_toggle').setting.get();
+			var colors = [];
+			if ( isCustom ) {
+				$('#customize-control-custom_palette .botiga-color-input').each(function () {
+					colors.push( $(this).val() );
+				});
+			} else {
+				$('#customize-control-color_palettes .saved-palette .palette-color').each(function () {
+					colors.push( $(this).css('background-color') );
+				});
+			}
+			return colors;
+		}
+
+		Pickr.prototype.setSwatches = function(swatches) {
+			if ( ! swatches.length ) {
+				return;
+			}
+			for (let i = this._swatchColors.length - 1; i > -1; i--) {
+				this.removeSwatch(i);
+			}
+			swatches.forEach(swatch => this.addSwatch(swatch));
+		}
+
+		$colorControls.each( function() {
+
+			var $colorControl = $(this);
+			var $colorPicker  = $colorControl.find('.botiga-color-picker');
+			var inited;
+
+			$colorPicker.on('click', function() {
+
+				if ( ! inited ) {
+
+					var $colorInput = $colorControl.find('.botiga-color-input');
+
+					var pickr = new Pickr({
+					  el: $colorPicker.get(0),
+					  container: 'body',
+					  theme: 'botiga',
+					  default: $colorInput.val(),
+						swatches: [],
+						position: 'bottom-end',
+						appClass: 'botiga-pcr-app',
+						sliders: 'h',
+						useAsButton: true,
+						components: {
+							hue: true,
+							preview: true,
+							opacity: true,
+							interaction: {
+							  input: true,
+							  clear: true,
+							},
+						},
+						i18n: {
+							'btn:clear': 'Default',
+						},
+					});
+
+					pickr.on('change', function( color ) {
+
+						var colorCode;
+
+						if ( color.a === 1 ) {
+					    pickr.setColorRepresentation('HEX');
+					    colorCode = color.toHEXA().toString(0);
+					  } else {
+					    pickr.setColorRepresentation('RGBA');
+					    colorCode = color.toRGBA().toString(0);
+					  }
+						
+						$colorPicker.css({'background-color': colorCode});
+						$colorInput.val(colorCode).trigger('change');
+
+					});
+
+					pickr.on('show', function() {
+						pickr.setSwatches( getCurrentSwatches() );
+					});
+
+					pickr.on('clear', function() {
+						pickr.setColor( $colorPicker.data('default-color') );
+					});
+
+					$colorPicker.data('pickr', pickr);
+
+					setTimeout(function(){
+						pickr.show();
+					});
+
+					inited = true;
+
+				}
+
+			});
+
+		});
+
+	}
+
+});
+
+/* Color Control */
+jQuery(document).ready(function ($) {
+
+	$('#customize-control-reset_colors').on('click', function() {
+
+		var $label  = $('.palette-radio-buttons').find('label').first();
+		var control = wp.customize('color_palettes');
+
+		$label.trigger('click');
+		$label.find('.palette').trigger('click');
+
+		control.set('');
+		control.set('palette1');
+
+	});
+
+});
+
+;(function ( $, window, document ) {
+  'use strict';
+
+  setInterval( function() {
+    $(window).off('beforeunload');
+  }, 500);
+
+})( jQuery, window, document );

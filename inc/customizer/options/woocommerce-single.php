@@ -11,9 +11,8 @@
 $wp_customize->add_section(
 	'botiga_section_single_product',
 	array(
-		'title'      => esc_html__( 'Single products', 'botiga'),
-		'panel'      => 'woocommerce',
-		'priority'	 => 8
+		'title'    => esc_html__( 'Single Product', 'botiga'),
+		'priority' => 44
 	)
 ); 
 

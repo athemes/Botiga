@@ -5,21 +5,14 @@
  * @package Botiga
  */
 
-$wp_customize->add_panel( 'botiga_panel_blog', array(
-	'priority'       => 19,
-	'capability'     => 'edit_theme_options',
-	'title'          => esc_html__( 'Blog', 'botiga' ),
-) );
-
 /**
  * Archives
  */
 $wp_customize->add_section(
 	'botiga_section_blog_archives',
 	array(
-		'title'         => esc_html__( 'Blog archives', 'botiga'),
-		'priority'      => 11,
-		'panel'         => 'botiga_panel_blog',
+		'title'    => esc_html__( 'Blog Archives', 'botiga'),
+		'priority' => 61,
 	)
 );
 

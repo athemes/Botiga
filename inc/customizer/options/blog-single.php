@@ -11,9 +11,8 @@
 $wp_customize->add_section(
 	'botiga_section_blog_singles',
 	array(
-		'title'         => esc_html__( 'Single posts', 'botiga'),
-		'priority'      => 11,
-		'panel'         => 'botiga_panel_blog',
+		'title'    => esc_html__( 'Single Posts', 'botiga'),
+		'priority' => 62,
 	)
 );
 

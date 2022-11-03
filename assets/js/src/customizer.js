@@ -982,6 +982,13 @@
 		} );
 	} );	
 
+	wp.customize( 'header_menu_text_decoration', function( value ) {
+		value.bind( function( to ) {
+			console.log(to);
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'text-decoration', to );
+		} );
+	} );
+
 	// Shop Header Style
 	wp.customize( 'shop_archive_header_padding_top', function( value ) {
 		value.bind( function( to ) {
@@ -1031,6 +1038,9 @@
 	// Predefined palettes listener.
 	wp.customize( 'color_palettes', function( value ) {
 		value.bind( function( to ) {
+			if ( to === '' ) {
+				return;
+			}
 			var palettes = $( '#customize-control-color_palettes', window.parent.document ).find( '.radio-buttons' ).data( 'palettes' );
 			for (var i = 0; i < 8; i++) {
 				$('.has-color-'+ i +'-color').css('color', palettes[to][i]);

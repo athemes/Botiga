@@ -10,13 +10,13 @@
  */
 
 /**
- * Footer
+ * Footer widgets
  */
 $wp_customize->add_panel(
 	'botiga_panel_footer',
 	array(
-		'title'         => esc_html__( 'Footer', 'botiga'),
-		'priority'      => 31,
+		'title'    => esc_html__( 'Footer', 'botiga' ),
+		'priority' => 12,
 	)
 );
 

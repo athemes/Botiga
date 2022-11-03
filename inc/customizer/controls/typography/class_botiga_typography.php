@@ -78,7 +78,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 				<div class="google_fonts_select_control popover-block">
 					<input type="hidden" id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $this->value( 'family' ) ); ?>" class="customize-control-google-font-selection" <?php $this->link( 'family' ); ?> />
 					<div class="google-fonts">
-						<div class="font-control-title"><strong><?php esc_html_e( 'Font family', 'botiga' ) ?></strong></div>
+						<div class="customize-control-title"><?php esc_html_e( 'Font family', 'botiga' ) ?></div>
 
 						<select class="google-fonts-list" control-name="<?php echo esc_attr( $this->id ); ?>">
 							<?php
@@ -103,7 +103,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 					</div>
 
 					<div class="range-slider-wrapper cols2-control">
-					<div class="font-control-title w50"><strong><?php esc_html_e( 'Font weight', 'botiga' ) ?></strong></div>
+					<div class="customize-control-title"><?php esc_html_e( 'Font weight', 'botiga' ) ?></div>
 					<?php if ( $this->input_attrs['disableRegular'] == false ) : ?>
 						<select class="google-fonts-regularweight-style w50">
 							<?php

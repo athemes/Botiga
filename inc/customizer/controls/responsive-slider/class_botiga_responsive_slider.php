@@ -19,6 +19,12 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 			$step = 1;
 		}
 
+		if ( isset( $this->input_attrs['unit'] ) ) {
+			$unit = $this->input_attrs['unit'];
+		} else {
+			$unit = 'px';
+		}
+
 		$responsive = '';
 		if ( !$this->is_responsive ) {
 			$responsive = 'noresponsive';
@@ -40,15 +46,18 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 				<div class="range-slider responsive-control-desktop active <?php echo esc_attr( $responsive ); ?>">
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_desktop' ) ); ?>" <?php $this->link( 'size_desktop' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_desktop' ) ); ?>" <?php $this->link( 'size_desktop' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
+					<span class="range-slider__unit"><?php echo esc_html( $unit ); ?></span>
 				</div>
 				<?php if ( $this->is_responsive ) : ?>
 				<div class="range-slider responsive-control-tablet">
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_tablet' ) ); ?>" <?php $this->link( 'size_tablet' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_tablet' ) ); ?>" <?php $this->link( 'size_tablet' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
+					<span class="range-slider__unit"><?php echo esc_html( $unit ); ?></span>
 				</div>
 				<div class="range-slider responsive-control-mobile">
 					<input class="range-slider__range" type="range" value="<?php echo esc_attr( $this->value( 'size_mobile' ) ); ?>" <?php $this->link( 'size_mobile' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
 					<input class="range-slider__value" type="number" value="<?php echo esc_attr( $this->value( 'size_mobile' ) ); ?>" <?php $this->link( 'size_mobile' ); ?> min="<?php echo absint( $this->input_attrs['min'] ); ?>" max="<?php echo absint( $this->input_attrs['max'] ); ?>" step="<?php echo esc_attr( $step ); ?>">
+					<span class="range-slider__unit"><?php echo esc_html( $unit ); ?></span>
 				</div>		
 				<?php endif; ?>	
 				<?php if ( $this->description ) : ?>

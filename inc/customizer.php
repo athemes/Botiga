@@ -29,7 +29,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		public function __construct() {		
 			add_action( 'init', array( $this, 'customize_wp_init' ) );
 			add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ) );
-			add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'customize_register' ), 99 );
 			add_action( 'customize_controls_print_footer_scripts', array( $this, 'scripts' ) );
 		}
 
@@ -67,6 +67,10 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/accordion/class_botiga_accordion_control.php';
 			require get_template_directory() . '/inc/customizer/controls/display-conditions/class_botiga_display_conditions_control.php';
 			require get_template_directory() . '/inc/customizer/controls/custom-sidebars/class_botiga_custom_sidebars_control.php';
+			require get_template_directory() . '/inc/customizer/controls/class_botiga_title_section.php';
+			require get_template_directory() . '/inc/customizer/controls/class_botiga_typography_preview_control.php';
+			require get_template_directory() . '/inc/customizer/controls/class_botiga_text_style_control.php';
+			require get_template_directory() . '/inc/customizer/controls/color-group/class_botiga_color_group.php';
 			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}
@@ -78,25 +82,23 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 			$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 			$wp_customize->get_section( 'title_tagline' )->priority 	= 1;
-			$wp_customize->get_section( 'colors' )->priority 			= 10;
 			$wp_customize->get_section( 'title_tagline' )->panel 		= 'botiga_panel_header';
 			$wp_customize->get_section( 'header_image' )->panel 		= 'botiga_panel_header';
-			$wp_customize->get_section( 'background_image' )->panel 	= 'botiga_panel_general';
 
 			$wp_customize->remove_control( 'header_textcolor' );
-			if ( class_exists( 'WooCommerce') ) {
-				$wp_customize->get_panel( 'woocommerce' )->priority 	= 31;
-			}
 
 			// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			require get_template_directory() . '/inc/customizer/sanitize.php';
 			require_once get_template_directory() . '/inc/customizer/callbacks.php';
+			require get_template_directory() . '/inc/customizer/options/navigation.php';
+			require get_template_directory() . '/inc/customizer/options/layout.php';
+			require get_template_directory() . '/inc/customizer/options/buttons.php';
+			require get_template_directory() . '/inc/customizer/options/scrolltotop.php';
 			require get_template_directory() . '/inc/customizer/options/blog.php';
 			require get_template_directory() . '/inc/customizer/options/blog-single.php';
 			require get_template_directory() . '/inc/customizer/options/topbar.php';
 			require get_template_directory() . '/inc/customizer/options/header.php';
 			require get_template_directory() . '/inc/customizer/options/header-mobile.php';
-			require get_template_directory() . '/inc/customizer/options/general.php';
 			require get_template_directory() . '/inc/customizer/options/footer.php';
 			require get_template_directory() . '/inc/customizer/options/colors.php';
 			require get_template_directory() . '/inc/customizer/options/performance.php';
@@ -154,6 +156,20 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		}		
 
 		function scripts() {
+
+			$fonts_library = get_theme_mod( 'fonts_library', 'google' );
+			
+			if( $fonts_library === 'google' ) {
+				wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
+			} else {
+				$kits = get_option( 'botiga_adobe_fonts_kits', array() );
+				foreach ( $kits as $kit_id => $kit_data ) {
+					if ( $kit_data['enable'] == false ) {
+						continue;
+					}
+					wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.com/' . $kit_id . '.css', array(), BOTIGA_VERSION );
+				}
+			}
 
 			wp_enqueue_style( 'botiga-customizer-styles', get_template_directory_uri() . '/assets/css/customizer.css' );
 
