@@ -149,3 +149,10 @@ div.editor-styles-wrapper {
 div.editor-styles-wrapper {
 	@import "components/widgets/widget_blocks";
 }
+
+/*
+* Pagination
+*/
+div.editor-styles-wrapper {
+	@import "components/navigation/navigation";
+}
