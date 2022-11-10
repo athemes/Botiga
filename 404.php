@@ -11,7 +11,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-		<?php do_action( 'sydney_404_content' ); ?>
+		<?php do_action( 'botiga_404_content' ); ?>
 	</main><!-- #main -->
 
 <?php

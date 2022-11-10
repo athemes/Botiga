@@ -483,8 +483,8 @@ add_action( 'botiga_after_single_post_content', 'botiga_single_post_comments', 4
 /**
  * Prints the 404 page content.
  */
-if ( ! function_exists( 'sydney_404_page_content' ) ) :
-	function sydney_404_page_content() { ?>
+if ( ! function_exists( 'botiga_404_page_content' ) ) :
+	function botiga_404_page_content() { ?>
 		
 		<section class="error-404 not-found">
 			<header class="page-header">
@@ -511,5 +511,5 @@ if ( ! function_exists( 'sydney_404_page_content' ) ) :
 
 		<?php
 	}
-	add_action( 'sydney_404_content', 'sydney_404_page_content' );
+	add_action( 'botiga_404_content', 'botiga_404_page_content' );
 endif;
