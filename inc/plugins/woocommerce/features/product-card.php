@@ -192,7 +192,7 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart
  */
 function botiga_page_has_woo_blocks() {
 	global $post;
-	
+
 	if( $post ) {
 		if( isset( $post->post_content ) && strpos( $post->post_content, 'woocommerce/' ) ) {
             return true;

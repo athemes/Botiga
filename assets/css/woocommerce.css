@@ -662,13 +662,21 @@ ul.products li.product .wc-block-grid__product-link {
   border-bottom: 1px solid #eee;
 }
 
+@media (min-width: 768px) {
+  .woocommerce-sorting-wrapper > .row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .woocommerce-sorting-wrapper p {
   margin: 0;
 }
 
 .woocommerce-sorting-wrapper select {
   border: 0;
-  padding: 0 25px 0 0;
+  padding: 10px 25px 10px 20px;
   max-width: 220px;
   min-height: auto;
 }
