@@ -11,28 +11,8 @@
 $wp_customize->add_section(
 	'botiga_section_scrolltotop',
 	array(
-		'title'    => esc_html__( 'Scroll to Top', 'botiga'),
-		'priority' => 32,
-	)
-);
-
-$wp_customize->add_setting(
-	'botiga_scrolltop_tabs',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Tab_Control (
-		$wp_customize,
-		'botiga_scrolltop_tabs',
-		array(
-			'label' 				=> '',
-			'section'       		=> 'botiga_section_scrolltotop',
-			'controls_general'		=> json_encode( array( '#customize-control-scrolltop_text','#customize-control-enable_scrolltop','#customize-control-scrolltop_type','#customize-control-scrolltop_icon','#customize-control-scrolltop_radius','#customize-control-scrolltop_divider_1','#customize-control-scrolltop_position','#customize-control-scrolltop_side_offset','#customize-control-scrolltop_bottom_offset','#customize-control-scrolltop_divider_2','#customize-control-scrolltop_visibility',	) ),
-			'controls_design'		=> json_encode( array( '#customize-control-scrolltop_color','#customize-control-scrolltop_bg_color','#customize-control-scrolltop_divider_3','#customize-control-scrolltop_color_hover','#customize-control-scrolltop_bg_color_hover','#customize-control-scrolltop_divider_4','#customize-control-scrolltop_icon_size','#customize-control-scrolltop_padding', ) ),
-		)
+		'title' => esc_html__( 'Scroll to Top', 'botiga'),
+		'priority' => 75,
 	)
 );
 
@@ -50,6 +30,45 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Enable scroll to top', 'botiga' ),
 			'section'       	=> 'botiga_section_scrolltotop',
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'botiga_scrolltop_tabs',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Tab_Control (
+		$wp_customize,
+		'botiga_scrolltop_tabs',
+		array(
+			'label'            => '',
+			'section'          => 'botiga_section_scrolltotop',
+			'controls_general' => json_encode( array(
+				'#customize-control-scrolltop_type',
+				'#customize-control-scrolltop_text',
+				'#customize-control-scrolltop_icon',
+				'#customize-control-scrolltop_radius',
+				'#customize-control-scrolltop_divider_1',
+				'#customize-control-scrolltop_position',
+				'#customize-control-scrolltop_side_offset',
+				'#customize-control-scrolltop_bottom_offset',
+				'#customize-control-scrolltop_divider_2',
+				'#customize-control-scrolltop_visibility',
+			) ),
+			'controls_design'  => json_encode( array(
+				'#customize-control-scrolltop',
+				'#customize-control-scrolltop_bg',
+				'#customize-control-scrolltop_divider_3',
+				'#customize-control-scrolltop_divider_4',
+				'#customize-control-scrolltop_icon_size',
+				'#customize-control-scrolltop_padding',
+			) ),
+			'active_callback'  => 'botiga_callback_scrolltop',
 		)
 	)
 );
@@ -282,18 +301,31 @@ $wp_customize->add_control( 'scrolltop_visibility', array(
 $wp_customize->add_setting(
 	'scrolltop_color',
 	array(
-		'default'           => '#fff',
+		'default'           => '#ffffff',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_setting(
+	'scrolltop_color_hover',
+	array(
+		'default'           => '#ffffff',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
 		'transport'         => 'postMessage'
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'scrolltop_color',
+		'scrolltop',
 		array(
-			'label'         	=> esc_html__( 'Icon color', 'botiga' ),
-			'section'       	=> 'botiga_section_scrolltotop',
+			'label'    => esc_html__( 'Icon color', 'botiga' ),
+			'section'  => 'botiga_section_scrolltotop',
+			'settings' => array(
+				'normal' => 'scrolltop_color',
+				'hover'  => 'scrolltop_color_hover',
+			),
+			'active_callback' => 'botiga_callback_scrolltop'
 		)
 	)
 );
@@ -306,36 +338,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'scrolltop_bg_color',
-		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga' ),
-			'section'       	=> 'botiga_section_scrolltotop',
-		)
-	)
-);
-
-$wp_customize->add_setting(
-	'scrolltop_color_hover',
-	array(
-		'default'           => '#fff',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'scrolltop_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Icon hover color', 'botiga' ),
-			'section'       	=> 'botiga_section_scrolltotop',
-		)
-	)
-);
-
 $wp_customize->add_setting(
 	'scrolltop_bg_color_hover',
 	array(
@@ -345,12 +347,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'scrolltop_bg_color_hover',
+		'scrolltop_bg',
 		array(
-			'label'         	=> esc_html__( 'Background hover color', 'botiga' ),
-			'section'       	=> 'botiga_section_scrolltotop',
+			'label'    => esc_html__( 'Background color', 'botiga' ),
+			'section'  => 'botiga_section_scrolltotop',
+			'settings' => array(
+				'normal' => 'scrolltop_bg_color',
+				'hover'  => 'scrolltop_bg_color_hover',
+			),
+			'active_callback' => 'botiga_callback_scrolltop'
 		)
 	)
 );
@@ -373,6 +380,7 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'scroll
 			'min'	=> 10,
 			'max'	=> 100
 		),
+		'active_callback' => 'botiga_callback_scrolltop'
 	)
 ) );
 
@@ -394,5 +402,6 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'scroll
 			'min'	=> 0,
 			'max'	=> 100
 		),
+		'active_callback' => 'botiga_callback_scrolltop'
 	)
 ) );

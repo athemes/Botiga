@@ -9,11 +9,11 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_nav
 	),
 ) );
 //
-// @priority 11 (Header)
+// @priority 15 (Header)
 //
-// @priority 12 (Footer)
+// @priority 20 (Footer)
 //
-// @priority 13 (Sidebar)
+// @priority 30 (Sidebar)
 //
 
 /**
@@ -22,23 +22,24 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_nav
 $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_site_styles',
 	array(
 		'title'    => esc_html__( 'Site Styles', 'botiga' ),
-		'priority' => 20,
+		'priority' => 35,
 		'divider'  => true,
 	),
 ) );
 //
-// @priority 21 (Typography)
+// @priority 40 (Typography)
 //
-// @priority 22 (Colors)
+// @priority 45 (Colors)
 //
-$wp_customize->get_section( 'colors' )->priority = 22;
+$wp_customize->get_section( 'colors' )->priority    = 50;
+$wp_customize->get_section( 'colors' )->description = esc_html__( 'Manage palettes and the default color of different global elements on the site.', 'botiga' );
 //
-// @priority 23 (Layout)
+// @priority 55 (Layout)
 //
-// @priority 24 (Background)
+// @priority 60 (Background)
 //
 $wp_customize->get_section( 'background_image' )->title    = esc_html__( 'Background', 'botiga');
-$wp_customize->get_section( 'background_image' )->priority = 24;
+$wp_customize->get_section( 'background_image' )->priority = 60;
 
 /**
  * Elements
@@ -46,18 +47,18 @@ $wp_customize->get_section( 'background_image' )->priority = 24;
 $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_elements',
 	array(
 		'title'    => esc_html__( 'Elements', 'botiga' ),
-		'priority' => 30,
+		'priority' => 65,
 		'divider'  => true,
 	),
 ) );
 //
-// @priority 31 (Buttons)
+// @priority 70 (Buttons)
 //
-// @priority 32 (Scroll to Top)
+// @priority 75 (Scroll to Top)
 //
-// @priority 33 (Breadcrumbs)
+// @priority 80 (Breadcrumbs)
 //
-// @priority 34 (Quick Links)
+// @priority 85 (Quick Links)
 //
 
 /**
@@ -68,52 +69,52 @@ if ( class_exists( 'WooCommerce' ) ) {
 	$wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_woocommerce',
 		array(
 			'title'    => esc_html__( 'WooCommerce', 'botiga' ),
-			'priority' => 40,
+			'priority' => 90,
 			'divider'  => true,
 		),
 	) );
 	//
-	// @priority 41 (General)
+	// @priority 95 (General)
 	//
-	// @priority 42 (Store Notice)
+	// @priority 100 (Store Notice)
 	//
 	if ( $wp_customize->get_section( 'woocommerce_store_notice' ) ) {
 		$wp_customize->get_section( 'woocommerce_store_notice' )->panel    = null;
-		$wp_customize->get_section( 'woocommerce_store_notice' )->priority = 42;
+		$wp_customize->get_section( 'woocommerce_store_notice' )->priority = 100;
 	}
 	//
-	// @priority 43 (Product Catalog)
+	// @priority 105 (Product Catalog)
 	//
 	if ( $wp_customize->get_section( 'woocommerce_product_catalog' ) ) {
 		$wp_customize->get_section( 'woocommerce_product_catalog' )->panel    = null;
-		$wp_customize->get_section( 'woocommerce_product_catalog' )->priority = 43;
+		$wp_customize->get_section( 'woocommerce_product_catalog' )->priority = 105;
 	}
 	//
-	// @priority 44 (Single Products)
+	// @priority 110 (Single Products)
 	//
-	// @priority 45 (Checkout)
+	// @priority 115 (Checkout)
 	//
 	if ( $wp_customize->get_section( 'woocommerce_checkout' ) ) {
 		$wp_customize->get_section( 'woocommerce_checkout' )->panel    = null;
-		$wp_customize->get_section( 'woocommerce_checkout' )->priority = 45;
+		$wp_customize->get_section( 'woocommerce_checkout' )->priority = 115;
 	}
 	//
-	// @priority 46 (Cart)
+	// @priority 120 (Cart)
 	//
-	// @priority 47 (Search)
+	// @priority 125 (Search)
 	//
-	// @priority 48 (Wishlist)
+	// @priority 130 (Wishlist)
 	//
-	// @priority 49 (Floating Mini Cart Icon)
+	// @priority 135 (Floating Mini Cart Icon)
 	//
-	// @priority 50 (Product Images)
+	// @priority 140 (Product Images)
 	//
 	if ( $wp_customize->get_section( 'woocommerce_product_images' ) ) {
 		$wp_customize->get_section( 'woocommerce_product_images' )->panel    = null;
-		$wp_customize->get_section( 'woocommerce_product_images' )->priority = 50;
+		$wp_customize->get_section( 'woocommerce_product_images' )->priority = 140;
 	}
 	//
-	// @priority 51 (Product Swatches)
+	// @priority 150 (Product Swatches)
 	//
 
 }
@@ -124,14 +125,14 @@ if ( class_exists( 'WooCommerce' ) ) {
 $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_blog',
 	array(
 		'title'    => esc_html__( 'Blog', 'botiga' ),
-		'priority' => 60,
+		'priority' => 160,
 		'divider'  => true,
 	),
 ) );
 //
-// @priority 61 (Blog Archives)
+// @priority 165 (Blog Archives)
 //
-// @priority 62 (Single Posts)
+// @priority 170 (Single Posts)
 //
 
 /**
@@ -140,16 +141,16 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_blo
 $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_extension',
 	array(
 		'title'    => esc_html__( 'Extension', 'botiga' ),
-		'priority' => 70,
+		'priority' => 175,
 		'divider'  => true,
 	),
 ) );
 //
-// @priority 71 (Performance)
+// @priority 180 (Performance)
 //
-// @priority 72 (Modal Popup)
+// @priority 185 (Modal Popup)
 //
-// @priority 73 (Hooks)
+// @priority 190 (Hooks)
 
 /**
  * Core
@@ -157,31 +158,31 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_ext
 $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_core',
 	array(
 		'title'    => esc_html__( 'Core', 'botiga' ),
-		'priority' => 80,
+		'priority' => 195,
 		'divider'  => true,
 	),
 ) );
 //
-// @priority 81 (Widgets)
+// @priority 200 (Widgets)
 //
 if ( $wp_customize->get_panel( 'widgets' ) ) {
-	$wp_customize->get_panel( 'widgets' )->priority = 81;
+	$wp_customize->get_panel( 'widgets' )->priority = 200;
 }
 //
-// @priority 82 (Menus)
+// @priority 205 (Menus)
 //
 if ( $wp_customize->get_panel( 'nav_menus' ) ) {
-	$wp_customize->get_panel( 'nav_menus' )->priority = 82;
+	$wp_customize->get_panel( 'nav_menus' )->priority = 205;
 }
 //
-// @priority 83 (Homepage Settings)
+// @priority 210 (Homepage Settings)
 //
 if ( $wp_customize->get_section( 'static_front_page' ) ) {
-	$wp_customize->get_section( 'static_front_page' )->priority = 83;
+	$wp_customize->get_section( 'static_front_page' )->priority = 210;
 }
 //
-// @priority 84 (Additional CSS)
+// @priority 215 (Additional CSS)
 //
 if ( $wp_customize->get_section( 'custom_css' ) ) {
-	$wp_customize->get_section( 'custom_css' )->priority = 84;
+	$wp_customize->get_section( 'custom_css' )->priority = 215;
 }

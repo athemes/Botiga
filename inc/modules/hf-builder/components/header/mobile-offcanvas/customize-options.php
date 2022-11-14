@@ -82,8 +82,7 @@ $wp_customize->add_control(
                 array_merge(
                     array(
                         '#customize-control-bhfb_mobile_offcanvas_close_background_color',
-                        '#customize-control-bhfb_mobile_offcanvas_close_text_color',
-                        '#customize-control-bhfb_mobile_offcanvas_close_text_color_hover',
+                        '#customize-control-bhfb_mobile_offcanvas_close_text',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -183,19 +182,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_mobile_offcanvas_close_text_color',
-		array(
-			'label'         	=> esc_html__( 'Close Icon Text', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_mobile_offcanvas',
-			'priority'			=> 40
-		)
-	)
-);
-
-// Close Icon Text Color Hover.
 $wp_customize->add_setting(
 	'bhfb_mobile_offcanvas_close_text_color_hover',
 	array(
@@ -205,15 +191,19 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_mobile_offcanvas_close_text_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Close Icon Text Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_mobile_offcanvas',
-			'priority'			=> 40
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_mobile_offcanvas_close_text',
+        array(
+            'label'    => esc_html__( 'Close Icon Text', 'botiga' ),
+            'section'  => 'botiga_section_hb_mobile_offcanvas',
+            'settings' => array(
+                'normal' => 'bhfb_mobile_offcanvas_close_text_color',
+                'hover'  => 'bhfb_mobile_offcanvas_close_text_color_hover',
+            ),
+            'priority' => 40
+        )
+    )
 );
 
 // Move existing options.

@@ -50,7 +50,7 @@ class Botiga_Text_Style_Control extends WP_Customize_Control {
 					</label>
 					<label>
 						<input type="radio" name="<?php echo esc_attr( $this->id . '_transform' ); ?>" value="capitalize" <?php $this->link( 'transform' ); ?> <?php checked( 'capitalize', $this->value( 'transform' ) ); ?> />
-						<i><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M6.1 6.8 2.1 18h1.6l1.1-3h4.3l1.1 3h1.6l-4-11.2H6.1Zm-.8 6.8L7 8.9l1.7 4.7H5.3Zm15.1-.7c-.4-.5-.9-.8-1.6-1 .4-.2.7-.5.8-.9.2-.4.3-.9.3-1.4 0-.9-.3-1.6-.8-2-.6-.5-1.3-.7-2.4-.7h-3.5V18h4.2c1.1 0 2-.3 2.6-.8.6-.6 1-1.4 1-2.4-.1-.8-.3-1.4-.6-1.9Zm-5.7-4.7h1.8c.6 0 1.1.1 1.4.4.3.2.5.7.5 1.3 0 .6-.2 1.1-.5 1.3-.3.2-.8.4-1.4.4h-1.8V8.2Zm4 8c-.4.3-.9.5-1.5.5h-2.6v-3.8h2.6c1.4 0 2 .6 2 1.9.1.6-.1 1-.5 1.4Z"/></svg></i>
+						<i><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M7.1 6.8 3.1 18h1.6l1.1-3h4.3l1.1 3h1.6l-4-11.2H7.1Zm-.8 6.8L8 8.9l1.7 4.7H6.3Zm14.5-1.5c-.3-.6-.7-1.1-1.2-1.5a3.3 3.3 0 0 0-3.3-.3c-.4.2-.8.5-1.1.8V6h-1.4v12h1.3l.2-1c.2.4.6.6 1 .8.4.2.9.3 1.4.3.7 0 1.2-.2 1.8-.5.5-.4 1-.9 1.3-1.5.3-.6.5-1.3.5-2.1-.1-.6-.2-1.3-.5-1.9Zm-1.7 4c-.4.5-.9.8-1.6.8-.7 0-1.2-.2-1.7-.7-.4-.5-.7-1.2-.7-2.1 0-.9.2-1.6.7-2.1.4-.5 1-.7 1.7-.7s1.2.3 1.6.8c.4.5.6 1.2.6 2 .1.8-.2 1.4-.6 2Z"/></svg></i>
 					</label>
 					<label>
 						<input type="radio" name="<?php echo esc_attr( $this->id . '_transform' ); ?>" value="lowercase" <?php $this->link( 'transform' ); ?> <?php checked( 'lowercase', $this->value( 'transform' ) ); ?> />
@@ -58,7 +58,7 @@ class Botiga_Text_Style_Control extends WP_Customize_Control {
 					</label>
 					<label>
 						<input type="radio" name="<?php echo esc_attr( $this->id . '_transform' ); ?>" value="uppercase" <?php $this->link( 'transform' ); ?> <?php checked( 'uppercase', $this->value( 'transform' ) ); ?> />
-						<i><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M7.1 6.8 3.1 18h1.6l1.1-3h4.3l1.1 3h1.6l-4-11.2H7.1Zm-.8 6.8L8 8.9l1.7 4.7H6.3Zm14.5-1.5c-.3-.6-.7-1.1-1.2-1.5a3.3 3.3 0 0 0-3.3-.3c-.4.2-.8.5-1.1.8V6h-1.4v12h1.3l.2-1c.2.4.6.6 1 .8.4.2.9.3 1.4.3.7 0 1.2-.2 1.8-.5.5-.4 1-.9 1.3-1.5.3-.6.5-1.3.5-2.1-.1-.6-.2-1.3-.5-1.9Zm-1.7 4c-.4.5-.9.8-1.6.8-.7 0-1.2-.2-1.7-.7-.4-.5-.7-1.2-.7-2.1 0-.9.2-1.6.7-2.1.4-.5 1-.7 1.7-.7s1.2.3 1.6.8c.4.5.6 1.2.6 2 .1.8-.2 1.4-.6 2Z"/></svg></i>
+						<i><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M6.1 6.8 2.1 18h1.6l1.1-3h4.3l1.1 3h1.6l-4-11.2H6.1Zm-.8 6.8L7 8.9l1.7 4.7H5.3Zm15.1-.7c-.4-.5-.9-.8-1.6-1 .4-.2.7-.5.8-.9.2-.4.3-.9.3-1.4 0-.9-.3-1.6-.8-2-.6-.5-1.3-.7-2.4-.7h-3.5V18h4.2c1.1 0 2-.3 2.6-.8.6-.6 1-1.4 1-2.4-.1-.8-.3-1.4-.6-1.9Zm-5.7-4.7h1.8c.6 0 1.1.1 1.4.4.3.2.5.7.5 1.3 0 .6-.2 1.1-.5 1.3-.3.2-.8.4-1.4.4h-1.8V8.2Zm4 8c-.4.3-.9.5-1.5.5h-2.6v-3.8h2.6c1.4 0 2 .6 2 1.9.1.6-.1 1-.5 1.4Z"/></svg></i>
 					</label>
 				</div>
 			</div>

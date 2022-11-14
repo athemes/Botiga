@@ -30,6 +30,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			add_action( 'init', array( $this, 'customize_wp_init' ) );
 			add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ) );
 			add_action( 'customize_register', array( $this, 'customize_register' ), 99 );
+			add_action( 'customize_controls_print_scripts', array( $this, 'styles' ) );
 			add_action( 'customize_controls_print_footer_scripts', array( $this, 'scripts' ) );
 		}
 
@@ -152,10 +153,9 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 
 		public function customize_preview_js() {
 			wp_enqueue_script( 'botiga-customizer', get_template_directory_uri() . '/assets/js/customizer.min.js', array( 'jquery', 'customize-preview' ), BOTIGA_VERSION, true );
-
 		}		
 
-		function scripts() {
+		public function styles() {
 
 			$fonts_library = get_theme_mod( 'fonts_library', 'google' );
 			
@@ -172,6 +172,10 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			}
 
 			wp_enqueue_style( 'botiga-customizer-styles', get_template_directory_uri() . '/assets/css/customizer.css' );
+
+		}
+
+		public function scripts() {
 
 			wp_enqueue_script( 'botiga-customizer-scripts', get_template_directory_uri() . '/assets/js/customizer-scripts.min.js', array( 'jquery', 'jquery-ui-core' ), BOTIGA_VERSION, true );
 

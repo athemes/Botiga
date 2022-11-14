@@ -53,11 +53,22 @@ function botiga_enqueue_gutenberg_assets() {
 		)
 	);	
 
-	$body_font		= get_theme_mod( 'botiga_body_font', $typography_defaults );
-	$headings_font 	= get_theme_mod( 'botiga_headings_font', $typography_defaults );
+	$body_font         = get_theme_mod( 'botiga_body_font', $typography_defaults );
+	$headings_font     = get_theme_mod( 'botiga_headings_font', $typography_defaults );
+	$button_font       = get_theme_mod( 'button_font', $typography_defaults );
+	$button_font_style = get_theme_mod( 'button_font_style', 'custom' );
 
-	$body_font 		= json_decode( $body_font, true );
-	$headings_font 	= json_decode( $headings_font, true );
+	$body_font     = json_decode( $body_font, true );
+	$headings_font = json_decode( $headings_font, true );
+
+	// Set button font as Heading/Body/Custom
+	if ( $button_font_style === 'body' ) {
+		$button_font = $body_font;
+	} else if ( $button_font_style === 'heading' ) {
+		$button_font = $headings_font;
+	} else {
+		$button_font = json_decode( $button_font, true );
+	}
 	
 	if ( 'System default' !== $body_font['font'] ) {
 		$css .= 'div.editor-styles-wrapper body { font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .'}' . "\n";	
@@ -65,6 +76,10 @@ function botiga_enqueue_gutenberg_assets() {
 	
 	if ( 'System default' !== $headings_font['font'] ) {
 		$css .= 'div.editor-styles-wrapper .editor-post-title .editor-post-title__input, div.editor-styles-wrapper h1,div.editor-styles-wrapper h2,div.editor-styles-wrapper h3,div.editor-styles-wrapper h4,div.editor-styles-wrapper h5,div.editor-styles-wrapper h6 { font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . ';}' . "\n";
+	}
+
+	if ( 'System default' !== $button_font['font'] ) {
+		$css .= 'div.editor-styles-wrapper button, div.editor-styles-wrapper a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"] { font-family:' . esc_attr( $button_font['font'] ) . ',' . esc_attr( $button_font['category'] ) . '; font-weight: '. esc_attr( $button_font['regularweight'] ) .';}' . "\n";
 	}
 
 	$headings_font_style 		= get_theme_mod( 'headings_font_style', 'normal' );

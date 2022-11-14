@@ -38,15 +38,10 @@ $wp_customize->add_control(
             ),
             'controls_design'		=> json_encode(
                 array(
-                    '#customize-control-bhfb_footer_button_default_state_title',
-                    '#customize-control-bhfb_footer_button_background_color',
-                    '#customize-control-bhfb_footer_button_color',
-                    '#customize-control-bhfb_footer_button_border_color',
-                    '#customize-control-bhfb_footer_button_buttons_divider_2',
-                    '#customize-control-bhfb_footer_button_buttons_hover_state_title',
-                    '#customize-control-bhfb_footer_button_background_color_hover',
-                    '#customize-control-bhfb_footer_button_color_hover',
-                    '#customize-control-bhfb_footer_button_border_color_hover'
+                    '#customize-control-bhfb_footer_button_colors_title',
+                    '#customize-control-bhfb_footer_button_background',
+                    '#customize-control-bhfb_footer_button',
+                    '#customize-control-bhfb_footer_button_border',
                 )
             ),
             'priority' 				=> 20
@@ -119,16 +114,16 @@ $wp_customize->add_control(
 	)
 );
 
-// Default State Title.
-$wp_customize->add_setting( 'bhfb_footer_button_default_state_title',
+// Colors Title.
+$wp_customize->add_setting( 'bhfb_footer_button_colors_title',
 	array(
 		'default' 			=> '',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_footer_button_default_state_title',
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_footer_button_colors_title',
 		array(
-			'label'			=> esc_html__( 'Default state', 'botiga' ),
+			'label'			=> esc_html__( 'Colors', 'botiga' ),
 			'section' 		=> 'botiga_section_fb_component__button',
             'priority'      => 45
 		)
@@ -144,16 +139,28 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_button_background_color',
-		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-            'priority'          => 50
-		)
+$wp_customize->add_setting(
+	'bhfb_footer_button_background_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
 	)
+);
+$wp_customize->add_control(
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_footer_button_background',
+        array(
+            'label'    => esc_html__( 'Background Color', 'botiga' ),
+            'section'  => 'botiga_section_fb_component__button',
+            'settings' => array(
+                'normal' => 'bhfb_footer_button_background_color',
+                'hover'  => 'bhfb_footer_button_background_color_hover',
+            ),
+            'priority' => 50
+        )
+    )
 );
 
 // Text Color.
@@ -165,16 +172,28 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_button_color',
-		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-            'priority'          => 55
-		)
+$wp_customize->add_setting(
+	'bhfb_footer_button_color_hover',
+	array(
+		'default'           => '#FFF',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
 	)
+);
+$wp_customize->add_control(
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_footer_button',
+        array(
+            'label'    => esc_html__( 'Text Color', 'botiga' ),
+            'section'  => 'botiga_section_fb_component__button',
+            'settings' => array(
+                'normal' => 'bhfb_footer_button_color',
+                'hover'  => 'bhfb_footer_button_color_hover',
+            ),
+            'priority' => 55
+        )
+    )
 );
 
 // Border Color.
@@ -186,91 +205,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_button_border_color',
-		array(
-			'label'         	=> esc_html__( 'Border Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-            'priority'          => 60
-		)
-	)
-);
-
-// Divider.
-$wp_customize->add_setting( 'bhfb_footer_button_buttons_divider_2',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'bhfb_footer_button_buttons_divider_2',
-		array(
-			'section' 		=> 'botiga_section_fb_component__button',
-            'priority'      => 65
-		)
-	)
-);
-
-// Hover State Title.
-$wp_customize->add_setting( 'bhfb_footer_button_buttons_hover_state_title',
-	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_footer_button_buttons_hover_state_title',
-		array(
-			'label'			=> esc_html__( 'Hover state', 'botiga' ),
-			'section' 		=> 'botiga_section_fb_component__button',
-            'priority'      => 70
-		)
-	)
-);
-
-// Background Color Hover.
-$wp_customize->add_setting(
-	'bhfb_footer_button_background_color_hover',
-	array(
-		'default'           => '#757575',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_button_background_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-            'priority'          => 75
-		)
-	)
-);
-
-// Text Color Hover.
-$wp_customize->add_setting(
-	'bhfb_footer_button_color_hover',
-	array(
-		'default'           => '#FFF',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_button_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-            'priority'          => 80
-		)
-	)
-);
-
-// Border Color Hover.
 $wp_customize->add_setting(
 	'bhfb_footer_button_border_color_hover',
 	array(
@@ -280,13 +214,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_button_border_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Border Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-            'priority'          => 85
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_footer_button_border',
+        array(
+            'label'    => esc_html__( 'Border Color', 'botiga' ),
+            'section'  => 'botiga_section_fb_component__button',
+            'settings' => array(
+                'normal' => 'bhfb_footer_button_border_color',
+                'hover'  => 'bhfb_footer_button_border_color_hover',
+            ),
+            'priority' => 60
+        )
+    )
 );

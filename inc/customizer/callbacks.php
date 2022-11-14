@@ -672,3 +672,163 @@ function botiga_callback_site_layout_boxed_padded() {
 	}
 
 }
+
+/**
+ * Button: Library Adobe & Custom Style
+ */
+function botiga_button_font_library_adobe_and_custom_style() {
+
+	$style   = get_theme_mod( 'button_font_style', 'custom' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Button: Library Google & Custom Style
+ */
+function botiga_button_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'button_font_style', 'custom' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Loop Post Title: Library Adobe & Custom Style
+ */
+function botiga_loop_post_title_font_library_adobe_and_custom_style() {
+
+	$style   = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Loop Post Title: Library Google & Custom Style
+ */
+function botiga_loop_post_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Post Title: Library Google & Custom Style
+ */
+function botiga_single_post_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Post Title: Library Adobe & Custom Style
+ */
+function botiga_single_post_title_font_library_adobe_and_custom_style() {
+
+	$style   = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Product Title: Library Google & Custom Style
+ */
+function botiga_single_product_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Product Title: Library Adobe & Custom Style
+ */
+function botiga_single_product_title_font_library_adobe_and_custom_style() {
+
+	$style   = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Shop Product Title: Library Google & Custom Style
+ */
+function botiga_shop_product_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Shop Product Title: Library Adobe & Custom Style
+ */
+function botiga_shop_product_title_font_library_adobe_and_custom_style() {
+
+	$style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}

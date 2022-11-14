@@ -44,12 +44,9 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-bhfb_social_color',
-                        '#customize-control-bhfb_social_color_hover',
-                        '#customize-control-bhfb_social_sticky_divider1',
+                        '#customize-control-bhfb_social',
                         '#customize-control-bhfb_social_sticky_title',
-                        '#customize-control-bhfb_social_sticky_color',
-                        '#customize-control-bhfb_social_sticky_color_hover'
+                        '#customize-control-bhfb_social_sticky',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -68,19 +65,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_social_color',
-		array(
-			'label'         	=> esc_html__( 'Icons color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__social',
-			'priority'			=> 25
-		)
-	)
-);
-
-// Icons Color Hover.
 $wp_customize->add_setting(
 	'bhfb_social_color_hover',
 	array(
@@ -90,28 +74,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_social_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Icons color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__social',
-			'priority'			=> 30
-		)
-	)
-);
-
-// Sticky Header - Divider
-$wp_customize->add_setting( 'bhfb_social_sticky_divider1',
-    array(
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'bhfb_social_sticky_divider1',
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_social',
         array(
-            'section' 		  => 'botiga_section_hb_component__social',
-            'active_callback' => 'botiga_sticky_header_enabled',
-            'priority'        => 31
+            'label'    => esc_html__( 'Icons Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__social',
+            'settings' => array(
+                'normal' => 'bhfb_social_color',
+                'hover'  => 'bhfb_social_color_hover',
+            ),
+            'priority' => 25
         )
     )
 );
@@ -147,20 +120,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_social_sticky_color',
-		array(
-			'label'         	=> esc_html__( 'Icons color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__social',
-            'active_callback'   => 'botiga_sticky_header_enabled',
-			'priority'			=> 33
-		)
-	)
-);
-
-// Sticky Header - Icons Color Hover.
 $wp_customize->add_setting(
 	'bhfb_social_sticky_color_hover',
 	array(
@@ -170,16 +129,20 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_social_sticky_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Icons color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__social',
-            'active_callback'   => 'botiga_sticky_header_enabled',
-			'priority'			=> 34
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_social_sticky',
+        array(
+            'label'    => esc_html__( 'Icons Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__social',
+            'settings' => array(
+                'normal' => 'bhfb_social_sticky_color',
+                'hover'  => 'bhfb_social_sticky_color_hover',
+            ),
+            'active_callback' => 'botiga_sticky_header_enabled',
+            'priority' => 33
+        )
+    )
 );
 
 // Add selective refresh to existing options.

@@ -662,15 +662,65 @@ function botiga_google_fonts_url() {
 	);	
 
 	//Get and decode options
-	$body_font		  = get_theme_mod( 'botiga_body_font', $defaults );
-	$headings_font    = get_theme_mod( 'botiga_headings_font', $defaults );
-	$header_menu_font = get_theme_mod( 'botiga_header_menu_font', $body_font );
-	
-	$body_font 		  = json_decode( $body_font, true );
-	$headings_font 	  = json_decode( $headings_font, true );
+	$body_font                       = get_theme_mod( 'botiga_body_font', $defaults );
+	$headings_font                   = get_theme_mod( 'botiga_headings_font', $defaults );
+	$header_menu_font                = get_theme_mod( 'botiga_header_menu_font', $body_font );
+	$button_font                     = get_theme_mod( 'button_font', $defaults );
+	$button_font_style               = get_theme_mod( 'button_font_style', 'custom' );
+	$loop_post_title_font            = get_theme_mod( 'loop_post_title_font', $defaults );
+	$loop_post_title_font_style      = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$single_post_title_font          = get_theme_mod( 'single_post_title_font', $defaults );
+	$single_post_title_font_style    = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$single_product_title_font       = get_theme_mod( 'single_product_title_font', $defaults );
+	$single_product_title_font_style = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$shop_product_title_font         = get_theme_mod( 'shop_product_title_font', $defaults );
+	$shop_product_title_font_style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+
+	$body_font        = json_decode( $body_font, true );
+	$headings_font    = json_decode( $headings_font, true );
 	$header_menu_font = json_decode( $header_menu_font, true );
 
-	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] && 'System default' === $header_menu_font['font'] ) {
+	if ( $button_font_style === 'body' ) {
+		$button_font = $body_font;
+	} else if ( $button_font_style === 'heading' ) {
+		$button_font = $headings_font;
+	} else {
+		$button_font = json_decode( $button_font, true );
+	}
+
+	if ( $loop_post_title_font_style === 'body' ) {
+		$loop_post_title_font = $body_font;
+	} else if ( $loop_post_title_font_style === 'heading' ) {
+		$loop_post_title_font = $headings_font;
+	} else {
+		$loop_post_title_font = json_decode( $loop_post_title_font, true );
+	}
+
+	if ( $single_post_title_font_style === 'body' ) {
+		$single_post_title_font = $body_font;
+	} else if ( $single_post_title_font_style === 'heading' ) {
+		$single_post_title_font = $headings_font;
+	} else {
+		$single_post_title_font = json_decode( $single_post_title_font, true );
+	}
+
+	if ( $single_product_title_font_style === 'body' ) {
+		$single_product_title_font = $body_font;
+	} else if ( $single_product_title_font_style === 'heading' ) {
+		$single_product_title_font = $headings_font;
+	} else {
+		$single_product_title_font = json_decode( $single_product_title_font, true );
+	}
+
+	if ( $shop_product_title_font_style === 'body' ) {
+		$shop_product_title_font = $body_font;
+	} else if ( $shop_product_title_font_style === 'heading' ) {
+		$shop_product_title_font = $headings_font;
+	} else {
+		$shop_product_title_font = json_decode( $shop_product_title_font, true );
+	}
+
+	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] && 'System default' === $header_menu_font['font'] && 'System default' === $button_font['font'] && 'System default' === $loop_post_title_font['font'] && 'System default' === $single_post_title_font['font'] && 'System default' === $single_product_title_font['font']  && 'System default' === $shop_product_title_font['font'] ) {
 		return; //return early if defaults are active
 	}
 
@@ -696,11 +746,41 @@ function botiga_google_fonts_url() {
 		array( '400', '' ),
 		$header_menu_font['regularweight'] 
 	);
+	$button_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$button_font['regularweight'] 
+	);
+	$loop_post_title_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$loop_post_title_font['regularweight'] 
+	);
+	$single_post_title_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$single_post_title_font['regularweight'] 
+	);
+	$single_product_title_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$single_product_title_font['regularweight'] 
+	);
+	$shop_product_title_font['regularweight'] = str_replace(
+		array( 'regular', 'italic' ),
+		array( '400', '' ),
+		$shop_product_title_font['regularweight'] 
+	);
 
 	$font_families = array(
 		$body_font['font'] . ':wght@' . $body_font['regularweight'],
 		$headings_font['font'] . ':wght@' . $headings_font['regularweight'],
-		$header_menu_font['font'] . ':wght@' . $header_menu_font['regularweight']
+		$header_menu_font['font'] . ':wght@' . $header_menu_font['regularweight'],
+		$button_font['font'] . ':wght@' . $button_font['regularweight'],
+		$loop_post_title_font['font'] . ':wght@' . $loop_post_title_font['regularweight'],
+		$single_post_title_font['font'] . ':wght@' . $single_post_title_font['regularweight'],
+		$single_product_title_font['font'] . ':wght@' . $single_product_title_font['regularweight'],
+		$shop_product_title_font['font'] . ':wght@' . $shop_product_title_font['regularweight'],
 	);
 
 	$fonts_url = add_query_arg( array(
@@ -754,15 +834,65 @@ function botiga_preconnect_google_fonts() {
 		)
 	);	
 
-	$body_font		  = get_theme_mod( 'botiga_body_font', $defaults );
-	$headings_font 	  = get_theme_mod( 'botiga_headings_font', $defaults );
-	$header_menu_font = get_theme_mod( 'botiga_headings_font', $body_font );
+	$body_font                       = get_theme_mod( 'botiga_body_font', $defaults );
+	$headings_font                   = get_theme_mod( 'botiga_headings_font', $defaults );
+	$header_menu_font                = get_theme_mod( 'botiga_headings_font', $body_font );
+	$button_font                     = get_theme_mod( 'button_font', $defaults );
+	$button_font_style               = get_theme_mod( 'button_font_style', 'custom' );
+	$loop_post_title_font            = get_theme_mod( 'loop_post_title_font', $defaults );
+	$loop_post_title_font_style      = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$single_post_title_font          = get_theme_mod( 'single_post_title_font', $defaults );
+	$single_post_title_font_style    = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$single_product_title_font       = get_theme_mod( 'single_product_title_font', $defaults );
+	$single_product_title_font_style = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$shop_product_title_font         = get_theme_mod( 'shop_product_title_font', $defaults );
+	$shop_product_title_font_style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
 
-	$body_font 		  = json_decode( $body_font, true );
-	$headings_font 	  = json_decode( $headings_font, true );
+	$body_font        = json_decode( $body_font, true );
+	$headings_font    = json_decode( $headings_font, true );
 	$header_menu_font = json_decode( $header_menu_font, true );
 
-	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] && 'System default' === $header_menu_font['font'] ) {
+	if ( $button_font_style === 'body' ) {
+		$button_font = $body_font;
+	} else if ( $button_font_style === 'heading' ) {
+		$button_font = $headings_font;
+	} else {
+		$button_font = json_decode( $button_font, true );
+	}
+
+	if ( $loop_post_title_font_style === 'body' ) {
+		$loop_post_title_font = $body_font;
+	} else if ( $loop_post_title_font_style === 'heading' ) {
+		$loop_post_title_font = $headings_font;
+	} else {
+		$loop_post_title_font = json_decode( $loop_post_title_font, true );
+	}
+
+	if ( $single_post_title_font_style === 'body' ) {
+		$single_post_title_font = $body_font;
+	} else if ( $single_post_title_font_style === 'heading' ) {
+		$single_post_title_font = $headings_font;
+	} else {
+		$single_post_title_font = json_decode( $single_post_title_font, true );
+	}
+
+	if ( $single_product_title_font_style === 'body' ) {
+		$single_product_title_font = $body_font;
+	} else if ( $single_product_title_font_style === 'heading' ) {
+		$single_product_title_font = $headings_font;
+	} else {
+		$single_product_title_font = json_decode( $single_product_title_font, true );
+	}
+
+	if ( $shop_product_title_font_style === 'body' ) {
+		$shop_product_title_font = $body_font;
+	} else if ( $shop_product_title_font_style === 'heading' ) {
+		$shop_product_title_font = $headings_font;
+	} else {
+		$shop_product_title_font = json_decode( $shop_product_title_font, true );
+	}
+
+	if ( 'System default' === $body_font['font'] && 'System default' === $headings_font['font'] && 'System default' === $header_menu_font['font'] && 'System default' === $button_font['font'] && 'System default' === $loop_post_title_font['font'] && 'System default' === $single_post_title_font['font'] && 'System default' === $single_product_title_font['font'] && 'System default' === $shop_product_title_font['font'] ) {
 		return;
 	}
 

@@ -198,11 +198,11 @@ $wp_customize->add_control(
 		$wp_customize,
 		'color_link',
 		array(
-			'label'     => esc_html__( 'Link Color', 'botiga' ),
-			'section'   => 'colors',
-			'settings'  => array(
-				'default' => 'color_link_default',
-				'hover'   => 'color_link_hover',
+			'label'    => esc_html__( 'Link Color', 'botiga' ),
+			'section'  => 'colors',
+			'settings' => array(
+				'normal' => 'color_link_default',
+				'hover'  => 'color_link_hover',
 			),
 		)
 	)
@@ -211,7 +211,7 @@ $wp_customize->add_control(
 //Headings
 $wp_customize->add_setting( 'headings_color_title',
 	array(
-		'default' 			=> '',
+		'default'       => '',
 		'sanitize_callback' => 'esc_attr',
 	)
 );

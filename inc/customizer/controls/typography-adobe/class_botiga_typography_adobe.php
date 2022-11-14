@@ -75,9 +75,7 @@ class Botiga_Typography_Adobe_Control extends WP_Customize_Control {
             <div class="adobe_fonts_select_control">
                 <input type="hidden" id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" class="customize-control-adobe-font-selection" <?php $this->link(); ?> />
                 <div class="adobe-fonts">
-                    <div class="font-control-title">
-                        <strong><?php esc_html_e( 'Font family', 'botiga' ) ?></strong>
-                    </div>
+                    <div class="customize-control-title"><?php esc_html_e( 'Font family', 'botiga' ) ?></div>
                     <select class="adobe-font-family" control-name="<?php echo esc_attr( $this->id ); ?>">
 
                         <?php 
@@ -95,9 +93,7 @@ class Botiga_Typography_Adobe_Control extends WP_Customize_Control {
 
                     </select>
 
-                    <div class="font-control-title w50">
-                        <strong><?php esc_html_e( 'Font weight', 'botiga' ) ?></strong>
-                    </div>
+                    <div class="customize-control-title"><?php esc_html_e( 'Font weight', 'botiga' ) ?></div>
                     <select class="adobe-font-weight w50">
                         <option value="<?php echo esc_attr( $weight_val ); ?>"><?php echo esc_html( $weight_val ); ?></option>
                     </select>

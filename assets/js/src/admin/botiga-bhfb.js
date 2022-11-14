@@ -753,7 +753,8 @@
                                     column.append(
                                         '<div class="botiga-bhfb-element">' +
                                             '<a href="#" class="bhfb-button" data-bhfb-id="'+ element.id +'" data-bhfb-focus-section="botiga_section_'+ cprefix +'_component__'+ element.id +'">'+ 
-                                                element.label +
+                                                '<span class="bhfb-title-element">' + element.label + '</span>' +
+                                                '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' +
                                                 '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' +
                                             '</a>' + 
                                         '</div>' 
@@ -785,7 +786,8 @@
                                     column.append(
                                         '<div class="botiga-bhfb-element">' +
                                             '<a href="#" class="bhfb-button" data-bhfb-id="'+ element.id +'" data-bhfb-focus-section="botiga_section_'+ cprefix +'_component__'+ element.id +'">'+ 
-                                                element.label +
+                                                '<span class="bhfb-title-element">' + element.label + '</span>' +
+                                                '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' +
                                                 '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' +
                                             '</a>' + 
                                         '</div>' 
@@ -812,7 +814,8 @@
                                     $( '.botiga-bhfb-area-offcanvas' ).append(
                                         '<div class="botiga-bhfb-element">' +
                                             '<a href="#" class="bhfb-button" data-bhfb-id="'+ element.id +'" data-bhfb-focus-section="botiga_section_hb_component__'+ element.id +'">'+ 
-                                                element.label +
+                                                '<span class="bhfb-title-element">' + element.label + '</span>' +
+                                                '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' +
                                                 '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' +
                                             '</a>' + 
                                         '</div>' 

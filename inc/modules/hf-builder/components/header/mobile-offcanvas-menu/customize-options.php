@@ -49,10 +49,8 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-mobile_offcanvas_menu_color',
-                        '#customize-control-mobile_offcanvas_menu_color_hover',
-                        '#customize-control-mobile_offcanvas_menu_submenu_color',
-                        '#customize-control-mobile_offcanvas_menu_submenu_color_hover'
+                        '#customize-control-mobile_offcanvas_menu',
+                        '#customize-control-mobile_offcanvas_menu_submenu',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -71,19 +69,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'mobile_offcanvas_menu_color',
-		array(
-			'label'         	=> esc_html__( 'Text color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__mobile_offcanvas_menu',
-			'priority'			=> 25
-		)
-	)
-);
-
-// Text Color Hover
 $wp_customize->add_setting(
 	'mobile_offcanvas_menu_color_hover',
 	array(
@@ -93,15 +78,19 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'mobile_offcanvas_menu_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Text color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__mobile_offcanvas_menu',
-			'priority'			=> 30
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'mobile_offcanvas_menu',
+        array(
+            'label'    => esc_html__( 'Text Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__mobile_offcanvas_menu',
+            'settings' => array(
+                'normal' => 'mobile_offcanvas_menu_color',
+                'hover'  => 'mobile_offcanvas_menu_color_hover',
+            ),
+            'priority' => 25
+        )
+    )
 );
 
 // Submenu Text Color
@@ -113,19 +102,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'mobile_offcanvas_menu_submenu_color',
-		array(
-			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__mobile_offcanvas_menu',
-			'priority'			=> 40
-		)
-	)
-);
-
-// Submenu Text Color Hover
 $wp_customize->add_setting(
 	'mobile_offcanvas_menu_submenu_color_hover',
 	array(
@@ -135,15 +111,19 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'mobile_offcanvas_menu_submenu_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__mobile_offcanvas_menu',
-			'priority'			=> 45
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'mobile_offcanvas_menu_submenu',
+        array(
+            'label'    => esc_html__( 'Submenu Text Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__mobile_offcanvas_menu',
+            'settings' => array(
+                'normal' => 'mobile_offcanvas_menu_submenu_color',
+                'hover'  => 'mobile_offcanvas_menu_submenu_color_hover',
+            ),
+            'priority' => 40
+        )
+    )
 );
 
 // Move existing options.

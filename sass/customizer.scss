@@ -38,8 +38,7 @@ html[dir="rtl"] {
 /* Select 2 Control */
 .select2-container {
     .botiga-select2 {
-        padding-bottom: 0;
-        padding-top: 5px;
+        padding: 0;
         
         .select2-search {
             display: none;
@@ -48,17 +47,18 @@ html[dir="rtl"] {
         .select2-selection__choice {
             background-color: #FFF;
             line-height: 2.2;
+            margin-bottom: 0;
+            margin-left: 0;
         }
         
         &.select2-selection {
-            border-color: #d0d0d0;
+            border-color: #949494;
         }
     }
 
     &.select2-container--focus {
         .botiga-select2 {
             &.select2-selection {
-                border-color: #2271b1;
             }
         }
     }
@@ -195,6 +195,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 4px;
 }
 .botiga-control-wrapper {
     position: relative;
@@ -202,7 +203,6 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 .botiga-devices-preview {
     display: flex;
     grid-gap: 4px;
-    margin-bottom: 4px;
 
     li{
         margin-bottom: 0;
@@ -319,7 +319,7 @@ html[dir="rtl"] {
     vertical-align: top;
     display: inline-block;
     margin-left: -1px;
-    border: 1px solid #d0d0d0;
+    border: 1px solid #949494;
 }
 
 .repeater .dashicons-menu:hover {
@@ -362,12 +362,11 @@ span.delete:hover {
 
 /* Tabs */
 .control-tabs {
-    // margin: -15px -12px 0;
-    // background: #fff;
     display: flex;
     border-bottom: 1px solid #f0f0f0;
 }
 .control-tab {
+    color: #1e1e1e;
     cursor: pointer;
     height: 40px;
     font-size: 13px;
@@ -403,7 +402,9 @@ span.delete:hover {
 
 .text_radio_button_control .radio-buttons {
 	display: flex;
-	border: 1px solid #f9f9fe;
+	border: 1px solid #949494;
+    padding: 2px;
+    border-radius: 2px;
 
     & + .customize-control-description {
         margin-top: 10px;
@@ -422,12 +423,11 @@ span.delete:hover {
 .text_radio_button_control .radio-button-label span {
 	cursor: pointer;
     color: #1e1e1e;
-	border: 1px solid #949494;
 	margin: 0;
 	padding: 8px 10px;
     text-align: center;
 	display: block;
-    margin-left: -1px;
+    border-radius: 2px;
 }
 .text_radio_button_control .palette-radio-buttons {
     position: absolute;
@@ -473,15 +473,6 @@ span.delete:hover {
     border-radius: 0 !important;
     margin-left: 0;
 }
-.text_radio_button_control .radio-button-label:first-of-type span {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-}
-
-.text_radio_button_control .radio-button-label:last-of-type span {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
 
 .text_radio_button_control .radio-button-label span:hover {
 	background-color: rgba(255, 255, 255, .2);
@@ -513,6 +504,11 @@ span.delete:hover {
     padding: 9px 15px;
     border: 1px solid #ddd;
     text-decoration: none;
+
+    + .botiga-to-widget-area-link{
+        border-top: none;
+    }
+
     &:hover {
         color: #3858E9;
     }
@@ -595,6 +591,11 @@ span.delete:hover {
 .customize-control-botiga-text-control .customize-control-title {
     color: #1e1e1e;
     font-weight: 600;
+    margin-bottom: 0;
+}
+
+.customize-control-botiga-toggle-control .customize-control-title {
+    margin-bottom: 0;
 }
 
 .accordion-section-title {
@@ -602,12 +603,11 @@ span.delete:hover {
 }
 /* Toggle */
 .toggle-switch {
+	float: right;
 	position: relative;
 	width: 36px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	float: right;
+    margin-top: 2px;
+    user-select: none;
 }
 
 html[dir="rtl"] {
@@ -796,6 +796,7 @@ label {
     display: block;
     background: #FFF;
     padding: 15px;
+    text-transform: capitalize;
     text-decoration: none;
     color: #1E1E1E;
     font-weight: 600;
@@ -867,18 +868,45 @@ html[dir="rtl"] .botiga-accordion-title:after {
 /*
  * Upsell
  */
-.customize-control-botiga-upsell-features {
-    border-top: 1px solid #CCC;
+.botiga-upsell-feature-wrapper{
+    margin-top: 5px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
 }
 
-.botiga-upsell-feature-wrapper {
+.botiga-upsell-button-wrapper{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.botiga-upsell-button{
+    position: relative;
     display: flex;
+    text-align: center;
     align-items: center;
-    p {
-        font-weight: 500;
-        padding-right: 5px;
+    justify-content: center;
+    padding: 7px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #3858E9;
+    border: 2px solid #3858E9;
+    transition: all .2s;
+
+    &:active,
+    &:focus,
+    &:hover{
+        color: #3858E9;
+    }
+
+    &:hover{
+        background-color: #f7f9ff;
+    }
+
+    &:focus{
+        box-shadow: none;
     }
 }
+
 
 /*
  * Hide some sections
@@ -929,7 +957,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
 }
 
 .adobe-fonts {
-    .select2-container + .font-control-title {
+    .select2-container + .customize-control-title {
         margin-top: 20px;
     }
 }
@@ -982,8 +1010,26 @@ html[dir="rtl"] .botiga-accordion-title:after {
 }
 
 .botiga-display-conditions-modal-button{
-    width: 100%;
+    display: block;
     text-align: center;
+    border-radius: 2px;
+    border: 1px solid #949494;
+    background-color: #fff;
+    text-decoration: none;
+
+    span{
+        display: block;
+        padding: 8px 10px;
+        margin: 2px;
+        color: #fff;
+        background-color: #3858E9;
+        border-radius: 2px;
+    }
+
+    &:focus,
+    &:active{
+        box-shadow: none;
+    }
 }
 
 .botiga-display-conditions-modal{
@@ -1333,7 +1379,7 @@ html[dir="rtl"] .botiga-accordion-title:after {
 }
 
 .customize-section-title{
-    border-bottom-color: #f0f0f0;
+    border: none;
 }
 
 .expanded .wp-full-overlay-footer{
@@ -1341,12 +1387,37 @@ html[dir="rtl"] .botiga-accordion-title:after {
     background: #f9f9f9;
 }
 
+.wp-full-overlay-footer .devices{
+    background-color: #f9f9f9;
+}
+
+.customize-section-description-container{
+    margin: 0 -12px 12px -12px;
+    padding: 0 12px 0 12px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #f9f9f9;
+}
+
+div.customize-section-description{
+    margin-top: -5px;
+    padding-left: 50px;
+    padding-bottom: 12px;
+}
+
+#customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-panel-description,
+#customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-section-description{
+    display: block;
+    border-top: none;
+    margin-top: -10px;
+    padding-left: 65px;
+    background: transparent;
+}
+
 .customize-section-title,
-.wp-full-overlay-footer .devices,
 #customize-controls .customize-info .accordion-section-title,
 #customize-controls .cannot-expand:hover .accordion-section-title,
 #customize-controls .panel-meta.customize-info .accordion-section-title:hover{
-    background-color: #f9f9f9;
+    background-color: transparent;
 }
 
 .wp-full-overlay-footer .devices{
@@ -1433,6 +1504,22 @@ html[dir="rtl"] .botiga-accordion-title:after {
 .control-panel-themes #accordion-section-installed_themes{
     border: none !important;
     background: none !important;
+}
+
+#customize-controls .customize-info .customize-help-toggle:focus,
+#customize-controls .customize-info .customize-help-toggle:hover,
+#customize-controls .customize-info.open .customize-help-toggle{
+    color: #3858E9;
+}
+
+.control-panel-themes .customize-themes-section-title:focus,
+.control-panel-themes .customize-themes-section-title:hover,
+.control-panel-themes .customize-themes-section-title.selected{
+    color: #3858E9;
+}
+
+.control-panel-themes .theme-section .customize-themes-section-title.selected:after{
+    background-color: #3858E9;
 }
 
 .wp-full-overlay-footer .devices button.active,
@@ -1771,6 +1858,21 @@ html[dir="rtl"] .botiga-accordion-title:after {
     }
 }
 
+a,
+.wp-core-ui .button-link:not(.button-link-delete){
+    color: #3858E9;
+
+    &:hover,
+    &:focus,
+    &:active{
+        color: #2c4de2;
+    }
+
+    &:focus{
+        box-shadow: none;
+    }
+}
+
 .wp-core-ui .button,
 .wp-core-ui .button-secondary{
     color: #3858E9;
@@ -1785,6 +1887,11 @@ html[dir="rtl"] .botiga-accordion-title:after {
 .wp-core-ui .button:hover{
     color: #2c4de2;
     border-color: #2c4de2;
+}
+
+.wp-core-ui select:focus,
+.wp-core-ui select:hover{
+    color: #212121;
 }
 
 .wp-core-ui .button-secondary:focus,
@@ -2040,6 +2147,10 @@ html[dir="rtl"] .botiga-accordion-title:after {
         }
     }
 
+    .botiga-color-title{
+        text-transform: capitalize;
+    }
+
     .botiga-color-picker{
         position: relative;
         overflow: hidden;
@@ -2061,6 +2172,10 @@ html[dir="rtl"] .botiga-accordion-title:after {
 .botiga-color-group{
     display: flex;
     justify-content: space-between;
+
+    .botiga-color-title{
+        text-transform: capitalize;
+    }
 }
 
 #sub-accordion-section-colors{

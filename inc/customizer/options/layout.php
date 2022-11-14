@@ -12,7 +12,7 @@ $wp_customize->add_section(
 	'botiga_section_layout',
 	array(
 		'title'    => esc_html__( 'Layout', 'botiga'),
-		'priority' => 23,
+		'priority' => 55,
 	)
 );
 

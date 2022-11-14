@@ -79,7 +79,6 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 					<input type="hidden" id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $this->value( 'family' ) ); ?>" class="customize-control-google-font-selection" <?php $this->link( 'family' ); ?> />
 					<div class="google-fonts">
 						<div class="customize-control-title"><?php esc_html_e( 'Font family', 'botiga' ) ?></div>
-
 						<select class="google-fonts-list" control-name="<?php echo esc_attr( $this->id ); ?>">
 							<?php
 								foreach( $this->fontList as $key => $value ) {

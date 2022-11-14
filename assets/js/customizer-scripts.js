@@ -275,18 +275,26 @@ jQuery(document).ready(function ($) {
   "use strict";
 
   $('.customize-control-botiga-tab-control').each(function () {
-    $(this).parent().find('li').not('.section-meta').not('.customize-control-botiga-tab-control').addClass('botiga-hide-control');
-    var generals = $(this).find('.control-tab-general').data('connected');
-    $.each(generals, function (i, v) {
-      $(this).removeClass('botiga-hide-control'); //show
+    // Hide designs options at first
+    var designs = $(this).find('.control-tab-design').data('connected');
+    $.each(designs, function (i, v) {
+      $(this).addClass('botiga-hide-control');
     });
     $(this).find('.control-tab').on('click', function () {
-      var visibles = $(this).data('connected');
-      $(this).addClass('active');
-      $(this).siblings().removeClass('active');
-      $(this).parent().parent().parent().find('li').not('.section-meta').not('.customize-control-botiga-tab-control').addClass('botiga-hide-control');
+      var $tab = $(this);
+      var $siblings = $tab.siblings();
+      var visibles = $tab.data('connected');
+      $tab.addClass('active');
+      $siblings.removeClass('active');
       $.each(visibles, function (i, v) {
-        $(this).removeClass('botiga-hide-control'); //show
+        $(this).removeClass('botiga-hide-control');
+      });
+      $siblings.each(function () {
+        var $sibling = $(this);
+        var hiddens = $sibling.data('connected');
+        $.each(hiddens, function (i, v) {
+          $(this).addClass('botiga-hide-control');
+        });
       });
     });
   });
@@ -353,31 +361,24 @@ jQuery(document).ready(function ($) {
 });
 
 var botigaChangeElementColors = function botigaChangeElementColors(element, color, palette) {
-  if (element === 'color_link_default' || element === 'color_link_hover') {
-    var $control = jQuery('#customize-control-color_link');
+  var $setting = jQuery('[data-control-id="' + element + '"]');
 
-    if ($control.length) {
-      var $color = $control.find('[data-control-id="' + element + '"]');
+  if ($setting.length) {
+    if (palette) {
+      var index = palette.indexOf(color);
 
-      if ($color.length) {
-        var $picker = $color.find('.botiga-color-picker');
-        var $input = $color.find('.botiga-color-input');
-
-        if (palette) {
-          if (element === 'color_link_default') {
-            color = palette[0];
-          } else if (element === 'color_link_hover') {
-            color = palette[1];
-          }
-        }
-
-        if ($picker.data('pickr')) {
-          $picker.data('pickr').setColor(color);
-        } else {
-          $picker.css('background-color', color);
-          wp.customize(element).set(color);
-        }
+      if (palette[index]) {
+        color = palette[index];
       }
+    }
+
+    var $picker = $setting.find('.botiga-color-picker');
+
+    if ($picker.data('pickr')) {
+      $picker.data('pickr').setColor(color);
+    } else {
+      $picker.css('background-color', color);
+      wp.customize(element).set(color);
     }
   } else {
     var $control = jQuery('#customize-control-' + element);
@@ -1299,11 +1300,12 @@ jQuery(document).ready(function ($) {
       $colorPicker.on('click', function () {
         if (!inited) {
           var $colorInput = $colorControl.find('.botiga-color-input');
+          var customizeControl = wp.customize($colorInput.data('customize-setting-link'));
           var pickr = new Pickr({
             el: $colorPicker.get(0),
             container: 'body',
             theme: 'botiga',
-            default: $colorInput.val(),
+            default: $colorInput.val() || '#212121',
             swatches: [],
             position: 'bottom-end',
             appClass: 'botiga-pcr-app',
@@ -1336,13 +1338,24 @@ jQuery(document).ready(function ($) {
             $colorPicker.css({
               'background-color': colorCode
             });
-            $colorInput.val(colorCode).trigger('change');
+            $colorInput.val(colorCode);
+            customizeControl.set(colorCode);
           });
           pickr.on('show', function () {
             pickr.setSwatches(getCurrentSwatches());
           });
           pickr.on('clear', function () {
-            pickr.setColor($colorPicker.data('default-color'));
+            var defaultColor = $colorPicker.data('default-color');
+
+            if (defaultColor) {
+              pickr.setColor(defaultColor);
+            } else {
+              $colorPicker.css({
+                'background-color': 'white'
+              });
+              $colorInput.val('');
+              customizeControl.set('');
+            }
           });
           $colorPicker.data('pickr', pickr);
           setTimeout(function () {

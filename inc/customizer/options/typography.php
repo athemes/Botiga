@@ -11,7 +11,8 @@ $wp_customize->add_panel(
 	'botiga_panel_typography',
 	array(
 		'title'    => esc_html__( 'Typography', 'botiga' ),
-		'priority' => 21,
+		'priority' => 40,
+		'description' => esc_html__( 'Manage the typography settings for different elements.', 'botiga' ),
 	)
 );
 

@@ -45,18 +45,13 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-secondary_menu_color',
-                        '#customize-control-secondary_menu_color_hover',
+                        '#customize-control-secondary_menu',
                         '#customize-control-secondary_menu_submenu_background',
-                        '#customize-control-secondary_menu_submenu_color',
-                        '#customize-control-secondary_menu_submenu_color_hover',
-						'#customize-control-secondary_menu_sticky_divider1',
+                        '#customize-control-secondary_menu_submenu',
                         '#customize-control-secondary_menu_sticky_title',
-						'#customize-control-secondary_menu_sticky_color',
-                        '#customize-control-secondary_menu_sticky_color_hover',
+						'#customize-control-secondary_menu_sticky',
                         '#customize-control-secondary_menu_sticky_submenu_background',
-                        '#customize-control-secondary_menu_sticky_submenu_color',
-                        '#customize-control-secondary_menu_sticky_submenu_color_hover'
+                        '#customize-control-secondary_menu_sticky_submenu',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -75,19 +70,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'secondary_menu_color',
-		array(
-			'label'         	=> esc_html__( 'Text color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'priority'			=> 25
-		)
-	)
-);
-
-// Text Color Hover
 $wp_customize->add_setting(
 	'secondary_menu_color_hover',
 	array(
@@ -97,13 +79,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'secondary_menu_color_hover',
+		'secondary_menu',
 		array(
-			'label'         	=> esc_html__( 'Text color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'priority'			=> 30
+			'label'    => esc_html__( 'Text Color', 'botiga' ),
+			'section'  => 'botiga_section_hb_component__secondary_menu',
+			'settings' => array(
+				'normal' => 'secondary_menu_color',
+				'hover'  => 'secondary_menu_color_hover',
+			),
+			'priority' => 25
 		)
 	)
 );
@@ -138,19 +124,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'secondary_menu_submenu_color',
-		array(
-			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'priority'			=> 40
-		)
-	)
-);
-
-// Submenu Text Color Hover
 $wp_customize->add_setting(
 	'secondary_menu_submenu_color_hover',
 	array(
@@ -160,30 +133,19 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'secondary_menu_submenu_color_hover',
+		'secondary_menu_submenu',
 		array(
-			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'priority'			=> 45
+			'label'    => esc_html__( 'Submenu Text Color', 'botiga' ),
+			'section'  => 'botiga_section_hb_component__secondary_menu',
+			'settings' => array(
+				'normal' => 'secondary_menu_submenu_color',
+				'hover'  => 'secondary_menu_submenu_color_hover',
+			),
+			'priority' => 40
 		)
 	)
-);
-
-// Sticky Header - Divider
-$wp_customize->add_setting( 'secondary_menu_sticky_divider1',
-    array(
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'secondary_menu_sticky_divider1',
-        array(
-            'section' 		  => 'botiga_section_hb_component__secondary_menu',
-            'active_callback' => 'botiga_sticky_header_enabled',
-            'priority'        => 46
-        )
-    )
 );
 
 // Sticky Header - Title
@@ -217,20 +179,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'secondary_menu_sticky_color',
-		array(
-			'label'         	=> esc_html__( 'Text color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'active_callback'   => 'botiga_sticky_header_enabled',
-			'priority'			=> 48
-		)
-	)
-);
-
-// Sticky Header - Text Color Hover
 $wp_customize->add_setting(
 	'secondary_menu_sticky_color_hover',
 	array(
@@ -240,14 +188,18 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'secondary_menu_sticky_color_hover',
+		'secondary_menu_sticky',
 		array(
-			'label'         	=> esc_html__( 'Text color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'active_callback' 	=> 'botiga_sticky_header_enabled',
-			'priority'			=> 49
+			'label'    => esc_html__( 'Text Color', 'botiga' ),
+			'section'  => 'botiga_section_hb_component__secondary_menu',
+			'settings' => array(
+				'normal' => 'secondary_menu_sticky_color',
+				'hover'  => 'secondary_menu_sticky_color_hover',
+			),
+			'active_callback' => 'botiga_sticky_header_enabled',
+			'priority' => 48
 		)
 	)
 );
@@ -283,20 +235,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'secondary_menu_sticky_submenu_color',
-		array(
-			'label'         	=> esc_html__( 'Submenu Text Color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'active_callback' 	=> 'botiga_sticky_header_enabled',
-			'priority'			=> 51
-		)
-	)
-);
-
-// Sticky Header - Submenu Text Color Hover
 $wp_customize->add_setting(
 	'secondary_menu_sticky_submenu_color_hover',
 	array(
@@ -306,14 +244,18 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'secondary_menu_sticky_submenu_color_hover',
+		'secondary_menu_sticky_submenu',
 		array(
-			'label'         	=> esc_html__( 'Submenu Text Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__secondary_menu',
-			'active_callback' 	=> 'botiga_sticky_header_enabled',
-			'priority'			=> 52
+			'label'    => esc_html__( 'Submenu Text Color', 'botiga' ),
+			'section'  => 'botiga_section_hb_component__secondary_menu',
+			'settings' => array(
+				'normal' => 'secondary_menu_sticky_submenu_color',
+				'hover'  => 'secondary_menu_sticky_submenu_color_hover',
+			),
+			'active_callback' => 'botiga_sticky_header_enabled',
+			'priority' => 51
 		)
 	)
 );

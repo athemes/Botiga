@@ -44,8 +44,7 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-bhfb_footer_social_color',
-                        '#customize-control-bhfb_footer_social_color_hover'
+                        '#customize-control-bhfb_footer_social',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -64,37 +63,28 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_social_color',
-		array(
-			'label'         	=> esc_html__( 'Icons color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__social',
-			'priority'			=> 25
-		)
-	)
-);
-
-// Icons Color Hover.
 $wp_customize->add_setting(
-	'bhfb_footer_social_color_hover',
-	array(
-		'default'           => '#757575',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
+    'bhfb_footer_social_color_hover',
+    array(
+        'default'           => '#757575',
+        'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+        'transport'         => 'postMessage'
+    )
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_footer_social_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Icons color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__social',
-			'priority'			=> 30
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_footer_social',
+        array(
+            'label'    => esc_html__( 'Icons Color', 'botiga' ),
+            'section'  => 'botiga_section_fb_component__social',
+            'settings' => array(
+                'normal' => 'bhfb_footer_social_color',
+                'hover'  => 'bhfb_footer_social_color_hover',
+            ),
+            'priority' => 25
+        )
+    )
 );
 
 // Add selective refresh to existing options.
