@@ -2962,13 +2962,21 @@ div.editor-styles-wrapper .woocommerce-sorting-wrapper {
   border-bottom: 1px solid #eee;
 }
 
+@media (min-width: 768px) {
+  div.editor-styles-wrapper .woocommerce-sorting-wrapper > .row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 div.editor-styles-wrapper .woocommerce-sorting-wrapper p {
   margin: 0;
 }
 
 div.editor-styles-wrapper .woocommerce-sorting-wrapper select {
   border: 0;
-  padding: 0 25px 0 0;
+  padding: 10px 25px 10px 20px;
   max-width: 220px;
   min-height: auto;
 }
