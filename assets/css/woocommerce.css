@@ -1815,6 +1815,165 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .loop-image-wrap > .l
   background-color: #CCC;
 }
 
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery, .botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-scrolling .woocommerce-product-gallery {
+  max-height: 70vh;
+  padding-right: 10px;
+  overflow: auto;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery::-webkit-scrollbar, .botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-scrolling .woocommerce-product-gallery::-webkit-scrollbar {
+  width: 4px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery::-webkit-scrollbar-track, .botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-scrolling .woocommerce-product-gallery::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery::-webkit-scrollbar-thumb, .botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-scrolling .woocommerce-product-gallery::-webkit-scrollbar-thumb {
+  background-color: #CCC;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery .woocommerce-product-gallery__wrapper > div + div, .botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-scrolling .woocommerce-product-gallery .woocommerce-product-gallery__wrapper > div + div {
+  margin-top: 25px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery .woocommerce-product-gallery__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery .woocommerce-product-gallery__wrapper > div:nth-child(1) {
+  grid-column: 1/3;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-grid .woocommerce-product-gallery .woocommerce-product-gallery__wrapper > div + div {
+  margin-top: 0;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-showcase {
+  left: auto;
+  width: 100%;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-showcase .woocommerce-product-gallery {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-showcase .woocommerce-product-gallery .flex-viewport {
+  width: 100%;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-showcase .woocommerce-product-gallery .flex-control-thumbs {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-vertical .woocommerce-product-gallery .flex-control-thumbs {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .woocommerce-product-gallery {
+  grid-gap: 0;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single ul.flex-direction-nav {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  top: calc(50% - 20px);
+  width: 100%;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single ul.flex-direction-nav li {
+  position: absolute;
+  top: calc(50% - 20px);
+  z-index: 998;
+  margin: 0;
+  padding: 0;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-nav-prev {
+  left: 15px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-nav-next {
+  right: 15px;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-next,
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-prev {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #212121;
+  background: #FFF;
+  text-indent: -9999px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-next::after,
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-prev::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  color: #212121;
+  display: inline-block;
+  line-height: 37px;
+  text-align: center;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-next:hover,
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-prev:hover {
+  background-color: #212121;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-next:hover:before,
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-prev:hover:before {
+  border-right-color: #FFF;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-next:hover:after,
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-prev:hover:after {
+  border-left-color: #FFF;
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-next::after {
+  visibility: visible;
+  border-left: 12px solid #212121;
+  -webkit-transform: translate3d(-40%, -50%, 0);
+          transform: translate3d(-40%, -50%, 0);
+}
+
+.botiga-quick-view-popup .botiga-quick-view-popup-content .gallery-quickview.gallery-single .flex-prev::before {
+  visibility: visible;
+  border-right: 12px solid #212121;
+  -webkit-transform: translate3d(-70%, -50%, 0);
+          transform: translate3d(-70%, -50%, 0);
+}
+
 .botiga-quick-view-popup .botiga-quick-view-popup-content .woocommerce-product-gallery {
   width: 100%;
 }
