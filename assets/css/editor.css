@@ -4857,3 +4857,7 @@ div.editor-styles-wrapper .top-bar .top-bar-mobile-navigation.header-item + .sec
     z-index: 1000;
   }
 }
+
+.botiga-block-editor-components-block-icon {
+  fill: #3858E9 !important;
+}
