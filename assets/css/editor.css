@@ -4858,6 +4858,9 @@ div.editor-styles-wrapper .top-bar .top-bar-mobile-navigation.header-item + .sec
   }
 }
 
-.botiga-block-editor-components-block-icon {
-  fill: #3858E9 !important;
+/*
+* Custom Control Components
+*/
+.botiga-dimensions-control > div {
+  max-width: 100%;
 }

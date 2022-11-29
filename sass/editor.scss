@@ -163,6 +163,11 @@ div.editor-styles-wrapper {
 	@import "components/navigation/navigation";
 }
 
-.botiga-block-editor-components-block-icon {
-	fill: #3858E9 !important; 
+/*
+* Custom Control Components
+*/
+.botiga-dimensions-control {
+	> div {
+		max-width: 100%;
+	}
 }
