@@ -6,7 +6,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_nav
 	array(
 		'title'    => esc_html__( 'Navigation', 'botiga' ),
 		'priority' => 10,
-	),
+	)
 ) );
 //
 // @priority 15 (Header)
@@ -24,7 +24,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_sit
 		'title'    => esc_html__( 'Site Styles', 'botiga' ),
 		'priority' => 35,
 		'divider'  => true,
-	),
+	)
 ) );
 //
 // @priority 40 (Typography)
@@ -49,7 +49,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_ele
 		'title'    => esc_html__( 'Elements', 'botiga' ),
 		'priority' => 65,
 		'divider'  => true,
-	),
+	)
 ) );
 //
 // @priority 70 (Buttons)
@@ -71,7 +71,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 			'title'    => esc_html__( 'WooCommerce', 'botiga' ),
 			'priority' => 90,
 			'divider'  => true,
-		),
+		)
 	) );
 	//
 	// @priority 95 (General)
@@ -127,7 +127,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_blo
 		'title'    => esc_html__( 'Blog', 'botiga' ),
 		'priority' => 160,
 		'divider'  => true,
-	),
+	)
 ) );
 //
 // @priority 165 (Blog Archives)
@@ -143,7 +143,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_ext
 		'title'    => esc_html__( 'Extension', 'botiga' ),
 		'priority' => 175,
 		'divider'  => true,
-	),
+	)
 ) );
 //
 // @priority 180 (Performance)
@@ -160,7 +160,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_cor
 		'title'    => esc_html__( 'Core', 'botiga' ),
 		'priority' => 195,
 		'divider'  => true,
-	),
+	)
 ) );
 //
 // @priority 200 (Widgets)

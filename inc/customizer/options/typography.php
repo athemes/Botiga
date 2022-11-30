@@ -21,7 +21,7 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_glo
 		'title'    => esc_html__( 'Global Text Styles', 'botiga' ),
 		'panel'    => 'botiga_panel_typography',
 		'priority' => 21,
-	),
+	)
 ) );
 
 /**
