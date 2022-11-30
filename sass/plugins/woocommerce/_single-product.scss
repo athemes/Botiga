@@ -796,7 +796,8 @@ table.variations {
 
 .reset_variations {
 	margin-left: 10px;
-	bottom: -25px !important;
+    top: calc( 100% + 15px ) !important;
+    bottom: auto !important;
 }
 
 .grouped_form.cart {
@@ -806,6 +807,7 @@ table.variations {
 	}
 	.quantity {
 		width: 100% !important;
+		max-width: 100% !important;
 	}
 	.group_table {
 		border: none;
@@ -814,6 +816,7 @@ table.variations {
 		}
 		.woocommerce-grouped-product-list-item__quantity {
 			width: 150px;
+			max-width: 150px;
 			padding-left: 0;
 		}
 		.stock {

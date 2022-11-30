@@ -4864,3 +4864,10 @@ div.editor-styles-wrapper .top-bar .top-bar-mobile-navigation.header-item + .sec
 .botiga-dimensions-control > div {
   max-width: 100%;
 }
+
+.botiga-inspector-tabs-content-wrapper .components-base-control__label,
+.botiga-inspector-tabs-content-wrapper .components-input-control__label {
+  text-transform: none !important;
+  font-weight: 400 !important;
+  font-size: inherit !important;
+}

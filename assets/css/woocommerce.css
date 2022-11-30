@@ -2866,7 +2866,8 @@ table.variations .reset_variations {
 
 .reset_variations {
   margin-left: 10px;
-  bottom: -25px !important;
+  top: calc( 100% + 15px) !important;
+  bottom: auto !important;
 }
 
 .grouped_form.cart .product_type_variable {
@@ -2876,6 +2877,7 @@ table.variations .reset_variations {
 
 .grouped_form.cart .quantity {
   width: 100% !important;
+  max-width: 100% !important;
 }
 
 .grouped_form.cart .group_table {
@@ -2888,6 +2890,7 @@ table.variations .reset_variations {
 
 .grouped_form.cart .group_table .woocommerce-grouped-product-list-item__quantity {
   width: 150px;
+  max-width: 150px;
   padding-left: 0;
 }
 
