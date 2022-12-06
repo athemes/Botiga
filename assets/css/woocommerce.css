@@ -2839,17 +2839,6 @@ table.variations td select {
   width: 100%;
 }
 
-table.variations .reset_variations {
-  position: absolute;
-  bottom: -15px;
-  right: 0;
-  color: #716f6f;
-  text-transform: uppercase;
-  text-decoration: underline;
-  font-size: 13px;
-  font-size: 0.8125rem;
-}
-
 .woocommerce-variation-price {
   margin-bottom: 15px;
 }
@@ -2865,9 +2854,16 @@ table.variations .reset_variations {
 }
 
 .reset_variations {
-  margin-left: 10px;
-  top: calc( 100% + 15px) !important;
-  bottom: auto !important;
+  display: none;
+  text-align: right;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  color: #716f6f;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .grouped_form.cart .product_type_variable {
@@ -3092,6 +3088,10 @@ form.cart .quantity.hidden {
   margin-bottom: 0;
 }
 
+.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .variations_form.cart .reset_variations {
+  margin: 0 0px 0 15px;
+}
+
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -3141,6 +3141,7 @@ form.cart .quantity.hidden {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 20px;
 }
 
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .variations_form .single_variation_wrap .woocommerce-variation-add-to-cart {
@@ -3207,10 +3208,6 @@ form.cart .quantity.hidden {
   .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart > .variations_form .variations {
     width: auto;
     line-height: 1 !important;
-  }
-  .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart > .variations_form .variations .reset_variations {
-    right: auto;
-    left: 40px;
   }
   .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart > .variations_form .single_variation_wrap {
     display: -webkit-box;

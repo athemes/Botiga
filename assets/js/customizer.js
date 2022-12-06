@@ -926,6 +926,12 @@
       var outputLeftRight = '.botiga-quick-links.pos-left .quick-link:first-of-type, .botiga-quick-links.pos-right .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-top-right-radius:' + to + 'px;} .botiga-quick-links.pos-left .quick-link:last-of-type, .botiga-quick-links.pos-right .quick-link:last-of-type {border-bottom-right-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;}';
       $('head').append('<style id="botiga-customizer-styles-ql_border_radius">' + outputBottom + outputLeftRight + '</style>');
     });
+  }); // Modal Popup
+
+  wp.customize('modal_popup_content_padding', function (value) {
+    value.bind(function (to) {
+      $('.botiga-popup-wrapper').css('padding', to + 'px');
+    });
   }); // Predefined palettes listener.
 
   wp.customize('color_palettes', function (value) {

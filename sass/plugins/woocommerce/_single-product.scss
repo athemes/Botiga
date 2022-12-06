@@ -767,16 +767,6 @@ table.variations {
 			width: 100%;
 		}
 	}
-
-	.reset_variations {
-		position: absolute;
-		bottom: -15px;
-		right: 0;
-		color: #716f6f;
-		text-transform: uppercase;
-		text-decoration: underline;
-		@include font-size(13);
-	}
 }
 
 .woocommerce-variation-price {
@@ -795,9 +785,15 @@ table.variations {
 }
 
 .reset_variations {
-	margin-left: 10px;
-    top: calc( 100% + 15px ) !important;
-    bottom: auto !important;
+	display: none;
+	text-align: right;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	color: #716f6f;
+	text-transform: uppercase;
+	text-decoration: underline;
+	@include font-size(13);
 }
 
 .grouped_form.cart {
@@ -977,6 +973,10 @@ form.cart .quantity.hidden {
 							}
 						}
 					}
+
+					.reset_variations {
+						margin: 0 0px 0 15px;
+					}
 				}
 			}
 		}
@@ -1015,6 +1015,7 @@ form.cart .quantity.hidden {
 			.single_variation_wrap {
 				display: flex;
 				align-items: center;
+				margin-left: 20px;
 				.woocommerce-variation-add-to-cart {
 					flex-wrap: nowrap;
 				}
@@ -1075,10 +1076,6 @@ form.cart .quantity.hidden {
 						.variations {
 							width: auto;
 							line-height: 1 !important;
-							.reset_variations {
-								right: auto;
-								left: 40px;
-							}
 						}
 						.single_variation_wrap {
 							display: flex;

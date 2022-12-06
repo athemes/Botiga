@@ -1028,6 +1028,13 @@
 		} );
 	} );
 
+	// Modal Popup
+	wp.customize( 'modal_popup_content_padding', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-popup-wrapper' ).css( 'padding', to + 'px' );
+		} );
+	} );
+
 	// Predefined palettes listener.
 	wp.customize( 'color_palettes', function( value ) {
 		value.bind( function( to ) {
