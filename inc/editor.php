@@ -136,6 +136,9 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= "div.editor-styles-wrapper :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 	$css .= "div.editor-styles-wrapper ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . ";}" . "\n";
 
+	// Additional Information (Variations) Table
+	$css .= Botiga_Custom_CSS::get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.3 );
+
 	// Additional CSS (from customizer)
 	$css .= wp_get_custom_css();
 

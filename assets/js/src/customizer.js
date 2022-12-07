@@ -777,7 +777,7 @@
 		});
 	});
 
-	var $fontSizes 	= {  "body_font_size":"body","header_menu_font_size":".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation","h1_font_size":"h1:not(.site-title)","h2_font_size":"h2","h3_font_size":"h3","h4_font_size":"h4","h5_font_size":"h5","h6_font_size":"h6","single_product_title_size":".product-gallery-summary .entry-title","single_product_price_size":".product-gallery-summary .price","loop_post_text_size":".posts-archive .entry-content","loop_post_meta_size":".posts-archive .entry-meta","loop_post_title_size":".posts-archive .entry-title","single_post_title_size": ".single .entry-header .entry-title","single_post_meta_size": ".single .entry-meta","footer_widgets_title_size":".widget-column .widget .widget-title","shop_product_title_size": shopProductTitleSelector, };
+  var $fontSizes 	= {  "body_font_size":"body","header_menu_font_size":".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation","h1_font_size":"h1:not(.site-title)","h2_font_size":"h2","h3_font_size":"h3","h4_font_size":"h4","h5_font_size":"h5","h6_font_size":"h6","single_product_title_size":".product-gallery-summary .entry-title, .botiga-tb-sp-title h1","single_product_price_size":".product-gallery-summary .price","loop_post_text_size":".posts-archive .entry-content","loop_post_meta_size":".posts-archive .entry-meta","loop_post_title_size":".posts-archive .entry-title","single_post_title_size": ".single .entry-header .entry-title","single_post_meta_size": ".single .entry-meta","footer_widgets_title_size":".widget-column .widget .widget-title","shop_product_title_size": shopProductTitleSelector, };
 	$.each( $fontSizes, function( option, selector ) {
 		$.each( $devices, function( device, mediaSize ) {
 			wp.customize( option + '_' + device, function( value ) {
@@ -1285,6 +1285,13 @@
 			var outputLeftRight = '.botiga-quick-links.pos-left .quick-link:first-of-type, .botiga-quick-links.pos-right .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-top-right-radius:' + to + 'px;} .botiga-quick-links.pos-left .quick-link:last-of-type, .botiga-quick-links.pos-right .quick-link:last-of-type {border-bottom-right-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;}';
 			
 			$( 'head' ).append( '<style id="botiga-customizer-styles-ql_border_radius">' + outputBottom + outputLeftRight + '</style>' )			
+		} );
+	} );
+
+	// Modal Popup
+	wp.customize( 'modal_popup_content_padding', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-popup-wrapper' ).css( 'padding', to + 'px' );
 		} );
 	} );
 
