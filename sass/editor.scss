@@ -16,6 +16,24 @@
 	}
 }
 
+.wp-block[data-align="full"] {
+	.wp-block {
+		max-width: none;
+	}
+}
+
+.botiga-block-no-preview {
+    padding: 25px;
+    border: 1px solid #CCC;
+    border-left-color: #6c6c6c;
+    border-left-width: 3px;
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
 /*
 * Spacing
 */
@@ -136,4 +154,29 @@ div.editor-styles-wrapper {
 }
 div.editor-styles-wrapper {
 	@import "components/widgets/widget_blocks";
+}
+
+/*
+* Pagination
+*/
+div.editor-styles-wrapper {
+	@import "components/navigation/navigation";
+}
+
+/*
+* Custom Control Components
+*/
+.botiga-dimensions-control {
+	> div {
+		max-width: 100%;
+	}
+}
+
+.botiga-inspector-tabs-content-wrapper {
+	.components-base-control__label,
+	.components-input-control__label {
+		text-transform: none !important;
+		font-weight: 400 !important;
+		font-size: inherit !important;
+	}
 }

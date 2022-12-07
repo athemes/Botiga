@@ -725,7 +725,7 @@
     "h4_font_size": "h4",
     "h5_font_size": "h5",
     "h6_font_size": "h6",
-    "single_product_title_size": ".product-gallery-summary .entry-title",
+    "single_product_title_size": ".product-gallery-summary .entry-title:not(.site-title):not([class*=\"-font-size\"]), .botiga-tb-sp-title h1:not(.site-title):not([class*=\"-font-size\"])",
     "single_product_price_size": ".product-gallery-summary .price",
     "loop_post_text_size": ".posts-archive .entry-content",
     "loop_post_meta_size": ".posts-archive .entry-meta",
@@ -925,6 +925,12 @@
       var outputBottom = '.botiga-quick-links.pos-bottom .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;} .botiga-quick-links.pos-bottom .quick-link:last-of-type {border-top-right-radius:' + to + 'px;border-bottom-right-radius:' + to + 'px;}';
       var outputLeftRight = '.botiga-quick-links.pos-left .quick-link:first-of-type, .botiga-quick-links.pos-right .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-top-right-radius:' + to + 'px;} .botiga-quick-links.pos-left .quick-link:last-of-type, .botiga-quick-links.pos-right .quick-link:last-of-type {border-bottom-right-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;}';
       $('head').append('<style id="botiga-customizer-styles-ql_border_radius">' + outputBottom + outputLeftRight + '</style>');
+    });
+  }); // Modal Popup
+
+  wp.customize('modal_popup_content_padding', function (value) {
+    value.bind(function (to) {
+      $('.botiga-popup-wrapper').css('padding', to + 'px');
     });
   }); // Predefined palettes listener.
 

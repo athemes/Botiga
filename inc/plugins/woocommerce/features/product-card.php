@@ -27,7 +27,6 @@ function botiga_product_card_hooks() {
 	//Archive layout
 	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
 		if ( 'product-list' === $layout ) {
-
 			// Products
 			add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-big'; } );
 			add_action( 'woocommerce_before_shop_loop_item', function() use ($loop_image_wrap_extra_class) { echo '<div class="row valign"><div class="col-md-4"><div class="loop-image-wrap '. esc_attr( apply_filters( 'botiga_wc_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ) .'">'; }, 1 );
@@ -144,7 +143,7 @@ function botiga_product_card_hooks() {
 	}
 
 	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
-	if( $shop_cart_show_cross_sell ) {
+	if( $shop_cart_show_cross_sell && 'layout1' !== $quick_view_layout ) {
 		//Quick view popup
 		add_action( 'wp_body_open', 'botiga_quick_view_popup' );
 	}
@@ -192,7 +191,7 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart
  */
 function botiga_page_has_woo_blocks() {
 	global $post;
-	
+
 	if( $post ) {
 		if( isset( $post->post_content ) && strpos( $post->post_content, 'woocommerce/' ) ) {
             return true;

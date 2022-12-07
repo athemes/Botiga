@@ -337,8 +337,6 @@ function botiga_social_profile( $location ) {
 	echo $items; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
-
-
 /**
  * Header builder components
  */
@@ -743,6 +741,11 @@ function botiga_preconnect_google_fonts() {
 	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
 	$load_locally  = get_theme_mod( 'perf_google_fonts_local', 1 );
 	if( $fonts_library !== 'google' || $load_locally ) {
+		return;
+	}
+
+	//Disable preconnect if popular plugins for local fonts are active
+	if ( function_exists( 'omgf_init') || class_exists( 'EverPress\LGF' ) ) {
 		return;
 	}
 

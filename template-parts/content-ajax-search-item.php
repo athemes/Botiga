@@ -5,6 +5,8 @@
  * @package Botiga
  */
 
+do_action( 'botiga_before_ajax_search_item' );
+
 if( $args['type'] === 'product' ) {
     $item_post_id   = $args['post_id'];
     $product        = wc_get_product( $item_post_id );
@@ -40,3 +42,5 @@ if( $args['type'] === 'product' ) {
         <?php echo wp_kses_post( $price ); ?>
     </div>
 </a>
+
+<?php do_action( 'botiga_after_ajax_search_item' ); ?>

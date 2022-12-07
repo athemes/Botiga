@@ -52,7 +52,7 @@ $wp_customize->add_control(
                         '#customize-control-bhfb_button_color',
                         '#customize-control-bhfb_button_border_color',
                         '#customize-control-buttons_divider_2',
-                        '#customize-control-buttons_hover_state_title',
+                        '#customize-control-bhfb_button_hover_state_title',
                         '#customize-control-bhfb_button_background_color_hover',
                         '#customize-control-bhfb_button_color_hover',
                         '#customize-control-bhfb_button_border_color_hover',
@@ -170,13 +170,13 @@ $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'buttons_
 );
 
 // Hover State Title.
-$wp_customize->add_setting( 'buttons_hover_state_title',
+$wp_customize->add_setting( 'bhfb_button_hover_state_title',
 	array(
 		'default' 			=> '',
 		'sanitize_callback' => 'esc_attr'
 	)
 );
-$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'buttons_hover_state_title',
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_button_hover_state_title',
 		array(
 			'label'			=> esc_html__( 'Hover state', 'botiga' ),
 			'section' 		=> 'botiga_section_hb_component__button',

@@ -3983,17 +3983,22 @@ body.mobile-menu-visible {
 }
 
 @media (min-width: 1024px) {
-  body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignfull {
+  body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignfull,
+  body:not(.botiga-page-builder-mode) .no-sidebar .blocks-content .alignfull {
     margin-left: calc(50% - 50vw);
     max-width: 100vw;
     width: 100vw;
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .entry-content .alignfull {
+  body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .entry-content .alignfull,
+  body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .blocks-content .alignfull {
     margin-left: calc(50% - calc(var(--botiga_boxed_width, 1200px) / 2));
     max-width: var(--botiga_boxed_width, 1200px);
     width: 100vw;
   }
-  body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignwide {
+  body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignwide,
+  body:not(.botiga-page-builder-mode) .no-sidebar .blocks-content .alignwide {
     margin: 20px calc(25% - 15vw);
     width: auto;
   }
@@ -5644,6 +5649,130 @@ body {
 .botigaFadeInShort {
   -webkit-animation-name: botigaFadeInShort;
           animation-name: botigaFadeInShort;
+}
+
+/* Fade In Up Shorter */
+@-webkit-keyframes fadeInUpShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, 20px);
+            transform: translate(0, 20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInUpShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, 20px);
+            transform: translate(0, 20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInUpShorter {
+  -webkit-animation-name: fadeInUpShorter;
+          animation-name: fadeInUpShorter;
+}
+
+/* Fade In Right Shorter */
+@-webkit-keyframes fadeInRightShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-20px, 0);
+            transform: translate(-20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInRightShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-20px, 0);
+            transform: translate(-20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInRightShorter {
+  -webkit-animation-name: fadeInRightShorter;
+          animation-name: fadeInRightShorter;
+}
+
+/* Fade In Left Shorter */
+@-webkit-keyframes fadeInLeftShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(20px, 0);
+            transform: translate(20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeftShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(20px, 0);
+            transform: translate(20px, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInLeftShorter {
+  -webkit-animation-name: fadeInLeftShorter;
+          animation-name: fadeInLeftShorter;
+}
+
+/* Fade In Down Shorter */
+@-webkit-keyframes fadeInDownShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, -20px);
+            transform: translate(0, -20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInDownShorter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(0, -20px);
+            transform: translate(0, -20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.fadeInDownShorter {
+  -webkit-animation-name: fadeInDownShorter;
+          animation-name: fadeInDownShorter;
 }
 
 .botiga-animated {
