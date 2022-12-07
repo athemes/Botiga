@@ -12,18 +12,13 @@
 $opts_to_move = array(
     'general' => array(),
     'style'   => array(
-        'main_header_color',
-        'main_header_color_hover',
+        'main_header',
         'main_header_submenu_background',
-        'main_header_submenu_color',
-        'main_header_submenu_color_hover',
-        'main_header_sticky_active_divider',
+        'main_header_submenu',
         'main_header_sticky_active_title_1',
-        'main_header_sticky_active_color',
-        'main_header_sticky_active_color_hover',
+        'main_header_sticky_active',
         'main_header_sticky_active_submenu_background_color',
-        'main_header_sticky_active_submenu_color',
-        'main_header_sticky_active_submenu_color_hover'
+        'main_header_sticky_active_submenu',
     )
 );
 
@@ -75,7 +70,7 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_section_hb_component__menu_config',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Configure Menu', 'botiga' ) . '</span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'menu_locations\' ).focus();">' . esc_html__( 'Configure Menu', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Configure Menu', 'botiga' ) . '</span><a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'menu_locations\' ).focus();">' . esc_html__( 'Configure Menu', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_hb_component__menu',
             'priority'      => 20
 		)

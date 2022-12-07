@@ -37,8 +37,7 @@ $wp_customize->add_control(
                 array(
                     '#customize-control-botiga_section_fb_component__widget4_title_color',
                     '#customize-control-botiga_section_fb_component__widget4_text_color',
-                    '#customize-control-botiga_section_fb_component__widget4_links_color',
-                    '#customize-control-botiga_section_fb_component__widget4_links_color_hover'
+                    '#customize-control-botiga_section_fb_component__widget4_links',
                 )
             ),
             'priority' 				=> 20
@@ -55,7 +54,7 @@ $wp_customize->add_setting( 'botiga_section_fb_component__widget4_goto_edit',
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_fb_component__widget4_goto_edit',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-4\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-4\' ).focus();">' . esc_html__( 'Footer Widget Area 4', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-4\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-4\' ).focus();">' . esc_html__( 'Footer Widget Area 4', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_fb_component__widget4',
             'priority' 		=> 30
 		)
@@ -113,19 +112,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_fb_component__widget4_links_color',
-		array(
-			'label'         	=> esc_html__( 'Links Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__widget4',
-			'priority'			=> 29
-		)
-	)
-);
-
-// Links Color Hover
 $wp_customize->add_setting(
 	'botiga_section_fb_component__widget4_links_color_hover',
 	array(
@@ -135,13 +121,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_fb_component__widget4_links_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Links Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__widget4',
-			'priority'			=> 29
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'botiga_section_fb_component__widget4_links',
+        array(
+            'label'    => esc_html__( 'Links Color', 'botiga' ),
+            'section'  => 'botiga_section_fb_component__widget4',
+            'settings' => array(
+                'normal' => 'botiga_section_fb_component__widget4_links_color',
+                'hover'  => 'botiga_section_fb_component__widget4_links_color_hover',
+            ),
+            'priority' => 29
+        )
+    )
 );

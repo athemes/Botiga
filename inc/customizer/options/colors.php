@@ -66,20 +66,6 @@ $wp_customize->add_control( new Botiga_Custom_Palettes_Control( $wp_customize, '
 	'active_callback'	=> 'botiga_callback_custom_palette'
 )));
 
-$wp_customize->add_setting( 'color_divider_1',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'color_divider_1',
-		array(
-			'section' 		=> 'colors',
-			'priority'			=> 9
-		)
-	)
-);
-
 //General
 $wp_customize->add_setting( 'general_color_title',
 	array(
@@ -93,6 +79,24 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'general_col
 			'label'			=> esc_html__( 'General', 'botiga' ),
 			'section' 		=> 'colors',
 			'priority'			=> 9
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'background_color',
+	array(
+		'default'   => '#ffffff',
+		'transport' => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'background_color',
+		array(
+			'label'   => esc_html__( 'Background color', 'botiga' ),
+			'section' => 'colors',
 		)
 	)
 );
@@ -155,19 +159,6 @@ $wp_customize->add_control(
 	)
 );
 
-$wp_customize->add_setting( 'color_divider_2',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'color_divider_2',
-		array(
-			'section' 		=> 'colors',
-		)
-	)
-);
-
 
 //Links
 $wp_customize->add_setting( 'links_color_title',
@@ -193,16 +184,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'color_link_default',
-		array(
-			'label'         	=> esc_html__( 'Links color', 'botiga' ),
-			'section'       	=> 'colors',
-		)
-	)
-);
 
 $wp_customize->add_setting(
 	'color_link_hover',
@@ -213,25 +194,16 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
+	new Botiga_Color_Group(
 		$wp_customize,
-		'color_link_hover',
+		'color_link',
 		array(
-			'label'         	=> esc_html__( 'Links hover color', 'botiga' ),
-			'section'       	=> 'colors',
-		)
-	)
-);
-
-$wp_customize->add_setting( 'color_divider_3',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'color_divider_3',
-		array(
-			'section' 		=> 'colors',
+			'label'    => esc_html__( 'Link Color', 'botiga' ),
+			'section'  => 'colors',
+			'settings' => array(
+				'normal' => 'color_link_default',
+				'hover'  => 'color_link_hover',
+			),
 		)
 	)
 );
@@ -239,7 +211,7 @@ $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'color_di
 //Headings
 $wp_customize->add_setting( 'headings_color_title',
 	array(
-		'default' 			=> '',
+		'default'       => '',
 		'sanitize_callback' => 'esc_attr',
 	)
 );
@@ -361,19 +333,6 @@ $wp_customize->add_control(
 	)
 );
 
-$wp_customize->add_setting( 'color_divider_4',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'color_divider_4',
-		array(
-			'section' 		=> 'colors',
-		)
-	)
-);
-
 //Forms
 $wp_customize->add_setting( 'forms_color_title',
 	array(
@@ -481,6 +440,21 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Placeholder color', 'botiga' ),
 			'section'       	=> 'colors',
+		)
+	)
+);
+
+//Reset
+$wp_customize->add_setting( 'reset_colors',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr',
+	)
+);
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'reset_colors',
+		array(
+			'label'   => esc_html__( 'Reset Styles to Defaults', 'botiga' ),
+			'section' => 'colors',
 		)
 	)
 );

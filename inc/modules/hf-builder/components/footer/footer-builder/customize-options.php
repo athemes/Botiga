@@ -8,6 +8,29 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Footer Section Shortcuts
+$wp_customize->add_setting( 'botiga_section_hb_wrapper__footer_builder_goto_sections',
+	array(
+		'default'             => '',
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_hb_wrapper__footer_builder_goto_sections',
+		array(
+			'description' 	=> '
+				<span class="customize-control-title" style="font-style: normal;">Global Footer</span>
+				<div class="customize-section-shortcuts">
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_fb_above_footer_row\' ).focus();">' . esc_html__( 'Top Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_fb_main_footer_row\' ).focus();">' . esc_html__( 'Main Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_fb_below_footer_row\' ).focus();">' . esc_html__( 'Bottom Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+				</div>
+			',
+			'section'  => 'botiga_section_fb_wrapper',
+            'priority' => 20
+		)
+	)
+);
+
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(

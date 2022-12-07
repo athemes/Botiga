@@ -467,12 +467,12 @@ require_once get_parent_theme_file_path( 'vendor/autoload.php' );
 /**
  * Theme dashboard.
  */
-require get_template_directory() . '/theme-dashboard/class-theme-dashboard.php';
+require get_template_directory() . '/inc/dashboard/class-dashboard.php';
 
 /**
  * Theme dashboard settings.
  */
-require get_template_directory() . '/inc/theme-dashboard-settings.php';
+require get_template_directory() . '/inc/dashboard/class-dashboard-settings.php';
 
 /**
  * Modules.

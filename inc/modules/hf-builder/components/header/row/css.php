@@ -44,7 +44,7 @@ foreach( $rows as $row ) {
     if( botiga_sticky_header_enabled() ) {
         
         // Sticky Header - Background Color
-        $css .= Botiga_Custom_CSS::get_background_color_css( "botiga_header_row__${row}_sticky_background_color", '#FFF', ".sticky-header-active .has-sticky-header .bhfb-$row" ); 
+        $css .= Botiga_Custom_CSS::get_background_color_css( "botiga_header_row__${row}_sticky_background_color", '', ".sticky-header-active .has-sticky-header .bhfb-$row" ); 
 
         // Sticky Header - Border Bottom Color
         $css .= Botiga_Custom_CSS::get_border_bottom_color_rgba_css( "botiga_header_row__${row}_sticky_border_bottom_color", '#EAEAEA', ".sticky-header-active .has-sticky-header .bhfb-$row" );

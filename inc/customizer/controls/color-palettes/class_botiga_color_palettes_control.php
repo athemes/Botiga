@@ -26,9 +26,9 @@ class Botiga_Color_Palettes_Control extends WP_Customize_Control {
 
 				<?php $saved_values = $this->choices[ $this->value() ]; ?>
 				<div class="radio-button-label palette-label saved-palette">
-					<span style="display: flex;">
+					<span class="palette">
 					<?php foreach ( $saved_values as $value ) { ?>
-						<div style="width:20%;height:25px;margin: 0 2px;background-color: <?php echo esc_attr( $value ); ?>"></div>
+						<div class="palette-color" style="background-color: <?php echo esc_attr( $value ); ?>"></div>
 					<?php } ?>
 					</span>	
 				</div>	
@@ -37,9 +37,9 @@ class Botiga_Color_Palettes_Control extends WP_Customize_Control {
 					<?php foreach ( $this->choices as $key => $values ) { ?>						
 						<label class="radio-button-label palette-label">
 							<input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php $this->link(); ?> <?php checked( esc_attr( $key ), $this->value() ); ?>/>
-							<span class="palette" style="display: flex;">
+							<span class="palette">
 							<?php foreach ( $values as $value ) { ?>
-								<div style="width:20%;height:25px;margin: 0 2px;background-color: <?php echo esc_attr( $value ); ?>"></div>
+								<div class="palette-color" style="background-color: <?php echo esc_attr( $value ); ?>"></div>
 							<?php } ?>
 							</span>	
 						</label>

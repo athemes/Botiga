@@ -226,7 +226,7 @@ foreach( $this->footer_rows as $row ) {
             for( $i=1;$i<=6;$i++ ) {
                 $col_section_id = 'botiga_footer_row__' . $row['id'] . '_column' . $i;
 
-                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+                $desc .= '<a class="bhfb-available-columns-item" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
             }
             $desc .= '</div>';
         $desc .= '</div>';

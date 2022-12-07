@@ -76,15 +76,6 @@ body {
     display: none !important;
 }
 
-#customize-control-botiga_section_hb_wrapper__header_builder_goto_presets {
-    margin-left: -25px;
-    width: calc( 100% + 50px );
-    .to-widget-area-link {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-}
-
 #sub-accordion-section-botiga_section_fb_component__footer_menu {
     #customize-control-footer_navigation_menu_link {
         .footer-widget-area-link {
@@ -376,6 +367,13 @@ body {
 
             .bhfb-button {
                 cursor: grab; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                .bhfb-title-element{
+                    flex: 1;
+                }
 
                 i {
                     color: #787878;
@@ -383,6 +381,15 @@ body {
                     line-height: 1.3;
                     transition: ease color 300ms;
                     cursor: pointer;
+                }
+
+                i.bhfb-edit-element{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 14px;
+                    line-height: 1em;
+                    margin-left: 2px;
                 }
 
                 &:hover {
@@ -563,11 +570,25 @@ body {
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
+
+                .bhfb-title-element{
+                    flex: 1;
+                }
+
                 i {
                     color: #787878;
                     font-size: 1.3em;
                     line-height: 1.3;
                     transition: ease color 300ms;
+                }
+
+                i.bhfb-edit-element{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 14px;
+                    line-height: 1em;
+                    margin-left: 2px;
                 }
 
                 &:hover {
@@ -638,32 +659,41 @@ body {
  */
 .bhfb-available-columns {
     .bhfb-available-columns-items-wrapper {
-        display: grid;
-        gap: 8px;
+        display: flex;
+        flex-direction: column;
         .bhfb-available-columns-item {
-            margin-bottom: 0;
-            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #1e1e1e;
+            font-weight: 400;
+            font-style: normal;
+            padding: 9px 15px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            margin-bottom: -1px;
+            &:hover {
+                color: #3858E9;
+            }
+            &:focus{
+                box-shadow: none;
+            }
             &.hide {
                 display: none;
             }
             .dashicons {
-                font-size: 1rem;
-                position: relative;
-                top: 2px;
-                color: #777;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
                 transition: ease color 300ms;
-            }
-
-            &:hover {
-                .dashicons {
-                    color: #212121;
-                }
             }
         }
     }
 
     &.bhfb-always-show {
-        display: grid !important;
+        display: flex !important;
+        flex-direction: column;
     }
 }
 
@@ -699,23 +729,29 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
-    border: 1px dashed #CCC;
+    background-image: linear-gradient(to right, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%), linear-gradient(to right, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%), linear-gradient(to bottom, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%), linear-gradient(to bottom, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%);
+    background-position: left top, left bottom, left top, right top;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 10px 1px, 10px 1px, 1px 10px, 1px 10px;
     padding: 10px;
     margin-top: 10px;
+    border-radius: 5px;
     .bhfb-button {
         display: flex;
         background: #FFF;
-        color: #212121;
+        color: #1e1e1e;
         text-decoration: none;
         font-style: normal;
-        padding: 6px 12px;
-        border: 1px solid #CCC;
+        padding: 8px 8px;
+        border: 2px solid #3858E9;
+        border-radius: 2px;
         height: 100%;
         box-sizing: border-box;
         align-items: center;
 
         &:hover {
-            border-color: #212121;    
+            border-color: #3858E9;    
+            box-shadow: none;
         }
     }
     .bhfb-elements-message {
@@ -814,17 +850,30 @@ body {
 }
 
 .bhfb-upsell-button {
-    background-color: #2271b1;
-    display: block;
+    position: relative;
+    display: flex;
     text-align: center;
-    color: #FFF !important;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 10px;
     text-decoration: none;
-    padding: 10px;
     border-radius: 4px;
-    transition: ease background-color 300ms;
+    color: #3858E9;
+    border: 2px solid #3858E9;
+    transition: all .2s;
 
-    &:hover {
-        background-color: #2c84cb;
+    &:active,
+    &:focus,
+    &:hover{
+        color: #3858E9;
+    }
+
+    &:hover{
+        background-color: #f7f9ff;
+    }
+
+    &:focus{
+        box-shadow: none;
     }
 }
 
