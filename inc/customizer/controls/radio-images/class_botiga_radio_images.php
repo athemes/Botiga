@@ -11,6 +11,8 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 
 	public $desc_below = false;
 
+	public $class = '';
+
 	public $cols = 4;
 
 	public $is_responsive;
@@ -46,7 +48,7 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 				</ul>
 			<?php endif; ?>
 
-			<div id="<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>" class="botiga-radio-images-wrapper responsive-control-desktop active botiga-radio-images-col-<?php echo esc_attr( $this->cols ); ?> <?php echo esc_attr( $responsive ); ?>">
+			<div id="<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>" class="botiga-radio-images-wrapper responsive-control-desktop active botiga-radio-images-col-<?php echo esc_attr( $this->cols ); ?> <?php echo esc_attr( $this->class ); ?> <?php echo esc_attr( $responsive ); ?>">
 				<?php foreach ( $this->choices as $value => $args ) : ?>
 
 					<label for="<?php echo esc_attr( "{$this->id}{$desktop}-{$value}" ); ?>">

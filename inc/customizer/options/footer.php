@@ -67,6 +67,7 @@ $wp_customize->add_control(
 			'label'    => esc_html__( 'Footer widgets layout', 'botiga' ),
 			'section'  => 'botiga_section_footer_widgets',
 			'cols' 		=> 3,
+      'class'     => 'botiga-radio-images-medium',
 			'choices'  => array(
 				'disabled' => array(
 					'label' => esc_html__( 'Disabled', 'botiga' ),
@@ -203,8 +204,16 @@ $wp_customize->add_setting( 'footer_widget_sections',
 
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'footer_widget_sections',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Footer widget areas', 'botiga' ) . '</span><a class="footer-widget-area-link footer-widget-area-link-1" href="javascript:wp.customize.section( \'sidebar-widgets-footer-1\' ).focus();">' . esc_html__( 'Widget area 1', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a><a class="footer-widget-area-link footer-widget-area-link-2" href="javascript:wp.customize.section( \'sidebar-widgets-footer-2\' ).focus();">' . esc_html__( 'Widget area 2', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a><a class="footer-widget-area-link footer-widget-area-link-3" href="javascript:wp.customize.section( \'sidebar-widgets-footer-3\' ).focus();">' . esc_html__( 'Widget area 3', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a><a class="footer-widget-area-link footer-widget-area-link-4" href="javascript:wp.customize.section( \'sidebar-widgets-footer-4\' ).focus();">' . esc_html__( 'Widget area 4', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
-			'section' 		=> 'botiga_section_footer_widgets',
+			'description' 	=> '
+				<span class="customize-control-title" style="font-style: normal;">' . esc_html__( 'Footer widget areas', 'botiga' ) . '</span>
+				<div class="customize-section-shortcuts">
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-1\' ).focus();">' . esc_html__( 'Widget area 1', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-2\' ).focus();">' . esc_html__( 'Widget area 2', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-3\' ).focus();">' . esc_html__( 'Widget area 3', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-4\' ).focus();">' . esc_html__( 'Widget area 4', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+				</div>
+			',
+			'section' => 'botiga_section_footer_widgets',
 		)
 	)
 );
@@ -551,7 +560,8 @@ $wp_customize->add_control(
 		array(
 			'label'    => esc_html__( 'Copyright Bar Layout', 'botiga' ),
 			'section'  => 'botiga_section_footer_credits',
-			'cols' 		=> 2,
+			'cols' 		=> 3,
+      'class'     => 'botiga-radio-images-medium',
 			'choices'  => array(
 				'col1' => array(
 					'label' => esc_html__( '1 column', 'botiga' ),

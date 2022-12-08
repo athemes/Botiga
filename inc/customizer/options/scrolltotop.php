@@ -119,7 +119,8 @@ $wp_customize->add_control(
 		array(
 			'label'    	=> esc_html__( 'Icon', 'botiga' ),
 			'section'  	=> 'botiga_section_scrolltotop',
-			'cols'		=> 4,
+			'cols'		  => 4,
+			'class'     => 'botiga-radio-images-medium',
 			'choices'  	=> array(			
 				'icon1' 	=> array(
 					'label' => esc_html__( 'Icon 1', 'botiga' ),

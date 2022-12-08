@@ -749,6 +749,10 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 /*
  * Available Columns
  */
+.bhfb-available-columns .bhfb-columns-control-title {
+  margin-bottom: 7px !important;
+}
+
 .bhfb-available-columns .bhfb-available-columns-items-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -847,7 +851,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 10px 1px, 10px 1px, 1px 10px, 1px 10px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
   border-radius: 5px;
 }
 

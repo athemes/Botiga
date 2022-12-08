@@ -54,7 +54,14 @@ $theme = wp_get_theme();
   <?php else: ?>
 
     <div class="botiga-dashboard-row">
-      <?php do_action( 'atss_starter_sites' ); ?>
+      <?php
+        $plugin_data = $this->get_plugin_data( $this->settings['starter_plugin_path'] );
+        if ( ! empty( $plugin_data['Version'] ) && version_compare( $plugin_data['Version'], '1.0.27', '>=' ) ) {
+          do_action( 'atss_starter_sites' );
+        } else {
+          wp_redirect( add_query_arg( array( 'page' => 'starter-sites' ), admin_url( 'themes.php' ) ) );
+        }
+      ?>
     </div>
 
   <?php endif; ?>
