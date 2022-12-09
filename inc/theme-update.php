@@ -12,7 +12,7 @@
 function botiga_migrate_woo_catalog_columns_and_rows() {
     $flag = get_theme_mod( 'botiga_migrate_woo_catalog_columns_and_rows_flag', false );
 
-    if ( true === $flag ) {
+    if ( ! empty( $flag ) ) {
         return;
     }
 
@@ -33,7 +33,7 @@ add_action( 'init', 'botiga_migrate_woo_catalog_columns_and_rows' );
 function botiga_migrate_header_mobile_icons() {
     $flag = get_theme_mod( 'botiga_migrate_header_mobile_icons_flag', false );
 
-    if ( true === $flag ) {
+    if ( ! empty( $flag ) ) {
         return;
     }
     
@@ -163,7 +163,7 @@ add_action( 'wp_ajax_botiga_hf_update_dismiss_notice_1_1_9_callback', 'botiga_hf
 function botiga_migrate_1_2_1_options() {
     $flag = get_theme_mod( 'botiga_migrate_1_2_1_options_flag', false );
 
-    if ( true === $flag ) {
+    if ( ! empty( $flag ) ) {
         return;
     }
 
