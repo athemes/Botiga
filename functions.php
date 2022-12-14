@@ -225,6 +225,11 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 * Responsive embeds
 		 */
 		add_theme_support( 'responsive-embeds' );
+
+		/**
+		 * Page templates with blocks
+		 */
+		add_theme_support( 'block-templates' );
 	}
 endif;
 add_action( 'after_setup_theme', 'botiga_setup' );
