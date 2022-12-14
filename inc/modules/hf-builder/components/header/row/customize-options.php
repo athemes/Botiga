@@ -186,6 +186,7 @@ foreach( $this->header_rows as $row ) {
                 'label'    => esc_html__( 'Columns Layout', 'botiga' ),
                 'section'  => $row['section'],
                 'cols' 		=> 4,
+                'class'    => 'botiga-radio-images-small',
                 'is_responsive' => true,
                 'settings' 		=> array (
                     'desktop' 		=> 'botiga_header_row__' . $row['id'] . '_columns_layout_desktop',
@@ -255,7 +256,7 @@ foreach( $this->header_rows as $row ) {
     $desc    = '';
     foreach( $devices as $device ) {
         $desc .= '<div class="bhfb-available-columns bhfb-available-columns-'. esc_attr( $device ) .'">';
-            $desc .= '<span class="customize-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
+            $desc .= '<span class="customize-control-title bhfb-columns-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
             $desc .= '<div class="bhfb-available-columns-items-wrapper">';
             for( $i=1;$i<=6;$i++ ) {
                 $col_section_id = 'botiga_header_row__' . $row['id'] . '_column' . $i;

@@ -158,24 +158,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
   <div class="botiga-dashboard-home-sidebar">
 
-    <div class="botiga-dashboard-home-pro-box">
-      <h2><?php esc_html_e( 'Botiga Pro', 'botiga' ); ?></h2>
-      <ul>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '15+ Starter Themes', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '60+ Ready Blocks', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '5+ Design System', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Widgets', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Customizer', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Single Post/Page', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'WooCommerce', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Page Template', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Header for Crelly', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Header for Shortcode', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Footer Credits', 'botiga' ); ?></li>
-        <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Priority Support', 'botiga' ); ?></li>
-      </ul>
-      <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" target="_blank"><?php esc_html_e( 'Buy Botiga Pro', 'botiga' ); ?></a>
-    </div>
+    <?php if ( ! $this->settings['has_pro'] ) : ?>
+      <div class="botiga-dashboard-home-pro-box">
+        <h2><?php esc_html_e( 'Botiga Pro', 'botiga' ); ?></h2>
+        <ul>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '15+ Starter Themes', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '60+ Ready Blocks', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '5+ Design System', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Widgets', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Customizer', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Single Post/Page', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'WooCommerce', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Page Template', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Header for Crelly', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Header for Shortcode', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Footer Credits', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Priority Support', 'botiga' ); ?></li>
+        </ul>
+        <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" target="_blank"><?php esc_html_e( 'Buy Botiga Pro', 'botiga' ); ?></a>
+      </div>
+    <?php endif; ?>
 
     <div class="botiga-dashboard-box botiga-dashboard-box-review">
       <div class="botiga-dashboard-box-title"><?php esc_html_e( 'Leave A Review', 'botiga' ); ?></div>

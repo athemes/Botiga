@@ -1186,6 +1186,10 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 					$result = $boolean;
 				}
 
+				if ( $condition === 'product-category-id' && is_product_category() && get_queried_object_id() === $object_id ) {
+					$result = $boolean;
+				}
+
 			}
 
 			// Specific

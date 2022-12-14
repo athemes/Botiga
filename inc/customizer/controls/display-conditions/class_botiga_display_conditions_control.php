@@ -88,6 +88,7 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 
 			case 'tag-id':
 			case 'category-id':
+			case 'product-category-id':
 
 				$term = get_term($value['id']);
 

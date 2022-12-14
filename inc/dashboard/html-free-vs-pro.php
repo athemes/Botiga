@@ -502,6 +502,14 @@ if ( ! defined( 'ABSPATH' ) ) {
   </div>
 
   <div class="botiga-dashboard-row">
+    <div class="botiga-dashboard-box">
+      <div class="botiga-dashboard-box-link">
+        <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" target="_blank" class="button button-pro-support"><?php esc_html_e( 'Buy Botiga Pro Today', 'botiga' ); ?></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="botiga-dashboard-row">
     <?php require get_template_directory() . '/inc/dashboard/part-support.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
   </div>
 

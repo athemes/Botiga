@@ -82,6 +82,10 @@ $user = wp_get_current_user();
 
           foreach ( $this->settings['tabs'] as $tab_key => $tab_title ) {
 
+            if ( $this->settings['has_pro'] && $tab_key === 'free-vs-pro' ) {
+              continue;
+            }
+
             $tab_link   = add_query_arg( array( 'page' => $this->settings['menu_slug'], 'section' => $tab_key ), admin_url( 'themes.php' ) );
             $tab_active = ( ( $section && $section === $tab_key ) || ( ! $section && $num === 0 ) ) ? 'active' : '';
 

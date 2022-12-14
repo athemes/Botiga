@@ -31,7 +31,7 @@ $wp_customize->add_control(
 		array(
 			'label'     => esc_html__( 'Site Layout', 'botiga' ),
 			'section'   => 'botiga_section_layout',
-			'cols'      => 3,
+			'cols'      => 2,
 			'choices'   => array(
 				'default' => array(
 					'label' => esc_html__( 'Default', 'botiga' ),

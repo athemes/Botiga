@@ -31,10 +31,6 @@ class Botiga_Dashboard {
       return;
     }
 
-    if ( ! function_exists( 'get_plugin_data' ) ) {
-      require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-    }
-
     add_filter( 'woocommerce_enable_setup_wizard', '__return_false' );
 
     add_action( 'init', array( $this, 'set_settings' ) );
@@ -111,6 +107,10 @@ class Botiga_Dashboard {
       return;
     }
 
+    if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+      require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+    }
+
     if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_path ) ) {
       return 'not_installed';
     } elseif ( in_array( $plugin_path, (array) get_option( 'active_plugins', array() ), true ) || is_plugin_active_for_network( $plugin_path ) ) {
@@ -122,11 +122,31 @@ class Botiga_Dashboard {
   }
 
   /**
+   * Get plugin data.
+   *
+   * @param string $plugin_path Plugin path.
+   */
+  public function get_plugin_data( $plugin_path ) {
+
+    if ( ! current_user_can( 'install_plugins' ) ) {
+      return;
+    }
+
+    if ( ! function_exists( 'get_plugin_data' ) ) {
+      require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+    }
+
+    return get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_path );
+
+  }
+
+  /**
    * Install a plugin.
    *
    * @param string $plugin_slug Plugin slug.
    */
   public function install_plugin( $plugin_slug ) {
+
     if ( ! current_user_can( 'install_plugins' ) ) {
       return;
     }
@@ -189,6 +209,10 @@ class Botiga_Dashboard {
       return false;
     }
 
+    if ( ! function_exists( 'activate_plugin' ) ) {
+      require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+    }
+
     $activate = activate_plugin( $plugin_path, '', false, true );
 
     if ( is_wp_error( $activate ) ) {
@@ -207,6 +231,10 @@ class Botiga_Dashboard {
 
     if ( ! current_user_can( 'install_plugins' ) ) {
       return false;
+    }
+
+    if ( ! function_exists( 'deactivate_plugins' ) ) {
+      require_once ABSPATH . 'wp-admin/includes/plugin.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     $deactivate = deactivate_plugins( $plugin_path );
