@@ -731,7 +731,7 @@
     "h4_font_size": "h4",
     "h5_font_size": "h5",
     "h6_font_size": "h6",
-    "single_product_title_size": ".product-gallery-summary .entry-title:not(.site-title):not([class*=\"-font-size\"]), .botiga-tb-sp-title h1:not(.site-title):not([class*=\"-font-size\"])",
+    "single_product_title_size": ".product-gallery-summary .entry-title, .botiga-tb-sp-title h1",
     "single_product_price_size": ".product-gallery-summary .price",
     "loop_post_text_size": ".posts-archive .entry-content",
     "loop_post_meta_size": ".posts-archive .entry-meta",

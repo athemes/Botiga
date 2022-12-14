@@ -376,6 +376,15 @@ function botiga_dashboard_settings() {
     'documentation_url' => 'https://docs.athemes.com/article/botiga-pro-quick-links',
   );
 
+  $settings['features'][] = array(
+    'module'       			=> 'templates',
+    'type'              => 'pro',
+    'title'             => esc_html__( 'Templates', 'botiga-pro' ),
+    'desc'			        => __( 'Create shop or content templates.', 'botiga-pro' ),
+    'customize_url'     => admin_url( 'edit.php?post_type=athemes_hf' ),
+    'documentation_url' => 'https://docs.athemes.com/article/pro-templates-builder-overview/', //param is added in dashboard class
+  );
+
   return $settings;
 
 }
