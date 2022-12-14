@@ -203,11 +203,16 @@ function botiga_display_conditions_select_ajax() {
 
             case 'tag-id':
             case 'category-id':
+            case 'product-category-id':
 
                 $taxonomy = 'category';
 
                 if ( $source === 'tag-id' ) {
                     $taxonomy = 'post_tag';
+                }
+
+                if ( $source === 'product-category-id' ) {
+                    $taxonomy = 'product_cat';
                 }
 
                 $query = new WP_Term_Query( array(

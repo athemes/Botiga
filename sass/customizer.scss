@@ -195,7 +195,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-bottom: 7px;
 }
 .botiga-control-wrapper {
     position: relative;
@@ -405,6 +405,7 @@ span.delete:hover {
 	border: 1px solid #949494;
     padding: 2px;
     border-radius: 2px;
+    margin-top: 7px;
 
     & + .customize-control-description {
         margin-top: 10px;
@@ -494,6 +495,10 @@ span.delete:hover {
 	color: #fff;
 }
 
+.customize-section-shortcuts{
+    margin-top: 7px;
+}
+
 .botiga-to-widget-area-link{
     display: flex;
     align-items: center;
@@ -562,6 +567,7 @@ span.delete:hover {
     display: flex;
     grid-gap: 20px;
     flex-wrap: wrap;
+    margin-top: 7px;
 }
 
 .customize-control-title {
@@ -1382,6 +1388,14 @@ html[dir="rtl"] .botiga-accordion-title:after {
     border: none;
 }
 
+#customize-theme-controls .customize-section-title-menu_locations-heading{
+    padding-top: 10px;
+}
+
+#customize-theme-controls .customize-section-title-nav_menus-heading{
+    padding-bottom: 5px;
+}
+
 .expanded .wp-full-overlay-footer{
     border-top-color: #f0f0f0;
     background: #f9f9f9;
@@ -1748,7 +1762,7 @@ div.customize-section-description{
         border: none;
         padding: 0 7px 0 7px;
         border-radius: 4px;
-        background-color: #fafafa;
+        background-color: #f5f5f5;
         box-sizing: border-box;
 
         &.ui-state-active {
@@ -1768,7 +1782,7 @@ div.customize-section-description{
             margin: 0;
             display: block;
             position: relative;
-            bottom: -7px;
+            bottom: -8px;
         }
     }
 
@@ -1799,6 +1813,38 @@ div.customize-section-description{
 
 .botiga-radio-images-col-6 label{
     width: calc(16.666666666% - 17px);
+}
+
+.botiga-radio-images-small{
+    grid-gap: 5px;
+
+    label{
+        align-items: center;
+        padding: 4px 3px 3px 3px;
+    }
+
+    figure{
+
+        img{
+            top: 0;
+        }
+    }
+}
+
+.botiga-radio-images-medium{
+    grid-gap: 10px;
+
+    label{
+        align-items: center;
+        padding: 5px;
+    }
+
+    figure{
+
+        img{
+            top: 1px;
+        }
+    }
 }
 
 .customize-control-kirki-sortable ul.ui-sortable li{
