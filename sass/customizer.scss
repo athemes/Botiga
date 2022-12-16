@@ -575,6 +575,18 @@ span.delete:hover {
     font-size: 13px;
     font-weight: 400;
     text-transform: capitalize;
+
+    &.customize-control-title-font-size-normal {
+        font-size: 13px !important;
+    }
+
+    &.customize-control-title-weight-normal {
+        font-weight: normal !important;
+    }
+
+    &.customize-control-title-text-transform-none {
+        text-transform: none !important;
+    }
 }
 
 .customize-control:not(.customize-control-botiga-alpha-color):not(.customize-control-botiga-toggle-control){
@@ -2235,7 +2247,7 @@ a,
 .customize-control-botiga-color-group-control{
 
     .botiga-color-group{
-        padding: 0 12px 15px 12px;
+        padding: 0 0 15px 0;
         border-bottom: 1px solid #ddd;
     }
 }
@@ -2243,7 +2255,7 @@ a,
 .customize-control-botiga-alpha-color{
 
     .botiga-color-control{
-        padding: 0 12px 15px 12px;
+        padding: 0 0 15px 0;
         border-bottom: 1px solid #ddd;
     }
 }

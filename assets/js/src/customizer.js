@@ -1383,6 +1383,53 @@
 		});
 	});
 
+	// Header Search Form
+	wp.customize( 'bhfb_search_form_button_margin_left', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-bhfb_search_form_button_margin_left' ).remove();
+			var output = '.header-search-form form button { margin-left:' + to + 'px !important; }';
+			$( 'head' ).append( '<style id="botiga-customizer-styles-bhfb_search_form_button_margin_left">' + output + '</style>' );
+		} );
+	} );
+
+	wp.customize( 'bhfb_search_form_size', function( value ) {
+		value.bind( function( to ) {
+			$( '.header-search-form form button, .header-search-form form .search-field, .header-search-form .botiga-select, .header-search-form .botiga-select select' ).css( 'font-size', to + 'rem' );
+		} );
+	} );
+
+	wp.customize( 'bhfb_search_form_input_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.header-search-form form .search-field, .header-search-form .botiga-select select' ).css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	wp.customize( 'bhfb_search_form_button_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.header-search-form form button' ).css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'bhfb_search_form_width' + '_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-bhfb_search_form_width_' + device ).remove();
+		
+				var output = '@media ' + mediaSize + ' { .header-search-form { width:' + to + 'px; } }';
+				
+				$( 'head' ).append( '<style id="botiga-customizer-styles-bhfb_search_form_width_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	wp.customize( 'bhfb_search_form_product_cat_dropdown_margin_right', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-bhfb_search_form_product_cat_dropdown_margin_right' ).remove();
+			var output = '.header-search-form .botiga-select { margin-right:' + to + 'px !important; }';
+			$( 'head' ).append( '<style id="botiga-customizer-styles-bhfb_search_form_product_cat_dropdown_margin_right">' + output + '</style>' );
+		} );
+	} );
+
 	// Color options
 	var $color_options = botiga_theme_options;
 
@@ -1426,10 +1473,10 @@
 						} else {
 							
 							if( typeof css2.prop === 'string' ) {
-								output += css2.selector + '{ '+ css2.prop +': '+ to +'; }'; 
+								output += css2.selector + '{ '+ css2.prop +': '+ to +' '+ ( css2.important ? '!important' : '' ) +'; }'; 
 							} else {
 								$.each( css2.prop, function( propkey, propvalue ) {
-									output += css2.selector + '{ '+ propvalue +': '+ to +'; }';
+									output += css2.selector + '{ '+ propvalue +': '+ to +' '+ ( css2.important ? '!important' : '' ) +'; }';
 								} );
 							}
 						}
