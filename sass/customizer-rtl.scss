@@ -1,0 +1,104 @@
+/**
+ * Customizer RTL.
+ */
+
+/* Header Builder */
+.botiga-bhfb{
+  right: auto;
+  left: 0;
+}
+
+.botiga-bhfb .botiga-bhfb-devices{
+  left: auto;
+  right: 0;
+}
+
+.botiga-bhfb .botiga-bhfb-mobile .bhfb-offcanvas{
+  margin-left: 15px;
+  margin-right: 0;
+}
+
+.botiga-bhfb .botiga-bhfb-mobile .bhfb-offcanvas .bhfb-offcanvas-settings .settings,
+.botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .botiga-bhfb-row-controls .settings{
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+.botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button i.bhfb-edit-element{
+  margin-left: 0;
+  margin-right: 2px;
+}
+
+.botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .botiga-bhfb-area+.botiga-bhfb-area{
+  border-right: 0;
+  border-left: 1px dashed #1E1E1E;
+}
+
+.botiga-to-widget-area-link .dashicons-arrow-right-alt2:before,
+.bhfb-available-columns-items-wrapper .dashicons-arrow-right-alt2:before{
+  content: "\f341";
+}
+
+/* Display Conditions control */
+.customize-pane-parent>li.control-section .accordion-section-title:before{
+  margin-left: 4px;
+  margin-right: -4px;
+}
+
+.botiga-display-conditions-select2-type .select2-selection:before{
+  left: auto;
+  right: 6px;
+}
+
+.botiga-display-conditions-select2-type .select2-container .select2-selection--single .select2-selection__rendered{
+  padding-right: 25px;
+  padding-left: 20px;
+}
+
+.botiga-display-conditions-select2-groupped{
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+/* Slider control */
+.range-slider__unit{
+  right: auto;
+  left: 10px;
+}
+
+.range-slider__value{
+  direction: ltr;
+  padding: 7px 12px 7px 25px !important;
+}
+
+.customize-control input[type=range]{
+  direction: ltr;
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+/* Accordion control */
+.botiga-accordion-title:after {
+  right: auto;
+  left: 20px;
+}
+
+/* Toggle control */
+.toggle-switch{
+  float: left;
+}
+
+/* Repeater control */
+.customize-control-sortable-repeater-delete, .repeater .dashicons-menu{
+  margin: 0 -1px 0 0;
+}
+
+/* Custom Sidebars control */
+.botiga-custom-sidebar-icon{
+  border-left: 0;
+  border-right: 1px solid #ccc;
+}
+
+.woocommerce-cropping-control{
+  margin-right: 0;
+}
