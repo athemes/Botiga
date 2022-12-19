@@ -225,6 +225,11 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 * Responsive embeds
 		 */
 		add_theme_support( 'responsive-embeds' );
+
+		/**
+		 * Page templates with blocks
+		 */
+		add_theme_support( 'block-templates' );
 	}
 endif;
 add_action( 'after_setup_theme', 'botiga_setup' );
@@ -432,7 +437,7 @@ if( defined( 'ELEMENTOR_VERSION' ) ) {
 /**
  * Load Elementor compatibility file.
  */
-if( defined( 'DOKAN_PLUGIN_VERSION' ) ) {
+if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/dokan/dokan.php';
 }
 

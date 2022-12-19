@@ -1074,6 +1074,27 @@ function botiga_get_header_icon( $identifier = '', $echo = false ) {
 }
 
 /**
+ * Get Header Search Form Icon
+ */
+function botiga_get_header_search_form_icon( $echo = false ) {
+	$icon = get_theme_mod( 'bhfb_search_form_button_icon', 'icon-search' );
+
+	$output = '';
+	if( $icon !== 'icon-custom' ) {
+		$output .= botiga_get_svg_icon( $icon );
+	} else {
+		$image_id = get_theme_mod( 'bhfb_search_form_button_icon_custom_image', 0 );
+		$output .= botiga_get_image( $image_id, apply_filters( 'botiga_header_search_form_icon_image_size', 'botiga-header-icons' ) );
+	}
+
+	if ( $echo != false ) {
+		echo $output; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} else {
+		return $output;
+	}
+}
+
+/**
  * Get Registered Sidebars
  */
 function botiga_get_registered_sidebars() {

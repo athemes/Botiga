@@ -10,10 +10,12 @@
 
 // Icon Color
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_color', '', '.bhfb-component-woo_icons .header-item svg:not(.stroke-based)' );
+$css .= Botiga_Custom_CSS::get_stroke_css( 'bhfb_woo_icons_color', '', '.bhfb-component-woo_icons .header-item svg.stroke-based' );
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_color', '', '.bhfb-component-woo_icons .header-item .botiga-image.is-svg' );
 
 // Icon Color Hover
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_woo_icons_color_hover', '', '.bhfb-component-woo_icons .header-item:hover svg:not(.stroke-based)' );
+$css .= Botiga_Custom_CSS::get_stroke_css( 'bhfb_woo_icons_color_hover', '', '.bhfb-component-woo_icons .header-item:hover svg.stroke-based' );
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_color_hover', '', '.bhfb-component-woo_icons .header-item:hover .botiga-image.is-svg' );
 
 // Mini Cart Count Background Color
