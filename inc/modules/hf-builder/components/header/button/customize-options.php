@@ -48,17 +48,12 @@ $wp_customize->add_control(
                 array_merge(
                     array(
                         '#customize-control-bhfb_button_default_state_title',
-                        '#customize-control-bhfb_button_background_color',
-                        '#customize-control-bhfb_button_color',
-                        '#customize-control-bhfb_button_border_color',
-                        '#customize-control-buttons_divider_2',
-                        '#customize-control-bhfb_button_hover_state_title',
-                        '#customize-control-bhfb_button_background_color_hover',
-                        '#customize-control-bhfb_button_color_hover',
-                        '#customize-control-bhfb_button_border_color_hover',
+                        '#customize-control-bhfb_button_background',
+                        '#customize-control-bhfb_button',
+                        '#customize-control-bhfb_button_border',
 
-						            // Sticky State
-						            '#customize-control-bhfb_button_sticky_title',
+			            // Sticky State
+			            '#customize-control-bhfb_button_sticky_title',
                         '#customize-control-bhfb_button_sticky_background',
                         '#customize-control-bhfb_button_sticky',
                         '#customize-control-bhfb_button_sticky_border',
@@ -66,10 +61,27 @@ $wp_customize->add_control(
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
             ),
-            'priority' 				=> 20
+            'priority' 				=> 10
         )
     )
 );
+
+// Move existing options.
+$priority = 20;
+foreach( $opts_to_move as $control_tabs ) {
+    foreach( $control_tabs as $option_name ) {
+
+        if( $wp_customize->get_control( $option_name ) === NULL ) {
+            continue;
+        }
+        
+        $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__button';
+        $wp_customize->get_control( $option_name )->priority = $priority;
+        $wp_customize->get_control( $option_name )->active_callback  = function(){};
+        
+        $priority++;
+    }
+}
 
 // Default State Title.
 $wp_customize->add_setting( 'bhfb_button_default_state_title',
@@ -80,9 +92,9 @@ $wp_customize->add_setting( 'bhfb_button_default_state_title',
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_button_default_state_title',
 		array(
-			'label'			=> esc_html__( 'Default state', 'botiga' ),
-			'section' 		=> 'botiga_section_hb_component__button',
-            'priority'      => 25
+			'label'    => esc_html__( 'Default state', 'botiga' ),
+			'section'  => 'botiga_section_hb_component__button',
+            'priority' => 30
 		)
 	)
 );
@@ -115,7 +127,7 @@ $wp_customize->add_control(
                 'normal' => 'bhfb_button_background_color',
                 'hover'  => 'bhfb_button_background_color_hover',
             ),
-            'priority' => 30
+            'priority' => 31
         )
     )
 );
@@ -127,48 +139,6 @@ $wp_customize->add_setting(
 		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
 		'transport'         => 'postMessage'
-	)
-);
-
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_button_border_color',
-		array(
-			'label'         	=> esc_html__( 'Border Color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__button',
-            'priority'          => 40
-		)
-	)
-);
-
-// Divider.
-$wp_customize->add_setting( 'buttons_divider_2',
-	array(
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'buttons_divider_2',
-		array(
-			'section' 		=> 'botiga_section_hb_component__button',
-            'priority'      => 45
-		)
-	)
-);
-
-// Hover State Title.
-$wp_customize->add_setting( 'bhfb_button_hover_state_title',
-	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_button_hover_state_title',
-		array(
-			'label'			=> esc_html__( 'Hover state', 'botiga' ),
-			'section' 		=> 'botiga_section_hb_component__button',
-            'priority'      => 50
-		)
 	)
 );
 
@@ -192,7 +162,7 @@ $wp_customize->add_control(
                 'normal' => 'bhfb_button_color',
                 'hover'  => 'bhfb_button_color_hover',
             ),
-            'priority' => 35
+            'priority' => 32
         )
     )
 );
@@ -225,7 +195,7 @@ $wp_customize->add_control(
                 'normal' => 'bhfb_button_border_color',
                 'hover'  => 'bhfb_button_border_color_hover',
             ),
-            'priority' => 40
+            'priority' => 33
         )
     )
 );
@@ -354,22 +324,5 @@ $wp_customize->add_control(
         )
     )
 );
-
-// Move existing options.
-$priority = 80;
-foreach( $opts_to_move as $control_tabs ) {
-    foreach( $control_tabs as $option_name ) {
-
-		if( $wp_customize->get_control( $option_name ) === NULL ) {
-            continue;
-        }
-		
-        $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__button';
-        $wp_customize->get_control( $option_name )->priority = $priority;
-        $wp_customize->get_control( $option_name )->active_callback  = function(){};
-        
-        $priority++;
-    }
-}
 
 // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

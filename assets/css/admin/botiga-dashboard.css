@@ -134,6 +134,14 @@
           box-shadow: none;
 }
 
+.botiga-dashboard .button-disabled {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
 .botiga-dashboard .button-pro-support {
   color: #fff;
   border-color: #3fb28f;
@@ -524,7 +532,7 @@
 }
 
 .botiga-dashboard-box-badge + .botiga-dashboard-box-title {
-  margin-right: 50px;
+  margin-right: 40px;
 }
 
 .botiga-dashboard-box-badge-free {
@@ -547,6 +555,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   grid-gap: 5px;
 }
 

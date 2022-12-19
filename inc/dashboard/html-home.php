@@ -163,7 +163,7 @@ if (!defined('ABSPATH')) {
       <div class="botiga-dashboard-home-pro-box">
         <h2><?php esc_html_e( 'Botiga Pro', 'botiga' ); ?></h2>
         <ul>
-          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '15+ Starter Themes', 'botiga' ); ?></li>
+          <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '5+ Starter Themes', 'botiga' ); ?></li>
           <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '60+ Ready Blocks', 'botiga' ); ?></li>
           <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( '5+ Design System', 'botiga' ); ?></li>
           <li><i class="dashicons dashicons-saved"></i><?php esc_html_e( 'Extra Widgets', 'botiga' ); ?></li>

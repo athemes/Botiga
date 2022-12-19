@@ -97,7 +97,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		"</div>";
 	}
 
-	$enable_product_swatch = get_theme_mod( 'product_swatch', 0 );
+	$enable_product_swatch = Botiga_Modules::is_module_active( 'product-swatches' );
 	$enable_product_swatch_on_shop_catalog = get_theme_mod( 'product_swatch_on_shop_catalog', 0 );
 
 	if (
@@ -143,7 +143,7 @@ function botiga_gb_add_to_cart_button( $_product ) {
 	//Start markup
 	$markup = '';
 
-	$enable_product_swatch = get_theme_mod( 'product_swatch', 0 );
+	$enable_product_swatch = Botiga_Modules::is_module_active( 'product-swatches' );
 	$enable_product_swatch_on_shop_catalog = get_theme_mod( 'product_swatch_on_shop_catalog', 0 );
 
 	if (

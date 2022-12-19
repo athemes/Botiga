@@ -241,7 +241,7 @@
 			text-transform: uppercase;
 			padding-top: 17px;
 			padding-bottom: 17px;
-	
+
 			@media(max-width: 991px) {
 				width: 100%;
 			}
@@ -1705,5 +1705,38 @@ body {
 		span {
 			display: none;
 		}
+	}
+}
+
+.single_add_to_cart_button{
+
+	&.loading {
+		opacity: 0.5;
+		pointer-events: none;
+
+		&:after {
+			font-family: WooCommerce;
+			content: "\e031";
+			animation: spin 2s linear infinite;
+			margin-left: 0.5em;
+			line-height: 1em;
+			position: relative;
+			top: 1px;
+			display: inline-block;
+			width: auto;
+			height: auto;
+		}
+	}
+
+	&.added:after {
+		font-family: WooCommerce;
+		content: "\e017";
+		position: relative;
+		top: 1px;
+		margin-left: 0.5em;
+		line-height: 1em;
+		display: inline-block;
+		width: auto;
+		height: auto;
 	}
 }

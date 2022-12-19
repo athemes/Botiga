@@ -34,7 +34,9 @@ $wp_customize->add_control(
         '#customize-control-single_gallery_slider',
         '#customize-control-single_product_gallery',
         '#customize-control-single_zoom_effects',
+        '#customize-control-single_gallery_divider_1',
         '#customize-control-single_breadcrumbs',
+        '#customize-control-single_ajax_add_to_cart',
         '#customize-control-single_product_elements_order',
         '#customize-control-single_product_tabs',
         '#customize-control-single_upsell_products_top_divider',
@@ -139,6 +141,20 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting( 'single_gallery_divider_1',
+  array(
+    'sanitize_callback' => 'esc_attr'
+  )
+);
+
+$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'single_gallery_divider_1',
+    array(
+      'section'  => 'botiga_section_single_product',
+      'priority' => 45
+    )
+  )
+);
+
 $wp_customize->add_setting(
 	'single_breadcrumbs',
 	array(
@@ -154,6 +170,25 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Breadcrumbs', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
 			'priority'	 		=> 50
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'single_ajax_add_to_cart',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'single_ajax_add_to_cart',
+		array(
+			'label'    => esc_html__( 'Ajax Add To Cart', 'botiga' ),
+			'section'  => 'botiga_section_single_product',
+			'priority' => 55
 		)
 	)
 );
@@ -177,7 +212,7 @@ $wp_customize->add_control( new \Kirki\Control\Sortable(
 		'section' => 'botiga_section_single_product',
 		'choices' => $botiga_choices,
 		'active_callback' => 'botiga_single_product_elements_show',
-		'priority'     => 51
+		'priority'     => 65
 	) ) 
 );
 
@@ -196,7 +231,7 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'SKU', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
 			'active_callback'    => function() { return botiga_callback_single_product_elements( 'woocommerce_template_single_meta' ); },
-			'priority'	 		=> 60
+			'priority'	 		=> 65
 		)
 	)
 );
@@ -382,7 +417,7 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'single_prod
     array(
       'label'    => esc_html__( 'Product Title', 'botiga' ),
       'section'  => 'botiga_section_single_product',
-      'priority' => 120
+      'priority' => 145
     )
   )
 );
@@ -406,7 +441,7 @@ $wp_customize->add_control(
       'body'    => esc_html__( 'Body', 'botiga' ),
       'custom'  => esc_html__( 'Custom', 'botiga' ),
     ),
-    'priority'  => 120,
+    'priority'  => 145,
   )
 );
 $wp_customize->add_setting( 'single_product_title_adobe_font',
@@ -420,7 +455,7 @@ $wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 
   array(
     'section'         => 'botiga_section_single_product',
     'active_callback' => 'botiga_single_product_title_font_library_adobe_and_custom_style',
-    'priority'        => 120,
+    'priority'        => 145,
   )
 ) );
 
@@ -429,7 +464,7 @@ $wp_customize->add_setting( 'single_product_title_font',
     'default'           => '{"font":"System default","regularweight":"400","category":"sans-serif"}',
     'transport'         => 'postMessage',
     'sanitize_callback' => 'botiga_google_fonts_sanitize',
-    'priority'          => 120,
+    'priority'          => 145,
   )
 );
 $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'single_product_title_font',
@@ -444,7 +479,7 @@ $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'singl
       'disableRegular' => false,
     ),
     'active_callback' => 'botiga_single_product_title_font_library_google_and_custom_style',
-    'priority'  => 120,
+    'priority'  => 145,
   )
 ) );
 
@@ -478,7 +513,7 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'single
 			'min'	=> 0,
 			'max'	=> 200
 		),
-		'priority'	 => 120
+		'priority'	 => 145
 	)
 ) );
 
@@ -500,7 +535,7 @@ $wp_customize->add_control( new Botiga_Text_Style_Control( $wp_customize, 'singl
       'decoration' => 'single_product_title_text_decoration',
       'transform'  => 'single_product_title_text_transform',
     ),
-    'priority' => 120,
+    'priority' => 145,
   )
 ) );
 
@@ -519,7 +554,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Product title color', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
-			'priority'	 		=> 130
+			'priority'	 		=> 145
 		)
 	)
 );
@@ -535,7 +570,7 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'single_prod
     array(
       'label'    => esc_html__( 'Product Price', 'botiga' ),
       'section'  => 'botiga_section_single_product',
-      'priority' => 150
+      'priority' => 145
     )
   )
 );
@@ -570,7 +605,7 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'single
 			'min'	=> 0,
 			'max'	=> 200
 		),
-		'priority' => 150
+		'priority' => 145
 	)
 ) );
 
@@ -590,7 +625,7 @@ $wp_customize->add_control(
 		array(
 			'label'    => esc_html__( 'Product price color', 'botiga' ),
 			'section'  => 'botiga_section_single_product',
-			'priority' => 150
+			'priority' => 145
 		)
 	)
 );

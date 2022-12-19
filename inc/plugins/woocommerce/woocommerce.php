@@ -632,6 +632,11 @@ require get_template_directory() . '/inc/plugins/woocommerce/features/product-ca
 require get_template_directory() . '/inc/plugins/woocommerce/features/single-product-gallery.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
+ * Single Product Ajax Add to Cart
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/features/single-ajax-add-to-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
  * Single Product Tabs
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/single-product-tabs.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

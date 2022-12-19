@@ -75,11 +75,13 @@ class Botiga_Dashboard {
       return;
     }
 
-    wp_enqueue_style( 'botiga-dashboard', get_template_directory_uri() . '/assets/css/admin/botiga-dashboard.min.css', array(), '2.0.0' );
+    wp_enqueue_style( 'botiga-dashboard', get_template_directory_uri() . '/assets/css/admin/botiga-dashboard.min.css', array(), BOTIGA_VERSION );
 
-    wp_style_add_data( 'botiga-dashboard', 'rtl', 'replace' );
-    
-    wp_enqueue_script( 'botiga-dashboard', get_template_directory_uri() . '/assets/js/admin/botiga-dashboard.min.js', array( 'jquery' ), '2.0.0', true );
+    if ( is_rtl() ) {
+      wp_enqueue_style( 'botiga-dashboard-rtl', get_template_directory_uri() . '/assets/css/admin/botiga-dashboard-rtl.min.css', array(), BOTIGA_VERSION );
+    }
+
+    wp_enqueue_script( 'botiga-dashboard', get_template_directory_uri() . '/assets/js/admin/botiga-dashboard.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 
     wp_localize_script( 'botiga-dashboard', 'botiga_dashboard', array(
       'ajax_url'         => admin_url( 'admin-ajax.php' ),

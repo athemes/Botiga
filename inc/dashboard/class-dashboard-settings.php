@@ -176,24 +176,27 @@ function botiga_dashboard_settings() {
   $settings['features'] = array();
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Change Site Title or Logo', 'botiga' ),
-    'desc'          => esc_html__( 'Set the title and upload logo.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[control]', 'blogname', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Change Site Title or Logo', 'botiga' ),
+    'desc'       => esc_html__( 'Set the title and upload logo.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[control]', 'blogname', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Typography', 'botiga' ),
-    'desc'          => esc_html__( 'Set the global font size, style and library.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[panel]', 'botiga_panel_typography', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Typography', 'botiga' ),
+    'desc'       => esc_html__( 'Set the global font size, style and library.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[panel]', 'botiga_panel_typography', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Color Options', 'botiga' ),
-    'desc'          => esc_html__( 'Create your own palette and set the global colors.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'colors', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Color Options', 'botiga' ),
+    'desc'       => esc_html__( 'Create your own palette and set the global colors.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'colors', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
@@ -201,154 +204,167 @@ function botiga_dashboard_settings() {
     'type'              => 'free',
     'title'             => esc_html__( 'Header & Footer Builder', 'botiga' ),
     'desc'              => esc_html__( 'Drag and drop header/footer builder.', 'botiga' ),
-    'customize_url'     => add_query_arg( 'autofocus[section]', 'botiga_section_hb_wrapper', admin_url( 'customize.php' ) ),
+    'link_label'        => esc_html__( 'Customize', 'botiga' ),
+    'link_url'          => add_query_arg( 'autofocus[section]', 'botiga_section_hb_wrapper', admin_url( 'customize.php' ) ),
     'documentation_url' => 'https://docs.athemes.com/article/447-header-builder-pro',
   );
 
   if ( ! Botiga_Modules::is_module_active( 'hf-builder' ) ) {
 
     $settings['features'][] = array(
-      'type'          => 'free',
-      'title'         => esc_html__( 'Main Header', 'botiga' ),
-      'desc'          => esc_html__( 'Set the main header layout, elements and styles.', 'botiga' ),
-      'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_main_header', admin_url( 'customize.php' ) ),
+      'type'       => 'free',
+      'title'      => esc_html__( 'Main Header', 'botiga' ),
+      'desc'       => esc_html__( 'Set the main header layout, elements and styles.', 'botiga' ),
+      'link_label' => esc_html__( 'Customize', 'botiga' ),
+      'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_main_header', admin_url( 'customize.php' ) ),
     );
 
     $settings['features'][] = array(
-      'type'          => 'free',
-      'title'         => esc_html__( 'Mobile Header', 'botiga' ),
-      'desc'          => esc_html__( 'Set the mobile header layout, elements and styles.', 'botiga' ),
-      'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_mobile_header', admin_url( 'customize.php' ) ),
+      'type'       => 'free',
+      'title'      => esc_html__( 'Mobile Header', 'botiga' ),
+      'desc'       => esc_html__( 'Set the mobile header layout, elements and styles.', 'botiga' ),
+      'link_label' => esc_html__( 'Customize', 'botiga' ),
+      'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_mobile_header', admin_url( 'customize.php' ) ),
     );
 
     $settings['features'][] = array(
-      'type'          => 'free',
-      'title'         => esc_html__( 'Footer Copyright', 'botiga' ),
-      'desc'          => esc_html__( 'Set the copyright text, layout and styles.', 'botiga' ),
-      'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_footer_credits', admin_url( 'customize.php' ) ),
+      'type'       => 'free',
+      'title'      => esc_html__( 'Footer Copyright', 'botiga' ),
+      'desc'       => esc_html__( 'Set the copyright text, layout and styles.', 'botiga' ),
+      'link_label' => esc_html__( 'Customize', 'botiga' ),
+      'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_footer_credits', admin_url( 'customize.php' ) ),
     );
 
   }
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Blog Archives', 'botiga' ),
-    'desc'          => esc_html__( 'Set the blog layout, columns, pagination and styles.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_blog_archives', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Blog Archives', 'botiga' ),
+    'desc'       => esc_html__( 'Set the blog layout, columns, pagination and styles.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_blog_archives', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Single Posts', 'botiga' ),
-    'desc'          => esc_html__( 'Set the single post layout, meta elements and styles.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_blog_singles', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Single Posts', 'botiga' ),
+    'desc'       => esc_html__( 'Set the single post layout, meta elements and styles.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_blog_singles', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Button Options', 'botiga' ),
-    'desc'          => esc_html__( 'Create your own button, set typography and styles.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_buttons', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Button Options', 'botiga' ),
+    'desc'       => esc_html__( 'Create your own button, set typography and styles.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_buttons', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Product Catalog', 'botiga' ),
-    'desc'          => esc_html__( 'Set the shop layout, product cart and more.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'woocommerce_product_catalog', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Product Catalog', 'botiga' ),
+    'desc'       => esc_html__( 'Set the shop layout, product cart and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'woocommerce_product_catalog', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Single Products', 'botiga' ),
-    'desc'          => esc_html__( 'Set the product layout, tabs, size chart and more.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_single_product', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Single Products', 'botiga' ),
+    'desc'       => esc_html__( 'Set the product layout, tabs, size chart and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_single_product', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Cart Layout', 'botiga' ),
-    'desc'          => esc_html__( 'Set the cart layout, mini cart and more.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_shop_cart', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Cart Layout', 'botiga' ),
+    'desc'       => esc_html__( 'Set the cart layout, mini cart and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_shop_cart', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Checkout Options', 'botiga' ),
-    'desc'          => esc_html__( 'Set the checkout layout, coupon and more.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'woocommerce_checkout', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Checkout Options', 'botiga' ),
+    'desc'       => esc_html__( 'Set the checkout layout, coupon and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'woocommerce_checkout', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'free',
-    'title'         => esc_html__( 'Scroll to Top', 'botiga' ),
-    'desc'          => esc_html__( 'Set the scroll to top type, icon, position and styles.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_scrolltotop', admin_url( 'customize.php' ) ),
+    'type'       => 'free',
+    'title'      => esc_html__( 'Scroll to Top', 'botiga' ),
+    'desc'       => esc_html__( 'Set the scroll to top type, icon, position and styles.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_scrolltotop', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Wishlist', 'botiga' ),
-    'desc'          => esc_html__( 'Set the wishlist layout and styles.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_wishlist', admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'Wishlist', 'botiga' ),
+    'desc'       => esc_html__( 'Set the wishlist layout and styles.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_wishlist', admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Product Swatches', 'botiga' ),
-    'desc'          => esc_html__( 'Set the global swatches and toolitp.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_product_swatches', admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'Shop Header Styles', 'botiga' ),
+    'desc'       => esc_html__( 'Set the shop header colors, spacing and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( array( 'autofocus[section]' => 'woocommerce_product_catalog', 'control' => 'customize-control-accordion_shop_layout' ), admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Shop Header Styles', 'botiga' ),
-    'desc'          => esc_html__( 'Set the shop header colors, spacing and more.', 'botiga' ),
-    'customize_url' => add_query_arg( array( 'autofocus[section]' => 'woocommerce_product_catalog', 'control' => 'customize-control-accordion_shop_layout' ), admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'More Single Product Gallery Styles', 'botiga' ),
+    'desc'       => esc_html__( 'Set the gallery slideshow layout and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( array( 'autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_layout' ), admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'More Single Product Gallery Styles', 'botiga' ),
-    'desc'          => esc_html__( 'Set the gallery slideshow layout and more.', 'botiga' ),
-    'customize_url' => add_query_arg( array( 'autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_layout' ), admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'Single Product Sticky Add to Cart', 'botiga' ),
+    'desc'       => esc_html__( 'Set the sticky cart elements, position and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( array( 'autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_sticky_add_to_cart' ), admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Single Product Sticky Add to Cart', 'botiga' ),
-    'desc'          => esc_html__( 'Set the sticky cart elements, position and more.', 'botiga' ),
-    'customize_url' => add_query_arg( array( 'autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_sticky_add_to_cart' ), admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'Single Product Tab Styles', 'botiga' ),
+    'desc'       => esc_html__( 'Set the tab layout, position, alignment and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( array( 'autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_tabs' ), admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Single Product Tab Styles', 'botiga' ),
-    'desc'          => esc_html__( 'Set the tab layout, position, alignment and more.', 'botiga' ),
-    'customize_url' => add_query_arg( array( 'autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_tabs' ), admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'Shop Sidebar Layouts', 'botiga' ),
+    'desc'       => esc_html__( 'Set the shop sidebar layout, position and more.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( array( 'autofocus[section]' => 'woocommerce_product_catalog', 'control' => 'customize-control-accordion_shop_layout' ), admin_url( 'customize.php' ) ),
   );
 
   $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Shop Sidebar Layouts', 'botiga' ),
-    'desc'          => esc_html__( 'Set the shop sidebar layout, position and more.', 'botiga' ),
-    'customize_url' => add_query_arg( array( 'autofocus[section]' => 'woocommerce_product_catalog', 'control' => 'customize-control-accordion_shop_layout' ), admin_url( 'customize.php' ) ),
-  );
-
-  $settings['features'][] = array(
-    'type'          => 'pro',
-    'title'         => esc_html__( 'Distraction Free Checkout', 'botiga' ),
-    'desc'          => esc_html__( 'Set the distraction free checkout.', 'botiga' ),
-    'customize_url' => add_query_arg( 'autofocus[section]', 'woocommerce_checkout', admin_url( 'customize.php' ) ),
+    'type'       => 'pro',
+    'title'      => esc_html__( 'Distraction Free Checkout', 'botiga' ),
+    'desc'       => esc_html__( 'Set the distraction free checkout.', 'botiga' ),
+    'link_label' => esc_html__( 'Customize', 'botiga' ),
+    'link_url'   => add_query_arg( 'autofocus[section]', 'woocommerce_checkout', admin_url( 'customize.php' ) ),
   );
 
   if ( ! Botiga_Modules::is_module_active( 'hf-builder' ) ) {
 
     $settings['features'][] = array(
-      'type'          => 'pro',
-      'title'         => esc_html__( 'More Footer Copyright Elements', 'botiga' ),
-      'desc'          => esc_html__( 'Set the copyright text, layout and styles.', 'botiga' ),
-      'customize_url' => add_query_arg( 'autofocus[section]', 'botiga_section_footer_credits', admin_url( 'customize.php' ) ),
+      'type'       => 'pro',
+      'title'      => esc_html__( 'More Footer Copyright Elements', 'botiga' ),
+      'desc'       => esc_html__( 'Set the copyright text, layout and styles.', 'botiga' ),
+      'link_label' => esc_html__( 'Customize', 'botiga' ),
+      'link_url'   => add_query_arg( 'autofocus[section]', 'botiga_section_footer_credits', admin_url( 'customize.php' ) ),
     );
 
   }
@@ -358,7 +374,8 @@ function botiga_dashboard_settings() {
     'type'              => 'pro',
     'title'             => esc_html__( 'Mega Menu', 'botiga' ),
     'desc'              => esc_html__( 'Create mega menus.', 'botiga' ),
-    'customize_url'     => admin_url( 'nav-menus.php' ),
+    'link_label'        => esc_html__( 'Customize', 'botiga' ),
+    'link_url'          => admin_url( 'nav-menus.php' ),
     'documentation_url' => 'https://docs.athemes.com/article/448-pro-mega-menu',
   );
 
@@ -367,7 +384,8 @@ function botiga_dashboard_settings() {
     'type'              => 'pro',
     'title'             => esc_html__( 'Breadcrumbs', 'botiga' ),
     'desc'              => esc_html__( 'Set the breadcrumb engine, spacing and styles.', 'botiga' ),
-    'customize_url'     => add_query_arg( 'autofocus[section]', 'botiga_breadcrumbs', admin_url( 'customize.php' ) ),
+    'link_label'        => esc_html__( 'Customize', 'botiga' ),
+    'link_url'          => add_query_arg( 'autofocus[section]', 'botiga_breadcrumbs', admin_url( 'customize.php' ) ),
     'documentation_url' => 'https://docs.athemes.com/article/450-pro-breadcrumbs',
   );
 
@@ -376,17 +394,57 @@ function botiga_dashboard_settings() {
     'type'              => 'pro',
     'title'             => esc_html__( 'Quick Links', 'botiga' ),
     'desc'              => esc_html__( 'Set the quick links, layout and styles.', 'botiga' ),
-    'customize_url'     => add_query_arg( 'autofocus[section]', 'botiga_quicklinks', admin_url( 'customize.php' ) ),
+    'link_label'        => esc_html__( 'Customize', 'botiga' ),
+    'link_url'          => add_query_arg( 'autofocus[section]', 'botiga_quicklinks', admin_url( 'customize.php' ) ),
     'documentation_url' => 'https://docs.athemes.com/article/botiga-pro-quick-links',
   );
 
   $settings['features'][] = array(
-    'module'       			=> 'templates',
+    'module'            => 'product-swatches',
     'type'              => 'pro',
-    'title'             => esc_html__( 'Templates', 'botiga-pro' ),
-    'desc'			        => __( 'Create shop or content templates.', 'botiga-pro' ),
-    'customize_url'     => admin_url( 'edit.php?post_type=athemes_hf' ),
-    'documentation_url' => 'https://docs.athemes.com/article/pro-templates-builder-overview/', //param is added in dashboard class
+    'title'             => esc_html__( 'Product Swatches', 'botiga' ),
+    'desc'              => esc_html__( 'Set the global swatches and toolitp.', 'botiga' ),
+    'link_label'        => esc_html__( 'Customize', 'botiga' ),
+    'link_url'          => add_query_arg( 'autofocus[section]', 'botiga_section_product_swatches', admin_url( 'customize.php' ) ),
+    'documentation_url' => 'https://docs.athemes.com/article/pro-product-swatch/',
+  );
+
+  $settings['features'][] = array(
+    'module'            => 'size-chart',
+    'type'              => 'pro',
+    'title'             => esc_html__( 'Product Size Chart', 'botiga' ),
+    'desc'              => esc_html__( 'Create size charts and set the global size chart.', 'botiga' ),
+    'link_label'        => esc_html__( 'Size Charts', 'botiga' ),
+    'link_url'          => add_query_arg( 'post_type', 'size_chart', admin_url( 'edit.php' ) ),
+    'documentation_url' => 'https://docs.athemes.com/article/pro-size-chart/',
+  );
+
+  $settings['features'][] = array(
+    'module'            => 'linked-variations',
+    'type'              => 'pro',
+    'title'             => esc_html__( 'Product Linked Variations', 'botiga' ),
+    'desc'              => esc_html__( 'Create linked variations products.', 'botiga' ),
+    'link_label'        => esc_html__( 'Linked Variations', 'botiga' ),
+    'link_url'          => add_query_arg( 'post_type', 'linked_variation', admin_url( 'edit.php' ) ),
+    'documentation_url' => 'https://docs.athemes.com/article/pro-single-product-linked-variations/',
+  );
+
+  $settings['features'][] = array(
+    'module'            => 'video-gallery',
+    'type'              => 'pro',
+    'title'             => esc_html__( 'Product Video Gallery', 'botiga' ),
+    'desc'              => esc_html__( 'Set the featured and gallery video/audio.', 'botiga' ),
+    'documentation_url' => 'https://docs.athemes.com/article/pro-product-featured-and-gallery-video-audio/',
+  );
+
+  $settings['features'][] = array(
+    'module'            => 'templates',
+    'type'              => 'pro',
+    'title'             => esc_html__( 'Templates', 'botiga' ),
+    'desc'              => esc_html__( 'Create shop or content templates.', 'botiga' ),
+    'link_label'        => esc_html__( 'Templates', 'botiga' ),
+    'link_url'          => add_query_arg( 'post_type', 'athemes_hf', admin_url( 'edit.php' ) ),
+    'documentation_url' => 'https://docs.athemes.com/article/pro-templates-builder-overview/',
   );
 
   return $settings;

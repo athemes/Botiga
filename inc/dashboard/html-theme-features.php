@@ -49,7 +49,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </a>
               <?php endif; ?>
             <?php endif; ?>
-            <a href="<?php echo esc_url( $feature['customize_url'] ); ?>" target="_blank" class="button button-secondary"><?php esc_html_e( 'Customize', 'botiga' ); ?></a>
+            <?php if ( isset( $feature['link_url'] ) && isset( $feature['link_label'] ) ) : ?>
+              <?php $button_disabled_class = ( isset( $feature['module'] ) && ! Botiga_Modules::is_module_active( $feature['module'] ) ) ? ' button-disabled' : ''; ?>
+              <a href="<?php echo esc_url( $feature['link_url'] ); ?>" target="_blank" class="button button-secondary<?php echo esc_attr( $button_disabled_class ); ?>"><?php echo esc_html( $feature['link_label'] ); ?></a>
+            <?php endif; ?>
           </div>
 
         </div>

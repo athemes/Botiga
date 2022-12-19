@@ -171,7 +171,12 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 				}
 			}
 
-			wp_enqueue_style( 'botiga-customizer-styles', get_template_directory_uri() . '/assets/css/customizer.css' );
+			wp_enqueue_style( 'botiga-customizer-styles', get_template_directory_uri() . '/assets/css/customizer.min.css', array(), BOTIGA_VERSION );
+
+			// Add RTL support.
+			if ( is_rtl() ) {
+				wp_enqueue_style( 'botiga-customizer-styles-rtl', get_template_directory_uri() . '/assets/css/customizer-rtl.min.css', array(), BOTIGA_VERSION );
+			}
 
 		}
 

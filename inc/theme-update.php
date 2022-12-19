@@ -227,3 +227,50 @@ function botiga_migrate_1_2_1_options() {
     set_theme_mod( 'botiga_migrate_1_2_1_options_flag', true );
 }
 add_action( 'init', 'botiga_migrate_1_2_1_options' );
+
+/**
+ * Migrate 'size-chart, linked variations, product swatches and video gallery' modules.
+ * 
+ * @since 1.2.3
+ */
+function botiga_migrate_1_2_3_modules() {
+
+    $flag = get_theme_mod( 'botiga_migrate_1_2_3_modules_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+
+    $modules = get_option( 'botiga-modules', array() );
+
+    // Size charts module.
+    $size_chart = get_theme_mod( 'single_size_chart', 0 );
+
+    if ( ! empty( $size_chart ) ) {
+        $modules = array_merge( $modules, array( 'size-chart' => true ) );
+    }
+
+    // Linked variations module.
+    $linked_variations = get_theme_mod( 'single_product_linked_variations', 0 );
+
+    if ( ! empty( $linked_variations ) ) {
+        $modules = array_merge( $modules, array( 'linked-variations' => true ) );
+    }
+
+    // Product swatches module.
+    $product_swatches = get_theme_mod( 'product_swatch', 1 );
+
+    if ( ! empty( $product_swatches ) ) {
+        $modules = array_merge( $modules, array( 'product-swatches' => true ) );
+    }
+
+    // Video gallery module.
+    $modules = array_merge( $modules, array( 'video-gallery' => true ) );
+
+    update_option( 'botiga-modules', $modules );
+
+    // Set flag
+    set_theme_mod( 'botiga_migrate_1_2_3_modules_flag', true );
+
+}
+add_action( 'init', 'botiga_migrate_1_2_3_modules' );

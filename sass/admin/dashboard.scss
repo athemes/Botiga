@@ -123,6 +123,11 @@
     }
   }
 
+  .button-disabled{
+    user-select: none;
+    pointer-events: none;
+  }
+
   .button-pro-support{
     color: #fff;
     border-color: #3fb28f;
@@ -424,7 +429,7 @@
   background-color: #3858e9;
 
   + .botiga-dashboard-box-title{
-    margin-right: 50px;
+    margin-right: 40px;
   }
 }
 
@@ -446,6 +451,7 @@
 
 .botiga-dashboard-box-link{
   display: flex;
+  flex-wrap: wrap;
   grid-gap: 5px;
 }
 
