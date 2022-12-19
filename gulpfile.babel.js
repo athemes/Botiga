@@ -237,6 +237,75 @@
  });
 
  /**
+  * Task: `dashboardRtl`.
+  *
+  * Compiles Sass, Autoprefixes it and Minifies CSS.
+  *
+  * This task does the following:
+  *    1. Gets the source scss file
+  *    2. Compiles Sass to CSS
+  *    3. Writes Sourcemaps for it
+  *    4. Autoprefixes it and generates style.css
+  *    5. Renames the CSS file with suffix .min.css
+  *    6. Minifies the CSS file and generates style.min.css
+  *    7. Injects CSS or reloads the browser via browserSync
+  */
+ gulp.task('dashboardRtlStyles', () => {
+	 return gulp
+		 .src(config.adminDashboardRtlSRC, {allowEmpty: true})
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 sass({
+				 errLogToConsole: config.errLogToConsole,
+				 outputStyle: 'expanded',
+				 precision: config.precision
+			 })
+		 )
+		 .on('error', sass.logError)
+		 .pipe(autoprefixer(config.BROWSERS_LIST))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(rename({prefix: 'botiga-'}))
+		 .pipe(gulp.dest(config.adminStyleDestination))
+		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
+		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Dashboard RTL Expanded — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
+ 
+ gulp.task('dashboardRtlStylesMin', () => {
+	 return gulp
+		 .src(config.adminDashboardRtlSRC, {allowEmpty: true})
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 sass({
+				 errLogToConsole: config.errLogToConsole,
+				 outputStyle: 'compressed',
+				 precision: config.precision
+			 })
+		 )
+		 .on('error', sass.logError)
+		 .pipe(autoprefixer(config.BROWSERS_LIST))
+		 .pipe(rename({suffix: '.min'}))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(rename({prefix: 'botiga-'}))
+		 .pipe(gulp.dest(config.adminStyleDestination))
+		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
+		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Dashboard RTL Minified — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
+
+ /**
   * Task: `adminBHFBSRC`.
   *
   * Compiles Sass, Autoprefixes it and Minifies CSS.
@@ -425,6 +494,62 @@
 		 .pipe(
 			 notify({
 				 message: '\n\n✅  ===> Customizer Minified — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
+
+ /*  
+ * Customizer RTL Styles
+ */
+ gulp.task('customizerRtlStyles', () => {
+	 return gulp
+		 .src(config.customizerRtlSRC, {allowEmpty: true})
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 sass({
+				 errLogToConsole: config.errLogToConsole,
+				 outputStyle: 'expanded',
+				 precision: config.precision
+			 })
+		 )
+		 .on('error', sass.logError)
+		 .pipe(autoprefixer(config.BROWSERS_LIST))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(gulp.dest(config.styleDestination))
+		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
+		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Customizer RTL Expanded — completed!\n',
+				 onLast: true
+			 })
+		 );
+ });
+ 
+ gulp.task('customizerRtlStylesMin', () => {
+	 return gulp
+		 .src(config.customizerRtlSRC, {allowEmpty: true})
+		 .pipe(plumber(errorHandler))
+		 .pipe(
+			 sass({
+				 errLogToConsole: config.errLogToConsole,
+				 outputStyle: 'compressed',
+				 precision: config.precision
+			 })
+		 )
+		 .on('error', sass.logError)
+		 .pipe(autoprefixer(config.BROWSERS_LIST))
+		 .pipe(rename({suffix: '.min'}))
+		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		 .pipe(gulp.dest(config.styleDestination))
+		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
+		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		 .pipe(
+			 notify({
+				 message: '\n\n✅  ===> Customizer RTL Minified — completed!\n',
 				 onLast: true
 			 })
 		 );
@@ -1149,6 +1274,50 @@ gulp.task('dokanStylesMin', () => {
 });
 
 /**
+  * Task: `botigaAjaxAddToCartJS`.
+  */
+  gulp.task('botigaAjaxAddToCartJS', () => {
+	return gulp
+		.src(config.jsAjaxAddToCartSRC, {since: gulp.lastRun('botigaAjaxAddToCartJS')}) // Only run on changed files.
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsAjaxAddToCartSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsAjaxAddToCartFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			rename({
+				basename: config.jsAjaxAddToCartFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> AJAX ADD TO CART JS — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
   * Task: `botigaSidebarJS`.
   *
   * Concatenate and uglify custom JS scripts.
@@ -1472,6 +1641,8 @@ gulp.task(
 		gulp.watch(config.watchStyles, gulp.parallel('editorStylesMin')); 
 		gulp.watch(config.watchStyles, gulp.parallel('customizerStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('customizerStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('customizerRtlStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('customizerRtlStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('metaboxStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('metaboxStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('adminBHFBStyles'));
@@ -1480,12 +1651,15 @@ gulp.task(
 		gulp.watch(config.watchStyles, gulp.parallel('adminCustPrevBHFBStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('dashboardStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('dashboardStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('dashboardRtlStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('dashboardRtlStylesMin'));
 
 		// Frontend JS
 		gulp.watch(config.watchJsAdmin, gulp.series('customJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaPopupJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaCarouselJS', reload));
     gulp.watch(config.watchJsAdmin, gulp.series('botigaGalleryJS', reload));
+    gulp.watch(config.watchJsAdmin, gulp.series('botigaAjaxAddToCartJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaSwiperJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaSidebarJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaAjaxSearchJS', reload));

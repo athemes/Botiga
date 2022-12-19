@@ -23,6 +23,8 @@ const injectChanges = true;
 // Path to main .scss file.
 const customizerSRC = './sass/customizer.scss';
 
+const customizerRtlSRC = './sass/customizer-rtl.scss';
+
 const metaboxSRC = './sass/metabox.scss';
 
 const styleSRC = './sass/styles.scss';
@@ -79,6 +81,7 @@ const BHFBSRC = './sass/bhfb.scss';
 const adminBHFBSRC = './sass/admin/bhfb.scss';
 const adminCustPrevBHFBSRC = './sass/admin/bhfb-customize-preview.scss';
 const adminDashboardSRC = './sass/admin/dashboard.scss';
+const adminDashboardRtlSRC = './sass/admin/dashboard-rtl.scss';
 
 // JS BHFB
 const jsAdminBHFBSRC = './assets/js/src/admin/botiga-bhfb.js';
@@ -98,6 +101,9 @@ const jsSwiperSRC = './assets/js/src/botiga-swiper.js';
 
 // Path to JS gallery.
 const jsGallerySRC = './assets/js/src/botiga-gallery.js';
+
+// Path to JS ajax add to cart.
+const jsAjaxAddToCartSRC = './assets/js/src/botiga-ajax-add-to-cart.js';
 
 // Path to JS popup.
 const jsPopupSRC = './assets/js/src/botiga-popup.js';
@@ -125,6 +131,9 @@ const jsSwiperFile = 'botiga-swiper';
 
 // Compiled JS gallery file name.
 const jsGalleryFile = 'botiga-gallery';
+
+// Compiled JS gallery file name.
+const jsAjaxAddToCartFile = 'botiga-ajax-add-to-cart';
 
 // Compiled JS popup file name.
 const jsPopupFile = 'botiga-popup';
@@ -222,6 +231,7 @@ module.exports = {
 	adminBHFBSRC,
 	adminCustPrevBHFBSRC,
 	adminDashboardSRC,
+	adminDashboardRtlSRC,
 	jsAdminBHFBSRC,
 	jsAdminCustPrevBHFBSRC,
 	jsAdminDashboardSRC,
@@ -230,6 +240,7 @@ module.exports = {
 	jsAdminDashboardFile,
 	styleSRC,
 	customizerSRC,
+	customizerRtlSRC,
 	metaboxSRC,
 	editorStyleSRC,
 	woocommerceSRC,
@@ -249,6 +260,7 @@ module.exports = {
 	jsCarouselSRC,
 	jsSwiperSRC,
 	jsGallerySRC,
+	jsAjaxAddToCartSRC,
 	jsPopupSRC,
 	jsSidebarSRC,
 	jsAjaxSearchSRC,
@@ -262,6 +274,7 @@ module.exports = {
 	jsCarouselFile,
 	jsSwiperFile,
 	jsGalleryFile,
+	jsAjaxAddToCartFile,
 	jsPopupFile,
 	jsSidebarFile,
 	jsAjaxSearchFile,
