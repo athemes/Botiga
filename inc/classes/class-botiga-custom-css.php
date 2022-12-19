@@ -391,7 +391,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$background_color = get_theme_mod( 'background_color' );
 			$css .= $this->get_background_color_css( 'background_color', '#FFF', '.checkout-wrapper .wc_payment_methods,.site-header-cart .widget_shopping_cart' );
 			$css .= $this->get_color_css( 'background_color', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
-			$css .= $this->get_background_color_css( 'color_heading_4', '#FFF', '.site-header-cart .product_list_widget li a.remove' );
+			$css .= $this->get_background_color_css( 'color_heading_4', '#212121', '.site-header-cart .product_list_widget li a.remove' );
 
 			//Header
 			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
@@ -1563,7 +1563,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_background_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			if( $setting === 'background_color' ) {
+			if( $setting === 'background_color' && substr( $mod, 0, 1 ) !== '#' ) {
 				$mod = "#$mod";
 			}
 
@@ -1589,7 +1589,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			if( $setting === 'background_color' ) {
+			if( $setting === 'background_color' && substr( $mod, 0, 1 ) !== '#' ) {
 				$mod = "#$mod";
 			}
 			
