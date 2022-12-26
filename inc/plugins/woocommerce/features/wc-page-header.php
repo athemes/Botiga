@@ -17,6 +17,7 @@ function botiga_woocommerce_page_header() {
 	$shop_archive_header_style_alignment 		   = $shop_archive_header_style !== 'style2' ? get_theme_mod( 'shop_archive_header_style_alignment', 'center' ) : 'left';
 	$shop_archive_header_style_show_categories 	   = get_theme_mod( 'shop_archive_header_style_show_categories', 0 );
 	$shop_archive_header_style_show_sub_categories = get_theme_mod( 'shop_archive_header_style_show_sub_categories', 0 );
+	$shop_archive_header_style_hide_cat_term_count = get_theme_mod( 'shop_archive_header_style_hide_cat_term_count', 0 );
 	$shop_page_title           					   = get_theme_mod( 'shop_page_title', 1 );
 	$shop_page_description           			   = get_theme_mod( 'shop_page_description', 1 );
 	$shop_breadcrumbs 							   = get_theme_mod( 'shop_breadcrumbs', 1 );
@@ -26,6 +27,11 @@ function botiga_woocommerce_page_header() {
 	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description' );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description' );
+
+	// Remove category terms count
+	if( $shop_archive_header_style_hide_cat_term_count ) {
+		add_filter( 'botiga_shop_page_header_category_post_count', function(){ return ''; }, 99 );
+	}
 
 	if( ! $shop_page_title && ! $shop_page_description && ! $shop_breadcrumbs && ! $shop_archive_header_style_show_categories && ! $shop_archive_header_style_show_sub_categories ) {
 		return;
