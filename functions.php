@@ -428,14 +428,14 @@ if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
 }
 
 /**
- * Load Dokan compatibility file.
+ * Load Elementor compatibility file.
  */
 if( defined( 'ELEMENTOR_VERSION' ) ) {
 	require get_template_directory() . '/inc/plugins/elementor/elementor.php';
 }
 
 /**
- * Load Elementor compatibility file.
+ * Load Dokan compatibility file.
  */
 if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/dokan/dokan.php';

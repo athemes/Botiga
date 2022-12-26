@@ -1230,6 +1230,13 @@
     value.bind(function (to) {
       $('head').find('#botiga-customizer-styles-bhfb_search_form_button_margin_left').remove();
       var output = '.header-search-form form button { margin-left:' + to + 'px !important; }';
+
+      if (to < 0) {
+        output += '.header-search-form form .search-field { padding-right:' + Math.abs(to) + 'px !important; }';
+      } else {
+        output += '.header-search-form form .search-field { padding-right: 1em !important; }';
+      }
+
       $('head').append('<style id="botiga-customizer-styles-bhfb_search_form_button_margin_left">' + output + '</style>');
     });
   });

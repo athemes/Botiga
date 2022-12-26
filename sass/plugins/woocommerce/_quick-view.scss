@@ -31,6 +31,7 @@
 		width: 100%;
 		margin-top: 0 !important;
 		text-align: center;
+		border-radius: 0 !important;
 		transform: translate3d(0, 100%, 0);
 		transition: ease transform 300ms;
 		z-index: 3;
@@ -58,6 +59,7 @@
 		}
 	}
 	> .loop-button-wrap.button-layout3 {
+		z-index: 3;
 		.add_to_cart_button {
 			min-width: 145px;
 			text-align: center;;
@@ -168,6 +170,12 @@ ul.wc-block-grid__products {
 			.loop-image-wrap {
 				> .loop-button-wrap.button-layout3 {
 					transform: translate3d(-50%, 45%, 0);
+				}
+
+				&.botiga-quick-view-button-layout3 {
+					> .loop-button-wrap.button-layout3 {
+						transform: translate3d(-50%, -50%, 0);
+					}
 				}
 			}
 		}
