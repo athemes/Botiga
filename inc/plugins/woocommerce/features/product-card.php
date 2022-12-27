@@ -115,7 +115,7 @@ function botiga_product_card_hooks() {
 	}
 
 	//Quick view and wishlist buttons
-	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_page_has_woo_blocks() || is_cart() || is_404() || is_product_taxonomy() ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_page_has_woo_blocks() || botiga_page_has_woo_shortcode() || is_cart() || is_404() || is_product_taxonomy() ) {
 		if( 'layout1' !== $quick_view_layout || 'layout1' !== $wishlist_layout ) {
 			remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open' );
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
@@ -195,6 +195,30 @@ function botiga_page_has_woo_blocks() {
 	if( $post ) {
 		if( isset( $post->post_content ) && strpos( $post->post_content, 'woocommerce/' ) ) {
             return true;
+        }
+	}
+
+	return false;
+}
+
+/**
+ * Check if page has woocommece shortcode
+ */
+function botiga_page_has_woo_shortcode() {
+	global $post;
+
+	$shortcodes = array(
+		'products',
+		'product_page'
+	);
+
+	if( $post ) {
+		if( isset( $post->post_content ) ) { 
+			foreach( $shortcodes as $shortcode ) {
+                if( has_shortcode( $post->post_content, $shortcode ) ) {
+                    return true;
+                }
+            }
         }
 	}
 

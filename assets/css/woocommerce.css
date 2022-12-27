@@ -438,6 +438,13 @@ ul.products li.product {
   border: none;
 }
 
+ul.wc-block-grid__products li.wc-block-grid__product a:empty,
+ul.wc-block-grid__products li.product a:empty,
+ul.products li.wc-block-grid__product a:empty,
+ul.products li.product a:empty {
+  display: none;
+}
+
 ul.wc-block-grid__products li.wc-block-grid__product img,
 ul.wc-block-grid__products li.product img,
 ul.products li.wc-block-grid__product img,
@@ -3557,6 +3564,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   font-weight: bold;
   text-transform: capitalize;
   margin-top: 15px !important;
+}
+
+.botiga-product-stock > span {
+  display: block;
 }
 
 .botiga-product-stock-low {

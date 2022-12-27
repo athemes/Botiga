@@ -1452,38 +1452,42 @@ body {
 /**
  * Product Stock
  */
-.botiga-product-stock{
+.botiga-product-stock {
 	color: green;
 	font-size: 14px;
 	font-weight: bold;
 	text-transform: capitalize;
 	margin-top: 15px !important;
+
+	> span {
+		display: block;
+	}
 }
 
-.botiga-product-stock-low{
+.botiga-product-stock-low {
 	color: red;
 }
 
 /**
  * Swiper for Product Thumbnails Carousel (Vertical)
  */
-.botiga-swiper{
+.botiga-swiper {
 	width: 100%;
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
 	padding: 0;
 
-	&.swiper-vertical .swiper-wrapper{
+	&.swiper-vertical .swiper-wrapper {
 		flex-direction: column;
 	}
 
-	&.swiper-backface-hidden .swiper-slide{
+	&.swiper-backface-hidden .swiper-slide {
 		transform: translateZ(0);
 		backface-visibility: hidden;
 	}
 
-	.swiper-wrapper{
+	.swiper-wrapper {
 		position: relative;
 		width: 100%;
 		height: 100%;
@@ -1498,11 +1502,11 @@ body {
 		touch-action: pan-y;
 	}
 
-	.swiper-pointer-events.swiper-vertical{
+	.swiper-pointer-events.swiper-vertical {
 		touch-action: pan-x;
 	}
 
-	.swiper-slide{
+	.swiper-slide {
 		flex-shrink: 0;
 		display: flex;
 		justify-content: center;
@@ -1512,7 +1516,7 @@ body {
 		position: relative;
 		transition-property: transform;
 
-		img{
+		img {
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -1521,7 +1525,7 @@ body {
 	}
 }
 
-.botiga-swiper-button{
+.botiga-swiper-button {
 	cursor: pointer;
 	position: absolute;
 	z-index: 1;
@@ -1538,7 +1542,7 @@ body {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 	transition: all .2s;
 
-	&:before{
+	&:before {
 		content: '';
 		width: 8px;
 		height: 8px;
@@ -1546,56 +1550,56 @@ body {
 		border-left: 2px solid currentColor;
 	}
 
-	&:focus{
+	&:focus {
 		outline: none;
 	}
 
-	&:active{
+	&:active {
 		opacity: 0.3;
 	}
 
-	&.swiper-button-disabled{
+	&.swiper-button-disabled {
 		user-select: none;
 		pointer-events: none;
 		cursor: inherit;
 		opacity: 0;
 	}
 
-	&.swiper-button-lock{
+	&.swiper-button-lock {
 		display: none;
 	}
 }
 
-.botiga-swiper-button-prev{
+.botiga-swiper-button-prev {
 	left: 8px;
 
-	&:before{
+	&:before {
 		transform: translateX(2px) rotate(-45deg);
 	}
 }
 
-.botiga-swiper-button-next{
+.botiga-swiper-button-next {
 	right: 8px;
 
-	&:before{
+	&:before {
 		transform: translateX(-2px) rotate(135deg);
 	}
 }
 
-.swiper-vertical{
+.swiper-vertical {
 	order: -1;
 	flex-shrink: 0;
 	width: 65px;
 	height: 490px;
 
-	.botiga-swiper-button{
+	.botiga-swiper-button {
 		top: auto;
 		right: auto;
 		left: 50%;
 		transform: translateX(-50%);
 	}
 
-	.botiga-swiper-button-prev{
+	.botiga-swiper-button-prev {
 		top: 8px;
 
 		&:before{
@@ -1603,7 +1607,7 @@ body {
 		}
 	}
 
-	.botiga-swiper-button-next{
+	.botiga-swiper-button-next {
 		bottom: 8px;
 
 		&:before{
@@ -1615,7 +1619,7 @@ body {
 /**
  * Flexslider for Product Thumbnails Carousel (Horizontal)
  */
-.botiga-flexslider{
+.botiga-flexslider {
 	position: relative;
 	user-select: none;
 	display: flex;
@@ -1632,7 +1636,7 @@ body {
 	}
 }
 
-.botiga-flex-direction-nav{
+.botiga-flex-direction-nav {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -1671,7 +1675,7 @@ body {
 			opacity: 0.3;
 		}
 
-		&.botiga-flex-disabled{
+		&.botiga-flex-disabled {
 			user-select: none;
 			pointer-events: none;
 			cursor: inherit;
@@ -1708,7 +1712,7 @@ body {
 	}
 }
 
-.single_add_to_cart_button{
+.single_add_to_cart_button {
 
 	&.loading {
 		opacity: 0.5;

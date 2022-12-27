@@ -2744,6 +2744,13 @@ div.editor-styles-wrapper ul.products li.product {
   border: none;
 }
 
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product a:empty,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product a:empty,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product a:empty,
+div.editor-styles-wrapper ul.products li.product a:empty {
+  display: none;
+}
+
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product img,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product img,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product img,

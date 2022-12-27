@@ -21,6 +21,10 @@ ul.products {
 		position: relative;
 		border: none;
 
+		a:empty {
+			display: none;
+		}
+
 		img {
 			transition: opacity 0.3s;
 		}
