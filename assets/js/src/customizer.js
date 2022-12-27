@@ -1055,6 +1055,124 @@
 		} );
 	} );
 
+	//Typography - Custom Fonts
+	var embedCustomFonts = function( data ) {
+
+		data = JSON.parse( data ) || [];
+
+		$.each(data, function( index, font ) {
+
+			if ( font.name && ( font.woff2 || font.woff || font.ttf || font.eot || font.otf || font.svg ) ) {
+
+				var fontFaceStyle = font.name.replace(/ /g, '-').toLowerCase();
+
+				if ( $('#'+fontFaceStyle).length ) {
+					$('#'+fontFaceStyle).remove();
+				}
+
+				var src = [];
+
+				if ( font.woff2 ) {
+				 src.push( 'url("'+ font.woff2 +'") format("woff2");' );
+				}
+
+				if ( font.woff ) {
+				 src.push( 'url("'+ font.woff +'") format("woff");' );
+				}
+
+				if ( font.svg ) {
+				 src.push( 'url("'+ font.svg +'") format("svg");' );
+				}
+
+				if ( font.ttf ) {
+				 src.push( 'url("'+ font.ttf +'") format("truetype");' );
+				}
+
+				if ( font.otf ) {
+				 src.push( 'url("'+ font.otf +'") format("opentype");' );
+				}
+
+				if ( font.eot ) {
+				 src.push( 'url("'+ font.eot +'?#iefix") format("embedded-opentype");' );
+				}
+
+				if ( src.length ) {
+
+					var css = '';
+					
+					css += '@font-face{ font-family: "'+ font.name +'";';
+					if ( font.eot ) {
+					 css += 'src: url('+ font.eot +');';
+					}
+					css += 'src: '+ src.join(',') +';';
+					css += '}';
+
+					$('head').append( '<style id="'+ fontFaceStyle +'" type="text/css">'+ css +'</style>' );
+
+				}
+
+			}
+
+		});
+
+	};
+
+	embedCustomFonts( window.parent.window.wp.customize.control( 'custom_fonts' ).setting.get() );
+
+	wp.customize( 'custom_fonts', function( value ) {
+		value.bind( function( to ) {
+			embedCustomFonts(to);
+		} );
+	} );
+
+	wp.customize( 'botiga_headings_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( 'h1,h2,h3,h4,h5,h6,.site-title' ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'botiga_body_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( 'body' ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'botiga_header_menu_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( '.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation' ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'button_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( buttonSelector ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'loop_post_title_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( loopPostTitleSelector ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'single_post_title_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( singlePostTitleSelector ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'single_product_title_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( singleProductTitleSelector ).css( 'font-family', to );
+		} );
+	} );
+
+	wp.customize( 'shop_product_title_custom_font', function( value ) {
+		value.bind( function( to ) {
+			$( shopProductTitleSelector ).css( 'font-family', to );
+		} );
+	} );
+
 	//Typography - Adobe Type Kit Fonts
 	wp.customize( 'botiga_headings_adobe_font', function( value ) {
 		value.bind( function( to ) {

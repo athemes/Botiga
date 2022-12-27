@@ -444,6 +444,7 @@ $wp_customize->add_control(
     'priority'  => 145,
   )
 );
+
 $wp_customize->add_setting( 'single_product_title_adobe_font',
   array(
     'default'           => 'system-default|n4',
@@ -455,6 +456,21 @@ $wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 
   array(
     'section'         => 'botiga_section_single_product',
     'active_callback' => 'botiga_single_product_title_font_library_adobe_and_custom_style',
+    'priority'        => 145,
+  )
+) );
+
+$wp_customize->add_setting( 'single_product_title_custom_font',
+  array(
+    'default'           => '',
+    'transport'         => 'postMessage',
+    'sanitize_callback' => 'sanitize_text_field',
+  )
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'single_product_title_custom_font',
+  array(
+    'section'         => 'botiga_section_single_product',
+    'active_callback' => 'botiga_single_product_title_font_library_custom_and_custom_style',
     'priority'        => 145,
   )
 ) );

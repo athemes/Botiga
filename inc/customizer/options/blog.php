@@ -609,6 +609,7 @@ $wp_customize->add_control(
 		'priority'  => 260,
 	)
 );
+
 $wp_customize->add_setting( 'loop_post_title_adobe_font',
 	array(
 		'default'           => 'system-default|n4',
@@ -620,6 +621,21 @@ $wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 
 	array(
 		'section'         => 'botiga_section_blog_archives',
 		'active_callback' => 'botiga_loop_post_title_font_library_adobe_and_custom_style',
+		'priority'        => 260,
+	)
+) );
+
+$wp_customize->add_setting( 'loop_post_title_custom_font',
+	array(
+		'default'           => '',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'sanitize_text_field',
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'loop_post_title_custom_font',
+	array(
+		'section'         => 'botiga_section_blog_archives',
+		'active_callback' => 'botiga_loop_post_title_font_library_custom_and_custom_style',
 		'priority'        => 260,
 	)
 ) );

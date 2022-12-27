@@ -134,6 +134,27 @@
           box-shadow: none;
 }
 
+.botiga-dashboard .button-info {
+  color: #bbb;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.botiga-dashboard .button-info i {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.botiga-dashboard .button-info:hover {
+  color: #777;
+}
+
+.botiga-dashboard .button-info:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .botiga-dashboard .button-disabled {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -560,6 +581,21 @@
   grid-gap: 5px;
 }
 
+.botiga-dashboard-box-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 5px;
+}
+
 .botiga-dashboard-box-locked {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -880,6 +916,174 @@
   padding-bottom: 8px;
 }
 
+.botiga-dashboard-modal-overlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 160px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.botiga-dashboard-modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.botiga-dashboard-modal-overlay.show .botiga-dashboard-modal-content {
+  top: 0;
+}
+
+.botiga-dashboard-modal-opened {
+  overflow: hidden;
+}
+
+.botiga-dashboard-modal-content {
+  color: #697b96;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 600px;
+  max-width: 85%;
+  max-height: 80vh;
+  min-height: 300px;
+  padding: 50px;
+  border-radius: 6px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 50px 200px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 50px 200px rgba(0, 0, 0, 0.2);
+  top: -15px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  will-change: top;
+}
+
+.botiga-dashboard-modal-content h1,
+.botiga-dashboard-modal-content h2,
+.botiga-dashboard-modal-content h3,
+.botiga-dashboard-modal-content h4,
+.botiga-dashboard-modal-content h5,
+.botiga-dashboard-modal-content h6 {
+  color: #1e1e1e;
+  margin: 0 0 0.8em 0;
+}
+
+.botiga-dashboard-modal-content h1:last-child,
+.botiga-dashboard-modal-content h2:last-child,
+.botiga-dashboard-modal-content h3:last-child,
+.botiga-dashboard-modal-content h4:last-child,
+.botiga-dashboard-modal-content h5:last-child,
+.botiga-dashboard-modal-content h6:last-child {
+  margin-bottom: 0;
+}
+
+.botiga-dashboard-modal-content h2 {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.botiga-dashboard-modal-content p {
+  font-size: inherit;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+}
+
+.botiga-dashboard-modal-content p:last-child {
+  margin-bottom: 0;
+}
+
+.botiga-dashboard-modal-content a {
+  font-size: inherit;
+  color: #3858e9;
+}
+
+.botiga-dashboard-modal-content a:hover {
+  color: #3052e8;
+}
+
+.botiga-dashboard-modal-content ul,
+.botiga-dashboard-modal-content ol {
+  padding-left: 20px;
+  margin: 0 0 1.5em 0;
+}
+
+.botiga-dashboard-modal-content ul:last-child,
+.botiga-dashboard-modal-content ol:last-child {
+  margin-bottom: 0;
+}
+
+.botiga-dashboard-modal-content ul li,
+.botiga-dashboard-modal-content ol li {
+  margin-bottom: 1.5em;
+}
+
+.botiga-dashboard-modal-content ul li::marker,
+.botiga-dashboard-modal-content ol li::marker {
+  color: #1e1e1e;
+}
+
+.botiga-dashboard-modal-content ul li:last-child,
+.botiga-dashboard-modal-content ol li:last-child {
+  margin-bottom: 0;
+}
+
+.botiga-dashboard-modal-content ul {
+  list-style: inherit;
+}
+
+.botiga-dashboard-modal-content ol li {
+  padding-left: 2px;
+}
+
+.botiga-dashboard-modal-content ol li::marker {
+  font-weight: 700;
+}
+
+.botiga-dashboard-modal-close {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0.5;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.botiga-dashboard-modal-close:hover {
+  opacity: 1;
+}
+
+.botiga-dashboard-modal-close .dashicons {
+  font-size: 16px;
+  line-height: 1em;
+}
+
 .botiga-dashboard-freevspro-table__header {
   position: sticky;
   top: 50px;
@@ -1038,6 +1242,21 @@
   }
   .botiga-dashboard-theme-features {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .botiga-dashboard-modal-overlay {
+    left: 34px;
+  }
+}
+
+@media screen and (max-width: 782px) {
+  .botiga-dashboard-modal-overlay {
+    left: 0;
+  }
+  .botiga-dashboard-modal-content {
+    padding: 25px;
   }
 }
 
