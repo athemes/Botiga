@@ -61,7 +61,7 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 
 			<select class="botiga-typography-custom-select" <?php $this->link(); ?>>
 				<?php if ( ! empty( $custom_fonts ) ) : ?>
-					<option name=""></option>
+					<option name=""><?php esc_html_e( 'System default', 'botiga' ); ?></option>
 					<?php foreach ( $custom_fonts as $font ) : ?>
 						<?php $selected = $this->value() === $font['name'] ? true : false; ?>
 						<option name="<?php echo esc_attr( $font['name'] ); ?>" <?php selected( $selected ); ?>><?php echo esc_html( $font['name'] ); ?></option>
