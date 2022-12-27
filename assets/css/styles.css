@@ -849,6 +849,33 @@ select {
   background-position: calc( 100% - 18px) center;
 }
 
+.botiga-select {
+  position: relative;
+  font-size: 1rem;
+}
+
+.botiga-select:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0.4em;
+  height: 0.4em;
+  border-bottom: 1px solid #212121;
+  border-right: 1px solid #212121;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg) translate3d(0, -50%, 0);
+  right: 1.5em;
+  top: 46%;
+}
+
+.botiga-select select {
+  padding: 1em 2.5em 1em 1em;
+  background-image: none;
+  font-size: 1rem;
+  min-height: 0;
+  min-width: 140px;
+}
+
 textarea {
   width: 100%;
 }
@@ -3077,7 +3104,9 @@ body.mobile-menu-visible {
 .header-search-form form button,
 .header-search-form form .search-field {
   display: block;
-  min-height: 60px;
+  min-height: 0;
+  font-size: 1rem;
+  padding: 0.7em 1em;
 }
 
 .header-search-form form button svg,
@@ -3086,9 +3115,19 @@ body.mobile-menu-visible {
 }
 
 .header-search-form form button {
-  padding: 13px 24px !important;
-  border-radius: 0 !important;
-  font-size: 14px !important;
+  padding: 0.7em 1.25em !important;
+  border-radius: 0;
+}
+
+.header-search-form.header-search-form-always-visible {
+  position: relative;
+  top: auto;
+  padding: 0;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  background: transparent !important;
+  z-index: 2;
 }
 
 .header-search-form-active .header-search-form {

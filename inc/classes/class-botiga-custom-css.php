@@ -1739,12 +1739,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		/**
 		 * Get fill CSS
 		 */
-		public static function get_fill_css( $setting, $default, $selector ) {
+		public static function get_fill_css( $setting, $default, $selector, $opacity = 1, $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'fill' );
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, 'fill', $opacity, $important );
 
-			return $selector . '{ fill:' . esc_attr( $mod ) . ';}' . "\n";
+			return $selector . '{ fill:' . esc_attr( $mod ) . ( $important ? '!important' : '' ) .';}' . "\n";
 		}	
 		
 		/**
@@ -1983,18 +1983,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 		public static function mount_customizer_js_options( $selector = '', $setting = '', $prop = '', $opacity = '', $important = false ) {
 			$options = array(
-				'option'   => $setting,
-				'selector' => $selector,
-				'prop'     => $prop
+				'option'    => $setting,
+				'selector'  => $selector,
+				'prop'      => $prop,
+				'important' => $important
 			);
 
 			if( $opacity ) {
 				$options[ 'rgba' ] = $opacity;
 			}
 
-			// if( strpos( $selector, ':after' ) !== FALSE || strpos( $selector, ':before' ) !== FALSE || strpos( $selector, ':hover' ) !== FALSE || $important ) {
-				$options[ 'pseudo' ] = true;
-			// }
+			$options[ 'pseudo' ] = true;
 			
 			Botiga_Custom_CSS::get_instance()->customizer_js[] = $options;
 		}
