@@ -19,7 +19,10 @@ function botiga_get_default_single_product_components() {
 		'woocommerce_template_single_meta',
 	);
 
-	if( 'layout1' !== get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) ) {
+	$wishlist_enable = Botiga_Modules::is_module_active( 'wishlist' );
+	$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+
+	if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 		$components[] = 'botiga_single_wishlist_button';
 	}
 
@@ -41,7 +44,10 @@ function botiga_single_product_elements() {
 		'woocommerce_template_single_meta' 		  => esc_html__( 'Meta', 'botiga' )
 	);
 
-	if( 'layout1' !== get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) ) {
+	$wishlist_enable = Botiga_Modules::is_module_active( 'wishlist' );
+	$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+
+	if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 		$elements[ 'botiga_single_wishlist_button' ] = esc_html__( 'Wishlist Button', 'botiga' );
 	}
 

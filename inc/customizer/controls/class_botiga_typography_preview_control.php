@@ -46,32 +46,40 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 		// font family and font weight
 		$library = get_theme_mod( 'fonts_library', 'google' );
 
-		if ( $library === 'google' ) {
+		if ( $library === 'google' && isset( $this->options['google_font'] )  ) {
 
 			$value = $this->manager->get_setting( $this->options['google_font'] )->value();
 
 			if ( ! empty( $value ) ) {
 				$values = json_decode( $value, true );
 				if ( ! empty( $values['font'] ) ) {
-					$props['font-family'] = $values['font'];
+					$props['font-family'] = '"'. $values['font'] .'"';
 				}
 				if ( ! empty( $values['regularweight'] ) ) {
 					$props['font-weight'] = $values['regularweight'];
 				}
 			}
 
-		} else if ( $library === 'adobe' ) {
+		} else if ( $library === 'adobe' && isset( $this->options['adobe_font'] ) ) {
 
 			$value = $this->manager->get_setting( $this->options['adobe_font'] )->value();
 
 			if ( ! empty( $value ) ) {
 				$values = explode( '|', $value );
 				if ( ! empty( $values[0] ) ) {
-					$props['font-family'] = $values[0];
+					$props['font-family'] = '"'. $values[0] .'"';
 				}
 				if ( ! empty( $values[1] ) ) {
 					$props['font-weight'] = str_replace( 'n4', '400', $values[1] );
 				}
+			}
+
+		} else if ( $library === 'custom' && isset( $this->options['custom_font'] ) ) {
+
+			$value = $this->manager->get_setting( $this->options['custom_font'] )->value();
+
+			if ( ! empty( $value ) ) {
+				$props['font-family'] = '"'. $value .'"';
 			}
 
 		}
@@ -83,7 +91,7 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 
 			foreach ( $common_props as $common_prop => $setting_id ) {
 
-				if ( in_array( $common_prop, array( 'google_font', 'adobe_font' ) ) ) {
+				if ( in_array( $common_prop, array( 'google_font', 'adobe_font', 'custom_font' ) ) ) {
 					continue;
 				}
 
