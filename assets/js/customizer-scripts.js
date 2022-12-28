@@ -669,7 +669,8 @@ jQuery(document).ready(function ($) {
     events: function events() {
       var self = this; // Toggle accordion
 
-      $(document).on('click', '.botiga-accordion-title', function () {
+      $(document).on('click', '.botiga-accordion-title', function (e) {
+        e.preventDefault();
         var $this = $(this);
 
         if ($(this).hasClass('expanded')) {
@@ -1170,6 +1171,137 @@ jQuery(document).ready(function ($) {
   });
 });
 /**
+ * Custom Fonts Control
+ */
+
+jQuery(document).ready(function ($) {
+  "use strict";
+
+  $(document).on('botiga-custom-font-update', function (event, control) {
+    event.preventDefault();
+    var data = [];
+    var $control = $(control);
+    var $textarea = $control.find('.botiga-custom-font-textarea');
+    var $items = $control.find('.botiga-custom-font-item').not('.hidden');
+    $items.each(function () {
+      var $item = $(this);
+      var name = $item.find('input[name="name"]').val();
+      var woff2 = $item.find('input[name="woff2"]').val();
+      var woff = $item.find('input[name="woff"]').val();
+      var ttf = $item.find('input[name="ttf"]').val();
+      var eot = $item.find('input[name="eot"]').val();
+      var otf = $item.find('input[name="otf"]').val();
+      var svg = $item.find('input[name="svg"]').val();
+
+      if (name && (woff2 || woff || ttf || eot || otf || svg)) {
+        data.push({
+          name: name,
+          woff2: woff2,
+          woff: woff,
+          ttf: ttf,
+          eot: eot,
+          otf: otf,
+          svg: svg
+        });
+        var fontFaceStyle = name.replace(/ /g, '-').toLowerCase();
+
+        if ($('#' + fontFaceStyle).length) {
+          $('#' + fontFaceStyle).remove();
+        }
+
+        var src = [];
+
+        if (woff2) {
+          src.push('url("' + woff2 + '") format("woff2");');
+        }
+
+        if (woff) {
+          src.push('url("' + woff + '") format("woff");');
+        }
+
+        if (svg) {
+          src.push('url("' + svg + '") format("svg");');
+        }
+
+        if (ttf) {
+          src.push('url("' + ttf + '") format("truetype");');
+        }
+
+        if (otf) {
+          src.push('url("' + otf + '") format("opentype");');
+        }
+
+        if (eot) {
+          src.push('url("' + eot + '?#iefix") format("embedded-opentype");');
+        }
+
+        if (src.length) {
+          var css = '';
+          css += '@font-face{ font-family: "' + name + '";';
+
+          if (eot) {
+            css += 'src: url(' + eot + ');';
+          }
+
+          css += 'src: ' + src.join(',') + ';';
+          css += '}';
+          $('head').append('<style id="' + fontFaceStyle + '" type="text/css">' + css + '</style>');
+        }
+      }
+    });
+    $textarea.val(JSON.stringify(data)).trigger('change'); // update custom font selectors
+
+    var $selectors = $('.botiga-typography-custom-select');
+
+    if ($selectors.length) {
+      $selectors.each(function () {
+        var $selector = $(this);
+        var controlValue = wp.customize.control($selector.data('customize-setting-link')).setting.get();
+        $selector.find('option').not(':first-child').remove();
+        $.each(data, function (index, option) {
+          var selected = option.name === controlValue ? ' selected="selected"' : '';
+          $selector.append('<option name="' + option.name + '"' + selected + '>' + option.name + '</option>');
+        });
+      });
+    }
+  });
+  $(document).on('change', '.botiga-custom-font-item-input', function (event) {
+    var $input = $(this);
+    var $control = $input.closest('.botiga-custom-fonts-control');
+    $(document).trigger('botiga-custom-font-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-font-upload', function (e) {
+    e.preventDefault();
+    var $button = $(this);
+    console.log($button.data('type'));
+    var wpMediaFrame = window.wp.media({
+      library: {
+        type: $button.data('type') || 'image'
+      }
+    }).open();
+    wpMediaFrame.on('select', function () {
+      var attachment = wpMediaFrame.state().get('selection').first().toJSON();
+      $button.prev('.botiga-custom-font-item-input').val(attachment.url).trigger('change');
+    });
+  });
+  $(document).on('click', '.botiga-custom-font-add', function (event) {
+    var $button = $(this);
+    var $control = $button.closest('.botiga-custom-fonts-control');
+    var $list = $control.find('.botiga-custom-font-items');
+    var $item = $control.find('.botiga-custom-font-item').first().clone();
+    $item.removeClass('hidden');
+    $list.append($item);
+    $(document).trigger('botiga-custom-font-update', [$control]);
+  });
+  $(document).on('click', '.botiga-custom-font-remove', function (event) {
+    var $button = $(this);
+    var $item = $button.closest('.botiga-custom-font-item');
+    var $control = $button.closest('.botiga-custom-fonts-control');
+    $item.remove();
+    $(document).trigger('botiga-custom-font-update', [$control]);
+  });
+});
+/**
  * HTML5 Input Range (Track Color Support)
  */
 
@@ -1237,6 +1369,12 @@ jQuery(document).ready(function ($) {
               if (to[1]) {
                 $preview.css('font-weight', to[1].replace('n4', '400'));
               }
+            });
+          });
+        } else if (prop === 'custom_font') {
+          wp.customize(option, function (value) {
+            value.bind(function (to) {
+              $preview.css('font-family', to);
             });
           });
         } else {

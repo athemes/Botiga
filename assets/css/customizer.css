@@ -1542,6 +1542,116 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
 }
 
 /**
+ * Custom Fonts Control
+ */
+.botiga-custom-font-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.botiga-custom-font-item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 7px;
+  padding: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #ddd;
+}
+
+.botiga-custom-font-item input[type="text"] {
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.botiga-custom-font-item.hidden {
+  display: none;
+}
+
+.botiga-custom-font-remove {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+  color: #a00;
+  opacity: 0.5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.botiga-custom-font-remove:hover {
+  opacity: 1;
+}
+
+.botiga-custom-font-remove:focus, .botiga-custom-font-remove:hover, .botiga-custom-font-remove:active {
+  color: #a00;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.botiga-custom-font-remove .dashicons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  line-height: 1em;
+  width: 30px;
+  height: 30px;
+}
+
+.botiga-custom-font-item-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-gap: 4px;
+}
+
+.botiga-custom-font-item-wrapper label {
+  font-weight: 500;
+}
+
+.botiga-custom-font-item-inner {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 5px;
+}
+
+.botiga-custom-font-footer {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+/**
  * New Design
  */
 .wp-full-overlay-sidebar {

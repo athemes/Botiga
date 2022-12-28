@@ -264,8 +264,53 @@ function botiga_migrate_1_2_3_modules() {
         $modules = array_merge( $modules, array( 'product-swatches' => true ) );
     }
 
+    // Modal popup module.
+    $modal_popup = get_theme_mod( 'modal_popup_enable', 0 );
+
+    if ( ! empty( $modal_popup ) ) {
+        $modules = array_merge( $modules, array( 'modal-popup' => true ) );
+    }
+
+    // Local google fonts module.
+    $local_google_fonts = get_theme_mod( 'perf_google_fonts_local', 1 );
+
+    if ( ! empty( $local_google_fonts ) ) {
+        $modules = array_merge( $modules, array( 'local-google-fonts' => true ) );
+    }
+
+    // Sticky add to cart module.
+    $sticky_add_to_cart = get_theme_mod( 'single_sticky_add_to_cart', 0 );
+
+    if ( ! empty( $sticky_add_to_cart ) ) {
+        $modules = array_merge( $modules, array( 'sticky-add-to-cart' => true ) );
+    }
+
+    // Advanced reviews module.
+    $advanced_reviews = get_theme_mod( 'single_product_reviews_advanced_enable', 0 );
+
+    if ( ! empty( $advanced_reviews ) ) {
+        $modules = array_merge( $modules, array( 'advanced-reviews' => true ) );
+    }
+
+    // Login Popup
+    $login_popup = get_theme_mod( 'login_register_popup', 0 );
+
+    if ( ! empty( $login_popup ) ) {
+        $modules = array_merge( $modules, array( 'login-popup' => true ) );
+    }
+
     // Video gallery module.
-    $modules = array_merge( $modules, array( 'video-gallery' => true ) );
+    // Wishlist
+    // Single Post Table of Contents
+    // Custom Sidebars
+    $modules = array_merge( $modules, array(
+        'video-gallery'      => true,
+        'wishlist'           => true,
+        'table-of-contents'  => true,
+        'custom-sidebars'    => true,
+        'variations-gallery' => true,
+        'adobe-typekit'      => true,
+    ) );
 
     update_option( 'botiga-modules', $modules );
 

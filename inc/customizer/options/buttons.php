@@ -73,6 +73,21 @@ $wp_customize->add_control(
 	)
 );
 
+// Custom Typography
+$wp_customize->add_setting( 'button_custom_font',
+	array(
+		'default'           => '',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'sanitize_text_field',
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'button_custom_font',
+	array(
+		'section'         => 'botiga_section_buttons',
+		'active_callback' => 'botiga_button_font_library_custom_and_custom_style'
+	)
+) );
+
 // Adobe Typography
 $wp_customize->add_setting( 'button_adobe_font',
 	array(

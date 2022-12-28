@@ -4,6 +4,9 @@
 
   $(document).ready( function() {
 
+    // Globals
+    var $body = $('body');
+
     // Dashboard hero re-position
     var $header = $('.wp-header-end');
     var $notice = $('.botiga-dashboard-notice');
@@ -26,6 +29,51 @@
           action: 'botiga_dismissed_handler',
           nonce: window.botiga_dashboard.nonce,
           notice: $dismissable.data('notice'),
+        });
+
+      });
+
+    }
+
+    // Dashboard modals
+    var $modals = $('.botiga-dashboard-modal');
+
+    if ( $modals.length ) {
+
+      $modals.each( function() {
+
+        var $modal   = $(this);
+        var $button  = $modal.find('.botiga-dashboard-modal-button');
+        var $close   = $modal.find('.botiga-dashboard-modal-close');
+        var $overlay = $modal.find('.botiga-dashboard-modal-overlay');
+
+        $button.on('click', function( e ) {
+
+          e.preventDefault();
+
+          $overlay.addClass('show');
+          $body.addClass('botiga-dashboard-modal-opened');
+
+        });
+
+        $close.on('click', function( e ) {
+
+          e.preventDefault();
+
+          $body.removeClass('botiga-dashboard-modal-opened');
+          $overlay.removeClass('show');
+
+        });
+
+        $overlay.on('click', function( e ) {
+
+          e.preventDefault();
+
+          if ( e.target.closest('.botiga-dashboard-modal-content') === null ) {
+            $body.removeClass('botiga-dashboard-modal-opened');
+            $overlay.removeClass('show');
+          }
+
         });
 
       });

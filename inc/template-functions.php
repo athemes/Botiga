@@ -619,10 +619,13 @@ function botiga_header_transparent_choices() {
 		$choices['shop-my-account'] = __( 'Shop My Account', 'botiga' );
 
 		// Wishlist
+		$wishlist_enable = Botiga_Modules::is_module_active( 'wishlist' );
 		$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-		if( 'layout1' !== $wishlist_layout ) {
+
+		if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 			$choices['shop-wishlist'] = __( 'Shop Wishlist', 'botiga' );
 		}
+
 	}
 
 	return apply_filters( 'botiga_header_transparent_choices', $choices );
@@ -787,7 +790,7 @@ function botiga_google_fonts_url() {
 	), 'https://fonts.googleapis.com/css2' );
 
 	// Load google fonts locally
-	$load_locally = get_theme_mod( 'perf_google_fonts_local', 1 );
+	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
 	if( $load_locally ) {
 		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
@@ -805,7 +808,7 @@ function botiga_google_fonts_url() {
  * Reference: https://core.trac.wordpress.org/ticket/49742#comment:7
  */
 function botiga_google_fonts_version() {
-	$load_locally = get_theme_mod( 'perf_google_fonts_local', 1 );
+	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
 	if( $load_locally ) {
 		return BOTIGA_VERSION;
 	}
@@ -819,7 +822,7 @@ function botiga_google_fonts_version() {
 function botiga_preconnect_google_fonts() {
 
 	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
-	$load_locally  = get_theme_mod( 'perf_google_fonts_local', 1 );
+	$load_locally  = Botiga_Modules::is_module_active( 'local-google-fonts' );
 	if( $fonts_library !== 'google' || $load_locally ) {
 		return;
 	}
@@ -1295,5 +1298,70 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 	$result = apply_filters( 'botiga_display_conditions_result', $result, $rules );
 
 	return $result;
+
+}
+
+/**
+ * Embed Custom Fonts
+ * 
+ * return @font-face
+ */
+function botiga_get_custom_fonts() {
+
+	$css = '';
+
+	$custom_fonts = json_decode( get_theme_mod( 'custom_fonts', '[]' ), true );
+
+	if ( ! empty( $custom_fonts ) ) {
+
+		foreach ( $custom_fonts as $font ) {
+
+			if ( ! empty( $font['name'] ) ) {
+
+				$src = array();
+
+				if ( ! empty( $font['eot'] ) ) {
+					$src[] = 'url("'. esc_url( $font['eot'] ) .'?#iefix") format("embedded-opentype")';
+				}
+
+				if ( ! empty( $font['otf'] ) ) {
+					$src[] = 'url("'. esc_url( $font['otf'] ) .'") format("opentype")';
+				}
+
+				if ( ! empty( $font['ttf'] ) ) {
+					$src[] = 'url("'. esc_url( $font['ttf'] ) .'") format("truetype")';
+				}
+
+				if ( ! empty( $font['svg'] ) ) {
+					$src[] = 'url("'. esc_url( $font['svg'] ) .'") format("svg")';
+				}
+
+				if ( ! empty( $font['woff'] ) ) {
+					$src[] = 'url("'. esc_url( $font['woff'] ) .'") format("woff")';
+				}
+
+				if ( ! empty( $font['woff2'] ) ) {
+					$src[] = 'url("'. esc_url( $font['woff2'] ) .'") format("woff2")';
+				}
+
+				if ( ! empty( $src ) ) {
+
+					$css .= '@font-face {';
+					$css .= 'font-family: "'. esc_attr( $font['name'] ) .'";';
+					if ( ! empty( $font['eot'] ) ) {
+						$css .= 'src: url("'. esc_url( $font['eot'] ) .'");';
+					}
+					$css .= 'src: '. join( ',', $src ) .';';
+					$css .= '}';
+
+				}
+
+			}
+
+		}
+
+	}
+
+	return $css;
 
 }

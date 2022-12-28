@@ -123,6 +123,26 @@
     }
   }
 
+  .button-info{
+    color: #bbb;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+
+    i{
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    &:hover{
+      color: #777;
+    }
+
+    &:focus{
+      box-shadow: none;
+    }
+  }
+
   .button-disabled{
     user-select: none;
     pointer-events: none;
@@ -455,6 +475,14 @@
   grid-gap: 5px;
 }
 
+.botiga-dashboard-box-footer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 5px;
+}
+
 .botiga-dashboard-box-locked{
   user-select: none;
   pointer-events: none;
@@ -724,6 +752,152 @@
   }
 }
 
+.botiga-dashboard-modal-overlay{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 160px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: all .2s;
+
+  &.show{
+    opacity: 1;
+    pointer-events: auto;
+
+    .botiga-dashboard-modal-content{
+      top: 0;
+    } 
+  }
+}
+
+.botiga-dashboard-modal-opened{
+  overflow: hidden;
+}
+
+.botiga-dashboard-modal-content{
+  color: #697b96;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 600px;
+  max-width: 85%;
+  max-height: 80vh;
+  min-height: 300px;
+  padding: 50px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 50px 200px rgba(0,0,0,0.2);
+  top: -15px;
+  transition: all .3s;
+  will-change: top;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6{
+    color: #1e1e1e;
+    margin: 0 0 0.8em 0;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  h2{
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  p{
+    font-size: inherit;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  a{
+    font-size: inherit;
+    color: #3858e9;
+
+    &:hover{
+      color: #3052e8;
+    }
+  }
+
+  ul,
+  ol{
+    padding-left: 20px;
+    margin: 0 0 1.5em 0;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+
+    li{
+      margin-bottom: 1.5em;
+
+      &::marker{
+        color: #1e1e1e;
+      }
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ul{
+    list-style: inherit;
+  }
+
+  ol{
+
+    li{
+      padding-left: 2px;
+
+      &::marker{
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.botiga-dashboard-modal-close{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  transition: all .2s;
+
+  &:hover{
+    opacity: 1;
+  }
+
+  .dashicons{
+    font-size: 16px;
+    line-height: 1em;
+  }
+}
+
 .botiga-dashboard-freevspro-table__header{
   position: sticky;
   top: 50px;
@@ -872,6 +1046,24 @@
   
   .botiga-dashboard-theme-features{
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 960px){
+
+  .botiga-dashboard-modal-overlay{
+    left: 34px;
+  }
+}
+
+@media screen and (max-width: 782px){
+
+  .botiga-dashboard-modal-overlay{
+    left: 0;
+  }
+
+  .botiga-dashboard-modal-content{
+    padding: 25px;
   }
 }
 

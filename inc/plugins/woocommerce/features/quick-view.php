@@ -261,8 +261,10 @@ function botiga_quick_view_summary_add_to_cart( $product = null ) {
  * Quick View Summary Wishlist
  */
 function botiga_quick_view_summary_wishlist( $product = null ) {
+	$wishlist_enable = Botiga_Modules::is_module_active( 'wishlist' );
 	$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-	if( 'layout1' !== $wishlist_layout ) {
+
+	if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 		botiga_single_wishlist_button( $product, true );
 	}
 }

@@ -63,6 +63,10 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 			$section = ( isset( $_GET['section'] ) ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
 			$section = ( ! empty( $section ) ) ? array( 'section' => $section ) : array();
 
+			// Update Custom CSS
+			$custom_css = Botiga_Custom_CSS::get_instance();
+			$custom_css->update_custom_css_file();
+
 			wp_redirect( add_query_arg( array( 'page' => 'botiga-dashboard', $section ), admin_url( 'themes.php' ) ) );
 
 		}

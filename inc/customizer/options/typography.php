@@ -45,33 +45,12 @@ $wp_customize->add_setting(
 $wp_customize->add_control( 
 	'fonts_library', 
 	array(
-		'type' 		=> 'select',
-		'section' 	=> 'botiga_section_typography_general',
-		'label' 	=> esc_html__( 'Fonts Library', 'botiga' ),
-		'choices'   => array(
-			'google' 	=> esc_html__( 'Google Fonts', 'botiga' ),
-			'adobe' 	=> esc_html__( 'Adobe Fonts', 'botiga' )
+		'type'     => 'select',
+		'section'  => 'botiga_section_typography_general',
+		'label'    => esc_html__( 'Fonts Library', 'botiga' ),
+		'choices'  => array(
+			'google' => esc_html__( 'Google Fonts', 'botiga' ),
 		),
-	) 
-);
-
-$wp_customize->add_setting( 
-	'adobe_fonts_kits_generator',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'sanitize_text_field',
-		'transport'	 		=> 'postMessage'
-	)
-);
-
-$wp_customize->add_control( 
-	new Botiga_Typography_Adobe_Kits_Control( 
-		$wp_customize, 
-		'adobe_fonts_kits_generator',
-		array(
-			'section' 			=> 'botiga_section_typography_general',
-			'active_callback' 	=> 'botiga_font_library_adobe'
-		)
 	) 
 );
 
@@ -94,6 +73,7 @@ $wp_customize->add_control( new Botiga_Typography_Preview_Control( $wp_customize
 		'options' => array(
 			'google_font'     => 'botiga_header_menu_font',
 			'adobe_font'      => 'botiga_header_menu_adobe_font',
+			'custom_font'     => 'botiga_header_menu_custom_font',
 			'font-style'      => 'header_menu_font_style',
 			'line-height'     => 'header_menu_line_height',
 			'letter-spacing'  => 'header_menu_letter_spacing',
@@ -137,6 +117,21 @@ $wp_customize->add_control( new Botiga_Typography_Adobe_Control( $wp_customize, 
 	array(
 		'section' => 'botiga_section_typography_header_menu',
 		'active_callback' => 'botiga_font_library_adobe'
+	)
+) );
+
+// Custom Fonts
+$wp_customize->add_setting( 'botiga_header_menu_custom_font',
+	array(
+		'default'           => get_theme_mod( 'botiga_body_custom_font', '' ),
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_header_menu_custom_font',
+	array(
+		'section' => 'botiga_section_typography_header_menu',
+		'active_callback' => 'botiga_font_library_custom'
 	)
 ) );
 
@@ -273,12 +268,28 @@ $wp_customize->add_control( new Botiga_Typography_Preview_Control( $wp_customize
 		'options' => array(
 			'google_font'     => 'botiga_headings_font',
 			'adobe_font'      => 'botiga_headings_adobe_font',
+			'custom_font'     => 'botiga_headings_custom_font',
 			'font-style'      => 'headings_font_style',
 			'line-height'     => 'headings_line_height',
 			'letter-spacing'  => 'headings_letter_spacing',
 			'text-transform'  => 'headings_text_transform',
 			'text-decoration' => 'headings_text_decoration',
 		),
+	)
+) );
+
+// Custom Fonts
+$wp_customize->add_setting( 'botiga_headings_custom_font',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_headings_custom_font',
+	array(
+		'section' => 'botiga_section_typography_headings',
+		'active_callback' => 'botiga_font_library_custom'
 	)
 ) );
 
@@ -630,6 +641,7 @@ $wp_customize->add_control( new Botiga_Typography_Preview_Control( $wp_customize
 		'options' => array(
 			'google_font'     => 'botiga_body_font',
 			'adobe_font'      => 'botiga_body_adobe_font',
+			'custom_font'     => 'botiga_body_custom_font',
 			'font-style'      => 'body_font_style',
 			'line-height'     => 'body_line_height',
 			'letter-spacing'  => 'body_letter_spacing',
@@ -658,6 +670,21 @@ $wp_customize->add_control( new Botiga_Typography_Control( $wp_customize, 'botig
 			'disableRegular' => false,
 		),
 		'active_callback' => 'botiga_font_library_google'
+	)
+) );
+
+// Custom Fonts
+$wp_customize->add_setting( 'botiga_body_custom_font',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_body_custom_font',
+	array(
+		'section' => 'botiga_section_typography_body',
+		'active_callback' => 'botiga_font_library_custom'
 	)
 ) );
 
