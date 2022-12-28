@@ -560,7 +560,7 @@ function botiga_dashboard_settings() {
     'type'       => 'pro',
     'title'      => esc_html__( 'Templates Builder', 'botiga' ),
     'desc'       => esc_html__( 'Create shop or content templates.', 'botiga' ),
-    'link_label' => esc_html__( 'Builde Templates', 'botiga' ),
+    'link_label' => esc_html__( 'Build Templates', 'botiga' ),
     'link_url'   => add_query_arg( 'post_type', 'athemes_hf', admin_url( 'edit.php' ) ),
   );
 
