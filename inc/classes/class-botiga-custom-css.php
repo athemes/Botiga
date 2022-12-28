@@ -918,7 +918,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			if ( 'layout3' === $shop_product_card_style ) {
-				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap, ul.wc-block-grid__products li.product .loop-image-wrap, ul.products li.wc-block-grid__product .loop-image-wrap, ul.products li.product .loop-image-wrap { margin:-30px -30px 12px;}" . "\n";
+				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap, ul.wc-block-grid__products li.product .loop-image-wrap, ul.products li.wc-block-grid__product .loop-image-wrap, ul.products li.product .loop-image-wrap { margin:-30px -30px 20px;}" . "\n";
 			}
 
 			if ( 'left' === $shop_product_alignment ) {
@@ -1149,7 +1149,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			//Quick view
-			$css .= $this->get_background_color_css( 'content_cards_background', '', '.botiga-quick-view-popup .botiga-quick-view-popup-content' );
+			$css .= $this->get_background_color_css( 'content_cards_background', '#f2f2f2', '.botiga-quick-view-popup .botiga-quick-view-popup-content' );
 
 			//Mini cart
 			$css .= $this->get_color_css( 'color_heading_4', '', '.mini_cart_item a:nth-child(2)' );

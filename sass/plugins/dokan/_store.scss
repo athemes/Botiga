@@ -3,7 +3,7 @@
     .content-wrapper {
         max-width: 1500px;
     }
-
+    
     // Sidebar
     .dokan-store-menu {
         .caret-icon {
@@ -52,6 +52,16 @@
         margin-top: 15px;
     }
 
+    .dokan-store-products-filter-area {
+        .search-store-products {
+            padding: 0px 20px;
+            height: 51px;
+        }
+        .orderby-search {
+            width: auto;
+        }
+    }
+
     .dokan-store-products-filter-search {
         width: calc( 100% - 79px );
     }
@@ -64,6 +74,15 @@
 
         .dokan-store-products-filter-search {
             width: 250px;
+        }
+    }
+
+    // Products List
+    ul.products {
+        .product {
+            a:empty {
+                display: none;
+            }
         }
     }
 

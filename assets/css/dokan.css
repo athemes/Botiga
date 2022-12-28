@@ -4,169 +4,172 @@
 /**
  * Helpers
  */
-/* Float */
-.pull-right {
+.dokan-dashboard-wrap {
+  /* Float */
+  /* Forms */
+  /* Buttons */
+}
+
+.dokan-dashboard-wrap .pull-right {
   float: right;
 }
 
-.pull-left {
+.dokan-dashboard-wrap .pull-left {
   float: left;
 }
 
-/* Forms */
-fieldset {
+.dokan-dashboard-wrap fieldset {
   border: none;
   padding: 0;
 }
 
-input,
-select,
-textarea,
-.select2-dropdown {
+.dokan-dashboard-wrap input,
+.dokan-dashboard-wrap select,
+.dokan-dashboard-wrap textarea,
+.dokan-dashboard-wrap .select2-dropdown {
   padding: 7px !important;
   min-height: 0 !important;
   line-height: 1 !important;
   border-color: #EDEDED !important;
 }
 
-.select2-container .select2-selection--multiple {
+.dokan-dashboard-wrap .select2-container .select2-selection--multiple {
   min-height: 0 !important;
 }
 
-.select2-search__field {
+.dokan-dashboard-wrap .select2-search__field {
   font-size: 0.9rem !important;
   padding: 0 5px !important;
 }
 
-.select2-container--open .select2-dropdown--below {
+.dokan-dashboard-wrap .select2-container--open .select2-dropdown--below {
   margin-top: 29px !important;
 }
 
-.form-label {
+.dokan-dashboard-wrap .form-label {
   font-size: 0.85rem;
 }
 
-.form-row {
+.dokan-dashboard-wrap .form-row {
   width: 100%;
 }
 
-.form-row label {
+.dokan-dashboard-wrap .form-row label {
   display: block;
   margin-bottom: 10px;
 }
 
-.form-row input {
+.dokan-dashboard-wrap .form-row input {
   width: 100%;
 }
 
 @media screen and (min-width: 768px) {
-  .form-row-first {
+  .dokan-dashboard-wrap .form-row-first {
     float: left;
     margin-right: 3.8%;
   }
-  .form-row-last {
+  .dokan-dashboard-wrap .form-row-last {
     float: right;
     margin-right: 0;
   }
-  .form-row-first,
-  .form-row-last {
+  .dokan-dashboard-wrap .form-row-first,
+  .dokan-dashboard-wrap .form-row-last {
     width: 48.1%;
   }
 }
 
-/* Buttons */
-button {
+.dokan-dashboard-wrap button {
   padding: 4px 10px !important;
   border-radius: 4px !important;
 }
 
-.dokan-btn,
-.btn-theme {
+.dokan-dashboard-wrap .dokan-btn,
+.dokan-dashboard-wrap .btn-theme {
   padding: 7px 15px !important;
   letter-spacing: 0.5px !important;
   border-radius: 6px !important;
 }
 
-.dokan-btn:hover,
-.btn-theme:hover {
+.dokan-dashboard-wrap .dokan-btn:hover,
+.dokan-dashboard-wrap .btn-theme:hover {
   color: #FFF;
 }
 
-.dokan-btn-theme {
+.dokan-dashboard-wrap .dokan-btn-theme {
   color: #FFF !important;
   text-decoration: none !important;
 }
 
-.dokan-btn-default:hover {
+.dokan-dashboard-wrap .dokan-btn-default:hover {
   color: #212121;
 }
 
 /**
  * Dashboard
  */
-.dokan-dashboard ul {
+.dokan-dashboard-wrap ul {
   padding: 0;
 }
 
-.dokan-dashboard.botiga-page-builder-mode .entry-content > * {
+.dokan-dashboard-wrap.botiga-page-builder-mode .entry-content > * {
   max-width: 100%;
 }
 
-.dokan-dashboard header.dokan-dashboard-header h1,
-.dokan-dashboard .edit-account-wrap h1 {
+.dokan-dashboard-wrap header.dokan-dashboard-header h1,
+.dokan-dashboard-wrap .edit-account-wrap h1 {
   font-size: 2rem;
 }
 
-.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li {
+.dokan-dashboard-wrap .dokan-dash-sidebar ul.dokan-dashboard-menu li {
   padding-bottom: 0;
 }
 
-.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.active:after {
+.dokan-dashboard-wrap .dokan-dash-sidebar ul.dokan-dashboard-menu li.active:after {
   left: auto;
   right: 0;
 }
 
-.dokan-dashboard .dokan-dashboard-content {
+.dokan-dashboard-wrap .dokan-dashboard-content {
   padding: 25px 25px 15px 25px;
 }
 
-.dokan-dashboard .chart-placeholder .legend > div {
+.dokan-dashboard-wrap .chart-placeholder .legend > div {
   display: none;
 }
 
-.dokan-dashboard .chart-placeholder .legend > table {
+.dokan-dashboard-wrap .chart-placeholder .legend > table {
   max-width: 170px;
   background-color: rgba(255, 255, 255, 0.85);
 }
 
-.dokan-dashboard .big-counter {
+.dokan-dashboard-wrap .big-counter {
   padding: 10px !important;
 }
 
-.dokan-dashboard .big-counter > ul {
+.dokan-dashboard-wrap .big-counter > ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.dokan-dashboard .big-counter > ul > li {
+.dokan-dashboard-wrap .big-counter > ul > li {
   padding: 30px 0;
   background-color: #f7f7f7;
   border: 1px solid #e6e6e6;
 }
 
-.dokan-dashboard .big-counter > ul > li .count {
+.dokan-dashboard-wrap .big-counter > ul > li .count {
   border: none !important;
 }
 
-.dokan-dashboard .edit-slug {
+.dokan-dashboard-wrap .edit-slug {
   padding: 1px 5px;
   border-radius: 4px;
   margin-left: 10px;
   font-size: 10px;
 }
 
-.dokan-dashboard .add-product-images {
+.dokan-dashboard-wrap .add-product-images {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,17 +181,17 @@ button {
           justify-content: center;
 }
 
-.dokan-dashboard .dokan-new-product-featured-img .instruction-inside {
+.dokan-dashboard-wrap .dokan-new-product-featured-img .instruction-inside {
   padding: 100px 0;
 }
 
-.dokan-dashboard input[name="dokan_update_product"] {
+.dokan-dashboard-wrap input[name="dokan_update_product"] {
   padding: 10px 20px !important;
   font-size: 1rem;
   letter-spacing: 0.5px;
 }
 
-.dokan-dashboard .mfp-close {
+.dokan-dashboard-wrap .mfp-close {
   padding: 0;
   width: 30px;
   height: 30px;
@@ -204,33 +207,33 @@ button {
   font-size: 1.7rem;
 }
 
-.dokan-dashboard .mfp-close:hover {
+.dokan-dashboard-wrap .mfp-close:hover {
   color: #f5f5f5;
 }
 
-.dokan-dashboard .dokan-orders-area > a {
+.dokan-dashboard-wrap .dokan-orders-area > a {
   margin-bottom: 15px;
 }
 
-.dokan-dashboard .dokan-table {
+.dokan-dashboard-wrap .dokan-table {
   text-align: left;
 }
 
-.dokan-dashboard .dokan-table th.item {
+.dokan-dashboard-wrap .dokan-table th.item {
   width: 40%;
 }
 
-.dokan-dashboard .dokan-table th.quantity {
+.dokan-dashboard-wrap .dokan-table th.quantity {
   display: table-cell;
   width: 20%;
   border: none;
 }
 
-.dokan-dashboard .dokan-table th.line_cost {
+.dokan-dashboard-wrap .dokan-table th.line_cost {
   width: 40%;
 }
 
-.dokan-dashboard .media-modal .media-modal-close {
+.dokan-dashboard-wrap .media-modal .media-modal-close {
   top: 10px;
   right: 10px;
   width: 30px;
@@ -238,43 +241,43 @@ button {
   padding: 5px !important;
 }
 
-.dokan-dashboard .media-modal .media-modal-close:hover {
+.dokan-dashboard-wrap .media-modal .media-modal-close:hover {
   color: #f5f5f5;
 }
 
-.dokan-dashboard .media-modal .delete-attachment,
-.dokan-dashboard .media-modal .trash-attachment,
-.dokan-dashboard .media-modal .untrash-attachment {
+.dokan-dashboard-wrap .media-modal .delete-attachment,
+.dokan-dashboard-wrap .media-modal .trash-attachment,
+.dokan-dashboard-wrap .media-modal .untrash-attachment {
   letter-spacing: 0.5px;
   font-size: 10px;
   padding: 0 !important;
 }
 
-.dokan-dashboard .media-modal .copy-attachment-url,
-.dokan-dashboard .media-modal .media-button-select,
-.dokan-dashboard .media-modal .button-hero {
+.dokan-dashboard-wrap .media-modal .copy-attachment-url,
+.dokan-dashboard-wrap .media-modal .media-button-select,
+.dokan-dashboard-wrap .media-modal .button-hero {
   letter-spacing: 0.5px;
 }
 
-.dokan-dashboard .media-modal .button-hero {
+.dokan-dashboard-wrap .media-modal .button-hero {
   padding: 10px 20px !important;
   line-height: 1;
 }
 
-.dokan-dashboard .media-modal .media-frame-title h1 {
+.dokan-dashboard-wrap .media-modal .media-frame-title h1 {
   font-size: 1.4rem;
 }
 
-.dokan-dashboard .media-modal .media-frame-router {
+.dokan-dashboard-wrap .media-modal .media-frame-router {
   top: 59px;
 }
 
-.dokan-dashboard .media-modal .media-router .media-menu-item {
+.dokan-dashboard-wrap .media-modal .media-router .media-menu-item {
   color: #212121 !important;
   letter-spacing: 0.5px;
 }
 
-.dokan-dashboard .media-modal .attachment-filters {
+.dokan-dashboard-wrap .media-modal .attachment-filters {
   min-width: 130px;
 }
 
@@ -337,6 +340,15 @@ button {
   margin-top: 15px;
 }
 
+.dokan-store .dokan-store-products-filter-area .search-store-products {
+  padding: 0px 20px;
+  height: 51px;
+}
+
+.dokan-store .dokan-store-products-filter-area .orderby-search {
+  width: auto;
+}
+
 .dokan-store .dokan-store-products-filter-search {
   width: calc( 100% - 79px);
 }
@@ -351,9 +363,17 @@ button {
   }
 }
 
+.dokan-store ul.products .product a:empty {
+  display: none;
+}
+
 /**
  * Store Listing
  */
+.is-dokan-store-listing .dokan-btn-round[class] {
+  padding: 0;
+}
+
 .is-dokan-store-listing.botiga-page-builder-mode .entry-content > * {
   max-width: 100%;
 }
@@ -399,6 +419,14 @@ button {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+.is-dokan-store-listing #dokan-seller-listing-wrap.list-view .dokan-single-seller .store-wrapper .store-header .store-banner {
+  min-height: 180px !important;
+}
+
+.is-dokan-store-listing #dokan-seller-listing-wrap.list-view .store-data {
+  margin-top: 7%;
 }
 
 .is-dokan-store-listing #dokan-seller-listing-wrap.list-view .store-data h2 {

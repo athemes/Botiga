@@ -424,6 +424,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	letter-spacing: 0;
+	color: #FFA441; // woo blocks contains 'color: inherit' in the span::before, so we need to add the color here for this purpose
 
 	&::before {
 		content: "\53\53\53\53\53";
