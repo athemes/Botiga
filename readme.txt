@@ -1,9 +1,10 @@
 === Botiga ===
 
 Contributors: athemes
-Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns
+Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
+Version: 2.0.0
 Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: 1.0.0
@@ -34,7 +35,7 @@ Added - Elementor version from free demo/starter.
 Added - Single product ajax add to cart functionality to single product pages.
 Added - 'Canvas' page template (page with no header and footer).
 Changed - Customizer UI revamped.
-Changed - Some features are now modules. 
+Changed - Some features are now modules.
 Fixed - Dashboard CSS issue.
 Fixed - RTL issues in the theme dashboard and customizer.
 Fixed - Botiga Page Options Sidebar: Admin metabox page options images are not rendering when child theme is active.
