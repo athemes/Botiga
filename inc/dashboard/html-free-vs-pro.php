@@ -68,6 +68,14 @@ if (!defined('ABSPATH')) {
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<strong><a href="https://docs.athemes.com/article/pro-custom-fonts/" target="_blank">Custom Fonts<i class="dashicons dashicons-external"></i></a></strong>
+								<i class="botiga-dashboard-freevspro-table__desc">The Custom Fonts module lets you load your custom fonts. </i>
+							</div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
 								<strong><a href="https://docs.athemes.com/article/pro-custom-sidebars/" target="_blank">Custom Sidebars<i class="dashicons dashicons-external"></i></a></strong>
 								<i class="botiga-dashboard-freevspro-table__desc">Create unlimited custom sidebars.</i>
 							</div>
@@ -86,6 +94,14 @@ if (!defined('ABSPATH')) {
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
 								<strong><a href="https://docs.athemes.com/article/botiga-pro-quick-links/" target="_blank">Quick Links Module<i class="dashicons dashicons-external"></i></a></strong>
 								<i class="botiga-dashboard-freevspro-table__desc">The quick links module lets you create a floating contact bar.</i>
+							</div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<strong><a href="https://docs.athemes.com/article/pro-templates-builder-overview/" target="_blank">Templates Builder<i class="dashicons dashicons-external"></i></a></strong>
+								<i class="botiga-dashboard-freevspro-table__desc">The templates builder module lets you create custom templates for shop archive, single products, 404 page, mega menu dropdown content, modal popup content and hooks content.</i>
 							</div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
