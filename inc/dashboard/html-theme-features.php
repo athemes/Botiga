@@ -58,10 +58,17 @@ if (!defined('ABSPATH')) {
 							<?php endif; ?>
 						</div>
 
-						<?php if (!empty($feature['info']) && ($feature['type'] === 'free' || $this->settings['has_pro'])) : ?>
-							<div class="botiga-dashboard-box-info">
+						<div class="botiga-dashboard-box-info">
+							<?php if( !empty( $feature[ 'docs_link' ] ) ) : ?>
+								<div class="botiga-dashboard-docs-link-wrapper">
+									<a href="<?php echo esc_url( $feature[ 'docs_link' ] ); ?>" target="_blank" class="botiga-dashboard-docs-link button-info" title="<?php echo esc_attr__( 'Documentation', 'botiga' ); ?>">
+										<i class="dashicons dashicons-editor-help"></i>
+									</a>
+								</div>
+							<?php endif; ?>
+							<?php if (!empty($feature['info']) && ($feature['type'] === 'free' || $this->settings['has_pro'])) : ?>
 								<div class="botiga-dashboard-modal">
-									<a href="#" class="button-info botiga-dashboard-modal-button"><i class="dashicons dashicons-info"></i></a>
+									<a href="#" class="button-info botiga-dashboard-modal-button"><i class="dashicons dashicons-info" title="<?php echo esc_attr__( 'Lean more', 'botiga' ); ?>"></i></a>
 									<div class="botiga-dashboard-modal-overlay">
 										<div class="botiga-dashboard-modal-content">
 											<div class="botiga-dashboard-modal-close"><i class="dashicons dashicons-no-alt"></i></div>
@@ -69,8 +76,8 @@ if (!defined('ABSPATH')) {
 										</div>
 									</div>
 								</div>
-							</div>
-						<?php endif; ?>
+							<?php endif; ?>
+						</div>
 
 					</div>
 
