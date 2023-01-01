@@ -60,11 +60,11 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 			<?php $custom_fonts = json_decode( get_theme_mod( 'custom_fonts', '[]' ), true ); ?>
 
 			<select class="botiga-typography-custom-select" <?php $this->link(); ?>>
-				<option name=""><?php esc_html_e( 'System default', 'botiga' ); ?></option>
+				<option value=""><?php esc_html_e( 'System default', 'botiga' ); ?></option>
 				<?php if ( ! empty( $custom_fonts ) ) : ?>
 					<?php foreach ( $custom_fonts as $font ) : ?>
 						<?php $selected = $this->value() === $font['name'] ? true : false; ?>
-						<option name="<?php echo esc_attr( $font['name'] ); ?>" <?php selected( $selected ); ?>><?php echo esc_html( $font['name'] ); ?></option>
+						<option value="<?php echo esc_attr( $font['name'] ); ?>" <?php selected( $selected ); ?>><?php echo esc_html( $font['name'] ); ?></option>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</select>
