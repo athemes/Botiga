@@ -1008,7 +1008,12 @@
     });
   };
 
-  embedCustomFonts(window.parent.window.wp.customize.control('custom_fonts').setting.get());
+  var customFontsControl = window.parent.window.wp.customize.control('custom_fonts');
+
+  if (customFontsControl) {
+    embedCustomFonts(customFontsControl.setting.get());
+  }
+
   wp.customize('custom_fonts', function (value) {
     value.bind(function (to) {
       embedCustomFonts(to);

@@ -141,7 +141,7 @@ function botiga_dashboard_settings()
 		'path'   => 'athemes-blocks/athemes-blocks.php',
 		'icon'   => 'https://plugins.svn.wordpress.org/athemes-blocks/assets/icon-256x256.png',
 		'banner' => 'https://plugins.svn.wordpress.org/athemes-blocks/assets/banner-772x250.png',
-		'title'  => esc_html__('aThemes Block', 'botiga'),
+		'title'  => esc_html__('aThemes Blocks', 'botiga'),
 		'desc'   => esc_html__('Extend the Gutenberg Block Editor with additional functionality. You can extend the Gutenberg block editor with additional functionality.', 'botiga'),
 	);
 
@@ -161,15 +161,6 @@ function botiga_dashboard_settings()
 		'banner' => 'https://plugins.svn.wordpress.org/leadin/assets/banner-772x250.png',
 		'title'  => esc_html__('HubSpot', 'botiga'),
 		'desc'   => esc_html__('HubSpot is a platform with all the tools and integrations you need for marketing, sales, and customer service.', 'botiga'),
-	);
-
-	$settings['plugins'][] = array(
-		'slug'   => 'tutor',
-		'path'   => 'tutor/tutor.php',
-		'icon'   => 'https://plugins.svn.wordpress.org/tutor/assets/icon-256X256.gif',
-		'banner' => 'https://plugins.svn.wordpress.org/tutor/assets/banner-772x250.jpg',
-		'title'  => esc_html__('Tutor LMS', 'botiga'),
-		'desc'   => esc_html__('Tutor LMS is a complete, feature-packed, and robust WordPress LMS plugin to easily create & sell courses online.', 'botiga'),
 	);
 
 	//
@@ -306,14 +297,14 @@ function botiga_dashboard_settings()
 		'module' => 'local-google-fonts',
 		'type'   => 'free',
 		'title'  => esc_html__('Local Google Fonts', 'botiga'),
-		'desc'   => esc_html__('Load the google fonts locally.', 'botiga'),
+		'desc'   => esc_html__('Load the Google fonts locally.', 'botiga'),
 	);
 
 	$settings['features'][] = array(
 		'module'     => 'adobe-typekit',
 		'type'       => 'free',
-		'title'      => esc_html__('Adobe Typekit', 'botiga'),
-		'desc'       => esc_html__('Set and use adobe typekit fonts.', 'botiga'),
+		'title'      => esc_html__('Adobe Fonts', 'botiga'),
+		'desc'       => esc_html__('Set and use Adobe Fonts.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_typography_general', admin_url('customize.php')),
 		'docs_link'  => 'https://docs.athemes.com/article/how-to-use-adobe-fonts/'
@@ -364,7 +355,7 @@ function botiga_dashboard_settings()
 	$settings['features'][] = array(
 		'type'       => 'pro',
 		'title'      => esc_html__('Distraction Free Checkout', 'botiga'),
-		'desc'       => esc_html__('Increase your store conversion rate with the distraction freee checkout.', 'botiga'),
+		'desc'       => esc_html__('Increase your store conversion rate with the distraction free checkout.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'woocommerce_checkout', admin_url('customize.php')),
 		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'

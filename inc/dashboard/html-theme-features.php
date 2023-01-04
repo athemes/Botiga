@@ -68,7 +68,7 @@ if (!defined('ABSPATH')) {
 							<?php endif; ?>
 							<?php if (!empty($feature['info']) && ($feature['type'] === 'free' || $this->settings['has_pro'])) : ?>
 								<div class="botiga-dashboard-modal">
-									<a href="#" class="button-info botiga-dashboard-modal-button"><i class="dashicons dashicons-info" title="<?php echo esc_attr__( 'Lean more', 'botiga' ); ?>"></i></a>
+									<a href="#" class="button-info botiga-dashboard-modal-button"><i class="dashicons dashicons-info" title="<?php echo esc_attr__( 'Learn more', 'botiga' ); ?>"></i></a>
 									<div class="botiga-dashboard-modal-overlay">
 										<div class="botiga-dashboard-modal-content">
 											<div class="botiga-dashboard-modal-close"><i class="dashicons dashicons-no-alt"></i></div>
