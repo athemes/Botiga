@@ -86,8 +86,9 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'general_col
 $wp_customize->add_setting(
 	'background_color',
 	array(
-		'default'   => '#ffffff',
-		'transport' => 'postMessage'
+		'default'   	    => '#ffffff',
+		'sanitize_callback' => 'esc_attr',
+		'transport' 		=> 'postMessage'
 	)
 );
 $wp_customize->add_control(

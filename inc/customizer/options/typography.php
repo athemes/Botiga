@@ -66,7 +66,12 @@ $wp_customize->add_section(
 );
 
 // Header Menu Typography Preview
-$wp_customize->add_setting( 'botiga_header_menu_typography_preview' );
+$wp_customize->add_setting( 
+	'botiga_header_menu_typography_preview',
+	array(
+		'sanitize_callback' => 'wp_kses_post'
+	)
+);
 $wp_customize->add_control( new Botiga_Typography_Preview_Control( $wp_customize, 'botiga_header_menu_typography_preview',
 	array(
 		'section' => 'botiga_section_typography_header_menu',
@@ -229,13 +234,13 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'header
 
 $wp_customize->add_setting( 'header_menu_text_transform', array(
 	'default'           => get_theme_mod( 'body_text_transform', 'none' ),
-  'transport'         => 'postMessage',
+  	'transport'         => 'postMessage',
 	'sanitize_callback' => 'botiga_sanitize_text',
 ) );
 
 $wp_customize->add_setting( 'header_menu_text_decoration', array(
 	'default'           => get_theme_mod( 'body_text_decoration', 'none' ),
-  'transport'         => 'postMessage',
+  	'transport'         => 'postMessage',
 	'sanitize_callback' => 'botiga_sanitize_text',
 ) );
 
@@ -261,7 +266,12 @@ $wp_customize->add_section(
 );
 
 // Heading Typography Preview
-$wp_customize->add_setting( 'botiga_headings_typography_preview' );
+$wp_customize->add_setting( 
+	'botiga_headings_typography_preview',
+	array(
+		'sanitize_callback' => 'wp_kses_post'
+	)
+);
 $wp_customize->add_control( new Botiga_Typography_Preview_Control( $wp_customize, 'botiga_headings_typography_preview',
 	array(
 		'section' => 'botiga_section_typography_headings',
@@ -634,7 +644,12 @@ $wp_customize->add_section(
 );
 
 // Body Typography Preview
-$wp_customize->add_setting( 'botiga_body_typography_preview' );
+$wp_customize->add_setting( 
+	'botiga_body_typography_preview',
+	array(
+		'sanitize_callback' => 'wp_kses_post'
+	)
+);
 $wp_customize->add_control( new Botiga_Typography_Preview_Control( $wp_customize, 'botiga_body_typography_preview',
 	array(
 		'section' => 'botiga_section_typography_body',

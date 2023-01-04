@@ -127,7 +127,7 @@ if (!defined('ABSPATH')) {
           <div class="botiga-dashboard-box botiga-dashboard-box-tutorial">
             <div class="botiga-dashboard-box-title"><?php esc_html_e( 'Tutorial', 'botiga' ); ?></div>
             <div class="botiga-dashboard-box-content">
-              <?php esc_html_e( 'It makes us happy to hear from our users. We would appreciate a review.', 'botiga' ); ?>
+              <?php esc_html_e( 'Explore our library of video lessons covering everything from getting started to customizing your site.', 'botiga' ); ?>
             </div>
             <div class="botiga-dashboard-box-link">
               <a href="<?php echo esc_url( $this->settings['tutorial_link'] ); ?>" target="_blank" class="button-simple"><span><?php esc_html_e( 'View Tutorials', 'botiga' ); ?></span><i class="dashicons dashicons-external"></i></a>

@@ -19,7 +19,7 @@ if( $search_layout === 'hidden' ) {
 if( $search_layout === 'visible' ) {
     $search_html .= '<div class="header-search-form header-search-form-always-visible">';
         if ( class_exists( 'DGWT_WC_Ajax_Search' ) ) {
-            $search_html .= do_shortcode('[wcas-search-form]');
+            $search_html .= do_shortcode( '[wcas-search-form]' );
         } else {
             $search_html .= get_search_form( false );
         }
@@ -28,5 +28,5 @@ if( $search_layout === 'visible' ) {
 
 echo '<div class="bhfb-builder-item bhfb-component-search" data-component-id="search">'; 
     $this->customizer_edit_button();    
-    echo $search_html;
+    echo $search_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 echo '</div>';

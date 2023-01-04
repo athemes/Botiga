@@ -94,7 +94,7 @@ function botiga_woocommerce_output_related_products_slider( $args = array() ) {
 		$heading_tag  = tag_escape( apply_filters( 'botiga_woocommerce_product_related_products_heading_tag', 'h2' ) );
 
 		if ( $heading_text ) {
-			echo '<'. $heading_tag .'>'. esc_html( $heading_text ) .'</'. $heading_tag .'>';
+			echo '<'. $heading_tag .'>'. esc_html( $heading_text ) .'</'. $heading_tag .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 		}
 
 		$wrapper_atts = array();

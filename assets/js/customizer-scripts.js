@@ -1273,7 +1273,6 @@ jQuery(document).ready(function ($) {
   $(document).on('click', '.botiga-custom-font-upload', function (e) {
     e.preventDefault();
     var $button = $(this);
-    console.log($button.data('type'));
     var wpMediaFrame = window.wp.media({
       library: {
         type: $button.data('type') || 'image'

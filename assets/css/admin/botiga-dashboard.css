@@ -664,6 +664,20 @@
           box-shadow: none;
 }
 
+.botiga-dashboard-box-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.botiga-dashboard-box-info > div + div {
+  margin-left: 5px;
+}
+
+.botiga-dashboard-box-info .botiga-dashboard-docs-link i {
+  font-size: 21px;
+}
+
 .botiga-dashboard-box-documentation {
   padding-bottom: 75px;
   background-image: url(../../img/dashboard/documentation.svg);

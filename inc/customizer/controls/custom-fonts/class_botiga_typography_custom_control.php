@@ -38,7 +38,7 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 	 * Embed the custom fonts
 	 */
 	public function print_styles() {
-		echo '<style type="text/css">'. wp_strip_all_tags( botiga_get_custom_fonts() ) .'</style>';
+		echo '<style type="text/css">'. wp_strip_all_tags( botiga_get_custom_fonts() ) .'</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

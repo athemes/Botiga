@@ -231,11 +231,11 @@ add_action( 'init', 'botiga_migrate_1_2_1_options' );
 /**
  * Migrate 'size-chart, linked variations, product swatches and video gallery' modules.
  * 
- * @since 1.2.3
+ * @since 2.0.0
  */
-function botiga_migrate_1_2_3_modules() {
+function botiga_migrate_2_0_0_modules() {
 
-    $flag = get_theme_mod( 'botiga_migrate_1_2_3_modules_flag', false );
+    $flag = get_theme_mod( 'botiga_migrate_2_0_0_modules_flag', false );
 
     if ( ! empty( $flag ) ) {
         return;
@@ -315,7 +315,7 @@ function botiga_migrate_1_2_3_modules() {
     update_option( 'botiga-modules', $modules );
 
     // Set flag
-    set_theme_mod( 'botiga_migrate_1_2_3_modules_flag', true );
+    set_theme_mod( 'botiga_migrate_2_0_0_modules_flag', true );
 
 }
-add_action( 'init', 'botiga_migrate_1_2_3_modules' );
+add_action( 'init', 'botiga_migrate_2_0_0_modules' );
