@@ -17,7 +17,7 @@ $theme = wp_get_theme(); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixA
 
 <div class="botiga-dashboard-content">
 
-	<?php if ('inactive' === $this->get_plugin_status($this->settings['starter_plugin_path'])) : ?>
+  <?php if ( in_array( $this->get_plugin_status( $this->settings['starter_plugin_path'] ), array( 'inactive', 'not_installed' ) ) ) : ?>
 
 		<div class="botiga-dashboard-row">
 
