@@ -1925,6 +1925,7 @@ div.customize-section-description {
   vertical-align: middle;
   margin-right: 4px;
   margin-left: -4px;
+  background-image: url(../img/icons/default.svg);
 }
 
 #accordion-panel-botiga_panel_header .accordion-section-title:before {
