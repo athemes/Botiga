@@ -528,8 +528,7 @@ function botiga_dashboard_settings()
 
 add_filter('botiga_dashboard_settings', 'botiga_dashboard_settings');
 
-function botiga_demos_settings($settings)
-{
+function botiga_demos_settings($settings) {
 
 	// Categories.
 	$settings['categories'] = array(
@@ -552,4 +551,4 @@ function botiga_demos_settings($settings)
 
 	return $settings;
 }
-add_filter('atss_register_demos_settings', 'botiga_demos_settings');
+add_filter( 'atss_register_demos_settings', 'botiga_demos_settings' );

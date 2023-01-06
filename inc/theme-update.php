@@ -234,108 +234,93 @@ add_action( 'init', 'botiga_migrate_1_2_1_options' );
  * @since 2.0.0
  */
 function botiga_migrate_2_0_0_modules( $old_theme_name ) {
-
     $flag = get_theme_mod( 'botiga_migrate_2_0_0_modules_flag', false );
 
-    $old_theme_name  = strtolower( $old_theme_name );
-    $is_theme_update = strpos( $old_theme_name, 'botiga' ) === TRUE;
-
-    if ( ! $flag && $is_theme_update) {
-
-        $modules = get_option( 'botiga-modules', array() );
-
-        // Size charts module.
-        $size_chart = get_theme_mod( 'single_size_chart', 0 );
-
-        if ( ! empty( $size_chart ) ) {
-            $modules = array_merge( $modules, array( 'size-chart' => true ) );
-        }
-
-        // Linked variations module.
-        $linked_variations = get_theme_mod( 'single_product_linked_variations', 0 );
-
-        if ( ! empty( $linked_variations ) ) {
-            $modules = array_merge( $modules, array( 'linked-variations' => true ) );
-        }
-
-        // Product swatches module.
-        $product_swatches = get_theme_mod( 'product_swatch', 1 );
-
-        if ( ! empty( $product_swatches ) && ! isset( $modules['product-swatches'] ) ) {
-            $modules = array_merge( $modules, array( 'product-swatches' => true ) );
-        }
-
-        // Modal popup module.
-        $modal_popup = get_theme_mod( 'modal_popup_enable', 0 );
-
-        if ( ! empty( $modal_popup ) ) {
-            $modules = array_merge( $modules, array( 'modal-popup' => true ) );
-        }
-
-        // Local google fonts module.
-        $local_google_fonts = get_theme_mod( 'perf_google_fonts_local', 1 );
-
-        if ( ! empty( $local_google_fonts ) && ! isset( $modules['local-google-fonts'] ) ) {
-            $modules = array_merge( $modules, array( 'local-google-fonts' => true ) );
-        }
-
-        // Sticky add to cart module.
-        $sticky_add_to_cart = get_theme_mod( 'single_sticky_add_to_cart', 0 );
-
-        if ( ! empty( $sticky_add_to_cart ) ) {
-            $modules = array_merge( $modules, array( 'sticky-add-to-cart' => true ) );
-        }
-
-        // Advanced reviews module.
-        $advanced_reviews = get_theme_mod( 'single_product_reviews_advanced_enable', 0 );
-
-        if ( ! empty( $advanced_reviews ) ) {
-            $modules = array_merge( $modules, array( 'advanced-reviews' => true ) );
-        }
-
-        // Login Popup
-        $login_popup = get_theme_mod( 'login_register_popup', 0 );
-
-        if ( ! empty( $login_popup ) ) {
-            $modules = array_merge( $modules, array( 'login-popup' => true ) );
-        }
-
-        // Video gallery module
-        if( ! isset( $modules[ 'video-gallery' ] ) ) {
-            $modules = array_merge( $modules, array( 'video-gallery' => true ) );
-        }
-
-        // Wishlist module
-        if( ! isset( $modules[ 'wishlist' ] ) ) {
-            $modules = array_merge( $modules, array( 'wishlist' => true ) );
-        }
-
-        // Table of contents module
-        if( ! isset( $modules[ 'table-of-contents' ] ) ) {
-            $modules = array_merge( $modules, array( 'table-of-contents' => true ) );
-        }
-
-        // Custom sidebars module
-        if( ! isset( $modules[ 'custom-sidebars' ] ) ) {
-            $modules = array_merge( $modules, array( 'custom-sidebars' => true ) );
-        }
-
-        // Variations gallery module
-        if( ! isset( $modules[ 'variations-gallery' ] ) ) {
-            $modules = array_merge( $modules, array( 'variations-gallery' => true ) );
-        }
-
-        // Adobe typekit module
-        if( ! isset( $modules[ 'adobe-typekit' ] ) ) {
-            $modules = array_merge( $modules, array( 'adobe-typekit' => true ) );
-        }
-
-        update_option( 'botiga-modules', $modules );
-
-        //Set flag
-        set_theme_mod( 'botiga_migrate_2_0_0_modules_flag', true );
-
+    if ( ! empty( $flag ) ) {
+        return;
     }
 
+    $modules = get_option( 'botiga-modules', array() );
+
+    // Size charts module.
+    $size_chart = get_theme_mod( 'single_size_chart', 0 );
+    if ( ! empty( $size_chart ) ) {
+        $modules = array_merge( $modules, array( 'size-chart' => true ) );
+    }
+
+    // Linked variations module.
+    $linked_variations = get_theme_mod( 'single_product_linked_variations', 0 );
+    if ( ! empty( $linked_variations ) ) {
+        $modules = array_merge( $modules, array( 'linked-variations' => true ) );
+    }
+
+    // Product swatches module.
+    $product_swatches = get_theme_mod( 'product_swatch', 1 );
+    if ( ! empty( $product_swatches ) ) {
+        $modules = array_merge( $modules, array( 'product-swatches' => true ) );
+    }
+
+    // Modal popup module.
+    $modal_popup = get_theme_mod( 'modal_popup_enable', 0 );
+    if ( ! empty( $modal_popup ) ) {
+        $modules = array_merge( $modules, array( 'modal-popup' => true ) );
+    }
+
+    // Local google fonts module.
+    $local_google_fonts = get_theme_mod( 'perf_google_fonts_local', 1 );
+    if ( ! empty( $local_google_fonts ) && ! isset( $modules['local-google-fonts'] ) ) {
+        $modules = array_merge( $modules, array( 'local-google-fonts' => true ) );
+    }
+
+    // Sticky add to cart module.
+    $sticky_add_to_cart = get_theme_mod( 'single_sticky_add_to_cart', 0 );
+    if ( ! empty( $sticky_add_to_cart ) ) {
+        $modules = array_merge( $modules, array( 'sticky-add-to-cart' => true ) );
+    }
+
+    // Advanced reviews module.
+    $advanced_reviews = get_theme_mod( 'single_product_reviews_advanced_enable', 0 );
+    if ( ! empty( $advanced_reviews ) ) {
+        $modules = array_merge( $modules, array( 'advanced-reviews' => true ) );
+    }
+
+    // Login Popup
+    $login_popup = get_theme_mod( 'login_register_popup', 0 );
+    if ( ! empty( $login_popup ) ) {
+        $modules = array_merge( $modules, array( 'login-popup' => true ) );
+    }
+
+    // Video gallery module
+    if( ! isset( $modules[ 'video-gallery' ] ) ) {
+        $modules = array_merge( $modules, array( 'video-gallery' => true ) );
+    }
+
+    // Wishlist module
+    $wishlist_enabled = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) !== 'layout1' ? true : false;
+    if( $wishlist_enabled ) {
+        $modules = array_merge( $modules, array( 'wishlist' => true ) );
+    }
+
+    // Table of contents module
+    if( ! isset( $modules[ 'table-of-contents' ] ) ) {
+        $modules = array_merge( $modules, array( 'table-of-contents' => true ) );
+    }
+
+    // Custom sidebars module
+    $custom_sidebars_enabled = get_theme_mod( 'custom_sidebars', '[]' ) !== '[]' ? true : false;
+    if( $custom_sidebars_enabled ) {
+        $modules = array_merge( $modules, array( 'custom-sidebars' => true ) );
+    }
+
+    // Variations gallery module
+    if( ! isset( $modules[ 'variations-gallery' ] ) ) {
+        $modules = array_merge( $modules, array( 'variations-gallery' => true ) );
+    }
+
+    update_option( 'botiga-modules', $modules );
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_2_0_0_modules_flag', true );
+
 }
-add_action( 'after_switch_theme', 'botiga_migrate_2_0_0_modules' );
+add_action( 'admin_init', 'botiga_migrate_2_0_0_modules' );

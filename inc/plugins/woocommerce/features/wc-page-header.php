@@ -96,7 +96,7 @@ function botiga_shop_page_header_category_links() {
 				<?php  
 				foreach( $categories as $cat_id => $cat_name ) {
 					$cat_link = get_term_link( $cat_id );
-					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) .'</a>';
+					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . esc_html( apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) ) .'</a>';
 				} ?>
 			</div>
 		<?php endif; ?>
@@ -138,7 +138,7 @@ function botiga_shop_page_header_sub_category_links() {
 				<?php 
 				foreach( $categories as $cat_id => $cat_name ) {
 					$cat_link = get_term_link( $cat_id );
-					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) .'</a>';
+					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . esc_html( apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) ) .'</a>';
 				} ?>
 			</div>
 		<?php endif; ?>

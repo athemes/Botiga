@@ -82,7 +82,9 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		 */
 		public function modules_default_status() {
 			$modules_default_status = apply_filters( 'botiga_modules_default_status', array(
-				'local-google-fonts' => true
+				'hf-builder'         => true,
+				'local-google-fonts' => true,
+				'adobe-typekit'      => true
 			) );
 
 			$all_modules = get_option( 'botiga-modules' );
