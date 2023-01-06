@@ -14,6 +14,7 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'admin_init', array( $this, 'activate_modules' ) );
+			add_action( 'admin_init', array( $this, 'modules_default_status' ) );
 		}
 
 		/**
@@ -41,7 +42,7 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 				return;
 			}
 
-      $all_modules = get_option( 'botiga-modules' );
+     		$all_modules = get_option( 'botiga-modules' );
 			$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
 
 			if ( isset( $_GET['activate-module'] ) ) {
@@ -68,6 +69,30 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 			$custom_css->update_custom_css_file();
 
 			wp_redirect( add_query_arg( array( 'page' => 'botiga-dashboard', $section ), admin_url( 'themes.php' ) ) );
+
+		}
+
+		/**
+		 * Enable/disable default modules
+		 * 
+		 * Always enable/disable these modules for new users
+		 * This will happen only when the module slug is not present in the 'botiga-modules' option
+		 * If the condition matches, the theme will force the respective module to be enabled
+		 * 
+		 */
+		public function modules_default_status() {
+			$modules_default_status = apply_filters( 'botiga_modules_default_status', array(
+				'local-google-fonts' => true
+			) );
+
+			$all_modules = get_option( 'botiga-modules' );
+			if( $all_modules ) {
+				foreach( $modules_default_status as $module => $status ) {
+					if( ! isset( $all_modules[ $module ] ) ) {
+						update_option( 'botiga-modules', array_merge( $all_modules, array( $module => $status ) ) );
+					}
+				}
+			}
 
 		}
 	}	
