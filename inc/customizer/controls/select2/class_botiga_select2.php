@@ -20,6 +20,8 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 	public $choices = '';
 	public $select2_options = '';
 	public $multiple = '';
+	public $posttype = '';
+	public $posttype_args = array();
 
 	/**
 	 * Constructor
@@ -43,7 +45,24 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 
 		$choices 		 = $this->choices; 
 		$select2_options = $this->select2_options; 
-		$multiple        = $this->multiple; ?>
+		$multiple        = $this->multiple; 
+		$posttype        = $this->posttype; 
+		
+		if( $posttype ) {
+			$defaults = array( 
+				'post_type' => 'page',
+				'posts_per_page' => -1 
+			);
+			$args = wp_parse_args( $this->posttype_args, $defaults );
+
+			$choices = array();
+			$posts = get_posts( $args );
+			foreach( $posts as $post ) {
+				$choices[$post->ID] = $post->post_title;
+			}
+		}
+
+		?>
 
 		<div class="customize-control-title"><?php echo esc_html( $this->label ); ?></div>
 

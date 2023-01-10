@@ -90,13 +90,12 @@ function botiga_woocommerce_output_related_products_slider( $args = array() ) {
 	<section class="related products">
 
 		<?php
-		$heading = apply_filters( 'botiga_woocommerce_product_related_products_heading', __( 'Related products', 'botiga' ) );
+		$heading_text = apply_filters( 'botiga_woocommerce_product_related_products_heading', __( 'Related products', 'botiga' ) );
+		$heading_tag  = tag_escape( apply_filters( 'botiga_woocommerce_product_related_products_heading_tag', 'h2' ) );
 
-		if ( $heading ) : ?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
-		
-		<?php
+		if ( $heading_text ) {
+			echo '<'. $heading_tag .'>'. esc_html( $heading_text ) .'</'. $heading_tag .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
+		}
 
 		$wrapper_atts = array();
 		$wrapper_classes = array( 'botiga-related-products' );

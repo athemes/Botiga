@@ -281,7 +281,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				$output .= '</nav>';
 			} else {
 				$login_register_link_text = get_theme_mod( 'login_register_link_text', esc_html__( 'Login', 'botiga' ) );
-				$login_register_popup     = get_theme_mod( 'login_register_popup', 0 );
+				$login_register_popup     = Botiga_Modules::is_module_active( 'login-popup' );
 				
 				$link_classes = array( 'botiga-login-register-link' );
 				

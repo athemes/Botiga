@@ -241,7 +241,7 @@
 			text-transform: uppercase;
 			padding-top: 17px;
 			padding-bottom: 17px;
-	
+
 			@media(max-width: 991px) {
 				width: 100%;
 			}
@@ -375,7 +375,7 @@
 	}
 
 	&.gallery-single{
-		.woocommerce-product-gallery{
+		.woocommerce-product-gallery {
 			grid-gap: 0;
 		}
 	}
@@ -767,16 +767,6 @@ table.variations {
 			width: 100%;
 		}
 	}
-
-	.reset_variations {
-		position: absolute;
-		bottom: -15px;
-		right: 0;
-		color: #716f6f;
-		text-transform: uppercase;
-		text-decoration: underline;
-		@include font-size(13);
-	}
 }
 
 .woocommerce-variation-price {
@@ -795,8 +785,15 @@ table.variations {
 }
 
 .reset_variations {
-	margin-left: 10px;
-	bottom: -25px !important;
+	display: none;
+	text-align: right;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	color: #716f6f;
+	text-transform: uppercase;
+	text-decoration: underline;
+	@include font-size(13);
 }
 
 .grouped_form.cart {
@@ -806,6 +803,7 @@ table.variations {
 	}
 	.quantity {
 		width: 100% !important;
+		max-width: 100% !important;
 	}
 	.group_table {
 		border: none;
@@ -814,6 +812,7 @@ table.variations {
 		}
 		.woocommerce-grouped-product-list-item__quantity {
 			width: 150px;
+			max-width: 150px;
 			padding-left: 0;
 		}
 		.stock {
@@ -974,6 +973,10 @@ form.cart .quantity.hidden {
 							}
 						}
 					}
+
+					.reset_variations {
+						margin: 0 0px 0 15px;
+					}
 				}
 			}
 		}
@@ -1012,6 +1015,7 @@ form.cart .quantity.hidden {
 			.single_variation_wrap {
 				display: flex;
 				align-items: center;
+				margin-left: 20px;
 				.woocommerce-variation-add-to-cart {
 					flex-wrap: nowrap;
 				}
@@ -1072,10 +1076,6 @@ form.cart .quantity.hidden {
 						.variations {
 							width: auto;
 							line-height: 1 !important;
-							.reset_variations {
-								right: auto;
-								left: 40px;
-							}
 						}
 						.single_variation_wrap {
 							display: flex;
@@ -1452,38 +1452,42 @@ body {
 /**
  * Product Stock
  */
-.botiga-product-stock{
+.botiga-product-stock {
 	color: green;
 	font-size: 14px;
 	font-weight: bold;
 	text-transform: capitalize;
 	margin-top: 15px !important;
+
+	> span {
+		display: block;
+	}
 }
 
-.botiga-product-stock-low{
+.botiga-product-stock-low {
 	color: red;
 }
 
 /**
  * Swiper for Product Thumbnails Carousel (Vertical)
  */
-.botiga-swiper{
+.botiga-swiper {
 	width: 100%;
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
 	padding: 0;
 
-	&.swiper-vertical .swiper-wrapper{
+	&.swiper-vertical .swiper-wrapper {
 		flex-direction: column;
 	}
 
-	&.swiper-backface-hidden .swiper-slide{
+	&.swiper-backface-hidden .swiper-slide {
 		transform: translateZ(0);
 		backface-visibility: hidden;
 	}
 
-	.swiper-wrapper{
+	.swiper-wrapper {
 		position: relative;
 		width: 100%;
 		height: 100%;
@@ -1498,11 +1502,11 @@ body {
 		touch-action: pan-y;
 	}
 
-	.swiper-pointer-events.swiper-vertical{
+	.swiper-pointer-events.swiper-vertical {
 		touch-action: pan-x;
 	}
 
-	.swiper-slide{
+	.swiper-slide {
 		flex-shrink: 0;
 		display: flex;
 		justify-content: center;
@@ -1512,7 +1516,7 @@ body {
 		position: relative;
 		transition-property: transform;
 
-		img{
+		img {
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -1521,7 +1525,7 @@ body {
 	}
 }
 
-.botiga-swiper-button{
+.botiga-swiper-button {
 	cursor: pointer;
 	position: absolute;
 	z-index: 1;
@@ -1538,7 +1542,7 @@ body {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 	transition: all .2s;
 
-	&:before{
+	&:before {
 		content: '';
 		width: 8px;
 		height: 8px;
@@ -1546,56 +1550,56 @@ body {
 		border-left: 2px solid currentColor;
 	}
 
-	&:focus{
+	&:focus {
 		outline: none;
 	}
 
-	&:active{
+	&:active {
 		opacity: 0.3;
 	}
 
-	&.swiper-button-disabled{
+	&.swiper-button-disabled {
 		user-select: none;
 		pointer-events: none;
 		cursor: inherit;
 		opacity: 0;
 	}
 
-	&.swiper-button-lock{
+	&.swiper-button-lock {
 		display: none;
 	}
 }
 
-.botiga-swiper-button-prev{
+.botiga-swiper-button-prev {
 	left: 8px;
 
-	&:before{
+	&:before {
 		transform: translateX(2px) rotate(-45deg);
 	}
 }
 
-.botiga-swiper-button-next{
+.botiga-swiper-button-next {
 	right: 8px;
 
-	&:before{
+	&:before {
 		transform: translateX(-2px) rotate(135deg);
 	}
 }
 
-.swiper-vertical{
+.swiper-vertical {
 	order: -1;
 	flex-shrink: 0;
 	width: 65px;
 	height: 490px;
 
-	.botiga-swiper-button{
+	.botiga-swiper-button {
 		top: auto;
 		right: auto;
 		left: 50%;
 		transform: translateX(-50%);
 	}
 
-	.botiga-swiper-button-prev{
+	.botiga-swiper-button-prev {
 		top: 8px;
 
 		&:before{
@@ -1603,7 +1607,7 @@ body {
 		}
 	}
 
-	.botiga-swiper-button-next{
+	.botiga-swiper-button-next {
 		bottom: 8px;
 
 		&:before{
@@ -1615,7 +1619,7 @@ body {
 /**
  * Flexslider for Product Thumbnails Carousel (Horizontal)
  */
-.botiga-flexslider{
+.botiga-flexslider {
 	position: relative;
 	user-select: none;
 	display: flex;
@@ -1632,7 +1636,7 @@ body {
 	}
 }
 
-.botiga-flex-direction-nav{
+.botiga-flex-direction-nav {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -1671,7 +1675,7 @@ body {
 			opacity: 0.3;
 		}
 
-		&.botiga-flex-disabled{
+		&.botiga-flex-disabled {
 			user-select: none;
 			pointer-events: none;
 			cursor: inherit;
@@ -1705,5 +1709,38 @@ body {
 		span {
 			display: none;
 		}
+	}
+}
+
+.single_add_to_cart_button {
+
+	&.loading {
+		opacity: 0.5;
+		pointer-events: none;
+
+		&:after {
+			font-family: WooCommerce;
+			content: "\e031";
+			animation: spin 2s linear infinite;
+			margin-left: 0.5em;
+			line-height: 1em;
+			position: relative;
+			top: 1px;
+			display: inline-block;
+			width: auto;
+			height: auto;
+		}
+	}
+
+	&.added:after {
+		font-family: WooCommerce;
+		content: "\e017";
+		position: relative;
+		top: 1px;
+		margin-left: 0.5em;
+		line-height: 1em;
+		display: inline-block;
+		width: auto;
+		height: auto;
 	}
 }

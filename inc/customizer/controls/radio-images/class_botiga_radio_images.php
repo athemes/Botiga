@@ -11,7 +11,9 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 
 	public $desc_below = false;
 
-	public $cols;
+	public $class = '';
+
+	public $cols = 4;
 
 	public $is_responsive;
 
@@ -46,25 +48,25 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 				</ul>
 			<?php endif; ?>
 
-			<div id="<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>" class="botiga-radio-images-wrapper responsive-control-desktop active <?php echo esc_attr( $responsive ); ?>">
+			<div id="<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>" class="botiga-radio-images-wrapper responsive-control-desktop active botiga-radio-images-col-<?php echo esc_attr( $this->cols ); ?> <?php echo esc_attr( $this->class ); ?> <?php echo esc_attr( $responsive ); ?>">
 				<?php foreach ( $this->choices as $value => $args ) : ?>
 
-					<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}{$desktop}" ); ?>" id="<?php echo esc_attr( "{$this->id}{$desktop}-{$value}" ); ?>" <?php $this->is_responsive ? $this->link( 'desktop' ) : $this->link(); ?> <?php checked( $this->is_responsive ? $this->value( 'desktop' ) : $this->value(), $value ); ?> /> 
-
 					<label for="<?php echo esc_attr( "{$this->id}{$desktop}-{$value}" ); ?>">
+						<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}{$desktop}" ); ?>" id="<?php echo esc_attr( "{$this->id}{$desktop}-{$value}" ); ?>" <?php $this->is_responsive ? $this->link( 'desktop' ) : $this->link(); ?> <?php checked( $this->is_responsive ? $this->value( 'desktop' ) : $this->value(), $value ); ?> /> 
 						<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-						<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
+						<figure><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></figure>
 					</label>
 
 				<?php endforeach; ?>
 
-				<script type="text/javascript">
-					jQuery( document ).ready( function() {
-						jQuery( '#<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>' ).buttonset();
-						jQuery( '#<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
-					} );
-				</script>
 			</div><!-- .image -->
+
+			<script type="text/javascript">
+				jQuery( document ).ready( function() {
+					jQuery( '#<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>' ).buttonset();
+					jQuery( '#<?php echo esc_attr( "input_{$this->id}{$desktop}" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
+				} );
+			</script>
 
 			<?php if ( $this->is_responsive ) : ?>
 				<?php if( isset( $this->settings[ 'tablet' ] ) ) : ?>
@@ -72,22 +74,21 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 					<div id="<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>" class="botiga-radio-images-wrapper responsive-control-tablet<?php echo ( ! isset( $this->settings[ 'mobile' ] ) ? ' show-mobile' : '' ); ?>">
 						<?php foreach ( $this->choices as $value => $args ) : ?>
 
-							<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_tablet" ); ?>" id="<?php echo esc_attr( "{$this->id}_tablet-{$value}" ); ?>" <?php $this->link( 'tablet' ); ?> <?php checked( $this->value( 'tablet' ), $value ); ?> /> 
-
 							<label for="<?php echo esc_attr( "{$this->id}_tablet-{$value}" ); ?>">
+								<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_tablet" ); ?>" id="<?php echo esc_attr( "{$this->id}_tablet-{$value}" ); ?>" <?php $this->link( 'tablet' ); ?> <?php checked( $this->value( 'tablet' ), $value ); ?> /> 
 								<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-								<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
+								<figure><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></ class="img-cont">
 							</label>
 
 						<?php endforeach; ?>
-
-						<script type="text/javascript">
-							jQuery( document ).ready( function() {
-								jQuery( '#<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>' ).buttonset();
-								jQuery( '#<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
-							} );
-						</script>
 					</div><!-- .image -->
+
+					<script type="text/javascript">
+						jQuery( document ).ready( function() {
+							jQuery( '#<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>' ).buttonset();
+							jQuery( '#<?php echo esc_attr( "input_{$this->id}_tablet" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
+						} );
+					</script>
 
 				<?php endif; ?>
 				<?php if( isset( $this->settings[ 'mobile' ] ) ) : ?>
@@ -95,22 +96,21 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 					<div id="<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>" class="botiga-radio-images-wrapper responsive-control-mobile">
 						<?php foreach ( $this->choices as $value => $args ) : ?>
 
-							<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_mobile" ); ?>" id="<?php echo esc_attr( "{$this->id}_mobile-{$value}" ); ?>" <?php $this->link( 'mobile' ); ?> <?php checked( $this->value( 'mobile' ), $value ); ?> /> 
-
 							<label for="<?php echo esc_attr( "{$this->id}_mobile-{$value}" ); ?>">
+								<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}_mobile" ); ?>" id="<?php echo esc_attr( "{$this->id}_mobile-{$value}" ); ?>" <?php $this->link( 'mobile' ); ?> <?php checked( $this->value( 'mobile' ), $value ); ?> /> 
 								<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-								<div class="img-cont"><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></div>
+								<figure><img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" title="<?php echo esc_attr( $args['label'] ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" /></figure>
 							</label>
 
 						<?php endforeach; ?>
-
-						<script type="text/javascript">
-							jQuery( document ).ready( function() {
-								jQuery( '#<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>' ).buttonset();
-								jQuery( '#<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
-							} );
-						</script>
 					</div><!-- .image -->
+
+					<script type="text/javascript">
+						jQuery( document ).ready( function() {
+							jQuery( '#<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>' ).buttonset();
+							jQuery( '#<?php echo esc_attr( "input_{$this->id}_mobile" ); ?>' ).find( 'label' ).removeClass( 'ui-button' );
+						} );
+					</script>
 
 				<?php endif; ?>
 			<?php endif; ?>
@@ -132,7 +132,7 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
 
-		add_action( 'customize_controls_print_styles', array( $this, 'print_styles' ) );
+		// add_action( 'customize_controls_print_styles', array( $this, 'print_styles' ) );
 	}
 
 	/**
@@ -141,7 +141,8 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 	public function print_styles() { ?>
 
 		<style type="text/css" id="hybrid-customize-botiga-radio-image-css">
-			.customize-control-botiga-radio-image .botiga-radio-images-wrapper.ui-helper-clearfix:before, .customize-control-botiga-radio-image .botiga-radio-images-wrapper.ui-helper-clearfix:after { content: none !important; }
+			.customize-control-botiga-radio-image .botiga-radio-images-wrapper.ui-helper-clearfix:before,
+			.customize-control-botiga-radio-image .botiga-radio-images-wrapper.ui-helper-clearfix:after { content: none !important; }
 			.customize-control-botiga-radio-image img { border: 1px solid transparent;border-radius:3px;width:100%;display:block;transition: opacity 0.2s;}
 			.customize-control-botiga-radio-image .img-cont {margin:5px;}
 			<?php if ( $this->cols === 3 ) : ?>

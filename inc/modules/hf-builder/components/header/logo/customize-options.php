@@ -59,7 +59,6 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-logo_sticky_divider1',
                         '#customize-control-logo_sticky_title',
                         '#customize-control-site_title_sticky_color',
                         '#customize-control-site_description_sticky_color'
@@ -68,21 +67,6 @@ $wp_customize->add_control(
                 )
             ),
             'priority' 				=> 20
-        )
-    )
-);
-
-// Sticky Header - Divider
-$wp_customize->add_setting( 'logo_sticky_divider1',
-    array(
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'logo_sticky_divider1',
-        array(
-            'section' 		  => 'botiga_section_hb_component__logo',
-            'active_callback' => 'botiga_sticky_header_enabled',
-            'priority'        => 50
         )
     )
 );

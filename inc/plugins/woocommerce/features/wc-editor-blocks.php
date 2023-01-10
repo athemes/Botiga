@@ -13,10 +13,11 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	global $post;
 
-	$button_layout 	   = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$layout			   = get_theme_mod( 'shop_product_card_layout', 'layout1' );
+	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$layout            = get_theme_mod( 'shop_product_card_layout', 'layout1' );
 	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
-	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
+	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+	$wishlist_enable   = Botiga_Modules::is_module_active( 'wishlist' );
 
 	$wc_block_grid_item_class = '';
 
@@ -31,7 +32,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		$loop_image_wrap_extra_class .= ' botiga-quick-view-button-'. $quick_view_layout;
 	}
 
-	if( 'layout1' !== $wishlist_layout ) {
+	if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 		$loop_image_wrap_extra_class .= ' botiga-wishlist-button-'. $wishlist_layout;
 
 		$wishlist_icon_show_on_hover = get_theme_mod( 'shop_product_wishlist_show_on_hover', 0 );
@@ -97,7 +98,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		"</div>";
 	}
 
-	$enable_product_swatch = get_theme_mod( 'product_swatch', 0 );
+	$enable_product_swatch = Botiga_Modules::is_module_active( 'product-swatches' );
 	$enable_product_swatch_on_shop_catalog = get_theme_mod( 'product_swatch_on_shop_catalog', 0 );
 
 	if (
@@ -143,7 +144,7 @@ function botiga_gb_add_to_cart_button( $_product ) {
 	//Start markup
 	$markup = '';
 
-	$enable_product_swatch = get_theme_mod( 'product_swatch', 0 );
+	$enable_product_swatch = Botiga_Modules::is_module_active( 'product-swatches' );
 	$enable_product_swatch_on_shop_catalog = get_theme_mod( 'product_swatch_on_shop_catalog', 0 );
 
 	if (

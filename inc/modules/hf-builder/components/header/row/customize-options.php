@@ -76,7 +76,6 @@ foreach( $this->header_rows as $row ) {
                     '#customize-control-botiga_header_row__' . $row['id'] . '_padding',
 
                     // Stiky Active State
-                    '#customize-control-botiga_header_row__' . $row['id'] . '_sticky_divider1',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_sticky_title',
                     
                     '#customize-control-botiga_header_row__' . $row['id'] . '_sticky_background_color',
@@ -187,6 +186,7 @@ foreach( $this->header_rows as $row ) {
                 'label'    => esc_html__( 'Columns Layout', 'botiga' ),
                 'section'  => $row['section'],
                 'cols' 		=> 4,
+                'class'    => 'botiga-radio-images-small',
                 'is_responsive' => true,
                 'settings' 		=> array (
                     'desktop' 		=> 'botiga_header_row__' . $row['id'] . '_columns_layout_desktop',
@@ -256,12 +256,12 @@ foreach( $this->header_rows as $row ) {
     $desc    = '';
     foreach( $devices as $device ) {
         $desc .= '<div class="bhfb-available-columns bhfb-available-columns-'. esc_attr( $device ) .'">';
-            $desc .= '<span class="customize-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
+            $desc .= '<span class="customize-control-title bhfb-columns-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
             $desc .= '<div class="bhfb-available-columns-items-wrapper">';
             for( $i=1;$i<=6;$i++ ) {
                 $col_section_id = 'botiga_header_row__' . $row['id'] . '_column' . $i;
 
-                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+                $desc .= '<a class="bhfb-available-columns-item" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
             }
             $desc .= '</div>';
         $desc .= '</div>';
@@ -354,21 +354,6 @@ foreach( $this->header_rows as $row ) {
         )
     );
 
-    // Sticky Header - Divider
-    $wp_customize->add_setting( 'botiga_header_row__' . $row['id'] . '_sticky_divider1',
-        array(
-            'sanitize_callback' => 'esc_attr'
-        )
-        );
-        $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'botiga_header_row__' . $row['id'] . '_sticky_divider1',
-            array(
-                'section' 		  => $row['section'],
-                'active_callback' => 'botiga_sticky_header_enabled',
-                'priority'        => 37
-            )
-        )
-    );
-
     // Sticky Header - Title
     $wp_customize->add_setting( 
         'botiga_header_row__' . $row['id'] . '_sticky_title',
@@ -395,7 +380,7 @@ foreach( $this->header_rows as $row ) {
     $wp_customize->add_setting(
         'botiga_header_row__' . $row['id'] . '_sticky_background_color',
         array(
-            'default'           => '#FFF',
+            'default'           => '',
             'sanitize_callback' => 'botiga_sanitize_hex_rgba',
             'transport'         => 'postMessage'
         )

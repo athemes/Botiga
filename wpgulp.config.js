@@ -23,6 +23,8 @@ const injectChanges = true;
 // Path to main .scss file.
 const customizerSRC = './sass/customizer.scss';
 
+const customizerRtlSRC = './sass/customizer-rtl.scss';
+
 const metaboxSRC = './sass/metabox.scss';
 
 const styleSRC = './sass/styles.scss';
@@ -41,11 +43,6 @@ const outputStyle = 'compressed';
 const errLogToConsole = true;
 const precision = 10;
 
-// JS Vendor options.
-
-// Path to JS vendor folder.
-const jsVendorSRC = './assets/js/vendor/*.js';
-
 // Path to customizer js file
 const custSRC = './assets/js/src/customizer.js';
 
@@ -63,12 +60,6 @@ const metaboxScriptsSRC = './assets/js/src/metabox.js';
 
 // Path to place the metabox scripts file.
 const metaboxScriptsDestination = './assets/js/';
-
-// Path to place the compiled JS vendors file.
-const jsVendorDestination = './assets/js/';
-
-// Compiled JS vendors file name. Default set to vendors i.e. vendors.js.
-const jsVendorFile = 'vendor';
 
 const custFile = 'customizer';
 
@@ -89,16 +80,16 @@ const adminStyleDestination = './assets/css/admin/';
 const BHFBSRC = './sass/bhfb.scss';
 const adminBHFBSRC = './sass/admin/bhfb.scss';
 const adminCustPrevBHFBSRC = './sass/admin/bhfb-customize-preview.scss';
+const adminDashboardSRC = './sass/admin/dashboard.scss';
+const adminDashboardRtlSRC = './sass/admin/dashboard-rtl.scss';
 
 // JS BHFB
 const jsAdminBHFBSRC = './assets/js/src/admin/botiga-bhfb.js';
 const jsAdminCustPrevBHFBSRC = './assets/js/src/admin/botiga-bhfb-customize-preview.js';
+const jsAdminDashboardSRC = './assets/js/src/admin/botiga-dashboard.js';
 const jsAdminBHFBFile = 'botiga-bhfb';
 const jsAdminCustPrevBHFBFile = 'botiga-bhfb-customize-preview';
-
-// Watch BHFB
-const watchJsAdminBHFB = './assets/js/src/admin/botiga-bhfb.js';
-const watchJsAdminCustPrevBHFB = './assets/js/src/admin/botiga-bhfb-customize-preview.js';
+const jsAdminDashboardFile = 'botiga-dashboard';
 
 // JS Custom options.
 
@@ -110,6 +101,9 @@ const jsSwiperSRC = './assets/js/src/botiga-swiper.js';
 
 // Path to JS gallery.
 const jsGallerySRC = './assets/js/src/botiga-gallery.js';
+
+// Path to JS ajax add to cart.
+const jsAjaxAddToCartSRC = './assets/js/src/botiga-ajax-add-to-cart.js';
 
 // Path to JS popup.
 const jsPopupSRC = './assets/js/src/botiga-popup.js';
@@ -138,6 +132,9 @@ const jsSwiperFile = 'botiga-swiper';
 // Compiled JS gallery file name.
 const jsGalleryFile = 'botiga-gallery';
 
+// Compiled JS gallery file name.
+const jsAjaxAddToCartFile = 'botiga-ajax-add-to-cart';
+
 // Compiled JS popup file name.
 const jsPopupFile = 'botiga-popup';
 
@@ -161,36 +158,8 @@ const imgDST = './assets/img/';
 // Path to all *.scss files inside css folder and inside them.
 const watchStyles = './sass/**/*.scss';
 
-const watchEditorStyles = './sass/editor.scss';
-
-// Path to all vendor JS files.
-const watchJsVendor = './assets/js/vendor/*.js';
-
-// Path to all custom JS files.
-const watchJsCustom = './assets/js/src/custom.js';
-
-// Path to all carousel JS files.
-const watchJsCarousel = './assets/js/src/botiga-carousel.js';
-
-// Path to all swiper JS files.
-const watchJsSwiper = './assets/js/src/botiga-swiper.js';
-
-// Path to all gallery JS files.
-const watchJsGallery = './assets/js/src/botiga-gallery.js';
-
-// Path to all carousel JS files.
-const watchJsPopup = './assets/js/src/botiga-popup.js';
-
-// Path to all sidebar JS files.
-const watchJsSidebar = './assets/js/src/botiga-sidebar.js';
-
-// Path to all ajax search JS files.
-const watchJsAjaxSearch = './assets/js/src/botiga-ajax-search.js';
-
-// Path to all custom JS files.
-const watchJsCustomizer = './assets/js/src/*.js';
-
-const watchJsAdminFunctions = './assets/js/src/admin-functions.js';
+// Path to all admin JS files.
+const watchJsAdmin = './assets/js/src/**/*.js';
 
 // Path to all PHP files.
 const watchPhp = './**/*.php';
@@ -261,14 +230,17 @@ module.exports = {
 	BHFBSRC,
 	adminBHFBSRC,
 	adminCustPrevBHFBSRC,
+	adminDashboardSRC,
+	adminDashboardRtlSRC,
 	jsAdminBHFBSRC,
 	jsAdminCustPrevBHFBSRC,
+	jsAdminDashboardSRC,
 	jsAdminBHFBFile,
 	jsAdminCustPrevBHFBFile,
-	watchJsAdminBHFB,
-	watchJsAdminCustPrevBHFB,
+	jsAdminDashboardFile,
 	styleSRC,
 	customizerSRC,
+	customizerRtlSRC,
 	metaboxSRC,
 	editorStyleSRC,
 	woocommerceSRC,
@@ -277,13 +249,10 @@ module.exports = {
 	outputStyle,
 	errLogToConsole,
 	precision,
-	jsVendorSRC,
 	custSRC,
 	custDestination,
 	custScriptsSRC,
 	metaboxScriptsSRC,
-	jsVendorDestination,
-	jsVendorFile,
 	custScriptsFile,
 	metaboxScriptsFile,
 	adminFunctionsScriptsFile,
@@ -291,6 +260,7 @@ module.exports = {
 	jsCarouselSRC,
 	jsSwiperSRC,
 	jsGallerySRC,
+	jsAjaxAddToCartSRC,
 	jsPopupSRC,
 	jsSidebarSRC,
 	jsAjaxSearchSRC,
@@ -304,6 +274,7 @@ module.exports = {
 	jsCarouselFile,
 	jsSwiperFile,
 	jsGalleryFile,
+	jsAjaxAddToCartFile,
 	jsPopupFile,
 	jsSidebarFile,
 	jsAjaxSearchFile,
@@ -311,17 +282,7 @@ module.exports = {
 	imgSRC,
 	imgDST,
 	watchStyles,
-	watchEditorStyles,
-	watchJsVendor,
-	watchJsCarousel,
-	watchJsSwiper,
-	watchJsGallery,
-	watchJsPopup,
-	watchJsSidebar,
-	watchJsAjaxSearch,
-	watchJsCustom,
-	watchJsCustomizer,
-	watchJsAdminFunctions,
+	watchJsAdmin,
 	watchPhp,
 	zipName,
 	zipDestination,

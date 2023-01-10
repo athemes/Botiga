@@ -228,7 +228,13 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                         </div>
                                         <div class="col-12">
                                             <div class="botiga-review-content">
-                                                <?php comment_text( $p_comment ); ?>
+                                                <?php
+                                                do_action( 'woocommerce_review_before_comment_text', $p_comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+
+                                                comment_text( $p_comment ); 
+                                                                                    
+                                                do_action( 'woocommerce_review_after_comment_text', $p_comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

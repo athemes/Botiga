@@ -4,6 +4,9 @@
  *
  * @package Botiga
  */
+if ( ! Botiga_Modules::is_module_active( 'wishlist' ) ) {
+	return;
+}
 
 /**
  * Wishlist post class callback

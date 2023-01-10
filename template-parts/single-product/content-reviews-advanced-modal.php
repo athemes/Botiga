@@ -92,7 +92,7 @@ global $_product; ?>
 
                             $comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'botiga' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="5" required></textarea></p>';
 
-                            comment_form( apply_filters( 'botiga_product_advanced_review_comment_form_args', $comment_form ), $_product->get_id() );
+                            comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ), $_product->get_id() ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
                             ?>
                         </div>
                     </div>

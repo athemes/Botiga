@@ -59,16 +59,6 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   display: none !important;
 }
 
-#customize-control-botiga_section_hb_wrapper__header_builder_goto_presets {
-  margin-left: -25px;
-  width: calc( 100% + 50px);
-}
-
-#customize-control-botiga_section_hb_wrapper__header_builder_goto_presets .to-widget-area-link {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
 #sub-accordion-section-botiga_section_fb_component__footer_menu #customize-control-footer_navigation_menu_link .footer-widget-area-link {
   display: block !important;
 }
@@ -418,6 +408,21 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 .botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button {
   cursor: -webkit-grab;
   cursor: grab;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button .bhfb-title-element {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button i {
@@ -427,6 +432,21 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
   cursor: pointer;
+}
+
+.botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button i.bhfb-edit-element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  line-height: 1em;
+  margin-left: 2px;
 }
 
 .botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button:hover i {
@@ -641,12 +661,33 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   width: 100%;
 }
 
+.botiga-bhfb .botiga-bhfb-mobile .bhfb-offcanvas .bhfb-button .bhfb-title-element {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .botiga-bhfb .botiga-bhfb-mobile .bhfb-offcanvas .bhfb-button i {
   color: #787878;
   font-size: 1.3em;
   line-height: 1.3;
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
+}
+
+.botiga-bhfb .botiga-bhfb-mobile .bhfb-offcanvas .bhfb-button i.bhfb-edit-element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  line-height: 1em;
+  margin-left: 2px;
 }
 
 .botiga-bhfb .botiga-bhfb-mobile .bhfb-offcanvas .bhfb-button:hover i {
@@ -708,14 +749,46 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 /*
  * Available Columns
  */
+.bhfb-available-columns .bhfb-columns-control-title {
+  margin-bottom: 7px !important;
+}
+
 .bhfb-available-columns .bhfb-available-columns-items-wrapper {
-  display: grid;
-  gap: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item {
-  margin-bottom: 0;
-  padding: 8px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #1e1e1e;
+  font-weight: 400;
+  font-style: normal;
+  padding: 9px 15px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  margin-bottom: -1px;
+}
+
+.bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item:hover {
+  color: #3858E9;
+}
+
+.bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item.hide {
@@ -723,20 +796,28 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item .dashicons {
-  font-size: 1rem;
-  position: relative;
-  top: 2px;
-  color: #777;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
   -webkit-transition: ease color 300ms;
   transition: ease color 300ms;
 }
 
-.bhfb-available-columns .bhfb-available-columns-items-wrapper .bhfb-available-columns-item:hover .dashicons {
-  color: #212121;
-}
-
 .bhfb-available-columns.bhfb-always-show {
-  display: grid !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .preview-desktop .bhfb-available-columns-tablet {
@@ -764,9 +845,14 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  border: 1px dashed #CCC;
+  background-image: -webkit-gradient(linear, left top, right top, from(#3858E9), color-stop(50%, #3858E9), color-stop(50%, transparent), to(transparent)), -webkit-gradient(linear, left top, right top, from(#3858E9), color-stop(50%, #3858E9), color-stop(50%, transparent), to(transparent)), -webkit-gradient(linear, left top, left bottom, from(#3858E9), color-stop(50%, #3858E9), color-stop(50%, transparent), to(transparent)), -webkit-gradient(linear, left top, left bottom, from(#3858E9), color-stop(50%, #3858E9), color-stop(50%, transparent), to(transparent));
+  background-image: linear-gradient(to right, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%), linear-gradient(to right, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%), linear-gradient(to bottom, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%), linear-gradient(to bottom, #3858E9 0%, #3858E9 50%, transparent 50%, transparent 100%);
+  background-position: left top, left bottom, left top, right top;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 10px 1px, 10px 1px, 1px 10px, 1px 10px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
+  border-radius: 5px;
 }
 
 .bhfb-available-components .bhfb-button {
@@ -774,11 +860,12 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   display: -ms-flexbox;
   display: flex;
   background: #FFF;
-  color: #212121;
+  color: #1e1e1e;
   text-decoration: none;
   font-style: normal;
-  padding: 6px 12px;
-  border: 1px solid #CCC;
+  padding: 8px 8px;
+  border: 2px solid #3858E9;
+  border-radius: 2px;
   height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -788,7 +875,9 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 .bhfb-available-components .bhfb-button:hover {
-  border-color: #212121;
+  border-color: #3858E9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .bhfb-available-components .bhfb-elements-message {
@@ -862,19 +951,37 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 .bhfb-upsell-button {
-  background-color: #2271b1;
-  display: block;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   text-align: center;
-  color: #FFF !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 7px 10px;
   text-decoration: none;
-  padding: 10px;
   border-radius: 4px;
-  -webkit-transition: ease background-color 300ms;
-  transition: ease background-color 300ms;
+  color: #3858E9;
+  border: 2px solid #3858E9;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.bhfb-upsell-button:active, .bhfb-upsell-button:focus, .bhfb-upsell-button:hover {
+  color: #3858E9;
 }
 
 .bhfb-upsell-button:hover {
-  background-color: #2c84cb;
+  background-color: #f7f9ff;
+}
+
+.bhfb-upsell-button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .botiga-bhfb-upsell-components-wrapper {

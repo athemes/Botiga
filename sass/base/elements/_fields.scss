@@ -43,6 +43,31 @@ select {
 	background-position: calc( 100% - 18px ) center;
 }
 
+.botiga-select {
+	position: relative;
+	font-size: 1rem;
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 0.4em;
+		height: 0.4em;
+		border-bottom: 1px solid #212121;
+		border-right: 1px solid #212121;
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg) translate3d(0, -50%, 0);
+		right: 1.5em;
+		top: 46%;
+	}
+	select {
+		padding: 1em 2.5em 1em 1em;
+		background-image: none;
+		font-size: 1rem;
+		min-height: 0;
+		min-width: 140px;
+	}
+}
+
 textarea {
 	width: 100%;
 }

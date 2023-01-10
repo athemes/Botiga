@@ -10,10 +10,10 @@
     <?php $this->customizer_edit_button();
     
     // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
-    $text 	= get_theme_mod( 'bhfb_footer_button1_text', esc_html__( 'Click me', 'botiga' ) );
-    $url	= get_theme_mod( 'bhfb_footer_button1_link', '#' );
-    $class  = get_theme_mod( 'bhfb_footer_button1_class', '' ); 
-    $newtab = get_theme_mod( 'bhfb_footer_button1_newtab', 0 );
+    $text 	= get_theme_mod( 'bhfb_footer_button_text', esc_html__( 'Click me', 'botiga' ) );
+    $url	= get_theme_mod( 'bhfb_footer_button_link', '#' );
+    $class  = get_theme_mod( 'bhfb_footer_button_class', '' ); 
+    $newtab = get_theme_mod( 'bhfb_footer_button_newtab', 0 );
     $open	= '';
 
     if ( $newtab ) {

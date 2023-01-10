@@ -161,6 +161,7 @@ foreach( $this->footer_rows as $row ) {
                 'label'    => esc_html__( 'Columns Layout', 'botiga' ),
                 'section'  => $row['section'],
                 'cols' 		=> 4,
+                'class'    => 'botiga-radio-images-small',
                 'choices'  => array(			
                     '1col-equal' => array(
                         'label' => esc_html__( 'Equal Width', 'botiga' ),
@@ -221,12 +222,12 @@ foreach( $this->footer_rows as $row ) {
     $desc    = '';
     foreach( $devices as $device ) {
         $desc .= '<div class="bhfb-available-columns bhfb-available-columns-'. esc_attr( $device ) .' bhfb-always-show">';
-            $desc .= '<span class="customize-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
+            $desc .= '<span class="customize-control-title bhfb-columns-control-title" style="font-style: normal;">'. esc_html__( 'Available Columns', 'botiga' ) .'</span>';
             $desc .= '<div class="bhfb-available-columns-items-wrapper">';
             for( $i=1;$i<=6;$i++ ) {
                 $col_section_id = 'botiga_footer_row__' . $row['id'] . '_column' . $i;
 
-                $desc .= '<a class="bhfb-available-columns-item to-widget-area-link" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
+                $desc .= '<a class="bhfb-available-columns-item" href="#" data-column="'. absint( $i ) .'" onClick="wp.customize.section(\''. esc_js( $col_section_id ) .'\').focus()">'. /* translators: 1: column number. */ sprintf( esc_html__( 'Column %s', 'botiga' ), absint( $i ) ) .'<span class="dashicons dashicons-arrow-right-alt2"></span></a>';
             }
             $desc .= '</div>';
         $desc .= '</div>';

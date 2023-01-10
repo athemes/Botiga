@@ -17,78 +17,94 @@ function botiga_quick_view_scripts() {
 		$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 		
 		if( 'layout1' !== $quick_view_layout ) {
-			$register_scripts = array();
-			
-			if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
-				$register_scripts['flexslider'] = array(
-					'src'     => plugins_url( 'assets/js/flexslider/jquery.flexslider.min.js', WC_PLUGIN_FILE ),
-					'deps'    => array( 'jquery' )
-				);
-			}
-			if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
-				$register_styles = array(
-					'photoswipe' => array(
-						'src'     => plugins_url( 'assets/css/photoswipe/photoswipe.min.css', WC_PLUGIN_FILE ),
-						'deps'    => array()
-					),
-					'photoswipe-default-skin' => array(
-						'src'     => plugins_url( 'assets/css/photoswipe/default-skin/default-skin.min.css', WC_PLUGIN_FILE ),
-						'deps'    => array( 'photoswipe' )
-					)
-				);
-				foreach ( $register_styles as $name => $props ) {
-					wp_enqueue_style( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
-				}
-
-				$register_scripts['photoswipe'] = array(
-					'src'     => plugins_url( 'assets/js/photoswipe/photoswipe.min.js', WC_PLUGIN_FILE ),
-					'deps'    => array()
-				);
-				$register_scripts['photoswipe-ui-default'] = array(
-					'src'     => plugins_url( 'assets/js/photoswipe/photoswipe-ui-default.min.js', WC_PLUGIN_FILE ),
-					'deps'    => array( 'photoswipe' )
-				);
-			}
-
-			$register_scripts['wc-single-product'] = array(
-				'src'     => plugins_url( 'assets/js/frontend/single-product.min.js', WC_PLUGIN_FILE ),
-				'deps'    => array( 'jquery' )
-			);
-
-			if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) {
-				$register_scripts['zoom'] = array(
-					'src'     => plugins_url( 'assets/js/zoom/jquery.zoom.min.js', WC_PLUGIN_FILE ),
-					'deps'    => array( 'jquery' )
-				);
-			}
-
-			// Enqueue variation scripts.
-			$register_scripts['wc-add-to-cart-variation'] = array(
-				'src'     => plugins_url( 'assets/js/frontend/add-to-cart-variation.min.js', WC_PLUGIN_FILE ),
-				'deps'    => array( 'jquery', 'wp-util', 'jquery-blockui' )
-			);
-
-			foreach ( $register_scripts as $name => $props ) {
-				wp_enqueue_script( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
-			}
-
+			botiga_quick_view_needed_scripts();
 		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_quick_view_scripts', 9 );
 
 /**
- * Quick view button
+ * Function to enqueue needed quick view scripts
+ * We need this function alone because it is also used to enqueue scripts inside gutenberg and elementor blocks (without any condition check)
+ * 
  */
-function botiga_quick_view_button( $product = false, $echo = true ) {
+function botiga_quick_view_needed_scripts() {
+	$register_scripts = array();
+			
+	if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
+		$register_scripts['flexslider'] = array(
+			'src'     => plugins_url( 'assets/js/flexslider/jquery.flexslider.min.js', WC_PLUGIN_FILE ),
+			'deps'    => array( 'jquery' )
+		);
+	}
+	if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
+		$register_styles = array(
+			'photoswipe' => array(
+				'src'     => plugins_url( 'assets/css/photoswipe/photoswipe.min.css', WC_PLUGIN_FILE ),
+				'deps'    => array()
+			),
+			'photoswipe-default-skin' => array(
+				'src'     => plugins_url( 'assets/css/photoswipe/default-skin/default-skin.min.css', WC_PLUGIN_FILE ),
+				'deps'    => array( 'photoswipe' )
+			)
+		);
+		foreach ( $register_styles as $name => $props ) {
+			wp_enqueue_style( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
+		}
+
+		$register_scripts['photoswipe'] = array(
+			'src'     => plugins_url( 'assets/js/photoswipe/photoswipe.min.js', WC_PLUGIN_FILE ),
+			'deps'    => array()
+		);
+		$register_scripts['photoswipe-ui-default'] = array(
+			'src'     => plugins_url( 'assets/js/photoswipe/photoswipe-ui-default.min.js', WC_PLUGIN_FILE ),
+			'deps'    => array( 'photoswipe' )
+		);
+	}
+
+	$register_scripts['wc-single-product'] = array(
+		'src'     => plugins_url( 'assets/js/frontend/single-product.min.js', WC_PLUGIN_FILE ),
+		'deps'    => array( 'jquery' )
+	);
+
+	if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) {
+		$register_scripts['zoom'] = array(
+			'src'     => plugins_url( 'assets/js/zoom/jquery.zoom.min.js', WC_PLUGIN_FILE ),
+			'deps'    => array( 'jquery' )
+		);
+	}
+
+	// Enqueue variation scripts.
+	$register_scripts['wc-add-to-cart-variation'] = array(
+		'src'     => plugins_url( 'assets/js/frontend/add-to-cart-variation.min.js', WC_PLUGIN_FILE ),
+		'deps'    => array( 'jquery', 'wp-util', 'jquery-blockui' )
+	);
+
+	foreach ( $register_scripts as $name => $props ) {
+		wp_enqueue_script( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
+	}
+}
+
+/**
+ * Quick view button
+ * 
+ * @param bool $product_id
+ * @param bool $echo
+ * @param string $block_layout Layout from gutenberg and elementor blocks.
+ * 
+ * @return string
+ */
+function botiga_quick_view_button( $product = false, $echo = true, $block_layout = 'layout1' ) {
 	if( $product == false ) {
 		global $product; 
 	}
 
 	$product_id        = $product->get_id(); 
 	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' ); 
-	if( 'layout1' == $quick_view_layout ) {
-		return '';
+	if( 'layout1' === $quick_view_layout ) {
+		if( 'layout1' === $block_layout ) {
+			return '';
+		}
 	} 
 	
 	if( $echo == false ) {
@@ -245,8 +261,10 @@ function botiga_quick_view_summary_add_to_cart( $product = null ) {
  * Quick View Summary Wishlist
  */
 function botiga_quick_view_summary_wishlist( $product = null ) {
+	$wishlist_enable = Botiga_Modules::is_module_active( 'wishlist' );
 	$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-	if( 'layout1' !== $wishlist_layout ) {
+
+	if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 		botiga_single_wishlist_button( $product, true );
 	}
 }

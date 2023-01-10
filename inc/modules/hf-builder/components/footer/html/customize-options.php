@@ -51,8 +51,7 @@ $wp_customize->add_control(
                 array_merge(
                     array(
                         '#customize-control-botiga_section_fb_component__html_text_color',
-                        '#customize-control-botiga_section_fb_component__html_link_color',
-                        '#customize-control-botiga_section_fb_component__html_link_color_hover'
+                        '#customize-control-botiga_section_fb_component__html_link',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -159,37 +158,28 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_fb_component__html_link_color',
-		array(
-			'label'         	=> esc_html__( 'Link Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__html',
-            'priority'          => 41
-		)
-	)
-);
-
-// Link Color Hover.
 $wp_customize->add_setting(
-	'botiga_section_fb_component__html_link_color_hover',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
+    'botiga_section_fb_component__html_link_color_hover',
+    array(
+        'default'           => '',
+        'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+        'transport'         => 'postMessage'
+    )
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_fb_component__html_link_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Link Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__html',
-            'priority'          => 42
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'botiga_section_fb_component__html_link',
+        array(
+            'label'    => esc_html__( 'Link Color', 'botiga' ),
+            'section'  => 'botiga_section_fb_component__html',
+            'settings' => array(
+                'normal' => 'botiga_section_fb_component__html_link_color',
+                'hover'  => 'botiga_section_fb_component__html_link_color_hover',
+            ),
+            'priority' => 41
+        )
+    )
 );
 
 // Move existing options.

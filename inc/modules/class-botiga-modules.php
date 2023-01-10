@@ -14,25 +14,7 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'admin_init', array( $this, 'activate_modules' ) );
-		}
-
-		/**
-		 * All modules registered in Botiga
-		 */
-		public static function get_modules() {
-			$modules = array(
-				array(
-					'slug'			=> 'hf-builder',
-					'name'          => esc_html__( 'Header & Footer Builder', 'botiga' ),
-					'type'          => 'free',
-					'link' 			=> admin_url( '/customize.php?autofocus[section]=botiga_section_hb_wrapper' ),
-					'link_label'	=> esc_html__( 'Customize', 'botiga' ),
-					'activate_uri' 	=> '&amp;activate_module_hf-builder', //param is added in dashboard class
-					'text'			=> __( 'Drag and drop header/footer builder.', 'botiga' ) . '<div><a target="_blank" href="https://docs.athemes.com/article/447-header-builder-pro">' . __( 'Documentation article', 'botiga' ) . '</a></div>',
-				)	
-			);
-		
-			return apply_filters( 'botiga_modules', $modules );
+			add_action( 'admin_init', array( $this, 'modules_default_status' ) );
 		}
 
 		/**
@@ -48,28 +30,72 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 			}
 		
 			return false;
+
 		}
 
 		/**
 		 * Activate modules on click
 		 */
 		public function activate_modules() {
-			$modules = $this->get_modules();
 
-            $all_modules = get_option( 'botiga-modules' );
+			if ( ! isset( $_GET['activate-module'] ) && ! isset( $_GET['deactivate-module'] ) ) {
+				return;
+			}
+
+     		$all_modules = get_option( 'botiga-modules' );
 			$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
 
-            foreach ( $modules as $module ) {
-				if ( isset( $_GET['activate_module_' . $module['slug'] ] ) ) {
-					if ( '1' == $_GET['activate_module_' . $module['slug'] ] ) {
-						update_option( 'botiga-modules', array_merge( $all_modules, array( $module['slug'] => true ) ) );
-					} elseif ( '0' == $_GET['activate_module_' . $module['slug'] ] ) {
-						update_option( 'botiga-modules', array_merge( $all_modules, array( $module['slug'] => false ) ) );
-					}
+			if ( isset( $_GET['activate-module'] ) ) {
 
-					wp_redirect( admin_url( '/themes.php?page=theme-dashboard' ) );
+				$module = sanitize_text_field( wp_unslash( $_GET['activate-module'] ) );
+
+				update_option( 'botiga-modules', array_merge( $all_modules, array( $module => true ) ) );
+
+			}
+
+			if ( isset( $_GET['deactivate-module'] ) ) {
+
+				$module = sanitize_text_field( wp_unslash( $_GET['deactivate-module'] ) );
+
+				update_option( 'botiga-modules', array_merge( $all_modules, array( $module => false ) ) );
+
+			}
+
+			$section = ( isset( $_GET['section'] ) ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
+			$section = ( ! empty( $section ) ) ? array( 'section' => $section ) : array();
+
+			// Update Custom CSS
+			$custom_css = Botiga_Custom_CSS::get_instance();
+			$custom_css->update_custom_css_file();
+
+			wp_redirect( add_query_arg( array( 'page' => 'botiga-dashboard', $section ), admin_url( 'themes.php' ) ) );
+
+		}
+
+		/**
+		 * Enable/disable default modules
+		 * 
+		 * Always enable/disable these modules for new users
+		 * This will happen only when the module slug is not present in the 'botiga-modules' option
+		 * If the condition matches, the theme will force the respective module to be enabled
+		 * 
+		 */
+		public function modules_default_status() {
+			$modules_default_status = apply_filters( 'botiga_modules_default_status', array(
+				'hf-builder'         => true,
+				'local-google-fonts' => true,
+				'adobe-typekit'      => true
+			) );
+
+			$all_modules = get_option( 'botiga-modules' );
+			if( $all_modules ) {
+				foreach( $modules_default_status as $module => $status ) {
+					if( ! isset( $all_modules[ $module ] ) ) {
+						update_option( 'botiga-modules', array_merge( $all_modules, array( $module => $status ) ) );
+					}
 				}
 			}
+
 		}
 	}	
     

@@ -43,12 +43,9 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
                 'controls_design'		=> json_encode(
                     array_merge(
                         array(
-                            '#customize-control-bhfb_search_icon_color',
-                            '#customize-control-bhfb_search_icon_color_hover',
-                            '#customize-control-bhfb_search_icon_sticky_divider1',
+                            '#customize-control-bhfb_search_icon',
                             '#customize-control-bhfb_search_icon_sticky_title',
-                            '#customize-control-bhfb_search_icon_sticky_color',
-                            '#customize-control-bhfb_search_icon_sticky_color_hover'
+                            '#customize-control-bhfb_search_icon_sticky',
                         ),
                         array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                     )
@@ -68,19 +65,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_search_icon_color',
-		array(
-			'label'         	=> esc_html__( 'Icon color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__search',
-			'priority'			=> 25
-		)
-	)
-);
-
-// Icon Color Hover
 $wp_customize->add_setting(
 	'bhfb_search_icon_color_hover',
 	array(
@@ -90,28 +74,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_search_icon_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Icon color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__search',
-			'priority'			=> 30
-		)
-	)
-);
-
-// Sticky Header - Divider
-$wp_customize->add_setting( 'bhfb_search_icon_sticky_divider1',
-    array(
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'bhfb_search_icon_sticky_divider1',
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_search_icon',
         array(
-            'section' 		  => 'botiga_section_hb_component__search',
-            'active_callback' => 'botiga_sticky_header_enabled',
-            'priority'        => 31
+            'label'    => esc_html__( 'Icon Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__search',
+            'settings' => array(
+                'normal' => 'bhfb_search_icon_color',
+                'hover'  => 'bhfb_search_icon_color_hover',
+            ),
+            'priority' => 25
         )
     )
 );
@@ -147,20 +120,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_search_icon_sticky_color',
-		array(
-			'label'         	=> esc_html__( 'Icon color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__search',
-            'active_callback'   => 'botiga_sticky_header_enabled',
-			'priority'			=> 33
-		)
-	)
-);
-
-// Sticky Header - Icon Color Hover
 $wp_customize->add_setting(
 	'bhfb_search_icon_sticky_color_hover',
 	array(
@@ -170,16 +129,20 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'bhfb_search_icon_sticky_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Icon color hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__search',
-            'active_callback'   => 'botiga_sticky_header_enabled',
-			'priority'			=> 34
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'bhfb_search_icon_sticky',
+        array(
+            'label'    => esc_html__( 'Icon Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__search',
+            'settings' => array(
+                'normal' => 'bhfb_search_icon_sticky_color',
+                'hover'  => 'bhfb_search_icon_color_hover',
+            ),
+            'active_callback' => 'botiga_sticky_header_enabled',
+            'priority' => 33
+        )
+    )
 );
 
 // Move existing options.

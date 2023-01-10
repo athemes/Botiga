@@ -617,11 +617,6 @@ require get_template_directory() . '/inc/plugins/woocommerce/features/wishlist.p
 require get_template_directory() . '/inc/plugins/woocommerce/features/cross-sell.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
- * Sticky Add To Cart
- */
-require get_template_directory() . '/inc/plugins/woocommerce/features/sticky-add-to-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-
-/**
  * Product Card
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/product-card.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
@@ -630,6 +625,11 @@ require get_template_directory() . '/inc/plugins/woocommerce/features/product-ca
  * Single Product Gallery
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/single-product-gallery.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
+ * Single Product Ajax Add to Cart
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/features/single-ajax-add-to-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Single Product Tabs

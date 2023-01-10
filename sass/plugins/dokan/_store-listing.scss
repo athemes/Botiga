@@ -1,5 +1,9 @@
 .is-dokan-store-listing {
 
+    .dokan-btn-round[class] {
+        padding: 0;
+    }
+
     &.botiga-page-builder-mode {
         .entry-content > * {
             max-width: 100%;
@@ -49,7 +53,17 @@
             }
         }
         &.list-view {
+            .dokan-single-seller {
+                .store-wrapper {
+                    .store-header {
+                        .store-banner {
+                            min-height: 180px !important;
+                        }
+                    }
+                }
+            }
             .store-data {
+                margin-top: 7%;
                 h2 {
                     font-size: 1.7rem !important;
                     margin-bottom: 5px !important;

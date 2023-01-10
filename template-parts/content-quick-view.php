@@ -8,12 +8,15 @@
 
 global $product;
 
-$product    = wc_get_product( $args['product_id'] ); 
-$product_id = $product->get_id(); ?>
+$product       = wc_get_product( $args['product_id'] ); 
+$product_id    = $product->get_id(); 
+$gallery_style = get_theme_mod( 'single_product_gallery', 'gallery-default' ); ?>
+
+<?php do_action( 'botiga_before_quick_view_popup_content' ); ?>
 
 <div id="product-<?php echo absint( $product_id ); ?>" <?php wc_product_class( '', $product ); ?>>
     <div class="row">
-        <div class="col-lg-6 gallery-quickview">
+        <div class="col-lg-6 gallery-quickview <?php echo esc_attr( $gallery_style ); ?>">
             
             <?php
             //Gallery
@@ -81,3 +84,5 @@ $product_id = $product->get_id(); ?>
     </div>
 
 </div>
+
+<?php do_action( 'botiga_after_quick_view_popup_content' ); ?>

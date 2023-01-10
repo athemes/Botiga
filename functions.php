@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '1.2.2' );
+	define( 'BOTIGA_VERSION', '2.0.0' );
 }
 
 // aThemes White Label Compatibility
@@ -225,6 +225,11 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 * Responsive embeds
 		 */
 		add_theme_support( 'responsive-embeds' );
+
+		/**
+		 * Page templates with blocks
+		 */
+		add_theme_support( 'block-templates' );
 	}
 endif;
 add_action( 'after_setup_theme', 'botiga_setup' );
@@ -370,6 +375,11 @@ function botiga_deactivate_ele_onboarding() {
 add_action( 'after_switch_theme', 'botiga_deactivate_ele_onboarding' );
 
 /**
+ * Modules Class.
+ */
+require get_template_directory() . '/inc/modules/class-botiga-modules.php';
+
+/**
  * Gutenberg editor.
  */
 require get_template_directory() . '/inc/editor.php';
@@ -423,16 +433,16 @@ if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
 }
 
 /**
- * Load Dokan compatibility file.
+ * Load Elementor compatibility file.
  */
 if( defined( 'ELEMENTOR_VERSION' ) ) {
 	require get_template_directory() . '/inc/plugins/elementor/elementor.php';
 }
 
 /**
- * Load Elementor compatibility file.
+ * Load Dokan compatibility file.
  */
-if( defined( 'DOKAN_PLUGIN_VERSION' ) ) {
+if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/dokan/dokan.php';
 }
 
@@ -467,20 +477,20 @@ require_once get_parent_theme_file_path( 'vendor/autoload.php' );
 /**
  * Theme dashboard.
  */
-require get_template_directory() . '/theme-dashboard/class-theme-dashboard.php';
+require get_template_directory() . '/inc/dashboard/class-dashboard.php';
 
 /**
  * Theme dashboard settings.
  */
-require get_template_directory() . '/inc/theme-dashboard-settings.php';
+require get_template_directory() . '/inc/dashboard/class-dashboard-settings.php';
 
 /**
  * Modules.
  */
-require get_template_directory() . '/inc/modules/class-botiga-modules.php';
 if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 	if( version_compare( BOTIGA_PRO_VERSION, '1.1.0', '>=' ) ) {
 		require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
+		require get_template_directory() . '/inc/modules/adobe-typekit/adobe-typekit.php';
 	} else {
 		$botiga_all_modules = get_option( 'botiga-modules' );
 		$botiga_all_modules = ( is_array( $botiga_all_modules ) ) ? $botiga_all_modules : (array) $botiga_all_modules;
@@ -505,6 +515,7 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 	}
 } else {
 	require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
+	require get_template_directory() . '/inc/modules/adobe-typekit/adobe-typekit.php';
 }
 
 /**

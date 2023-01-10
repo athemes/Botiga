@@ -35,22 +35,22 @@ class Botiga_Metabox {
 				case 'post':
 				case 'product':
 					
-        	$query = new WP_Query( array(
-		        's'              => $term,
+					$query = new WP_Query( array(
+						's'              => $term,
 						'post_type'      => $source,
-		        'post_status'    => 'publish',
-            'posts_per_page' => 25,
-          	'order'          => 'DESC',
+						'post_status'    => 'publish',
+						'posts_per_page' => 25,
+						'order'          => 'DESC',
 					) );
 
-	        if ( ! empty( $query->posts ) ) {
-	          foreach( $query->posts as $post ) {
+					if ( ! empty( $query->posts ) ) {
+						foreach( $query->posts as $post ) {
 							$options[] = array(
 								'id'   => $post->ID,
 								'text' => $post->post_title,
 							);
-	        	}
-	        }
+						}
+					}
 		
 				break;
 				
@@ -244,6 +244,10 @@ class Botiga_Metabox {
 				$metabox_title = esc_html__( 'Botiga Linked Variation Options', 'botiga' );
 			break;
 
+		}
+
+		if ( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'templates' ) ) {
+			unset( $types[ 'athemes_hf' ] );
 		}
 
 		$metabox_title = apply_filters( 'botiga_metabox_title', $metabox_title, $post_type );
@@ -631,7 +635,7 @@ class Botiga_Metabox {
 
 					echo '<label>';
 					echo '<input type="radio" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $key ) .'"'. checked( $value, $key, false ) .' />';
-					echo '<figure><img src="'. esc_url( sprintf( $option['image'], get_stylesheet_directory_uri() ) ) .'" title="'. esc_attr( $option['label'] ) .'" alt="'. esc_attr( $option['label'] ) .'" /></figure>';
+					echo '<figure><img src="'. esc_url( sprintf( $option['image'], get_template_directory_uri() ) ) .'" title="'. esc_attr( $option['label'] ) .'" alt="'. esc_attr( $option['label'] ) .'" /></figure>';
 					echo '</label>';
 
 				}

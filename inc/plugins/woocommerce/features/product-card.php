@@ -9,25 +9,25 @@
  * Hooks 
  */
 function botiga_product_card_hooks() {
-    $layout			   			 = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
-	$button_layout     			 = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$quick_view_layout 			 = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
-	$wishlist_layout 			 = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-    
+    $layout            = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+    $wishlist_enable   = Botiga_Modules::is_module_active( 'wishlist' );
+
     //Loop image wrapper extra class
 	$loop_image_wrap_extra_class = 'botiga-add-to-cart-button-'. $button_layout;
 	if( 'layout1' !== $quick_view_layout ) {
 		$loop_image_wrap_extra_class .= ' botiga-quick-view-button-'. $quick_view_layout;
 	}
 
-	if( 'layout1' !== $wishlist_layout ) {
+	if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 		$loop_image_wrap_extra_class .= ' botiga-wishlist-button-'. $wishlist_layout;
 	}
 
 	//Archive layout
 	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
 		if ( 'product-list' === $layout ) {
-
 			// Products
 			add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-big'; } );
 			add_action( 'woocommerce_before_shop_loop_item', function() use ($loop_image_wrap_extra_class) { echo '<div class="row valign"><div class="col-md-4"><div class="loop-image-wrap '. esc_attr( apply_filters( 'botiga_wc_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ) .'">'; }, 1 );
@@ -116,8 +116,8 @@ function botiga_product_card_hooks() {
 	}
 
 	//Quick view and wishlist buttons
-	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_page_has_woo_blocks() || is_cart() || is_404() || is_product_taxonomy() ) {
-		if( 'layout1' !== $quick_view_layout || 'layout1' !== $wishlist_layout ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product() || botiga_page_has_woo_blocks() || botiga_page_has_woo_shortcode() || is_cart() || is_404() || is_product_taxonomy() ) {
+		if( 'layout1' !== $quick_view_layout || ( $wishlist_enable && 'layout1' !== $wishlist_layout ) ) {
 			remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open' );
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
 			add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_open', 9 );
@@ -138,13 +138,13 @@ function botiga_product_card_hooks() {
 			}
 		}
 
-		if( 'layout1' !== $wishlist_layout ) {
+		if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 			add_action( 'woocommerce_before_shop_loop_item_title', 'botiga_wishlist_button', 10 );
 		}
 	}
 
 	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
-	if( $shop_cart_show_cross_sell ) {
+	if( $shop_cart_show_cross_sell && 'layout1' !== $quick_view_layout ) {
 		//Quick view popup
 		add_action( 'wp_body_open', 'botiga_quick_view_popup' );
 	}
@@ -192,10 +192,34 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart
  */
 function botiga_page_has_woo_blocks() {
 	global $post;
-	
+
 	if( $post ) {
 		if( isset( $post->post_content ) && strpos( $post->post_content, 'woocommerce/' ) ) {
             return true;
+        }
+	}
+
+	return false;
+}
+
+/**
+ * Check if page has woocommece shortcode
+ */
+function botiga_page_has_woo_shortcode() {
+	global $post;
+
+	$shortcodes = array(
+		'products',
+		'product_page'
+	);
+
+	if( $post ) {
+		if( isset( $post->post_content ) ) { 
+			foreach( $shortcodes as $shortcode ) {
+                if( has_shortcode( $post->post_content, $shortcode ) ) {
+                    return true;
+                }
+            }
         }
 	}
 

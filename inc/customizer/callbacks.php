@@ -9,9 +9,9 @@
  * Typography Adobe Fonts library
  */
 function botiga_font_library_google() {
-	$lib = get_theme_mod( 'fonts_library', 'google' );
+	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
 
-	if ( $lib === 'google' ) {
+	if ( $fonts_library === 'google' ) {
 		return true;
 	} else {
 		return false;
@@ -22,9 +22,24 @@ function botiga_font_library_google() {
  * Typography Google Fonts library
  */
 function botiga_font_library_adobe() {
-	$lib = get_theme_mod( 'fonts_library', 'google' );
+	$adobe_typekit = Botiga_Modules::is_module_active( 'adobe-typekit' );
+	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
 
-	if ( $lib === 'adobe' ) {
+	if ( $adobe_typekit && $fonts_library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Typography Custom Fonts library
+ */
+function botiga_font_library_custom() {
+	$custom_fonts  = Botiga_Modules::is_module_active( 'custom-fonts' );
+	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $custom_fonts && $fonts_library === 'custom' ) {
 		return true;
 	} else {
 		return false;
@@ -666,6 +681,256 @@ function botiga_callback_site_layout_boxed_padded() {
 	$site_layout = get_theme_mod( 'site_layout', 'default' );
 
 	if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Button: Library Adobe & Custom Style
+ */
+function botiga_button_font_library_adobe_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'adobe-typekit' );
+	$style   = get_theme_mod( 'button_font_style', 'custom' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Button: Library Custom & Custom Style
+ */
+function botiga_button_font_library_custom_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'custom-fonts' );
+	$style   = get_theme_mod( 'button_font_style', 'custom' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'custom' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Button: Library Google & Custom Style
+ */
+function botiga_button_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'button_font_style', 'custom' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Loop Post Title: Library Adobe & Custom Style
+ */
+function botiga_loop_post_title_font_library_adobe_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'adobe-typekit' );
+	$style   = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Loop Post Title: Library Custom & Custom Style
+ */
+function botiga_loop_post_title_font_library_custom_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'custom-fonts' );
+	$style   = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'custom' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Loop Post Title: Library Google & Custom Style
+ */
+function botiga_loop_post_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Post Title: Library Google & Custom Style
+ */
+function botiga_single_post_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Post Title: Library Adobe & Custom Style
+ */
+function botiga_single_post_title_font_library_adobe_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'adobe-typekit' );
+	$style   = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Post Title: Library Custom & Custom Style
+ */
+function botiga_single_post_title_font_library_custom_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'custom-fonts' );
+	$style   = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'custom' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Product Title: Library Google & Custom Style
+ */
+function botiga_single_product_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Product Title: Library Adobe & Custom Style
+ */
+function botiga_single_product_title_font_library_adobe_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'adobe-typekit' );
+	$style   = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Single Product Title: Library Custom & Custom Style
+ */
+function botiga_single_product_title_font_library_custom_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'custom-fonts' );
+	$style   = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'custom' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Shop Product Title: Library Google & Custom Style
+ */
+function botiga_shop_product_title_font_library_google_and_custom_style() {
+
+	$style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $style === 'custom' && $library === 'google' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Shop Product Title: Library Adobe & Custom Style
+ */
+function botiga_shop_product_title_font_library_adobe_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'adobe-typekit' );
+	$style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'adobe' ) {
+		return true;
+	} else {
+		return false;
+	}
+
+}
+
+/**
+ * Shop Product Title: Library Custom & Custom Style
+ */
+function botiga_shop_product_title_font_library_custom_and_custom_style() {
+
+	$enable  = Botiga_Modules::is_module_active( 'custom-fonts' );
+	$style   = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+	$library = get_theme_mod( 'fonts_library', 'google' );
+
+	if ( $enable && $style === 'custom' && $library === 'custom' ) {
 		return true;
 	} else {
 		return false;

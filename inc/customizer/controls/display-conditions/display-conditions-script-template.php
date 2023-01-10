@@ -100,6 +100,11 @@ function botiga_display_conditions_script_template() {
 					'text' => esc_html__( 'Product Name', 'botiga' ),
 					'ajax' => true,
 				),
+				array(
+					'id'   => 'product-category-id',
+					'text' => esc_html__( 'Product Category Name', 'botiga' ),
+					'ajax' => true,
+				),
 			),
 		);
 

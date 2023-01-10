@@ -77,8 +77,7 @@ final class Botiga_Customize_Upsell {
 				$manager,
 				'botiga_upsell',
 				array(
-					'title'    => esc_html__( 'Want More Customization Options?', 'botiga' ),
-					'pro_text' => esc_html__( 'Buy Botiga Pro',  'botiga' ),
+					'pro_text' => esc_html__( 'View Pro Features',  'botiga' ),
 					'pro_url'  => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer&utm_medium=botiga_customizer&utm_campaign=Botiga',
 					'priority' => -999,
 				)
@@ -97,7 +96,6 @@ final class Botiga_Customize_Upsell {
 
 		wp_enqueue_script( 'botiga-upsell-customize-controls', trailingslashit( get_template_directory_uri() ) . 'inc/customizer/upsell/customize-controls.js', array( 'customize-controls' ) );
 
-		wp_enqueue_style( 'botiga-upsell-customize-controls', trailingslashit( get_template_directory_uri() ) . 'inc/customizer/upsell/customize-controls.css' );
 	}
 }
 

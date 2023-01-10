@@ -51,15 +51,12 @@ $wp_customize->add_control(
                 array_merge(
                     array(
                         '#customize-control-botiga_section_hb_component__html_text_color',
-                        '#customize-control-botiga_section_hb_component__html_link_color',
-                        '#customize-control-botiga_section_hb_component__html_link_color_hover',
+                        '#customize-control-botiga_section_hb_component__html_link',
 
 						// Sticky State
-						'#customize-control-botiga_section_hb_component__html_sticky_divider1',
                         '#customize-control-botiga_section_hb_component__html_sticky_title',
                         '#customize-control-botiga_section_hb_component__html_sticky_text_color',
-                        '#customize-control-botiga_section_hb_component__html_sticky_link_color',
-                        '#customize-control-botiga_section_hb_component__html_sticky_link_color_hover'
+                        '#customize-control-botiga_section_hb_component__html_sticky_link',
 
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
@@ -167,19 +164,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_hb_component__html_link_color',
-		array(
-			'label'         	=> esc_html__( 'Link Color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__html',
-            'priority'          => 41
-		)
-	)
-);
-
-// Link Color Hover.
 $wp_customize->add_setting(
 	'botiga_section_hb_component__html_link_color_hover',
 	array(
@@ -189,28 +173,17 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_hb_component__html_link_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Link Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__html',
-            'priority'          => 42
-		)
-	)
-);
-
-// Sticky Header - Divider
-$wp_customize->add_setting( 'botiga_section_hb_component__html_sticky_divider1',
-    array(
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'botiga_section_hb_component__html_sticky_divider1',
+    new Botiga_Color_Group(
+        $wp_customize,
+        'botiga_section_hb_component__html_link',
         array(
-            'section' 		  => 'botiga_section_hb_component__html',
-            'active_callback' => 'botiga_sticky_header_enabled',
-            'priority'        => 43
+            'label'    => esc_html__( 'Link Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__html',
+            'settings' => array(
+                'normal' => 'botiga_section_hb_component__html_link_color',
+                'hover'  => 'botiga_section_hb_component__html_link_color_hover',
+            ),
+            'priority' => 41
         )
     )
 );
@@ -268,20 +241,6 @@ $wp_customize->add_setting(
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_hb_component__html_sticky_link_color',
-		array(
-			'label'         	=> esc_html__( 'Link Color', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__html',
-            'active_callback'   => 'botiga_sticky_header_enabled',
-            'priority'          => 46
-		)
-	)
-);
-
-// Sticky - Link Color Hover.
 $wp_customize->add_setting(
 	'botiga_section_hb_component__html_sticky_link_color_hover',
 	array(
@@ -291,16 +250,20 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'botiga_section_hb_component__html_sticky_link_color_hover',
-		array(
-			'label'         	=> esc_html__( 'Link Color Hover', 'botiga' ),
-			'section'       	=> 'botiga_section_hb_component__html',
-            'active_callback'   => 'botiga_sticky_header_enabled',
-            'priority'          => 47
-		)
-	)
+    new Botiga_Color_Group(
+        $wp_customize,
+        'botiga_section_hb_component__html_sticky_link',
+        array(
+            'label'    => esc_html__( 'Link Color', 'botiga' ),
+            'section'  => 'botiga_section_hb_component__html',
+            'settings' => array(
+                'normal' => 'botiga_section_hb_component__html_sticky_link_color',
+                'hover'  => 'botiga_section_hb_component__html_sticky_link_color_hover',
+            ),
+            'active_callback' => 'botiga_sticky_header_enabled',
+            'priority' => 46
+        )
+    )
 );
 
 // Move existing options.
