@@ -751,7 +751,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 
 			echo '<div class="header-item header-login-register">';
-				echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
+				echo apply_filters( 'botiga_header_login_register_component_output', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 			echo '</div>';
 		}
 
