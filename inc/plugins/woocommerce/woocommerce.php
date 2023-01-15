@@ -586,6 +586,17 @@ function botiga_myaccount_html_insert() {
 add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
 
 /**
+ * Store notice add shortcode suppport
+ */
+function botiga_store_notice_add_shortcode_support( $notice ) {
+	if ( strpos( $notice, '[' ) !== false ) {
+		return do_shortcode( $notice );
+	}
+	return $notice;
+}
+add_filter( 'woocommerce_demo_store', 'botiga_store_notice_add_shortcode_support' );
+
+/**
  * Header Mini Cart
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/mini-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
