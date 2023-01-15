@@ -667,6 +667,11 @@ require get_template_directory() . '/inc/plugins/woocommerce/features/recently-v
 require get_template_directory() . '/inc/plugins/woocommerce/features/wc-editor-blocks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
+ * WooCommerce No Posts Found
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/features/no-posts-found.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
  * WooCommerce Template Functions
  */
 require get_template_directory() . '/inc/plugins/woocommerce/woocommerce-template-functions.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

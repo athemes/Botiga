@@ -7107,6 +7107,13 @@ dl.variation p {
 }
 
 /**
+ * No products found popular products
+ */
+.botiga-no-products-found-popular-products h2 {
+  font-size: 24px;
+}
+
+/**
  * WooCommerce widgets
  */
 /**
