@@ -989,6 +989,11 @@ botiga.quickView = {
 
             if (botiga.sizeChart) {
               botiga.sizeChart.init($wrapper);
+            } // Initialize product swatches mouseover 
+
+
+            if (botiga.productSwatch && botiga.productSwatch.variationMouseOver) {
+              botiga.productSwatch.variationMouseOver();
             } // Initialize product variable
 
 
