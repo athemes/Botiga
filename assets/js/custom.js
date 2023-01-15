@@ -1157,21 +1157,8 @@ botiga.qtyButton = {
         _self.events();
       });
       jQuery(document).on('wc_fragments_loaded', function () {
-        console.log('wc_fragments_loaded');
-
         _self.events();
       });
-      jQuery(document).on('wc_fragments_refreshed', function () {
-        console.log('wc_fragments_refreshed');
-
-        _self.events();
-
-        jQuery('.botiga-side-mini-cart').unblock();
-      });
-      jQuery(document).ready(function () {
-        jQuery('a.cart-contents').trigger('click');
-      });
-      console.log();
     }
   },
   updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyInput) {
