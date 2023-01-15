@@ -5718,15 +5718,58 @@ p.no-comments {
 .widget_shopping_cart .variation {
   width: 100%;
   margin: 7px 0 9px;
-  padding-left: 15px;
   line-height: 1.5;
 }
 
-.widget_shopping_cart .quantity {
-  border: none;
+.widget_shopping_cart span.quantity {
+  padding: 0;
+  margin: 0;
+  width: auto;
   height: auto;
+  border: none;
   background: transparent;
-  margin: 5px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 4px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  min-width: 70px;
+}
+
+.widget_shopping_cart .quantity-wrap {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 90px;
+}
+
+.widget_shopping_cart div.quantity {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+}
+
+.widget_shopping_cart div.quantity input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.widget_shopping_cart div.quantity input[type="number"]::-webkit-outer-spin-button, .widget_shopping_cart div.quantity input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.widget_shopping_cart .botiga-quantity-plus,
+.widget_shopping_cart .botiga-quantity-minus {
+  font-size: 1.25rem;
 }
 
 .widget_shopping_cart .mini_cart_item a:nth-child(2) {
@@ -5956,11 +5999,12 @@ p.no-comments {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    grid-gap: 10px;
     padding: 20px 30px 20px 105px;
     min-height: 115px;
     background: transparent;
@@ -6013,17 +6057,18 @@ p.no-comments {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
-  .site-header-cart .product_list_widget li > a:not(.remove),
-  .site-header-cart .product_list_widget li > span {
-    padding-left: 15px;
-    max-width: 100%;
-  }
   .site-header-cart .product_list_widget li > span {
     display: block;
     font-weight: 600;
     width: 100%;
     font-size: 14px;
     font-size: 0.875rem;
+  }
+  .site-header-cart .product_list_widget li span.quantity {
+    width: auto;
+  }
+  .site-header-cart .product_list_widget li div.quantity {
+    height: 35px;
   }
   .site-header-cart.mini-cart-has-scroll .product_list_widget {
     max-height: 26vh;

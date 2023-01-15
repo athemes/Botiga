@@ -1120,7 +1120,8 @@ botiga.qtyButton = {
       }
 
       var plus = wrapper.querySelector('.botiga-quantity-plus'),
-          minus = wrapper.querySelector('.botiga-quantity-minus');
+          minus = wrapper.querySelector('.botiga-quantity-minus'),
+          input = wrapper.querySelector('.input-text');
       plus.classList.add('show');
       minus.classList.add('show');
       plus.addEventListener('click', function (e) {
@@ -1130,16 +1131,20 @@ botiga.qtyButton = {
         input.value = input.value === '' ? 0 : parseInt(input.value) + 1;
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
-        self.updateAddToCartQuantity(this, input.value);
+        self.updateAddToCartQuantity(this, input);
       });
       minus.addEventListener('click', function (e) {
         var input = this.parentNode.querySelector('.qty'),
             changeEvent = document.createEvent('HTMLEvents');
         e.preventDefault();
-        input.value = parseInt(input.value) > 0 ? parseInt(input.value) - 1 : 0;
+        input.value = parseInt(input.value) > 1 ? parseInt(input.value) - 1 : 1;
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
-        self.updateAddToCartQuantity(this, input.value);
+        self.updateAddToCartQuantity(this, input);
+      });
+      input.addEventListener('change', function (e) {
+        this.value = this.value ? this.value : 1;
+        self.updateAddToCartQuantity(this, this);
       });
       wrapper.dataset.qtyInitialized = true;
     }
@@ -1151,17 +1156,63 @@ botiga.qtyButton = {
       jQuery('body').on('updated_cart_totals', function () {
         _self.events();
       });
+      jQuery(document).on('wc_fragments_loaded', function () {
+        console.log('wc_fragments_loaded');
+
+        _self.events();
+      });
+      jQuery(document).on('wc_fragments_refreshed', function () {
+        console.log('wc_fragments_refreshed');
+
+        _self.events();
+
+        jQuery('.botiga-side-mini-cart').unblock();
+      });
+      jQuery(document).ready(function () {
+        jQuery('a.cart-contents').trigger('click');
+      });
+      console.log();
     }
   },
-  updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
+  updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyInput) {
     var product = qtyItem.closest('.product');
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button');
 
       if (addToCartButton) {
-        addToCartButton.setAttribute('data-quantity', qtyValue);
+        addToCartButton.setAttribute('data-quantity', qtyInput.value);
       }
+    }
+
+    var miniCartItem = qtyItem.closest('.mini_cart_item');
+
+    if (miniCartItem) {
+      var $cart = jQuery(qtyItem.closest('.widget_shopping_cart'));
+      $cart.block({
+        message: null,
+        overlayCSS: {
+          background: '#fff',
+          opacity: 0.6
+        }
+      });
+      jQuery.post({
+        url: botiga.ajaxurl,
+        data: {
+          action: 'botiga_update_floating_mini_cart_quantity',
+          quantity: qtyInput.value,
+          cart_item_key: qtyInput.name
+        },
+        success: function success(response) {
+          if (response && response.fragments && response.cart_hash) {
+            jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash]);
+          }
+
+          setTimeout(function () {
+            $cart.unblock();
+          }, 100);
+        }
+      });
     }
   }
 };
