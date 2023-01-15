@@ -118,10 +118,6 @@
  gulp.task('styles', () => {
 	 return gulp
 		 .src(config.styleSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -148,10 +144,6 @@
  gulp.task('stylesMin', () => {
 	 return gulp
 		 .src(config.styleSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -193,10 +185,6 @@
  gulp.task('dashboardStyles', () => {
 	 return gulp
 		 .src(config.adminDashboardSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -224,10 +212,6 @@
  gulp.task('dashboardStylesMin', () => {
 	 return gulp
 		 .src(config.adminDashboardSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -270,10 +254,6 @@
  gulp.task('dashboardRtlStyles', () => {
 	 return gulp
 		 .src(config.adminDashboardRtlSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -301,10 +281,6 @@
  gulp.task('dashboardRtlStylesMin', () => {
 	 return gulp
 		 .src(config.adminDashboardRtlSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -347,10 +323,6 @@
  gulp.task('adminBHFBStyles', () => {
 	 return gulp
 		 .src(config.adminBHFBSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -378,10 +350,6 @@
  gulp.task('adminBHFBStylesMin', () => {
 	 return gulp
 		 .src(config.adminBHFBSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -424,10 +392,6 @@
  gulp.task('adminCustPrevBHFBStyles', () => {
 	 return gulp
 		 .src(config.adminCustPrevBHFBSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -455,10 +419,6 @@
  gulp.task('adminCustPrevBHFBStylesMin', () => {
 	 return gulp
 		 .src(config.adminCustPrevBHFBSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.adminStyleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -490,10 +450,6 @@
  gulp.task('customizerStyles', () => {
 	 return gulp
 		 .src(config.customizerSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -520,10 +476,6 @@
  gulp.task('customizerStylesMin', () => {
 	 return gulp
 		 .src(config.customizerSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -554,10 +506,6 @@
  gulp.task('customizerRtlStyles', () => {
 	 return gulp
 		 .src(config.customizerRtlSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -584,10 +532,6 @@
  gulp.task('customizerRtlStylesMin', () => {
 	 return gulp
 		 .src(config.customizerRtlSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -618,10 +562,6 @@
  gulp.task('metaboxStyles', () => {
 	 return gulp
 		 .src(config.metaboxSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -648,10 +588,6 @@
  gulp.task('metaboxStylesMin', () => {
 	 return gulp
 		 .src(config.metaboxSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -679,10 +615,6 @@
  gulp.task('editorStyles', () => {
 	 return gulp
 		 .src(config.editorStyleSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -709,10 +641,6 @@
  gulp.task('editorStylesMin', () => {
 	 return gulp
 		 .src(config.editorStyleSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -740,10 +668,6 @@
 gulp.task('woocommerceStyles', () => {
 	 return gulp
 		 .src(config.woocommerceSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -770,10 +694,6 @@ gulp.task('woocommerceStyles', () => {
 gulp.task('woocommerceStylesMin', () => {
 	 return gulp
 		 .src(config.woocommerceSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 .pipe(
 			 sass({
@@ -801,10 +721,6 @@ gulp.task('woocommerceStylesMin', () => {
 gulp.task('dokanStyles', () => {
 	return gulp
 		.src(config.dokanSRC, {allowEmpty: true})
-		.pipe(newer({
-			dest: config.styleDestination,
-			ext: '.css',
-		}))
 		.pipe(plumber(errorHandler))
 		.pipe(
 			sass({
@@ -831,10 +747,6 @@ gulp.task('dokanStyles', () => {
 gulp.task('dokanStylesMin', () => {
 	return gulp
 		.src(config.dokanSRC, {allowEmpty: true})
-		.pipe(newer({
-			dest: config.styleDestination,
-			ext: '.css',
-		}))
 		.pipe(plumber(errorHandler))
 		.pipe(
 			sass({
@@ -877,10 +789,6 @@ gulp.task('dokanStylesMin', () => {
  gulp.task('stylesRTL', () => {
 	 return gulp
 		 .src(config.styleSRC, {allowEmpty: true})
-		 .pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 		 .pipe(plumber(errorHandler))
 		 //.pipe(sourcemaps.init())
 		 .pipe(
@@ -922,10 +830,6 @@ gulp.task('dokanStylesMin', () => {
  gulp.task('BHFBStyles', () => {
 	return gulp
 		.src(config.BHFBSRC, {allowEmpty: true})
-		.pipe(newer({
-			dest: config.styleDestination,
-			ext: '.css',
-		}))
 		.pipe(plumber(errorHandler))
 		.pipe(
 			sass({
@@ -953,10 +857,6 @@ gulp.task('dokanStylesMin', () => {
 	gulp.task('BHFBStylesMin', () => {
 		return gulp
 			.src(config.BHFBSRC, {allowEmpty: true})
-			.pipe(newer({
-				dest: config.styleDestination,
-				ext: '.css',
-			}))
 			.pipe(plumber(errorHandler))
 			.pipe(
 				sass({
