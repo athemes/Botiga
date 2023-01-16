@@ -1570,7 +1570,7 @@ dl.variation {
 	.botiga-variation-type-image,
 	.botiga-variation-type-color {
 		display: flex;
-		grid-gap: 2px;
+		grid-gap: 5px;
 		flex-wrap: wrap;
 
 		> a {
@@ -1578,18 +1578,18 @@ dl.variation {
 			width: 30px;
 			height: 30px;
 			border-radius: 100%;
-			margin: 5px 8px 5px 0px;
 			border: 1px solid #ddd;
 			cursor: pointer;
+			display: flex;
 			text-indent: -99999px;
 
 			&:not(.disabled):before {
 				content: '';
 				position: absolute;
-				top: -6px;
-				right: -6px;
-				bottom: -6px;
-				left: -6px;
+				top: -4px;
+				right: -4px;
+				bottom: -4px;
+				left: -4px;
 				border: 2px solid transparent;
 				border-radius: 100%;
 				transition: ease border-color 300ms;
@@ -1612,6 +1612,7 @@ dl.variation {
 	.botiga-variation-type-button,
 	.botiga-variation-type-select {
 		display: flex;
+		grid-gap: 5px;
 		flex-wrap: wrap;
 
 		> a {
@@ -1621,22 +1622,20 @@ dl.variation {
 			font-size: 0.9rem;
 			font-weight: 600;
 			line-height: 1;
-			padding: 9px 15px;
-			margin-right: 8px;
-			margin-bottom: 8px;
+			padding: 10px 15px;
 			min-width: 30px;
 			min-height: 30px;
-			border: 2px solid $color__primary;
+			color: $color__grey;
+			border: 2px solid $color__grey;
 			text-align: center;
 			cursor: pointer;
-			opacity: 0.4;
 			overflow: hidden;
-			transition: ease opacity 300ms;
+			transition: ease all 300ms;
 
 			&:hover,
 			&.active {
-				opacity: 1;
 				color: $color__primary;
+				border-color: $color__primary;
 			}
 
 			&:last-child {
@@ -1651,6 +1650,7 @@ dl.variation {
 	.botiga-variation-type-select {
 
 		> a {
+			text-decoration: none;
 
 			&.disabled {
 				position: relative;
@@ -1685,6 +1685,9 @@ dl.variation {
 			text-indent: 0;
 
 			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
 				border-radius: 100%;
 			}
 		}
@@ -2195,7 +2198,7 @@ dl.variation {
 		font-size: 0.9rem;
 		font-weight: 600;
 		line-height: 1;
-		padding: 9px 15px;
+		padding: 10px 15px;
 		min-width: 30px;
 		min-height: 30px;
 		color: $color__primary;
