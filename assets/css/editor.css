@@ -2033,39 +2033,31 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a {
   position: relative;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
   border: 1px solid #ddd;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  text-indent: -99999px;
-}
-
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
-  border: 2px solid transparent;
+  padding: 2px;
+  width: 26px;
+  height: 26px;
   border-radius: 100%;
-  -webkit-transition: ease border-color 300ms;
-  transition: ease border-color 300ms;
+  -webkit-transition: border-color .3s;
+  transition: border-color .3s;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:last-child,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:last-child {
-  margin-right: 0;
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a > span,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a > span {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
 }
 
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover:not(.disabled):before, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.active:not(.disabled):before,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before,
-div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before {
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.active,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover,
+div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a.active {
   border-color: #212121;
 }
 
@@ -2194,7 +2186,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-tooltip {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   white-space: nowrap;
   color: #fff;
   background-color: #212121;
@@ -2229,7 +2221,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-imag
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-color > a:hover .botiga-variation-tooltip,
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover .botiga-variation-tooltip {
   opacity: 1;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   visibility: visible;
 }
 

@@ -1469,18 +1469,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 				// Color
 				$css .= $this->get_css( 'product_swatch_color_border_radius', 100, '.botiga-variations-wrapper .botiga-variation-type-color > a', 'border-radius' );
-				$css .= $this->get_css( 'product_swatch_color_border_radius', 100, '.botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before', 'border-radius' );
-				$css .= $this->get_responsive_css( 'product_swatch_color_width', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.botiga-variations-wrapper .botiga-variation-type-color>a', 'width' );
-				$css .= $this->get_responsive_css( 'product_swatch_color_height', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.botiga-variations-wrapper .botiga-variation-type-color>a', 'height' );
+				$css .= $this->get_css( 'product_swatch_color_border_radius', 100, '.botiga-variations-wrapper .botiga-variation-type-color > a > span', 'border-radius' );
+				$css .= $this->get_responsive_css( 'product_swatch_color_width', array( 'desktop' => 26, 'tablet' => 26, 'mobile' => 26 ), '.botiga-variations-wrapper .botiga-variation-type-color>a', 'width' );
+				$css .= $this->get_responsive_css( 'product_swatch_color_height', array( 'desktop' => 26, 'tablet' => 26, 'mobile' => 26 ), '.botiga-variations-wrapper .botiga-variation-type-color>a', 'height' );
 				$css .= $this->get_css( 'product_swatch_color_border_width', 1, '.botiga-variations-wrapper .botiga-variation-type-color > a', 'border-width' );
-				$swatch_border_width_hover    = intval( get_theme_mod( 'product_swatch_color_border_width_hover', 2 ) );
-				$swatch_border_width_space    = max( 4, $swatch_border_width_hover*2 );
-				$swatch_border_width_position = 'top: -'. $swatch_border_width_space .'px; right: -'. $swatch_border_width_space .'px; bottom: -'. $swatch_border_width_space .'px; left: -'. $swatch_border_width_space .'px;';
-				$css .= '.botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before{ border-width: '. $swatch_border_width_hover .'px; '. $swatch_border_width_position .' }';
 				$css .= $this->get_responsive_css( 'product_swatch_color_spacing', array( 'desktop' => 5, 'tablet' => 5, 'mobile' => 5 ), '.botiga-variations-wrapper .botiga-variation-type-color', 'grid-gap' );
 				$css .= $this->get_border_color_css( 'product_swatch_color_border_color_default', '', '.botiga-variations-wrapper .botiga-variation-type-color > a' );
-				$css .= $this->get_border_color_css( 'product_swatch_color_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-color > a:hover:not(.disabled):before' );
-				$css .= $this->get_border_color_css( 'product_swatch_color_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-color > a.active:not(.disabled):before' );
+				$css .= $this->get_border_color_css( 'product_swatch_color_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-color > a:hover > span' );
+				$css .= $this->get_border_color_css( 'product_swatch_color_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-color > a.active > span' );
 
 				// Button
 				$css .= $this->get_left_right_padding_css( 'product_swatch_button_left_right_padding', array( 'desktop' => 15, 'tablet' => 15, 'mobile' => 15 ), '.botiga-variations-wrapper .botiga-variation-type-button > a', true );
@@ -1500,18 +1496,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 				// Image
 				$css .= $this->get_css( 'product_swatch_image_border_radius', 100, '.botiga-variations-wrapper .botiga-variation-type-image > a', 'border-radius' );
-				$css .= $this->get_css( 'product_swatch_image_border_radius', 100, '.botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before', 'border-radius' );
-				$css .= $this->get_responsive_css( 'product_swatch_image_width', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.botiga-variations-wrapper .botiga-variation-type-image>a', 'width' );
-				$css .= $this->get_responsive_css( 'product_swatch_image_height', array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 30 ), '.botiga-variations-wrapper .botiga-variation-type-image>a', 'height' );
+				$css .= $this->get_css( 'product_swatch_image_border_radius', 100, '.botiga-variations-wrapper .botiga-variation-type-image > a > span', 'border-radius' );
+				$css .= $this->get_responsive_css( 'product_swatch_image_width', array( 'desktop' => 26, 'tablet' => 26, 'mobile' => 26 ), '.botiga-variations-wrapper .botiga-variation-type-image>a', 'width' );
+				$css .= $this->get_responsive_css( 'product_swatch_image_height', array( 'desktop' => 26, 'tablet' => 26, 'mobile' => 26 ), '.botiga-variations-wrapper .botiga-variation-type-image>a', 'height' );
 				$css .= $this->get_css( 'product_swatch_image_border_width', 1, '.botiga-variations-wrapper .botiga-variation-type-image > a', 'border-width' );
-				$swatch_border_width_hover    = intval( get_theme_mod( 'product_swatch_image_border_width_hover', 2 ) );
-				$swatch_border_width_space    = max( 4, $swatch_border_width_hover*2 );
-				$swatch_border_width_position = 'top: -'. $swatch_border_width_space .'px; right: -'. $swatch_border_width_space .'px; bottom: -'. $swatch_border_width_space .'px; left: -'. $swatch_border_width_space .'px;';
-				$css .= '.botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before{ border-width: '. $swatch_border_width_hover .'px; '. $swatch_border_width_position .' }';
 				$css .= $this->get_responsive_css( 'product_swatch_image_spacing', array( 'desktop' => 5, 'tablet' => 5, 'mobile' => 5 ), '.botiga-variations-wrapper .botiga-variation-type-image', 'grid-gap' );
 				$css .= $this->get_border_color_css( 'product_swatch_image_border_color_default', '', '.botiga-variations-wrapper .botiga-variation-type-image > a' );
-				$css .= $this->get_border_color_css( 'product_swatch_image_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-image > a:hover:not(.disabled):before' );
-				$css .= $this->get_border_color_css( 'product_swatch_image_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-image > a.active:not(.disabled):before' );
+				$css .= $this->get_border_color_css( 'product_swatch_image_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-image > a:hover > span' );
+				$css .= $this->get_border_color_css( 'product_swatch_image_border_color_hover', '', '.botiga-variations-wrapper .botiga-variation-type-image > a.active > span' );
 
 			}
 

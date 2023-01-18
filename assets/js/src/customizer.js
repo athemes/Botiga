@@ -1627,16 +1627,6 @@
 		} );
 	} );
 
-	wp.customize( 'product_swatch_color_border_width_hover', function( value ) {
-		value.bind( function( to ) {
-			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_color_border_width_hover' ).remove();
-			var space     = Math.max(4, parseInt( to )*2);
-			var positions = 'left:-' + space + 'px !important; right:-' + space + 'px !important; bottom:-' + space + 'px !important; top:-' + space + 'px !important;';
-			var output    = '.botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before { border-width:' + to + 'px !important; '+ positions +' }';
-			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_color_border_width_hover">' + output + '</style>' );
-		} );
-	} );
-
 	wp.customize( 'product_swatch_color_border_radius', function( value ) {
 		value.bind( function( to ) {
 			$( '.botiga-variations-wrapper .botiga-variation-type-color > a' ).css( 'border-radius', to + 'px' );
@@ -1725,16 +1715,6 @@
 			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_image_border_width' ).remove();
 			var output = '.botiga-variations-wrapper .botiga-variation-type-image > a { border-width:' + to + 'px !important; }';
 			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_image_border_width">' + output + '</style>' );
-		} );
-	} );
-
-	wp.customize( 'product_swatch_image_border_width_hover', function( value ) {
-		value.bind( function( to ) {
-			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_image_border_width_hover' ).remove();
-			var space     = Math.max(4, parseInt( to )*2);
-			var positions = 'left:-' + space + 'px !important; right:-' + space + 'px !important; bottom:-' + space + 'px !important; top:-' + space + 'px !important;';
-			var output    = '.botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before { border-width:' + to + 'px !important; '+ positions +' }';
-			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_image_border_width_hover">' + output + '</style>' );
 		} );
 	} );
 
