@@ -1758,3 +1758,59 @@ jQuery(document).ready(function ($) {
 	});
 
 });
+
+/* Dimensions Control */
+(function($){
+
+	const Botiga_Dimensions_Control = {
+		init: function() {
+			this.events();
+		},
+
+		// events
+		events: function() {
+			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-input' ).on( 'change', this.setDimensionValue.bind(this) );
+			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-unit' ).on( 'change', this.setDimensionValue.bind(this) );
+		},
+
+		// change dimension
+		setDimensionValue: function(e) {
+			const 
+				$inputToSave = $( e.target ).parent().find( '.botiga-dimensions-value' ),
+				value        = this.getDimensionValue( e.target );
+
+			$inputToSave.val( value ).trigger( 'change' );
+		},
+
+		// mount value
+		getDimensionValue: function( input ) {
+			const deviceType = $( input ).parent().data( 'device-type' );
+			const inputs = $( input ).parent().find( '.botiga-dimensions-input' );
+			let value = {
+				unit: 'px',
+				top: '',
+				right: '',
+				bottom: '',
+				left: '',
+			};
+
+			// Unit value
+			value[ 'unit' ] = $( input ).closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-units[data-device-type="'+ deviceType +'"] .botiga-dimensions-unit' ).val();
+
+			// Side values
+			inputs.each( function() {
+				const side = $( this ).data( 'side' ),
+					val    = $( this ).val();
+
+				value[side] = val;
+			});
+
+			return JSON.stringify( value );
+		}
+
+	}
+
+	$( document ).ready(function(){
+		Botiga_Dimensions_Control.init();
+	});
+})(jQuery);

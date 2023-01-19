@@ -21,6 +21,50 @@ $opts_to_move = array(
     'style'   => array()
 );
 
+/**
+ * Tabs (Layout / Design)
+ * 
+ */
+$wp_customize->add_setting(
+    'botiga_section_hb_wrapper__header_builder_tabs',
+    array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_attr'
+    )
+);
+$wp_customize->add_control(
+    new Botiga_Tab_Control (
+        $wp_customize,
+        'botiga_section_hb_wrapper__header_builder_tabs',
+        array(
+            'label' 				=> '',
+            'section'       		=> 'botiga_section_hb_wrapper',
+            'controls_general'		=> json_encode(
+				array_merge(
+					array(
+						'#customize-control-botiga_section_hb_wrapper__header_builder_goto_sections',
+						'#customize-control-header_transparent_hb_rows',
+						'#customize-control-botiga_section_hb_wrapper__header_builder_sticky_row'
+					),
+					array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+				)
+            ),
+            'controls_design'		=> json_encode(
+				array(
+					'#customize-control-botiga_section_hb_wrapper__header_builder_background_color',
+					'#customize-control-botiga_section_hb_wrapper__header_builder_background_image'
+				)
+            ),
+            'priority' 				=> 10
+        )
+    )
+);
+
+/**
+ * Layout (Tab Content)
+ * 
+ */
+
 // Header Section Shortcuts
 $wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_goto_sections',
 	array(
@@ -97,6 +141,110 @@ $wp_customize->add_control(
         'priority'        => 35
 	) 
 );
+
+/**
+ * Design (Tab Content)
+ * 
+ */
+
+// Background Color
+$wp_customize->add_setting(
+	'botiga_section_hb_wrapper__header_builder_background_color',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'botiga_section_hb_wrapper__header_builder_background_color',
+		array(
+			'label'         	=> esc_html__( 'Background color', 'botiga' ),
+			'section'       	=> 'botiga_section_hb_wrapper',
+			'priority'			=> 35
+		)
+	)
+);
+
+// Background Image
+$wp_customize->add_setting( 
+	'botiga_section_hb_wrapper__header_builder_background_image',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'absint',
+	) 
+);
+$wp_customize->add_control( 
+	new WP_Customize_Media_Control( 
+		$wp_customize, 
+		'botiga_section_hb_wrapper__header_builder_background_image',
+		array(
+			'label'           => __( 'Background Image', 'botiga' ),
+			'section'         => 'botiga_section_hb_wrapper',
+			'mime_type'       => 'image',
+			'priority'	      => 35
+		)
+	)
+);
+
+// Padding
+$wp_customize->add_setting( 
+	'botiga_section_hb_wrapper__header_builder_padding_desktop',
+	array(
+		'default'           => '{ "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+		'sanitize_callback' => '',
+		'transport'         => 'postMessage'
+	) 
+);
+$wp_customize->add_setting( 
+	'botiga_section_hb_wrapper__header_builder_padding_tablet',
+	array(
+		'default'           => '{ "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+		'sanitize_callback' => '',
+		'transport'         => 'postMessage'
+	) 
+);
+$wp_customize->add_setting( 
+	'botiga_section_hb_wrapper__header_builder_padding_mobile',
+	array(
+		'default'           => '{ "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+		'sanitize_callback' => '',
+		'transport'         => 'postMessage'
+	) 
+);
+$wp_customize->add_control( 
+	new Botiga_Dimensions_Control( 
+		$wp_customize, 
+		'botiga_section_hb_wrapper__header_builder_padding',
+		array(
+			'label'           	=> __( 'Padding', 'botiga' ),
+			'section'         	=> 'botiga_section_hb_wrapper',
+			'sides'             => array(
+				'top'    => __( 'Top', 'botiga' ),
+				'right'  => __( 'Right', 'botiga' ),
+				'bottom' => __( 'Bottom', 'botiga' ),
+				'left'   => __( 'Left', 'botiga' ),
+			),
+			'units'              => array( 'px', '%', 'rem', 'em' ),
+			'link_values_toggle' => true,
+			'is_responsive'   	 => true,
+			'settings'        	 => array(
+				'desktop' => 'botiga_section_hb_wrapper__header_builder_padding_desktop',
+				'tablet'  => 'botiga_section_hb_wrapper__header_builder_padding_tablet',
+				'mobile'  => 'botiga_section_hb_wrapper__header_builder_padding_mobile'
+			),
+			'priority'	      	 => 35
+		)
+	)
+);
+
+/**
+ * Layout / Design
+ * Is not assigned to any tab, so it will display in both tabs
+ * 
+ */
 
 // Available Header Components Area
 $wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_available_components',
