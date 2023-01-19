@@ -1090,6 +1090,7 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.behaviorsBasedOnQuantityValue( this, input.value );
 
 			});
 	
@@ -1104,6 +1105,7 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.behaviorsBasedOnQuantityValue( this, input.value );
 
 			});
 
@@ -1116,26 +1118,44 @@ botiga.qtyButton = {
 		var _self = this;
 
 		if( typeof jQuery !== 'undefined' ) {
-			jQuery( 'body' ).on('updated_cart_totals', function(){
+			jQuery( 'body' ).on( 'updated_cart_totals', function(){
 				_self.events();
-			});
+			} );
 		}
 	},
 
 	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
-
-		var product = qtyItem.closest('.product');
+		var product = qtyItem.closest( '.product' );
 
 		if ( product ) {
 
-			var addToCartButton = product.querySelector('.add_to_cart_button');
+			var addToCartButton = product.querySelector( '.add_to_cart_button:not(.single_add_to_cart_button)' );
 
 			if ( addToCartButton ) {
-				addToCartButton.setAttribute('data-quantity', qtyValue);
+				addToCartButton.setAttribute( 'data-quantity', qtyValue );
 			}
 
 		}
+	},
 
+	behaviorsBasedOnQuantityValue: function( qtyItem, qtyValue ) {
+		var product = qtyItem.closest( '.product' );
+
+		if ( product ) {
+
+			var addToCartButton = product.querySelector( '.add_to_cart_button:not(.single_add_to_cart_button)' );
+
+			if ( addToCartButton ) {
+				
+				if( qtyValue == 0 ) {
+					addToCartButton.classList.add( 'disabled' );
+				} else {
+					addToCartButton.classList.remove( 'disabled' );
+				}
+
+			}
+
+		}
 	}
 }
 

@@ -513,6 +513,7 @@
 
             $( document ).on( 'click', '.botiga-bhfb-element > a', function(e){
                 e.preventDefault();
+                e.stopPropagation();
 
                 const
                     id           = $( this ).data( 'bhfb-id' ),

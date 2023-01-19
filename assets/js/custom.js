@@ -1131,6 +1131,7 @@ botiga.qtyButton = {
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
         self.updateAddToCartQuantity(this, input.value);
+        self.behaviorsBasedOnQuantityValue(this, input.value);
       });
       minus.addEventListener('click', function (e) {
         var input = this.parentNode.querySelector('.qty'),
@@ -1140,6 +1141,7 @@ botiga.qtyButton = {
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
         self.updateAddToCartQuantity(this, input.value);
+        self.behaviorsBasedOnQuantityValue(this, input.value);
       });
       wrapper.dataset.qtyInitialized = true;
     }
@@ -1157,10 +1159,25 @@ botiga.qtyButton = {
     var product = qtyItem.closest('.product');
 
     if (product) {
-      var addToCartButton = product.querySelector('.add_to_cart_button');
+      var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
 
       if (addToCartButton) {
         addToCartButton.setAttribute('data-quantity', qtyValue);
+      }
+    }
+  },
+  behaviorsBasedOnQuantityValue: function behaviorsBasedOnQuantityValue(qtyItem, qtyValue) {
+    var product = qtyItem.closest('.product');
+
+    if (product) {
+      var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
+
+      if (addToCartButton) {
+        if (qtyValue == 0) {
+          addToCartButton.classList.add('disabled');
+        } else {
+          addToCartButton.classList.remove('disabled');
+        }
       }
     }
   }
