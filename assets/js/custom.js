@@ -1119,10 +1119,14 @@ botiga.qtyButton = {
         return false;
       }
 
-      var plus = wrapper.querySelector('.botiga-quantity-plus'),
+      var qtyInput = wrapper.querySelector('.qty'),
+          plus = wrapper.querySelector('.botiga-quantity-plus'),
           minus = wrapper.querySelector('.botiga-quantity-minus');
       plus.classList.add('show');
       minus.classList.add('show');
+      qtyInput.addEventListener('change', function (e) {
+        self.behaviorsBasedOnQuantityValue(this, this.value);
+      });
       plus.addEventListener('click', function (e) {
         var input = this.parentNode.querySelector('.qty'),
             changeEvent = document.createEvent('HTMLEvents');
