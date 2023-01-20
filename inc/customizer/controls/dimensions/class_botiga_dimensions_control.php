@@ -22,6 +22,7 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
             'mobile'  => json_decode( $this->value( 'mobile' ) )
         );
 
+        // Responsive identifier
         $responsive = '';
 		if ( !$this->is_responsive ) {
 			$responsive = 'noresponsive';
@@ -44,8 +45,11 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
                             </select>
                         </div>
                         <?php if( $this->link_values_toggle ) : ?>
-                            <div class="botiga-dimensions-link-values responsive-control-desktop active" data-device-type="desktop">
-                                <button type="button" class="botiga-dimensions-link-btn" title="<?php esc_attr_e( 'Link values together', 'botiga' ); ?>"><i class="dashicons dashicons-admin-links"></i></button>
+                            <div class="botiga-dimensions-link-values <?php echo ( $value[ 'desktop' ]->linked ? 'linked ' : '' ); ?>responsive-control-desktop active" data-device-type="desktop">
+                                <button type="button" class="botiga-dimensions-link-btn" title="<?php esc_attr_e( 'Link values together', 'botiga' ); ?>">
+                                    <i class="botiga-dimensions-icon botiga-dimensions-icon-link dashicons dashicons-admin-links"></i>
+                                    <i class="botiga-dimensions-icon botiga-dimensions-icon-unlink dashicons dashicons-editor-unlink"></i>
+                                </button>
                             </div>
                         <?php endif; ?>
                         <?php if ( $this->is_responsive ) : ?>
@@ -57,8 +61,11 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
                                 </select>
                             </div>
                             <?php if( $this->link_values_toggle ) : ?>
-                                <div class="botiga-dimensions-link-values responsive-control-tablet" data-device-type="tablet">
-                                    <button type="button" class="botiga-dimensions-link-btn" title="<?php esc_attr_e( 'Link values together', 'botiga' ); ?>"><i class="dashicons dashicons-admin-links"></i></button>
+                                <div class="botiga-dimensions-link-values <?php echo ( $value[ 'tablet' ]->linked ? 'linked ' : '' ); ?>responsive-control-tablet" data-device-type="tablet">
+                                    <button type="button" class="botiga-dimensions-link-btn" title="<?php esc_attr_e( 'Link values together', 'botiga' ); ?>">
+                                        <i class="botiga-dimensions-icon botiga-dimensions-icon-link dashicons dashicons-admin-links"></i>
+                                        <i class="botiga-dimensions-icon botiga-dimensions-icon-unlink dashicons dashicons-editor-unlink"></i>   
+                                    </button>
                                 </div>
                             <?php endif; ?>
                             <div class="botiga-dimensions-units responsive-control-mobile" data-device-type="mobile">
@@ -69,8 +76,11 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
                                 </select>
                             </div>
                             <?php if( $this->link_values_toggle ) : ?>
-                                <div class="botiga-dimensions-link-values responsive-control-mobile" data-device-type="mobile">
-                                    <button type="button" class="botiga-dimensions-link-btn" title="<?php esc_attr_e( 'Link values together', 'botiga' ); ?>"><i class="dashicons dashicons-admin-links"></i></button>
+                                <div class="botiga-dimensions-link-values <?php echo ( $value[ 'mobile' ]->linked ? 'linked ' : '' ); ?>responsive-control-mobile" data-device-type="mobile">
+                                    <button type="button" class="botiga-dimensions-link-btn" title="<?php esc_attr_e( 'Link values together', 'botiga' ); ?>">
+                                        <i class="botiga-dimensions-icon botiga-dimensions-icon-link dashicons dashicons-admin-links"></i>
+                                        <i class="botiga-dimensions-icon botiga-dimensions-icon-unlink dashicons dashicons-editor-unlink"></i>    
+                                    </button>
                                 </div>
                             <?php endif; ?>
                             <ul class="botiga-devices-preview">
@@ -81,25 +91,25 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
                         <?php endif; ?>
                     </div>
                     <div class="botiga-dimensions-inputs responsive-control-desktop active" data-device-type="desktop">
-                        <?php if( isset( $this->sides[ 'top' ] ) ) : ?>
+                        <?php if( isset( $this->sides[ 'top' ] ) && $this->sides[ 'top' ] ) : ?>
                             <div class="botiga-dimensions-input-wrapper">
                                 <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'desktop' ]->top ); ?>" data-side="top" class="botiga-dimensions-input" />
                                 <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Top', 'botiga' ); ?></label>
                             </div>
                         <?php endif; ?>
-                        <?php if( isset( $this->sides[ 'right' ] ) ) : ?>
+                        <?php if( isset( $this->sides[ 'right' ] ) && $this->sides[ 'right' ] ) : ?>
                             <div class="botiga-dimensions-input-wrapper">
                                 <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'desktop' ]->right ); ?>" data-side="right" class="botiga-dimensions-input" />
                                 <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Right', 'botiga' ); ?></label>
                             </div>
                         <?php endif; ?>
-                        <?php if( isset( $this->sides[ 'bottom' ] ) ) : ?>
+                        <?php if( isset( $this->sides[ 'bottom' ] ) && $this->sides[ 'bottom' ] ) : ?>
                             <div class="botiga-dimensions-input-wrapper">
                                 <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'desktop' ]->bottom ); ?>" data-side="bottom" class="botiga-dimensions-input" />
                                 <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Bottom', 'botiga' ); ?></label>
                             </div>
                         <?php endif; ?>
-                        <?php if( isset( $this->sides[ 'left' ] ) ) : ?>
+                        <?php if( isset( $this->sides[ 'left' ] ) && $this->sides[ 'left' ] ) : ?>
                             <div class="botiga-dimensions-input-wrapper">
                                 <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'desktop' ]->left ); ?>" data-side="left" class="botiga-dimensions-input" />
                                 <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Left', 'botiga' ); ?></label>
@@ -109,25 +119,25 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
                     </div>
                     <?php if( $this->is_responsive ) : ?>
                         <div class="botiga-dimensions-inputs responsive-control-tablet" data-device-type="tablet">
-                            <?php if( isset( $this->sides[ 'top' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'top' ] ) && $this->sides[ 'top' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'tablet' ]->top ); ?>" data-side="top" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Top', 'botiga' ); ?></label>
                                 </div>
                             <?php endif; ?>
-                            <?php if( isset( $this->sides[ 'right' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'right' ] ) && $this->sides[ 'right' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'tablet' ]->right ); ?>" data-side="right" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Right', 'botiga' ); ?></label>
                                 </div>
                             <?php endif; ?>
-                            <?php if( isset( $this->sides[ 'bottom' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'bottom' ] ) && $this->sides[ 'bottom' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'tablet' ]->bottom ); ?>" data-side="bottom" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Bottom', 'botiga' ); ?></label>
                                 </div>
                             <?php endif; ?>
-                            <?php if( isset( $this->sides[ 'left' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'left' ] ) && $this->sides[ 'left' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'tablet' ]->left ); ?>" data-side="left" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Left', 'botiga' ); ?></label>
@@ -136,25 +146,25 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
                             <input type="hidden" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link( 'tablet' ); ?> class="botiga-dimensions-value" />
                         </div>
                         <div class="botiga-dimensions-inputs responsive-control-mobile" data-device-type="mobile">
-                            <?php if( isset( $this->sides[ 'top' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'top' ] ) && $this->sides[ 'top' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'mobile' ]->top ); ?>" data-side="top" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Top', 'botiga' ); ?></label>
                                 </div>
                             <?php endif; ?>
-                            <?php if( isset( $this->sides[ 'right' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'right' ] ) && $this->sides[ 'right' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'mobile' ]->right ); ?>" data-side="right" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Right', 'botiga' ); ?></label>
                                 </div>
                             <?php endif; ?>
-                            <?php if( isset( $this->sides[ 'bottom' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'bottom' ] ) && $this->sides[ 'bottom' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'mobile' ]->bottom ); ?>" data-side="bottom" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Bottom', 'botiga' ); ?></label>
                                 </div>
                             <?php endif; ?>
-                            <?php if( isset( $this->sides[ 'left' ] ) ) : ?>
+                            <?php if( isset( $this->sides[ 'left' ] ) && $this->sides[ 'left' ] ) : ?>
                                 <div class="botiga-dimensions-input-wrapper">
                                     <input type="number" min="-500" max="500" value="<?php echo esc_attr( $value[ 'mobile' ]->left ); ?>" data-side="left" class="botiga-dimensions-input" />
                                     <label class="botiga-dimensions-input-label"><?php echo esc_html__( 'Left', 'botiga' ); ?></label>

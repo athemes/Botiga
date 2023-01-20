@@ -2996,6 +2996,22 @@ a:focus,
   font-size: 1em;
 }
 
+.botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-header .botiga-dimensions-link-values .botiga-dimensions-icon-link {
+  display: none;
+}
+
+.botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-header .botiga-dimensions-link-values .botiga-dimensions-icon-unlink {
+  display: block;
+}
+
+.botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-header .botiga-dimensions-link-values.linked .botiga-dimensions-icon-link {
+  display: block;
+}
+
+.botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-header .botiga-dimensions-link-values.linked .botiga-dimensions-icon-unlink {
+  display: none;
+}
+
 .botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-inputs {
   display: grid;
   grid-template-columns: repeat(4, auto);

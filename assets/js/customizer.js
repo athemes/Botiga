@@ -1374,14 +1374,14 @@
       var output = '.header-search-form .botiga-select { margin-right:' + to + 'px !important; }';
       $('head').append('<style id="botiga-customizer-styles-bhfb_search_form_product_cat_dropdown_margin_right">' + output + '</style>');
     });
-  }); // Color options
+  }); // Theme options
 
-  var $color_options = botiga_theme_options;
-  $.each($color_options, function (key, css) {
+  var $theme_options = botiga_theme_options;
+  $.each($theme_options, function (key, css) {
     wp.customize(css.option, function (value) {
       value.bind(function (to, prev) {
         var output = '';
-        $.each($color_options, function (key, css2) {
+        $.each($theme_options, function (key, css2) {
           if (css.option === css2.option) {
             var unit = typeof css2.unit !== 'undefined' ? css2.unit : '';
 
@@ -1397,8 +1397,14 @@
               return;
             }
 
-            if (!unit) {
+            if (!unit && css2.type !== 'dimensions') {
               to = typeof css2.rgba !== 'undefined' ? hexToRGB(to, css2.rgba) : to;
+            } // convert 'to' value to a dimensions format
+
+
+            if (css2.type === 'dimensions') {
+              to = JSON.parse(to);
+              to = to.top + to.unit + ' ' + to.right + to.unit + ' ' + to.bottom + to.unit + ' ' + to.left + to.unit;
             }
 
             if (typeof css2.pseudo === 'undefined') {
@@ -1410,12 +1416,26 @@
                 });
               }
             } else {
-              if (typeof css2.prop === 'string') {
-                output += css2.selector + '{ ' + css2.prop + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; }';
-              } else {
-                $.each(css2.prop, function (propkey, propvalue) {
-                  output += css2.selector + '{ ' + propvalue + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; }';
+              if (css2.is_responsive) {
+                $.each($devices, function (device, mediaSize) {
+                  console.log(mediaSize);
+
+                  if (typeof css2.prop === 'string') {
+                    output += '@media ' + mediaSize + ' { ' + css2.selector + ' { ' + css2.prop + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; } }';
+                  } else {
+                    $.each(css2.prop, function (propkey, propvalue) {
+                      output += '@media ' + mediaSize + ' { ' + css2.selector + ' { ' + propvalue + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; } }';
+                    });
+                  }
                 });
+              } else {
+                if (typeof css2.prop === 'string') {
+                  output += css2.selector + '{ ' + css2.prop + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; }';
+                } else {
+                  $.each(css2.prop, function (propkey, propvalue) {
+                    output += css2.selector + '{ ' + propvalue + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; }';
+                  });
+                }
               }
             }
           }

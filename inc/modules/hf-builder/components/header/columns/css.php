@@ -62,6 +62,30 @@ foreach( $rows as $row ) {
             $row,
             $section_id
         );
+
+        // Padding
+        $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+            $section_id . '_padding',
+            array(
+                'desktop' => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+                'tablet'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+                'mobile'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+            ), 
+            $column_selector, 
+            'padding'
+        );
+
+        // Margin
+        $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+            $section_id . '_margin',
+            array(
+                'desktop' => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+                'tablet'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+                'mobile'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+            ), 
+            $column_selector, 
+            'margin'
+        );
     }
 
 }

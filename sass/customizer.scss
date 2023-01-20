@@ -2606,6 +2606,22 @@ a,
 						font-size: 1em;
 					}
 				}
+
+				.botiga-dimensions-icon-link {
+					display: none;
+				}
+				.botiga-dimensions-icon-unlink {
+					display: block;
+				}
+
+				&.linked {
+					.botiga-dimensions-icon-link {
+						display: block;
+					}
+					.botiga-dimensions-icon-unlink {
+						display: none;
+					}
+				}
 			}
 		}
 

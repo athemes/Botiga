@@ -1646,6 +1646,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_background_color_css( $setting = '', $default = '', $selector = '', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
+			if( ! $mod ) {
+				return '';
+			}
+
 			if( $setting === 'background_color' && substr( $mod, 0, 1 ) !== '#' ) {
 				$mod = "#$mod";
 			}
@@ -1870,9 +1874,58 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			return $css;
 		}
 
+		//Dimensions
+		public static function get_dimensions_css( $setting = '', $default = '', $selector = '', $css_prop = '', $important = false ) {
+			$mod_val = json_decode( get_theme_mod( $setting, $default ) );
+			$mod_val = is_object( $mod_val ) ? $mod_val : json_decode( $default );
+
+			$css_prop_value = "{$mod_val->top}{$mod_val->unit} {$mod_val->right}{$mod_val->unit} {$mod_val->bottom}{$mod_val->unit} {$mod_val->left}{$mod_val->unit}";
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, $css_prop, '', $important, false, 'dimensions' );
+
+			if( is_array( $css_prop ) ) {
+				$css_output = '';
+
+				foreach( $css_prop as $css ) {
+					$css_output .= $selector . '{ '. $css['prop'] .':' . esc_attr( $css_prop_value ) . ( $important ? '!important' : '' ) . ';}' . "\n";
+				}
+
+				return $css_output;
+			} else {
+				return $selector . '{ '. $css_prop .':' . esc_attr( $css_prop_value ) . ( $important ? '!important' : '' ) . ';}' . "\n";
+			}
+
+		}
+
+		//Responsive dimensions
+		public static function get_responsive_dimensions_css( $setting = '', $defaults = array(), $selector = '', $css_prop = '', $important = false ) {
+			$devices = array( 
+				'desktop' 	=> '@media (min-width: 992px)',
+				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
+				'mobile'	=> '@media (max-width: 575px)'
+			);
+
+			$css = '';
+
+			foreach ( $devices as $device => $media ) {
+				$mod_val = json_decode( get_theme_mod( $setting . '_' . $device, $defaults[$device] ) );
+				$mod_val = is_object( $mod_val ) ? $mod_val : json_decode( $defaults[$device] );
+
+				$css_prop_value = "{$mod_val->top}{$mod_val->unit} {$mod_val->right}{$mod_val->unit} {$mod_val->bottom}{$mod_val->unit} {$mod_val->left}{$mod_val->unit}";
+
+				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true, 'dimensions' );
+
+				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $css_prop_value ) . ( $important ? '!important' : '' ) . '; } }' . "\n";	
+			}
+
+			return $css;
+		}
+
 		//CSS (can pass css prop and unit)
 		public static function get_css( $setting = '', $default = '', $selector = '', $css_prop = '', $unit = 'px', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
+
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, $css_prop, '', $important );
 
 			if( is_array( $css_prop ) ) {
 				$css_output = '';
@@ -1889,7 +1942,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}
 		
 		//Responsive CSS (can pass css prop and unit)
-		public static function get_responsive_css( $setting = '', $defaults = array(), $selector = '', $css_prop = '', $unit = 'px' ) {
+		public static function get_responsive_css( $setting = '', $defaults = array(), $selector = '', $css_prop = '', $unit = 'px', $important = false ) {
 			$devices 	= array( 
 				'desktop' 	=> '@media (min-width: 992px)',
 				'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
@@ -1900,7 +1953,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
-				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $mod ) . ( $unit ? $unit : '' ) . '; } }' . "\n";	
+
+				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true );
+
+				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $mod ) . ( $unit ? $unit : '' ) . ( $important ? '!important' : '' ) . '; } }' . "\n";	
 			}
 
 			return $css;
@@ -1981,12 +2037,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			return $output;
 		}
 
-		public static function mount_customizer_js_options( $selector = '', $setting = '', $prop = '', $opacity = '', $important = false ) {
+		public static function mount_customizer_js_options( $selector = '', $setting = '', $prop = '', $opacity = '', $important = false, $is_responsive = false, $type = '' ) {
 			$options = array(
-				'option'    => $setting,
-				'selector'  => $selector,
-				'prop'      => $prop,
-				'important' => $important
+				'option'    	=> $setting,
+				'selector'  	=> $selector,
+				'prop'      	=> $prop,
+				'important' 	=> $important,
+				'is_responsive' => $is_responsive,
+				'type'      	=> $type
 			);
 
 			if( $opacity ) {
