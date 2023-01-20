@@ -1086,12 +1086,17 @@ botiga.qtyButton = {
 			minus.classList.add('show');
 
 			plus.addEventListener( 'click', function(e){
-				var input = this.parentNode.querySelector('.qty'),
-					changeEvent = document.createEvent('HTMLEvents');
 
-				e.preventDefault();  
+				e.preventDefault();
 
-				input.value = input.value === '' ? 0 : parseInt( input.value ) + 1;
+				var input       = this.parentNode.querySelector('.qty'),
+						qtyMax      = Number( input.getAttribute('max') ) || 99999,
+						qtyMin      = Number( input.getAttribute('min') ),
+						qtyStep     = Number( input.getAttribute('step') ),
+						qtyValue    = Number( input.value ),
+						changeEvent = document.createEvent('HTMLEvents');
+
+				input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue + qtyStep).toFixed(1)));
 
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
@@ -1100,12 +1105,17 @@ botiga.qtyButton = {
 			});
 	
 			minus.addEventListener( 'click', function(e){
-				var input       = this.parentNode.querySelector('.qty'),
-					changeEvent = document.createEvent('HTMLEvents'); 
 
-				e.preventDefault();  
-				
-				input.value = ( parseInt( input.value ) > 1 ) ? parseInt( input.value ) - 1 : 1;
+				e.preventDefault();
+
+				var input       = this.parentNode.querySelector('.qty'),
+						qtyMax      = Number( input.getAttribute('max') ) || 99999,
+						qtyMin      = Number( input.getAttribute('min') ),
+						qtyStep     = Number( input.getAttribute('step') ),
+						qtyValue    = Number( input.value ),
+						changeEvent = document.createEvent('HTMLEvents');
+
+				input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue - qtyStep).toFixed(1)));
 
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
@@ -1114,7 +1124,6 @@ botiga.qtyButton = {
 			});
 
 			input.addEventListener( 'change', function(e){
-				this.value = this.value ? this.value : 1;
 				self.updateAddToCartQuantity(this, this);
 			});
 
@@ -1151,7 +1160,7 @@ botiga.qtyButton = {
 
 		if ( miniCartItem ) {
 
-			var $cart = jQuery( qtyItem.closest('.widget_shopping_cart'));
+			var $cart = jQuery(qtyItem.closest('.widget_shopping_cart'));
 
 			$cart.block({
 				message: null,
@@ -1170,9 +1179,7 @@ botiga.qtyButton = {
 				}, 
 				success: function( response ) {
 
-					if ( response && response.fragments && response.cart_hash ) {
-						jQuery( document.body ).trigger( 'added_to_cart', [ response.fragments, response.cart_hash ] );
-					}
+					jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash]);
 
 					setTimeout( function() {
 						$cart.unblock();

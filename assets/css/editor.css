@@ -1413,7 +1413,7 @@ div.editor-styles-wrapper .widget_shopping_cart span.quantity {
           justify-content: flex-end;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  min-width: 70px;
+  min-width: 85px;
 }
 
 div.editor-styles-wrapper .widget_shopping_cart .quantity-wrap {
@@ -3432,7 +3432,7 @@ div.editor-styles-wrapper .botiga-pagination-ppp ul li.active {
 
 div.editor-styles-wrapper ul.products li.product .quantity {
   margin: 0;
-  max-width: 100px;
+  width: 90px;
   height: auto;
 }
 
@@ -3452,10 +3452,6 @@ div.editor-styles-wrapper ul.products li.product .button-with-quantity {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   grid-gap: 10px;
-}
-
-div.editor-styles-wrapper ul.products li.product .button-with-quantity .quantity {
-  width: 100%;
 }
 
 div.editor-styles-wrapper ul.products li.product .button-with-quantity .quantity .botiga-quantity-plus,

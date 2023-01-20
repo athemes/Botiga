@@ -1130,25 +1130,32 @@ botiga.qtyButton = {
       plus.classList.add('show');
       minus.classList.add('show');
       plus.addEventListener('click', function (e) {
-        var input = this.parentNode.querySelector('.qty'),
-            changeEvent = document.createEvent('HTMLEvents');
         e.preventDefault();
-        input.value = input.value === '' ? 0 : parseInt(input.value) + 1;
+        var input = this.parentNode.querySelector('.qty'),
+            qtyMax = Number(input.getAttribute('max')) || 99999,
+            qtyMin = Number(input.getAttribute('min')),
+            qtyStep = Number(input.getAttribute('step')),
+            qtyValue = Number(input.value),
+            changeEvent = document.createEvent('HTMLEvents');
+        input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue + qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
         self.updateAddToCartQuantity(this, input);
       });
       minus.addEventListener('click', function (e) {
-        var input = this.parentNode.querySelector('.qty'),
-            changeEvent = document.createEvent('HTMLEvents');
         e.preventDefault();
-        input.value = parseInt(input.value) > 1 ? parseInt(input.value) - 1 : 1;
+        var input = this.parentNode.querySelector('.qty'),
+            qtyMax = Number(input.getAttribute('max')) || 99999,
+            qtyMin = Number(input.getAttribute('min')),
+            qtyStep = Number(input.getAttribute('step')),
+            qtyValue = Number(input.value),
+            changeEvent = document.createEvent('HTMLEvents');
+        input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue - qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
         self.updateAddToCartQuantity(this, input);
       });
       input.addEventListener('change', function (e) {
-        this.value = this.value ? this.value : 1;
         self.updateAddToCartQuantity(this, this);
       });
       wrapper.dataset.qtyInitialized = true;
@@ -1196,10 +1203,7 @@ botiga.qtyButton = {
           cart_item_key: qtyInput.name
         },
         success: function success(response) {
-          if (response && response.fragments && response.cart_hash) {
-            jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash]);
-          }
-
+          jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash]);
           setTimeout(function () {
             $cart.unblock();
           }, 100);

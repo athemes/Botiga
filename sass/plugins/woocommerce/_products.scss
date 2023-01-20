@@ -556,7 +556,7 @@ ul.products {
 		
 		.quantity {
 			margin: 0;
-			max-width: 100px;
+			width: 90px;
 			height: auto;
 			
 			.botiga-quantity-plus,
@@ -573,7 +573,6 @@ ul.products {
 			grid-gap: 10px;
 			
 			.quantity {
-				width: 100%;
 				
 				.botiga-quantity-plus,
 				.botiga-quantity-minus {

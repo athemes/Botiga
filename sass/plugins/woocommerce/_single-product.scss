@@ -246,6 +246,11 @@
 				width: 100%;
 			}
 		}
+
+		a.added_to_cart{
+			display: none;
+		}
+
 		& + button,
 		& + div {
 			margin-top: 15px;
