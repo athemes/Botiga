@@ -12,7 +12,7 @@ function botiga_woocommerce_no_products_found_popular_products() {
 
 	$enable = get_theme_mod( 'shop_search_enable_popular_products', 0 );
 
-	if ( ! $enable ) {
+	if ( ! $enable || ! is_search() ) {
 		return;
 	}
 
