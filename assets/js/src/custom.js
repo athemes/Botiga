@@ -1084,6 +1084,10 @@ botiga.qtyButton = {
 				self.behaviorsBasedOnQuantityValue( this, this.value );
 			});
 
+			qtyInput.addEventListener( 'keyup', function(e){
+				self.behaviorsBasedOnQuantityValue( this, this.value );
+			});
+
 			plus.addEventListener( 'click', function(e){
 				var input = this.parentNode.querySelector('.qty'),
 					changeEvent = document.createEvent('HTMLEvents');
