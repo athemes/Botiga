@@ -1769,7 +1769,7 @@ jQuery(document).ready(function ($) {
 
 		// Events
 		events: function() {
-			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-input' ).on( 'change', this.setDimensionValue.bind(this) );
+			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-input' ).on( 'input', this.setDimensionValue.bind(this) );
 			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-unit' ).on( 'change', this.unitSelectHandler.bind(this) );
 			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-link-btn' ).on( 'click', this.toggleLinkValues.bind(this) );
 		},

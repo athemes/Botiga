@@ -1592,6 +1592,16 @@
 						// convert 'to' value to a dimensions format
 						if( css2.type === 'dimensions' ) {
 							to = JSON.parse( to );
+
+							if( to.top === '' && to.right === '' && to.bottom === '' && to.left === '' ) {
+								return;
+							}
+
+							to.top    = to.top === '' ? 0 : to.top;
+							to.right  = to.right === '' ? 0 : to.right;
+							to.bottom = to.bottom === '' ? 0 : to.bottom;
+							to.left   = to.left === '' ? 0 : to.left;
+
 							to = to.top + to.unit + ' ' + to.right + to.unit + ' ' + to.bottom + to.unit + ' ' + to.left + to.unit;
 						}
 

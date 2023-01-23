@@ -37,9 +37,9 @@ if( $header_transparent ) {
 $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
     'botiga_section_hb_wrapper__header_builder_padding', 
     array(
-        'desktop' => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
-        'tablet'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
-        'mobile'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+        'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
     ), 
     '.bhfb-header.bhfb-desktop, .bhfb-header.bhfb-mobile', 
     'padding'

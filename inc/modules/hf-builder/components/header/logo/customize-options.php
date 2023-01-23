@@ -61,7 +61,9 @@ $wp_customize->add_control(
                     array(
                         '#customize-control-logo_sticky_title',
                         '#customize-control-site_title_sticky_color',
-                        '#customize-control-site_description_sticky_color'
+                        '#customize-control-site_description_sticky_color',
+                        '#customize-control-botiga_section_hb_component__logo_padding',
+                        '#customize-control-botiga_section_hb_component__logo_margin'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -187,6 +189,108 @@ $wp_customize->add_control(
 			'priority'			=> 53
 		)
 	)
+);
+
+// Padding
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_padding_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_padding_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_padding_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'botiga_section_hb_component__logo_padding',
+        array(
+            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_component__logo',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'botiga_section_hb_component__logo_padding_desktop',
+                'tablet'  => 'botiga_section_hb_component__logo_padding_tablet',
+                'mobile'  => 'botiga_section_hb_component__logo_padding_mobile'
+            ),
+            'priority'	      	 => 72
+        )
+    )
+);
+
+// Margin
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_margin_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_margin_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_margin_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'botiga_section_hb_component__logo_margin',
+        array(
+            'label'           	=> __( 'Wrapper Margin', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_component__logo',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'botiga_section_hb_component__logo_margin_desktop',
+                'tablet'  => 'botiga_section_hb_component__logo_margin_tablet',
+                'mobile'  => 'botiga_section_hb_component__logo_margin_mobile'
+            ),
+            'priority'	      	 => 72
+        )
+    )
 );
 
 // Move existing options.

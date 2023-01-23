@@ -67,9 +67,9 @@ foreach( $rows as $row ) {
         $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
             $section_id . '_padding',
             array(
-                'desktop' => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
-                'tablet'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
-                'mobile'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+                'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
             ), 
             $column_selector, 
             'padding'
@@ -79,9 +79,9 @@ foreach( $rows as $row ) {
         $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
             $section_id . '_margin',
             array(
-                'desktop' => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
-                'tablet'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
-                'mobile'  => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+                'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
             ), 
             $column_selector, 
             'margin'

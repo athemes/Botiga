@@ -22,4 +22,29 @@ if( botiga_sticky_header_enabled() ) {
     $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_social_sticky_color_hover', '', '.sticky-header-active .bhfb-component-social .social-profile > a:hover svg' );
 }
 
+// Padding
+$css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+    'bhfb_social_padding',
+    array(
+        'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+    ), 
+    '.bhfb-header .bhfb-component-social', 
+    'padding'
+);
+
+// Margin
+$css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+    'bhfb_social_margin',
+    array(
+        'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+    ), 
+    '.bhfb-header .bhfb-component-social', 
+    'margin',
+    true
+);
+
 // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

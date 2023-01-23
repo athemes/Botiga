@@ -55,9 +55,10 @@ $wp_customize->add_control(
 
                         // Sticky Active State
                         '#customize-control-bhfb_contact_info_sticky_title',
-
                         '#customize-control-bhfb_contact_info_icon_sticky',
                         '#customize-control-bhfb_contact_info_text_sticky',
+                        '#customize-control-bhfb_contact_info_padding',
+                        '#customize-control-bhfb_contact_info_margin'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -66,6 +67,11 @@ $wp_customize->add_control(
         )
     )
 );
+
+/**
+ * Layout (Tab Content)
+ * 
+ */
 
 $wp_customize->add_setting(
     'bhfb_contact_info_display_inline',
@@ -86,6 +92,11 @@ $wp_customize->add_control(
         )
     )
 );
+
+/**
+ * Style (Tab Content)
+ * 
+ */
 
 // Icons Color
 $wp_customize->add_setting(
@@ -239,6 +250,108 @@ $wp_customize->add_control(
             ),
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority' => 45
+        )
+    )
+);
+
+// Padding
+$wp_customize->add_setting( 
+    'bhfb_contact_info_padding_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_contact_info_padding_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_contact_info_padding_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'bhfb_contact_info_padding',
+        array(
+            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_component__contact_info',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'bhfb_contact_info_padding_desktop',
+                'tablet'  => 'bhfb_contact_info_padding_tablet',
+                'mobile'  => 'bhfb_contact_info_padding_mobile'
+            ),
+            'priority'	      	 => 72
+        )
+    )
+);
+
+// Margin
+$wp_customize->add_setting( 
+    'bhfb_contact_info_margin_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_contact_info_margin_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_contact_info_margin_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'bhfb_contact_info_margin',
+        array(
+            'label'           	=> __( 'Wrapper Margin', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_component__contact_info',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'bhfb_contact_info_margin_desktop',
+                'tablet'  => 'bhfb_contact_info_margin_tablet',
+                'mobile'  => 'bhfb_contact_info_margin_mobile'
+            ),
+            'priority'	      	 => 72
         )
     )
 );

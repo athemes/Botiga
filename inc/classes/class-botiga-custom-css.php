@@ -1879,9 +1879,18 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$mod_val = json_decode( get_theme_mod( $setting, $default ) );
 			$mod_val = is_object( $mod_val ) ? $mod_val : json_decode( $default );
 
-			$css_prop_value = "{$mod_val->top}{$mod_val->unit} {$mod_val->right}{$mod_val->unit} {$mod_val->bottom}{$mod_val->unit} {$mod_val->left}{$mod_val->unit}";
-
 			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, $css_prop, '', $important, false, 'dimensions' );
+
+			if( $mod_val->top === '' && $mod_val->right === '' && $mod_val->bottom === '' && $mod_val->left === '' ) {
+				return '';
+			}
+
+			$mod_val->top    = $mod_val->top === '' ? 0 : $mod_val->top;
+			$mod_val->right  = $mod_val->right === '' ? 0 : $mod_val->right;
+			$mod_val->bottom = $mod_val->bottom === '' ? 0 : $mod_val->bottom;
+			$mod_val->left   = $mod_val->left === '' ? 0 : $mod_val->left;
+
+			$css_prop_value = "{$mod_val->top}{$mod_val->unit} {$mod_val->right}{$mod_val->unit} {$mod_val->bottom}{$mod_val->unit} {$mod_val->left}{$mod_val->unit}";
 
 			if( is_array( $css_prop ) ) {
 				$css_output = '';
@@ -1911,10 +1920,18 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$mod_val = json_decode( get_theme_mod( $setting . '_' . $device, $defaults[$device] ) );
 				$mod_val = is_object( $mod_val ) ? $mod_val : json_decode( $defaults[$device] );
 
-				$css_prop_value = "{$mod_val->top}{$mod_val->unit} {$mod_val->right}{$mod_val->unit} {$mod_val->bottom}{$mod_val->unit} {$mod_val->left}{$mod_val->unit}";
-
 				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true, 'dimensions' );
 
+				if( $mod_val->top === '' && $mod_val->right === '' && $mod_val->bottom === '' && $mod_val->left === '' ) {
+					continue;
+				}
+
+				$mod_val->top    = $mod_val->top === '' ? 0 : $mod_val->top;
+				$mod_val->right  = $mod_val->right === '' ? 0 : $mod_val->right;
+				$mod_val->bottom = $mod_val->bottom === '' ? 0 : $mod_val->bottom;
+				$mod_val->left   = $mod_val->left === '' ? 0 : $mod_val->left;
+
+				$css_prop_value = "{$mod_val->top}{$mod_val->unit} {$mod_val->right}{$mod_val->unit} {$mod_val->bottom}{$mod_val->unit} {$mod_val->left}{$mod_val->unit}";
 				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $css_prop_value ) . ( $important ? '!important' : '' ) . '; } }' . "\n";	
 			}
 

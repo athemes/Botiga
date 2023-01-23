@@ -270,7 +270,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting( 
 	'botiga_section_hb_wrapper__header_builder_padding_desktop',
 	array(
-		'default'           => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+		'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
 		'sanitize_callback' => 'botiga_sanitize_text',
 		'transport'         => 'postMessage'
 	) 
@@ -278,7 +278,7 @@ $wp_customize->add_setting(
 $wp_customize->add_setting( 
 	'botiga_section_hb_wrapper__header_builder_padding_tablet',
 	array(
-		'default'           => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+		'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
 		'sanitize_callback' => 'botiga_sanitize_text',
 		'transport'         => 'postMessage'
 	) 
@@ -286,7 +286,7 @@ $wp_customize->add_setting(
 $wp_customize->add_setting( 
 	'botiga_section_hb_wrapper__header_builder_padding_mobile',
 	array(
-		'default'           => '{ "unit": "px", "linked": false, "top": "0", "right": "0", "bottom": "0", "left": "0" }',
+		'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
 		'sanitize_callback' => 'botiga_sanitize_text',
 		'transport'         => 'postMessage'
 	) 
@@ -304,7 +304,7 @@ $wp_customize->add_control(
 				'bottom' => true,
 				'left'   => true
 			),
-			'units'              => array( 'px', '%', 'rem', 'em' ),
+			'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
 			'link_values_toggle' => true,
 			'is_responsive'   	 => true,
 			'settings'        	 => array(
