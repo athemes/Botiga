@@ -13,13 +13,20 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	global $post;
 
-	$button_layout     = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$layout            = get_theme_mod( 'shop_product_card_layout', 'layout1' );
-	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
-	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
-	$wishlist_enable   = Botiga_Modules::is_module_active( 'wishlist' );
-
+	$button_layout            = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$layout                   = get_theme_mod( 'shop_product_card_layout', 'layout1' );
+	$quick_view_layout        = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	$wishlist_layout          = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
+	$wishlist_enable          = Botiga_Modules::is_module_active( 'wishlist' );
+	$shop_product_quantity    = get_theme_mod( 'shop_product_quantity', 0 );
+	$button_with_quantity     = '';
 	$wc_block_grid_item_class = '';
+
+	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
+		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
+			$button_with_quantity = ' button-with-quantity';
+		}
+	}
 
 	//Check for gb option to hide or show add to cart button
 	if( strpos( $html, 'wp-block-button' ) === FALSE ) {
@@ -54,7 +61,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	//Add button inside image wrapper for layout4 and layout3
 	if ( 'layout4' === $button_layout || 'layout3' === $button_layout ) {
-		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . "\">"
+		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . "\">"
 				. botiga_gb_add_to_cart_button( $product ) .
 				"</div>";
 	}
@@ -93,7 +100,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		
 	//Add button outside image wrapper		
 	if ( 'layout1' !== $button_layout && 'layout4' !== $button_layout && 'layout3' !== $button_layout ) {
-		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . "\">"
+		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . "\">"
 		. botiga_gb_add_to_cart_button( $product ) .
 		"</div>";
 	}

@@ -2053,6 +2053,7 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-colo
   width: 100%;
   height: 100%;
   border-radius: 100%;
+  text-indent: -9999px;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a:hover, div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-image > a.active,
@@ -3430,14 +3431,23 @@ div.editor-styles-wrapper .botiga-pagination-ppp ul li.active {
   opacity: 0.5;
 }
 
-div.editor-styles-wrapper ul.products li.product .quantity {
+div.editor-styles-wrapper ul.products li.product .quantity,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .quantity {
   margin: 0;
   width: 90px;
   height: auto;
 }
 
 div.editor-styles-wrapper ul.products li.product .quantity .botiga-quantity-plus,
-div.editor-styles-wrapper ul.products li.product .quantity .botiga-quantity-minus {
+div.editor-styles-wrapper ul.products li.product .quantity .botiga-quantity-minus,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .quantity .botiga-quantity-minus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .quantity .botiga-quantity-minus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .quantity .botiga-quantity-minus {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
@@ -3445,7 +3455,10 @@ div.editor-styles-wrapper ul.products li.product .quantity .botiga-quantity-minu
   padding: 0;
 }
 
-div.editor-styles-wrapper ul.products li.product .button-with-quantity {
+div.editor-styles-wrapper ul.products li.product .button-with-quantity,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -3455,24 +3468,38 @@ div.editor-styles-wrapper ul.products li.product .button-with-quantity {
 }
 
 div.editor-styles-wrapper ul.products li.product .button-with-quantity .quantity .botiga-quantity-plus,
-div.editor-styles-wrapper ul.products li.product .button-with-quantity .quantity .botiga-quantity-minus {
+div.editor-styles-wrapper ul.products li.product .button-with-quantity .quantity .botiga-quantity-minus,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity .quantity .botiga-quantity-minus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity .quantity .botiga-quantity-minus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .quantity .botiga-quantity-plus,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .quantity .botiga-quantity-minus {
   font-size: 1.2em;
   padding: 0;
 }
 
-div.editor-styles-wrapper ul.products li.product .button-with-quantity .wc-forward {
+div.editor-styles-wrapper ul.products li.product .button-with-quantity .wc-forward,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity .wc-forward,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity .wc-forward,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .wc-forward {
   width: 100%;
 }
 
-div.editor-styles-wrapper ul.products li.product .button-with-quantity .button {
+div.editor-styles-wrapper ul.products li.product .button-with-quantity .button,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity .button,
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity .button,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .button {
   margin: 0;
 }
 
-div.editor-styles-wrapper ul.products .button-layout2.button-with-quantity {
+div.editor-styles-wrapper ul.products .button-layout2.button-with-quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .button-layout2.button-with-quantity {
   margin-top: 10px;
 }
 
-div.editor-styles-wrapper ul.products .button-layout3.button-with-quantity {
+div.editor-styles-wrapper ul.products .button-layout3.button-with-quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .button-layout3.button-with-quantity {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -3486,11 +3513,13 @@ div.editor-styles-wrapper ul.products .button-layout3.button-with-quantity {
   margin-top: -55px;
 }
 
-div.editor-styles-wrapper ul.products .button-layout3.button-with-quantity .quantity {
+div.editor-styles-wrapper ul.products .button-layout3.button-with-quantity .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .button-layout3.button-with-quantity .quantity {
   height: 45px;
 }
 
-div.editor-styles-wrapper ul.products .button-layout4.button-with-quantity {
+div.editor-styles-wrapper ul.products .button-layout4.button-with-quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .button-layout4.button-with-quantity {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
@@ -3500,11 +3529,13 @@ div.editor-styles-wrapper ul.products .button-layout4.button-with-quantity {
           justify-content: flex-end;
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout3 .button-layout3.button-with-quantity {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout3 .button-layout3.button-with-quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout3 .button-layout3.button-with-quantity {
   margin-top: 0;
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -3519,24 +3550,28 @@ div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-
   transition: all .3s;
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity + .add_to_cart_button {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity + .add_to_cart_button,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity + .add_to_cart_button {
   -webkit-transform: translate3d(-50%, 100%, 0);
           transform: translate3d(-50%, 100%, 0);
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover .quantity {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover .quantity {
   opacity: 1;
   visibility: visible;
   -webkit-transform: translate3d(-50%, 35%, 0);
           transform: translate3d(-50%, 35%, 0);
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover .quantity + .add_to_cart_button {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover .quantity + .add_to_cart_button,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2:hover .quantity + .add_to_cart_button {
   -webkit-transform: translate3d(-50%, 120%, 0);
           transform: translate3d(-50%, 120%, 0);
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 .quantity {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3 .quantity {
   position: absolute;
   z-index: 1;
   top: auto;
@@ -3550,22 +3585,32 @@ div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout4.botiga-
   transition: all .3s;
 }
 
-div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3:hover .quantity {
+div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3:hover .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout4.botiga-quick-view-button-layout3:hover .quantity {
   opacity: 1;
   visibility: visible;
 }
 
-div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-layout2 .quantity, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-layout2 .quantity, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-layout2 .quantity {
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-layout2 .quantity, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-layout2 .quantity, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-layout2 .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-layout2 .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-layout2 .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-layout2 .quantity {
   max-width: 100%;
   height: 45px;
 }
 
-div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-layout2 .button {
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-layout2 .button,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-layout2 .button,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-layout2 .button,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-layout2 .button {
   width: 100%;
   text-align: center;
 }
 
-div.editor-styles-wrapper ul.products.columns-4 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-layout2 .button {
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-layout2 .button,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-4 li.product .button-layout2 .button,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .button-layout2 .button,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   width: 100%;
   text-align: center;
   margin: 0;

@@ -550,9 +550,11 @@ ul.products {
 /**
  * Quantity in Loop
  */
- ul.products {
-	
-	li.product {
+ul.products,
+ul.wc-block-grid__products {
+
+	li.product,
+	li.wc-block-grid__product {
 		
 		.quantity {
 			margin: 0;
