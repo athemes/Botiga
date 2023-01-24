@@ -13,7 +13,7 @@ foreach( $rows as $row ) {
 
     // Up to 6 columns.
     for( $i=1; $i<=6; $i++ ) {
-        $section_id      = "botiga_header_row__${row}_column$i";
+        $section_id      = "botiga_header_row__{$row}_column$i";
         $column_selector = ".bhfb-header .bhfb-$row .bhfb-column-$i"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
         // Vertical Alignment.

@@ -1372,6 +1372,7 @@ class Botiga_Header_Footer_Builder {
 
         // Footer.
         // Structure Components.
+        require get_template_directory() . '/inc/modules/hf-builder/components/footer/footer-builder/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/row/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/columns/css.php';
 

@@ -75,7 +75,7 @@ $css .= Botiga_Custom_CSS::get_responsive_dimensions_css(
         'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
     ), 
-    '.bhfb-component-button', 
+    '.bhfb-header .bhfb-component-button', 
     'padding'
 );
 
@@ -87,7 +87,7 @@ $css .= Botiga_Custom_CSS::get_responsive_dimensions_css(
         'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
     ), 
-    '.bhfb-component-button', 
+    '.bhfb-header .bhfb-component-button', 
     'margin',
     true
 );

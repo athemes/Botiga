@@ -76,7 +76,7 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 
 		<select class="botiga-select2" control-name="<?php echo esc_attr( $this->id ); ?>" data-select2-options='<?php echo esc_attr( $select2_options ); ?>'<?php echo ( $multiple ) ? ' multiple' : ''; ?>>
 			<?php foreach( $choices as $value => $label ) : ?>
-				<option value="<?php echo esc_attr( $value ); ?>"<?php echo ( strpos( $this->value(), (string) $value ) !== FALSE ? ' selected' : '' ); ?>><?php echo esc_html( $label ); ?></option>
+				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $this->value(), true ); ?>><?php echo esc_html( $label ); ?></option>
 			<?php endforeach; ?>
 		</select>
 
