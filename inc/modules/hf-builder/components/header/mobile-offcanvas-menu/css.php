@@ -8,6 +8,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'mobile_offcanvas_menu_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-mobile_offcanvas_menu, .bhfb-mobile_offcanvas .bhfb-builder-item.bhfb-component-mobile_offcanvas_menu', 
+    'display',
+    ''
+);
+
 // Link Separator Color and Size.
 $mobile_menu_link_separator 	= get_theme_mod( 'mobile_menu_link_separator', 0 );
 if ( $mobile_menu_link_separator ) {

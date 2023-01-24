@@ -51,7 +51,8 @@ $wp_customize->add_control(
             'controls_general'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-botiga_section_hb_component__logo_text_alignment'
+                        '#customize-control-botiga_section_hb_component__logo_text_alignment',
+                        '#customize-control-botiga_section_hb_component__logo_visibility'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ) 
                 )
@@ -137,6 +138,53 @@ $wp_customize->add_control(
                 'left' 		=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h10v1H0zM0 4h16v1H0zM0 8h10v1H0zM0 12h16v1H0z"/></svg>',
                 'center' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 0h10v1H3zM0 4h16v1H0zM3 8h10v1H3zM0 12h16v1H0z"/></svg>',
                 'right' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 0h10v1H6zM0 4h16v1H0zM6 8h10v1H6zM0 12h16v1H0z"/></svg>'
+            ),
+            'priority'      => 51
+        )
+    ) 
+);
+
+// Visibility
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_visibility_desktop',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_visibility_tablet',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'botiga_section_hb_component__logo_visibility_mobile',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Radio_Buttons( 
+        $wp_customize, 
+        'botiga_section_hb_component__logo_visibility',
+        array(
+            'label'         => esc_html__( 'Visibility', 'botiga' ),
+            'section'       => 'botiga_section_hb_component__logo',
+            'is_responsive' => true,
+            'settings' => array(
+                'desktop' 		=> 'botiga_section_hb_component__logo_visibility_desktop',
+                'tablet' 		=> 'botiga_section_hb_component__logo_visibility_tablet',
+                'mobile' 		=> 'botiga_section_hb_component__logo_visibility_mobile'
+            ),
+            'choices'       => array(
+                'visible' => esc_html__( 'Visible', 'botiga' ),
+                'hidden'  => esc_html__( 'Hidden', 'botiga' )
             ),
             'priority'      => 51
         )

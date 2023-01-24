@@ -17,6 +17,15 @@ $css .= Botiga_Custom_CSS::get_responsive_css(
     '' 
 );
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'botiga_section_hb_component__html_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-html, .bhfb-mobile_offcanvas .bhfb-builder-item.bhfb-component-html', 
+    'display',
+    ''
+);
+
 /**
  * Colors Default State
  */

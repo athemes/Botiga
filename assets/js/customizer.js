@@ -1414,6 +1414,16 @@
               to.bottom = to.bottom === '' ? 0 : to.bottom;
               to.left = to.left === '' ? 0 : to.left;
               to = to.top + to.unit + ' ' + to.right + to.unit + ' ' + to.bottom + to.unit + ' ' + to.left + to.unit;
+            } // Check and convert value to be compatible with 'display' css property
+
+
+            if (css2.type === 'display') {
+              if (to === 'hidden') {
+                to = 'none';
+              } else {
+                to = 'flex';
+                css2.important = true;
+              }
             }
 
             if (typeof css2.pseudo === 'undefined') {
@@ -1426,17 +1436,13 @@
               }
             } else {
               if (css2.is_responsive) {
-                $.each($devices, function (device, mediaSize) {
-                  console.log(mediaSize);
-
-                  if (typeof css2.prop === 'string') {
-                    output += '@media ' + mediaSize + ' { ' + css2.selector + ' { ' + css2.prop + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; } }';
-                  } else {
-                    $.each(css2.prop, function (propkey, propvalue) {
-                      output += '@media ' + mediaSize + ' { ' + css2.selector + ' { ' + propvalue + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; } }';
-                    });
-                  }
-                });
+                if (typeof css2.prop === 'string') {
+                  output += '@media ' + $devices[css2.device] + ' { ' + css2.selector + ' { ' + css2.prop + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; } }';
+                } else {
+                  $.each(css2.prop, function (propkey, propvalue) {
+                    output += '@media ' + $devices[css2.device] + ' { ' + css2.selector + ' { ' + propvalue + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; } }';
+                  });
+                }
               } else {
                 if (typeof css2.prop === 'string') {
                   output += css2.selector + '{ ' + css2.prop + ': ' + to + ' ' + (css2.important ? '!important' : '') + '; }';

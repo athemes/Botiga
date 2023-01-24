@@ -8,6 +8,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'bhfb_search_icon_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-search, .bhfb-mobile_offcanvas .bhfb-builder-item.bhfb-component-search', 
+    'display',
+    ''
+);
+
 // Icon Color
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_color', '', '.bhfb-component-search .header-search svg' );
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_color', '', '.bhfb-component-search .header-search .botiga-image.is-svg' );

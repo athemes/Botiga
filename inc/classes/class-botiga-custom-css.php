@@ -1920,7 +1920,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$mod_val = json_decode( get_theme_mod( $setting . '_' . $device, $defaults[$device] ) );
 				$mod_val = is_object( $mod_val ) ? $mod_val : json_decode( $defaults[$device] );
 
-				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true, 'dimensions' );
+				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true, 'dimensions', $device );
 
 				if( $mod_val->top === '' && $mod_val->right === '' && $mod_val->bottom === '' && $mod_val->left === '' ) {
 					continue;
@@ -1971,7 +1971,22 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			foreach ( $devices as $device => $media ) {
 				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
 
-				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true );
+				// Some properties need to be converted to be compatible with the respective css property
+				$type = '';
+				if( strpos( $setting, '_visibility' ) !== FALSE && $css_prop === 'display' ) {
+					$type = 'display';
+				}
+
+				Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting . '_' . $device, $css_prop, '', $important, true, $type, $device );
+
+				// Check and convert value to be compatible with 'display' css property
+				if( $css_prop === 'display' ) {
+					if( $mod === 'hidden' ) {
+						$mod = 'none';
+					} else {
+						continue;
+					}
+				}
 
 				$css .= $media . ' { ' . $selector . ' { ' . $css_prop . ':' . esc_attr( $mod ) . ( $unit ? $unit : '' ) . ( $important ? '!important' : '' ) . '; } }' . "\n";	
 			}
@@ -2054,14 +2069,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			return $output;
 		}
 
-		public static function mount_customizer_js_options( $selector = '', $setting = '', $prop = '', $opacity = '', $important = false, $is_responsive = false, $type = '' ) {
+		public static function mount_customizer_js_options( $selector = '', $setting = '', $prop = '', $opacity = '', $important = false, $is_responsive = false, $type = '', $device = '' ) {
 			$options = array(
 				'option'    	=> $setting,
 				'selector'  	=> $selector,
 				'prop'      	=> $prop,
 				'important' 	=> $important,
 				'is_responsive' => $is_responsive,
-				'type'      	=> $type
+				'type'      	=> $type,
+				'device'        => $device
 			);
 
 			if( $opacity ) {

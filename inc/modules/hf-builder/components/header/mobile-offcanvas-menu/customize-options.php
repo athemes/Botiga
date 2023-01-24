@@ -44,7 +44,12 @@ $wp_customize->add_control(
             'label' 				=> '',
             'section'       		=> 'botiga_section_hb_component__mobile_offcanvas_menu',
             'controls_general'		=> json_encode(
-                array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                array_merge(
+                    array(
+                        '#customize-control-mobile_offcanvas_menu_visibility'
+                    ),
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                ),
             ),
             'controls_design'		=> json_encode(
                 array_merge(
@@ -60,6 +65,53 @@ $wp_customize->add_control(
             'priority' 				=> 20
         )
     )
+);
+
+// Visibility
+$wp_customize->add_setting( 
+    'mobile_offcanvas_menu_visibility_desktop',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'mobile_offcanvas_menu_visibility_tablet',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'mobile_offcanvas_menu_visibility_mobile',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Radio_Buttons( 
+        $wp_customize, 
+        'mobile_offcanvas_menu_visibility',
+        array(
+            'label'         => esc_html__( 'Visibility', 'botiga' ),
+            'section'       => 'botiga_section_hb_component__mobile_offcanvas_menu',
+            'is_responsive' => true,
+            'settings' => array(
+                'desktop' 		=> 'mobile_offcanvas_menu_visibility_desktop',
+                'tablet' 		=> 'mobile_offcanvas_menu_visibility_tablet',
+                'mobile' 		=> 'mobile_offcanvas_menu_visibility_mobile'
+            ),
+            'choices'       => array(
+                'visible' => esc_html__( 'Visible', 'botiga' ),
+                'hidden'  => esc_html__( 'Hidden', 'botiga' )
+            ),
+            'priority'      => 55
+        )
+    ) 
 );
 
 // Text Color

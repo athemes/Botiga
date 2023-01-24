@@ -12,6 +12,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'bhfb_button_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-button, .bhfb-mobile_offcanvas .bhfb-builder-item.bhfb-component-button', 
+    'display',
+    ''
+);
+
 // Background Color
 $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_background_color', '', '.bhfb-component-button .button' );
 

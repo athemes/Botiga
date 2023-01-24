@@ -8,6 +8,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'bhfb_mobile_hamburger_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-mobile_hamburger', 
+    'display',
+    ''
+);
+
 // Icon Color
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_mobile_hamburger_icon_color', '', '.bhfb-component-mobile_hamburger .menu-toggle svg' );
 
