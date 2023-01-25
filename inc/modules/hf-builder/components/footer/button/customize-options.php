@@ -33,7 +33,8 @@ $wp_customize->add_control(
                     '#customize-control-bhfb_footer_button_text',
                     '#customize-control-bhfb_footer_button_link',
                     '#customize-control-bhfb_footer_button_class',
-                    '#customize-control-bhfb_footer_button_newtab'
+                    '#customize-control-bhfb_footer_button_newtab',
+                    '#customize-control-bhfb_footer_button_visibility'
                 )
             ),
             'controls_design'		=> json_encode(
@@ -114,6 +115,53 @@ $wp_customize->add_control(
 			'priority'			=> 40
 		)
 	)
+);
+
+// Visibility
+$wp_customize->add_setting( 
+    'bhfb_footer_button_visibility_desktop',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'bhfb_footer_button_visibility_tablet',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'bhfb_footer_button_visibility_mobile',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Radio_Buttons( 
+        $wp_customize, 
+        'bhfb_footer_button_visibility',
+        array(
+            'label'         => esc_html__( 'Visibility', 'botiga' ),
+            'section'       => 'botiga_section_fb_component__button',
+            'is_responsive' => true,
+            'settings' => array(
+                'desktop' 		=> 'bhfb_footer_button_visibility_desktop',
+                'tablet' 		=> 'bhfb_footer_button_visibility_tablet',
+                'mobile' 		=> 'bhfb_footer_button_visibility_mobile'
+            ),
+            'choices'       => array(
+                'visible' => esc_html__( 'Visible', 'botiga' ),
+                'hidden'  => esc_html__( 'Hidden', 'botiga' )
+            ),
+            'priority'      => 42
+        )
+    ) 
 );
 
 // Colors Title.

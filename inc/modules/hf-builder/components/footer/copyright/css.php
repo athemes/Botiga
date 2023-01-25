@@ -8,6 +8,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'botiga_section_fb_component__copyright_visibility', 
+    'visible', 
+    '.bhfb.bhfb-footer .bhfb-builder-item.bhfb-component-copyright',
+    'display',
+    ''
+);
+
 // Text Color
 $css .= Botiga_Custom_CSS::get_color_css( 'botiga_section_fb_component__copyright_text_color', '', '.bhfb .botiga-credits' );
 

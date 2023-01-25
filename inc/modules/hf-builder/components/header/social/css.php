@@ -8,6 +8,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'bhfb_social_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-social, .bhfb-mobile_offcanvas .bhfb-builder-item.bhfb-component-social',
+    'display',
+    ''
+);
+
 // Icon Color
 $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_social_color', '', '.bhfb-component-social .social-profile > a svg' );
 
