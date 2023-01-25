@@ -13,7 +13,7 @@ class Botiga_WC_Brands {
         add_filter( 'botiga_shop_page_header_sub_cats_query_args', array( $this, '_shop_page_header_sub_cats_query_args' ) );
         add_filter( 'botiga_default_single_product_components', array( $this, 'customizer_single_product_components_defaults' ) );
         add_filter( 'botiga_single_product_elements', array( $this, 'customizer_single_product_components' ) );
-        add_action( 'customize_register', array( $this, 'customizer_options' ) );
+        add_action( 'customize_register', array( $this, 'customizer_options' ), 1000 );
     }
 
     /**
