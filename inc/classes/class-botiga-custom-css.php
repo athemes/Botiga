@@ -883,7 +883,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'shop_archive_header_button_color', '#212121', '.woocommerce-page-header .category-button' );
 			$css .= $this->get_color_css( 'shop_archive_header_button_color_hover', '#FFF', '.woocommerce-page-header .category-button:hover', true );
 			$css .= $this->get_background_color_css( 'shop_archive_header_button_background_color', '#FFF', '.woocommerce-page-header .category-button' );
-			$css .= $this->get_background_color_css( 'shop_archive_header_button_background_color_hover', '#FFF', '.woocommerce-page-header .category-button:hover', true );
+			$css .= $this->get_background_color_css( 'shop_archive_header_button_background_color_hover', '#212121', '.woocommerce-page-header .category-button:hover', true );
 			$css .= $this->get_border_color_css( 'shop_archive_header_button_border_color', '#212121', '.woocommerce-page-header .category-button' );
 			$css .= $this->get_border_color_css( 'shop_archive_header_button_border_color_hover', '#212121', '.woocommerce-page-header .category-button:hover', true );
 			$css .= ".woocommerce-page-header .category-button { border-radius: ". get_theme_mod( 'shop_archive_header_button_border_radius', 35 ) ."px; }" . "\n";

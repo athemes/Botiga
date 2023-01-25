@@ -49,9 +49,6 @@ $css .= Botiga_Custom_CSS::get_responsive_dimensions_css(
 $hb_background_image = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_background_image', '' );
 if( $hb_background_image ) {
     $image_url           = wp_get_attachment_image_url( $hb_background_image, 'full' );
-    $background_size     = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_background_size', 'cover' );
-    $background_position = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_background_position', 'center' );
-    $background_repeat   = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_background_repeat', 'no-repeat' );
 
     $css .= '.bhfb-header.bhfb-desktop, .bhfb-header.bhfb-mobile { background-image: url(' . esc_url( $image_url ) . '); }';
     $css .= Botiga_Custom_CSS::get_css( 
