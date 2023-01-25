@@ -60,7 +60,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function header_image() {
 			$output = '<div class="header-image">';
-				$output .= get_header_image_tag();
+				$output .= apply_filters( 'botiga_header_image_tag', get_header_image_tag() );
 			$output .= '</div>';
 
 			if ( ! botiga_get_display_conditions( 'header_image_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {

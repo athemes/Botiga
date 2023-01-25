@@ -71,7 +71,7 @@ function botiga_page_post_sidebar() {
 
 	global $post;
 
-	if ( !isset( $post ) || !is_singular( array( 'post', 'page' ) ) ) {
+	if ( !isset( $post ) ) {
 		return;
 	}
 
@@ -1154,7 +1154,7 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 			}
 
 			// Posts
-			if ( $condition === 'single-post' && is_single() ) {
+			if ( $condition === 'single-post' && is_singular( 'post' ) ) {
 				$result = $boolean;
 			}
 

@@ -231,23 +231,22 @@ function botiga_wc_archive_layout() {
  */
 function botiga_wc_single_layout() {
 
-  // Sidebar layout
+	// Sidebar layout
 	$sidebar_layout = get_theme_mod( 'single_product_sidebar', 'no-sidebar' );
-  
-  $meta_sidebar_layout = get_post_meta( get_the_ID(), '_botiga_sidebar_layout', true );
 
-  if ( ! empty( $meta_sidebar_layout ) && $meta_sidebar_layout !== 'customizer' ) {
-  	$sidebar_layout = $meta_sidebar_layout;
-  }
+	$meta_sidebar_layout = get_post_meta( get_the_ID(), '_botiga_sidebar_layout', true );
 
-  // Remove sidebar
-  if ( $sidebar_layout === 'no-sidebar' ) {
+	if ( ! empty( $meta_sidebar_layout ) && $meta_sidebar_layout !== 'customizer' ) {
+		$sidebar_layout = $meta_sidebar_layout;
+	}
+
+	// Remove sidebar
+	if ( $sidebar_layout === 'no-sidebar' ) {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 		add_filter( 'botiga_sidebar', '__return_false' );
-  }
+	}
 
 	return $sidebar_layout;
-
 }
 
 /**

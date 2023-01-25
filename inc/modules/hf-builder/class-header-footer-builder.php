@@ -1217,11 +1217,13 @@ class Botiga_Header_Footer_Builder {
      * Core header image
      */
     public function header_image() {
-        $show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
+        if ( ! get_header_image() ) {
+            return;
+        }
 
         // output
         $output = '<div class="header-image">';
-            $output .= get_header_image_tag();
+            $output .= apply_filters( 'botiga_header_image_tag', get_header_image_tag() );
         $output .= '</div>';
 
         if ( ! botiga_get_display_conditions( 'header_image_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {
