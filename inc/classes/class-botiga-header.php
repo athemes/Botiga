@@ -730,12 +730,33 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				
 				$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">' . esc_html( $welcome_message_text ) . '</a>'; 
 				$output .= '<nav>';
+
+					/**
+					 * Filter: botiga_header_login_register_after_last_dropdown_item
+					 * 
+					 */
+					$output .= apply_filters( 'botiga_header_login_register_before_first_dropdown_item', '' );
+
 					$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">'. esc_html__( 'Dashboard', 'botiga' ) .'</a>';
 					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Orders', 'botiga' ) .'</a>';
 					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'downloads', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Downloads', 'botiga' ) .'</a>';
 					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Addresses', 'botiga' ) .'</a>';
 					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'edit-account', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Account Details', 'botiga' ) .'</a>';
+
+					/**
+					 * Filter: botiga_header_login_register_before_logout_dropdown_item
+					 * 
+					 */
+					$output .= apply_filters( 'botiga_header_login_register_before_logout_dropdown_item', '' );
+
 					$output .= '<a href="'. esc_url( wc_logout_url() ) .'">'. esc_html__( 'Logout', 'botiga' ) .'</a>';
+
+					/**
+					 * Filter: botiga_header_login_register_after_last_dropdown_item
+					 * 
+					 */
+					$output .= apply_filters( 'botiga_header_login_register_after_last_dropdown_item', '' );
+
 				$output .= '</nav>';
 			} else {
 				$login_register_link_text = get_theme_mod( 'login_register_link_text', esc_html__( 'Login', 'botiga' ) );
