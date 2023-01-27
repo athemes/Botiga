@@ -70,9 +70,14 @@ foreach( $this->footer_rows as $row ) {
                 ) ),
                 'controls_design'		=> json_encode( array( 
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_background_color',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_background_image',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_background_size',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_background_position',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_background_repeat',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_border_top',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_border_top_color',
-                    '#customize-control-botiga_footer_row__' . $row['id'] . '_padding'
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_padding',
+                    '#customize-control-botiga_footer_row__' . $row['id'] . '_margin'
                 ) ),
                 'priority' 				=> 20
             )
@@ -277,6 +282,100 @@ foreach( $this->footer_rows as $row ) {
         )
     );
 
+    // Background Image
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_background_image',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'absint',
+        ) 
+    );
+    $wp_customize->add_control( 
+        new WP_Customize_Media_Control( 
+            $wp_customize, 
+            'botiga_footer_row__' . $row['id'] . '_background_image',
+            array(
+                'label'           => __( 'Background Image', 'botiga' ),
+                'section'         => $row['section'],
+                'mime_type'       => 'image',
+                'priority'	      => 32
+            )
+        )
+    );
+
+    // Background Size
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_background_size',
+        array(
+            'default'           => 'cover',
+            'sanitize_callback' => 'botiga_sanitize_select',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_control( 
+        'botiga_footer_row__' . $row['id'] . '_background_size',
+        array(
+            'type' 		      => 'select',
+            'label' 	      => esc_html__( 'Background Size', 'botiga' ),
+            'choices'         => array(
+                'cover'   => esc_html__( 'Cover', 'botiga' ),
+                'contain' => esc_html__( 'Contain', 'botiga' )
+            ),
+            'section' 	      => $row['section'],
+            'active_callback' => function() use ( $row ){ return get_theme_mod( 'botiga_footer_row__' . $row['id'] . '_background_image' ) ? true : false; },
+            'priority'        => 32
+        )
+    );
+
+    // Background Position
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_background_position',
+        array(
+            'default'           => 'center',
+            'sanitize_callback' => 'botiga_sanitize_select',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_control( 
+        'botiga_footer_row__' . $row['id'] . '_background_position',
+        array(
+            'type' 		      => 'select',
+            'label' 	      => esc_html__( 'Background Position', 'botiga' ),
+            'choices'         => array(
+                'top'    => esc_html__( 'Top', 'botiga' ),
+                'center' => esc_html__( 'Center', 'botiga' ),
+                'bottom' => esc_html__( 'Bottom', 'botiga' )
+            ),
+            'section' 	      => $row['section'],
+            'active_callback' => function() use ( $row ){ return get_theme_mod( 'botiga_footer_row__' . $row['id'] . '_background_image' ) ? true : false; },
+            'priority'        => 32
+        )
+    );
+
+    // Background Repeat
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_background_repeat',
+        array(
+            'default'           => 'no-repeat',
+            'sanitize_callback' => 'botiga_sanitize_select',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_control( 
+        'botiga_footer_row__' . $row['id'] . '_background_repeat',
+        array(
+            'type' 		      => 'select',
+            'label' 	      => esc_html__( 'Background Repeat', 'botiga' ),
+            'choices'         => array(
+                'no-repeat' => esc_html__( 'No Repeat', 'botiga' ),
+                'repeat'    => esc_html__( 'Repeat', 'botiga' )
+            ),
+            'section' 	      => $row['section'],
+            'active_callback' => function() use ( $row ){ return get_theme_mod( 'botiga_footer_row__' . $row['id'] . '_background_image' ) ? true : false; },
+            'priority'        => 32
+        )
+    );
+
     // Border Top.
     $wp_customize->add_setting( 'botiga_footer_row__' . $row['id'] . '_border_top_desktop', array(
         'default'   		=> Botiga_Header_Footer_Builder::get_row_border_default_customizer_value( $row[ 'id' ] ),
@@ -316,6 +415,108 @@ foreach( $this->footer_rows as $row ) {
                 'label'         	=> esc_html__( 'Border Top Color', 'botiga' ),
                 'section'       	=> $row['section'],
                 'priority'			=> 36
+            )
+        )
+    );
+
+    // Padding
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_padding_desktop',
+        array(
+            'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_padding_tablet',
+        array(
+            'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_padding_mobile',
+        array(
+            'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_control( 
+        new Botiga_Dimensions_Control( 
+            $wp_customize, 
+            'botiga_footer_row__' . $row['id'] . '_padding',
+            array(
+                'label'           	=> __( 'Padding', 'botiga' ),
+                'section'         	=> $row['section'],
+                'sides'             => array(
+                    'top'    => true,
+                    'right'  => true,
+                    'bottom' => true,
+                    'left'   => true
+                ),
+                'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+                'link_values_toggle' => true,
+                'is_responsive'   	 => true,
+                'settings'        	 => array(
+                    'desktop' => 'botiga_footer_row__' . $row['id'] . '_padding_desktop',
+                    'tablet'  => 'botiga_footer_row__' . $row['id'] . '_padding_tablet',
+                    'mobile'  => 'botiga_footer_row__' . $row['id'] . '_padding_mobile'
+                ),
+                'priority'	      	 => 36
+            )
+        )
+    );
+
+    // Margin
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_margin_desktop',
+        array(
+            'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_margin_tablet',
+        array(
+            'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_setting( 
+        'botiga_footer_row__' . $row['id'] . '_margin_mobile',
+        array(
+            'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            'sanitize_callback' => 'botiga_sanitize_text',
+            'transport'         => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_control( 
+        new Botiga_Dimensions_Control( 
+            $wp_customize, 
+            'botiga_footer_row__' . $row['id'] . '_margin',
+            array(
+                'label'           	=> __( 'Margin', 'botiga' ),
+                'section'         	=> $row['section'],
+                'sides'             => array(
+                    'top'    => true,
+                    'right'  => true,
+                    'bottom' => true,
+                    'left'   => true
+                ),
+                'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+                'link_values_toggle' => true,
+                'is_responsive'   	 => true,
+                'settings'        	 => array(
+                    'desktop' => 'botiga_footer_row__' . $row['id'] . '_margin_desktop',
+                    'tablet'  => 'botiga_footer_row__' . $row['id'] . '_margin_tablet',
+                    'mobile'  => 'botiga_footer_row__' . $row['id'] . '_margin_mobile'
+                ),
+                'priority'	      	 => 36
             )
         )
     );

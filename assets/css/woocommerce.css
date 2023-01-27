@@ -751,9 +751,14 @@ ul.products li.product .wc-block-grid__product-link {
 .related.products .button-layout4,
 .upsells.products .button-layout4,
 .product-grid .button-layout4 {
+  position: absolute;
   width: 100%;
   bottom: 10px;
   left: 10px;
+  opacity: 0;
+  -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 .button-layout3 a,

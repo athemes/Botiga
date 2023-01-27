@@ -19,12 +19,17 @@ botiga.helpers = {
 	
 		document.addEventListener( 'DOMContentLoaded', fn, false );
 	},
-	isInViewport: function( el ) {
+	isInVerticalViewport: function( el ) {
 		const rect = el.getBoundingClientRect();
 		return (
-			rect.top >= 0 &&
+			rect.top >= 0 && 
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+		);
+	},
+	isInHorizontalViewport: function( el ) {
+		const rect = el.getBoundingClientRect();
+		return (
 			rect.left >= 0 &&
-			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
 			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 		);
 	},
@@ -257,9 +262,46 @@ botiga.navigation = {
 			}
 		}
 
+		// Mobile accordion style navigation
+		this.mobileAccordionNavigation();
+
 		// Menu reverse
 		this.checkMenuReverse();
+		
+	},
 
+	/*
+	* Mobile navigation (accordion style navigation)
+	*/
+	mobileAccordionNavigation: function() {
+		const navs = document.querySelectorAll( '.botiga-dropdown-mobile-accordion' );
+		if( ! navs.length ) {
+			return false;
+		}
+
+		for(const nav of navs) {
+			const nav_item = nav.querySelectorAll( '.menu-item-has-children' );
+			if( ! nav_item.length ) {
+				return false;
+			}
+			
+			for(const item of nav_item) {
+				const dropdownToggler = item.querySelectorAll( '.dropdown-symbol' );
+				console.log(dropdownToggler);
+				dropdownToggler[0].addEventListener( 'click', function(e){
+					console.log(123);
+					e.stopPropagation();
+
+					const parent = this.parentNode;
+
+					if( parent.classList.contains( 'expand' ) ) {
+						parent.classList.remove( 'expand' );
+					} else {
+						parent.classList.add( 'expand' )
+					}
+				} );
+			}
+		}
 	},
 
 	/* 
@@ -283,9 +325,21 @@ botiga.navigation = {
 		if( submenu === null ) {
 			return false;
 		}
-
-		if( botiga.helpers.isInViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+		
+		// Reverse horizontally
+		submenu.classList.remove( 'sub-menu-reverse' );
+		if( botiga.helpers.isInHorizontalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
 			submenu.classList.add( 'sub-menu-reverse' );
+		} else {
+			submenu.classList.remove( 'sub-menu-reverse' );
+		}
+
+		// Reverse vertically
+		submenu.classList.remove( 'sub-menu-reverse-vertically' );
+		if( botiga.helpers.isInVerticalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+			submenu.classList.add( 'sub-menu-reverse-vertically' );
+		} else {
+			submenu.classList.remove( 'sub-menu-reverse-vertically' );
 		}
 	}
 
@@ -1073,11 +1127,20 @@ botiga.qtyButton = {
 				return false;
 			}
 
-			var plus  	= wrapper.querySelector('.botiga-quantity-plus'),
-				minus 	= wrapper.querySelector('.botiga-quantity-minus');
+			var qtyInput = wrapper.querySelector( '.qty' ),
+				plus  	 = wrapper.querySelector('.botiga-quantity-plus'),
+				minus 	 = wrapper.querySelector('.botiga-quantity-minus');
 
 			plus.classList.add('show');
 			minus.classList.add('show');
+
+			qtyInput.addEventListener( 'change', function(e){
+				self.behaviorsBasedOnQuantityValue( this, this.value );
+			});
+
+			qtyInput.addEventListener( 'keyup', function(e){
+				self.behaviorsBasedOnQuantityValue( this, this.value );
+			});
 
 			plus.addEventListener( 'click', function(e){
 				var input = this.parentNode.querySelector('.qty'),
@@ -1090,6 +1153,7 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.behaviorsBasedOnQuantityValue( this, input.value );
 
 			});
 	
@@ -1104,6 +1168,7 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.behaviorsBasedOnQuantityValue( this, input.value );
 
 			});
 
@@ -1116,26 +1181,44 @@ botiga.qtyButton = {
 		var _self = this;
 
 		if( typeof jQuery !== 'undefined' ) {
-			jQuery( 'body' ).on('updated_cart_totals', function(){
+			jQuery( 'body' ).on( 'updated_cart_totals', function(){
 				_self.events();
-			});
+			} );
 		}
 	},
 
 	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
-
-		var product = qtyItem.closest('.product');
+		var product = qtyItem.closest( '.product' );
 
 		if ( product ) {
 
-			var addToCartButton = product.querySelector('.add_to_cart_button');
+			var addToCartButton = product.querySelector( '.add_to_cart_button:not(.single_add_to_cart_button)' );
 
 			if ( addToCartButton ) {
-				addToCartButton.setAttribute('data-quantity', qtyValue);
+				addToCartButton.setAttribute( 'data-quantity', qtyValue );
 			}
 
 		}
+	},
 
+	behaviorsBasedOnQuantityValue: function( qtyItem, qtyValue ) {
+		var product = qtyItem.closest( '.product' );
+
+		if ( product ) {
+
+			var addToCartButton = product.querySelector( '.add_to_cart_button:not(.single_add_to_cart_button)' );
+
+			if ( addToCartButton ) {
+				
+				if( qtyValue == 0 ) {
+					addToCartButton.classList.add( 'disabled' );
+				} else {
+					addToCartButton.classList.remove( 'disabled' );
+				}
+
+			}
+
+		}
 	}
 }
 

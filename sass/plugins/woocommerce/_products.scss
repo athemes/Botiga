@@ -227,9 +227,13 @@ ul.products {
 	}
 	
 	.button-layout4 {
+		position: absolute;
 		width: 100%;
 		bottom: 10px;
 		left: 10px;
+		opacity: 0;
+		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		z-index: 3;
 	}
 }
 

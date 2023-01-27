@@ -74,6 +74,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/color-group/class_botiga_color_group.php';
 			require get_template_directory() . '/inc/customizer/controls/custom-fonts/class_botiga_custom_fonts_control.php';
 			require get_template_directory() . '/inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php';
+			require get_template_directory() . '/inc/customizer/controls/dimensions/class_botiga_dimensions_control.php';
 			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}

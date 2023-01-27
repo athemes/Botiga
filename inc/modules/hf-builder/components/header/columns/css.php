@@ -13,7 +13,7 @@ foreach( $rows as $row ) {
 
     // Up to 6 columns.
     for( $i=1; $i<=6; $i++ ) {
-        $section_id      = "botiga_header_row__${row}_column$i";
+        $section_id      = "botiga_header_row__{$row}_column$i";
         $column_selector = ".bhfb-header .bhfb-$row .bhfb-column-$i"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
         // Vertical Alignment.
@@ -61,6 +61,30 @@ foreach( $rows as $row ) {
             'px',
             $row,
             $section_id
+        );
+
+        // Padding
+        $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+            $section_id . '_padding',
+            array(
+                'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            ), 
+            $column_selector, 
+            'padding'
+        );
+
+        // Margin
+        $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+            $section_id . '_margin',
+            array(
+                'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+            ), 
+            $column_selector, 
+            'margin'
         );
     }
 

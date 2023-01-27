@@ -1758,3 +1758,100 @@ jQuery(document).ready(function ($) {
 	});
 
 });
+
+/* Dimensions Control */
+(function($){
+
+	const Botiga_Dimensions_Control = {
+		init: function() {
+			this.events();
+		},
+
+		// Events
+		events: function() {
+			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-input' ).on( 'input', this.setDimensionValue.bind(this) );
+			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-unit' ).on( 'change', this.unitSelectHandler.bind(this) );
+			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-link-btn' ).on( 'click', this.toggleLinkValues.bind(this) );
+		},
+
+		// Change dimension
+		setDimensionValue: function(e) {
+			const 
+				$inputToSave = $( e.target ).closest( '.botiga-dimensions-inputs' ).find( '.botiga-dimensions-value' ),
+				value        = this.getDimensionValue( e.target );
+
+			$inputToSave.val( value ).trigger( 'change' );
+		},
+
+		// Mount value
+		getDimensionValue: function( input ) {
+			const 
+				deviceType = $( input ).closest( '.botiga-dimensions-inputs' ).data( 'device-type' ),
+				inputs = $( input ).closest( '.botiga-dimensions-inputs' ).find( '.botiga-dimensions-input' );
+
+			let value = {
+				unit: 'px',
+				linked: false,
+				top: '',
+				right: '',
+				bottom: '',
+				left: '',
+			};
+
+			// Unit value
+			value[ 'unit' ] = $( input ).closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-units[data-device-type="'+ deviceType +'"] .botiga-dimensions-unit' ).val();
+
+			// Linked toggle
+			value[ 'linked' ] = $( input ).closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-link-values[data-device-type="'+ deviceType +'"]' ).hasClass( 'linked' );
+
+			// Values
+			if( ! value[ 'linked' ] ) {
+				inputs.each( function() {
+					const side = $( this ).data( 'side' ),
+						val    = $( this ).val();
+	
+					value[side] = val;
+				});
+			} else {
+				const val = $( input ).val();
+				value[ 'top' ] = val;
+				value[ 'right' ] = val;
+				value[ 'bottom' ] = val;
+				value[ 'left' ] = val;
+
+				inputs.each( function() {
+					$( this ).val( val );
+				});
+			}
+
+			return JSON.stringify( value );
+		},
+
+		unitSelectHandler: function(e) {
+			const 
+				$this = $( e.target ),
+				deviceType = $( e.target ).closest( '.botiga-dimensions-units' ).data( 'device-type' );
+
+			// Trigger change in the first input to update the value
+			$this.closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-inputs[data-device-type="'+ deviceType +'"] .botiga-dimensions-input-wrapper:first-child .botiga-dimensions-input' ).trigger( 'change' );
+		},
+
+		toggleLinkValues: function( e ) {
+			e.preventDefault();
+
+			const 
+				$this = $( e.target ),
+				deviceType = $( e.target ).closest( '.botiga-dimensions-link-values' ).data( 'device-type' );
+
+			$this.closest( '.botiga-dimensions-link-values' ).toggleClass( 'linked' );
+
+			// Trigger change in the first input to update the value
+			$this.closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-inputs[data-device-type="'+ deviceType +'"] .botiga-dimensions-input-wrapper:first-child .botiga-dimensions-input' ).trigger( 'change' );
+		}
+
+	}
+
+	$( document ).ready(function(){
+		Botiga_Dimensions_Control.init();
+	});
+})(jQuery);

@@ -71,7 +71,7 @@ function botiga_page_post_sidebar() {
 
 	global $post;
 
-	if ( !isset( $post ) || !is_singular( array( 'post', 'page' ) ) ) {
+	if ( !isset( $post ) ) {
 		return;
 	}
 
@@ -141,7 +141,7 @@ add_filter( 'botiga_content_class', 'botiga_sidebar_position' );
  */
 function botiga_add_submenu_icons( $item_output, $item, $depth, $args ) {
 	
-	if ( empty( $args->theme_location ) || ( 'primary' !== $args->theme_location && 'mobile' !== $args->theme_location && 'secondary' !== $args->theme_location && 'top-bar-mobile' !== $args->theme_location ) ) {
+	if ( empty( $args->theme_location ) || ( 'primary' !== $args->theme_location && 'mobile' !== $args->theme_location && 'secondary' !== $args->theme_location && 'top-bar-mobile' !== $args->theme_location && 'footer-copyright-menu' !== $args->theme_location ) ) {
 		return $item_output;
 	}
 
@@ -1154,7 +1154,7 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 			}
 
 			// Posts
-			if ( $condition === 'single-post' && is_single() ) {
+			if ( $condition === 'single-post' && is_singular( 'post' ) ) {
 				$result = $boolean;
 			}
 

@@ -305,6 +305,12 @@
             flex-wrap: wrap;
         }
     }
+
+    @media(max-width: 1024px) {
+        .bhfb-component-footer_menu {
+            width: 100%;
+        }
+    }
 }
 
 .bhfb-column {

@@ -158,6 +158,24 @@ function botiga_dokan_remove_woocommerce_breadcrumb() {
 add_action( 'wp', 'botiga_dokan_remove_woocommerce_breadcrumb' );
 
 /**
+ * Add vendor profile link to botiga header login register dropdown
+ */
+function botiga_dokan_header_login_register_vendor_profile_link( $output ) {
+    if( ! is_user_logged_in() ) {
+        return '';
+    }
+
+    if( ! dokan_is_user_seller( dokan_get_current_user_id() ) ) {
+        return '';
+    }
+    
+    $output .= '<a href="'. esc_url( dokan_get_navigation_url() ) .'">'. esc_html__( 'Vendor Dashboard', 'botiga' ) .'</a>';
+
+    return $output;
+}
+add_filter( 'botiga_header_login_register_before_logout_dropdown_item', 'botiga_dokan_header_login_register_vendor_profile_link' );
+
+/**
  * Custom CSS
  */
 function botiga_dokan_custom_css( $css ) {
