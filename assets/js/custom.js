@@ -305,10 +305,67 @@ botiga.navigation = {
 
         menuItem.classList.toggle('focus');
       }
-    } // Menu reverse
+    } // Mobile accordion style navigation
 
+
+    this.mobileAccordionNavigation(); // Menu reverse
 
     this.checkMenuReverse();
+  },
+
+  /*
+  * Mobile navigation (accordion style navigation)
+  */
+  mobileAccordionNavigation: function mobileAccordionNavigation() {
+    var navs = document.querySelectorAll('.botiga-dropdown-mobile-accordion');
+
+    if (!navs.length) {
+      return false;
+    }
+
+    var _iterator6 = _createForOfIteratorHelper(navs),
+        _step6;
+
+    try {
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+        var nav = _step6.value;
+        var nav_item = nav.querySelectorAll('.menu-item-has-children');
+
+        if (!nav_item.length) {
+          return false;
+        }
+
+        var _iterator7 = _createForOfIteratorHelper(nav_item),
+            _step7;
+
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var item = _step7.value;
+            var dropdownToggler = item.querySelectorAll('.dropdown-symbol');
+            console.log(dropdownToggler);
+            dropdownToggler[0].addEventListener('click', function (e) {
+              console.log(123);
+              e.stopPropagation();
+              var parent = this.parentNode;
+
+              if (parent.classList.contains('expand')) {
+                parent.classList.remove('expand');
+              } else {
+                parent.classList.add('expand');
+              }
+            });
+          }
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+      }
+    } catch (err) {
+      _iterator6.e(err);
+    } finally {
+      _iterator6.f();
+    }
   },
 
   /* 
@@ -317,21 +374,21 @@ botiga.navigation = {
   checkMenuReverse: function checkMenuReverse() {
     var items = document.querySelectorAll('.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li');
 
-    var _iterator6 = _createForOfIteratorHelper(items),
-        _step6;
+    var _iterator8 = _createForOfIteratorHelper(items),
+        _step8;
 
     try {
-      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-        var element = _step6.value;
+      for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+        var element = _step8.value;
         element.removeEventListener('mouseover', this.menuReverseEventHandler);
         element.addEventListener('mouseover', this.menuReverseEventHandler);
         element.removeEventListener('touchstart', this.menuReverseEventHandler);
         element.addEventListener('touchstart', this.menuReverseEventHandler);
       }
     } catch (err) {
-      _iterator6.e(err);
+      _iterator8.e(err);
     } finally {
-      _iterator6.f();
+      _iterator8.f();
     }
   },
   menuReverseEventHandler: function menuReverseEventHandler() {
@@ -377,12 +434,12 @@ botiga.desktopOffCanvasToggleNav = {
 
     var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
 
-    var _iterator7 = _createForOfIteratorHelper(submenuToggles),
-        _step7;
+    var _iterator9 = _createForOfIteratorHelper(submenuToggles),
+        _step9;
 
     try {
-      for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-        var submenuToggle = _step7.value;
+      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+        var submenuToggle = _step9.value;
         submenuToggle.addEventListener('touchstart', submenuToggleHandler);
         submenuToggle.addEventListener('click', submenuToggleHandler);
         submenuToggle.addEventListener('keydown', function (e) {
@@ -398,9 +455,9 @@ botiga.desktopOffCanvasToggleNav = {
         });
       }
     } catch (err) {
-      _iterator7.e(err);
+      _iterator9.e(err);
     } finally {
-      _iterator7.f();
+      _iterator9.f();
     }
 
     function submenuToggleHandler(e) {
@@ -464,28 +521,28 @@ botiga.headerSearch = {
     }
 
     if (typeof overlay !== 'undefined') {
-      var _iterator8 = _createForOfIteratorHelper(button),
-          _step8;
+      var _iterator10 = _createForOfIteratorHelper(button),
+          _step10;
 
       try {
-        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-          var buttonEl = _step8.value;
+        for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+          var buttonEl = _step10.value;
           buttonEl.addEventListener('click', function (e) {
             e.preventDefault(); // Hide other search icons 
 
             if (button.length > 1) {
-              var _iterator9 = _createForOfIteratorHelper(button),
-                  _step9;
+              var _iterator11 = _createForOfIteratorHelper(button),
+                  _step11;
 
               try {
-                for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-                  var btn = _step9.value;
+                for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+                  var btn = _step11.value;
                   btn.classList.toggle('hide');
                 }
               } catch (err) {
-                _iterator9.e(err);
+                _iterator11.e(err);
               } finally {
-                _iterator9.f();
+                _iterator11.f();
               }
             }
 
@@ -507,9 +564,9 @@ botiga.headerSearch = {
           });
         }
       } catch (err) {
-        _iterator8.e(err);
+        _iterator10.e(err);
       } finally {
-        _iterator8.f();
+        _iterator10.f();
       }
 
       overlay.addEventListener('click', function () {
@@ -555,20 +612,20 @@ botiga.headerSearch = {
     return this;
   },
   backButtonsToDefaultState: function backButtonsToDefaultState(button) {
-    var _iterator10 = _createForOfIteratorHelper(button),
-        _step10;
+    var _iterator12 = _createForOfIteratorHelper(button),
+        _step12;
 
     try {
-      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-        var btn = _step10.value;
+      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+        var btn = _step12.value;
         btn.classList.remove('hide');
         btn.querySelector('.icon-cancel').classList.remove('active');
         btn.querySelector('.icon-search').classList.add('active');
       }
     } catch (err) {
-      _iterator10.e(err);
+      _iterator12.e(err);
     } finally {
-      _iterator10.f();
+      _iterator12.f();
     }
   }
 };
@@ -1094,18 +1151,18 @@ botiga.backToTop = {
       return false;
     }
 
-    var _iterator11 = _createForOfIteratorHelper(links),
-        _step11;
+    var _iterator13 = _createForOfIteratorHelper(links),
+        _step13;
 
     try {
-      for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-        var link = _step11.value;
+      for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+        var link = _step13.value;
         link.addEventListener('touchend', function () {});
       }
     } catch (err) {
-      _iterator11.e(err);
+      _iterator13.e(err);
     } finally {
-      _iterator11.f();
+      _iterator13.f();
     }
   }
 };
@@ -1223,12 +1280,12 @@ botiga.carousel = {
 
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
 
-    var _iterator12 = _createForOfIteratorHelper(carouselEls),
-        _step12;
+    var _iterator14 = _createForOfIteratorHelper(carouselEls),
+        _step14;
 
     try {
-      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-        var carouselEl = _step12.value;
+      for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+        var carouselEl = _step14.value;
 
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
@@ -1287,9 +1344,9 @@ botiga.carousel = {
         }
       }
     } catch (err) {
-      _iterator12.e(err);
+      _iterator14.e(err);
     } finally {
-      _iterator12.f();
+      _iterator14.f();
     }
   },
   events: function events() {

@@ -1962,6 +1962,16 @@ html {
   .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu .sub-menu {
     padding-left: 20px;
   }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children.expand > .sub-menu {
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children:not(.expand) > .sub-menu {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
   .botiga-dropdown.botiga-dropdown-mobile-accordion li .dropdown-symbol {
     margin: 0;
   }

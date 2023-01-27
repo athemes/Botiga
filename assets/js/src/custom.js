@@ -262,9 +262,46 @@ botiga.navigation = {
 			}
 		}
 
+		// Mobile accordion style navigation
+		this.mobileAccordionNavigation();
+
 		// Menu reverse
 		this.checkMenuReverse();
+		
+	},
 
+	/*
+	* Mobile navigation (accordion style navigation)
+	*/
+	mobileAccordionNavigation: function() {
+		const navs = document.querySelectorAll( '.botiga-dropdown-mobile-accordion' );
+		if( ! navs.length ) {
+			return false;
+		}
+
+		for(const nav of navs) {
+			const nav_item = nav.querySelectorAll( '.menu-item-has-children' );
+			if( ! nav_item.length ) {
+				return false;
+			}
+			
+			for(const item of nav_item) {
+				const dropdownToggler = item.querySelectorAll( '.dropdown-symbol' );
+				console.log(dropdownToggler);
+				dropdownToggler[0].addEventListener( 'click', function(e){
+					console.log(123);
+					e.stopPropagation();
+
+					const parent = this.parentNode;
+
+					if( parent.classList.contains( 'expand' ) ) {
+						parent.classList.remove( 'expand' );
+					} else {
+						parent.classList.add( 'expand' )
+					}
+				} );
+			}
+		}
 	},
 
 	/* 

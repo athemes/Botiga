@@ -155,6 +155,22 @@
 							padding-left: 20px;
 						}
 					}
+
+					&.expand {
+						> .sub-menu {
+							opacity: 1;
+							height: auto;
+							overflow: visible;
+						}
+					}
+
+					&:not(.expand) {
+						> .sub-menu {
+							opacity: 0;
+							height: 0;
+							overflow: hidden;
+						}
+					}
 				}
 
 				.dropdown-symbol {
