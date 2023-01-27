@@ -46,7 +46,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 * Filters
 		 */
 		public function filters() {
-			if ( is_singular() || is_404() || ( class_exists( 'Woocommerce' ) && is_woocommerce() ) ) {
+			if ( is_singular() || is_404() || ( class_exists( 'Woocommerce' ) && is_woocommerce() ) || ( class_exists( 'Tribe__Events__Main' ) && get_post_type() === 'tribe_events' ) ) {
 				return;
 			}
 

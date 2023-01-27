@@ -447,6 +447,13 @@ if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {
 }
 
 /**
+ * Load WC Vendors compatibility file.
+ */
+if( class_exists( 'WC_Vendors' ) && class_exists( 'Woocommerce' ) ) {
+	require get_template_directory() . '/inc/plugins/wc-vendors/wc-vendors.php';
+}
+
+/**
  * Upsell.
  */
 if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {

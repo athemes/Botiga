@@ -72,7 +72,6 @@ $wp_customize->add_control(
                 array_merge(
                     array(
                         '#customize-control-botiga_header_row__mobile_offcanvas',
-                        '#customize-control-bhfb_mobile_offcanvas_padding',
                         '#customize-control-bhfb_mobile_offcanvas_close_offset'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
@@ -83,6 +82,8 @@ $wp_customize->add_control(
                     array(
                         '#customize-control-bhfb_mobile_offcanvas_close_background_color',
                         '#customize-control-bhfb_mobile_offcanvas_close_text',
+                        '#customize-control-bhfb_mobile_offcanvas_padding',
+                        '#customize-control-bhfb_mobile_offcanvas_margin'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -90,36 +91,6 @@ $wp_customize->add_control(
             'priority' 				=> 20
         )
     )
-);
-
-// Padding.
-$wp_customize->add_setting( 
-    'bhfb_mobile_offcanvas_padding', 
-    array(
-        'default'   		=> 20,
-        'transport'			=> 'postMessage',
-        'sanitize_callback' => 'absint',
-    ) 
-);			
-$wp_customize->add_control( 
-    new Botiga_Responsive_Slider( 
-        $wp_customize, 
-        'bhfb_mobile_offcanvas_padding',
-        array(
-            'label' 		=> esc_html__( 'Padding', 'botiga' ),
-            'section' 		=> 'botiga_section_hb_mobile_offcanvas',
-            'is_responsive'	=> 0,
-            'settings' 		=> array (
-                'size_desktop' 		=> 'bhfb_mobile_offcanvas_padding',
-            ),
-            'input_attrs' => array (
-                'min'	=> 0,
-                'max'	=> 200,
-                'step'  => 1
-            ),
-            'priority'     => 25
-        )
-    ) 
 );
 
 // Close Button Offset.
@@ -202,6 +173,108 @@ $wp_customize->add_control(
                 'hover'  => 'bhfb_mobile_offcanvas_close_text_color_hover',
             ),
             'priority' => 40
+        )
+    )
+);
+
+// Padding
+$wp_customize->add_setting( 
+    'bhfb_mobile_offcanvas_padding_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "20", "right": "20", "bottom": "20", "left": "20" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_mobile_offcanvas_padding_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "20", "right": "20", "bottom": "20", "left": "20" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_mobile_offcanvas_padding_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "20", "right": "20", "bottom": "20", "left": "20" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'bhfb_mobile_offcanvas_padding',
+        array(
+            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_mobile_offcanvas',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'bhfb_mobile_offcanvas_padding_desktop',
+                'tablet'  => 'bhfb_mobile_offcanvas_padding_tablet',
+                'mobile'  => 'bhfb_mobile_offcanvas_padding_mobile'
+            ),
+            'priority'	      	 => 72
+        )
+    )
+);
+
+// Margin
+$wp_customize->add_setting( 
+    'bhfb_mobile_offcanvas_margin_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_mobile_offcanvas_margin_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_mobile_offcanvas_margin_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'bhfb_mobile_offcanvas_margin',
+        array(
+            'label'           	=> __( 'Wrapper Margin', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_mobile_offcanvas',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'bhfb_mobile_offcanvas_margin_desktop',
+                'tablet'  => 'bhfb_mobile_offcanvas_margin_tablet',
+                'mobile'  => 'bhfb_mobile_offcanvas_margin_mobile'
+            ),
+            'priority'	      	 => 72
         )
     )
 );

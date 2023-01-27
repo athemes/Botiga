@@ -23,7 +23,7 @@ $cols_number = $bhfb->get_row_number_of_columns( $row_data->$device );
 
 // General options
 $container 	     = get_theme_mod( 'footer_container', 'container' ); 
-$columns_layout  = Botiga_Header_Footer_Builder::get_columns_layout_class( get_theme_mod( "botiga_footer_row__${row}_columns_layout_desktop", Botiga_Header_Footer_Builder::get_row_columns_layout_default_customizer_value( $row ) ) ); 
+$columns_layout  = Botiga_Header_Footer_Builder::get_columns_layout_class( get_theme_mod( "botiga_footer_row__{$row}_columns_layout_desktop", Botiga_Header_Footer_Builder::get_row_columns_layout_default_customizer_value( $row ) ) ); 
 $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$device ) ? ' bhfb-is-row-empty' : ''; ?>
 
 <div class="<?php echo esc_attr( $container ); ?>">

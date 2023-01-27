@@ -136,12 +136,12 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_blo
 //
 
 /**
- * Extension
+ * Extensions
  */
 if ( defined( 'BOTIGA_PRO_VERSION' ) ) {
 	$wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_extension',
 		array(
-			'title'    => esc_html__( 'Extension', 'botiga' ),
+			'title'    => esc_html__( 'Extensions', 'botiga' ),
 			'priority' => 175,
 			'divider'  => true,
 		)

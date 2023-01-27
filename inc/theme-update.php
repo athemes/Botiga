@@ -324,3 +324,30 @@ function botiga_migrate_2_0_0_modules( $old_theme_name ) {
 
 }
 add_action( 'admin_init', 'botiga_migrate_2_0_0_modules' );
+
+/**
+ * Migrate 'size-chart, linked variations, product swatches and video gallery' modules.
+ * 
+ * @since 2.0.0
+ */
+function botiga_migrate_2_1_0_options() {
+    $flag = get_theme_mod( 'botiga_migrate_2_1_0_options_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+
+    // Migrate the mobile offcanvas old padding to new responsive padding.
+    $bhfb_mobile_offcanvas_padding = get_theme_mod( 'bhfb_mobile_offcanvas_padding', 20 );
+    if( $bhfb_mobile_offcanvas_padding !== 20 && $bhfb_mobile_offcanvas_padding !== '{ "unit": "px", "linked": false, "top": "20", "right": "20", "bottom": "20", "left": "20" }' ) {
+        $padding = $bhfb_mobile_offcanvas_padding;
+        $new_value = '{ "unit": "px", "linked": false, "top": "'. $padding .'", "right": "'. $padding .'", "bottom": "'. $padding .'", "left": "'. $padding .'" }';
+
+        set_theme_mod( 'bhfb_mobile_offcanvas_padding_desktop', $new_value );
+    }
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_2_1_0_options_flag', true );
+
+}
+add_action( 'admin_init', 'botiga_migrate_2_1_0_options' );
