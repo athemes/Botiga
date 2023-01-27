@@ -361,6 +361,14 @@ function botiga_dashboard_settings()
 		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
 	);
 
+	$settings['features'][] = array(
+		'type'       => 'pro',
+		'title'      => esc_html__('Google Autocomplete', 'botiga'),
+		'desc'       => esc_html__('Help customers autocomplete their addresses on checkout with Google API.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'woocommerce_checkout', admin_url('customize.php')),
+	);
+
 	if (!Botiga_Modules::is_module_active('hf-builder')) {
 
 		$settings['features'][] = array(
@@ -371,6 +379,15 @@ function botiga_dashboard_settings()
 			'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_footer_credits', admin_url('customize.php')),
 		);
 	}
+
+	$settings['features'][] = array(
+		'module'     => 'quantity-step-control',
+		'type'       => 'pro',
+		'title'      => esc_html__('Quantity Step Control', 'botiga'),
+		'desc'       => esc_html__('Set the Min, Max, Step and Default preset Quantity.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_catalog_general', admin_url('customize.php')),
+	);
 
 	$settings['features'][] = array(
 		'module'     => 'mega-menu',

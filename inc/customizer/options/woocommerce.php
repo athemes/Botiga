@@ -1578,3 +1578,23 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+$wp_customize->add_setting(
+	'shop_search_enable_popular_products',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_enable_popular_products',
+		array(
+			'label'       => esc_html__( 'Enable Popular Products', 'botiga' ),
+			'description' => esc_html__( 'Show popular products if no products found in search result page.', 'botiga' ),
+			'section'     => 'botiga_section_shop_search',
+			'priority'    => 55
+		)
+	)
+);

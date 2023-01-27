@@ -1064,6 +1064,11 @@ botiga.quickView = {
 
             if (botiga.sizeChart) {
               botiga.sizeChart.init($wrapper);
+            } // Initialize product swatches mouseover 
+
+
+            if (botiga.productSwatch && botiga.productSwatch.variationMouseOver) {
+              botiga.productSwatch.variationMouseOver();
             } // Initialize product variable
 
 
@@ -1194,9 +1199,9 @@ botiga.qtyButton = {
         return false;
       }
 
-      var qtyInput = wrapper.querySelector('.qty'),
-          plus = wrapper.querySelector('.botiga-quantity-plus'),
-          minus = wrapper.querySelector('.botiga-quantity-minus');
+      var plus = wrapper.querySelector('.botiga-quantity-plus'),
+          minus = wrapper.querySelector('.botiga-quantity-minus'),
+          input = wrapper.querySelector('.input-text');
       plus.classList.add('show');
       minus.classList.add('show');
       qtyInput.addEventListener('change', function (e) {
@@ -1206,24 +1211,33 @@ botiga.qtyButton = {
         self.behaviorsBasedOnQuantityValue(this, this.value);
       });
       plus.addEventListener('click', function (e) {
-        var input = this.parentNode.querySelector('.qty'),
-            changeEvent = document.createEvent('HTMLEvents');
         e.preventDefault();
-        input.value = input.value === '' ? 0 : parseInt(input.value) + 1;
+        var input = this.parentNode.querySelector('.qty'),
+            qtyMax = Number(input.getAttribute('max')) || 99999,
+            qtyMin = Number(input.getAttribute('min')),
+            qtyStep = Number(input.getAttribute('step')),
+            qtyValue = Number(input.value),
+            changeEvent = document.createEvent('HTMLEvents');
+        input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue + qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
-        self.updateAddToCartQuantity(this, input.value);
-        self.behaviorsBasedOnQuantityValue(this, input.value);
+        self.updateAddToCartQuantity(this, input);
       });
       minus.addEventListener('click', function (e) {
-        var input = this.parentNode.querySelector('.qty'),
-            changeEvent = document.createEvent('HTMLEvents');
         e.preventDefault();
-        input.value = parseInt(input.value) > 0 ? parseInt(input.value) - 1 : 0;
+        var input = this.parentNode.querySelector('.qty'),
+            qtyMax = Number(input.getAttribute('max')) || 99999,
+            qtyMin = Number(input.getAttribute('min')),
+            qtyStep = Number(input.getAttribute('step')),
+            qtyValue = Number(input.value),
+            changeEvent = document.createEvent('HTMLEvents');
+        input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue - qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
-        self.updateAddToCartQuantity(this, input.value);
-        self.behaviorsBasedOnQuantityValue(this, input.value);
+        self.updateAddToCartQuantity(this, input);
+      });
+      input.addEventListener('change', function (e) {
+        self.updateAddToCartQuantity(this, this);
       });
       wrapper.dataset.qtyInitialized = true;
     }
@@ -1235,32 +1249,47 @@ botiga.qtyButton = {
       jQuery('body').on('updated_cart_totals', function () {
         _self.events();
       });
+      jQuery(document).on('wc_fragments_loaded', function () {
+        _self.events();
+      });
     }
   },
-  updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
+  updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyInput) {
     var product = qtyItem.closest('.product');
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
 
       if (addToCartButton) {
-        addToCartButton.setAttribute('data-quantity', qtyValue);
+        addToCartButton.setAttribute('data-quantity', qtyInput.value);
       }
     }
-  },
-  behaviorsBasedOnQuantityValue: function behaviorsBasedOnQuantityValue(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product');
 
-    if (product) {
-      var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
+    var miniCartItem = qtyItem.closest('.mini_cart_item');
 
-      if (addToCartButton) {
-        if (qtyValue == 0) {
-          addToCartButton.classList.add('disabled');
-        } else {
-          addToCartButton.classList.remove('disabled');
+    if (miniCartItem) {
+      var $cart = jQuery(qtyItem.closest('.widget_shopping_cart'));
+      $cart.block({
+        message: null,
+        overlayCSS: {
+          background: '#fff',
+          opacity: 0.6
         }
-      }
+      });
+      jQuery.post({
+        url: botiga.ajaxurl,
+        data: {
+          action: 'botiga_update_floating_mini_cart_quantity',
+          quantity: qtyInput.value,
+          cart_item_key: qtyInput.name
+        },
+        success: function success(response) {
+          jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash]);
+          setTimeout(function () {
+            $cart.unblock();
+          }, 100);
+        }
+      });
     }
   }
 };

@@ -400,8 +400,7 @@ add_filter( 'loop_shop_per_page', 'botiga_loop_shop_per_page' );
  */
 function botiga_shop_loop_product_title() {
 	global $post;
-	
-	echo wp_kses_post( the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' ) );
+	echo wp_kses_post( apply_filters( 'botiga_shop_loop_product_title', the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' ), $post ) );
 }
 
 /**
@@ -586,6 +585,17 @@ function botiga_myaccount_html_insert() {
 add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
 
 /**
+ * Store notice add shortcode suppport
+ */
+function botiga_store_notice_add_shortcode_support( $notice ) {
+	if ( strpos( $notice, '[' ) !== false ) {
+		return do_shortcode( $notice );
+	}
+	return $notice;
+}
+add_filter( 'woocommerce_demo_store', 'botiga_store_notice_add_shortcode_support' );
+
+/**
  * Header Mini Cart
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/mini-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
@@ -654,6 +664,11 @@ require get_template_directory() . '/inc/plugins/woocommerce/features/recently-v
  * WooCommerce GB Blocks
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/wc-editor-blocks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
+ * WooCommerce No Posts Found
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/features/no-posts-found.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * WooCommerce Template Functions

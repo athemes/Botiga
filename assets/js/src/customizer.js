@@ -1559,6 +1559,175 @@
 		} );
 	} );
 
+	// Product Swatches
+
+	// Swatch select
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_select_left_right_padding_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_select_left_right_padding_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .variations select { padding-left:' + to + 'px !important; padding-right:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_select_left_right_padding_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_select_top_bottom_padding_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_select_top_bottom_padding_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .variations select { padding-top:' + to + 'px !important; padding-bottom:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_select_top_bottom_padding_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	wp.customize( 'product_swatch_select_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.variations select' ).css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	// Swatch color
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_color_width_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_color_width_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-color > a { width:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_color_width_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_color_height_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_color_height_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-color > a { height:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_color_height_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_color_spacing_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_color_spacing_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-color { grid-gap:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_color_spacing_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	wp.customize( 'product_swatch_color_border_width', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_color_border_width' ).remove();
+			var output = '.botiga-variations-wrapper .botiga-variation-type-color > a { border-width:' + to + 'px !important; }';
+			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_color_border_width">' + output + '</style>' );
+		} );
+	} );
+
+	wp.customize( 'product_swatch_color_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-variations-wrapper .botiga-variation-type-color > a' ).css( 'border-radius', to + 'px' );
+			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_color_border_radius' ).remove();
+			var output = '.botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before { border-radius:' + to + 'px !important; }';
+			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_color_border_radius">' + output + '</style>' );
+		} );
+	} );
+
+	// Swatch button
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_button_left_right_padding_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_button_left_right_padding_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-button > a { padding-left:' + to + 'px !important; padding-right:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_button_left_right_padding_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_button_top_bottom_padding_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_button_top_bottom_padding_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-button > a { padding-top:' + to + 'px !important; padding-bottom:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_button_top_bottom_padding_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_button_spacing_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_button_spacing_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-button { grid-gap:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_button_spacing_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	wp.customize( 'product_swatch_button_border_width', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-variations-wrapper .botiga-variation-type-button > a' ).css( 'border-width', to + 'px' );
+		} );
+	} );
+
+	wp.customize( 'product_swatch_button_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( '.botiga-variations-wrapper .botiga-variation-type-button > a' ).css( 'border-radius', to + 'px' );
+		} );
+	} );
+
+	// Swatch image
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_image_width_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_image_width_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-image > a { width:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_image_width_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_image_height_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_image_height_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-image > a { height:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_image_height_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	$.each( $devices, function( device, mediaSize ) {
+		wp.customize( 'product_swatch_image_spacing_' + device, function( value ) {
+			value.bind( function( to ) {
+				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_image_spacing_' + device ).remove();
+				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-image { grid-gap:' + to + 'px !important; } }';
+				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_image_spacing_' + device + '">' + output + '</style>' );
+			} );
+		} );
+	});
+
+	wp.customize( 'product_swatch_image_border_width', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_image_border_width' ).remove();
+			var output = '.botiga-variations-wrapper .botiga-variation-type-image > a { border-width:' + to + 'px !important; }';
+			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_image_border_width">' + output + '</style>' );
+		} );
+	} );
+
+	wp.customize( 'product_swatch_image_border_radius', function( value ) {
+		value.bind( function( to ) {
+			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_image_border_radius' ).remove();
+			var selector  = '.botiga-variations-wrapper .botiga-variation-type-image > a,';
+					selector += '.botiga-variations-wrapper .botiga-variation-type-image > a img,';
+					selector += '.botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before';
+			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_image_border_radius">' + selector + '{ border-radius:' + to + 'px !important; }</style>' );
+		} );
+	} );
+
 	// Theme options
 	var $theme_options = botiga_theme_options;
 
