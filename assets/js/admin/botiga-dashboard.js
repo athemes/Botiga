@@ -35,6 +35,25 @@
 
     }
 
+    // License button
+    var $license = $('.botiga-license-button');
+
+    if ( $license.length ) {
+
+      $license.on('click', function( e ) {
+
+        var $button = $(this);
+
+        if ( $button.data('type') === 'activate' ) {
+          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.activating);
+        } else {
+          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.deactivating);
+        }
+
+      });
+
+    }
+
     // Dashboard modals
     var $modals = $('.botiga-dashboard-modal');
 

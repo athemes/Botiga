@@ -912,6 +912,129 @@
 	}
 }
 
+.botiga-dashboard-settings {
+	display: flex;
+	grid-gap: 30px;
+}
+
+.botiga-dashboard-settings-tabs {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+}
+
+.botiga-dashboard-settings-tab {
+	display: flex;
+	padding: 15px;
+	border-radius: 0 2px 2px 0;
+	font-weight: 500;
+	text-decoration: none;
+	color: #1e1e1e;
+	border-left: 2px solid #3858e9;
+
+	&:hover,
+	&:active {
+		color: #1e1e1e;
+	}
+
+	&:focus {
+		box-shadow: none;
+	}
+
+	&.active {
+		color: #fff;
+		background-color: #3858e9;
+	}
+}
+
+.botiga-dashboard-settings-contents {
+	flex: 1;
+	width: calc(100% - 200px);
+}
+
+.botiga-dashboard-settings-box {
+	display: flex;
+	grid-gap: 15px;
+	flex-direction: column;
+}
+
+.botiga-dashboard-settings-row {
+	display: flex;
+	grid-gap: 10px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	+ .botiga-dashboard-settings-row {
+		padding-top: 20px;
+		border-top: 1px solid #eee;
+	}
+
+	.botiga-dashboard-box-title {
+		grid-gap: 5px;
+	}
+}
+
+.botiga-dashboard-settings-column-left {
+	display: flex;
+	flex-direction: column;
+	grid-gap: 5px;
+}
+
+.botiga-dashboard-license-form {
+	margin-top: 10px;
+
+
+	form {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		grid-gap: 10px;
+
+		input {
+			width: 400px;
+			max-width: 100%;
+			padding-left: 26px;
+
+			&::placeholder {
+				opacity: 0.75;
+			}
+		}
+
+		button {
+			position: relative;
+			display: flex;
+			grid-gap: 2px;
+			align-items: center;
+		}
+	}
+
+	.botiga-license-key-icon{
+		position: absolute;
+		z-index: 1;
+		top: 50%;
+		left: 10px;
+		transform: translateY(-50%);
+		margin-top: -1px;
+		opacity: 0.5;
+	}
+}
+
+.botiga-dashboard-license-success {
+	margin-top: 10px;
+	display: flex;
+	grid-gap: 5px;
+
+	span{
+		color: #0b890b;
+	}
+}
+
+.botiga-dashboard-license-error {
+	margin-top: 10px;
+	color: #d63638;
+}
+
 .botiga-dashboard-freevspro-table__header {
 	position: sticky;
 	top: 50px;
