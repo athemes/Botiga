@@ -1592,7 +1592,7 @@ $wp_customize->add_control(
 		'shop_search_enable_popular_products',
 		array(
 			'label'       => esc_html__( 'Enable Popular Products', 'botiga' ),
-			'description' => esc_html__( 'Show popular products if no products found in search result page.', 'botiga' ),
+			'description' => esc_html__( 'Show popular products if no products found in search results page.', 'botiga' ),
 			'section'     => 'botiga_section_shop_search',
 			'priority'    => 55
 		)

@@ -1234,6 +1234,15 @@ class Botiga_Header_Footer_Builder {
     }
 
     /**
+     * Require wrapper
+     * To require files with params
+     */
+    public function require_wrapper( $file_path, $params ) {
+        extract( $params );
+        require $file_path;
+    }
+
+    /**
      * Primary Menu
      */
     public function menu( $params ) {
@@ -1251,7 +1260,7 @@ class Botiga_Header_Footer_Builder {
      * Social
      */
     public function social( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/social/social.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/social/social.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
@@ -1272,7 +1281,10 @@ class Botiga_Header_Footer_Builder {
      * Site branding
      */		
     public function logo( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/logo/logo.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        return $this->require_wrapper(
+            get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/logo/logo.php',
+            $params
+        );
     }
 
     /**
@@ -1286,7 +1298,7 @@ class Botiga_Header_Footer_Builder {
      * Button
      */		
     public function button( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/button/button.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/button/button.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
@@ -1307,7 +1319,7 @@ class Botiga_Header_Footer_Builder {
      * HTML
      */		
     public function html( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/html/html.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/html/html.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**

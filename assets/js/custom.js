@@ -1191,7 +1191,7 @@ botiga.qtyButton = {
     for (var i = 0; i < qty.length; i++) {
       var wrapper = qty[i].closest('.quantity');
 
-      if (wrapper.dataset.qtyInitialized) {
+      if (wrapper === null || wrapper.dataset.qtyInitialized) {
         continue;
       }
 
@@ -1199,7 +1199,8 @@ botiga.qtyButton = {
         return false;
       }
 
-      var plus = wrapper.querySelector('.botiga-quantity-plus'),
+      var qtyInput = wrapper.querySelector('.qty'),
+          plus = wrapper.querySelector('.botiga-quantity-plus'),
           minus = wrapper.querySelector('.botiga-quantity-minus'),
           input = wrapper.querySelector('.input-text');
       plus.classList.add('show');
@@ -1221,7 +1222,8 @@ botiga.qtyButton = {
         input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue + qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
-        self.updateAddToCartQuantity(this, input);
+        self.updateAddToCartQuantity(this, input.value);
+        self.behaviorsBasedOnQuantityValue(this, input.value);
       });
       minus.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1234,10 +1236,11 @@ botiga.qtyButton = {
         input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue - qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
-        self.updateAddToCartQuantity(this, input);
+        self.updateAddToCartQuantity(this, input.value);
+        self.behaviorsBasedOnQuantityValue(this, input.value);
       });
       input.addEventListener('change', function (e) {
-        self.updateAddToCartQuantity(this, this);
+        self.updateAddToCartQuantity(this, this.value);
       });
       wrapper.dataset.qtyInitialized = true;
     }
@@ -1254,14 +1257,14 @@ botiga.qtyButton = {
       });
     }
   },
-  updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyInput) {
+  updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
     var product = qtyItem.closest('.product');
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
 
       if (addToCartButton) {
-        addToCartButton.setAttribute('data-quantity', qtyInput.value);
+        addToCartButton.setAttribute('data-quantity', qtyValue);
       }
     }
 
@@ -1290,6 +1293,21 @@ botiga.qtyButton = {
           }, 100);
         }
       });
+    }
+  },
+  behaviorsBasedOnQuantityValue: function behaviorsBasedOnQuantityValue(qtyItem, qtyValue) {
+    var product = qtyItem.closest('.product');
+
+    if (product) {
+      var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
+
+      if (addToCartButton) {
+        if (qtyValue == 0) {
+          addToCartButton.classList.add('disabled');
+        } else {
+          addToCartButton.classList.remove('disabled');
+        }
+      }
     }
   }
 };

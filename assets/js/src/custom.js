@@ -1124,7 +1124,7 @@ botiga.qtyButton = {
 
 			var wrapper = qty[i].closest( '.quantity' );
 
-			if( wrapper.dataset.qtyInitialized ) {
+			if( wrapper === null || wrapper.dataset.qtyInitialized ) {
 				continue;
 			}
 
@@ -1133,9 +1133,9 @@ botiga.qtyButton = {
 			}
 
 			var qtyInput = wrapper.querySelector( '.qty' ),
-				  plus  	 = wrapper.querySelector('.botiga-quantity-plus'),
-				  minus 	 = wrapper.querySelector('.botiga-quantity-minus'),
-          input    = wrapper.querySelector('.input-text');
+				plus  	 = wrapper.querySelector( '.botiga-quantity-plus' ),
+				minus 	 = wrapper.querySelector( '.botiga-quantity-minus' ),
+          		input    = wrapper.querySelector( '.input-text' );
 
 			plus.classList.add('show');
 			minus.classList.add('show');
@@ -1153,11 +1153,11 @@ botiga.qtyButton = {
 				e.preventDefault();
 
 				var input       = this.parentNode.querySelector('.qty'),
-						qtyMax      = Number( input.getAttribute('max') ) || 99999,
-						qtyMin      = Number( input.getAttribute('min') ),
-						qtyStep     = Number( input.getAttribute('step') ),
-						qtyValue    = Number( input.value ),
-						changeEvent = document.createEvent('HTMLEvents');
+					qtyMax      = Number( input.getAttribute('max') ) || 99999,
+					qtyMin      = Number( input.getAttribute('min') ),
+					qtyStep     = Number( input.getAttribute('step') ),
+					qtyValue    = Number( input.value ),
+					changeEvent = document.createEvent('HTMLEvents');
 
 				input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue + qtyStep).toFixed(1)));
 
@@ -1173,11 +1173,11 @@ botiga.qtyButton = {
 				e.preventDefault();
 
 				var input       = this.parentNode.querySelector('.qty'),
-						qtyMax      = Number( input.getAttribute('max') ) || 99999,
-						qtyMin      = Number( input.getAttribute('min') ),
-						qtyStep     = Number( input.getAttribute('step') ),
-						qtyValue    = Number( input.value ),
-						changeEvent = document.createEvent('HTMLEvents');
+					qtyMax      = Number( input.getAttribute('max') ) || 99999,
+					qtyMin      = Number( input.getAttribute('min') ),
+					qtyStep     = Number( input.getAttribute('step') ),
+					qtyValue    = Number( input.value ),
+					changeEvent = document.createEvent('HTMLEvents');
 
 				input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue - qtyStep).toFixed(1)));
 
@@ -1185,10 +1185,10 @@ botiga.qtyButton = {
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
 				self.behaviorsBasedOnQuantityValue( this, input.value );
-      });
+      		});
 
 			input.addEventListener( 'change', function(e){
-				self.updateAddToCartQuantity(this, this);
+				self.updateAddToCartQuantity( this, this.value );
 			});
 
 			wrapper.dataset.qtyInitialized = true;

@@ -3212,9 +3212,14 @@ div.editor-styles-wrapper .product-grid ul.products li.product:hover .button-lay
 div.editor-styles-wrapper .related.products .button-layout4,
 div.editor-styles-wrapper .upsells.products .button-layout4,
 div.editor-styles-wrapper .product-grid .button-layout4 {
+  position: absolute;
   width: 100%;
   bottom: 10px;
   left: 10px;
+  opacity: 0;
+  -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
 }
 
 div.editor-styles-wrapper .button-layout3 a,
@@ -4387,6 +4392,7 @@ div.editor-styles-wrapper {
 }
 
 div.editor-styles-wrapper .botiga-dropdown {
+  --dropdown--symbol--size: 0.8em;
   display: block;
   width: 100%;
 }
@@ -4411,6 +4417,8 @@ div.editor-styles-wrapper .botiga-dropdown ul ul {
   -webkit-transform: translate3d(0, 15px, 0);
           transform: translate3d(0, 15px, 0);
   opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 div.editor-styles-wrapper .botiga-dropdown ul ul ul {
@@ -4461,12 +4469,20 @@ div.editor-styles-wrapper .botiga-dropdown ul li.focus > ul {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+  height: auto;
+  overflow: visible;
 }
 
 div.editor-styles-wrapper .botiga-dropdown ul li:hover > ul.sub-menu-reverse,
 div.editor-styles-wrapper .botiga-dropdown ul li.focus > ul.sub-menu-reverse {
   left: auto;
   right: 0;
+}
+
+div.editor-styles-wrapper .botiga-dropdown ul li:hover > ul.sub-menu-reverse-vertically,
+div.editor-styles-wrapper .botiga-dropdown ul li.focus > ul.sub-menu-reverse-vertically {
+  top: auto;
+  bottom: 100%;
 }
 
 div.editor-styles-wrapper .botiga-dropdown ul li:hover > ul ul,
@@ -4478,6 +4494,12 @@ div.editor-styles-wrapper .botiga-dropdown ul li:hover > ul ul.sub-menu-reverse,
 div.editor-styles-wrapper .botiga-dropdown ul li.focus > ul ul.sub-menu-reverse {
   left: auto;
   right: 100%;
+}
+
+div.editor-styles-wrapper .botiga-dropdown ul li:hover > ul ul.sub-menu-reverse-vertically,
+div.editor-styles-wrapper .botiga-dropdown ul li.focus > ul ul.sub-menu-reverse-vertically {
+  top: auto;
+  bottom: 0;
 }
 
 div.editor-styles-wrapper .botiga-dropdown li {
@@ -4497,13 +4519,62 @@ div.editor-styles-wrapper .botiga-dropdown a {
 }
 
 div.editor-styles-wrapper .botiga-dropdown .ws-svg-icon {
-  width: 0.8em;
-  height: 0.8em;
+  width: var(--dropdown--symbol--size);
+  height: var(--dropdown--symbol--size);
   margin-top: -2px;
 }
 
 div.editor-styles-wrapper .botiga-dropdown .dropdown-symbol {
   margin-left: 8px;
+}
+
+@media (max-width: 1024px) {
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li {
+    margin-right: 0;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > a {
+    width: calc( 100% - ( var(--dropdown--symbol--size) + 0.5em ));
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    -webkit-transform: none;
+            transform: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu > li {
+    background-color: transparent;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu .sub-menu {
+    padding-left: 20px;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children.expand > .sub-menu {
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children:not(.expand) > .sub-menu {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li .dropdown-symbol {
+    margin: 0;
+  }
+  div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion li .dropdown-symbol svg {
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 
 div.editor-styles-wrapper .bottom-header-row .dropdown-symbol,
@@ -4957,28 +5028,6 @@ div.editor-styles-wrapper .secondary-navigation:not(.bhfb-navigation).botiga-dro
 div.editor-styles-wrapper .secondary-navigation:not(.bhfb-navigation).botiga-dropdown .menu > li:hover > ul {
   -webkit-transform: translate3d(0, 15px, 0);
           transform: translate3d(0, 15px, 0);
-}
-
-div.editor-styles-wrapper .botiga-footer-copyright-navigation {
-  display: block;
-}
-
-div.editor-styles-wrapper .botiga-footer-copyright-navigation ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-
-div.editor-styles-wrapper .botiga-footer-copyright-navigation ul li {
-  padding-bottom: 0;
-}
-
-div.editor-styles-wrapper .botiga-footer-copyright-navigation ul li a {
-  padding: 0 10px;
-  text-decoration: none;
 }
 
 div.editor-styles-wrapper .header-elements:nth-child(1) ul li:first-child a,

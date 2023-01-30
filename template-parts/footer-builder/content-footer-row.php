@@ -11,6 +11,11 @@ $row      = $args[ 'row' ];
 $device   = $args[ 'device' ]; 
 $row_data = $args[ 'row_data' ];
 
+$component_args = array(
+    'builder_type' => 'footer',
+    'device'       => $device
+);
+
 if( $row_data === NULL ) {
     return;
 }
@@ -50,12 +55,12 @@ $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$devic
 
                 <?php foreach( $elements as $component_callback ) {
                     if( method_exists( $bhfb, $component_callback  ) ) {
-                        call_user_func( array( $bhfb, $component_callback ), array( 'footer' ) );
+                        call_user_func( array( $bhfb, $component_callback ), $component_args );
                     } else if( class_exists( 'Botiga_Pro_HF_Builder_Components' ) ) {
                         $bp_bphfbc = Botiga_Pro_HF_Builder_Components::get_instance();
 
                         if( method_exists( $bp_bphfbc, $component_callback  ) ) {
-                            call_user_func( array( $bp_bphfbc, $component_callback ), array( 'footer' ) );
+                            call_user_func( array( $bp_bphfbc, $component_callback ), $component_args );
                         }
                     }
                 } ?>

@@ -1524,7 +1524,7 @@
       selector += '.botiga-variations-wrapper .botiga-variation-type-image > a:not(.disabled):before';
       $('head').append('<style id="botiga-customizer-styles-product_swatch_image_border_radius">' + selector + '{ border-radius:' + to + 'px !important; }</style>');
     });
-  }); // Color options
+  }); // Theme options
 
   var $theme_options = botiga_theme_options;
   $.each($theme_options, function (key, css) {

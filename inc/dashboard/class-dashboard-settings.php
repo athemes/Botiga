@@ -384,7 +384,7 @@ function botiga_dashboard_settings()
 		'module'     => 'quantity-step-control',
 		'type'       => 'pro',
 		'title'      => esc_html__('Quantity Step Control', 'botiga'),
-		'desc'       => esc_html__('Set the Min, Max, Step and Default preset Quantity.', 'botiga'),
+		'desc'       => esc_html__('Set the min, max, step and default preset quantity.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_catalog_general', admin_url('customize.php')),
 	);

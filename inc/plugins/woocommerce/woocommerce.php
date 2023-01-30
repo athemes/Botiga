@@ -589,6 +589,12 @@ add_action( 'woocommerce_account_content', 'botiga_myaccount_html_insert', 0 );
  */
 function botiga_store_notice_add_shortcode_support( $notice ) {
 	if ( strpos( $notice, '[' ) !== false ) {
+		$notice = str_replace(
+			array( '<p class="woocommerce-store-notice demo_store"', '</p>' ),
+			array( '<div class="woocommerce-store-notice demo_store"', '</div>' ),
+			$notice
+		);
+		
 		return do_shortcode( $notice );
 	}
 	return $notice;

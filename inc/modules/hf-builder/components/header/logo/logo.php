@@ -4,14 +4,17 @@
  * Logo Component
  * 
  * @package Botiga_Pro
- */ ?>
+ * @var array $params Contains component data
+ */ 
+
+?>
 
 <div class="bhfb-builder-item bhfb-component-logo" data-component-id="logo">
     <?php $this->customizer_edit_button(); ?>
     <div class="site-branding">
         <?php
         the_custom_logo();
-        if ( is_front_page() || is_home() ) :
+        if ( ( is_front_page() || is_home() ) && $params[ 'device' ] !== 'mobile' ) :
             ?>
             <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
             <?php

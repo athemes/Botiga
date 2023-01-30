@@ -27,11 +27,12 @@ function botiga_woocommerce_no_products_found_popular_products() {
 				echo sprintf( '<%1$s>%2$s</%1$s>', tag_escape( $heading_tag ), esc_html( $heading_text ) );
 			}
 
-			$columns = get_theme_mod( 'shop_woocommerce_catalog_columns_desktop', 4 );
-			$rows    = get_theme_mod( 'shop_woocommerce_catalog_rows', 4 );
+			$columns = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_grid_columns', 5 );
+			$rows    = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_grid_rows', 1 );
+			$orderby = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_grid_orderby', 'popularity' );
 			$limit   = $columns * $rows;
 
-			echo do_shortcode( '[products limit="'. $limit .'" columns="'. $columns .'" orderby="popularity"]' );
+			echo do_shortcode( '[products limit="'. $limit .'" columns="'. $columns .'" orderby="'. $orderby .'"]' );
 
 		?>
 	</section>
