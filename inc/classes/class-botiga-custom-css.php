@@ -2020,7 +2020,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css = '';
 
 			foreach ( $devices as $device => $media ) {
-				$mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
+
+				$default = ( isset( $defaults[ $device ] ) ) ? $defaults[ $device ] : $defaults;
+
+				$mod = get_theme_mod( $setting . '_' . $device, $default );
 
 				// Some properties need to be converted to be compatible with the respective css property
 				$type = '';
