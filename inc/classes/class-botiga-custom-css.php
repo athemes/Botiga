@@ -1460,9 +1460,9 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'product-swatches' ) ) {
 
 				// Select
-				$css .= $this->get_left_right_padding_css( 'product_swatch_select_left_right_padding', array( 'desktop' => 5, 'tablet' => 5, 'mobile' => 5 ), '.variations select', true );
-				$css .= $this->get_top_bottom_padding_css( 'product_swatch_select_top_bottom_padding', array( 'desktop' => 5, 'tablet' => 5, 'mobile' => 5 ), '.variations select', true );
-				$css .= $this->get_css( 'product_swatch_select_border_radius', 0, '.variations select', 'border-radius' );
+				// $css .= $this->get_left_right_padding_css( 'product_swatch_select_left_right_padding', array( 'desktop' => 5, 'tablet' => 5, 'mobile' => 5 ), '.variations select', true );
+				// $css .= $this->get_top_bottom_padding_css( 'product_swatch_select_top_bottom_padding', array( 'desktop' => 5, 'tablet' => 5, 'mobile' => 5 ), '.variations select', true );
+				// $css .= $this->get_css( 'product_swatch_select_border_radius', 0, '.variations select', 'border-radius' );
 				$css .= $this->get_color_css( 'product_swatch_select_text_color', '', '.variations select' );
 				$css .= $this->get_border_color_css( 'product_swatch_select_border_color', '', '.variations select' );
 				$css .= $this->get_background_color_css( 'product_swatch_select_background_color', '', '.variations select' );

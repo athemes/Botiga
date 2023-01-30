@@ -1375,31 +1375,7 @@
       $('head').append('<style id="botiga-customizer-styles-bhfb_search_form_product_cat_dropdown_margin_right">' + output + '</style>');
     });
   }); // Product Swatches
-  // Swatch select
-
-  $.each($devices, function (device, mediaSize) {
-    wp.customize('product_swatch_select_left_right_padding_' + device, function (value) {
-      value.bind(function (to) {
-        $('head').find('#botiga-customizer-styles-' + 'product_swatch_select_left_right_padding_' + device).remove();
-        var output = '@media ' + mediaSize + ' { .variations select { padding-left:' + to + 'px !important; padding-right:' + to + 'px !important; } }';
-        $('head').append('<style id="botiga-customizer-styles-' + 'product_swatch_select_left_right_padding_' + device + '">' + output + '</style>');
-      });
-    });
-  });
-  $.each($devices, function (device, mediaSize) {
-    wp.customize('product_swatch_select_top_bottom_padding_' + device, function (value) {
-      value.bind(function (to) {
-        $('head').find('#botiga-customizer-styles-' + 'product_swatch_select_top_bottom_padding_' + device).remove();
-        var output = '@media ' + mediaSize + ' { .variations select { padding-top:' + to + 'px !important; padding-bottom:' + to + 'px !important; } }';
-        $('head').append('<style id="botiga-customizer-styles-' + 'product_swatch_select_top_bottom_padding_' + device + '">' + output + '</style>');
-      });
-    });
-  });
-  wp.customize('product_swatch_select_border_radius', function (value) {
-    value.bind(function (to) {
-      $('.variations select').css('border-radius', to + 'px');
-    });
-  }); // Swatch color
+  // Swatch color
 
   $.each($devices, function (device, mediaSize) {
     wp.customize('product_swatch_color_width_' + device, function (value) {
