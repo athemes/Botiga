@@ -343,6 +343,10 @@ class Botiga_Dashboard {
                 require get_template_directory() . '/inc/dashboard/html-theme-features.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
               break;
 
+              case 'settings':
+                require get_template_directory() . '/inc/dashboard/html-settings.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+              break;
+
               case 'useful-plugins':
                 require get_template_directory() . '/inc/dashboard/html-useful-plugins.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
               break;

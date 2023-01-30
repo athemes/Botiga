@@ -92,8 +92,17 @@ function botiga_dashboard_settings()
 		'home'           => esc_html__('Home', 'botiga'),
 		'starter-sites'  => esc_html__('Starter Sites', 'botiga'),
 		'theme-features' => esc_html__('Theme Features', 'botiga'),
+		'settings'       => esc_html__('Settings', 'botiga'),
 		'useful-plugins' => esc_html__('Useful Plugins', 'botiga'),
 		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga'),
+	);
+
+	//
+	// Settings.
+	//
+	$settings['settings']  = array(
+		'general'     => esc_html__('General', 'botiga'),
+		'performance' => esc_html__('Performance', 'botiga'),
 	);
 
 	//
@@ -291,13 +300,6 @@ function botiga_dashboard_settings()
 		'desc'       => esc_html__('Set the scroll to top type, icon, position and styles.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_scrolltotop', admin_url('customize.php')),
-	);
-
-	$settings['features'][] = array(
-		'module' => 'local-google-fonts',
-		'type'   => 'free',
-		'title'  => esc_html__('Local Google Fonts', 'botiga'),
-		'desc'   => esc_html__('Load the Google fonts locally.', 'botiga'),
 	);
 
 	$settings['features'][] = array(
