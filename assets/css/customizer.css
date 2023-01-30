@@ -3024,3 +3024,7 @@ a:focus,
   font-size: 0.7em;
   color: #777;
 }
+
+#customize-theme-controls .customize-pane-parent > #accordion-section-botiga_google_autocomplete_section {
+  display: none !important;
+}

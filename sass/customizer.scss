@@ -2639,3 +2639,11 @@ a,
 
 	}
 }
+
+#customize-theme-controls {
+	.customize-pane-parent {
+		> #accordion-section-botiga_google_autocomplete_section {
+			display: none !important;
+		}
+	}
+}

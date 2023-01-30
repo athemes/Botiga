@@ -364,14 +364,16 @@ function botiga_dashboard_settings()
 	);
 
 	$settings['features'][] = array(
+		'module'     => 'google-autocomplete',
 		'type'       => 'pro',
 		'title'      => esc_html__('Google Autocomplete', 'botiga'),
-		'desc'       => esc_html__('Help customers autocomplete their addresses on checkout with Google API.', 'botiga'),
+		'desc'       => esc_html__('Help customers autocomplete their addresses on checkout with Google Maps API.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg('autofocus[section]', 'woocommerce_checkout', admin_url('customize.php')),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_google_autocomplete_section', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-how-to-enable-google-autocomplete-on-checkout-address-fields/'
 	);
 
-	if (!Botiga_Modules::is_module_active('hf-builder')) {
+	if ( !Botiga_Modules::is_module_active('hf-builder') ) {
 
 		$settings['features'][] = array(
 			'type'       => 'pro',
@@ -386,9 +388,10 @@ function botiga_dashboard_settings()
 		'module'     => 'quantity-step-control',
 		'type'       => 'pro',
 		'title'      => esc_html__('Quantity Step Control', 'botiga'),
-		'desc'       => esc_html__('Set the min, max, step and default preset quantity.', 'botiga'),
+		'desc'       => esc_html__('Set the min, max, step and default preset from all quantity inputs.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_catalog_general', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-quantity-step-control/'
 	);
 
 	$settings['features'][] = array(
