@@ -1561,54 +1561,6 @@
 
 	// Product Swatches
 
-	// Swatch color
-	$.each( $devices, function( device, mediaSize ) {
-		wp.customize( 'product_swatch_color_width_' + device, function( value ) {
-			value.bind( function( to ) {
-				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_color_width_' + device ).remove();
-				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-color > a { width:' + to + 'px !important; } }';
-				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_color_width_' + device + '">' + output + '</style>' );
-			} );
-		} );
-	});
-
-	$.each( $devices, function( device, mediaSize ) {
-		wp.customize( 'product_swatch_color_height_' + device, function( value ) {
-			value.bind( function( to ) {
-				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_color_height_' + device ).remove();
-				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-color > a { height:' + to + 'px !important; } }';
-				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_color_height_' + device + '">' + output + '</style>' );
-			} );
-		} );
-	});
-
-	$.each( $devices, function( device, mediaSize ) {
-		wp.customize( 'product_swatch_color_spacing_' + device, function( value ) {
-			value.bind( function( to ) {
-				$( 'head' ).find( '#botiga-customizer-styles-' + 'product_swatch_color_spacing_' + device ).remove();
-				var output = '@media ' + mediaSize + ' { .botiga-variations-wrapper .botiga-variation-type-color { grid-gap:' + to + 'px !important; } }';
-				$( 'head' ).append( '<style id="botiga-customizer-styles-' + 'product_swatch_color_spacing_' + device + '">' + output + '</style>' );
-			} );
-		} );
-	});
-
-	wp.customize( 'product_swatch_color_border_width', function( value ) {
-		value.bind( function( to ) {
-			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_color_border_width' ).remove();
-			var output = '.botiga-variations-wrapper .botiga-variation-type-color > a { border-width:' + to + 'px !important; }';
-			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_color_border_width">' + output + '</style>' );
-		} );
-	} );
-
-	wp.customize( 'product_swatch_color_border_radius', function( value ) {
-		value.bind( function( to ) {
-			$( '.botiga-variations-wrapper .botiga-variation-type-color > a' ).css( 'border-radius', to + 'px' );
-			$( 'head' ).find( '#botiga-customizer-styles-product_swatch_color_border_radius' ).remove();
-			var output = '.botiga-variations-wrapper .botiga-variation-type-color > a:not(.disabled):before { border-radius:' + to + 'px !important; }';
-			$( 'head' ).append( '<style id="botiga-customizer-styles-product_swatch_color_border_radius">' + output + '</style>' );
-		} );
-	} );
-
 	// Swatch button
 	$.each( $devices, function( device, mediaSize ) {
 		wp.customize( 'product_swatch_button_left_right_padding_' + device, function( value ) {
@@ -1771,18 +1723,18 @@
 
 							if( css2.is_responsive ) {
 								if( typeof css2.prop === 'string' ) {
-									output += '@media ' + $devices[ css2.device ] + ' { ' + css2.selector + ' { '+ css2.prop +': '+ to +' '+ ( css2.important ? '!important' : '' ) +'; } }';
+									output += '@media ' + $devices[ css2.device ] + ' { ' + css2.selector + ' { '+ css2.prop +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; } }';
 								} else {
 									$.each( css2.prop, function( propkey, propvalue ) {
-										output += '@media ' + $devices[ css2.device ] + ' { ' + css2.selector + ' { '+ propvalue +': '+ to +' '+ ( css2.important ? '!important' : '' ) +'; } }';
+										output += '@media ' + $devices[ css2.device ] + ' { ' + css2.selector + ' { '+ propvalue +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; } }';
 									} );
 								}
 							} else {
 								if( typeof css2.prop === 'string' ) {
-									output += css2.selector + '{ '+ css2.prop +': '+ to +' '+ ( css2.important ? '!important' : '' ) +'; }'; 
+									output += css2.selector + '{ '+ css2.prop +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; }'; 
 								} else {
 									$.each( css2.prop, function( propkey, propvalue ) {
-										output += css2.selector + '{ '+ propvalue +': '+ to +' '+ ( css2.important ? '!important' : '' ) +'; }';
+										output += css2.selector + '{ '+ propvalue +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; }';
 									} );
 								}
 							}

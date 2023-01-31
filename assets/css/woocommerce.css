@@ -6646,7 +6646,14 @@ dl.variation p {
   text-indent: 0;
 }
 
+.botiga-variations-wrapper .botiga-variation-type-image > a > span {
+  position: relative;
+}
+
 .botiga-variations-wrapper .botiga-variation-type-image > a img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
