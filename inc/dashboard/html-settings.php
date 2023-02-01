@@ -31,10 +31,10 @@ if  ( empty( $this->settings['settings'] ) ) {
 						unset($this->settings['settings']['general']);
 					}
 
-					$num = 0;
-					$tab = (isset($_GET['tab'])) ? sanitize_text_field(wp_unslash($_GET['tab'])) : key(array_slice($this->settings['settings'], 0, 1)); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+					$num = 0; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+					$tab = (isset($_GET['tab'])) ? sanitize_text_field(wp_unslash($_GET['tab'])) : key(array_slice($this->settings['settings'], 0, 1)); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
-					foreach ( $this->settings['settings'] as $tab_key => $tab_title ) {
+					foreach ( $this->settings['settings'] as $tab_key => $tab_title ) { // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
 						$tab_link   = add_query_arg(array('tab' => $tab_key)); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 						$tab_active = (($tab && $tab === $tab_key) || (!$tab && $num === 0)) ? 'active' : ''; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

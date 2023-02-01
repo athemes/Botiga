@@ -1239,7 +1239,7 @@ class Botiga_Header_Footer_Builder {
      */
     public function require_wrapper( $file_path, $params ) {
         extract( $params );
-        require $file_path;
+        require $file_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
