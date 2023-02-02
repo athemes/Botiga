@@ -2272,10 +2272,14 @@ html {
   float: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+  height: auto;
+  overflow: visible;
 }
 
 .botiga-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
   display: block;
+  height: auto;
+  visibility: visible;
 }
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown ul ul {

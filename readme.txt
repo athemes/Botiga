@@ -30,6 +30,9 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.0.2 =
+Fixed - PHP error when header builder mobile offcanvas contains some specific components.
+
 = 2.0.1 =
 Added - New theme dashboard 'Settings' page. 
 Added - Header and Footer Builder: New option for add image background to the builder wrapper and rows.

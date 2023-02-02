@@ -4874,10 +4874,14 @@ div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .sub-menu {
   float: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+  height: auto;
+  overflow: visible;
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
   display: block;
+  height: auto;
+  visibility: visible;
 }
 
 div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown ul ul {

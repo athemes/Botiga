@@ -448,9 +448,13 @@
 			position: static;
 			float: none;
 			box-shadow: none;
+			height: auto;
+			overflow: visible;
 	
 			&.toggled {
 				display: block;
+				height: auto;
+				visibility: visible;
 			}
 		}
 	}
