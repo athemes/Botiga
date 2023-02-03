@@ -96,7 +96,7 @@ class Botiga_Metabox {
 		// Begin: General Options
 		$this->add_section( 'general', array(
 			'title'   => esc_html__( 'General', 'botiga' ),
-			'exclude' => array( 'size_chart', 'linked_variation' ),
+			'exclude' => apply_filters( 'botiga_metabox_exclude_post_types_from_general_section', array() ),
 		) );
 
 		$this->add_field( '_botiga_hide_page_title', array(
@@ -125,8 +125,8 @@ class Botiga_Metabox {
 		//
 		// Begin: Sidebar Options
 		$this->add_section( 'sidebar', array(
-			'post_type' => array( 'post', 'page', 'product' ),
-			'title'     => esc_html__( 'Sidebar', 'botiga' ),
+			'exclude' => apply_filters( 'botiga_metabox_exclude_post_types_from_sidebar_section', array() ),
+			'title'   => esc_html__( 'Sidebar', 'botiga' ),
 		) );
 
 		$this->add_field( '_botiga_sidebar_layout', array(
@@ -850,16 +850,16 @@ class Botiga_Metabox {
 
 				$options = array();
 				
-			  $posts = get_posts( array(
+				$posts = get_posts( array(
 					'post_type'   => 'size_chart',
-			    'post_status' => 'publish',
-			  ) );
-
-			  if ( ! is_wp_error( $posts ) && ! empty( $posts ) ) {
-			    foreach ( $posts as $_post ) {
-			      $options[ $_post->ID ] = $_post->post_title;
-			    }
-			  }
+					'post_status' => 'publish',
+				) );
+					
+				if ( ! is_wp_error( $posts ) && ! empty( $posts ) ) {
+					foreach ( $posts as $_post ) {
+						$options[ $_post->ID ] = $_post->post_title;
+					}
+				}
 
 				echo '<select name="'. esc_attr( $field_id ) .'">';
 					echo '<option value="">'. esc_html__( 'Select a size chart', 'botiga' ) .'</option>';

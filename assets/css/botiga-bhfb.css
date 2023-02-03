@@ -255,6 +255,12 @@
       flex-wrap: wrap;
 }
 
+@media (max-width: 1024px) {
+  .bhfb-footer .bhfb-component-footer_menu {
+    width: 100%;
+  }
+}
+
 .bhfb-column {
   display: -webkit-box;
   display: -ms-flexbox;

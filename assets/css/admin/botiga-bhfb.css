@@ -60,7 +60,9 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 #sub-accordion-section-botiga_section_fb_component__footer_menu #customize-control-footer_navigation_menu_link .footer-widget-area-link {
-  display: block !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 #customize-control-botiga_section_fb_component__html2_title {

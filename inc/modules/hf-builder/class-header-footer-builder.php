@@ -1217,11 +1217,13 @@ class Botiga_Header_Footer_Builder {
      * Core header image
      */
     public function header_image() {
-        $show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
+        if ( ! get_header_image() ) {
+            return;
+        }
 
         // output
         $output = '<div class="header-image">';
-            $output .= get_header_image_tag();
+            $output .= apply_filters( 'botiga_header_image_tag', get_header_image_tag() );
         $output .= '</div>';
 
         if ( ! botiga_get_display_conditions( 'header_image_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {
@@ -1229,6 +1231,15 @@ class Botiga_Header_Footer_Builder {
         }
 
         echo wp_kses_post( $output );
+    }
+
+    /**
+     * Require wrapper
+     * To require files with params
+     */
+    public function require_wrapper( $file_path, $params ) {
+        extract( $params );
+        require $file_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
@@ -1249,7 +1260,7 @@ class Botiga_Header_Footer_Builder {
      * Social
      */
     public function social( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/social/social.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/social/social.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
@@ -1270,7 +1281,10 @@ class Botiga_Header_Footer_Builder {
      * Site branding
      */		
     public function logo( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/logo/logo.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        return $this->require_wrapper(
+            get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/logo/logo.php',
+            $params
+        );
     }
 
     /**
@@ -1284,7 +1298,7 @@ class Botiga_Header_Footer_Builder {
      * Button
      */		
     public function button( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/button/button.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/button/button.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
@@ -1305,7 +1319,7 @@ class Botiga_Header_Footer_Builder {
      * HTML
      */		
     public function html( $params ) {
-        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[0] .'/html/html.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+        require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/html/html.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
@@ -1372,6 +1386,7 @@ class Botiga_Header_Footer_Builder {
 
         // Footer.
         // Structure Components.
+        require get_template_directory() . '/inc/modules/hf-builder/components/footer/footer-builder/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/row/css.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/columns/css.php';
 

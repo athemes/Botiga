@@ -57,8 +57,7 @@ $theme = wp_get_theme(); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixA
 
 		<div class="botiga-dashboard-row">
 			<?php
-			$plugin_data = $this->get_plugin_data($this->settings['starter_plugin_path']); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
-			if (!empty($plugin_data['Version']) && version_compare($plugin_data['Version'], '1.0.29', '>=')) {
+			if (has_action('atss_starter_sites')) {
 				do_action('atss_starter_sites'); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 			} else {
 				wp_redirect(add_query_arg(array('page' => 'starter-sites'), admin_url('themes.php')));

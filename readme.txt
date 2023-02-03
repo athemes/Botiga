@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.0.0
+Version: 2.0.1
 Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: 1.0.0
@@ -30,6 +30,23 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.0.3 =
+Fixed - Mobile menu dropdowns not expanding.
+
+= 2.0.2 =
+Fixed - PHP error when header builder mobile offcanvas contains some specific components.
+
+= 2.0.1 =
+Added - New theme dashboard 'Settings' page. 
+Added - Header and Footer Builder: New option for add image background to the builder wrapper and rows.
+Added - Allow Shortcodes in the default woocommerce store notice.
+Added - Search Page: New option to display a grid of popular products when there's no search results.
+Added - New theme hook to allow change product loops title (botiga_shop_loop_product_title).
+Added - Header/Footer Builder: More customization options to builrder wrapper, rows, columns and free components (responsive padding/margin and visibility).
+Changed - Moved 'Load Google Fonts Locally' module from Theme Dashboard > Theme Features to Theme Dashboard > Settings > Performance.
+Fixed - CSS class added to article breaking Events Calendar layout (when list view mode is active).
+Fixed - Shopping cart widget doesn’t show up in sidebar area.
+
 = 2.0.0 =
 Added - Elementor version from free demo/starter.
 Added - Single product ajax add to cart functionality to single product pages.

@@ -4,7 +4,14 @@
  * Secondary Menu Component
  * 
  * @package Botiga_Pro
- */ ?>
+ */
+
+// Check display conditions.
+if ( ! botiga_get_display_conditions( 'secondary_menu_display_conditions', false, '[{"type":"include","condition":"all","id":null}]' ) ) {
+    return;
+}
+
+?>
 
 <div class="bhfb-builder-item bhfb-component-secondary_menu" data-component-id="secondary_menu">
     <?php $this->customizer_edit_button();

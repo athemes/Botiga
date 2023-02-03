@@ -227,9 +227,13 @@ ul.products {
 	}
 	
 	.button-layout4 {
+		position: absolute;
 		width: 100%;
 		bottom: 10px;
 		left: 10px;
+		opacity: 0;
+		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		z-index: 3;
 	}
 }
 
@@ -550,13 +554,15 @@ ul.products {
 /**
  * Quantity in Loop
  */
- ul.products {
-	
-	li.product {
+ul.products,
+ul.wc-block-grid__products {
+
+	li.product,
+	li.wc-block-grid__product {
 		
 		.quantity {
 			margin: 0;
-			max-width: 100px;
+			width: 90px;
 			height: auto;
 			
 			.botiga-quantity-plus,
@@ -573,7 +579,6 @@ ul.products {
 			grid-gap: 10px;
 			
 			.quantity {
-				width: 100%;
 				
 				.botiga-quantity-plus,
 				.botiga-quantity-minus {

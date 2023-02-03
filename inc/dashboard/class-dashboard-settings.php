@@ -92,8 +92,17 @@ function botiga_dashboard_settings()
 		'home'           => esc_html__('Home', 'botiga'),
 		'starter-sites'  => esc_html__('Starter Sites', 'botiga'),
 		'theme-features' => esc_html__('Theme Features', 'botiga'),
+		'settings'       => esc_html__('Settings', 'botiga'),
 		'useful-plugins' => esc_html__('Useful Plugins', 'botiga'),
 		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga'),
+	);
+
+	//
+	// Settings.
+	//
+	$settings['settings']  = array(
+		'general'     => esc_html__('General', 'botiga'),
+		'performance' => esc_html__('Performance', 'botiga'),
 	);
 
 	//
@@ -294,13 +303,6 @@ function botiga_dashboard_settings()
 	);
 
 	$settings['features'][] = array(
-		'module' => 'local-google-fonts',
-		'type'   => 'free',
-		'title'  => esc_html__('Local Google Fonts', 'botiga'),
-		'desc'   => esc_html__('Load the Google fonts locally.', 'botiga'),
-	);
-
-	$settings['features'][] = array(
 		'module'     => 'adobe-typekit',
 		'type'       => 'free',
 		'title'      => esc_html__('Adobe Fonts', 'botiga'),
@@ -361,7 +363,17 @@ function botiga_dashboard_settings()
 		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
 	);
 
-	if (!Botiga_Modules::is_module_active('hf-builder')) {
+	$settings['features'][] = array(
+		'module'     => 'google-autocomplete',
+		'type'       => 'pro',
+		'title'      => esc_html__('Google Autocomplete', 'botiga'),
+		'desc'       => esc_html__('Help customers autocomplete their addresses on checkout with Google Maps API.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_google_autocomplete_section', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-how-to-enable-google-autocomplete-on-checkout-address-fields/'
+	);
+
+	if ( !Botiga_Modules::is_module_active('hf-builder') ) {
 
 		$settings['features'][] = array(
 			'type'       => 'pro',
@@ -371,6 +383,16 @@ function botiga_dashboard_settings()
 			'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_footer_credits', admin_url('customize.php')),
 		);
 	}
+
+	$settings['features'][] = array(
+		'module'     => 'quantity-step-control',
+		'type'       => 'pro',
+		'title'      => esc_html__('Quantity Step Control', 'botiga'),
+		'desc'       => esc_html__('Set the min, max, step and default preset from all quantity inputs.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_catalog_general', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-quantity-step-control/'
+	);
 
 	$settings['features'][] = array(
 		'module'     => 'mega-menu',

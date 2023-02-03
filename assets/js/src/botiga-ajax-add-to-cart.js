@@ -50,7 +50,7 @@ botiga.single_ajax_add_to_cart = {
 						return;
 					}
 
-					jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, null]);
+					jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
 					jQuery('.woocommerce-error, .woocommerce-message, .woocommerce-info').remove();
 					jQuery('.woocommerce-notices-wrapper').append(response.fragments.notices);
 

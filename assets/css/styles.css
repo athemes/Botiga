@@ -1796,6 +1796,7 @@ html {
 /* Navigation
 --------------------------------------------- */
 .botiga-dropdown {
+  --dropdown--symbol--size: 0.8em;
   display: block;
   width: 100%;
 }
@@ -1820,6 +1821,8 @@ html {
   -webkit-transform: translate3d(0, 15px, 0);
           transform: translate3d(0, 15px, 0);
   opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .botiga-dropdown ul ul ul {
@@ -1870,12 +1873,20 @@ html {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+  height: auto;
+  overflow: visible;
 }
 
 .botiga-dropdown ul li:hover > ul.sub-menu-reverse,
 .botiga-dropdown ul li.focus > ul.sub-menu-reverse {
   left: auto;
   right: 0;
+}
+
+.botiga-dropdown ul li:hover > ul.sub-menu-reverse-vertically,
+.botiga-dropdown ul li.focus > ul.sub-menu-reverse-vertically {
+  top: auto;
+  bottom: 100%;
 }
 
 .botiga-dropdown ul li:hover > ul ul,
@@ -1887,6 +1898,12 @@ html {
 .botiga-dropdown ul li.focus > ul ul.sub-menu-reverse {
   left: auto;
   right: 100%;
+}
+
+.botiga-dropdown ul li:hover > ul ul.sub-menu-reverse-vertically,
+.botiga-dropdown ul li.focus > ul ul.sub-menu-reverse-vertically {
+  top: auto;
+  bottom: 0;
 }
 
 .botiga-dropdown li {
@@ -1906,13 +1923,62 @@ html {
 }
 
 .botiga-dropdown .ws-svg-icon {
-  width: 0.8em;
-  height: 0.8em;
+  width: var(--dropdown--symbol--size);
+  height: var(--dropdown--symbol--size);
   margin-top: -2px;
 }
 
 .botiga-dropdown .dropdown-symbol {
   margin-left: 8px;
+}
+
+@media (max-width: 1024px) {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li {
+    margin-right: 0;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > a {
+    width: calc( 100% - ( var(--dropdown--symbol--size) + 0.5em ));
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    -webkit-transform: none;
+            transform: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu > li {
+    background-color: transparent;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children > .sub-menu .sub-menu {
+    padding-left: 20px;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children.expand > .sub-menu {
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li.menu-item-has-children:not(.expand) > .sub-menu {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li .dropdown-symbol {
+    margin: 0;
+  }
+  .botiga-dropdown.botiga-dropdown-mobile-accordion li .dropdown-symbol svg {
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 
 .bottom-header-row .dropdown-symbol,
@@ -2206,10 +2272,14 @@ html {
   float: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+  height: auto;
+  overflow: visible;
 }
 
 .botiga-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
   display: block;
+  height: auto;
+  visibility: visible;
 }
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown ul ul {
@@ -2285,6 +2355,8 @@ html {
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
   display: block;
+  height: auto;
+  overflow: visible;
 }
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled li {
@@ -2368,28 +2440,6 @@ body.mobile-menu-visible {
 .secondary-navigation:not(.bhfb-navigation).botiga-dropdown .menu > li:hover > ul {
   -webkit-transform: translate3d(0, 15px, 0);
           transform: translate3d(0, 15px, 0);
-}
-
-.botiga-footer-copyright-navigation {
-  display: block;
-}
-
-.botiga-footer-copyright-navigation ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-
-.botiga-footer-copyright-navigation ul li {
-  padding-bottom: 0;
-}
-
-.botiga-footer-copyright-navigation ul li a {
-  padding: 0 10px;
-  text-decoration: none;
 }
 
 .header-elements:nth-child(1) ul li:first-child a,
@@ -6074,6 +6124,7 @@ body {
   .widget-area {
     padding-left: 15px;
     padding-right: 15px;
+    width: 100%;
     max-width: 100%;
     margin-top: 60px;
   }

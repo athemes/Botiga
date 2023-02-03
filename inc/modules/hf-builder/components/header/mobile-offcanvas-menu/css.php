@@ -8,6 +8,15 @@
 
 // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
+// Visibility
+$css .= Botiga_Custom_CSS::get_responsive_css( 
+    'mobile_offcanvas_menu_visibility', 
+    'visible', 
+    '.bhfb.bhfb-header .bhfb-builder-item.bhfb-component-mobile_offcanvas_menu, .bhfb-mobile_offcanvas .bhfb-builder-item.bhfb-component-mobile_offcanvas_menu', 
+    'display',
+    ''
+);
+
 // Link Separator Color and Size.
 $mobile_menu_link_separator 	= get_theme_mod( 'mobile_menu_link_separator', 0 );
 if ( $mobile_menu_link_separator ) {
@@ -32,5 +41,30 @@ $css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color', 
 // Submenu Text Color Hover
 $css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a:hover' );
 $css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a:hover + .dropdown-symbol svg' );
+
+// Padding
+$css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+    'mobile_offcanvas_menu_padding',
+    array(
+        'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+    ), 
+    '.bhfb-component-mobile_offcanvas_menu', 
+    'padding'
+);
+
+// Margin
+$css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
+    'mobile_offcanvas_menu_margin',
+    array(
+        'desktop' => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'tablet'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'mobile'  => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+    ), 
+    '.bhfb-component-mobile_offcanvas_menu', 
+    'margin',
+    true
+);
 
 // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

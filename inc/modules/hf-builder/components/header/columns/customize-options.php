@@ -28,6 +28,48 @@ foreach( $this->header_rows as $row ) {
             )
         );
 
+        /**
+         * Tabs (Layout / Design)
+         * 
+         */
+        $wp_customize->add_setting(
+            $section_id . '_tabs',
+            array(
+                'default'           => '',
+                'sanitize_callback' => 'esc_attr'
+            )
+        );
+        $wp_customize->add_control(
+            new Botiga_Tab_Control (
+                $wp_customize,
+                $section_id . '_tabs',
+                array(
+                    'label' 				=> '',
+                    'section'       		=> $section_id,
+                    'controls_general'		=> json_encode(
+                        array(
+                            "#customize-control-{$section_id}_vertical_alignment",
+                            "#customize-control-{$section_id}_inner_layout",
+                            "#customize-control-{$section_id}_horizontal_alignment",
+                            "#customize-control-{$section_id}_elements_spacing",
+                        ),
+                    ),
+                    'controls_design'		=> json_encode(
+                        array(
+                            "#customize-control-{$section_id}_padding",
+                            "#customize-control-{$section_id}_margin",
+                        )
+                    ),
+                    'priority' 				=> 10
+                )
+            )
+        );
+
+        /**
+         * Layout (Tab Content)
+         * 
+         */
+
         // Vertical Alignment.
         $default = Botiga_Header_Footer_Builder::get_row_column_default_customizer_value( $row[ 'id' ], $i, 'vertical_alignment' );
 
@@ -224,6 +266,113 @@ foreach( $this->header_rows as $row ) {
                     'priority'     => 30
                 )
             ) 
+        );
+
+        /**
+         * Design (Tab Content)
+         * 
+         */
+
+        // Padding
+        $wp_customize->add_setting( 
+            $section_id . '_padding_desktop',
+            array(
+                'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_padding_tablet',
+            array(
+                'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_padding_mobile',
+            array(
+                'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            ) 
+        );
+        $wp_customize->add_control( 
+            new Botiga_Dimensions_Control( 
+                $wp_customize, 
+                $section_id . '_padding',
+                array(
+                    'label'           	=> __( 'Padding', 'botiga' ),
+                    'section'         	=> $section_id,
+                    'sides'             => array(
+                        'top'    => true,
+                        'right'  => true,
+                        'bottom' => true,
+                        'left'   => true
+                    ),
+                    'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+                    'link_values_toggle' => true,
+                    'is_responsive'   	 => true,
+                    'settings'        	 => array(
+                        'desktop' => $section_id . '_padding_desktop',
+                        'tablet'  => $section_id . '_padding_tablet',
+                        'mobile'  => $section_id . '_padding_mobile'
+                    ),
+                    'priority'	      	 => 32
+                )
+            )
+        );
+
+        // Margin
+        $wp_customize->add_setting( 
+            $section_id . '_margin_desktop',
+            array(
+                'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_margin_tablet',
+            array(
+                'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            ) 
+        );
+        $wp_customize->add_setting( 
+            $section_id . '_margin_mobile',
+            array(
+                'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+                'sanitize_callback' => 'botiga_sanitize_text',
+                'transport'         => 'postMessage'
+            ) 
+        );
+        $wp_customize->add_control( 
+            new Botiga_Dimensions_Control( 
+                $wp_customize, 
+                $section_id . '_margin',
+                array(
+                    'label'           	=> __( 'Margin', 'botiga' ),
+                    'section'         	=> $section_id,
+                    'sides'             => array(
+                        'top'    => true,
+                        'right'  => true,
+                        'bottom' => true,
+                        'left'   => true
+                    ),
+                    'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+                    'link_values_toggle' => true,
+                    'is_responsive'   	 => true,
+                    'settings'        	 => array(
+                        'desktop' => $section_id . '_margin_desktop',
+                        'tablet'  => $section_id . '_margin_tablet',
+                        'mobile'  => $section_id . '_margin_mobile'
+                    ),
+                    'priority'	      	 => 32
+                )
+            )
         );
 
     }

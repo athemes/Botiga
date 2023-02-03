@@ -42,7 +42,12 @@ $wp_customize->add_control(
             'label' 				=> '',
             'section'       		=> 'botiga_section_hb_component__button',
             'controls_general'		=> json_encode(
-                array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                array_merge(
+                    array(
+                        '#customize-control-bhfb_button_visibility'
+                    ),  
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                )
             ),
             'controls_design'		=> json_encode(
                 array_merge(
@@ -57,6 +62,8 @@ $wp_customize->add_control(
                         '#customize-control-bhfb_button_sticky_background',
                         '#customize-control-bhfb_button_sticky',
                         '#customize-control-bhfb_button_sticky_border',
+                        '#customize-control-bhfb_button_padding',
+                        '#customize-control-bhfb_button_margin'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
@@ -64,6 +71,58 @@ $wp_customize->add_control(
             'priority' 				=> 10
         )
     )
+);
+
+/**
+ * Layout (Tab Content)
+ * 
+ */
+
+// Visibility
+$wp_customize->add_setting( 
+    'bhfb_button_visibility_desktop',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'bhfb_button_visibility_tablet',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_setting( 
+    'bhfb_button_visibility_mobile',
+    array(
+        'default' 			=> 'visible',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( 
+    new Botiga_Radio_Buttons( 
+        $wp_customize, 
+        'bhfb_button_visibility',
+        array(
+            'label'         => esc_html__( 'Visibility', 'botiga' ),
+            'section'       => 'botiga_section_hb_component__button',
+            'is_responsive' => true,
+            'settings' => array(
+                'desktop' 		=> 'bhfb_button_visibility_desktop',
+                'tablet' 		=> 'bhfb_button_visibility_tablet',
+                'mobile' 		=> 'bhfb_button_visibility_mobile'
+            ),
+            'choices'       => array(
+                'visible' => esc_html__( 'Visible', 'botiga' ),
+                'hidden'  => esc_html__( 'Hidden', 'botiga' )
+            ),
+            'priority'      => 30
+        )
+    ) 
 );
 
 // Move existing options.
@@ -82,6 +141,11 @@ foreach( $opts_to_move as $control_tabs ) {
         $priority++;
     }
 }
+
+/**
+ * Design (Tab Content)
+ * 
+ */
 
 // Default State Title.
 $wp_customize->add_setting( 'bhfb_button_default_state_title',
@@ -321,6 +385,108 @@ $wp_customize->add_control(
             ),
 			'active_callback' => 'botiga_sticky_header_enabled',
             'priority' => 70
+        )
+    )
+);
+
+// Padding
+$wp_customize->add_setting( 
+    'bhfb_button_padding_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_button_padding_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_button_padding_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'bhfb_button_padding',
+        array(
+            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_component__button',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'bhfb_button_padding_desktop',
+                'tablet'  => 'bhfb_button_padding_tablet',
+                'mobile'  => 'bhfb_button_padding_mobile'
+            ),
+            'priority'	      	 => 72
+        )
+    )
+);
+
+// Margin
+$wp_customize->add_setting( 
+    'bhfb_button_margin_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_button_margin_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'bhfb_button_margin_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'bhfb_button_margin',
+        array(
+            'label'           	=> __( 'Wrapper Margin', 'botiga' ),
+            'section'         	=> 'botiga_section_hb_component__button',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'bhfb_button_margin_desktop',
+                'tablet'  => 'bhfb_button_margin_tablet',
+                'mobile'  => 'bhfb_button_margin_mobile'
+            ),
+            'priority'	      	 => 72
         )
     )
 );

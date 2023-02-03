@@ -504,6 +504,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       $(document).on('click', '.botiga-bhfb-element > a', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         var id = $(this).data('bhfb-id'),
             focusSection = $(this).data('bhfb-focus-section');
 

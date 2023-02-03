@@ -239,6 +239,14 @@ if (!defined('ABSPATH')) {
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<strong>Quantity Step Control</strong>
+								<i class="botiga-dashboard-freevspro-table__desc">The quantity step control feature allow you to change the default wocommerce quantity increment behavior.</i>
+							</div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Products Spacing Control</strong></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
@@ -290,6 +298,11 @@ if (!defined('ABSPATH')) {
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>One-Step Checkout (Shopify Style)</strong></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Checkout Address Fields With Google Autocomplete </strong></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
 						</div>
