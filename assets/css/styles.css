@@ -2355,6 +2355,8 @@ html {
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
   display: block;
+  height: auto;
+  overflow: visible;
 }
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled li {

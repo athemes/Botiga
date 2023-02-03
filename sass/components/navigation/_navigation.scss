@@ -532,6 +532,8 @@
 
 			&.toggled {
 				display: block;
+				height: auto;
+				overflow: visible;
 
 				li{
 					background-color: transparent;

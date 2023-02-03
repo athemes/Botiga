@@ -30,6 +30,9 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.0.3 =
+Fixed - Mobile menu dropdowns not expanding.
+
 = 2.0.2 =
 Fixed - PHP error when header builder mobile offcanvas contains some specific components.
 

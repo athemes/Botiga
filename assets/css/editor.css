@@ -4957,6 +4957,8 @@ div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-m
 
 div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
   display: block;
+  height: auto;
+  overflow: visible;
 }
 
 div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled li {
