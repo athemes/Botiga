@@ -335,6 +335,11 @@ botiga.navigation = {
 		}
 
 		// Reverse vertically
+		// Do not reverse vertically if the menu is in the header
+		if( submenu.closest( '.site-header' ) || submenu.closest( '.bottom-header-row' ) || submenu.closest( '.bhfb-header' ) ) {
+			return false;
+		}
+
 		submenu.classList.remove( 'sub-menu-reverse-vertically' );
 		if( botiga.helpers.isInVerticalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
 			submenu.classList.add( 'sub-menu-reverse-vertically' );
@@ -421,7 +426,7 @@ botiga.desktopOffcanvasNav = {
 
 		// Close mega menu when clicking outside
 		document.addEventListener( 'click', function(e){
-			if( e.target.closest( '.botiga-desktop-offcanvas-menu' ) === null ) {
+			if( e.target.closest( '.botiga-desktop-offcanvas-menu' ) === null && offcanvas.querySelector( '.botiga-mega-menu .sub-menu.toggled' ) !== null ) {
 				offcanvas.querySelector( '.botiga-mega-menu .sub-menu.toggled' ).classList.remove( 'toggled' );
 			}
 		} );
