@@ -419,6 +419,13 @@ botiga.desktopOffcanvasNav = {
 			offcanvas.classList.remove( 'botiga-desktop-offcanvas-show' );
 		} );
 
+		// Close mega menu when clicking outside
+		document.addEventListener( 'click', function(e){
+			if( e.target.closest( '.botiga-desktop-offcanvas-menu' ) === null ) {
+				offcanvas.querySelector( '.botiga-mega-menu .sub-menu.toggled' ).classList.remove( 'toggled' );
+			}
+		} );
+
 	}
  }
 

@@ -572,7 +572,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$main_header_bottom_padding = get_theme_mod( 'main_header_bottom_padding', 15 );
 				$css .= ".bottom-header-inner { padding-top:" . esc_attr( $main_header_bottom_padding ) . 'px;padding-bottom:' . esc_attr( $main_header_bottom_padding ) . "px;}" . "\n";
 
-				$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .botiga-dropdown ul ul li, .site-header .header-login-register nav' );
+				$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .botiga-dropdown ul ul li, .site-header .header-login-register nav, .bottom-header-row .botiga-dropdown ul ul li, .botiga-desktop-offcanvas-menu .botiga-dropdown .botiga-mega-menu>.sub-menu>li>.sub-menu .menu-item-has-children:hover>.sub-menu' );
 				$css .= $this->get_color_css( 'main_header_submenu_color', '#212121', '.site-header .botiga-dropdown ul ul a, .site-header .botiga-dropdown ul ul > li:hover > .dropdown-symbol svg, .site-header .header-login-register nav>a, .bottom-header-row .header-login-register nav>a' );
 				$css .= $this->get_color_css( 'main_header_submenu_color_hover', '#757575', '.site-header .botiga-dropdown ul ul li:hover > a, .site-header .header-login-register nav>a:hover, .bottom-header-row .header-login-register nav>a:hover' );
 				$css .= $this->get_fill_css( 'main_header_submenu_color', '#212121', '.site-header .botiga-dropdown ul ul li > .dropdown-symbol svg' );
