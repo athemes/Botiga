@@ -415,7 +415,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_font_sizes_css( 'h6_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'h6' );
 
 			// Body typography
-      $body_font_style      = get_theme_mod( 'body_font_style', 'normal' );
+      		$body_font_style      = get_theme_mod( 'body_font_style', 'normal' );
 			$body_line_height     = get_theme_mod( 'body_line_height', 1.68 );
 			$body_letter_spacing  = get_theme_mod( 'body_letter_spacing', 0 );
 			$body_text_transform  = get_theme_mod( 'body_text_transform', 'none' );
@@ -433,12 +433,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$header_menu_text_decoration = get_theme_mod( 'header_menu_text_decoration', $body_text_decoration );
 
 			if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'hf-builder' ) ) {
-				$css .= ".bhfb-header .main-navigation, .bhfb-header .secondary-navigation { text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
+				$css .= ".bhfb-header .main-navigation, .bhfb-header .secondary-navigation, .bhfb-mobile_offcanvas .main-navigation, .bhfb-mobile_offcanvas .secondary-navigation { text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
 				$css .= $this->get_font_sizes_css( 'header_menu_font_size', $defaults = array( 
 					'desktop' => get_theme_mod( 'body_font_size_desktop', 16 ), 
 					'tablet' => get_theme_mod( 'body_font_size_tablet', 16 ), 
 					'mobile' => get_theme_mod( 'body_font_size_mobile', 16 ) 
-				), '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation' );
+				), '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation, .bhfb-mobile_offcanvas .main-navigation, .bhfb-mobile_offcanvas .secondary-navigation' );
 			} else {
 				$css .= ".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation { text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
 				$css .= $this->get_font_sizes_css( 'header_menu_font_size', $defaults = array( 
