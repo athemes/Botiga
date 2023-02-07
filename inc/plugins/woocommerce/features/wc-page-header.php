@@ -22,7 +22,7 @@ function botiga_woocommerce_page_header() {
 	$shop_breadcrumbs 							   = get_theme_mod( 'shop_breadcrumbs', 1 );
 
 	// Do not show page header if Elementor is active and has a theme builder template assigned to the shop archive location
-	if( Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
+	if( class_exists( 'Botiga_Elementor_Helpers' ) && Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
 		return;
 	}
 
