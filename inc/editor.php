@@ -12,8 +12,13 @@ function botiga_enqueue_gutenberg_assets() {
 
 	wp_enqueue_style( 'botiga-block-editor-styles', get_template_directory_uri() . '/assets/css/editor.min.css', array(), BOTIGA_VERSION );
 
-	wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), BOTIGA_VERSION );
+	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
 
+	if( $fonts_library === 'google' ) {
+		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), BOTIGA_VERSION );
+	} else if ( $fonts_library === 'custom' ) {
+		wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), BOTIGA_VERSION );
+	}
 	
 	/**
 	 * Make Customizer dynamic styles available in the editor

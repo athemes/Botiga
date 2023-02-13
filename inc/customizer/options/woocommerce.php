@@ -1218,9 +1218,20 @@ $wp_customize->add_setting( 'shop_product_title_custom_font',
     'sanitize_callback' => 'sanitize_text_field',
   )
 );
-$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'shop_product_title_custom_font',
+$wp_customize->add_setting( 'shop_product_title_custom_font_weight',
+  array(
+    'default'           => '',
+    'transport'         => 'postMessage',
+    'sanitize_callback' => 'sanitize_text_field',
+  )
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'shop_product_title_custom_font_typography',
   array(
     'section'         => 'woocommerce_product_catalog',
+	'settings'        => array(
+		'font-family' => 'shop_product_title_custom_font',
+		'font-weight' => 'shop_product_title_custom_font_weight',
+	),
     'active_callback' => 'botiga_shop_product_title_font_library_custom_and_custom_style',
     'priority'        => 365,
   )

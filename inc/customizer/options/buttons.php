@@ -83,11 +83,22 @@ $wp_customize->add_setting(
 		'sanitize_callback' => 'sanitize_text_field',
 	)
 );
+$wp_customize->add_setting( 'button_custom_font_weight',
+	array(
+		'default'           => '',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'sanitize_text_field',
+	)
+);
 $wp_customize->add_control(new Botiga_Typography_Custom_Control(
 	$wp_customize,
-	'button_custom_font',
+	'button_custom_font_typography',
 	array(
 		'section'         => 'botiga_section_buttons',
+		'settings'        => array(
+			'font-family'   => 'button_custom_font',
+			'font-weight'   => 'button_custom_font_weight',
+		),
 		'active_callback' => 'botiga_button_font_library_custom_and_custom_style'
 	)
 ));

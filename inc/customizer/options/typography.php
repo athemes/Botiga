@@ -133,9 +133,20 @@ $wp_customize->add_setting( 'botiga_header_menu_custom_font',
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_header_menu_custom_font',
+$wp_customize->add_setting( 'botiga_header_menu_custom_font_weight',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_header_menu_custom_font_typography',
 	array(
 		'section' => 'botiga_section_typography_header_menu',
+		'settings' => array(
+			'font-family' => 'botiga_header_menu_custom_font',
+			'font-weight' => 'botiga_header_menu_custom_font_weight',
+		),
 		'active_callback' => 'botiga_font_library_custom'
 	)
 ) );
@@ -296,9 +307,20 @@ $wp_customize->add_setting( 'botiga_headings_custom_font',
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_headings_custom_font',
+$wp_customize->add_setting( 'botiga_headings_custom_font_weight',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_headings_custom_font_typography',
 	array(
 		'section' => 'botiga_section_typography_headings',
+		'settings' => array(
+			'font-family' => 'botiga_headings_custom_font',
+			'font-weight' => 'botiga_headings_custom_font_weight',
+		),
 		'active_callback' => 'botiga_font_library_custom'
 	)
 ) );
@@ -696,9 +718,20 @@ $wp_customize->add_setting( 'botiga_body_custom_font',
 		'transport'         => 'postMessage'
 	)
 );
-$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_body_custom_font',
+$wp_customize->add_setting( 'botiga_body_custom_font_weight',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'botiga_body_custom_font_typography',
 	array(
 		'section' => 'botiga_section_typography_body',
+		'settings' => array(
+			'font-family' => 'botiga_body_custom_font',
+			'font-weight' => 'botiga_body_custom_font_weight',
+		),
 		'active_callback' => 'botiga_font_library_custom'
 	)
 ) );

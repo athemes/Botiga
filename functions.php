@@ -291,6 +291,8 @@ function botiga_scripts() {
 	
 	if( $fonts_library === 'google' ) {
 		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
+	} else if( $fonts_library === 'custom' ) {
+		wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), botiga_google_fonts_version() );
 	} else {
 		$kits = get_option( 'botiga_adobe_fonts_kits', array() );
 

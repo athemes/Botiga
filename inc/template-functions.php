@@ -801,6 +801,152 @@ function botiga_google_fonts_url() {
 }
 
 /**
+ * Custom Google Fonts URL
+ */
+function botiga_custom_google_fonts_url() {
+
+	$fonts_url     = '';
+	$subsets       = 'latin';
+	$font_families = array();
+	$google_fonts  = array_column( botiga_get_google_fonts(), 'family' );
+
+	$body_custom_font                        = get_theme_mod( 'botiga_body_custom_font', '' );
+	$body_custom_font_weight                 = get_theme_mod( 'botiga_body_custom_font_weight', '' );
+	$headings_custom_font                    = get_theme_mod( 'botiga_headings_custom_font', '' );
+	$headings_custom_font_weight             = get_theme_mod( 'botiga_headings_custom_font_weight', '' );
+	$header_menu_custom_font                 = get_theme_mod( 'botiga_header_menu_custom_font', '' );
+	$header_menu_custom_font_weight          = get_theme_mod( 'botiga_header_menu_custom_font_weight', '' );
+	$button_custom_font                      = get_theme_mod( 'button_custom_font', '' );
+	$button_custom_font_weight               = get_theme_mod( 'button_custom_font_weight', '' );
+	$button_font_style                       = get_theme_mod( 'button_font_style', 'custom' );
+	$loop_post_title_custom_font             = get_theme_mod( 'loop_post_title_custom_font', '' );
+	$loop_post_title_custom_font_weight      = get_theme_mod( 'loop_post_title_custom_font_weight', '' );
+	$loop_post_title_font_style              = get_theme_mod( 'loop_post_title_font_style', 'heading' );
+	$single_post_title_custom_font           = get_theme_mod( 'single_post_title_custom_font', '' );
+	$single_post_title_custom_font_weight    = get_theme_mod( 'single_post_title_custom_font_weight', '' );
+	$single_post_title_font_style            = get_theme_mod( 'single_post_title_font_style', 'heading' );
+	$single_product_title_custom_font        = get_theme_mod( 'single_product_title_custom_font', '' );
+	$single_product_title_custom_font_weight = get_theme_mod( 'single_product_title_custom_font_weight', '' );
+	$single_product_title_font_style         = get_theme_mod( 'single_product_title_font_style', 'heading' );
+	$shop_product_title_custom_font          = get_theme_mod( 'shop_product_title_custom_font', '' );
+	$shop_product_title_custom_font_weight   = get_theme_mod( 'shop_product_title_custom_font_weight', '' );
+	$shop_product_title_font_style           = get_theme_mod( 'shop_product_title_font_style', 'heading' );
+
+	if ( $button_font_style === 'body' ) {
+		$button_custom_font = $body_custom_font;
+	} else if ( $button_font_style === 'heading' ) {
+		$button_custom_font = $headings_custom_font;
+	}
+
+	if ( $loop_post_title_font_style === 'body' ) {
+		$loop_post_title_custom_font = $body_custom_font;
+	} else if ( $loop_post_title_font_style === 'heading' ) {
+		$loop_post_title_custom_font = $headings_custom_font;
+	}
+
+	if ( $single_post_title_font_style === 'body' ) {
+		$single_post_title_custom_font = $body_custom_font;
+	} else if ( $single_post_title_font_style === 'heading' ) {
+		$single_post_title_custom_font = $headings_custom_font;
+	}
+
+	if ( $single_product_title_font_style === 'body' ) {
+		$single_product_title_custom_font = $body_custom_font;
+	} else if ( $single_product_title_font_style === 'heading' ) {
+		$single_product_title_custom_font = $headings_custom_font;
+	}
+
+	if ( $shop_product_title_font_style === 'body' ) {
+		$shop_product_title_custom_font = $body_custom_font;
+	} else if ( $shop_product_title_font_style === 'heading' ) {
+		$shop_product_title_custom_font = $headings_custom_font;
+	}
+
+	if ( in_array( $body_custom_font, $google_fonts ) ) {
+		$body_custom_font .= ( $body_custom_font_weight ) ? ':wght@'. $body_custom_font_weight : '';
+		$font_families[ $body_custom_font ] = $body_custom_font;
+	}
+
+	if ( in_array( $headings_custom_font, $google_fonts ) ) {
+		$headings_custom_font .= ( $headings_custom_font_weight ) ? ':wght@'. $headings_custom_font_weight : '';
+		$font_families[ $headings_custom_font ] = $headings_custom_font;
+	}
+
+	if ( in_array( $header_menu_custom_font, $google_fonts ) ) {
+		$header_menu_custom_font .= ( $header_menu_custom_font_weight ) ? ':wght@'. $header_menu_custom_font_weight : '';
+		$font_families[ $header_menu_custom_font ] = $header_menu_custom_font;
+	}
+
+	if ( in_array( $button_custom_font, $google_fonts ) ) {
+		$button_custom_font .= ( $button_custom_font_weight ) ? ':wght@'. $button_custom_font_weight : '';
+		$font_families[ $button_custom_font ] = $button_custom_font;
+	}
+
+	if ( in_array( $loop_post_title_custom_font, $google_fonts ) ) {
+		$loop_post_title_custom_font .= ( $loop_post_title_custom_font_weight ) ? ':wght@'. $loop_post_title_custom_font_weight : '';
+		$font_families[ $loop_post_title_custom_font ] = $loop_post_title_custom_font;
+	}
+
+	if ( in_array( $single_post_title_custom_font, $google_fonts ) ) {
+		$single_post_title_custom_font .= ( $single_post_title_custom_font_weight ) ? ':wght@'. $single_post_title_custom_font_weight : '';
+		$font_families[ $single_post_title_custom_font ] = $single_post_title_custom_font;
+	}
+
+	if ( in_array( $single_product_title_custom_font, $google_fonts ) ) {
+		$single_product_title_custom_font .= ( $single_product_title_custom_font_weight ) ? ':wght@'. $single_product_title_custom_font_weight : '';
+		$font_families[ $single_product_title_custom_font ] = $single_product_title_custom_font;
+	}
+
+	if ( in_array( $shop_product_title_custom_font, $google_fonts ) ) {
+		$shop_product_title_custom_font .= ( $shop_product_title_custom_font_weight ) ? ':wght@'. $shop_product_title_custom_font_weight : '';
+		$font_families[ $shop_product_title_custom_font ] = $shop_product_title_custom_font;
+	}
+
+	// Google API
+	$fonts_url  = add_query_arg( array(
+		'family'  => implode( '&family=', $font_families ),
+		'display' => 'swap',
+	), 'https://fonts.googleapis.com/css2' );
+
+	// Load google fonts locally
+	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
+
+	if ( $load_locally ) {
+		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		return wptt_get_webfont_url( $fonts_url );
+	}
+
+	return esc_url_raw( $fonts_url );
+
+}
+
+/**
+ * Get google fonts
+ */
+function botiga_get_google_fonts() {
+
+	$fontFile = get_template_directory_uri() . '/inc/customizer/controls/typography/google-fonts-alphabetical.json';
+	$request  = wp_remote_get( $fontFile );
+	$status   = wp_remote_retrieve_response_code( $request );
+
+	if( is_wp_error( $request ) || $status !== 200 ) {
+		return "error";
+	}
+
+	$body    = wp_remote_retrieve_body( $request );
+	$content = json_decode( $body, true );
+	$fonts   = array();
+
+	if ( ! empty( $content ) && ! empty( $content['items'] ) ) {
+		$fonts = $content['items'];
+		unset( $fonts[0] ); // Remove system font option
+	}
+
+	return $fonts;
+
+}
+
+/**
  * Check if google fonts is being either locally load or not and insert
  * the needed stylesheet version. That's needed because the new google API (css2)
  * isn't compatible with wp_enqueue_style().

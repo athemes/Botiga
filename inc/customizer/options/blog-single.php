@@ -652,11 +652,23 @@ $wp_customize->add_setting(
 		'sanitize_callback' => 'sanitize_text_field',
 	)
 );
+$wp_customize->add_setting(
+	'single_post_title_custom_font_weight',
+	array(
+		'default'           => '',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'sanitize_text_field',
+	)
+);
 $wp_customize->add_control(new Botiga_Typography_Custom_Control(
 	$wp_customize,
-	'single_post_title_custom_font',
+	'single_post_title_custom_font_typography',
 	array(
 		'section'         => 'botiga_section_blog_singles',
+		'settings'        => array(
+			'font-family'   => 'single_post_title_custom_font',
+			'font-weight'   => 'single_post_title_custom_font_weight',
+		),
 		'active_callback' => 'botiga_single_post_title_font_library_custom_and_custom_style',
 		'priority'        => 260,
 	)
