@@ -12,7 +12,7 @@
         "."
     ],
     "mappings": {
-        "wp-content/tests-imports": "./tests-imports"
+        "wp-content/tests/demos": "./tests/demos"
     },
     "port": 1000,
     "testsPort": 1001,
