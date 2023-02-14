@@ -153,3 +153,6 @@ function botiga_setup_after_import( $demo_id ) {
 }
 
 botiga_setup_after_import( 'beauty' );
+
+// Enable popular products grid on the search results page
+set_theme_mod( 'shop_search_enable_popular_products', 1 );

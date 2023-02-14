@@ -50,9 +50,14 @@ if( ! $menu_exists){
     }
 
     // Assign menu to the primary location
-    set_theme_mod( 'nav_menu_locations', array( 'primary' => $menu_id, 'secondary' => $menu_id ) );
+    set_theme_mod( 'nav_menu_locations', array( 
+        'primary' => $menu_id, 
+        'secondary' => $menu_id,
+        'footer-copyright-menu' => $menu_id 
+    ) );
 }
 
+// Header
 // Set header builder components
 set_theme_mod( 'botiga_header_row__mobile_offcanvas', '{"desktop":[],"mobile":[],"mobile_offcanvas":[["mobile_offcanvas_menu","social","contact_info","button","html","button2","html2","shortcode"]]}' );
 set_theme_mod( 'botiga_header_row__above_header_row', '{"desktop":[["secondary_menu","social"],["contact_info","html"],["button2","html2"]],"mobile":[[],[],[]],"mobile_offcanvas":[["secondary_menu","social"],["contact_info","html"],["button2","html2"]]}' );
@@ -64,3 +69,13 @@ set_theme_mod( 'social_profiles_topbar', 'https://facebook,https://twitter' );
 set_theme_mod( 'header_html_content', 'HTML Content Example One' );
 set_theme_mod( 'botiga_section_hb_component__html2_content', 'HTML Content Example Two' );
 set_theme_mod( 'header_shortcode_content', 'shortcode content goes here' );
+
+// Footer
+// Set footer builder components
+set_theme_mod( 'botiga_footer_row__main_footer_row', '{ "desktop": [["social", "copyright", "footer_menu", "button", "button2", "html", "html2", "widget1", "widget2", "widget3", "widget4", "shortcode"], [], []], "mobile": [[], [], []] }' );
+
+// Set footer builder componenets content
+set_theme_mod( 'social_profiles_footer', 'https://facebook,https://twitter' );
+set_theme_mod( 'footer_html_content', 'HTML Content One For Tests' );
+set_theme_mod( 'botiga_section_fb_component__html2_content', 'HTML Content Two For Tests' );
+set_theme_mod( 'footer_shortcode_content', 'Shortcode content goes here' );
