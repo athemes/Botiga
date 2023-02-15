@@ -1,5 +1,5 @@
 /**
- * General Shop e2e Tests
+ * Quick View e2e Tests
  * 
  */
 const { test, expect } = require('@playwright/test');
