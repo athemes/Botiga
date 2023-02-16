@@ -342,9 +342,7 @@ botiga.navigation = {
           for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
             var item = _step7.value;
             var dropdownToggler = item.querySelectorAll('.dropdown-symbol');
-            console.log(dropdownToggler);
             dropdownToggler[0].addEventListener('click', function (e) {
-              console.log(123);
               e.stopPropagation();
               var parent = this.parentNode;
 
@@ -1258,7 +1256,8 @@ botiga.qtyButton = {
     }
   },
   updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product');
+    var product = qtyItem.closest('.product'),
+        qtyInput = qtyItem.parentNode.querySelector('.qty');
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
