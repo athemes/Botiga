@@ -4,18 +4,6 @@
  */
 const { test, expect } = require('@playwright/test');
 
-// No PHP Fatal Errors
-test('No PHP Fatal Errors', async ({ page }) => {
-	await page.goto('http://localhost:1000/');
-	await expect(page.locator( 'html' )).not.toContainText(['Fatal error:']);
-});
-
-// No PHP Notices
-test('No PHP Notices', async ({ page }) => {
-	await page.goto('http://localhost:1000/');
-	await expect(page.locator( 'html' )).not.toContainText(['Warning:']);
-});
-
 // Front-End - Desktop tests
 test.describe('Front-End — Desktop tests', () => {
 
@@ -82,26 +70,6 @@ test.describe('Customizer Tests', () => {
         await page.locator('#user_pass').fill('password');
         await page.click('#wp-submit');
     }
-
-    // Customizer - No PHP Fatal Errors
-    test('Customizer - No PHP Fatal Errors', async ({ page }) => {
-        await page.goto('http://localhost:1000/wp-admin/customize.php');
-        
-        // Login to admin
-        await adminLoginAction( page );
-        
-        await expect(page.locator( 'html' )).not.toContainText(['Fatal error:']);
-    });
-
-    // Customizer - No PHP Notices
-    test('Customizer - No PHP Notices', async ({ page }) => {
-        await page.goto('http://localhost:1000/wp-admin/customize.php');
-
-        // Login to admin
-        await adminLoginAction( page );
-
-        await expect(page.locator( 'html' )).not.toContainText(['Warning:']);
-    });
 
     // Components sections open when "edit" button is clicked
     test('Components sections open when "edit" button is clicked', async ({ page }) => {

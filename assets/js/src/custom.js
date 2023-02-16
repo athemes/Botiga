@@ -1237,7 +1237,7 @@ botiga.qtyButton = {
 			jQuery.post({
 				url: botiga.ajaxurl,
 				data: {
-					action: 'botiga_update_floating_mini_cart_quantity',
+					action: 'botiga_update_mini_cart_quantity',
 					quantity: qtyInput.value,
 					cart_item_key: qtyInput.name,
 				}, 

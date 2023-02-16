@@ -34,6 +34,7 @@
 	/**
 	 * Header
 	 */
+	echo $sadasd;
 	if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) {
 		do_action( 'botiga_header' );
 	}

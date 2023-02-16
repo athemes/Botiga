@@ -1,9 +1,12 @@
 <?php
+
 /**
- * Script to run after WP-CLI import. That's the same code from athemes starter sites plugin.
+ * Enable programmatically all features from Botiga/Botiga Pro
+ * This fil will be evaluated thourgh wp-cli for testings purposes
  * 
  */
-function botiga_setup_after_import( $demo_id ) {
+
+ function botiga_setup_after_import( $demo_id ) {
 
 	// Assign the menu.
 	$main_menu = get_term_by( 'name', 'Main', 'nav_menu' );
@@ -232,6 +235,37 @@ set_theme_mod( 'footer_html_content', 'HTML Content One For Tests' );
 set_theme_mod( 'botiga_section_fb_component__html2_content', 'HTML Content Two For Tests' );
 set_theme_mod( 'footer_shortcode_content', 'Shortcode content goes here' );
 
+// Enable all modules
+$all_modules = get_option( 'botiga-modules' );
+$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
+
+update_option( 'botiga-modules', array_merge( 
+    $all_modules, 
+    array( 
+        'hf-builder' => true,
+        'adobe-typekit' => true,
+        'custom-fonts' => true,
+        'google-autocomplete' => true,
+        'quantity-step-control' => true,
+        'mega-menu' => true,
+        'wishlist' => true,
+        'modal-popup' => true,
+        'table-of-contents' => true,
+        'login-popup' => true,
+        'custom-sidebars' => true,
+        'breadcrumbs' => true,
+        'quick-links' => true,
+        'product-swatches' => true,
+        'sticky-add-to-cart' => true,
+        'advanced-reviews' => true,
+        'size-chart' => true,
+        'linked-variations' => true,
+        'video-gallery' => true,
+        'variations-gallery' => true,
+        'templates' => true
+    ) 
+) );
+
 // Enable popular products grid on the search results page
 set_theme_mod( 'shop_search_enable_popular_products', 1 );
 
@@ -240,12 +274,6 @@ set_theme_mod( 'single_ajax_add_to_cart', 1 );
 
 // Enable ajax search
 set_theme_mod( 'shop_search_enable_ajax', 1 );
-
-// Enable quantity step control module
-$all_modules = get_option( 'botiga-modules' );
-$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
-
-update_option( 'botiga-modules', array_merge( $all_modules, array( 'quantity-step-control' => true ) ) );
 
 set_theme_mod( 'shop_general_quantity_min', '1' );
 set_theme_mod( 'shop_general_quantity_max', '10' );
@@ -260,5 +288,8 @@ set_theme_mod( 'shop_product_quantity', 1 );
 
 // Enable image swap
 set_theme_mod( 'shop_product_image_swap', 1 );
+
+// Increase modal popup delay time (to avoid issues with tests)
+set_theme_mod( 'modal_popup_open_delay', 20 );
 
 botiga_setup_after_import( 'beauty' );
