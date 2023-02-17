@@ -114,7 +114,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 			<?php do_action( 'botiga_before_footer_copyright' ); ?>
 
-			<footer id="colophon" class="site-footer">
+			<footer id="colophon" class="site-footer" <?php botiga_schema( 'footer' ); ?>>
 
 				<?php do_action( 'botiga_footer_copyright_content_start' ); ?>
 

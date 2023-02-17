@@ -15,7 +15,7 @@ echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-c
         $location = 'mobile';
     } ?>
 
-    <nav id="site-navigation" class="botiga-dropdown main-navigation">
+    <nav id="site-navigation" class="botiga-dropdown main-navigation" <?php botiga_schema( 'nav' ); ?>>
         <?php
         wp_nav_menu(
             array(

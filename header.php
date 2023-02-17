@@ -21,7 +21,7 @@
 	
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> <?php botiga_schema( 'html' ); ?>>
 <?php wp_body_open(); ?>
 
 <?php do_action( 'botiga_before_site' ); ?>

@@ -11,7 +11,7 @@ echo '<div class="bhfb-builder-item bhfb-component-menu" data-component-id="menu
     if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
         <?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
     <?php else: ?>	
-        <nav id="site-navigation" class="botiga-dropdown main-navigation">
+        <nav id="site-navigation" class="botiga-dropdown main-navigation" <?php botiga_schema( 'nav' ); ?>>
             <?php
             wp_nav_menu(
                 array(

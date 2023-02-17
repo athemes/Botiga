@@ -10,14 +10,14 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>">
+	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>" <?php botiga_schema( 'blog' ); ?>>
 
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
 				<?php
 				do_action( 'botiga_before_title' );
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
+				the_archive_title( '<h1 class="page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' );
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->

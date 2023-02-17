@@ -12,9 +12,9 @@ if ( ! function_exists( 'botiga_posted_on' ) ) :
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
 	function botiga_posted_on() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+		$time_string = '<time class="entry-date published updated" datetime="%1$s" ' . botiga_get_schema( 'published_date' ) . '>%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+			$time_string = '<time class="entry-date published" datetime="%1$s" ' . botiga_get_schema( 'published_date' ) . '>%2$s</time><time class="updated" datetime="%3$s"' . botiga_get_schema( 'modified_date' ) . '>%4$s</time>';
 		}
 
 		$time_string = sprintf(
@@ -41,11 +41,11 @@ if ( ! function_exists( 'botiga_posted_by' ) ) :
 		$author = $post->post_author;
 		$show_avatar = get_theme_mod( 'show_avatar', 0 );
 
-		$byline = '<span class="author vcard">';
+		$byline = '<span class="author vcard" '. botiga_get_schema( 'author' ) .'>';
 		if ( $show_avatar ) {
 			$byline .= get_avatar( get_the_author_meta( 'email', $author ) , 16 );
 		}
-		$byline .= '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+		$byline .= '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" '. botiga_get_schema( 'author_url' ) .'>' . esc_html( get_the_author() ) . '</a></span>';
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
@@ -161,7 +161,7 @@ if ( ! function_exists( 'botiga_post_thumbnail' ) ) :
 					break;
 			} ?>
 
-			<div class="post-thumbnail">
+			<div class="post-thumbnail" <?php botiga_schema( 'thumbnail' ); ?>>
 				<?php the_post_thumbnail( $thumbnail_size ); ?>
 			</div><!-- .post-thumbnail -->
 
@@ -367,7 +367,7 @@ function botiga_post_author_bio() {
 		</div>
 
 		<div class="author-content">
-			<h3 class="author-name">
+			<h3 class="author-name" <?php botiga_schema( 'author' ); ?>>
 				<?php
 					printf(
 						/* translators: %s: Author name */
@@ -377,7 +377,7 @@ function botiga_post_author_bio() {
 				?>
 			</h3>		
 			<?php echo wp_kses_post( wpautop( get_the_author_meta( 'description' ) ) ); ?>
-			<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+			<a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author" <?php botiga_schema( 'author_url' ); ?>>
 				<?php
 					printf(
 						/* translators: %s: Author name */
@@ -488,10 +488,10 @@ if ( ! function_exists( 'botiga_404_page_content' ) ) :
 		
 		<section class="error-404 not-found">
 			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'botiga' ); ?></h1>
+				<h1 class="page-title" <?php botiga_schema( 'headline' ); ?>><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'botiga' ); ?></h1>
 			</header><!-- .page-header -->
 
-			<div class="page-content">
+			<div class="page-content" <?php botiga_schema( 'entry_content' ); ?>>
 				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'botiga' ); ?></p>
 
 				<div class="search404">

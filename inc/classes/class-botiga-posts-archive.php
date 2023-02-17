@@ -220,7 +220,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 			<header class="entry-header">
 				<?php
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( $post_url ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2 class="entry-title" '. botiga_get_schema( 'headline' ) .'><a href="' . esc_url( $post_url ) . '" rel="bookmark">', '</a></h2>' );
 				?>
 			</header><!-- .entry-header -->
 			<?php
@@ -233,7 +233,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 			if ( in_array( get_post_format(), array( 'aside', 'quote', 'link', 'image', 'video', 'status' ) ) ) {
 
-				echo '<div class="entry-content">';
+				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>';
 
 					the_content();
 
@@ -248,7 +248,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 					return;
 				}
 
-				echo '<div class="entry-content">';
+				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>';
 				the_excerpt();
 
 				if ( $read_more ) {

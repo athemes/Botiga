@@ -11,7 +11,7 @@
 
 <div class="bhfb-builder-item bhfb-component-logo" data-component-id="logo">
     <?php $this->customizer_edit_button(); ?>
-    <div class="site-branding">
+    <div class="site-branding" <?php botiga_schema( 'logo' ); ?>>
         <?php
         the_custom_logo();
         if ( ( is_front_page() || is_home() ) && $params[ 'device' ] !== 'mobile' ) :

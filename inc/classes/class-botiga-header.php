@@ -135,7 +135,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -170,7 +170,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -205,7 +205,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="top-header-row">
 							<div class="row valign">
@@ -254,7 +254,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="top-header-row">
 							<div class="row valign">
@@ -304,7 +304,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="top-header-row">
 							<div class="row valign">
@@ -356,7 +356,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-menu botiga-desktop-offcanvas-show vertical-align-<?php echo esc_attr( $vertical_alignment ); ?> content-align-<?php echo esc_attr( $content_alignment ); ?>">
 						<div class="row">
 							<div class="col-12">
@@ -391,7 +391,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -446,7 +446,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			?>
 				<?php do_action( 'botiga_before_header' ); ?>
 
-				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
+				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="site-header-inner">
 							<div class="row valign">
@@ -492,7 +492,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_mobile_layout_1() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<header id="masthead-mobile" class="site-header mobile-header">
+				<header id="masthead-mobile" class="site-header mobile-header" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-sm-6 col-md-4 col-grow-mobile">
@@ -518,7 +518,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_mobile_layout_2() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<header id="masthead-mobile" class="site-header mobile-header">
+				<header id="masthead-mobile" class="site-header mobile-header" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-md-4 header-elements valign">
@@ -545,7 +545,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_mobile_layout_3() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<header id="masthead-mobile" class="site-header mobile-header">
+				<header id="masthead-mobile" class="site-header mobile-header" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-md-4">
@@ -592,7 +592,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
 			<?php else: ?>	
-				<nav id="site-navigation" class="botiga-dropdown main-navigation">
+				<nav id="site-navigation" class="botiga-dropdown main-navigation" <?php botiga_schema( 'nav' ); ?>>
 					<?php
 					wp_nav_menu(
 						array(
@@ -845,7 +845,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		*/		
 		public function logo() {
 			?>
-			<div class="site-branding">
+			<div class="site-branding" <?php botiga_schema( 'logo' ); ?>>
 				<?php
 				the_custom_logo();
 				if ( is_front_page() || is_home() ) :
