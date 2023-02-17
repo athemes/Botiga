@@ -152,6 +152,60 @@ function botiga_setup_after_import( $demo_id ) {
 
 }
 
+// Header
+// Set header builder components
+set_theme_mod( 'botiga_header_row__mobile_offcanvas', '{"desktop":[],"mobile":[],"mobile_offcanvas":[["mobile_offcanvas_menu","social","contact_info","button","html","button2","html2","shortcode"]]}' );
+set_theme_mod( 'botiga_header_row__above_header_row', '{"desktop":[["secondary_menu","social"],["contact_info","html"],["button2","html2"]],"mobile":[[],[],[]],"mobile_offcanvas":[["secondary_menu","social"],["contact_info","html"],["button2","html2"]]}' );
+set_theme_mod( 'botiga_header_row__main_header_row', '{"desktop":[["menu"],["logo","button"],["search","woo_icons"]],"mobile":[["search"],["logo"],["mobile_hamburger"]]}' );
+set_theme_mod( 'botiga_header_row__below_header_row', '{"desktop":[["shortcode"],[],[]],"mobile":[[],[],[]],"mobile_offcanvas":[[]]}' );
+
+// Set header builder components contnet
+set_theme_mod( 'social_profiles_topbar', 'https://facebook,https://twitter' );
+set_theme_mod( 'header_html_content', 'HTML Content Example One' );
+set_theme_mod( 'botiga_section_hb_component__html2_content', 'HTML Content Example Two' );
+set_theme_mod( 'header_shortcode_content', 'shortcode content goes here' );
+
+// Footer
+// Set footer builder components
+set_theme_mod( 'botiga_footer_row__main_footer_row', '{ "desktop": [["social", "copyright", "footer_menu", "button", "button2", "html", "html2", "widget1", "widget2", "widget3", "widget4", "shortcode"], [], []], "mobile": [[], [], []] }' );
+
+// Set footer builder componenets content
+set_theme_mod( 'social_profiles_footer', 'https://facebook,https://twitter' );
+set_theme_mod( 'footer_html_content', 'HTML Content One For Tests' );
+set_theme_mod( 'botiga_section_fb_component__html2_content', 'HTML Content Two For Tests' );
+set_theme_mod( 'footer_shortcode_content', 'Shortcode content goes here' );
+
+// Enable popular products grid on the search results page
+set_theme_mod( 'shop_search_enable_popular_products', 1 );
+
+// Enable single product ajax add to cart
+set_theme_mod( 'single_ajax_add_to_cart', 1 );
+
+// Enable ajax search
+set_theme_mod( 'shop_search_enable_ajax', 1 );
+
+// Enable quantity step control module
+$all_modules = get_option( 'botiga-modules' );
+$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
+
+update_option( 'botiga-modules', array_merge( $all_modules, array( 'quantity-step-control' => true ) ) );
+
+set_theme_mod( 'shop_general_quantity_min', '0' );
+set_theme_mod( 'shop_general_quantity_max', '10' );
+set_theme_mod( 'shop_general_quantity_step', '1' );
+set_theme_mod( 'shop_general_quantity_default', '1' );
+
+// Enable mini cart quantity
+set_theme_mod( 'enable_mini_cart_quantity', 1 );
+
+// Enable shop catalog quantity input
+set_theme_mod( 'shop_product_quantity', 1 );
+
+// Enable image swap
+set_theme_mod( 'shop_product_image_swap', 1 );
+
+botiga_setup_after_import( 'beauty' );
+
 // Create random menu for tests
 $menuname = 'Menu For Tests';
 
@@ -208,57 +262,3 @@ if( ! $menu_exists){
         'footer-copyright-menu' => $menu_id 
     ) );
 }
-
-// Header
-// Set header builder components
-set_theme_mod( 'botiga_header_row__mobile_offcanvas', '{"desktop":[],"mobile":[],"mobile_offcanvas":[["mobile_offcanvas_menu","social","contact_info","button","html","button2","html2","shortcode"]]}' );
-set_theme_mod( 'botiga_header_row__above_header_row', '{"desktop":[["secondary_menu","social"],["contact_info","html"],["button2","html2"]],"mobile":[[],[],[]],"mobile_offcanvas":[["secondary_menu","social"],["contact_info","html"],["button2","html2"]]}' );
-set_theme_mod( 'botiga_header_row__main_header_row', '{"desktop":[["menu"],["logo","button"],["search","woo_icons"]],"mobile":[["search"],["logo"],["mobile_hamburger"]]}' );
-set_theme_mod( 'botiga_header_row__below_header_row', '{"desktop":[["shortcode"],[],[]],"mobile":[[],[],[]],"mobile_offcanvas":[[]]}' );
-
-// Set header builder components contnet
-set_theme_mod( 'social_profiles_topbar', 'https://facebook,https://twitter' );
-set_theme_mod( 'header_html_content', 'HTML Content Example One' );
-set_theme_mod( 'botiga_section_hb_component__html2_content', 'HTML Content Example Two' );
-set_theme_mod( 'header_shortcode_content', 'shortcode content goes here' );
-
-// Footer
-// Set footer builder components
-set_theme_mod( 'botiga_footer_row__main_footer_row', '{ "desktop": [["social", "copyright", "footer_menu", "button", "button2", "html", "html2", "widget1", "widget2", "widget3", "widget4", "shortcode"], [], []], "mobile": [[], [], []] }' );
-
-// Set footer builder componenets content
-set_theme_mod( 'social_profiles_footer', 'https://facebook,https://twitter' );
-set_theme_mod( 'footer_html_content', 'HTML Content One For Tests' );
-set_theme_mod( 'botiga_section_fb_component__html2_content', 'HTML Content Two For Tests' );
-set_theme_mod( 'footer_shortcode_content', 'Shortcode content goes here' );
-
-// Enable popular products grid on the search results page
-set_theme_mod( 'shop_search_enable_popular_products', 1 );
-
-// Enable single product ajax add to cart
-set_theme_mod( 'single_ajax_add_to_cart', 1 );
-
-// Enable ajax search
-set_theme_mod( 'shop_search_enable_ajax', 1 );
-
-// Enable quantity step control module
-$all_modules = get_option( 'botiga-modules' );
-$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
-
-update_option( 'botiga-modules', array_merge( $all_modules, array( 'quantity-step-control' => true ) ) );
-
-set_theme_mod( 'shop_general_quantity_min', '1' );
-set_theme_mod( 'shop_general_quantity_max', '10' );
-set_theme_mod( 'shop_general_quantity_step', '1' );
-set_theme_mod( 'shop_general_quantity_default', '1' );
-
-// Enable mini cart quantity
-set_theme_mod( 'enable_mini_cart_quantity', 1 );
-
-// Enable shop catalog quantity input
-set_theme_mod( 'shop_product_quantity', 1 );
-
-// Enable image swap
-set_theme_mod( 'shop_product_image_swap', 1 );
-
-botiga_setup_after_import( 'beauty' );

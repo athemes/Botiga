@@ -1,4 +1,5 @@
 {
+    "devnote": "development",
     "core": null,
     "phpVersion": "8.0",
     "plugins": [
@@ -12,7 +13,7 @@
         "."
     ],
     "mappings": {
-        "wp-content/tests/demos": "./tests/demos"
+        "wp-content/tests": "./tests"
     },
     "port": 1000,
     "testsPort": 1001,

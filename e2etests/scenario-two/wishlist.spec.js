@@ -24,10 +24,10 @@ test('Wishlist - Wishlist page: Product removal works', async ({ page }) => {
     const cookieObject = {
         name: 'woocommerce_items_in_cart_botiga_wishlist',
         value: '218',
-        url: 'https://localhost:1000/'
+        url: 'http://localhost:1000/'
     }
 
-    const browser = await chromium.launch({ headless: false });
+    const browser = await chromium.launch({ headless: true });
     const browserContext = await browser.newContext();
     const newPage = await browserContext.newPage();
     await browserContext.addCookies( [cookieObject] );

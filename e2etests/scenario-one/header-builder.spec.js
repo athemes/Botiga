@@ -10,7 +10,7 @@ test.describe('Front-End — Desktop tests', () => {
     // Primary Menu - Dropdowns are visibible when mouse hover
     test('Primary Menu - Dropdowns are visibible when mouse hover', async ({ page }) => {
         await page.goto('http://localhost:1000/');
-        await page.locator( '.bhfb-desktop #primary-menu .menu-item-has-children' ).hover();
+        await page.locator( '.bhfb-desktop #primary-menu .menu-item-has-children' ).first().hover();
         await expect(page.locator( '.bhfb-desktop #primary-menu li.menu-item-has-children > .sub-menu > li:nth-child(1) > a' )).toBeVisible();
     });
 

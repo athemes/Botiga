@@ -290,6 +290,6 @@ set_theme_mod( 'shop_product_quantity', 1 );
 set_theme_mod( 'shop_product_image_swap', 1 );
 
 // Increase modal popup delay time (to avoid issues with tests)
-set_theme_mod( 'modal_popup_open_delay', 20 );
+set_theme_mod( 'modal_popup_open_delay_desktop', 20 );
 
 botiga_setup_after_import( 'beauty' );
