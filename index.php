@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" <?php botiga_schema( 'blog' ); ?>>
 
 		<?php
 		if ( have_posts() ) :
@@ -23,7 +23,7 @@ get_header();
 			if ( is_home() && ! is_front_page() ) :
 				?>
 				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+					<h1 class="page-title screen-reader-text" <?php botiga_schema( 'headline' ); ?>><?php single_post_title(); ?></h1>
 				</header>
 				<?php
 			endif;

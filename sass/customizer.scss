@@ -1889,6 +1889,12 @@ div.customize-section-description{
 	}
 }
 
+.botiga-typography-custom-control{
+	display: flex;
+	grid-gap: 15px;
+	flex-direction: column;
+}
+
 .customize-control-kirki-sortable ul.ui-sortable li{
 	position: relative;
 	overflow: hidden;

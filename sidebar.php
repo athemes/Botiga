@@ -38,7 +38,7 @@ if (!is_active_sidebar($botiga_sidebar_id)) {
 
 ?>
 
-<aside id="secondary" class="widget-area">
+<aside id="secondary" class="widget-area" <?php botiga_schema( 'sidebar' ); ?>>
 	<?php do_action('botiga_before_sidebar'); ?>
 	<?php dynamic_sidebar($botiga_sidebar_id); ?>
 	<?php do_action('botiga_after_sidebar'); ?>

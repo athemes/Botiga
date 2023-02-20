@@ -14,7 +14,7 @@
 	$single_post_meta_position		= get_theme_mod( 'single_post_meta_position', 'above-title' );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php botiga_schema( 'article' ); ?>>
 	
 	<?php if ( 'above' === $single_post_image_placement ) { //if featured image above title
 		botiga_single_post_thumbnail();
@@ -28,7 +28,7 @@
 			<?php botiga_single_post_meta( 'entry-meta-above' ); ?>
 		<?php endif; ?>
 
-		<?php the_title( '<h1 class="entry-title">', '</h1>' );
+		<?php the_title( '<h1 class="entry-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' );
 
 		if ( 'post' === get_post_type() && 'below-title' === $single_post_meta_position ) : ?>
 			<?php botiga_single_post_meta( 'entry-meta-below' ); ?>
@@ -39,7 +39,7 @@
 		botiga_single_post_thumbnail();
 	} ?>
 
-	<div class="entry-content">
+	<div class="entry-content" <?php botiga_schema( 'entry_content' ); ?>>
 		<?php
 		the_content(
 			sprintf(

@@ -984,9 +984,7 @@
 .botiga-dashboard-license-form {
 	margin-top: 10px;
 
-
 	form {
-		position: relative;
 		display: flex;
 		flex-wrap: wrap;
 		grid-gap: 10px;
@@ -995,6 +993,7 @@
 			width: 400px;
 			max-width: 100%;
 			padding-left: 26px;
+			min-height: 36px;
 
 			&::placeholder {
 				opacity: 0.75;
@@ -1006,10 +1005,17 @@
 			display: flex;
 			grid-gap: 2px;
 			align-items: center;
+			line-height: 1em;
+			min-height: 36px;
 		}
 	}
+}
 
-	.botiga-license-key-icon{
+.botiga-license-key-input {
+	position: relative;
+	display: flex;
+
+	i {
 		position: absolute;
 		z-index: 1;
 		top: 50%;
@@ -1302,6 +1308,17 @@
 	.botiga-dashboard-useful-plugins,
 	.botiga-dashboard-theme-features {
 		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+
+	.botiga-dashboard-settings {
+		flex-direction: column;
+	}
+
+	.botiga-license-key-input,
+	.botiga-dashboard-settings-tabs,
+	.botiga-dashboard-settings-contents,
+	.botiga-dashboard-license-form form input{
+		width: 100%;
 	}
 
 	.botiga-dashboard-freevspro-table__header {

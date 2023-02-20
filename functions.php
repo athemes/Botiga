@@ -291,6 +291,8 @@ function botiga_scripts() {
 	
 	if( $fonts_library === 'google' ) {
 		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
+	} else if( $fonts_library === 'custom' ) {
+		wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), botiga_google_fonts_version() );
 	} else {
 		$kits = get_option( 'botiga_adobe_fonts_kits', array() );
 
@@ -494,10 +496,12 @@ require get_template_directory() . '/inc/dashboard/class-dashboard-settings.php'
 /**
  * Modules.
  */
+require get_template_directory() . '/inc/modules/adobe-typekit/adobe-typekit.php';
+require get_template_directory() . '/inc/modules/schema-markup/schema-markup.php';
+
 if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 	if( version_compare( BOTIGA_PRO_VERSION, '1.1.0', '>=' ) ) {
 		require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
-		require get_template_directory() . '/inc/modules/adobe-typekit/adobe-typekit.php';
 	} else {
 		$botiga_all_modules = get_option( 'botiga-modules' );
 		$botiga_all_modules = ( is_array( $botiga_all_modules ) ) ? $botiga_all_modules : (array) $botiga_all_modules;
@@ -522,7 +526,6 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 	}
 } else {
 	require get_template_directory() . '/inc/modules/hf-builder/class-header-footer-builder.php';
-	require get_template_directory() . '/inc/modules/adobe-typekit/adobe-typekit.php';
 }
 
 /**

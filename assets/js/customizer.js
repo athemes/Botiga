@@ -1019,44 +1019,130 @@
       embedCustomFonts(to);
     });
   });
+
+  var embedCustomGoogleFonts = function embedCustomGoogleFonts($selector, option, type) {
+    var control = window.parent.window.wp.customize.control(option + '_typography');
+    var settings = window.parent.window._wpCustomizeSettings.controls[option + '_typography'];
+    var family = control.settings['font-family'].get();
+    var weight = control.settings['font-weight'].get();
+    $selector.css('font-weight', 'normal');
+
+    if (settings && settings.google_fonts) {
+      $.map(settings.google_fonts, function (obj, index) {
+        if (obj.family === family) {
+          if (type === 'family') {
+            weight = obj.variants[0];
+          }
+
+          var styleId = family.replace(/ /g, '-').toLowerCase() + '-' + weight;
+          var styleHref = 'https://fonts.googleapis.com/css?family=' + family.replace(/ /g, '+') + ':' + weight + '&display=swap';
+
+          if ($('#' + styleId).length === 0) {
+            $('head').append('<link id="' + styleId + '" href="' + styleHref + '" rel="stylesheet">');
+          }
+
+          $selector.css('font-weight', weight);
+        }
+      });
+    }
+
+    $selector.css('font-family', family);
+  };
+
   wp.customize('botiga_headings_custom_font', function (value) {
     value.bind(function (to) {
-      $('h1,h2,h3,h4,h5,h6,.site-title').css('font-family', to);
+      var $selector = $('h1,h2,h3,h4,h5,h6,.site-title');
+      embedCustomGoogleFonts($selector, 'botiga_headings_custom_font', 'family');
+    });
+  });
+  wp.customize('botiga_headings_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $('h1,h2,h3,h4,h5,h6,.site-title');
+      embedCustomGoogleFonts($selector, 'botiga_headings_custom_font', 'weight');
     });
   });
   wp.customize('botiga_body_custom_font', function (value) {
     value.bind(function (to) {
-      $('body').css('font-family', to);
+      var $selector = $('body');
+      embedCustomGoogleFonts($selector, 'botiga_body_custom_font', 'family');
+    });
+  });
+  wp.customize('botiga_body_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $('body');
+      embedCustomGoogleFonts($selector, 'botiga_body_custom_font', 'weight');
     });
   });
   wp.customize('botiga_header_menu_custom_font', function (value) {
     value.bind(function (to) {
-      $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation').css('font-family', to);
+      var $selector = $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation');
+      embedCustomGoogleFonts($selector, 'botiga_header_menu_custom_font', 'family');
+    });
+  });
+  wp.customize('botiga_header_menu_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $('.top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation, .bhfb-header .main-navigation, .bhfb-header .secondary-navigation');
+      embedCustomGoogleFonts($selector, 'botiga_header_menu_custom_font', 'weight');
     });
   });
   wp.customize('button_custom_font', function (value) {
     value.bind(function (to) {
-      $(buttonSelector).css('font-family', to);
+      var $selector = $(buttonSelector);
+      embedCustomGoogleFonts($selector, 'button_custom_font', 'family');
+    });
+  });
+  wp.customize('button_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $(buttonSelector);
+      embedCustomGoogleFonts($selector, 'button_custom_font', 'weight');
     });
   });
   wp.customize('loop_post_title_custom_font', function (value) {
     value.bind(function (to) {
-      $(loopPostTitleSelector).css('font-family', to);
+      var $selector = $(loopPostTitleSelector);
+      embedCustomGoogleFonts($selector, 'loop_post_title_custom_font', 'family');
+    });
+  });
+  wp.customize('loop_post_title_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $(loopPostTitleSelector);
+      embedCustomGoogleFonts($selector, 'loop_post_title_custom_font', 'weight');
     });
   });
   wp.customize('single_post_title_custom_font', function (value) {
     value.bind(function (to) {
-      $(singlePostTitleSelector).css('font-family', to);
+      var $selector = $(singlePostTitleSelector);
+      embedCustomGoogleFonts($selector, 'single_post_title_custom_font', 'family');
+    });
+  });
+  wp.customize('single_post_title_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $(singlePostTitleSelector);
+      embedCustomGoogleFonts($selector, 'single_post_title_custom_font', 'weight');
     });
   });
   wp.customize('single_product_title_custom_font', function (value) {
     value.bind(function (to) {
-      $(singleProductTitleSelector).css('font-family', to);
+      var $selector = $(singleProductTitleSelector);
+      embedCustomGoogleFonts($selector, 'single_product_title_custom_font', 'family');
+    });
+  });
+  wp.customize('single_product_title_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $(singleProductTitleSelector);
+      embedCustomGoogleFonts($selector, 'single_product_title_custom_font', 'weight');
     });
   });
   wp.customize('shop_product_title_custom_font', function (value) {
     value.bind(function (to) {
-      $(shopProductTitleSelector).css('font-family', to);
+      var $selector = $(shopProductTitleSelector);
+      embedCustomGoogleFonts($selector, 'shop_product_title_custom_font', 'family');
+    });
+  });
+  wp.customize('shop_product_title_custom_font_weight', function (value) {
+    value.bind(function (to) {
+      var $selector = $(shopProductTitleSelector);
+      embedCustomGoogleFonts($selector, 'shop_product_title_custom_font', 'weight');
     });
   }); //Typography - Adobe Type Kit Fonts
 

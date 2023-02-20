@@ -303,6 +303,13 @@ function botiga_dashboard_settings()
 	);
 
 	$settings['features'][] = array(
+		'module' => 'schema-markup',
+		'type'   => 'free',
+		'title'  => esc_html__('Schema Markup', 'botiga'),
+		'desc'   => esc_html__('Add the schema structured data to your website.', 'botiga'),
+	);
+
+	$settings['features'][] = array(
 		'module'     => 'adobe-typekit',
 		'type'       => 'free',
 		'title'      => esc_html__('Adobe Fonts', 'botiga'),

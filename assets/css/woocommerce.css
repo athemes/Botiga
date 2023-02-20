@@ -6534,7 +6534,6 @@ dl.variation p {
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  text-indent: -9999px;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-image > a:hover, .botiga-variations-wrapper .botiga-variation-type-image > a.active,

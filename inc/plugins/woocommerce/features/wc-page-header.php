@@ -50,7 +50,7 @@ function botiga_woocommerce_page_header() {
 				do_action( 'botiga_before_shop_archive_title' );
 
 				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) : ?>
-					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+					<h1 class="woocommerce-products-header__title page-title" <?php botiga_schema( 'headline' ); ?>><?php woocommerce_page_title(); ?></h1>
 				<?php endif;
 
 				if( ( $shop_page_description && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {
