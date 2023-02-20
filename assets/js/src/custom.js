@@ -287,9 +287,8 @@ botiga.navigation = {
 			
 			for(const item of nav_item) {
 				const dropdownToggler = item.querySelectorAll( '.dropdown-symbol' );
-				console.log(dropdownToggler);
+
 				dropdownToggler[0].addEventListener( 'click', function(e){
-					console.log(123);
 					e.stopPropagation();
 
 					const parent = this.parentNode;
@@ -1223,7 +1222,8 @@ botiga.qtyButton = {
 
 	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
 
-		var product = qtyItem.closest('.product');
+		var product  		 = qtyItem.closest('.product'),
+			qtyInput 		 = qtyItem.parentNode.querySelector('.qty');
 
 		if ( product ) {
 			var addToCartButton = product.querySelector( '.add_to_cart_button:not(.single_add_to_cart_button)' );
@@ -1249,7 +1249,7 @@ botiga.qtyButton = {
 			jQuery.post({
 				url: botiga.ajaxurl,
 				data: {
-					action: 'botiga_update_floating_mini_cart_quantity',
+					action: 'botiga_update_mini_cart_quantity',
 					quantity: qtyInput.value,
 					cart_item_key: qtyInput.name,
 				}, 
