@@ -342,9 +342,7 @@ botiga.navigation = {
           for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
             var item = _step7.value;
             var dropdownToggler = item.querySelectorAll('.dropdown-symbol');
-            console.log(dropdownToggler);
             dropdownToggler[0].addEventListener('click', function (e) {
-              console.log(123);
               e.stopPropagation();
               var parent = this.parentNode;
 
@@ -407,7 +405,12 @@ botiga.navigation = {
     } else {
       submenu.classList.remove('sub-menu-reverse');
     } // Reverse vertically
+    // Do not reverse vertically if the menu is in the header
 
+
+    if (submenu.closest('.site-header') || submenu.closest('.bottom-header-row') || submenu.closest('.bhfb-header')) {
+      return false;
+    }
 
     submenu.classList.remove('sub-menu-reverse-vertically');
 
@@ -496,6 +499,12 @@ botiga.desktopOffcanvasNav = {
     closeButton.addEventListener('click', function (e) {
       e.preventDefault();
       offcanvas.classList.remove('botiga-desktop-offcanvas-show');
+    }); // Close mega menu when clicking outside
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.botiga-desktop-offcanvas-menu') === null && offcanvas.querySelector('.botiga-mega-menu .sub-menu.toggled') !== null) {
+        offcanvas.querySelector('.botiga-mega-menu .sub-menu.toggled').classList.remove('toggled');
+      }
     });
   }
 };
@@ -1258,7 +1267,8 @@ botiga.qtyButton = {
     }
   },
   updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product');
+    var product = qtyItem.closest('.product'),
+        qtyInput = qtyItem.parentNode.querySelector('.qty');
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
@@ -1282,7 +1292,7 @@ botiga.qtyButton = {
       jQuery.post({
         url: botiga.ajaxurl,
         data: {
-          action: 'botiga_update_floating_mini_cart_quantity',
+          action: 'botiga_update_mini_cart_quantity',
           quantity: qtyInput.value,
           cart_item_key: qtyInput.name
         },

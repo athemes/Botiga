@@ -5804,6 +5804,14 @@ p.no-comments {
   width: 90px;
 }
 
+@media (max-width: 575px) {
+  .widget_shopping_cart .quantity-wrap {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+  }
+}
+
 .widget_shopping_cart div.quantity {
   width: 100%;
   height: 40px;

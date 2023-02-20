@@ -191,7 +191,15 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*assets/img/raw/**/*',
 	'!../@(Botiga|botiga)/**/*assets/img/raw',
 	'!../@(Botiga|botiga)/**/*assets/js/src/**/*',
-	'!../@(Botiga|botiga)/**/*assets/js/src'
+	'!../@(Botiga|botiga)/**/*assets/js/src',
+	'!../@(Botiga|botiga)/**/*tests/**/*',
+	'!../@(Botiga|botiga)/**/*tests',
+	'!../@(Botiga|botiga)/**/*e2etests/**/*',
+	'!../@(Botiga|botiga)/**/*e2etests',
+	'!../@(Botiga|botiga)/**/*playwright-report/**/*',
+	'!../@(Botiga|botiga)/**/*playwright-report',
+	'!../@(Botiga|botiga)/**/*.wp-env.json',
+	'!../@(Botiga|botiga)/**/*playwright.config.js'
 ];
 
 // >>>>> Translation options.
