@@ -101,7 +101,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                         </p>  
                     </div>
                     <div class="botiga-star-rating-bar-item">
-                        <p class="item-rating"><?php echo esc_html__( '1 Stars', 'botiga' ); ?></p>
+                        <p class="item-rating"><?php echo esc_html__( '1 Star', 'botiga' ); ?></p>
                         <div class="item-bar">
                             <div class="item-bar-inner" style="width: <?php echo esc_attr( $bars_data[ '1-stars-percent' ] ); ?>%;"></div>
                         </div>

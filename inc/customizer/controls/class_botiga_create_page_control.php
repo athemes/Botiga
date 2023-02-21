@@ -61,7 +61,8 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 			echo '</div>';
 			echo wp_kses_post( 
 				sprintf( /* translators: 1: page title, 2: page meta key, 3: page meta value, 4: option name, 5: nonce, 6: loading text, 7: success text  */	
-					__( '<a href="#" class="botiga-create-page-control-button button" data-page-title="%1$s" data-page-meta-key="%2$s" data-page-meta-value="%3$s" data-option-name="%4$s" data-nonce="%5$s" data-creating-text="%6$s" data-created-text="%7$s">Create Page</a>', 'botiga' ),
+					__( '<a href="#" class="botiga-create-page-control-button button" data-page-title="%2$s" data-page-meta-key="%3$s" data-page-meta-value="%4$s" data-option-name="%5$s" data-nonce="%6$s" data-creating-text="%7$s" data-created-text="%8$s">%1$s</a>', 'botiga' ),
+					esc_html__( 'Create Page', 'botiga' ),
 					esc_attr( $this->page_title ),
 					esc_attr( $this->page_meta_key ),
 					esc_attr( $this->page_meta_value ),

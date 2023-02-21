@@ -512,7 +512,7 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 				<p>
 					<?php
 					printf(
-						/* Translators: %1$s current user display name. */
+						/* Translators: %s plugins html anchor link. */
 						esc_html__(
 							'It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro.', 'botiga'
 						),

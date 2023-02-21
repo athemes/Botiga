@@ -297,7 +297,7 @@ class Botiga_Header_Footer_Builder {
             ),
             'header_presets' => $this->header_presets_values(),
             'i18n' => array(
-                'elementsMessage' => esc_html__( 'It looks like you already is using all available components.', 'botiga' )
+                'elementsMessage' => esc_html__( 'It looks like you already are using all available components.', 'botiga' )
             )
         ) );
     }

@@ -262,7 +262,8 @@ update_option( 'botiga-modules', array_merge(
         'linked-variations' => true,
         'video-gallery' => true,
         'variations-gallery' => true,
-        'templates' => true
+        'templates' => true,
+		'schema-markup' => true
     ) 
 ) );
 

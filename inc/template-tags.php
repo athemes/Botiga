@@ -83,8 +83,10 @@ if ( ! function_exists( 'botiga_post_reading_time' ) ) :
 
 		$words = str_word_count(strip_tags($post->post_content));
 		$m     = $words / $words_per_min;
-		/* translators: 1: time, 2: plural for min(s). */
-		$time  = sprintf( __( '%1$s min%2$s read', 'botiga' ), ( $m < 1 ? '1' : ceil($m) ), ( $m == 1 || $m < 1 ? '' : 's' ) );
+		$mins  = ( $m < 1 ? '1' : ceil($m) );
+
+		/* translators: 1: time. */
+		$time  = sprintf( _n( '%1$s min read', '%1$s mins read', $mins, 'botiga' ), $mins );
 
 		echo '<span class="reading-time">';
 			echo esc_html( $time );	
@@ -246,7 +248,7 @@ if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
 			),
 			'linkedin' 	=> array(
 				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.linkedin.com/sharing/share-offsite/?url={url}' ) ),
-				'tooltip'   => esc_html__( 'Linkedin', 'botiga' )
+				'tooltip'   => esc_html__( 'LinkedIn', 'botiga' )
 			),
 			'reddit' 	=> array(
 				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://reddit.com/submit?url={url}&title={title}' ) ),
