@@ -166,7 +166,7 @@ add_filter( 'product_attributes_type_selector', function(){
 
 $attribute_data = wc_get_attribute( 1 );
 $test = wc_update_attribute( $attribute_data->id, array(
-	'name'         => $attribute_data->name, // <== == == Here set the taxonomy label name
+	'name'         => $attribute_data->name,
 	'slug'         => $attribute_data->slug,
 	'type'         => 'color',
 	'order_by'     => $attribute_data->order_by,
@@ -178,6 +178,11 @@ $all_modules = get_option( 'botiga-modules' );
 $all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
 
 update_option( 'botiga-modules', array_merge( $all_modules, array( 'sticky-add-to-cart' => true ) ) );
+
+// Enable wishlist module
+$all_modules = get_option( 'botiga-modules' );
+$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
+update_option( 'botiga-modules', array_merge( $all_modules, array( 'wishlist' => true ) ) );
 
 // Enable popular products grid on the search results page
 set_theme_mod( 'shop_search_enable_popular_products', 1 );
@@ -194,6 +199,12 @@ set_theme_mod( 'product_swatch_tooltip', 1 );
 // Enable shop catalog left sidebar
 set_theme_mod( 'shop_archive_sidebar', 'left' );
 set_theme_mod( 'shop_sidebar', 'shop-sidebar-1' );
+
+// Set products cards layout
+set_theme_mod( 'shop_product_add_to_cart_layout', 'layout2' );
+
+// Enable quick view
+set_theme_mod( 'shop_product_quickview_layout', 'layout2' );
 
 // Insert widgets on sidebars
 function insert_widget_in_sidebar( $widget_id, $widget_data, $sidebar ) {

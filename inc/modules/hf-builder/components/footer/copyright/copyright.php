@@ -24,7 +24,7 @@
 
     $credits 	= str_replace( $tags, $replace, $credits ); ?>
     <div class="botiga-credits">
-        <?php echo $credits; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+        <?php echo apply_filters( 'botiga_footer_builder_copyright_component_output', $credits ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     </div>
 </div>
 
