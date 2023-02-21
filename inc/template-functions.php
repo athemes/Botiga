@@ -902,6 +902,10 @@ function botiga_custom_google_fonts_url() {
 		$font_families[ $shop_product_title_custom_font ] = $shop_product_title_custom_font;
 	}
 
+	if ( empty( $font_families ) ) {
+		return;
+	}
+
 	// Google API
 	$fonts_url  = add_query_arg( array(
 		'family'  => implode( '&family=', $font_families ),
@@ -915,6 +919,7 @@ function botiga_custom_google_fonts_url() {
 		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		return wptt_get_webfont_url( $fonts_url );
 	}
+
 
 	return esc_url_raw( $fonts_url );
 
