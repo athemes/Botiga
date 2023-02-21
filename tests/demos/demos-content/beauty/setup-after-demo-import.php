@@ -204,6 +204,12 @@ set_theme_mod( 'shop_product_quantity', 1 );
 // Enable image swap
 set_theme_mod( 'shop_product_image_swap', 1 );
 
+// Set products cards layout
+set_theme_mod( 'shop_product_add_to_cart_layout', 'layout2' );
+
+// Enable quick view
+set_theme_mod( 'shop_product_quickview_layout', 'layout2' );
+
 botiga_setup_after_import( 'beauty' );
 
 // Create random menu for tests

@@ -117,7 +117,7 @@ function botiga_schema( $location ) {
 function botiga_attachment_image_schema( $attr ) {
 
 	if ( Botiga_Modules::is_module_active( 'schema-markup' ) ) {
-    $attr['itemprop'] = 'image';
+    	$attr['itemprop'] = 'image';
 	}
 
 	return $attr;

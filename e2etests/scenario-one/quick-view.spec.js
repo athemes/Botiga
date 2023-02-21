@@ -24,6 +24,7 @@ test('Quick View - Popup opens in the single product', async ({ page }) => {
 test('Quick View - Popup opens in the search results page (popular products grid)', async ({ page }) => {
     await page.goto('http://localhost:1000/?s=randomsearch&post_type=product');
     await page.locator( 'body.search .site-main .products .product' ).first().hover();
+    await page.locator( 'body.search .site-main .products .product .loop-image-wrap' ).first().hover();
     await page.locator( 'body.search .site-main .products .product .botiga-quick-view' ).first().click();
     await expect( page.locator( '.botiga-quick-view-popup-content-ajax' ) ).not.toBeEmpty();
 });
