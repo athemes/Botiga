@@ -71,8 +71,8 @@ function botiga_woocommerce_output_related_products_slider( $args = array() ) {
 
 	$defaults = array(
 		'posts_per_page' => $posts_per_page,
-		'orderby'        => 'rand',
-		'order'          => 'desc'
+		'orderby'        => apply_filters( 'botiga_related_products_as_slider_orderby', 'rand' ),
+		'order'          => apply_filters( 'botiga_related_products_as_slider_order', 'desc' )
 	);
 
 	$args = wp_parse_args( $args, $defaults );

@@ -1430,6 +1430,14 @@ div.editor-styles-wrapper .widget_shopping_cart .quantity-wrap {
   width: 90px;
 }
 
+@media (max-width: 575px) {
+  div.editor-styles-wrapper .widget_shopping_cart .quantity-wrap {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+  }
+}
+
 div.editor-styles-wrapper .widget_shopping_cart div.quantity {
   width: 100%;
   height: 40px;

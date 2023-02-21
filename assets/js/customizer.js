@@ -1572,6 +1572,10 @@
 
 
             if (css2.type === 'dimensions') {
+              if (!isJsonString(to)) {
+                return;
+              }
+
               to = JSON.parse(to);
 
               if (to.top === '' && to.right === '' && to.bottom === '' && to.left === '') {
@@ -1673,4 +1677,14 @@ function hexToRGB(hex, alpha) {
   } else {
     return "rgb(" + r + ", " + g + ", " + b + ")";
   }
+}
+
+function isJsonString(str) {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 }

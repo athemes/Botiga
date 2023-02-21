@@ -1,0 +1,24 @@
+{
+    "devnote": "development",
+    "core": null,
+    "phpVersion": "8.0",
+    "plugins": [
+      "../../plugins/botiga-pro/",
+      "https://downloads.wordpress.org/plugin/athemes-blocks.zip",
+      "https://downloads.wordpress.org/plugin/wordpress-importer.zip",
+      "https://downloads.wordpress.org/plugin/one-click-demo-import.zip",
+      "https://downloads.wordpress.org/plugin/woocommerce.zip"
+    ],
+    "themes": [
+        "."
+    ],
+    "mappings": {
+        "wp-content/tests": "./tests"
+    },
+    "port": 1000,
+    "testsPort": 1001,
+    "config": {
+      "WP_DEBUG_DISPLAY": true,
+      "FS_METHOD": "direct"
+    }
+}
