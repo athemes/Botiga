@@ -67,6 +67,11 @@ if (!defined('ABSPATH')) {
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Schema Markup</strong></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
 								<strong><a href="https://docs.athemes.com/article/pro-custom-fonts/" target="_blank">Custom Fonts<i class="dashicons dashicons-external"></i></a></strong>
 								<i class="botiga-dashboard-freevspro-table__desc">The Custom Fonts module lets you load your custom fonts. </i>

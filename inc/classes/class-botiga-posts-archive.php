@@ -233,7 +233,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 			if ( in_array( get_post_format(), array( 'aside', 'quote', 'link', 'image', 'video', 'status' ) ) ) {
 
-				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>';
+				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 					the_content();
 
@@ -248,7 +248,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 					return;
 				}
 
-				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>';
+				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				the_excerpt();
 
 				if ( $read_more ) {

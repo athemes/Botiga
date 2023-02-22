@@ -14,6 +14,6 @@ if( ! $footer_html_content ) {
 <div class="bhfb-builder-item bhfb-component-html" data-component-id="html">
     <?php $this->customizer_edit_button(); ?>
     <div class="footer-html">
-        <?php echo apply_filters( 'botiga_footer_builder_html_component_output', wp_kses_post( $footer_html_content ) ); ?>
+        <?php echo wp_kses_post( $footer_html_content ); ?>
     </div>
 </div>

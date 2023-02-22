@@ -2484,7 +2484,7 @@ msgstr ""
 msgid "Failed to initialize or activate importer plugin."
 msgstr ""
 
-#: inc/dashboard/html-free-vs-pro.php:537
+#: inc/dashboard/html-free-vs-pro.php:542
 msgid "Buy Botiga Pro Today"
 msgstr ""
 

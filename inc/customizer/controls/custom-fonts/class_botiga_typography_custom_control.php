@@ -77,8 +77,8 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 			<?php } ?>
 
 			<select class="botiga-typography-custom-select" data-control-name="<?php echo esc_attr( $this->id ); ?>" <?php $this->link( 'font-family' ); ?>>
-				<option value=""><?php esc_html_e( 'System default', 'botiga' ); ?></option>
-				<optgroup label="<?php esc_html_e( 'Custom Fonts', 'botiga' ); ?>" data-type="custom-fonts">
+				<option value="System default"><?php esc_html_e( 'System default', 'botiga' ); ?></option>
+				<optgroup label="<?php esc_attr_e( 'Custom Fonts', 'botiga' ); ?>" data-type="custom-fonts">
 					<?php if ( ! empty( $this->custom_fonts ) ) : ?>
 						<?php foreach ( $this->custom_fonts as $font ) : ?>
 							<?php $selected = $this->value( 'font-family' ) === $font['name'] ? true : false; ?>
@@ -86,7 +86,7 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</optgroup>
-				<optgroup label="<?php esc_html_e( 'Google Fonts', 'botiga' ); ?>" data-type="google-fonts">
+				<optgroup label="<?php esc_attr_e( 'Google Fonts', 'botiga' ); ?>" data-type="google-fonts">
 					<?php if ( ! empty( $this->google_fonts ) ) : ?>
 						<?php foreach ( $this->google_fonts as $key => $font ) : ?>
 							<?php $selected = $this->value() === $font['family'] ? true : false; ?>

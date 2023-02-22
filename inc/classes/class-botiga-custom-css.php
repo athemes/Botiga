@@ -316,7 +316,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				// Embed custom fonts
 				$css .= botiga_get_custom_fonts() . "\n";	
 
-				$body_font                       = get_theme_mod( 'botiga_body_custom_font', '' );
+				$body_font                       = get_theme_mod( 'botiga_body_custom_font', 'System default' );
 				$headings_font                   = get_theme_mod( 'botiga_headings_custom_font', '' );
 				$header_menu_font                = get_theme_mod( 'botiga_header_menu_custom_font', $body_font );
 				$button_font                     = get_theme_mod( 'button_custom_font', '' );
@@ -359,7 +359,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				} else if ( $shop_product_title_font_style === 'heading' ) {
 					$shop_product_title_font = $headings_font;
 				}
-				
+
 				if ( 'System default' !== $body_font ) {
 					$css .= 'body { font-family:"' . esc_attr( $body_font ) . '";}' . "\n";	
 				}
