@@ -65,8 +65,8 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 
 	$defaults = array(
 		'posts_per_page' => $posts_per_page,
-		'orderby'        => 'rand',
-		'order'          => 'desc'
+		'orderby'        => apply_filters( 'botiga_recently_viewed_products_orderby', 'rand' ),
+		'order'          => apply_filters( 'botiga_recently_viewed_products_order', 'desc' )
 	);
 
 	$args = wp_parse_args( $args, $defaults );

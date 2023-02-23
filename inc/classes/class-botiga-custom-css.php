@@ -316,7 +316,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				// Embed custom fonts
 				$css .= botiga_get_custom_fonts() . "\n";	
 
-				$body_font                       = get_theme_mod( 'botiga_body_custom_font', '' );
+				$body_font                       = get_theme_mod( 'botiga_body_custom_font', 'System default' );
 				$headings_font                   = get_theme_mod( 'botiga_headings_custom_font', '' );
 				$header_menu_font                = get_theme_mod( 'botiga_header_menu_custom_font', $body_font );
 				$button_font                     = get_theme_mod( 'button_custom_font', '' );
@@ -359,7 +359,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				} else if ( $shop_product_title_font_style === 'heading' ) {
 					$shop_product_title_font = $headings_font;
 				}
-				
+
 				if ( 'System default' !== $body_font ) {
 					$css .= 'body { font-family:"' . esc_attr( $body_font ) . '";}' . "\n";	
 				}
@@ -415,7 +415,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_font_sizes_css( 'h6_font_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'h6' );
 
 			// Body typography
-      $body_font_style      = get_theme_mod( 'body_font_style', 'normal' );
+      		$body_font_style      = get_theme_mod( 'body_font_style', 'normal' );
 			$body_line_height     = get_theme_mod( 'body_line_height', 1.68 );
 			$body_letter_spacing  = get_theme_mod( 'body_letter_spacing', 0 );
 			$body_text_transform  = get_theme_mod( 'body_text_transform', 'none' );
@@ -433,12 +433,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$header_menu_text_decoration = get_theme_mod( 'header_menu_text_decoration', $body_text_decoration );
 
 			if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'hf-builder' ) ) {
-				$css .= ".bhfb-header .main-navigation, .bhfb-header .secondary-navigation { text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
+				$css .= ".bhfb-header .main-navigation, .bhfb-header .secondary-navigation, .bhfb-mobile_offcanvas .main-navigation, .bhfb-mobile_offcanvas .secondary-navigation { text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
 				$css .= $this->get_font_sizes_css( 'header_menu_font_size', $defaults = array( 
 					'desktop' => get_theme_mod( 'body_font_size_desktop', 16 ), 
 					'tablet' => get_theme_mod( 'body_font_size_tablet', 16 ), 
 					'mobile' => get_theme_mod( 'body_font_size_mobile', 16 ) 
-				), '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation' );
+				), '.bhfb-header .main-navigation, .bhfb-header .secondary-navigation, .bhfb-mobile_offcanvas .main-navigation, .bhfb-mobile_offcanvas .secondary-navigation' );
 			} else {
 				$css .= ".top-bar .secondary-navigation, #masthead .main-navigation, .botiga-offcanvas-menu .main-navigation, .bottom-header-row .main-navigation { text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
 				$css .= $this->get_font_sizes_css( 'header_menu_font_size', $defaults = array( 
@@ -572,7 +572,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$main_header_bottom_padding = get_theme_mod( 'main_header_bottom_padding', 15 );
 				$css .= ".bottom-header-inner { padding-top:" . esc_attr( $main_header_bottom_padding ) . 'px;padding-bottom:' . esc_attr( $main_header_bottom_padding ) . "px;}" . "\n";
 
-				$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .botiga-dropdown ul ul li, .site-header .header-login-register nav' );
+				$css .= $this->get_background_color_css( 'main_header_submenu_background', '', '.site-header .botiga-dropdown ul ul li, .site-header .header-login-register nav, .bottom-header-row .botiga-dropdown ul ul li, .botiga-desktop-offcanvas-menu .botiga-dropdown .botiga-mega-menu>.sub-menu>li>.sub-menu .menu-item-has-children:hover>.sub-menu' );
 				$css .= $this->get_color_css( 'main_header_submenu_color', '#212121', '.site-header .botiga-dropdown ul ul a, .site-header .botiga-dropdown ul ul > li:hover > .dropdown-symbol svg, .site-header .header-login-register nav>a, .bottom-header-row .header-login-register nav>a' );
 				$css .= $this->get_color_css( 'main_header_submenu_color_hover', '#757575', '.site-header .botiga-dropdown ul ul li:hover > a, .site-header .header-login-register nav>a:hover, .bottom-header-row .header-login-register nav>a:hover' );
 				$css .= $this->get_fill_css( 'main_header_submenu_color', '#212121', '.site-header .botiga-dropdown ul ul li > .dropdown-symbol svg' );

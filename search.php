@@ -10,11 +10,11 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>">
+	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>" <?php botiga_schema( 'search' ); ?>>
 		<?php
 		if ( have_posts() ) : ?>
 			<header class="page-header">
-				<h1 class="page-title">
+				<h1 class="page-title" <?php botiga_schema( 'headline' ); ?>>
 					<?php
 					/* translators: %s: search query. */
 					printf( esc_html__( 'Search Results for: %s', 'botiga' ), '<span>' . get_search_query() . '</span>' );

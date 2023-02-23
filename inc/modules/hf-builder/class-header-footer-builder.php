@@ -297,7 +297,7 @@ class Botiga_Header_Footer_Builder {
             ),
             'header_presets' => $this->header_presets_values(),
             'i18n' => array(
-                'elementsMessage' => esc_html__( 'It looks like you already is using all available components.', 'botiga' )
+                'elementsMessage' => esc_html__( 'It looks like you already are using all available components.', 'botiga' )
             )
         ) );
     }
@@ -785,7 +785,7 @@ class Botiga_Header_Footer_Builder {
 
             <?php do_action( 'botiga_before_header' ); ?>
 
-            <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?> <?php botiga_schema( 'header' ); ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
                 <?php do_action( 'botiga_bhfb_header_inner_before' ); ?>
 
@@ -871,7 +871,7 @@ class Botiga_Header_Footer_Builder {
         $devices = array( 'desktop' );
         foreach( $devices as $device ) { ?>
 
-            <footer class="bhfb bhfb-footer bhfb-<?php echo esc_attr( $device ); ?>">
+            <footer class="bhfb bhfb-footer bhfb-<?php echo esc_attr( $device ); ?>" <?php botiga_schema( 'footer' ); ?>>
 
                 <?php do_action( 'botiga_bhfb_footer_inner_before' ); ?>
 

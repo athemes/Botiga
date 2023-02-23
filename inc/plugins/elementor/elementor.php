@@ -53,3 +53,30 @@ class Botiga_Elementor_Compatibility {
 }
 
 new Botiga_Elementor_Compatibility();
+
+/**
+ * Elementor Helper Class
+ * 
+ */
+class Botiga_Elementor_Helpers {
+
+    /**
+     * Check if a theme builder location is active
+     * 
+     */
+    public static function elementor_has_location( $location ) {
+        if ( ! did_action( 'elementor_pro/init' ) ) {
+            return false;
+        }
+
+        if( ! class_exists( 'ElementorPro\\Plugin' ) ) {
+            return false;
+        }
+
+        $conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
+        $documents          = $conditions_manager->get_documents_for_location( $location );
+
+        return ! empty( $documents );
+    } 
+
+}

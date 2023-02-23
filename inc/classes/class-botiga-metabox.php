@@ -851,8 +851,9 @@ class Botiga_Metabox {
 				$options = array();
 				
 				$posts = get_posts( array(
-					'post_type'   => 'size_chart',
-					'post_status' => 'publish',
+					'post_type'      => 'size_chart',
+					'posts_per_page' => -1, // phpcs:ignore WPThemeReview.CoreFunctionality.PostsPerPage.posts_per_page_posts_per_page
+					'post_status'    => 'publish'
 				) );
 					
 				if ( ! is_wp_error( $posts ) && ! empty( $posts ) ) {

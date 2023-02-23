@@ -1,0 +1,558 @@
+a:4:{s:8:"template";s:6:"botiga";s:4:"mods";a:127:{i:0;b:0;s:18:"custom_css_post_id";i:61;s:40:"shop_woocommerce_catalog_columns_desktop";i:3;s:29:"shop_woocommerce_catalog_rows";i:3;s:48:"botiga_migrate_woo_catalog_columns_and_rows_flag";b:1;s:24:"header_components_mobile";a:0:{}s:27:"header_components_offcanvas";a:2:{i:0;s:6:"search";i:1;s:34:"mobile_offcanvas_woocommerce_icons";}s:39:"botiga_migrate_header_mobile_icons_flag";b:1;s:18:"nav_menu_locations";a:1:{s:7:"primary";i:2;}s:16:"sidebars_widgets";a:2:{s:4:"time";i:1658420131;s:4:"data";a:6:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:5:{i:0;s:7:"block-2";i:1;s:7:"block-3";i:2;s:7:"block-4";i:3;s:7:"block-5";i:4;s:7:"block-6";}s:8:"footer-1";a:0:{}s:8:"footer-2";a:0:{}s:8:"footer-3";a:0:{}s:8:"footer-4";a:0:{}}}s:11:"custom_logo";i:967;s:22:"site_logo_size_desktop";i:78;s:21:"header_layout_desktop";s:15:"header_layout_2";s:25:"main_header_menu_position";s:6:"center";s:20:"header_components_l1";a:2:{i:0;s:17:"woocommerce_icons";i:1;s:6:"button";}s:16:"header_textcolor";s:5:"blank";s:16:"header_container";s:9:"container";s:16:"background_color";s:6:"f5f5f7";s:18:"header_button_text";s:7:"Buy Now";s:22:"main_header_background";s:7:"#f5f5f7";s:33:"button_top_bottom_padding_desktop";i:10;s:33:"button_left_right_padding_desktop";i:20;s:20:"button_border_radius";i:100;s:21:"button_text_transform";s:10:"capitalize";s:23:"button_background_color";s:7:"#0171e2";s:19:"button_border_color";s:7:"#0171e2";s:29:"button_background_color_hover";s:7:"#0060ce";s:25:"button_border_color_hover";s:7:"#0060ce";s:15:"color_body_text";s:7:"#3c3b34";s:15:"color_heading_1";s:7:"#1f1c21";s:15:"color_heading_2";s:7:"#1f1c21";s:15:"color_heading_3";s:7:"#1f1c21";s:15:"color_heading_4";s:7:"#1f1c21";s:15:"color_heading_5";s:7:"#1f1c21";s:15:"color_heading_6";s:7:"#1f1c21";s:20:"botiga_headings_font";s:66:"{"font":"Open Sans","regularweight":"700","category":"sans-serif"}";s:16:"botiga_body_font";s:66:"{"font":"Open Sans","regularweight":"400","category":"sans-serif"}";s:25:"footer_credits_text_color";s:7:"#757575";s:23:"footer_copyright_layout";s:4:"col1";s:14:"footer_credits";s:60:"Copyright {copyright} {year}. All rights reserved by aThemes";s:23:"footer_credits_position";s:4:"left";s:24:"footer_content_alignment";s:6:"center";s:14:"footer_widgets";s:4:"col3";s:30:"footer_credits_padding_desktop";i:20;s:25:"footer_credits_background";s:7:"#f5f5f7";s:22:"footer_widgets_divider";i:1;s:27:"footer_widgets_divider_size";i:2;s:28:"footer_widgets_divider_color";s:7:"#dddddd";s:25:"footer_widgets_background";s:7:"#f5f5f7";s:25:"botiga_hook_footer_before";s:539:"<div class="botiga-footer-cta">
+  <div class="botiga-footer-cta-image">
+    <img width="2072" height="750" loading="lazy" src="https://demo.athemes.com/botiga-single-product/wp-content/uploads/sites/135/2022/07/home-image-7.jpg" alt="" />
+  </div>
+  <div class="container botiga-footer-cta-content">
+    <h5>EXCLUSIVE GIFT RANGE</h5>
+    <h1>It Adapts You,<br />
+You Don’t Have To Adapt It</h1>
+    <div class="wp-block-button aligncenter botiga-hero-button"><a href="#" class="wp-block-button__link">Learn More</a></div>
+  </div>
+</div>";s:20:"h1_font_size_desktop";i:48;s:20:"h2_font_size_desktop";i:40;s:20:"h3_font_size_desktop";i:24;s:20:"h4_font_size_desktop";i:16;s:20:"h5_font_size_desktop";i:12;s:20:"h6_font_size_desktop";i:14;s:29:"shop_product_quickview_layout";s:7:"layout2";s:24:"shop_product_card_radius";i:0;s:30:"shop_product_card_thumb_radius";i:0;s:27:"shop_general_quantity_style";s:6:"style9";s:16:"shop_breadcrumbs";s:0:"";s:18:"single_breadcrumbs";s:0:"";s:15:"shop_page_title";s:0:"";s:21:"shop_page_description";s:0:"";s:33:"single_product_title_size_desktop";i:48;s:33:"single_product_price_size_desktop";i:40;s:47:"single_product_related_section_background_color";s:19:"rgba(255,255,255,0)";s:28:"single_product_tabs_position";s:15:"product-summary";s:38:"single_product_reviews_advanced_enable";s:0:"";s:42:"shop_single_upsell_products_columns_number";i:3;s:32:"shop_archive_columns_gap_desktop";i:40;s:31:"shop_archive_header_padding_top";i:80;s:18:"shop_card_elements";a:3:{i:0;s:32:"woocommerce_template_loop_rating";i:1;s:30:"botiga_shop_loop_product_title";i:2;s:31:"woocommerce_template_loop_price";}s:28:"shop_product_element_spacing";i:15;s:23:"shop_product_image_swap";s:0:"";s:40:"shop_archive_header_button_border_radius";i:35;s:21:"custom_palette_toggle";i:1;s:13:"custom_color6";s:7:"#f5f5f7";s:24:"content_cards_background";s:7:"#f5f5f7";s:46:"single_product_gallery_styles_background_color";s:7:"#f5f5f7";s:48:"single_sticky_add_to_cart_style_color_background";s:7:"#f5f5f7";s:36:"single_product_tabs_background_color";s:7:"#f5f5f7";s:43:"single_product_tabs_background_color_active";s:7:"#f5f5f7";s:21:"enable_header_account";s:0:"";s:28:"shop_product_wishlist_layout";s:7:"layout2";s:22:"single_product_gallery";s:12:"gallery-grid";s:24:"mobile_header_background";s:7:"#f5f5f7";s:28:"shop_archive_pagination_type";s:7:"default";s:15:"mini_cart_style";s:4:"side";s:52:"botiga_hook_woocommerce_before_page_header_shop_loop";s:493:"<div class="botiga-listing-header">
+  <div class="botiga-listing-header-image">
+    <img width="2072" height="750" loading="lazy" src="https://demo.athemes.com/botiga-single-product/wp-content/uploads/sites/135/2022/07/listing-image-0.jpg" alt="" />
+  </div>
+  <div class="container botiga-listing-header-content">
+    <h5>EXCLUSIVE GIFT RANGE</h5>
+    <h1>Shop</h1>
+    <p>Amet minim mollit non deserunt ullamco est sit aliqua<br />dolor do amet sint. Exercitation veniam.</p>
+  </div>
+</div>";s:29:"scrolltop_side_offset_desktop";i:30;s:31:"scrolltop_bottom_offset_desktop";i:30;s:29:"header_transparent_display_on";s:55:"[{"type":"include","condition":"front-page","id":null}]";s:31:"header_image_display_conditions";s:48:"[{"type":"include","condition":"all","id":null}]";s:33:"botiga_migrate_1_2_1_options_flag";b:1;s:34:"botiga_header_row__main_header_row";s:106:"{"desktop":[["logo"],["menu"],["woo_icons","button"]],"mobile":[["search"],["logo"],["mobile_hamburger"]]}";s:57:"botiga_header_row__main_header_row_columns_layout_desktop";s:10:"3col-fluid";s:41:"botiga_header_row__mobile_main_header_row";s:19:"0.14219989092459073";s:28:"bhfb_button_background_color";s:7:"#0171e2";s:24:"bhfb_button_border_color";s:7:"#0171e2";s:34:"bhfb_button_background_color_hover";s:7:"#1d80e2";s:30:"bhfb_button_border_color_hover";s:7:"#1d80e2";s:70:"botiga_footer_row__below_footer_row_column1_vertical_alignment_desktop";s:6:"middle";s:69:"botiga_footer_row__below_footer_row_column1_vertical_alignment_tablet";s:6:"middle";s:69:"botiga_footer_row__below_footer_row_column1_vertical_alignment_mobile";s:6:"middle";s:72:"botiga_footer_row__below_footer_row_column1_horizontal_alignment_desktop";s:6:"center";s:71:"botiga_footer_row__below_footer_row_column1_horizontal_alignment_tablet";s:6:"center";s:71:"botiga_footer_row__below_footer_row_column1_horizontal_alignment_mobile";s:6:"center";s:34:"botiga_footer_row__main_footer_row";s:69:"{"desktop":[["widget1"],["widget2"],["widget3"]],"mobile":[[],[],[]]}";s:57:"botiga_footer_row__main_footer_row_columns_layout_desktop";s:12:"3col-bigleft";s:9:"cart_icon";s:10:"icon-cart5";s:26:"single_product_tabs_layout";s:6:"style6";s:29:"single_product_elements_order";a:8:{i:0;s:33:"woocommerce_template_single_title";i:1;s:34:"woocommerce_template_single_rating";i:2;s:33:"woocommerce_template_single_price";i:3;s:35:"woocommerce_template_single_excerpt";i:4;s:39:"woocommerce_template_single_add_to_cart";i:5;s:21:"botiga_divider_output";i:6;s:32:"woocommerce_template_single_meta";i:7;s:29:"botiga_single_wishlist_button";}s:20:"shop_product_sorting";i:1;s:19:"shop_grid_list_view";i:1;s:19:"shop_pagination_ppp";s:0:"";s:25:"single_product_navigation";i:1;s:18:"enable_header_cart";i:1;s:27:"enable_header_wishlist_icon";i:1;s:35:"botiga_header_row__mobile_offcanvas";s:85:"{"desktop":[],"mobile":[],"mobile_offcanvas":[["mobile_offcanvas_menu","woo_icons"]]}";s:70:"botiga_footer_row__main_footer_row_column2_horizontal_alignment_tablet";s:5:"start";s:70:"botiga_footer_row__main_footer_row_column2_horizontal_alignment_mobile";s:5:"start";s:70:"botiga_footer_row__main_footer_row_column3_horizontal_alignment_tablet";s:5:"start";s:70:"botiga_footer_row__main_footer_row_column3_horizontal_alignment_mobile";s:5:"start";s:49:"botiga_footer_row__main_footer_row_height_desktop";i:278;s:48:"botiga_footer_row__main_footer_row_height_tablet";i:696;s:48:"botiga_footer_row__main_footer_row_height_mobile";i:696;}s:7:"options";a:18:{s:22:"woocommerce_demo_store";s:2:"no";s:29:"woocommerce_demo_store_notice";s:79:"This is a demo store for testing purposes &mdash; no orders shall be fulfilled.";s:29:"woocommerce_shop_page_display";s:0:"";s:36:"woocommerce_category_archive_display";s:0:"";s:35:"woocommerce_default_catalog_orderby";s:10:"menu_order";s:30:"woocommerce_thumbnail_cropping";s:3:"1:1";s:43:"woocommerce_thumbnail_cropping_custom_width";s:1:"4";s:44:"woocommerce_thumbnail_cropping_custom_height";s:1:"3";s:34:"woocommerce_checkout_company_field";s:8:"optional";s:36:"woocommerce_checkout_address_2_field";s:8:"optional";s:32:"woocommerce_checkout_phone_field";s:8:"required";s:46:"woocommerce_checkout_highlight_required_fields";s:3:"yes";s:55:"woocommerce_checkout_terms_and_conditions_checkbox_text";s:44:"I have read and agree to the website [terms]";s:40:"woocommerce_checkout_privacy_policy_text";s:161:"Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our [privacy_policy].";s:26:"wp_page_for_privacy_policy";s:1:"0";s:25:"woocommerce_terms_page_id";s:0:"";s:9:"site_icon";s:1:"0";s:23:"nav_menus_created_posts";a:0:{}}s:6:"wp_css";s:9970:"/*
+--- CSS MAP ---
+- 01. Homepage Features Boxes
+- 02. Homepage Ultimate and Image
+- 03. Homepage Collections Boxes
+- 04. Homepage Icon List
+- 05. Listing (Header, Title, Rating)
+- 06. WooCommerce Pages Background
+- 07. Product Page
+- 08. Footer Before CTA
+- 09. Footer
+- 10. Contact Form
+- 11. Newsletter
+- 12. Utilities
+- 13. Responsive
+*/
+
+/* 01. Homepage Features Boxes */
+.botiga-home-features-boxes{
+	grid-gap: 0 !important;
+  border: 2px solid #f5f5f7;
+	border-radius: 10px;
+}
+
+.botiga-home-features-boxes .wp-block-column{
+	position: relative;
+	padding: 40px;
+	border-style: solid;
+	border-width: 0 2px 0 0;
+	border-color: #f5f5f7;
+}
+
+.botiga-home-features-boxes .wp-block-column:last-child{
+	border-right: none;
+	border-bottom: none;
+}
+
+.botiga-home-features-boxes .wp-block-column:before{
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #f5f5f7;
+	opacity: 0;
+	border-radius: 0 0 10px 10px;
+	transition: all .2s;
+}
+
+.botiga-home-features-boxes .wp-block-column:hover:before{
+	opacity: 1;
+	bottom: -30px;
+}
+
+.botiga-home-features-boxes svg{
+	display: flex;
+	margin: 0 auto 20px auto;
+	border: 1px solid #ececec;
+	padding: 14px;
+	border-radius: 100%;
+	box-sizing: content-box;
+	transition: all .2s;
+}
+
+.botiga-home-features-boxes .wp-block-column:hover svg{
+	color: #fff;
+	border-color: #0171e2;
+	background-color: #0171e2;
+}
+
+/* 02. Homepage Ultimate and Image */
+.botiga-home-ultimate .athemes-blocks-block-container-wrapper{
+	overflow: inherit;
+}
+
+.botiga-home-ultimate .athemes-blocks-block-container-wrapper-content{
+	position: static;
+}
+
+.botiga-home-ultimate-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 35px 35px 35px;
+    overflow: hidden;
+    width: calc(100vw / 2 - 100px);
+    bottom: -125px;
+}
+
+/* 03. Homepage Collections Boxes */
+.botiga-home-collections-boxes img{
+	border-radius: 10px;
+}
+
+.botiga-home-collections-boxes .wp-block-cover__inner-container{
+	display: flex;
+	grid-gap: 2px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 40px;
+	margin-left: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-right: 25px;
+	backdrop-filter: blur(20px);
+	transition: all .2s;
+}
+
+.page .botiga-home-collections-boxes .wp-block-cover__inner-container{
+	opacity: 0;
+}
+
+.botiga-home-collections-boxes .wp-block-cover__inner-container p{
+	color: #fff;
+	text-align: center;
+  margin: 0 !important;
+}
+
+.botiga-home-collections-boxes-title{
+	position: relative;
+	z-index: 1;
+	top: 0;
+	transition: all .2s;
+}
+
+.botiga-home-collections-boxes .wp-block-cover img{
+	transition: all .2s;
+}
+
+.page .botiga-home-collections-boxes .wp-block-column:hover .wp-block-cover img{
+  height: calc(100% + 50px);
+}
+
+.page .botiga-home-collections-boxes .wp-block-column:hover .botiga-home-collections-boxes-title{
+	color: #fff;
+  top: -30px;
+}
+
+.botiga-home-collections-boxes .wp-block-column:hover .wp-block-cover__inner-container{
+	opacity: 1;
+}
+
+/* 04. Homepage Icon List */
+.botiga-home-icon-list{
+	grid-gap: 20px !important;
+}
+
+/* 05. Listing (Header, Title, Rating) */
+.botiga-listing-header{
+	position: relative;
+	overflow: hidden;
+	margin: 40px 30px 80px 30px;
+	padding: 180px 50px;
+	border-radius: 35px;
+}
+
+.botiga-listing-header-image{
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.botiga-listing-header-image img{
+	width: 100%;
+	height: 100%;
+  object-fit: cover;
+}
+
+.botiga-listing-header-content{
+	position: relative;
+	z-index: 2;
+	display: flex;
+	grid-gap: 10px;
+	flex-direction: column;
+	
+}
+
+.botiga-listing-header-content h5{
+	margin: 0;
+  color: #b0b0b0;
+  letter-spacing: 2px;
+}
+
+.botiga-listing-header-content h1{
+	margin: 0;
+	color: #fff;
+}
+
+.botiga-listing-header-content p{
+	margin: 0;
+	color: #b0b0b0;
+}
+
+.wc-block-grid__product-rating .star-rating span:before,
+.wc-block-grid__product-rating .wc-block-grid__product-rating__stars span:before{
+	color: #FFA441;
+}
+
+.loop-image-wrap img,
+.woocommerce-product-gallery__image,
+.wc-block-grid__product-image img,
+.woocommerce-product-gallery__image img{
+	border-radius: 35px;
+}
+
+.wc-block-grid__product{
+	display: flex;
+	flex-direction: column;
+}
+
+.wc-block-grid__product > *{
+	order: 2;
+}
+
+.wc-block-grid__product .loop-image-wrap,
+.wc-block-grid__product-rating{
+	order: 1;
+}
+
+.products .price,
+.wc-block-grid__product-price{
+	font-size: 24px;
+	font-weight: bold;
+	color: #0171E2;
+	line-height: 1em;
+}
+
+.products .botiga-wc-loop-product__title,
+.wc-block-grid__product-title{
+	font-size: 24px !important;
+	font-weight: bold !important;
+	margin-bottom: 0 !important;
+}
+
+/* 06. WooCommerce Pages Background */
+.woocommerce-cart .content-wrapper,
+.woocommerce-page .content-wrapper{
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 100px;
+	margin-top: 0;
+	margin-bottom: 60px;
+}
+
+.woocommerce-cart .content-wrapper:after,
+.woocommerce-page .content-wrapper:after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: calc(100vw - 60px);
+	height: 100%;
+  transform: translateX(-50%);
+  left: 50%;
+  background-color: #fff;
+  border-radius: 35px;
+}
+
+/* 07. Product Page */
+.flex-control-nav img{
+	border-radius: 20px;
+}
+
+.product-gallery-summary table.variations tr{
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.product-gallery-summary table.variations .label{
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* 08. Footer Before CTA */
+.botiga-footer-cta{
+	position: relative;
+	overflow: hidden;
+	margin: 80px 30px 80px 30px;
+	padding: 125px 50px;
+	border-radius: 35px;
+}
+
+.botiga-footer-cta-image{
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.botiga-footer-cta-image img{
+	width: 100%;
+	height: 100%;
+  object-fit: cover;
+}
+
+.botiga-footer-cta-content{
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.botiga-footer-cta-content h5{
+	margin: 0 0 10px 0;
+  color: #b0b0b0;
+  letter-spacing: 2px;
+}
+
+.botiga-footer-cta-content h1{
+	margin: 0 0 30px 0;
+	color: #fff;
+}
+
+/* 09. Footer */
+@media(min-width: 1025px) {
+		.bhfb-footer .bhfb-row.bhfb-cols-layout-bigleft.bhfb-cols-3 {
+				grid-template-columns: 2fr 1fr 1fr;
+	}
+}
+
+@media(min-width: 768px) and (max-width: 1024px) {
+	.botiga-footer-links > div:nth-child(1) {
+		min-width: 20vw;
+	}
+		.botiga-footer-links {
+    justify-content: flex-start !important;
+}
+}
+
+@media(max-width: 767px) {
+	.botiga-footer-links > div:nth-child(1) {
+		min-width: 30vw;
+	}
+	
+	.botiga-footer-links {
+    justify-content: flex-start !important;
+}
+}
+
+.bhfb-footer .wp-block-social-links.is-style-logos-only .wp-social-link {
+	padding-bottom: 0;
+}
+
+.footer-widgets .widget-column:first-child .widget{
+	margin-bottom: 0;
+}
+
+.footer-widgets .wp-block-social-links li{
+	padding-bottom: 0;
+}
+
+.botiga-footer-links{
+	grid-gap: 20px !important;
+	align-items: flex-start  !important;
+}
+
+.botiga-footer-links ul{
+	padding-left: 20px;
+  border-left: 1px solid #ddd;
+}
+
+.botiga-footer-links img{
+	vertical-align: baseline;
+}
+
+/* 10. Contact Form */
+.botiga-contact-form .wpforms-field textarea,
+.botiga-contact-form .wpforms-field input{
+	border-width: 0 0 1px 0;
+	border-color: #e6e6e6 !important;
+	padding-left: 0 !important;
+}
+
+.botiga-contact-form .wpforms-field textarea:focus,
+.botiga-contact-form .wpforms-field input:focus{
+	border-color: #0171e2 !important;
+	box-shadow: none !important;
+}
+
+.botiga-contact-form .wpforms-submit{
+	padding-left: 40px !important;
+	padding-right: 40px !important;
+}
+
+/* 11. Newsletter */
+.botiga-newsletter{
+	margin-bottom: 0 !important;
+}
+
+.botiga-newsletter form {
+	position: relative;
+}
+
+.botiga-newsletter .wpforms-field{
+	padding: 0 !important;
+}
+
+.botiga-newsletter .wpforms-field input[type="email"]{
+	font-family: inherit;
+	font-size: 14px;
+	padding-right: 140px !important;
+	border-radius: 35px !important;
+	max-width: 100% !important;
+	border: 2px solid #ddd !important;
+	box-shadow: none !important;
+}
+
+.botiga-newsletter .wpforms-submit-container{
+	padding: 0 !important;
+  position: absolute !important;
+	top: 0;
+	right: 0;
+}
+
+.botiga-newsletter button[type="submit"]{
+	width: 150px;
+	height: 51px;
+}
+
+/* 12. Utilities */
+.botiga-p-0{
+	padding: 0 !important;
+}
+
+.botiga-m-0{
+	margin: 0 !important;
+}
+
+.botiga-mb-0{
+	margin-bottom: 0 !important;
+}
+
+.botiga-mb-10{
+	margin-bottom: 10px !important;
+}
+
+.botiga-mb-15{
+	margin-bottom: 15px !important;
+}
+
+.botiga-mb-20{
+	margin-bottom: 20px !important;
+}
+
+.botiga-mb-30{
+	margin-bottom: 30px !important;
+}
+
+.botiga-mb-50{
+	margin-bottom: 50px !important;
+}
+
+.botiga-dropdown .current-menu-item > a{
+	font-weight: 700;
+}
+
+button, a.button, .wp-block-button__link, input[type="button"], input[type="reset"], input[type="submit"]{
+	letter-spacing: 0;
+	font-weight: 700;
+}
+
+.wp-block-button__link{
+	padding-left: 45px;
+	padding-right: 45px;
+}
+
+.botiga-hero-button .wp-block-button__link{
+	color: #1f1c21 !important;
+	background-color: #fff !important;
+	border-color: #fff !important;
+}
+
+.woocommerce-form-coupon button{
+	height: 51px !important;
+}
+
+.woocommerce-ordering select{
+	background-color: transparent;
+}
+
+/* 13. Responsive */
+@media (max-width: 768px){
+	.botiga-home-ultimate-image{
+			position: relative;
+			bottom: 0;
+			width: 100%;
+			border-radius: 35px;
+	}
+	
+	.botiga-home-features-boxes{
+		padding: 0 !important;
+	}
+	
+	.botiga-home-features-boxes .wp-block-column:before{
+		bottom: 0 !important;
+		border-radius: 0;
+	}
+	
+	.botiga-home-features-boxes .wp-block-column{
+	  border-right: none;
+		border-bottom-width: 2px;
+	}
+	
+	.botiga-footer-links{
+		justify-content: flex-start !important;	
+	}
+	
+	.woocommerce-page .content-wrapper{
+		padding: 15px 50px 40px 50px;
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+
+	.woocommerce-page .content-wrapper:after{
+		width: calc(100vw - 50px);
+	}
+	
+	.botiga-listing-header{
+		padding: 40px 20px;
+		margin-bottom: 40px;
+	}
+
+	.botiga-footer-cta{
+		padding: 40px 20px;
+  	margin-top: 40px;
+		margin-bottom: 40px;
+	}
+}";}

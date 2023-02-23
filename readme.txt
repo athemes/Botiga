@@ -30,6 +30,12 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.0.4 =
+Added - Schema Markup. You might enable this module from Appearance > Theme dashboard > Theme Features.
+Fixed - Mobile Offcanvas: Some options like font-size, line-height, letter-spacing and others not working.
+Fixed - Main menu dropdown direction reversing in a wrong way with large dropdowns.
+Fixed - Elementor Pro widget 'Archive Description' not working to render shop description.
+
 = 2.0.3 =
 Fixed - Mobile menu dropdowns not expanding.
 

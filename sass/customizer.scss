@@ -1889,6 +1889,12 @@ div.customize-section-description{
 	}
 }
 
+.botiga-typography-custom-control{
+	display: flex;
+	grid-gap: 15px;
+	flex-direction: column;
+}
+
 .customize-control-kirki-sortable ul.ui-sortable li{
 	position: relative;
 	overflow: hidden;
@@ -2642,8 +2648,31 @@ a,
 
 #customize-theme-controls {
 	.customize-pane-parent {
-		> #accordion-section-botiga_google_autocomplete_section {
+		> #accordion-section-botiga_google_autocomplete_section,
+		> #accordion-section-botiga_section_product_swatches_swatch_select,
+		> #accordion-section-botiga_section_product_swatches_swatch_color,
+		> #accordion-section-botiga_section_product_swatches_swatch_button,
+		> #accordion-section-botiga_section_product_swatches_swatch_image {
 			display: none !important;
+		}
+	}
+
+	// Remove border bottom from specific options
+	#customize-control-product_swatch_select_background_color,
+	#customize-control-product_swatch_select_background_color_shop_archive,
+	#customize-control-product_swatch_select_background_color_filter_widgets,
+	#customize-control-product_swatch_color_border_color,
+	#customize-control-product_swatch_color_border_color_shop_archive,
+	#customize-control-product_swatch_color_border_color_filter_widgets,
+	#customize-control-product_swatch_button_background_color,
+	#customize-control-product_swatch_button_background_color_shop_archive,
+	#customize-control-product_swatch_button_background_color_filter_widgets,
+	#customize-control-product_swatch_image_border_color,
+	#customize-control-product_swatch_image_border_color_shop_archive,
+	#customize-control-product_swatch_image_border_color_filter_widgets {
+		.botiga-color-control,
+		.botiga-color-group {
+			border-bottom: 0;
 		}
 	}
 }

@@ -21,6 +21,11 @@ function botiga_woocommerce_page_header() {
 	$shop_page_description           			   = get_theme_mod( 'shop_page_description', 1 );
 	$shop_breadcrumbs 							   = get_theme_mod( 'shop_breadcrumbs', 1 );
 
+	// Do not show page header if Elementor is active and has a theme builder template assigned to the shop archive location
+	if( class_exists( 'Botiga_Elementor_Helpers' ) && Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
+		return;
+	}
+
 	//Remove elements
 	add_filter( 'woocommerce_show_page_title', '__return_false' );
 	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
@@ -45,7 +50,7 @@ function botiga_woocommerce_page_header() {
 				do_action( 'botiga_before_shop_archive_title' );
 
 				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) : ?>
-					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+					<h1 class="woocommerce-products-header__title page-title" <?php botiga_schema( 'headline' ); ?>><?php woocommerce_page_title(); ?></h1>
 				<?php endif;
 
 				if( ( $shop_page_description && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {

@@ -990,11 +990,19 @@ p.no-comments {
 		min-width: 85px;
 	}
 
-	.quantity-wrap{
+	.quantity-wrap {
 		flex-shrink: 0;
 		display: flex;
 		justify-content: center;
 		width: 90px;
+	}
+
+	@media(max-width: 575px) {
+		.quantity-wrap {
+			position: absolute;
+			bottom: 30px;
+			right: 0;
+		}
 	}
 
 	div.quantity{
@@ -1682,7 +1690,6 @@ dl.variation {
 				width: 100%;
 				height: 100%;
 				border-radius: 100%;
-				text-indent: -9999px;
 			}
 
 			&:hover,

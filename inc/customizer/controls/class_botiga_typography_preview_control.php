@@ -82,6 +82,18 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 				$props['font-family'] = '"'. $value .'"';
 			}
 
+			$weight_setting = $this->manager->get_setting( $this->options['custom_font'] .'_weight' );
+
+			if ( ! empty( $weight_setting ) ) {
+
+				$value = $weight_setting->value();
+
+				if ( ! empty( $value ) ) {
+					$props['font-weight'] = $value;
+				}
+
+			}
+
 		}
 
 		// font style, line-height, letter-spacing, text-transform, text-decoration

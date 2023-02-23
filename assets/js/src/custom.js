@@ -287,9 +287,8 @@ botiga.navigation = {
 			
 			for(const item of nav_item) {
 				const dropdownToggler = item.querySelectorAll( '.dropdown-symbol' );
-				console.log(dropdownToggler);
+
 				dropdownToggler[0].addEventListener( 'click', function(e){
-					console.log(123);
 					e.stopPropagation();
 
 					const parent = this.parentNode;
@@ -335,6 +334,11 @@ botiga.navigation = {
 		}
 
 		// Reverse vertically
+		// Do not reverse vertically if the menu is in the header
+		if( submenu.closest( '.site-header' ) || submenu.closest( '.bottom-header-row' ) || submenu.closest( '.bhfb-header' ) ) {
+			return false;
+		}
+
 		submenu.classList.remove( 'sub-menu-reverse-vertically' );
 		if( botiga.helpers.isInVerticalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
 			submenu.classList.add( 'sub-menu-reverse-vertically' );
@@ -417,6 +421,13 @@ botiga.desktopOffcanvasNav = {
 			e.preventDefault();
 
 			offcanvas.classList.remove( 'botiga-desktop-offcanvas-show' );
+		} );
+
+		// Close mega menu when clicking outside
+		document.addEventListener( 'click', function(e){
+			if( e.target.closest( '.botiga-desktop-offcanvas-menu' ) === null && offcanvas.querySelector( '.botiga-mega-menu .sub-menu.toggled' ) !== null ) {
+				offcanvas.querySelector( '.botiga-mega-menu .sub-menu.toggled' ).classList.remove( 'toggled' );
+			}
 		} );
 
 	}
@@ -1211,7 +1222,8 @@ botiga.qtyButton = {
 
 	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
 
-		var product = qtyItem.closest('.product');
+		var product  		 = qtyItem.closest('.product'),
+			qtyInput 		 = qtyItem.parentNode.querySelector('.qty');
 
 		if ( product ) {
 			var addToCartButton = product.querySelector( '.add_to_cart_button:not(.single_add_to_cart_button)' );
@@ -1237,7 +1249,7 @@ botiga.qtyButton = {
 			jQuery.post({
 				url: botiga.ajaxurl,
 				data: {
-					action: 'botiga_update_floating_mini_cart_quantity',
+					action: 'botiga_update_mini_cart_quantity',
 					quantity: qtyInput.value,
 					cart_item_key: qtyInput.name,
 				}, 

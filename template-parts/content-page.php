@@ -9,12 +9,12 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php botiga_schema( 'article' ); ?>>
 
 	<?php if ( apply_filters( 'botiga_entry_header', true ) ) : ?>
 	<header class="entry-header">
 		<?php do_action( 'botiga_before_title' ); ?>
-		<?php the_title( '<h1 class="entry-title page-title">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="entry-title page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 	<?php endif; ?>
 
@@ -22,7 +22,7 @@
 
 	<?php do_action( 'botiga_before_page_entry_content' ); ?>
 
-	<div class="entry-content">
+	<div class="entry-content" <?php botiga_schema( 'entry_content' ); ?>>
 		<?php
 
 		do_action( 'botiga_before_page_the_content' );

@@ -632,9 +632,20 @@ $wp_customize->add_setting( 'loop_post_title_custom_font',
 		'sanitize_callback' => 'sanitize_text_field',
 	)
 );
-$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'loop_post_title_custom_font',
+$wp_customize->add_setting( 'loop_post_title_custom_font_weight',
+	array(
+		'default'           => '',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => 'sanitize_text_field',
+	)
+);
+$wp_customize->add_control( new Botiga_Typography_Custom_Control( $wp_customize, 'loop_post_title_custom_font_typograhpy',
 	array(
 		'section'         => 'botiga_section_blog_archives',
+		'settings'        => array(
+			'font-family'   => 'loop_post_title_custom_font',
+			'font-weight'   => 'loop_post_title_custom_font_weight',
+		),
 		'active_callback' => 'botiga_loop_post_title_font_library_custom_and_custom_style',
 		'priority'        => 260,
 	)

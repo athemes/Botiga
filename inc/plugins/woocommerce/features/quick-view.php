@@ -174,7 +174,7 @@ add_action( 'wp_ajax_nopriv_botiga_quick_view_content', 'botiga_quick_view_conte
  */
 function botiga_quick_view_summary_title( $product = null ) { ?>
 	<?php do_action( 'botiga_quick_view_product_title_start' ); ?>
-	<h2 class="product_title entry-title">
+	<h2 class="product_title entry-title" <?php botiga_schema( 'headline' ); ?>>
 		<?php echo esc_html( get_the_title( $product->get_id() ) ); ?>
 	</h2>
 	<?php do_action( 'botiga_quick_view_product_title_end' ); ?>

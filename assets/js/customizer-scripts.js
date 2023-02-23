@@ -1177,6 +1177,39 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
   "use strict";
 
+  var $selectors = $('.botiga-typography-custom-select');
+
+  if ($selectors.length) {
+    $selectors.each(function () {
+      var $selector = $(this);
+      $selector.select2();
+      $selector.on('change', function () {
+        var font = $(this).val();
+
+        var control = _wpCustomizeSettings.controls[$selector.data('control-name')];
+
+        var googleFontWeights = $.map(control.google_fonts, function (obj, index) {
+          if (obj.family === font) {
+            return obj.variants;
+          }
+        });
+        var $weightWrapper = $selector.parent().find('.botiga-typography-custom-weight-select-wrapper');
+        var $weightSelector = $weightWrapper.find('.botiga-typography-custom-weight-select');
+        $weightSelector.empty();
+
+        if (googleFontWeights.length) {
+          $weightWrapper.show();
+          $.each(googleFontWeights, function (index, weight) {
+            $weightSelector.append('<option name="' + weight + '">' + weight + '</option>');
+          });
+          $weightSelector.trigger('change');
+        } else {
+          $weightWrapper.hide();
+        }
+      });
+    });
+  }
+
   $(document).on('botiga-custom-font-update', function (event, control) {
     event.preventDefault();
     var data = [];
@@ -1251,17 +1284,24 @@ jQuery(document).ready(function ($) {
     });
     $textarea.val(JSON.stringify(data)).trigger('change'); // update custom font selectors
 
-    var $selectors = $('.botiga-typography-custom-select');
-
     if ($selectors.length) {
       $selectors.each(function () {
         var $selector = $(this);
-        var controlValue = wp.customize.control($selector.data('customize-setting-link')).setting.get();
-        $selector.find('option').not(':first-child').remove();
-        $.each(data, function (index, option) {
-          var selected = option.name === controlValue ? ' selected="selected"' : '';
-          $selector.append('<option name="' + option.name + '"' + selected + '>' + option.name + '</option>');
+        var $optgroups = $selector.find('optgroup');
+        $optgroups.each(function () {
+          var $optgroup = $(this);
+
+          if ($optgroup.data('type') === 'custom-fonts') {
+            var controlValue = wp.customize.control($selector.data('control-name')).settings['font-family'].get();
+            $optgroup.empty();
+            $.each(data, function (index, option) {
+              var selected = option.name === controlValue ? ' selected="selected"' : '';
+              $optgroup.append('<option name="' + option.name + '"' + selected + '>' + option.name + '</option>');
+            });
+          }
         });
+        $selector.select2('destroy');
+        $selector.select2();
       });
     }
   });
@@ -1371,9 +1411,43 @@ jQuery(document).ready(function ($) {
             });
           });
         } else if (prop === 'custom_font') {
+          var customFontPreview = function customFontPreview(to, type) {
+            var control = wp.customize.control(option + '_typography');
+            var settings = _wpCustomizeSettings.controls[option + '_typography'];
+            var family = control.settings['font-family'].get();
+            var weight = control.settings['font-weight'].get();
+            $preview.css('font-weight', 'normal');
+
+            if (settings && settings.google_fonts) {
+              $.map(settings.google_fonts, function (obj, index) {
+                if (obj.family === family) {
+                  if (type === 'family') {
+                    weight = obj.variants[0];
+                  }
+
+                  var styleId = family.replace(/ /g, '-').toLowerCase() + '-' + weight;
+                  var styleHref = 'https://fonts.googleapis.com/css?family=' + family.replace(/ /g, '+') + ':' + weight + '&display=swap';
+
+                  if ($('#' + styleId).length === 0) {
+                    $('head').append('<link id="' + styleId + '" href="' + styleHref + '" rel="stylesheet">');
+                  }
+
+                  $preview.css('font-weight', weight);
+                }
+              });
+            }
+
+            $preview.css('font-family', to);
+          };
+
           wp.customize(option, function (value) {
             value.bind(function (to) {
-              $preview.css('font-family', to);
+              customFontPreview(to, 'family');
+            });
+          });
+          wp.customize(option + '_weight', function (value) {
+            value.bind(function (to) {
+              customFontPreview(to, 'weight');
             });
           });
         } else {

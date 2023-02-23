@@ -151,7 +151,7 @@ function botiga_dashboard_settings()
 		'icon'   => 'https://plugins.svn.wordpress.org/athemes-blocks/assets/icon-256x256.png',
 		'banner' => 'https://plugins.svn.wordpress.org/athemes-blocks/assets/banner-772x250.png',
 		'title'  => esc_html__('aThemes Blocks', 'botiga'),
-		'desc'   => esc_html__('Extend the Gutenberg Block Editor with additional functionality. You can extend the Gutenberg block editor with additional functionality.', 'botiga'),
+		'desc'   => esc_html__('Extend the Gutenberg Block Editor with additional functionality.', 'botiga'),
 	);
 
 	$settings['plugins'][] = array(
@@ -159,7 +159,7 @@ function botiga_dashboard_settings()
 		'path'   => 'wpforms-lite/wpforms.php',
 		'icon'   => 'https://plugins.svn.wordpress.org/wpforms-lite/assets/icon-256x256.png',
 		'banner' => 'https://plugins.svn.wordpress.org/wpforms-lite/assets/banner-772x250.png',
-		'title'  => esc_html__('WP Forms', 'botiga'),
+		'title'  => esc_html__('WPForms', 'botiga'),
 		'desc'   => esc_html__('The best WordPress contact form plugin. Drag & Drop online form builder that helps you create beautiful contact forms + custom forms in minutes.', 'botiga'),
 	);
 
@@ -300,6 +300,13 @@ function botiga_dashboard_settings()
 		'desc'       => esc_html__('Set the scroll to top type, icon, position and styles.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_scrolltotop', admin_url('customize.php')),
+	);
+
+	$settings['features'][] = array(
+		'module' => 'schema-markup',
+		'type'   => 'free',
+		'title'  => esc_html__('Schema Markup', 'botiga'),
+		'desc'   => esc_html__('Add the schema structured data to your website.', 'botiga'),
 	);
 
 	$settings['features'][] = array(
@@ -464,7 +471,7 @@ function botiga_dashboard_settings()
 		'module'     => 'quick-links',
 		'type'       => 'pro',
 		'title'      => esc_html__('Quick Links', 'botiga'),
-		'desc'       => esc_html__('Floating quick links bar (contact, social, ect).', 'botiga'),
+		'desc'       => esc_html__('Floating quick links bar (contact, social, etc).', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_quicklinks', admin_url('customize.php')),
 		'docs_link'  => 'https://docs.athemes.com/article/botiga-pro-quick-links/'
