@@ -1165,7 +1165,7 @@ ul.wc-block-grid__products .button-layout3.button-with-quantity {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -55px;
+  margin-top: 0;
 }
 
 ul.products .button-layout3.button-with-quantity .quantity,
@@ -2119,6 +2119,10 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
 .single-product div.product .woocommerce-product-gallery .flex-control-thumbs li img:hover, .single-product div.product .woocommerce-product-gallery .flex-control-thumbs li img.flex-active {
   opacity: 1;
   border: 1px solid #212121;
+}
+
+.single-product div.product.sold-individually form.cart .quantity {
+  display: none;
 }
 
 .single-product.no-single-breadcrumbs .gallery-showcase,

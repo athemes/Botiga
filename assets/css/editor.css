@@ -3628,7 +3628,7 @@ div.editor-styles-wrapper ul.wc-block-grid__products .button-layout3.button-with
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -55px;
+  margin-top: 0;
 }
 
 div.editor-styles-wrapper ul.products .button-layout3.button-with-quantity .quantity,
