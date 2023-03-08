@@ -85,6 +85,7 @@ function botiga_shop_page_header_category_links() {
 	
 	?>
 
+	</div>
 	<div class="container">
 
 		<?php 
