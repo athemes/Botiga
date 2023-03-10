@@ -2121,7 +2121,7 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
   border: 1px solid #212121;
 }
 
-.single-product div.product.sold-individually form.cart .quantity {
+.single-product div.product.sold-individually form.cart .quantity, .single-product div.product.has-only-one-instock form.cart .quantity {
   display: none;
 }
 

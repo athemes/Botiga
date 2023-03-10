@@ -54,7 +54,8 @@
 			}
 		}
 
-		&.sold-individually {
+		&.sold-individually,
+		&.has-only-one-instock {
 			form.cart {
 				.quantity {
 					display: none;
