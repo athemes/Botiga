@@ -619,6 +619,20 @@ function botiga_woocommerce_post_class( $classes, $product ) {
 add_filter( 'woocommerce_post_class', 'botiga_woocommerce_post_class', 10, 2 );
 
 /**
+ * Remove the quantity input from the cart page for products that have either only one instock or sold individually option enabled
+ */
+function botiga_cart_item_quantity( $product_quantity_output, $cart_item_key, $cart_item ) {
+	$product = wc_get_product( $cart_item['product_id'] );
+
+	if( $product->is_sold_individually() ) {
+		return '';
+	}
+
+	return $product_quantity_output;
+}
+add_filter( 'woocommerce_cart_item_quantity', 'botiga_cart_item_quantity', 10, 3 );
+
+/**
  * Header Mini Cart
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/mini-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
