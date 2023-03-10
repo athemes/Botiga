@@ -408,6 +408,13 @@
 	.quantity {
 		width: calc(100% - 116px);
 	}
+
+	.woocommerce-cart-form {
+		.quantity {
+			width: 100%;
+			max-width: 85px;
+		}
+	}
 }
 
 /**

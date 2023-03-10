@@ -930,6 +930,10 @@ div.editor-styles-wrapper .woocommerce-cart-form .quantity .qty {
   div.editor-styles-wrapper .quantity {
     width: calc(100% - 116px);
   }
+  div.editor-styles-wrapper .woocommerce-cart-form .quantity {
+    width: 100%;
+    max-width: 85px;
+  }
 }
 
 div.editor-styles-wrapper .star-rating {
@@ -3243,6 +3247,10 @@ div.editor-styles-wrapper .button-layout4 a {
 
 div.editor-styles-wrapper .button-layout3 .wc-forward {
   margin-left: 5px;
+}
+
+div.editor-styles-wrapper .button-layout3.loop-button-wrap:empty {
+  display: none !important;
 }
 
 div.editor-styles-wrapper .button-layout2 .wc-forward {

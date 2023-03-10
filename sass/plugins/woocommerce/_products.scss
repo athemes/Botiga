@@ -247,6 +247,10 @@ ul.products {
 	.wc-forward {
 		margin-left: 5px;
 	}
+
+	&.loop-button-wrap:empty {
+		display: none !important;
+	}
 }
 .button-layout2 {
 	.wc-forward {

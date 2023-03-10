@@ -770,6 +770,10 @@ ul.products li.product .wc-block-grid__product-link {
   margin-left: 5px;
 }
 
+.button-layout3.loop-button-wrap:empty {
+  display: none !important;
+}
+
 .button-layout2 .wc-forward {
   margin-top: 8px;
   display: block;
@@ -5286,6 +5290,10 @@ form.woocommerce-checkout {
 @media (min-width: 992px) and (max-width: 1024px) {
   .quantity {
     width: calc(100% - 116px);
+  }
+  .woocommerce-cart-form .quantity {
+    width: 100%;
+    max-width: 85px;
   }
 }
 
