@@ -16,6 +16,17 @@ class Botiga_Header_Footer_Builder {
     private static $instance;
 
     /**
+     * Properties
+     */
+    public $desktop_components;
+    public $mobile_components;
+    public $footer_components;
+    public $header_upsell_components;
+    public $footer_upsell_components;
+    public $header_rows;
+    public $footer_rows;
+
+    /**
      * Initiator
      */
     public static function get_instance() {

@@ -18,6 +18,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		private static $instance;
 
 		/**
+		 * Properties
+		 */
+		public $customizer_js;
+		public $dynamic_css_uri;
+		public $dynamic_css_path;
+
+		/**
 		 * Initiator
 		 */
 		public static function get_instance() {
