@@ -303,10 +303,11 @@ function botiga_dashboard_settings()
 	);
 
 	$settings['features'][] = array(
-		'module' => 'schema-markup',
-		'type'   => 'free',
-		'title'  => esc_html__('Schema Markup', 'botiga'),
-		'desc'   => esc_html__('Add the schema structured data to your website.', 'botiga'),
+		'module' 	=> 'schema-markup',
+		'type'   	=> 'free',
+		'title'  	=> esc_html__('Schema Markup', 'botiga'),
+		'desc'      => esc_html__('Add the schema structured data to your website.', 'botiga'),
+		'docs_link' => 'https://docs.athemes.com/article/schema-markup/'
 	);
 
 	$settings['features'][] = array(

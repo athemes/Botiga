@@ -602,6 +602,37 @@ function botiga_store_notice_add_shortcode_support( $notice ) {
 add_filter( 'woocommerce_demo_store', 'botiga_store_notice_add_shortcode_support' );
 
 /**
+ * Identify products with manage stock and only one instock
+ * This is needed because since WooCommerce 7.4.0 the quantity input is automatically hidden when the product has only one instock or is defined to "Limit purchases to 1 item per order"
+ */
+function botiga_woocommerce_post_class( $classes, $product ) {
+	if( $product->get_manage_stock() ) {
+		$classes[] = 'has-manage-stock';
+
+		if( $product->get_stock_quantity() == 1 ) {
+			$classes[] = 'has-only-one-instock';
+		}
+	}
+
+	return $classes;
+}
+add_filter( 'woocommerce_post_class', 'botiga_woocommerce_post_class', 10, 2 );
+
+/**
+ * Remove the quantity input from the cart page for products that have either only one instock or sold individually option enabled
+ */
+function botiga_cart_item_quantity( $product_quantity_output, $cart_item_key, $cart_item ) {
+	$product = wc_get_product( $cart_item['product_id'] );
+
+	if( $product->is_sold_individually() ) {
+		return '';
+	}
+
+	return $product_quantity_output;
+}
+add_filter( 'woocommerce_cart_item_quantity', 'botiga_cart_item_quantity', 10, 3 );
+
+/**
  * Header Mini Cart
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/mini-cart.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

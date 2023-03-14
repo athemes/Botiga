@@ -247,6 +247,10 @@ ul.products {
 	.wc-forward {
 		margin-left: 5px;
 	}
+
+	&.loop-button-wrap:empty {
+		display: none !important;
+	}
 }
 .button-layout2 {
 	.wc-forward {
@@ -605,7 +609,7 @@ ul.wc-block-grid__products {
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
-		margin-top: -55px;
+		margin-top: 0;
 		
 		.quantity {
 			height: 45px;

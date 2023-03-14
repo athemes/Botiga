@@ -910,7 +910,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
               if (section === 'botiga_section_hb_wrapper' || section === 'botiga_section_fb_wrapper') {
                 $('.botiga-bhfb-' + self.currentBuilderType).find('.botiga-bhfb-above-row .botiga-bhfb-area').trigger('click');
-                $('.botiga-bhfb-elements').removeClass('show');
+                setTimeout(function () {
+                  $('.botiga-bhfb-elements').removeClass('show');
+                }, 200);
               }
             }, 100);
           });

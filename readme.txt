@@ -30,6 +30,13 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.0.5 =
+Fixed - Customizer: Images select control conflicting with ACF plugin.
+Fixed - Header Builder (Customizer Tablet Mode): Components popup is wrong opening when you navigate trough 'Global Header' sections.
+Fixed - Header Builder Columns: Horizontal alignment media querie breakpoint adjusted from 992px to 1025px.
+Fixed - Cart: Quantity style issue between screen size 992px and 1024px.
+Fixed - Quantity field not hiding when product is sold individually since WooCommerce 7.4.0.
+
 = 2.0.4 =
 Added - Schema Markup. You might enable this module from Appearance > Theme dashboard > Theme Features.
 Fixed - Mobile Offcanvas: Some options like font-size, line-height, letter-spacing and others not working.

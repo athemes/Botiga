@@ -524,6 +524,11 @@ span.delete:hover {
 	grid-gap: 20px;
 	flex-wrap: wrap;
 	margin-top: 7px;
+
+	&:before,
+	&:after {
+		content: none !important;
+	}
 }
 
 .customize-control-title {
