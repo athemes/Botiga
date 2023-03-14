@@ -44,8 +44,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.builderCustomColumns();
       this.builderColumnsLayout();
       this.footerCustomizerOptions();
-      this.headerPresets(); // this.extraNavigation();
-
+      this.headerPresets();
+      this.extraNavigation();
       this.showHideBuilder();
       this.showHideBuilderTop();
     },
@@ -153,7 +153,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this; // Current Device.      
 
 
-      $(' .wp-full-overlay-footer .devices button, .botiga-devices-preview button').on('click', function () {
+      $('.wp-full-overlay-footer .devices button, .botiga-devices-preview button').on('click', function () {
         var device = $(this).attr('data-device');
 
         if (device === 'tablet') {
@@ -1218,9 +1218,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     extraNavigation: function extraNavigation() {
       var _this = this;
 
-      wp.customize.panel('botiga_panel_footer').expanded.bind(function (is_active) {
-        if (is_active) {
-          wp.customize.section('botiga_section_fb_wrapper').focus();
+      wp.customize.section('botiga_section_hb_mobile_offcanvas').expanded.bind(function (is_active) {
+        if (!is_active) {
+          return false;
+        }
+
+        var currentDevice = $('.wp-full-overlay-footer .devices button.active').data('device');
+
+        if (currentDevice === 'desktop') {
+          $('.wp-full-overlay-footer .devices button[data-device="tablet"]').trigger('click');
         }
       });
     },
