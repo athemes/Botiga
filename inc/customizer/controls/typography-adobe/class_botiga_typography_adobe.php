@@ -16,29 +16,32 @@ class Botiga_Typography_Adobe_Control extends WP_Customize_Control {
 			parent::__construct( $manager, $id, $args );
 			
             $kits = get_option( 'botiga_adobe_fonts_kits' );
-            $kits[ 'system_default' ] = array(
-                'enable' => 1,
-                'project_name' => 'System Default',
-                'families' => array(
-                    array(
-                        'name' => 'System Default',
-                        'css_name' => array( 'system-default' ),
-                        'css_stack' => '"system-default", sans-serif',
-                        'variations' => array( 'n4', 'n5', 'n8' )
+
+            if( $kits !== false ) {
+                $kits[ 'system_default' ] = array(
+                    'enable' => 1,
+                    'project_name' => 'System Default',
+                    'families' => array(
+                        array(
+                            'name' => 'System Default',
+                            'css_name' => array( 'system-default' ),
+                            'css_stack' => '"system-default", sans-serif',
+                            'variations' => array( 'n4', 'n5', 'n8' )
+                        )
                     )
-                )
-            );
+                );
 
-            $this->kits = $kits;
+                $this->kits = $kits;
 
-            $families = array();
-            foreach( $this->kits as $kit_id => $project ) { 
-                foreach( $project[ 'families' ] as $family ) {
-                    array_push( $families, $family );
+                $families = array();
+                foreach( $this->kits as $kit_id => $project ) { 
+                    foreach( $project[ 'families' ] as $family ) {
+                        array_push( $families, $family );
+                    }
                 }
-            }
 
-            $this->families = $families;
+                $this->families = $families;
+            }
 		}
 
 		/**
