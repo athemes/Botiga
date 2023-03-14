@@ -18,6 +18,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		private static $instance;
 
 		/**
+		 * Properties
+		 */
+		public $customizer_js;
+		public $dynamic_css_uri;
+		public $dynamic_css_path;
+
+		/**
 		 * Initiator
 		 */
 		public static function get_instance() {
@@ -1109,7 +1116,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if( $single_size_chart ) {
 				$css .= $this->get_background_color_css( 'content_cards_background', '#f2f2f2', '.botiga-product-size-chart-modal-inner' );
 				$css .= $this->get_background_color_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
-				$css .= $this->get_color_css( 'button_color', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
+				$css .= $this->get_color_css( 'button_color', '#FFF', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
 				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab.active' );
 				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab', 0.4 );
 				$css .= $this->get_color_css( 'color_heading_4', '#212121', '.botiga-product-size-chart-modal-title' );

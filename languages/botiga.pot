@@ -465,7 +465,7 @@ msgstr ""
 msgid "System default"
 msgstr ""
 
-#: inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php:81, inc/dashboard/class-dashboard-settings.php:325
+#: inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php:81, inc/dashboard/class-dashboard-settings.php:326
 msgid "Custom Fonts"
 msgstr ""
 
@@ -1744,7 +1744,7 @@ msgstr ""
 msgid "Image zoom effects"
 msgstr ""
 
-#: inc/customizer/options/woocommerce-single.php:170, inc/dashboard/class-dashboard-settings.php:463
+#: inc/customizer/options/woocommerce-single.php:170, inc/dashboard/class-dashboard-settings.php:464
 msgid "Breadcrumbs"
 msgstr ""
 
@@ -2124,7 +2124,7 @@ msgstr ""
 msgid "Set the title and upload logo."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:184, inc/dashboard/class-dashboard-settings.php:192, inc/dashboard/class-dashboard-settings.php:200, inc/dashboard/class-dashboard-settings.php:209, inc/dashboard/class-dashboard-settings.php:220, inc/dashboard/class-dashboard-settings.php:228, inc/dashboard/class-dashboard-settings.php:236, inc/dashboard/class-dashboard-settings.php:245, inc/dashboard/class-dashboard-settings.php:253, inc/dashboard/class-dashboard-settings.php:261, inc/dashboard/class-dashboard-settings.php:269, inc/dashboard/class-dashboard-settings.php:277, inc/dashboard/class-dashboard-settings.php:285, inc/dashboard/class-dashboard-settings.php:293, inc/dashboard/class-dashboard-settings.php:301, inc/dashboard/class-dashboard-settings.php:317, inc/dashboard/class-dashboard-settings.php:327, inc/dashboard/class-dashboard-settings.php:336, inc/dashboard/class-dashboard-settings.php:344, inc/dashboard/class-dashboard-settings.php:352, inc/dashboard/class-dashboard-settings.php:360, inc/dashboard/class-dashboard-settings.php:368, inc/dashboard/class-dashboard-settings.php:378, inc/dashboard/class-dashboard-settings.php:389, inc/dashboard/class-dashboard-settings.php:399, inc/dashboard/class-dashboard-settings.php:409, inc/dashboard/class-dashboard-settings.php:419, inc/dashboard/class-dashboard-settings.php:429, inc/dashboard/class-dashboard-settings.php:455, inc/dashboard/class-dashboard-settings.php:465, inc/dashboard/class-dashboard-settings.php:475, inc/dashboard/class-dashboard-settings.php:485, inc/dashboard/class-dashboard-settings.php:495, inc/dashboard/class-dashboard-settings.php:505
+#: inc/dashboard/class-dashboard-settings.php:184, inc/dashboard/class-dashboard-settings.php:192, inc/dashboard/class-dashboard-settings.php:200, inc/dashboard/class-dashboard-settings.php:209, inc/dashboard/class-dashboard-settings.php:220, inc/dashboard/class-dashboard-settings.php:228, inc/dashboard/class-dashboard-settings.php:236, inc/dashboard/class-dashboard-settings.php:245, inc/dashboard/class-dashboard-settings.php:253, inc/dashboard/class-dashboard-settings.php:261, inc/dashboard/class-dashboard-settings.php:269, inc/dashboard/class-dashboard-settings.php:277, inc/dashboard/class-dashboard-settings.php:285, inc/dashboard/class-dashboard-settings.php:293, inc/dashboard/class-dashboard-settings.php:301, inc/dashboard/class-dashboard-settings.php:318, inc/dashboard/class-dashboard-settings.php:328, inc/dashboard/class-dashboard-settings.php:337, inc/dashboard/class-dashboard-settings.php:345, inc/dashboard/class-dashboard-settings.php:353, inc/dashboard/class-dashboard-settings.php:361, inc/dashboard/class-dashboard-settings.php:369, inc/dashboard/class-dashboard-settings.php:379, inc/dashboard/class-dashboard-settings.php:390, inc/dashboard/class-dashboard-settings.php:400, inc/dashboard/class-dashboard-settings.php:410, inc/dashboard/class-dashboard-settings.php:420, inc/dashboard/class-dashboard-settings.php:430, inc/dashboard/class-dashboard-settings.php:456, inc/dashboard/class-dashboard-settings.php:466, inc/dashboard/class-dashboard-settings.php:476, inc/dashboard/class-dashboard-settings.php:486, inc/dashboard/class-dashboard-settings.php:496, inc/dashboard/class-dashboard-settings.php:506
 msgid "Customize"
 msgstr ""
 
@@ -2168,7 +2168,7 @@ msgstr ""
 msgid "Footer Copyright"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:235, inc/dashboard/class-dashboard-settings.php:388
+#: inc/dashboard/class-dashboard-settings.php:235, inc/dashboard/class-dashboard-settings.php:389
 msgid "Set the copyright text, layout and styles."
 msgstr ""
 
@@ -2232,215 +2232,215 @@ msgstr ""
 msgid "Add the schema structured data to your website."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:315, inc/modules/adobe-typekit/customizer/options.php:9
+#: inc/dashboard/class-dashboard-settings.php:316, inc/modules/adobe-typekit/customizer/options.php:9
 msgid "Adobe Fonts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:316
+#: inc/dashboard/class-dashboard-settings.php:317
 msgid "Set and use Adobe Fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:326
+#: inc/dashboard/class-dashboard-settings.php:327
 msgid "Upload your own custom fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:334, inc/dashboard/html-home.php:163
+#: inc/dashboard/class-dashboard-settings.php:335, inc/dashboard/html-home.php:163
 msgid "Shop Header Styles"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:335
+#: inc/dashboard/class-dashboard-settings.php:336
 msgid "Set the shop header colors, spacing and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:342
+#: inc/dashboard/class-dashboard-settings.php:343
 msgid "More Single Product Gallery Styles"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:343
+#: inc/dashboard/class-dashboard-settings.php:344
 msgid "Set the gallery slideshow layout and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:350
+#: inc/dashboard/class-dashboard-settings.php:351
 msgid "Single Product Tab Styles"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:351
+#: inc/dashboard/class-dashboard-settings.php:352
 msgid "Set the tab layout, position, alignment and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:358
+#: inc/dashboard/class-dashboard-settings.php:359
 msgid "Shop Sidebar Layouts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:359
+#: inc/dashboard/class-dashboard-settings.php:360
 msgid "Set the shop sidebar layout, position and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:366
+#: inc/dashboard/class-dashboard-settings.php:367
 msgid "Distraction Free Checkout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:367
+#: inc/dashboard/class-dashboard-settings.php:368
 msgid "Increase your store conversion rate with the distraction free checkout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:376
+#: inc/dashboard/class-dashboard-settings.php:377
 msgid "Google Autocomplete"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:377
+#: inc/dashboard/class-dashboard-settings.php:378
 msgid "Help customers autocomplete their addresses on checkout with Google Maps API."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:387
+#: inc/dashboard/class-dashboard-settings.php:388
 msgid "More Footer Copyright Elements"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:397
+#: inc/dashboard/class-dashboard-settings.php:398
 msgid "Quantity Step Control"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:398
+#: inc/dashboard/class-dashboard-settings.php:399
 msgid "Set the min, max, step and default preset from all quantity inputs."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:407, inc/dashboard/html-home.php:159
+#: inc/dashboard/class-dashboard-settings.php:408, inc/dashboard/html-home.php:159
 msgid "Mega Menu"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:408
+#: inc/dashboard/class-dashboard-settings.php:409
 msgid "Create beautiful and unique mega menus."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:417
+#: inc/dashboard/class-dashboard-settings.php:418
 msgid "Wishlist"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:418
+#: inc/dashboard/class-dashboard-settings.php:419
 msgid "Your customers can save their favorite products to find them easily when they're ready to buy."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:427
+#: inc/dashboard/class-dashboard-settings.php:428
 msgid "Modal Popup"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:428
+#: inc/dashboard/class-dashboard-settings.php:429
 msgid "Displays a modal popup to highlight any content. Display conditions are available."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:437
+#: inc/dashboard/class-dashboard-settings.php:438
 msgid "Single Post Table of Contents"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:438
+#: inc/dashboard/class-dashboard-settings.php:439
 msgid "Display a table of contents inside your blog posts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:445
+#: inc/dashboard/class-dashboard-settings.php:446
 msgid "Login Popup"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:446
+#: inc/dashboard/class-dashboard-settings.php:447
 msgid "Display the login/register form inside a popup."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:453, inc/dashboard/html-home.php:166
+#: inc/dashboard/class-dashboard-settings.php:454, inc/dashboard/html-home.php:166
 msgid "Custom Sidebars"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:454
+#: inc/dashboard/class-dashboard-settings.php:455
 msgid "Create any number of custom sidebars."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:464
+#: inc/dashboard/class-dashboard-settings.php:465
 msgid "Set the breadcrumb engine, spacing and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:473
+#: inc/dashboard/class-dashboard-settings.php:474
 msgid "Quick Links"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:474
+#: inc/dashboard/class-dashboard-settings.php:475
 msgid "Floating quick links bar (contact, social, etc)."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:483
+#: inc/dashboard/class-dashboard-settings.php:484
 msgid "Product Swatches"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:484
+#: inc/dashboard/class-dashboard-settings.php:485
 msgid "Enable your customers to see all the available color, size, and other options as beautiful product swatches."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:493
+#: inc/dashboard/class-dashboard-settings.php:494
 msgid "Single Product Sticky Add to Cart"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:494
+#: inc/dashboard/class-dashboard-settings.php:495
 msgid "Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:503
+#: inc/dashboard/class-dashboard-settings.php:504
 msgid "Single Product Advanced Reviews"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:504
+#: inc/dashboard/class-dashboard-settings.php:505
 msgid "Replace the default WooCommerce reviews workflow and style with a modern and intuitive star rating reviews."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:513
+#: inc/dashboard/class-dashboard-settings.php:514
 msgid "Single Product Size Chart"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:514
+#: inc/dashboard/class-dashboard-settings.php:515
 msgid "Add custom size charts to your products, e.g. size charts for clothes, shoes, bags, or jewelry."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:515
+#: inc/dashboard/class-dashboard-settings.php:516
 msgid "Size Charts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:523
+#: inc/dashboard/class-dashboard-settings.php:524
 msgid "Product Linked Variations"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:524
+#: inc/dashboard/class-dashboard-settings.php:525
 msgid "Allows users to connect a group of any product types together by attribute(s) while they can still be managed as separate products."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:525
+#: inc/dashboard/class-dashboard-settings.php:526
 msgid "Linked Variations"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:533
+#: inc/dashboard/class-dashboard-settings.php:534
 msgid "Product Video Gallery"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:534
+#: inc/dashboard/class-dashboard-settings.php:535
 msgid "Add videos to your products along with the image gallery. Featured videos to display in the shop catalog page are available as well."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:541
+#: inc/dashboard/class-dashboard-settings.php:542
 msgid "Product Variations Gallery"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:542
+#: inc/dashboard/class-dashboard-settings.php:543
 msgid "Set different galleries for product each product variation."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:548
+#: inc/dashboard/class-dashboard-settings.php:549
 msgid "Templates Builder"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:549
+#: inc/dashboard/class-dashboard-settings.php:550
 msgid "Create custom templates for shop catalog, single products, 404 page, mega menu, modal popup and hooks."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:550
+#: inc/dashboard/class-dashboard-settings.php:551
 msgid "Build Templates"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:578
+#: inc/dashboard/class-dashboard-settings.php:579
 msgid "Get Pro"
 msgstr ""
 

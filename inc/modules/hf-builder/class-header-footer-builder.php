@@ -16,6 +16,17 @@ class Botiga_Header_Footer_Builder {
     private static $instance;
 
     /**
+     * Properties
+     */
+    public $desktop_components;
+    public $mobile_components;
+    public $footer_components;
+    public $header_upsell_components;
+    public $footer_upsell_components;
+    public $header_rows;
+    public $footer_rows;
+
+    /**
      * Initiator
      */
     public static function get_instance() {
@@ -1146,8 +1157,8 @@ class Botiga_Header_Footer_Builder {
      */
     public static function get_responsive_css( $setting = '', $defaults = array(), $selector = '', $css_prop = '', $unit = 'px', $row = '', $column = '' ) {
         $devices 	= array( 
-            'desktop' 	=> '@media (min-width: 992px)',
-            'tablet'	=> '@media (min-width: 576px) and (max-width:  991px)',
+            'desktop' 	=> '@media (min-width: 1025px)',
+            'tablet'	=> '@media (min-width: 576px) and (max-width: 1024px)',
             'mobile'	=> '@media (max-width: 575px)'
         );
 

@@ -623,6 +623,10 @@ span.delete:hover {
   margin-top: 7px;
 }
 
+.botiga-radio-images-wrapper:before, .botiga-radio-images-wrapper:after {
+  content: none !important;
+}
+
 .customize-control-title {
   color: #3c434a;
   font-size: 13px;

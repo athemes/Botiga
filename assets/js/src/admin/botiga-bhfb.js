@@ -318,6 +318,7 @@
                 _this   = this;
 
             $( document ).on( 'click', '.botiga-bhfb-area:not(.bhfb-available-components)', function(e){
+
                 const 
                     popup = _this.currentBuilder.find( '#botiga-bhfb-elements' ),
                     rect  = $(this)[0].getBoundingClientRect(),
@@ -958,7 +959,10 @@
                                 // Update available components.
                                 if( section === 'botiga_section_hb_wrapper' || section === 'botiga_section_fb_wrapper' ) {
                                     $( '.botiga-bhfb-' + self.currentBuilderType ).find( '.botiga-bhfb-above-row .botiga-bhfb-area' ).trigger( 'click' );
-                                    $( '.botiga-bhfb-elements' ).removeClass( 'show' );
+
+                                    setTimeout(function(){
+                                        $( '.botiga-bhfb-elements' ).removeClass( 'show' );
+                                    }, 200);
                                 }
 
                             }, 100);

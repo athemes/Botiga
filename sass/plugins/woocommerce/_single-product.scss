@@ -53,6 +53,15 @@
 				}
 			}
 		}
+
+		&.sold-individually,
+		&.has-only-one-instock {
+			form.cart {
+				.quantity {
+					display: none;
+				}
+			}
+		}
 	}
 
 	&.no-single-breadcrumbs {
@@ -659,18 +668,6 @@
 		}
 	}
 }
-// .upsells.products {
-// 	& + .related.products,
-// 	& + .recently-viewed-products {
-// 		padding-top: 80px;
-// 	}
-// }
-
-// .related.products {
-// 	& + .recently-viewed-products {
-// 		padding-top: 80px;
-// 	}
-// }
 
 figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 	display: inline-block;
