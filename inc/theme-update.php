@@ -351,3 +351,41 @@ function botiga_migrate_2_1_0_options() {
 
 }
 add_action( 'admin_init', 'botiga_migrate_2_1_0_options' );
+
+/**
+ * Migrate size chart options
+ * @since 2.0.5
+ */
+function botiga_migrate_2_0_5_options() {
+    $flag = get_theme_mod( 'botiga_migrate_2_0_5_options_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+    
+    // Size Chart
+    if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'size-chart' ) ) {
+        
+        // Size Chart Default Colors
+        set_theme_mod( 'single_size_chart_title_text_color', get_theme_mod( 'color_link_default', '#212121' ) );
+        set_theme_mod( 'single_size_chart_title_text_hover', get_theme_mod( 'color_link_hover', '#757575' ) );
+        set_theme_mod( 'single_size_chart_icon_link_color', get_theme_mod( 'color_link_default', '#212121' ) );
+        set_theme_mod( 'single_size_chart_icon_link_color_hover', get_theme_mod( 'color_link_hover', '#757575' ) );
+
+        // Size Chart Popup Colors
+        set_theme_mod( 'single_size_chart_popup_background_color', get_theme_mod( 'content_cards_background', '#F2F2F2' ) );
+        set_theme_mod( 'single_size_chart_popup_close_icon_color', get_theme_mod( 'color_link_default', '#212121' ) );
+        set_theme_mod( 'single_size_chart_popup_close_icon_color_hover', get_theme_mod( 'color_link_hover', '#757575' ) );
+        set_theme_mod( 'single_size_chart_popup_title_color', get_theme_mod( 'color_heading_4', '#212121' ) );
+        set_theme_mod( 'single_size_chart_popup_tabs_color', get_theme_mod( 'color_link_default', '#212121' ) );
+        set_theme_mod( 'single_size_chart_popup_tabs_color_hover', get_theme_mod( 'color_link_hover', '#757575' ) );
+        set_theme_mod( 'single_size_chart_popup_table_headings_background_color', get_theme_mod( 'color_link_default', '#212121' ) );
+        set_theme_mod( 'single_size_chart_popup_table_headings_text_color', get_theme_mod( 'button_color', '#FFF' ) );
+
+    }
+
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_2_0_5_options_flag', true );
+}
+add_action( 'init', 'botiga_migrate_2_0_5_options' );
