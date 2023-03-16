@@ -26,11 +26,41 @@ function botiga_ajax_search_callback() {
     );
     
     if( $orderby === 'price' ) {
-        $args['meta_key'] = '_price';
+        $args[ 'meta_key' ] = '_price';
+        $args[ 'orderby' ]  = 'meta_value_num';
     }
 
     $output = '';
     $qry = new WP_Query( $args );
+
+    // Enable search by SKU
+    $enable_search_by_sku = isset( $_POST['enable_search_by_sku'] ) && $_POST['enable_search_by_sku'] ? true : false;
+    if( $enable_search_by_sku ) {
+        $args = array(
+            'post_type'      => 'product',
+            'posts_per_page' => $posts_per_page,
+            'order'          => $order,
+            'orderby'        => $orderby,
+            'post_status'    => array( 'publish' ),
+            'meta_query'     => array(
+                'relation' => 'OR',
+                array(
+                    'key' => '_sku',
+                    'value' => $search_term,
+                    'compare' => 'LIKE'
+                )
+            )
+        );
+        
+        if( $orderby === 'price' ) {
+            $args[ 'meta_key' ] = '_price';
+            $args[ 'orderby' ]  = 'meta_value_num';
+        }
+
+        $qry_sku = new WP_Query( $args );
+        $qry->posts = array_merge( $qry->posts, $qry_sku->posts );
+        $qry->post_count = count( $qry->posts );
+    }
 
     if( $qry->have_posts() ) :
         $output .= '<h2 class="botiga-ajax-search__heading-title">'. esc_html__( 'Products', 'botiga' ) .'</h2>';

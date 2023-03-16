@@ -1438,6 +1438,26 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'shop_search_ajax_enable_search_by_sku',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_ajax_enable_search_by_sku',
+		array(
+			'label'         	=> esc_html__( 'Enable search by SKU', 'botiga' ),
+			'description'       => esc_html__( 'Return search results based on either product name or SKU.', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_search',
+			'priority'	 		=> 11
+		)
+	)
+);
+
 $wp_customize->add_setting( 
 	'shop_search_ajax_posts_per_page', 
 	array(

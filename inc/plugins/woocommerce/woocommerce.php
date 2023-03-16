@@ -124,20 +124,22 @@ function botiga_woocommerce_scripts_after_custom_js() {
 	// Ajax Search
 	$ajax_search = get_theme_mod( 'shop_search_enable_ajax', 0 );
 	if( $ajax_search ) {
-		$posts_per_page  = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
-		$order 			 = get_theme_mod( 'shop_search_ajax_order', 'asc' );
-		$orderby 		 = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
-		$show_categories = get_theme_mod( 'shop_search_ajax_show_categories', 1 );
+		$posts_per_page  	  = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
+		$order 			 	  = get_theme_mod( 'shop_search_ajax_order', 'asc' );
+		$orderby 		 	  = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
+		$show_categories 	  = get_theme_mod( 'shop_search_ajax_show_categories', 1 );
+		$enable_search_by_sku = get_theme_mod( 'shop_search_ajax_enable_search_by_sku', 0 );
 
 		wp_register_script( 'botiga-ajax-search', get_template_directory_uri() . '/assets/js/botiga-ajax-search.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 		wp_enqueue_script( 'botiga-ajax-search' );
 		wp_localize_script( 'botiga-ajax-search', 'botiga_ajax_search', array(
 			'nonce' => wp_create_nonce( 'botiga-ajax-search-random-nonce' ),
 			'query_args' => array(
-				'posts_per_page'  => apply_filters( 'botiga_shop_ajax_search_posts_per_page', $posts_per_page ),
-				'order' 		  => apply_filters( 'botiga_shop_ajax_search_order', $order ),
-				'orderby' 		  => apply_filters( 'botiga_shop_ajax_search_orderby', $orderby ),
-				'show_categories' => apply_filters( 'botiga_shop_ajax_search_show_categories', $show_categories )
+				'posts_per_page'  	   => apply_filters( 'botiga_shop_ajax_search_posts_per_page', $posts_per_page ),
+				'order' 		  	   => apply_filters( 'botiga_shop_ajax_search_order', $order ),
+				'orderby' 		  	   => apply_filters( 'botiga_shop_ajax_search_orderby', $orderby ),
+				'show_categories' 	   => apply_filters( 'botiga_shop_ajax_search_show_categories', $show_categories ),
+				'enable_search_by_sku' => apply_filters( 'botiga_shop_ajax_search_enable_search_by_sku', $enable_search_by_sku ),
 			)
 		) );
 	}
