@@ -384,6 +384,17 @@ function botiga_migrate_2_0_5_options() {
 
     }
 
+    // Slide Sidebar
+    if( get_theme_mod( 'shop_archive_sidebar' ) === 'sidebar-slide' ) {
+
+        // Background Color
+        set_theme_mod( 'shop_archive_slide_sidebar_background_color', get_theme_mod( 'content_cards_background', '#f5f5f5' ) );
+
+        // Widgets Divider Border Color
+        set_theme_mod( 'shop_archive_slide_sidebar_widgets_divider_color', '#d1d1d1' );
+        
+    }
+
 
     //Set flag
     set_theme_mod( 'botiga_migrate_2_0_5_options_flag', true );

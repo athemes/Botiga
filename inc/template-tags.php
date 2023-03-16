@@ -212,7 +212,9 @@ if ( ! function_exists( 'botiga_single_post_meta' ) ) :
 
 		echo '<div class="entry-meta ' . esc_attr( $location ) . ' delimiter-' . esc_attr( $archive_meta_delimiter ) . '">';
 		foreach( $elements as $element ) {
-			call_user_func( $element );
+			if( function_exists( $element ) ) {
+				call_user_func( $element );
+			}
 		}			
 		echo '</div>';		
 	}

@@ -370,14 +370,17 @@ span.delete:hover {
 .customize-control-botiga-divider-control.botiga-hide-control[style="display: list-item;"],
 .customize-control-botiga-divider-control.botiga-accordion-hide[style="display: list-item;"],
 .customize-control-botiga-toggle-control.botiga-hide-control[style="display: list-item;"],
-.customize-control-botiga-toggle-control.botiga-accordion-hide[style="display: list-item;"] {
+.customize-control-botiga-toggle-control.botiga-accordion-hide[style="display: list-item;"],
+.customize-control-botiga-color-group-control.botiga-hide-control[style="display: list-item;"],
+.customize-control-botiga-color-group-control.botiga-accordion-hide[style="display: list-item;"] {
   display: none !important;
 }
 
 .customize-control-botiga-responsive-slider[style="display: list-item;"],
 .customize-control-botiga-text-control[style="display: list-item;"],
 .customize-control-botiga-divider-control[style="display: list-item;"],
-.customize-control-botiga-toggle-control[style="display: list-item;"] {
+.customize-control-botiga-toggle-control[style="display: list-item;"],
+.customize-control-botiga-color-group-control[style="display: list-item;"] {
   display: block !important;
 }
 

@@ -1831,7 +1831,12 @@
 									output += css2.selector + '{ '+ css2.prop +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; }'; 
 								} else {
 									$.each( css2.prop, function( propkey, propvalue ) {
-										output += css2.selector + '{ '+ propvalue +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; }';
+										console.log( propkey, propvalue );
+										if( typeof propvalue === 'string' ) {
+											output += css2.selector + '{ '+ propvalue +': '+ to + unit +' '+ ( css2.important ? '!important' : '' ) +'; }';
+										} else {
+											output += css2.selector + '{ '+ propvalue.prop +': '+ to + ( propvalue.unit ? propvalue.unit : unit ) +' '+ ( css2.important ? '!important' : '' ) +'; }';
+										}
 									} );
 								}
 							}

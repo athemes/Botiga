@@ -254,7 +254,9 @@ function botiga_loop_product_structure() {
 
 	if ( 'layout1' === $layout ) {
 		foreach ( $elements as $element ) {
-			call_user_func( $element );
+			if( function_exists( $element ) ) {
+				call_user_func( $element );
+			}
 		}
 	} else {
 		$left_elements = array_diff( $elements, array( 'woocommerce_template_loop_price', 'botiga_loop_product_description' ) );
@@ -262,7 +264,9 @@ function botiga_loop_product_structure() {
 		echo '<div class="row">';
 			echo '<div class="col-md-7">';
 			foreach ( $left_elements as $element ) {
-				call_user_func( $element );
+				if( function_exists( $element ) ) {
+					call_user_func( $element );
+				}
 			}		
 			echo '</div>';
 			echo '<div class="col-md-5 loop-price-inline text-sm-left">';
