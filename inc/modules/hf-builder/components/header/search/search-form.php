@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */ ?>
 
-<div class="header-search-form">
+<div class="header-search-form header-search-form-row">
 <?php
     if ( class_exists( 'DGWT_WC_Ajax_Search' ) ) {
         echo do_shortcode('[wcas-search-form]');
