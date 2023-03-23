@@ -749,9 +749,12 @@
     
                             if( columns.length ) {
                                 for( let element of columns ) {
-    
                                     element = _this.getElementData( element );
-    
+
+                                    if( typeof element !== 'object' ) {
+                                        continue;
+                                    }
+
                                     column.append(
                                         '<div class="botiga-bhfb-element">' +
                                             '<a href="#" class="bhfb-button" data-bhfb-id="'+ element.id +'" data-bhfb-focus-section="botiga_section_'+ cprefix +'_component__'+ element.id +'">'+ 
@@ -782,8 +785,11 @@
     
                             if( columns.length ) {
                                 for( let element of columns ) {
-    
                                     element = _this.getElementData( element );
+
+                                    if( typeof element !== 'object' ) {
+                                        continue;
+                                    }
     
                                     column.append(
                                         '<div class="botiga-bhfb-element">' +
@@ -812,6 +818,10 @@
 
                                 for( var element of elements ) {
                                     element = _this.getElementData( element );
+
+                                    if( typeof element !== 'object' ) {
+                                        continue;
+                                    }
 
                                     $( '.botiga-bhfb-area-offcanvas' ).append(
                                         '<div class="botiga-bhfb-element">' +
