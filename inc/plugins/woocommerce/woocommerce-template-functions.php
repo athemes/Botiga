@@ -83,6 +83,7 @@ function botiga_divider_output() {
  * The purpose is avoid third party plugins hooking here
  */
 function botiga_simple_add_to_cart( $product, $prefix = '', $remove_botiga_prefix = false ) {
+	// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 	if ( ! $product->is_purchasable() ) {
 		return;
 	}
@@ -122,6 +123,7 @@ function botiga_simple_add_to_cart( $product, $prefix = '', $remove_botiga_prefi
 		<?php do_action( "{$hook_prefix}after_add_to_cart_form" ); ?>
 	
 	<?php endif;
+	// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 }
 
 /**
@@ -129,6 +131,7 @@ function botiga_simple_add_to_cart( $product, $prefix = '', $remove_botiga_prefi
  * The purpose is avoid third party plugins hooking here
  */
 function botiga_grouped_add_to_cart( $product, $prefix = '', $remove_botiga_prefix = false ) {
+	// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 	$hook_prefix = botiga_get_hook_prefix( $prefix, $remove_botiga_prefix );
 	$products    = array_filter( array_map( 'wc_get_product', $product->get_children() ), 'wc_products_array_filter_visible_grouped' );
 
@@ -245,6 +248,7 @@ function botiga_grouped_add_to_cart( $product, $prefix = '', $remove_botiga_pref
 		<?php do_action( "{$hook_prefix}after_add_to_cart_form" ); ?>
 	
 	<?php endif;
+	// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 }
 
 /**
@@ -252,6 +256,7 @@ function botiga_grouped_add_to_cart( $product, $prefix = '', $remove_botiga_pref
  * The purpose is avoid third party plugins hooking here
  */
 function botiga_variable_add_to_cart( $product, $prefix = '', $remove_botiga_prefix = false ) {
+	// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 	$hook_prefix = botiga_get_hook_prefix( $prefix, $remove_botiga_prefix );
 
 	// Get Available variations?
@@ -344,6 +349,7 @@ function botiga_variable_add_to_cart( $product, $prefix = '', $remove_botiga_pre
 
 	<?php
 	do_action( 'botiga_quick_view_after_add_to_cart_form' );
+	// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 }
 
 
@@ -352,6 +358,7 @@ function botiga_variable_add_to_cart( $product, $prefix = '', $remove_botiga_pre
  * The purpose is avoid third party plugins hooking here
  */
 function botiga_external_add_to_cart( $product, $prefix = '', $remove_botiga_prefix = false ) {
+	// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 	if ( ! $product->add_to_cart_url() ) {
 		return;
 	}
@@ -373,6 +380,7 @@ function botiga_external_add_to_cart( $product, $prefix = '', $remove_botiga_pre
 	</form>
 
 	<?php do_action( "{$hook_prefix}after_add_to_cart_form" );
+	// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 }
 
 /**
@@ -380,11 +388,13 @@ function botiga_external_add_to_cart( $product, $prefix = '', $remove_botiga_pre
  * The purpose is avoid third party plugins hooking here
  */
 function botiga_single_product_price( $hook_prefix = '' ) {
+	// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 	global $product; ?>
 
 	<p class="<?php echo esc_attr( apply_filters( "{$hook_prefix}product_price_class", 'price' ) ); ?>"><?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
 <?php
+	// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.DynamicHooknameFound
 }
 
 function botiga_get_hook_prefix( $prefix, $remove_botiga_prefix ) {

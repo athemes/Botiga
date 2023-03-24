@@ -11,10 +11,11 @@
 function botiga_ajax_search_callback() {
 	check_ajax_referer( 'botiga-ajax-search-random-nonce', 'nonce' );
 
-    $search_term    = isset( $_POST['search_term'] ) ? apply_filters( 'botiga_ajax_search_search_term', sanitize_text_field( wp_unslash( $_POST['search_term'] ) ) ) : '';
-    $posts_per_page = isset( $_POST['posts_per_page'] ) ? absint( $_POST['posts_per_page'] ) : 15;
-    $order          = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'asc';
-    $orderby        = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'title'; 
+    $search_term          = isset( $_POST['search_term'] ) ? apply_filters( 'botiga_ajax_search_search_term', sanitize_text_field( wp_unslash( $_POST['search_term'] ) ) ) : '';
+    $posts_per_page       = isset( $_POST['posts_per_page'] ) ? absint( $_POST['posts_per_page'] ) : 15;
+    $order                = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'asc';
+    $orderby              = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'title'; 
+    $enable_search_by_sku = isset( $_POST['enable_search_by_sku'] ) && sanitize_text_field( wp_unslash( $_POST['enable_search_by_sku'] ) ) ? true : false;
     
     $args = array(
         'post_type'      => 'product',
@@ -34,7 +35,6 @@ function botiga_ajax_search_callback() {
     $qry = new WP_Query( $args );
 
     // Enable search by SKU
-    $enable_search_by_sku = isset( $_POST['enable_search_by_sku'] ) && $_POST['enable_search_by_sku'] ? true : false;
     if( $enable_search_by_sku ) {
         $args = array(
             'post_type'      => 'product',
