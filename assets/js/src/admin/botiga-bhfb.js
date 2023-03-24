@@ -39,7 +39,7 @@
             this.footerCustomizerOptions();
             this.headerPresets();
 
-            // this.extraNavigation();
+            this.extraNavigation();
             
 
             this.showHideBuilder();
@@ -187,7 +187,7 @@
                 _this  = this;
 
             // Current Device.      
-            $(' .wp-full-overlay-footer .devices button, .botiga-devices-preview button').on('click', function() {
+            $( '.wp-full-overlay-footer .devices button, .botiga-devices-preview button' ).on('click', function() {
                 let device = $(this).attr('data-device');
 
                 if( device === 'tablet' ) {
@@ -749,9 +749,12 @@
     
                             if( columns.length ) {
                                 for( let element of columns ) {
-    
                                     element = _this.getElementData( element );
-    
+
+                                    if( typeof element !== 'object' ) {
+                                        continue;
+                                    }
+
                                     column.append(
                                         '<div class="botiga-bhfb-element">' +
                                             '<a href="#" class="bhfb-button" data-bhfb-id="'+ element.id +'" data-bhfb-focus-section="botiga_section_'+ cprefix +'_component__'+ element.id +'">'+ 
@@ -782,8 +785,11 @@
     
                             if( columns.length ) {
                                 for( let element of columns ) {
-    
                                     element = _this.getElementData( element );
+
+                                    if( typeof element !== 'object' ) {
+                                        continue;
+                                    }
     
                                     column.append(
                                         '<div class="botiga-bhfb-element">' +
@@ -812,6 +818,10 @@
 
                                 for( var element of elements ) {
                                     element = _this.getElementData( element );
+
+                                    if( typeof element !== 'object' ) {
+                                        continue;
+                                    }
 
                                     $( '.botiga-bhfb-area-offcanvas' ).append(
                                         '<div class="botiga-bhfb-element">' +
@@ -1305,11 +1315,18 @@
         extraNavigation: function() {
             const _this = this;
 
-            wp.customize.panel( 'botiga_panel_footer' ).expanded.bind(function( is_active ){
-                if( is_active ) {
-                    wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
+            wp.customize.section( 'botiga_section_hb_mobile_offcanvas' ).expanded.bind(function( is_active ){
+                if( ! is_active ) {
+                    return false;
+                }
+
+                const currentDevice = $( '.wp-full-overlay-footer .devices button.active' ).data( 'device' );
+
+                if( currentDevice === 'desktop' ) {
+                    $( '.wp-full-overlay-footer .devices button[data-device="tablet"]' ).trigger( 'click' );
                 }
             });
+
         },
 
         headerPresets: function() {

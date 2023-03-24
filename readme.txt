@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.0.1
+Version: 2.0.6
 Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: 1.0.0
@@ -15,7 +15,7 @@ A starter theme called Botiga.
 
 == Description ==
 
-Launch your online store with a beautiful theme that is Gutenberg-ready. We proudly introduce Botiga, with a modern and clean design that will effortlessly match your brand. Botiga has been developed from the ground up with clean code for optimal performance. You’ll get a mobile-optimized theme that looks and works great on any device and comes with plenty of customization options as well. Discover the theme that will transform your online business.
+Launch your store with Botiga. A beautiful theme that is optimized for both the block editor and Elementor. We proudly introduce Botiga, with a modern and clean design that will effortlessly match your brand. Botiga has been developed from the ground up with clean code for optimal performance. You’ll get a mobile-optimized theme that looks and works great on any device and comes with plenty of customization options as well. Discover the theme that will transform your online business.
 
 == Installation ==
 
@@ -30,6 +30,13 @@ Launch your online store with a beautiful theme that is Gutenberg-ready. We prou
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.0.6 =
+Added - New customization options for store notice.
+Added - New option to search by SKU in the Ajax Search feature.
+Changed - Header Builder Customizer: Automatically switch to mobile/tablet customizer mode when 'Mobile Header' shortcut nav item is clicked.
+Fixed - Mobile iOS: Header search form getting rounded when we focus the input.
+Fixed - Header Builder: When WooCommerce is not being used, components are getting 'undefined' value.
+
 = 2.0.5 =
 Fixed - Customizer: Images select control conflicting with ACF plugin.
 Fixed - Header Builder (Customizer Tablet Mode): Components popup is wrong opening when you navigate trough 'Global Header' sections.

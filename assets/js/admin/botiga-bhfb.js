@@ -8,6 +8,8 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -44,8 +46,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.builderCustomColumns();
       this.builderColumnsLayout();
       this.footerCustomizerOptions();
-      this.headerPresets(); // this.extraNavigation();
-
+      this.headerPresets();
+      this.extraNavigation();
       this.showHideBuilder();
       this.showHideBuilderTop();
     },
@@ -153,7 +155,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this; // Current Device.      
 
 
-      $(' .wp-full-overlay-footer .devices button, .botiga-devices-preview button').on('click', function () {
+      $('.wp-full-overlay-footer .devices button, .botiga-devices-preview button').on('click', function () {
         var device = $(this).attr('data-device');
 
         if (device === 'tablet') {
@@ -735,6 +737,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                       for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
                         var _element2 = _step12.value;
                         _element2 = _this.getElementData(_element2);
+
+                        if (_typeof(_element2) !== 'object') {
+                          continue;
+                        }
+
                         column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element2.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element2.id + '">' + '<span class="bhfb-title-element">' + _element2.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                       }
                     } catch (err) {
@@ -776,6 +783,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                         var _element3 = _step15.value;
                         _element3 = _this.getElementData(_element3);
 
+                        if (_typeof(_element3) !== 'object') {
+                          continue;
+                        }
+
                         _column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element3.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element3.id + '">' + '<span class="bhfb-title-element">' + _element3.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                       }
                     } catch (err) {
@@ -807,6 +818,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                     for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
                       var element = _step14.value;
                       element = _this.getElementData(element);
+
+                      if (_typeof(element) !== 'object') {
+                        continue;
+                      }
+
                       $('.botiga-bhfb-area-offcanvas').append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + element.id + '" data-bhfb-focus-section="botiga_section_hb_component__' + element.id + '">' + '<span class="bhfb-title-element">' + element.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                     }
                   } catch (err) {
@@ -1218,9 +1234,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     extraNavigation: function extraNavigation() {
       var _this = this;
 
-      wp.customize.panel('botiga_panel_footer').expanded.bind(function (is_active) {
-        if (is_active) {
-          wp.customize.section('botiga_section_fb_wrapper').focus();
+      wp.customize.section('botiga_section_hb_mobile_offcanvas').expanded.bind(function (is_active) {
+        if (!is_active) {
+          return false;
+        }
+
+        var currentDevice = $('.wp-full-overlay-footer .devices button.active').data('device');
+
+        if (currentDevice === 'desktop') {
+          $('.wp-full-overlay-footer .devices button[data-device="tablet"]').trigger('click');
         }
       });
     },

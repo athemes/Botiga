@@ -11,10 +11,11 @@
 function botiga_ajax_search_callback() {
 	check_ajax_referer( 'botiga-ajax-search-random-nonce', 'nonce' );
 
-    $search_term    = isset( $_POST['search_term'] ) ? apply_filters( 'botiga_ajax_search_search_term', sanitize_text_field( wp_unslash( $_POST['search_term'] ) ) ) : '';
-    $posts_per_page = isset( $_POST['posts_per_page'] ) ? absint( $_POST['posts_per_page'] ) : 15;
-    $order          = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'asc';
-    $orderby        = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'title'; 
+    $search_term          = isset( $_POST['search_term'] ) ? apply_filters( 'botiga_ajax_search_search_term', sanitize_text_field( wp_unslash( $_POST['search_term'] ) ) ) : '';
+    $posts_per_page       = isset( $_POST['posts_per_page'] ) ? absint( $_POST['posts_per_page'] ) : 15;
+    $order                = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'asc';
+    $orderby              = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'title'; 
+    $enable_search_by_sku = isset( $_POST['enable_search_by_sku'] ) && sanitize_text_field( wp_unslash( $_POST['enable_search_by_sku'] ) ) ? true : false;
     
     $args = array(
         'post_type'      => 'product',
@@ -26,11 +27,40 @@ function botiga_ajax_search_callback() {
     );
     
     if( $orderby === 'price' ) {
-        $args['meta_key'] = '_price';
+        $args[ 'meta_key' ] = '_price';
+        $args[ 'orderby' ]  = 'meta_value_num';
     }
 
     $output = '';
     $qry = new WP_Query( $args );
+
+    // Enable search by SKU
+    if( $enable_search_by_sku ) {
+        $args = array(
+            'post_type'      => 'product',
+            'posts_per_page' => $posts_per_page,
+            'order'          => $order,
+            'orderby'        => $orderby,
+            'post_status'    => array( 'publish' ),
+            'meta_query'     => array(
+                'relation' => 'OR',
+                array(
+                    'key' => '_sku',
+                    'value' => $search_term,
+                    'compare' => 'LIKE'
+                )
+            )
+        );
+        
+        if( $orderby === 'price' ) {
+            $args[ 'meta_key' ] = '_price';
+            $args[ 'orderby' ]  = 'meta_value_num';
+        }
+
+        $qry_sku = new WP_Query( $args );
+        $qry->posts = array_merge( $qry->posts, $qry_sku->posts );
+        $qry->post_count = count( $qry->posts );
+    }
 
     if( $qry->have_posts() ) :
         $output .= '<h2 class="botiga-ajax-search__heading-title">'. esc_html__( 'Products', 'botiga' ) .'</h2>';

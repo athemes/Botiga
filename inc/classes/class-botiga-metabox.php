@@ -686,7 +686,7 @@ class Botiga_Metabox {
 
 			case 'media':
 
-        $placeholder  = wc_placeholder_img_src( 'thumbnail' );
+        $placeholder  = class_exists( 'Woocommerce' ) ? wc_placeholder_img_src( 'thumbnail' ) : get_template_directory_uri() . '/assets/placeholder.svg';
         $hidden_class = ( empty( $value ) ) ? ' hidden' : '';
 
         if ( ! empty( $value ) ) {

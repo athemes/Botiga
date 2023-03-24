@@ -2045,6 +2045,7 @@ dl.variation {
 		width: 18px;
 		height: 18px;
 		fill: currentColor;
+		margin-right: 8px;
 	}
 }
 
@@ -2075,8 +2076,8 @@ dl.variation {
 	display: flex;
 	flex-direction: column;
 	padding: 30px 40px;
-	width: 750px;
-	max-width: 100%;
+	max-width: 750px;
+	width: 100%;
 	max-height: calc(100% - 100px);
 	overflow-y: auto;
 	font-size: 14px;
@@ -2169,7 +2170,6 @@ dl.variation {
 	font-size: 14px;
 	line-height: 1em;
 	color: #fff;
-	background-color: #212121;
 
 	svg{
 		fill: #fff;
