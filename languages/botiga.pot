@@ -3380,11 +3380,11 @@ msgstr ""
 msgid "Wishlist Button"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce-template-functions.php:290
+#: inc/plugins/woocommerce/woocommerce-template-functions.php:295
 msgid "Clear"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce-template-functions.php:274
+#: inc/plugins/woocommerce/woocommerce-template-functions.php:279
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
