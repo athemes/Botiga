@@ -711,8 +711,16 @@ a.button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  background-color: #757575;
   border-color: #757575;
+}
+
+button:hover:not(.has-background),
+a.button:hover:not(.has-background),
+.wp-block-button__link:hover:not(.has-background),
+input[type="button"]:hover:not(.has-background),
+input[type="reset"]:hover:not(.has-background),
+input[type="submit"]:hover:not(.has-background) {
+  background-color: #757575;
 }
 
 button:active, button:focus,
@@ -733,14 +741,30 @@ a.wc-backward {
   color: #fff;
 }
 
-.is-style-outline .wp-block-button__link,
-.wp-block-button__link.is-style-outline {
+.is-style-outline .wp-block-button__link:not(.has-text-color),
+.wp-block-button__link:not(.has-text-color).is-style-outline {
   color: #212121;
   border: 2px solid #212121;
 }
 
 .wp-block-button {
   margin-bottom: 20px;
+}
+
+.wp-block-button[style*="text-transform"] .wp-block-button__link {
+  text-transform: inherit;
+}
+
+.wp-block-button[style*="letter-spacing"] .wp-block-button__link {
+  letter-spacing: inherit;
+}
+
+.wp-block-button[style*="font-weight"] .wp-block-button__link {
+  font-weight: inherit;
+}
+
+.wp-block-button[style*="font-style"] .wp-block-button__link {
+  font-style: inherit;
 }
 
 .wp-block-button.is-style-squared a,

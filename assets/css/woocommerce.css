@@ -799,6 +799,10 @@ ul.wc-block-grid__products li.wc-block-grid__product:hover .button-layout4 {
   font-size: 1em !important;
 }
 
+.wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+  font-size: 1.971em;
+}
+
 .wc-block-grid__product-link {
   display: block;
 }

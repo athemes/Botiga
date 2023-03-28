@@ -69,8 +69,8 @@ div.editor-styles-wrapper {
 	a.wc-backward {
 		color: #fff;
 	}
-	.is-style-outline .wp-block-button__link,
-	.wp-block-button__link.is-style-outline {
+	.is-style-outline .wp-block-button__link:not(.has-text-color),
+	.wp-block-button__link:not(.has-text-color).is-style-outline {
 		color: $color__primary;
 		border: 2px solid $color__primary;
 	}

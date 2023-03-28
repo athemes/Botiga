@@ -305,14 +305,30 @@ div.editor-styles-wrapper a.wc-backward {
   color: #fff;
 }
 
-div.editor-styles-wrapper .is-style-outline .wp-block-button__link,
-div.editor-styles-wrapper .wp-block-button__link.is-style-outline {
+div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-text-color),
+div.editor-styles-wrapper .wp-block-button__link:not(.has-text-color).is-style-outline {
   color: #212121;
   border: 2px solid #212121;
 }
 
 div.editor-styles-wrapper .wp-block-button {
   margin-bottom: 20px;
+}
+
+div.editor-styles-wrapper .wp-block-button[style*="text-transform"] .wp-block-button__link {
+  text-transform: inherit;
+}
+
+div.editor-styles-wrapper .wp-block-button[style*="letter-spacing"] .wp-block-button__link {
+  letter-spacing: inherit;
+}
+
+div.editor-styles-wrapper .wp-block-button[style*="font-weight"] .wp-block-button__link {
+  font-weight: inherit;
+}
+
+div.editor-styles-wrapper .wp-block-button[style*="font-style"] .wp-block-button__link {
+  font-style: inherit;
 }
 
 div.editor-styles-wrapper .wp-block-button.is-style-squared a,
@@ -3276,6 +3292,10 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:h
 
 div.editor-styles-wrapper .wc-block-grid.has-4-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-5-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-6-columns .wc-block-grid__product {
   font-size: 1em !important;
+}
+
+div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+  font-size: 1.971em;
 }
 
 div.editor-styles-wrapper .wc-block-grid__product-link {

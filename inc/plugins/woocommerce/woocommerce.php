@@ -112,7 +112,7 @@ function botiga_woocommerce_scripts() {
 		wp_enqueue_script( 'botiga-sidebar' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
+add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 10 );
 
 /**
  * Enqueue WooCommerce specific scripts & stylesheets after custom.min.js.
