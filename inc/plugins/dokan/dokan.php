@@ -60,7 +60,7 @@ add_filter( 'botiga_single_product_elements', 'botiga_dokan_customizer_single_pr
 
 /**
  * Single Product Element (Vendor Info)
- * Hooke into this filter to extend the defaults from single products elements (needed due to sanitization)
+ * Hook into this filter to extend the defaults from single products elements (needed due to sanitization)
  */
 function botiga_dokan_default_single_product_components( $components ) {
     $components[] = 'botiga_dokan_vendor_infobox';

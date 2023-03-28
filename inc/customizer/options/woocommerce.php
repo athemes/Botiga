@@ -529,13 +529,13 @@ $wp_customize->add_setting( 'shop_card_elements', array(
 $wp_customize->add_control( new \Kirki\Control\Sortable( $wp_customize, 'shop_card_elements', array(
 	'label'   			=> esc_html__( 'Card elements', 'botiga' ),
 	'section' 			=> 'woocommerce_product_catalog',
-	'choices' 			=> array(
+	'choices' 			=> apply_filters( 'botiga_shop_archive_product_card_elements', array(
 		'botiga_shop_loop_product_title'         	=> esc_html__( 'Title', 'botiga' ),
 		'woocommerce_template_loop_rating' 			=> esc_html__( 'Reviews', 'botiga' ),
 		'woocommerce_template_loop_price' 			=> esc_html__( 'Price', 'botiga' ),
 		'botiga_loop_product_category' 				=> esc_html__( 'Category', 'botiga' ),
 		'botiga_loop_product_description' 			=> esc_html__( 'Short description', 'botiga' ),
-	),
+	) ),
 	'priority'	 => 140
 ) ) );
 
@@ -1438,6 +1438,26 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'shop_search_ajax_enable_search_by_sku',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_ajax_enable_search_by_sku',
+		array(
+			'label'         	=> esc_html__( 'Enable search by SKU', 'botiga' ),
+			'description'       => esc_html__( 'Return search results based on either product name or SKU.', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_search',
+			'priority'	 		=> 11
+		)
+	)
+);
+
 $wp_customize->add_setting( 
 	'shop_search_ajax_posts_per_page', 
 	array(
@@ -1608,4 +1628,164 @@ $wp_customize->add_control(
 			'priority'    => 55
 		)
 	)
+);
+
+/**
+ * Store Notice
+ */
+
+// Store notice tabs
+$wp_customize->add_setting(
+	'shop_store_notice_tabs',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Tab_Control (
+		$wp_customize,
+		'shop_store_notice_tabs',
+		array(
+			'label'            => '',
+			'section'          => 'woocommerce_store_notice',
+			'controls_general' => json_encode( array( 
+				'#customize-control-woocommerce_demo_store_notice',
+				'#customize-control-woocommerce_demo_store'
+			) ),
+			'controls_design'  => json_encode( array( 
+				'#customize-control-shop_store_notice_background_color',
+				'#customize-control-shop_store_notice_text_color',
+				'#customize-control-shop_store_notice_link_color',
+				'#customize-control-shop_store_notice_wrapper_padding'
+			) ),
+			'priority'         =>	-10
+		)
+	)
+);
+
+// Store notice background color
+$wp_customize->add_setting(
+	'shop_store_notice_background_color',
+	array(
+		'default'           => '#3d9cd2',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'shop_store_notice_background_color',
+		array(
+			'label'         	=> esc_html__( 'Background color', 'botiga' ),
+			'section'       	=> 'woocommerce_store_notice',
+			'priority'	 		=> 50
+		)
+	)
+);
+
+// Store notice text color
+$wp_customize->add_setting(
+	'shop_store_notice_text_color',
+	array(
+		'default'           => '#212121',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'shop_store_notice_text_color',
+		array(
+			'label'         	=> esc_html__( 'Text color', 'botiga' ),
+			'section'       	=> 'woocommerce_store_notice',
+			'priority'	 		=> 52
+		)
+	)
+);
+
+// Store notice link color
+$wp_customize->add_setting(
+	'shop_store_notice_link_color',
+	array(
+		'default'           => '#212121',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_setting(
+	'shop_store_notice_link_color_hover',
+	array(
+		'default'           => '#757575',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+    new Botiga_Color_Group(
+        $wp_customize,
+        'shop_store_notice_link_color',
+        array(
+            'label'    => esc_html__( 'Link Color', 'botiga' ),
+            'section'  => 'woocommerce_store_notice',
+            'settings' => array(
+                'normal' => 'shop_store_notice_link_color',
+                'hover'  => 'shop_store_notice_link_color_hover',
+            ),
+            'priority' => 54
+        )
+    )
+);
+
+// Store notice padding
+$wp_customize->add_setting( 
+    'shop_store_notice_wrapper_padding_desktop',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'shop_store_notice_wrapper_padding_tablet',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_setting( 
+    'shop_store_notice_wrapper_padding_mobile',
+    array(
+        'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
+        'sanitize_callback' => 'botiga_sanitize_text',
+        'transport'         => 'postMessage'
+    ) 
+);
+$wp_customize->add_control( 
+    new Botiga_Dimensions_Control( 
+        $wp_customize, 
+        'shop_store_notice_wrapper_padding',
+        array(
+            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
+            'section'         	=> 'woocommerce_store_notice',
+            'sides'             => array(
+                'top'    => true,
+                'right'  => true,
+                'bottom' => true,
+                'left'   => true
+            ),
+            'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
+            'link_values_toggle' => true,
+            'is_responsive'   	 => true,
+            'settings'        	 => array(
+                'desktop' => 'shop_store_notice_wrapper_padding_desktop',
+                'tablet'  => 'shop_store_notice_wrapper_padding_tablet',
+                'mobile'  => 'shop_store_notice_wrapper_padding_mobile'
+            ),
+            'priority'	      	 => 56
+        )
+    )
 );

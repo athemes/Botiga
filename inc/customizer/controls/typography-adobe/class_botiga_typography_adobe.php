@@ -115,7 +115,7 @@ class Botiga_Typography_Adobe_Control extends WP_Customize_Control {
 
             // normal format
             for( $i=1;$i<=9;$i++ ) {
-                $variations[ "n${i}" ] = $i * 100 ;
+                $variations[ "n{$i}" ] = $i * 100 ;
             }
 
             if ( array_key_exists( $variation, $variations ) ) {

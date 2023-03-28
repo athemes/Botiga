@@ -113,7 +113,7 @@ function botiga_sanitize_mobile_offcanvas_header_components( $input ) {
 function botiga_sanitize_product_loop_components( $input ) {
     $input      = (array) $input;
     $sanitized  = array();
-    $elements   = array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_rating', 'woocommerce_template_loop_price', 'botiga_loop_product_category', 'botiga_loop_product_description' );
+    $elements   = apply_filters( 'botiga_sanitize_product_loop_components', array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_rating', 'woocommerce_template_loop_price', 'botiga_loop_product_category', 'botiga_loop_product_description' ) );
 
     foreach ( $input as $sub_value ) {
         if ( in_array( $sub_value, $elements, true ) ) {

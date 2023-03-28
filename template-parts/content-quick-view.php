@@ -75,7 +75,9 @@ $gallery_style = get_theme_mod( 'single_product_gallery', 'gallery-default' ); ?
                 $components = botiga_get_quick_view_summary_components( get_theme_mod( 'single_product_elements_order', $defaults ) );
 
                 foreach( $components as $component ) {
-                    call_user_func( $component, $product );
+                    if( function_exists( $component ) ) {
+                        call_user_func( $component, $product );
+                    }
                 } ?>
 
                 <?php do_action( 'botiga_quick_view_share' ); ?>

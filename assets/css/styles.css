@@ -294,7 +294,9 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type="search"] {
-  -webkit-appearance: textfield;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   outline-offset: -2px;
 }
 

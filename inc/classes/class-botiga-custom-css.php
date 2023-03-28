@@ -1111,19 +1111,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_border_bottom_color_rgba_css( 'color_heading_4', '#212121', '.botiga-product-navigation a span:after' );
 			}
 
-			// Single Product - Size Chart
-			$single_size_chart = Botiga_Modules::is_module_active( 'size-chart' );
-			if( $single_size_chart ) {
-				$css .= $this->get_background_color_css( 'content_cards_background', '#f2f2f2', '.botiga-product-size-chart-modal-inner' );
-				$css .= $this->get_background_color_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
-				$css .= $this->get_color_css( 'button_color', '#FFF', '.botiga-product-size-chart-modal-close, .botiga-product-size-chart-modal-table thead tr, .botiga-product-size-chart-modal-table thead th' );
-				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab.active' );
-				$css .= $this->get_border_bottom_color_rgba_css( 'color_link_default', '#212121', '.botiga-product-size-chart-modal-tab', 0.4 );
-				$css .= $this->get_color_css( 'color_heading_4', '#212121', '.botiga-product-size-chart-modal-title' );
-				$css .= $this->get_color_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button a' );
-				$css .= $this->get_fill_css( 'color_body_text', '', '.single-product .botiga-product-size-chart-button svg path' );
-			}
-
 			//Woocommerce single upsell, related and recently viewed products section
 			$single_upsell_products = get_theme_mod( 'single_upsell_products', 1 );
 			if( $single_upsell_products ) {
@@ -1949,7 +1936,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		public static function get_css( $setting = '', $default = '', $selector = '', $css_prop = '', $unit = 'px', $important = false ) {
 			$mod = get_theme_mod( $setting, $default );
 
-			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, $css_prop, '', $important );
+			Botiga_Custom_CSS::get_instance()->mount_customizer_js_options( $selector, $setting, $css_prop, '', $important, false, '', '', $unit );
 
 			if( is_array( $css_prop ) ) {
 				$css_output = '';
