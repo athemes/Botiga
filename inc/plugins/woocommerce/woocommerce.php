@@ -420,12 +420,12 @@ function botiga_single_addtocart_wrapper_close() {
  * Quantity buttons
  */
 function botiga_woocommerce_before_quantity_input_field() {
-	echo '<a href="#" class="botiga-quantity-minus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'minus' ) ) .'</a>';
+	echo '<a href="#" class="botiga-quantity-minus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'minus' ) ) .'<span class="bt-d-none">'. esc_html__( 'Decrease product quantity.', 'botiga' ) .'</span></a>';
 }
 add_action( 'woocommerce_before_quantity_input_field', 'botiga_woocommerce_before_quantity_input_field' );
 
 function botiga_woocommerce_after_quantity_input_field() {
-	echo '<a href="#" class="botiga-quantity-plus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'plus' ) ) .'</a>';
+	echo '<a href="#" class="botiga-quantity-plus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'plus' ) ) .'<span class="bt-d-none">'. esc_html__( 'Increase product quantity.', 'botiga' ) .'</span></a>';
 }
 add_action( 'woocommerce_after_quantity_input_field', 'botiga_woocommerce_after_quantity_input_field' );
 
