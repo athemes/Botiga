@@ -85,7 +85,10 @@ function botiga_shop_page_header_category_links() {
 	
 	?>
 
+	<?php if( Botiga_Modules::is_module_active( 'hf-builder' ) ) : ?>
 	</div>
+	<?php endif; ?>
+	
 	<div class="container">
 
 		<?php 
