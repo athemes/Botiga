@@ -13,11 +13,22 @@ function botiga_enqueue_gutenberg_assets() {
 	wp_enqueue_style( 'botiga-block-editor-styles', get_template_directory_uri() . '/assets/css/editor.min.css', array(), BOTIGA_VERSION );
 
 	$fonts_library = get_theme_mod( 'fonts_library', 'google' );
-
+	
 	if( $fonts_library === 'google' ) {
-		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), BOTIGA_VERSION );
-	} else if ( $fonts_library === 'custom' ) {
-		wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), BOTIGA_VERSION );
+		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
+	} else if( $fonts_library === 'custom' ) {
+		wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), botiga_google_fonts_version() );
+	} else {
+		$kits = get_option( 'botiga_adobe_fonts_kits', array() );
+
+		foreach ( $kits as $kit_id => $kit_data ) {
+
+			if ( $kit_data['enable'] == false ) {
+				continue;
+			}
+
+			wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.com/' . $kit_id . '.css', array(), BOTIGA_VERSION );
+		}
 	}
 	
 	/**
@@ -33,7 +44,7 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= "div.editor-styles-wrapper .wp-block-button__link { border-radius:" . intval( $button_border_radius ) . "px;}" . "\n";
 
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), 'div.editor-styles-wrapper button, div.editor-styles-wrapper a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"]' );
-	$button_text_transform = get_theme_mod( 'button_text_transform', 'none' );
+	$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 	$css .= "div.editor-styles-wrapper .wp-block-button__link { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
 
 	$css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '#212121', 'div.editor-styles-wrapper .wp-block-button__link' );			
@@ -85,6 +96,18 @@ function botiga_enqueue_gutenberg_assets() {
 
 	//Shop product options
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'shop_product_title_size', $defaults = array( 'desktop' => 16, 'tablet' => 16, 'mobile' => 16 ), 'div.editor-styles-wrapper ul.products li.product .botiga-wc-loop-product__title, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .woocommerce-loop-product__title, div.editor-styles-wrapper ul.wc-block-grid__products li.product .wc-block-grid__product-title, div.editor-styles-wrapper ul.wc-block-grid__products li.product .woocommerce-loop-product__title, div.editor-styles-wrapper ul.products li.wc-block-grid__product .wc-block-grid__product-title, div.editor-styles-wrapper ul.products li.wc-block-grid__product .woocommerce-loop-product__title, div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-title, div.editor-styles-wrapper ul.products li.product .woocommerce-loop-product__title, div.editor-styles-wrapper ul.products li.product .woocommerce-loop-category__title, div.editor-styles-wrapper .woocommerce-loop-product__title .botiga-wc-loop-product__title' );
+
+	$shop_product_element_spacing = get_theme_mod( 'shop_product_element_spacing', 12 );
+	$css .= "div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .col-md-7>*, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .col-md-8>*, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product>*, div.editor-styles-wrapper ul.wc-block-grid__products li.product .col-md-7>*, div.editor-styles-wrapper ul.wc-block-grid__products li.product .col-md-8>*, div.editor-styles-wrapper ul.wc-block-grid__products li.product>*, div.editor-styles-wrapper ul.products li.wc-block-grid__product .col-md-7>*, div.editor-styles-wrapper ul.products li.wc-block-grid__product .col-md-8>*, div.editor-styles-wrapper ul.products li.wc-block-grid__product>*, div.editor-styles-wrapper ul.products li.product .col-md-7>*, div.editor-styles-wrapper ul.products li.product .col-md-8>*, div.editor-styles-wrapper ul.products li.product>* { margin-bottom:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";
+	$css .= "div.editor-styles-wrapper ul.products li.product .product-description-column:not(:empty), div.editor-styles-wrapper ul.products li.wc-block-grid__product .product-description-column:not(:empty), div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .product-description-column:not(:empty) { margin-top:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";
+
+	$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
+	$css .= "div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product, div.editor-styles-wrapper ul.wc-block-grid__products li.product, div.editor-styles-wrapper ul.products li.wc-block-grid__product, div.editor-styles-wrapper ul.products li.product { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
+	if ( 'left' === $shop_product_alignment ) {
+		$css .= "div.editor-styles-wrapper .star-rating, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.wc-block-grid__products li.product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.product .button, div.editor-styles-wrapper ul.products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.products li.product .wp-block-button__link, div.editor-styles-wrapper ul.products li.product .button { margin-left:0!important;}" . "\n";
+	} elseif ( 'right' === $shop_product_alignment ) {
+		$css .= "div.editor-styles-wrapper .star-rating, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.wc-block-grid__products li.product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.product .button, div.editor-styles-wrapper ul.products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.products li.product .wp-block-button__link, div.editor-styles-wrapper ul.products li.product .button { margin-right:0!important;}" . "\n";		
+	}
 
 	//Forms
 	$css .= Botiga_Custom_CSS::get_color_css( 'color_forms_text', '', 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="number"],input[type="tel"],input[type="range"],input[type="date"],input[type="month"],input[type="week"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="color"],textarea,select,.woocommerce .select2-container .select2-selection--single,.woocommerce-page .select2-container .select2-selection--single,input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus, select:focus, .woocommerce .select2-container .select2-selection--single:focus, .woocommerce-page .select2-container .select2-selection--single:focus,.select2-container--default .select2-selection--single .select2-selection__rendered,.wp-block-search .wp-block-search__input,.wp-block-search .wp-block-search__input:focus' );
