@@ -279,7 +279,8 @@ function botiga_wc_hooks() {
 
 	//Single product settings
 	if ( is_product() ) {
-		$single_breadcrumbs = get_theme_mod( 'single_breadcrumbs', 1 );
+		$single_breadcrumbs            = get_theme_mod( 'single_breadcrumbs', 1 );
+		$single_breadcrumbs_hide_title = get_theme_mod( 'single_breadcrumbs_hide_title', 0 );
 
 		//Content class
 		add_filter( 'botiga_content_class', 'botiga_wc_single_layout' );
@@ -290,6 +291,10 @@ function botiga_wc_hooks() {
 		//Breadcrumbs
 		if ( !$single_breadcrumbs ) {
 			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+		}
+
+		if( $single_breadcrumbs_hide_title ) {
+			add_filter( 'woocommerce_get_breadcrumb', 'botiga_remove_last_item_from_breadcrumb', 10, 2 );
 		}
 
 		//Elements Order
@@ -621,6 +626,17 @@ function botiga_cart_item_quantity( $product_quantity_output, $cart_item_key, $c
 	return $product_quantity_output;
 }
 add_filter( 'woocommerce_cart_item_quantity', 'botiga_cart_item_quantity', 10, 3 );
+
+/**
+ * Remove the last item from the breadcrumb trail
+ */
+function botiga_remove_last_item_from_breadcrumb( $crumbs, $breadcrumb ) {
+	if( is_product() ) {
+		array_pop( $crumbs );
+	}
+
+	return $crumbs;
+}
 
 /**
  * Header Mini Cart
