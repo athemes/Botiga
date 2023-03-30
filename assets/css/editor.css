@@ -3535,6 +3535,21 @@ div.editor-styles-wrapper .product-equal-height ul.products li.product .variatio
   margin-bottom: 7px;
 }
 
+div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .add_to_cart_button,
+div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .product_type_grouped,
+div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .product_type_external,
+div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .add_to_cart_button,
+div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .product_type_grouped,
+div.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .product_type_external,
+div.editor-styles-wrapper .product-equal-height ul.products li.wc-block-grid__product .add_to_cart_button,
+div.editor-styles-wrapper .product-equal-height ul.products li.wc-block-grid__product .product_type_grouped,
+div.editor-styles-wrapper .product-equal-height ul.products li.wc-block-grid__product .product_type_external,
+div.editor-styles-wrapper .product-equal-height ul.products li.product .add_to_cart_button,
+div.editor-styles-wrapper .product-equal-height ul.products li.product .product_type_grouped,
+div.editor-styles-wrapper .product-equal-height ul.products li.product .product_type_external {
+  margin-top: 0;
+}
+
 div.editor-styles-wrapper .botiga-pagination-ppp {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3747,6 +3762,21 @@ div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .butto
 div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-layout2 .button {
   width: 100%;
   text-align: center;
+}
+
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-width-full, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-width-full, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-width-full,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-width-full,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-width-full,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-width-full {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+div.editor-styles-wrapper ul.products.columns-4 li.product .button-with-quantity.button-width-full .quantity, div.editor-styles-wrapper ul.products.columns-5 li.product .button-with-quantity.button-width-full .quantity, div.editor-styles-wrapper ul.products.columns-6 li.product .button-with-quantity.button-width-full .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-width-full .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-width-full .quantity,
+div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-width-full .quantity {
+  width: 100%;
 }
 
 div.editor-styles-wrapper ul.products.columns-4 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-5 li.product .button-layout2 .button, div.editor-styles-wrapper ul.products.columns-6 li.product .button-layout2 .button,

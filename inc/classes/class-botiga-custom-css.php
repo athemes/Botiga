@@ -1154,6 +1154,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= ".star-rating,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.wc-block-grid__products li.product .wp-block-button__link, ul.wc-block-grid__products li.product .button, ul.products li.wc-block-grid__product .wp-block-button__link, ul.products li.wc-block-grid__product .button, ul.products li.product .wp-block-button__link, ul.products li.product .button { margin-right:0!important;}" . "\n";		
 			}
 
+			$shop_product_add_to_cart_button_width = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' );
+			if( $shop_product_add_to_cart_button_width === 'full-width' ) {
+				$css .= '.button-layout2.button-with-quantity .button, .button-layout2.button-with-quantity .wp-block-button .wp-block-button__link { width: calc( 100% - 100px ); }';
+				$css .= '.button-layout2.button-with-quantity, .button-layout2.button-width-full:not(.button-with-quantity) .button, .button-layout2.button-width-full:not(.button-with-quantity) .wp-block-button, .button-layout2.button-width-full:not(.button-with-quantity) .wp-block-button .wp-block-button__link, .button-layout2.button-with-quantity .wp-block-button { width: 100%; }';
+				$css .= '.product-equal-height ul.products li.product .button-layout2.button-with-quantity .quantity, .product-equal-height .wc-block-grid__products .wc-block-grid__product .button-layout2.button-with-quantity .quantity { height: 100%; }';
+			} else {
+				$css .= '.product-equal-height ul.products li.product .button-layout2.button-with-quantity .quantity, .product-equal-height .wc-block-grid__products .wc-block-grid__product .button-layout2.button-with-quantity .quantity { height: 100%; }';
+			}
+
 			$shop_product_element_spacing = get_theme_mod( 'shop_product_element_spacing', 12 );
 			$css .= "ul.wc-block-grid__products li.wc-block-grid__product .col-md-7>*, ul.wc-block-grid__products li.wc-block-grid__product .col-md-8>*, ul.wc-block-grid__products li.wc-block-grid__product>*, ul.wc-block-grid__products li.product .col-md-7>*, ul.wc-block-grid__products li.product .col-md-8>*, ul.wc-block-grid__products li.product>*, ul.products li.wc-block-grid__product .col-md-7>*, ul.products li.wc-block-grid__product .col-md-8>*, ul.products li.wc-block-grid__product>*, ul.products li.product .col-md-7>*, ul.products li.product .col-md-8>*, ul.products li.product>* { margin-bottom:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";
 			$css .= "ul.products li.product .product-description-column:not(:empty), ul.products li.wc-block-grid__product .product-description-column:not(:empty), ul.wc-block-grid__products li.wc-block-grid__product .product-description-column:not(:empty) { margin-top:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";

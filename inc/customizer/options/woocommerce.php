@@ -84,6 +84,8 @@ $wp_customize->add_control(
 		        '#customize-control-shop_product_title_size',
 		        '#customize-control-shop_product_title_text_style',
 				'#customize-control-shop_product_product',
+				'#customize-control-shop_product_add_to_cart_button_title',
+				'#customize-control-shop_product_add_to_cart_button_width',
 				'#customize-control-accordion_shop_styling_sale',
 				'#customize-control-single_product_sale_background_color',
 				'#customize-control-single_product_sale_color',
@@ -1013,7 +1015,7 @@ $wp_customize->add_control(
         array(
             'label'         => esc_html__( 'Product card', 'botiga' ),
             'section'       => 'woocommerce_product_catalog',
-            'until'         => 'shop_product_product',
+            'until'         => 'shop_product_add_to_cart_button_width',
 			'priority'	 	=> 280
         )
     )
@@ -1348,6 +1350,39 @@ $wp_customize->add_control(
         )
     )
 );
+
+$wp_customize->add_setting( 'shop_product_add_to_cart_button_title',
+  array(
+    'default'           => '',
+    'sanitize_callback' => 'esc_attr'
+  )
+);
+$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'shop_product_add_to_cart_button_title',
+    array(
+      'label'    => esc_html__( 'Add To Cart Button', 'botiga' ),
+      'section'  => 'woocommerce_product_catalog',
+      'priority' => 365
+    )
+  )
+);
+
+$wp_customize->add_setting( 'shop_product_add_to_cart_button_width',
+	array(
+		'default' 			=> 'auto',
+		'sanitize_callback' => 'botiga_sanitize_text'
+	)
+);
+$wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'shop_product_add_to_cart_button_width',
+	array(
+		'label'   => esc_html__( 'Width', 'botiga' ),
+		'section' => 'woocommerce_product_catalog',
+		'choices' => array(
+			'auto' 	 => esc_html__( 'Auto', 'botiga' ),
+			'full-width'   => esc_html__( 'Full Width', 'botiga' )
+		),
+		'priority'	 => 365
+	)
+) );
 
 //Sale tag
 $wp_customize->add_setting( 'accordion_shop_styling_sale', 

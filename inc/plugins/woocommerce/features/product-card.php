@@ -233,6 +233,7 @@ function botiga_wrap_loop_button_start() {
 
 	$button_layout         = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 	$shop_product_quantity = get_theme_mod( 'shop_product_quantity', 0 );
+	$button_width          = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' ) === 'auto' ? 'button-width-auto' : 'button-width-full';
 	$button_with_quantity  = '';
 
 	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
@@ -242,7 +243,7 @@ function botiga_wrap_loop_button_start() {
 		}
 	}
 
-	echo '<div class="loop-button-wrap button-' . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . '">';
+	echo '<div class="loop-button-wrap '. esc_attr( $button_width ) .' button-' . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . '">';
 }
 
 /**

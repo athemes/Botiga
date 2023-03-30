@@ -1046,6 +1046,21 @@ ul.products li.product-category mark {
   margin-bottom: 7px;
 }
 
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .add_to_cart_button,
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .product_type_grouped,
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .product_type_external,
+.product-equal-height ul.wc-block-grid__products li.product .add_to_cart_button,
+.product-equal-height ul.wc-block-grid__products li.product .product_type_grouped,
+.product-equal-height ul.wc-block-grid__products li.product .product_type_external,
+.product-equal-height ul.products li.wc-block-grid__product .add_to_cart_button,
+.product-equal-height ul.products li.wc-block-grid__product .product_type_grouped,
+.product-equal-height ul.products li.wc-block-grid__product .product_type_external,
+.product-equal-height ul.products li.product .add_to_cart_button,
+.product-equal-height ul.products li.product .product_type_grouped,
+.product-equal-height ul.products li.product .product_type_external {
+  margin-top: 0;
+}
+
 /**
  * Pagination PPP (Posts Per Page)
  */
@@ -1264,6 +1279,21 @@ ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-lay
 ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-layout2 .button {
   width: 100%;
   text-align: center;
+}
+
+ul.products.columns-4 li.product .button-with-quantity.button-width-full, ul.products.columns-5 li.product .button-with-quantity.button-width-full, ul.products.columns-6 li.product .button-with-quantity.button-width-full,
+ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-width-full,
+ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-width-full,
+ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-width-full {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+ul.products.columns-4 li.product .button-with-quantity.button-width-full .quantity, ul.products.columns-5 li.product .button-with-quantity.button-width-full .quantity, ul.products.columns-6 li.product .button-with-quantity.button-width-full .quantity,
+ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-width-full .quantity,
+ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-width-full .quantity,
+ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-width-full .quantity {
+  width: 100%;
 }
 
 ul.products.columns-4 li.product .button-layout2 .button, ul.products.columns-5 li.product .button-layout2 .button, ul.products.columns-6 li.product .button-layout2 .button,

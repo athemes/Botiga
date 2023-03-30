@@ -19,6 +19,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$wishlist_layout          = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
 	$wishlist_enable          = Botiga_Modules::is_module_active( 'wishlist' );
 	$shop_product_quantity    = get_theme_mod( 'shop_product_quantity', 0 );
+	$button_width             = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' ) === 'auto' ? 'button-width-auto' : 'button-width-full';
 	$button_with_quantity     = '';
 	$wc_block_grid_item_class = '';
 
@@ -61,7 +62,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	//Add button inside image wrapper for layout4 and layout3
 	if ( 'layout4' === $button_layout || 'layout3' === $button_layout ) {
-		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . "\">"
+		$markup .= "<div class=\"loop-button-wrap ". esc_attr( $button_width ) ." button-" . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . "\">"
 				. botiga_gb_add_to_cart_button( $product ) .
 				"</div>";
 	}
@@ -100,7 +101,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		
 	//Add button outside image wrapper		
 	if ( 'layout1' !== $button_layout && 'layout4' !== $button_layout && 'layout3' !== $button_layout ) {
-		$markup .= "<div class=\"loop-button-wrap button-" . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . "\">"
+		$markup .= "<div class=\"loop-button-wrap ". esc_attr( $button_width ) ." button-" . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . "\">"
 		. botiga_gb_add_to_cart_button( $product ) .
 		"</div>";
 	}
