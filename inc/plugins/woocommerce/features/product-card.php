@@ -67,7 +67,7 @@ function botiga_product_card_hooks() {
 	add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 12 );
 
 	//Wrap loop image
-	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) || is_product() ) {
+	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) || is_product() || ( $layout === 'product-list' && ! is_shop() && ! is_product_category() && ! is_product_tag() && ! is_product_taxonomy() ) ) {
 		//Wrap loop image
 		add_action( 'woocommerce_before_shop_loop_item_title', function() use ($loop_image_wrap_extra_class) { echo '<div class="loop-image-wrap '. esc_attr( apply_filters( 'botiga_wc_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ) .'">'; }, 9 );
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div>'; }, 11 );
@@ -295,4 +295,51 @@ function botiga_add_to_cart_text( $text, $product ) {
 	}
 
 	return $text;
+}
+
+/**
+ * Product Equal Height
+ */
+// Add class to botiga content class to flag the equal height in the product loop
+function botiga_equal_height_content_class( $class ) {
+	$layout 			= get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$button_layout      = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$equal_height       = get_theme_mod( 'shop_product_equal_height', 0 );
+	$equal_height_class = ( ! empty( $equal_height ) && $button_layout === 'layout2' && $layout === 'product-grid' ) ? ' product-equal-height' : '';
+
+	return $class . $equal_height_class;
+}
+add_action( 'wp', function(){
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
+		add_filter( 'botiga_content_class', 'botiga_equal_height_content_class' );
+	}
+} );
+
+/**
+ * Pass through all the legacy WooCommerce shortcodes to handle attributes
+ */
+$shortcodes = array(
+	'products',
+	'recent_products',
+	'sale_products',
+	'best_selling_products',
+	'top_rated_products',
+	'featured_products',
+	'related_products'
+);
+
+foreach( $shortcodes as $shortcode ) {
+	add_filter( "shortcode_atts_{$shortcode}", function( $atts ){
+
+		// Always product grid layout
+		$atts[ 'class' ] = 'product-grid';
+
+		// Proudct Equal Height
+		$shop_product_equal_height = get_theme_mod( 'shop_product_equal_height', 0 );
+		if( $shop_product_equal_height ) {
+			$atts[ 'class' ] = 'product-equal-height';
+		}
+		
+		return $atts;
+	} );
 }

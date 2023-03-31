@@ -1267,7 +1267,8 @@ botiga.qtyButton = {
     }
   },
   updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product'),
+    var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
+        product = qtyItem.closest(productSelector),
         qtyInput = qtyItem.parentNode.querySelector('.qty');
 
     if (product) {
@@ -1306,7 +1307,8 @@ botiga.qtyButton = {
     }
   },
   behaviorsBasedOnQuantityValue: function behaviorsBasedOnQuantityValue(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product');
+    var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
+        product = qtyItem.closest(productSelector);
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');

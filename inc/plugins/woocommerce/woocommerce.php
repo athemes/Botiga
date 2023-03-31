@@ -219,13 +219,9 @@ function botiga_wc_archive_layout() {
 
 	$archive_sidebar .= ' product-category-item-' . $shop_categories_layout;
 	
-	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );		
 
-	$button_layout      = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$equal_height       = get_theme_mod( 'shop_product_equal_height', 0 );
-	$equal_height_class = ( ! empty( $equal_height ) && $button_layout === 'layout2' && $layout === 'product-grid' ) ? ' product-equal-height' : '';
-
-	return $archive_sidebar . ' ' . $layout . $equal_height_class;
+	return $archive_sidebar . ' ' . $layout;
 }
 
 /**

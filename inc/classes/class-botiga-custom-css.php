@@ -1118,7 +1118,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_gap_css( 'shop_archive_columns_gap', $defaults = array( 'desktop' => 30, 'tablet' => 30, 'mobile' => 20 ), 'ul.wc-block-grid__products, ul.products' );
 
 			$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
-			$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
+			$css .= "ul.wc-block-grid__products li.wc-block-grid__product, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product, ul.products li.product .wp-block-button__link { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
 
 			$shop_categories_alignment = get_theme_mod( 'shop_categories_alignment', 'center' );
 			$css .= "ul.products li.product-category .woocommerce-loop-category__title { text-align:" . esc_attr( $shop_categories_alignment ) . ";}" . "\n";
@@ -1160,7 +1160,22 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= '.button-layout2.button-with-quantity, .button-layout2.button-width-full:not(.button-with-quantity) .button, .button-layout2.button-width-full:not(.button-with-quantity) .wp-block-button, .button-layout2.button-width-full:not(.button-with-quantity) .wp-block-button .wp-block-button__link, .button-layout2.button-with-quantity .wp-block-button { width: 100%; }';
 				$css .= '.product-equal-height ul.products li.product .button-layout2.button-with-quantity .quantity, .product-equal-height .wc-block-grid__products .wc-block-grid__product .button-layout2.button-with-quantity .quantity { height: 100%; }';
 			} else {
+				$alignval = 'center';
+				if ( 'left' === $shop_product_alignment ) {
+					$alignval = 'flex-start';
+				} elseif ( 'right' === $shop_product_alignment ) {
+					$alignval = 'flex-end';
+				}
+				$css .= '.product-equal-height ul.products li.product .button-layout2.button-with-quantity, .product-equal-height .wc-block-grid__products .wc-block-grid__product .button-layout2.button-with-quantity, .wc-block-grid__products .wc-block-grid__product .button-layout2.button-with-quantity { justify-content: '. esc_attr( $alignval ) .'; }';
 				$css .= '.product-equal-height ul.products li.product .button-layout2.button-with-quantity .quantity, .product-equal-height .wc-block-grid__products .wc-block-grid__product .button-layout2.button-with-quantity .quantity { height: 100%; }';
+			}
+
+			// Add button font size to the button wrapper div when quantity input is active. This way we might use 'em' unit to control the max height from others elements that contains buttons inside.
+			$shop_product_quantity = get_theme_mod( 'shop_product_quantity', 0 );
+			if( $shop_product_quantity ) {
+				$css .= $this->get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), '.loop-button-wrap.button-layout2.button-with-quantity' );
+				$css .= '.loop-button-wrap.button-layout2.button-with-quantity { max-height: 3.2em; }';
+				$css .= '.product-equal-height .loop-button-wrap.button-layout2.button-with-quantity { margin-top: auto; }';
 			}
 
 			$shop_product_element_spacing = get_theme_mod( 'shop_product_element_spacing', 12 );

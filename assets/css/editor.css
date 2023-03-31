@@ -3226,6 +3226,18 @@ div.editor-styles-wrapper .loop-button-wrap.button-layout4 .ws-svg-icon {
 div.editor-styles-wrapper .loop-button-wrap.button-layout4 .button,
 div.editor-styles-wrapper .loop-button-wrap.button-layout4 .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
   margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+div.editor-styles-wrapper .loop-button-wrap.button-layout4 .added_to_cart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto !important;
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  padding: 11px 0;
+  text-decoration: none;
 }
 
 div.editor-styles-wrapper .loop-price-inline {
@@ -3256,6 +3268,17 @@ div.editor-styles-wrapper .product-grid .button-layout4 {
   z-index: 3;
 }
 
+div.editor-styles-wrapper .button-layout2 .wc-forward {
+  margin-top: 8px;
+  display: block;
+}
+
+div.editor-styles-wrapper .button-layout2.loop-button-wrap {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
 div.editor-styles-wrapper .button-layout3 a,
 div.editor-styles-wrapper .button-layout4 a {
   margin-top: 0 !important;
@@ -3267,11 +3290,6 @@ div.editor-styles-wrapper .button-layout3 .wc-forward {
 
 div.editor-styles-wrapper .button-layout3.loop-button-wrap:empty {
   display: none !important;
-}
-
-div.editor-styles-wrapper .button-layout2 .wc-forward {
-  margin-top: 8px;
-  display: block;
 }
 
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-layout3 .wp-block-button,
@@ -3292,6 +3310,18 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:h
 
 div.editor-styles-wrapper .wc-block-grid.has-4-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-5-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-6-columns .wc-block-grid__product {
   font-size: 1em !important;
+}
+
+div.editor-styles-wrapper .wc-block-grid.has-aligned-buttons .wc-block-grid__product > :last-child {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0 !important;
+}
+
+div.editor-styles-wrapper .wc-block-grid.has-aligned-buttons .wc-block-grid__product .wc-block-grid__product-add-to-cart {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: auto !important;
 }
 
 div.editor-styles-wrapper .wc-block-grid__product-link {
@@ -3644,10 +3674,20 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .
 }
 
 div.editor-styles-wrapper ul.products li.product .button-with-quantity .button,
+div.editor-styles-wrapper ul.products li.product .button-with-quantity .add_to_cart_button,
 div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity .button,
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .button-with-quantity .add_to_cart_button,
 div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity .button,
-div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .button {
+div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-quantity .add_to_cart_button,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .button,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .add_to_cart_button {
   margin: 0;
+}
+
+div.editor-styles-wrapper ul.products li.wc-block-grid__product .add_to_cart_button.added,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .add_to_cart_button.added {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 div.editor-styles-wrapper ul.products .button-layout2.button-with-quantity,
@@ -3694,7 +3734,7 @@ div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-
 div.editor-styles-wrapper ul.products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity,
 div.editor-styles-wrapper ul.wc-block-grid__products .botiga-add-to-cart-button-layout3.botiga-quick-view-button-layout2 .quantity {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 50%;
   left: 50%;
   height: 45px;

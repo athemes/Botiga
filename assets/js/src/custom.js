@@ -1222,7 +1222,8 @@ botiga.qtyButton = {
 
 	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
 
-		var product  		 = qtyItem.closest('.product'),
+		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
+			product  		 = qtyItem.closest( productSelector ),
 			qtyInput 		 = qtyItem.parentNode.querySelector('.qty');
 
 		if ( product ) {
@@ -1268,7 +1269,8 @@ botiga.qtyButton = {
 	},
 
 	behaviorsBasedOnQuantityValue: function( qtyItem, qtyValue ) {
-		var product = qtyItem.closest( '.product' );
+		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
+			product 	     = qtyItem.closest( productSelector );
 
 		if ( product ) {
 
