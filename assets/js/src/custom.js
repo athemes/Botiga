@@ -442,7 +442,6 @@ botiga.headerSearch = {
 			button 		    = document.querySelectorAll( '.header-search' ),
 			form 			= window.matchMedia('(max-width: 1024px)').matches ? document.querySelector( '#masthead-mobile .header-search-form' ) : document.querySelector( '#masthead .header-search-form' ),
 			overlay 		= document.getElementsByClassName( 'search-overlay' )[0],
-			searchInput 	= form !== null ? form.getElementsByClassName('search-field')[0] : undefined,
 			searchBtn 	    = form !== null ? form.getElementsByClassName('search-submit')[0] : undefined;
 
 		if ( button.length === 0 ) {
@@ -472,6 +471,17 @@ botiga.headerSearch = {
 					e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
 					e.target.closest( '.header-search' ).classList.add( 'active' );
 					e.target.closest( '.header-search' ).classList.remove( 'hide' );
+					
+					var searchInput        = '';
+					if( window.matchMedia( 'screen and (min-width: 1024px)' ).matches ) {
+						searchInput = document.querySelectorAll( '.bhfb-desktop .header-search-form .search-field' )[0];
+					} else {
+						searchInput = document.querySelectorAll( '.bhfb-mobile .header-search-form .search-field' )[0];
+					}
+
+					if( e.target.closest( '.header-search' ).parentNode.classList.contains( 'header-search-form-hide-input-on-mobile' ) ) {
+						searchInput = document.querySelectorAll( '.bhfb-mobile .header-search-form .search-field' )[1];
+					}
 
 					if( typeof searchInput !== 'undefined' ) {
 						searchInput.focus();
