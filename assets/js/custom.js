@@ -1355,10 +1355,11 @@ botiga.carousel = {
 
           if (perPage === null) {
             var stageClassList = carouselEl.querySelector('.products').classList.value;
-
-            if (stageClassList.indexOf('columns-4') > 0) {
-              perPage = 4;
-            }
+            [1, 2, 3, 4, 5].forEach(function (columns) {
+              if (stageClassList.indexOf('columns-' + columns) > 0) {
+                perPage = columns;
+              }
+            });
           } // Mount carousel wrapper
 
 
