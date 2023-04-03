@@ -253,6 +253,8 @@ function botiga_loop_product_structure() {
 	$elements 	= get_theme_mod( 'shop_card_elements', array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ) );
 	$layout		= get_theme_mod( 'shop_product_card_layout', 'layout1' );
 
+	$elements = array_merge( $elements, apply_filters( 'botiga_loop_product_elements', array() ) );
+
 	if ( 'layout1' === $layout ) {
 		foreach ( $elements as $element ) {
 			if( function_exists( $element ) ) {

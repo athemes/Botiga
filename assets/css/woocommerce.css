@@ -1342,7 +1342,6 @@ ul.wc-block-grid__products.columns-5 li.product .button-layout2 .button,
 ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   width: 100%;
   text-align: center;
-  margin: 0;
 }
 
 /**
@@ -2394,6 +2393,7 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
   width: 100%;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 20px;
 }
 
 .product-gallery-summary .botiga-single-addtocart-wrapper h4,
@@ -5319,7 +5319,6 @@ form.woocommerce-checkout {
   .quantity {
     width: 100%;
     margin-bottom: 0;
-    margin-right: 20px;
   }
   .quantity .botiga-quantity-plus,
   .quantity .botiga-quantity-minus {

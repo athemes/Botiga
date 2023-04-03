@@ -381,6 +381,16 @@ function botiga_dashboard_settings()
 		'docs_link'  => 'https://docs.athemes.com/article/pro-how-to-enable-google-autocomplete-on-checkout-address-fields/'
 	);
 
+	$settings['features'][] = array(
+		'module'     => 'buy-now',
+		'type'       => 'pro',
+		'title'      => esc_html__('Buy Now', 'botiga'),
+		'desc'       => esc_html__('Allows to redirect customers directly to the checkout for quick buy.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_buy_now', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-buy-now-feature/'
+	);
+
 	if ( !Botiga_Modules::is_module_active('hf-builder') ) {
 
 		$settings['features'][] = array(

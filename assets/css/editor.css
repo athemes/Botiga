@@ -904,7 +904,6 @@ div.editor-styles-wrapper .woocommerce-cart-form .quantity .qty {
   div.editor-styles-wrapper .quantity {
     width: 100%;
     margin-bottom: 0;
-    margin-right: 20px;
   }
   div.editor-styles-wrapper .quantity .botiga-quantity-plus,
   div.editor-styles-wrapper .quantity .botiga-quantity-minus {
@@ -3825,7 +3824,6 @@ div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .butto
 div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   width: 100%;
   text-align: center;
-  margin: 0;
 }
 
 @-webkit-keyframes rotateAnim {
