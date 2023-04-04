@@ -96,6 +96,9 @@
 			transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
 			z-index: 3;
 		}
+		> .button.botiga-buy-now-button {
+			top: 27%;
+		}
 	}
 }
 
@@ -106,7 +109,8 @@ ul.wc-block-grid__products {
 	
 		.botiga-add-to-cart-button-layout1.botiga-quick-view-button-layout2:hover,
 		.botiga-add-to-cart-button-layout2.botiga-quick-view-button-layout2:hover {
-			.botiga-quick-view {
+			.botiga-quick-view,
+			.botiga-buy-now-button {
 				opacity: 1;
 				visibility: visible;
 				transform: translate3d(-50%, -50%, 0);
@@ -129,7 +133,8 @@ ul.wc-block-grid__products {
 			> .product_type_variable,
 			> .product_type_grouped,
 			> .product_type_external,
-			> .loop-button-wrap.button-layout3 {
+			> .loop-button-wrap.button-layout3,
+			> .botiga-buy-now-button {
 				opacity: 1;
 				visibility: visible;
 				transform: translate3d(-50%, 0%, 0);
@@ -149,6 +154,13 @@ ul.wc-block-grid__products {
 				> .product_type_external,
 				> .loop-button-wrap.button-layout3 {
 					transform: translate3d(-50%, -50%, 0);
+				}
+			}
+			&.botiga-add-to-cart-button-layout4 {
+				.botiga-quick-view-layout2 {
+					opacity: 1;
+					visibility: visible;
+					transform: translate3d(-50%, -75%, 0);
 				}
 			}
 		}

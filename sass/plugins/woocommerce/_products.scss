@@ -168,6 +168,7 @@ ul.products {
 				position: absolute;
 				bottom: 15px;
 				left: 15px;
+				width: calc( 100% - 15px );
 				opacity: 0;
 				visibility: hidden;
 				transition: ease opacity 300ms, ease visibility 300ms;

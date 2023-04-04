@@ -231,19 +231,13 @@ function botiga_page_has_woo_shortcode() {
  */
 function botiga_wrap_loop_button_start() {
 
-	$button_layout         = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$shop_product_quantity = get_theme_mod( 'shop_product_quantity', 0 );
-	$button_width          = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' ) === 'auto' ? 'button-width-auto' : 'button-width-full';
-	$button_with_quantity  = '';
+	$loop_button_wrap_classes = array( 'loop-button-wrap' );
+	$button_layout            = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	
+	$loop_button_wrap_classes[] = 'button-' . $button_layout;
+	$loop_button_wrap_classes[] = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' ) === 'auto' ? 'button-width-auto' : 'button-width-full';
 
-	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
-		global $product;
-		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
-			$button_with_quantity = ' button-with-quantity';
-		}
-	}
-
-	echo '<div class="loop-button-wrap '. esc_attr( $button_width ) .' button-' . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . '">';
+	echo '<div class="'. esc_attr( implode( ' ', apply_filters( 'botiga_loop_button_wrap_classes', $loop_button_wrap_classes ) ) ) .'">';
 }
 
 /**

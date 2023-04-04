@@ -1185,6 +1185,7 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.updateBuyNowButtonQuantity(this, input.value);
 				self.behaviorsBasedOnQuantityValue( this, input.value );
 
 			});
@@ -1205,11 +1206,13 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.updateBuyNowButtonQuantity(this, input.value);
 				self.behaviorsBasedOnQuantityValue( this, input.value );
       		});
 
 			input.addEventListener( 'change', function(e){
 				self.updateAddToCartQuantity( this, this.value );
+				self.updateBuyNowButtonQuantity(this, this.value);
 			});
 
 			wrapper.dataset.qtyInitialized = true;
@@ -1276,6 +1279,22 @@ botiga.qtyButton = {
 			});
 
 		}
+	},
+
+	updateBuyNowButtonQuantity: function( qtyItem, qtyValue ) {
+		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
+			product  		 = qtyItem.closest( productSelector ),
+			qtyInput 		 = qtyItem.parentNode.querySelector('.qty'),
+			buyNowButton     = product.querySelector( '.botiga-buy-now-button' );
+
+		if( buyNowButton === null ) {
+			return false;
+		}
+
+		var url = new URL( buyNowButton.getAttribute( 'href' ) );
+		url.searchParams.set( 'quantity', qtyValue );
+
+		buyNowButton.setAttribute( 'href', url );
 	},
 
 	behaviorsBasedOnQuantityValue: function( qtyItem, qtyValue ) {
