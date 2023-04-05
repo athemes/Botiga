@@ -2028,6 +2028,10 @@ div.customize-section-description {
   background-image: url(../img/icons/product-swatches.svg);
 }
 
+#accordion-section-botiga_section_buy_now .accordion-section-title:before {
+  background-image: url(../img/icons/buy-now.svg);
+}
+
 #accordion-section-botiga_section_blog_archives .accordion-section-title:before {
   background-image: url(../img/icons/blog-archives.svg);
 }
