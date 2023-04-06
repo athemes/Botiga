@@ -164,7 +164,7 @@ botiga.navigation = {
 		if( anchors.length ) {
 			for( var anchor of anchors ) {
 				anchor.addEventListener( 'click', function(e) {
-					if( e.target.hash && document.querySelector( e.target.hash ) !== null ) {
+					if( e.target.hash && document.querySelector( e.target.hash ) !== null && ! e.target.classList.contains( 'botiga-tabs-nav-link' ) ) {
 						button.classList.remove( 'open' );
 						offCanvas.classList.remove( 'toggled' );
 						document.body.classList.remove( 'mobile-menu-visible' );
@@ -208,6 +208,7 @@ botiga.navigation = {
 		} );
 
 		document.addEventListener( 'click', function(e){
+			console.log( e.target.closest( '.botiga-offcanvas-menu' ) );
 			if( e.target.closest( '.botiga-offcanvas-menu' ) === null && ! e.target.classList.contains( 'menu-toggle' ) && e.target.closest( '.menu-toggle' ) === null ) {
 				button.classList.remove( 'open' );
 	
@@ -1563,6 +1564,41 @@ botiga.collapse = {
 	}
 }
 
+botiga.tabsNav = {
+	init: function() {
+		const
+			tabsNav = document.querySelectorAll( '.botiga-tabs-nav' );
+
+		if( ! tabsNav.length ) {
+			return false;
+		}
+
+		this.events();
+	},
+
+	events: function() {
+		const tabsNavItems = document.querySelectorAll( '.botiga-tabs-nav-item' );
+		for( const tabItem of tabsNavItems ) {
+			tabItem.addEventListener( 'click', function(e){
+				e.preventDefault();
+
+				const
+					tabId      = this.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ),
+					tabContent = document.querySelector( tabId );
+
+				for( const tabItem of tabsNavItems ) {
+					tabItem.classList.remove( 'is-active' );
+					document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) ).classList.remove( 'is-active' );
+				}
+
+				this.classList.add( 'is-active' );
+				tabContent.classList.add( 'is-active' );
+
+			} );
+		}
+	}
+}
+
 /**
  * Misc
  */
@@ -1700,5 +1736,6 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.qtyButton.init();
 	botiga.carousel.init();
 	botiga.collapse.init();
+	botiga.tabsNav.init();
 	botiga.misc.init();
 } );

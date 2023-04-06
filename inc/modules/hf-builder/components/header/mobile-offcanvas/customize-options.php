@@ -72,7 +72,8 @@ $wp_customize->add_control(
                 array_merge(
                     array(
                         '#customize-control-botiga_header_row__mobile_offcanvas',
-                        '#customize-control-bhfb_mobile_offcanvas_close_offset'
+                        '#customize-control-bhfb_mobile_offcanvas_close_offset',
+                        '#customize-control-bhfb_mobile_offcanvas_hide_close_button'
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
                 )
@@ -89,6 +90,26 @@ $wp_customize->add_control(
                 )
             ),
             'priority' 				=> 20
+        )
+    )
+);
+
+// Hide Close Button.
+$wp_customize->add_setting(
+    'bhfb_mobile_offcanvas_hide_close_button',
+    array(
+        'default'           => 0,
+        'sanitize_callback' => 'botiga_sanitize_checkbox'
+    )
+);
+$wp_customize->add_control(
+    new Botiga_Toggle_Control(
+        $wp_customize,
+        'bhfb_mobile_offcanvas_hide_close_button',
+        array(
+            'label'         	=> esc_html__( 'Hide Close Icon', 'botiga' ),
+            'section'       	=> 'botiga_section_hb_mobile_offcanvas',
+            'priority' 			=> 25
         )
     )
 );
@@ -118,6 +139,7 @@ $wp_customize->add_control(
                 'max'	=> 100,
                 'step'  => 1
             ),
+            'active_callback' => function(){ return ! get_theme_mod( 'bhfb_mobile_offcanvas_hide_close_button', 0 ); },
             'priority'     => 25
         )
     ) 

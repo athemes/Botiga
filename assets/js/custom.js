@@ -176,7 +176,7 @@ botiga.navigation = {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var anchor = _step2.value;
           anchor.addEventListener('click', function (e) {
-            if (e.target.hash && document.querySelector(e.target.hash) !== null) {
+            if (e.target.hash && document.querySelector(e.target.hash) !== null && !e.target.classList.contains('botiga-tabs-nav-link')) {
               button.classList.remove('open');
               offCanvas.classList.remove('toggled');
               document.body.classList.remove('mobile-menu-visible');
@@ -222,6 +222,8 @@ botiga.navigation = {
       document.body.classList.remove('mobile-menu-visible');
     });
     document.addEventListener('click', function (e) {
+      console.log(e.target.closest('.botiga-offcanvas-menu'));
+
       if (e.target.closest('.botiga-offcanvas-menu') === null && !e.target.classList.contains('menu-toggle') && e.target.closest('.menu-toggle') === null) {
         button.classList.remove('open');
         offCanvas.classList.remove('toggled');
@@ -1589,6 +1591,58 @@ botiga.collapse = {
     el.nextElementSibling.style = 'max-height: 0px;';
   }
 };
+botiga.tabsNav = {
+  init: function init() {
+    var tabsNav = document.querySelectorAll('.botiga-tabs-nav');
+
+    if (!tabsNav.length) {
+      return false;
+    }
+
+    this.events();
+  },
+  events: function events() {
+    var tabsNavItems = document.querySelectorAll('.botiga-tabs-nav-item');
+
+    var _iterator15 = _createForOfIteratorHelper(tabsNavItems),
+        _step15;
+
+    try {
+      for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+        var tabItem = _step15.value;
+        tabItem.addEventListener('click', function (e) {
+          e.preventDefault();
+          var tabId = this.querySelector('.botiga-tabs-nav-link').getAttribute('href'),
+              tabContent = document.querySelector(tabId);
+
+          var _iterator16 = _createForOfIteratorHelper(tabsNavItems),
+              _step16;
+
+          try {
+            for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+              var _tabItem = _step16.value;
+
+              _tabItem.classList.remove('is-active');
+
+              document.querySelector(_tabItem.querySelector('.botiga-tabs-nav-link').getAttribute('href')).classList.remove('is-active');
+            }
+          } catch (err) {
+            _iterator16.e(err);
+          } finally {
+            _iterator16.f();
+          }
+
+          this.classList.add('is-active');
+          tabContent.classList.add('is-active');
+        });
+      }
+    } catch (err) {
+      _iterator15.e(err);
+    } finally {
+      _iterator15.f();
+    }
+  }
+};
 /**
  * Misc
  */
@@ -1723,5 +1777,6 @@ botiga.helpers.botigaDomReady(function () {
   botiga.qtyButton.init();
   botiga.carousel.init();
   botiga.collapse.init();
+  botiga.tabsNav.init();
   botiga.misc.init();
 });

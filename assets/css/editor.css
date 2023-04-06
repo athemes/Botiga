@@ -4930,12 +4930,16 @@ div.editor-styles-wrapper .botiga-offcanvas-menu.toggled .mobile-header-item {
   visibility: visible;
 }
 
+div.editor-styles-wrapper .botiga-offcanvas-menu .mobile-offcanvas-menu-content {
+  width: 100%;
+}
+
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown a {
   width: 100%;
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .menu-item-has-children a {
-  width: calc(100% - 23px);
+  width: calc(100% - 26px);
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown ul ul {
@@ -4943,7 +4947,7 @@ div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown ul ul {
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown ul ul a {
-  width: calc(100% - 23px);
+  width: calc(100% - 26px);
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown ul ul li {
@@ -5008,6 +5012,14 @@ div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .sub-menu.togg
   display: block;
   height: auto;
   visibility: visible;
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu.botiga-offcanvas-menu-hide-close-icon .mobile-menu-close {
+  display: none;
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu .widget_shopping_cart {
+  display: none !important;
 }
 
 div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown ul ul {
@@ -5105,6 +5117,17 @@ div.editor-styles-wrapper .botiga-offcanvas-menu.toggled .menu {
 
 div.editor-styles-wrapper body.mobile-menu-visible {
   overflow-y: hidden;
+}
+
+div.editor-styles-wrapper body.mobile-menu-visible:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
 }
 
 div.editor-styles-wrapper .menu-toggle {
