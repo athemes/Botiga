@@ -164,7 +164,7 @@ botiga.navigation = {
 		if( anchors.length ) {
 			for( var anchor of anchors ) {
 				anchor.addEventListener( 'click', function(e) {
-					if( e.target.hash && document.querySelector( e.target.hash ) !== null ) {
+					if( e.target.hash && document.querySelector( e.target.hash ) !== null && ! e.target.classList.contains( 'botiga-tabs-nav-link' ) ) {
 						button.classList.remove( 'open' );
 						offCanvas.classList.remove( 'toggled' );
 						document.body.classList.remove( 'mobile-menu-visible' );
@@ -208,6 +208,7 @@ botiga.navigation = {
 		} );
 
 		document.addEventListener( 'click', function(e){
+			console.log( e.target.closest( '.botiga-offcanvas-menu' ) );
 			if( e.target.closest( '.botiga-offcanvas-menu' ) === null && ! e.target.classList.contains( 'menu-toggle' ) && e.target.closest( '.menu-toggle' ) === null ) {
 				button.classList.remove( 'open' );
 	
@@ -442,7 +443,6 @@ botiga.headerSearch = {
 			button 		    = document.querySelectorAll( '.header-search' ),
 			form 			= window.matchMedia('(max-width: 1024px)').matches ? document.querySelector( '#masthead-mobile .header-search-form' ) : document.querySelector( '#masthead .header-search-form' ),
 			overlay 		= document.getElementsByClassName( 'search-overlay' )[0],
-			searchInput 	= form !== null ? form.getElementsByClassName('search-field')[0] : undefined,
 			searchBtn 	    = form !== null ? form.getElementsByClassName('search-submit')[0] : undefined;
 
 		if ( button.length === 0 ) {
@@ -472,6 +472,17 @@ botiga.headerSearch = {
 					e.target.closest( '.header-search' ).getElementsByClassName( 'icon-cancel' )[0].classList.toggle( 'active' );
 					e.target.closest( '.header-search' ).classList.add( 'active' );
 					e.target.closest( '.header-search' ).classList.remove( 'hide' );
+					
+					var searchInput        = '';
+					if( window.matchMedia( 'screen and (min-width: 1024px)' ).matches ) {
+						searchInput = document.querySelectorAll( '.bhfb-desktop .header-search-form .search-field' )[0];
+					} else {
+						searchInput = document.querySelectorAll( '.bhfb-mobile .header-search-form .search-field' )[0];
+					}
+
+					if( e.target.closest( '.header-search' ).parentNode.classList.contains( 'header-search-form-hide-input-on-mobile' ) ) {
+						searchInput = document.querySelectorAll( '.bhfb-mobile .header-search-form .search-field' )[1];
+					}
 
 					if( typeof searchInput !== 'undefined' ) {
 						searchInput.focus();
@@ -1175,6 +1186,7 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.updateBuyNowButtonQuantity(this, input.value);
 				self.behaviorsBasedOnQuantityValue( this, input.value );
 
 			});
@@ -1195,11 +1207,13 @@ botiga.qtyButton = {
 				changeEvent.initEvent( 'change', true, false );
 				input.dispatchEvent( changeEvent );
 				self.updateAddToCartQuantity(this, input.value);
+				self.updateBuyNowButtonQuantity(this, input.value);
 				self.behaviorsBasedOnQuantityValue( this, input.value );
       		});
 
 			input.addEventListener( 'change', function(e){
 				self.updateAddToCartQuantity( this, this.value );
+				self.updateBuyNowButtonQuantity(this, this.value);
 			});
 
 			wrapper.dataset.qtyInitialized = true;
@@ -1222,7 +1236,8 @@ botiga.qtyButton = {
 
 	updateAddToCartQuantity: function( qtyItem, qtyValue ) {
 
-		var product  		 = qtyItem.closest('.product'),
+		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
+			product  		 = qtyItem.closest( productSelector ),
 			qtyInput 		 = qtyItem.parentNode.querySelector('.qty');
 
 		if ( product ) {
@@ -1267,8 +1282,25 @@ botiga.qtyButton = {
 		}
 	},
 
+	updateBuyNowButtonQuantity: function( qtyItem, qtyValue ) {
+		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
+			product  		 = qtyItem.closest( productSelector ),
+			qtyInput 		 = qtyItem.parentNode.querySelector('.qty'),
+			buyNowButton     = product.querySelector( '.botiga-buy-now-button' );
+
+		if( buyNowButton === null ) {
+			return false;
+		}
+
+		var url = new URL( buyNowButton.getAttribute( 'href' ) );
+		url.searchParams.set( 'quantity', qtyValue );
+
+		buyNowButton.setAttribute( 'href', url );
+	},
+
 	behaviorsBasedOnQuantityValue: function( qtyItem, qtyValue ) {
-		var product = qtyItem.closest( '.product' );
+		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
+			product 	     = qtyItem.closest( productSelector );
 
 		if ( product ) {
 
@@ -1312,9 +1344,12 @@ botiga.carousel = {
 				var perPage = carouselEl.getAttribute( 'data-per-page' );
 				if( perPage === null ) {
 					var stageClassList = carouselEl.querySelector( '.products' ).classList.value;
-					if( stageClassList.indexOf( 'columns-4' ) > 0 ) {
-						perPage = 4;
-					}
+
+					[ 1, 2, 3, 4, 5 ].forEach( function( columns ) {
+						if( stageClassList.indexOf( 'columns-' + columns ) > 0 ) {
+							perPage = columns;
+						}
+					});
 				}
 				
 				// Mount carousel wrapper
@@ -1529,6 +1564,41 @@ botiga.collapse = {
 	}
 }
 
+botiga.tabsNav = {
+	init: function() {
+		const
+			tabsNav = document.querySelectorAll( '.botiga-tabs-nav' );
+
+		if( ! tabsNav.length ) {
+			return false;
+		}
+
+		this.events();
+	},
+
+	events: function() {
+		const tabsNavItems = document.querySelectorAll( '.botiga-tabs-nav-item' );
+		for( const tabItem of tabsNavItems ) {
+			tabItem.addEventListener( 'click', function(e){
+				e.preventDefault();
+
+				const
+					tabId      = this.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ),
+					tabContent = document.querySelector( tabId );
+
+				for( const tabItem of tabsNavItems ) {
+					tabItem.classList.remove( 'is-active' );
+					document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) ).classList.remove( 'is-active' );
+				}
+
+				this.classList.add( 'is-active' );
+				tabContent.classList.add( 'is-active' );
+
+			} );
+		}
+	}
+}
+
 /**
  * Misc
  */
@@ -1666,5 +1736,6 @@ botiga.helpers.botigaDomReady( function() {
 	botiga.qtyButton.init();
 	botiga.carousel.init();
 	botiga.collapse.init();
+	botiga.tabsNav.init();
 	botiga.misc.init();
 } );

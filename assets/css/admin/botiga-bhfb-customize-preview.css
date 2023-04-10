@@ -74,7 +74,8 @@
 }
 
 div[data-customize-partial-type="nav_menu_instance"] > .customize-partial-edit-shortcut,
-#site-navigation .customize-partial-edit-shortcut-button {
+#site-navigation .customize-partial-edit-shortcut-button,
+#site-navigation-mobile .customize-partial-edit-shortcut-button {
   display: none;
 }
 

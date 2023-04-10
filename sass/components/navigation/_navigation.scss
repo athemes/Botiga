@@ -378,6 +378,10 @@
 		}
     }
 
+	.mobile-offcanvas-menu-content {
+		width: 100%;
+	}
+
 	.botiga-dropdown {
 
 		a {
@@ -385,14 +389,14 @@
 		}
 		.menu-item-has-children {
 			a {
-				width: calc(100% - 23px);
+				width: calc(100% - 26px);
 			}	
 		}
 
 		ul ul {
 			width: 100%;
 			a {
-				width: calc(100% - 23px);
+				width: calc(100% - 26px);
 			}
 			li {
 				display: block;
@@ -457,6 +461,16 @@
 				visibility: visible;
 			}
 		}
+	}
+
+	&.botiga-offcanvas-menu-hide-close-icon {
+		.mobile-menu-close {
+			display: none;
+		}
+	}
+
+	.widget_shopping_cart {
+		display: none !important;
 	}
 }
 
@@ -561,6 +575,16 @@
 }
 body.mobile-menu-visible {
 	overflow-y: hidden;
+	&:before {
+		content: '';
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 99999;
+	}
 }
 .menu-toggle {
 	width: 28px;

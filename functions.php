@@ -557,3 +557,7 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
+
+// add_action( 'wp', function() {
+// 	var_dump( get_queried_object_id() );
+// } );

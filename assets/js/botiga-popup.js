@@ -38,10 +38,10 @@ botiga.popup = {
 
 
     var _loop = function _loop(i) {
-      var button = buttons[i];
+      var button = buttons[i],
+          popup = document.getElementById(button.getAttribute('data-popup-id'));
       button.addEventListener('click', function (e) {
         e.preventDefault();
-        var popup = document.getElementById(this.getAttribute('data-popup-id'));
 
         _this.openPopup(popup);
       }); // auto open
@@ -51,10 +51,10 @@ botiga.popup = {
 
         if (typeof delay === 'string') {
           setTimeout(function () {
-            button.dispatchEvent(new Event('click'));
+            _this.openPopup(popup);
           }, parseInt(delay) * 1000);
         } else {
-          button.dispatchEvent(new Event('click'));
+          _this.openPopup(popup);
         }
       }
     };

@@ -859,9 +859,13 @@ class Botiga_Header_Footer_Builder {
             <?php do_action( 'botiga_after_header' ); ?>
 
             <?php 
-        } ?>
+        } 
+        
+        $mobile_offcanvas_classes = apply_filters( 'botiga_mobile_offcanvas_classes', array( 'bhfb', 'bhfb-mobile_offcanvas', 'botiga-offcanvas-menu' ) );
+        
+        ?>
 
-        <div class="bhfb bhfb-mobile_offcanvas botiga-offcanvas-menu">
+        <div class="<?php echo esc_attr( implode( ' ', $mobile_offcanvas_classes ) ); ?>">
             <a class="mobile-menu-close" href="#" title="<?php echo esc_attr( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
             <div class="bhfb-mobile-offcanvas-rows">
                 <?php $this->mobile_offcanvas_callback( 'mobile_offcanvas' ); ?>

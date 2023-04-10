@@ -176,7 +176,7 @@ botiga.navigation = {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var anchor = _step2.value;
           anchor.addEventListener('click', function (e) {
-            if (e.target.hash && document.querySelector(e.target.hash) !== null) {
+            if (e.target.hash && document.querySelector(e.target.hash) !== null && !e.target.classList.contains('botiga-tabs-nav-link')) {
               button.classList.remove('open');
               offCanvas.classList.remove('toggled');
               document.body.classList.remove('mobile-menu-visible');
@@ -222,6 +222,8 @@ botiga.navigation = {
       document.body.classList.remove('mobile-menu-visible');
     });
     document.addEventListener('click', function (e) {
+      console.log(e.target.closest('.botiga-offcanvas-menu'));
+
       if (e.target.closest('.botiga-offcanvas-menu') === null && !e.target.classList.contains('menu-toggle') && e.target.closest('.menu-toggle') === null) {
         button.classList.remove('open');
         offCanvas.classList.remove('toggled');
@@ -518,7 +520,6 @@ botiga.headerSearch = {
         button = document.querySelectorAll('.header-search'),
         form = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('#masthead-mobile .header-search-form') : document.querySelector('#masthead .header-search-form'),
         overlay = document.getElementsByClassName('search-overlay')[0],
-        searchInput = form !== null ? form.getElementsByClassName('search-field')[0] : undefined,
         searchBtn = form !== null ? form.getElementsByClassName('search-submit')[0] : undefined;
 
     if (button.length === 0) {
@@ -562,6 +563,17 @@ botiga.headerSearch = {
             e.target.closest('.header-search').getElementsByClassName('icon-cancel')[0].classList.toggle('active');
             e.target.closest('.header-search').classList.add('active');
             e.target.closest('.header-search').classList.remove('hide');
+            var searchInput = '';
+
+            if (window.matchMedia('screen and (min-width: 1024px)').matches) {
+              searchInput = document.querySelectorAll('.bhfb-desktop .header-search-form .search-field')[0];
+            } else {
+              searchInput = document.querySelectorAll('.bhfb-mobile .header-search-form .search-field')[0];
+            }
+
+            if (e.target.closest('.header-search').parentNode.classList.contains('header-search-form-hide-input-on-mobile')) {
+              searchInput = document.querySelectorAll('.bhfb-mobile .header-search-form .search-field')[1];
+            }
 
             if (typeof searchInput !== 'undefined') {
               searchInput.focus();
@@ -1232,6 +1244,7 @@ botiga.qtyButton = {
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
         self.updateAddToCartQuantity(this, input.value);
+        self.updateBuyNowButtonQuantity(this, input.value);
         self.behaviorsBasedOnQuantityValue(this, input.value);
       });
       minus.addEventListener('click', function (e) {
@@ -1246,10 +1259,12 @@ botiga.qtyButton = {
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
         self.updateAddToCartQuantity(this, input.value);
+        self.updateBuyNowButtonQuantity(this, input.value);
         self.behaviorsBasedOnQuantityValue(this, input.value);
       });
       input.addEventListener('change', function (e) {
         self.updateAddToCartQuantity(this, this.value);
+        self.updateBuyNowButtonQuantity(this, this.value);
       });
       wrapper.dataset.qtyInitialized = true;
     }
@@ -1267,7 +1282,8 @@ botiga.qtyButton = {
     }
   },
   updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product'),
+    var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
+        product = qtyItem.closest(productSelector),
         qtyInput = qtyItem.parentNode.querySelector('.qty');
 
     if (product) {
@@ -1305,8 +1321,23 @@ botiga.qtyButton = {
       });
     }
   },
+  updateBuyNowButtonQuantity: function updateBuyNowButtonQuantity(qtyItem, qtyValue) {
+    var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
+        product = qtyItem.closest(productSelector),
+        qtyInput = qtyItem.parentNode.querySelector('.qty'),
+        buyNowButton = product.querySelector('.botiga-buy-now-button');
+
+    if (buyNowButton === null) {
+      return false;
+    }
+
+    var url = new URL(buyNowButton.getAttribute('href'));
+    url.searchParams.set('quantity', qtyValue);
+    buyNowButton.setAttribute('href', url);
+  },
   behaviorsBasedOnQuantityValue: function behaviorsBasedOnQuantityValue(qtyItem, qtyValue) {
-    var product = qtyItem.closest('.product');
+    var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
+        product = qtyItem.closest(productSelector);
 
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
@@ -1353,10 +1384,11 @@ botiga.carousel = {
 
           if (perPage === null) {
             var stageClassList = carouselEl.querySelector('.products').classList.value;
-
-            if (stageClassList.indexOf('columns-4') > 0) {
-              perPage = 4;
-            }
+            [1, 2, 3, 4, 5].forEach(function (columns) {
+              if (stageClassList.indexOf('columns-' + columns) > 0) {
+                perPage = columns;
+              }
+            });
           } // Mount carousel wrapper
 
 
@@ -1559,6 +1591,58 @@ botiga.collapse = {
     el.nextElementSibling.style = 'max-height: 0px;';
   }
 };
+botiga.tabsNav = {
+  init: function init() {
+    var tabsNav = document.querySelectorAll('.botiga-tabs-nav');
+
+    if (!tabsNav.length) {
+      return false;
+    }
+
+    this.events();
+  },
+  events: function events() {
+    var tabsNavItems = document.querySelectorAll('.botiga-tabs-nav-item');
+
+    var _iterator15 = _createForOfIteratorHelper(tabsNavItems),
+        _step15;
+
+    try {
+      for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+        var tabItem = _step15.value;
+        tabItem.addEventListener('click', function (e) {
+          e.preventDefault();
+          var tabId = this.querySelector('.botiga-tabs-nav-link').getAttribute('href'),
+              tabContent = document.querySelector(tabId);
+
+          var _iterator16 = _createForOfIteratorHelper(tabsNavItems),
+              _step16;
+
+          try {
+            for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+              var _tabItem = _step16.value;
+
+              _tabItem.classList.remove('is-active');
+
+              document.querySelector(_tabItem.querySelector('.botiga-tabs-nav-link').getAttribute('href')).classList.remove('is-active');
+            }
+          } catch (err) {
+            _iterator16.e(err);
+          } finally {
+            _iterator16.f();
+          }
+
+          this.classList.add('is-active');
+          tabContent.classList.add('is-active');
+        });
+      }
+    } catch (err) {
+      _iterator15.e(err);
+    } finally {
+      _iterator15.f();
+    }
+  }
+};
 /**
  * Misc
  */
@@ -1693,5 +1777,6 @@ botiga.helpers.botigaDomReady(function () {
   botiga.qtyButton.init();
   botiga.carousel.init();
   botiga.collapse.init();
+  botiga.tabsNav.init();
   botiga.misc.init();
 });
