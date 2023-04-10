@@ -4289,6 +4289,14 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   margin-top: 0;
 }
 
+.woocommerce-cart .checkout-button + .ppc-button-wrapper {
+  margin-top: 20px;
+}
+
+.woocommerce-cart #ppcp-messages + .checkout-button {
+  margin-top: 10px;
+}
+
 .shipping-calculator-button {
   text-decoration: underline;
 }
@@ -4300,6 +4308,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 
 .shipping-calculator-form .input-text {
   width: 100%;
+}
+
+.shipping-calculator-form .form-row {
+  margin-bottom: 20px;
 }
 
 .woocommerce-cart-form td {
@@ -4588,6 +4600,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 
 .woocommerce-checkout fieldset.wc-credit-card-form {
   margin-top: 25px;
+}
+
+.woocommerce-checkout .form-row {
+  margin-bottom: 20px;
 }
 
 #ship-to-different-address {
