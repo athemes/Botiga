@@ -13,7 +13,7 @@ botiga.single_ajax_add_to_cart = {
 
 	init: function () {
 
-		jQuery('.single_add_to_cart_button').on('click', function( e ) {
+		jQuery( document ).on('click', '.single_add_to_cart_button', function( e ) {
 
 			e.preventDefault();
 

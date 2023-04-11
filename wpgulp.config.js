@@ -198,6 +198,8 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*e2etests',
 	'!../@(Botiga|botiga)/**/*playwright-report/**/*',
 	'!../@(Botiga|botiga)/**/*playwright-report',
+	'!../@(Botiga|botiga)/**/*test-results/**/*',
+	'!../@(Botiga|botiga)/**/*test-results',
 	'!../@(Botiga|botiga)/**/*.wp-env.json',
 	'!../@(Botiga|botiga)/**/*playwright.config.js'
 ];

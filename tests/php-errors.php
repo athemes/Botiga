@@ -263,7 +263,8 @@ update_option( 'botiga-modules', array_merge(
         'video-gallery' => true,
         'variations-gallery' => true,
         'templates' => true,
-		'schema-markup' => true
+		'schema-markup' => true,
+		'buy-now' => true
     ) 
 ) );
 

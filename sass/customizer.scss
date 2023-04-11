@@ -727,7 +727,7 @@ span.delete:hover {
 }
 
 .customize-control-botiga-tab-control {
-	& + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title):not(#customize-control-botiga_section_hb_component__html_title):not(#customize-control-botiga_section_hb_component__html2_title):not(#customize-control-botiga_section_hb_component__shortcode_title):not(#customize-control-botiga_section_fb_component__html_title):not(#customize-control-botiga_section_fb_component__html2_title):not(#customize-control-botiga_section_fb_component__shortcode_title):not(#customize-control-botiga_section_hb_wrapper__header_builder_goto_sections):not(#customize-control-botiga_section_fb_wrapper__footer_builder_goto_sections) {
+	& + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title):not(#customize-control-botiga_section_hb_component__html_title):not(#customize-control-botiga_section_hb_component__html2_title):not(#customize-control-botiga_section_hb_component__shortcode_title):not(#customize-control-botiga_section_fb_component__html_title):not(#customize-control-botiga_section_fb_component__html2_title):not(#customize-control-botiga_section_fb_component__shortcode_title):not(#customize-control-botiga_section_hb_wrapper__header_builder_goto_sections):not(#customize-control-botiga_section_fb_wrapper__footer_builder_goto_sections):not(#customize-control-mobile_offcanvas_menu_switcher_title):not(#customize-control-mobile_offcanvas_menu_switcher_title) {
 		margin: 20px 0 30px !important;
 	}
 }
@@ -1762,6 +1762,10 @@ div.customize-section-description{
 
 #accordion-section-botiga_section_product_swatches .accordion-section-title:before{
 	background-image: url(../img/icons/product-swatches.svg);
+}
+
+#accordion-section-botiga_section_buy_now .accordion-section-title:before{
+	background-image: url(../img/icons/buy-now.svg);
 }
 
 #accordion-section-botiga_section_blog_archives .accordion-section-title:before{

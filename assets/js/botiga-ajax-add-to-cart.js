@@ -9,7 +9,7 @@
 var botiga = botiga || {};
 botiga.single_ajax_add_to_cart = {
   init: function init() {
-    jQuery('.single_add_to_cart_button').on('click', function (e) {
+    jQuery(document).on('click', '.single_add_to_cart_button', function (e) {
       e.preventDefault();
       var $button = jQuery(this);
       var $form = $button.closest('form.cart');

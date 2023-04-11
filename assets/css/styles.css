@@ -711,8 +711,16 @@ a.button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  background-color: #757575;
   border-color: #757575;
+}
+
+button:hover:not(.has-background),
+a.button:hover:not(.has-background),
+.wp-block-button__link:hover:not(.has-background),
+input[type="button"]:hover:not(.has-background),
+input[type="reset"]:hover:not(.has-background),
+input[type="submit"]:hover:not(.has-background) {
+  background-color: #757575;
 }
 
 button:active, button:focus,
@@ -733,14 +741,30 @@ a.wc-backward {
   color: #fff;
 }
 
-.is-style-outline .wp-block-button__link,
-.wp-block-button__link.is-style-outline {
+.is-style-outline .wp-block-button__link:not(.has-text-color),
+.wp-block-button__link:not(.has-text-color).is-style-outline {
   color: #212121;
   border: 2px solid #212121;
 }
 
 .wp-block-button {
   margin-bottom: 20px;
+}
+
+.wp-block-button[style*="text-transform"] .wp-block-button__link {
+  text-transform: inherit;
+}
+
+.wp-block-button[style*="letter-spacing"] .wp-block-button__link {
+  letter-spacing: inherit;
+}
+
+.wp-block-button[style*="font-weight"] .wp-block-button__link {
+  font-weight: inherit;
+}
+
+.wp-block-button[style*="font-style"] .wp-block-button__link {
+  font-style: inherit;
 }
 
 .wp-block-button.is-style-squared a,
@@ -2204,12 +2228,16 @@ html {
   visibility: visible;
 }
 
+.botiga-offcanvas-menu .mobile-offcanvas-menu-content {
+  width: 100%;
+}
+
 .botiga-offcanvas-menu .botiga-dropdown a {
   width: 100%;
 }
 
 .botiga-offcanvas-menu .botiga-dropdown .menu-item-has-children a {
-  width: calc(100% - 23px);
+  width: calc(100% - 26px);
 }
 
 .botiga-offcanvas-menu .botiga-dropdown ul ul {
@@ -2217,7 +2245,7 @@ html {
 }
 
 .botiga-offcanvas-menu .botiga-dropdown ul ul a {
-  width: calc(100% - 23px);
+  width: calc(100% - 26px);
 }
 
 .botiga-offcanvas-menu .botiga-dropdown ul ul li {
@@ -2282,6 +2310,14 @@ html {
   display: block;
   height: auto;
   visibility: visible;
+}
+
+.botiga-offcanvas-menu.botiga-offcanvas-menu-hide-close-icon .mobile-menu-close {
+  display: none;
+}
+
+.botiga-offcanvas-menu .widget_shopping_cart {
+  display: none !important;
 }
 
 .botiga-desktop-offcanvas-menu .botiga-dropdown ul ul {
@@ -2379,6 +2415,17 @@ html {
 
 body.mobile-menu-visible {
   overflow-y: hidden;
+}
+
+body.mobile-menu-visible:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
 }
 
 .menu-toggle {
@@ -5327,6 +5374,51 @@ body {
 
 .botiga-accordion__body-content #comments {
   margin-top: 0;
+}
+
+/* Tabs
+--------------------------------------------- */
+/**
+ * Tabs
+ */
+.botiga-tabs-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.botiga-tabs-nav .botiga-tabs-nav-item .botiga-tabs-nav-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 13px 22px;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid transparent;
+  opacity: 0.7;
+}
+
+.botiga-tabs-nav .botiga-tabs-nav-item.is-active .botiga-tabs-nav-link {
+  border-bottom-color: #212121;
+  opacity: 1;
+}
+
+.botiga-tabs-nav.botiga-tabs-nav-items-full-width .botiga-tabs-nav-item {
+  width: 100%;
+}
+
+.botiga-tab-content {
+  display: none;
+  padding: 20px;
+}
+
+.botiga-tab-content.is-active {
+  display: block;
 }
 
 /* Dokan

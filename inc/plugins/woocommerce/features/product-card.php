@@ -67,7 +67,7 @@ function botiga_product_card_hooks() {
 	add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 12 );
 
 	//Wrap loop image
-	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) || is_product() ) {
+	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) || is_product() || ( $layout === 'product-list' && ! is_shop() && ! is_product_category() && ! is_product_tag() && ! is_product_taxonomy() ) ) {
 		//Wrap loop image
 		add_action( 'woocommerce_before_shop_loop_item_title', function() use ($loop_image_wrap_extra_class) { echo '<div class="loop-image-wrap '. esc_attr( apply_filters( 'botiga_wc_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ) .'">'; }, 9 );
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div>'; }, 11 );
@@ -231,18 +231,13 @@ function botiga_page_has_woo_shortcode() {
  */
 function botiga_wrap_loop_button_start() {
 
-	$button_layout         = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$shop_product_quantity = get_theme_mod( 'shop_product_quantity', 0 );
-	$button_with_quantity  = '';
+	$loop_button_wrap_classes = array( 'loop-button-wrap' );
+	$button_layout            = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	
+	$loop_button_wrap_classes[] = 'button-' . $button_layout;
+	$loop_button_wrap_classes[] = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' ) === 'auto' ? 'button-width-auto' : 'button-width-full';
 
-	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
-		global $product;
-		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
-			$button_with_quantity = ' button-with-quantity';
-		}
-	}
-
-	echo '<div class="loop-button-wrap button-' . esc_attr( $button_layout ) . esc_attr( $button_with_quantity ) . '">';
+	echo '<div class="'. esc_attr( implode( ' ', apply_filters( 'botiga_loop_button_wrap_classes', $loop_button_wrap_classes ) ) ) .'">';
 }
 
 /**
@@ -251,6 +246,8 @@ function botiga_wrap_loop_button_start() {
 function botiga_loop_product_structure() {
 	$elements 	= get_theme_mod( 'shop_card_elements', array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ) );
 	$layout		= get_theme_mod( 'shop_product_card_layout', 'layout1' );
+
+	$elements = array_merge( $elements, apply_filters( 'botiga_loop_product_elements', array() ) );
 
 	if ( 'layout1' === $layout ) {
 		foreach ( $elements as $element ) {
@@ -294,4 +291,51 @@ function botiga_add_to_cart_text( $text, $product ) {
 	}
 
 	return $text;
+}
+
+/**
+ * Product Equal Height
+ */
+// Add class to botiga content class to flag the equal height in the product loop
+function botiga_equal_height_content_class( $class ) {
+	$layout 			= get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+	$button_layout      = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$equal_height       = get_theme_mod( 'shop_product_equal_height', 0 );
+	$equal_height_class = ( ! empty( $equal_height ) && $button_layout === 'layout2' && $layout === 'product-grid' ) ? ' product-equal-height' : '';
+
+	return $class . $equal_height_class;
+}
+add_action( 'wp', function(){
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
+		add_filter( 'botiga_content_class', 'botiga_equal_height_content_class' );
+	}
+} );
+
+/**
+ * Pass through all the legacy WooCommerce shortcodes to handle attributes
+ */
+$botiga_legacy_woo_shortcodes = array(
+	'products',
+	'recent_products',
+	'sale_products',
+	'best_selling_products',
+	'top_rated_products',
+	'featured_products',
+	'related_products'
+);
+
+foreach( $botiga_legacy_woo_shortcodes as $botiga_legacy_woo_shortcode ) {
+	add_filter( "shortcode_atts_{$botiga_legacy_woo_shortcode}", function( $atts ){
+
+		// Always product grid layout
+		$atts[ 'class' ] = 'product-grid';
+
+		// Proudct Equal Height
+		$shop_product_equal_height = get_theme_mod( 'shop_product_equal_height', 0 );
+		if( $shop_product_equal_height ) {
+			$atts[ 'class' ] = 'product-equal-height';
+		}
+		
+		return $atts;
+	} );
 }

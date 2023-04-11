@@ -214,6 +214,18 @@
 		}
 	}
 
+	.checkout-button {
+		& + .ppc-button-wrapper {
+			margin-top: 20px;
+		}
+	}
+
+	#ppcp-messages {
+		& + .checkout-button {
+			margin-top: 10px;
+		}
+	}
+
 }
 
 .shipping-calculator-button {
@@ -226,6 +238,10 @@
 
 	.input-text {
 		width: 100%;
+	}
+
+	.form-row {
+		margin-bottom: 20px;
 	}
 }
 

@@ -43,12 +43,12 @@ botiga.popup = {
 
         // Open popup link/button
         for( let i=0;i<buttons.length;i++ ) {
-            const button = buttons[i];
+            const 
+                button = buttons[i],
+                popup  = document.getElementById( button.getAttribute( 'data-popup-id' ) );
+
             button.addEventListener( 'click', function(e){
                 e.preventDefault();
-
-                const popup = document.getElementById( this.getAttribute( 'data-popup-id' ) );
-
                 _this.openPopup( popup );
             } );
 
@@ -57,10 +57,10 @@ botiga.popup = {
                 const delay = button.getAttribute( 'data-auto-open-delay' );
                 if( typeof delay === 'string' ) {
                     setTimeout(function(){
-                        button.dispatchEvent( new Event( 'click' ) );
+                        _this.openPopup( popup );
                     }, parseInt( delay ) * 1000 );
                 } else {
-                    button.dispatchEvent( new Event( 'click' ) );
+                    _this.openPopup( popup );
                 }
             }
         }

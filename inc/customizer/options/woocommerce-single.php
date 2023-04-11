@@ -36,6 +36,7 @@ $wp_customize->add_control(
         '#customize-control-single_zoom_effects',
         '#customize-control-single_gallery_divider_1',
         '#customize-control-single_breadcrumbs',
+		'#customize-control-single_breadcrumbs_hide_title',
         '#customize-control-single_ajax_add_to_cart',
         '#customize-control-single_product_elements_order',
         '#customize-control-single_product_tabs',
@@ -169,6 +170,26 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Breadcrumbs', 'botiga' ),
 			'section'       	=> 'botiga_section_single_product',
+			'priority'	 		=> 50
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'single_breadcrumbs_hide_title',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'single_breadcrumbs_hide_title',
+		array(
+			'label'         	=> esc_html__( 'Breadcrumbs - Hide Product Title', 'botiga' ),
+			'section'       	=> 'botiga_section_single_product',
+			'active_callback'   => function() { return get_theme_mod( 'single_breadcrumbs', 1 ) === 1; },
 			'priority'	 		=> 50
 		)
 	)
