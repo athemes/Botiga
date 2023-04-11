@@ -181,6 +181,14 @@ if (!defined('ABSPATH')) {
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<i class="botiga-dashboard-freevspro-table__icon_break dashicons dashicons-editor-break"></i>
+								<strong>Product Categories Navigation To Mobile Off-Canvas Menu</strong>
+							</div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
 								<strong><a href="https://docs.athemes.com/article/pro-mega-menu/" target="_blank">Mega Menu<i class="dashicons dashicons-external"></i></a></strong>
 								<i class="botiga-dashboard-freevspro-table__desc">Acommodate a large number of lower-level site pages at a glance.</i>
 							</div>
@@ -240,6 +248,14 @@ if (!defined('ABSPATH')) {
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Image Hover Swap</strong></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<strong>Buy Now Button</strong>
+								<i class="botiga-dashboard-freevspro-table__desc">Increase conversion by adding buy now buttons to your products.</i>
+							</div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
 						</div>

@@ -24,11 +24,6 @@ function botiga_single_ajax_add_to_cart_script() {
         return;
     }
 
-    global $product;
-    if( $product->is_type( 'external' ) ) {
-        return;
-    }
-
     wp_enqueue_script( 'botiga-single-ajax-add-to-cart', get_template_directory_uri() . '/assets/js/botiga-ajax-add-to-cart.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 
 }

@@ -314,7 +314,7 @@ add_action( 'wp', function(){
 /**
  * Pass through all the legacy WooCommerce shortcodes to handle attributes
  */
-$shortcodes = array(
+$botiga_legacy_woo_shortcodes = array(
 	'products',
 	'recent_products',
 	'sale_products',
@@ -324,8 +324,8 @@ $shortcodes = array(
 	'related_products'
 );
 
-foreach( $shortcodes as $shortcode ) {
-	add_filter( "shortcode_atts_{$shortcode}", function( $atts ){
+foreach( $botiga_legacy_woo_shortcodes as $botiga_legacy_woo_shortcode ) {
+	add_filter( "shortcode_atts_{$botiga_legacy_woo_shortcode}", function( $atts ){
 
 		// Always product grid layout
 		$atts[ 'class' ] = 'product-grid';
