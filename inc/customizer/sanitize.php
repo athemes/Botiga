@@ -20,6 +20,28 @@ function botiga_sanitize_select( $input, $setting ){
 }
 
 /**
+ * Select2
+ */
+function botiga_sanitize_select2( $input, $setting ){        
+    if( empty( $input ) ) {
+        return '';
+    }
+
+    $input   = strpos( $input, ',' ) !== FALSE ? explode( ',', $input ) : array( $input );
+    $choices = $setting->manager->get_control( $setting->id )->choices;
+
+    foreach( $input as $key => $value ) {
+        $input[ $key ] = sanitize_key( $value );
+
+        if( ! array_key_exists( $input[ $key ], $choices ) ) {
+            return $setting->default;
+        }
+    }
+
+    return implode( ',', $input );
+}
+
+/**
  * Sanitize blog elements
  */
 function botiga_sanitize_blog_meta_elements( $input ) {

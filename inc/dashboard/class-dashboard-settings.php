@@ -391,6 +391,16 @@ function botiga_dashboard_settings()
 		'docs_link'  => 'https://docs.athemes.com/article/pro-buy-now-feature/'
 	);
 
+	$settings['features'][] = array(
+		'module'     => 'free-shipping-progress-bar',
+		'type'       => 'pro',
+		'title'      => esc_html__('Free Shipping Progress Bar', 'botiga'),
+		'desc'       => esc_html__('Display a progress bar to show how close you are to getting free delivery.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_free_shipping_progress_bar', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-free-shipping-progress-bar/'
+	);
+
 	if ( !Botiga_Modules::is_module_active('hf-builder') ) {
 
 		$settings['features'][] = array(

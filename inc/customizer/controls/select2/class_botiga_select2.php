@@ -48,7 +48,7 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 		$select2_options = $this->select2_options; 
 		$multiple        = $this->multiple; 
 		$posttype        = $this->posttype; 
-		
+
 		if( $posttype ) {
 			$defaults = array( 
 				'post_type' => 'page',
@@ -79,6 +79,25 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $this->value(), true ); ?>><?php echo esc_html( $label ); ?></option>
 			<?php endforeach; ?>
 		</select>
+
+		<?php if( $multiple && strpos( $this->value(), ',' ) !== FALSE ) : 
+			$values = explode( ',', $this->value() ); 
+			
+			$values = array_map( function( $val ){
+				return "'$val'";
+			}, $values );
+			
+			?>
+			<script type="text/javascript">
+				(function( $ ){
+					'use strict';
+
+					const select2 = $( '.botiga-select2[control-name="<?php echo esc_js( $this->id ); ?>"]' );
+					select2.select2().val( [ <?php echo implode( ', ', $values ); ?> ] ).trigger( 'change.select2' );
+				})(jQuery);
+			</script>
+			
+		<?php endif; ?>
 
 		<?php
 
