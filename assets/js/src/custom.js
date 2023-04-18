@@ -1282,6 +1282,12 @@ botiga.qtyButton = {
 	},
 
 	updateBuyNowButtonQuantity: function( qtyItem, qtyValue ) {
+		const is_checkout_quantity = qtyItem.parentNode.parentNode.classList.contains( 'botiga-sc-product-name' ) || qtyItem.parentNode.parentNode.classList.contains( 'product-name' ) ? true : false;
+
+		if( is_checkout_quantity ) {
+			return false;
+		}
+		
 		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
 			product  		 = qtyItem.closest( productSelector ),
 			qtyInput 		 = qtyItem.parentNode.querySelector('.qty'),
