@@ -1308,7 +1308,8 @@ botiga.qtyButton = {
         data: {
           action: 'botiga_update_mini_cart_quantity',
           quantity: qtyInput.value,
-          cart_item_key: qtyInput.name
+          cart_item_key: qtyInput.name,
+          nonce: jQuery('#mini_cart_qty_nonce').val()
         },
         success: function success(response) {
           jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash]);
@@ -1320,9 +1321,10 @@ botiga.qtyButton = {
     }
   },
   updateBuyNowButtonQuantity: function updateBuyNowButtonQuantity(qtyItem, qtyValue) {
-    var is_checkout_quantity = qtyItem.parentNode.parentNode.classList.contains('botiga-sc-product-name') || qtyItem.parentNode.parentNode.classList.contains('product-name') ? true : false;
+    var is_checkout_quantity = qtyItem.parentNode.parentNode.classList.contains('botiga-sc-product-name') || qtyItem.parentNode.parentNode.classList.contains('product-name') ? true : false,
+        is_mini_cart_quantity = qtyItem.closest('.woocommerce-mini-cart-item') !== null ? true : false;
 
-    if (is_checkout_quantity) {
+    if (is_checkout_quantity || is_mini_cart_quantity) {
       return false;
     }
 
