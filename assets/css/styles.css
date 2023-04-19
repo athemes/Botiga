@@ -3968,6 +3968,10 @@ body.mobile-menu-visible:before {
   text-align: center;
 }
 
+.page-header + .posts-archive {
+  margin-top: 80px;
+}
+
 .posts-archive .entry-header {
   margin-bottom: 16px;
 }

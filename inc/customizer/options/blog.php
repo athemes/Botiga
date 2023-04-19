@@ -37,6 +37,7 @@ $wp_customize->add_control(
 				'#customize-control-archive_list_image_placement',
 				'#customize-control-archives_grid_columns',
 				'#customize-control-blog_layout',
+				'#customize-control-archive_hide_title',
 				'#customize-control-sidebar_archives',
 				'#customize-control-sidebar_archives_position',
 				'#customize-control-archives_sidebar_display_conditions',
@@ -126,6 +127,25 @@ $wp_customize->add_control(
 ); 
 
 $wp_customize->add_setting(
+	'archive_hide_title',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'archive_hide_title',
+		array(
+			'label'         	=> esc_html__( 'Hide Page Title', 'botiga' ),
+			'section'       	=> 'botiga_section_blog_archives',
+			'priority'      	=> 30
+		)
+	)
+);
+
+$wp_customize->add_setting(
 	'sidebar_archives',
 	array(
 		'default'           => '',
@@ -139,7 +159,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Enable sidebar', 'botiga' ),
 			'section'       	=> 'botiga_section_blog_archives',
-			'priority'      	=> 30
+			'priority'      	=> 31
 		)
 	)
 );

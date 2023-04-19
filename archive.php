@@ -14,13 +14,15 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-				do_action( 'botiga_before_title' );
-				the_archive_title( '<h1 class="page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+			<?php if( ! get_theme_mod( 'archive_hide_title', 0 ) ) : ?>
+				<header class="page-header">
+					<?php
+					do_action( 'botiga_before_title' );
+					the_archive_title( '<h1 class="page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' );
+					the_archive_description( '<div class="archive-description">', '</div>' );
+					?>
+				</header><!-- .page-header -->
+			<?php endif; ?>
 
 			<div class="posts-archive <?php echo esc_attr( apply_filters( 'botiga_blog_layout_class', 'layout3' ) ); ?>" <?php botiga_masonry_data(); ?>>
 				<div class="row">

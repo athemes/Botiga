@@ -416,7 +416,7 @@ add_filter( 'excerpt_length', 'botiga_excerpt_length', 99 );
  * Blog home page title
  */
 function botiga_page_title() {
-	if ( is_home() && ! is_front_page() ) :
+	if ( is_home() && ! is_front_page() && ! get_theme_mod( 'archive_hide_title', 0 ) ) :
 		?>
 		<header class="page-header">
 			<h1 class="page-title" <?php botiga_schema( 'headline' ); ?>><?php single_post_title(); ?></h1>

@@ -207,6 +207,13 @@ class Botiga_Metabox {
 	}
 
 	public function add_metabox( $post_type ) {
+		global $post;
+		
+		// Do not render the metabox in the page for posts (blog page).
+		$page_for_posts = get_option( 'page_for_posts' );
+		if( $page_for_posts && $post->ID == $page_for_posts ) {
+			return;
+		}
 
 		if ( $post_type === 'attachment' ) {
 			return;
