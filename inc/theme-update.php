@@ -400,3 +400,28 @@ function botiga_migrate_2_0_5_options() {
     set_theme_mod( 'botiga_migrate_2_0_5_options_flag', true );
 }
 add_action( 'init', 'botiga_migrate_2_0_5_options' );
+
+/**
+ * Migrate quick links options
+ * @since 2.0.7
+ */
+function botiga_migrate_2_0_7_options() {
+    $flag = get_theme_mod( 'botiga_migrate_2_0_7_options_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+    
+    // Quick Links
+    if( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'quick-links' ) ) {
+        
+        // Set Item Text Color
+        set_theme_mod( 'ql_item_text_color', get_theme_mod( 'ql_item_color', '' ) );
+        set_theme_mod( 'ql_item_text_color_hover', get_theme_mod( 'ql_item_color_hover', '' ) );
+
+    }
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_2_0_7_options_flag', true );
+}
+add_action( 'init', 'botiga_migrate_2_0_7_options' );

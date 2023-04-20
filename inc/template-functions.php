@@ -1365,6 +1365,34 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 					$result = $boolean;
 				}
 
+				if ( $condition === 'cart-page' && is_cart() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'checkout-page' && is_checkout() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'account-page' && is_account_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'view-order-page' && is_view_order_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'edit-account-page' && is_edit_account_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'order-received-page' && is_order_received_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'lost-password-page' && is_lost_password_page() ) {
+					$result = $boolean;
+				}
+				
 			}
 
 			// Specific

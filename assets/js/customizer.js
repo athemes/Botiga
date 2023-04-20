@@ -1306,21 +1306,6 @@
     value.bind(function (to) {
       $('.botiga-breadcrumb-trail').css('text-align', to);
     });
-  }); // Quick Links
-
-  wp.customize('ql_border_radius', function (value) {
-    value.bind(function (to) {
-      $('.botiga-quick-links .quick-links-inner').css('border-radius', to + 'px');
-    });
-  }); // Quick Links
-
-  wp.customize('ql_border_radius', function (value) {
-    value.bind(function (to) {
-      $('head').find('#botiga-customizer-styles-ql_border_radius').remove();
-      var outputBottom = '.botiga-quick-links.pos-bottom .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;} .botiga-quick-links.pos-bottom .quick-link:last-of-type {border-top-right-radius:' + to + 'px;border-bottom-right-radius:' + to + 'px;}';
-      var outputLeftRight = '.botiga-quick-links.pos-left .quick-link:first-of-type, .botiga-quick-links.pos-right .quick-link:first-of-type {border-top-left-radius:' + to + 'px;border-top-right-radius:' + to + 'px;} .botiga-quick-links.pos-left .quick-link:last-of-type, .botiga-quick-links.pos-right .quick-link:last-of-type {border-bottom-right-radius:' + to + 'px;border-bottom-left-radius:' + to + 'px;}';
-      $('head').append('<style id="botiga-customizer-styles-ql_border_radius">' + outputBottom + outputLeftRight + '</style>');
-    });
   }); // Modal Popup
 
   wp.customize('modal_popup_content_padding', function (value) {
