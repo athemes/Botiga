@@ -12,7 +12,7 @@ function botiga_related_products_hooks() {
     $single_related = get_theme_mod( 'single_related_products', 1 );
 	$hook_order     = apply_filters( 'botiga_woocommerce_after_single_product_summary_related_products_order', 20 );
 
-    if ( !$single_related ) {
+    if ( ! $single_related ) {
         remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', $hook_order );
     } else {
         $shop_single_related_products_columns_number = get_theme_mod( 'shop_single_related_products_columns_number', 3 );

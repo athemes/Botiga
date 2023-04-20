@@ -403,7 +403,11 @@ add_filter( 'loop_shop_per_page', 'botiga_loop_shop_per_page' );
  */
 function botiga_shop_loop_product_title() {
 	global $post;
-	echo wp_kses_post( apply_filters( 'botiga_shop_loop_product_title', the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' ), $post ) );
+	ob_start();
+	the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' );
+	$the_title = ob_get_clean();
+
+	echo wp_kses_post( apply_filters( 'botiga_shop_loop_product_title', $the_title, $post ) );
 }
 
 /**

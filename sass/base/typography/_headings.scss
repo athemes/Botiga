@@ -12,25 +12,31 @@ h6,
 	color: $color__primary;	
 }
 
-h1 {
+h1, 
+.bt-h1 {
 	@include font-size(64);
 	margin: 60px 0 40px;
 }
-h2 {
+h2,
+.bt-h2 {
 	@include font-size(48);
 	margin: 45px 0 30px;
 }
-h3 {
+h3,
+.bt-h3 {
 	@include font-size(32);
 	margin: 30px 0 16px;
 }
-h4 {
+h4,
+.bt-h4 {
 	@include font-size(24);
 }
-h5 {
+h5,
+.bt-h5 {
 	@include font-size(18);
 }
-h6 {
+h6,
+.bt-h6 {
 	@include font-size(16);
 }
 h4,h5,h6 {

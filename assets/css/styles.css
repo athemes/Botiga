@@ -427,35 +427,41 @@ h6,
   color: #212121;
 }
 
-h1 {
+h1,
+.bt-h1 {
   font-size: 64px;
   font-size: 4rem;
   margin: 60px 0 40px;
 }
 
-h2 {
+h2,
+.bt-h2 {
   font-size: 48px;
   font-size: 3rem;
   margin: 45px 0 30px;
 }
 
-h3 {
+h3,
+.bt-h3 {
   font-size: 32px;
   font-size: 2rem;
   margin: 30px 0 16px;
 }
 
-h4 {
+h4,
+.bt-h4 {
   font-size: 24px;
   font-size: 1.5rem;
 }
 
-h5 {
+h5,
+.bt-h5 {
   font-size: 18px;
   font-size: 1.125rem;
 }
 
-h6 {
+h6,
+.bt-h6 {
   font-size: 16px;
   font-size: 1rem;
 }
