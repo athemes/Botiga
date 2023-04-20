@@ -534,6 +534,11 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 require get_template_directory() . '/inc/notices/class-botiga-review.php';
 
 /**
+ * Botiga pro upsell notice.
+ */
+require get_template_directory() . '/inc/notices/class-botiga-pro-upsell.php';
+
+/**
  * Theme update migration functions.
  */
 require get_template_directory() . '/inc/theme-update.php';
