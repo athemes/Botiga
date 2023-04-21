@@ -22,9 +22,17 @@ class Botiga_Pro_Upsell_Notice {
 			return;
 		}
 
-		add_action( 'admin_notices', array( $this, 'notice_markup' ), 0 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'admin_notices', array( $this, 'notice_markup' ), 20 );
         add_action( 'admin_init', array( $this, 'dimiss_notice' ), 0 );
 		add_action( 'switch_theme', array( $this, 'notice_data_remove' ) );
+	}
+
+	/**
+	 * Enqueue admin scripts
+	 */
+	public function admin_enqueue_scripts() {
+		wp_enqueue_style( 'botiga-notices', get_template_directory_uri() . '/assets/css/admin/botiga-notices.min.css', array(), BOTIGA_VERSION, 'all' );
 	}
 
 	/**
@@ -32,32 +40,46 @@ class Botiga_Pro_Upsell_Notice {
 	 */
 	public function notice_markup() {
 		$user_id                  = get_current_user_id();
-		$current_user             = wp_get_current_user();
 		$dismissed_notice         = get_user_meta( $user_id, 'botiga_pro_upsell_notice_dismiss', true ) ? true : false;
+
+		if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+			return;
+		}
 
 		if ( $dismissed_notice ) {
 			return;
 		}
 
+		// Display Conditions
+		global $hook_suffix;
+		
+		if( ! in_array( $hook_suffix, array( 'woocommerce_page_wc-settings', 'index.php', 'plugins.php', 'edit.php', 'plugin-install.php' ) ) ) {
+			return;
+		}
+
+		if( $hook_suffix === 'edit.php' && ! isset( $_GET[ 'post_type' ] ) ) {
+			return;
+		}
+
+		if( $hook_suffix === 'edit.php' && ( isset( $_GET[ 'post_type' ] ) && $_GET[ 'post_type' ] !== 'product' ) ) {
+			return;
+		}
+
 		?>
 
-		<div class="notice notice-success" style="position:relative;">
+		<div class="botiga-notice botiga-notice-with-thumbnail notice" style="position:relative;">
+			<h3><?php echo esc_html__( 'Unlock More Design And Conversion Features', 'botiga' ); ?></h3>
+
 			<p>
 				<?php
-				printf(
-				    /* Translators: %1$s current user display name. */
-					esc_html__(
-						'Hey, %1$s! You\'ve been using Botiga for more than two weeks now and we hope you\'re happy with it. If you have a few minutes, we would love to get a 5 star review from you.', 'botiga'
-					),
-					'<strong>' . esc_html( $current_user->display_name ) . '</strong>'
-				);
+					echo esc_html__(
+						'When you upgrade to Botiga Pro, you\'re saying "yes" to a bucketload of extra customization options, advanced eCommerce features that boost your sales and premium support via email.', 'botiga'
+					);
 				?>
 			</p>
 
-			<p>
-				<a href="https://wordpress.org/support/theme/botiga/reviews/?filter=5#new-post" class="btn button-primary" target="_blank"><?php esc_html_e( 'asdsad', 'botiga' ); ?></a>
-			</p>
-
+			<a href="https://athemes.com/botiga-upgrade?utm_source=theme_notice&utm_medium=button&utm_campaign=Botiga" class="botiga-btn botiga-btn-secondary" target="_blank"><?php esc_html_e( 'Update To Pro Version', 'botiga' ); ?></a>
+			
 			<a class="notice-dismiss" href="?botiga_pro_upsell_notice_dismiss=1" style="text-decoration:none;"></a>
 		</div>
 		<?php

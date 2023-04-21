@@ -22,11 +22,19 @@ class Botiga_Theme_Review_Notice {
 			return;
 		}
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $this, 'review_notice' ) );
 		add_action( 'admin_notices', array( $this, 'review_notice_markup' ), 0 );
 		add_action( 'admin_init', array( $this, 'ignore_theme_review_notice' ), 0 );
 		add_action( 'admin_init', array( $this, 'ignore_theme_review_notice_partially' ), 0 );
 		add_action( 'switch_theme', array( $this, 'review_notice_data_remove' ) );
+	}
+
+	/**
+	 * Enqueue admin scripts
+	 */
+	public function admin_enqueue_scripts() {
+		wp_enqueue_style( 'botiga-notices', get_template_directory_uri() . '/assets/css/admin/botiga-notices.min.css', array(), BOTIGA_VERSION, 'all' );
 	}
 
 	/**
@@ -51,7 +59,7 @@ class Botiga_Theme_Review_Notice {
 			return;
 		}
 		?>
-		<div class="notice notice-success" style="position:relative;">
+		<div class="botiga-notice notice" style="position:relative;">
 			<p>
 				<?php
 				printf(
@@ -64,13 +72,9 @@ class Botiga_Theme_Review_Notice {
 				?>
 			</p>
 
-			<p>
-				<a href="https://wordpress.org/support/theme/botiga/reviews/?filter=5#new-post" class="btn button-primary" target="_blank"><?php esc_html_e( 'Sure', 'botiga' ); ?></a>
-
-				<a href="?delay_botiga_disable_review_notice_partially=0" class="btn button-secondary"><?php esc_html_e( 'Maybe later', 'botiga' ); ?></a>
-
-				<a href="?nag_botiga_disable_review_notice=0" class="btn button-secondary"><?php esc_html_e( 'I already did', 'botiga' ); ?></a>
-			</p>
+			<a href="https://wordpress.org/support/theme/botiga/reviews/?filter=5#new-post" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Sure', 'botiga' ); ?></a>
+			<a href="?delay_botiga_disable_review_notice_partially=0" class="botiga-btn botiga-btn-secondary"><?php esc_html_e( 'Maybe later', 'botiga' ); ?></a>
+			<a href="?nag_botiga_disable_review_notice=0" class="botiga-btn botiga-btn-secondary"><?php esc_html_e( 'I already did', 'botiga' ); ?></a>
 
 			<a class="notice-dismiss" href="?nag_botiga_disable_review_notice=0" style="text-decoration:none;"></a>
 		</div>
