@@ -392,6 +392,16 @@ function botiga_dashboard_settings()
 	);
 
 	$settings['features'][] = array(
+		'module'     => 'add-to-cart-notifications',
+		'type'       => 'pro',
+		'title'      => esc_html__('Add To Cart Notifications', 'botiga'),
+		'desc'       => esc_html__('Display a notification when a product is added to cart.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_adtcnotif', admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-add-to-cart-notifications/'
+	);
+
+	$settings['features'][] = array(
 		'module'     => 'free-shipping-progress-bar',
 		'type'       => 'pro',
 		'title'      => esc_html__('Free Shipping Progress Bar', 'botiga'),

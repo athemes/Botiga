@@ -264,7 +264,9 @@ update_option( 'botiga-modules', array_merge(
         'variations-gallery' => true,
         'templates' => true,
 		'schema-markup' => true,
-		'buy-now' => true
+		'buy-now' => true,
+		'free-shipping-progress-bar' => true,
+		'add-to-cart-notifications' => true
     ) 
 ) );
 
