@@ -46,7 +46,8 @@ if ( is_cart() ) {
 <?php endif; ?>
 <?php if( $wishlist_enable && $show_wishlist && $enable_header_wishlist_icon ) : 
     $wishlist_count = isset( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ? count( explode( ',', sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ) ) ) : 0; ?>
-    <a class="header-item header-wishlist-icon" href="<?php echo esc_url( get_permalink( get_option('botiga_wishlist_page_id') ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
+
+    <a class="header-item header-wishlist-icon" href="<?php echo esc_url( botiga_get_permalink( get_option( 'botiga_wishlist_page_id' ) ) ); ?>" title="<?php echo esc_attr__( 'Your wishlist', 'botiga' ); ?>">
         <span class="count-number"><?php echo esc_html( $wishlist_count ); ?></span>
         <i class="ws-svg-icon"><?php botiga_get_header_icon( 'wishlist', true ); ?></i>
     </a>

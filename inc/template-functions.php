@@ -1544,3 +1544,31 @@ function botiga_get_custom_fonts() {
 	return $css;
 
 }
+
+/**
+ * Wrapper to get_permalink() function. 
+ * 
+ */
+function botiga_get_permalink( $post = 0 ) {
+	if ( ! is_object( $post ) ) {
+		$post = get_post( $post );
+	}
+
+	if ( empty( $post->ID ) ) {
+		return false;
+	}
+
+	$post_id = $post->ID;
+
+	// Polylang
+	if ( function_exists( 'pll_get_post' ) ) {
+		$post_id = pll_get_post( $post->ID );
+	}
+
+	// WPML
+	if ( has_filter( 'wpml_object_id' ) ) {
+		$post_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true );
+	}
+
+	return get_permalink( $post_id );
+}
