@@ -1726,6 +1726,19 @@
 		} );
 	} );
 
+	// Add To Cart Notifications
+	// Force the display of notification when the the respective feature section is active
+	// This will provide better UX while customizing
+	window.parent.wp.customize.section( 'botiga_section_adtcnotif' ).expanded.bind(
+		function( isExpanded ) {
+			if ( isExpanded ) {
+				$( '.botiga-adtcnotif' ).addClass( 'active' );
+			} else {
+				$( '.botiga-adtcnotif' ).removeClass( 'active' );
+			}
+		}
+	);
+
 	// Theme options
 	var $theme_options = botiga_theme_options;
 
