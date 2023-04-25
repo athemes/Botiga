@@ -93,7 +93,7 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 					'use strict';
 
 					const select2 = $( '.botiga-select2[control-name="<?php echo esc_js( $this->id ); ?>"]' );
-					select2.select2().val( [ <?php echo implode( ', ', $values ); ?> ] ).trigger( 'change.select2' );
+					select2.select2().val( [ <?php echo implode( ', ', esc_js( $values ) ); ?> ] ).trigger( 'change.select2' );
 				})(jQuery);
 			</script>
 			

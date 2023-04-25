@@ -52,10 +52,10 @@ function botiga_woocommerce_page_header() {
 				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {
 					$title_html_tag = apply_filters( 'botiga_shop_page_title_html_tag', 'h1' );
 
-					echo sprintf( // WPCS: XSS ok.
+					echo sprintf(
 						'<%1$s class="woocommerce-products-header__title page-title" %2$s>%3$s</%1$s>',
 						tag_escape( $title_html_tag ),
-						botiga_schema( 'headline', false ),
+						botiga_schema( 'headline', false ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						esc_html( woocommerce_page_title( false ) )
 					);
 				}

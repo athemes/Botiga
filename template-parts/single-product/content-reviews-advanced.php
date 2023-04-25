@@ -181,13 +181,13 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                     break;
             }
 
-            $comments = get_comments( apply_filters( 'botiga_wc_reviews_advanced_sorting_args', $args ) ); ?>
+            $comments = get_comments( apply_filters( 'botiga_wc_reviews_advanced_sorting_args', $args ) ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited ?>
 
             <div id="comments">
                 <?php if ( count( $comments ) > 0 ) : ?>
                     <div class="botiga-reviews-list-wrapper">
                         
-                        <?php foreach( $comments as $comment ) :
+                        <?php foreach( $comments as $comment ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
                             if ( '1' === $comment->comment_approved ) : ?>
 
                                 <div id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="botiga-reviews-list-item">
@@ -230,7 +230,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                             <div class="botiga-review-content">
                                                 <?php
                                                 // We need to include the $comment variable here because some extra plugins like Germanized for WooCommerce use it.
-                                                $comment = $comment;
+                                                $comment = $comment; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
                                                 do_action( 'woocommerce_review_before_comment_text', $comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
 
