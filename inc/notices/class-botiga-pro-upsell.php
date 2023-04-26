@@ -68,12 +68,12 @@ class Botiga_Pro_Upsell_Notice {
 		?>
 
 		<div class="botiga-notice botiga-notice-with-thumbnail notice" style="position:relative;">
-			<h3><?php echo esc_html__( 'Unlock More Design And Conversion Features', 'botiga' ); ?></h3>
+			<h3><?php echo esc_html__( 'One theme with 35+ fully integrated features', 'botiga' ); ?></h3>
 
 			<p>
 				<?php
 					echo esc_html__(
-						'When you upgrade to Botiga Pro, you\'re saying "yes" to a bucketload of extra customization options, advanced eCommerce features that boost your sales and premium support via email.', 'botiga'
+						'Our all-in-one plugin (that extends Botiga theme) is packed with features to help you boost sales and grow your business. Join the thousands of satisfied entrepreneurs who have already taken their website to the next level with Botiga Pro. Don\'t wait - start achieving your website goals today!', 'botiga'
 					);
 				?>
 			</p>

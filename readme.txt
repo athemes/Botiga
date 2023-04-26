@@ -31,6 +31,10 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 = 2.0.8 =
+Added - New option to 'Hide Page Title' in the Blog Archives customizer settings.
+Changed - Removed Botiga metabox from the page that's defined as the 'Blog' page.
+Changed - Improvement to headings SEO outline structure from single product related products.
+Fixed - Single Product Gallery: Some layouts with no pagination in the thumbnails.
 
 = 2.0.7 =
 Added - New product card button width option (auto or full-width).
