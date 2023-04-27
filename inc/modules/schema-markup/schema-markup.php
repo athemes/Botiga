@@ -107,8 +107,12 @@ function botiga_get_schema( $location ) {
 
 }
 
-function botiga_schema( $location ) {
-	echo botiga_get_schema( $location ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+function botiga_schema( $location, $echo = true ) {
+	if( $echo ) {
+		echo botiga_get_schema( $location ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} else {
+		return botiga_get_schema( $location );
+	}
 }
 
 /**
