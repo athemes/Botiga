@@ -323,6 +323,11 @@ if (!defined('ABSPATH')) {
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Display Quantity Input On Checkout</strong></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Checkout Address Fields With Google Autocomplete </strong></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
@@ -395,6 +400,22 @@ if (!defined('ABSPATH')) {
 						</div>
 						<div class="botiga-dashboard-freevspro-table__row">
 							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Related Products Slider</strong></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<strong><a href="https://docs.athemes.com/article/pro-add-to-cart-notifications/" target="_blank">Add To Cart Notifications<i class="dashicons dashicons-external"></i></a></strong>
+								<i class="botiga-dashboard-freevspro-table__desc">Display a popup with the product that were added to the cart. </i>
+							</div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+						</div>
+						<div class="botiga-dashboard-freevspro-table__row">
+							<div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+								<strong><a href="https://docs.athemes.com/article/pro-free-shipping-progress-bar/" target="_blank">Free Shipping Progress Bar<i class="dashicons dashicons-external"></i></a></strong>
+								<i class="botiga-dashboard-freevspro-table__desc">Display a progress bar to show how close you are to getting free delivery. </i>
+							</div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
 							<div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
 						</div>

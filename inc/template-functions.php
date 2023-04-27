@@ -416,7 +416,7 @@ add_filter( 'excerpt_length', 'botiga_excerpt_length', 99 );
  * Blog home page title
  */
 function botiga_page_title() {
-	if ( is_home() && ! is_front_page() ) :
+	if ( is_home() && ! is_front_page() && ! get_theme_mod( 'archive_hide_title', 0 ) ) :
 		?>
 		<header class="page-header">
 			<h1 class="page-title" <?php botiga_schema( 'headline' ); ?>><?php single_post_title(); ?></h1>
@@ -1365,6 +1365,34 @@ function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_defa
 					$result = $boolean;
 				}
 
+				if ( $condition === 'cart-page' && is_cart() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'checkout-page' && is_checkout() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'account-page' && is_account_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'view-order-page' && is_view_order_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'edit-account-page' && is_edit_account_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'order-received-page' && is_order_received_page() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'lost-password-page' && is_lost_password_page() ) {
+					$result = $boolean;
+				}
+				
 			}
 
 			// Specific
@@ -1515,4 +1543,32 @@ function botiga_get_custom_fonts() {
 
 	return $css;
 
+}
+
+/**
+ * Wrapper to get_permalink() function. 
+ * 
+ */
+function botiga_get_permalink( $post = 0 ) {
+	if ( ! is_object( $post ) ) {
+		$post = get_post( $post );
+	}
+
+	if ( empty( $post->ID ) ) {
+		return false;
+	}
+
+	$post_id = $post->ID;
+
+	// Polylang
+	if ( function_exists( 'pll_get_post' ) ) {
+		$post_id = pll_get_post( $post->ID );
+	}
+
+	// WPML
+	if ( has_filter( 'wpml_object_id' ) ) {
+		$post_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+	}
+
+	return get_permalink( $post_id );
 }

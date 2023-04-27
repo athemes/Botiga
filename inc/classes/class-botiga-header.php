@@ -848,7 +848,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			<div class="site-branding" <?php botiga_schema( 'logo' ); ?>>
 				<?php
 				the_custom_logo();
-				if ( is_front_page() || is_home() ) :
+				if ( is_front_page() ) :
 					?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 					<?php

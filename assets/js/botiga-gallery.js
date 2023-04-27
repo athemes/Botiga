@@ -22,7 +22,7 @@ botiga.gallery = {
     jQuery(document).on('wc-product-gallery-after-init', '.woocommerce-product-gallery', function (event, gallery) {
       var $gallery = jQuery(gallery);
 
-      if (!$gallery.parent().is('.gallery-default, .gallery-vertical, .gallery-quickview')) {
+      if (!$gallery.parent().is('.gallery-default, .gallery-vertical, .gallery-quickview, .gallery-showcase, .gallery-full-width')) {
         return;
       }
 
@@ -39,7 +39,7 @@ botiga.gallery = {
         return;
       }
 
-      if ($gallery.parent().is('.gallery-vertical')) {
+      if ($gallery.parent().is('.gallery-vertical, .gallery-showcase')) {
         $flexThumbs.addClass('swiper-wrapper botiga-slides');
         $flexThumbs.find('li').addClass('swiper-slide');
         $flexThumbs.wrapAll('<div class="swiper botiga-swiper"></div>');
@@ -68,7 +68,7 @@ botiga.gallery = {
             swiper.update();
           }
         }).trigger('botiga.resize');
-      } else if ($gallery.parent().is('.gallery-default, .gallery-quickview')) {
+      } else if ($gallery.parent().is('.gallery-default, .gallery-quickview, .gallery-full-width')) {
         $flexThumbs.addClass('botiga-slides');
         $flexThumbs.wrapAll('<div class="botiga-flexslider"></div>');
         var $slider = $gallery.find('.botiga-flexslider');

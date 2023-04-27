@@ -134,35 +134,41 @@ div.editor-styles-wrapper .site-title {
   color: #212121;
 }
 
-div.editor-styles-wrapper h1 {
+div.editor-styles-wrapper h1,
+div.editor-styles-wrapper .bt-h1 {
   font-size: 64px;
   font-size: 4rem;
   margin: 60px 0 40px;
 }
 
-div.editor-styles-wrapper h2 {
+div.editor-styles-wrapper h2,
+div.editor-styles-wrapper .bt-h2 {
   font-size: 48px;
   font-size: 3rem;
   margin: 45px 0 30px;
 }
 
-div.editor-styles-wrapper h3 {
+div.editor-styles-wrapper h3,
+div.editor-styles-wrapper .bt-h3 {
   font-size: 32px;
   font-size: 2rem;
   margin: 30px 0 16px;
 }
 
-div.editor-styles-wrapper h4 {
+div.editor-styles-wrapper h4,
+div.editor-styles-wrapper .bt-h4 {
   font-size: 24px;
   font-size: 1.5rem;
 }
 
-div.editor-styles-wrapper h5 {
+div.editor-styles-wrapper h5,
+div.editor-styles-wrapper .bt-h5 {
   font-size: 18px;
   font-size: 1.125rem;
 }
 
-div.editor-styles-wrapper h6 {
+div.editor-styles-wrapper h6,
+div.editor-styles-wrapper .bt-h6 {
   font-size: 16px;
   font-size: 1rem;
 }

@@ -506,7 +506,7 @@ if ( ! function_exists( 'botiga_404_page_content' ) ) :
 
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
 					<div class="products404">
-						<h3><?php esc_html_e( 'Most Popular', 'botiga' ); ?></h3>
+						<h2 class="bt-h3"><?php esc_html_e( 'Most Popular', 'botiga' ); ?></h2>
 						<?php echo do_shortcode('[products limit="4" columns="4" orderby="popularity"]'); ?>
 					</div>					
 				<?php endif; ?>

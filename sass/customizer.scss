@@ -1800,6 +1800,14 @@ div.customize-section-description{
 	background-image: url(../img/icons/css.svg);
 }
 
+#accordion-section-botiga_section_free_shipping_progress_bar .accordion-section-title:before {
+	background-image: url(../img/icons/free-shipping.svg);
+}
+
+#accordion-section-botiga_section_adtcnotif .accordion-section-title:before {
+	background-image: url(../img/icons/add-to-cart-notifications.svg);
+}
+
 .customize-control-botiga-radio-image{
 
 	label{
@@ -1905,7 +1913,8 @@ div.customize-section-description{
 	flex-direction: column;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li{
+.customize-control-kirki-sortable ul.ui-sortable li,
+.customize-control-botiga-multi-list-toggle-control ul li {
 	position: relative;
 	overflow: hidden;
 	padding: 0;
@@ -1960,6 +1969,10 @@ div.customize-section-description{
 			}
 		}
 	}
+}
+
+.customize-control-botiga-multi-list-toggle-control ul li {
+	padding-left: 10px;
 }
 
 a,

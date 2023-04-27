@@ -181,42 +181,42 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                     break;
             }
 
-            $p_comments = get_comments( apply_filters( 'botiga_wc_reviews_advanced_sorting_args', $args ) ); ?>
+            $comments = get_comments( apply_filters( 'botiga_wc_reviews_advanced_sorting_args', $args ) ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited ?>
 
             <div id="comments">
-                <?php if ( count( $p_comments ) > 0 ) : ?>
+                <?php if ( count( $comments ) > 0 ) : ?>
                     <div class="botiga-reviews-list-wrapper">
                         
-                        <?php foreach( $p_comments as $p_comment ) :
-                            if ( '1' === $p_comment->comment_approved ) : ?>
+                        <?php foreach( $comments as $comment ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+                            if ( '1' === $comment->comment_approved ) : ?>
 
-                                <div id="comment-<?php echo esc_attr( $p_comment->comment_ID ); ?>" class="botiga-reviews-list-item">
+                                <div id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="botiga-reviews-list-item">
                                     <div class="row">
                                         <div class="col-md-9">
                                             <div class="d-flex align-items-center">
 
                                                 <?php 
-                                                $p_comment_rating_value = get_comment_meta( $p_comment->comment_ID, 'rating', true ); ?>
+                                                $comment_rating_value = get_comment_meta( $comment->comment_ID, 'rating', true ); ?>
 
                                                 <?php if( wc_review_ratings_enabled() ) : ?>
-                                                    <div class="star-rating botiga-star-rating-style2" role="img" aria-label="Rated <?php echo esc_attr( $p_comment_rating_value ); ?>.00 out of 5">
-                                                        <span style="width: <?php echo esc_attr( ( ( $p_comment_rating_value / 5 ) * 100 ) ); ?>%;">
+                                                    <div class="star-rating botiga-star-rating-style2" role="img" aria-label="Rated <?php echo esc_attr( $comment_rating_value ); ?>.00 out of 5">
+                                                        <span style="width: <?php echo esc_attr( ( ( $comment_rating_value / 5 ) * 100 ) ); ?>%;">
                                                             <?php 
                                                             /* translators: %s is average rating value */
-                                                            $p_comment_rating_text = sprintf( __( 'Rated %s out of 5 based on customer ratings.', 'botiga' ), $p_comment_rating_value );
-                                                            echo esc_html( $p_comment_rating_text ); ?>
+                                                            $comment_rating_text = sprintf( __( 'Rated %s out of 5 based on customer ratings.', 'botiga' ), $comment_rating_value );
+                                                            echo esc_html( $comment_rating_text ); ?>
                                                         </span>
                                                     </div>
                                                 <?php endif; ?>
                                                 
                                                 <strong class="botiga-review-author">
-                                                    <?php echo esc_html( get_comment_author( $p_comment ) ); ?>
+                                                    <?php echo esc_html( get_comment_author( $comment ) ); ?>
 
                                                     <?php
                                                     /**
                                                      * Verified owner
                                                      */
-                                                    $verified = wc_review_is_from_verified_owner( $p_comment->comment_ID );
+                                                    $verified = wc_review_is_from_verified_owner( $comment->comment_ID );
                                                     if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified ) {
                                                         echo '<em class="woocommerce-review__verified verified">'. esc_attr__( ' — verified owner', 'botiga' ) . '</em> ';
                                                     } ?>
@@ -224,51 +224,54 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-3 botiga-review-date-wrapper">
-                                            <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( 'c', $p_comment ) ); ?>"><?php echo esc_html( get_comment_date( 'F j, Y', $p_comment ) ); ?></time>
+                                            <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'F j, Y', $comment ) ); ?></time>
                                         </div>
                                         <div class="col-12">
                                             <div class="botiga-review-content">
                                                 <?php
-                                                do_action( 'woocommerce_review_before_comment_text', $p_comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                                                // We need to include the $comment variable here because some extra plugins like Germanized for WooCommerce use it.
+                                                $comment = $comment; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
-                                                comment_text( $p_comment ); 
+                                                do_action( 'woocommerce_review_before_comment_text', $comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+
+                                                comment_text( $comment ); 
                                                                                     
-                                                do_action( 'woocommerce_review_after_comment_text', $p_comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                                                do_action( 'woocommerce_review_after_comment_text', $comment ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
                                                 ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                            <?php elseif( isset( $_GET['unapproved'] ) && $p_comment->comment_ID === $_GET['unapproved'] ) : ?>
+                            <?php elseif( isset( $_GET['unapproved'] ) && $comment->comment_ID === $_GET['unapproved'] ) : ?>
 
-                                <div id="comment-<?php echo esc_attr( $p_comment->comment_ID ); ?>" class="botiga-reviews-list-item">
+                                <div id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="botiga-reviews-list-item">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="d-flex align-items-center">
 
                                                 <?php 
-                                                $p_comment_rating_value = get_comment_meta( $p_comment->comment_ID, 'rating', true ); ?>
+                                                $comment_rating_value = get_comment_meta( $comment->comment_ID, 'rating', true ); ?>
 
                                                 <?php if( wc_review_ratings_enabled() ) : ?>
-                                                    <div class="star-rating botiga-star-rating-style2" role="img" aria-label="Rated <?php echo esc_attr( $p_comment_rating_value ); ?>.00 out of 5">
-                                                        <span style="width: <?php echo esc_attr( ( ( $p_comment_rating_value / 5 ) * 100 ) ); ?>%;">
+                                                    <div class="star-rating botiga-star-rating-style2" role="img" aria-label="Rated <?php echo esc_attr( $comment_rating_value ); ?>.00 out of 5">
+                                                        <span style="width: <?php echo esc_attr( ( ( $comment_rating_value / 5 ) * 100 ) ); ?>%;">
                                                             <?php 
                                                             /* translators: %s is average rating value */
-                                                            $p_comment_rating_text = sprintf( __( 'Rated %s out of 5 based on customer ratings.', 'botiga' ), $p_comment_rating_value );
-                                                            echo esc_html( $p_comment_rating_text ); ?>
+                                                            $comment_rating_text = sprintf( __( 'Rated %s out of 5 based on customer ratings.', 'botiga' ), $comment_rating_value );
+                                                            echo esc_html( $comment_rating_text ); ?>
                                                         </span>
                                                     </div>
                                                 <?php endif; ?>
 
                                                 <strong class="botiga-review-author">
-                                                    <?php echo esc_html( get_comment_author( $p_comment ) ); ?>
+                                                    <?php echo esc_html( get_comment_author( $comment ) ); ?>
 
                                                     <?php
                                                     /**
                                                      * Verified owner
                                                      */
-                                                    $verified = wc_review_is_from_verified_owner( $p_comment->comment_ID );
+                                                    $verified = wc_review_is_from_verified_owner( $comment->comment_ID );
                                                     if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified ) {
                                                         echo '<em class="woocommerce-review__verified verified">'. esc_attr__( ' — verified owner', 'botiga' ) . '</em> ';
                                                     } ?>
@@ -293,7 +296,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
         <?php endif; ?>
 
     </div>
-    <?php if ( isset( $p_comments ) && count( $p_comments ) > 0 ) {
+    <?php if ( isset( $comments ) && count( $comments ) > 0 ) {
         echo '<div class="botiga-adv-reviews-footer text-center">';
         
             if ( $cpages > 1 && get_option( 'page_comments' ) ) {

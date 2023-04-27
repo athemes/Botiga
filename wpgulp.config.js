@@ -82,6 +82,7 @@ const adminBHFBSRC = './sass/admin/bhfb.scss';
 const adminCustPrevBHFBSRC = './sass/admin/bhfb-customize-preview.scss';
 const adminDashboardSRC = './sass/admin/dashboard.scss';
 const adminDashboardRtlSRC = './sass/admin/dashboard-rtl.scss';
+const adminNoticesSRC = './sass/admin/notices.scss';
 
 // JS BHFB
 const jsAdminBHFBSRC = './assets/js/src/admin/botiga-bhfb.js';
@@ -242,6 +243,7 @@ module.exports = {
 	adminCustPrevBHFBSRC,
 	adminDashboardSRC,
 	adminDashboardRtlSRC,
+	adminNoticesSRC,
 	jsAdminBHFBSRC,
 	jsAdminCustPrevBHFBSRC,
 	jsAdminDashboardSRC,

@@ -75,12 +75,14 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/custom-fonts/class_botiga_custom_fonts_control.php';
 			require get_template_directory() . '/inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php';
 			require get_template_directory() . '/inc/customizer/controls/dimensions/class_botiga_dimensions_control.php';
+			require get_template_directory() . '/inc/customizer/controls/multi-list-toggle/class_botiga_multi_list_toggle_control.php';
 			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}
 			// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 			$wp_customize->register_control_type( '\Kirki\Control\sortable' );
+			$wp_customize->register_control_type( 'Botiga_Multi_List_Toggle_Control' );
 
 			$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';

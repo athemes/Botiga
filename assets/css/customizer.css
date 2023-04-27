@@ -2064,6 +2064,14 @@ div.customize-section-description {
   background-image: url(../img/icons/css.svg);
 }
 
+#accordion-section-botiga_section_free_shipping_progress_bar .accordion-section-title:before {
+  background-image: url(../img/icons/free-shipping.svg);
+}
+
+#accordion-section-botiga_section_adtcnotif .accordion-section-title:before {
+  background-image: url(../img/icons/add-to-cart-notifications.svg);
+}
+
 .customize-control-botiga-radio-image label {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2182,7 +2190,8 @@ div.customize-section-description {
           flex-direction: column;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li {
+.customize-control-kirki-sortable ul.ui-sortable li,
+.customize-control-botiga-multi-list-toggle-control ul li {
   position: relative;
   overflow: hidden;
   padding: 0;
@@ -2193,7 +2202,8 @@ div.customize-section-description {
   line-height: 36px;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li .dashicons {
+.customize-control-kirki-sortable ul.ui-sortable li .dashicons,
+.customize-control-botiga-multi-list-toggle-control ul li .dashicons {
   width: 36px;
   height: 36px;
   -ms-flex-preferred-size: 36px;
@@ -2212,12 +2222,14 @@ div.customize-section-description {
           box-sizing: border-box;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li .dashicons:before {
+.customize-control-kirki-sortable ul.ui-sortable li .dashicons:before,
+.customize-control-botiga-multi-list-toggle-control ul li .dashicons:before {
   font-size: 16px;
   line-height: 1em;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-menu {
+.customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-menu,
+.customize-control-botiga-multi-list-toggle-control ul li .dashicons.dashicons-menu {
   float: left;
   padding: 0;
   margin: 0 10px 0 0;
@@ -2225,7 +2237,8 @@ div.customize-section-description {
   border-right: 1px solid #ddd;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-visibility {
+.customize-control-kirki-sortable ul.ui-sortable li .dashicons.dashicons-visibility,
+.customize-control-botiga-multi-list-toggle-control ul li .dashicons.dashicons-visibility {
   float: right;
   color: #3858E9;
   padding: 0;
@@ -2234,14 +2247,20 @@ div.customize-section-description {
   border-left: 1px solid #ddd;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li.invisible {
+.customize-control-kirki-sortable ul.ui-sortable li.invisible,
+.customize-control-botiga-multi-list-toggle-control ul li.invisible {
   color: #6E7780;
   border: 1px solid #CAD2F6;
   background-color: #EBEEFB;
 }
 
-.customize-control-kirki-sortable ul.ui-sortable li.invisible .dashicons.dashicons-visibility:before {
+.customize-control-kirki-sortable ul.ui-sortable li.invisible .dashicons.dashicons-visibility:before,
+.customize-control-botiga-multi-list-toggle-control ul li.invisible .dashicons.dashicons-visibility:before {
   content: "\f530";
+}
+
+.customize-control-botiga-multi-list-toggle-control ul li {
+  padding-left: 10px;
 }
 
 a,

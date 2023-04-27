@@ -80,6 +80,14 @@ function botiga_display_conditions_script_template() {
 			'text'    => esc_html__( 'WooCommerce', 'botiga' ),
 			'options' => array(
 				array(
+					'id'   => 'cart-page',
+					'text' => esc_html__( 'Cart', 'botiga' ),
+				),
+				array(
+					'id'   => 'checkout-page',
+					'text' => esc_html__( 'Checkout', 'botiga' ),
+				),
+				array(
 					'id'   => 'single-product',
 					'text' => esc_html__( 'Single Product', 'botiga' ),
 				),
@@ -105,6 +113,26 @@ function botiga_display_conditions_script_template() {
 					'text' => esc_html__( 'Product Category Name', 'botiga' ),
 					'ajax' => true,
 				),
+				array(
+					'id'   => 'account-page',
+					'text' => esc_html__( 'My Account', 'botiga' ),
+				),
+				array(
+					'id'   => 'edit-account-page',
+					'text' => esc_html__( 'Edit Account', 'botiga' ),
+				),
+				array(
+					'id'   => 'order-received-page',
+					'text' => esc_html__( 'Order Received', 'botiga' ),
+				),
+				array(
+					'id'   => 'view-order-page',
+					'text' => esc_html__( 'View Order', 'botiga' ),
+				),
+				array(
+					'id'   => 'lost-password-page',
+					'text' => esc_html__( 'Lost Password', 'botiga' ),
+				)
 			),
 		);
 

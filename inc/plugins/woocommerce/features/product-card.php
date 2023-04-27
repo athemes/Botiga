@@ -339,3 +339,38 @@ foreach( $botiga_legacy_woo_shortcodes as $botiga_legacy_woo_shortcode ) {
 		return $atts;
 	} );
 }
+
+/**
+ * Change products cards heading tag from h2 (default) to h3
+ * To have a better SEO structure
+ * 
+ */
+function botiga_product_card_title_output( $title, $loop_post ) {
+	if( ! is_singular( 'product' ) && ! is_404() ) {
+		return $title;
+	}
+
+	$early = true;
+
+	// 404
+	if( is_404() ) {
+		$early = false;
+	}
+
+	// Related, Upsell and Recently Viewed Products
+	if( ( get_theme_mod( 'single_related_products', 1 ) || get_theme_mod( 'single_upsell_products', 1 ) || get_theme_mod( 'single_recently_viewed_products', 0 ) ) && ! is_404() ) {
+		$early = false;
+	}
+
+	// Return early
+	if( $early ) {
+		return $title;
+	}
+
+	ob_start();
+	the_title( '<h3 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $loop_post->ID ) ) .'">', '</a></h3>' );
+	$the_title = ob_get_clean();
+
+	return $the_title;
+}
+add_filter( 'botiga_shop_loop_product_title', 'botiga_product_card_title_output', 10, 2 );

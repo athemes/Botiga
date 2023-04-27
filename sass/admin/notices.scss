@@ -1,0 +1,92 @@
+/*
+ * Notices
+ * Admin CSS
+ */
+
+.botiga-notice {
+    background-color: #FFF;
+    border-color: #DDE2E7;
+    border-left-color: #3858E9;
+    padding: 15px 20px 20px !important;
+    color: #6D7175;
+
+    .botiga-btn {
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border: 1px solid #757575;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: ease color 300ms, ease background-color 300ms, ease border-color 300ms;
+    }
+
+    .botiga-btn-primary {
+        background-color: #3858E9;
+        border-color: #3858E9;
+        color: #FFF;
+
+        &:hover {
+            background-color: #4d6aee;
+            border-color: #4d6aee;
+        }
+    }
+
+    .botiga-btn-secondary {
+        background-color: #FFF;
+        border-color: #3858E9;
+        color: #3858E9;
+
+        &:hover {
+            background-color: #f5f5f5;
+            border-color: #4d6aee;
+            color: #4d6aee;
+        }
+    }
+
+    h3 {
+        font-size: 20px;
+        line-height: 30px;
+        margin: 0;
+        & + p {
+            margin-top: 10px;
+        }
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 20px;
+        margin: 0;
+        padding: 0;
+        & + .botiga-btn {
+            margin-top: 15px;
+        }
+    }
+
+    .notice-dismiss {
+        padding: 14px;
+        &:before {
+            content: "\f335";
+            font-size: 19px;
+            color: #757575;
+            transition: ease color 300ms;
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+            &:before {
+                color: #212121;
+            }
+        }
+
+    }
+
+    &.botiga-notice-with-thumbnail {
+        background-image: url(../../img/admin/notice-thumbnail.png);
+        background-repeat: no-repeat;
+        background-position: 20px 20px;
+        background-size: 89px;
+        padding-left: 135px !important;
+    }
+}

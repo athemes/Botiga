@@ -237,74 +237,143 @@
 		 );
  });
 
- /**
-	* Task: `dashboardRtl`.
-	*
-	* Compiles Sass, Autoprefixes it and Minifies CSS.
-	*
-	* This task does the following:
-	*    1. Gets the source scss file
-	*    2. Compiles Sass to CSS
-	*    3. Writes Sourcemaps for it
-	*    4. Autoprefixes it and generates style.css
-	*    5. Renames the CSS file with suffix .min.css
-	*    6. Minifies the CSS file and generates style.min.css
-	*    7. Injects CSS or reloads the browser via browserSync
-	*/
- gulp.task('dashboardRtlStyles', () => {
-	 return gulp
-		 .src(config.adminDashboardRtlSRC, {allowEmpty: true})
-		 .pipe(plumber(errorHandler))
-		 .pipe(
-			 sass({
-				 errLogToConsole: config.errLogToConsole,
-				 outputStyle: 'expanded',
-				 precision: config.precision
-			 })
-		 )
-		 .on('error', sass.logError)
-		 .pipe(autoprefixer(config.BROWSERS_LIST))
-		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
-		 .pipe(rename({prefix: 'botiga-'}))
-		 .pipe(gulp.dest(config.adminStyleDestination))
-		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
-		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
-		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
-		 .pipe(
-			 notify({
-				 message: '\n\n✅  ===> Dashboard RTL Expanded — completed!\n',
-				 onLast: true
-			 })
-		 );
- });
- 
- gulp.task('dashboardRtlStylesMin', () => {
-	 return gulp
-		 .src(config.adminDashboardRtlSRC, {allowEmpty: true})
-		 .pipe(plumber(errorHandler))
-		 .pipe(
-			 sass({
-				 errLogToConsole: config.errLogToConsole,
-				 outputStyle: 'compressed',
-				 precision: config.precision
-			 })
-		 )
-		 .on('error', sass.logError)
-		 .pipe(autoprefixer(config.BROWSERS_LIST))
-		 .pipe(rename({suffix: '.min'}))
-		 .pipe(lineec()) // Consistent Line Endings for non UNIX systems.
-		 .pipe(rename({prefix: 'botiga-'}))
-		 .pipe(gulp.dest(config.adminStyleDestination))
-		 .pipe(filter('**/*.css')) // Filtering stream to only css files.
-		 .pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
-		 .pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
-		 .pipe(
-			 notify({
-				 message: '\n\n✅  ===> Dashboard RTL Minified — completed!\n',
-				 onLast: true
-			 })
-		 );
- });
+/**
+* Task: `dashboardRtl`.
+*
+* Compiles Sass, Autoprefixes it and Minifies CSS.
+*
+* This task does the following:
+*    1. Gets the source scss file
+*    2. Compiles Sass to CSS
+*    3. Writes Sourcemaps for it
+*    4. Autoprefixes it and generates style.css
+*    5. Renames the CSS file with suffix .min.css
+*    6. Minifies the CSS file and generates style.min.css
+*    7. Injects CSS or reloads the browser via browserSync
+*/
+gulp.task('dashboardRtlStyles', () => {
+	return gulp
+		.src(config.adminDashboardRtlSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Dashboard RTL Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('dashboardRtlStylesMin', () => {
+	return gulp
+		.src(config.adminDashboardRtlSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Dashboard RTL Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
+* Task: `adminNotices`.
+*
+* Compiles Sass, Autoprefixes it and Minifies CSS.
+*
+* This task does the following:
+*    1. Gets the source scss file
+*    2. Compiles Sass to CSS
+*    3. Writes Sourcemaps for it
+*    4. Autoprefixes it and generates style.css
+*    5. Renames the CSS file with suffix .min.css
+*    6. Minifies the CSS file and generates style.min.css
+*    7. Injects CSS or reloads the browser via browserSync
+*/
+gulp.task('adminNoticesStyles', () => {
+	return gulp
+		.src(config.adminNoticesSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Admin Notices CSS Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('adminNoticesStylesMin', () => {
+	return gulp
+		.src(config.adminNoticesSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(rename({prefix: 'botiga-'}))
+		.pipe(gulp.dest(config.adminStyleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Admin Notices CSS Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
 
  /**
 	* Task: `adminBHFBSRC`.
@@ -1662,6 +1731,8 @@ gulp.task(
 		'dashboardStylesMin',
 		'dashboardRtlStyles',
 		'dashboardRtlStylesMin',
+		'adminNoticesStyles',
+		'adminNoticesStylesMin',
 		'customJS',
 		'botigaPopupJS',
 		'botigaCarouselJS',
@@ -1709,6 +1780,8 @@ gulp.task(
 		gulp.watch(config.watchStyles, gulp.parallel('dashboardStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('dashboardRtlStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('dashboardRtlStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('adminNoticesStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('adminNoticesStylesMin'));
 
 		// Frontend JS
 		gulp.watch(config.watchJsAdmin, gulp.series('customJS', reload));
