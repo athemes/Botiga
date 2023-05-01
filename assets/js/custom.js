@@ -89,7 +89,7 @@ botiga.helpers = {
 
 botiga.navigation = {
   init: function init() {
-    var siteNavigation = document.getElementById('site-navigation'),
+    var siteNavigation = document.getElementById('site-navigation') == null ? document.getElementById('site-navigation-mobile') : null,
         offCanvas = document.getElementsByClassName('botiga-offcanvas-menu')[0],
         button = document.getElementsByClassName('menu-toggle')[0]; // Return early if the navigation don't exist.
 

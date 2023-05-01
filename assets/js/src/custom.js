@@ -83,7 +83,7 @@ botiga.navigation = {
 	
 	init: function() {
 		const 
-			siteNavigation = document.getElementById( 'site-navigation' ),
+			siteNavigation = document.getElementById( 'site-navigation' ) == null ? document.getElementById( 'site-navigation-mobile' ) : null,
 			offCanvas 	   = document.getElementsByClassName( 'botiga-offcanvas-menu' )[0],
 			button 		   = document.getElementsByClassName( 'menu-toggle' )[ 0 ];
 
