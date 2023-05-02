@@ -84,16 +84,18 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 			$values = explode( ',', $this->value() ); 
 			
 			$values = array_map( function( $val ){
-				return "'$val'";
+				$newval = esc_js( $val );
+
+				return "'$newval'";
 			}, $values );
-			
+
 			?>
 			<script type="text/javascript">
 				(function( $ ){
 					'use strict';
 
 					const select2 = $( '.botiga-select2[control-name="<?php echo esc_js( $this->id ); ?>"]' );
-					select2.select2().val( [ <?php echo implode( ', ', esc_js( $values ) ); ?> ] ).trigger( 'change.select2' );
+					select2.select2().val( [ <?php echo implode( ', ', $values ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped previously. ?> ] ).trigger( 'change.select2' );
 				})(jQuery);
 			</script>
 			
