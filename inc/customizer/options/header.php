@@ -11,14 +11,21 @@
 $wp_customize->add_panel(
 	'botiga_panel_header',
 	array(
-		'title'    => esc_html__( 'Header', 'botiga' ),
-		'priority' => 15,
+		'title'       => esc_html__( 'Header', 'botiga' ),
+		'description' => esc_html__( 'Build your own header or choose from layout options.', 'botiga' ),
+		'priority'    => 15,
 	)
 );
 
 /**
  * Header image
  */
+
+// Header image section description
+$wp_customize->get_section( 'header_image' )->description = esc_html__( 'Display any image in the header area.', 'botiga' );
+
+// Remove description from header image control
+$wp_customize->get_setting( 'header_image' )->description = 'zzzzzzzz';
 
 // Header Image Display Conditions
 $wp_customize->add_setting(

@@ -1,4 +1,28 @@
 /* General */
+.customize-control {
+	margin-bottom: 0;
+	padding: 15px 12px 0px 12px;
+
+	&.customize-control-botiga-alpha-color,
+	&.customize-control-botiga-color-group-control {
+		width: calc( 100% - 24px );
+		margin-left: 12px;
+		border-top: 1px solid #ddd;
+		padding: 15px 12px;
+	}
+
+	&.customize-control-botiga-text-control {
+		+ .customize-control-botiga-alpha-color,
+		+ .customize-control-botiga-color-group-control {
+			border-top: 0;
+		}
+	}
+
+	&#customize-control-reset_colors {
+		padding-bottom: 15px;
+	}
+}
+
 .customize-control input[type=color], .customize-control input[type=date], .customize-control input[type=datetime-local], .customize-control input[type=datetime], .customize-control input[type=email], .customize-control input[type=month], .customize-control input[type=number], .customize-control input[type=password], .customize-control input[type=search], .customize-control input[type=tel], .customize-control input[type=text], .customize-control input[type=time], .customize-control input[type=url], .customize-control input[type=week], .customize-control select, .customize-control textarea {
 	border-color: #949494;
 	padding: 3px 12px;
@@ -15,6 +39,19 @@
 
 .customize-control input[type=range] {
 	margin-right: 10px;
+}
+
+/* Control Subsection */
+#customize-theme-controls,
+#customize-outer-theme-controls {
+	.control-subsection {
+		border: 1px solid #ddd;
+		margin: -1px 15px;
+
+		h3 {
+			padding: 9px 14px;
+		}
+	}
 }
 
 /* Typography */
@@ -410,10 +447,10 @@ span.delete:hover {
 }
 .text_radio_button_control .palette-radio-buttons {
 	position: absolute;
-	top: calc(100% + 5px);
+	top: calc(100% - 15px);
 	display: none;
 	left: 12px;
-	width: calc(100% - 24px);
+	width: calc(100% - 30px);
 	background-color: #fff;
 	z-index: 99;
 	border-radius: 2px;
@@ -515,8 +552,6 @@ span.delete:hover {
 	border-color: #ddd;
 }
 .customize-control:not(.customize-control-botiga-tab-control):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor) {
-	margin-bottom: 15px;
-	padding: 0 12px;
 	box-sizing: border-box;
 }
 .botiga-radio-images-wrapper {
@@ -537,6 +572,7 @@ span.delete:hover {
     font-size: 13px;
     font-weight: 400;
     text-transform: capitalize;
+	margin-bottom: 12px;
 
     &.customize-control-title-font-size-normal {
         font-size: 13px !important;
@@ -666,6 +702,7 @@ span.delete:hover {
 	visibility: hidden;
 	height: 0;
 	margin: 0 !important;
+	padding: 0;
 }
 #sub-accordion-section-botiga_section_blog_singles .customize-control-botiga-text-control,
 #customize-control-archive_featured_image_title,
@@ -689,7 +726,7 @@ span.delete:hover {
 #customize-control-header_transparent_display_rules_title,
 #sub-accordion-section-colors li:not(.customize-control-botiga-divider-control),
 #sub-accordion-section-botiga_section_buttons li:not(.customize-control-botiga-divider-control) {
-	margin-bottom: 12px;
+	// margin-bottom: 12px;
 }
 #customize-control-color_palettes,
 #customize-control-background_color,
@@ -1431,16 +1468,134 @@ label {
 	background-color: #f9f9f9;
 }
 
-.customize-section-title{
+.customize-section-title {
 	border: none;
 }
 
-#customize-theme-controls .customize-section-title-menu_locations-heading{
+#customize-theme-controls .customize-section-title-menu_locations-heading {
 	padding-top: 10px;
 }
 
-#customize-theme-controls .customize-section-title-nav_menus-heading{
+#customize-theme-controls .customize-section-title-nav_menus-heading {
 	padding-bottom: 5px;
+}
+
+#customize-theme-controls {
+	.customize-pane-child.accordion-section-content {
+		padding: 0;
+	}
+}
+
+#customize-controls {
+	.customize-pane-child {
+
+		.section-meta,
+		.panel-meta {
+			padding: 12px 12px 5px 12px;
+			border-bottom: none;
+			background-color: #FFF;
+			margin-top: 5px;
+			margin-bottom: 0;
+		}
+
+		.section-meta {
+			.customize-section-title {
+				display: flex;
+				margin: 0;
+				h3 {
+					font-size: 15px;
+					line-height: 20px;
+					font-weight: 600;
+					margin: 0;
+					padding: 0;
+
+					.customize-action {
+						display: none;
+					}
+				}
+			}
+
+			.customize-section-description {
+				color: #1e1e1e;
+				font-weight: 400;
+				margin-top: 9px;
+				padding: 0 20px 0 0;
+			}
+		}
+
+		.panel-meta {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 0;
+			.customize-panel-back {
+				flex-basis: 11%;
+			}
+			.accordion-section-title {
+				flex-basis: 89%;
+				margin: 0;
+				padding: 0;
+
+				.preview-notice {
+					max-height: 32px;
+					display: block;
+					flex-direction: column;
+
+					.panel-title {
+						font-size: 15px;
+						line-height: 20px;
+						font-weight: 600;
+						transform: translate3d(0, -100%, 0);
+						background: #FFF;
+					}
+				}
+
+				.customize-help-toggle {
+					font-size: 18px;
+					top: -2px;
+					right: 0;
+				}
+			}
+			.customize-panel-description {
+				display: block !important;
+				flex-basis: 100%;
+				color: #1e1e1e;
+				font-weight: 400;
+				margin-top: 9px;
+				padding: 0 20px 0 0;
+				border-top: none;
+				margin-left: 4px;
+			}
+			.customize-panel-description,
+			.customize-control-notifications-container {
+				flex-basis: 100%;
+			}
+
+			.customize-help-toggle {
+				display: none;
+			}
+
+			& + .control-subsection:not(.botiga-title-section),
+			& + .control-subsection:not(.botiga-title-section)[style="display: none;"] + .control-subsection {
+				margin-top: 15px;
+			}
+		}
+
+	}
+}
+
+/* Back Button */
+.customize-panel-back,
+.customize-section-back {
+	float: none;
+	padding: 0;
+	width: 35px;
+	height: auto;
+
+	&:before {
+		line-height: 20px;
+		left: -3px;
+		font-size: 18px;
+	}
 }
 
 .expanded .wp-full-overlay-footer{
@@ -1452,27 +1607,14 @@ label {
 	background-color: #f9f9f9;
 }
 
-.customize-section-description-container{
-	margin: 0 -12px 12px -12px;
-	padding: 0 12px 0 12px;
-	border-bottom: 1px solid #f0f0f0;
-	background-color: #f9f9f9;
-}
-
-div.customize-section-description{
-	margin-top: -5px;
-	padding-left: 50px;
-	padding-bottom: 12px;
-}
-
-#customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-panel-description,
-#customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-section-description{
-	display: block;
-	border-top: none;
-	margin-top: -10px;
-	padding-left: 65px;
-	background: transparent;
-}
+// #customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-panel-description,
+// #customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-section-description{
+// 	display: block;
+// 	border-top: none;
+// 	margin-top: -10px;
+// 	padding-left: 65px;
+// 	background: transparent;
+// }
 
 .customize-section-title,
 #customize-controls .customize-info .accordion-section-title,
@@ -1505,11 +1647,11 @@ div.customize-section-description{
 }
 
 #customize-outer-theme-controls .accordion-section-title,
-#customize-theme-controls .accordion-section-title{
+#customize-theme-controls .accordion-section-title {
 	color: #1e1e1e;
 	border: none;
 	font-weight: 400;
-	padding: 9px 15px;
+	padding: 7px 15px;
 }
 
 #customize-controls .control-section .accordion-section-title:focus,
@@ -1531,20 +1673,8 @@ div.customize-section-description{
 #customize-theme-controls .customize-pane-child{
 
 	> li:not(.panel-meta):not(.section-meta):not(.control-panel-themes):not(.customize-control-nav_menu_locations):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor){
-		padding-left: 15px;
-		padding-right: 15px;
 		box-sizing: border-box;
 	}
-}
-
-#customize-theme-controls .control-subsection:not(.theme-section):not(.control-section-new_menu){
-	border: 1px solid #ddd;
-	border-width: 1px 1px 1px 1px;
-	margin-left: 15px;
-	margin-right: 15px;
-	padding: 0 !important;
-	margin-top: -1px;
-	margin-bottom: -1px;
 }
 
 #customize-outer-theme-controls .accordion-section-title,
@@ -1567,9 +1697,12 @@ div.customize-section-description{
 	background: none !important;
 }
 
+#customize-controls .customize-info.open .customize-help-toggle {
+	color: #CCC;
+}
+
 #customize-controls .customize-info .customize-help-toggle:focus,
-#customize-controls .customize-info .customize-help-toggle:hover,
-#customize-controls .customize-info.open .customize-help-toggle{
+#customize-controls .customize-info .customize-help-toggle:hover {
 	color: #3858E9;
 }
 
@@ -1617,23 +1750,25 @@ div.customize-section-description{
 	color: #3858E9;
 }
 
-.botiga-title-section{
+.botiga-title-section {
 	display: block !important;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
+	padding: 15px 0 !important;
 	border: none !important;
 	margin-left: 15px;
 	margin-right: 15px;
 
-	h3{
+	h3 {
 		font-size: 11px !important;
+		font-weight: 700;
 		text-transform: uppercase;
+		margin: 0;
+		padding: 0 !important;
 	}
 
-	hr{
+	hr {
 		border-top: 1px solid #ddd;
 		border-bottom: none;
-		margin: 10px 0 20px 0;
+		margin: 15px 0 25px 0;
 	}
 }
 
@@ -2295,30 +2430,6 @@ a,
 	}
 }
 
-#sub-accordion-section-colors{
-
-	.customize-control-botiga-text-control{
-		margin-top: 20px;
-	}
-
-}
-
-.customize-control-botiga-color-group-control{
-
-    .botiga-color-group{
-        padding: 0 0 15px 0;
-        border-bottom: 1px solid #ddd;
-    }
-}
-
-.customize-control-botiga-alpha-color{
-
-    .botiga-color-control{
-        padding: 0 0 15px 0;
-        border-bottom: 1px solid #ddd;
-    }
-}
-
 .pcr-app * {
 	outline: none;
 	border: none;
@@ -2696,6 +2807,26 @@ a,
 		.botiga-color-control,
 		.botiga-color-group {
 			border-bottom: 0;
+		}
+	}
+}
+
+/* Upload Header Image Control */
+.customize-control-header {
+	.customize-control-description {
+		display: none;
+	}
+	.actions,
+	.uploaded {
+		margin-bottom: 0;
+
+		& + .choices {
+			.header-previously-uploaded,
+			.header-default {
+				&:not([style="display: none;"]) {
+					margin-top: 15px;
+				}
+			}
 		}
 	}
 }

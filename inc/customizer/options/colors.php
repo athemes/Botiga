@@ -16,7 +16,6 @@ $wp_customize->add_setting( 'color_palettes', array(
 
 $wp_customize->add_control( new Botiga_Color_Palettes_Control($wp_customize, 'color_palettes', array(
 	'label'			=> esc_html__( 'Color palettes', 'botiga' ),
-	'description'	=> esc_html__( 'Click below to pick a predefined color palette or create your own.', 'botiga' ),
 	'section' 		=> 'colors',
 	'choices' 		=> $botiga_palettes,
 	'priority'		=> -1,
