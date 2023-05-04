@@ -11,8 +11,9 @@
 $wp_customize->add_section(
 	'botiga_section_layout',
 	array(
-		'title'    => esc_html__( 'Layout', 'botiga'),
-		'priority' => 55,
+		'title'       => esc_html__( 'Layout', 'botiga'),
+		'description' => esc_html__( 'Manage the overall layout of the website.', 'botiga'),
+		'priority' 	  => 55,
 	)
 );
 

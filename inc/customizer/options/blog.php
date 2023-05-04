@@ -11,8 +11,9 @@
 $wp_customize->add_section(
 	'botiga_section_blog_archives',
 	array(
-		'title'    => esc_html__( 'Blog Archives', 'botiga'),
-		'priority' => 165,
+		'title'       => esc_html__( 'Blog Archives', 'botiga'),
+		'description' => esc_html__( 'Manage the overall design and functionality from the blog archive pages.', 'botiga' ),
+		'priority'    => 165,
 	)
 );
 

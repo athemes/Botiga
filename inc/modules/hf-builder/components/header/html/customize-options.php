@@ -252,7 +252,6 @@ $wp_customize->add_control(
         'botiga_section_hb_component__html_sticky_title',
         array(
             'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__html',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 44

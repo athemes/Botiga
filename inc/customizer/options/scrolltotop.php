@@ -11,26 +11,9 @@
 $wp_customize->add_section(
 	'botiga_section_scrolltotop',
 	array(
-		'title' => esc_html__( 'Scroll to Top', 'botiga'),
-		'priority' => 75,
-	)
-);
-
-$wp_customize->add_setting(
-	'enable_scrolltop',
-	array(
-		'default'           => 1,
-		'sanitize_callback' => 'botiga_sanitize_checkbox',
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Toggle_Control(
-		$wp_customize,
-		'enable_scrolltop',
-		array(
-			'label'         	=> esc_html__( 'Enable scroll to top', 'botiga' ),
-			'section'       	=> 'botiga_section_scrolltotop',
-		)
+		'title' 	  => esc_html__( 'Scroll to Top', 'botiga'),
+		'description' => esc_html__( 'A button that helps users quickly navigate to the top of the page.', 'botiga' ),
+		'priority' 	  => 75,
 	)
 );
 
@@ -49,6 +32,7 @@ $wp_customize->add_control(
 			'label'            => '',
 			'section'          => 'botiga_section_scrolltotop',
 			'controls_general' => json_encode( array(
+				'#customize-control-enable_scrolltop',
 				'#customize-control-scrolltop_type',
 				'#customize-control-scrolltop_text',
 				'#customize-control-scrolltop_icon',
@@ -69,6 +53,24 @@ $wp_customize->add_control(
 				'#customize-control-scrolltop_padding',
 			) ),
 			'active_callback'  => 'botiga_callback_scrolltop',
+		)
+	)
+);
+
+$wp_customize->add_setting(
+	'enable_scrolltop',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'enable_scrolltop',
+		array(
+			'label'         	=> esc_html__( 'Enable scroll to top', 'botiga' ),
+			'section'       	=> 'botiga_section_scrolltotop',
 		)
 	)
 );

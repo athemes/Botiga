@@ -22,10 +22,7 @@ $wp_customize->add_panel(
  */
 
 // Header image section description
-$wp_customize->get_section( 'header_image' )->description = esc_html__( 'Display any image in the header area.', 'botiga' );
-
-// Remove description from header image control
-$wp_customize->get_setting( 'header_image' )->description = 'zzzzzzzz';
+$wp_customize->get_section( 'header_image' )->description = esc_html__( 'A prominent image at the top of the page that\'s useful to highlight any information.', 'botiga' );
 
 // Header Image Display Conditions
 $wp_customize->add_setting(

@@ -71,6 +71,7 @@ foreach( $this->header_rows as $row ) {
                 ) ),
                 'controls_design'		=> json_encode( array( 
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_color',
+                    '#customize-control-botiga_header_row__' . $row['id'] . '_divider2',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_image',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_size',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_position',
@@ -316,6 +317,24 @@ foreach( $this->header_rows as $row ) {
         )
     );
 
+    // Divider
+    $wp_customize->add_setting(
+        'botiga_header_row__' . $row['id'] . '_divider2',
+        array(
+            'sanitize_callback' => 'esc_attr'
+        )
+    );
+    $wp_customize->add_control(
+        new Botiga_Divider_Control(
+            $wp_customize,
+            'botiga_header_row__' . $row['id'] . '_divider2',
+            array(
+                'section' 		=> $row['section'],
+                'priority' 		=> 32
+            )
+        )
+    );
+
     // Background Image
     $wp_customize->add_setting( 
         'botiga_header_row__' . $row['id'] . '_background_image',
@@ -442,7 +461,7 @@ foreach( $this->header_rows as $row ) {
         )
     );
     $wp_customize->add_control(
-        new Botiga_Alpha_Color(
+        new Botiga_Alpha_Color_Border_Bottom(
             $wp_customize,
             'botiga_header_row__' . $row['id'] . '_border_bottom_color',
             array(
@@ -593,7 +612,6 @@ foreach( $this->header_rows as $row ) {
             'botiga_header_row__' . $row['id'] . '_sticky_title',
             array(
                 'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
-                'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
                 'section' 		  => $row['section'],
                 'active_callback' => 'botiga_sticky_header_enabled',
                 'priority'	 	  => 38

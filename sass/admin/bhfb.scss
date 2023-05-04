@@ -84,10 +84,6 @@ body {
     }
 }
 
-#customize-control-botiga_section_fb_component__html2_title {
-    margin-bottom: 10px;
-}
-
 #customize-control-botiga_section_fb_component__html_title,
 #customize-control-botiga_section_fb_component__shortcode_title {
     display: none;
@@ -659,7 +655,7 @@ body {
  */
 .bhfb-available-columns {
     .bhfb-columns-control-title{
-        margin-bottom: 7px !important;
+        margin-bottom: 12px !important;
     }
     .bhfb-available-columns-items-wrapper {
         display: flex;
@@ -669,6 +665,7 @@ body {
             align-items: center;
             justify-content: space-between;
             color: #1e1e1e;
+            font-size: 13px;
             font-weight: 400;
             font-style: normal;
             padding: 9px 15px;
@@ -737,13 +734,14 @@ body {
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
     background-size: 10px 1px, 10px 1px, 1px 10px, 1px 10px;
     padding: 10px;
-    margin-top: 7px;
+    margin-top: 12px;
     border-radius: 5px;
     .bhfb-button {
         display: flex;
         background: #FFF;
         color: #1e1e1e;
         text-decoration: none;
+        font-size: 13px;
         font-style: normal;
         padding: 8px 8px;
         border: 2px solid #3858E9;

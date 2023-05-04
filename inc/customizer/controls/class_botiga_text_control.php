@@ -26,6 +26,8 @@ class Botiga_Text_Control extends WP_Customize_Control {
 
 	public $controls_design;
 
+	public $rm_desc_mt = false;
+
 	public $check_white_label = false;
 
 	public $white_label_desc = '';
@@ -56,7 +58,7 @@ class Botiga_Text_Control extends WP_Customize_Control {
 			<span class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></span>
 		<?php } ?>
 		<?php if( !empty( $this->description ) ) { ?>
-			<span class="customize-control-description"><?php echo $this->description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+			<span class="customize-control-description<?php echo ( $this->rm_desc_mt ? ' bt-mt-0' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>"><?php echo $this->description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 		<?php } ?>
 		<?php if( !empty( $this->link_title ) && !empty( $this->link ) ) { ?>
 			<a href="<?php echo esc_url( $this->link ); ?>" target="_blank"><?php echo $this->link_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>

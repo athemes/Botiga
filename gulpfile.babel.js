@@ -1699,11 +1699,11 @@ gulp.task('dokanStylesMin', () => {
 	 return gulp.src(src).pipe(zip(config.zipName)).pipe(gulp.dest(config.zipDestination));
  });
  
- /**
-	* Watch Tasks.
-	*
-	* Watches for file changes and runs specific tasks.
-	*/
+/**
+ * Watch Tasks.
+ *
+ * Watches for file changes and runs specific tasks.
+ */
 gulp.task(
 	'default',
 	gulp.parallel(

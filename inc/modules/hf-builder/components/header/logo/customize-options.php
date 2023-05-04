@@ -50,23 +50,23 @@ $wp_customize->add_control(
             'section'       		=> 'botiga_section_hb_component__logo',
             'controls_general'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ),
                     array(
                         '#customize-control-botiga_section_hb_component__logo_text_alignment',
                         '#customize-control-botiga_section_hb_component__logo_visibility'
-                    ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ) 
+                    )
                 )
             ),
             'controls_design'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] ),
                     array(
                         '#customize-control-logo_sticky_title',
                         '#customize-control-site_title_sticky_color',
                         '#customize-control-site_description_sticky_color',
                         '#customize-control-botiga_section_hb_component__logo_padding',
                         '#customize-control-botiga_section_hb_component__logo_margin'
-                    ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
+                    )
                 )
             ),
             'priority' 				=> 20
@@ -88,7 +88,6 @@ $wp_customize->add_control(
         'logo_sticky_title',
         array(
             'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__logo',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 51
@@ -139,7 +138,7 @@ $wp_customize->add_control(
                 'center' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 0h10v1H3zM0 4h16v1H0zM3 8h10v1H3zM0 12h16v1H0z"/></svg>',
                 'right' 	=> '<svg width="16" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 0h10v1H6zM0 4h16v1H0zM6 8h10v1H6zM0 12h16v1H0z"/></svg>'
             ),
-            'priority'      => 51
+            'priority'      => 58
         )
     ) 
 );
@@ -186,7 +185,7 @@ $wp_customize->add_control(
                 'visible' => esc_html__( 'Visible', 'botiga' ),
                 'hidden'  => esc_html__( 'Hidden', 'botiga' )
             ),
-            'priority'      => 51
+            'priority'      => 58
         )
     ) 
 );

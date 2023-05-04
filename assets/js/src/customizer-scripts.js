@@ -315,44 +315,71 @@ jQuery(document).ready(function ($) {
  * Tab control
  */
 jQuery(document).ready(function ($) {
-  "use strict";
+	"use strict";
 
-  $('.customize-control-botiga-tab-control').each(function () {
+	$('.customize-control-botiga-tab-control').each(function () {
 
-    // Hide designs options at first
-    var designs = $(this).find('.control-tab-design').data('connected');
+		// Hide designs options at first
+		var designs = $(this).find('.control-tab-design').data('connected');
+		var general = $(this).find('.control-tab-general').data('connected');
 
-    $.each(designs, function (i, v) {
-      $(this).addClass('botiga-hide-control');
-    });
+		$.each(general, function (i, v) {
+			if( i === 0 ) {
+				$(this).addClass('botiga-tab-control-item-first');
+			}
 
-    $(this).find('.control-tab').on('click', function () {
+			if( i === general.length - 1 ) {
+				$(this).addClass('botiga-tab-control-item-last');
+			}
+		});
 
-      var $tab      = $(this);
-      var $siblings = $tab.siblings();
-      var visibles  = $tab.data('connected');
+		$.each(designs, function (i, v) {
+			$(this).addClass('botiga-hide-control');
+		});
 
-      $tab.addClass('active');
-      $siblings.removeClass('active');
+		$(this).find('.control-tab').on('click', function () {
 
-      $.each(visibles, function (i, v) {
-        $(this).removeClass('botiga-hide-control');
-      });
+			var $tab = $(this);
+			var $siblings = $tab.siblings();
+			var visibles = $tab.data('connected');
 
-      $siblings.each( function() {
+			$tab.addClass('active');
+			$siblings.removeClass('active');
 
-        var $sibling = $(this);
-        var hiddens  = $sibling.data('connected');
+			$.each(visibles, function (i, v) {
+				if( i === 0 ) {
+					$(this).addClass('botiga-tab-control-item-first');
+				}
 
-        $.each(hiddens, function (i, v) {
-          $(this).addClass('botiga-hide-control');
-        });
+				if( i === visibles.length - 1 ) {
+					$(this).addClass('botiga-tab-control-item-last');
+				}
 
-      });
+				$(this).removeClass('botiga-hide-control');
+			});
 
-    });
+			$siblings.each(function () {
 
-  });
+				var $sibling = $(this);
+				var hiddens = $sibling.data('connected');
+
+				$.each(hiddens, function (i, v) {
+					if( i === 0 ) {
+						$(this).removeClass('botiga-tab-control-item-first');
+					}
+
+					if( i === hiddens.length - 1 ) {
+						$(this).removeClass('botiga-tab-control-item-last');
+					}
+
+					$(this).addClass('botiga-hide-control');
+				});
+
+			});
+
+		});
+
+	});
 });
 
 /**
@@ -415,22 +442,22 @@ jQuery(document).ready(function ($) {
 	}
 });
 
-var botigaChangeElementColors = function( element, color, palette ) {
+var botigaChangeElementColors = function (element, color, palette) {
 
-	var $setting = jQuery('[data-control-id="'+ element +'"]');
+	var $setting = jQuery('[data-control-id="' + element + '"]');
 
-	if ( $setting.length ) {
+	if ($setting.length) {
 
-		if ( palette ) {
-			var index = palette.indexOf( color );
-			if ( palette[ index ] ) {
-				color = palette[ index ];
+		if (palette) {
+			var index = palette.indexOf(color);
+			if (palette[index]) {
+				color = palette[index];
 			}
 		}
 
 		var $picker = $setting.find('.botiga-color-picker');
-		
-		if ( $picker.data('pickr') ) {
+
+		if ($picker.data('pickr')) {
 			$picker.data('pickr').setColor(color);
 		} else {
 			$picker.css('background-color', color);
@@ -439,13 +466,13 @@ var botigaChangeElementColors = function( element, color, palette ) {
 
 	} else {
 
-		var $control = jQuery('#customize-control-'+element);
+		var $control = jQuery('#customize-control-' + element);
 
-		if ( $control.length ) {
+		if ($control.length) {
 
 			var $picker = $control.find('.botiga-color-picker');
 
-			if ( $picker.data('pickr') ) {
+			if ($picker.data('pickr')) {
 				$picker.data('pickr').setColor(color);
 			} else {
 				$picker.css('background-color', color);
@@ -465,16 +492,16 @@ wp.customize('color_palettes', function (control) {
 
 	var palettes = jQuery('#customize-control-color_palettes').find('.radio-buttons').data('palettes');
 
-	control.bind(function(value) {
+	control.bind(function (value) {
 
-		if ( value === '' ) {
+		if (value === '') {
 			return;
 		}
 
 		var palette = value;
 
 		//Color 1 Button color, Link color
-		let elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color','ql_item_bg_hover'];
+		let elements1 = ['custom_color1', 'scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color', 'ql_item_bg_hover'];
 
 		for (const element of elements1) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -483,7 +510,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 2 Hover color for - Button, Headings, Titles, Text links, Nav links
-		let elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover','ql_item_color_hover'];
+		let elements2 = ['custom_color2', 'footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover', 'ql_item_color_hover'];
 
 		for (const element of elements2) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -492,7 +519,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 3 Heading (1-6), Small text, Nav links, Site title, 
-		let elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color','bhfb_search_icon_color','bhfb_woo_icons_color','bhfb_contact_info_icon_color','ql_item_color'];
+		let elements3 = ['single_post_title_color', 'custom_color3', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color', 'bhfb_search_icon_color', 'bhfb_woo_icons_color', 'bhfb_contact_info_icon_color', 'ql_item_color'];
 
 		for (const element of elements3) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -510,7 +537,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 5 Input, tag borders
-		let elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border','botiga_header_row__above_header_row_border_bottom_color','botiga_header_row__main_header_row_border_bottom_color','botiga_header_row__below_header_row_border_bottom_color','botiga_footer_row__above_footer_row_border_top_color','botiga_footer_row__main_footer_row_border_top_color','botiga_footer_row__below_footer_row_border_top_color','ql_item_border_color'];
+		let elements5 = ['custom_color5', 'color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border', 'botiga_header_row__above_header_row_border_bottom_color', 'botiga_header_row__main_header_row_border_bottom_color', 'botiga_header_row__below_header_row_border_bottom_color', 'botiga_footer_row__above_footer_row_border_top_color', 'botiga_footer_row__main_footer_row_border_top_color', 'botiga_footer_row__below_footer_row_border_top_color', 'ql_item_border_color'];
 
 		for (const element of elements5) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -519,7 +546,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 6 Footer background, Subtle backgrounds
-		let elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background', 'botiga_footer_row__above_footer_row_background_color', 'botiga_footer_row__main_footer_row_background_color', 'botiga_footer_row__below_footer_row_background_color','ql_background_color'];
+		let elements6 = ['custom_color6', 'footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background', 'botiga_footer_row__above_footer_row_background_color', 'botiga_footer_row__main_footer_row_background_color', 'botiga_footer_row__below_footer_row_background_color', 'ql_background_color'];
 
 		for (const element of elements6) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -537,7 +564,7 @@ wp.customize('color_palettes', function (control) {
 		}
 
 		//Color 8 header background
-		let elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color','login_register_submenu_background'];
+		let elements8 = ['custom_color8', 'main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color', 'login_register_submenu_background'];
 
 		for (const element of elements8) {
 			if (typeof wp.customize(element) !== 'undefined') {
@@ -547,15 +574,15 @@ wp.customize('color_palettes', function (control) {
 
 		// Custom palette update.
 		var $customPaletteControl = jQuery('#customize-control-custom_palette');
-		if ( $customPaletteControl.length ) {
+		if ($customPaletteControl.length) {
 			var $customPaletteControls = $customPaletteControl.find('.botiga-color-control');
-			if ( $customPaletteControls.length ) {
-				$customPaletteControls.each( function( index ) {
+			if ($customPaletteControls.length) {
+				$customPaletteControls.each(function (index) {
 
 					var $control = jQuery(this);
-					var $picker  = $control.find('.botiga-color-picker');
-					var $input   = $control.find('.botiga-color-input');
-					var color    = palettes[ palette ][ index ];
+					var $picker = $control.find('.botiga-color-picker');
+					var $input = $control.find('.botiga-color-input');
+					var color = palettes[palette][index];
 
 					$input.attr('value', color);
 					$picker.css('background-color', color);
@@ -575,7 +602,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color1', function (control) {
 		control.bind(function (value) {
 
-			let elements1 = ['scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color','ql_item_bg_hover'];
+			let elements1 = ['scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color', 'ql_item_bg_hover'];
 
 			for (const element of elements1) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -587,7 +614,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color2', function (control) {
 		control.bind(function (value) {
 
-			let elements2 = ['footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover','ql_item_color_hover'];
+			let elements2 = ['footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover', 'ql_item_color_hover'];
 
 			for (const element of elements2) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -599,7 +626,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color3', function (control) {
 		control.bind(function (value) {
 
-			let elements3 = ['single_post_title_color', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color', 'bhfb_search_icon_color','bhfb_woo_icons_color','bhfb_contact_info_icon_color','ql_item_color'];
+			let elements3 = ['single_post_title_color', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color', 'bhfb_search_icon_color', 'bhfb_woo_icons_color', 'bhfb_contact_info_icon_color', 'ql_item_color'];
 
 			for (const element of elements3) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -625,7 +652,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color5', function (control) {
 		control.bind(function (value) {
 
-			let elements5 = ['color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border', 'botiga_header_row__above_header_row_border_bottom_color','botiga_header_row__main_header_row_border_bottom_color','botiga_header_row__below_header_row_border_bottom_color','botiga_footer_row__above_footer_row_border_top_color','botiga_footer_row__main_footer_row_border_top_color','botiga_footer_row__below_footer_row_border_top_color','ql_item_border_color'];
+			let elements5 = ['color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border', 'botiga_header_row__above_header_row_border_bottom_color', 'botiga_header_row__main_header_row_border_bottom_color', 'botiga_header_row__below_header_row_border_bottom_color', 'botiga_footer_row__above_footer_row_border_top_color', 'botiga_footer_row__main_footer_row_border_top_color', 'botiga_footer_row__below_footer_row_border_top_color', 'ql_item_border_color'];
 
 			for (const element of elements5) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -664,7 +691,7 @@ wp.customize.bind('ready', function () {
 	wp.customize('custom_color8', function (control) {
 		control.bind(function (value) {
 
-			let elements8 = ['main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color','login_register_submenu_background'];
+			let elements8 = ['main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color', 'login_register_submenu_background'];
 
 			for (const element of elements8) {
 				if (typeof wp.customize(element) !== 'undefined') {
@@ -1333,36 +1360,36 @@ jQuery(document).ready(function ($) {
 
 	var $selectors = $('.botiga-typography-custom-select');
 
-	if ( $selectors.length ) {
+	if ($selectors.length) {
 
-		$selectors.each( function() {
+		$selectors.each(function () {
 
 			var $selector = $(this);
 
 			$selector.select2();
 
-			$selector.on('change', function() {
+			$selector.on('change', function () {
 
-				var font    = $(this).val();
-				var control = _wpCustomizeSettings.controls[ $selector.data('control-name') ];
+				var font = $(this).val();
+				var control = _wpCustomizeSettings.controls[$selector.data('control-name')];
 
-				var googleFontWeights = $.map( control.google_fonts, function (obj, index) {
-					if ( obj.family === font ) {
+				var googleFontWeights = $.map(control.google_fonts, function (obj, index) {
+					if (obj.family === font) {
 						return obj.variants;
 					}
 				});
 
-				var $weightWrapper  = $selector.parent().find('.botiga-typography-custom-weight-select-wrapper');
+				var $weightWrapper = $selector.parent().find('.botiga-typography-custom-weight-select-wrapper');
 				var $weightSelector = $weightWrapper.find('.botiga-typography-custom-weight-select');
 
 				$weightSelector.empty();
 
-				if ( googleFontWeights.length ) {
+				if (googleFontWeights.length) {
 
 					$weightWrapper.show();
 
-					$.each(googleFontWeights, function( index, weight ) {
-						$weightSelector.append('<option name="'+ weight +'">'+ weight +'</option>');
+					$.each(googleFontWeights, function (index, weight) {
+						$weightSelector.append('<option name="' + weight + '">' + weight + '</option>');
 					});
 
 					$weightSelector.trigger('change');
@@ -1383,24 +1410,24 @@ jQuery(document).ready(function ($) {
 
 		event.preventDefault();
 
-		var data      = [];
-		var $control  = $(control);
+		var data = [];
+		var $control = $(control);
 		var $textarea = $control.find('.botiga-custom-font-textarea');
-		var $items    = $control.find('.botiga-custom-font-item').not('.hidden');
+		var $items = $control.find('.botiga-custom-font-item').not('.hidden');
 
 		$items.each(function () {
 
 			var $item = $(this);
 
-			var name  = $item.find('input[name="name"]').val();
+			var name = $item.find('input[name="name"]').val();
 			var woff2 = $item.find('input[name="woff2"]').val();
-			var woff  = $item.find('input[name="woff"]').val();
-			var ttf   = $item.find('input[name="ttf"]').val();
-			var eot   = $item.find('input[name="eot"]').val();
-			var otf   = $item.find('input[name="otf"]').val();
-			var svg   = $item.find('input[name="svg"]').val();
+			var woff = $item.find('input[name="woff"]').val();
+			var ttf = $item.find('input[name="ttf"]').val();
+			var eot = $item.find('input[name="eot"]').val();
+			var otf = $item.find('input[name="otf"]').val();
+			var svg = $item.find('input[name="svg"]').val();
 
-			if ( name && ( woff2 || woff || ttf || eot || otf || svg ) ) {
+			if (name && (woff2 || woff || ttf || eot || otf || svg)) {
 
 				data.push({
 					name: name,
@@ -1414,48 +1441,48 @@ jQuery(document).ready(function ($) {
 
 				var fontFaceStyle = name.replace(/ /g, '-').toLowerCase();
 
-				if ( $('#'+fontFaceStyle).length ) {
-					$('#'+fontFaceStyle).remove();
+				if ($('#' + fontFaceStyle).length) {
+					$('#' + fontFaceStyle).remove();
 				}
 
 				var src = [];
 
-				if ( woff2 ) {
-				 src.push( 'url("'+ woff2 +'") format("woff2");' );
+				if (woff2) {
+					src.push('url("' + woff2 + '") format("woff2");');
 				}
 
-				if ( woff ) {
-				 src.push( 'url("'+ woff +'") format("woff");' );
+				if (woff) {
+					src.push('url("' + woff + '") format("woff");');
 				}
 
-				if ( svg ) {
-				 src.push( 'url("'+ svg +'") format("svg");' );
+				if (svg) {
+					src.push('url("' + svg + '") format("svg");');
 				}
 
-				if ( ttf ) {
-				 src.push( 'url("'+ ttf +'") format("truetype");' );
+				if (ttf) {
+					src.push('url("' + ttf + '") format("truetype");');
 				}
 
-				if ( otf ) {
-				 src.push( 'url("'+ otf +'") format("opentype");' );
+				if (otf) {
+					src.push('url("' + otf + '") format("opentype");');
 				}
 
-				if ( eot ) {
-				 src.push( 'url("'+ eot +'?#iefix") format("embedded-opentype");' );
+				if (eot) {
+					src.push('url("' + eot + '?#iefix") format("embedded-opentype");');
 				}
 
-				if ( src.length ) {
+				if (src.length) {
 
 					var css = '';
-					
-					css += '@font-face{ font-family: "'+ name +'";';
-					if ( eot ) {
-					 css += 'src: url('+ eot +');';
+
+					css += '@font-face{ font-family: "' + name + '";';
+					if (eot) {
+						css += 'src: url(' + eot + ');';
 					}
-					css += 'src: '+ src.join(',') +';';
+					css += 'src: ' + src.join(',') + ';';
 					css += '}';
 
-					$('head').append( '<style id="'+ fontFaceStyle +'" type="text/css">'+ css +'</style>' );
+					$('head').append('<style id="' + fontFaceStyle + '" type="text/css">' + css + '</style>');
 
 				}
 
@@ -1466,29 +1493,29 @@ jQuery(document).ready(function ($) {
 		$textarea.val(JSON.stringify(data)).trigger('change');
 
 		// update custom font selectors
-		if ( $selectors.length ) {
+		if ($selectors.length) {
 
-			$selectors.each( function() {
+			$selectors.each(function () {
 
 				var $selector = $(this);
 
 				var $optgroups = $selector.find('optgroup');
 
-				$optgroups.each( function() {
+				$optgroups.each(function () {
 
 					var $optgroup = $(this);
 
-					if ( $optgroup.data('type') === 'custom-fonts' ) {
+					if ($optgroup.data('type') === 'custom-fonts') {
 
-						var controlValue = wp.customize.control( $selector.data('control-name') ).settings['font-family'].get();
+						var controlValue = wp.customize.control($selector.data('control-name')).settings['font-family'].get();
 
 						$optgroup.empty();
 
-						$.each(data, function( index, option ) {
+						$.each(data, function (index, option) {
 
-							var selected = ( option.name === controlValue ) ? ' selected="selected"' : '';
+							var selected = (option.name === controlValue) ? ' selected="selected"' : '';
 
-							$optgroup.append('<option name="'+ option.name +'"'+ selected +'>'+ option.name +'</option>');
+							$optgroup.append('<option name="' + option.name + '"' + selected + '>' + option.name + '</option>');
 
 						});
 
@@ -1507,14 +1534,14 @@ jQuery(document).ready(function ($) {
 
 	$(document).on('change', '.botiga-custom-font-item-input', function (event) {
 
-		var $input   = $(this);
+		var $input = $(this);
 		var $control = $input.closest('.botiga-custom-fonts-control');
 
-		$(document).trigger('botiga-custom-font-update', [ $control ]);
+		$(document).trigger('botiga-custom-font-update', [$control]);
 
 	});
 
-	$(document).on('click', '.botiga-custom-font-upload', function( e ) {
+	$(document).on('click', '.botiga-custom-font-upload', function (e) {
 
 		e.preventDefault();
 
@@ -1526,9 +1553,9 @@ jQuery(document).ready(function ($) {
 			},
 		}).open();
 
-		wpMediaFrame.on('select', function() {
+		wpMediaFrame.on('select', function () {
 
-			var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
+			var attachment = wpMediaFrame.state().get('selection').first().toJSON();
 
 			$button.prev('.botiga-custom-font-item-input').val(attachment.url).trigger('change');
 
@@ -1538,28 +1565,28 @@ jQuery(document).ready(function ($) {
 
 	$(document).on('click', '.botiga-custom-font-add', function (event) {
 
-		var $button  = $(this);
+		var $button = $(this);
 		var $control = $button.closest('.botiga-custom-fonts-control');
-		var $list    = $control.find('.botiga-custom-font-items');
-		var $item    = $control.find('.botiga-custom-font-item').first().clone();
+		var $list = $control.find('.botiga-custom-font-items');
+		var $item = $control.find('.botiga-custom-font-item').first().clone();
 
 		$item.removeClass('hidden');
 
 		$list.append($item);
 
-		$(document).trigger('botiga-custom-font-update', [ $control ]);
+		$(document).trigger('botiga-custom-font-update', [$control]);
 
 	});
 
 	$(document).on('click', '.botiga-custom-font-remove', function (event) {
 
-		var $button  = $(this);
-		var $item    = $button.closest('.botiga-custom-font-item');
+		var $button = $(this);
+		var $item = $button.closest('.botiga-custom-font-item');
 		var $control = $button.closest('.botiga-custom-fonts-control');
 
 		$item.remove();
 
-		$(document).trigger('botiga-custom-font-update', [ $control ]);
+		$(document).trigger('botiga-custom-font-update', [$control]);
 
 	});
 
@@ -1572,23 +1599,23 @@ jQuery(document).ready(function ($) {
 
 	"use strict";
 
-	$('.range-slider__range').on('change input botiga.range', function(){
-	 	
-		var $range     = $(this);
-	 	var value      = $range.val() || 0;
-		var min        = $range.attr('min') || 0;
-		var max        = $range.attr('max') || 1;
-	 	var percentage = (((value-min)/(max- min))*100);
+	$('.range-slider__range').on('change input botiga.range', function () {
 
-	 	$range.css({'background': 'linear-gradient(to right, #3858E9 0%, #3858E9 '+ percentage +'%, #ddd '+ percentage +'%, #ddd 100%)' });
+		var $range = $(this);
+		var value = $range.val() || 0;
+		var min = $range.attr('min') || 0;
+		var max = $range.attr('max') || 1;
+		var percentage = (((value - min) / (max - min)) * 100);
+
+		$range.css({ 'background': 'linear-gradient(to right, #3858E9 0%, #3858E9 ' + percentage + '%, #ddd ' + percentage + '%, #ddd 100%)' });
 
 	}).trigger('botiga.range');
-	
-	$('.range-slider__value').on('change input', function(){
+
+	$('.range-slider__value').on('change input', function () {
 
 		var $slider = $(this).prev();
 
-		if ( $slider.hasClass('range-slider__range') ) {
+		if ($slider.hasClass('range-slider__range')) {
 			$slider.trigger('botiga.range');
 		}
 
@@ -1605,29 +1632,29 @@ jQuery(document).ready(function ($) {
 
 	var $previews = $('.botiga-typography-preview');
 
-	if ( $previews.length ) {
+	if ($previews.length) {
 
-		$previews.each(function( index ) {
+		$previews.each(function (index) {
 
 			var $preview = $(this);
-			var options  = $preview.data('options');
+			var options = $preview.data('options');
 
-			$.each( options, function(prop, option) {
+			$.each(options, function (prop, option) {
 
-				if ( prop === 'google_font' ) {
+				if (prop === 'google_font') {
 
-					wp.customize( option, function( value ) {
-						value.bind( function( to ) {
+					wp.customize(option, function (value) {
+						value.bind(function (to) {
 
-							to = $.parseJSON( to );
+							to = $.parseJSON(to);
 
 							var family = to.font || '';
 							var weight = to.regularweight || 400;
-							var elemId = family.replace(/ /g, '-').toLowerCase() +'-'+ weight;
-							var href   = 'https://fonts.googleapis.com/css?family='+ family.replace(/ /g, '+') +':'+ weight +'&display=swap';
+							var elemId = family.replace(/ /g, '-').toLowerCase() + '-' + weight;
+							var href = 'https://fonts.googleapis.com/css?family=' + family.replace(/ /g, '+') + ':' + weight + '&display=swap';
 
-							if ( $('#'+elemId).length === 0 ) {
-								$('head').append( '<link id="'+ elemId +'" href="'+ href +'" rel="stylesheet">' );
+							if ($('#' + elemId).length === 0) {
+								$('head').append('<link id="' + elemId + '" href="' + href + '" rel="stylesheet">');
 							}
 
 							$preview.css('font-family', family);
@@ -1636,41 +1663,41 @@ jQuery(document).ready(function ($) {
 						});
 					});
 
-				} else if ( prop === 'adobe_font' ) {
+				} else if (prop === 'adobe_font') {
 
-					wp.customize( option, function( value ) {
-						value.bind( function( to ) {
+					wp.customize(option, function (value) {
+						value.bind(function (to) {
 							to = to.split('|');
-							if ( to[0] ) {
+							if (to[0]) {
 								$preview.css('font-family', to[0]);
 							}
-							if ( to[1] ) {
+							if (to[1]) {
 								$preview.css('font-weight', to[1].replace('n4', '400'));
 							}
 						});
 					});
 
-				} else if ( prop === 'custom_font' ) {
+				} else if (prop === 'custom_font') {
 
-					var customFontPreview = function( to, type ) {
+					var customFontPreview = function (to, type) {
 
-						var control  = wp.customize.control( option +'_typography' );
-						var settings = _wpCustomizeSettings.controls[ option +'_typography' ];
-						var family   = control.settings['font-family'].get();
-						var weight   = control.settings['font-weight'].get();
+						var control = wp.customize.control(option + '_typography');
+						var settings = _wpCustomizeSettings.controls[option + '_typography'];
+						var family = control.settings['font-family'].get();
+						var weight = control.settings['font-weight'].get();
 
 						$preview.css('font-weight', 'normal');
 
-						if ( settings && settings.google_fonts ) {
-							$.map( settings.google_fonts, function (obj, index) {
-								if ( obj.family === family ) {
-									if ( type === 'family' ) {
+						if (settings && settings.google_fonts) {
+							$.map(settings.google_fonts, function (obj, index) {
+								if (obj.family === family) {
+									if (type === 'family') {
 										weight = obj.variants[0];
 									}
-									var styleId   = family.replace(/ /g, '-').toLowerCase() +'-'+ weight;
-									var styleHref = 'https://fonts.googleapis.com/css?family='+ family.replace(/ /g, '+') +':'+ weight +'&display=swap';
-									if ( $('#'+styleId).length === 0 ) {
-										$('head').append( '<link id="'+ styleId +'" href="'+ styleHref +'" rel="stylesheet">' );
+									var styleId = family.replace(/ /g, '-').toLowerCase() + '-' + weight;
+									var styleHref = 'https://fonts.googleapis.com/css?family=' + family.replace(/ /g, '+') + ':' + weight + '&display=swap';
+									if ($('#' + styleId).length === 0) {
+										$('head').append('<link id="' + styleId + '" href="' + styleHref + '" rel="stylesheet">');
 									}
 									$preview.css('font-weight', weight);
 								}
@@ -1681,24 +1708,24 @@ jQuery(document).ready(function ($) {
 
 					};
 
-					wp.customize( option, function( value ) {
-						value.bind( function (to) {
-							customFontPreview( to, 'family' );
-						} );
+					wp.customize(option, function (value) {
+						value.bind(function (to) {
+							customFontPreview(to, 'family');
+						});
 					});
 
-					wp.customize( option +'_weight', function( value ) {
-						value.bind( function( to ) {
-							customFontPreview( to, 'weight' );
+					wp.customize(option + '_weight', function (value) {
+						value.bind(function (to) {
+							customFontPreview(to, 'weight');
 						});
 					});
 
 				} else {
 
-					wp.customize( option, function( value ) {
-						value.bind( function( to ) {
-							if ( to !== '' && isFinite(to) ) {
-								to = Number( to );
+					wp.customize(option, function (value) {
+						value.bind(function (to) {
+							if (to !== '' && isFinite(to)) {
+								to = Number(to);
 							}
 							$preview.css(prop, to);
 						});
@@ -1719,25 +1746,25 @@ jQuery(document).ready(function ($) {
 
 	var $colorControls = $('.botiga-color-control');
 
-	if ( $colorControls.length && Pickr ) {
+	if ($colorControls.length && Pickr) {
 
-		var getCurrentSwatches = function() {
+		var getCurrentSwatches = function () {
 			var isCustom = wp.customize.control('custom_palette_toggle').setting.get();
 			var colors = [];
-			if ( isCustom ) {
+			if (isCustom) {
 				$('#customize-control-custom_palette .botiga-color-input').each(function () {
-					colors.push( $(this).val() );
+					colors.push($(this).val());
 				});
 			} else {
 				$('#customize-control-color_palettes .saved-palette .palette-color').each(function () {
-					colors.push( $(this).css('background-color') );
+					colors.push($(this).css('background-color'));
 				});
 			}
 			return colors;
 		}
 
-		Pickr.prototype.setSwatches = function(swatches) {
-			if ( ! swatches.length ) {
+		Pickr.prototype.setSwatches = function (swatches) {
+			if (!swatches.length) {
 				return;
 			}
 			for (let i = this._swatchColors.length - 1; i > -1; i--) {
@@ -1746,24 +1773,24 @@ jQuery(document).ready(function ($) {
 			swatches.forEach(swatch => this.addSwatch(swatch));
 		}
 
-		$colorControls.each( function() {
+		$colorControls.each(function () {
 
 			var $colorControl = $(this);
-			var $colorPicker  = $colorControl.find('.botiga-color-picker');
+			var $colorPicker = $colorControl.find('.botiga-color-picker');
 			var inited;
 
-			$colorPicker.on('click', function() {
+			$colorPicker.on('click', function () {
 
-				if ( ! inited ) {
+				if (!inited) {
 
-					var $colorInput      = $colorControl.find('.botiga-color-input');
-					var customizeControl = wp.customize( $colorInput.data('customize-setting-link') );
+					var $colorInput = $colorControl.find('.botiga-color-input');
+					var customizeControl = wp.customize($colorInput.data('customize-setting-link'));
 
 					var pickr = new Pickr({
-					  el: $colorPicker.get(0),
-					  container: 'body',
-					  theme: 'botiga',
-					  default: $colorInput.val() || '#212121',
+						el: $colorPicker.get(0),
+						container: 'body',
+						theme: 'botiga',
+						default: $colorInput.val() || '#212121',
 						swatches: [],
 						position: 'bottom-end',
 						appClass: 'botiga-pcr-app',
@@ -1774,8 +1801,8 @@ jQuery(document).ready(function ($) {
 							preview: true,
 							opacity: true,
 							interaction: {
-							  input: true,
-							  clear: true,
+								input: true,
+								clear: true,
 							},
 						},
 						i18n: {
@@ -1783,36 +1810,36 @@ jQuery(document).ready(function ($) {
 						},
 					});
 
-					pickr.on('change', function( color ) {
+					pickr.on('change', function (color) {
 
 						var colorCode;
 
-						if ( color.a === 1 ) {
-					    pickr.setColorRepresentation('HEX');
-					    colorCode = color.toHEXA().toString(0);
-					  } else {
-					    pickr.setColorRepresentation('RGBA');
-					    colorCode = color.toRGBA().toString(0);
-					  }
-						
-						$colorPicker.css({'background-color': colorCode});
+						if (color.a === 1) {
+							pickr.setColorRepresentation('HEX');
+							colorCode = color.toHEXA().toString(0);
+						} else {
+							pickr.setColorRepresentation('RGBA');
+							colorCode = color.toRGBA().toString(0);
+						}
+
+						$colorPicker.css({ 'background-color': colorCode });
 						$colorInput.val(colorCode);
 						customizeControl.set(colorCode);
 
 					});
 
-					pickr.on('show', function() {
-						pickr.setSwatches( getCurrentSwatches() );
+					pickr.on('show', function () {
+						pickr.setSwatches(getCurrentSwatches());
 					});
 
-					pickr.on('clear', function() {
+					pickr.on('clear', function () {
 
 						var defaultColor = $colorPicker.data('default-color');
 
-						if ( defaultColor ) {
-							pickr.setColor( defaultColor );
+						if (defaultColor) {
+							pickr.setColor(defaultColor);
 						} else {
-							$colorPicker.css({'background-color': 'white'});
+							$colorPicker.css({ 'background-color': 'white' });
 							$colorInput.val('');
 							customizeControl.set('');
 						}
@@ -1821,7 +1848,7 @@ jQuery(document).ready(function ($) {
 
 					$colorPicker.data('pickr', pickr);
 
-					setTimeout(function(){
+					setTimeout(function () {
 						pickr.show();
 					});
 
@@ -1840,9 +1867,9 @@ jQuery(document).ready(function ($) {
 /* Color Control */
 jQuery(document).ready(function ($) {
 
-	$('#customize-control-reset_colors').on('click', function() {
+	$('#customize-control-reset_colors').on('click', function () {
 
-		var $label  = $('.palette-radio-buttons').find('label').first();
+		var $label = $('.palette-radio-buttons').find('label').first();
 		var control = wp.customize('color_palettes');
 
 		$label.trigger('click');
@@ -1856,34 +1883,34 @@ jQuery(document).ready(function ($) {
 });
 
 /* Dimensions Control */
-(function($){
+(function ($) {
 
 	const Botiga_Dimensions_Control = {
-		init: function() {
+		init: function () {
 			this.events();
 		},
 
 		// Events
-		events: function() {
-			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-input' ).on( 'input', this.setDimensionValue.bind(this) );
-			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-unit' ).on( 'change', this.unitSelectHandler.bind(this) );
-			$( '.botiga-dimensions-control' ).find( '.botiga-dimensions-link-btn' ).on( 'click', this.toggleLinkValues.bind(this) );
+		events: function () {
+			$('.botiga-dimensions-control').find('.botiga-dimensions-input').on('input', this.setDimensionValue.bind(this));
+			$('.botiga-dimensions-control').find('.botiga-dimensions-unit').on('change', this.unitSelectHandler.bind(this));
+			$('.botiga-dimensions-control').find('.botiga-dimensions-link-btn').on('click', this.toggleLinkValues.bind(this));
 		},
 
 		// Change dimension
-		setDimensionValue: function(e) {
-			const 
-				$inputToSave = $( e.target ).closest( '.botiga-dimensions-inputs' ).find( '.botiga-dimensions-value' ),
-				value        = this.getDimensionValue( e.target );
+		setDimensionValue: function (e) {
+			const
+				$inputToSave = $(e.target).closest('.botiga-dimensions-inputs').find('.botiga-dimensions-value'),
+				value = this.getDimensionValue(e.target);
 
-			$inputToSave.val( value ).trigger( 'change' );
+			$inputToSave.val(value).trigger('change');
 		},
 
 		// Mount value
-		getDimensionValue: function( input ) {
-			const 
-				deviceType = $( input ).closest( '.botiga-dimensions-inputs' ).data( 'device-type' ),
-				inputs = $( input ).closest( '.botiga-dimensions-inputs' ).find( '.botiga-dimensions-input' );
+		getDimensionValue: function (input) {
+			const
+				deviceType = $(input).closest('.botiga-dimensions-inputs').data('device-type'),
+				inputs = $(input).closest('.botiga-dimensions-inputs').find('.botiga-dimensions-input');
 
 			let value = {
 				unit: 'px',
@@ -1895,59 +1922,59 @@ jQuery(document).ready(function ($) {
 			};
 
 			// Unit value
-			value[ 'unit' ] = $( input ).closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-units[data-device-type="'+ deviceType +'"] .botiga-dimensions-unit' ).val();
+			value['unit'] = $(input).closest('.botiga-dimensions-control').find('.botiga-dimensions-units[data-device-type="' + deviceType + '"] .botiga-dimensions-unit').val();
 
 			// Linked toggle
-			value[ 'linked' ] = $( input ).closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-link-values[data-device-type="'+ deviceType +'"]' ).hasClass( 'linked' );
+			value['linked'] = $(input).closest('.botiga-dimensions-control').find('.botiga-dimensions-link-values[data-device-type="' + deviceType + '"]').hasClass('linked');
 
 			// Values
-			if( ! value[ 'linked' ] ) {
-				inputs.each( function() {
-					const side = $( this ).data( 'side' ),
-						val    = $( this ).val();
-	
+			if (!value['linked']) {
+				inputs.each(function () {
+					const side = $(this).data('side'),
+						val = $(this).val();
+
 					value[side] = val;
 				});
 			} else {
-				const val = $( input ).val();
-				value[ 'top' ] = val;
-				value[ 'right' ] = val;
-				value[ 'bottom' ] = val;
-				value[ 'left' ] = val;
+				const val = $(input).val();
+				value['top'] = val;
+				value['right'] = val;
+				value['bottom'] = val;
+				value['left'] = val;
 
-				inputs.each( function() {
-					$( this ).val( val );
+				inputs.each(function () {
+					$(this).val(val);
 				});
 			}
 
-			return JSON.stringify( value );
+			return JSON.stringify(value);
 		},
 
-		unitSelectHandler: function(e) {
-			const 
-				$this = $( e.target ),
-				deviceType = $( e.target ).closest( '.botiga-dimensions-units' ).data( 'device-type' );
+		unitSelectHandler: function (e) {
+			const
+				$this = $(e.target),
+				deviceType = $(e.target).closest('.botiga-dimensions-units').data('device-type');
 
 			// Trigger change in the first input to update the value
-			$this.closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-inputs[data-device-type="'+ deviceType +'"] .botiga-dimensions-input-wrapper:first-child .botiga-dimensions-input' ).trigger( 'change' );
+			$this.closest('.botiga-dimensions-control').find('.botiga-dimensions-inputs[data-device-type="' + deviceType + '"] .botiga-dimensions-input-wrapper:first-child .botiga-dimensions-input').trigger('change');
 		},
 
-		toggleLinkValues: function( e ) {
+		toggleLinkValues: function (e) {
 			e.preventDefault();
 
-			const 
-				$this = $( e.target ),
-				deviceType = $( e.target ).closest( '.botiga-dimensions-link-values' ).data( 'device-type' );
+			const
+				$this = $(e.target),
+				deviceType = $(e.target).closest('.botiga-dimensions-link-values').data('device-type');
 
-			$this.closest( '.botiga-dimensions-link-values' ).toggleClass( 'linked' );
+			$this.closest('.botiga-dimensions-link-values').toggleClass('linked');
 
 			// Trigger change in the first input to update the value
-			$this.closest( '.botiga-dimensions-control' ).find( '.botiga-dimensions-inputs[data-device-type="'+ deviceType +'"] .botiga-dimensions-input-wrapper:first-child .botiga-dimensions-input' ).trigger( 'change' );
+			$this.closest('.botiga-dimensions-control').find('.botiga-dimensions-inputs[data-device-type="' + deviceType + '"] .botiga-dimensions-input-wrapper:first-child .botiga-dimensions-input').trigger('change');
 		}
 
 	}
 
-	$( document ).ready(function(){
+	$(document).ready(function () {
 		Botiga_Dimensions_Control.init();
 	});
 })(jQuery);

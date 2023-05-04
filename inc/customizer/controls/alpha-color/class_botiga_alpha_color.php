@@ -26,3 +26,7 @@ class Botiga_Alpha_Color extends WP_Customize_Control {
 	}
 
 }
+
+class Botiga_Alpha_Color_Border_Bottom extends Botiga_Alpha_Color {
+	public $type = 'botiga-alpha-color botiga-alpha-color-border-bottom';
+}

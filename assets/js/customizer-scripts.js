@@ -277,6 +277,16 @@ jQuery(document).ready(function ($) {
   $('.customize-control-botiga-tab-control').each(function () {
     // Hide designs options at first
     var designs = $(this).find('.control-tab-design').data('connected');
+    var general = $(this).find('.control-tab-general').data('connected');
+    $.each(general, function (i, v) {
+      if (i === 0) {
+        $(this).addClass('botiga-tab-control-item-first');
+      }
+
+      if (i === general.length - 1) {
+        $(this).addClass('botiga-tab-control-item-last');
+      }
+    });
     $.each(designs, function (i, v) {
       $(this).addClass('botiga-hide-control');
     });
@@ -287,12 +297,28 @@ jQuery(document).ready(function ($) {
       $tab.addClass('active');
       $siblings.removeClass('active');
       $.each(visibles, function (i, v) {
+        if (i === 0) {
+          $(this).addClass('botiga-tab-control-item-first');
+        }
+
+        if (i === visibles.length - 1) {
+          $(this).addClass('botiga-tab-control-item-last');
+        }
+
         $(this).removeClass('botiga-hide-control');
       });
       $siblings.each(function () {
         var $sibling = $(this);
         var hiddens = $sibling.data('connected');
         $.each(hiddens, function (i, v) {
+          if (i === 0) {
+            $(this).removeClass('botiga-tab-control-item-first');
+          }
+
+          if (i === hiddens.length - 1) {
+            $(this).removeClass('botiga-tab-control-item-last');
+          }
+
           $(this).addClass('botiga-hide-control');
         });
       });

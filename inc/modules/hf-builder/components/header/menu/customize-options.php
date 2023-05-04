@@ -55,11 +55,11 @@ $wp_customize->add_control(
             ),
             'controls_design'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] ),
                     array(
                         '#customize-control-botiga_section_hb_component__menu_padding',
                         '#customize-control-botiga_section_hb_component__menu_margin'
                     ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
             ),
             'priority' 				=> 20

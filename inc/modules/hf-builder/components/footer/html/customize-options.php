@@ -40,12 +40,12 @@ $wp_customize->add_control(
             'section'       		=> 'botiga_section_fb_component__html',
             'controls_general'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ),
                     array(
                         '#customize-control-botiga_section_fb_component__html_title',
                         '#customize-control-botiga_section_fb_component__html_text_align',
                         '#customize-control-botiga_section_fb_component__html_visibility'
                     ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
                 )
             ),
             'controls_design'		=> json_encode(

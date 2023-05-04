@@ -47,6 +47,7 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
 				array(
 					'#customize-control-botiga_section_fb_wrapper__footer_builder_background_color',
+					'#customize-control-botiga_section_fb_wrapper__footer_builder__divider2',
 					'#customize-control-botiga_section_fb_wrapper__footer_builder_background_image',
 					'#customize-control-botiga_section_fb_wrapper__footer_builder_background_size',
 					'#customize-control-botiga_section_fb_wrapper__footer_builder_background_position',
@@ -109,6 +110,24 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Background color', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_wrapper',
 			'priority'			=> 35
+		)
+	)
+);
+
+// Divider
+$wp_customize->add_setting(
+	'botiga_section_fb_wrapper__footer_builder__divider2',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Divider_Control(
+		$wp_customize,
+		'botiga_section_fb_wrapper__footer_builder__divider2',
+		array(
+			'section' 		=> 'botiga_section_fb_wrapper',
+			'priority' 		=> 35
 		)
 	)
 );

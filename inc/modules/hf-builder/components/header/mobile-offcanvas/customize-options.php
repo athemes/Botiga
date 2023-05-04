@@ -80,13 +80,13 @@ $wp_customize->add_control(
             ),
             'controls_design'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] ),
                     array(
                         '#customize-control-bhfb_mobile_offcanvas_close_background_color',
                         '#customize-control-bhfb_mobile_offcanvas_close_text',
                         '#customize-control-bhfb_mobile_offcanvas_padding',
                         '#customize-control-bhfb_mobile_offcanvas_margin'
-                    ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
+                    )
                 )
             ),
             'priority' 				=> 20

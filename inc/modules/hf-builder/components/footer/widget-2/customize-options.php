@@ -26,7 +26,6 @@ $wp_customize->add_control(
         $wp_customize,
         'botiga_section_fb_component__widget2_tabs',
         array(
-            'label' 				=> '',
             'section'       		=> 'botiga_section_fb_component__widget2',
             'controls_general'		=> json_encode(
                 array(
@@ -57,7 +56,7 @@ $wp_customize->add_setting( 'botiga_section_fb_component__widget2_goto_edit',
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_fb_component__widget2_goto_edit',
 		array(
-			'description' 	=> '<span class="customize-control-title" style="font-style: normal;"></span><a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-2\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-2\' ).focus();">' . esc_html__( 'Footer Widget Area 2', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'description' 	=> '<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-2\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-2\' ).focus();">' . esc_html__( 'Footer Widget Area 2', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 			'section' 		=> 'botiga_section_fb_component__widget2',
             'priority' 		=> 30
 		)
@@ -127,7 +126,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Widget Title Color', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__widget2',
-			'priority'			=> 29
+			'priority'			=> 50
 		)
 	)
 );
@@ -148,7 +147,7 @@ $wp_customize->add_control(
 		array(
 			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
 			'section'       	=> 'botiga_section_fb_component__widget2',
-			'priority'			=> 29
+			'priority'			=> 50
 		)
 	)
 );
@@ -181,7 +180,7 @@ $wp_customize->add_control(
                 'normal' => 'botiga_section_fb_component__widget2_links_color',
                 'hover'  => 'botiga_section_fb_component__widget2_links_color_hover',
             ),
-            'priority' => 29
+            'priority' => 50
         )
     )
 );

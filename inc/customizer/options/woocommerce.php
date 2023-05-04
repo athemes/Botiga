@@ -827,8 +827,9 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'shop_c
 $wp_customize->add_section(
 	'botiga_section_shop_cart',
 	array(
-		'title'    => esc_html__( 'Cart', 'botiga'),
-		'priority' => 120
+		'title'       => esc_html__( 'Cart', 'botiga'),
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop cart page.', 'botiga' ),
+		'priority'    => 120
 	)
 );
 
@@ -1448,8 +1449,9 @@ $wp_customize->add_control(
 $wp_customize->add_section(
 	'botiga_section_shop_search',
 	array(
-		'title'    => esc_html__( 'Search', 'botiga'),
-		'priority' => 125
+		'title'       => esc_html__( 'Search', 'botiga'),
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop search page.', 'botiga' ),
+		'priority'    => 125
 	)
 );
 

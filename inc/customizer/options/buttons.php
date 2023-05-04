@@ -12,8 +12,9 @@
 $wp_customize->add_section(
 	'botiga_section_buttons',
 	array(
-		'title'    => esc_html__('Buttons', 'botiga'),
-		'priority' => 70,
+		'title'       => esc_html__('Buttons', 'botiga'),
+		'description' => esc_html__( 'Vary your button styles to highlight different calls-to-action.', 'botiga' ),
+		'priority'    => 70,
 	)
 );
 

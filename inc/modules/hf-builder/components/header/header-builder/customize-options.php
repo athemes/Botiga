@@ -52,6 +52,7 @@ $wp_customize->add_control(
             'controls_design'		=> json_encode(
 				array(
 					'#customize-control-botiga_section_hb_wrapper__header_builder_background_color',
+					'#customize-control-botiga_section_hb_wrapper__header_builder_divider2',
 					'#customize-control-botiga_section_hb_wrapper__header_builder_background_image',
 					'#customize-control-botiga_section_hb_wrapper__header_builder_background_size',
 					'#customize-control-botiga_section_hb_wrapper__header_builder_background_position',
@@ -168,6 +169,24 @@ $wp_customize->add_control(
 			'label'         	=> esc_html__( 'Background color', 'botiga' ),
 			'section'       	=> 'botiga_section_hb_wrapper',
 			'priority'			=> 35
+		)
+	)
+);
+
+// Divider
+$wp_customize->add_setting(
+	'botiga_section_hb_wrapper__header_builder_divider2',
+	array(
+		'sanitize_callback' => 'esc_attr'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Divider_Control(
+		$wp_customize,
+		'botiga_section_hb_wrapper__header_builder_divider2',
+		array(
+			'section' 		=> 'botiga_section_hb_wrapper',
+			'priority' 		=> 35
 		)
 	)
 );
@@ -418,8 +437,9 @@ foreach( $opts_to_move as $control_tabs ) {
 $wp_customize->add_section(
     'botiga_section_hb_presets',
     array(
-        'title'      => esc_html__( 'Header Layouts', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+        'title'       => esc_html__( 'Header Layouts', 'botiga' ),
+		'description' => esc_html__( 'Choose a header layout to start with.', 'botiga' ),
+        'panel'       => 'botiga_panel_header'
     )
 );
 

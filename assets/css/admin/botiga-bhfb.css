@@ -65,10 +65,6 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   display: flex !important;
 }
 
-#customize-control-botiga_section_fb_component__html2_title {
-  margin-bottom: 10px;
-}
-
 #customize-control-botiga_section_fb_component__html_title,
 #customize-control-botiga_section_fb_component__shortcode_title {
   display: none;
@@ -752,7 +748,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
  * Available Columns
  */
 .bhfb-available-columns .bhfb-columns-control-title {
-  margin-bottom: 7px !important;
+  margin-bottom: 12px !important;
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper {
@@ -776,6 +772,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #1e1e1e;
+  font-size: 13px;
   font-weight: 400;
   font-style: normal;
   padding: 9px 15px;
@@ -853,7 +850,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 10px 1px, 10px 1px, 1px 10px, 1px 10px;
   padding: 10px;
-  margin-top: 7px;
+  margin-top: 12px;
   border-radius: 5px;
 }
 
@@ -864,6 +861,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   background: #FFF;
   color: #1e1e1e;
   text-decoration: none;
+  font-size: 13px;
   font-style: normal;
   padding: 8px 8px;
   border: 2px solid #3858E9;
