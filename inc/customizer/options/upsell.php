@@ -64,9 +64,9 @@ if( class_exists( 'Woocommerce' ) ) {
     /**
      * Woocommerce Single
      */
-    $botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general );
+    $botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_single_product_layout_tabs' )->controls_general );
     $botiga_new_controls_general = array( '#customize-control-botiga_upsell_single_product' );
-    $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general = json_encode( array_merge( $botiga_controls_general, $botiga_new_controls_general ) );
+    $wp_customize->get_control( 'botiga_single_product_layout_tabs' )->controls_general = json_encode( array_merge( $botiga_controls_general, $botiga_new_controls_general ) );
 
     $wp_customize->add_setting( 
         'botiga_upsell_single_product',

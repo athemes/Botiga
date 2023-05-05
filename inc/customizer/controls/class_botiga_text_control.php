@@ -54,15 +54,17 @@ class Botiga_Text_Control extends WP_Customize_Control {
 			}
 		} ?>
 
-		<?php if( !empty( $this->label ) ) { ?>
+		<?php if( ! empty( $this->label ) ) : ?>
 			<span class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></span>
-		<?php } ?>
-		<?php if( !empty( $this->description ) ) { ?>
+		<?php endif; ?>
+		<?php if( ! empty( $this->description ) ) : ?>
 			<span class="customize-control-description<?php echo ( $this->rm_desc_mt ? ' bt-mt-0' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>"><?php echo $this->description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-		<?php } ?>
-		<?php if( !empty( $this->link_title ) && !empty( $this->link ) ) { ?>
+		<?php else : ?>
+			<span class="customize-control-description-empty" style="display: block; margin-top: -8px;"></span>
+		<?php endif; ?>
+		<?php if( ! empty( $this->link_title ) && !empty( $this->link ) ) : ?>
 			<a href="<?php echo esc_url( $this->link ); ?>" target="_blank"><?php echo $this->link_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
-		<?php } ?>
+		<?php endif; ?>
 	<?php
 	}
 }

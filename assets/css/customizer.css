@@ -144,7 +144,22 @@
 }
 
 .customize-control.customize-control-botiga-tab-control {
+  position: sticky;
+  top: 0;
   padding-top: 10px;
+  background-color: #FFF;
+  z-index: 10;
+}
+
+.customize-control.customize-control-botiga-tab-control:before {
+  content: '';
+  display: block;
+  width: calc(100% - 24px);
+  left: 12px;
+  bottom: 1px;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  z-index: -1;
 }
 
 .customize-control.customize-control-botiga-toggle-control .customize-control-title {
@@ -154,11 +169,31 @@
 .customize-control.customize-control-botiga-alpha-color, .customize-control.customize-control-botiga-color-group-control {
   width: calc( 100% - 24px);
   margin-left: 12px;
+  padding: 0;
+}
+
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-group, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-color-group-control > .botiga-color-group {
   border-top: 1px solid #ddd;
   padding: 16px 12px;
 }
 
-.customize-control.customize-control-botiga-alpha-color.botiga-tab-control-item-first, .customize-control.customize-control-botiga-color-group-control.botiga-tab-control-item-first {
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-control.border-top-none,
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-group.border-top-none, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control.border-top-none,
+.customize-control.customize-control-botiga-color-group-control > .botiga-color-group.border-top-none {
+  border-top: none;
+}
+
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-control.border-bottom-none,
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-group.border-bottom-none, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control.border-bottom-none,
+.customize-control.customize-control-botiga-color-group-control > .botiga-color-group.border-bottom-none {
+  border-bottom: none;
+}
+
+.customize-control.customize-control-botiga-alpha-color.botiga-tab-control-item-first > .botiga-color-control,
+.customize-control.customize-control-botiga-alpha-color.botiga-tab-control-item-first > .botiga-color-group, .customize-control.customize-control-botiga-color-group-control.botiga-tab-control-item-first > .botiga-color-control,
+.customize-control.customize-control-botiga-color-group-control.botiga-tab-control-item-first > .botiga-color-group {
   border-top: 0;
 }
 
@@ -166,13 +201,20 @@
   padding-top: 0;
 }
 
-.customize-control.customize-control-botiga-alpha-color.botiga-alpha-color-border-bottom {
+.customize-control.customize-control-botiga-alpha-color + .customize-control-botiga-divider-control, .customize-control.customize-control-botiga-color-group-control + .customize-control-botiga-divider-control {
+  padding-top: 0;
+}
+
+.customize-control.customize-control-botiga-alpha-color.botiga-alpha-color-border-bottom > .botiga-color-control,
+.customize-control.customize-control-botiga-alpha-color.botiga-alpha-color-border-bottom > .botiga-color-group {
   border-top: 0;
   border-bottom: 1px solid #ddd;
 }
 
-.customize-control.customize-control-botiga-text-control + .customize-control-botiga-alpha-color,
-.customize-control.customize-control-botiga-text-control + .customize-control-botiga-color-group-control {
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-alpha-color > .botiga-color-group,
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-color-group-control > .botiga-color-group {
   border-top: 0;
 }
 
@@ -199,6 +241,20 @@
 
 .customize-control.customize-control-background_position .background-position-control .button-group .button {
   background: #FFF;
+}
+
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-alpha-color > .botiga-color-group,
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-color-group-control > .botiga-color-group {
+  border-top: 0;
+}
+
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-alpha-color > .botiga-color-group,
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-color-group-control > .botiga-color-group {
+  border-top: 0;
 }
 
 .customize-control.customize-control-nav_menu_location .edit-menu,
@@ -2419,7 +2475,7 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
 }
 
 .botiga-radio-images-col-4 label {
-  width: calc(25% - 15px);
+  width: calc(25% - 8px);
 }
 
 .botiga-radio-images-col-5 label {
