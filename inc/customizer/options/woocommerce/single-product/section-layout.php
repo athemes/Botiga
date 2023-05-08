@@ -1,88 +1,11 @@
 <?php
 /**
- * Woocommerce Customizer options
+ * Single Product - Layout Section Customizer Settings
  *
  * @package Botiga
  */
 
-/**
- * Panel
- */
-$wp_customize->add_panel(
-    'botiga_panel_single_product',
-    array(
-        'title' => esc_html__('Single Product', 'botiga'),
-        'priority' => 110,
-        'description' => esc_html__('Manage the overall design and functionality from the shop single product pages.', 'botiga'),
-    )
-);
-
-/**
- * Layout Section
- */
-
-// Section
-$wp_customize->add_section(
-    'botiga_section_single_product_layout',
-    array(
-        'panel' => 'botiga_panel_single_product',
-        'title' => esc_html__('Layout', 'botiga'),
-    )
-);
-
-// Tabs (Control)
-$wp_customize->add_setting(
-    'botiga_single_product_layout_tabs',
-    array(
-        'default' => '',
-        'sanitize_callback' => 'esc_attr',
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Tab_Control(
-        $wp_customize,
-        'botiga_single_product_layout_tabs',
-        array(
-            'label' => '',
-            'section' => 'botiga_section_single_product_layout',
-            'controls_general' => json_encode(array(
-                '#customize-control-single_gallery_slider',
-                '#customize-control-single_product_gallery',
-                '#customize-control-single_zoom_effects',
-                '#customize-control-single_gallery_divider_1',
-                '#customize-control-single_breadcrumbs',
-                '#customize-control-single_breadcrumbs_hide_title',
-                '#customize-control-single_ajax_add_to_cart',
-                '#customize-control-single_product_elements_order',
-                '#customize-control-single_upsell_products_top_divider',
-                '#customize-control-single_upsell_products',
-                '#customize-control-single_recently_viewed_top_divider',
-                '#customize-control-single_recently_viewed_products',
-                '#customize-control-single_recently_viewed_bottom_divider',
-                '#customize-control-single_related_products',
-                '#customize-control-single_product_sku',
-                '#customize-control-single_product_categories',
-                '#customize-control-single_product_tags',
-            )),
-            'controls_design' => json_encode(array(
-                '#customize-control-single_product_title_title',
-                '#customize-control-single_product_title_font_style',
-                '#customize-control-single_product_title_adobe_font',
-                '#customize-control-single_product_title_font',
-                '#customize-control-single_product_title_size',
-                '#customize-control-single_product_title_text_style',
-                '#customize-control-single_product_title_color',
-                '#customize-control-single_product_styling_divider_1',
-				'#customize-control-single_product_title_and_price_divider',
-                '#customize-control-single_product_price_title',
-                '#customize-control-single_product_price_size',
-                '#customize-control-single_product_price_color',
-            )),
-        )
-    )
-);
-
-$wp_customize->add_setting(
+ $wp_customize->add_setting(
     'single_product_gallery',
     array(
         'default' => 'gallery-default',
@@ -692,62 +615,6 @@ $wp_customize->add_control(
             'label' => esc_html__('Product price color', 'botiga'),
             'section' => 'botiga_section_single_product_layout',
             'priority' => 145,
-        )
-    )
-);
-
-/**
- * Tabs Section
- */
-
-// Section
-$wp_customize->add_section(
-    'botiga_section_single_product_tabs',
-    array(
-        'panel' => 'botiga_panel_single_product',
-        'title' => esc_html__('Product Tab', 'botiga'),
-    )
-);
-
-// Tabs (Control)
-$wp_customize->add_setting(
-    'botiga_single_product_tabs_tabs',
-    array(
-        'default' => '',
-        'sanitize_callback' => 'esc_attr',
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Tab_Control(
-        $wp_customize,
-        'botiga_single_product_tabs_tabs',
-        array(
-            'label' => '',
-            'section' => 'botiga_section_single_product_tabs',
-            'controls_general' => json_encode(array(
-                '#customize-control-single_product_tabs',
-            )),
-            'controls_design' => json_encode(array()),
-        )
-    )
-);
-
-// Tabs (Feature)
-$wp_customize->add_setting(
-    'single_product_tabs',
-    array(
-        'default' => 1,
-        'sanitize_callback' => 'botiga_sanitize_checkbox',
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Toggle_Control(
-        $wp_customize,
-        'single_product_tabs',
-        array(
-            'label' => esc_html__('Product tabs', 'botiga'),
-            'section' => 'botiga_section_single_product_tabs',
-            'priority' => 90,
         )
     )
 );
