@@ -68,6 +68,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/accordion/class_botiga_accordion_control.php';
 			require get_template_directory() . '/inc/customizer/controls/display-conditions/class_botiga_display_conditions_control.php';
 			require get_template_directory() . '/inc/customizer/controls/custom-sidebars/class_botiga_custom_sidebars_control.php';
+			require get_template_directory() . '/inc/customizer/controls/class_botiga_section.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_title_section.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_typography_preview_control.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_text_style_control.php';

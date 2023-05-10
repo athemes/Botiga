@@ -10,6 +10,11 @@
 	}
 }
 
+/* Botiga Section Hidden */
+li.control-section-botiga-section-hidden {
+	display: none !important;
+}
+
 /* Customize Panels (panel-meta and section-meta) */
 #customize-controls {
 	.customize-pane-child {
@@ -1315,15 +1320,6 @@ label {
 	&:focus{
 		box-shadow: none;
 	}
-}
-
-
-/*
- * Hide some sections
- */
-#accordion-section-botiga_login_register_popup,
-#accordion-section-side_mini_cart_floating_icon_section {
-	display: none !important;
 }
 
 /*
@@ -3079,15 +3075,6 @@ a,
 }
 
 #customize-theme-controls {
-	.customize-pane-parent {
-		> #accordion-section-botiga_google_autocomplete_section,
-		> #accordion-section-botiga_section_product_swatches_swatch_select,
-		> #accordion-section-botiga_section_product_swatches_swatch_color,
-		> #accordion-section-botiga_section_product_swatches_swatch_button,
-		> #accordion-section-botiga_section_product_swatches_swatch_image {
-			display: none !important;
-		}
-	}
 
 	// Remove border bottom from specific options
 	#customize-control-product_swatch_select_background_color,
