@@ -18,10 +18,13 @@ $opts_to_move = array(
 );
 
 $wp_customize->add_section(
-    'botiga_section_hb_component__contact_info',
-    array(
-        'title'      => esc_html__( 'Contact Info', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__contact_info',
+        array(
+            'title'      => esc_html__( 'Contact Info', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 

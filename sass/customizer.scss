@@ -229,6 +229,14 @@ li.control-section-botiga-section-hidden {
 				padding-top: 0;
 			}
 		}
+
+		.customize-control-description {
+			& + a {
+				display: block;
+				margin-top: 8px;
+				font-size: 11px;
+			}
+		}
 	}
 
 	// Input Text
@@ -296,6 +304,36 @@ li.control-section-botiga-section-hidden {
 				border-top: 0;
 			}
 		}
+
+		.range-slider {
+			& + .customize-control-description {
+				margin-top: 12px;
+			}
+		}
+	}
+
+	// Botiga Radio Image
+	&.customize-control-botiga-radio-image {
+		padding-bottom: 8px;
+
+		.customize-control-title {
+			margin-bottom: 12px;
+		}
+
+		.customize-control-description {
+			& + .botiga-control-wrapper {
+				margin-top: 16px;
+			}
+		}
+	}
+
+	// Tiny MCE
+	&.customize-control-botiga-tinymce {
+		.customize-control-description {
+			& + .wp-editor-wrap {
+				margin-top: 12px;
+			}
+		}
 	}
 
 	/* Specific Settings */
@@ -335,6 +373,16 @@ li.control-section-botiga-section-hidden {
 	// Colors
 	&#customize-control-reset_colors {
 		padding-bottom: 16px;
+	}
+
+	// Google Autocomplete
+	&#customize-control-botiga_google_autocomplete_api_extra_parameters {
+		padding-top: 16px;
+	}
+
+	// Code Editor
+	&.customize-control-code_editor {
+		padding: 16px 0 0;
 	}
 	
 }
@@ -1169,12 +1217,6 @@ span.delete:hover {
 	font-weight: 600;
 	font-size: 16px;
 }
-
-// .customize-control-botiga-tab-control {
-// 	& + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title):not(#customize-control-botiga_section_hb_component__html_title):not(#customize-control-botiga_section_hb_component__html2_title):not(#customize-control-botiga_section_hb_component__shortcode_title):not(#customize-control-botiga_section_fb_component__html_title):not(#customize-control-botiga_section_fb_component__html2_title):not(#customize-control-botiga_section_fb_component__shortcode_title):not(#customize-control-botiga_section_hb_wrapper__header_builder_goto_sections):not(#customize-control-botiga_section_fb_wrapper__footer_builder_goto_sections):not(#customize-control-mobile_offcanvas_menu_switcher_title):not(#customize-control-mobile_offcanvas_menu_switcher_title) {
-// 		margin: 20px 0 30px !important;
-// 	}
-// }
 
 #customize-control-search_icon_custom_image,
 #customize-control-cart_icon_custom_image,
@@ -2057,7 +2099,7 @@ label {
 	hr {
 		border-top: 1px solid #ddd;
 		border-bottom: none;
-		margin: 15px 0 25px 0;
+		margin: 0px 0 22px 0;
 	}
 }
 
@@ -2078,20 +2120,27 @@ label {
 	box-sizing: border-box;
 }
 
-.customize-pane-parent{
+.customize-pane-parent {
 
-	> li.control-section{
+	> li.control-section {
+		padding-left: 15px;
 
-		.accordion-section-title:before{
-			content: "";
-			width: 24px;
-			height: 24px;
-			background-repeat: no-repeat;
-			display: inline-block;
-			vertical-align: middle;
-			margin-right: 4px;
-			margin-left: -4px;
-			background-image: url(../img/icons/default.svg);
+		.accordion-section-title {
+			&:before {
+				content: "";
+				width: 24px;
+				height: 24px;
+				background-repeat: no-repeat;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 4px;
+				margin-left: -4px;
+				background-image: url(../img/icons/default.svg);
+			}
+
+			&:after {
+				right: 30px;
+			}
 		}
 	}
 }
@@ -2152,7 +2201,7 @@ label {
 	background-image: url(../img/icons/megaphone.svg);
 }
 
-#accordion-section-woocommerce_product_catalog .accordion-section-title:before{
+#accordion-panel-botiga_panel_shop_archive .accordion-section-title:before{
 	background-image: url(../img/icons/product-catalog.svg);
 }
 
@@ -2172,7 +2221,7 @@ label {
 	background-image: url(../img/icons/search.svg);
 }
 
-#accordion-section-botiga_section_single_product .accordion-section-title:before{
+#accordion-panel-botiga_panel_single_product .accordion-section-title:before{
 	background-image: url(../img/icons/single-product.svg);
 }
 
@@ -2266,7 +2315,7 @@ label {
 			margin: 0;
 			display: block;
 			position: relative;
-			bottom: -8px;
+			bottom: -6px;
 		}
 	}
 
@@ -2283,8 +2332,16 @@ label {
 	width: calc(50% - 10px);
 }
 
-.botiga-radio-images-col-3 label{
-	width: calc(33.333% - 14px);
+.botiga-radio-images-col-3 {
+	label {
+		width: calc(33.333% - 14px);
+	}
+
+	&.botiga-radio-images-medium {
+		label {
+			width: calc(33.333% - 7px);
+		}
+	}
 }
 
 .botiga-radio-images-col-4 label{

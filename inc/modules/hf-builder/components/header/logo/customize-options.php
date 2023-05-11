@@ -27,10 +27,13 @@ $opts_to_move = array(
 
 // Register New Options.
 $wp_customize->add_section(
-    'botiga_section_hb_component__logo',
-    array(
-        'title'      => esc_html__( 'Logo', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__logo',
+        array(
+            'title'      => esc_html__( 'Logo', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 

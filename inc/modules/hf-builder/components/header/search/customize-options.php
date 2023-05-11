@@ -15,10 +15,13 @@ $opts_to_move = apply_filters( 'botiga_hfb_header_component_search_opts_to_move'
 ) );
 
 $wp_customize->add_section(
-    'botiga_section_hb_component__search',
-    array(
-        'title'      => esc_html__( 'Search', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__search',
+        array(
+            'title'      => esc_html__( 'Search', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 

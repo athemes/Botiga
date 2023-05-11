@@ -82,11 +82,11 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_sect
 			'description' 	=> '
 				<span class="customize-control-title" style="font-style: normal;">Global Header</span>
 				<div class="customize-section-shortcuts">
-					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();">' . esc_html__( 'Header Layouts', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
-					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_above_header_row\' ).focus();">' . esc_html__( 'Top Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
-					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_main_header_row\' ).focus();">' . esc_html__( 'Main Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
-					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_below_header_row\' ).focus();">' . esc_html__( 'Bottom Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
-					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_mobile_offcanvas\' ).focus();">' . esc_html__( 'Mobile Header', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();" data-goto-section="botiga_section_hb_presets">' . esc_html__( 'Header Layouts', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_above_header_row\' ).focus();" data-goto-section="botiga_section_hb_above_header_row">' . esc_html__( 'Top Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_main_header_row\' ).focus();" data-goto-section="botiga_section_hb_main_header_row">' . esc_html__( 'Main Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_below_header_row\' ).focus();" data-goto-section="botiga_section_hb_below_header_row">' . esc_html__( 'Bottom Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_mobile_offcanvas\' ).focus();" data-goto-section="botiga_section_hb_mobile_offcanvas">' . esc_html__( 'Mobile Header', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
 				</div>
 			',
 			'section' 		=> 'botiga_section_hb_wrapper',
@@ -435,12 +435,15 @@ foreach( $opts_to_move as $control_tabs ) {
  * 
  */
 $wp_customize->add_section(
-    'botiga_section_hb_presets',
-    array(
-        'title'       => esc_html__( 'Header Layouts', 'botiga' ),
-		'description' => esc_html__( 'Choose a header layout to start with.', 'botiga' ),
-        'panel'       => 'botiga_panel_header'
-    )
+	new Botiga_Section_Hidden(
+        $wp_customize,
+		'botiga_section_hb_presets',
+		array(
+			'title'       => esc_html__( 'Header Layouts', 'botiga' ),
+			'description' => esc_html__( 'Choose a header layout to start with.', 'botiga' ),
+			'panel'       => 'botiga_panel_header'
+		)
+	)
 );
 
 $choices = botiga_header_layouts();

@@ -1,18 +1,13 @@
-<svg width="150" height="105" viewBox="0 0 119 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="119" height="74" rx="3" fill="white"/>
-<rect x="15" width="39" height="28" fill="#DADDDE"/>
-<rect x="15" width="39" height="28" stroke="white"/>
-<rect x="15" y="29" width="9" height="8" fill="#DADDDE"/>
-<rect x="15" y="29" width="9" height="8" stroke="white"/>
-<rect x="25" y="29" width="9" height="8" fill="#DADDDE"/>
-<rect x="25" y="29" width="9" height="8" stroke="white"/>
-<rect x="35" y="29" width="9" height="8" fill="#DADDDE"/>
-<rect x="35" y="29" width="9" height="8" stroke="white"/>
-<rect x="45" y="29" width="9" height="8" fill="#DADDDE"/>
-<rect x="45" y="29" width="9" height="8" stroke="white"/>
-<rect x="63" y="5" width="30" height="3" fill="#DADDDE"/>
-<rect x="63" width="40" height="2" fill="#DADDDE"/>
-<path d="M63 17H93V20H63V17Z" fill="#DADDDE"/>
-<rect x="63" y="11" width="40" height="3" fill="#DADDDE"/>
-<rect x="15" y="43" width="88" height="24" fill="#AAAEB1"/>
+<svg width="150" height="94" viewBox="0 0 150 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M146.218 0H3.78151C1.69304 0 0 1.69304 0 3.78151V89.4958C0 91.5843 1.69304 93.2773 3.78151 93.2773H146.218C148.307 93.2773 150 91.5843 150 89.4958V3.78151C150 1.69304 148.307 0 146.218 0Z" fill="white"/>
+<path d="M68 35V0H43.5H19V35H68Z" fill="#DADDDE"/>
+<path d="M30.2521 36.5546H18.9076V46.6387H30.2521V36.5546Z" fill="#DADDDE"/>
+<path d="M42.8571 36.5546H31.5126V46.6387H42.8571V36.5546Z" fill="#DADDDE"/>
+<path d="M55.4622 36.5546H44.1176V46.6387H55.4622V36.5546Z" fill="#DADDDE"/>
+<path d="M68.0672 36.5546H56.7227V46.6387H68.0672V36.5546Z" fill="#DADDDE"/>
+<path d="M117.227 6.30252H79.4118V10.084H117.227V6.30252Z" fill="#E4E5E6"/>
+<path d="M129.832 0H79.4118V2.52101H129.832V0Z" fill="#E4E5E6"/>
+<path d="M79.4118 21.4286H117.227V25.2101H79.4118V21.4286Z" fill="#E4E5E6"/>
+<path d="M129.832 13.8655H79.4118V17.6471H129.832V13.8655Z" fill="#E4E5E6"/>
+<path d="M129.832 54.2017H18.9076V84.4538H129.832V54.2017Z" fill="#CACCCE"/>
 </svg>

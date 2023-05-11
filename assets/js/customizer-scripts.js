@@ -1,6 +1,30 @@
 "use strict";
 
+// Customizer Back Button
+jQuery(document).ready(function ($) {
+  // Store the previous section in a global variable to use later
+  var previous_section = '';
+  $('.botiga-to-widget-area-link').on('click', function () {
+    // Sections
+    if ($(this).closest('.control-section').length) {
+      previous_section = $(this).closest('.control-section').attr('id').replace('sub-accordion-section-', '');
+    }
+  }); // Flag when hidden section content is active
+
+  var is_hidden_section_content = false;
+  $(document).on('mouseover focus', '.customize-section-back', function (e) {
+    is_hidden_section_content = $('.control-section.open').hasClass('control-section-botiga-section-hidden') ? true : false;
+  }); // If hidden section content is active, focus on the previous section (from global variable)
+
+  $(document).on('click', '.customize-section-back', function (e) {
+    if (is_hidden_section_content) {
+      wp.customize.section(previous_section).focus();
+      is_hidden_section_content = false;
+    }
+  });
+});
 /* Select 2 Control */
+
 jQuery(document).ready(function ($) {
   "use strict";
 

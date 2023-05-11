@@ -2,7 +2,7 @@
 <g filter="url(#filter0_d)">
 <rect x="2" y="1" width="74" height="58" rx="3" fill="white"/>
 </g>
-<rect x="12" y="11" width="54" height="38" rx="1.5429" fill="#AAAEB1"/>
+<rect x="12" y="11" width="54" height="38" rx="1.5429" fill="#CACCCE"/>
 <defs>
 <filter id="filter0_d" x="0" y="0" width="78" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

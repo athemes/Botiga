@@ -69,24 +69,12 @@ body {
     display: none;
 }
 
-#sub-accordion-panel-botiga_panel_header > li.accordion-section[id*="accordion-section-botiga_section_hb"]:not(#accordion-section-botiga_section_hb_wrapper),
-#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="accordion-section-botiga_section_fb"]:not(#accordion-section-botiga_section_fb_wrapper),
-#sub-accordion-panel-botiga_panel_header > li.accordion-section[id*="botiga_header_row__"],
-#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="botiga_footer_row__"] {
-    display: none !important;
-}
-
 #sub-accordion-section-botiga_section_fb_component__footer_menu {
     #customize-control-footer_navigation_menu_link {
         .footer-widget-area-link {
             display: flex !important;
         }
     }
-}
-
-#customize-control-botiga_section_fb_component__html_title,
-#customize-control-botiga_section_fb_component__shortcode_title {
-    display: none;
 }
 
 .bhfb-ui-state-highlight {

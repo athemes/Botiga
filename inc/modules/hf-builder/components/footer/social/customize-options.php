@@ -17,10 +17,13 @@ $opts_to_move = array(
 );
 
 $wp_customize->add_section(
-    'botiga_section_fb_component__social',
-    array(
-        'title'      => esc_html__( 'Social Icons', 'botiga' ),
-        'panel'      => 'botiga_panel_footer'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_fb_component__social',
+        array(
+            'title'      => esc_html__( 'Social Icons', 'botiga' ),
+            'panel'      => 'botiga_panel_footer'
+        )
     )
 );
 

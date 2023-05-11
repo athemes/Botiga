@@ -374,41 +374,53 @@ class Botiga_Header_Footer_Builder {
 
         // Header Builder Above Header Row Section
         $wp_customize->add_section(
-            'botiga_section_hb_above_header_row',
-            array(
-                'title'       => esc_html__( 'Above Header Row', 'botiga' ),
-                'description' => esc_html__( 'The settings from the first row from header builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_header'
+            new Botiga_Section_Hidden(
+				$wp_customize, 
+                'botiga_section_hb_above_header_row',
+                array(
+                    'title'       => esc_html__( 'Above Header Row', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the first row from header builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_header'
+                )
             )
         );
 
         // Header Builder Main Header Row Section
         $wp_customize->add_section(
-            'botiga_section_hb_main_header_row',
-            array(
-                'title'       => esc_html__( 'Main Header Row', 'botiga' ),
-                'description' => esc_html__( 'The settings from the second row from header builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_header'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                'botiga_section_hb_main_header_row',
+                array(
+                    'title'       => esc_html__( 'Main Header Row', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the second row from header builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_header'
+                )
             )
         );
 
         // Header Builder Below Header Row Section
         $wp_customize->add_section(
-            'botiga_section_hb_below_header_row',
-            array(
-                'title'       => esc_html__( 'Below Header Row', 'botiga' ),
-                'description' => esc_html__( 'The settings from the third row from header builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_header'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                'botiga_section_hb_below_header_row',
+                array(
+                    'title'       => esc_html__( 'Below Header Row', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the third row from header builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_header'
+                )
             )
         );
 
         // Header Builder Mobile Offcanvas Header Section
         $wp_customize->add_section(
-            'botiga_section_hb_mobile_offcanvas',
-            array(
-                'title'       => esc_html__( 'Mobile Offcanvas', 'botiga' ),
-                'description' => esc_html__( 'The settings from the mobile offcanvas from header builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_header'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                'botiga_section_hb_mobile_offcanvas',
+                array(
+                    'title'       => esc_html__( 'Mobile Offcanvas', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the mobile offcanvas from header builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_header'
+                )
             )
         );
 
@@ -452,31 +464,40 @@ class Botiga_Header_Footer_Builder {
 
         // Footer Builder Above Footer Row Section
         $wp_customize->add_section(
-            'botiga_section_fb_above_footer_row',
-            array(
-                'title'       => esc_html__( 'Above Footer Row', 'botiga' ),
-                'description' => esc_html__( 'The settings from the first row from footer builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_footer'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                'botiga_section_fb_above_footer_row',
+                array(
+                    'title'       => esc_html__( 'Above Footer Row', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the first row from footer builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_footer'
+                )
             )
         );
 
         // Footer Builder Main Footer Row Section
         $wp_customize->add_section(
-            'botiga_section_fb_main_footer_row',
-            array(
-                'title'       => esc_html__( 'Main Footer Row', 'botiga' ),
-                'description' => esc_html__( 'The settings from the second row from footer builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_footer'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                'botiga_section_fb_main_footer_row',
+                array(
+                    'title'       => esc_html__( 'Main Footer Row', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the second row from footer builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_footer'
+                )
             )
         );
 
         // Footer Builder Below Footer Row Section
         $wp_customize->add_section(
-            'botiga_section_fb_below_footer_row',
-            array(
-                'title'       => esc_html__( 'Below Footer Row', 'botiga' ),
-                'description' => esc_html__( 'The settings from the third row from footer builder.', 'botiga' ),
-                'panel'       => 'botiga_panel_footer'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                'botiga_section_fb_below_footer_row',
+                array(
+                    'title'       => esc_html__( 'Below Footer Row', 'botiga' ),
+                    'description' => esc_html__( 'The settings from the third row from footer builder.', 'botiga' ),
+                    'panel'       => 'botiga_panel_footer'
+                )
             )
         );
 
