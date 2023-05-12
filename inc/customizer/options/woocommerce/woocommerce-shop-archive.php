@@ -27,40 +27,42 @@ $wp_customize->get_section( 'woocommerce_product_catalog' )->panel = 'botiga_pan
 $wp_customize->get_section( 'woocommerce_product_catalog' )->title = esc_html__( 'Layout', 'botiga' );
 
 // Layout Tabs (control)
-$wp_customize->add_setting(
-	'botiga_product_catalog_tabs',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_attr'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Tab_Control (
-		$wp_customize,
+if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+	$wp_customize->add_setting(
 		'botiga_product_catalog_tabs',
 		array(
-			'label'            => '',
-			'section'          => 'woocommerce_product_catalog',
-			'controls_general' => json_encode( array( 
-				'#customize-control-woocommerce_catalog_rows',
-				'#customize-control-woocommerce_catalog_columns',
-				'#customize-control-shop_woocommerce_catalog_columns_desktop',
-				'#customize-control-shop_woocommerce_catalog_rows',
-				'#customize-control-shop_archive_layout',
-				'#customize-control-shop_archive_sidebar',
-				'#customize-control-shop_archive_divider_1',
-				'#customize-control-shop_page_elements_title',
-				'#customize-control-shop_page_title',
-				'#customize-control-shop_page_description',
-				'#customize-control-shop_product_sorting',
-				'#customize-control-shop_results_count',
-				'#customize-control-shop_breadcrumbs'
-			) ),
-			'controls_design'  => json_encode( array() ),
-			'priority'         =>	-10
+			'default'           => '',
+			'sanitize_callback' => 'esc_attr'
 		)
-	)
-);
+	);
+	$wp_customize->add_control(
+		new Botiga_Tab_Control (
+			$wp_customize,
+			'botiga_product_catalog_tabs',
+			array(
+				'label'            => '',
+				'section'          => 'woocommerce_product_catalog',
+				'controls_general' => json_encode( array( 
+					'#customize-control-woocommerce_catalog_rows',
+					'#customize-control-woocommerce_catalog_columns',
+					'#customize-control-shop_woocommerce_catalog_columns_desktop',
+					'#customize-control-shop_woocommerce_catalog_rows',
+					'#customize-control-shop_archive_layout',
+					'#customize-control-shop_archive_sidebar',
+					'#customize-control-shop_archive_divider_1',
+					'#customize-control-shop_page_elements_title',
+					'#customize-control-shop_page_title',
+					'#customize-control-shop_page_description',
+					'#customize-control-shop_product_sorting',
+					'#customize-control-shop_results_count',
+					'#customize-control-shop_breadcrumbs'
+				) ),
+				'controls_design'  => json_encode( array() ),
+				'priority'         =>	-10
+			)
+		)
+	);
+}
 
 // Layout Settings
 require 'shop-archive/section-layout.php';

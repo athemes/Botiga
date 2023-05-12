@@ -99,27 +99,29 @@ $wp_customize->add_section(
 );
 
 // Tabs (Control)
-$wp_customize->add_setting(
-    'botiga_single_product_tabs_tabs',
-    array(
-        'default' => '',
-        'sanitize_callback' => 'esc_attr',
-    )
-);
-$wp_customize->add_control(
-    new Botiga_Tab_Control(
-        $wp_customize,
+if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+    $wp_customize->add_setting(
         'botiga_single_product_tabs_tabs',
         array(
-            'label' => '',
-            'section' => 'botiga_section_single_product_tabs',
-            'controls_general' => json_encode(array(
-                '#customize-control-single_product_tabs',
-            )),
-            'controls_design' => json_encode(array()),
+            'default' => '',
+            'sanitize_callback' => 'esc_attr',
         )
-    )
-);
+    );
+    $wp_customize->add_control(
+        new Botiga_Tab_Control(
+            $wp_customize,
+            'botiga_single_product_tabs_tabs',
+            array(
+                'label' => '',
+                'section' => 'botiga_section_single_product_tabs',
+                'controls_general' => json_encode(array(
+                    '#customize-control-single_product_tabs',
+                )),
+                'controls_design' => json_encode(array()),
+            )
+        )
+    );
+}
 
 // Product Tabs Settings
 require 'single-product/section-tabs.php';

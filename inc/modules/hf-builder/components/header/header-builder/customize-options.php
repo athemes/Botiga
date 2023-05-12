@@ -394,19 +394,31 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_sect
 
 // Upsell
 if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
-	$wp_customize->add_setting( 'botiga_section_hb_wrapper__header_builder_upsell',
+	$wp_customize->add_setting( 
+		'botiga_section_hb_wrapper__header_builder_upsell',
 		array(
-			'default' 			=> '',
-			'sanitize_callback' => 'esc_attr'
+			'default'           => '',
+			'sanitize_callback' => 'botiga_sanitize_text'
 		)
 	);
-	$wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_hb_wrapper__header_builder_upsell',
+	
+	$wp_customize->add_control( 
+		new Botiga_Upsell_Message( 
+			$wp_customize, 
+			'botiga_section_hb_wrapper__header_builder_upsell',
 			array(
-				'description' 	=> '<div class="bhfb-customizer-sidebar-upsell"><p>'. esc_html__( 'Extend your header with more components.', 'botiga' ) .'</p><a class="bhfb-upsell-button" target="_blank" href="https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga">'. esc_html__( 'Get Botiga Pro!', 'botiga' ) .'</a></div>',
-				'section' 		=> 'botiga_section_hb_wrapper',
-				'priority' 		=> 40
+				'title'         => esc_html__( 'More header builder components available with Botiga Pro.', 'botiga' ),
+				'features_list' => array(
+					esc_html__( 'Extra HTML component', 'botiga' ),
+					esc_html__( 'Shortcode component', 'botiga' ),
+					esc_html__( 'Extra button component', 'botiga' ),
+					esc_html__( 'Display login button component', 'botiga' ),
+					esc_html__( 'Polylang/WPML language switcher component', 'botiga' )
+				),
+				'section'       => 'botiga_section_hb_wrapper',
+				'priority'      => 999
 			)
-		)
+		) 
 	);
 }
 

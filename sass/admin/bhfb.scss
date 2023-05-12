@@ -829,9 +829,6 @@ body {
 .bhfb-customizer-sidebar-upsell {
     background: #fff;
     font-style: normal;
-    margin-left: -25px;
-    margin-right: -25px;
-    padding: 25px 25px;
 
     p {
         margin-top: 0;
@@ -839,30 +836,21 @@ body {
 }
 
 .bhfb-upsell-button {
-    position: relative;
-    display: flex;
+    display: block;
     text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 7px 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 8px 50px;
     text-decoration: none;
     border-radius: 4px;
-    color: #3858E9;
-    border: 2px solid #3858E9;
+    color: #FFF !important;
+    background-color: #3858E9;
     transition: all .2s;
 
     &:active,
     &:focus,
-    &:hover{
-        color: #3858E9;
-    }
-
-    &:hover{
-        background-color: #f7f9ff;
-    }
-
-    &:focus{
-        box-shadow: none;
+    &:hover {
+        background-color: #4466fd;
     }
 }
 

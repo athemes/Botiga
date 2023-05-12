@@ -21,7 +21,7 @@ li.control-section-botiga-section-hidden {
 
 		.section-meta,
 		.panel-meta {
-			padding: 12px 12px 5px 12px;
+			padding: 12px 16px 5px 16px;
 			border-bottom: none;
 			background-color: #FFF;
 			margin-top: 5px;
@@ -128,7 +128,7 @@ li.control-section-botiga-section-hidden {
 /* Customize Control */
 .customize-control {
 	margin-bottom: 0;
-	padding: 16px 12px 0px 12px;
+	padding: 16px 16px 0px 16px;
 
 	// Control Description
 	.customize-control-description {
@@ -149,8 +149,8 @@ li.control-section-botiga-section-hidden {
 		&:before {
 			content: '';
 			display: block;
-			width: calc(100% - 24px);
-			left: 12px;
+			width: calc(100% - 32px);
+			left: 16px;
 			bottom: 1px;
 			border-bottom: 1px solid #ddd;
 			position: absolute;
@@ -168,14 +168,14 @@ li.control-section-botiga-section-hidden {
 	// Botiga Colors
 	&.customize-control-botiga-alpha-color,
 	&.customize-control-botiga-color-group-control {
-		width: calc( 100% - 24px );
-		margin-left: 12px;
+		width: calc( 100% - 32px );
+		margin-left: 16px;
 		padding: 0;
 		
 		> .botiga-color-control,
 		> .botiga-color-group {
 			border-top: 1px solid #ddd;
-			padding: 16px 12px;
+			padding: 16px 16px;
 
 			&.border-top-none {
 				border-top: none;
@@ -325,6 +325,74 @@ li.control-section-botiga-section-hidden {
 				margin-top: 16px;
 			}
 		}
+
+		.botiga-control-wrapper {
+			label {
+				.label-tooltip {
+					position: absolute;
+					left: 50%;
+					bottom: calc( 100% + 12px );
+					background-color: #212121;
+					color: #f7f7f7;
+					padding: 3px 12px;
+					border-radius: 4px;
+					font-size: 11px;
+					white-space: nowrap;
+					opacity: 0;
+					visibility: hidden;
+					transform: translate3d(-50%, 6px, 0);
+					transition: ease opacity 300ms, ease transform 300ms;
+					z-index: 10;
+
+					&:after {
+						content: '';
+						// css triangle
+						position: absolute;
+						left: 50%;
+						bottom: -12px;
+						border: 6px solid transparent;
+						border-top-color: #212121;
+						transform: translate3d(-50%, 0, 0);						
+					}
+				}
+
+				&:hover {
+					.label-tooltip {
+						opacity: 1;
+						visibility: visible;
+						transform: translate3d(-50%, 0, 0);
+					}
+				}
+
+				&.is-pro {
+					pointer-events: none;
+					&:before {
+						content: '';
+						background-image: url(../img/pro-lock.svg);
+						background-repeat: no-repeat;
+						background-position: center;
+						background-size: 15px;
+						width: 15px;
+						height: 15px;
+						position: absolute;
+						top: 12px;
+						right: 12px;
+						z-index: 2;
+					}
+
+					&:after {
+						content: '';
+						position: absolute;
+						top: 0;
+						right: 0;
+						bottom: 0;
+						left: 0;
+						background-color: rgba(255, 255, 255, 0.5);
+						z-index: 1;
+					}
+				}
+			}
+		}
 	}
 
 	// Tiny MCE
@@ -415,6 +483,8 @@ li.control-section-botiga-section-hidden {
 	// Menus Heading
 	&.customize-section-title-nav_menus-heading {
 		padding-top: 16px !important;
+		padding-left: 16px !important;
+		padding-right: 16px !important;
 		margin-bottom: 0;
 	}
 }
@@ -442,6 +512,17 @@ li.control-section-botiga-section-hidden {
 #customize-outer-theme-controls {
 	.control-section {
 
+		// Botiga Upsell
+		&.control-section-botiga-upsell {
+			padding: 0 16px;
+		}
+
+		&.control-section-botiga-section-upsell-message {
+			display: block !important;
+			border: none;
+			margin-top: 16px;
+		}
+
 		// Additional CSS
 		&#sub-accordion-section-custom_css {
 			.customize-section-description {
@@ -464,10 +545,10 @@ li.control-section-botiga-section-hidden {
 #customize-outer-theme-controls {
 	.control-subsection {
 		border: 1px solid #ddd;
-		margin: -1px 12px;
+		margin: -1px 16px;
 
 		h3 {
-			padding: 9px 14px;
+			padding: 9px 16px;
 		}
 
 		&.control-section-nav_menu {
@@ -477,7 +558,7 @@ li.control-section-botiga-section-hidden {
 		&.control-section-new_menu {
 			border: 0;
 			margin: 0;
-			padding: 8px 12px 0px;
+			padding: 8px 16px 0px;
 
 			h3 {
 				padding: 0;
@@ -490,7 +571,7 @@ li.control-section-botiga-section-hidden {
 		}
 
 		&#accordion-section-menu_locations {
-			margin: 16px 12px 0; 
+			margin: 16px 16px 0; 
 			padding: 16px 0 0;
 			border: 0;
 			border-top: 1px solid #ddd;
@@ -1126,7 +1207,7 @@ span.delete:hover {
 }
 
 .customize-section-description {
-	padding: 0 12px;
+	padding: 0 16px;
 	ul {
 		margin-top: 10px;
 		margin-left: 0;
@@ -1325,43 +1406,81 @@ label {
 /*
  * Upsell
  */
-.botiga-upsell-feature-wrapper{
+.botiga-upsell-feature-wrapper {
 	margin-top: 5px;
 	padding-top: 20px;
 	border-top: 1px solid #ddd;
+
+	.botiga-upsell-feature-thumb {
+		img {
+			max-width: 74px !important;
+			height: auto;
+		}
+
+		& + strong {
+			margin-top: 17px;
+		}
+	}
+
+	strong {
+		display: block;
+		font-size: 16px;
+		line-height: 1.4;
+
+		& + .botiga-upsell-features-list {
+			margin-top: 20px;
+		}
+	}
+
+	.botiga-upsell-features-list {
+		list-style: none;
+		padding: 0;
+
+		li {
+			display: flex;
+			align-items: flex-start;
+			color: #757575;
+			font-size: 13px;
+			line-height: 1.4;
+
+			svg {
+				margin-top: 3px;
+				margin-right: 5px;
+			}
+
+			& + li {
+				margin-top: 10px;
+			}
+		}
+
+		& + .botiga-upsell-button {
+			margin-top: 30px;
+		}
+	}
+
+	.botiga-upsell-button {
+		display: block;
+		text-align: center;
+		font-size: 14px;
+		line-height: 1.4;
+		padding: 8px 50px;
+		text-decoration: none;
+		border-radius: 4px;
+		color: #FFF;
+		background-color: #3858E9;
+		transition: all .2s;
+	
+		&:active,
+		&:focus,
+		&:hover {
+			background-color: #4466fd;
+		}
+	}
 }
 
-.botiga-upsell-button-wrapper{
+.botiga-upsell-button-wrapper {
 	margin-top: 20px;
 	margin-bottom: 20px;
-}
-
-.botiga-upsell-button{
-	position: relative;
-	display: flex;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-	padding: 7px 10px;
-	text-decoration: none;
-	border-radius: 4px;
-	color: #3858E9;
-	border: 2px solid #3858E9;
-	transition: all .2s;
-
-	&:active,
-	&:focus,
-	&:hover{
-		color: #3858E9;
-	}
-
-	&:hover{
-		background-color: #f7f9ff;
-	}
-
-	&:focus{
-		box-shadow: none;
-	}
 }
 
 /*
@@ -2288,7 +2407,6 @@ label {
 		align-items: flex-end;
 		justify-content: center;
 		position: relative;
-		overflow: hidden;
 		width: 25%;
 		margin: 0;
 		padding: 0;
@@ -2309,6 +2427,7 @@ label {
 		align-items: center;
 		margin: 0;
 		padding: 0;
+		overflow: hidden;
 
 		img{
 			padding: 0;

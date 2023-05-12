@@ -70,6 +70,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/custom-sidebars/class_botiga_custom_sidebars_control.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_section.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_title_section.php';
+			require get_template_directory() . '/inc/customizer/controls/class_botiga_section_upsell_message.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_typography_preview_control.php';
 			require get_template_directory() . '/inc/customizer/controls/class_botiga_text_style_control.php';
 			require get_template_directory() . '/inc/customizer/controls/color-group/class_botiga_color_group.php';
@@ -81,6 +82,8 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}
 			// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+			$wp_customize->register_section_type( 'Botiga_Section_Upsell_Message' );
 
 			$wp_customize->register_control_type( '\Kirki\Control\sortable' );
 			$wp_customize->register_control_type( 'Botiga_Multi_List_Toggle_Control' );

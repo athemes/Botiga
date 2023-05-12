@@ -1,6 +1,6 @@
 "use strict";
 
-// Customizer Back Button
+/* Customizer Back Button */
 jQuery(document).ready(function ($) {
   // Store the previous section in a global variable to use later
   var previous_section = '';
@@ -11,16 +11,28 @@ jQuery(document).ready(function ($) {
     }
   }); // Flag when hidden section content is active
 
-  var is_hidden_section_content = false;
+  var is_hidden_section_content = false,
+      is_footer_builder_section = false;
   $(document).on('mouseover focus', '.customize-section-back', function (e) {
     is_hidden_section_content = $('.control-section.open').hasClass('control-section-botiga-section-hidden') ? true : false;
+    is_footer_builder_section = $('.control-section.open').attr('id') === 'sub-accordion-section-botiga_section_fb_wrapper' ? true : false;
   }); // If hidden section content is active, focus on the previous section (from global variable)
 
   $(document).on('click', '.customize-section-back', function (e) {
+    if (is_footer_builder_section) {
+      $('.wp-full-overlay').removeClass('in-sub-panel').removeClass('section-open');
+      $('#sub-accordion-panel-botiga_panel_footer').removeClass('current-panel'); // As we are simulating the '.focus()' effect manually (above code), we need to 'restart' the panel again to ensure all events like 'click' will back to work
+
+      wp.customize.panel('botiga_panel_footer').active(false);
+      wp.customize.panel('botiga_panel_footer').active(true);
+    }
+
     if (is_hidden_section_content) {
       wp.customize.section(previous_section).focus();
-      is_hidden_section_content = false;
     }
+
+    is_footer_builder_section = false;
+    is_hidden_section_content = false;
   });
 });
 /* Select 2 Control */

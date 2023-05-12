@@ -929,9 +929,6 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 .bhfb-customizer-sidebar-upsell {
   background: #fff;
   font-style: normal;
-  margin-left: -25px;
-  margin-right: -25px;
-  padding: 25px 25px;
 }
 
 .bhfb-customizer-sidebar-upsell p {
@@ -939,37 +936,21 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 .bhfb-upsell-button {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 7px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 8px 50px;
   text-decoration: none;
   border-radius: 4px;
-  color: #3858E9;
-  border: 2px solid #3858E9;
+  color: #FFF !important;
+  background-color: #3858E9;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
 .bhfb-upsell-button:active, .bhfb-upsell-button:focus, .bhfb-upsell-button:hover {
-  color: #3858E9;
-}
-
-.bhfb-upsell-button:hover {
-  background-color: #f7f9ff;
-}
-
-.bhfb-upsell-button:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  background-color: #4466fd;
 }
 
 .botiga-bhfb-upsell-components-wrapper {

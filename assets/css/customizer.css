@@ -16,7 +16,7 @@ li.control-section-botiga-section-hidden {
 /* Customize Panels (panel-meta and section-meta) */
 #customize-controls .customize-pane-child .section-meta,
 #customize-controls .customize-pane-child .panel-meta {
-  padding: 12px 12px 5px 12px;
+  padding: 12px 16px 5px 16px;
   border-bottom: none;
   background-color: #FFF;
   margin-top: 5px;
@@ -137,7 +137,7 @@ li.control-section-botiga-section-hidden {
 /* Customize Control */
 .customize-control {
   margin-bottom: 0;
-  padding: 16px 12px 0px 12px;
+  padding: 16px 16px 0px 16px;
   /* Specific Settings */
 }
 
@@ -159,8 +159,8 @@ li.control-section-botiga-section-hidden {
 .customize-control.customize-control-botiga-tab-control:before {
   content: '';
   display: block;
-  width: calc(100% - 24px);
-  left: 12px;
+  width: calc(100% - 32px);
+  left: 16px;
   bottom: 1px;
   border-bottom: 1px solid #ddd;
   position: absolute;
@@ -172,8 +172,8 @@ li.control-section-botiga-section-hidden {
 }
 
 .customize-control.customize-control-botiga-alpha-color, .customize-control.customize-control-botiga-color-group-control {
-  width: calc( 100% - 24px);
-  margin-left: 12px;
+  width: calc( 100% - 32px);
+  margin-left: 16px;
   padding: 0;
 }
 
@@ -181,7 +181,7 @@ li.control-section-botiga-section-hidden {
 .customize-control.customize-control-botiga-alpha-color > .botiga-color-group, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control,
 .customize-control.customize-control-botiga-color-group-control > .botiga-color-group {
   border-top: 1px solid #ddd;
-  padding: 16px 12px;
+  padding: 16px 16px;
 }
 
 .customize-control.customize-control-botiga-alpha-color > .botiga-color-control.border-top-none,
@@ -284,6 +284,72 @@ li.control-section-botiga-section-hidden {
   margin-top: 16px;
 }
 
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label .label-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc( 100% + 12px);
+  background-color: #212121;
+  color: #f7f7f7;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(-50%, 6px, 0);
+          transform: translate3d(-50%, 6px, 0);
+  -webkit-transition: ease opacity 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease transform 300ms;
+  z-index: 10;
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label .label-tooltip:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  border: 6px solid transparent;
+  border-top-color: #212121;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label:hover .label-tooltip {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label.is-pro {
+  pointer-events: none;
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label.is-pro:before {
+  content: '';
+  background-image: url(../img/pro-lock.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label.is-pro:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
 .customize-control.customize-control-botiga-tinymce .customize-control-description + .wp-editor-wrap {
   margin-top: 12px;
 }
@@ -352,6 +418,8 @@ li.control-section-botiga-section-hidden {
 
 .customize-control-title.customize-section-title-nav_menus-heading {
   padding-top: 16px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
   margin-bottom: 0;
 }
 
@@ -376,6 +444,18 @@ li.control-section-botiga-section-hidden {
 }
 
 /* Control Section */
+#customize-theme-controls .control-section.control-section-botiga-upsell,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell {
+  padding: 0 16px;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell-message,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell-message {
+  display: block !important;
+  border: none;
+  margin-top: 16px;
+}
+
 #customize-theme-controls .control-section#sub-accordion-section-custom_css .customize-section-description,
 #customize-outer-theme-controls .control-section#sub-accordion-section-custom_css .customize-section-description {
   margin: 16px 0 0;
@@ -396,12 +476,12 @@ li.control-section-botiga-section-hidden {
 #customize-theme-controls .control-subsection,
 #customize-outer-theme-controls .control-subsection {
   border: 1px solid #ddd;
-  margin: -1px 12px;
+  margin: -1px 16px;
 }
 
 #customize-theme-controls .control-subsection h3,
 #customize-outer-theme-controls .control-subsection h3 {
-  padding: 9px 14px;
+  padding: 9px 16px;
 }
 
 #customize-theme-controls .control-subsection.control-section-nav_menu,
@@ -413,7 +493,7 @@ li.control-section-botiga-section-hidden {
 #customize-outer-theme-controls .control-subsection.control-section-new_menu {
   border: 0;
   margin: 0;
-  padding: 8px 12px 0px;
+  padding: 8px 16px 0px;
 }
 
 #customize-theme-controls .control-subsection.control-section-new_menu h3,
@@ -429,7 +509,7 @@ li.control-section-botiga-section-hidden {
 
 #customize-theme-controls .control-subsection#accordion-section-menu_locations,
 #customize-outer-theme-controls .control-subsection#accordion-section-menu_locations {
-  margin: 16px 12px 0;
+  margin: 16px 16px 0;
   padding: 16px 0 0;
   border: 0;
   border-top: 1px solid #ddd;
@@ -1150,7 +1230,7 @@ span.delete:hover {
 }
 
 .customize-section-description {
-  padding: 0 12px;
+  padding: 0 16px;
 }
 
 .customize-section-description ul {
@@ -1356,43 +1436,76 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
   border-top: 1px solid #ddd;
 }
 
-.botiga-upsell-button-wrapper {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.botiga-upsell-feature-wrapper .botiga-upsell-feature-thumb img {
+  max-width: 74px !important;
+  height: auto;
 }
 
-.botiga-upsell-button {
-  position: relative;
+.botiga-upsell-feature-wrapper .botiga-upsell-feature-thumb + strong {
+  margin-top: 17px;
+}
+
+.botiga-upsell-feature-wrapper strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.botiga-upsell-feature-wrapper strong + .botiga-upsell-features-list {
+  margin-top: 20px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: #757575;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list li svg {
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list li + li {
+  margin-top: 10px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list + .botiga-upsell-button {
+  margin-top: 30px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-button {
+  display: block;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 7px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 8px 50px;
   text-decoration: none;
   border-radius: 4px;
-  color: #3858E9;
-  border: 2px solid #3858E9;
+  color: #FFF;
+  background-color: #3858E9;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
-.botiga-upsell-button:active, .botiga-upsell-button:focus, .botiga-upsell-button:hover {
-  color: #3858E9;
+.botiga-upsell-feature-wrapper .botiga-upsell-button:active, .botiga-upsell-feature-wrapper .botiga-upsell-button:focus, .botiga-upsell-feature-wrapper .botiga-upsell-button:hover {
+  background-color: #4466fd;
 }
 
-.botiga-upsell-button:hover {
-  background-color: #f7f9ff;
-}
-
-.botiga-upsell-button:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.botiga-upsell-button-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /*
@@ -2459,7 +2572,6 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  overflow: hidden;
   width: 25%;
   margin: 0;
   padding: 0;
@@ -2487,6 +2599,7 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
           align-items: center;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .customize-control-botiga-radio-image figure img {

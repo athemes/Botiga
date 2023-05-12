@@ -29,7 +29,22 @@ $wp_customize->add_control(
 				'layout2' => array(
 					'label' => esc_html__( 'Layout 2', 'botiga' ),
 					'url'   => '%s/assets/img/checkout2.svg'
-				),		
+				),
+				'layout3' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Layout 3 (Multi Step)', 'botiga-pro' ),
+					'url'    => '%s/assets/img/checkout3.svg'
+				),
+				'layout4' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Layout 4 (Shopify Multi Step)', 'botiga-pro' ),
+					'url'    => '%s/assets/img/checkout4.svg'
+				),
+				'layout5' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Layout 5 (Shopify One Step)', 'botiga-pro' ),
+					'url'    => '%s/assets/img/checkout5.svg'
+				)
 			),
 			'priority'	 => 1
 		)
