@@ -117,6 +117,38 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'mini_cart_t
 	)
 );
 
+// Mini Cart Style
+$wp_customize->add_setting(
+	'mini_cart_style',
+	array(
+		'default'           => 'default',
+		'sanitize_callback' => 'sanitize_key',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Radio_Images(
+		$wp_customize,
+		'mini_cart_style',
+		array(
+			'label'     => esc_html__( 'Mini Cart Style', 'botiga-pro' ),
+			'section'   => 'botiga_section_shop_cart',
+			'cols'      => 2,
+			'choices'  => array(
+				'default' => array(
+					'label' => esc_html__( 'Default', 'botiga-pro' ),
+					'url'   => '%s/assets/img/mini-cart-style1.svg'
+				),
+				'side' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Side', 'botiga-pro' ),
+					'url'    => '%s/assets/img/mini-cart-style2.svg'
+				),      
+			),
+			'priority'   => 61
+		)
+	)
+);
+
 // Mini Car Cross Sell
 $wp_customize->add_setting(
 	'enable_mini_cart_cross_sell',

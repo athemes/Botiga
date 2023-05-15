@@ -25,8 +25,9 @@ $wp_customize->add_panel(
 $wp_customize->add_section(
     'botiga_section_single_product_layout',
     array(
-        'panel' => 'botiga_panel_single_product',
-        'title' => esc_html__('Layout', 'botiga'),
+        'panel'       => 'botiga_panel_single_product',
+        'title'       => esc_html__('Layout', 'botiga'),
+        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product pages.', 'botiga-pro' )
     )
 );
 
@@ -93,8 +94,9 @@ require 'single-product/section-layout.php';
 $wp_customize->add_section(
     'botiga_section_single_product_tabs',
     array(
-        'panel' => 'botiga_panel_single_product',
-        'title' => esc_html__('Product Tab', 'botiga'),
+        'panel'       => 'botiga_panel_single_product',
+        'title'       => esc_html__('Product Tab', 'botiga'),
+        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product tabs.', 'botiga-pro' )
     )
 );
 

@@ -76,8 +76,9 @@ require 'shop-archive/section-layout.php';
 $wp_customize->add_section(
     'botiga_section_shop_archive_product_card',
     array(
-        'panel' => 'botiga_panel_shop_archive',
-        'title' => esc_html__( 'Product Card', 'botiga' ),
+        'panel'	      => 'botiga_panel_shop_archive',
+        'title'		  => esc_html__( 'Product Card', 'botiga' ),
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products card.', 'botiga-pro' )
     )
 );
 
@@ -140,8 +141,9 @@ require 'shop-archive/section-product-card.php';
 $wp_customize->add_section(
     'botiga_section_shop_archive_sale_tag',
     array(
-        'panel' => 'botiga_panel_shop_archive',
-        'title' => esc_html__( 'Sale Tag', 'botiga' ),
+        'panel' 	  => 'botiga_panel_shop_archive',
+        'title' 	  => esc_html__( 'Sale Tag', 'botiga' ),
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products sale tag.', 'botiga-pro' )
     )
 );
 
@@ -190,8 +192,9 @@ require 'shop-archive/section-sale-tag.php';
 $wp_customize->add_section(
     'botiga_section_shop_archive_categories',
     array(
-        'panel' => 'botiga_panel_shop_archive',
-        'title' => esc_html__( 'Categories', 'botiga' ),
+        'panel' 	  => 'botiga_panel_shop_archive',
+        'title' 	  => esc_html__( 'Categories', 'botiga' ),
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products categories.', 'botiga-pro' )
     )
 );
 

@@ -83,9 +83,13 @@ botiga.navigation = {
 	
 	init: function() {
 		const 
-			siteNavigation = document.getElementById( 'site-navigation' ) == null ? document.getElementById( 'site-navigation-mobile' ) : null,
+			siteNavigation = document.getElementById( 'site-navigation' ) == null ? document.getElementById( 'site-navigation-mobile' ) : document.getElementById( 'site-navigation' ),
 			offCanvas 	   = document.getElementsByClassName( 'botiga-offcanvas-menu' )[0],
 			button 		   = document.getElementsByClassName( 'menu-toggle' )[ 0 ];
+
+		if( siteNavigation === null ) {
+			return;
+		}
 
 		// Return early if the navigation don't exist.
 		if ( ! siteNavigation && typeof button === 'undefined'  ) {

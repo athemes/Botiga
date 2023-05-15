@@ -128,7 +128,17 @@ $wp_customize->add_control(
 				'sidebar-right' => array(
 					'label' => esc_html__( 'Right', 'botiga' ),
 					'url'   => '%s/assets/img/sidebar-right.svg'
-				),	
+				),
+				'sidebar-top' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Top', 'botiga-pro' ),
+					'url'    => '%s/assets/img/sidebar-top.svg'
+				),
+				'sidebar-slide' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Slide-out', 'botiga-pro' ),
+					'url'    => '%s/assets/img/sidebar-slide.svg'
+				)
 			),
 			'priority'	 => 30
 		)

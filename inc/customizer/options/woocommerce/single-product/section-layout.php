@@ -33,6 +33,26 @@ $wp_customize->add_control(
                     'label' => esc_html__('Layout 3', 'botiga'),
                     'url' => '%s/assets/img/sg3.svg',
                 ),
+                'gallery-grid' => array(
+                    'is_pro' => true,
+                    'label'  => esc_html__( 'Layout 4', 'botiga-pro' ),
+                    'url'    => '%s/assets/img/sg4.svg'
+                ),
+                'gallery-scrolling' => array(
+                    'is_pro' => true,
+                    'label'  => esc_html__( 'Layout 5', 'botiga-pro' ),
+                    'url'    => '%s/assets/img/sg5.svg'
+                ),
+                'gallery-showcase' => array(
+                    'is_pro' => true,
+                    'label'  => esc_html__( 'Layout 6', 'botiga-pro' ),
+                    'url'    => '%s/assets/img/sg6.svg'
+                ),
+                'gallery-full-width' => array(
+                    'is_pro' => true,
+                    'label'  => esc_html__( 'Layout 7', 'botiga-pro' ),
+                    'url'    => '%s/assets/img/sg7.svg'
+                )
             ),
             'priority' => 20,
         )

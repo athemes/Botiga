@@ -12,10 +12,16 @@ jQuery(document).ready(function ($) {
   }); // Flag when hidden section content is active
 
   var is_hidden_section_content = false,
-      is_footer_builder_section = false;
+      is_footer_builder_section = false,
+      is_footer_builder_component_section = false;
   $(document).on('mouseover focus', '.customize-section-back', function (e) {
+    if (!$('.control-section.open').length) {
+      return false;
+    }
+
     is_hidden_section_content = $('.control-section.open').hasClass('control-section-botiga-section-hidden') ? true : false;
     is_footer_builder_section = $('.control-section.open').attr('id') === 'sub-accordion-section-botiga_section_fb_wrapper' ? true : false;
+    is_footer_builder_component_section = $('.control-section.open').attr('id').indexOf('botiga_section_fb_component_') !== -1 ? true : false;
   }); // If hidden section content is active, focus on the previous section (from global variable)
 
   $(document).on('click', '.customize-section-back', function (e) {
@@ -27,11 +33,16 @@ jQuery(document).ready(function ($) {
       wp.customize.panel('botiga_panel_footer').active(true);
     }
 
-    if (is_hidden_section_content) {
+    if (is_footer_builder_component_section) {
+      wp.customize.section('botiga_section_fb_wrapper').focus();
+    }
+
+    if (!is_footer_builder_component_section && is_hidden_section_content && previous_section !== '') {
       wp.customize.section(previous_section).focus();
     }
 
     is_footer_builder_section = false;
+    is_footer_builder_component_section = false;
     is_hidden_section_content = false;
   });
 });

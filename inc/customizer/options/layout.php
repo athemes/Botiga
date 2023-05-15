@@ -38,6 +38,21 @@ $wp_customize->add_control(
 					'label' => esc_html__( 'Default', 'botiga' ),
 					'url'   => '%s/assets/img/site-layout-default.svg'
 				),
+				'boxed' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Boxed', 'botiga' ),
+					'url'    => '%s/assets/img/site-layout-boxed.svg'
+				),
+				'padded' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Padded', 'botiga' ),
+					'url'    => '%s/assets/img/site-layout-padded.svg'
+				),
+				'fluid' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Fluid', 'botiga' ),
+					'url'    => '%s/assets/img/site-layout-fluid.svg'
+				),
 			),
 			'priority'  => 20,
 		)

@@ -335,7 +335,6 @@ li.control-section-botiga-section-hidden {
 					background-color: #212121;
 					color: #f7f7f7;
 					padding: 3px 12px;
-					border-radius: 4px;
 					font-size: 11px;
 					white-space: nowrap;
 					opacity: 0;
@@ -389,6 +388,19 @@ li.control-section-botiga-section-hidden {
 						left: 0;
 						background-color: rgba(255, 255, 255, 0.5);
 						z-index: 1;
+					}
+				}
+			}
+		}
+
+		// Increase the opacity in some settings
+		&#customize-control-shop_general_quantity_style {
+			.botiga-control-wrapper {
+				label {
+					&.is-pro {
+						&:after {
+							background-color: rgba(255, 255, 255, 0.8);
+						}
 					}
 				}
 			}
@@ -834,7 +846,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	border: 0;
 }
 .botiga-devices-preview button i {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 20px;
 	width: auto;
 }
@@ -1104,21 +1116,28 @@ span.delete:hover {
 		border-top: none;
 	}
 
-	&:hover {
-		color: #3858E9;
-	}
-	&:focus{
-		box-shadow: none;
-	}
-	&.hide {
-		display: none;
-	}
 	.dashicons {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		font-size: 12px;
 		margin-right: -6px;
+		transform: translate3d(0, 0, 0);
+		transition: ease transform 300ms;
+	}
+
+	&:hover {
+		color: #3858E9;
+
+		.dashicons {
+			transform: translate3d(4px, 0, 0);
+		}
+	}
+	&:focus{
+		box-shadow: none;
+	}
+	&.hide {
+		display: none;
 	}
 }
 
@@ -2114,9 +2133,16 @@ label {
 }
 
 .control-section .accordion-section-title:after,
-.customize-pane-child .accordion-section-title:after{
+.customize-pane-child .accordion-section-title:after {
 	top: calc(50% - 6px);
 	font-size: 12px;
+	transform: translate3d(0, 0, 0);
+	transition: ease transform 300ms;
+}
+
+.control-section .accordion-section-title:hover:after,
+.customize-pane-child .accordion-section-title:hover:after {
+	transform: translate3d(4px, 0, 0);
 }
 
 #customize-theme-controls .customize-pane-parent,
@@ -2259,6 +2285,14 @@ label {
 
 			&:after {
 				right: 30px;
+				transform: translate3d(0 , 0, 0);
+				transition: ease transform 300ms;
+			}
+
+			&:hover {
+				&:after {
+					transform: translate3d(4px, 0, 0);
+				}
 			}
 		}
 	}
@@ -2784,11 +2818,7 @@ a,
 		font-size: 11px;
 		font-weight: 600;
 		text-transform: uppercase;
-		margin-bottom: 4px;
-	}
-
-	label{
-
+		margin-bottom: 8px;
 	}
 
 	i{
