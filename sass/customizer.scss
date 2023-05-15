@@ -1,3 +1,18 @@
+/* General */
+input[type="number"] {
+	&::-webkit-inner-spin-button {
+		opacity: 0;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		&::-webkit-inner-spin-button {
+			opacity: 1;
+		}
+	}
+}
+
 /* Helpers */
 .bt-mt-0 {
 	margin-top: 0 !important;
@@ -162,6 +177,16 @@ li.control-section-botiga-section-hidden {
 	&.customize-control-botiga-toggle-control {
 		.customize-control-title {
 			margin-bottom: 0;
+		}
+	}
+
+	// Botiga Google Fonts
+	&.customize-control-botiga-google_fonts {
+		position: relative;
+		.google-fonts {
+			& + .range-slider-wrapper {
+				margin-top: 16px;
+			}
 		}
 	}
 
@@ -526,7 +551,24 @@ li.control-section-botiga-section-hidden {
 
 		// Botiga Upsell
 		&.control-section-botiga-upsell {
+			display: block !important;
 			padding: 0 16px;
+
+			.botiga-upsell-button-wrapper {
+				margin: 0;
+			}
+
+			a {
+				display: block;
+				text-align: center;
+				padding: 7px 10px;
+				text-decoration: none;
+				border-radius: 4px;
+				color: #3858E9;
+				border: 2px solid #3858E9;
+				transition: all .2s;
+				text-decoration: none;
+			}
 		}
 
 		&.control-section-botiga-section-upsell-message {
@@ -783,9 +825,6 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 
 .customize-pane-child {
 	height: 100% !important;
-}
-.customize-control-botiga-google_fonts {
-	position: relative;
 }
 .google_fonts_select_control .select2-container {
 	width: 100% !important;
