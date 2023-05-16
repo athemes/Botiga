@@ -14,11 +14,13 @@ if (!defined('ABSPATH')) {
 global $pagenow;
 
 $screen = get_current_screen(); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
-$user   = wp_get_current_user(); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
+$user = wp_get_current_user(); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 
 ?>
 
 <div class="botiga-dashboard-hero">
+
 	<div class="botiga-dashboard-hero-content">
 
 		<div class="botiga-dashboard-hero-hello">
@@ -70,13 +72,31 @@ $user   = wp_get_current_user(); // phpcs:ignore WPThemeReview.CoreFunctionality
 				</div>
 			<?php endif; ?>
 
-        <?php else : ?>
+		<?php else : ?>
 
-            <div class="botiga-dashboard-hero-customize-button">
-                <a href="#" class="button button-primary">
-                    <?php echo esc_html__( 'Start Customizing', 'botiga' ); ?>
-                </a>
-            </div>
+			<div class="botiga-dashboard-hero-tabs">
+				<?php
+
+				$num = 0; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
+				$section = (isset($_GET['section'])) ? sanitize_text_field(wp_unslash($_GET['section'])) : ''; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
+				foreach ($this->settings['tabs'] as $tab_key => $tab_title) { // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
+					if ($this->settings['has_pro'] && $tab_key === 'free-vs-pro') {
+						continue;
+					}
+
+					$tab_link   = add_query_arg(array('page' => $this->settings['menu_slug'], 'section' => $tab_key), admin_url('themes.php')); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+					$tab_active = (($section && $section === $tab_key) || (!$section && $num === 0)) ? 'active' : ''; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
+					echo sprintf('<a href="%s" class="botiga-dashboard-hero-tab %s">%s</a>', esc_url($tab_link), esc_attr($tab_active), esc_html($tab_title));
+
+					$num++;
+				}
+
+				?>
+			</div>
 
 		<?php endif; ?>
 

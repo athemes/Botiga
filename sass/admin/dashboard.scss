@@ -1,8 +1,27 @@
+/* Helpers */
+.bt-p-relative {
+	position: relative;
+}
+
+.bt-d-flex {
+	display: flex;
+}
+
+.bt-justify-content-between {
+	justify-content: space-between;
+}
+
+/* Animations */
+@keyframes botiga-spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* General */
 .botiga-dashboard {
+	padding: 20px 20px 20px 0px;
 	box-sizing: border-box;
-	border-radius: 2px;
-	color: #1e1e1e;
-	background-color: #fff;
 
 	* {
 		box-sizing: border-box;
@@ -27,8 +46,9 @@
 	}
 
 	.button {
-		padding: 10px 20px;
-		line-height: 1.1em;
+		padding: 12px 24px;
+		font-size: 13px;
+		line-height: 16px;
 		margin-bottom: 0;
 		display: flex;
 		text-align: center;
@@ -174,6 +194,87 @@
 	}
 }
 
+.botiga-ajax-progress {
+	user-select: none;
+	pointer-events: none;
+}
+
+.botiga-dashboard-badge {
+	color: #99A5B8;
+	padding: 5px 6px;
+	border: 1px solid #DFDFDF;
+	border-radius: 2px;
+}
+
+/* Grid */
+.botiga-dashboard-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.botiga-dashboard-column {
+	flex-basis: 100%;
+
+	&.botiga-dashboard-column-3 {
+		flex-basis: 25%;
+	}
+
+	&.botiga-dashboard-column-4 {
+		flex-basis: 33.333333%;
+	}
+
+	&.botiga-dashboard-column-9 {
+		flex-basis: 75%;
+	}
+}
+
+/* Botiga Dashboard Top Bar */
+.botiga-dashboard-top-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #FFF;
+	margin: -20px -20px 20px -20px;
+	padding: 18px 20px;
+
+	.botiga-dashboard-top-bar-infos {
+		display: flex;
+		align-items: center;
+
+		.botiga-dashboard-top-bar-info-item {
+			padding: 0 10px;
+			& + .botiga-dashboard-top-bar-info-item {
+				border-left: 1px solid #F0F0F0;
+			}
+		}
+	}
+
+	.botiga-dashboard-theme-version {
+		font-size: 13px;
+		line-height: 13px;
+		color: #97A3B6;
+
+		.botiga-dashboard-badge {
+			display: inline-flex;
+			margin-left: 5px;
+			font-size: 8px;
+			line-height: 10px;
+		}
+	}
+
+	.botiga-dashboard-theme-website {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 13px;
+		line-height: 16px;
+		color: #3858E9;
+		text-decoration: none;
+	}
+}
+
+/* Botiga Dashboard Notice */
 .botiga-dashboard-notice {
 	display: none;
 	position: relative;
@@ -204,1154 +305,165 @@
 	}
 }
 
+/* Botiga Dashboard Hero */
 .botiga-dashboard-hero {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
-}
+	background-color: #FFF;
+	border-radius: 4px;
+	margin-bottom: 20px;
 
-.botiga-dashboard-hero-content {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 25px;
-}
-
-.botiga-dashboard-hero-hello {
-	font-size: 1rem;
-	font-weight: 600;
-	color: #1e1e1e;
-}
-
-.botiga-dashboard-hero-title {
-	font-size: 2rem;
-	font-weight: 600;
-	line-height: 1.2;
-	color: #1e1e1e;
-	margin-top: 1rem;
-}
-
-.botiga-dashboard-hero-badge {
-	font-size: 12px;
-	line-height: 1em;
-	font-weight: 500;
-	padding: 4px 8px;
-	border-radius: 50px;
-	letter-spacing: 0.5px;
-	text-transform: uppercase;
-}
-
-.botiga-dashboard-hero-badge-free {
-	color: #3fb28f;
-	background-color: #def3ed;
-}
-
-.botiga-dashboard-hero-badge-pro {
-	color: #fff;
-	background-color: #3858e9;
-}
-
-.botiga-dashboard-hero-desc {
-	color: #1e1e1e;
-	margin-top: 15px;
-}
-
-@keyframes botiga-spin {
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-.botiga-dashboard-hero-actions {
-	display: flex;
-	grid-gap: 10px;
-	margin-top: 25px;
-
-	.button {
+	.botiga-dashboard-hero-content {
+		flex: 1;
 		display: flex;
-		grid-gap: 4px;
-		align-items: center;
+		flex-direction: column;
 		justify-content: center;
-		padding: 12px 18px;
-		line-height: 1em;
+		align-items: flex-start;
+		padding: 30px 24px;
 	}
-}
 
-.botiga-ajax-progress {
-	user-select: none;
-	pointer-events: none;
-}
-
-.botiga-dashboard-hero-button {
-	text-decoration: none;
-	padding: 12px 18px;
-	border-radius: 2px;
-}
-
-.botiga-dashboard-hero-warning {
-	color: #d63638;
-	margin-top: 10px;
-}
-
-.botiga-dashboard-hero-notion {
-	color: #697b96;
-	margin-top: 10px;
-}
-
-.botiga-dashboard-hero-image {
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-end;
-	margin: 15px 38px 0 38px;
-
-	img {
-		max-width: 365px;
-	}
-}
-
-.botiga-dashboard-hero-tabs {
-	margin-top: 30px;
-	display: flex;
-	border-bottom: 2px solid #3858e9;
-}
-
-.botiga-dashboard-hero-tab {
-	display: flex;
-	padding: 15px 18px;
-	margin-bottom: 0;
-	border-radius: 2px 2px 0 0;
-	font-weight: 500;
-	text-decoration: none;
-	color: #1e1e1e;
-
-	&:hover,
-	&:active {
+	.botiga-dashboard-hero-hello {
+		font-size: 1rem;
+		font-weight: 600;
 		color: #1e1e1e;
 	}
 
-	&:focus {
-		box-shadow: none;
+	.botiga-dashboard-hero-title {
+		font-size: 2rem;
+		font-weight: 600;
+		line-height: 1.2;
+		color: #1e1e1e;
+		margin-top: 16px;
 	}
 
-	&.active {
+	.botiga-dashboard-hero-badge {
+		font-size: 12px;
+		line-height: 1em;
+		font-weight: 500;
+		padding: 4px 8px;
+		border-radius: 50px;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+	}
+
+	.botiga-dashboard-hero-badge-free {
+		color: #3fb28f;
+		background-color: #def3ed;
+	}
+	
+	.botiga-dashboard-hero-badge-pro {
 		color: #fff;
 		background-color: #3858e9;
 	}
-}
-
-.botiga-dashboard-wrap {
-	margin: 20px 20px 0 0;
-}
-
-.botiga-dashboard-container {
-	padding: 30px;
-	border-top: 1px solid #f2f2f2;
-}
-
-.botiga-dashboard-home {
-	display: flex;
-	grid-gap: 30px;
-	align-items: flex-start;
-}
-
-.botiga-dashboard-content {
-	display: flex;
-	flex-direction: column;
-	grid-gap: 20px;
-}
-
-.botiga-dashboard-home-content {
-	width: calc(100% - 300px);
-}
-
-.botiga-dashboard-home-sidebar {
-	width: 300px;
-	display: flex;
-	grid-gap: 20px;
-	flex-direction: column;
-}
-
-.botiga-dashboard-column {
-	display: flex;
-	grid-gap: 20px;
-}
-
-.botiga-dashboard-box {
-	position: relative;
-	flex: 1;
-	display: flex;
-	grid-gap: 16px;
-	flex-direction: column;
-	padding: 25px;
-	border-radius: 4px;
-	border: 1px solid #e4e4e4;
-	background-repeat: no-repeat;
-	background-position: right bottom;
-}
-
-.botiga-dashboard-box-row {
-	display: flex;
-	grid-gap: 25px;
-}
-
-.botiga-dashboard-box-column {
-	flex: 1;
-	display: flex;
-	grid-gap: 16px;
-	flex-direction: column;
-}
-
-.botiga-dashboard-box-plugin-title {
-	display: flex;
-	grid-gap: 10px;
-	align-items: center;
-	font-size: 20px;
-	line-height: 1.2;
-	font-weight: 700;
-	letter-spacing: -0.25px;
-
-	figure {
-		width: 48px;
-	}
-}
-
-.botiga-dashboard-box-title {
-	display: flex;
-	grid-gap: 10px;
-	align-items: center;
-	font-size: 20px;
-	line-height: 1.2;
-	font-weight: 700;
-	letter-spacing: -0.25px;
-
-	.botiga-dashboard-box-badge {
-		position: relative;
-		top: auto;
-		right: auto;
-	}
-}
-
-.botiga-dashboard-box-badge {
-	position: absolute;
-	z-index: 1;
-	top: 10px;
-	right: 10px;
-	border-radius: 50px;
-	font-size: 12px;
-	line-height: 1em;
-	font-weight: 500;
-	letter-spacing: 0.5px;
-	text-transform: uppercase;
-	padding: 5px 10px;
-	color: #fff;
-	background-color: #3858e9;
-
-	+.botiga-dashboard-box-title {
-		margin-right: 40px;
-	}
-}
-
-.botiga-dashboard-box-badge-free {
-	color: #3fb28f;
-	background-color: #def3ed;
-}
-
-.botiga-dashboard-box-badge-pro {
-	color: #fff;
-	background-color: #3858e9;
-}
-
-.botiga-dashboard-box-content {
-	color: #697b96;
-	font-size: 14px;
-	line-height: 24px;
-}
-
-.botiga-dashboard-box-link {
-	display: flex;
-	flex-wrap: wrap;
-	grid-gap: 5px;
-}
-
-.botiga-dashboard-box-footer {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	grid-gap: 5px;
-}
-
-.botiga-dashboard-box-locked {
-	user-select: none;
-	pointer-events: none;
-
-	.botiga-dashboard-box-title {
-		color: #aaa;
+	
+	.botiga-dashboard-hero-desc {
+		color: #1e1e1e;
+		margin-top: 12px;
 	}
 
-	.botiga-dashboard-box-content,
-	.botiga-dashboard-box-link {
-		opacity: 0.5;
-		filter: grayscale(1);
+	.botiga-dashboard-hero-customize-button {
+		margin-top: 24px;
+
+
 	}
-}
 
-.botiga-dashboard-features-list {
-	display: flex;
-	flex-wrap: wrap;
-
-	ul {
-		width: 25%;
-		margin: 0;
-		padding: 0;
-		list-style: none;
+	.botiga-dashboard-hero-actions {
 		display: flex;
-		grid-gap: 8px;
-		flex-direction: column;
-		border-right: 1px solid #e4e4e4;
-
-		&:last-child {
-			padding-right: 0;
-			border-right: none;
-		}
-
-		&:first-child {
-
-			li {
-				padding-left: 0;
-			}
-		}
-
-		li {
-			margin-bottom: 0;
-			padding-left: 30px;
-
-			a {
-				font-weight: 500;
-				text-decoration: none;
-				color: #697b96;
-
-				&:focus,
-				&:active {
-					box-shadow: none;
-				}
-			}
-		}
-	}
-}
-
-.botiga-dashboard-box-info {
-	display: flex;
-
-	> div + div {
-		margin-left: 5px;
-	}
-
-	.botiga-dashboard-docs-link {
-		i {
-			font-size: 21px;
-		}
-	}
-}
-
-.botiga-dashboard-box-documentation {
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/documentation.svg);
-}
-
-.botiga-dashboard-box-feedback {
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/feedback.svg);
-}
-
-.botiga-dashboard-box-facebook-community {
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/facebook-community.svg);
-}
-
-.botiga-dashboard-box-stay-touch {
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/stay-touch.svg);
-}
-
-.botiga-dashboard-box-tutorial {
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/tutorial.svg);
-}
-
-.botiga-dashboard-box-changelog {
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/changelog.svg);
-}
-
-.botiga-dashboard-box-pro-support {
-	min-height: 200px;
-	padding-bottom: 75px;
-	background-image: url(../../img/dashboard/support.svg);
-}
-
-.botiga-dashboard-box-social-links {
-	display: flex;
-	align-items: center;
-	grid-gap: 20px;
-
-	a {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-
-		&:focus,
-		&:active {
-			box-shadow: none;
-		}
-	}
-}
-
-.botiga-dashboard-home-priority-support {
-	position: relative;
-	padding: 20px;
-	border-radius: 4px;
-	background-color: #F6F9FE;
-}
-
-.botiga-dashboard-home-pro-box {
-	color: #fff;
-	padding: 25px;
-	border-radius: 4px;
-	background: linear-gradient(350deg, #6e73f7 20%, #274cf6 100%);
-	display: flex;
-	grid-gap: 25px;
-	flex-direction: column;
-
-	h2 {
-		font-size: 24px;
-		font-weight: 700;
-		letter-spacing: -0.25px;
-		margin: 0;
-		padding-bottom: 20px;
-		color: #fff;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-	}
-
-	ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		display: flex;
-		grid-gap: 18px;
-		flex-direction: column;
-
-		li {
-			margin-bottom: 0;
-			font-size: 14px;
+		grid-gap: 10px;
+		margin-top: 25px;
+	
+		.button {
 			display: flex;
 			grid-gap: 4px;
 			align-items: center;
-			letter-spacing: 0.5px;
-
-			.dashicons {
-				font-size: 18px;
-			}
+			justify-content: center;
+			padding: 12px 18px;
+			line-height: 1em;
 		}
 	}
 
-	a {
-		display: flex;
-		padding: 10px;
-		justify-content: center;
-		font-weight: 500;
+	.botiga-dashboard-hero-button {
 		text-decoration: none;
+		padding: 12px 18px;
 		border-radius: 2px;
-		color: #6e73f7;
-		background-color: #fff;
-
-		&:hover {
-			color: #6e73f7;
-		}
-
-		&:focus,
-		&:active {
-			box-shadow: none;
-		}
 	}
-}
-
-.botiga-dashboard-starter-sites {
-	position: relative;
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	grid-gap: 20px;
-
-	.button {
-		padding-top: 8px;
-		padding-bottom: 8px;
+	
+	.botiga-dashboard-hero-warning {
+		color: #d63638;
+		margin-top: 10px;
 	}
-}
-
-.botiga-dashboard-starter-sites-locked {
-	position: absolute;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-
-	&:before {
-		content: "";
-		position: absolute;
-		z-index: 1;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #fff;
-		opacity: 0.9;
+	
+	.botiga-dashboard-hero-notion {
+		color: #697b96;
+		margin-top: 10px;
 	}
-
-	.button {
-		padding: 10px 30px;
-	}
-}
-
-.botiga-dashboard-starter-sites-notice {
-	position: relative;
-	z-index: 2;
-	top: 125px;
-	width: 80%;
-	min-height: 275px;
-	border: 1px solid #e4e4e4;
-	background-color: #fff;
-	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
-	border-radius: 4px;
-	padding: 70px;
-	display: flex;
-	grid-gap: 30px;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
-
-.botiga-dashboard-starter-sites-notice-text {
-	font-weight: 700;
-	font-size: 24px;
-	line-height: 34px;
-	text-align: center;
-	color: #1e1e1e;
-}
-
-.botiga-dashboard-useful-plugins {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	grid-gap: 20px;
-
-	.button {
-		padding-top: 8px;
-		padding-bottom: 8px;
-	}
-}
-
-.botiga-dashboard-theme-features {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	grid-gap: 20px;
-
-	.button {
-		padding-top: 8px;
-		padding-bottom: 8px;
-	}
-}
-
-.botiga-dashboard-modal-overlay {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: fixed;
-	z-index: 999;
-	top: 0;
-	left: 160px;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(255, 255, 255, 0.7);
-	opacity: 0;
-	pointer-events: none;
-	transition: all .2s;
-
-	&.show {
-		opacity: 1;
-		pointer-events: auto;
-
-		.botiga-dashboard-modal-content {
-			top: 0;
+	
+	.botiga-dashboard-hero-image {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		margin: 15px 38px 0 38px;
+	
+		img {
+			max-width: 365px;
 		}
 	}
 }
 
-.botiga-dashboard-modal-opened {
-	overflow: hidden;
-}
-
-.botiga-dashboard-modal-content {
-	color: #697b96;
-	font-size: 14px;
-	position: relative;
-	overflow: hidden;
-	overflow-y: auto;
-	width: 600px;
-	max-width: 85%;
-	max-height: 80vh;
-	min-height: 300px;
-	padding: 50px;
-	border-radius: 6px;
-	background-color: #fff;
-	box-shadow: 0 50px 200px rgba(0, 0, 0, 0.2);
-	top: -15px;
-	transition: all .3s;
-	will-change: top;
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		color: #1e1e1e;
-		margin: 0 0 0.8em 0;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-
-	h2 {
-		font-size: 17px;
-		line-height: 1.5;
-	}
-
-	p {
-		font-size: inherit;
-		margin-top: 0;
-		margin-bottom: 1.5em;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-
-	a {
-		font-size: inherit;
-		color: #3858e9;
-
-		&:hover {
-			color: #3052e8;
-		}
-	}
-
-	ul,
-	ol {
-		padding-left: 20px;
-		margin: 0 0 1.5em 0;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		li {
-			margin-bottom: 1.5em;
-
-			&::marker {
-				color: #1e1e1e;
-			}
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-	}
+/* Botiga Dashboard Tabs Nav Items */
+.botiga-dashboard-tabs-nav {
+    padding: 0 20px;
+	margin-bottom: -100%;
+    transform: translate3d(0, 100%, 0);
 
 	ul {
-		list-style: inherit;
-	}
-
-	ol {
-
-		li {
-			padding-left: 2px;
-
-			&::marker {
-				font-weight: 700;
-			}
-		}
-	}
-}
-
-.botiga-dashboard-modal-close {
-	cursor: pointer;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 40px;
-	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	opacity: 0.5;
-	transition: all .2s;
-
-	&:hover {
-		opacity: 1;
-	}
-
-	.dashicons {
-		font-size: 16px;
-		line-height: 1em;
-	}
-}
-
-.botiga-dashboard-settings {
-	display: flex;
-	grid-gap: 30px;
-}
-
-.botiga-dashboard-settings-tabs {
-	width: 200px;
-	display: flex;
-	flex-direction: column;
-}
-
-.botiga-dashboard-settings-tab {
-	display: flex;
-	padding: 15px;
-	border-radius: 0 2px 2px 0;
-	font-weight: 500;
-	text-decoration: none;
-	color: #1e1e1e;
-	border-left: 2px solid #3858e9;
-
-	&:hover,
-	&:active {
-		color: #1e1e1e;
-	}
-
-	&:focus {
-		box-shadow: none;
-	}
-
-	&.active {
-		color: #fff;
-		background-color: #3858e9;
-	}
-}
-
-.botiga-dashboard-settings-contents {
-	flex: 1;
-	width: calc(100% - 200px);
-}
-
-.botiga-dashboard-settings-box {
-	display: flex;
-	grid-gap: 15px;
-	flex-direction: column;
-}
-
-.botiga-dashboard-settings-row {
-	display: flex;
-	grid-gap: 10px;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-
-	+ .botiga-dashboard-settings-row {
-		padding-top: 20px;
-		border-top: 1px solid #eee;
-	}
-
-	.botiga-dashboard-box-title {
-		grid-gap: 5px;
-	}
-}
-
-.botiga-dashboard-settings-column-left {
-	display: flex;
-	flex-direction: column;
-	grid-gap: 5px;
-}
-
-.botiga-dashboard-license-form {
-	margin-top: 10px;
-
-	form {
 		display: flex;
-		flex-wrap: wrap;
-		grid-gap: 10px;
+		padding: 0;
+	}
 
-		input {
-			width: 400px;
-			max-width: 100%;
-			padding-left: 26px;
-			min-height: 36px;
-
-			&::placeholder {
-				opacity: 0.75;
-			}
+	.botiga-dashboard-tabs-nav-item {
+		.botiga-dashboard-tabs-nav-link {
+			font-size: 14px;
+			line-height: 20px;
+			padding: 16px;
+			color: #6D7175;
+			text-decoration: none;
 		}
 
-		button {
-			position: relative;
-			display: flex;
-			grid-gap: 2px;
-			align-items: center;
-			line-height: 1em;
-			min-height: 36px;
-		}
-	}
-}
-
-.botiga-license-key-input {
-	position: relative;
-	display: flex;
-
-	i {
-		position: absolute;
-		z-index: 1;
-		top: 50%;
-		left: 10px;
-		transform: translateY(-50%);
-		margin-top: -1px;
-		opacity: 0.5;
-	}
-}
-
-.botiga-dashboard-license-success {
-	margin-top: 10px;
-	display: flex;
-	grid-gap: 5px;
-
-	span{
-		color: #0b890b;
-	}
-}
-
-.botiga-dashboard-license-error {
-	margin-top: 10px;
-	color: #d63638;
-}
-
-.botiga-dashboard-freevspro-table__header {
-	position: sticky;
-	top: 50px;
-	z-index: 1;
-	border-radius: 4px;
-	border: 1px solid #C2CFF8;
-	background-color: #F9FAFE;
-
-	.botiga-dashboard-freevspro-table__column {
-		border-bottom: 0;
-	}
-
-	strong {
-		font-size: 20px;
-		font-weight: 500;
-		line-height: 23px;
-		letter-spacing: 0em;
-		color: #1e1e1e;
-		margin: 0;
-	}
-}
-
-.botiga-dashboard-freevspro-table__body {
-
-	.botiga-dashboard-freevspro-table__column strong {
-		font-size: 14px;
-		font-weight: 400;
-		line-height: 20px;
-		letter-spacing: 0em;
-	}
-
-	.botiga-dashboard-freevspro-table__column a {
-		color: #1e1e1e;
-		display: inline-flex;
-		align-items: center;
-		text-decoration: none;
-		transition: none;
-
-		&:hover {
-			color: #3858e9;
+		&.active {
+			.botiga-dashboard-tabs-nav-link {
+				color: #3858E9;
+				font-weight: 500;
+				border-bottom: 3px solid #3858E9;
+			}	
 		}
 
+		&:hover,
 		&:focus,
 		&:active {
-			box-shadow: none;
-		}
-	}
-
-	.dashicons-external {
-		width: auto;
-		height: auto;
-		font-size: 16px;
-		margin-left: 3px;
-		transition: none;
-	}
-}
-
-.botiga-dashboard-freevspro-table__row {
-	display: flex;
-}
-
-.botiga-dashboard-freevspro-table__column {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	width: 100%;
-	max-width: 275px;
-	padding: 24px 23px;
-	text-align: center;
-	border-bottom: 1px solid #E3E8F7;
-
-	strong {
-		font-weight: 500;
-		text-align: left;
-		color: #1e1e1e;
-	}
-
-	.botiga-dashboard-freevspro-table__icon {
-		text-align: center;
-		width: 30px;
-		height: 30px;
-		border-radius: 30px;
-		font-size: 20px;
-		line-height: 30px;
-	}
-
-	.botiga-dashboard-freevspro-table__icon_break {
-		text-align: center;
-		width: 20px;
-		height: 20px;
-		font-size: 20px;
-		line-height: 20px;
-		opacity: 0.3;
-		transform: scaleX(-1);
-	}
-
-	.dashicons-saved {
-		text-indent: -2px;
-		color: #3FB28F;
-		background-color: rgba(63, 178, 143, 0.1);
-	}
-
-	.dashicons-no-alt {
-		color: #E62424;
-		background-color: rgba(230, 36, 36, 0.05);
-	}
-
-	&.botiga-dashboard-freevspro-table__column--feature {
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 20px;
-		letter-spacing: 0em;
-		max-width: none;
-		text-align: left;
-		flex-wrap: wrap;
-		grid-gap: 6px;
-	}
-}
-
-.botiga-dashboard-freevspro-table__spacing {
-	margin-left: 10px;
-}
-
-.botiga-dashboard-freevspro-table__desc {
-	font-size: 12px;
-	font-style: italic;
-	width: 100%;
-	opacity: 0.5;
-}
-
-.botiga-dashboard-freevspro-table__row+.botiga-dashboard-freevspro-table__row .botiga-dashboard-freevspro-table__column,
-.botiga-dashboard-freevspro-table__body .botiga-dashboard-freevspro-table__row:first-child .botiga-dashboard-freevspro-table__column {
-	border-top-width: 0;
-}
-
-.botiga-dashboard-freevspro-table__body .botiga-dashboard-freevspro-table__row:last-child .botiga-dashboard-freevspro-table__column {
-	border-bottom: 0;
-}
-
-
-@media screen and (max-width: 1360px) {
-
-	.botiga-dashboard-hero-image {
-		display: none;
-	}
-
-	.botiga-dashboard-theme-features {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-}
-
-@media screen and (max-width: 960px) {
-
-	.botiga-dashboard-modal-overlay {
-		left: 34px;
-	}
-}
-
-@media screen and (max-width: 782px) {
-
-	.botiga-dashboard-modal-overlay {
-		left: 0;
-	}
-
-	.botiga-dashboard-modal-content {
-		padding: 25px;
-	}
-}
-
-@media screen and (max-width: 991px) {
-
-	.botiga-dashboard-hero-tabs {
-		flex-wrap: wrap;
-		border: none;
-	}
-
-	.botiga-dashboard-hero-tab {
-		border-radius: 2px;
-	}
-
-	.botiga-dashboard {
-		margin: 10px 10px 0 0;
-
-		.button {
-			line-height: 1em;
-		}
-	}
-
-	.botiga-dashboard-home {
-		grid-gap: 20px;
-		flex-direction: column;
-	}
-
-	.botiga-dashboard-home-content {
-		width: 100%;
-	}
-
-	.botiga-dashboard-home-sidebar {
-		width: 100%;
-	}
-
-	.botiga-dashboard-column {
-		flex-direction: column;
-	}
-
-	.botiga-dashboard-starter-sites {
-
-		.botiga-dashboard-box {
-			display: none;
-		}
-	}
-
-	.botiga-dashboard-starter-sites-locked {
-		position: relative;
-	}
-
-	.botiga-dashboard-starter-sites-notice {
-		padding: 50px;
-		top: auto;
-		width: 100%;
-	}
-
-	.botiga-dashboard-starter-sites-notice-text {
-		font-size: 20px;
-	}
-
-	.botiga-dashboard-features-list {
-		flex-wrap: wrap;
-		grid-row-gap: 8px;
-
-		ul {
-			width: 50%;
-			border-right: none;
-
-			li {
-				padding-left: 0;
+			.botiga-dashboard-tabs-nav-link {
+				color: #3858E9;
 			}
 		}
 	}
+}
 
-	.botiga-dashboard-box-documentation,
-	.botiga-dashboard-box-feedback,
-	.botiga-dashboard-box-facebook-community,
-	.botiga-dashboard-box-stay-touch,
-	.botiga-dashboard-box-tutorial,
-	.botiga-dashboard-box-changelog,
-	.botiga-dashboard-box-pro-support {
-		padding-bottom: 50px;
-		background-size: 50%;
+/* Botiga Tabs Content */
+.botiga-dashboard-tab-content {
+	display: none;
+
+	&.active {
+		display: block;
 	}
+}
 
-	.botiga-dashboard-box-support {
-		min-height: auto;
+/* Botiga Dashboard Card */
+.botiga-dashboard-card {
+	background-color: #FFF;
+	padding: 20px;
 
-		.botiga-dashboard-box-row {
-			flex-direction: column;
-		}
-	}
-
-	.botiga-dashboard-box-pro-support {
-		min-height: auto;
-	}
-
-	.botiga-dashboard-starter-sites,
-	.botiga-dashboard-useful-plugins,
-	.botiga-dashboard-theme-features {
-		grid-template-columns: repeat(1, minmax(0, 1fr));
-	}
-
-	.botiga-dashboard-settings {
-		flex-direction: column;
-	}
-
-	.botiga-license-key-input,
-	.botiga-dashboard-settings-tabs,
-	.botiga-dashboard-settings-contents,
-	.botiga-dashboard-license-form form input{
-		width: 100%;
-	}
-
-	.botiga-dashboard-freevspro-table__header {
-		position: relative;
-		top: auto;
-
-		strong {
-			font-size: 16px;
-		}
-	}
-
-	.botiga-dashboard-freevspro-table-responsive {
-		max-width: 100%;
-		overflow-x: auto;
-	}
-
-	.botiga-dashboard-freevspro-table__column--feature:first-child {
-		text-align: left;
-		justify-content: flex-start;
-	}
-
-	.botiga-dashboard-freevspro-table__column {
-		padding: 15px 10px;
-		text-align: center;
-		justify-content: center;
-		max-width: 100px;
-
-		&:not(:first-child) {
-
-			strong {
-				margin-left: 0;
-				text-align: center;
-			}
-		}
+	&.botiga-dashboard-card-top-spacing {
+		padding: 106px 20px 20px 20px;
 	}
 }

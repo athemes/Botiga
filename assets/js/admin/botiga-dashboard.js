@@ -1,212 +1,235 @@
-(function( $ ){
+(function ($) {
 
-  'use strict';
+	'use strict';
 
-  $(document).ready( function() {
+	$(document).ready(function () {
 
-    // Globals
-    var $body = $('body');
+		// Globals
+		var $body = $('body');
 
-    // Dashboard hero re-position
-    var $header = $('.wp-header-end');
-    var $notice = $('.botiga-dashboard-notice');
+		// Dashboard hero re-position
+		var $header = $('.wp-header-end');
+		var $notice = $('.botiga-dashboard-notice');
 
-    if ( $header.length && $notice.length ) {
-      $header.after( $notice );
-      $notice.addClass('show');
-    }
+		if ($header.length && $notice.length) {
+			$header.after($notice);
+			$notice.addClass('show');
+		}
 
-    // Dashboard hero dismissable
-    var $dismissable = $('.botiga-dashboard-dismissable');
+		// Dashboard hero dismissable
+		var $dismissable = $('.botiga-dashboard-dismissable');
 
-    if ( $dismissable.length ) {
+		if ($dismissable.length) {
 
-      $dismissable.on('click', function() {
+			$dismissable.on('click', function () {
 
-        $dismissable.parent().hide();
+				$dismissable.parent().hide();
 
-        $.post( window.botiga_dashboard.ajax_url, {
-          action: 'botiga_dismissed_handler',
-          nonce: window.botiga_dashboard.nonce,
-          notice: $dismissable.data('notice'),
-        });
+				$.post(window.botiga_dashboard.ajax_url, {
+					action: 'botiga_dismissed_handler',
+					nonce: window.botiga_dashboard.nonce,
+					notice: $dismissable.data('notice'),
+				});
 
-      });
+			});
 
-    }
+		}
 
-    // License button
-    var $license = $('.botiga-license-button');
+		// Tabs Navigation
+		const tabsNavLink = $( '.botiga-dashboard-tabs-nav-link' );
+		if( tabsNavLink.length ) {
 
-    if ( $license.length ) {
+			tabsNavLink.on( 'click', function(e){
+				e.preventDefault();
 
-      $license.on('click', function( e ) {
+				const to = $(this).data( 'tab-to' );
 
-        var $button = $(this);
+				// Tab Nav Item
+				tabsNavLink.each( function(){
+					$( this ).closest( '.botiga-dashboard-tabs-nav-item' ).removeClass( 'active' );
+				});
+				
+				$( this ).closest( '.botiga-dashboard-tabs-nav-item' ).addClass( 'active' );
 
-        if ( $button.data('type') === 'activate' ) {
-          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.activating);
-        } else {
-          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.deactivating);
-        }
+				// Tab Content
+				$( '.botiga-dashboard-tab-content' ).removeClass( 'active' );
+				$( '.botiga-dashboard-tab-content[data-tab-id="'+ to +'"]' ).addClass( 'active' );
+			} );
 
-      });
+		}
 
-    }
+		// License button
+		var $license = $('.botiga-license-button');
 
-    // Dashboard modals
-    var $modals = $('.botiga-dashboard-modal');
+		if ($license.length) {
 
-    if ( $modals.length ) {
+			$license.on('click', function (e) {
 
-      $modals.each( function() {
+				var $button = $(this);
 
-        var $modal   = $(this);
-        var $button  = $modal.find('.botiga-dashboard-modal-button');
-        var $close   = $modal.find('.botiga-dashboard-modal-close');
-        var $overlay = $modal.find('.botiga-dashboard-modal-overlay');
+				if ($button.data('type') === 'activate') {
+					$button.html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.activating);
+				} else {
+					$button.html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.deactivating);
+				}
 
-        $button.on('click', function( e ) {
+			});
 
-          e.preventDefault();
+		}
 
-          $overlay.addClass('show');
-          $body.addClass('botiga-dashboard-modal-opened');
+		// Dashboard modals
+		var $modals = $('.botiga-dashboard-modal');
 
-        });
+		if ($modals.length) {
 
-        $close.on('click', function( e ) {
+			$modals.each(function () {
 
-          e.preventDefault();
+				var $modal = $(this);
+				var $button = $modal.find('.botiga-dashboard-modal-button');
+				var $close = $modal.find('.botiga-dashboard-modal-close');
+				var $overlay = $modal.find('.botiga-dashboard-modal-overlay');
 
-          $body.removeClass('botiga-dashboard-modal-opened');
-          $overlay.removeClass('show');
+				$button.on('click', function (e) {
 
-        });
+					e.preventDefault();
 
-        $overlay.on('click', function( e ) {
+					$overlay.addClass('show');
+					$body.addClass('botiga-dashboard-modal-opened');
 
-          e.preventDefault();
+				});
 
-          if ( e.target.closest('.botiga-dashboard-modal-content') === null ) {
-            $body.removeClass('botiga-dashboard-modal-opened');
-            $overlay.removeClass('show');
-          }
+				$close.on('click', function (e) {
 
-        });
+					e.preventDefault();
 
-      });
+					$body.removeClass('botiga-dashboard-modal-opened');
+					$overlay.removeClass('show');
 
-    }
+				});
 
-    // Install plugin
-    var $plugin = $('.botiga-dashboard-plugin-ajax-button');
+				$overlay.on('click', function (e) {
 
-    if ( $plugin.length ) {
+					e.preventDefault();
 
-      $plugin.on('click', function( e ) {
+					if (e.target.closest('.botiga-dashboard-modal-content') === null) {
+						$body.removeClass('botiga-dashboard-modal-opened');
+						$overlay.removeClass('show');
+					}
 
-        e.preventDefault();
+				});
 
-        var $button  = $(this);
-        var href    = $button.attr('href');
-        var slug    = $button.data('slug');
-        var type    = $button.data('type');
-        var path    = $button.data('path');
-        var caption = $button.html();
+			});
 
-        $button.addClass('botiga-ajax-progress');
-        $button.parent().siblings('.botiga-dashboard-hero-warning').remove();
+		}
 
-        if ( type === 'install' ) {
-          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.installing);
-        } else if ( type === 'activate' ) {
-          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.activating);
-        } else if ( type === 'deactivate' ) {
-          $button.html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.deactivating);
-        }
+		// Install plugin
+		var $plugin = $('.botiga-dashboard-plugin-ajax-button');
 
-        $.post( window.botiga_dashboard.ajax_url, {
-          action: 'botiga_plugin',
-          nonce: window.botiga_dashboard.nonce,
-          slug: slug,
-          type: type,
-          path: path,
-        }, function( response ) {
+		if ($plugin.length) {
 
-          if ( response.success ) {
+			$plugin.on('click', function (e) {
 
-            if ( type === 'install' ) {
+				e.preventDefault();
 
-              $button.html('<i class="dashicons dashicons-saved"></i>'+ window.botiga_dashboard.i18n.activated);
+				var $button = $(this);
+				var href = $button.attr('href');
+				var slug = $button.data('slug');
+				var type = $button.data('type');
+				var path = $button.data('path');
+				var caption = $button.html();
 
-              setTimeout( function() {
+				$button.addClass('botiga-ajax-progress');
+				$button.parent().siblings('.botiga-dashboard-hero-warning').remove();
 
-                $button.html(window.botiga_dashboard.i18n.redirecting);
+				if (type === 'install') {
+					$button.html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.installing);
+				} else if (type === 'activate') {
+					$button.html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.activating);
+				} else if (type === 'deactivate') {
+					$button.html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.deactivating);
+				}
 
-                setTimeout( function() {
+				$.post(window.botiga_dashboard.ajax_url, {
+					action: 'botiga_plugin',
+					nonce: window.botiga_dashboard.nonce,
+					slug: slug,
+					type: type,
+					path: path,
+				}, function (response) {
 
-                  window.location = href;
+					if (response.success) {
 
-                }, 1000 );
+						if (type === 'install') {
 
-              }, 500 );
+							$button.html('<i class="dashicons dashicons-saved"></i>' + window.botiga_dashboard.i18n.activated);
 
-            } else {
+							setTimeout(function () {
 
-              window.location = href;
+								$button.html(window.botiga_dashboard.i18n.redirecting);
 
-            }
+								setTimeout(function () {
 
-          } else if ( response.data ) {
+									window.location = href;
 
-            $button.html( caption );
-            $button.parent().after('<div class="botiga-dashboard-hero-warning">'+ response.data +'</div>');
+								}, 1000);
 
-          } else {
+							}, 500);
 
-            $button.html( caption );
-            $button.parent().after('<div class="botiga-dashboard-hero-warning">'+ window.botiga_dashboard.i18n.failed_message +'</div>');
+						} else {
 
-          }
+							window.location = href;
 
-        }).fail( function( xhr, textStatus, e ) {
+						}
 
-          $button.html( caption );
-          $button.parent().after('<div class="botiga-dashboard-hero-warning">'+ window.botiga_dashboard.i18n.failed_message +'</div>');
+					} else if (response.data) {
 
-        });
+						$button.html(caption);
+						$button.parent().after('<div class="botiga-dashboard-hero-warning">' + response.data + '</div>');
 
-      });
+					} else {
 
-    }
+						$button.html(caption);
+						$button.parent().after('<div class="botiga-dashboard-hero-warning">' + window.botiga_dashboard.i18n.failed_message + '</div>');
 
-    // Activate Feature
-    var $activate = $('.botiga-dashboard-activate-button');
+					}
 
-    if ( $activate.length ) {
+				}).fail(function (xhr, textStatus, e) {
 
-      $activate.on('click', function( e ) {
+					$button.html(caption);
+					$button.parent().after('<div class="botiga-dashboard-hero-warning">' + window.botiga_dashboard.i18n.failed_message + '</div>');
 
-        $(this).html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.activating);
+				});
 
-      });
+			});
 
-    }
+		}
 
-    // Deactivate Feature
-    var $deactivate = $('.botiga-dashboard-deactivate-button');
+		// Activate Feature
+		var $activate = $('.botiga-dashboard-activate-button');
 
-    if ( $deactivate.length ) {
+		if ($activate.length) {
 
-      $deactivate.on('click', function( e ) {
+			$activate.on('click', function (e) {
 
-        $(this).html('<i class="dashicons dashicons-update-alt"></i>'+ window.botiga_dashboard.i18n.deactivating);
+				$(this).html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.activating);
 
-      });
+			});
 
-    }
+		}
 
-  });
+		// Deactivate Feature
+		var $deactivate = $('.botiga-dashboard-deactivate-button');
 
-})( jQuery );
+		if ($deactivate.length) {
+
+			$deactivate.on('click', function (e) {
+
+				$(this).html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.deactivating);
+
+			});
+
+		}
+
+	});
+
+})(jQuery);

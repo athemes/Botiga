@@ -91,10 +91,8 @@ function botiga_dashboard_settings()
 	$settings['tabs']  = array(
 		'home'           => esc_html__('Home', 'botiga'),
 		'starter-sites'  => esc_html__('Starter Sites', 'botiga'),
-		'theme-features' => esc_html__('Theme Features', 'botiga'),
 		'settings'       => esc_html__('Settings', 'botiga'),
-		'useful-plugins' => esc_html__('Useful Plugins', 'botiga'),
-		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga'),
+		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga')
 	);
 
 	//
