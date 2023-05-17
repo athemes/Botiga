@@ -378,10 +378,12 @@ class Botiga_Dashboard
 						foreach( $this->settings[ 'tabs' ] as $tab_id => $tab_title ) : 
 							$tab_active = (($section && $section === $tab_id) || (!$section && $tab_id === 'home')) ? ' active' : '';
 
-							?>						
-							<div class="botiga-dashboard-tab-content<?php echo esc_attr( $tab_active ); ?>" data-tab-id="<?php echo esc_attr( $tab_id ); ?>">
-								<?php require get_template_directory() . '/inc/dashboard/html-'. $tab_id .'.php'; ?>
-							</div>
+							?>	
+                            <div class="botiga-dashboard-tab-content-wrapper" data-tab-wrapper-id="main">					
+                                <div class="botiga-dashboard-tab-content<?php echo esc_attr( $tab_active ); ?>" data-tab-content-id="<?php echo esc_attr( $tab_id ); ?>">
+                                    <?php require get_template_directory() . '/inc/dashboard/html-'. $tab_id .'.php'; ?>
+                                </div>
+                            </div>
 						<?php endforeach; ?>
 					</div>
 				</div>

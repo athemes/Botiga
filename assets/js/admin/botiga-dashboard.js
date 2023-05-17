@@ -36,25 +36,32 @@
 		}
 
 		// Tabs Navigation
-		const tabsNavLink = $( '.botiga-dashboard-tabs-nav-link' );
-		if( tabsNavLink.length ) {
+		const tabs = $( '.botiga-dashboard-tabs-nav' );
+		if( tabs.length ) {
 
-			tabsNavLink.on( 'click', function(e){
-				e.preventDefault();
+			tabs.each(function(){
+				const tabWrapperId = $( this ).data( 'tab-wrapper-id' );
 
-				const to = $(this).data( 'tab-to' );
+				$( this ).find( '.botiga-dashboard-tabs-nav-link' ).on( 'click', function(e){
+					e.preventDefault();
 
-				// Tab Nav Item
-				tabsNavLink.each( function(){
-					$( this ).closest( '.botiga-dashboard-tabs-nav-item' ).removeClass( 'active' );
-				});
-				
-				$( this ).closest( '.botiga-dashboard-tabs-nav-item' ).addClass( 'active' );
+					const 
+						tabsNavLink  = $( this ).closest( '.botiga-dashboard-tabs-nav' ).find( '.botiga-dashboard-tabs-nav-link' ),
+						to           = $( this ).data( 'tab-to' );
 
-				// Tab Content
-				$( '.botiga-dashboard-tab-content' ).removeClass( 'active' );
-				$( '.botiga-dashboard-tab-content[data-tab-id="'+ to +'"]' ).addClass( 'active' );
-			} );
+					// Tab Nav Item
+					tabsNavLink.each( function(){
+						$( this ).closest( '.botiga-dashboard-tabs-nav-item' ).removeClass( 'active' );
+					});
+					
+					$( this ).closest( '.botiga-dashboard-tabs-nav-item' ).addClass( 'active' );
+
+					// Tab Content
+					const tabContentWrapper = $( '.botiga-dashboard-tab-content-wrapper[data-tab-wrapper-id="'+ tabWrapperId +'"]' );
+					tabContentWrapper.find( '.botiga-dashboard-tab-content' ).removeClass( 'active' );
+					tabContentWrapper.find( '.botiga-dashboard-tab-content[data-tab-content-id="'+ to +'"]' ).addClass( 'active' );
+				} );
+			});
 
 		}
 

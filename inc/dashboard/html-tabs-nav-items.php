@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-echo '<nav class="botiga-dashboard-tabs-nav">';
+echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
     echo '<ul>';
 
         $num = 0; // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
