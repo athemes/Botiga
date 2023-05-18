@@ -11,12 +11,12 @@
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
+        'enable_sticky_header',
+        'sticky_header_type',
         'header_transparent',
         'header_transparent_display_rules_title',
         'header_transparent_display_on',
-        'header_container',
-        'enable_sticky_header',
-        'sticky_header_type'
+        'header_container'
     ),
     'style'   => array()
 );
@@ -82,6 +82,7 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_sect
 			'description' 	=> '
 				<span class="customize-control-title" style="font-style: normal;">Global Header</span>
 				<div class="customize-section-shortcuts">
+					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'header_image\' ).focus();" data-goto-section="header_image">' . esc_html__( 'Header Image', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
 					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_presets\' ).focus();" data-goto-section="botiga_section_hb_presets">' . esc_html__( 'Header Layouts', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
 					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_above_header_row\' ).focus();" data-goto-section="botiga_section_hb_above_header_row">' . esc_html__( 'Top Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
 					<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'botiga_section_hb_main_header_row\' ).focus();" data-goto-section="botiga_section_hb_main_header_row">' . esc_html__( 'Main Row', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>
@@ -118,7 +119,7 @@ $wp_customize->add_control(
 				'bottom-row'  	=> __( 'Bottom Row', 'botiga' )
 			),
 			'active_callback' => 'botiga_header_transparent_enabled',
-			'priority'		  => 25
+			'priority'		  => 27
 		)
 	)
 );
@@ -143,7 +144,7 @@ $wp_customize->add_control(
 		),
         'section' 	      => 'botiga_section_hb_wrapper',
         'active_callback' => 'botiga_sticky_header_enabled',
-        'priority'        => 35
+        'priority'        => 26
 	) 
 );
 

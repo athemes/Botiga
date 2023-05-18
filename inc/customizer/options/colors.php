@@ -33,7 +33,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'custom_palette_toggle',
 		array(
-			'label'         	=> esc_html__( 'Create your own palette?', 'botiga' ),
+			'label'         	=> esc_html__( 'Create your own palette', 'botiga' ),
 			'section'       	=> 'colors',
 			'priority'	=> 0,
 		)

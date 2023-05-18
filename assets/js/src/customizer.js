@@ -1747,16 +1747,6 @@
 		}
 	} );
 
-	if( typeof window.parent.wp.customize.section( 'botiga_section_fb_wrapper' ) !== 'undefined' ) {
-		window.parent.wp.customize.panel( 'botiga_panel_footer' ).expanded.bind(
-			function( isExpanded ) {
-				if ( isExpanded ) {
-					window.parent.wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
-				}
-			}
-		);
-	}
-
 	// Theme options
 	var $theme_options = botiga_theme_options;
 

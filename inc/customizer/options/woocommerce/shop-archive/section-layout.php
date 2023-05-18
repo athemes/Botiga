@@ -100,6 +100,43 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'shop_archi
 	)
 ) );
 
+// Shop Header Style
+$wp_customize->add_setting(
+    'shop_archive_header_style',
+    array(
+        'default'           => 'style1',
+        'sanitize_callback' => 'sanitize_key',
+    )
+);
+$wp_customize->add_control(
+    new Botiga_Radio_Images(
+        $wp_customize,
+        'shop_archive_header_style',
+        array(
+            'label'     => esc_html__( 'Shop Header Style', 'botiga-pro' ),
+            'section'   => 'woocommerce_product_catalog',
+            'cols'      => 2,
+            'choices'  => array(
+                'style1' => array(
+                    'label' => esc_html__( 'Style 1', 'botiga-pro' ),
+                    'url'   => '%s/assets/img/shop-page-header-style-1.svg'
+                ),
+                'style2' => array(
+					'is_pro' => true,
+                    'label'  => esc_html__( 'Style 2', 'botiga-pro' ),
+                    'url'    => '%s/assets/img/shop-page-header-style-2.svg'
+                ),
+                'style3' => array(
+					'is_pro' => true,
+                    'label'  => esc_html__( 'Style 3', 'botiga-pro' ),
+                    'url'    => '%s/assets/img/shop-page-header-style-3.svg'
+                )       
+            ),
+            'priority'   => 21
+        )
+    )
+);
+
 // Sidebar Layout
 $wp_customize->add_setting(
 	'shop_archive_sidebar',

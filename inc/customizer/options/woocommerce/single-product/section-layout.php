@@ -35,22 +35,22 @@ $wp_customize->add_control(
                 ),
                 'gallery-grid' => array(
                     'is_pro' => true,
-                    'label'  => esc_html__( 'Layout 4', 'botiga-pro' ),
+                    'label'  => esc_html__( 'Layout 4', 'botiga' ),
                     'url'    => '%s/assets/img/sg4.svg'
                 ),
                 'gallery-scrolling' => array(
                     'is_pro' => true,
-                    'label'  => esc_html__( 'Layout 5', 'botiga-pro' ),
+                    'label'  => esc_html__( 'Layout 5', 'botiga' ),
                     'url'    => '%s/assets/img/sg5.svg'
                 ),
                 'gallery-showcase' => array(
                     'is_pro' => true,
-                    'label'  => esc_html__( 'Layout 6', 'botiga-pro' ),
+                    'label'  => esc_html__( 'Layout 6', 'botiga' ),
                     'url'    => '%s/assets/img/sg6.svg'
                 ),
                 'gallery-full-width' => array(
                     'is_pro' => true,
-                    'label'  => esc_html__( 'Layout 7', 'botiga-pro' ),
+                    'label'  => esc_html__( 'Layout 7', 'botiga' ),
                     'url'    => '%s/assets/img/sg7.svg'
                 )
             ),
@@ -167,6 +167,44 @@ $wp_customize->add_control(
             'label' => esc_html__('Ajax Add To Cart', 'botiga'),
             'section' => 'botiga_section_single_product_layout',
             'priority' => 55,
+        )
+    )
+);
+
+// Sidebar Layout
+$wp_customize->add_setting(
+    'single_product_sidebar',
+    array(
+        'default'           => 'no-sidebar',
+        'sanitize_callback' => 'sanitize_key',
+    )
+);
+$wp_customize->add_control(
+    new Botiga_Radio_Images(
+        $wp_customize,
+        'single_product_sidebar',
+        array(
+            'label'   => esc_html__( 'Sidebar Layout', 'botiga' ),
+            'section' => 'botiga_section_single_product_layout',
+            'cols'    => 3,
+            'choices' => array(
+                'no-sidebar'    => array(
+                    'is_pro'    => false,
+                    'label'     => esc_html__( 'No Sidebar', 'botiga' ),
+                    'url'       => '%s/assets/img/meta-sidebar-none.svg'
+                ),
+                'sidebar-left'  => array(
+                    'is_pro'    => true,
+                    'label'     => esc_html__( 'Left', 'botiga' ),
+                    'url'       => '%s/assets/img/meta-sidebar-left.svg'
+                ),
+                'sidebar-right' => array(
+                    'is_pro'    => true,
+                    'label'     => esc_html__( 'Right', 'botiga' ),
+                    'url'       => '%s/assets/img/meta-sidebar-right.svg'
+                ),  
+            ),
+            'priority' => 60
         )
     )
 );

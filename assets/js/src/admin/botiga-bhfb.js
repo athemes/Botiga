@@ -75,6 +75,28 @@
         },
 
         customizeNavigation: function() {
+
+            if( typeof wp.customize.section( 'botiga_section_fb_wrapper' ) !== 'undefined' ) {
+
+                // Navigate directly to the header builder when we click on the main panel item 'Header'
+                wp.customize.panel( 'botiga_panel_header' ).expanded.bind(
+                    function( isExpanded ) {
+                        if ( isExpanded ) {
+                            wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
+                        }
+                    }
+                );
+                
+                // Navigate directly to the footer builder when we click on the main panel item 'Footer'
+                wp.customize.panel( 'botiga_panel_footer' ).expanded.bind(
+                    function( isExpanded ) {
+                        if ( isExpanded ) {
+                            wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
+                        }
+                    }
+                );
+            }
+
             const
                 sections = [
                     'sub-accordion-section-botiga_section_hb_presets',
@@ -950,6 +972,7 @@
                 if( typeof wp.customize.section( section ) !== 'undefined' ) {
                     wp.customize.section( section ).expanded.bind( 
                         function( is_active ){ 
+                            console.log(222);
                             self.currentBuilder     = self.getCurrentBuilderByComponent( section );
                             self.currentBuilderType = self.currentBuilder.hasClass( 'botiga-bhfb-header' ) ? 'header' : 'footer';
 
@@ -985,9 +1008,14 @@
 
         scrollToRespectiveBuilderArea: function() {
             const 
-                _this = this,
-                iframeHTMLTag = document.querySelector( '#customize-preview > iframe' ).contentWindow.document.getElementsByTagName('html')[0],
+                _this         = this,
+                iframe        = document.querySelector( '#customize-preview > iframe' ),
+                iframeHTMLTag = iframe ? iframe.contentWindow.document.getElementsByTagName('html')[0] : null,
                 scrollTo      = _this.currentBuilderType === 'header' ? 0 : 99999;
+
+            if( iframeHTMLTag === null ) {
+                return false;
+            }
 
             $( iframeHTMLTag ).animate( { scrollTop: scrollTo }, 'fast' );
         },

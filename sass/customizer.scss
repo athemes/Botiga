@@ -62,6 +62,7 @@ li.control-section-botiga-section-hidden {
 			}
 
 			.customize-section-description {
+				display: none !important;
 				color: #1e1e1e;
 				font-weight: 400;
 				margin-top: 9px;
@@ -102,7 +103,7 @@ li.control-section-botiga-section-hidden {
 				}
 			}
 			.customize-panel-description {
-				display: block !important;
+				display: none !important;
 				flex-basis: 100%;
 				color: #1e1e1e;
 				font-weight: 400;
@@ -151,13 +152,17 @@ li.control-section-botiga-section-hidden {
 		font-style: italic;
 		margin-bottom: 0;
 		font-size: 12px;
+
+		p {
+			font-size: 12px;
+		}
 	}
 
 	// Tabs
 	&.customize-control-botiga-tab-control {
 		position: sticky;
 		top: 0;
-		padding-top: 10px;
+		padding-top: 8px;
 		background-color: #FFF;
 		z-index: 10;
 
@@ -389,15 +394,14 @@ li.control-section-botiga-section-hidden {
 				}
 
 				&.is-pro {
-					pointer-events: none;
 					&:before {
 						content: '';
 						background-image: url(../img/pro-lock.svg);
 						background-repeat: no-repeat;
 						background-position: center;
-						background-size: 15px;
-						width: 15px;
-						height: 15px;
+						background-size: 20px;
+						width: 20px;
+						height: 20px;
 						position: absolute;
 						top: 12px;
 						right: 12px;
@@ -438,6 +442,31 @@ li.control-section-botiga-section-hidden {
 			& + .wp-editor-wrap {
 				margin-top: 12px;
 			}
+		}
+	}
+
+	// WooCommerce Cropping
+	&.customize-control-woocommerce-cropping-control {
+		.woocommerce-cropping-control {
+			li {
+				margin: 0;
+
+				& + li {
+					margin-top: 12px;
+				}
+			}
+		}
+
+		.woocommerce-cropping-control-aspect-ratio {
+			margin-top: 12px;
+		}
+
+		.description {
+			color: #50575e;
+			font-size: 12px;
+			font-style: italic;
+			margin-top: 8px;
+			display: block;
 		}
 	}
 
@@ -544,6 +573,95 @@ li.control-section-botiga-section-hidden {
 	margin-right: 10px;
 }
 
+/* Change Theme Button */
+#customize-theme-controls {
+	.control-panel-themes {
+		.accordion-section-title {
+			.change-theme {
+				right: 16px;
+			}
+		}
+	}
+}
+
+/* Accordion Section */
+#customize-theme-controls {
+	.control-panel-themes {
+		> .accordion-section-title {
+			padding-left: 16px !important;
+		}
+	}
+}
+
+/* Upsell Section and Panel */
+#customize-theme-controls,
+#customize-outer-theme-controls {
+	.control-section,
+	.control-panel {
+		&.control-section-botiga-section-upsell,
+		&.control-panel-botiga-panel-upsell {
+			display: block !important;
+
+			.accordion-section-title {
+				color: #1e1e1e !important;
+				pointer-events: none;
+
+				&:before {
+					content: '';
+					background-image: url(../img/pro-lock.svg);
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: 18px;
+					width: 18px;
+					height: 18px;
+					position: absolute;
+					top: 50%;
+					right: 25px;
+					transform: translate3d(0, -50%, 0);
+					z-index: 2;
+				}
+
+				&:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					background-color: rgba(255, 255, 255, 0.5);
+					z-index: 1;
+				}
+
+				.botiga-pro-badge {
+					position: absolute;
+					top: 50%;
+					right: 40px;
+					font-size: 9px;
+					font-weight: 700;
+					color: #3858E9;
+					border: 1px solid #3858E9;
+					padding: 0px 4px;
+					opacity: 0;
+					visibility: hidden;
+					transform: translate3d(-5px, -50%, 0);
+					transition: ease opacity 200ms, ease transform 200ms;
+					z-index: 3;
+				}
+			}
+
+			&:hover {
+				.accordion-section-title {
+					.botiga-pro-badge {
+						opacity: 1;
+						visibility: visible;
+						transform: translate3d(-15px, -50%, 0);
+					}
+				}
+			}
+		}
+	}
+}
+
 /* Control Section */
 #customize-theme-controls,
 #customize-outer-theme-controls {
@@ -552,7 +670,7 @@ li.control-section-botiga-section-hidden {
 		// Botiga Upsell
 		&.control-section-botiga-upsell {
 			display: block !important;
-			padding: 0 16px;
+			padding: 0 16px 7px;
 
 			.botiga-upsell-button-wrapper {
 				margin: 0;
@@ -566,8 +684,16 @@ li.control-section-botiga-section-hidden {
 				border-radius: 4px;
 				color: #3858E9;
 				border: 2px solid #3858E9;
-				transition: all .2s;
+				transition: ease background-color .2s, ease color .2s;
 				text-decoration: none;
+				margin: 0 -1px;
+
+				&:hover,
+				&:focus,
+				&:active {
+					background-color: #3858E9;
+					color: #fff;
+				}
 			}
 		}
 
@@ -605,6 +731,20 @@ li.control-section-botiga-section-hidden {
 			padding: 9px 16px;
 		}
 
+		// Botiga Section Upsell
+		&.control-section-botiga-section-upsell {
+			.accordion-section-title {
+				&:before {
+					right: 13px;
+				}
+
+				.botiga-pro-badge {
+					right: 28px;
+				}
+			}
+		}
+
+		// Menus
 		&.control-section-nav_menu {
 			margin: 0;
 		}
@@ -624,6 +764,7 @@ li.control-section-botiga-section-hidden {
 			}
 		}
 
+		// Menu Locations
 		&#accordion-section-menu_locations {
 			margin: 16px 16px 0; 
 			padding: 16px 0 0;
@@ -1001,8 +1142,6 @@ span.delete:hover {
 .control-tabs {
 	display: flex;
 	border-bottom: 2px solid #f0f0f0;
-	max-width: 60%;
-	margin: 0 auto;
 }
 .control-tab {
 	color: #1e1e1e;
@@ -1524,14 +1663,16 @@ label {
 		padding: 8px 50px;
 		text-decoration: none;
 		border-radius: 4px;
-		color: #FFF;
-		background-color: #3858E9;
-		transition: all .2s;
+		color: #3858E9;
+		border: 2px solid #3858E9;
+		background-color: #FFF;
+		transition: ease background-color .2s, ease color .2s;
 	
 		&:active,
 		&:focus,
 		&:hover {
-			background-color: #4466fd;
+			color: #FFF;
+			background-color: #3858E9;
 		}
 	}
 }
@@ -2101,6 +2242,7 @@ label {
 
 	&:before {
 		line-height: 20px;
+		top: 1px;
 		left: -3px;
 		font-size: 18px;
 	}
@@ -2173,6 +2315,7 @@ label {
 
 .control-section .accordion-section-title:after,
 .customize-pane-child .accordion-section-title:after {
+	right: 15px;
 	top: calc(50% - 6px);
 	font-size: 12px;
 	transform: translate3d(0, 0, 0);
@@ -2274,7 +2417,7 @@ label {
 
 	h3 {
 		font-size: 11px !important;
-		font-weight: 700;
+		font-weight: 600;
 		text-transform: uppercase;
 		margin: 0;
 		padding: 0 !important;
@@ -2534,6 +2677,12 @@ label {
 			width: calc(33.333% - 7px);
 		}
 	}
+
+	label.is-pro:before {
+		background-size: 15px !important;
+		width: 15px !important;
+		height: 15px !important;
+	}
 }
 
 .botiga-radio-images-col-4 label{
@@ -2569,13 +2718,13 @@ label {
 
 	label{
 		align-items: center;
-		padding: 5px;
+		padding: 3px;
 	}
 
 	figure{
 
 		img{
-			top: 1px;
+			top: 0px;
 		}
 	}
 }
@@ -2794,6 +2943,7 @@ a,
 		position: relative;
 		border-radius: 4px;
 		border: 2px solid #3858E9;
+		transition: ease opacity .2s;
 
 		label{
 			display: none;
@@ -2810,6 +2960,10 @@ a,
 			padding: 0;
 			border-radius: 0;
 			opacity: 0;
+		}
+
+		&:hover {
+			opacity: 0.8;
 		}
 	}
 
@@ -3359,4 +3513,9 @@ a,
 			}
 		}
 	}
+}
+
+#sub-accordion-panel-botiga_panel_header,
+#sub-accordion-panel-botiga_panel_footer {
+	visibility: hidden !important;
 }

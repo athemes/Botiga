@@ -14,6 +14,8 @@ jQuery(document).ready(function ($) {
 
 	// Flag when hidden section content is active
 	let is_hidden_section_content = false,
+		is_header_builder_section = false,
+		is_header_builder_component_section = false,
 		is_footer_builder_section = false,
 		is_footer_builder_component_section = false;
 
@@ -23,32 +25,63 @@ jQuery(document).ready(function ($) {
 		}
 
 		is_hidden_section_content 			= $( '.control-section.open' ).hasClass( 'control-section-botiga-section-hidden' ) ? true : false;
+		is_header_builder_section 			= $( '.control-section.open' ).attr( 'id' ) === 'sub-accordion-section-botiga_section_hb_wrapper' ? true : false;
+		is_header_builder_component_section = $( '.control-section.open' ).attr( 'id' ).indexOf( 'botiga_section_hb_component_' ) !== -1 ? true : false;
 		is_footer_builder_section 			= $( '.control-section.open' ).attr( 'id' ) === 'sub-accordion-section-botiga_section_fb_wrapper' ? true : false;
 		is_footer_builder_component_section = $( '.control-section.open' ).attr( 'id' ).indexOf( 'botiga_section_fb_component_' ) !== -1 ? true : false;
 	} );
 
 	// If hidden section content is active, focus on the previous section (from global variable)
 	$( document ).on( 'click', '.customize-section-back', function(e){
+		console.log( is_hidden_section_content, is_header_builder_section, is_header_builder_component_section, is_footer_builder_section, is_footer_builder_component_section );
+		if( is_header_builder_section ) {
+			wp.customize.section( 'botiga_section_hb_wrapper' ).collapse();
+			setTimeout(function(){
+				wp.customize.panel( 'botiga_panel_header' ).collapse();
+			}, 10);
+		}
+
+		if( is_header_builder_component_section ) {
+			if ( typeof wp.customize.section( 'botiga_section_hb_wrapper' ) !== 'undefined' ) {
+				wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
+			}
+		}
+		
 		if( is_footer_builder_section ) {
-			$( '.wp-full-overlay' ).removeClass( 'in-sub-panel' ).removeClass( 'section-open' );
-			$( '#sub-accordion-panel-botiga_panel_footer' ).removeClass( 'current-panel' );
- 
-			// As we are simulating the '.focus()' effect manually (above code), we need to 'restart' the panel again to ensure all events like 'click' will back to work
-			wp.customize.panel( 'botiga_panel_footer' ).active( false );
-			wp.customize.panel( 'botiga_panel_footer' ).active( true );
+			wp.customize.section( 'botiga_section_fb_wrapper' ).collapse();
+			setTimeout(function(){
+				wp.customize.panel( 'botiga_panel_footer' ).collapse();
+			}, 10);
 		}
 
 		if( is_footer_builder_component_section ) {
-			wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
+			if ( typeof wp.customize.section( 'botiga_section_fb_wrapper' ) !== 'undefined' ) {
+				wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
+			}
 		}
 
-		if( ! is_footer_builder_component_section && is_hidden_section_content && previous_section !== '' ) {
-			wp.customize.section( previous_section ).focus();
+		if( ! is_footer_builder_component_section && ! is_header_builder_component_section && is_hidden_section_content && previous_section !== '' ) {
+			if ( typeof wp.customize.section( previous_section ) !== 'undefined' ) {
+				wp.customize.section( previous_section ).focus();
+			}
 		}
 
+		is_header_builder_section = false;
+		is_header_builder_component_section = false;
 		is_footer_builder_section = false;
 		is_footer_builder_component_section = false;
 		is_hidden_section_content = false;
+	} );
+
+});
+
+/* Botiga Radio Image Control */
+jQuery(document).ready(function ($) {
+
+	"use strict";
+
+	$( document ).on( 'click', '.customize-control-botiga-radio-image label.is-pro', function(e){
+		e.preventDefault();
 	} );
 
 });

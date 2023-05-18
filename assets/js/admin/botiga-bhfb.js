@@ -90,6 +90,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     customizeNavigation: function customizeNavigation() {
+      if (typeof wp.customize.section('botiga_section_fb_wrapper') !== 'undefined') {
+        // Navigate directly to the header builder when we click on the main panel item 'Header'
+        wp.customize.panel('botiga_panel_header').expanded.bind(function (isExpanded) {
+          if (isExpanded) {
+            wp.customize.section('botiga_section_hb_wrapper').focus();
+          }
+        }); // Navigate directly to the footer builder when we click on the main panel item 'Footer'
+
+        wp.customize.panel('botiga_panel_footer').expanded.bind(function (isExpanded) {
+          if (isExpanded) {
+            wp.customize.section('botiga_section_fb_wrapper').focus();
+          }
+        });
+      }
+
       var sections = ['sub-accordion-section-botiga_section_hb_presets', 'sub-accordion-section-botiga_section_hb_above_header_row', 'sub-accordion-section-botiga_section_hb_main_header_row', 'sub-accordion-section-botiga_section_hb_below_header_row', 'sub-accordion-section-botiga_section_hb_mobile_offcanvas', 'sub-accordion-section-botiga_section_hb_component__logo', 'sub-accordion-section-botiga_section_hb_component__search', 'sub-accordion-section-botiga_section_hb_component__social', 'sub-accordion-section-botiga_section_hb_component__menu', 'sub-accordion-section-botiga_section_hb_component__secondary_menu', 'sub-accordion-section-botiga_section_hb_component__contact_info', 'sub-accordion-section-botiga_section_hb_component__button', 'sub-accordion-section-botiga_section_hb_component__button2', 'sub-accordion-section-botiga_section_hb_component__html', 'sub-accordion-section-botiga_section_hb_component__html2', 'sub-accordion-section-botiga_section_hb_component__shortcode', 'sub-accordion-section-botiga_section_hb_component__login_register', 'sub-accordion-section-botiga_section_hb_component__woo_icons', 'sub-accordion-section-botiga_section_hb_component__pll_switcher', 'sub-accordion-section-botiga_section_hb_component__wpml_switcher', 'sub-accordion-section-botiga_section_hb_component__mobile_offcanvas_menu', 'sub-accordion-section-botiga_section_hb_component__mobile_hamburger', // Footer
       'sub-accordion-section-botiga_section_fb_above_footer_row', 'sub-accordion-section-botiga_section_fb_main_footer_row', 'sub-accordion-section-botiga_section_fb_below_footer_row', 'sub-accordion-section-botiga_section_fb_component__footer_menu', 'sub-accordion-section-botiga_section_fb_component__copyright', 'sub-accordion-section-botiga_section_fb_component__social', 'sub-accordion-section-botiga_section_fb_component__button', 'sub-accordion-section-botiga_section_fb_component__button2', 'sub-accordion-section-botiga_section_fb_component__html', 'sub-accordion-section-botiga_section_fb_component__html2', 'sub-accordion-section-botiga_section_fb_component__shortcode', 'sub-accordion-section-botiga_section_fb_component__widget1', 'sub-accordion-section-botiga_section_fb_component__widget2', 'sub-accordion-section-botiga_section_fb_component__widget3', 'sub-accordion-section-botiga_section_fb_component__widget4']; // Append columns to the sections array.
 
@@ -902,6 +917,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       sections.forEach(function (section) {
         if (typeof wp.customize.section(section) !== 'undefined') {
           wp.customize.section(section).expanded.bind(function (is_active) {
+            console.log(222);
             self.currentBuilder = self.getCurrentBuilderByComponent(section);
             self.currentBuilderType = self.currentBuilder.hasClass('botiga-bhfb-header') ? 'header' : 'footer';
 
@@ -930,8 +946,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     scrollToRespectiveBuilderArea: function scrollToRespectiveBuilderArea() {
       var _this = this,
-          iframeHTMLTag = document.querySelector('#customize-preview > iframe').contentWindow.document.getElementsByTagName('html')[0],
+          iframe = document.querySelector('#customize-preview > iframe'),
+          iframeHTMLTag = iframe ? iframe.contentWindow.document.getElementsByTagName('html')[0] : null,
           scrollTo = _this.currentBuilderType === 'header' ? 0 : 99999;
+
+      if (iframeHTMLTag === null) {
+        return false;
+      }
 
       $(iframeHTMLTag).animate({
         scrollTop: scrollTo

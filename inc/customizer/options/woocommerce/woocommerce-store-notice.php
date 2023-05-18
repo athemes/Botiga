@@ -35,6 +35,9 @@ $wp_customize->add_control(
 	)
 );
 
+// Move 'Enable store notice' checkbox to before the store notice
+$wp_customize->get_control( 'woocommerce_demo_store' )->priority = 9;
+
 // Store notice background color
 $wp_customize->add_setting(
 	'shop_store_notice_background_color',
