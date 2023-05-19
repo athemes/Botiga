@@ -637,6 +637,10 @@
   color: #3858E9;
 }
 
+.botiga-dashboard-tabs-nav.botiga-dashboard-tabs-nav-no-negative-margin {
+  margin-bottom: 0;
+}
+
 /* Botiga Tabs Content */
 .botiga-dashboard-tab-content {
   display: none;

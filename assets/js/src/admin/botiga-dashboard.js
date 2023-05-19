@@ -58,8 +58,8 @@
 
 					// Tab Content
 					const tabContentWrapper = $( '.botiga-dashboard-tab-content-wrapper[data-tab-wrapper-id="'+ tabWrapperId +'"]' );
-					tabContentWrapper.find( '.botiga-dashboard-tab-content' ).removeClass( 'active' );
-					tabContentWrapper.find( '.botiga-dashboard-tab-content[data-tab-content-id="'+ to +'"]' ).addClass( 'active' );
+					tabContentWrapper.find( '> .botiga-dashboard-tab-content' ).removeClass( 'active' );
+					tabContentWrapper.find( '> .botiga-dashboard-tab-content[data-tab-content-id="'+ to +'"]' ).addClass( 'active' );
 				} );
 			});
 
