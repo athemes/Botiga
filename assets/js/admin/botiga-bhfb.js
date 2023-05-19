@@ -92,20 +92,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     customizeNavigation: function customizeNavigation() {
       if (typeof wp.customize.section('botiga_section_fb_wrapper') !== 'undefined') {
         // Navigate directly to the header builder when we click on the main panel item 'Header'
-        wp.customize.panel('botiga_panel_header').expanded.bind(function (isExpanded) {
-          if (isExpanded) {
-            wp.customize.section('botiga_section_hb_wrapper').focus();
+        $('#accordion-panel-botiga_panel_header').on('click keyup', function (e) {
+          if (e.keyCode && e.keyCode !== 13) {
+            return false;
           }
+
+          e.preventDefault();
+          wp.customize.section('botiga_section_hb_wrapper').focus();
         }); // Navigate directly to the footer builder when we click on the main panel item 'Footer'
 
-        wp.customize.panel('botiga_panel_footer').expanded.bind(function (isExpanded) {
-          if (isExpanded) {
-            wp.customize.section('botiga_section_fb_wrapper').focus();
+        $('#accordion-panel-botiga_panel_footer').on('click keyup', function (e) {
+          if (e.keyCode && e.keyCode !== 13) {
+            return false;
           }
+
+          e.preventDefault();
+          wp.customize.section('botiga_section_fb_wrapper').focus();
         });
       }
 
-      var sections = ['sub-accordion-section-botiga_section_hb_presets', 'sub-accordion-section-botiga_section_hb_above_header_row', 'sub-accordion-section-botiga_section_hb_main_header_row', 'sub-accordion-section-botiga_section_hb_below_header_row', 'sub-accordion-section-botiga_section_hb_mobile_offcanvas', 'sub-accordion-section-botiga_section_hb_component__logo', 'sub-accordion-section-botiga_section_hb_component__search', 'sub-accordion-section-botiga_section_hb_component__social', 'sub-accordion-section-botiga_section_hb_component__menu', 'sub-accordion-section-botiga_section_hb_component__secondary_menu', 'sub-accordion-section-botiga_section_hb_component__contact_info', 'sub-accordion-section-botiga_section_hb_component__button', 'sub-accordion-section-botiga_section_hb_component__button2', 'sub-accordion-section-botiga_section_hb_component__html', 'sub-accordion-section-botiga_section_hb_component__html2', 'sub-accordion-section-botiga_section_hb_component__shortcode', 'sub-accordion-section-botiga_section_hb_component__login_register', 'sub-accordion-section-botiga_section_hb_component__woo_icons', 'sub-accordion-section-botiga_section_hb_component__pll_switcher', 'sub-accordion-section-botiga_section_hb_component__wpml_switcher', 'sub-accordion-section-botiga_section_hb_component__mobile_offcanvas_menu', 'sub-accordion-section-botiga_section_hb_component__mobile_hamburger', // Footer
+      var sections = ['sub-accordion-section-botiga_section_hb_presets', 'sub-accordion-section-botiga_section_hb_above_header_row', 'sub-accordion-section-botiga_section_hb_main_header_row', 'sub-accordion-section-botiga_section_hb_below_header_row', 'sub-accordion-section-botiga_section_hb_mobile_offcanvas', 'sub-accordion-section-header_image', 'sub-accordion-section-botiga_section_hb_component__logo', 'sub-accordion-section-botiga_section_hb_component__search', 'sub-accordion-section-botiga_section_hb_component__social', 'sub-accordion-section-botiga_section_hb_component__menu', 'sub-accordion-section-botiga_section_hb_component__secondary_menu', 'sub-accordion-section-botiga_section_hb_component__contact_info', 'sub-accordion-section-botiga_section_hb_component__button', 'sub-accordion-section-botiga_section_hb_component__button2', 'sub-accordion-section-botiga_section_hb_component__html', 'sub-accordion-section-botiga_section_hb_component__html2', 'sub-accordion-section-botiga_section_hb_component__shortcode', 'sub-accordion-section-botiga_section_hb_component__login_register', 'sub-accordion-section-botiga_section_hb_component__woo_icons', 'sub-accordion-section-botiga_section_hb_component__pll_switcher', 'sub-accordion-section-botiga_section_hb_component__wpml_switcher', 'sub-accordion-section-botiga_section_hb_component__mobile_offcanvas_menu', 'sub-accordion-section-botiga_section_hb_component__mobile_hamburger', // Footer
       'sub-accordion-section-botiga_section_fb_above_footer_row', 'sub-accordion-section-botiga_section_fb_main_footer_row', 'sub-accordion-section-botiga_section_fb_below_footer_row', 'sub-accordion-section-botiga_section_fb_component__footer_menu', 'sub-accordion-section-botiga_section_fb_component__copyright', 'sub-accordion-section-botiga_section_fb_component__social', 'sub-accordion-section-botiga_section_fb_component__button', 'sub-accordion-section-botiga_section_fb_component__button2', 'sub-accordion-section-botiga_section_fb_component__html', 'sub-accordion-section-botiga_section_fb_component__html2', 'sub-accordion-section-botiga_section_fb_component__shortcode', 'sub-accordion-section-botiga_section_fb_component__widget1', 'sub-accordion-section-botiga_section_fb_component__widget2', 'sub-accordion-section-botiga_section_fb_component__widget3', 'sub-accordion-section-botiga_section_fb_component__widget4']; // Append columns to the sections array.
 
       var rows = ['above', 'main', 'below'];
@@ -124,38 +130,49 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         current_section_id = $('.control-section.open').attr('id');
       });
       $(document).on('click keydown', '.customize-section-back', function (e) {
-        if (sections.includes(current_section_id)) {// header columns.
-          // if( current_section_id.indexOf( 'above_header_row_column' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_hb_above_header_row' ).focus();
-          //     return false;
-          // }
-          // if( current_section_id.indexOf( 'main_header_row_column' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_hb_main_header_row' ).focus();
-          //     return false;
-          // }
-          // if( current_section_id.indexOf( 'below_header_row_column' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_hb_below_header_row' ).focus();
-          //     return false;
-          // }
-          // // footer columns.
-          // if( current_section_id.indexOf( 'above_footer_row_column' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_fb_above_footer_row' ).focus();
-          //     return false;
-          // }
-          // if( current_section_id.indexOf( 'main_footer_row_column' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_fb_main_footer_row' ).focus();
-          //     return false;
-          // }
-          // if( current_section_id.indexOf( 'below_footer_row_column' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_fb_below_footer_row' ).focus();
-          //     return false;
-          // }
-          // header/footer row and components.
-          // if( current_section_id.indexOf( '_hb_' ) !== -1 || current_section_id.indexOf( '_header_' ) !== -1 ) {
-          //     wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
-          // } else {
-          //     wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
-          // }
+        if (e.keyCode && e.keyCode !== 13 && e.keyCode !== 27) {
+          return false;
+        }
+
+        if (sections.includes(current_section_id)) {
+          // header columns.
+          if (current_section_id.indexOf('above_header_row_column') !== -1) {
+            wp.customize.section('botiga_section_hb_above_header_row').focus();
+            return false;
+          }
+
+          if (current_section_id.indexOf('main_header_row_column') !== -1) {
+            wp.customize.section('botiga_section_hb_main_header_row').focus();
+            return false;
+          }
+
+          if (current_section_id.indexOf('below_header_row_column') !== -1) {
+            wp.customize.section('botiga_section_hb_below_header_row').focus();
+            return false;
+          } // footer columns.
+
+
+          if (current_section_id.indexOf('above_footer_row_column') !== -1) {
+            wp.customize.section('botiga_section_fb_above_footer_row').focus();
+            return false;
+          }
+
+          if (current_section_id.indexOf('main_footer_row_column') !== -1) {
+            wp.customize.section('botiga_section_fb_main_footer_row').focus();
+            return false;
+          }
+
+          if (current_section_id.indexOf('below_footer_row_column') !== -1) {
+            wp.customize.section('botiga_section_fb_below_footer_row').focus();
+            return false;
+          } // header/footer row and components.
+
+
+          if (current_section_id.indexOf('_hb_') !== -1 || current_section_id.indexOf('_header_') !== -1 || current_section_id.indexOf('header_image') !== -1) {
+            wp.customize.section('botiga_section_hb_wrapper').focus();
+          } else {
+            wp.customize.section('botiga_section_fb_wrapper').focus();
+          }
         }
       });
     },
@@ -370,6 +387,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.builderGridContent();
       });
       $('#customize-preview iframe').on('mouseup', function (e) {
+        if (!_this.currentBuilder) {
+          return false;
+        }
+
         _this.closeElementsPopup(e);
       });
       $(document).on('mouseup', function (e) {
@@ -900,7 +921,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     showHideBuilder: function showHideBuilder() {
       var self = this;
       var sections = [// Header
-      'botiga_section_hb_wrapper', 'botiga_section_hb_presets', 'botiga_section_hb_above_header_row', 'botiga_section_hb_main_header_row', 'botiga_section_hb_below_header_row', 'botiga_section_hb_mobile_offcanvas', 'botiga_section_hb_component__logo', 'botiga_section_hb_component__search', 'botiga_section_hb_component__social', 'botiga_section_hb_component__menu', 'botiga_section_hb_component__secondary_menu', 'botiga_section_hb_component__contact_info', 'botiga_section_hb_component__button', 'botiga_section_hb_component__button2', 'botiga_section_hb_component__html', 'botiga_section_hb_component__html2', 'botiga_section_hb_component__shortcode', 'botiga_section_hb_component__login_register', 'botiga_section_hb_component__woo_icons', 'botiga_section_hb_component__pll_switcher', 'botiga_section_hb_component__wpml_switcher', 'botiga_section_hb_component__mobile_offcanvas_menu', 'botiga_section_hb_component__mobile_hamburger', // Footer
+      'botiga_section_hb_wrapper', 'botiga_section_hb_presets', 'botiga_section_hb_above_header_row', 'botiga_section_hb_main_header_row', 'botiga_section_hb_below_header_row', 'botiga_section_hb_mobile_offcanvas', 'header_image', 'botiga_section_hb_component__logo', 'botiga_section_hb_component__search', 'botiga_section_hb_component__social', 'botiga_section_hb_component__menu', 'botiga_section_hb_component__secondary_menu', 'botiga_section_hb_component__contact_info', 'botiga_section_hb_component__button', 'botiga_section_hb_component__button2', 'botiga_section_hb_component__html', 'botiga_section_hb_component__html2', 'botiga_section_hb_component__shortcode', 'botiga_section_hb_component__login_register', 'botiga_section_hb_component__woo_icons', 'botiga_section_hb_component__pll_switcher', 'botiga_section_hb_component__wpml_switcher', 'botiga_section_hb_component__mobile_offcanvas_menu', 'botiga_section_hb_component__mobile_hamburger', // Footer
       'botiga_section_fb_wrapper', 'botiga_section_fb_above_footer_row', 'botiga_section_fb_main_footer_row', 'botiga_section_fb_below_footer_row', 'botiga_section_fb_component__social', 'botiga_section_fb_component__footer_menu', 'botiga_section_fb_component__copyright', 'botiga_section_fb_component__button', 'botiga_section_fb_component__button2', 'botiga_section_fb_component__html', 'botiga_section_fb_component__html2', 'botiga_section_fb_component__shortcode', 'botiga_section_fb_component__widget1', 'botiga_section_fb_component__widget2', 'botiga_section_fb_component__widget3', 'botiga_section_fb_component__widget4']; // Append columns to the sections array.
 
       var rows = ['above', 'main', 'below'];
@@ -917,7 +938,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       sections.forEach(function (section) {
         if (typeof wp.customize.section(section) !== 'undefined') {
           wp.customize.section(section).expanded.bind(function (is_active) {
-            console.log(222);
             self.currentBuilder = self.getCurrentBuilderByComponent(section);
             self.currentBuilderType = self.currentBuilder.hasClass('botiga-bhfb-header') ? 'header' : 'footer';
 
@@ -934,7 +954,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               self.builderGridContent(); // Update available components.
 
               if (section === 'botiga_section_hb_wrapper' || section === 'botiga_section_fb_wrapper') {
-                $('.botiga-bhfb-' + self.currentBuilderType).find('.botiga-bhfb-above-row .botiga-bhfb-area').trigger('click');
+                // $( '.botiga-bhfb-' + self.currentBuilderType ).find( '.botiga-bhfb-above-row .botiga-bhfb-area' ).trigger( 'click' );
+                self.updateAvailableComponents();
                 setTimeout(function () {
                   $('.botiga-bhfb-elements').removeClass('show');
                 }, 200);
@@ -959,7 +980,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, 'fast');
     },
     getCurrentBuilderByComponent: function getCurrentBuilderByComponent(component) {
-      if (component.indexOf('_hb_') !== -1 || component.indexOf('_header_') !== -1) {
+      if (component.indexOf('_hb_') !== -1 || component.indexOf('_header_') !== -1 || component.indexOf('header_image') !== -1) {
         return $('.botiga-bhfb-header');
       } else if (component.indexOf('_fb_') !== -1 || component.indexOf('_footer_') !== -1) {
         return $('.botiga-bhfb-footer');
