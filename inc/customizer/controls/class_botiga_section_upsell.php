@@ -35,6 +35,9 @@ class Botiga_Section_Upsell extends WP_Customize_Section {
 				{{ data.title }}
 				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this section' ); ?></span>
                 <span class="botiga-pro-badge"><?php echo esc_html__( 'PRO', 'botiga' ); ?></span>
+				<span class="botiga-pro-lock-icon">
+					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/pro-lock.svg" loading="lazy" alt="<?php echo esc_attr__( 'Botiga Pro', 'botiga' ); ?>" />
+				</span>
 			</h3>
 			<ul class="accordion-section-content">
 				<li class="customize-section-description-container section-meta <# if ( data.description_hidden ) { #>customize-info<# } #>">

@@ -26,9 +26,9 @@ if ( ! has_action('botiga_pro_license_form' ) ) {
             <div class="botiga-dashboard-card-body">
 
                 <div class="botiga-dashboard-row">
-                    <div class="botiga-dashboard-column botiga-dashboard-column-3">
+                    <div class="botiga-dashboard-column botiga-dashboard-column-2">
 
-                        <nav class="botiga-dashboard-tabs-nav botiga-dashboard-tabs-nav-no-negative-margin" data-tab-wrapper-id="settings-tab">
+                        <nav class="botiga-dashboard-tabs-nav botiga-dashboard-tabs-nav-vertical botiga-dashboard-tabs-nav-with-icons botiga-dashboard-tabs-nav-no-negative-margin" data-tab-wrapper-id="settings-tab">
                             <ul>
                                 <?php foreach ( $this->settings['settings'] as $tab_id => $tab_title ) : 
                                     $current_tab = (isset($_GET['current_tab'])) ? sanitize_text_field(wp_unslash($_GET['current_tab'])) : key(array_slice($this->settings['settings'], 0, 1)); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -38,6 +38,7 @@ if ( ! has_action('botiga_pro_license_form' ) ) {
 
                                     <li class="botiga-dashboard-tabs-nav-item<?php echo esc_attr( $tab_active ); ?>">
                                         <a href="#" class="botiga-dashboard-tabs-nav-link" data-tab-to="settings-tab-<?php echo esc_attr( $tab_id ); ?>">
+                                            <?php echo botiga_dashboard_get_setting_icon( $tab_id ); ?>
                                             <?php echo esc_html( $tab_title ); ?>
                                         </a>
                                     </li>
@@ -47,7 +48,7 @@ if ( ! has_action('botiga_pro_license_form' ) ) {
                         </nav>
 
                     </div>
-                    <div class="botiga-dashboard-column botiga-dashboard-column-9">
+                    <div class="botiga-dashboard-column botiga-dashboard-column-10">
 
                         <?php 
 						$current_tab = ( isset( $_GET['current_tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['current_tab'] ) ) : '';
