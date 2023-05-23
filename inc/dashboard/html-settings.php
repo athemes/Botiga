@@ -14,15 +14,11 @@ if  ( empty( $this->settings['settings'] ) ) {
 	return;
 }
 
-if ( ! has_action('botiga_pro_license_form' ) ) {
-    unset( $this->settings[ 'settings' ][ 'general' ] );
-}
-
 ?>
 
 <div class="botiga-dashboard-row">
     <div class="botiga-dashboard-column">
-        <div class="botiga-dashboard-card botiga-dashboard-card-top-spacing">
+        <div class="botiga-dashboard-card botiga-dashboard-card-top-spacing botiga-dashboard-card-tabs-divider">
             <div class="botiga-dashboard-card-body">
 
                 <div class="botiga-dashboard-row">

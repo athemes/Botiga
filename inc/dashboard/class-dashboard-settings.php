@@ -23,6 +23,7 @@ function botiga_dashboard_settings()
 	$settings['starter_plugin_slug'] = 'athemes-starter-sites';
 	$settings['starter_plugin_path'] = 'athemes-starter-sites/athemes-starter-sites.php';
 	$settings['has_pro']             = false;
+	$settings['website_link']        = 'https://athemes.com/';
 
 	//
 	// Hero.
@@ -54,6 +55,11 @@ function botiga_dashboard_settings()
 	//
 	$settings['review_link']       = 'https://wordpress.org/support/theme/botiga/reviews/';
 	$settings['suggest_idea_link'] = 'https://athemes.com/feature-request/';
+
+	//
+	// Knowledge Base.
+	//
+	$settings['knowledge_base_link'] = 'https://docs.athemes.com/collection/318-botiga';
 
 	//
 	// Support.
@@ -177,7 +183,7 @@ function botiga_dashboard_settings()
 
 	$settings['features'][] = array(
 		'type'       => 'free',
-		'title'      => esc_html__('Change Site Title or Logo', 'botiga'),
+		'title'      => esc_html__('Site Title and Logo', 'botiga'),
 		'desc'       => esc_html__('Set the title and upload logo.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[control]', 'blogname', admin_url('customize.php')),

@@ -39,9 +39,12 @@ class Botiga_Dashboard
         add_action('admin_menu', array($this, 'add_menu_page'));
         add_action('admin_notices', array($this, 'html_notice'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
-
+        
         add_action('wp_ajax_botiga_plugin', array($this, 'ajax_plugin'));
         add_action('wp_ajax_botiga_dismissed_handler', array($this, 'ajax_dismissed_handler'));
+
+        add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'botiga_module_activation_handler' ) );
+        add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'botiga_module_activation_all_handler' ) );
 
         add_action('switch_theme', array($this, 'reset_notices'));
         add_action('after_switch_theme', array($this, 'reset_notices'));
@@ -90,8 +93,10 @@ class Botiga_Dashboard
 
         wp_localize_script('botiga-dashboard', 'botiga_dashboard', array(
             'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('nonce'),
+            'nonce' => wp_create_nonce( 'nonce-bt-dashboard' ),
             'i18n' => array(
+                'activate' => esc_html__('Activate', 'botiga'),
+                'deactivate' => esc_html__('Deactivate', 'botiga'),
                 'installing' => esc_html__('Installing...', 'botiga'),
                 'activating' => esc_html__('Activating...', 'botiga'),
                 'deactivating' => esc_html__('Deactivating...', 'botiga'),
@@ -261,17 +266,15 @@ class Botiga_Dashboard
     /**
      * Ajax plugin.
      */
-    public function ajax_plugin()
-    {
-
-        check_ajax_referer('nonce', 'nonce');
+    public function ajax_plugin() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
 
         $plugin_type = (isset($_POST['type'])) ? sanitize_text_field(wp_unslash($_POST['type'])) : '';
         $plugin_slug = (isset($_POST['slug'])) ? sanitize_text_field(wp_unslash($_POST['slug'])) : '';
         $plugin_path = (isset($_POST['path'])) ? sanitize_text_field(wp_unslash($_POST['path'])) : '';
 
-        if (!current_user_can('install_plugins') || empty($plugin_slug) || empty($plugin_type)) {
-            wp_send_json_error(esc_html__('Insufficient permissions to install the plugin.', 'botiga'));
+        if ( ! current_user_can('install_plugins') || empty($plugin_slug) || empty($plugin_type) ) {
+            wp_send_json_error( esc_html__( 'Insufficient permissions to install the plugin.', 'botiga' ) );
         }
 
         if ($plugin_type === 'install' || $plugin_type === 'activate') {
@@ -302,16 +305,13 @@ class Botiga_Dashboard
         }
 
         wp_send_json_error(esc_html__('Failed to initialize or activate importer plugin.', 'botiga'));
-
     }
 
     /**
      * Dismissed handler
      */
-    public function ajax_dismissed_handler()
-    {
-
-        check_ajax_referer('nonce', 'nonce');
+    public function ajax_dismissed_handler() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
 
         if (isset($_POST['notice'])) {
             set_transient(sanitize_text_field(wp_unslash($_POST['notice'])), true, 0);
@@ -325,9 +325,62 @@ class Botiga_Dashboard
     /**
      * Purified from the database information about notification.
      */
-    public function reset_notices()
-    {
+    public function reset_notices() {
         delete_transient(sprintf('%s_hero_notice', get_template()));
+    }
+
+    /**
+     * Activate/Deactivate Module Ajax
+     */
+    public function botiga_module_activation_handler() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
+
+        if( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error();
+        }
+
+        $module   = ( isset( $_POST[ 'module' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['module'] ) ) : '';
+        $activate = ( isset( $_POST[ 'activate' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['activate'] ) ) : '';
+
+        // Convert string to boolean
+        $activate = ( $activate === 'true' ) ? true : false;
+
+        if ( empty( $module ) ) {
+            wp_send_json_error();
+        }
+
+        $modules = get_option( 'botiga-modules', array() );
+        $modules[ $module ] = $activate;
+
+        update_option( 'botiga-modules', $modules );
+
+        wp_send_json_success();
+    }
+
+    /**
+     * Activate/Deactivate All Modules Ajax
+     */
+    public function botiga_module_activation_all_handler() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
+
+        if( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error();
+        }
+
+        $activate = ( isset( $_POST[ 'activate' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['activate'] ) ) : '';
+
+        // Convert string to boolean
+        $activate = ( $activate === 'true' ) ? true : false;
+
+        $modules = get_option( 'botiga-modules', array() );
+
+        foreach( $modules as $module_id => $is_enabled ) {
+            $modules[ $module_id ] = $activate;
+        }
+
+        update_option( 'botiga-modules', $modules );
+
+        wp_send_json_success();
     }
 
     /**
@@ -337,7 +390,7 @@ class Botiga_Dashboard
 		?>
       	<div class="botiga-dashboard botiga-dashboard-wrap">
 			<div class="botiga-dashboard-top-bar">
-				<a href="#" class="botiga-dashboard-top-bar-logo">
+				<a href="<?php echo esc_url($this->settings['upgrade_pro']); ?>" class="botiga-dashboard-top-bar-logo" target="_blank">
 					<svg width="96" height="24" viewBox="0 0 96 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M23.4693 1.32313L8.45381 14.3107L0.67962 4.82163L23.4693 1.32313Z" fill="#335EEA"/>
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M23.2942 1.17329L8.23868 14.112L16.0129 23.601L23.2942 1.17329Z" fill="#BECCF9"/>
@@ -347,13 +400,17 @@ class Botiga_Dashboard
 				<div class="botiga-dashboard-top-bar-infos">
 					<div class="botiga-dashboard-top-bar-info-item">
 						<div class="botiga-dashboard-theme-version">
-							<strong>2.0.7</strong>
-							<span class="botiga-dashboard-badge">FREE</span>
+							<strong><?php echo ( ! $this->settings[ 'has_pro' ] ) ? BOTIGA_VERSION : BOTIGA_PRO_VERSION; ?></strong>
+							<span class="botiga-dashboard-badge<?php echo ( $this->settings[ 'has_pro' ] ) ? ' botiga-dashboard-badge-pro' : ''; ?>">
+                                <?php echo ( ! $this->settings[ 'has_pro' ] ) ? esc_html__( 'FREE', 'botiga' ) : esc_html__( 'PRO', 'botiga' ); ?>
+                            </span>
 						</div>
 					</div>
 					<div class="botiga-dashboard-top-bar-info-item">
-						<a href="#" class="botiga-dashboard-theme-website" target="_blank">
-							Website
+                        <?php $link = $this->settings[ 'has_pro' ] ? $this->settings['website_link'] : $this->settings['upgrade_pro']; ?>
+
+						<a href="<?php echo esc_url( $link ); ?>" class="botiga-dashboard-theme-website" target="_blank">
+							<?php echo esc_html__( 'Website', 'botiga' ); ?>
 							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6 2.40002H7.20002L8.00002 4.00002H11.264L6.39202 8.88002L7.52002 10.008L12 5.53602V8.00002L13.6 8.80002V2.40002ZM9.60002 9.60002V12H4.00002V6.40002H7.20002L8.80002 4.80002H2.40002V13.6H11.2V8.00002L9.60002 9.60002Z" fill="#3858E9"/>
 							</svg>
@@ -365,7 +422,7 @@ class Botiga_Dashboard
 			<?php require get_template_directory() . '/inc/dashboard/html-hero.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
         
 			<div class="botiga-dashboard-container">
-				<div class="botiga-dashboard-row bt-p-relative">
+				<div class="botiga-dashboard-row bt-p-relative bt-zindex-2">
 					<div class="botiga-dashboard-column">
 						<?php require get_template_directory() . '/inc/dashboard/html-tabs-nav-items.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
 					</div>
@@ -373,10 +430,10 @@ class Botiga_Dashboard
 				<div class="botiga-dashboard-row">
 					<div class="botiga-dashboard-column">
 						<?php 
-						$section = ( isset( $_GET['section'] ) ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
+						$section = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : '';
 
 						foreach( $this->settings[ 'tabs' ] as $tab_id => $tab_title ) : 
-							$tab_active = (($section && $section === $tab_id) || (!$section && $tab_id === 'home')) ? ' active' : '';
+							$tab_active = (($tab && $tab === $tab_id) || (!$section && $tab_id === 'home')) ? ' active' : '';
 
 							?>	
                             <div class="botiga-dashboard-tab-content-wrapper" data-tab-wrapper-id="main">					
