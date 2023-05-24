@@ -9,6 +9,14 @@
 	flex-basis: 100%;
 }
 
+@media(min-width: 768px) {
+	.botiga-dashboard-column {
+		&.botiga-dashboard-column-4 {
+			flex-basis: calc( 50% - 10px );
+		}
+	}
+}
+
 @media(min-width: 1025px) {
 	.botiga-dashboard-column {
 		&.botiga-dashboard-column-2 {

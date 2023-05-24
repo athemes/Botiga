@@ -1,5 +1,6 @@
 /* Hide Notices */
 #wpbody-content {
+	padding-bottom: 25px;
 	.notice {
 		display: none !important;
 	}
@@ -210,6 +211,8 @@
 }
 
 .botiga-dashboard-link {
+	display: inline-flex;
+	align-items: center;
 	color: #757575;
 	text-decoration: none;
 	transition: ease color 300ms, ease opacity 300ms;
@@ -232,6 +235,12 @@
 	&:active {
 		color: #3858E9;
 		opacity: 0.7;
+	}
+
+	&.loading {
+		outline: none;
+		text-decoration: none;
+		box-shadow: none;
 	}
 }
 
@@ -391,6 +400,39 @@
 			margin-left: 5px;
 			font-size: 9px;
 			line-height: 10px;
+		}
+	}
+
+	.botiga-dashboard-theme-notifications {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 22px;
+		height: 22px;
+		border: 1px solid #DFDFDF;
+		border-radius: 35px;
+
+		.botiga-dashboard-notifications-count {
+			position: absolute;
+			top: -6px;
+			right: -5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 13px;
+			height: 13px;
+			color: #FFF;
+			background-color: #FA1212;
+			border-radius: 35px;
+			font-size: 8px;
+			line-height: 1;
+		}
+
+		&.read {
+			.botiga-dashboard-notifications-count {
+				display: none;
+			}
 		}
 	}
 

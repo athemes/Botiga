@@ -104,9 +104,86 @@ function botiga_dashboard_settings()
 	//
 	// Settings.
 	//
-	$settings['settings']  = array(
+	$settings['settings'] = array(
 		'general'     => esc_html__('General', 'botiga'),
 		'performance' => esc_html__('Performance', 'botiga'),
+	);
+
+	//
+	// Notifications.
+	//
+	$settings['notifications'] = array();
+
+	// Version 2.1.0
+	$settings['notifications'][] = array(
+		/* Translators: 1. date */
+		'date'  => sprintf( __( 'May %s', 'botiga' ), '25, 2023' ),
+		'label' => 'added',
+		'title' => __( 'Lorem ipsum dolor sit a met.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'Lorem ipsum dolor sit a met. Lorem ipsum dolor sit a met.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'fixed',
+		'title' => __( 'Lorem ipsum dolor sit a met.', 'botiga' )
+	);
+	
+	// Version 2.0.8
+	$settings['notifications'][] = array(
+		/* Translators: 1. date */
+		'date'  => sprintf( __( 'April %s (Version 2.0.8)', 'botiga' ), '27, 2023' ),
+		'label' => 'added',
+		'title' => __( 'New option to \'Hide Page Title\' in the Blog Archives customizer settings.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'Removed Botiga metabox from the page that\'s defined as the \'Blog\' page.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'Improvement to headings SEO outline structure from single product related products.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'fixed',
+		'title' => __( 'Single Product Gallery: Some layouts with no pagination in the thumbnails.', 'botiga' )
+	);
+
+	// Version 2.0.7
+	$settings['notifications'][] = array(
+		/* Translators: 1. date */
+		'date'  => sprintf( __( 'April %s (Version 2.0.7)', 'botiga' ), '12, 2023' ),
+		'label' => 'added',
+		'title' => __( 'New product card button width option (auto or full-width).', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'added',
+		'title' => __( 'Single Product: New option to hide title on breadcrumbs.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'Cross Sell Carousel: Allow 1, 2, 3, 4, 5, 6 columns in the JS code.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'Improvements to admin block editor layout appearance to be more close to frontend layout.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'WCAG improvements.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'changed',
+		'title' => __( 'Automatic focus on the search input when you click on the search icon.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'fixed',
+		'title' => __( 'Customizer Adobe Typekit Control: PHP Notice.', 'botiga' )
+	);
+	$settings['notifications'][] = array(
+		'label' => 'fixed',
+		'title' => __( 'Global styles (customizer) are overriding the block level styles.', 'botiga' )
 	);
 
 	//
@@ -344,7 +421,7 @@ function botiga_dashboard_settings()
 
 	$settings['features'][] = array(
 		'type'       => 'pro',
-		'title'      => esc_html__('More Single Product Gallery Styles', 'botiga'),
+		'title'      => esc_html__('Single Product Gallery Styles', 'botiga'),
 		'desc'       => esc_html__('Set the gallery slideshow layout and more.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_layout'), admin_url('customize.php')),
@@ -525,7 +602,7 @@ function botiga_dashboard_settings()
 	$settings['features'][] = array(
 		'module'     => 'sticky-add-to-cart',
 		'type'       => 'pro',
-		'title'      => esc_html__('Single Product Sticky Add to Cart', 'botiga'),
+		'title'      => esc_html__('Product Sticky Add to Cart', 'botiga'),
 		'desc'       => esc_html__('Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_sticky_add_to_cart'), admin_url('customize.php')),
@@ -535,7 +612,7 @@ function botiga_dashboard_settings()
 	$settings['features'][] = array(
 		'module'     => 'advanced-reviews',
 		'type'       => 'pro',
-		'title'      => esc_html__('Single Product Advanced Reviews', 'botiga'),
+		'title'      => esc_html__('Product Advanced Reviews', 'botiga'),
 		'desc'       => esc_html__('Replace the default WooCommerce reviews workflow and style with a modern and intuitive star rating reviews.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product', 'control' => 'customize-control-accordion_single_product_reviews_advanced'), admin_url('customize.php')),
@@ -590,6 +667,26 @@ function botiga_dashboard_settings()
 	return $settings;
 }
 add_filter('botiga_dashboard_settings', 'botiga_dashboard_settings');
+
+/**
+ * Get all modules ids
+ * 
+ */
+function botiga_get_modules_ids() {
+	$settings = botiga_dashboard_settings();
+
+	$modules = array();
+
+	foreach ( $settings[ 'features' ] as $feature ) {
+		if( ! isset( $feature[ 'module' ] ) ) {
+			continue;
+		}
+
+		$modules[] = $feature[ 'module' ];
+	}
+	
+	return $modules;
+}
 
 /**
  * Demos Settings
@@ -701,4 +798,29 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 			),				
 		)
 	);
+}
+
+/**
+ * Get dashboard notifications count
+ * 
+ */
+function botiga_dashboard_get_notifications_count( $notifications ) {
+	$notifications_count = 0;
+	$flag                = false;
+	$date_flag           = 0;
+	foreach( $notifications as $notification ) {
+		if( isset( $notification[ 'date' ] ) ) {
+			$date_flag++;
+		}
+
+		if( $date_flag > 1 ) {
+			$flag = true;
+		}
+
+		if( ! $flag ) {
+			$notifications_count++;
+		}
+	}
+
+	return $notifications_count;
 }

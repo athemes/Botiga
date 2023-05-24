@@ -106,6 +106,13 @@
       flex-basis: 100%;
 }
 
+@media (min-width: 768px) {
+  .botiga-dashboard-column.botiga-dashboard-column-4 {
+    -ms-flex-preferred-size: calc( 50% - 10px);
+        flex-basis: calc( 50% - 10px);
+  }
+}
+
 @media (min-width: 1025px) {
   .botiga-dashboard-column.botiga-dashboard-column-2 {
     -ms-flex-preferred-size: calc( 16.6666% - 10px);
@@ -145,6 +152,10 @@
 }
 
 /* Hide Notices */
+#wpbody-content {
+  padding-bottom: 25px;
+}
+
 #wpbody-content .notice {
   display: none !important;
 }
@@ -370,6 +381,12 @@
 }
 
 .botiga-dashboard-link {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #757575;
   text-decoration: none;
   -webkit-transition: ease color 300ms, ease opacity 300ms;
@@ -394,6 +411,13 @@
 .botiga-dashboard-link:hover, .botiga-dashboard-link:focus, .botiga-dashboard-link:active {
   color: #3858E9;
   opacity: 0.7;
+}
+
+.botiga-dashboard-link.loading {
+  outline: none;
+  text-decoration: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .botiga-dashboard-external-link {
@@ -575,6 +599,49 @@
   margin-left: 5px;
   font-size: 9px;
   line-height: 10px;
+}
+
+.botiga-dashboard-top-bar .botiga-dashboard-theme-notifications {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #DFDFDF;
+  border-radius: 35px;
+}
+
+.botiga-dashboard-top-bar .botiga-dashboard-theme-notifications .botiga-dashboard-notifications-count {
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 13px;
+  height: 13px;
+  color: #FFF;
+  background-color: #FA1212;
+  border-radius: 35px;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.botiga-dashboard-top-bar .botiga-dashboard-theme-notifications.read .botiga-dashboard-notifications-count {
+  display: none;
 }
 
 .botiga-dashboard-top-bar .botiga-dashboard-theme-website {
@@ -837,6 +904,173 @@
   color: #d63638;
 }
 
+/* Notifications Sidebar */
+.botiga-dashboard-notifications-sidebar {
+  position: fixed;
+  top: calc( 32px + 64px);
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  height: calc( 100vh - 92px);
+  background-color: #FFF;
+  -webkit-box-shadow: -10px 12px 14px rgba(0, 0, 0, 0.05);
+          box-shadow: -10px 12px 14px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  -webkit-transition: ease transform 300ms, ease opacity 300ms;
+  transition: ease transform 300ms, ease opacity 300ms;
+  z-index: 1000;
+}
+
+.botiga-dashboard-notifications-sidebar.opened {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.botiga-dashboard-notifications-sidebar.closing {
+  opacity: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  -webkit-transition: ease opacity 300ms;
+  transition: ease opacity 300ms;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-close:hover {
+  opacity: 0.7;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  background-color: #EAEEF2;
+  padding: 20px 22px;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-header .botiga-dashboard-notifications-sidebar-header-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #FFF;
+  border: 1px solid #EBEDEF;
+  border-radius: 35px;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-header .botiga-dashboard-notifications-sidebar-header-icon svg {
+  position: relative;
+  top: -2px;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-header .botiga-dashboard-notifications-sidebar-header-content h3 {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #3858E9;
+  margin: 0;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-header .botiga-dashboard-notifications-sidebar-header-content p {
+  font-size: 13px;
+  line-height: 18px;
+  color: #757575;
+  margin: 0;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc( 100vh - 180px);
+}
+
+/* Notifications (card) */
+.botiga-dashboard-notification .botiga-dashboard-notification-date + .botiga-dashboard-notification-label {
+  margin-top: 20px;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-date,
+.botiga-dashboard-notification .botiga-dashboard-notification-description {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  color: #757575;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-label {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 18px;
+  color: #FFF;
+  padding: 1px 10px;
+  background-color: #CCC;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-label.added {
+  background-color: #73B189;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-label.changed {
+  background-color: #F6CA45;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-label.fixed {
+  background-color: #967BE3;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-label + .botiga-dashboard-notification-title {
+  margin-top: 5px;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-title {
+  font-size: 16px;
+  line-height: 26px;
+  color: #101517;
+  margin: 0;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-title + .botiga-dashboard-notification-description {
+  margin-top: 10px;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-description {
+  margin: 0;
+}
+
+.botiga-dashboard-notification.has-date {
+  margin: 0 -20px;
+  padding: 0 20px;
+}
+
+.botiga-dashboard-notification + .botiga-dashboard-notification {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #E7E7E7;
+}
+
 /* Botiga Dashboard Hero */
 .botiga-dashboard-hero {
   position: relative;
@@ -1006,13 +1240,13 @@
 }
 
 .botiga-dashboard-feature-card .botiga-dashboard-feature-card-title {
-  padding-right: 30px;
+  padding-right: 32px;
   margin-bottom: 4px;
 }
 
 .botiga-dashboard-feature-card .botiga-dashboard-feature-card-title h3 {
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.4;
   margin: 0;
 }
 
@@ -1034,7 +1268,7 @@
 
 .botiga-dashboard-feature-card .botiga-dashboard-feature-card-link-icon {
   position: absolute;
-  top: 20px;
+  top: 23px;
   right: 20px;
   opacity: 0;
   visibility: hidden;

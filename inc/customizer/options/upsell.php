@@ -204,7 +204,7 @@ if( class_exists( 'Woocommerce' ) ) {
             $wp_customize, 
             'botiga_upsell_single_product_layout',
             array(
-                'title'         => esc_html__( 'More single product options available with Botiga Pro.', 'botiga' ),
+                'title'         => esc_html__( 'Single product options available with Botiga Pro.', 'botiga' ),
                 'features_list' => array(
                     esc_html__( 'Product swatches', 'botiga' ),
                     esc_html__( 'Advanced reviews system', 'botiga' ),
@@ -235,7 +235,7 @@ if( class_exists( 'Woocommerce' ) ) {
             $wp_customize, 
             'botiga_upsell_single_product_tabs',
             array(
-                'title'         => esc_html__( 'More single product tabs options available with Botiga Pro.', 'botiga' ),
+                'title'         => esc_html__( 'Single product tabs options available with Botiga Pro.', 'botiga' ),
                 'features_list' => array(
                     esc_html__( 'More positions to display the tabs', 'botiga' ),
                     esc_html__( '5+ layout variations', 'botiga' )

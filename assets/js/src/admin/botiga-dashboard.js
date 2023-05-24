@@ -347,8 +347,6 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 			} );
 		}
 
-
-
 		// Toggle Expand
 		const toggleExpand = $( '[data-bt-toggle-expand]' );
 		if( toggleExpand.length ) {
@@ -375,6 +373,49 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 		$( '.botiga-dashboard-sticky-wrapper' ).stick_in_parent({
 			offset_top: 54
 		});
+
+		// Notifications Sidebar
+		const $notificationsSidebar = $( '.botiga-dashboard-notifications-sidebar' );
+		if( $notificationsSidebar.length ) {
+		
+			// Open/Toggle Sidebar
+			$( '.botiga-dashboard-theme-notifications' ).on( 'click', function(e){
+				e.preventDefault();
+
+				$notificationsSidebar.toggleClass( 'opened' );
+
+				if( ! $( this ).hasClass( 'read' ) ) {
+					$.post( window.botiga_dashboard.ajax_url, {
+						action: 'botiga_notifications_read',
+						nonce: window.botiga_dashboard.nonce,
+					}, function ( response ) {
+						if( response.success ) {
+							setTimeout(function(){
+								$( '.botiga-dashboard-theme-notifications' ).addClass( 'read' );
+							}, 2000);
+						}
+					});
+				}
+			} );
+
+			$( window ).on( 'scroll', function(){
+				if( window.pageYOffset > 60 ) {
+					$notificationsSidebar.addClass( 'closing' );
+					setTimeout(function(){
+						$notificationsSidebar.removeClass( 'opened' );
+						$notificationsSidebar.removeClass( 'closing' );
+					}, 300);
+				}
+			} );
+
+			// Close Sidebar
+			$( '.botiga-dashboard-notifications-sidebar-close' ).on( 'click', function(e){
+				e.preventDefault();
+
+				$notificationsSidebar.removeClass( 'opened' );
+			} );
+
+		}
 
 	});
 
