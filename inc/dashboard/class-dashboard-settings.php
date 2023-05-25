@@ -112,79 +112,9 @@ function botiga_dashboard_settings()
 	//
 	// Notifications.
 	//
-	$settings['notifications'] = array();
-
-	// Version 2.1.0
-	$settings['notifications'][] = array(
-		/* Translators: 1. date */
-		'date'  => sprintf( __( 'May %s', 'botiga' ), '25, 2023' ),
-		'label' => 'added',
-		'title' => __( 'Lorem ipsum dolor sit a met.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'Lorem ipsum dolor sit a met. Lorem ipsum dolor sit a met.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'fixed',
-		'title' => __( 'Lorem ipsum dolor sit a met.', 'botiga' )
-	);
-	
-	// Version 2.0.8
-	$settings['notifications'][] = array(
-		/* Translators: 1. date */
-		'date'  => sprintf( __( 'April %s (Version 2.0.8)', 'botiga' ), '27, 2023' ),
-		'label' => 'added',
-		'title' => __( 'New option to \'Hide Page Title\' in the Blog Archives customizer settings.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'Removed Botiga metabox from the page that\'s defined as the \'Blog\' page.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'Improvement to headings SEO outline structure from single product related products.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'fixed',
-		'title' => __( 'Single Product Gallery: Some layouts with no pagination in the thumbnails.', 'botiga' )
-	);
-
-	// Version 2.0.7
-	$settings['notifications'][] = array(
-		/* Translators: 1. date */
-		'date'  => sprintf( __( 'April %s (Version 2.0.7)', 'botiga' ), '12, 2023' ),
-		'label' => 'added',
-		'title' => __( 'New product card button width option (auto or full-width).', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'added',
-		'title' => __( 'Single Product: New option to hide title on breadcrumbs.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'Cross Sell Carousel: Allow 1, 2, 3, 4, 5, 6 columns in the JS code.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'Improvements to admin block editor layout appearance to be more close to frontend layout.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'WCAG improvements.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'changed',
-		'title' => __( 'Automatic focus on the search input when you click on the search icon.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'fixed',
-		'title' => __( 'Customizer Adobe Typekit Control: PHP Notice.', 'botiga' )
-	);
-	$settings['notifications'][] = array(
-		'label' => 'fixed',
-		'title' => __( 'Global styles (customizer) are overriding the block level styles.', 'botiga' )
-	);
+	$notifications_response    = wp_remote_get( 'https://athemes.com/wp-json/wp/v2/changelogs?themes=7085&per_page=3' );
+	$settings['notifications'] = ! is_wp_error( $notifications_response ) || wp_remote_retrieve_response_code( $notifications_response ) === 200 ? json_decode( wp_remote_retrieve_body( $notifications_response ) ) : false;
+	$settings['notifications_tabs'] = false;
 
 	//
 	// Demos.
@@ -798,29 +728,4 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 			),				
 		)
 	);
-}
-
-/**
- * Get dashboard notifications count
- * 
- */
-function botiga_dashboard_get_notifications_count( $notifications ) {
-	$notifications_count = 0;
-	$flag                = false;
-	$date_flag           = 0;
-	foreach( $notifications as $notification ) {
-		if( isset( $notification[ 'date' ] ) ) {
-			$date_flag++;
-		}
-
-		if( $date_flag > 1 ) {
-			$flag = true;
-		}
-
-		if( ! $flag ) {
-			$notifications_count++;
-		}
-	}
-
-	return $notifications_count;
 }

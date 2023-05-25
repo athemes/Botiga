@@ -46,11 +46,6 @@ if (!defined('ABSPATH')) {
                                             <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
                                                 <?php echo esc_html__( 'Customize', 'botiga' ); ?>
                                             </a>
-                                            <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-feature-card-link-icon" target="_blank">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M17 3H9L10 5H14.08L7.99 11.1L9.4 12.51L15 6.92V10L17 11V3ZM12 12V15H5V8H9L11 6H3V17H14V10L12 12Z" fill="#757575"/>
-                                                </svg>
-                                            </a>
                                         <?php endif; ?>
                                     <?php elseif ( Botiga_Modules::is_module_active( $feature['module'] ) ) : ?>
                                         <a href="#" class="botiga-dashboard-link botiga-dashboard-link-danger botiga-dashboard-module-activation" data-module-id="<?php echo esc_attr( $feature['module'] ); ?>" data-module-activate="false">
@@ -70,6 +65,15 @@ if (!defined('ABSPATH')) {
                                                 <?php echo esc_html__( 'Customize', 'botiga' ); ?>
                                             </a>
                                         <?php endif; ?>
+                                    <?php endif; ?>
+                                    
+                                    <?php if( isset( $feature[ 'docs_link' ] ) ) : ?>
+                                        <a href="<?php echo esc_url( $feature[ 'docs_link' ] ); ?>" class="botiga-dashboard-feature-card-link-icon" title="<?php echo esc_attr__( 'Documentation', 'botiga' ); ?>" target="_blank">
+                                            <svg width="17" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="10" cy="10" r="9.5" stroke="#757575"/>
+                                                <path d="M8.79004 12.1689V11.769C8.79004 11.4559 8.82601 11.1829 8.89795 10.9502C8.96989 10.7174 9.09049 10.4995 9.25977 10.2964C9.42904 10.089 9.65755 9.87321 9.94531 9.64893C10.2415 9.41618 10.4764 9.21517 10.6499 9.0459C10.8276 8.87663 10.9546 8.70736 11.0308 8.53809C11.1112 8.36458 11.1514 8.16357 11.1514 7.93506C11.1514 7.57536 11.0286 7.30241 10.7832 7.11621C10.542 6.92578 10.2013 6.83057 9.76123 6.83057C9.37191 6.83057 9.00586 6.88558 8.66309 6.99561C8.32031 7.10563 7.98177 7.24316 7.64746 7.4082L7.12061 6.29102C7.5057 6.07943 7.92253 5.91016 8.37109 5.7832C8.82389 5.65202 9.32113 5.58643 9.86279 5.58643C10.7261 5.58643 11.3926 5.7959 11.8623 6.21484C12.3363 6.63379 12.5732 7.18604 12.5732 7.87158C12.5732 8.24821 12.514 8.57194 12.3955 8.84277C12.277 9.10938 12.1014 9.35693 11.8687 9.58545C11.6401 9.80973 11.363 10.0467 11.0371 10.2964C10.7705 10.508 10.5653 10.6921 10.4214 10.8486C10.2817 11.001 10.1844 11.1554 10.1294 11.312C10.0786 11.4686 10.0532 11.6569 10.0532 11.877V12.1689H8.79004ZM8.54883 14.2129C8.54883 13.8659 8.6377 13.6226 8.81543 13.4829C8.9974 13.339 9.21956 13.2671 9.48193 13.2671C9.73584 13.2671 9.95378 13.339 10.1357 13.4829C10.3177 13.6226 10.4087 13.8659 10.4087 14.2129C10.4087 14.5514 10.3177 14.7969 10.1357 14.9492C9.95378 15.0973 9.73584 15.1714 9.48193 15.1714C9.21956 15.1714 8.9974 15.0973 8.81543 14.9492C8.6377 14.7969 8.54883 14.5514 8.54883 14.2129Z" fill="#757575"/>
+                                            </svg>
+                                        </a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -139,11 +143,6 @@ if (!defined('ABSPATH')) {
                                                 <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
                                                     <?php echo esc_html__( 'Customize', 'botiga' ); ?>
                                                 </a>
-                                                <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-feature-card-link-icon" target="_blank">
-                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 3H9L10 5H14.08L7.99 11.1L9.4 12.51L15 6.92V10L17 11V3ZM12 12V15H5V8H9L11 6H3V17H14V10L12 12Z" fill="#757575"/>
-                                                    </svg>
-                                                </a>
                                             <?php endif; ?>
                                         <?php elseif ( Botiga_Modules::is_module_active( $feature['module'] ) ) : ?>
                                             <a href="#" class="botiga-dashboard-link botiga-dashboard-link-danger botiga-dashboard-module-activation" data-module-id="<?php echo esc_attr( $feature['module'] ); ?>" data-module-activate="false">
@@ -163,6 +162,15 @@ if (!defined('ABSPATH')) {
                                                     <?php echo esc_html__( 'Customize', 'botiga' ); ?>
                                                 </a>
                                             <?php endif; ?>
+                                        <?php endif; ?>
+
+                                        <?php if( isset( $feature[ 'docs_link' ] ) ) : ?>
+                                            <a href="<?php echo esc_url( $feature[ 'docs_link' ] ); ?>" class="botiga-dashboard-feature-card-link-icon" title="<?php echo esc_attr__( 'Documentation', 'botiga' ); ?>" target="_blank">
+                                                <svg width="17" height="17" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="10" cy="10" r="9.5" stroke="#757575"/>
+                                                    <path d="M8.79004 12.1689V11.769C8.79004 11.4559 8.82601 11.1829 8.89795 10.9502C8.96989 10.7174 9.09049 10.4995 9.25977 10.2964C9.42904 10.089 9.65755 9.87321 9.94531 9.64893C10.2415 9.41618 10.4764 9.21517 10.6499 9.0459C10.8276 8.87663 10.9546 8.70736 11.0308 8.53809C11.1112 8.36458 11.1514 8.16357 11.1514 7.93506C11.1514 7.57536 11.0286 7.30241 10.7832 7.11621C10.542 6.92578 10.2013 6.83057 9.76123 6.83057C9.37191 6.83057 9.00586 6.88558 8.66309 6.99561C8.32031 7.10563 7.98177 7.24316 7.64746 7.4082L7.12061 6.29102C7.5057 6.07943 7.92253 5.91016 8.37109 5.7832C8.82389 5.65202 9.32113 5.58643 9.86279 5.58643C10.7261 5.58643 11.3926 5.7959 11.8623 6.21484C12.3363 6.63379 12.5732 7.18604 12.5732 7.87158C12.5732 8.24821 12.514 8.57194 12.3955 8.84277C12.277 9.10938 12.1014 9.35693 11.8687 9.58545C11.6401 9.80973 11.363 10.0467 11.0371 10.2964C10.7705 10.508 10.5653 10.6921 10.4214 10.8486C10.2817 11.001 10.1844 11.1554 10.1294 11.312C10.0786 11.4686 10.0532 11.6569 10.0532 11.877V12.1689H8.79004ZM8.54883 14.2129C8.54883 13.8659 8.6377 13.6226 8.81543 13.4829C8.9974 13.339 9.21956 13.2671 9.48193 13.2671C9.73584 13.2671 9.95378 13.339 10.1357 13.4829C10.3177 13.6226 10.4087 13.8659 10.4087 14.2129C10.4087 14.5514 10.3177 14.7969 10.1357 14.9492C9.95378 15.0973 9.73584 15.1714 9.48193 15.1714C9.21956 15.1714 8.9974 15.0973 8.81543 14.9492C8.6377 14.7969 8.54883 14.5514 8.54883 14.2129Z" fill="#757575"/>
+                                                </svg>
+                                            </a>
                                         <?php endif; ?>
 
                                     <?php endif; ?>

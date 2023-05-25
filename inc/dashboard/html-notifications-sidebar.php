@@ -10,10 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if( ! isset( $this->settings[ 'notifications' ] ) ) {
-    return;
-}
-
 ?>
 
 <div class="botiga-dashboard-notifications-sidebar">
@@ -39,60 +35,124 @@ if( ! isset( $this->settings[ 'notifications' ] ) ) {
                         echo esc_html__( 'New Update', 'botiga' );
                     } ?>
                 </h3>
-                <p>
-                    <?php 
-                    if( $notification_read ) {
-                        echo esc_html__( 'Check the latest news from Botiga', 'botiga' );
-                    } else {
-                        /* Translators: 1. notifications count */
-                        echo sprintf( 
-                            esc_html__( '%s things to check now!', 'botiga' ),
-                            absint( $notifications_count )
-                        );
-                    } ?>
-                </p>
+                <p><?php echo esc_html__( 'Check the latest news from Botiga', 'botiga' ); ?></p>
             </div>
         </div>
-        <div class="botiga-dashboard-notifications-sidebar-body">
+        <?php if( $this->settings[ 'notifications_tabs' ] ) : ?>
+            <div class="botiga-dashboard-notifications-sidebar-tabs">
+                <nav class="botiga-dashboard-tabs-nav botiga-dashboard-tabs-nav-no-negative-margin" data-tab-wrapper-id="notifications-sidebar">
+                    <ul>
+                        <li class="botiga-dashboard-tabs-nav-item active">
+                            <a href="#" class="botiga-dashboard-tabs-nav-link" data-tab-to="notifications-sidebar-botiga">
+                                <?php echo esc_html__( 'Botiga', 'botiga' ); ?>
+                            </a>
+                        </li>
+                        <li class="botiga-dashboard-tabs-nav-item">
+                            <a href="#" class="botiga-dashboard-tabs-nav-link" data-tab-to="notifications-sidebar-botiga-pro">
+                                <?php echo esc_html__( 'Botiga Pro', 'botiga' ); ?>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        <?php endif; ?>
+        <div class="botiga-dashboard-notifications-sidebar-body botiga-dashboard-tab-content-wrapper" data-tab-wrapper-id="notifications-sidebar">
+            <div class="botiga-dashboard-tab-content active" data-tab-content-id="notifications-sidebar-botiga">
+                <?php 
+                
+                if( isset( $this->settings[ 'notifications' ] ) && $this->settings[ 'notifications' ] ) : 
+                    $display_version = false;
 
-            <?php foreach( $this->settings[ 'notifications' ] as $notification ) : ?>
+                    ?>
 
-                <div class="botiga-dashboard-notification<?php echo ( isset( $notification[ 'date' ] ) ) ? ' has-date' : ''; ?>">
-
-                    <?php if( isset( $notification[ 'date' ] ) ) : ?>
-                        <span class="botiga-dashboard-notification-date">
-                            <?php echo esc_html( $notification[ 'date' ] ); ?>
-                        </span>
-                    <?php endif; ?>
-                    <?php if( isset( $notification[ 'label' ] ) ) : 
-                        $label_text = '';
-                        switch ( $notification[ 'label' ] ) {
-                            case 'added':
-                                $label_text = __( 'Added', 'botiga' );
-                                break;
-
-                            case 'changed':
-                                $label_text = __( 'Changed', 'botiga' );
-                                break;
-
-                            case 'fixed':
-                                $label_text = __( 'Fixed', 'botiga' );
-                                break;                            
-                        }
-
+                    <?php foreach( $this->settings[ 'notifications' ] as $notification ) : 
+                        $date    = isset( $notification->date ) ? $notification->date : false;
+                        $version = isset( $notification->title->rendered ) ? $notification->title->rendered : false;
+                        $content = isset( $notification->content->rendered ) ? $notification->content->rendered : false;
+                        
                         ?>
-                        <span class="botiga-dashboard-notification-label <?php echo esc_attr( $notification[ 'label' ] ); ?>"><?php echo esc_html( $label_text ); ?></span>
-                    <?php endif; ?>
-                    <?php if( isset( $notification[ 'title' ] ) ) : ?>
-                        <h4 class="botiga-dashboard-notification-title"><?php echo esc_html( $notification[ 'title' ] ); ?></h4>
-                    <?php endif; ?>
-                    <?php if( isset( $notification[ 'description' ] ) ) : ?>
-                        <p class="botiga-dashboard-notification-description"><?php echo esc_html( $notification[ 'description' ] ); ?></p>
-                    <?php endif; ?>
-                </div>
 
-            <?php endforeach; ?>
-                    
+                        <div class="botiga-dashboard-notification">
+                            <?php if( $date ) : ?>
+                                <span class="botiga-dashboard-notification-date">
+                                    <?php echo esc_html( date_format( date_create( $date ), 'F j, Y' ) ); ?>
+                                    <?php if( $display_version ) : ?>
+                                        <span class="botiga-dashboard-notification-version"><?php echo sprintf( '(%s)', $version ); ?></span>
+                                    <?php endif; ?>
+                                </span>
+                            <?php endif; ?>
+                            <?php if( $content ) : ?>
+                                <div class="botiga-dashboard-notification-content">
+                                    <?php echo wp_kses_post( $content ); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php 
+                        $display_version = true;
+                    endforeach; ?>
+
+                <?php else : ?>
+
+                    <div class="botiga-dashboard-notification">
+                        <div class="botiga-dashboard-notification-content">
+                            <p class="changelog-description"><?php echo esc_html__( 'No notifications found', 'botiga' ); ?></p>
+                        </div>
+                    </div>
+
+                <?php 
+                endif; ?>
+
+            </div>
+
+            <?php if( $this->settings[ 'notifications_tabs' ] ) : ?>
+            <div class="botiga-dashboard-tab-content" data-tab-content-id="notifications-sidebar-botiga-pro">
+                <?php 
+                
+                if( isset( $this->settings[ 'notifications_pro' ] ) && $this->settings[ 'notifications_pro' ] ) : 
+                    $display_version = false;
+
+                    ?>
+
+                    <?php foreach( $this->settings[ 'notifications_pro' ] as $notification ) : 
+                        $date    = isset( $notification->date ) ? $notification->date : false;
+                        $version = isset( $notification->title->rendered ) ? $notification->title->rendered : false;
+                        $content = isset( $notification->content->rendered ) ? $notification->content->rendered : false;
+                        
+                        ?>
+
+                        <div class="botiga-dashboard-notification">
+                            <?php if( $date ) : ?>
+                                <span class="botiga-dashboard-notification-date">
+                                    <?php echo esc_html( date_format( date_create( $date ), 'F j, Y' ) ); ?>
+                                    <?php if( $display_version ) : ?>
+                                        <span class="botiga-dashboard-notification-version"><?php echo sprintf( '(%s)', $version ); ?></span>
+                                    <?php endif; ?>
+                                </span>
+                            <?php endif; ?>
+                            <?php if( $content ) : ?>
+                                <div class="botiga-dashboard-notification-content">
+                                    <?php echo wp_kses_post( $content ); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php 
+                        $display_version = true;
+                    endforeach; ?>
+
+                <?php else : ?>
+
+                    <div class="botiga-dashboard-notification">
+                        <div class="botiga-dashboard-notification-content">
+                            <p class="changelog-description"><?php echo esc_html__( 'No notifications found', 'botiga' ); ?></p>
+                        </div>
+                    </div>
+
+                <?php 
+                endif; ?>
+
+            </div>
+            <?php endif; ?>
+
         </div>
 
     </div>

@@ -612,16 +612,16 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 27px;
+  height: 27px;
   border: 1px solid #DFDFDF;
   border-radius: 35px;
 }
 
 .botiga-dashboard-top-bar .botiga-dashboard-theme-notifications .botiga-dashboard-notifications-count {
   position: absolute;
-  top: -6px;
-  right: -5px;
+  top: -8px;
+  right: -7px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -631,12 +631,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 13px;
-  height: 13px;
+  width: 16px;
+  height: 16px;
   color: #FFF;
   background-color: #FA1212;
   border-radius: 35px;
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1;
 }
 
@@ -998,76 +998,117 @@
   margin: 0;
 }
 
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-tabs {
+  position: relative;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-tabs:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: calc( 100% - 40px);
+  border-bottom: 1px solid #F0F0F1;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-tabs + .botiga-dashboard-notifications-sidebar-body {
+  max-height: calc( 100vh - 232px);
+}
+
 .botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-body {
   padding: 20px;
   overflow-y: auto;
   max-height: calc( 100vh - 180px);
 }
 
-/* Notifications (card) */
-.botiga-dashboard-notification .botiga-dashboard-notification-date + .botiga-dashboard-notification-label {
-  margin-top: 20px;
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-body::-webkit-scrollbar {
+  width: 5px;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-date,
-.botiga-dashboard-notification .botiga-dashboard-notification-description {
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-body::-webkit-scrollbar-track {
+  background: #e2e2e2;
+}
+
+.botiga-dashboard-notifications-sidebar .botiga-dashboard-notifications-sidebar-body::-webkit-scrollbar-thumb {
+  background-color: #CCC;
+}
+
+/* Notifications (card) */
+.botiga-dashboard-notification .botiga-dashboard-notification-date {
   display: block;
   font-size: 13px;
   line-height: 18px;
   color: #757575;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-label {
+.botiga-dashboard-notification .botiga-dashboard-notification-date + .botiga-dashboard-notification-content {
+  margin-top: 20px;
+}
+
+.botiga-dashboard-notification .changelog-tag {
   display: inline-block;
   font-size: 10px;
   line-height: 18px;
   color: #FFF;
-  padding: 1px 10px;
+  padding: 0px 10px;
   background-color: #CCC;
-  border-radius: 4px;
+  border-radius: 3px;
   text-transform: uppercase;
   font-weight: 600;
+  margin-bottom: 5px;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-label.added {
+.botiga-dashboard-notification .changelog-tag.changelog-added {
   background-color: #73B189;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-label.changed {
+.botiga-dashboard-notification .changelog-tag.changelog-changed {
   background-color: #F6CA45;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-label.fixed {
+.botiga-dashboard-notification .changelog-tag.changelog-fixed {
   background-color: #967BE3;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-label + .botiga-dashboard-notification-title {
+.botiga-dashboard-notification .changelog-description {
+  display: block;
+  font-size: 13px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #757575;
   margin-top: 5px;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-title {
+.botiga-dashboard-notification .botiga-dashboard-notification-content ul {
+  margin: 0;
+}
+
+.botiga-dashboard-notification .botiga-dashboard-notification-content ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   font-size: 16px;
   line-height: 26px;
+  font-weight: 600;
   color: #101517;
-  margin: 0;
 }
 
-.botiga-dashboard-notification .botiga-dashboard-notification-title + .botiga-dashboard-notification-description {
-  margin-top: 10px;
-}
-
-.botiga-dashboard-notification .botiga-dashboard-notification-description {
-  margin: 0;
-}
-
-.botiga-dashboard-notification.has-date {
-  margin: 0 -20px;
-  padding: 0 20px;
+.botiga-dashboard-notification .botiga-dashboard-notification-content ul li + li {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #E7E7E7;
 }
 
 .botiga-dashboard-notification + .botiga-dashboard-notification {
-  margin-top: 15px;
-  padding-top: 15px;
+  margin: 20px -20px 0px;
+  padding: 20px 20px 0px;
   border-top: 1px solid #E7E7E7;
 }
 
@@ -1288,6 +1329,10 @@
 
 .botiga-dashboard-feature-card .botiga-dashboard-feature-card-link-icon:hover svg path {
   fill: #3858E9;
+}
+
+.botiga-dashboard-feature-card .botiga-dashboard-feature-card-link-icon:hover svg circle {
+  stroke: #3858E9;
 }
 
 .botiga-dashboard-feature-card:hover .botiga-dashboard-feature-card-link-icon {
