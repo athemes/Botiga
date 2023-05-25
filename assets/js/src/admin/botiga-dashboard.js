@@ -139,7 +139,19 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 				}, function (response) {
 
 					if (response.success) {
-						console.log( type );
+
+						if( $button.hasClass( 'botiga-ajax-success-redirect' ) ) {
+							setTimeout(function () {
+								$button.html(window.botiga_dashboard.i18n.redirecting);
+
+								setTimeout(function () {
+									window.location = href;
+								}, 1000);
+							}, 500);
+
+							return false;
+						}
+
 						if( type === 'install' ) {
 							$button
 								.html( window.botiga_dashboard.i18n.deactivate )
