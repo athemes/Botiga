@@ -103,51 +103,6 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 
 		}
 
-		// Dashboard modals
-		var $modals = $('.botiga-dashboard-modal');
-
-		if ($modals.length) {
-
-			$modals.each(function () {
-
-				var $modal = $(this);
-				var $button = $modal.find('.botiga-dashboard-modal-button');
-				var $close = $modal.find('.botiga-dashboard-modal-close');
-				var $overlay = $modal.find('.botiga-dashboard-modal-overlay');
-
-				$button.on('click', function (e) {
-
-					e.preventDefault();
-
-					$overlay.addClass('show');
-					$body.addClass('botiga-dashboard-modal-opened');
-
-				});
-
-				$close.on('click', function (e) {
-
-					e.preventDefault();
-
-					$body.removeClass('botiga-dashboard-modal-opened');
-					$overlay.removeClass('show');
-
-				});
-
-				$overlay.on('click', function (e) {
-
-					e.preventDefault();
-
-					if (e.target.closest('.botiga-dashboard-modal-content') === null) {
-						$body.removeClass('botiga-dashboard-modal-opened');
-						$overlay.removeClass('show');
-					}
-
-				});
-
-			});
-
-		}
-
 		// Install plugin
 		var $plugin = $('.botiga-dashboard-plugin-ajax-button');
 
@@ -228,34 +183,6 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 					$button.parent().after('<div class="botiga-dashboard-hero-warning">' + window.botiga_dashboard.i18n.failed_message + '</div>');
 
 				});
-
-			});
-
-		}
-
-		// Activate Feature
-		var $activate = $('.botiga-dashboard-activate-button');
-
-		if ($activate.length) {
-
-			$activate.on('click', function (e) {
-
-				$( this ).addClass( 'loading' );
-				$(this).html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.activating);
-
-			});
-
-		}
-
-		// Deactivate Feature
-		var $deactivate = $('.botiga-dashboard-deactivate-button');
-
-		if ($deactivate.length) {
-
-			$deactivate.on('click', function (e) {
-
-				$( this ).addClass( 'loading' );
-				$(this).html('<i class="dashicons dashicons-update-alt"></i>' + window.botiga_dashboard.i18n.deactivating);
 
 			});
 
