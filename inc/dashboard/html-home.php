@@ -231,7 +231,7 @@ if (!defined('ABSPATH')) {
                         <h2><?php echo esc_html__( 'Priority support', 'botiga' ); ?></h2>
                     </div>
                     <div class="botiga-dashboard-card-body">
-                        <p><?php echo esc_html__( 'We aim to answer all priority support requests within 2-3 hours.', 'botiga' ); ?></p>
+                        <p><?php echo esc_html__( 'We aim to answer all priority support requests within 24 hours.', 'botiga' ); ?></p>
                         <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="botiga-dashboard-external-link" target="_blank">
                             <?php echo esc_html__( 'Get Premium Support With Botiga Pro', 'botiga' ); ?>
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

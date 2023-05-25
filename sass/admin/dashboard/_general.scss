@@ -213,6 +213,7 @@
 .botiga-dashboard-link {
 	display: inline-flex;
 	align-items: center;
+	font-weight: 500;
 	color: #757575;
 	text-decoration: none;
 	transition: ease color 300ms, ease opacity 300ms;
@@ -652,6 +653,16 @@
 			left: 20px;
 			width: calc( 100% - 40px );
 			border-bottom: 1px solid #F0F0F1;
+		}
+	}
+}
+
+.botiga-dashboard-sticky-wrapper {
+	.botiga-dashboard-card {
+		gap: 10px;
+
+		p {
+			color: #757575;
 		}
 	}
 }
