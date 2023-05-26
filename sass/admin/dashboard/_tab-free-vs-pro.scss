@@ -138,6 +138,15 @@
 	border-bottom: 0;
 }
 
+.botiga-dashboard-freevspro-upsell-wrapper {
+	text-align: right;
+
+	.button {
+		width: 100%;
+		max-width: 252px;
+	}
+}
+
 @media screen and (max-width: 991px) {
 	.botiga-dashboard-freevspro-table__header {
 		position: relative;

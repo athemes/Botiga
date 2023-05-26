@@ -44,7 +44,7 @@ if (!defined('ABSPATH')) {
                                     <?php if( ! isset( $feature[ 'module' ] ) ) : ?>
                                         <?php if( isset( $feature[ 'link_url' ] ) ) : ?>
                                             <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
-                                                <?php echo esc_html__( 'Customize', 'botiga' ); ?>
+                                                <?php echo esc_html( $feature['link_label'] ); ?>
                                             </a>
                                         <?php endif; ?>
                                     <?php elseif ( Botiga_Modules::is_module_active( $feature['module'] ) ) : ?>
@@ -52,8 +52,8 @@ if (!defined('ABSPATH')) {
                                             <?php echo esc_html__( 'Deactivate', 'botiga' ); ?>
                                         </a>
                                         <?php if( isset( $feature[ 'link_url' ] ) ) : ?>
-                                            <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-info botiga-dashboard-customize-link" target="_blank">
-                                                <?php echo esc_html__( 'Customize', 'botiga' ); ?>
+                                            <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
+                                                <?php echo esc_html( $feature['link_label'] ); ?>
                                             </a>
                                         <?php endif; ?>
                                     <?php else : ?>
@@ -61,8 +61,8 @@ if (!defined('ABSPATH')) {
                                             <?php echo esc_html__( 'Activate', 'botiga' ); ?>
                                         </a>
                                         <?php if( isset( $feature[ 'link_url' ] ) ) : ?>
-                                            <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-info botiga-dashboard-customize-link bt-d-none" target="_blank">
-                                                <?php echo esc_html__( 'Customize', 'botiga' ); ?>
+                                            <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link bt-d-none" target="_blank">
+                                                <?php echo esc_html( $feature['link_label'] ); ?>
                                             </a>
                                         <?php endif; ?>
                                     <?php endif; ?>
@@ -139,9 +139,12 @@ if (!defined('ABSPATH')) {
                                     <?php else : ?>
 
                                         <?php if( ! isset( $feature[ 'module' ] ) ) : ?>
-                                            <?php if( isset( $feature[ 'link_url' ] ) ) : ?>
-                                                <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
-                                                    <?php echo esc_html__( 'Customize', 'botiga' ); ?>
+                                            <?php if( isset( $feature[ 'link_url' ] ) || isset( $feature['pro_use_docs_link'] ) ) : 
+                                                $link_url = isset( $feature['pro_use_docs_link'] ) ? $feature['docs_link'] : $feature['link_url'];
+                                                
+                                                ?>
+                                                <a href="<?php echo esc_url( $link_url ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
+                                                    <?php echo esc_html( $feature['link_label'] ); ?>
                                                 </a>
                                             <?php endif; ?>
                                         <?php elseif ( Botiga_Modules::is_module_active( $feature['module'] ) ) : ?>
@@ -149,8 +152,8 @@ if (!defined('ABSPATH')) {
                                                 <?php echo esc_html__( 'Deactivate', 'botiga' ); ?>
                                             </a>
                                             <?php if( isset( $feature[ 'link_url' ] ) ) : ?>
-                                                <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-info botiga-dashboard-customize-link" target="_blank">
-                                                    <?php echo esc_html__( 'Customize', 'botiga' ); ?>
+                                                <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link" target="_blank">
+                                                    <?php echo esc_html( $feature['link_label'] ); ?>
                                                 </a>
                                             <?php endif; ?>
                                         <?php else : ?>
@@ -158,8 +161,8 @@ if (!defined('ABSPATH')) {
                                                 <?php echo esc_html__( 'Activate', 'botiga' ); ?>
                                             </a>
                                             <?php if( isset( $feature[ 'link_url' ] ) ) : ?>
-                                                <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-info botiga-dashboard-customize-link bt-d-none" target="_blank">
-                                                    <?php echo esc_html__( 'Customize', 'botiga' ); ?>
+                                                <a href="<?php echo esc_url( $feature['link_url'] ); ?>" class="botiga-dashboard-link botiga-dashboard-link-default botiga-dashboard-customize-link bt-d-none" target="_blank">
+                                                    <?php echo esc_html( $feature['link_label'] ); ?>
                                                 </a>
                                             <?php endif; ?>
                                         <?php endif; ?>
@@ -179,42 +182,6 @@ if (!defined('ABSPATH')) {
                         </div>
 
                     <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- Useful Plugins -->
-        <div class="botiga-dashboard-card">
-            <div class="botiga-dashboard-card-header bt-d-flex bt-justify-content-between bt-align-items-center">
-                <h2><?php echo esc_html__( 'Useful Plugins', 'botiga' ); ?></h2>
-            </div>
-            <div class="botiga-dashboard-card-body">
-                <div class="botiga-dashboard-row">
-
-                    <?php foreach( $this->settings[ 'plugins' ] as $plugin ) : // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound ?>
-                        <div class="botiga-dashboard-column botiga-dashboard-column-4">
-                            <div class="botiga-dashboard-feature-card">
-                                <div class="botiga-dashboard-feature-card-image botiga-dashboard-feature-card-image-rounded">
-                                    <figure>
-                                        <img src="<?php echo esc_url( $plugin[ 'icon' ] ); ?>" alt="<?php echo esc_attr( $plugin[ 'title' ] ); ?>" />
-                                    </figure>
-                                </div>
-                                <div class="botiga-dashboard-feature-card-title">
-                                    <h3><?php echo esc_html( $plugin[ 'title' ] ); ?></h3>
-                                </div>
-                                <div class="botiga-dashboard-feature-card-actions">
-                                    <?php if ('not_installed' === $this->get_plugin_status($plugin['path'])) : ?>
-                                        <a href="<?php echo esc_url(add_query_arg(array('page' => $this->settings['menu_slug'], 'section' => 'useful-plugins'), admin_url('themes.php'))); ?>" class="botiga-dashboard-link botiga-dashboard-link-info botiga-dashboard-plugin-ajax-button" data-type="install" data-path="<?php echo esc_attr($plugin['path']); ?>" data-slug="<?php echo esc_attr($plugin['slug']); ?>"><?php esc_html_e( 'Install', 'botiga' ); ?></a>
-                                    <?php elseif ('inactive' === $this->get_plugin_status($plugin['path'])) : ?>
-                                        <a href="<?php echo esc_url(add_query_arg(array('page' => $this->settings['menu_slug'], 'section' => 'useful-plugins'), admin_url('themes.php'))); ?>" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-plugin-ajax-button" data-type="activate" data-path="<?php echo esc_attr($plugin['path']); ?>" data-slug="<?php echo esc_attr($plugin['slug']); ?>"><?php esc_html_e('Activate', 'botiga'); ?></a>
-                                    <?php else : ?>
-                                        <a href="<?php echo esc_url(add_query_arg(array('page' => $this->settings['menu_slug'], 'section' => 'useful-plugins'), admin_url('themes.php'))); ?>" class="botiga-dashboard-link botiga-dashboard-link-danger botiga-dashboard-plugin-ajax-button" data-type="deactivate" data-path="<?php echo esc_attr($plugin['path']); ?>" data-slug="<?php echo esc_attr($plugin['slug']); ?>"><?php esc_html_e('Deactivate', 'botiga'); ?></a>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-
                 </div>
             </div>
         </div>

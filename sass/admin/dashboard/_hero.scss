@@ -52,7 +52,15 @@
 	
 	.botiga-dashboard-hero-desc {
 		color: #1e1e1e;
+		font-size: 14px;
+		line-height: 1.6;
 		margin-top: 12px;
+	}
+
+	@media(min-width: 1280px) {
+		.botiga-dashboard-hero-desc {
+			padding-right: 120px;
+		}
 	}
 
 	.botiga-dashboard-hero-customize-button {

@@ -1,6 +1,5 @@
 /* Hide Notices */
 #wpbody-content {
-	padding-bottom: 25px;
 	.notice {
 		display: none !important;
 	}
@@ -49,6 +48,12 @@
 
 		.dashicons {
 			margin-right: 2px;
+		}
+
+		&.atss-demo-preview-button,
+		&.atss-import-open-button,
+		&.atss-demo-pro-link-button {
+			padding: 6px 20px !important;
 		}
 	}
 
@@ -235,7 +240,14 @@
 	&:focus,
 	&:active {
 		color: #3858E9;
-		opacity: 0.7;
+		text-decoration: underline;
+
+		&.botiga-dashboard-link-success {
+			color: #4ba78b !important;
+		}
+		&.botiga-dashboard-link-danger {
+			color: #fd3c3c !important;
+		}
 	}
 
 	&.loading {
@@ -384,9 +396,19 @@
 		align-items: center;
 
 		.botiga-dashboard-top-bar-info-item {
+			position: relative;
 			padding: 0 10px;
+
 			& + .botiga-dashboard-top-bar-info-item {
-				border-left: 1px solid #F0F0F0;
+				&:before {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 0;
+					height: 17px;
+					transform: translateY(-50%);
+					border-left: 1px solid #F0F0F0;
+				}
 			}
 		}
 	}
@@ -395,6 +417,11 @@
 		font-size: 13px;
 		line-height: 13px;
 		color: #97A3B6;
+
+		strong {
+			position: relative;
+			top: 1px;
+		}
 
 		.botiga-dashboard-badge {
 			display: inline-flex;
@@ -512,7 +539,7 @@
 				font-size: 18px;
 				font-weight: 600;
 				line-height: 26px;
-				padding: 6px 16px;
+				padding: 9px 16px;
 				border-bottom: 0;
 				color: #1e1e1e;
 				transition: ease color 200ms;
@@ -543,10 +570,27 @@
 				}
 			}
 
-			&.active,
 			&:hover,
 			&:focus,
 			&:active {
+				.botiga-dashboard-tabs-nav-link {
+					color: #757575;
+
+					svg {
+						path {
+							fill: #757575;
+						}
+					}
+					
+					&:before {
+						background-color: #e1e1e1;
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+			}
+
+			&.active {
 				.botiga-dashboard-tabs-nav-link {
 					color: #3858E9;
 
@@ -663,6 +707,20 @@
 
 		p {
 			color: #757575;
+		}
+	}
+}
+
+/* Admin Footer */
+#wpfooter {
+	color: #1D2327;
+	font-style: italic;
+
+	a {
+		color: #3858E9;
+
+		&:not(.botiga-dashboard-footer-link) {
+			font-style: normal;
 		}
 	}
 }

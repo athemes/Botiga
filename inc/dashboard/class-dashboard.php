@@ -41,7 +41,6 @@ class Botiga_Dashboard
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         
         add_action('wp_ajax_botiga_notifications_read', array($this, 'ajax_notifications_read'));
-        add_action('after_switch_theme', array($this, 'reset_notifications_read'));
 
         add_action('wp_ajax_botiga_plugin', array($this, 'ajax_plugin'));
         add_action('wp_ajax_botiga_dismissed_handler', array($this, 'ajax_dismissed_handler'));
@@ -51,6 +50,8 @@ class Botiga_Dashboard
 
         add_action('switch_theme', array($this, 'reset_notices'));
         add_action('after_switch_theme', array($this, 'reset_notices'));
+
+        add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
 
     }
 
@@ -271,16 +272,11 @@ class Botiga_Dashboard
      */
     public function ajax_notifications_read() {
         check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
-        add_user_meta( get_current_user_id(), 'botiga_dashboard_notifications_read', 'true', true );
+
+        $latest_notification_date = ( isset( $_POST[ 'latest_notification_date' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'latest_notification_date' ] ) ) : false;
+        update_user_meta( get_current_user_id(), 'botiga_dashboard_notifications_latest_read', $latest_notification_date );
 
         wp_send_json_success();
-    }
-
-    /**
-     * Reset notifications read on theme update
-     */
-    public function reset_notifications_read() {
-        delete_user_meta( get_current_user_id(), 'botiga_dashboard_notifications_read' );
     }
 
     /**
@@ -417,15 +413,53 @@ class Botiga_Dashboard
     }
 
     /**
+     * Admin Footer Text
+     */
+    public function admin_footer_text() {
+        $text = sprintf(
+			/* translators: %s: https://wordpress.org/ */
+			__( 'Thank you for creating the website with <a href="%s" class="botiga-dashboard-footer-link" target="_blank">Botiga</a>.', 'botiga' ),
+			'https://athemes.com/botiga-upgrade/'
+		);
+
+        return $text;
+    }
+
+    /**
+     * Check if the latest notification is read
+     */
+    public function latest_notification_is_read() {
+        if( ! isset( $this->settings[ 'notifications' ] ) || empty( $this->settings[ 'notifications' ] ) ) {
+            return false;
+        }
+        
+        $user_id                     = get_current_user_id();
+        $user_read_meta              = get_user_meta( $user_id, 'botiga_dashboard_notifications_latest_read', true );
+
+        $last_notification_date      = strtotime( $this->settings[ 'notifications' ][0]->date );
+        $last_notification_date_ondb = $user_read_meta ? strtotime( $user_read_meta ) : false;
+
+        if( ! $last_notification_date_ondb ) {
+            return false;
+        }
+
+        if( $last_notification_date > $last_notification_date_ondb ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * HTML Dashboard
      */
     public function html_dashboard() {
         $user_id             = get_current_user_id();
         $current_user        = wp_get_current_user();
-        $notification_read   = get_user_meta( $user_id, 'botiga_dashboard_notifications_read', true );
+        $notification_read   = $this->latest_notification_is_read();
         $notifications_count = 1;
 
-		?>
+        ?>
       	<div class="botiga-dashboard botiga-dashboard-wrap">
 			<div class="botiga-dashboard-top-bar">
 				<a href="<?php echo esc_url($this->settings['upgrade_pro']); ?>" class="botiga-dashboard-top-bar-logo" target="_blank">
@@ -466,10 +500,10 @@ class Botiga_Dashboard
 			</div>
 
             <?php require get_template_directory() . '/inc/dashboard/html-notifications-sidebar.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
-
-			<?php require get_template_directory() . '/inc/dashboard/html-hero.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
         
 			<div class="botiga-dashboard-container">
+                <?php require get_template_directory() . '/inc/dashboard/html-hero.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
+
 				<div class="botiga-dashboard-row bt-p-relative bt-zindex-2">
 					<div class="botiga-dashboard-column">
 						<?php require get_template_directory() . '/inc/dashboard/html-tabs-nav-items.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>

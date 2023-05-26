@@ -1,4 +1,15 @@
 /* Grid */
+.botiga-dashboard-container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+@media(min-width: 1280px) {
+	.botiga-dashboard-container {
+		max-width: 1280px;
+	}
+}
+
 .botiga-dashboard-row {
 	display: flex;
 	flex-wrap: wrap;
@@ -45,10 +56,6 @@
 	.botiga-dashboard-column {
 		&.botiga-dashboard-column-3 {
 			flex-basis: calc( 25% - 10px );
-		}
-
-		&.botiga-dashboard-column-4 {
-			flex-basis: calc( 25% - 15px );
 		}
 
 		&.botiga-dashboard-column-9 {

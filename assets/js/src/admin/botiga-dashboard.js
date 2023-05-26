@@ -321,11 +321,14 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 			$( '.botiga-dashboard-theme-notifications' ).on( 'click', function(e){
 				e.preventDefault();
 
+				const latestNotificationDate = $notificationsSidebar.find( '.botiga-dashboard-notification:first-child .botiga-dashboard-notification-date' ).data( 'raw-date' );
+
 				$notificationsSidebar.toggleClass( 'opened' );
 
 				if( ! $( this ).hasClass( 'read' ) ) {
 					$.post( window.botiga_dashboard.ajax_url, {
 						action: 'botiga_notifications_read',
+						latest_notification_date: latestNotificationDate,
 						nonce: window.botiga_dashboard.nonce,
 					}, function ( response ) {
 						if( response.success ) {
@@ -351,7 +354,11 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 			$( '.botiga-dashboard-notifications-sidebar-close' ).on( 'click', function(e){
 				e.preventDefault();
 
-				$notificationsSidebar.removeClass( 'opened' );
+				$notificationsSidebar.addClass( 'closing' );
+				setTimeout(function(){
+					$notificationsSidebar.removeClass( 'opened' );
+					$notificationsSidebar.removeClass( 'closing' );
+				}, 300);
 			} );
 
 		}

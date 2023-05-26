@@ -56,8 +56,8 @@ if (!defined('ABSPATH')) {
             <div class="botiga-dashboard-module-card">
                 <div class="botiga-dashboard-module-card-header">
                     <div class="botiga-dashboard-module-card-header-info">
-                        <h2 class="bt-mb-10px"><?php echo esc_html__( 'One theme with 35+ fully integrated features', 'botiga' ); ?></h2>
-                        <p class="bt-text-color-grey"><?php echo esc_html__( 'Our all-in-one plugin (that extends Botiga theme) is packed with features to help you boost sales and grow your business. Join the thousands of satisfied entrepreneurs who have already taken their website to the next level with Botiga Pro. Don\'t wait - start achieving your website goals today!', 'botiga' ); ?></p>
+                        <h2 class="bt-mb-10px"><?php echo esc_html__( 'Premium Features To Go Beyond', 'botiga' ); ?></h2>
+                        <p class="bt-text-color-grey"><?php echo esc_html__( 'Accelerate your brand\'s growth with a theme that\'s built with conversion in mind — from the design to its powerful features, Botiga Pro has everything you need to boost your sales and grow your brand. Join the thousands of satisfied entrepreneurs who have already taken their website to the next level.', 'botiga' ); ?></p>
                     </div>
                     <div class="botiga-dashboard-module-card-header-actions">
                         <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="botiga-dashboard-external-link" target="_blank">

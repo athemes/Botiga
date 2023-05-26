@@ -74,7 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                         <div class="botiga-dashboard-notification">
                             <?php if( $date ) : ?>
-                                <span class="botiga-dashboard-notification-date">
+                                <span class="botiga-dashboard-notification-date" data-raw-date="<?php echo esc_attr( $date ); ?>">
                                     <?php echo esc_html( date_format( date_create( $date ), 'F j, Y' ) ); ?>
                                     <?php if( $display_version ) : ?>
                                         <span class="botiga-dashboard-notification-version"><?php echo sprintf( '(%s)', $version ); ?></span>
