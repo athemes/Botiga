@@ -470,6 +470,26 @@ li.control-section-botiga-section-hidden {
 		}
 	}
 
+	// Media
+	&.customize-control-media {
+		.attachment-media-view {
+			.button-add-media {
+				background-color: #FFF;
+
+				&:hover {
+					background-color: #f0f0f1;
+				}
+			}
+		}
+	}
+
+	// Radio
+	&.customize-control-radio {
+		.customize-control-title {
+			margin-bottom: 8px;
+		}
+	}
+
 	/* Specific Settings */
 
 	// Nav Menu
@@ -1371,7 +1391,6 @@ span.delete:hover {
 	float: right;
 	position: relative;
 	width: 36px;
-	margin-top: 2px;
 	user-select: none;
 }
 
@@ -3485,6 +3504,18 @@ a,
 			}
 		}
 
+	}
+}
+
+@media(max-width: 1280px) {
+	.botiga-dimensions-control {
+		.botiga-dimensions-wrapper {
+			.botiga-dimensions-inputs {
+				.botiga-dimensions-input {
+					padding: 3px;
+				}
+			}
+		}
 	}
 }
 

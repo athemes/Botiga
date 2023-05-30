@@ -119,41 +119,6 @@ $wp_customize->add_control(
 );
 
 /**
- * General options
- */
-$wp_customize->add_setting( 
-    'botiga_upsell_general',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'botiga_sanitize_text'
-	)
-);
-
-$wp_customize->add_control( 
-    new Botiga_Upsell_Message( 
-        $wp_customize, 
-        'botiga_upsell_general',
-        array(
-            'title'         => esc_html__( 'More options available with Botiga Pro.', 'botiga' ),
-            'features_list' => array(
-                esc_html__( 'Free shipping progress bar module', 'botiga' ),
-                esc_html__( 'Display buy now button', 'botiga' ),
-                esc_html__( 'Add to cart notifications popup', 'botiga' ),
-                esc_html__( 'Quantity picker step control', 'botiga' ),
-                esc_html__( 'Modal popup module', 'botiga' ),
-                esc_html__( 'Custom sidebars module', 'botiga' ),
-                esc_html__( 'Quick links module', 'botiga' ),
-                esc_html__( 'Templates builder', 'botiga' ),
-                esc_html__( '9+ quantity picker styles', 'botiga' ),
-                esc_html__( 'Schema markup module', 'botiga' ),
-            ),
-            'section'       => 'botiga_section_catalog_general',
-            'priority'      => 999
-        )
-    ) 
-);
-
-/**
  * Blog Single
  */
 $botiga_controls_general     = json_decode( $wp_customize->get_control( 'botiga_blog_single_tabs' )->controls_general );
@@ -187,37 +152,6 @@ $wp_customize->add_control(
 );
 
 if( class_exists( 'Woocommerce' ) ) {
-
-    /**
-     * Woocommerce Single Layout Section
-     */
-    $wp_customize->add_setting( 
-        'botiga_upsell_single_product_layout',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'botiga_sanitize_text'
-        )
-    );
-
-    $wp_customize->add_control( 
-        new Botiga_Upsell_Message( 
-            $wp_customize, 
-            'botiga_upsell_single_product_layout',
-            array(
-                'title'         => esc_html__( 'Single product options available with Botiga Pro.', 'botiga' ),
-                'features_list' => array(
-                    esc_html__( 'Product swatches', 'botiga' ),
-                    esc_html__( 'Advanced reviews system', 'botiga' ),
-                    esc_html__( 'Product trust badge', 'botiga' ),
-                    esc_html__( 'Next/prev product buttons', 'botiga' ),
-                    esc_html__( 'Gallery support to video/audio', 'botiga' ),
-                    esc_html__( 'Upsell and related products slider', 'botiga' )
-                ),
-                'section'     => 'botiga_section_single_product_layout',
-                'priority'    => 999
-            )
-        ) 
-    );
 
     /**
      * Woocommerce Single Tabs Section
@@ -423,6 +357,18 @@ $wp_customize->add_control(
  */
 
 // Main Panel
+
+// Custom Sidebar
+$wp_customize->add_section( 
+    new Botiga_Section_Upsell( 
+        $wp_customize, 
+        'botiga_section_sidebar',
+        array(
+            'title'         => esc_html__( 'Custom Sidebar', 'botiga' ),
+            'priority' 	    => 30
+        )
+    ) 
+);
 
 // Product Swatches
 $wp_customize->add_section( 

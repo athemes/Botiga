@@ -66,7 +66,7 @@ $wp_customize->add_control(
 	array(
 		'type'      => 'select',
 		'section'   => 'botiga_section_buttons',
-		'label'     => esc_html__('Font Style', 'botiga'),
+		'label'     => esc_html__('Style', 'botiga'),
 		'choices'   => array(
 			'body'    => esc_html__('Body', 'botiga'),
 			'heading' => esc_html__('Heading', 'botiga'),
@@ -170,7 +170,7 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 	$wp_customize,
 	'button_font_size',
 	array(
-		'label'         => esc_html__('Font size', 'botiga'),
+		'label'         => esc_html__('Size', 'botiga'),
 		'section'       => 'botiga_section_buttons',
 		'is_responsive' => 1,
 		'settings'      => array(

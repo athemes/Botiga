@@ -395,6 +395,18 @@ li.control-section-botiga-section-hidden {
   display: block;
 }
 
+.customize-control.customize-control-media .attachment-media-view .button-add-media {
+  background-color: #FFF;
+}
+
+.customize-control.customize-control-media .attachment-media-view .button-add-media:hover {
+  background-color: #f0f0f1;
+}
+
+.customize-control.customize-control-radio .customize-control-title {
+  margin-bottom: 8px;
+}
+
 .customize-control.customize-control-nav_menu_location .edit-menu,
 .customize-control.customize-control-nav_menu_location .create-menu {
   margin-left: 0;
@@ -1397,7 +1409,6 @@ span.delete:hover {
   float: right;
   position: relative;
   width: 36px;
-  margin-top: 2px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -3799,6 +3810,12 @@ a:focus,
   text-transform: uppercase;
   font-size: 0.7em;
   color: #777;
+}
+
+@media (max-width: 1280px) {
+  .botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-inputs .botiga-dimensions-input {
+    padding: 3px;
+  }
 }
 
 #customize-theme-controls #customize-control-product_swatch_select_background_color .botiga-color-control,
