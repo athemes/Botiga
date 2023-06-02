@@ -401,7 +401,7 @@ function botiga_dashboard_settings()
 		'desc'       => esc_html__('Swap the product image on mouse over.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[control]' => 'shop_product_image_swap'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-image-hover-swap/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-image-hover-swap/'
 	);
 
 	$settings['features'][] = array(
@@ -409,7 +409,7 @@ function botiga_dashboard_settings()
 		'type'   => 'pro',
 		'title'  => esc_html__('Product Variations Gallery', 'botiga'),
 		'desc'   => esc_html__('Set different galleries for product each product variation.', 'botiga'),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-variations-gallery/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-variations-gallery/'
 	);
 
 	$settings['features'][] = array(
@@ -533,7 +533,7 @@ function botiga_dashboard_settings()
 		'desc'       => esc_html__('Display next/prev buttons on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_navigation'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-next-prev/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-next-prev-product-navigation/'
 	);
 
 	$settings['features'][] = array(
