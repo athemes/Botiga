@@ -2581,6 +2581,10 @@ div.editor-styles-wrapper .botiga-product-size-chart-modal-open {
   overflow: hidden;
 }
 
+div.editor-styles-wrapper .botiga-product-size-chart-modal-open .bhfb-header {
+  z-index: 0;
+}
+
 div.editor-styles-wrapper .botiga-product-size-chart-modal-open .botiga-product-size-chart-modal {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3831,6 +3835,10 @@ div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .butto
 div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   width: 100%;
   text-align: center;
+}
+
+div.editor-styles-wrapper .woocommerce-notices-wrapper + .products {
+  margin-top: 25px;
 }
 
 @-webkit-keyframes rotateAnim {

@@ -35,7 +35,7 @@ botiga.helpers = {
   },
   isInHorizontalViewport: function isInHorizontalViewport(el) {
     var rect = el.getBoundingClientRect();
-    return rect.left >= 0 && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+    return rect.left >= 0 && rect.right <= document.documentElement.clientWidth;
   },
   ajax: function ajax(action, nonce, extraParams, successCallback) {
     var ajax = new XMLHttpRequest();

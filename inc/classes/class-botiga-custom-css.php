@@ -1668,12 +1668,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			if ( $custom_palette_toggle ) {
 				for ( $i = 0; $i < 8; $i++ ) {
 					$color = get_theme_mod( 'custom_color' . ($i+1), '#212121' );
-					$css .= ".has-color-" . $i . "-color, .has-color-" . $i . "-color:hover { color:" . esc_attr( $color ) . ";}" . "\n";
+					$css .= ".has-color-" . $i . "-color, .has-color-" . $i . "-color:hover, .has-color-" . $i . "-color:active, .has-color-" . $i . "-color:visited { color:" . esc_attr( $color ) . ";}" . "\n";
 					$css .= ".has-color-" . $i . "-background-color, .has-color-" . $i . "-background-color:hover { background-color:" . esc_attr( $color ) . ";}" . "\n";
 				}
 			} else {
 				for ( $i = 0; $i < 8; $i++ ) {
-					$css .= ".has-color-" . $i . "-color, .has-color-" . $i . "-color:hover { color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
+					$css .= ".has-color-" . $i . "-color, .has-color-" . $i . "-color:hover, .has-color-" . $i . "-color:active, .has-color-" . $i . "-color:visited { color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
 					$css .= ".has-color-" . $i . "-background-color, .has-color-" . $i . "-background-color:hover { background-color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
 				}
 			}
@@ -1681,7 +1681,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			// Gutenberg palettes backward compatibility
 			foreach ( $palettes as $key => $palette ) {
 				for ( $i = 0; $i < 8; $i++ ) { 
-					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color, .has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color:active, .has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color:visited { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
 					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
 				}
 			}

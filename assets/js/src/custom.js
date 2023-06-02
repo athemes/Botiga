@@ -30,7 +30,7 @@ botiga.helpers = {
 		const rect = el.getBoundingClientRect();
 		return (
 			rect.left >= 0 &&
-			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+			rect.right <= (document.documentElement.clientWidth)
 		);
 	},
 	ajax: function( action, nonce, extraParams, successCallback ) {

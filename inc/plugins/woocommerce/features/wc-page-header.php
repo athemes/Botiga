@@ -32,9 +32,42 @@ function botiga_woocommerce_page_header() {
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description' );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description' );
 
-	if( ! $shop_page_title && ! $shop_page_description && ! $shop_breadcrumbs && ! $shop_archive_header_style_show_categories && ! $shop_archive_header_style_show_sub_categories ) {
+	// Categories
+	$categories = 0;
+	if( is_shop() ) {
+		$args = array(
+			'taxonomy' => 'product_cat',
+			'fields'   => 'id=>name',
+			'parent'   => 0,
+			'hide_empty' => true
+		);
+		$categories = get_terms( apply_filters( 'botiga_shop_page_header_cats_query_args', $args ) ); 
+	}
+
+	// Sub Categories
+	$sub_categories = 0;
+	if( is_product_category() || is_product_tag() || is_product_taxonomy() ) {
+		$category = get_category( $GLOBALS['wp_query']->get_queried_object() );
+		$args = array(
+			'taxonomy' => 'product_cat',
+			'parent'   => $category->term_id ?? 0,
+			'fields'   => 'id=>name',
+			'hide_empty' => true
+		);
+		$sub_categories = get_terms( apply_filters( 'botiga_shop_page_header_sub_cats_query_args', $args ) ); 
+	}
+
+	// Return early to don't display the wc page header if all the options are disabled
+	if( 
+		! $shop_page_title && 
+		! $shop_page_description && 
+		! $shop_breadcrumbs && 
+		( ! $shop_archive_header_style_show_categories || $shop_archive_header_style_show_categories && empty( $categories ) ) && 
+		( ! $shop_archive_header_style_show_sub_categories || $shop_archive_header_style_show_sub_categories && empty( $sub_categories ) )
+	) {
 		return;
 	}
+
 	?>
 		<header class="woocommerce-page-header woocommerce-page-header-<?php echo esc_attr( $shop_archive_header_style ); ?> woocommerce-page-header-alignment-<?php echo esc_attr( $shop_archive_header_style_alignment ); ?>">
 			<div class="container">
@@ -66,11 +99,11 @@ function botiga_woocommerce_page_header() {
 				}
 				
 				if( $shop_archive_header_style_show_categories ) {
-					botiga_shop_page_header_category_links();
+					botiga_shop_page_header_category_links( $categories );
 				}
 
-				if( $shop_archive_header_style_show_sub_categories ) {
-					botiga_shop_page_header_sub_category_links();
+				if( $shop_archive_header_style_show_sub_categories && ( is_product_category() || is_product_tag() || is_product_taxonomy() ) ) {
+					botiga_shop_page_header_sub_category_links( $sub_categories );
 				} ?>
 				
 			</div>
@@ -83,7 +116,7 @@ add_action( 'botiga_page_header', 'botiga_woocommerce_page_header' );
  * Display shop page header category buttons/links on the main shop page
  * 
  */
-function botiga_shop_page_header_category_links() {
+function botiga_shop_page_header_category_links( $categories ) {
 	if( ! is_shop() ) {
 		return;
 	}
@@ -98,15 +131,7 @@ function botiga_shop_page_header_category_links() {
 	
 	<div class="container">
 
-		<?php 
-		$args = array(
-			'taxonomy' => 'product_cat',
-			'fields'   => 'id=>name',
-			'parent'   => 0,
-			'hide_empty' => true
-		);
-		$categories = get_terms( apply_filters( 'botiga_shop_page_header_cats_query_args', $args ) ); 
-		
+		<?php 		
 		if( count( $categories ) > 0 ) : ?>
 			<div class="categories-wrapper">
 				<?php  
@@ -128,7 +153,7 @@ function botiga_shop_page_header_category_links() {
  * Display shop page header category buttons/links on sub categories pages 
  * 
  */
-function botiga_shop_page_header_sub_category_links() {
+function botiga_shop_page_header_sub_category_links( $sub_categories ) {
 	if( ! is_product_category() && ! is_product_tag() && ! is_product_taxonomy() ) {
 		return;
 	}
@@ -140,19 +165,10 @@ function botiga_shop_page_header_sub_category_links() {
 	<div class="container">
 
 		<?php 
-		$category = get_category( $GLOBALS['wp_query']->get_queried_object() );
-		$args = array(
-			'taxonomy' => 'product_cat',
-			'parent'   => $category->term_id,
-			'fields'   => 'id=>name',
-			'hide_empty' => true
-		);
-		$categories = get_terms( apply_filters( 'botiga_shop_page_header_sub_cats_query_args', $args ) ); 
-		
-		if( count( $categories ) > 0 ) : ?>
+		if( count( $sub_categories ) > 0 ) : ?>
 			<div class="categories-wrapper">
 				<?php 
-				foreach( $categories as $cat_id => $cat_name ) {
+				foreach( $sub_categories as $cat_id => $cat_name ) {
 					$cat_link = get_term_link( $cat_id );
 					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . esc_html( apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) ) .'</a>';
 				} ?>
