@@ -11,8 +11,11 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-function botiga_dashboard_settings()
-{
+if( ! is_admin() ) {
+	return;
+}
+
+function botiga_dashboard_settings() {
 
 	$settings = array();
 

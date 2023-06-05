@@ -197,10 +197,10 @@ if (!defined('ABSPATH')) {
                 <!-- Priority Support -->
                 <div class="botiga-dashboard-card bt-border-color-primary">
                     <div class="botiga-dashboard-card-header">
-                        <h2><?php echo esc_html__( 'Priority support', 'botiga' ); ?></h2>
+                        <h2><?php echo esc_html__( 'Premium support', 'botiga' ); ?></h2>
                     </div>
                     <div class="botiga-dashboard-card-body">
-                        <p><?php echo esc_html__( 'We aim to answer all priority support requests within 24 hours.', 'botiga' ); ?></p>
+                        <p><?php echo esc_html__( 'Get direct support from our developers via email. We aim to answer all premium support requests within 24 hours.', 'botiga' ); ?></p>
                         <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="botiga-dashboard-external-link" target="_blank">
                             <?php echo esc_html__( 'Get Premium Support With Botiga Pro', 'botiga' ); ?>
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,7 +244,7 @@ if (!defined('ABSPATH')) {
             <!-- Knowledge Base -->
             <div class="botiga-dashboard-card">
                 <div class="botiga-dashboard-card-header">
-                    <h2><?php echo esc_html__( 'Knowledge base', 'botiga' ); ?></h2>
+                    <h2><?php echo esc_html__( 'Documentation', 'botiga' ); ?></h2>
                 </div>
                 <div class="botiga-dashboard-card-body">
                     <p><?php echo esc_html__( 'Browse documentation, reference material, and tutorials for Botiga Theme.', 'botiga' ); ?></p>
@@ -257,10 +257,10 @@ if (!defined('ABSPATH')) {
             <!-- Need Help? -->
             <div class="botiga-dashboard-card">
                 <div class="botiga-dashboard-card-header">
-                    <h2><?php echo esc_html__( 'Need help? We\'re here for you!', 'botiga' ); ?></h2>
+                    <h2><?php echo esc_html__( 'Free support', 'botiga' ); ?></h2>
                 </div>
                 <div class="botiga-dashboard-card-body">
-                    <p><?php echo esc_html__( 'Get the help you need, when you need it from our friendly support staff.', 'botiga' ); ?></p>
+                    <p><?php echo esc_html__( 'Post your question on the WordPress.org forum where a member of the team or community will get back to you.', 'botiga' ); ?></p>
                     <a href="<?php echo esc_url( $this->settings['support_link'] ); ?>" class="button button-primary button-outline button-medium bt-font-weight-500" target="_blank">
                         <?php echo esc_html__( 'Submit a Ticket', 'botiga' ); ?>
                     </a>
