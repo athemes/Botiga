@@ -130,17 +130,17 @@ $wp_customize->add_control(
 		$wp_customize,
 		'mini_cart_style',
 		array(
-			'label'     => esc_html__( 'Mini Cart Style', 'botiga-pro' ),
+			'label'     => esc_html__( 'Mini Cart Style', 'botiga' ),
 			'section'   => 'botiga_section_shop_cart',
 			'cols'      => 2,
 			'choices'  => array(
 				'default' => array(
-					'label' => esc_html__( 'Default', 'botiga-pro' ),
+					'label' => esc_html__( 'Default', 'botiga' ),
 					'url'   => '%s/assets/img/mini-cart-style1.svg'
 				),
 				'side' => array(
 					'is_pro' => true,
-					'label'  => esc_html__( 'Side', 'botiga-pro' ),
+					'label'  => esc_html__( 'Side', 'botiga' ),
 					'url'    => '%s/assets/img/mini-cart-style2.svg'
 				),      
 			),

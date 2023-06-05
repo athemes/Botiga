@@ -33,7 +33,7 @@ class Botiga_Section_Upsell extends WP_Customize_Section {
 		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }}">
 			<h3 class="accordion-section-title" tabindex="0">
 				{{ data.title }}
-				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this section' ); ?></span>
+				<span class="screen-reader-text"><?php echo esc_html__( 'Press return or enter to open this section', 'botiga' ); ?></span>
                 <span class="botiga-pro-badge"><?php echo esc_html__( 'PRO', 'botiga' ); ?></span>
 				<span class="botiga-pro-lock-icon">
 					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/pro-lock.svg" loading="lazy" alt="<?php echo esc_attr__( 'Botiga Pro', 'botiga' ); ?>" />
@@ -43,7 +43,7 @@ class Botiga_Section_Upsell extends WP_Customize_Section {
 				<li class="customize-section-description-container section-meta <# if ( data.description_hidden ) { #>customize-info<# } #>">
 					<div class="customize-section-title">
 						<button class="customize-section-back" tabindex="-1">
-							<span class="screen-reader-text"><?php _e( 'Back' ); ?></span>
+							<span class="screen-reader-text"><?php echo esc_html__( 'Back', 'botiga' ); ?></span>
 						</button>
 						<h3>
 							<span class="customize-action">
@@ -52,7 +52,7 @@ class Botiga_Section_Upsell extends WP_Customize_Section {
 							{{ data.title }}
 						</h3>
 						<# if ( data.description && data.description_hidden ) { #>
-							<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+							<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php echo esc_html__( 'Help', 'botiga' ); ?></span></button>
 							<div class="description customize-section-description">
 								{{{ data.description }}}
 							</div>

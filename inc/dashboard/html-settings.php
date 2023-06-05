@@ -14,6 +14,8 @@ if  ( empty( $this->settings['settings'] ) ) {
 	return;
 }
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 ?>
 
 <div class="botiga-dashboard-row">
@@ -67,3 +69,6 @@ if  ( empty( $this->settings['settings'] ) ) {
         </div>
     </div>
 </div>
+
+<?php 
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

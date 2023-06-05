@@ -27,7 +27,7 @@ $wp_customize->add_section(
     array(
         'panel'       => 'botiga_panel_single_product',
         'title'       => esc_html__('Layout', 'botiga'),
-        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product pages.', 'botiga-pro' )
+        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product pages.', 'botiga' )
     )
 );
 
@@ -85,7 +85,7 @@ $wp_customize->add_control(
 );
 
 // Layout Settings
-require 'single-product/section-layout.php';
+require 'single-product/section-layout.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Tabs Section
@@ -97,7 +97,7 @@ $wp_customize->add_section(
     array(
         'panel'       => 'botiga_panel_single_product',
         'title'       => esc_html__('Product Tab', 'botiga'),
-        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product tabs.', 'botiga-pro' )
+        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product tabs.', 'botiga' )
     )
 );
 
@@ -127,4 +127,4 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 }
 
 // Product Tabs Settings
-require 'single-product/section-tabs.php';
+require 'single-product/section-tabs.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

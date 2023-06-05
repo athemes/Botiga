@@ -113,22 +113,22 @@ $wp_customize->add_control(
         $wp_customize,
         'shop_archive_header_style',
         array(
-            'label'     => esc_html__( 'Shop Header Style', 'botiga-pro' ),
+            'label'     => esc_html__( 'Shop Header Style', 'botiga' ),
             'section'   => 'woocommerce_product_catalog',
             'cols'      => 2,
             'choices'  => array(
                 'style1' => array(
-                    'label' => esc_html__( 'Style 1', 'botiga-pro' ),
+                    'label' => esc_html__( 'Style 1', 'botiga' ),
                     'url'   => '%s/assets/img/shop-page-header-style-1.svg'
                 ),
                 'style2' => array(
 					'is_pro' => true,
-                    'label'  => esc_html__( 'Style 2', 'botiga-pro' ),
+                    'label'  => esc_html__( 'Style 2', 'botiga' ),
                     'url'    => '%s/assets/img/shop-page-header-style-2.svg'
                 ),
                 'style3' => array(
 					'is_pro' => true,
-                    'label'  => esc_html__( 'Style 3', 'botiga-pro' ),
+                    'label'  => esc_html__( 'Style 3', 'botiga' ),
                     'url'    => '%s/assets/img/shop-page-header-style-3.svg'
                 )       
             ),
@@ -168,12 +168,12 @@ $wp_customize->add_control(
 				),
 				'sidebar-top' => array(
 					'is_pro' => true,
-					'label'  => esc_html__( 'Top', 'botiga-pro' ),
+					'label'  => esc_html__( 'Top', 'botiga' ),
 					'url'    => '%s/assets/img/sidebar-top.svg'
 				),
 				'sidebar-slide' => array(
 					'is_pro' => true,
-					'label'  => esc_html__( 'Slide-out', 'botiga-pro' ),
+					'label'  => esc_html__( 'Slide-out', 'botiga' ),
 					'url'    => '%s/assets/img/sidebar-slide.svg'
 				)
 			),

@@ -46,9 +46,9 @@ class Botiga_Section_Upsell_Message extends WP_Customize_Section {
 
 		if ( $this->panel ) {
 			/* translators: &#9656; is the unicode right-pointing triangle. %s: Section title in the Customizer. */
-			$array['customizeAction'] = sprintf( __( 'Customizing &#9656; %s' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
+			$array['customizeAction'] = sprintf( __( 'Customizing &#9656; %s', 'botiga' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
 		} else {
-			$array['customizeAction'] = __( 'Customizing' );
+			$array['customizeAction'] = __( 'Customizing', 'botiga' );
 		}
 
 		return $array;

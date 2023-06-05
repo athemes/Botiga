@@ -32,17 +32,17 @@ $wp_customize->add_control(
 				),
 				'layout3' => array(
 					'is_pro' => true,
-					'label'  => esc_html__( 'Layout 3 (Multi Step)', 'botiga-pro' ),
+					'label'  => esc_html__( 'Layout 3 (Multi Step)', 'botiga' ),
 					'url'    => '%s/assets/img/checkout3.svg'
 				),
 				'layout4' => array(
 					'is_pro' => true,
-					'label'  => esc_html__( 'Layout 4 (Shopify Style)', 'botiga-pro' ),
+					'label'  => esc_html__( 'Layout 4 (Shopify Style)', 'botiga' ),
 					'url'    => '%s/assets/img/checkout4.svg'
 				),
 				'layout5' => array(
 					'is_pro' => true,
-					'label'  => esc_html__( 'Layout 5 (One Step)', 'botiga-pro' ),
+					'label'  => esc_html__( 'Layout 5 (One Step)', 'botiga' ),
 					'url'    => '%s/assets/img/checkout5.svg'
 				)
 			),

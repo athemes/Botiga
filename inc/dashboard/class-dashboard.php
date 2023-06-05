@@ -472,9 +472,9 @@ class Botiga_Dashboard
 				<div class="botiga-dashboard-top-bar-infos">
 					<div class="botiga-dashboard-top-bar-info-item">
 						<div class="botiga-dashboard-theme-version">
-							<strong><?php echo ( ! $this->settings[ 'has_pro' ] ) ? BOTIGA_VERSION : BOTIGA_PRO_VERSION; ?></strong>
+							<strong><?php echo esc_html( ( ! $this->settings[ 'has_pro' ] ) ? BOTIGA_VERSION : BOTIGA_PRO_VERSION ); ?></strong>
 							<span class="botiga-dashboard-badge<?php echo ( $this->settings[ 'has_pro' ] ) ? ' botiga-dashboard-badge-pro' : ''; ?>">
-                                <?php echo ( ! $this->settings[ 'has_pro' ] ) ? esc_html__( 'FREE', 'botiga' ) : esc_html__( 'PRO', 'botiga' ); ?>
+                                <?php echo esc_html( ( ! $this->settings[ 'has_pro' ] ) ? __( 'FREE', 'botiga' ) : __( 'PRO', 'botiga' ) ); ?>
                             </span>
 						</div>
 					</div>
@@ -514,13 +514,13 @@ class Botiga_Dashboard
 						<?php 
 						$section = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : '';
 
-						foreach( $this->settings[ 'tabs' ] as $tab_id => $tab_title ) : 
-							$tab_active = (($tab && $tab === $tab_id) || (!$section && $tab_id === 'home')) ? ' active' : '';
+						foreach( $this->settings[ 'tabs' ] as $nav_tab_id => $nav_tab_title ) : 
+							$nav_tab_active = (($nav_tab && $nav_tab === $nav_tab_id) || (!$section && $nav_tab_id === 'home')) ? ' active' : '';
 
 							?>	
                             <div class="botiga-dashboard-tab-content-wrapper" data-tab-wrapper-id="main">					
-                                <div class="botiga-dashboard-tab-content<?php echo esc_attr( $tab_active ); ?>" data-tab-content-id="<?php echo esc_attr( $tab_id ); ?>">
-                                    <?php require get_template_directory() . '/inc/dashboard/html-'. $tab_id .'.php'; ?>
+                                <div class="botiga-dashboard-tab-content<?php echo esc_attr( $nav_tab_active ); ?>" data-tab-content-id="<?php echo esc_attr( $nav_tab_id ); ?>">
+                                    <?php require get_template_directory() . '/inc/dashboard/html-'. $nav_tab_id .'.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
                                 </div>
                             </div>
 						<?php endforeach; ?>

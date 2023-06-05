@@ -524,7 +524,7 @@ $wp_customize->add_panel(
 		$wp_customize,
 		'botiga_panel_hooks',
 		array(
-			'title'       => esc_html__( 'Hooks', 'botiga-pro' ),
+			'title'       => esc_html__( 'Hooks', 'botiga' ),
 			'description' => esc_html__( 'Render custom content in multiples areas across the website.', 'botiga' ),
 			'priority'    => 190,
 		)

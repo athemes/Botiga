@@ -50,7 +50,7 @@ function botiga_woocommerce_page_header() {
 		$category = get_category( $GLOBALS['wp_query']->get_queried_object() );
 		$args = array(
 			'taxonomy' => 'product_cat',
-			'parent'   => $category->term_id ?? 0,
+			'parent'   => isset( $category->term_id ) ? $category->term_id : 0,
 			'fields'   => 'id=>name',
 			'hide_empty' => true
 		);

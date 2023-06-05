@@ -10,6 +10,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+
 ?>
 
 <div class="botiga-dashboard-row">
@@ -297,3 +299,6 @@ if (!defined('ABSPATH')) {
 
     </div>
 </div>
+
+<?php
+// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound

@@ -33,7 +33,7 @@ class Botiga_Panel_Upsell extends WP_Customize_Panel {
         <li id="accordion-panel-{{ data.id }}" class="accordion-section control-section control-panel control-panel-{{ data.type }}">
 			<h3 class="accordion-section-title" tabindex="0">
 				{{ data.title }}
-				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this panel' ); ?></span>
+				<span class="screen-reader-text"><?php echo esc_html__( 'Press return or enter to open this panel', 'botiga' ); ?></span>
                 <span class="botiga-pro-badge"><?php echo esc_html__( 'PRO', 'botiga' ); ?></span>
 				<span class="botiga-pro-lock-icon">
 					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/pro-lock.svg" loading="lazy" alt="<?php echo esc_attr__( 'Botiga Pro', 'botiga' ); ?>" />

@@ -65,7 +65,7 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
 }
 
 // Layout Settings
-require 'shop-archive/section-layout.php';
+require 'shop-archive/section-layout.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Product Card Section
@@ -78,7 +78,7 @@ $wp_customize->add_section(
     array(
         'panel'	      => 'botiga_panel_shop_archive',
         'title'		  => esc_html__( 'Product Card', 'botiga' ),
-		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products card.', 'botiga-pro' )
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products card.', 'botiga' )
     )
 );
 
@@ -130,7 +130,7 @@ $wp_customize->add_control(
 );
 
 // Product Card Settings
-require 'shop-archive/section-product-card.php';
+require 'shop-archive/section-product-card.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Sale Tag Section
@@ -143,7 +143,7 @@ $wp_customize->add_section(
     array(
         'panel' 	  => 'botiga_panel_shop_archive',
         'title' 	  => esc_html__( 'Sale Tag', 'botiga' ),
-		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products sale tag.', 'botiga-pro' )
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products sale tag.', 'botiga' )
     )
 );
 
@@ -181,7 +181,7 @@ $wp_customize->add_control(
 );
 
 // Sale Tag Settings
-require 'shop-archive/section-sale-tag.php';
+require 'shop-archive/section-sale-tag.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Categories Section
@@ -194,7 +194,7 @@ $wp_customize->add_section(
     array(
         'panel' 	  => 'botiga_panel_shop_archive',
         'title' 	  => esc_html__( 'Categories', 'botiga' ),
-		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products categories.', 'botiga-pro' )
+		'description' => esc_html__( 'Manage the overall design and functionality from the shop archive products categories.', 'botiga' )
     )
 );
 
@@ -226,4 +226,4 @@ $wp_customize->add_control(
 );
 
 // Categories Settings
-require 'shop-archive/section-categories.php';
+require 'shop-archive/section-categories.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
