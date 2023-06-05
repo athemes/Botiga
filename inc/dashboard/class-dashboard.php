@@ -38,15 +38,12 @@ class Botiga_Dashboard
         }
 
         if( $this->is_themes_page() ) {
+            add_action('init', array($this, 'set_settings'));
             add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         }
-        
+
         if( $this->is_botiga_dashboard_page() ) {
             add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
-        }
-
-        if( $this->is_themes_page() || $this->is_botiga_dashboard_page() ) {
-            add_action('init', array($this, 'set_settings'));
         }
 
         add_filter('woocommerce_enable_setup_wizard', '__return_false');
