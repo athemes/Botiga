@@ -54,6 +54,7 @@ $wp_customize->add_control(
                 '#customize-control-single_breadcrumbs',
                 '#customize-control-single_breadcrumbs_hide_title',
                 '#customize-control-single_ajax_add_to_cart',
+                '#customize-control-single_product_sidebar',
                 '#customize-control-single_product_elements_order',
                 '#customize-control-single_upsell_products_top_divider',
                 '#customize-control-single_upsell_products',
