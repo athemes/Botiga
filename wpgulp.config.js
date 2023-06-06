@@ -180,6 +180,7 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*{node_modules,node_modules/**/*}',
 	'!../@(Botiga|botiga)/**/*.git',
 	'!../@(Botiga|botiga)/**/*.svn',
+	'!../@(Botiga|botiga)/**/*phpcs.xml',
 	'!../@(Botiga|botiga)/**/*gulpfile.babel.js',
 	'!../@(Botiga|botiga)/**/*wpgulp.config.js',
 	'!../@(Botiga|botiga)/**/*.eslintrc.js',
