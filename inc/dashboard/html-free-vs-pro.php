@@ -59,7 +59,7 @@ if (!defined('ABSPATH')) {
                                 <div class="botiga-dashboard-freevspro-table__row">
                                     <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Starter Sites</strong></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><strong class="botiga-dashboard-freevspro-table__spacing">1</strong></div>
-                                    <div class="botiga-dashboard-freevspro-table__column"><strong class="botiga-dashboard-freevspro-table__spacing">7</strong></div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><strong class="botiga-dashboard-freevspro-table__spacing">8</strong></div>
                                 </div>
                                 <div class="botiga-dashboard-freevspro-table__row">
                                     <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Multi-Vendor Compatibility (Dokan &amp; WC Vendors)</strong></div>
