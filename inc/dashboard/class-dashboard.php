@@ -37,7 +37,7 @@ class Botiga_Dashboard
             return;
         }
 
-        if( $this->is_themes_page() ) {
+        if( $this->is_themes_page() || $this->is_botiga_dashboard_page() ) {
             add_action('init', array($this, 'set_settings'));
             add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         }
@@ -79,7 +79,7 @@ class Botiga_Dashboard
      */
     public function is_botiga_dashboard_page() {
         global $pagenow;
-        return $pagenow === 'themes.php' && ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] === 'botiga-dashboard' );
+        return $pagenow === 'admin.php' && ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] === 'botiga-dashboard' );
     }
 
     /**
@@ -95,11 +95,29 @@ class Botiga_Dashboard
     /**
      * Add menu page
      */
-    public function add_menu_page()
-    {
+    public function add_menu_page() {
 
-        add_submenu_page('themes.php', esc_html__('Theme Dashboard', 'botiga'), esc_html__('Theme Dashboard', 'botiga'), 'manage_options', isset( $this->settings['menu_slug'] ) ? $this->settings['menu_slug'] : 'botiga-dashboard', array($this, 'html_dashboard'), 1); // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+        // Add main 'Botiga' page
+        add_menu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_menu_page
+            esc_html__('Botiga', 'botiga'), 
+            esc_html__('Botiga', 'botiga'), 
+            'manage_options', 
+            isset( $this->settings['menu_slug'] ) ? $this->settings['menu_slug'] : 'botiga-dashboard', 
+            array($this, 'html_dashboard'),
+            get_template_directory_uri() . '/assets/img/admin/botiga-icon.svg',
+            58.9
+        );
 
+        // Add 'Theme Dashboard' page
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'themes.php',
+            esc_html__('Theme Dashboard', 'botiga'),
+            esc_html__('Theme Dashboard', 'botiga'),
+            'manage_options',
+            get_admin_url() . 'admin.php?page=botiga-dashboard',
+            '',
+            1
+        );
     }
 
     /**

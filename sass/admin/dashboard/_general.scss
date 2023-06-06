@@ -1,6 +1,8 @@
 /* Hide Notices */
 #wpbody-content {
-	.notice {
+	.notice, 
+	div.updated, 
+	div.error {
 		display: none !important;
 	}
 }

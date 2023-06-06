@@ -5,7 +5,7 @@ class Botiga_Typography_Adobe_Control extends WP_Customize_Control {
 		 */
 		public $type = 'botiga-adobe_fonts';
 
-        public $kits = '';
+        public $kits = array();
 
         public $families = '';
 		

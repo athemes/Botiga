@@ -58,23 +58,24 @@ class Botiga_Theme_Review_Notice {
 		if ( ( get_option( 'botiga_theme_installed_time' ) > strtotime( '-14 day' ) ) || ( $ignored_notice_partially > strtotime( '-14 day' ) ) || ( $ignored_notice ) ) {
 			return;
 		}
+		
 		?>
-		<div class="botiga-notice notice" style="position:relative;">
+		<div class="botiga-notice botiga-notice-with-thumbnail notice" style="position:relative;">
 			<p>
 				<?php
 				printf(
 				    /* Translators: %1$s current user display name. */
 					esc_html__(
-						'Hey, %1$s! You\'ve been using Botiga for more than two weeks now and we hope you\'re happy with it. If you have a few minutes, we would love to get a 5 star review from you.', 'botiga'
+						'Hi %1$s, it\'s so exciting to see that you\'ve made significant progress in building your website. We have a small request that would mean the world to us. Could you please take a moment to give our website a glowing 5-star rating on WordPress? Your support and positive feedback will not only fuel our motivation but also help other users feel confident in choosing our theme. We truly appreciate your consideration and support. Thank you!', 'botiga'
 					),
 					'<strong>' . esc_html( $current_user->display_name ) . '</strong>'
 				);
 				?>
 			</p>
 
-			<a href="https://wordpress.org/support/theme/botiga/reviews/?filter=5#new-post" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Sure', 'botiga' ); ?></a>
-			<a href="?delay_botiga_disable_review_notice_partially=0" class="botiga-btn botiga-btn-secondary"><?php esc_html_e( 'Maybe later', 'botiga' ); ?></a>
-			<a href="?nag_botiga_disable_review_notice=0" class="botiga-btn botiga-btn-secondary"><?php esc_html_e( 'I already did', 'botiga' ); ?></a>
+			<a href="https://wordpress.org/support/theme/botiga/reviews/?filter=5#new-post" class="botiga-btn botiga-btn-secondary" target="_blank"><?php esc_html_e( 'Ok, you deserve it', 'botiga' ); ?></a>
+			<a href="?delay_botiga_disable_review_notice_partially=0" class="botiga-btn botiga-btn-link"><?php esc_html_e( 'Nope, maybe later', 'botiga' ); ?></a>
+			<a href="?nag_botiga_disable_review_notice=0" class="botiga-btn botiga-btn-link"><?php esc_html_e( 'I already rated it', 'botiga' ); ?></a>
 
 			<a class="notice-dismiss" href="?nag_botiga_disable_review_notice=0" style="text-decoration:none;"></a>
 		</div>

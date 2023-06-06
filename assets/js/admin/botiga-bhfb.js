@@ -34,6 +34,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.currentBuilder = '';
       this.currentBuilderType = '';
       this.componentsOrder = '';
+      this.addBodyClass();
       this.preventEmptyRowValues();
       this.customizeNavigation();
       this.elementsPopup();
@@ -53,6 +54,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     jsonDecode: function jsonDecode(value) {
       return JSON.parse(value.replace(/'/g, '"').replace(';', ''));
+    },
+    // identify customizer with the builder.
+    addBodyClass: function addBodyClass() {
+      $('body').addClass('has-bhfb-builder');
     },
     // In some rare cases, the row values are empty, so we need to prevent that
     // case it is empty, we set the default values

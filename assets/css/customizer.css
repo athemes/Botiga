@@ -3862,7 +3862,7 @@ a:focus,
   margin-top: 15px;
 }
 
-#sub-accordion-panel-botiga_panel_header,
-#sub-accordion-panel-botiga_panel_footer {
+.has-bhfb-builder #sub-accordion-panel-botiga_panel_header,
+.has-bhfb-builder #sub-accordion-panel-botiga_panel_footer {
   visibility: hidden !important;
 }

@@ -21,6 +21,8 @@
 
             this.componentsOrder  = '';
 
+            this.addBodyClass();
+
             this.preventEmptyRowValues();
 
             this.customizeNavigation();
@@ -48,6 +50,11 @@
 
         jsonDecode: function( value ) {
             return JSON.parse(value.replace(/'/g,'"').replace(';',''));
+        },
+
+        // identify customizer with the builder.
+        addBodyClass: function(){
+            $( 'body' ).addClass( 'has-bhfb-builder' );
         },
 
         // In some rare cases, the row values are empty, so we need to prevent that

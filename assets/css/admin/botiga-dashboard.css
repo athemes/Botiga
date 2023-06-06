@@ -159,7 +159,9 @@
 }
 
 /* Hide Notices */
-#wpbody-content .notice {
+#wpbody-content .notice,
+#wpbody-content div.updated,
+#wpbody-content div.error {
   display: none !important;
 }
 
