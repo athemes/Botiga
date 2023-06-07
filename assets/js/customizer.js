@@ -1532,13 +1532,16 @@
   // Force the display of notification when the the respective feature section is active
   // This will provide better UX while customizing
 
-  window.parent.wp.customize.section('botiga_section_adtcnotif').expanded.bind(function (isExpanded) {
-    if (isExpanded) {
-      $('.botiga-adtcnotif').addClass('active');
-    } else {
-      $('.botiga-adtcnotif').removeClass('active');
-    }
-  });
+  if (typeof window.parent.wp.customize.section('botiga_section_adtcnotif') !== 'undefined') {
+    window.parent.wp.customize.section('botiga_section_adtcnotif').expanded.bind(function (isExpanded) {
+      if (isExpanded) {
+        $('.botiga-adtcnotif').addClass('active');
+      } else {
+        $('.botiga-adtcnotif').removeClass('active');
+      }
+    });
+  }
+
   wp.customize.bind('preview-ready', function () {
     if (jQuery(window.parent.document).find('#sub-accordion-section-botiga_section_adtcnotif').hasClass('open')) {
       $('.botiga-adtcnotif').addClass('active');

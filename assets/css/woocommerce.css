@@ -1345,6 +1345,10 @@ ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   text-align: center;
 }
 
+.woocommerce-notices-wrapper + .products {
+  margin-top: 25px;
+}
+
 /**
  * Sidebar
  */
@@ -7061,6 +7065,10 @@ dl.variation p {
 
 .botiga-product-size-chart-modal-open {
   overflow: hidden;
+}
+
+.botiga-product-size-chart-modal-open .bhfb-header {
+  z-index: 0;
 }
 
 .botiga-product-size-chart-modal-open .botiga-product-size-chart-modal {

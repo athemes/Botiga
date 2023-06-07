@@ -12,7 +12,7 @@
 // Local project URL of your already running WordPress site.
 // > Could be something like "wpgulp.local" or "localhost"
 // > depending upon your local WordPress setup.
-const projectURL = 'http://localhost/at-development';
+const projectURL = 'http://localhost:6060';
 
 // Theme/Plugin URL. Leave it like it is; since our gulpfile.js lives in the root folder.
 const productURL = './';
@@ -180,6 +180,7 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*{node_modules,node_modules/**/*}',
 	'!../@(Botiga|botiga)/**/*.git',
 	'!../@(Botiga|botiga)/**/*.svn',
+	'!../@(Botiga|botiga)/**/*phpcs.xml',
 	'!../@(Botiga|botiga)/**/*gulpfile.babel.js',
 	'!../@(Botiga|botiga)/**/*wpgulp.config.js',
 	'!../@(Botiga|botiga)/**/*.eslintrc.js',

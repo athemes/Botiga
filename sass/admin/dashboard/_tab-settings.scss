@@ -1,0 +1,147 @@
+/* Botiga License Field */
+.botiga-dashboard-license-wrapper {
+	h2 {
+		font-size: 20px;
+		line-height: 30px;
+		margin: 0;
+	}
+}
+
+.botiga-dashboard-license-form {
+	margin-top: 10px;
+
+	form {
+		display: flex;
+		flex-wrap: wrap;
+		grid-gap: 10px;
+
+		input {
+			width: 400px;
+			max-width: 100%;
+			padding-left: 36px;
+			min-height: 36px;
+
+			&::placeholder {
+				opacity: 0.75;
+			}
+		}
+
+		button {
+			position: relative;
+			display: flex;
+			grid-gap: 2px;
+			align-items: center;
+			line-height: 1em;
+			min-height: 36px;
+			padding: 10px 40px !important;
+		}
+	}
+}
+
+.botiga-license-key-input {
+	position: relative;
+	display: flex;
+
+	i {
+		position: absolute;
+		z-index: 1;
+		top: 50%;
+		left: 10px;
+		transform: translateY(-50%);
+		margin-top: -1px;
+		font-size: 20px !important;
+		color: #5C5F62;
+	}
+}
+
+.botiga-dashboard-license-success {
+	margin-top: 10px;
+	display: flex;
+	grid-gap: 5px;
+
+	span{
+		color: #0b890b;
+	}
+}
+
+.botiga-dashboard-license-error {
+	margin-top: 10px;
+	color: #d63638;
+}
+
+/* Botiga Dashboard Module Card */
+.botiga-dashboard-module-card {
+	.botiga-dashboard-module-card-header {
+		display: flex;
+		justify-content: space-between;
+		gap: 37px;
+
+		h2 {
+			font-size: 20px;
+			line-height: 20px;
+			margin: 0;
+		}
+
+		.botiga-dashboard-module-card-header-actions {
+			padding-top: 30px;
+		}
+	}
+}
+
+/* Botiga Dashboard Content Expand */
+.botiga-dashboard-content-expand {
+	.botiga-dashboard-content-expand-title {
+		.botiga-dashboard-content-expand-link {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			color: #3858E9;
+			background-color: #E8ECFF;
+			padding: 7px;
+			text-decoration: none;
+
+			&:after {
+				content: '';
+				background-image: url(../../img/dashboard/chevron.svg);
+				background-size: 15px;
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				margin-left: auto;
+			}
+
+			svg {
+				margin-right: 6px;
+			}
+		}
+	}
+
+	.botiga-dashboard-content-expand-content {
+		border: 1px solid #E8ECFF;
+		padding: 10px 8px;
+	}
+
+	.botiga-dashboard-content-expand-list {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		margin: 0;
+
+		li {
+			color: #6D7175;
+			margin: 0;
+
+			svg {
+				margin-top: 5px;
+				margin-right: 7px;
+				min-width: 8px;
+			}
+
+			a {
+				padding-left: 5px;
+			}
+		}
+	}
+}

@@ -30,7 +30,7 @@ botiga.helpers = {
 		const rect = el.getBoundingClientRect();
 		return (
 			rect.left >= 0 &&
-			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+			rect.right <= (document.documentElement.clientWidth)
 		);
 	},
 	ajax: function( action, nonce, extraParams, successCallback ) {
@@ -83,9 +83,13 @@ botiga.navigation = {
 	
 	init: function() {
 		const 
-			siteNavigation = document.getElementById( 'site-navigation' ),
+			siteNavigation = document.getElementById( 'site-navigation' ) == null ? document.getElementById( 'site-navigation-mobile' ) : document.getElementById( 'site-navigation' ),
 			offCanvas 	   = document.getElementsByClassName( 'botiga-offcanvas-menu' )[0],
 			button 		   = document.getElementsByClassName( 'menu-toggle' )[ 0 ];
+
+		if( siteNavigation === null ) {
+			return;
+		}
 
 		// Return early if the navigation don't exist.
 		if ( ! siteNavigation && typeof button === 'undefined'  ) {

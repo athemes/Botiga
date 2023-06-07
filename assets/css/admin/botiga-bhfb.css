@@ -52,26 +52,10 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   display: none;
 }
 
-#sub-accordion-panel-botiga_panel_header > li.accordion-section[id*="accordion-section-botiga_section_hb"]:not(#accordion-section-botiga_section_hb_wrapper),
-#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="accordion-section-botiga_section_fb"]:not(#accordion-section-botiga_section_fb_wrapper),
-#sub-accordion-panel-botiga_panel_header > li.accordion-section[id*="botiga_header_row__"],
-#sub-accordion-panel-botiga_panel_footer > li.accordion-section[id*="botiga_footer_row__"] {
-  display: none !important;
-}
-
 #sub-accordion-section-botiga_section_fb_component__footer_menu #customize-control-footer_navigation_menu_link .footer-widget-area-link {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
-}
-
-#customize-control-botiga_section_fb_component__html2_title {
-  margin-bottom: 10px;
-}
-
-#customize-control-botiga_section_fb_component__html_title,
-#customize-control-botiga_section_fb_component__shortcode_title {
-  display: none;
 }
 
 .bhfb-ui-state-highlight {
@@ -752,7 +736,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
  * Available Columns
  */
 .bhfb-available-columns .bhfb-columns-control-title {
-  margin-bottom: 7px !important;
+  margin-bottom: 12px !important;
 }
 
 .bhfb-available-columns .bhfb-available-columns-items-wrapper {
@@ -776,6 +760,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #1e1e1e;
+  font-size: 13px;
   font-weight: 400;
   font-style: normal;
   padding: 9px 15px;
@@ -853,7 +838,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 10px 1px, 10px 1px, 1px 10px, 1px 10px;
   padding: 10px;
-  margin-top: 7px;
+  margin-top: 12px;
   border-radius: 5px;
 }
 
@@ -864,6 +849,7 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
   background: #FFF;
   color: #1e1e1e;
   text-decoration: none;
+  font-size: 13px;
   font-style: normal;
   padding: 8px 8px;
   border: 2px solid #3858E9;
@@ -943,9 +929,6 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 .bhfb-customizer-sidebar-upsell {
   background: #fff;
   font-style: normal;
-  margin-left: -25px;
-  margin-right: -25px;
-  padding: 25px 25px;
 }
 
 .bhfb-customizer-sidebar-upsell p {
@@ -953,37 +936,21 @@ body.bhfb-active .botiga-bhfb.show-bottom .botiga-bhfb-top {
 }
 
 .bhfb-upsell-button {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 7px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 8px 50px;
   text-decoration: none;
   border-radius: 4px;
-  color: #3858E9;
-  border: 2px solid #3858E9;
+  color: #FFF !important;
+  background-color: #3858E9;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
 .bhfb-upsell-button:active, .bhfb-upsell-button:focus, .bhfb-upsell-button:hover {
-  color: #3858E9;
-}
-
-.bhfb-upsell-button:hover {
-  background-color: #f7f9ff;
-}
-
-.bhfb-upsell-button:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  background-color: #4466fd;
 }
 
 .botiga-bhfb-upsell-components-wrapper {

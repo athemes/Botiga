@@ -767,3 +767,9 @@ ul.wc-block-grid__products {
 		}
 	}
 }
+
+.woocommerce-notices-wrapper {
+	& + .products {
+		margin-top: 25px;
+	}
+}

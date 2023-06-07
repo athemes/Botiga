@@ -78,7 +78,7 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 			$custom_css = Botiga_Custom_CSS::get_instance();
 			$custom_css->update_custom_css_file();
 
-			wp_redirect( add_query_arg( $args, admin_url( 'themes.php' ) ) );
+			wp_redirect( add_query_arg( $args, admin_url( 'admin.php' ) ) );
 
 		}
 

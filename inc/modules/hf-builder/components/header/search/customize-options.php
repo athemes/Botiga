@@ -15,10 +15,13 @@ $opts_to_move = apply_filters( 'botiga_hfb_header_component_search_opts_to_move'
 ) );
 
 $wp_customize->add_section(
-    'botiga_section_hb_component__search',
-    array(
-        'title'      => esc_html__( 'Search', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__search',
+        array(
+            'title'      => esc_html__( 'Search', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 
@@ -155,10 +158,9 @@ $wp_customize->add_control(
         'bhfb_search_icon_sticky_title',
         array(
             'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__search',
             'active_callback' => 'botiga_sticky_header_enabled',
-            'priority'	 	  => 32
+            'priority'	 	  => 25
         )
     )
 );
@@ -192,7 +194,7 @@ $wp_customize->add_control(
                 'hover'  => 'bhfb_search_icon_color_hover',
             ),
             'active_callback' => 'botiga_sticky_header_enabled',
-            'priority' => 33
+            'priority' => 25
         )
     )
 );

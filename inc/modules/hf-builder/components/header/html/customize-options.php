@@ -17,10 +17,13 @@ $opts_to_move = array(
 );
 
 $wp_customize->add_section(
-    'botiga_section_hb_component__html',
-    array(
-        'title'      => esc_html__( 'HTML', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__html',
+        array(
+            'title'      => esc_html__( 'HTML', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 
@@ -41,7 +44,6 @@ $wp_customize->add_control(
             'controls_general'		=> json_encode(
                 array_merge(
                     array(
-                        '#customize-control-botiga_section_hb_component__html_title',
                         '#customize-control-botiga_section_hb_component__html_text_align',
                         '#customize-control-botiga_section_hb_component__html_visibility'
                     ),
@@ -66,25 +68,6 @@ $wp_customize->add_control(
                 )
             ),
             'priority' 				=> 20
-        )
-    )
-);
-
-$wp_customize->add_setting( 
-    'botiga_section_hb_component__html_title',
-    array(
-        'default' 			=> '',
-        'sanitize_callback' => 'esc_attr'
-    )
-);
-$wp_customize->add_control( 
-    new Botiga_Text_Control( 
-        $wp_customize, 
-        'botiga_section_hb_component__html_title',
-        array(
-            'label'			  => esc_html__( 'HTML Content', 'botiga' ),
-            'section' 		  => 'botiga_section_hb_component__html',
-            'priority'	 	  => 29
         )
     )
 );
@@ -252,7 +235,6 @@ $wp_customize->add_control(
         'botiga_section_hb_component__html_sticky_title',
         array(
             'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__html',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 44

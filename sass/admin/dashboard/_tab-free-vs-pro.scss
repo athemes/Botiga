@@ -1,0 +1,184 @@
+/* Free Vs Pro Table */
+.botiga-dashboard-freevspro-table__header {
+	position: sticky;
+	top: 50px;
+	z-index: 1;
+	border-radius: 4px;
+	border: 1px solid #C2CFF8;
+	background-color: #F9FAFE;
+
+	.botiga-dashboard-freevspro-table__column {
+		border-bottom: 0;
+	}
+
+	strong {
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 23px;
+		letter-spacing: 0em;
+		color: #1e1e1e;
+		margin: 0;
+	}
+}
+
+.botiga-dashboard-freevspro-table__body {
+
+	.botiga-dashboard-freevspro-table__column strong {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20px;
+		letter-spacing: 0em;
+	}
+
+	.botiga-dashboard-freevspro-table__column a {
+		color: #1e1e1e;
+		display: inline-flex;
+		align-items: center;
+		text-decoration: none;
+		transition: none;
+
+		&:hover {
+			color: #3858e9;
+		}
+
+		&:focus,
+		&:active {
+			box-shadow: none;
+		}
+	}
+
+	.dashicons-external {
+		width: auto;
+		height: auto;
+		font-size: 16px;
+		margin-left: 3px;
+		transition: none;
+	}
+}
+
+.botiga-dashboard-freevspro-table__row {
+	display: flex;
+}
+
+.botiga-dashboard-freevspro-table__column {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	max-width: 275px;
+	padding: 17px 23px;
+	text-align: center;
+	border-bottom: 1px solid #E3E8F7;
+
+	strong {
+		font-weight: 500;
+		text-align: left;
+		color: #1e1e1e;
+	}
+
+	.botiga-dashboard-freevspro-table__icon {
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		border-radius: 30px;
+		font-size: 20px;
+		line-height: 30px;
+	}
+
+	.botiga-dashboard-freevspro-table__icon_break {
+		text-align: center;
+		width: 20px;
+		height: 20px;
+		font-size: 20px;
+		line-height: 20px;
+		opacity: 0.3;
+		transform: scaleX(-1);
+	}
+
+	.dashicons-saved {
+		text-indent: -2px;
+		color: #3FB28F;
+		background-color: rgba(63, 178, 143, 0.1);
+	}
+
+	.dashicons-no-alt {
+		color: #E62424;
+		background-color: rgba(230, 36, 36, 0.05);
+	}
+
+	&.botiga-dashboard-freevspro-table__column--feature {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 20px;
+		letter-spacing: 0em;
+		max-width: none;
+		text-align: left;
+		flex-wrap: wrap;
+		grid-gap: 6px;
+	}
+}
+
+.botiga-dashboard-freevspro-table__spacing {
+	margin-left: 10px;
+}
+
+.botiga-dashboard-freevspro-table__desc {
+	font-size: 12px;
+	font-style: italic;
+	width: 100%;
+	opacity: 0.5;
+}
+
+.botiga-dashboard-freevspro-table__row+.botiga-dashboard-freevspro-table__row .botiga-dashboard-freevspro-table__column,
+.botiga-dashboard-freevspro-table__body .botiga-dashboard-freevspro-table__row:first-child .botiga-dashboard-freevspro-table__column {
+	border-top-width: 0;
+}
+
+.botiga-dashboard-freevspro-table__body .botiga-dashboard-freevspro-table__row:last-child .botiga-dashboard-freevspro-table__column {
+	border-bottom: 0;
+}
+
+.botiga-dashboard-freevspro-upsell-wrapper {
+	text-align: right;
+
+	.button {
+		width: 100%;
+		max-width: 252px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.botiga-dashboard-freevspro-table__header {
+		position: relative;
+		top: auto;
+
+		strong {
+			font-size: 16px;
+		}
+	}
+
+	.botiga-dashboard-freevspro-table-responsive {
+		max-width: 100%;
+		overflow-x: auto;
+	}
+
+	.botiga-dashboard-freevspro-table__column--feature:first-child {
+		text-align: left;
+		justify-content: flex-start;
+	}
+
+	.botiga-dashboard-freevspro-table__column {
+		padding: 15px 10px;
+		text-align: center;
+		justify-content: center;
+		max-width: 100px;
+
+		&:not(:first-child) {
+
+			strong {
+				margin-left: 0;
+				text-align: center;
+			}
+		}
+	}
+}

@@ -7,10 +7,13 @@
  */
 
 $wp_customize->add_section(
-    'botiga_section_fb_component__button',
-    array(
-        'title'      => esc_html__( 'Button 1', 'botiga' ),
-        'panel'      => 'botiga_panel_footer'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_fb_component__button',
+        array(
+            'title'      => esc_html__( 'Button 1', 'botiga' ),
+            'panel'      => 'botiga_panel_footer'
+        )
     )
 );
 

@@ -1,0 +1,65 @@
+/* Grid */
+.botiga-dashboard-container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+@media(min-width: 1280px) {
+	.botiga-dashboard-container {
+		max-width: 1280px;
+	}
+}
+
+.botiga-dashboard-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.botiga-dashboard-column {
+	flex-basis: 100%;
+}
+
+@media(min-width: 768px) {
+	.botiga-dashboard-column {
+		&.botiga-dashboard-column-4 {
+			flex-basis: calc( 50% - 10px );
+		}
+	}
+}
+
+@media(min-width: 1025px) {
+	.botiga-dashboard-column {
+		&.botiga-dashboard-column-2 {
+			flex-basis: calc( 16.6666% - 10px );
+		}
+
+		&.botiga-dashboard-column-3 {
+			flex-basis: calc( 30% - 10px );
+		}
+
+		&.botiga-dashboard-column-4 {
+			flex-basis: calc( 33.333333% - 14px );
+		}
+
+		&.botiga-dashboard-column-9 {
+			flex-basis: calc( 70% - 10px );
+		}
+
+		&.botiga-dashboard-column-10 {
+			flex-basis: calc( 83.333% - 10px );
+		}
+	}
+}
+
+@media(min-width: 1600px) {
+	.botiga-dashboard-column {
+		&.botiga-dashboard-column-3 {
+			flex-basis: calc( 25% - 10px );
+		}
+
+		&.botiga-dashboard-column-9 {
+			flex-basis: calc( 75% - 10px );
+		}
+	}
+}

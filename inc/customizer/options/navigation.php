@@ -38,8 +38,9 @@ $wp_customize->get_section( 'colors' )->description = esc_html__( 'Manage palett
 //
 // @priority 60 (Background)
 //
-$wp_customize->get_section( 'background_image' )->title    = esc_html__( 'Background', 'botiga');
-$wp_customize->get_section( 'background_image' )->priority = 60;
+$wp_customize->get_section( 'background_image' )->title       = esc_html__( 'Background', 'botiga');
+$wp_customize->get_section( 'background_image' )->description = esc_html__( 'Manage the syle of the background that appear behind the website content.', 'botiga');
+$wp_customize->get_section( 'background_image' )->priority    = 60;
 
 /**
  * Elements
@@ -80,14 +81,16 @@ if ( class_exists( 'WooCommerce' ) ) {
 	//
 	if ( $wp_customize->get_section( 'woocommerce_store_notice' ) ) {
 		$wp_customize->get_section( 'woocommerce_store_notice' )->panel    = null;
+		$wp_customize->get_section( 'woocommerce_store_notice' )->description = esc_html__( 'Display a global notice message that\'s displayed site wide.', 'botiga' );
 		$wp_customize->get_section( 'woocommerce_store_notice' )->priority = 100;
 	}
 	//
 	// @priority 105 (Product Catalog)
 	//
 	if ( $wp_customize->get_section( 'woocommerce_product_catalog' ) ) {
-		$wp_customize->get_section( 'woocommerce_product_catalog' )->panel    = null;
-		$wp_customize->get_section( 'woocommerce_product_catalog' )->priority = 105;
+		$wp_customize->get_section( 'woocommerce_product_catalog' )->panel       = null;
+		$wp_customize->get_section( 'woocommerce_product_catalog' )->description = esc_html__( 'Manage the overall design and functionality from the shop archive pages.', 'botiga' );
+		$wp_customize->get_section( 'woocommerce_product_catalog' )->priority 	 = 105;
 	}
 	//
 	// @priority 110 (Single Products)
@@ -96,6 +99,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	//
 	if ( $wp_customize->get_section( 'woocommerce_checkout' ) ) {
 		$wp_customize->get_section( 'woocommerce_checkout' )->panel    = null;
+		$wp_customize->get_section( 'woocommerce_checkout' )->description = esc_html__( 'Manage the overall design and functionality from the shop checkout page.', 'botiga' );
 		$wp_customize->get_section( 'woocommerce_checkout' )->priority = 115;
 	}
 	//
@@ -111,6 +115,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	//
 	if ( $wp_customize->get_section( 'woocommerce_product_images' ) ) {
 		$wp_customize->get_section( 'woocommerce_product_images' )->panel    = null;
+		$wp_customize->get_section( 'woocommerce_product_images' )->description = esc_html__( 'Manage the shop product images functionality and size.', 'botiga' );
 		$wp_customize->get_section( 'woocommerce_product_images' )->priority = 140;
 	}
 	//
@@ -138,15 +143,14 @@ $wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_blo
 /**
  * Extensions
  */
-if ( defined( 'BOTIGA_PRO_VERSION' ) ) {
-	$wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_extension',
-		array(
-			'title'    => esc_html__( 'Extensions', 'botiga' ),
-			'priority' => 175,
-			'divider'  => true,
-		)
-	) );
-}
+$wp_customize->add_section( new Botiga_Title_Section( $wp_customize, 'botiga_extension',
+	array(
+		'title'    => esc_html__( 'Extensions', 'botiga' ),
+		'priority' => 175,
+		'divider'  => true,
+	)
+) );
+
 //
 // @priority 180 (Performance)
 //

@@ -14,7 +14,7 @@ class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 	 * @access public
 	 * @var    string
 	 */
-	public $type = 'example-1';
+	public $type = 'botiga-upsell';
 
 	/**
 	 * Custom button text to output.

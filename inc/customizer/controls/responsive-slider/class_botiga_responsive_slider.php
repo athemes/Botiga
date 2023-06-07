@@ -79,7 +79,7 @@ class Botiga_Responsive_Slider extends WP_Customize_Control {
 				</div>		
 				<?php endif; ?>	
 				<?php if ( $this->description ) : ?>
-					<p><?php echo esc_html( $this->description ); ?></p>
+					<p class="customize-control-description"><?php echo esc_html( $this->description ); ?></p>
 				<?php endif; ?>									
 			</div>
 		</div>
