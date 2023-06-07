@@ -1,9 +1,61 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d0fa6594cf96c5f89f5589781ec0b2b6",
     "packages": [
+        {
+            "name": "wptt/webfont-loader",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WPTT/webfont-loader.git",
+                "reference": "19fa29ba8d82bed018fb8c6f949799739c61356c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPTT/webfont-loader/zipball/19fa29ba8d82bed018fb8c6f949799739c61356c",
+                "reference": "19fa29ba8d82bed018fb8c6f949799739c61356c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "composer/installers": "~1.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "wptrt/wpthemereview": "^0.2.1"
+            },
+            "type": "package",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WPTT/font-loader/graphs/contributors"
+                }
+            ],
+            "description": "Locally host webfonts.",
+            "homepage": "https://github.com/WPTT/font-loader",
+            "keywords": [
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/WPTT/font-loader/issues",
+                "source": "https://github.com/WPTT/font-loader"
+            },
+            "time": "2022-10-21T07:56:48+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
             "version": "v0.7.0",
-            "version_normalized": "0.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
@@ -25,12 +77,10 @@
                 "phpcompatibility/php-compatibility": "^9.0",
                 "sensiolabs/security-checker": "^4.1.0"
             },
-            "time": "2020-06-25T14:57:39+00:00",
             "type": "composer-plugin",
             "extra": {
                 "class": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin"
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\": "src/"
@@ -71,12 +121,11 @@
                 "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
                 "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
             },
-            "install-path": "../dealerdirect/phpcodesniffer-composer-installer"
+            "time": "2020-06-25T14:57:39+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
             "version": "9.3.5",
-            "version_normalized": "9.3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
@@ -102,9 +151,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
-            "time": "2019-12-27T09:44:58+00:00",
             "type": "phpcodesniffer-standard",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0-or-later"
@@ -136,12 +183,11 @@
                 "issues": "https://github.com/PHPCompatibility/PHPCompatibility/issues",
                 "source": "https://github.com/PHPCompatibility/PHPCompatibility"
             },
-            "install-path": "../phpcompatibility/php-compatibility"
+            "time": "2019-12-27T09:44:58+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",
             "version": "1.3.2",
-            "version_normalized": "1.3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie.git",
@@ -165,9 +211,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7 || This Composer plugin will sort out the PHP_CodeSniffer 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
-            "time": "2022-10-25T01:46:02+00:00",
             "type": "phpcodesniffer-standard",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0-or-later"
@@ -196,12 +240,11 @@
                 "issues": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie/issues",
                 "source": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie"
             },
-            "install-path": "../phpcompatibility/phpcompatibility-paragonie"
+            "time": "2022-10-25T01:46:02+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-wp",
             "version": "2.1.4",
-            "version_normalized": "2.1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibilityWP.git",
@@ -224,9 +267,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7 || This Composer plugin will sort out the PHP_CodeSniffer 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
-            "time": "2022-10-24T09:00:36+00:00",
             "type": "phpcodesniffer-standard",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0-or-later"
@@ -254,12 +295,11 @@
                 "issues": "https://github.com/PHPCompatibility/PHPCompatibilityWP/issues",
                 "source": "https://github.com/PHPCompatibility/PHPCompatibilityWP"
             },
-            "install-path": "../phpcompatibility/phpcompatibility-wp"
+            "time": "2022-10-24T09:00:36+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
             "version": "3.7.2",
-            "version_normalized": "3.7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
@@ -280,7 +320,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
-            "time": "2023-02-22T23:07:41+00:00",
             "bin": [
                 "bin/phpcs",
                 "bin/phpcbf"
@@ -291,7 +330,6 @@
                     "dev-master": "3.x-dev"
                 }
             },
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -314,12 +352,11 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "install-path": "../squizlabs/php_codesniffer"
+            "time": "2023-02-22T23:07:41+00:00"
         },
         {
             "name": "woocommerce/woocommerce-sniffs",
             "version": "0.1.3",
-            "version_normalized": "0.1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/woocommerce/woocommerce-sniffs.git",
@@ -337,9 +374,7 @@
                 "phpcompatibility/phpcompatibility-wp": "^2.1.0",
                 "wp-coding-standards/wpcs": "^2.3.0"
             },
-            "time": "2022-02-17T15:34:51+00:00",
             "type": "phpcodesniffer-standard",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -361,12 +396,11 @@
                 "issues": "https://github.com/woocommerce/woocommerce-sniffs/issues",
                 "source": "https://github.com/woocommerce/woocommerce-sniffs/tree/0.1.3"
             },
-            "install-path": "../woocommerce/woocommerce-sniffs"
+            "time": "2022-02-17T15:34:51+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
             "version": "2.3.0",
-            "version_normalized": "2.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
@@ -391,9 +425,7 @@
             "suggest": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.6 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
             },
-            "time": "2020-05-13T23:57:56+00:00",
             "type": "phpcodesniffer-standard",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -415,12 +447,11 @@
                 "source": "https://github.com/WordPress/WordPress-Coding-Standards",
                 "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
             },
-            "install-path": "../wp-coding-standards/wpcs"
+            "time": "2020-05-13T23:57:56+00:00"
         },
         {
             "name": "wptrt/wpthemereview",
             "version": "0.2.1",
-            "version_normalized": "0.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WPTT/WPThemeReview.git",
@@ -447,9 +478,7 @@
             "suggest": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
             },
-            "time": "2019-11-17T20:05:55+00:00",
             "type": "phpcodesniffer-standard",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -492,66 +521,15 @@
                 "issues": "https://github.com/WPTRT/WPThemeReview/issues",
                 "source": "https://github.com/WPTRT/WPThemeReview"
             },
-            "install-path": "../wptrt/wpthemereview"
-        },
-        {
-            "name": "wptt/webfont-loader",
-            "version": "v1.1.3",
-            "version_normalized": "1.1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WPTT/webfont-loader.git",
-                "reference": "19fa29ba8d82bed018fb8c6f949799739c61356c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WPTT/webfont-loader/zipball/19fa29ba8d82bed018fb8c6f949799739c61356c",
-                "reference": "19fa29ba8d82bed018fb8c6f949799739c61356c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "composer/installers": "~1.0",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "php-parallel-lint/php-parallel-lint": "^1.2",
-                "wptrt/wpthemereview": "^0.2.1"
-            },
-            "time": "2022-10-21T07:56:48+00:00",
-            "type": "package",
-            "installation-source": "dist",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/WPTT/font-loader/graphs/contributors"
-                }
-            ],
-            "description": "Locally host webfonts.",
-            "homepage": "https://github.com/WPTT/font-loader",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/WPTT/font-loader/issues",
-                "source": "https://github.com/WPTT/font-loader"
-            },
-            "install-path": "../wptt/webfont-loader"
+            "time": "2019-11-17T20:05:55+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": [
-        "dealerdirect/phpcodesniffer-composer-installer",
-        "phpcompatibility/php-compatibility",
-        "phpcompatibility/phpcompatibility-paragonie",
-        "phpcompatibility/phpcompatibility-wp",
-        "squizlabs/php_codesniffer",
-        "woocommerce/woocommerce-sniffs",
-        "wp-coding-standards/wpcs",
-        "wptrt/wpthemereview"
-    ]
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }

@@ -262,7 +262,7 @@ function botiga_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 			'before_sidebar' => '<div class="sidebar-wrapper"><a href="#" role="button" class="close-sidebar" title="'. esc_attr__( 'Close sidebar', 'botiga' ) .'" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-close\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. botiga_get_svg_icon( 'icon-cancel' ) .'</a>',
-				'after_sidebar'  => '</div>'
+			'after_sidebar'  => '</div>'
 		)
 	);
 
@@ -479,9 +479,10 @@ require get_template_directory() . '/inc/classes/class-botiga-custom-css.php';
 require get_template_directory() . '/inc/ajax-callbacks.php';
 
 /**
- * Autoload.
+ * Legacy composer autoload.
+ * Purpose is autoload only needed kirki-framework controls classes. 
  */
-require_once get_parent_theme_file_path( 'vendor/autoload.php' );
+require_once get_parent_theme_file_path( 'vendor-legacy/autoload.php' );
 
 /**
  * Theme dashboard.

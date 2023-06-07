@@ -792,7 +792,7 @@ function botiga_google_fonts_url() {
 	// Load google fonts locally
 	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
 	if( $load_locally ) {
-		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		require_once get_theme_file_path( 'vendor/wptt/webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 		return wptt_get_webfont_url( $fonts_url );
 	}
@@ -916,7 +916,7 @@ function botiga_custom_google_fonts_url() {
 	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
 
 	if ( $load_locally ) {
-		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		require_once get_theme_file_path( 'vendor/wptt/webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		return wptt_get_webfont_url( $fonts_url );
 	}
 

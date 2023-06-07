@@ -1,6 +1,7 @@
 <?php
 /**
  * The search form template
+ * 
  * @package Botiga
  */
 

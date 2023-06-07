@@ -49,4 +49,4 @@
 	 * Main Wrapper
 	 */
 	do_action( 'botiga_before_main_wrapper' );
-	do_action( 'botiga_main_wrapper_start' ); ?>			
+	do_action( 'botiga_main_wrapper_start' );

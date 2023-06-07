@@ -4,42 +4,32 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4df50f989ecb0efc97fcfe88333df300
+class ComposerStaticInit38999d373839c547404bdac05dde971a
 {
     public static $prefixLengthsPsr4 = array (
-        'K' => 
+        'D' => 
         array (
-            'Kirki\\Field\\' => 12,
-            'Kirki\\Control\\' => 14,
-            'Kirki\\' => 6,
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Kirki\\Field\\' => 
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
-            2 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
-        'Kirki\\Control\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/control-base/src/Control',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control',
-            2 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            3 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
-        ),
-        'Kirki\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
-        ),
+    );
+
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4df50f989ecb0efc97fcfe88333df300::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4df50f989ecb0efc97fcfe88333df300::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit38999d373839c547404bdac05dde971a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit38999d373839c547404bdac05dde971a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit38999d373839c547404bdac05dde971a::$classMap;
 
         }, null, ClassLoader::class);
     }

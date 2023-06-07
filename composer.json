@@ -1,0 +1,15 @@
+{
+    "require": {
+        "wptt/webfont-loader": "1.1.3"
+    },
+    "require-dev": {
+        "woocommerce/woocommerce-sniffs": "^0.1.3",
+        "wptrt/wpthemereview": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "0.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
