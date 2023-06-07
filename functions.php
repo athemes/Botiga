@@ -9,14 +9,14 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.0.8' );
+	define( 'BOTIGA_VERSION', '2.1.0' );
 }
 
 // aThemes White Label Compatibility
 if( function_exists( 'athemes_wl_get_data' ) ) {
 	$botiga_awl_data = athemes_wl_get_data();
 
-	if( $botiga_awl_data[ 'activate_white_label' ] ) {
+	if( isset( $botiga_awl_data[ 'activate_white_label' ] ) && $botiga_awl_data[ 'activate_white_label' ] ) {
 		define( 'BOTIGA_AWL_ACTIVE', true );
 	}
 }

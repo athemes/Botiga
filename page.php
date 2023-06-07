@@ -16,6 +16,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>">
+	
 
 		<?php
 		while ( have_posts() ) :

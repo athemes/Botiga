@@ -545,7 +545,7 @@ add_action( 'woocommerce_before_shop_loop', 'botiga_wrap_products_results_orderi
  * Check if has "woocommerce-sorting-wrapper"
  */
 function botiga_has_woocommerce_sorting_wrapper() {
-	$shop_grid_list_view  = get_theme_mod( 'shop_grid_list_view', 1 );
+	$shop_grid_list_view  = get_theme_mod( 'shop_grid_list_view', 0 );
 	$shop_product_sorting = get_theme_mod( 'shop_product_sorting', 1 );
 	$shop_results_count   = get_theme_mod( 'shop_results_count', 1 );
 	$shop_archive_sidebar = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );

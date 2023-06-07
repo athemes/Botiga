@@ -11,17 +11,19 @@
 // List of options we'll need to move.
 $opts_to_move = array(
     'general' => array(
-        'topbar_nav_title',
         'topbar_nav_link'
     ),
     'style'   => array()
 );
 
 $wp_customize->add_section(
-    'botiga_section_hb_component__secondary_menu',
-    array(
-        'title'      => esc_html__( 'Secondary Menu', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__secondary_menu',
+        array(
+            'title'      => esc_html__( 'Secondary Menu', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 
@@ -41,10 +43,10 @@ $wp_customize->add_control(
             'section'       		=> 'botiga_section_hb_component__secondary_menu',
             'controls_general'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] ),
                     array(
                         '#customize-control-secondary_menu_visibility'
-                    ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
+                    )
                 ),
             ),
             'controls_design'		=> json_encode(
@@ -110,7 +112,7 @@ $wp_customize->add_control(
                 'visible' => esc_html__( 'Visible', 'botiga' ),
                 'hidden'  => esc_html__( 'Hidden', 'botiga' )
             ),
-            'priority'      => 55
+            'priority'      => 25
         )
     ) 
 );
@@ -143,7 +145,7 @@ $wp_customize->add_control(
 				'normal' => 'secondary_menu_color',
 				'hover'  => 'secondary_menu_color_hover',
 			),
-			'priority' => 25
+			'priority' => 35
 		)
 	)
 );
@@ -216,7 +218,6 @@ $wp_customize->add_control(
         'secondary_menu_sticky_title',
         array(
             'label'			  => esc_html__( 'Sticky Header - Active State', 'botiga' ),
-            'description'     => esc_html__( 'Control the colors when the sticky header state is active.', 'botiga' ),
             'section' 		  => 'botiga_section_hb_component__secondary_menu',
             'active_callback' => 'botiga_sticky_header_enabled',
             'priority'	 	  => 47
@@ -417,12 +418,17 @@ $wp_customize->add_control(
 );
 
 // Move existing options.
-$priority = 50;
+$priority = 21;
 foreach( $opts_to_move as $control_tabs ) {
     foreach( $control_tabs as $option_name ) {
 
 		if( $wp_customize->get_control( $option_name ) === NULL ) {
             continue;
+        }
+
+        if( 'topbar_nav_link' === $option_name ) {
+            $wp_customize->get_control( $option_name )->label = esc_html__( 'Secondary Menu', 'botiga' );   
+            $wp_customize->get_control( $option_name )->rm_desc_mt = true;    
         }
 		
         $wp_customize->get_control( $option_name )->section  = 'botiga_section_hb_component__secondary_menu';

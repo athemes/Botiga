@@ -23,10 +23,13 @@ $opts_to_move = array(
 );
 
 $wp_customize->add_section(
-    'botiga_section_hb_component__menu',
-    array(
-        'title'      => esc_html__( 'Primary Menu', 'botiga' ),
-        'panel'      => 'botiga_panel_header'
+    new Botiga_Section_Hidden(
+        $wp_customize,
+        'botiga_section_hb_component__menu',
+        array(
+            'title'      => esc_html__( 'Primary Menu', 'botiga' ),
+            'panel'      => 'botiga_panel_header'
+        )
     )
 );
 
@@ -55,11 +58,11 @@ $wp_customize->add_control(
             ),
             'controls_design'		=> json_encode(
                 array_merge(
+                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] ),
                     array(
                         '#customize-control-botiga_section_hb_component__menu_padding',
                         '#customize-control-botiga_section_hb_component__menu_margin'
                     ),
-                    array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] )
                 )
             ),
             'priority' 				=> 20

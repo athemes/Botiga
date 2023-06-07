@@ -1,10 +1,10 @@
 <?php
 /**
  * Header Builder.
- * Above Header Row Template File.
+ * Top Header Row Template File.
  * 
  * @package Botiga
- * @var array $args Contains above header row data
+ * @var array $args Contains top header row data
  */
 
 $row      = $args[ 'row' ];

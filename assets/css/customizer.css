@@ -1,4 +1,481 @@
 /* General */
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 0;
+}
+
+input[type="number"]:hover::-webkit-inner-spin-button, input[type="number"]:focus::-webkit-inner-spin-button, input[type="number"]:active::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
+/* Helpers */
+.bt-mt-0 {
+  margin-top: 0 !important;
+}
+
+/* Customize Pane (wrapper) */
+#customize-theme-controls .customize-pane-child {
+  padding-bottom: 16px !important;
+}
+
+/* Botiga Section Hidden */
+li.control-section-botiga-section-hidden {
+  display: none !important;
+}
+
+/* Customize Panels (panel-meta and section-meta) */
+#customize-controls .customize-pane-child .section-meta,
+#customize-controls .customize-pane-child .panel-meta {
+  padding: 12px 16px 5px 16px;
+  border-bottom: none;
+  background-color: #FFF;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+#customize-controls .customize-pane-child .section-meta .customize-section-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+}
+
+#customize-controls .customize-pane-child .section-meta .customize-section-title h3 {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+#customize-controls .customize-pane-child .section-meta .customize-section-title h3 .customize-action {
+  display: none;
+}
+
+#customize-controls .customize-pane-child .section-meta .customize-section-description {
+  display: none !important;
+  color: #1e1e1e;
+  font-weight: 400;
+  margin-top: 9px;
+  padding: 0 20px 0 0;
+}
+
+#customize-controls .customize-pane-child .panel-meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 0;
+}
+
+#customize-controls .customize-pane-child .panel-meta .customize-panel-back {
+  -ms-flex-preferred-size: 11%;
+      flex-basis: 11%;
+}
+
+#customize-controls .customize-pane-child .panel-meta .accordion-section-title {
+  -ms-flex-preferred-size: 89%;
+      flex-basis: 89%;
+  margin: 0;
+  padding: 0;
+}
+
+#customize-controls .customize-pane-child .panel-meta .accordion-section-title .preview-notice {
+  max-height: 32px;
+  display: block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#customize-controls .customize-pane-child .panel-meta .accordion-section-title .preview-notice .panel-title {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  background: #FFF;
+}
+
+#customize-controls .customize-pane-child .panel-meta .accordion-section-title .customize-help-toggle {
+  font-size: 18px;
+  top: -2px;
+  right: 0;
+}
+
+#customize-controls .customize-pane-child .panel-meta .customize-panel-description {
+  display: none !important;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  color: #1e1e1e;
+  font-weight: 400;
+  margin-top: 9px;
+  padding: 0 20px 0 0;
+  border-top: none;
+  margin-left: 2px;
+}
+
+#customize-controls .customize-pane-child .panel-meta .customize-panel-description,
+#customize-controls .customize-pane-child .panel-meta .customize-control-notifications-container,
+#customize-controls .customize-pane-child .panel-meta #screen-options-wrap {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+#customize-controls .customize-pane-child .panel-meta .no-widget-areas-rendered-notice {
+  padding: 16px 0 0 0;
+  margin: 16px 0 0;
+}
+
+#customize-controls .customize-pane-child .panel-meta #screen-options-wrap {
+  padding: 16px 0 0;
+  margin: 16px 0 0 4px;
+}
+
+#customize-controls .customize-pane-child .panel-meta .customize-help-toggle {
+  display: none;
+}
+
+#customize-controls .customize-pane-child .panel-meta + .control-subsection:not(.botiga-title-section),
+#customize-controls .customize-pane-child .panel-meta + .control-subsection:not(.botiga-title-section)[style="display: none;"] + .control-subsection {
+  margin-top: 16px;
+}
+
+/* Customize Control */
+.customize-control {
+  margin-bottom: 0;
+  padding: 16px 16px 0px 16px;
+  /* Specific Settings */
+}
+
+.customize-control .customize-control-description {
+  color: #757575 !important;
+  font-style: italic;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.customize-control .customize-control-description p {
+  font-size: 12px;
+}
+
+.customize-control.customize-control-botiga-tab-control {
+  position: sticky;
+  top: 0;
+  padding-top: 8px;
+  background-color: #FFF;
+  z-index: 10;
+}
+
+.customize-control.customize-control-botiga-tab-control:before {
+  content: '';
+  display: block;
+  width: calc(100% - 32px);
+  left: 16px;
+  bottom: 1px;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  z-index: -1;
+}
+
+.customize-control.customize-control-botiga-toggle-control .customize-control-title {
+  margin-bottom: 0;
+}
+
+.customize-control.customize-control-botiga-google_fonts {
+  position: relative;
+}
+
+.customize-control.customize-control-botiga-google_fonts .google-fonts + .range-slider-wrapper {
+  margin-top: 16px;
+}
+
+.customize-control.customize-control-botiga-alpha-color, .customize-control.customize-control-botiga-color-group-control {
+  width: calc( 100% - 32px);
+  margin-left: 16px;
+  padding: 0;
+}
+
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-group, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-color-group-control > .botiga-color-group {
+  border-top: 1px solid #ddd;
+  padding: 16px 16px;
+}
+
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-control.border-top-none,
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-group.border-top-none, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control.border-top-none,
+.customize-control.customize-control-botiga-color-group-control > .botiga-color-group.border-top-none {
+  border-top: none;
+}
+
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-control.border-bottom-none,
+.customize-control.customize-control-botiga-alpha-color > .botiga-color-group.border-bottom-none, .customize-control.customize-control-botiga-color-group-control > .botiga-color-control.border-bottom-none,
+.customize-control.customize-control-botiga-color-group-control > .botiga-color-group.border-bottom-none {
+  border-bottom: none;
+}
+
+.customize-control.customize-control-botiga-alpha-color.botiga-tab-control-item-first > .botiga-color-control,
+.customize-control.customize-control-botiga-alpha-color.botiga-tab-control-item-first > .botiga-color-group, .customize-control.customize-control-botiga-color-group-control.botiga-tab-control-item-first > .botiga-color-control,
+.customize-control.customize-control-botiga-color-group-control.botiga-tab-control-item-first > .botiga-color-group {
+  border-top: 0;
+}
+
+.customize-control.customize-control-botiga-alpha-color.botiga-tab-control-item-first + .customize-control-botiga-divider-control, .customize-control.customize-control-botiga-color-group-control.botiga-tab-control-item-first + .customize-control-botiga-divider-control {
+  padding-top: 0;
+}
+
+.customize-control.customize-control-botiga-alpha-color + .customize-control-botiga-divider-control, .customize-control.customize-control-botiga-color-group-control + .customize-control-botiga-divider-control {
+  padding-top: 0;
+}
+
+.customize-control.customize-control-botiga-alpha-color.botiga-alpha-color-border-bottom > .botiga-color-control,
+.customize-control.customize-control-botiga-alpha-color.botiga-alpha-color-border-bottom > .botiga-color-group {
+  border-top: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-alpha-color > .botiga-color-group,
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-text-control + .customize-control-botiga-color-group-control > .botiga-color-group {
+  border-top: 0;
+}
+
+.customize-control.customize-control-botiga-text-control + .customize-control-textarea:not(.botiga-tab-control-item-first),
+.customize-control.customize-control-botiga-text-control + .customize-control-text:not(.botiga-tab-control-item-first) {
+  padding-top: 0;
+}
+
+.customize-control.customize-control-botiga-text-control .customize-control-description + a {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.customize-control.customize-control-text .customize-control-description + input[type="text"] {
+  margin-top: 16px;
+}
+
+.customize-control.customize-control-textarea .customize-control-description + textarea {
+  margin-top: 16px;
+}
+
+.customize-control.customize-control-select .customize-control-description + select {
+  margin-top: 16px;
+}
+
+.customize-control.customize-control-checkbox .customize-inside-control-row {
+  padding: 0;
+}
+
+.customize-control.customize-control-background_position .background-position-control .button-group .button {
+  background: #FFF;
+}
+
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-alpha-color > .botiga-color-group,
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-text-style-control + .customize-control-botiga-color-group-control > .botiga-color-group {
+  border-top: 0;
+}
+
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-alpha-color > .botiga-color-control,
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-alpha-color > .botiga-color-group,
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-color-group-control > .botiga-color-control,
+.customize-control.customize-control-botiga-responsive-slider + .customize-control-botiga-color-group-control > .botiga-color-group {
+  border-top: 0;
+}
+
+.customize-control.customize-control-botiga-responsive-slider .range-slider + .customize-control-description {
+  margin-top: 12px;
+}
+
+.customize-control.customize-control-botiga-radio-image {
+  padding-bottom: 8px;
+}
+
+.customize-control.customize-control-botiga-radio-image .customize-control-title {
+  margin-bottom: 12px;
+}
+
+.customize-control.customize-control-botiga-radio-image .customize-control-description + .botiga-control-wrapper {
+  margin-top: 16px;
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label .label-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc( 100% + 12px);
+  background-color: #212121;
+  color: #f7f7f7;
+  padding: 3px 12px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(-50%, 6px, 0);
+          transform: translate3d(-50%, 6px, 0);
+  -webkit-transition: ease opacity 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease transform 300ms;
+  z-index: 10;
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label .label-tooltip:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  border: 6px solid transparent;
+  border-top-color: #212121;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label:hover .label-tooltip {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label.is-pro:before {
+  content: '';
+  background-image: url(../img/pro-lock.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.customize-control.customize-control-botiga-radio-image .botiga-control-wrapper label.is-pro:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.customize-control.customize-control-botiga-radio-image#customize-control-shop_general_quantity_style .botiga-control-wrapper label.is-pro:after {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.customize-control.customize-control-botiga-tinymce .customize-control-description + .wp-editor-wrap {
+  margin-top: 12px;
+}
+
+.customize-control.customize-control-woocommerce-cropping-control .woocommerce-cropping-control li {
+  margin: 0;
+}
+
+.customize-control.customize-control-woocommerce-cropping-control .woocommerce-cropping-control li + li {
+  margin-top: 12px;
+}
+
+.customize-control.customize-control-woocommerce-cropping-control .woocommerce-cropping-control-aspect-ratio {
+  margin-top: 12px;
+}
+
+.customize-control.customize-control-woocommerce-cropping-control .description {
+  color: #50575e;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 8px;
+  display: block;
+}
+
+.customize-control.customize-control-media .attachment-media-view .button-add-media {
+  background-color: #FFF;
+}
+
+.customize-control.customize-control-media .attachment-media-view .button-add-media:hover {
+  background-color: #f0f0f1;
+}
+
+.customize-control.customize-control-radio .customize-control-title {
+  margin-bottom: 8px;
+}
+
+.customize-control.customize-control-nav_menu_location .edit-menu,
+.customize-control.customize-control-nav_menu_location .create-menu {
+  margin-left: 0;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+.customize-control.customize-control-nav_menu_locations .menu-location-settings {
+  margin: 0;
+  padding: 0;
+}
+
+.customize-control.customize-control-nav_menu_locations .customize-control {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.customize-control.customize-control-nav_menu_locations .customize-control-checkbox {
+  padding-top: 12px;
+}
+
+.customize-control.customize-control-nav_menu_name {
+  margin-bottom: 0 !important;
+}
+
+.customize-control#customize-control-reset_colors {
+  padding-bottom: 16px;
+}
+
+.customize-control#customize-control-botiga_google_autocomplete_api_extra_parameters {
+  padding-top: 16px;
+}
+
+.customize-control.customize-control-code_editor {
+  padding: 16px 0 0;
+}
+
+.customize-control-title {
+  color: #1e1e1e;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.customize-control-title.customize-control-title-font-size-normal {
+  font-size: 13px !important;
+}
+
+.customize-control-title.customize-control-title-weight-normal {
+  font-weight: normal !important;
+}
+
+.customize-control-title.customize-control-title-text-transform-none {
+  text-transform: none !important;
+}
+
+.customize-control-title + .customize-control-notifications-container,
+.customize-control-title + .customize-control-notifications-container[style="display: none;"] + .customize-control-description {
+  margin-top: 12px;
+}
+
+.customize-control-title.customize-section-title-nav_menus-heading {
+  padding-top: 16px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  margin-bottom: 0;
+}
+
 .customize-control input[type=color], .customize-control input[type=date], .customize-control input[type=datetime-local], .customize-control input[type=datetime], .customize-control input[type=email], .customize-control input[type=month], .customize-control input[type=number], .customize-control input[type=password], .customize-control input[type=search], .customize-control input[type=tel], .customize-control input[type=text], .customize-control input[type=time], .customize-control input[type=url], .customize-control input[type=week], .customize-control select, .customize-control textarea {
   border-color: #949494;
   padding: 3px 12px;
@@ -19,6 +496,292 @@
   margin-right: 10px;
 }
 
+/* Change Theme Button */
+#customize-theme-controls .control-panel-themes .accordion-section-title .change-theme {
+  right: 16px;
+}
+
+/* Accordion Section */
+#customize-theme-controls .control-panel-themes > .accordion-section-title {
+  padding-left: 16px !important;
+}
+
+/* Upsell Section and Panel */
+#customize-theme-controls .control-section.control-section-botiga-section-upsell, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell {
+  display: block !important;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title {
+  color: #1e1e1e !important;
+  pointer-events: none;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  width: 18px;
+  height: 18px;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+  z-index: 2;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon img, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon img,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon img,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon img,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon img,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon img,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon img,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-lock-icon img {
+  width: 100%;
+  height: auto;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title:after, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title:after,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title:after,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title:after,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title:after,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title:after,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title:after,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge {
+  position: absolute;
+  right: 16px;
+  bottom: calc( 100% - 10px);
+  background-color: #212121;
+  color: #f7f7f7;
+  font-size: 10px !important;
+  font-weight: 600;
+  padding: 3px 12px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(0, -20%, 0);
+          transform: translate3d(0, -20%, 0);
+  -webkit-transition: ease opacity 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease transform 300ms;
+  z-index: 10;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge:after, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge:after,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge:after,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge:after,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge:after,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge:after,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge:after,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell .accordion-section-title .botiga-pro-badge:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #212121 transparent transparent transparent;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell:hover .accordion-section-title .botiga-pro-badge, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell:hover .accordion-section-title .botiga-pro-badge,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell:hover .accordion-section-title .botiga-pro-badge,
+#customize-theme-controls .control-panel.control-panel-botiga-panel-upsell:hover .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell:hover .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-section.control-panel-botiga-panel-upsell:hover .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell:hover .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-panel.control-panel-botiga-panel-upsell:hover .accordion-section-title .botiga-pro-badge {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+}
+
+/* Control Section */
+#customize-theme-controls .control-section.control-section-botiga-upsell,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell {
+  display: block !important;
+  padding: 0 16px 7px;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-upsell .botiga-upsell-button-wrapper,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell .botiga-upsell-button-wrapper {
+  margin: 0;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-upsell a,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell a {
+  display: block;
+  text-align: center;
+  padding: 7px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #3858E9;
+  border: 2px solid #3858E9;
+  -webkit-transition: ease background-color .2s, ease color .2s;
+  transition: ease background-color .2s, ease color .2s;
+  text-decoration: none;
+  margin: 0 -1px;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-upsell a:hover, #customize-theme-controls .control-section.control-section-botiga-upsell a:focus, #customize-theme-controls .control-section.control-section-botiga-upsell a:active,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell a:hover,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell a:focus,
+#customize-outer-theme-controls .control-section.control-section-botiga-upsell a:active {
+  background-color: #3858E9;
+  color: #fff;
+}
+
+#customize-theme-controls .control-section.control-section-botiga-section-upsell-message,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell-message {
+  display: block !important;
+  border: none;
+  margin-top: 16px;
+}
+
+#customize-theme-controls .control-section#sub-accordion-section-custom_css .customize-section-description,
+#customize-outer-theme-controls .control-section#sub-accordion-section-custom_css .customize-section-description {
+  margin: 16px 0 0;
+  padding: 16px 12px 16px 12px;
+}
+
+#customize-theme-controls .control-section#sub-accordion-section-custom_css .customize-help-toggle,
+#customize-outer-theme-controls .control-section#sub-accordion-section-custom_css .customize-help-toggle {
+  top: 10px;
+}
+
+#customize-theme-controls .control-section#sub-accordion-section-custom_css .customize-help-toggle:before,
+#customize-outer-theme-controls .control-section#sub-accordion-section-custom_css .customize-help-toggle:before {
+  font-size: 18px;
+}
+
+/* Control Subsection */
+#customize-theme-controls .control-subsection,
+#customize-outer-theme-controls .control-subsection {
+  border: 1px solid #ddd;
+  margin: -1px 16px;
+}
+
+#customize-theme-controls .control-subsection h3,
+#customize-outer-theme-controls .control-subsection h3 {
+  padding: 9px 16px;
+}
+
+#customize-theme-controls .control-subsection.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon,
+#customize-outer-theme-controls .control-subsection.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon {
+  right: 13px;
+}
+
+#customize-theme-controls .control-subsection.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge,
+#customize-outer-theme-controls .control-subsection.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-badge {
+  right: 0;
+}
+
+#customize-theme-controls .control-subsection.control-section-nav_menu,
+#customize-outer-theme-controls .control-subsection.control-section-nav_menu {
+  margin: 0;
+}
+
+#customize-theme-controls .control-subsection.control-section-new_menu,
+#customize-outer-theme-controls .control-subsection.control-section-new_menu {
+  border: 0;
+  margin: 0;
+  padding: 8px 16px 0px;
+}
+
+#customize-theme-controls .control-subsection.control-section-new_menu h3,
+#customize-outer-theme-controls .control-subsection.control-section-new_menu h3 {
+  padding: 0;
+}
+
+#customize-theme-controls .control-subsection.control-section-new_menu .customize-add-menu-button,
+#customize-outer-theme-controls .control-subsection.control-section-new_menu .customize-add-menu-button {
+  width: 100%;
+  line-height: 3;
+}
+
+#customize-theme-controls .control-subsection#accordion-section-menu_locations,
+#customize-outer-theme-controls .control-subsection#accordion-section-menu_locations {
+  margin: 16px 16px 0;
+  padding: 16px 0 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+#customize-theme-controls .control-subsection#accordion-section-menu_locations .customize-section-title-menu_locations-heading,
+#customize-theme-controls .control-subsection#accordion-section-menu_locations .customize-section-title-menu_locations-description,
+#customize-theme-controls .control-subsection#accordion-section-menu_locations .accordion-section-title,
+#customize-outer-theme-controls .control-subsection#accordion-section-menu_locations .customize-section-title-menu_locations-heading,
+#customize-outer-theme-controls .control-subsection#accordion-section-menu_locations .customize-section-title-menu_locations-description,
+#customize-outer-theme-controls .control-subsection#accordion-section-menu_locations .accordion-section-title {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#customize-theme-controls .control-subsection#accordion-section-menu_locations .accordion-section-title,
+#customize-outer-theme-controls .control-subsection#accordion-section-menu_locations .accordion-section-title {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+}
+
+/* Screen Options Toggle */
+.customize-screen-options-toggle {
+  top: 2px;
+}
+
+.customize-screen-options-toggle:before {
+  font-size: 16px;
+  left: 8px;
+}
+
+/* Metabox Prefs */
+#screen-options-wrap h5,
+#screen-options-wrap legend,
+#contextual-help-wrap h5,
+#contextual-help-wrap legend {
+  color: #1e1e1e;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
 /* Typography */
 .select2-container {
   z-index: 999999 !important;
@@ -32,36 +795,32 @@
 }
 
 /* Select 2 Control */
-.select2-container .botiga-select2 {
+.select2-container .select2-selection--multiple {
+  max-height: 40px;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+  background-color: #FFF;
+  padding: 4px 5px;
+}
+
+.botiga-select2 {
   padding: 0;
 }
 
-.select2-container .botiga-select2 .select2-search {
+.botiga-select2 .select2-search {
   display: none;
 }
 
-.select2-container .botiga-select2 .select2-selection__choice {
+.botiga-select2 .select2-selection__choice {
   background-color: #FFF;
   line-height: 2.2;
   margin-bottom: 0;
   margin-left: 0;
 }
 
-.select2-container .botiga-select2.select2-selection {
+.botiga-select2.select2-selection {
   border-color: #949494;
-}
-
-#customize-control-botiga_body_font,
-#customize-control-body_font_style,
-#customize-control-body_letter_spacing,
-#customize-control-body_text_transform,
-#customize-control-botiga_headings_font,
-#customize-control-headings_font_style,
-#customize-control-headings_letter_spacing,
-#customize-control-headings_text_transform,
-.google_fonts_select_control .google-fonts,
-.google_fonts_select_control .weight-style {
-  margin-bottom: 20px;
 }
 
 .google_fonts_select_control .triangle {
@@ -177,10 +936,6 @@ input::-moz-focus-inner, input::-moz-focus-outer {
   height: 100% !important;
 }
 
-.customize-control-botiga-google_fonts {
-  position: relative;
-}
-
 .google_fonts_select_control .select2-container {
   width: 100% !important;
 }
@@ -257,7 +1012,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 }
 
 .botiga-devices-preview button i {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   width: auto;
 }
@@ -389,7 +1144,7 @@ span.delete:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
 }
 
 .control-tab {
@@ -474,10 +1229,10 @@ span.delete:hover {
 
 .text_radio_button_control .palette-radio-buttons {
   position: absolute;
-  top: calc(100% + 5px);
+  top: calc(100% - 15px);
   display: none;
   left: 12px;
-  width: calc(100% - 24px);
+  width: calc(100% - 30px);
   background-color: #fff;
   z-index: 99;
   border-radius: 2px;
@@ -546,7 +1301,7 @@ span.delete:hover {
 }
 
 .customize-section-shortcuts {
-  margin-top: 7px;
+  margin-top: 12px;
 }
 
 .footer-widget-area-link,
@@ -561,6 +1316,7 @@ span.delete:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #1e1e1e;
+  font-size: 13px;
   font-weight: 400;
   font-style: normal;
   padding: 9px 15px;
@@ -571,22 +1327,6 @@ span.delete:hover {
 .footer-widget-area-link + .botiga-to-widget-area-link,
 .botiga-to-widget-area-link + .botiga-to-widget-area-link {
   border-top: none;
-}
-
-.footer-widget-area-link:hover,
-.botiga-to-widget-area-link:hover {
-  color: #3858E9;
-}
-
-.footer-widget-area-link:focus,
-.botiga-to-widget-area-link:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.footer-widget-area-link.hide,
-.botiga-to-widget-area-link.hide {
-  display: none;
 }
 
 .footer-widget-area-link .dashicons,
@@ -601,16 +1341,42 @@ span.delete:hover {
       -ms-flex-align: center;
           align-items: center;
   font-size: 12px;
+  margin-right: -6px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: ease transform 300ms;
+  transition: ease transform 300ms;
+}
+
+.footer-widget-area-link:hover,
+.botiga-to-widget-area-link:hover {
+  color: #3858E9;
+}
+
+.footer-widget-area-link:hover .dashicons,
+.botiga-to-widget-area-link:hover .dashicons {
+  -webkit-transform: translate3d(4px, 0, 0);
+          transform: translate3d(4px, 0, 0);
+}
+
+.footer-widget-area-link:focus,
+.botiga-to-widget-area-link:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.footer-widget-area-link.hide,
+.botiga-to-widget-area-link.hide {
+  display: none;
 }
 
 .botiga-cust-divider {
   border-bottom: 0;
   border-color: #ddd;
+  margin: 0;
 }
 
 .customize-control:not(.customize-control-botiga-tab-control):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor) {
-  margin-bottom: 15px;
-  padding: 0 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -630,43 +1396,7 @@ span.delete:hover {
   content: none !important;
 }
 
-.customize-control-title {
-  color: #3c434a;
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: capitalize;
-}
-
-.customize-control-title.customize-control-title-font-size-normal {
-  font-size: 13px !important;
-}
-
-.customize-control-title.customize-control-title-weight-normal {
-  font-weight: normal !important;
-}
-
-.customize-control-title.customize-control-title-text-transform-none {
-  text-transform: none !important;
-}
-
-.customize-control:not(.customize-control-botiga-alpha-color):not(.customize-control-botiga-toggle-control) .customize-control-title {
-  color: #1e1e1e;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
 .customize-control-botiga-responsive-slider .customize-control-title {
-  margin-bottom: 0;
-}
-
-.customize-control-botiga-text-control .customize-control-title {
-  color: #1e1e1e;
-  font-weight: 600;
-  margin-bottom: 0;
-}
-
-.customize-control-botiga-toggle-control .customize-control-title {
   margin-bottom: 0;
 }
 
@@ -679,7 +1409,6 @@ span.delete:hover {
   float: right;
   position: relative;
   width: 36px;
-  margin-top: 2px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -732,7 +1461,7 @@ span.delete:hover {
 }
 
 .customize-section-description {
-  padding: 0 12px;
+  padding: 0 16px;
 }
 
 .customize-section-description ul {
@@ -765,6 +1494,7 @@ span.delete:hover {
   visibility: hidden;
   height: 0;
   margin: 0 !important;
+  padding: 0;
 }
 
 #sub-accordion-section-botiga_section_blog_singles .customize-control-botiga-text-control,
@@ -779,18 +1509,6 @@ span.delete:hover {
 #customize-control-h5_title,
 #customize-control-h6_title {
   margin-bottom: 5px;
-}
-
-#sub-accordion-section-botiga_section_top_bar .customize-control-botiga-text-control,
-#customize-control-main_header_contact_info_title,
-#customize-control-main_header_button_title,
-#customize-control-main_header_cart_account_title,
-#customize-control-main_header_settings_title,
-#customize-control-main_header_elements_title,
-#customize-control-header_transparent_display_rules_title,
-#sub-accordion-section-colors li:not(.customize-control-botiga-divider-control),
-#sub-accordion-section-botiga_section_buttons li:not(.customize-control-botiga-divider-control) {
-  margin-bottom: 12px;
 }
 
 #customize-control-color_palettes,
@@ -839,10 +1557,6 @@ span.delete:hover {
 #customize-control-archive_meta_delimiter label:not(:first-of-type) {
   font-weight: 600;
   font-size: 16px;
-}
-
-.customize-control-botiga-tab-control + .customize-control-botiga-text-control:not(#customize-control-botiga_section_hb_component__menu_config):not(#customize-control-bhfb_button_default_state_title):not(#customize-control-botiga_section_hb_component__html_title):not(#customize-control-botiga_section_hb_component__html2_title):not(#customize-control-botiga_section_hb_component__shortcode_title):not(#customize-control-botiga_section_fb_component__html_title):not(#customize-control-botiga_section_fb_component__html2_title):not(#customize-control-botiga_section_fb_component__shortcode_title):not(#customize-control-botiga_section_hb_wrapper__header_builder_goto_sections):not(#customize-control-botiga_section_fb_wrapper__footer_builder_goto_sections):not(#customize-control-mobile_offcanvas_menu_switcher_title):not(#customize-control-mobile_offcanvas_menu_switcher_title) {
-  margin: 20px 0 30px !important;
 }
 
 #customize-control-search_icon_custom_image .attachment-thumb,
@@ -953,58 +1667,78 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
   border-top: 1px solid #ddd;
 }
 
-.botiga-upsell-button-wrapper {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.botiga-upsell-feature-wrapper .botiga-upsell-feature-thumb img {
+  max-width: 74px !important;
+  height: auto;
 }
 
-.botiga-upsell-button {
-  position: relative;
+.botiga-upsell-feature-wrapper .botiga-upsell-feature-thumb + strong {
+  margin-top: 17px;
+}
+
+.botiga-upsell-feature-wrapper strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.botiga-upsell-feature-wrapper strong + .botiga-upsell-features-list {
+  margin-top: 20px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: #757575;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list li svg {
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list li + li {
+  margin-top: 10px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list + .botiga-upsell-button {
+  margin-top: 30px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-button {
+  display: block;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 7px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 8px 50px;
   text-decoration: none;
   border-radius: 4px;
   color: #3858E9;
   border: 2px solid #3858E9;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  background-color: #FFF;
+  -webkit-transition: ease background-color .2s, ease color .2s;
+  transition: ease background-color .2s, ease color .2s;
 }
 
-.botiga-upsell-button:active, .botiga-upsell-button:focus, .botiga-upsell-button:hover {
-  color: #3858E9;
+.botiga-upsell-feature-wrapper .botiga-upsell-button:active, .botiga-upsell-feature-wrapper .botiga-upsell-button:focus, .botiga-upsell-feature-wrapper .botiga-upsell-button:hover {
+  color: #FFF;
+  background-color: #3858E9;
 }
 
-.botiga-upsell-button:hover {
-  background-color: #f7f9ff;
-}
-
-.botiga-upsell-button:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-/*
- * Hide some sections
- */
-#accordion-section-botiga_login_register_popup,
-#accordion-section-side_mini_cart_floating_icon_section {
-  display: none !important;
-}
-
-/*
- * Select Control
- */
-.customize-control-description + select {
-  margin-top: 8px;
+.botiga-upsell-button-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /*
@@ -1049,18 +1783,11 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
   padding: 15px 18px;
   border: 1px solid #ffc0c0;
   border-radius: 6px;
+  margin: 0;
 }
 
 .customize-control-botiga-radio-image .ui-helper-hidden-accessible {
   top: 0;
-}
-
-#customize-control-topbar_nav_title,
-#customize-control-botiga_section_hb_component__shortcode_title,
-#customize-control-botiga_section_hb_component__html_title,
-#customize-control-botiga_section_hb_component__html2_title,
-#customize-control-botiga_section_hb_component__html2_title {
-  margin-bottom: 5px !important;
 }
 
 /*
@@ -1696,12 +2423,29 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
   border: none;
 }
 
-#customize-theme-controls .customize-section-title-menu_locations-heading {
-  padding-top: 10px;
-}
-
 #customize-theme-controls .customize-section-title-nav_menus-heading {
   padding-bottom: 5px;
+}
+
+#customize-theme-controls .customize-pane-child.accordion-section-content {
+  padding: 0;
+}
+
+/* Back Button */
+.customize-panel-back,
+.customize-section-back {
+  float: none;
+  padding: 0;
+  width: 35px;
+  height: auto;
+}
+
+.customize-panel-back:before,
+.customize-section-back:before {
+  line-height: 20px;
+  top: 1px;
+  left: -3px;
+  font-size: 18px;
 }
 
 .expanded .wp-full-overlay-footer {
@@ -1711,28 +2455,6 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
 
 .wp-full-overlay-footer .devices {
   background-color: #f9f9f9;
-}
-
-.customize-section-description-container {
-  margin: 0 -12px 12px -12px;
-  padding: 0 12px 0 12px;
-  border-bottom: 1px solid #f0f0f0;
-  background-color: #f9f9f9;
-}
-
-div.customize-section-description {
-  margin-top: -5px;
-  padding-left: 50px;
-  padding-bottom: 12px;
-}
-
-#customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-panel-description,
-#customize-controls .control-panel:not(.control-panel-widgets):not(.control-panel-nav_menus) .customize-section-description {
-  display: block;
-  border-top: none;
-  margin-top: -10px;
-  padding-left: 65px;
-  background: transparent;
 }
 
 .customize-section-title,
@@ -1771,7 +2493,7 @@ div.customize-section-description {
   color: #1e1e1e;
   border: none;
   font-weight: 400;
-  padding: 9px 15px;
+  padding: 7px 15px;
 }
 
 #customize-controls .control-section .accordion-section-title:focus,
@@ -1785,26 +2507,25 @@ div.customize-section-description {
 
 .control-section .accordion-section-title:after,
 .customize-pane-child .accordion-section-title:after {
+  right: 15px;
   top: calc(50% - 6px);
   font-size: 12px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: ease transform 300ms;
+  transition: ease transform 300ms;
+}
+
+.control-section .accordion-section-title:hover:after,
+.customize-pane-child .accordion-section-title:hover:after {
+  -webkit-transform: translate3d(4px, 0, 0);
+          transform: translate3d(4px, 0, 0);
 }
 
 #customize-theme-controls .customize-pane-parent > li:not(.panel-meta):not(.section-meta):not(.control-panel-themes):not(.customize-control-nav_menu_locations):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor),
 #customize-theme-controls .customize-pane-child > li:not(.panel-meta):not(.section-meta):not(.control-panel-themes):not(.customize-control-nav_menu_locations):not(.customize-control-code_editor):not(.customize-control-sidebar_block_editor) {
-  padding-left: 15px;
-  padding-right: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-#customize-theme-controls .control-subsection:not(.theme-section):not(.control-section-new_menu) {
-  border: 1px solid #ddd;
-  border-width: 1px 1px 1px 1px;
-  margin-left: 15px;
-  margin-right: 15px;
-  padding: 0 !important;
-  margin-top: -1px;
-  margin-bottom: -1px;
 }
 
 #customize-outer-theme-controls .accordion-section-title,
@@ -1827,9 +2548,12 @@ div.customize-section-description {
   background: none !important;
 }
 
-#customize-controls .customize-info .customize-help-toggle:focus,
-#customize-controls .customize-info .customize-help-toggle:hover,
 #customize-controls .customize-info.open .customize-help-toggle {
+  color: #CCC;
+}
+
+#customize-controls .customize-info .customize-help-toggle:focus,
+#customize-controls .customize-info .customize-help-toggle:hover {
   color: #3858E9;
 }
 
@@ -1879,8 +2603,7 @@ div.customize-section-description {
 
 .botiga-title-section {
   display: block !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding: 15px 0 !important;
   border: none !important;
   margin-left: 15px;
   margin-right: 15px;
@@ -1888,13 +2611,16 @@ div.customize-section-description {
 
 .botiga-title-section h3 {
   font-size: 11px !important;
+  font-weight: 600;
   text-transform: uppercase;
+  margin: 0;
+  padding: 0 !important;
 }
 
 .botiga-title-section hr {
   border-top: 1px solid #ddd;
   border-bottom: none;
-  margin: 10px 0 20px 0;
+  margin: 0px 0 22px 0;
 }
 
 .botiga-typography-preview {
@@ -1924,6 +2650,10 @@ div.customize-section-description {
           box-sizing: border-box;
 }
 
+.customize-pane-parent > li.control-section {
+  padding-left: 15px;
+}
+
 .customize-pane-parent > li.control-section .accordion-section-title:before {
   content: "";
   width: 24px;
@@ -1934,6 +2664,19 @@ div.customize-section-description {
   margin-right: 4px;
   margin-left: -4px;
   background-image: url(../img/icons/default.svg);
+}
+
+.customize-pane-parent > li.control-section .accordion-section-title:after {
+  right: 30px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: ease transform 300ms;
+  transition: ease transform 300ms;
+}
+
+.customize-pane-parent > li.control-section .accordion-section-title:hover:after {
+  -webkit-transform: translate3d(4px, 0, 0);
+          transform: translate3d(4px, 0, 0);
 }
 
 #accordion-panel-botiga_panel_header .accordion-section-title:before {
@@ -1992,7 +2735,7 @@ div.customize-section-description {
   background-image: url(../img/icons/megaphone.svg);
 }
 
-#accordion-section-woocommerce_product_catalog .accordion-section-title:before {
+#accordion-panel-botiga_panel_shop_archive .accordion-section-title:before {
   background-image: url(../img/icons/product-catalog.svg);
 }
 
@@ -2012,7 +2755,7 @@ div.customize-section-description {
   background-image: url(../img/icons/search.svg);
 }
 
-#accordion-section-botiga_section_single_product .accordion-section-title:before {
+#accordion-panel-botiga_panel_single_product .accordion-section-title:before {
   background-image: url(../img/icons/single-product.svg);
 }
 
@@ -2083,7 +2826,6 @@ div.customize-section-description {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  overflow: hidden;
   width: 25%;
   margin: 0;
   padding: 0;
@@ -2111,6 +2853,7 @@ div.customize-section-description {
           align-items: center;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .customize-control-botiga-radio-image figure img {
@@ -2118,7 +2861,7 @@ div.customize-section-description {
   margin: 0;
   display: block;
   position: relative;
-  bottom: -8px;
+  bottom: -6px;
 }
 
 .customize-control-botiga-radio-image input {
@@ -2137,8 +2880,18 @@ div.customize-section-description {
   width: calc(33.333% - 14px);
 }
 
+.botiga-radio-images-col-3.botiga-radio-images-medium label {
+  width: calc(33.333% - 7px);
+}
+
+.botiga-radio-images-col-3 label.is-pro:before {
+  background-size: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
 .botiga-radio-images-col-4 label {
-  width: calc(25% - 15px);
+  width: calc(25% - 8px);
 }
 
 .botiga-radio-images-col-5 label {
@@ -2172,11 +2925,11 @@ div.customize-section-description {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 5px;
+  padding: 3px;
 }
 
 .botiga-radio-images-medium figure img {
-  top: 1px;
+  top: 0px;
 }
 
 .botiga-typography-custom-control {
@@ -2439,6 +3192,8 @@ a:focus,
   position: relative;
   border-radius: 4px;
   border: 2px solid #3858E9;
+  -webkit-transition: ease opacity .2s;
+  transition: ease opacity .2s;
 }
 
 #customize-control-custom_palette_toggle .toggle-switch-control label {
@@ -2456,6 +3211,10 @@ a:focus,
   padding: 0;
   border-radius: 0;
   opacity: 0;
+}
+
+#customize-control-custom_palette_toggle .toggle-switch-control:hover {
+  opacity: 0.8;
 }
 
 #customize-control-custom_palette_toggle .toggle-switch {
@@ -2516,7 +3275,7 @@ a:focus,
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .botiga-text-style i {
@@ -2637,20 +3396,6 @@ a:focus,
 
 .botiga-color-group .botiga-color-title {
   text-transform: capitalize;
-}
-
-#sub-accordion-section-colors .customize-control-botiga-text-control {
-  margin-top: 20px;
-}
-
-.customize-control-botiga-color-group-control .botiga-color-group {
-  padding: 0 0 15px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.customize-control-botiga-alpha-color .botiga-color-control {
-  padding: 0 0 15px 0;
-  border-bottom: 1px solid #ddd;
 }
 
 .pcr-app * {
@@ -3040,6 +3785,7 @@ a:focus,
 
 .botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-header .botiga-dimensions-link-values .botiga-dimensions-icon-link {
   display: none;
+  color: #3858e9;
 }
 
 .botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-header .botiga-dimensions-link-values .botiga-dimensions-icon-unlink {
@@ -3066,12 +3812,10 @@ a:focus,
   color: #777;
 }
 
-#customize-theme-controls .customize-pane-parent > #accordion-section-botiga_google_autocomplete_section,
-#customize-theme-controls .customize-pane-parent > #accordion-section-botiga_section_product_swatches_swatch_select,
-#customize-theme-controls .customize-pane-parent > #accordion-section-botiga_section_product_swatches_swatch_color,
-#customize-theme-controls .customize-pane-parent > #accordion-section-botiga_section_product_swatches_swatch_button,
-#customize-theme-controls .customize-pane-parent > #accordion-section-botiga_section_product_swatches_swatch_image {
-  display: none !important;
+@media (max-width: 1280px) {
+  .botiga-dimensions-control .botiga-dimensions-wrapper .botiga-dimensions-inputs .botiga-dimensions-input {
+    padding: 3px;
+  }
 }
 
 #customize-theme-controls #customize-control-product_swatch_select_background_color .botiga-color-control,
@@ -3099,4 +3843,26 @@ a:focus,
 #customize-theme-controls #customize-control-product_swatch_image_border_color_filter_widgets .botiga-color-control,
 #customize-theme-controls #customize-control-product_swatch_image_border_color_filter_widgets .botiga-color-group {
   border-bottom: 0;
+}
+
+/* Upload Header Image Control */
+.customize-control-header .customize-control-description {
+  display: none;
+}
+
+.customize-control-header .actions,
+.customize-control-header .uploaded {
+  margin-bottom: 0;
+}
+
+.customize-control-header .actions + .choices .header-previously-uploaded:not([style="display: none;"]),
+.customize-control-header .actions + .choices .header-default:not([style="display: none;"]),
+.customize-control-header .uploaded + .choices .header-previously-uploaded:not([style="display: none;"]),
+.customize-control-header .uploaded + .choices .header-default:not([style="display: none;"]) {
+  margin-top: 15px;
+}
+
+.has-bhfb-builder #sub-accordion-panel-botiga_panel_header,
+.has-bhfb-builder #sub-accordion-panel-botiga_panel_footer {
+  visibility: hidden !important;
 }

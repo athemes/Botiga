@@ -11,8 +11,9 @@
 $wp_customize->add_section(
 	'botiga_section_layout',
 	array(
-		'title'    => esc_html__( 'Layout', 'botiga'),
-		'priority' => 55,
+		'title'       => esc_html__( 'Layout', 'botiga'),
+		'description' => esc_html__( 'Manage the overall layout of the website.', 'botiga'),
+		'priority' 	  => 55,
 	)
 );
 
@@ -36,6 +37,21 @@ $wp_customize->add_control(
 				'default' => array(
 					'label' => esc_html__( 'Default', 'botiga' ),
 					'url'   => '%s/assets/img/site-layout-default.svg'
+				),
+				'boxed' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Boxed', 'botiga' ),
+					'url'    => '%s/assets/img/site-layout-boxed.svg'
+				),
+				'padded' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Padded', 'botiga' ),
+					'url'    => '%s/assets/img/site-layout-padded.svg'
+				),
+				'fluid' => array(
+					'is_pro' => true,
+					'label'  => esc_html__( 'Fluid', 'botiga' ),
+					'url'    => '%s/assets/img/site-layout-fluid.svg'
 				),
 			),
 			'priority'  => 20,

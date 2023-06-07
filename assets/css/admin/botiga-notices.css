@@ -6,7 +6,7 @@
   background-color: #FFF;
   border-color: #DDE2E7;
   border-left-color: #3858E9;
-  padding: 15px 20px 20px !important;
+  padding: 15px 60px 20px 20px !important;
   color: #6D7175;
 }
 
@@ -22,6 +22,10 @@
   text-decoration: none;
   -webkit-transition: ease color 300ms, ease background-color 300ms, ease border-color 300ms;
   transition: ease color 300ms, ease background-color 300ms, ease border-color 300ms;
+}
+
+.botiga-notice .botiga-btn + .botiga-btn {
+  margin-left: 20px;
 }
 
 .botiga-notice .botiga-btn-primary {
@@ -47,6 +51,18 @@
   color: #4d6aee;
 }
 
+.botiga-notice .botiga-btn-link {
+  border: none !important;
+  background-color: transparent !important;
+  color: #4d6aee;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.botiga-notice .botiga-btn-link:hover {
+  color: #4d6aee;
+}
+
 .botiga-notice h3 {
   font-size: 20px;
   line-height: 30px;
@@ -66,6 +82,10 @@
 
 .botiga-notice p + .botiga-btn {
   margin-top: 15px;
+}
+
+.botiga-notice strong {
+  color: #212121;
 }
 
 .botiga-notice .notice-dismiss {

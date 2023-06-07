@@ -2062,6 +2062,10 @@ dl.variation {
 .botiga-product-size-chart-modal-open{
 	overflow: hidden;
 
+	.bhfb-header {
+		z-index: 0;
+	}
+
 	.botiga-product-size-chart-modal{
 		display: flex;
 		justify-content: center;

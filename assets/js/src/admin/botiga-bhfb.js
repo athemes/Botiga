@@ -21,6 +21,8 @@
 
             this.componentsOrder  = '';
 
+            this.addBodyClass();
+
             this.preventEmptyRowValues();
 
             this.customizeNavigation();
@@ -50,6 +52,11 @@
             return JSON.parse(value.replace(/'/g,'"').replace(';',''));
         },
 
+        // identify customizer with the builder.
+        addBodyClass: function(){
+            $( 'body' ).addClass( 'has-bhfb-builder' );
+        },
+
         // In some rare cases, the row values are empty, so we need to prevent that
         // case it is empty, we set the default values
         preventEmptyRowValues: function() {
@@ -75,6 +82,32 @@
         },
 
         customizeNavigation: function() {
+
+            if( typeof wp.customize.section( 'botiga_section_fb_wrapper' ) !== 'undefined' ) {
+
+                // Navigate directly to the header builder when we click on the main panel item 'Header'
+                $( '#accordion-panel-botiga_panel_header' ).on( 'click keyup', function(e){
+                    if( e.keyCode && e.keyCode !== 13 ) {
+                        return false;
+                    }
+
+                    e.preventDefault();
+                    
+                    wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
+                } );
+                
+                // Navigate directly to the footer builder when we click on the main panel item 'Footer'
+                $( '#accordion-panel-botiga_panel_footer' ).on( 'click keyup', function(e){
+                    if( e.keyCode && e.keyCode !== 13 ) {
+                        return false;
+                    }
+
+                    e.preventDefault();
+                    
+                    wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
+                } );
+            }
+
             const
                 sections = [
                     'sub-accordion-section-botiga_section_hb_presets',
@@ -82,6 +115,7 @@
                     'sub-accordion-section-botiga_section_hb_main_header_row',
                     'sub-accordion-section-botiga_section_hb_below_header_row',
                     'sub-accordion-section-botiga_section_hb_mobile_offcanvas',
+                    'sub-accordion-section-header_image',
 
                     'sub-accordion-section-botiga_section_hb_component__logo',
                     'sub-accordion-section-botiga_section_hb_component__search',
@@ -137,6 +171,10 @@
             });
 
             $( document ).on( 'click keydown', '.customize-section-back', function(e){
+                if( e.keyCode && e.keyCode !== 13 && e.keyCode !== 27 ) {
+                    return false;
+                }
+
                 if( sections.includes( current_section_id ) ) {
 
                     // header columns.
@@ -172,7 +210,7 @@
                     }
 
                     // header/footer row and components.
-                    if( current_section_id.indexOf( '_hb_' ) !== -1 || current_section_id.indexOf( '_header_' ) !== -1 ) {
+                    if( current_section_id.indexOf( '_hb_' ) !== -1 || current_section_id.indexOf( '_header_' ) !== -1 || current_section_id.indexOf( 'header_image' ) !== -1 ) {
                         wp.customize.section( 'botiga_section_hb_wrapper' ).focus();
                     } else {
                         wp.customize.section( 'botiga_section_fb_wrapper' ).focus();
@@ -349,6 +387,10 @@
             } );
 
             $( '#customize-preview iframe' ).on( 'mouseup', function(e) {
+                if( ! _this.currentBuilder ) {
+                    return false;
+                }
+
                 _this.closeElementsPopup(e);
             } );
 
@@ -379,7 +421,7 @@
             }
         
             var rect = el.getBoundingClientRect();
-        
+
             return (
                 rect.top >= 0 &&
                 rect.left >= 0 &&
@@ -448,7 +490,6 @@
             }
 
             this.addUpsellComponents();
-
         },
 
         updateAvailableComponents: function() {
@@ -472,7 +513,6 @@
                 $( '.botiga-footer-builder-available-footer-components' ).html( $( '.botiga-bhfb-footer .botiga-bhfb-elements-desktop' ).html() );
 
             }
-            
         },
 
         addUpsellComponents: function() {
@@ -898,6 +938,7 @@
                 'botiga_section_hb_main_header_row', 
                 'botiga_section_hb_below_header_row', 
                 'botiga_section_hb_mobile_offcanvas',
+                'header_image',
 
                 'botiga_section_hb_component__logo',
                 'botiga_section_hb_component__search',
@@ -968,7 +1009,8 @@
 
                                 // Update available components.
                                 if( section === 'botiga_section_hb_wrapper' || section === 'botiga_section_fb_wrapper' ) {
-                                    $( '.botiga-bhfb-' + self.currentBuilderType ).find( '.botiga-bhfb-above-row .botiga-bhfb-area' ).trigger( 'click' );
+                                    // $( '.botiga-bhfb-' + self.currentBuilderType ).find( '.botiga-bhfb-above-row .botiga-bhfb-area' ).trigger( 'click' );
+                                    self.updateAvailableComponents();
 
                                     setTimeout(function(){
                                         $( '.botiga-bhfb-elements' ).removeClass( 'show' );
@@ -985,15 +1027,20 @@
 
         scrollToRespectiveBuilderArea: function() {
             const 
-                _this = this,
-                iframeHTMLTag = document.querySelector( '#customize-preview > iframe' ).contentWindow.document.getElementsByTagName('html')[0],
+                _this         = this,
+                iframe        = document.querySelector( '#customize-preview > iframe' ),
+                iframeHTMLTag = iframe ? iframe.contentWindow.document.getElementsByTagName('html')[0] : null,
                 scrollTo      = _this.currentBuilderType === 'header' ? 0 : 99999;
+
+            if( iframeHTMLTag === null ) {
+                return false;
+            }
 
             $( iframeHTMLTag ).animate( { scrollTop: scrollTo }, 'fast' );
         },
 
         getCurrentBuilderByComponent: function( component ) {
-            if( component.indexOf( '_hb_' ) !== -1 || component.indexOf( '_header_' ) !== -1 ) {
+            if( component.indexOf( '_hb_' ) !== -1 || component.indexOf( '_header_' ) !== -1 || component.indexOf( 'header_image' ) !== -1 ) {
                 return $( '.botiga-bhfb-header' );
             } else if( component.indexOf( '_fb_' ) !== -1 || component.indexOf( '_footer_' ) !== -1 ) {
                 return $( '.botiga-bhfb-footer' );
@@ -1203,7 +1250,6 @@
             
             // Add class as a flag.
             $( 'label[for="'+ selector +'"]' ).parent().addClass( 'bhfb-option-updated' );
-            
         },
 
         builderColumnsLayout: function() {

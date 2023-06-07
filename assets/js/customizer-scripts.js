@@ -1,6 +1,79 @@
 "use strict";
 
+/* Customizer Back Button */
+jQuery(document).ready(function ($) {
+  // Store the previous section in a global variable to use later
+  var previous_section = '';
+  $('.botiga-to-widget-area-link').on('click', function () {
+    // Sections
+    if ($(this).closest('.control-section').length) {
+      previous_section = $(this).closest('.control-section').attr('id').replace('sub-accordion-section-', '');
+    }
+  }); // Flag when hidden section content is active
+
+  var is_any_header_footer_section = false,
+      is_hidden_section_content = false,
+      is_header_builder_section = false,
+      is_header_builder_component_section = false,
+      is_footer_builder_section = false,
+      is_footer_builder_component_section = false;
+  $(document).on('mouseover focus', '.customize-section-back', function (e) {
+    if (!$('.control-section.open').length) {
+      return false;
+    }
+
+    is_any_header_footer_section = $('.control-section.open').attr('id').indexOf('_hb_') || $('.control-section.open').attr('id').indexOf('_fb_') ? true : false;
+    is_hidden_section_content = $('.control-section.open').hasClass('control-section-botiga-section-hidden') ? true : false;
+    is_header_builder_section = $('.control-section.open').attr('id') === 'sub-accordion-section-botiga_section_hb_wrapper' ? true : false;
+    is_header_builder_component_section = $('.control-section.open').attr('id').indexOf('botiga_section_hb_component_') !== -1 ? true : false;
+    is_footer_builder_section = $('.control-section.open').attr('id') === 'sub-accordion-section-botiga_section_fb_wrapper' ? true : false;
+    is_footer_builder_component_section = $('.control-section.open').attr('id').indexOf('botiga_section_fb_component_') !== -1 ? true : false;
+  }); // If hidden section content is active, focus on the previous section (from global variable)
+
+  $(document).on('click keydown', '.customize-section-back', function (e) {
+    if (e.keyCode && e.keyCode !== 13 && e.keyCode !== 27) {
+      return false;
+    }
+
+    if (is_header_builder_section) {
+      wp.customize.section('botiga_section_hb_wrapper').collapse();
+      setTimeout(function () {
+        wp.customize.panel('botiga_panel_header').collapse();
+      }, 10);
+    }
+
+    if (is_footer_builder_section) {
+      wp.customize.section('botiga_section_fb_wrapper').collapse();
+      setTimeout(function () {
+        wp.customize.panel('botiga_panel_footer').collapse();
+      }, 10);
+    }
+
+    if (!is_any_header_footer_section && !is_footer_builder_component_section && !is_header_builder_component_section && is_hidden_section_content && previous_section !== '') {
+      if (typeof wp.customize.section(previous_section) !== 'undefined') {
+        wp.customize.section(previous_section).focus();
+      }
+    }
+
+    is_any_header_footer_section = false;
+    is_header_builder_section = false;
+    is_header_builder_component_section = false;
+    is_footer_builder_section = false;
+    is_footer_builder_component_section = false;
+    is_hidden_section_content = false;
+  });
+});
+/* Botiga Radio Image Control */
+
+jQuery(document).ready(function ($) {
+  "use strict";
+
+  $(document).on('click', '.customize-control-botiga-radio-image label.is-pro', function (e) {
+    e.preventDefault();
+  });
+});
 /* Select 2 Control */
+
 jQuery(document).ready(function ($) {
   "use strict";
 
@@ -277,6 +350,16 @@ jQuery(document).ready(function ($) {
   $('.customize-control-botiga-tab-control').each(function () {
     // Hide designs options at first
     var designs = $(this).find('.control-tab-design').data('connected');
+    var general = $(this).find('.control-tab-general').data('connected');
+    $.each(general, function (i, v) {
+      if (i === 0) {
+        $(this).addClass('botiga-tab-control-item-first');
+      }
+
+      if (i === general.length - 1) {
+        $(this).addClass('botiga-tab-control-item-last');
+      }
+    });
     $.each(designs, function (i, v) {
       $(this).addClass('botiga-hide-control');
     });
@@ -287,12 +370,28 @@ jQuery(document).ready(function ($) {
       $tab.addClass('active');
       $siblings.removeClass('active');
       $.each(visibles, function (i, v) {
+        if (i === 0) {
+          $(this).addClass('botiga-tab-control-item-first');
+        }
+
+        if (i === visibles.length - 1) {
+          $(this).addClass('botiga-tab-control-item-last');
+        }
+
         $(this).removeClass('botiga-hide-control');
       });
       $siblings.each(function () {
         var $sibling = $(this);
         var hiddens = $sibling.data('connected');
         $.each(hiddens, function (i, v) {
+          if (i === 0) {
+            $(this).removeClass('botiga-tab-control-item-first');
+          }
+
+          if (i === hiddens.length - 1) {
+            $(this).removeClass('botiga-tab-control-item-last');
+          }
+
           $(this).addClass('botiga-hide-control');
         });
       });

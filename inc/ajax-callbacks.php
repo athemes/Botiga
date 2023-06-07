@@ -37,7 +37,7 @@ function botiga_ajax_search_callback() {
     // Enable search by SKU
     if( $enable_search_by_sku ) {
         $args = array(
-            'post_type'      => 'product',
+            'post_type'      => array( 'product', 'product_variation' ),
             'posts_per_page' => $posts_per_page,
             'order'          => $order,
             'orderby'        => $orderby,

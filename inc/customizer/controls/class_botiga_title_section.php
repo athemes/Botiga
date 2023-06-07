@@ -16,7 +16,7 @@ class Botiga_Title_Section extends WP_Customize_Section {
 	/**
 	 * The type of control being rendered
 	 */
-	public $type = 'botiga-title-seciton';
+	public $type = 'botiga-title-section';
 
 	public $divider = false;
 

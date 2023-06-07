@@ -12,8 +12,9 @@
 $wp_customize->add_section(
 	'botiga_section_blog_singles',
 	array(
-		'title'    => esc_html__('Single Posts', 'botiga'),
-		'priority' => 170,
+		'title'       => esc_html__('Single Posts', 'botiga'),
+		'description' => esc_html__( 'Manage the overall design and functionality from the blog single posts.', 'botiga' ),
+		'priority'    => 170,
 	)
 );
 
@@ -62,16 +63,16 @@ $wp_customize->add_control(
 				'#customize-control-single_post_author_box_align',
 			)),
 			'controls_design' => json_encode(array(
+				'#customize-control-single_post_title_color',
+				'#customize-control-single_post_meta_color',
 				'#customize-control-single_post_title_title',
 				'#customize-control-single_post_title_font_style',
 				'#customize-control-single_post_title_adobe_font',
 				'#customize-control-single_post_title_font',
 				'#customize-control-single_post_title_size',
 				'#customize-control-single_post_title_text_style',
-				'#customize-control-single_post_title_color',
-				'#customize-control-single_post_meta_title',
-				'#customize-control-single_post_meta_size',
-				'#customize-control-single_post_meta_color'
+				'#customize-control-single_post_meta_title2',
+				'#customize-control-single_post_meta_size'
 			)),
 			'priority' => 10
 		)
@@ -583,6 +584,51 @@ $wp_customize->add_control(
 /**
  * Styling
  */
+
+// Colors
+
+// Title Color
+$wp_customize->add_setting(
+	'single_post_title_color',
+	array(
+		'default'           => '#212121',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'single_post_title_color',
+		array(
+			'label'         	=> esc_html__('Title color', 'botiga'),
+			'section'       	=> 'botiga_section_blog_singles',
+			'priority' 			=> 251
+		)
+	)
+);
+
+// Meta Color
+$wp_customize->add_setting(
+	'single_post_meta_color',
+	array(
+		'default'           => '#666666',
+		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
+		'transport'         => 'postMessage'
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Alpha_Color(
+		$wp_customize,
+		'single_post_meta_color',
+		array(
+			'label'         	=> esc_html__('Meta color', 'botiga'),
+			'section'       	=> 'botiga_section_blog_singles',
+			'priority' 			=> 251
+		)
+	)
+);
+
 // Title
 $wp_customize->add_setting(
 	'single_post_title_title',
@@ -761,29 +807,9 @@ $wp_customize->add_control(new Botiga_Text_Style_Control(
 	)
 ));
 
-$wp_customize->add_setting(
-	'single_post_title_color',
-	array(
-		'default'           => '#212121',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'single_post_title_color',
-		array(
-			'label'         	=> esc_html__('Title color', 'botiga'),
-			'section'       	=> 'botiga_section_blog_singles',
-			'priority' 			=> 270
-		)
-	)
-);
-
 // Title
 $wp_customize->add_setting(
-	'single_post_meta_title',
+	'single_post_meta_title2',
 	array(
 		'default'           => '',
 		'sanitize_callback' => 'esc_attr'
@@ -792,7 +818,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	new Botiga_Text_Control(
 		$wp_customize,
-		'single_post_meta_title',
+		'single_post_meta_title2',
 		array(
 			'label'    => esc_html__('Meta', 'botiga'),
 			'section'  => 'botiga_section_blog_singles',
@@ -836,24 +862,3 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 		'priority' 		=> 290
 	)
 ));
-
-// Color
-$wp_customize->add_setting(
-	'single_post_meta_color',
-	array(
-		'default'           => '#666666',
-		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Alpha_Color(
-		$wp_customize,
-		'single_post_meta_color',
-		array(
-			'label'         	=> esc_html__('Meta color', 'botiga'),
-			'section'       	=> 'botiga_section_blog_singles',
-			'priority' 			=> 300
-		)
-	)
-);

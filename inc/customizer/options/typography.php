@@ -31,7 +31,7 @@ $wp_customize->add_section(
 	'botiga_section_typography_general',
 	array(
 		'panel'      => 'botiga_panel_typography',
-		'title'      => esc_html__( 'General', 'botiga'),
+		'title'      => esc_html__( 'Fonts Library', 'botiga'),
 	)
 );
 
@@ -660,7 +660,7 @@ $wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'h6_fon
 $wp_customize->add_section(
 	'botiga_section_typography_body',
 	array(
-		'title'      => esc_html__( 'Body', 'botiga'),
+		'title'      => esc_html__( 'Paragraphs', 'botiga'),
 		'panel'      => 'botiga_panel_typography',
 	)
 );

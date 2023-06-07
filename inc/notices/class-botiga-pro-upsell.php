@@ -68,7 +68,7 @@ class Botiga_Pro_Upsell_Notice {
 		?>
 
 		<div class="botiga-notice botiga-notice-with-thumbnail notice" style="position:relative;">
-			<h3><?php echo esc_html__( 'One theme with 35+ fully integrated features', 'botiga' ); ?></h3>
+			<h3><?php echo esc_html__( 'One theme fully integrated with 35+ plugins features', 'botiga' ); ?></h3>
 
 			<p>
 				<?php

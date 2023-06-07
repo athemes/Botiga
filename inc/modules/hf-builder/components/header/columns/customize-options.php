@@ -20,11 +20,14 @@ foreach( $this->header_rows as $row ) {
 
         // Section.
         $wp_customize->add_section(
-            $section_id,
-            array(
-                /* translators: 1: column number. */
-                'title'      => sprintf( esc_html__( 'Column %s', 'botiga' ), $i ),
-                'panel'      => 'botiga_panel_header'
+            new Botiga_Section_Hidden(
+				$wp_customize,
+                $section_id,
+                array(
+                    /* translators: 1: column number. */
+                    'title'      => sprintf( esc_html__( 'Column %s', 'botiga' ), $i ),
+                    'panel'      => 'botiga_panel_header'
+                )
             )
         );
 

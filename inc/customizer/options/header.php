@@ -11,14 +11,18 @@
 $wp_customize->add_panel(
 	'botiga_panel_header',
 	array(
-		'title'    => esc_html__( 'Header', 'botiga' ),
-		'priority' => 15,
+		'title'       => esc_html__( 'Header', 'botiga' ),
+		'description' => esc_html__( 'Build your own header or choose from layout options.', 'botiga' ),
+		'priority'    => 15,
 	)
 );
 
 /**
  * Header image
  */
+
+// Header image section description
+$wp_customize->get_section( 'header_image' )->description = esc_html__( 'A prominent image at the top of the page that\'s useful to highlight any information.', 'botiga' );
 
 // Header Image Display Conditions
 $wp_customize->add_setting(
@@ -173,6 +177,66 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'enable_sticky_header',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'enable_sticky_header',
+		array(
+			'label'         	=> esc_html__( 'Enable sticky header', 'botiga' ),
+			'section'       	=> 'botiga_section_main_header',
+			'active_callback'   => 'botiga_callback_header_layout_not_6',
+			'priority'		    => 21
+		)
+	)
+);
+
+$wp_customize->add_setting( 'sticky_header_type',
+	array(
+		'default' 			=> 'always',
+		'sanitize_callback' => 'botiga_sanitize_text'
+	)
+);
+$wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'sticky_header_type',
+	array(
+		'label' 		=> esc_html__( 'Sticky header type', 'botiga' ),
+		'section' => 'botiga_section_main_header',
+		'choices' => array(
+			'always' 		=> esc_html__( 'Always Sticky', 'botiga' ),
+			'scrolltop' 	=> esc_html__( 'Scroll Back', 'botiga' ),
+		),
+		'active_callback' => 'botiga_callback_sticky_header',
+		'priority'		  => 21
+	)
+) );
+
+$wp_customize->add_setting( 
+	'sitcky_header_logo',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'absint',
+	) 
+);
+$wp_customize->add_control( 
+	new WP_Customize_Media_Control( 
+		$wp_customize, 
+		'sitcky_header_logo',
+		array(
+			'label'           => __( 'Sticky Header Logo', 'botiga' ),
+			'section'         => 'botiga_section_main_header',
+			'mime_type'       => 'image',
+			'active_callback' => 'botiga_callback_sticky_header_logo',
+			'priority'	      => 21
+		)
+	)
+);
+
+$wp_customize->add_setting(
 	'header_transparent',
 	array(
 		'default'           => 0,
@@ -303,66 +367,6 @@ $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'header_con
 		'priority'		  => 60
 	)
 ) );
-
-$wp_customize->add_setting(
-	'enable_sticky_header',
-	array(
-		'default'           => 0,
-		'sanitize_callback' => 'botiga_sanitize_checkbox',
-	)
-);
-$wp_customize->add_control(
-	new Botiga_Toggle_Control(
-		$wp_customize,
-		'enable_sticky_header',
-		array(
-			'label'         	=> esc_html__( 'Enable sticky header', 'botiga' ),
-			'section'       	=> 'botiga_section_main_header',
-			'active_callback'   => 'botiga_callback_header_layout_not_6',
-			'priority'		    => 70
-		)
-	)
-);
-
-$wp_customize->add_setting( 'sticky_header_type',
-	array(
-		'default' 			=> 'always',
-		'sanitize_callback' => 'botiga_sanitize_text'
-	)
-);
-$wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'sticky_header_type',
-	array(
-		'label' 		=> esc_html__( 'Sticky header type', 'botiga' ),
-		'section' => 'botiga_section_main_header',
-		'choices' => array(
-			'always' 		=> esc_html__( 'Always Sticky', 'botiga' ),
-			'scrolltop' 	=> esc_html__( 'Scroll Back', 'botiga' ),
-		),
-		'active_callback' => 'botiga_callback_sticky_header',
-		'priority'		  => 80
-	)
-) );
-
-$wp_customize->add_setting( 
-	'sitcky_header_logo',
-	array(
-		'default'           => '',
-		'sanitize_callback' => 'absint',
-	) 
-);
-$wp_customize->add_control( 
-	new WP_Customize_Media_Control( 
-		$wp_customize, 
-		'sitcky_header_logo',
-		array(
-			'label'           => __( 'Sticky Header Logo', 'botiga' ),
-			'section'         => 'botiga_section_main_header',
-			'mime_type'       => 'image',
-			'active_callback' => 'botiga_callback_sticky_header_logo',
-			'priority'	      => 81
-		)
-	)
-);
 
 $wp_customize->add_setting( 'header_divider_2',
 	array(

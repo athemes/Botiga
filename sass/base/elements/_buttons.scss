@@ -44,6 +44,15 @@ a.wc-backward {
 .wp-block-button {
 	margin-bottom: 20px;
 
+	&.is-style-outline {
+		.wp-block-button__link {
+			&:not(.has-background) {
+				background-color: transparent;
+				background-image: none;
+			}
+		}
+	}
+
 	&[style*="text-transform"] {
 		.wp-block-button__link {
 			text-transform: inherit;
