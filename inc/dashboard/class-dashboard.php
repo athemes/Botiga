@@ -527,9 +527,7 @@ class Botiga_Dashboard
 						</a>
 					</div>
 					<div class="botiga-dashboard-top-bar-info-item">
-                        <?php $link = $this->settings[ 'has_pro' ] ? $this->settings['website_link'] : $this->settings['upgrade_pro']; ?>
-
-						<a href="<?php echo esc_url( $link ); ?>" class="botiga-dashboard-theme-website" target="_blank">
+						<a href="<?php echo esc_url( $this->settings['website_link'] ); ?>" class="botiga-dashboard-theme-website" target="_blank">
 							<?php echo esc_html__( 'Website', 'botiga' ); ?>
 							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6 2.40002H7.20002L8.00002 4.00002H11.264L6.39202 8.88002L7.52002 10.008L12 5.53602V8.00002L13.6 8.80002V2.40002ZM9.60002 9.60002V12H4.00002V6.40002H7.20002L8.80002 4.80002H2.40002V13.6H11.2V8.00002L9.60002 9.60002Z" fill="#3858E9"/>
