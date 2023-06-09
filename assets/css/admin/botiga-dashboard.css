@@ -409,8 +409,7 @@
 }
 
 .botiga-dashboard-link.botiga-dashboard-link-danger {
-  color: #FA1212 !important;
-  text-decoration: underline;
+  color: #f34343 !important;
 }
 
 .botiga-dashboard-link.botiga-dashboard-link-info {
@@ -564,7 +563,7 @@
 .botiga-dahsboard-modules-global-actions .botiga-dashboard-module-activation-all.botiga-dahsboard-modules-deactivate-all {
   color: #FA1212;
   background-color: #FFECEC;
-  border-color: #FA1212;
+  border-color: #FFECEC;
 }
 
 .botiga-dahsboard-modules-global-actions .botiga-dashboard-module-activation-all.botiga-dahsboard-modules-deactivate-all:hover, .botiga-dahsboard-modules-global-actions .botiga-dashboard-module-activation-all.botiga-dahsboard-modules-deactivate-all:focus, .botiga-dahsboard-modules-global-actions .botiga-dashboard-module-activation-all.botiga-dahsboard-modules-deactivate-all:active {

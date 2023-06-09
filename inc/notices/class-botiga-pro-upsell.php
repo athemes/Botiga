@@ -73,7 +73,7 @@ class Botiga_Pro_Upsell_Notice {
 			<p>
 				<?php
 					echo esc_html__(
-						'Botiga Pro is an all-in-one WooCommerce plugin created specifically for the free Botiga theme. Only use what you need — we added the 40+ premium features as modules that you can toggle on and off with ease. Reasons-to-buy lists, product trust badges, custom eCommerce templates, floating mini cart icons, size charts, and many more conversion-boosting features! Join the thousands of happy entrepreneurs who have already taken their Botiga stores to the next level.', 'botiga'
+						'Botiga Pro is an all-in-one WooCommerce plugin with 40+ conversion-boosting features created specifically for the free Botiga theme. Reasons-to-buy lists, product trust badges, custom eCommerce templates, floating mini cart icons, size charts, and many more! Join the thousands of happy entrepreneurs who have already taken their Botiga stores to the next level.', 'botiga'
 					);
 				?>
 			</p>

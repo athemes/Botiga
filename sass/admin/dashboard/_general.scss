@@ -230,8 +230,7 @@
 		text-decoration: underline;
 	}
 	&.botiga-dashboard-link-danger {
-		color: #FA1212 !important;
-		text-decoration: underline;
+		color: #f34343 !important;
 	}
 	&.botiga-dashboard-link-info {
 		color: #3858E9 !important;
@@ -373,7 +372,7 @@
 		&.botiga-dahsboard-modules-deactivate-all {
 			color: #FA1212;
 			background-color: #FFECEC;
-			border-color: #FA1212;
+			border-color: #FFECEC;
 	
 			&:hover,
 			&:focus,
