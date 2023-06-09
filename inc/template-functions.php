@@ -156,8 +156,8 @@ add_filter( 'walker_nav_menu_start_el', 'botiga_add_submenu_icons', 10, 4 );
 /**
  * Get SVG code for specific theme icon
  */
-function botiga_get_svg_icon( $icon, $echo = false ) {
-	$svg_code = wp_kses( //From TwentTwenty. Keeps only allowed tags and attributes
+function botiga_get_svg_icon( $icon, $echo = false, $wpkses = true ) {
+	$svg_code = $wpkses ? wp_kses( //From TwentTwenty. Keeps only allowed tags and attributes
 		Botiga_SVG_Icons::get_svg_icon( $icon ),
 		array(
 			'svg'     => array(
@@ -195,7 +195,7 @@ function botiga_get_svg_icon( $icon, $echo = false ) {
 				'transform' => true
 			),				
 		)
-	);	
+	) : Botiga_SVG_Icons::get_svg_icon( $icon );
 
 	if ( $echo != false ) {
 		echo $svg_code; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
