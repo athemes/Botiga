@@ -19,7 +19,7 @@
 
 /**
  * Header cart & Wishlist count number
- */ 
+ */
  .site-header-cart,
  .header-wishlist-icon {
 	position: relative;
@@ -42,7 +42,7 @@
 
 /**
  * Quantity
- */ 
+ */
 .botiga-quantity-plus,
 .botiga-quantity-minus {
 	opacity: 0;
@@ -103,7 +103,7 @@
 	}
 	.botiga-quantity-plus,
 	.botiga-quantity-minus {
-		position: absolute; 
+		position: absolute;
 		right: 0;
 		display: flex;
 		align-items: center;
@@ -629,7 +629,7 @@ p.stars {
 					border: 1px solid rgba(33,33,33,0.2);
 					border-bottom: 0;
 				}
-	
+
 				&.active,
 				&:hover {
 					a {
@@ -688,7 +688,7 @@ p.stars {
 				&:not(:first-child) {
 					margin-left: -7px;
 				}
-	
+
 				&.active {
 					a {
 						z-index: 1;
@@ -726,7 +726,7 @@ p.stars {
 						border-top: 0;
 					}
 				}
-	
+
 				&.active {
 					a {
 						background: #f2f2f2;
@@ -917,7 +917,7 @@ p.no-comments {
 	margin-top: -30px;
 	margin-bottom: 30px;
 	padding: 15px;
-	
+
 	.form-row {
 		display: inline-block;
 	}
@@ -1055,8 +1055,8 @@ p.no-comments {
 			height: 1px;
 			bottom: 0;
 			left: 30px;
-			background-color: #eee;					
-		}				
+			background-color: #eee;
+		}
 	}
 
 	.widget_shopping_cart_content {
@@ -1088,11 +1088,11 @@ p.no-comments {
 		&::-webkit-scrollbar {
 			width: 4px;
 		}
-		 
+
 		&::-webkit-scrollbar-track {
 			background: #e2e2e2;
 		}
-		 
+
 		&::-webkit-scrollbar-thumb {
 			background-color: #CCC;
 		}
@@ -1140,8 +1140,8 @@ p.no-comments {
 		background-color: #f5f5f5;
 		margin: 0;
 		padding: 0 30px;
-	}	
-	
+	}
+
 	.woocommerce-mini-cart__total {
 		padding-top: 30px;
 		padding-bottom: 24px;
@@ -1151,7 +1151,7 @@ p.no-comments {
 
 		.woocommerce-Price-amount {
 			@include font-size(18);
-		}	
+		}
 
 		strong {
 			font-weight: 400;
@@ -1222,7 +1222,7 @@ p.no-comments {
 				height: 1px;
 				bottom: 0;
 				left: 30px;
-				background-color: rgba($color__primary, 0.1);					
+				background-color: rgba($color__primary, 0.1);
 			}
 
 			&:last-of-type {
@@ -1292,12 +1292,12 @@ p.no-comments {
 		.header-elements-left & {
 			&:hover,
 			&.focus {
-	
+
 				.widget_shopping_cart {
 					left: 0;
 					display: block;
 				}
-			}			
+			}
 		}
 
 		&:hover,
@@ -1322,15 +1322,15 @@ p.no-comments {
 			&::-webkit-scrollbar {
 				width: 4px;
 			}
-			 
+
 			&::-webkit-scrollbar-track {
 				background: #e2e2e2;
 			}
-			 
+
 			&::-webkit-scrollbar-thumb {
 				background-color: #CCC;
 			}
-	
+
 			li {
 				display: flex;
 				flex-wrap: wrap;
@@ -1349,7 +1349,7 @@ p.no-comments {
 					height: 1px;
 					bottom: 0;
 					left: 30px;
-					background-color: rgba($color__primary, 0.1);					
+					background-color: rgba($color__primary, 0.1);
 				}
 
 				&:last-of-type {
@@ -1359,7 +1359,7 @@ p.no-comments {
 						display: none;
 					}
 				}
-	
+
 				img {
 					width: 62px;
 					max-height: 75px;
@@ -1369,7 +1369,7 @@ p.no-comments {
 					object-fit: cover;
 					object-position: center;
 				}
-	
+
 				a.remove {
 					width: 18px;
 					height: 18px;
@@ -1389,7 +1389,7 @@ p.no-comments {
 						transform: scale(1.1);
 					}
 				}
-	
+
 				& > span {
 					display: block;
 					font-weight: 600;
@@ -1406,7 +1406,7 @@ p.no-comments {
 				}
 			}
 		}
-		
+
 		&.mini-cart-has-scroll {
 			.product_list_widget {
 				max-height: 26vh;
@@ -1491,7 +1491,7 @@ span.onsale {
     align-items: center;
     justify-content: center;
 	border-radius: 100%;
-	
+
 	&.botiga-wishlist-button-tooltip:not(.active) {
 		&:before {
 			content: attr(data-botiga-wishlist-tooltip);
@@ -1577,7 +1577,7 @@ span.onsale {
 				width: 17px;
 				margin-right: 5px;
 			}
-		}	
+		}
 	}
 }
 
@@ -1679,6 +1679,7 @@ dl.variation {
 		display: flex;
 		grid-gap: 5px;
 		flex-wrap: wrap;
+		align-items: center;
 
 		> a {
 			position: relative;
@@ -1786,7 +1787,7 @@ dl.variation {
 
 			img {
 				position: absolute;
-				top: 0; 
+				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
@@ -2006,9 +2007,9 @@ dl.variation {
 }
 
 @media (max-width: 768px){
-	
+
 	.botiga-flex-video-thumb{
-		
+
 		&:before{
 			width: 24px;
 			height: 24px;
@@ -2032,7 +2033,7 @@ dl.variation {
 .botiga-product-size-chart-button{
 	display: flex;
 	font-size: 0.9rem;
-	
+
 	a{
 		display: flex;
 		grid-gap: 5px;
@@ -2200,7 +2201,7 @@ dl.variation {
 }
 
 @media (max-width: 768px){
-	
+
 	.botiga-product-size-chart-modal-inner{
 		max-height: 100%;
 	}
@@ -2280,7 +2281,7 @@ dl.variation {
 		}
 
 		&:hover{
-			
+
 			.botiga-linked-variation-tooltip{
 				opacity: 1;
 				margin-bottom: 15px;
@@ -2289,7 +2290,7 @@ dl.variation {
 		}
 
 		&.active{
-	
+
 			&:before{
 				border-color: $color__primary;
 			}

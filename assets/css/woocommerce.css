@@ -6634,6 +6634,9 @@ dl.variation p {
   grid-gap: 5px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .botiga-variations-wrapper .botiga-variation-type-image > a,
