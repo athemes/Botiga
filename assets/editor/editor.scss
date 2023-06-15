@@ -54,13 +54,13 @@ div.editor-styles-wrapper {
 		border-radius: 0;
 		font-weight: 400;
 		@include font-size(14);
-	
+
 		&:hover {
 			color: #fff;
 			background-color: $color__hover;
 			border-color: $color__hover;
 		}
-	
+
 		&:active,
 		&:focus {
 			color: #fff;
@@ -77,7 +77,7 @@ div.editor-styles-wrapper {
 	.wp-block-button {
 		margin-bottom: 20px;
 	}
-	.wp-block-button.is-style-squared, 
+	.wp-block-button.is-style-squared,
 	.wp-block-button__link.wp-block-button.is-style-squared {
 		a {
 			border-radius: 0;
@@ -94,7 +94,7 @@ div.editor-styles-wrapper {
 		&:focus,
 		&:active {
 			color: $color__hover;
-		}		
+		}
 	}
 	@import "../../sass/base/elements/lists";
 	@import "../../sass/base/elements/tables";

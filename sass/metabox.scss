@@ -648,7 +648,7 @@
 }
 
 body:not(.block-editor-page){
-	
+
 	#botiga_metabox{
 
 		.inside {
@@ -725,6 +725,22 @@ body:not(.block-editor-page){
 			width: 100%;
 		}
 	}
+}
+
+.botiga-metabox-field-uploads-content {
+
+	.components-button.has-icon {
+		padding: 24px 12px;
+		color: #9f9f9f;
+		border: 1px dotted #9f9f9f;
+	}
+}
+
+.vertical-line {
+	border-left: 1px dotted;
+	border-color: #9f9f9f;
+	margin: 0px 10px;
+	height: 50px;
 }
 
 @media only screen and (max-width: 991px) {
