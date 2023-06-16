@@ -2201,6 +2201,9 @@ div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-sele
   grid-gap: 5px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 div.editor-styles-wrapper .botiga-variations-wrapper .botiga-variation-type-button > a,
