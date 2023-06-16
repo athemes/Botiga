@@ -829,7 +829,15 @@ body:not(.block-editor-page) #botiga_metabox .botiga-metabox-contents {
   border-left: 1px dotted;
   border-color: #9f9f9f;
   margin: 0px 10px;
-  height: 50px;
+  height: 40px;
+}
+
+.botiga-img-wrapper {
+  max-width: 50px;
+}
+
+.botiga-img-wrapper img {
+  width: 100%;
 }
 
 @media only screen and (max-width: 991px) {

@@ -2468,6 +2468,11 @@ div.editor-styles-wrapper .botiga-product-audio + .woocommerce-loop-product__lin
   display: none !important;
 }
 
+div.editor-styles-wrapper .botiga-product-video video {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 div.editor-styles-wrapper .botiga-product-audio audio {
   display: block;
   width: 100%;

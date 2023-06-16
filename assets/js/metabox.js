@@ -59,9 +59,14 @@
           });
           $uploads.find('.botiga-metabox-field-uploads-add').on('click', function (e) {
             e.preventDefault();
+            var listWrapper = $('.botiga-metabox-field-uploads-list li').length;
             var $item = $list.find('li').first().clone(true);
-            var $input = $item.find('input');
-            $input.attr('name', $input.data('name'));
+            var $imgInput = $item.find('input[type=hidden]');
+            var $input = $item.find('input[type=text]');
+            var $imgNameAttr = "".concat($imgInput.data('name'), "[").concat(listWrapper, "][image]");
+            var $videoNameAttr = "".concat($input.data('name'), "[").concat(listWrapper, "][video]");
+            $imgInput.attr('name', $imgNameAttr);
+            $input.attr('name', $videoNameAttr);
             $item.removeClass('hidden');
             $list.append($item);
           });
@@ -69,11 +74,10 @@
           var wpMediaInput;
           $uploads.find('.botiga-metabox-field-uploads-upload').on('click', function (e) {
             e.preventDefault();
-            wpMediaInput = $(this).closest('li').find('input');
+            wpMediaInput = $(this).closest('li').find('input[type=text]');
 
             if (wpMediaFrame) {
-              wpMediaFrame.open();
-              return;
+              wpMediaFrame = null;
             }
 
             wpMediaFrame = window.wp.media({
@@ -84,6 +88,27 @@
             wpMediaFrame.on('select', function () {
               var attachment = wpMediaFrame.state().get('selection').first().toJSON();
               wpMediaInput.val(attachment.url);
+            });
+          });
+          $uploads.find('.botiga-metabox-field-image-upload').on('click', function (e) {
+            e.preventDefault();
+            var $imgWrapper = $(this).closest('li').find('.botiga-img-wrapper');
+            wpMediaInput = $(this).closest('li').find('input[type=hidden]');
+
+            if (wpMediaFrame) {
+              wpMediaFrame = null;
+            }
+
+            wpMediaFrame = window.wp.media({
+              library: {
+                type: 'image'
+              }
+            }).open();
+            wpMediaFrame.on('select', function () {
+              var attachment = wpMediaFrame.state().get('selection').first().toJSON(); // Send the attachment URL to our custom image input field.
+
+              $imgWrapper.html("<img src=\"".concat(attachment.url, "\" alt=\"\" style=\"max-width:100%;\"/>"));
+              wpMediaInput.val(attachment.id);
             });
           });
           $uploads.find('.botiga-metabox-field-uploads-remove').on('click', function (e) {

@@ -425,7 +425,6 @@ class Botiga_Metabox {
 		foreach ( $options as $option ) {
 
 			if ( ! empty( $option['fields'] ) ) {
-
 				foreach ( $option['fields'] as $field_id => $field ) {
 
 					if ( in_array( $field['type'], array( 'content' ) ) ) {
@@ -433,9 +432,7 @@ class Botiga_Metabox {
 					}
 
 					$value = ( isset( $_POST[ $field_id ] ) ) ? wp_unslash( $_POST[ $field_id ] ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
 					$value = $this->sanitize( $field, $value );
-
 					update_post_meta( $post_id, $field_id, $value );
 
 				}
@@ -483,9 +480,18 @@ class Botiga_Metabox {
 			break;
 
 			case 'repeater':
-			case 'uploads':
 				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( array_map( 'sanitize_text_field', $value ) ) : array();
 			break;
+
+			case 'uploads':
+				$upload_values = [];
+				if ( is_array( $value ) && ! empty( $value ) ) {
+					foreach ( $value as $key => $val ) {
+						$upload_values[] = array_filter( array_map( 'sanitize_text_field', $val ) );
+					}
+				}
+				return $upload_values;
+				break;
 
 			case 'size-chart':
 				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( map_deep( $value, 'sanitize_text_field' ) ) : array();
@@ -502,7 +508,6 @@ class Botiga_Metabox {
 	}
 
 	public function get_field( $field_id, $field, $value ) {
-		error_log( print_r( $field, true ) );
 		switch ( $field['type'] ) {
 
 			case 'text':
@@ -730,10 +735,27 @@ class Botiga_Metabox {
 
 					$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
 
+					if ( is_array( $value ) && ! empty( $value ) ) {
+						// For Backward Competibility.
+						$values = $this->transform_array_to_mul( $value );
+					}
+
 					echo '<ul class="botiga-metabox-field-uploads-list" data-library="'. esc_attr( $field['library'] ) .'">';
 
 						echo '<li class="botiga-metabox-field-uploads-list-item hidden">';
-						echo '<input type="text" name="" value="" data-name="'. esc_attr( $field_id ) .'[]" />';
+						if ( 'image' === $field['thumbnail'] ) {
+							printf( '<input type="hidden" name="" value="" data-name="%1$s" />', esc_attr( $field_id ) );
+							printf(
+								'<div class="botiga-img-wrapper">
+									<button class="botiga-metabox-field-image-upload components-button block-editor-inserter__toggle has-icon">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg>
+									</button>
+								</div>'
+							);
+							echo '<div class="vertical-line"></div>';
+						}
+
+						printf( '<input type="text" name="" value="" data-name="%1$s" />', esc_attr( $field_id ) );
 						echo '<button class="botiga-metabox-field-uploads-upload button">'. esc_html__( 'Upload', 'botiga' ) .'</button>';
 						echo '<span class="botiga-metabox-field-uploads-move dashicons dashicons-menu"></span>';
 						echo '<span class="botiga-metabox-field-uploads-remove dashicons dashicons-trash"></span>';
@@ -742,14 +764,27 @@ class Botiga_Metabox {
 						foreach ( $values as $key => $value ) {
 							echo '<li class="botiga-metabox-field-uploads-list-item">';
 							if ( 'image' === $field['thumbnail'] ) {
-								printf(
-									'<button class="botiga-metabox-field-uploads-upload components-button block-editor-inserter__toggle has-icon">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg>
-									</button>
-									<div class="vertical-line"></div>'
-								);
+								if ( ! empty( $value['image'] ) ) {
+									printf( '<input type="hidden" name="%1$s[%2$s][image]" value="%3$s" />', esc_attr( $field_id ), esc_attr( $key ), esc_attr( $value['image'] ) );
+									$image_attributes = wp_get_attachment_image_src( $value['image'], 'thumbnail' );
+									if ( $image_attributes ) {
+										echo '<div class="botiga-img-wrapper">';
+										printf( '<img src="%s" />', esc_attr( $image_attributes[0] ) );
+										echo '</div>';
+									}
+								} else {
+									printf( '<input type="hidden" name="%1$s[%2$s][image]" value="" />', esc_attr( $field_id ), $key );
+									printf(
+										'<div class="botiga-img-wrapper">
+											<button class="botiga-metabox-field-image-upload components-button block-editor-inserter__toggle has-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg>
+											</button>
+										</div>'
+									);
+								}
+								echo '<div class="vertical-line"></div>';
 							}
-							echo '<input type="text" name="'. esc_attr( $field_id ) .'[]" value="'. esc_attr( $value ) .'" />';
+							printf( '<input type="text" name="%1$s[%2$s][video]" value="%3$s" />', esc_attr( $field_id ), $key, esc_attr( $value['video'] ) );
 							echo '<button class="botiga-metabox-field-uploads-upload button">'. esc_html__( 'Upload', 'botiga' ) .'</button>';
 							echo '<span class="botiga-metabox-field-uploads-move dashicons dashicons-menu"></span>';
 							echo '<span class="botiga-metabox-field-uploads-remove dashicons dashicons-trash"></span>';
@@ -925,6 +960,37 @@ class Botiga_Metabox {
 
 		}
 
+	}
+
+	/**
+	 * Transform the input array into a multidimensional array with backward compatibility support.
+	 *
+	 * This function takes an input array and checks its structure to determine whether it follows
+	 * the old or new format. Based on the format, it transforms the array into the desired
+	 * multidimensional array structure. This approach ensures backward compatibility with older
+	 * versions of the array format.
+	 *
+	 * @param array $inputArray The input array to be transformed.
+	 *
+	 * @return array The transformed multidimensional array.
+	 */
+	public function transform_array_to_mul( $inputArray ) {
+		$outputArray = [];
+
+		if ( is_array( $inputArray ) && is_array( $inputArray[0] ) ) {
+			// Input array is already in the new format.
+			$outputArray = $inputArray;
+		} else {
+			// Input array is in the old format, transform it.
+			foreach ( $inputArray as $key => $videoUrl ) {
+				$outputArray[ $key + 1 ] = [
+					'image' => '',
+					'video' => $videoUrl
+				];
+			}
+		}
+
+		return $outputArray;
 	}
 
 }

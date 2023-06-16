@@ -740,7 +740,15 @@ body:not(.block-editor-page){
 	border-left: 1px dotted;
 	border-color: #9f9f9f;
 	margin: 0px 10px;
-	height: 50px;
+	height: 40px;
+}
+
+.botiga-img-wrapper {
+	max-width: 50px;
+
+	img {
+		width: 100%;
+	}
 }
 
 @media only screen and (max-width: 991px) {

@@ -28,7 +28,7 @@
 			});
 
 			var $repeater = $contents.find('.botiga-metabox-field-repeater');
-			
+
 			if ( $repeater.length ) {
 
 				$repeater.each( function() {
@@ -87,11 +87,16 @@
 
 						e.preventDefault();
 
-						var $item  = $list.find('li').first().clone(true);
-						var $input = $item.find('input');
+						var listWrapper    = $( '.botiga-metabox-field-uploads-list li' ).length;
+						var $item          = $list.find('li').first().clone(true);
+						var $imgInput      = $item.find('input[type=hidden]');
+						var $input         = $item.find('input[type=text]');
+						var $imgNameAttr   = `${$imgInput.data('name')}[${listWrapper}][image]`;
+						var $videoNameAttr = `${$input.data('name')}[${listWrapper}][video]`;
 
-						$input.attr('name', $input.data('name'));
-						$item.removeClass('hidden');
+						$imgInput.attr( 'name', $imgNameAttr );
+						$input.attr( 'name', $videoNameAttr );
+						$item.removeClass( 'hidden' );
 
 						$list.append( $item );
 
@@ -101,14 +106,12 @@
 					var wpMediaInput;
 
 					$uploads.find('.botiga-metabox-field-uploads-upload').on('click', function( e ) {
-
 						e.preventDefault();
 
-						wpMediaInput = $(this).closest('li').find('input');
+						wpMediaInput = $(this).closest('li').find('input[type=text]');
 
 						if ( wpMediaFrame ) {
-							wpMediaFrame.open();
-							return;
+							wpMediaFrame = null;
 						}
 
 						wpMediaFrame = window.wp.media({
@@ -124,10 +127,37 @@
 							wpMediaInput.val(attachment.url);
 
 						});
-
 					});
 
-					$uploads.find('.botiga-metabox-field-uploads-remove').on('click', function( e ) {
+					$uploads.find( '.botiga-metabox-field-image-upload' ).on( 'click', function( e ) {
+						e.preventDefault();
+
+						var $imgWrapper = $( this ).closest( 'li' ).find( '.botiga-img-wrapper' );
+						wpMediaInput = $( this ).closest( 'li' ).find( 'input[type=hidden]' );
+
+						if ( wpMediaFrame ) {
+							wpMediaFrame = null;
+						}
+
+						wpMediaFrame = window.wp.media( {
+							library: {
+								type: 'image',
+							},
+						} ).open();
+
+						wpMediaFrame.on( 'select', function() {
+
+							var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
+
+							// Send the attachment URL to our custom image input field.
+							$imgWrapper.html( `<img src="${attachment.url}" alt="" style="max-width:100%;"/>` );
+
+							wpMediaInput.val( attachment.id );
+						} );
+
+					} );
+
+					$uploads.find( '.botiga-metabox-field-uploads-remove' ).on( 'click', function( e ) {
 
 						e.preventDefault();
 
@@ -136,7 +166,7 @@
 					});
 
 				});
-			
+
 			}
 
 			var $sizeChart = $contents.find('.botiga-metabox-field-size-chart');
@@ -160,7 +190,7 @@
 					});
 
 				});
-			
+
 				$sizeChart.each( function() {
 
 					var $list = $(this).find('ul');
@@ -176,7 +206,7 @@
 							$(this).attr('name', $(this).data('name'));
 							$(this).removeAttr('data-name');
 						});
-						
+
 						$item.removeClass('hidden');
 
 						$list.append( $item );
@@ -264,9 +294,9 @@
 					$sizeChart.on('click', '.botiga-remove', function( e ) {
 
 						e.preventDefault();
-						
+
 						$(this).closest('li').remove();
-						
+
 						$sizeChart.trigger('multidimensional');
 
 					});
@@ -279,7 +309,7 @@
 						var $clone = $li.clone(true);
 
 						$li.after( $clone );
-						
+
 						$sizeChart.trigger('multidimensional');
 
 					});
@@ -430,7 +460,7 @@
 							var $textarea = $(this).find('textarea');
 
 							var editorSettings = wp.codeEditor.defaultSettings || {};
-							
+
 							editorSettings.codemirror = _.extend({}, editorSettings.codemirror, {
 								gutters: [],
 							});
