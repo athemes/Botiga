@@ -743,11 +743,40 @@ body:not(.block-editor-page){
 	height: 40px;
 }
 
+.botiga-img-wrapper-edit,
 .botiga-img-wrapper {
 	max-width: 50px;
 
 	img {
 		width: 100%;
+	}
+}
+
+.botiga-img-wrapper-edit {
+	position: relative;
+
+	.botiga-metabox-field-image-upload {
+
+		&:hover {
+			color: #666666;
+		}
+	}
+
+	.image-upload-absolute {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.botiga-metabox-close-button {
+		position: absolute;
+		z-index: 99;
+		top: -8px;
+		left: 82%;
+		color: #FFFFFF;
+		background: #FF0000;
+		padding: 0px;
+		font-size: 16px;
 	}
 }
 

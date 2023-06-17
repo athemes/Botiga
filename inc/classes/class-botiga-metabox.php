@@ -768,8 +768,16 @@ class Botiga_Metabox {
 									printf( '<input type="hidden" name="%1$s[%2$s][image]" value="%3$s" />', esc_attr( $field_id ), esc_attr( $key ), esc_attr( $value['image'] ) );
 									$image_attributes = wp_get_attachment_image_src( $value['image'], 'thumbnail' );
 									if ( $image_attributes ) {
+										echo '<div class="botiga-img-wrapper-edit">';
 										echo '<div class="botiga-img-wrapper">';
-										printf( '<img src="%s" />', esc_attr( $image_attributes[0] ) );
+										printf( '<img src="%s" />', esc_url( $image_attributes[0] ) );
+										echo '<span class="botiga-metabox-close-button dashicons dashicons-no-alt"></span>';
+										echo '</div>';
+										printf(
+											'<button class="botiga-metabox-field-image-upload image-upload-absolute components-button block-editor-inserter__toggle has-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg>
+											</button>'
+										);
 										echo '</div>';
 									}
 								} else {

@@ -107,9 +107,20 @@
             wpMediaFrame.on('select', function () {
               var attachment = wpMediaFrame.state().get('selection').first().toJSON(); // Send the attachment URL to our custom image input field.
 
-              $imgWrapper.html("<img src=\"".concat(attachment.url, "\" alt=\"\" style=\"max-width:100%;\"/>"));
+              $imgWrapper.append("<img src=\"".concat(attachment.url, "\" alt=\"\" style=\"max-width:100%;\"/>"));
               wpMediaInput.val(attachment.id);
+              $(this).addClass('image-upload-absolute');
             });
+          });
+          $uploads.find('.botiga-metabox-close-button').on('click', function (e) {
+            e.preventDefault();
+            var $imgWrapper = $(this).closest('li').find('.botiga-img-wrapper');
+            var wpMediaInput = $(this).closest('li').find('input[type=hidden]');
+            var $uploadButton = $(this).closest('li').find('.botiga-metabox-field-image-upload'); // Delete the image id from the hidden input
+
+            wpMediaInput.val('');
+            $($uploadButton).removeClass('image-upload-absolute');
+            $imgWrapper.html('');
           });
           $uploads.find('.botiga-metabox-field-uploads-remove').on('click', function (e) {
             e.preventDefault();
