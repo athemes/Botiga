@@ -746,7 +746,9 @@ class Botiga_Metabox {
 						if ( 'image' === $field['thumbnail'] ) {
 							printf( '<input type="hidden" name="" value="" data-name="%1$s" />', esc_attr( $field_id ) );
 							printf(
-								'<div class="botiga-img-wrapper">
+								'<div class="botiga-img-wrapper-edit">
+									<div class="botiga-img-wrapper">
+									</div>
 									<button class="botiga-metabox-field-image-upload components-button block-editor-inserter__toggle has-icon">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg>
 									</button>
@@ -783,11 +785,14 @@ class Botiga_Metabox {
 								} else {
 									printf( '<input type="hidden" name="%1$s[%2$s][image]" value="" />', esc_attr( $field_id ), $key );
 									printf(
-										'<div class="botiga-img-wrapper">
+										'<div class="botiga-img-wrapper-edit">
+											<div class="botiga-img-wrapper">
+											</div>
 											<button class="botiga-metabox-field-image-upload components-button block-editor-inserter__toggle has-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"></path></svg>
 											</button>
-										</div>'
+										</div>
+										'
 									);
 								}
 								echo '<div class="vertical-line"></div>';

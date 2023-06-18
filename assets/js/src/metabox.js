@@ -134,6 +134,8 @@
 
 						var $imgWrapper = $( this ).closest( 'li' ).find( '.botiga-img-wrapper' );
 						wpMediaInput = $( this ).closest( 'li' ).find( 'input[type=hidden]' );
+						var $uploadButton = $( this ).closest( 'li' ).find( '.botiga-metabox-field-image-upload' );
+
 
 						if ( wpMediaFrame ) {
 							wpMediaFrame = null;
@@ -150,16 +152,17 @@
 							var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
 
 							// Send the attachment URL to our custom image input field.
+							$imgWrapper.html('');
 							$imgWrapper.append( `<img src="${attachment.url}" alt="" style="max-width:100%;"/>` );
+							$imgWrapper.append( '<span class="botiga-metabox-close-button dashicons dashicons-no-alt"></span>' );
 
 							wpMediaInput.val( attachment.id );
-
-							$( this ).addClass( 'image-upload-absolute' );
+							$( $uploadButton ).addClass( 'image-upload-absolute' );
 						} );
 
 					} );
 
-					$uploads.find( '.botiga-metabox-close-button' ).on( 'click', function( e ) {
+					$uploads.find( '.botiga-metabox-field-uploads-list-item' ).on( 'click', '.botiga-metabox-close-button', function( e ) {
 						e.preventDefault();
 
 						var $imgWrapper   = $( this ).closest( 'li' ).find( '.botiga-img-wrapper' );
