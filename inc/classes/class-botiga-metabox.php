@@ -765,7 +765,7 @@ class Botiga_Metabox {
 
 						foreach ( $values as $key => $value ) {
 							echo '<li class="botiga-metabox-field-uploads-list-item">';
-							if ( 'image' === $field['thumbnail'] ) {
+							if ( isset( $field['thumbnail'] ) && 'image' === $field['thumbnail'] ) {
 								if ( ! empty( $value['image'] ) ) {
 									printf( '<input type="hidden" name="%1$s[%2$s][image]" value="%3$s" />', esc_attr( $field_id ), esc_attr( $key ), esc_attr( $value['image'] ) );
 									$image_attributes = wp_get_attachment_image_src( $value['image'], 'thumbnail' );
