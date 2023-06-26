@@ -111,3 +111,20 @@
 		}
 	}
 }
+
+// Botiga Widgets
+.botiga-widget {
+	.botiga-widget-list-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+
+		> input[type="checkbox"] {
+			margin-top: 0.4rem;
+		}
+
+		> label {
+			cursor: pointer;
+		}
+	}
+}

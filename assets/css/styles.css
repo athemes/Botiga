@@ -4550,6 +4550,24 @@ body.mobile-menu-visible:before {
   font-size: 0.8em;
 }
 
+.botiga-widget .botiga-widget-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+}
+
+.botiga-widget .botiga-widget-list-item > input[type="checkbox"] {
+  margin-top: 0.4rem;
+}
+
+.botiga-widget .botiga-widget-list-item > label {
+  cursor: pointer;
+}
+
 .widget_block h3 {
   margin: 0 0 20px;
   font-size: 18px;

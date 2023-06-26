@@ -586,6 +586,26 @@ function your_prefix_register_meta_boxes( $meta_boxes ) {
                 'name' => esc_html__( 'Metabox Text 2', 'online-generator' ),
                 'id'   => $prefix . 'metabox_text_2',
             ],
+			[
+                'type' => 'text',
+                'name' => esc_html__( 'Metabox Text 4', 'online-generator' ),
+                'id'   => $prefix . 'metabox_text_4',
+            ],
+            [
+                'type' => 'text',
+                'name' => esc_html__( 'Metabox Text 5', 'online-generator' ),
+                'id'   => $prefix . 'metabox_text_5',
+            ],
+			[
+                'type' => 'text',
+                'name' => esc_html__( 'Metabox Text 6', 'online-generator' ),
+                'id'   => $prefix . 'metabox_text_6',
+            ],
+            [
+                'type' => 'text',
+                'name' => esc_html__( 'Metabox Text 7', 'online-generator' ),
+                'id'   => $prefix . 'metabox_text_7',
+            ],
         ],
     ];
 
