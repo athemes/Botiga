@@ -10,21 +10,23 @@ get_header(); ?>
 
 	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>">
 
-        <section>
-            <header class="entry-header">
-                <?php the_title( '<h1 class="entry-title page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' ); ?>
-            </header><!-- .page-header -->
+		<section>
+			<?php if ( apply_filters( 'botiga_entry_header', true ) ) : ?>
+			<header class="entry-header">
+				<?php the_title( '<h1 class="entry-title page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' ); ?>
+			</header><!-- .page-header -->
+			<?php endif; ?>
 
-            <div class="page-content">
+			<div class="page-content">
 
-                <?php 
-                while( have_posts() ) : the_post();
-                    the_content();
-                endwhile; ?>
+				<?php 
+				while( have_posts() ) : the_post();
+					the_content();
+				endwhile; ?>
 
-                <?php get_template_part( 'template-parts/content', 'wishlist' ); ?>
-            </div><!-- .page-content -->
-        </section>
+				<?php get_template_part( 'template-parts/content', 'wishlist' ); ?>
+			</div><!-- .page-content -->
+		</section>
 
 	</main><!-- #main -->
 
