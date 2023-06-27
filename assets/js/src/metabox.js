@@ -28,7 +28,7 @@
 			});
 
 			var $repeater = $contents.find('.botiga-metabox-field-repeater');
-			
+
 			if ( $repeater.length ) {
 
 				$repeater.each( function() {
@@ -87,10 +87,13 @@
 
 						e.preventDefault();
 
-						var $item  = $list.find('li').first().clone(true);
-						var $input = $item.find('input');
+						var $items = $list.find('li');
+						var $item  = $items.first().clone(true);
 
-						$input.attr('name', $input.data('name'));
+						$item.find('input').each(function() {
+							$(this).attr('name', $(this).data('name').replace('0', $items.length))
+						})
+
 						$item.removeClass('hidden');
 
 						$list.append( $item );
@@ -104,9 +107,9 @@
 
 						e.preventDefault();
 
-						wpMediaInput = $(this).closest('li').find('input');
+						wpMediaInput = $(this).closest('li').find(' > input');
 
-						if ( wpMediaFrame ) {
+						if ( wpMediaFrame && wpMediaFrame.options.library.type === $list.data('library')) {
 							wpMediaFrame.open();
 							return;
 						}
@@ -127,6 +130,53 @@
 
 					});
 
+					$uploads.find('.botiga-metabox-field-uploads-thumbnail-upload').on('click', function( e ) {
+
+						e.preventDefault();
+
+						wpMediaInput = $(this).parent().find('input');
+
+						if ( wpMediaFrame && wpMediaFrame.options.library.type === 'image' ) {
+							wpMediaFrame.open();
+							return;
+						}
+
+						wpMediaFrame = window.wp.media({
+							library: {
+								type: 'image'
+							},
+						}).open();
+
+						wpMediaFrame.on('select', function() {
+
+							var attachment = wpMediaFrame.state().get( 'selection' ).first().toJSON();
+							var thumbnail = wpMediaInput.parent();
+
+							wpMediaInput.val(attachment.id);
+
+							thumbnail.find('span').hide();
+							thumbnail.find('img').remove();
+							thumbnail.find('.botiga-metabox-field-uploads-thumbnail-remove').show();
+							thumbnail.find('.botiga-metabox-field-uploads-thumbnail-upload').append($('<img>').attr({
+								'src': attachment.url
+							}));
+						});
+
+					});
+
+					$uploads.find('.botiga-metabox-field-uploads-thumbnail-remove').on('click', function( e ) {
+
+						e.preventDefault();
+
+						var thumbnail = $(this).parent();
+
+						thumbnail.find('span').show();
+						thumbnail.find('img').remove();
+						thumbnail.find('input').val('');
+						thumbnail.find('.botiga-metabox-field-uploads-thumbnail-remove').hide();
+
+					});
+
 					$uploads.find('.botiga-metabox-field-uploads-remove').on('click', function( e ) {
 
 						e.preventDefault();
@@ -136,7 +186,7 @@
 					});
 
 				});
-			
+
 			}
 
 			var $sizeChart = $contents.find('.botiga-metabox-field-size-chart');
@@ -160,7 +210,7 @@
 					});
 
 				});
-			
+
 				$sizeChart.each( function() {
 
 					var $list = $(this).find('ul');
@@ -176,7 +226,7 @@
 							$(this).attr('name', $(this).data('name'));
 							$(this).removeAttr('data-name');
 						});
-						
+
 						$item.removeClass('hidden');
 
 						$list.append( $item );
@@ -264,9 +314,9 @@
 					$sizeChart.on('click', '.botiga-remove', function( e ) {
 
 						e.preventDefault();
-						
+
 						$(this).closest('li').remove();
-						
+
 						$sizeChart.trigger('multidimensional');
 
 					});
@@ -279,7 +329,7 @@
 						var $clone = $li.clone(true);
 
 						$li.after( $clone );
-						
+
 						$sizeChart.trigger('multidimensional');
 
 					});
@@ -430,7 +480,7 @@
 							var $textarea = $(this).find('textarea');
 
 							var editorSettings = wp.codeEditor.defaultSettings || {};
-							
+
 							editorSettings.codemirror = _.extend({}, editorSettings.codemirror, {
 								gutters: [],
 							});

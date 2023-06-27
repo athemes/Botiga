@@ -6915,6 +6915,13 @@ dl.variation p {
   height: 100%;
 }
 
+.botiga-video-ratio video[poster] {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 .botiga-video-ratio-16-9 {
   padding-top: calc((9/16) * 100%);
 }

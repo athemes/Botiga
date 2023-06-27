@@ -2432,6 +2432,13 @@ div.editor-styles-wrapper .botiga-video-ratio iframe {
   height: 100%;
 }
 
+div.editor-styles-wrapper .botiga-video-ratio video[poster] {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 div.editor-styles-wrapper .botiga-video-ratio-16-9 {
   padding-top: calc((9/16) * 100%);
 }

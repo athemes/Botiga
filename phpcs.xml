@@ -50,6 +50,7 @@
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="WooCommerce.Commenting.CommentHooks.MissingHookComment" />
+		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 	</rule>
 
 	<rule ref="PHPCompatibility">
