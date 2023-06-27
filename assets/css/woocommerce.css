@@ -2694,11 +2694,17 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
 }
 
 .product-gallery-summary.gallery-grid .woocommerce-product-gallery__wrapper, .product-gallery-summary.gallery-scrolling .woocommerce-product-gallery__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-right: -10px;
   margin-left: -10px;
 }
 
 .product-gallery-summary.gallery-grid .woocommerce-product-gallery__wrapper > div, .product-gallery-summary.gallery-scrolling .woocommerce-product-gallery__wrapper > div {
+  width: 100%;
   padding-right: 10px;
   padding-left: 10px;
 }
