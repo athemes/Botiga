@@ -199,11 +199,6 @@ ul.products {
 		width:24px;
 		height:24px;
 	}
-	.button,
-	.wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-	}
 	.added_to_cart {
 		position: absolute;
 		top: 0;
@@ -239,7 +234,7 @@ ul.products {
 	
 	.button-layout4 {
 		position: absolute;
-		width: 100%;
+		width: calc( 100% - 20px );
 		bottom: 10px;
 		left: 10px;
 		opacity: 0;
@@ -293,6 +288,10 @@ ul.wc-block-grid__products {
 			.button-layout4 {
 				opacity: 1;
 			}								
+		}
+
+		.wc-block-grid__product-add-to-cart {
+			margin-bottom: 0;
 		}
 	}	
 }

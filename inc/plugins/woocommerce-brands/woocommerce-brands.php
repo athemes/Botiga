@@ -95,9 +95,11 @@ class Botiga_WC_Brands {
          * Shop Archive
          */
         // Tabs control
-        $controls_general     = json_decode( $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general );
-        $new_controls_general = array( '#customize-control-shop_archive_header_cats_includes_brands' );
-        $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general = json_encode( array_merge( $controls_general, $new_controls_general ) );
+        if( $wp_customize->get_control( 'botiga_product_catalog_tabs' ) ) {
+            $controls_general     = json_decode( $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general );
+            $new_controls_general = array( '#customize-control-shop_archive_header_cats_includes_brands' );
+            $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general = json_encode( array_merge( $controls_general, $new_controls_general ) );
+        }
 
         // Display brands with categories
         $wp_customize->add_setting(

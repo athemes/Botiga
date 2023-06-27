@@ -3240,12 +3240,6 @@ div.editor-styles-wrapper .loop-button-wrap.button-layout4 .ws-svg-icon {
   height: 24px;
 }
 
-div.editor-styles-wrapper .loop-button-wrap.button-layout4 .button,
-div.editor-styles-wrapper .loop-button-wrap.button-layout4 .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
 div.editor-styles-wrapper .loop-button-wrap.button-layout4 .added_to_cart {
   position: absolute;
   top: 0;
@@ -3276,7 +3270,7 @@ div.editor-styles-wrapper .related.products .button-layout4,
 div.editor-styles-wrapper .upsells.products .button-layout4,
 div.editor-styles-wrapper .product-grid .button-layout4 {
   position: absolute;
-  width: 100%;
+  width: calc( 100% - 20px);
   bottom: 10px;
   left: 10px;
   opacity: 0;
@@ -3323,6 +3317,10 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:h
 
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:hover .button-layout4 {
   opacity: 1;
+}
+
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-add-to-cart {
+  margin-bottom: 0;
 }
 
 div.editor-styles-wrapper .wc-block-grid.has-4-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-5-columns .wc-block-grid__product, div.editor-styles-wrapper .wc-block-grid.has-6-columns .wc-block-grid__product {
