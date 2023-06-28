@@ -91,7 +91,11 @@
 
 					li {
 						width: 65px;
-						height: 65px;
+						height: 65px !important;
+
+						&.swiper-slide {
+							box-sizing: border-box;
+						}
 					}
 				}
 				.flex-nav-prev {
@@ -1590,9 +1594,8 @@ body {
 .swiper-vertical {
 	order: -1;
 	flex-shrink: 0;
-	width: 77px;
+	width: 65px;
 	height: 490px;
-	padding: 6px;
 
 	.botiga-swiper-button {
 		top: auto;

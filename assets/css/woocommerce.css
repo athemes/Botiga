@@ -2258,7 +2258,12 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
   .single-product div.product .gallery-vertical .flex-control-thumbs li,
   .single-product div.product .gallery-showcase .flex-control-thumbs li {
     width: 65px;
-    height: 65px;
+    height: 65px !important;
+  }
+  .single-product div.product .gallery-vertical .flex-control-thumbs li.swiper-slide,
+  .single-product div.product .gallery-showcase .flex-control-thumbs li.swiper-slide {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .single-product div.product .gallery-vertical .flex-nav-prev,
   .single-product div.product .gallery-showcase .flex-nav-prev {
@@ -3892,9 +3897,8 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
           order: -1;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  width: 77px;
+  width: 65px;
   height: 490px;
-  padding: 6px;
 }
 
 .swiper-vertical .botiga-swiper-button {

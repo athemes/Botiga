@@ -320,8 +320,8 @@ function botiga_wc_hooks() {
 		}
 
 		//Move sale tag
-		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
-		add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', 99 );
+		// remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
+		// add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', 99 );
 	}
 
 	//Move cart collaterals
