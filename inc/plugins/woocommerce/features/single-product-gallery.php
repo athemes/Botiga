@@ -9,7 +9,9 @@
  * WC Hooks 
  */
 function botiga_single_product_gallery_hooks() {
-    if( ! is_product() ) {
+    $has_quick_view = get_theme_mod( 'shop_product_quickview_layout', 'layout1' ) !== 'layout1' ? true : false;
+
+    if( ! $has_quick_view && ! is_product() ) {
         return;
     }
 
