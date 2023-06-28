@@ -1750,3 +1750,20 @@ body {
 		height: auto;
 	}
 }
+
+// Reasons to buy fallback
+.botiga-reasons-list {
+	.botiga-reasons-list-item {
+		display: flex;
+		align-items: flex-start;
+
+		.botiga-reasons-list-item-icon {
+			margin-right: 0.5em;
+
+			svg {
+				width: 0.9em;
+				height: 0.9em;
+			}
+		}
+	}
+}

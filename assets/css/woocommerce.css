@@ -4069,6 +4069,24 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   height: auto;
 }
 
+.botiga-reasons-list .botiga-reasons-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.botiga-reasons-list .botiga-reasons-list-item .botiga-reasons-list-item-icon {
+  margin-right: 0.5em;
+}
+
+.botiga-reasons-list .botiga-reasons-list-item .botiga-reasons-list-item-icon svg {
+  width: 0.9em;
+  height: 0.9em;
+}
+
 /**
  * Cart
  */
