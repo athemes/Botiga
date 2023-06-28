@@ -290,10 +290,15 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 		const toggleExpand = $( '[data-bt-toggle-expand]' );
 		if( toggleExpand.length ) {
 
-			toggleExpand.on( 'click', function(){
+			toggleExpand.on( 'click', function( e ){
 				const 
 					$this = $( this ),
 					$content = $this.find( '.bt-toggle-expand-content' );
+
+				// Do not toggle if click on content.
+				if( e.target.closest( '.botiga-dashboard-content-expand-content' ) !== null ) {
+					return;
+				}
 
 				if( $this.hasClass( 'bt-collapsed' ) ) {
 					$content.slideDown( 'fast' );
@@ -304,7 +309,8 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 				}
 			} );
 
-			toggleExpand.find( 'a' ).on( 'click', function(e){ e.preventDefault() } );
+			// Prevent default behavior from the toggle link.
+			toggleExpand.find( '.botiga-dashboard-content-expand-link' ).on( 'click', function(e){ e.preventDefault() } );
 
 		}
 

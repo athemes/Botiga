@@ -30,7 +30,7 @@ if (!defined('ABSPATH')) {
                     </div>
                     <div class="botiga-dashboard-content-expand-content bt-toggle-expand-content">
                         <ul class="botiga-dashboard-content-expand-list">
-                            <li class="bt-d-flex">
+                            <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 <?php 
                                 echo sprintf(
@@ -40,11 +40,14 @@ if (!defined('ABSPATH')) {
                                     '</a>'
                                 ); ?>
                             </li>
-                            <li class="bt-d-flex">
+                            <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                                <?php echo esc_html__( 'In licenses section, click on the 🔑 key icon. A license number will appear. Copy and paste the number here', 'botiga' ); ?>
+                                <?php echo sprintf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                    esc_html__( 'In licenses section, click on the %s key icon. A license number will appear. Copy and paste the number here', 'botiga' ),
+                                    '<i>🔑</i>'
+                                ); ?>
                             </li>
-                            <li class="bt-d-flex">
+                            <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 <?php echo esc_html__( 'Voilà! you have successfully unlock all premium features', 'botiga' ); ?>
                             </li>
