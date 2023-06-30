@@ -751,7 +751,7 @@ class Botiga_Metabox {
 
 						foreach ( $values as $key => $value ) {
 							$item_name 	= $field['library'] === 'video' ? str_replace('0', $key, $name) : $name;
-							$item_value = is_array($value) ? ( $value['src'] ?? '' ) : $value;
+							$item_value = is_array($value) ? ( isset( $value['src'] ) ? $value['src'] : '' ) : $value;
 
 							echo '<li class="botiga-metabox-field-uploads-list-item">';
 							if( $field['library'] === 'video' ) {

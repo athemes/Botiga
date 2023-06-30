@@ -338,6 +338,16 @@ if (!defined('ABSPATH')) {
                                     <div class="botiga-dashboard-freevspro-table__column"><strong class="botiga-dashboard-freevspro-table__spacing">4</strong></div>
                                 </div>
                                 <div class="botiga-dashboard-freevspro-table__row">
+                                    <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Sidebar Widget to filter products by ACF custom fields</strong></div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+                                </div>
+                                <div class="botiga-dashboard-freevspro-table__row">
+                                    <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Sidebar Widget to filter products by MetaBox (plugin) custom fields</strong></div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+                                </div>
+                                <div class="botiga-dashboard-freevspro-table__row">
                                     <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Product Gallery Style</strong></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><strong class="botiga-dashboard-freevspro-table__spacing">3</strong></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><strong class="botiga-dashboard-freevspro-table__spacing">7</strong></div>

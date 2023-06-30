@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.1.0
+Version: 2.1.1
 Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: 1.0.0
@@ -30,6 +30,13 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.1.1 =
+Added - New option to hide all others shipping methods when free shipping is available and match the conditions.
+Changed - Single Product Sale Badge: HTML rendering position.
+Fixed - Single Product + Ajax Search: The arrows from single product gallery are over the ajax search content.
+Fixed - WC Blocks: Wrong alignment for add to cart button layout 4.
+Fixed - Theme Dashboard License: 'key' icon breaking layout in some OS's.
+
 = 2.1.0 =
 Added - New 'Theme Dashboard' design.
 Changed - Better customizer workflow in some sections. 

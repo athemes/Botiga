@@ -42,7 +42,9 @@ if (!defined('ABSPATH')) {
                             </li>
                             <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                                <?php echo sprintf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                <?php 
+                                echo sprintf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                    /* translators: 1: key icon */
                                     esc_html__( 'In licenses section, click on the %s key icon. A license number will appear. Copy and paste the number here', 'botiga' ),
                                     '<i>🔑</i>'
                                 ); ?>
