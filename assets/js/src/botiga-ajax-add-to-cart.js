@@ -12,16 +12,16 @@ var botiga = botiga || {};
 botiga.single_ajax_add_to_cart = {
 
 	init: function () {
+		const self = this;
 
 		jQuery( document ).on('click', '.single_add_to_cart_button', function( e ) {
 
 			e.preventDefault();
 
-			var $button = jQuery(this);
-			var $form   = $button.closest('form.cart');
+			var $button   = jQuery(this),
+				$form     = $button.closest('form.cart'),
+				data = {};
 
-			var data = {};
-			
 			data['add-to-cart'] = $button.val();
 
 			data = $form.serializeArray().reduce( function( obj, item ) {
@@ -61,7 +61,39 @@ botiga.single_ajax_add_to_cart = {
 
 		});
 
+		jQuery( '.botiga-single-addtocart-wrapper .quantity .qty' ).on( 'change', this.quantityValidation );
+
 	},
+
+	quantityValidation: function() {
+		const qtyInput = jQuery( this );
+
+		if ( ! qtyInput.length ) {
+			return false;
+		}
+
+		const 
+			min    = qtyInput.attr( 'min' ) !== '' ? parseFloat( qtyInput.attr( 'min' ) ) : false,
+			max	   = qtyInput.attr( 'max' ) !== '' ? parseFloat( qtyInput.attr( 'max' ) ) : false,
+			step   = qtyInput.attr( 'step' ) !== '' ? parseFloat( qtyInput.attr( 'step' ) ) : 1,
+			qtyVal = Math.floor((parseFloat( qtyInput.val() ) - min) / step) * step + min;
+
+		// Min.
+		if ( min && qtyVal < min ) {
+			qtyInput.val( min );
+
+			return false;
+		}
+
+		// Max.
+		if ( max && qtyVal > max ) {
+			qtyInput.val( max );
+
+			return false;
+		}
+
+		qtyInput.val( qtyVal );
+	}
 
 }
 
