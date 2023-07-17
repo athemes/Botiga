@@ -180,6 +180,7 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*{node_modules,node_modules/**/*}',
 	'!../@(Botiga|botiga)/**/*.git',
 	'!../@(Botiga|botiga)/**/*.svn',
+	'!../@(Botiga|botiga)/**/*.code-workspace',
 	'!../@(Botiga|botiga)/**/*phpcs.xml',
 	'!../@(Botiga|botiga)/**/*gulpfile.babel.js',
 	'!../@(Botiga|botiga)/**/*wpgulp.config.js',
@@ -203,7 +204,16 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*test-results/**/*',
 	'!../@(Botiga|botiga)/**/*test-results',
 	'!../@(Botiga|botiga)/**/*.wp-env.json',
-	'!../@(Botiga|botiga)/**/*playwright.config.js'
+	'!../@(Botiga|botiga)/**/*playwright.config.js',
+	'!../@(Botiga|botiga)/**/*composer.json',
+	'!../@(Botiga|botiga)/**/*composer.lock',
+	'!../@(Botiga|botiga)/{vendor/bin,vendor/bin/**/*}',
+	'!../@(Botiga|botiga)/{vendor/dealerdirect,vendor/dealerdirect/**/*}',
+	'!../@(Botiga|botiga)/{vendor/phpcompatibility,vendor/phpcompatibility/**/*}',
+	'!../@(Botiga|botiga)/{vendor/squizlabs,vendor/squizlabs/**/*}',
+	'!../@(Botiga|botiga)/{vendor/woocommerce,vendor/woocommerce/**/*}',
+	'!../@(Botiga|botiga)/{vendor/wp-coding-standards,vendor/wp-coding-standards/**/*}',
+	'!../@(Botiga|botiga)/{vendor/wptrt,vendor/wptrt/**/*}'
 ];
 
 // >>>>> Translation options.
