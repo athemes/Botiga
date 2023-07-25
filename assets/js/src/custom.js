@@ -1250,8 +1250,7 @@ botiga.qtyButton = {
 			}
 		}
 
-		var miniCartItem = qtyItem.closest('.mini_cart_item');
-
+		var miniCartItem = qtyItem.closest('.mini_cart_item') ? qtyItem.closest('.mini_cart_item') : qtyItem.closest('.woocommerce-cart-form__cart-item');
 		if ( miniCartItem ) {
 
 			var $cart = jQuery(qtyItem.closest('.widget_shopping_cart'));
@@ -1299,7 +1298,7 @@ botiga.qtyButton = {
 		var productSelector  = qtyItem.closest( '.product' ) ? '.product' : '.wc-block-grid__product',
 			product  		 = qtyItem.closest( productSelector ),
 			qtyInput 		 = qtyItem.parentNode.querySelector('.qty'),
-			buyNowButton     = product.querySelector( '.botiga-buy-now-button' );
+			buyNowButton     = product ? product.querySelector( '.botiga-buy-now-button' ) : null;
 
 		if( buyNowButton === null ) {
 			return false;
