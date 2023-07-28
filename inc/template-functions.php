@@ -808,7 +808,13 @@ function botiga_custom_google_fonts_url() {
 	$fonts_url     = '';
 	$subsets       = 'latin';
 	$font_families = array();
-	$google_fonts  = array_column( botiga_get_google_fonts(), 'family' );
+	$google_fonts  = botiga_get_google_fonts();
+
+	if( 'error' === $google_fonts ) {
+		return;
+	}
+
+	$google_fonts  = array_column( $google_fonts, 'family' );
 
 	$body_custom_font                        = get_theme_mod( 'botiga_body_custom_font', '' );
 	$body_custom_font_weight                 = get_theme_mod( 'botiga_body_custom_font_weight', '' );
@@ -920,9 +926,7 @@ function botiga_custom_google_fonts_url() {
 		return wptt_get_webfont_url( $fonts_url );
 	}
 
-
 	return esc_url_raw( $fonts_url );
-
 }
 
 /**
