@@ -476,7 +476,7 @@ class Botiga_Dashboard
         $user_id                     = get_current_user_id();
         $user_read_meta              = get_user_meta( $user_id, 'botiga_dashboard_notifications_latest_read', true );
 
-        $last_notification_date      = strtotime( is_string( $this->settings[ 'notifications' ][0]->date ) ? $this->settings[ 'notifications' ][0]->date : '' );
+        $last_notification_date      = strtotime( is_string( $this->settings[ 'notifications' ][0]->post_date ) ? $this->settings[ 'notifications' ][0]->post_date : '' );
         $last_notification_date_ondb = $user_read_meta ? strtotime( $user_read_meta ) : false;
 
         if( ! $last_notification_date_ondb ) {

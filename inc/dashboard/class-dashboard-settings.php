@@ -115,11 +115,10 @@ function botiga_dashboard_settings() {
 	//
 	// Notifications.
 	//
-	if ( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
-		$notifications_response    = wp_remote_get( 'https://athemes.com/wp-json/wp/v2/changelogs?themes=7085&per_page=3' );
-		$settings['notifications'] = ! is_wp_error( $notifications_response ) || wp_remote_retrieve_response_code( $notifications_response ) === 200 ? json_decode( wp_remote_retrieve_body( $notifications_response ) ) : false;
-		$settings['notifications_tabs'] = false;
-	}
+	$notifications_response    = wp_remote_get( 'https://athemes.com/wp-json/wp/v2/changelogs?themes=7085&per_page=3' );
+	$settings['notifications'] = ! is_wp_error( $notifications_response ) || wp_remote_retrieve_response_code( $notifications_response ) === 200 ? json_decode( wp_remote_retrieve_body( $notifications_response ) ) : false;
+	$settings['notifications_tabs'] = false;
+
 
 	//
 	// Demos.
