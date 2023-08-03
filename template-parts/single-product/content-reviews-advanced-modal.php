@@ -20,7 +20,7 @@ global $_product; ?>
                 <?php echo get_the_post_thumbnail( $_product->get_id(), 'woocommerce_thumbnail' ); ?>
                 <div class="modal-product-info">
                     <h5><?php echo esc_html( $_product->get_name() ); ?></h5>
-                    <p><?php echo esc_html( $_product->get_short_description() ); ?></p>
+                    <?php echo wp_kses_post( $_product->get_short_description() ); ?>
                 </div>
             </div>
             <div class="botiga-adv-reviews-modal-rating">
