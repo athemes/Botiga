@@ -1715,7 +1715,23 @@ botiga.misc = {
             _this.checkIfHasVariationSelected($(this));
           });
           $(this).data('misc-variations', true);
-        });
+        }); // Single Product - In Cart Flag.
+
+        if ($('.botiga-in-cart-flag').length) {
+          var $form = $('body.single-product .entry-summary .variations_form'),
+              addToCartButton = $form.find('.single_add_to_cart_button');
+          $form.on('found_variation', function (event, variation) {
+            var variationInCart = botigaInCartFlag.variations_in_cart.filter(function (a) {
+              return a.variation_id === variation.variation_id;
+            });
+            var addToCartButtonText = variationInCart.length ? variationInCart[0].addtocart_button_text : addToCartButton.text();
+            addToCartButton.html(addToCartButtonText);
+          });
+          var defaultAddToCartButtonText = addToCartButton.text();
+          $form.on('reset_data', function () {
+            addToCartButton.text(defaultAddToCartButtonText);
+          });
+        }
       })(jQuery);
     }
   },

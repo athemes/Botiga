@@ -1676,6 +1676,25 @@ botiga.misc = {
 					$( this ).data( 'misc-variations', true );
 				});
 
+				// Single Product - In Cart Flag.
+				if( $( '.botiga-in-cart-flag' ).length ) {
+					const 
+						$form 			= $( 'body.single-product .entry-summary .variations_form' ),
+						addToCartButton = $form.find( '.single_add_to_cart_button' );
+	
+					$form.on( 'found_variation', function( event, variation ) {					
+						const variationInCart	= botigaInCartFlag.variations_in_cart.filter( a => a.variation_id === variation.variation_id );
+						let	addToCartButtonText = variationInCart.length ? variationInCart[0].addtocart_button_text : addToCartButton.text();
+	
+						addToCartButton.html( addToCartButtonText );
+					});
+	
+					const defaultAddToCartButtonText = addToCartButton.text();
+					$form.on( 'reset_data', function() {
+						addToCartButton.text( defaultAddToCartButtonText );
+					});
+				}
+
 			})(jQuery);
 		}
 	},
