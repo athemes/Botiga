@@ -45,9 +45,16 @@ add_action( 'wp', 'botiga_single_product_gallery_hooks' );
  * Single product top area wrapper
  */
 function botiga_single_product_wrap_before() {
-	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+    $classes = array( 'product-gallery-summary' );
 
-	echo '<div class="product-gallery-summary ' . esc_attr( $single_product_gallery ) . '">';
+    // Gallery layout.
+    $classes[] = get_theme_mod( 'single_product_gallery', 'gallery-default' );
+
+    // Thumbs slider.
+    $classes[] = get_theme_mod( 'single_gallery_slider', 1 ) ? 'has-thumbs-slider' : 'has-thumbs-grid';
+
+    // Output.
+    echo '<div class="' . esc_attr( implode( ' ', $classes ) ) . '">';
 }
 add_action( 'woocommerce_before_single_product_summary', 'botiga_single_product_wrap_before', -99 );
 

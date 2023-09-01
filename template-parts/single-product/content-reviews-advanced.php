@@ -200,7 +200,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
 
                                                 <?php if( wc_review_ratings_enabled() ) : ?>
                                                     <div class="star-rating botiga-star-rating-style2" role="img" aria-label="Rated <?php echo esc_attr( $comment_rating_value ); ?>.00 out of 5">
-                                                        <span style="width: <?php echo esc_attr( ( ( $comment_rating_value / 5 ) * 100 ) ); ?>%;">
+                                                        <span style="width: <?php echo esc_attr( ( ( intval( $comment_rating_value ) / 5 ) * 100 ) ); ?>%;">
                                                             <?php 
                                                             /* translators: %s is average rating value */
                                                             $comment_rating_text = sprintf( __( 'Rated %s out of 5 based on customer ratings.', 'botiga' ), $comment_rating_value );

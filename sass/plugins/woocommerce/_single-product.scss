@@ -288,6 +288,22 @@
 		}
 	}
 
+	&.gallery-default {
+		&.has-thumbs-grid {
+			.woocommerce-product-gallery__wrapper {
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				gap: 15px;
+
+				> div {
+					&:first-child {
+						grid-column: 1/6;
+					}
+				}
+			}
+		}
+	}
+
 	&.gallery-side {
 		.flex-viewport {
 			width: calc( 100% - 80px );
