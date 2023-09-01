@@ -6,6 +6,50 @@
  */
 
 /**
+ * Add botiga class to nav menu ul sub-menu.
+ *
+ * @param array $classes Classes for the ul element.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @return array $classes Updated classes for the ul element. 
+ */
+function botiga_nav_menu_submenu_css_class( $classes, $args, $depth ) {
+	$classes[] = 'botiga-dropdown-ul';
+	return $classes;
+}
+add_filter( 'nav_menu_submenu_css_class', 'botiga_nav_menu_submenu_css_class', 10, 3 );
+
+/**
+ * Add botiga class to nav menu li.
+ * 
+ * @param array $classes Classes for the li element.
+ * @param WP_Post $menu_item Menu item data object.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @return array $classes Updated classes for the li element.
+ */
+function botiga_nav_menu_css_class( $classes, $menu_item, $args, $depth ) {
+	$classes[] = 'botiga-dropdown-li';
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'botiga_nav_menu_css_class', 10, 4 );
+
+/**
+ * Add botiga class to nav menu anchor.
+ * 
+ * @param array $atts Array with attributes.
+ * @param WP_Post $menu_item Menu item data object.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @return array $atts Updated attributes for the li element.
+ */
+function botiga_nav_menu_link_attributes( $atts, $menu_item, $args, $depth ) {
+	$atts[ 'class' ] = 'botiga-dropdown-link';
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'botiga_nav_menu_link_attributes', 10, 4 );
+
+/**
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.

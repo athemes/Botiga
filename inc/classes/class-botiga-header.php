@@ -598,6 +598,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						array(
 							'theme_location' => 'primary',
 							'menu_id'        => 'primary-menu',
+							'menu_class'     => 'botiga-dropdown-ul menu',
 							'walker'         => apply_filters( 'botiga_primary_wp_nav_menu_walker', '' )
 						)
 					);
@@ -621,6 +622,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					array(
 						'theme_location' => $location,
 						'menu_id'        => "$location-menu",
+						'menu_class'     => 'botiga-dropdown-ul menu',
 						'walker'         => apply_filters( 'botiga_mobile_primary_wp_nav_menu_walker', '' )
 					)
 				);

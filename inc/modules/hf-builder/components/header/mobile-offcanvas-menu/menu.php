@@ -29,6 +29,7 @@ echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-c
                 array(
                     'theme_location' => $location,
                     'menu_id'        => "$location-menu",
+                    'menu_class'     => 'botiga-dropdown-ul menu',
                     'walker'         => apply_filters( 'botiga_mobile_primary_wp_nav_menu_walker', '' )
                 )
             );

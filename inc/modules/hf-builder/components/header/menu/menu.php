@@ -17,6 +17,7 @@ echo '<div class="bhfb-builder-item bhfb-component-menu" data-component-id="menu
                 array(
                     'theme_location' => 'primary',
                     'menu_id'        => 'primary-menu',
+                    'menu_class'     => 'botiga-dropdown-ul menu',
                     'walker'         => apply_filters( 'botiga_primary_wp_nav_menu_walker', '' )
                 )
             );
