@@ -98,7 +98,7 @@
 }
 
 .entry-meta {
-	@include font-size(14);
+	font-size: var( --bt-font-size-post-meta, 14px );
 	color: $color__grey;
 
 	a {
@@ -547,12 +547,10 @@
 }
 
 .entry-title {
-	@include font-size(32);
 	margin: 0 0 12px;
 }
 
 .page-title {
-	@include font-size(64);
 	margin: 0 0 12px;
 }
 
@@ -574,7 +572,7 @@
 		}
 	}
 	.entry-title {
-		@include font-size(18);
+		font-size: var( --bt-font-size-loop-post-title, 18px );
 		font-weight: 400;
 		margin: 0;
 
@@ -584,8 +582,14 @@
 	}
 
 	.entry-meta {
+		font-size: var( --bt-font-size-loop-post-meta, 14px );
 		margin: 8px 0;
 	}
+
+	.entry-content {
+		font-size: var( --bt-font-size-loop-post-text, 16px );
+	}
+
 	.post-align-left {
 		text-align: left;
 

@@ -9,6 +9,7 @@
 
 		.woocommerce-product-gallery {
 			position: relative;
+			z-index: 0;
 
 			.woocommerce-product-gallery__trigger {
 				position: absolute;
@@ -160,6 +161,12 @@
 		flex: 0 0 50%;
 		max-width: 50%;
 	}
+
+	.entry-title,
+	.botiga-tb-sp-title {
+		font-size: var( --bt-font-size-single-prod-title, 32px );
+	}
+
 	.entry-summary {
 		padding-left: 40px;
 		> *:last-of-type {
@@ -202,11 +209,11 @@
 	}
 
 	.price {
-		@include font-size(24);
+		font-size: var( --bt-font-size-single-prod-price, 24px );
 		margin-bottom: 20px;
 
 		del {
-			@include font-size(16);
+			font-size: 0.7em;
 			position: relative;
 			top: -2px;
 		}

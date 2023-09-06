@@ -1,6 +1,7 @@
 button,
 a.button,
 .wp-block-button__link,
+.wpforms-submit,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -18,7 +19,7 @@ input[type="submit"] {
 	font-weight: 400;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	@include font-size(14);
+	font-size: var( --bt-font-size-button, 14px );
 
 	&:hover {
 		border-color: $color__hover;

@@ -80,9 +80,19 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_upsell_typography_general',
         array(
-            'title'         => esc_html__( 'More typography options available with Botiga Pro.', 'botiga' ),
+            'title'         => esc_html__( 'Create your own custom Fonts Library with Botiga Pro!', 'botiga' ),
+            'sub_title'     => esc_html__( 'You can upload your favorite fonts in the following formats:', 'botiga' ),
             'features_list' => array(
-                esc_html__( 'Upload and use custom fonts', 'botiga' )
+                '.woff2',
+                '.woff',
+                '.ttf',
+                '.eot',
+                '.otf',
+                '.svg'
+            ),
+            'features_list_last_item_text' => array(
+                'text_before_link' => esc_html__( 'Plus, you\'ll unlock', 'botiga' ),
+                'link_text'        => esc_html__( 'many other premium features!', 'botiga' )
             ),
             'section'       => 'botiga_section_typography_general',
             'priority'      => 999
@@ -106,11 +116,16 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_upsell_site_layout',
         array(
-            'title'         => esc_html__( 'More site layout options available with Botiga Pro.', 'botiga' ),
+            'title'         => esc_html__( 'Switch to a different site layout with Botiga Pro!', 'botiga' ),
+            'sub_title'     => esc_html__( 'You\'ll unlock the following layouts:', 'botiga' ),
             'features_list' => array(
-                esc_html__( 'Boxed layout', 'botiga' ),
-                esc_html__( 'Padded layout', 'botiga' ),
-                esc_html__( 'Fluid layout', 'botiga' )
+                esc_html__( 'Boxed', 'botiga' ),
+                esc_html__( 'Padded', 'botiga' ),
+                esc_html__( 'Fluid', 'botiga' )
+            ),
+            'features_list_last_item_text' => array(
+                'text_before_link' => esc_html__( 'Plus, you\'ll get access to', 'botiga' ),
+                'link_text'        => esc_html__( 'many other premium features!', 'botiga' )
             ),
             'section'       => 'botiga_section_layout',
             'priority'      => 999
@@ -138,12 +153,12 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_upsell_blog_single',
         array(
-            'title'         => esc_html__( 'More blog single posts options available with Botiga Pro.', 'botiga' ),
+            'title'         => esc_html__( 'Improve the user experience of your blog posts with Botiga Pro!', 'botiga' ),
             'features_list' => array(
-                esc_html__( 'Reading post time', 'botiga' ),
-                esc_html__( 'Reading progress bar', 'botiga' ),
+                esc_html__( 'A reading time estimator', 'botiga' ),
+                esc_html__( 'A reading progress bar', 'botiga' ),
                 esc_html__( 'Table of contents', 'botiga' ),
-                esc_html__( 'Share box buttons', 'botiga' )
+                esc_html__( 'Social share buttons', 'botiga' )
             ),
             'section'       => 'botiga_section_blog_singles',
             'priority'      => 999
@@ -196,13 +211,13 @@ if( class_exists( 'Woocommerce' ) ) {
             $wp_customize, 
             'botiga_upsell_shop_archive_layout',
             array(
-                'title'         => esc_html__( 'More product catalog options available with Botiga Pro.', 'botiga' ),
+                'title'         => esc_html__( 'Increase the conversion rate of your product catalog with Botiga Pro!', 'botiga' ),
                 'features_list' => array(
-                    esc_html__( 'Wishlist', 'botiga' ),
-                    esc_html__( 'Off-Canvas sidebar filter', 'botiga' ),
-                    esc_html__( 'More shop header styles', 'botiga' ),
-                    esc_html__( 'Load more button pagination', 'botiga' ),
-                    esc_html__( 'Products spacing control', 'botiga' )
+                    esc_html__( 'Wishlist buttons', 'botiga' ),
+                    esc_html__( 'Off-canvas sidebar filters', 'botiga' ),
+                    esc_html__( 'Extra shop header styles', 'botiga' ),
+                    esc_html__( '\'Load more\' pagination', 'botiga' ),
+                    esc_html__( 'Product spacing control', 'botiga' )
                 ),
                 'section'     => 'woocommerce_product_catalog',
                 'priority'    => 999
@@ -226,13 +241,13 @@ if( class_exists( 'Woocommerce' ) ) {
             $wp_customize, 
             'botiga_upsell_shop_archive_product_card',
             array(
-                'title'         => esc_html__( 'More product card options available with Botiga Pro.', 'botiga' ),
+                'title'         => esc_html__( 'Make your product cards more engaging with Botiga Pro!', 'botiga' ),
                 'features_list' => array(
-                    esc_html__( 'Display quantity picker', 'botiga' ),
-                    esc_html__( 'Render ACF field', 'botiga' ),
-                    esc_html__( 'Display product stock', 'botiga' ),
-                    esc_html__( 'Product image swap', 'botiga' ),
-                    esc_html__( 'Display \'in cart\' quantity', 'botiga' )
+                    esc_html__( 'A quantity picker', 'botiga' ),
+                    esc_html__( 'An in-cart quantity counter', 'botiga' ),
+                    esc_html__( 'A product stock status label', 'botiga' ),
+                    esc_html__( 'Custom fields added with the ACF plugin', 'botiga' ),
+                    esc_html__( 'A cool product image swap effect', 'botiga' )
                 ),
                 'section'     => 'botiga_section_shop_archive_product_card',
                 'priority'    => 999
@@ -256,13 +271,13 @@ if( class_exists( 'Woocommerce' ) ) {
             $wp_customize, 
             'botiga_upsell_cart',
             array(
-                'title'         => esc_html__( 'More cart options available with Botiga Pro.', 'botiga' ),
+                'title'         => esc_html__( 'Deliver a better cart experience with Botiga Pro!', 'botiga' ),
                 'features_list' => array(
-                    esc_html__( 'More cart table styles', 'botiga' ),
-                    esc_html__( 'Display \'continue shopping\' button', 'botiga' ),
-                    esc_html__( 'Off-Canvas side mini cart style', 'botiga' ),
-                    esc_html__( 'Floating mini cart icon', 'botiga' ),
-                    esc_html__( 'Display quantity picker in the mini cart', 'botiga' )
+                    esc_html__( 'Additional cart table styles', 'botiga' ),
+                    esc_html__( 'A stylish \'Continue shopping\' button', 'botiga' ),
+                    esc_html__( 'Off-canvas side mini cart functionality', 'botiga' ),
+                    esc_html__( 'A floating mini cart icon', 'botiga' ),
+                    esc_html__( 'An option to show a quantity picker inside the mini cart', 'botiga' )
                 ),
                 'section'     => 'botiga_section_shop_cart',
                 'priority'    => 999
@@ -286,13 +301,13 @@ if( class_exists( 'Woocommerce' ) ) {
             $wp_customize, 
             'botiga_upsell_checkout',
             array(
-                'title'         => esc_html__( 'More checkout options available with Botiga Pro.', 'botiga' ),
+                'title'         => esc_html__( 'Make the checkout process easier than ever with Botiga Pro!', 'botiga' ),
                 'features_list' => array(
-                    esc_html__( 'Multi step checkout', 'botiga' ),
-                    esc_html__( 'Shopify checkout style', 'botiga' ),
-                    esc_html__( 'One step checkout', 'botiga' ),
-                    esc_html__( 'Distraction free checkout', 'botiga' ),
-                    esc_html__( 'Display quantity picker in the checkout', 'botiga' )
+                    esc_html__( 'A one-step checkout layout', 'botiga' ),
+                    esc_html__( 'A Shopify-like checkout layout', 'botiga' ),
+                    esc_html__( 'A multi-step checkout layout', 'botiga' ),
+                    esc_html__( 'An option to show a quantity picker on the checkout page', 'botiga' ),
+                    esc_html__( 'A distraction-free checkout page', 'botiga' )
                 ),
                 'section'     => 'woocommerce_checkout',
                 'priority'    => 999
@@ -310,12 +325,12 @@ $wp_customize->add_section(
         $wp_customize, 
         'botiga_upsell_menus',
         array(
-            'title'         => esc_html__( 'More menu options available with Botiga Pro.', 'botiga' ),
+            'title'         => esc_html__( 'Create more complex menus with Botiga Pro!', 'botiga' ),
             'features_list' => array(
-                esc_html__( 'Mega menu module', 'botiga' ),
-                esc_html__( 'Extra primary mobile menu location', 'botiga' ),
-                esc_html__( 'Extra secondary mobile menu location', 'botiga' ),
-                esc_html__( 'Extra footer copyright menu location', 'botiga' )
+                esc_html__( 'A mega menu module', 'botiga' ),
+                esc_html__( 'A \'Primary Mobile Menu\' location', 'botiga' ),
+                esc_html__( 'A \'Secondary Mobile Menu\' location', 'botiga' ),
+                esc_html__( 'A \'Footer Copyright Menu\' location', 'botiga' )
             ),
             'panel'         => 'nav_menus',
             'priority'      => 999

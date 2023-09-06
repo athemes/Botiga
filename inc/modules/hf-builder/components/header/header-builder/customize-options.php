@@ -408,12 +408,12 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 			$wp_customize, 
 			'botiga_section_hb_wrapper__header_builder_upsell',
 			array(
-				'title'         => esc_html__( 'More header builder components available with Botiga Pro.', 'botiga' ),
+				'title'         => esc_html__( 'Do more with your headers with Botiga Pro!', 'botiga' ),
 				'features_list' => array(
-					esc_html__( 'Extra HTML component', 'botiga' ),
-					esc_html__( 'Shortcode component', 'botiga' ),
-					esc_html__( 'Extra button component', 'botiga' ),
-					esc_html__( 'Display login button component', 'botiga' ),
+					esc_html__( 'An extra HTML component', 'botiga' ),
+					esc_html__( 'A shortcode component', 'botiga' ),
+					esc_html__( 'A login button', 'botiga' ),
+					esc_html__( 'A Polylang/WPML language switcher', 'botiga' ),
 					esc_html__( 'Polylang/WPML language switcher component', 'botiga' )
 				),
 				'section'       => 'botiga_section_hb_wrapper',

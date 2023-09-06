@@ -275,6 +275,13 @@
   }
 }
 
+.bhfb.bhfb-header .main-navigation,
+.bhfb.bhfb-header .secondary-navigation,
+.bhfb-mobile_offcanvas .main-navigation,
+.bhfb-mobile_offcanvas .secondary-navigation {
+  font-size: var(--bt-font-size-header-menu, 16px);
+}
+
 .bhfb.bhfb-header .social-profile a,
 .bhfb-mobile_offcanvas .social-profile a {
   margin-right: 0;

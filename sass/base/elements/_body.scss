@@ -1,4 +1,5 @@
 body {
+	font-size: var( --bt-font-size-body, 16px );
 	background: $color__background-body; // Fallback for when there is no custom background color defined.
 	overflow-x: hidden;
 }

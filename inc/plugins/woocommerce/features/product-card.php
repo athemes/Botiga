@@ -153,7 +153,7 @@ function botiga_product_card_hooks() {
 	// Add to cart button text
 	add_filter( 'woocommerce_product_add_to_cart_text', 'botiga_add_to_cart_text', 10, 2);
 }
-add_action( 'wp', 'botiga_product_card_hooks' );
+add_action( 'init', 'botiga_product_card_hooks' );
 
 /**
  * Loop add to cart
@@ -306,7 +306,7 @@ function botiga_equal_height_content_class( $class ) {
 
 	return $class . $equal_height_class;
 }
-add_action( 'wp', function(){
+add_action( 'init', function(){
 	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
 		add_filter( 'botiga_content_class', 'botiga_equal_height_content_class' );
 	}

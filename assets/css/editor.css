@@ -89,31 +89,27 @@ div.editor-styles-wrapper textarea {
 }
 
 div.editor-styles-wrapper .has-gigantic-font-size {
-  font-size: 64px;
+  font-size: var(--bt-font-size-h1, 64px);
 }
 
 div.editor-styles-wrapper .has-huge-font-size {
-  font-size: 48px;
+  font-size: var(--bt-font-size-h2, 48px);
 }
 
 div.editor-styles-wrapper .has-extra-large-font-size {
-  font-size: 32px;
+  font-size: var(--bt-font-size-h3, 32px);
 }
 
 div.editor-styles-wrapper .has-larger-font-size {
-  font-size: 24px;
+  font-size: var(--bt-font-size-h4, 24px);
 }
 
 div.editor-styles-wrapper .has-large-font-size {
-  font-size: 18px;
+  font-size: var(--bt-font-size-h5, 18px);
 }
 
 div.editor-styles-wrapper .has-normal-font-size {
-  font-size: 16px;
-}
-
-div.editor-styles-wrapper .has-small-font-size {
-  font-size: 14px;
+  font-size: var(--bt-font-size-h6, 16px);
 }
 
 div.editor-styles-wrapper .smallmargin {
@@ -135,42 +131,37 @@ div.editor-styles-wrapper .site-title {
 }
 
 div.editor-styles-wrapper h1,
+div.editor-styles-wrapper .page-title,
 div.editor-styles-wrapper .bt-h1 {
-  font-size: 64px;
-  font-size: 4rem;
+  font-size: var(--bt-font-size-h1, 64px);
   margin: 60px 0 40px;
 }
 
 div.editor-styles-wrapper h2,
 div.editor-styles-wrapper .bt-h2 {
-  font-size: 48px;
-  font-size: 3rem;
+  font-size: var(--bt-font-size-h2, 48px);
   margin: 45px 0 30px;
 }
 
 div.editor-styles-wrapper h3,
 div.editor-styles-wrapper .bt-h3 {
-  font-size: 32px;
-  font-size: 2rem;
+  font-size: var(--bt-font-size-h3, 32px);
   margin: 30px 0 16px;
 }
 
 div.editor-styles-wrapper h4,
 div.editor-styles-wrapper .bt-h4 {
-  font-size: 24px;
-  font-size: 1.5rem;
+  font-size: var(--bt-font-size-h4, 32px);
 }
 
 div.editor-styles-wrapper h5,
 div.editor-styles-wrapper .bt-h5 {
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: var(--bt-font-size-h5, 18px);
 }
 
 div.editor-styles-wrapper h6,
 div.editor-styles-wrapper .bt-h6 {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: var(--bt-font-size-h6, 16px);
 }
 
 div.editor-styles-wrapper h4, div.editor-styles-wrapper h5, div.editor-styles-wrapper h6 {
@@ -3061,8 +3052,7 @@ div.editor-styles-wrapper ul.products li.product .wc-block-grid__product-title,
 div.editor-styles-wrapper ul.products li.product .woocommerce-loop-product__title,
 div.editor-styles-wrapper ul.products li.product .woocommerce-loop-category__title,
 div.editor-styles-wrapper ul.products li.product .botiga-wc-loop-product__title {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: var(--bt-font-size-prod-card-title, 16px);
   font-weight: 400;
   word-break: break-word;
   -webkit-transition: ease color 300ms;
@@ -3697,12 +3687,6 @@ div.editor-styles-wrapper ul.wc-block-grid__products li.product .button-with-qua
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .button,
 div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .add_to_cart_button {
   margin: 0;
-}
-
-div.editor-styles-wrapper ul.products li.wc-block-grid__product .add_to_cart_button.added,
-div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .add_to_cart_button.added {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
 }
 
 div.editor-styles-wrapper ul.products .button-layout2.button-with-quantity,
@@ -4699,6 +4683,7 @@ div.editor-styles-wrapper .botiga-dropdown .dropdown-symbol {
     width: 100%;
     left: 0;
     top: 0;
+    right: auto !important;
     -webkit-transform: none;
             transform: none;
     -webkit-box-shadow: none;
@@ -4721,11 +4706,11 @@ div.editor-styles-wrapper .botiga-dropdown .dropdown-symbol {
     overflow: hidden;
   }
   div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li .dropdown-symbol {
-    margin: 0;
+    margin: 0 !important;
   }
   div.editor-styles-wrapper .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li .dropdown-symbol svg {
-    -webkit-transform: none;
-            transform: none;
+    -webkit-transform: none !important;
+            transform: none !important;
   }
 }
 
@@ -4932,6 +4917,10 @@ div.editor-styles-wrapper .botiga-offcanvas-menu {
   overflow-y: auto;
 }
 
+div.editor-styles-wrapper .botiga-offcanvas-menu .main-navigation {
+  font-size: var(--bt-font-size-header-menu, 16px);
+}
+
 div.editor-styles-wrapper .botiga-offcanvas-menu .mobile-header-item {
   visibility: hidden;
 }
@@ -5010,7 +4999,7 @@ div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdo
   position: static;
 }
 
-div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover > ul {
+div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li > .botiga-dropdown-ul {
   display: none;
 }
 
@@ -5028,7 +5017,7 @@ div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .sub-menu {
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
-  display: block;
+  display: block !important;
   height: auto;
   visibility: visible;
 }
@@ -5113,7 +5102,8 @@ div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-m
 }
 
 div.editor-styles-wrapper .botiga-desktop-offcanvas-menu .botiga-dropdown .sub-menu.toggled {
-  display: block;
+  float: none !important;
+  display: block !important;
   height: auto;
   overflow: visible;
 }

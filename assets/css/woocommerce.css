@@ -549,8 +549,7 @@ ul.products li.product .wc-block-grid__product-title,
 ul.products li.product .woocommerce-loop-product__title,
 ul.products li.product .woocommerce-loop-category__title,
 ul.products li.product .botiga-wc-loop-product__title {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: var(--bt-font-size-prod-card-title, 16px);
   font-weight: 400;
   word-break: break-word;
   -webkit-transition: ease color 300ms;
@@ -1198,12 +1197,6 @@ ul.wc-block-grid__products li.product .button-with-quantity .add_to_cart_button,
 ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .button,
 ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .add_to_cart_button {
   margin: 0;
-}
-
-ul.products li.wc-block-grid__product .add_to_cart_button.added,
-ul.wc-block-grid__products li.wc-block-grid__product .add_to_cart_button.added {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
 }
 
 ul.products .button-layout2.button-with-quantity,
@@ -2172,6 +2165,7 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
 
 .single-product div.product .woocommerce-product-gallery {
   position: relative;
+  z-index: 0;
 }
 
 .single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
@@ -2342,6 +2336,11 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
   max-width: 50%;
 }
 
+.product-gallery-summary .entry-title,
+.product-gallery-summary .botiga-tb-sp-title {
+  font-size: var(--bt-font-size-single-prod-title, 32px);
+}
+
 .product-gallery-summary .entry-summary {
   padding-left: 40px;
 }
@@ -2386,14 +2385,12 @@ body.admin-bar.botiga-site-layout-padded .botiga-quick-view-popup-content-ajax >
 }
 
 .product-gallery-summary .price {
-  font-size: 24px;
-  font-size: 1.5rem;
+  font-size: var(--bt-font-size-single-prod-price, 24px);
   margin-bottom: 20px;
 }
 
 .product-gallery-summary .price del {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 0.7em;
   position: relative;
   top: -2px;
 }

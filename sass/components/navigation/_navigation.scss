@@ -144,6 +144,7 @@
 						width: 100%;
 						left: 0;
 						top: 0;
+						right: auto !important;
 						transform: none;
 						box-shadow: none;
 
@@ -174,9 +175,9 @@
 				}
 
 				.dropdown-symbol {
-					margin: 0;
+					margin: 0 !important;
 					svg {
-						transform: none;
+						transform: none !important;
 					}
 				}
 			}
@@ -361,6 +362,10 @@
     height: 100%;
     overflow-y: auto;
 
+	.main-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
+
 	.mobile-header-item {
 		visibility: hidden;
 	}
@@ -440,7 +445,7 @@
 			position: static;
 		}
 	
-		.botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover>ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li > .botiga-dropdown-ul {
 			display: none;
 		}
 	
@@ -456,7 +461,7 @@
 			overflow: visible;
 	
 			&.toggled {
-				display: block;
+				display: block !important;
 				height: auto;
 				visibility: visible;
 			}
@@ -545,7 +550,8 @@
 			box-shadow: none;
 
 			&.toggled {
-				display: block;
+				float: none !important;
+				display: block !important;
 				height: auto;
 				overflow: visible;
 

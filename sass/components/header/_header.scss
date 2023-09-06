@@ -1,3 +1,9 @@
+#masthead {
+    .main-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
+}
+
 .site-header {
     background-color: #fff;
     position: relative;
@@ -424,6 +430,10 @@
 .bottom-header-row {
     background-color: #fff;
     z-index: 998;
+
+    .main-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
 }
 .bottom-header-inner {
     padding-top: 15px;
@@ -687,8 +697,11 @@
     padding-bottom: 15px;   
 }
 .top-bar {
-
     border-bottom: 1px solid rgba( $color__primary, 0.1);
+
+    .secondary-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
 
     .social-profile {
         line-height: 1;
