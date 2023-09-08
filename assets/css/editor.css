@@ -553,6 +553,10 @@ div.editor-styles-wrapper .site-header-cart .widget_shopping_cart {
   background-color: var(--bt-color-bg, #FFF);
 }
 
+div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout) {
+  color: var(--bt-color-link-default, #212121);
+}
+
 div.editor-styles-wrapper .site-header-cart .product_list_widget {
   margin: 0;
   padding: 0;
@@ -2047,7 +2051,7 @@ div.editor-styles-wrapper .botiga-wishlist-button.botiga-wishlist-button-tooltip
   position: absolute;
   top: 50%;
   right: calc( 100% + 15px);
-  background: #212121;
+  background: var(--bt-color-link-default, #212121);
   color: #FFF;
   padding: 5px 14px;
   font-size: 0.8rem;
@@ -2070,7 +2074,7 @@ div.editor-styles-wrapper .botiga-wishlist-button.botiga-wishlist-button-tooltip
   height: 0;
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
-  border-left: 7px solid #212121;
+  border-left: 7px solid var(--bt-color-link-default, #212121);
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translate3d(0, -50%, 0);
@@ -2080,8 +2084,13 @@ div.editor-styles-wrapper .botiga-wishlist-button.botiga-wishlist-button-tooltip
 }
 
 div.editor-styles-wrapper .botiga-wishlist-button svg path {
+  stroke: var(--bt-color-link-default, #212121);
   -webkit-transition: ease fill 300ms, ease stroke 300ms;
   transition: ease fill 300ms, ease stroke 300ms;
+}
+
+div.editor-styles-wrapper .botiga-wishlist-button svg path:hover {
+  stroke: var(--bt-color-link-hover, #757575);
 }
 
 div.editor-styles-wrapper .botiga-wishlist-button:hover.botiga-wishlist-button-tooltip:before, div.editor-styles-wrapper .botiga-wishlist-button:hover.botiga-wishlist-button-tooltip:after {
@@ -2133,6 +2142,14 @@ div.editor-styles-wrapper .single-product .botiga-wishlist-wrapper .botiga-wishl
   margin-right: 5px;
 }
 
+div.editor-styles-wrapper a.botiga-custom-addtocart {
+  color: var(--bt-color-link-default, #212121);
+}
+
+div.editor-styles-wrapper a.botiga-custom-addtocart:hover {
+  color: var(--bt-color-link-hover, #757575);
+}
+
 div.editor-styles-wrapper .botiga-wishlist-wrapper {
   margin-top: 60px;
 }
@@ -2155,6 +2172,14 @@ div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table.empty 
 div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table .botiga-custom-addtocart {
   display: block;
   min-width: 100px;
+}
+
+div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table .product-addtocart strong a {
+  color: var(--bt-color-link-default, #212121);
+}
+
+div.editor-styles-wrapper .botiga-wishlist-wrapper .botiga_wishlist_table .product-addtocart strong a:hover {
+  color: var(--bt-color-link-hover, #757575);
 }
 
 div.editor-styles-wrapper .botiga-wishlist-wrapper .footer-buttons {
@@ -5036,11 +5061,32 @@ div.editor-styles-wrapper .botiga-offcanvas-menu {
   padding: 30px;
   margin: 0;
   z-index: 99999;
-  background-color: #fff;
+  color: var(--bt-color-menu-text, #212121);
+  background-color: var(--bt-color-menu-bg, #FFF);
   width: 100%;
   max-width: 300px;
   height: 100%;
   overflow-y: auto;
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu a:not(.button) {
+  color: var(--bt-color-menu-text, #212121);
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu svg.stroke-based {
+  stroke: var(--bt-color-menu-text, #212121);
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu svg:not(.stroke-based) {
+  fill: var(--bt-color-menu-text, #212121);
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu .dropdown-symbol .ws-svg-icon svg {
+  fill: var(--bt-color-menu-text, #212121);
+}
+
+div.editor-styles-wrapper .botiga-offcanvas-menu .header-item .botiga-image.is-svg {
+  background-color: var(--bt-color-menu-text, #212121);
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .main-navigation {
@@ -5115,6 +5161,7 @@ div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown > .botiga-drop
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li {
   margin-right: 0;
+  padding-top: 5px;
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:last-child {

@@ -2295,11 +2295,32 @@ html {
   padding: 30px;
   margin: 0;
   z-index: 99999;
-  background-color: #fff;
+  color: var(--bt-color-menu-text, #212121);
+  background-color: var(--bt-color-menu-bg, #FFF);
   width: 100%;
   max-width: 300px;
   height: 100%;
   overflow-y: auto;
+}
+
+.botiga-offcanvas-menu a:not(.button) {
+  color: var(--bt-color-menu-text, #212121);
+}
+
+.botiga-offcanvas-menu svg.stroke-based {
+  stroke: var(--bt-color-menu-text, #212121);
+}
+
+.botiga-offcanvas-menu svg:not(.stroke-based) {
+  fill: var(--bt-color-menu-text, #212121);
+}
+
+.botiga-offcanvas-menu .dropdown-symbol .ws-svg-icon svg {
+  fill: var(--bt-color-menu-text, #212121);
+}
+
+.botiga-offcanvas-menu .header-item .botiga-image.is-svg {
+  background-color: var(--bt-color-menu-text, #212121);
 }
 
 .botiga-offcanvas-menu .main-navigation {
@@ -2374,6 +2395,7 @@ html {
 
 .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li {
   margin-right: 0;
+  padding-top: 5px;
 }
 
 .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:last-child {
@@ -3576,7 +3598,12 @@ body.mobile-menu-visible:before {
 }
 
 .single .entry-header .entry-title {
+  color: var(--bt-color-post-title, #212121);
   margin: 0;
+}
+
+.single .entry-meta a {
+  color: var(--bt-color-post-meta, #212121);
 }
 
 .single .entry-meta-above {
@@ -3832,6 +3859,10 @@ body.mobile-menu-visible:before {
   visibility: visible;
 }
 
+.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item:hover svg {
+  fill: var(--bt-color-link-default, #212121);
+}
+
 .botiga-related-posts .related-post h3 {
   font-size: 16px;
   font-size: 1rem;
@@ -3841,6 +3872,10 @@ body.mobile-menu-visible:before {
   color: var(--bt-color-body-text, #212121);
 }
 
+.botiga-related-posts .related-post h3 a:hover {
+  color: var(--bt-color-link-hover, #757575);
+}
+
 .botiga-related-posts .related-post .post-thumbnail {
   margin-bottom: 20px;
 }
@@ -3848,7 +3883,11 @@ body.mobile-menu-visible:before {
 .botiga-related-posts .related-post .posted-on a {
   font-size: 14px;
   font-size: 0.875rem;
-  color: #666666;
+  color: var(--bt-color-link-default, #212121);
+}
+
+.botiga-related-posts .related-post .posted-on a:hover {
+  color: var(--bt-color-link-hover, #757575);
 }
 
 .page-links {
@@ -4098,7 +4137,7 @@ body.mobile-menu-visible:before {
 }
 
 .posts-archive .entry-title a {
-  color: #212121;
+  color: var(--bt-color-loop-post-title, #212121);
 }
 
 .posts-archive .entry-meta {
@@ -4106,7 +4145,12 @@ body.mobile-menu-visible:before {
   margin: 8px 0;
 }
 
+.posts-archive .entry-meta a {
+  color: var(--bt-color-loop-post-meta, #212121);
+}
+
 .posts-archive .entry-content {
+  color: var(--bt-color-loop-post-text, #212121);
   font-size: var(--bt-font-size-loop-post-text, 16px);
 }
 
@@ -4845,6 +4889,14 @@ input.wc-block-components-price-slider__range-input {
   visibility: hidden;
 }
 
+.has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav svg path {
+  color: var(--bt-color-link-default, #212121);
+}
+
+.has-cross-sells-carousel .cross-sells .botiga-carousel-wrapper .botiga-carousel-nav:hover svg path {
+  color: var(--bt-color-link-hover, #757575);
+}
+
 .botiga-carousel .botiga-carousel-wrapper,
 .cross-sells .botiga-carousel-wrapper {
   position: relative;
@@ -4933,7 +4985,8 @@ input.wc-block-components-price-slider__range-input {
           justify-content: center;
   top: 50%;
   right: 15px;
-  background: #212121;
+  color: var(--bt-color-button, #FFF);
+  background: var(--bt-color-button-bg, #212121);
   width: 35px;
   height: 35px;
   opacity: 0;
@@ -4957,7 +5010,8 @@ input.wc-block-components-price-slider__range-input {
 
 .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-next:hover,
 .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev:hover {
-  background: #757575;
+  color: var(--bt-color-button-hover, #FFF);
+  background: var(--bt-color-button-bg-hover, #757575);
 }
 
 .botiga-carousel.botiga-carousel-nav2 .botiga-carousel-nav-prev {

@@ -9,6 +9,12 @@
 	.widget_shopping_cart {
 		display: none;
 		background-color: var(--bt-color-bg, #FFF);
+
+		.woocommerce-mini-cart__buttons {
+			.button:not(.checkout) {
+				color: var(--bt-color-link-default, $color__primary);
+			}
+		}
 	}
 
 	.product_list_widget {
@@ -1549,7 +1555,7 @@ span.onsale {
 			position: absolute;
 			top: 50%;
 			right: calc( 100% + 15px );
-			background: $color__primary;
+			background: var(--bt-color-link-default, $color__primary);
 			color: #FFF;
 			padding: 5px 14px;
 			font-size: 0.8rem;
@@ -1569,7 +1575,7 @@ span.onsale {
 			height: 0;
 			border-top: 7px solid transparent;
 			border-bottom: 7px solid transparent;
-			border-left: 7px solid $color__primary;
+			border-left: 7px solid var(--bt-color-link-default, $color__primary);
 			opacity: 0;
 			visibility: hidden;
 			transform: translate3d(0, -50%, 0);
@@ -1578,7 +1584,12 @@ span.onsale {
 	}
 
 	svg path {
+		stroke: var(--bt-color-link-default, $color__primary);
 		transition: ease fill 300ms, ease stroke 300ms;
+
+		&:hover {
+			stroke: var(--bt-color-link-hover, #757575);
+		}
 	}
 
 	&:hover {
@@ -1634,6 +1645,14 @@ span.onsale {
 }
 
 /* Wishlist Table */
+a.botiga-custom-addtocart {
+	color: var(--bt-color-link-default, $color__primary);
+
+	&:hover {
+		color: var(--bt-color-link-hover, #757575);
+	}
+}
+
 .botiga-wishlist-wrapper {
 	margin-top: 60px;
 	.botiga_wishlist_table {
@@ -1655,6 +1674,17 @@ span.onsale {
 		.botiga-custom-addtocart {
 			display: block;
 			min-width: 100px;
+		}
+		.product-addtocart {
+			strong {
+				a {
+					color: var(--bt-color-link-default, $color__primary);
+
+					&:hover {
+						color: var(--bt-color-link-hover, #757575);
+					}
+				}
+			}
 		}
 	}
 	.footer-buttons {

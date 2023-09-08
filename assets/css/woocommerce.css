@@ -2938,6 +2938,11 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
   margin-top: 2px;
   font-size: 13px;
   font-size: 0.8125rem;
+  color: var(--bt-color-link-default, #212121);
+}
+
+.woocommerce-product-rating .woocommerce-review-link:hover {
+  color: var(--bt-color-link-hover, #757575);
 }
 
 .woocommerce-Reviews .commentlist {
@@ -5030,6 +5035,10 @@ form.woocommerce-checkout {
   background-color: var(--bt-color-bg, #FFF);
 }
 
+.site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons .button:not(.checkout) {
+  color: var(--bt-color-link-default, #212121);
+}
+
 .site-header-cart .product_list_widget {
   margin: 0;
   padding: 0;
@@ -6551,7 +6560,7 @@ span.onsale {
   position: absolute;
   top: 50%;
   right: calc( 100% + 15px);
-  background: #212121;
+  background: var(--bt-color-link-default, #212121);
   color: #FFF;
   padding: 5px 14px;
   font-size: 0.8rem;
@@ -6574,7 +6583,7 @@ span.onsale {
   height: 0;
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
-  border-left: 7px solid #212121;
+  border-left: 7px solid var(--bt-color-link-default, #212121);
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translate3d(0, -50%, 0);
@@ -6584,8 +6593,13 @@ span.onsale {
 }
 
 .botiga-wishlist-button svg path {
+  stroke: var(--bt-color-link-default, #212121);
   -webkit-transition: ease fill 300ms, ease stroke 300ms;
   transition: ease fill 300ms, ease stroke 300ms;
+}
+
+.botiga-wishlist-button svg path:hover {
+  stroke: var(--bt-color-link-hover, #757575);
 }
 
 .botiga-wishlist-button:hover.botiga-wishlist-button-tooltip:before, .botiga-wishlist-button:hover.botiga-wishlist-button-tooltip:after {
@@ -6638,6 +6652,14 @@ span.onsale {
 }
 
 /* Wishlist Table */
+a.botiga-custom-addtocart {
+  color: var(--bt-color-link-default, #212121);
+}
+
+a.botiga-custom-addtocart:hover {
+  color: var(--bt-color-link-hover, #757575);
+}
+
 .botiga-wishlist-wrapper {
   margin-top: 60px;
 }
@@ -6660,6 +6682,14 @@ span.onsale {
 .botiga-wishlist-wrapper .botiga_wishlist_table .botiga-custom-addtocart {
   display: block;
   min-width: 100px;
+}
+
+.botiga-wishlist-wrapper .botiga_wishlist_table .product-addtocart strong a {
+  color: var(--bt-color-link-default, #212121);
+}
+
+.botiga-wishlist-wrapper .botiga_wishlist_table .product-addtocart strong a:hover {
+  color: var(--bt-color-link-hover, #757575);
 }
 
 .botiga-wishlist-wrapper .footer-buttons {

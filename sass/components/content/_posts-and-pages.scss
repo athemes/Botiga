@@ -86,7 +86,13 @@
 .single {
 	.entry-header {
 		.entry-title {
+			color: var(--bt-color-post-title, $color__primary);
 			margin: 0;
+		}
+	}
+	.entry-meta {
+		a {
+			color: var(--bt-color-post-meta, $color__primary);
 		}
 	}
 	.entry-meta-above {
@@ -316,6 +322,12 @@
 					}
 				}
 			}
+
+			&:hover {
+				svg {
+					fill: var(--bt-color-link-default, $color__primary);
+				}
+			}
         }
     }
 }
@@ -327,6 +339,10 @@
 
 			a {
 				color: var( --bt-color-body-text, $color__primary );
+
+				&:hover {
+					color: var( --bt-color-link-hover, #757575 );
+				}
 			}
 		}
 		.post-thumbnail {
@@ -335,7 +351,11 @@
 		.posted-on {
 			a {
 				@include font-size(14);
-				color: $color__grey;
+				color: var(--bt-color-link-default, #212121);
+
+				&:hover {
+					color: var(--bt-color-link-hover, #757575);
+				}
 			}
 		}
 	}
@@ -578,16 +598,21 @@
 		margin: 0;
 
 		a {
-			color: $color__primary;
+			color: var(--bt-color-loop-post-title, $color__primary);
 		}
 	}
 
 	.entry-meta {
 		font-size: var( --bt-font-size-loop-post-meta, 14px );
 		margin: 8px 0;
+
+		a {
+			color: var(--bt-color-loop-post-meta, $color__primary);
+		}
 	}
 
 	.entry-content {
+		color: var(--bt-color-loop-post-text, $color__primary);
 		font-size: var( --bt-font-size-loop-post-text, 16px );
 	}
 

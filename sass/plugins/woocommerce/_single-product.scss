@@ -747,6 +747,11 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 		margin-left: 8px;
 		margin-top: 2px;
 		@include font-size(13);
+		color: var(--bt-color-link-default, $color__primary);
+
+		&:hover {
+			color: var(--bt-color-link-hover, #757575);
+		}
 	}
 }
 .woocommerce-Reviews .commentlist {
