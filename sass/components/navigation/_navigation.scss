@@ -228,11 +228,27 @@
 
 	.nav-previous {
 		flex: 1 0 50%;
+
+		a {
+			color: var(--bt-color-body-text, #212121);
+
+			&:hover {
+				color: var(--bt-color-link-default, #757575);
+			}
+		}
 	}
 
 	.nav-next {
 		text-align: end;
 		flex: 1 0 50%;
+
+		a {
+			color: var(--bt-color-body-text, #212121);
+
+			&:hover {
+				color: var(--bt-color-link-default, #757575);
+			}
+		}
 	}
 }
 
@@ -252,7 +268,7 @@
 		margin-right: 7px;
 		border-radius: 50%;
 		background: transparent;
-		color: inherit;
+		color: var(--bt-color-body-text, $color__primary);
 
 		&:last-child {
 			margin-right: 0;
@@ -286,7 +302,7 @@
 			background: transparent;
 			transition: background-color 0.3s;
 			border-radius: 50%;
-			color: inherit;	
+			color: var(--bt-color-body-text, $color__primary);	
 		}
 	}
 }
@@ -341,6 +357,12 @@
 	&.loading-anim {
 		.botiga-pagination-button__label {
 			display: none;
+		}
+
+		svg {
+			path {
+				fill: var(--bt-color-body-text, $color__primary);
+			}
 		}
 	}
 }

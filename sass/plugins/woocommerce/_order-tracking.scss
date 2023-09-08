@@ -2,7 +2,7 @@
  * Order Tracking
  */
 .woocommerce-form-track-order {
-    background-color: #f5f5f5;
+    background-color: var(--bt-color-content-cards-bg, #f5f5f5);
     padding: 20px;
 
     .form-row {

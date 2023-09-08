@@ -629,6 +629,7 @@
         display: flex;
 
         .search-field {
+            font-size: var( --bt-font-size-header-search-form, 1rem );
             width: 100%;
         }
         button,
@@ -644,9 +645,15 @@
         }
 
         button {
+            font-size: var( --bt-font-size-header-search-form, 1rem );
             padding: 0.7em 1.25em !important;
             border-radius: 0;
         }
+    }
+
+    .botiga-select,
+    .botiga-select form {
+        font-size: var( --bt-font-size-header-search-form, 1rem );
     }
 
     &.header-search-form-always-visible {

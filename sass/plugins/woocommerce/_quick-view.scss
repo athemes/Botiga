@@ -239,11 +239,16 @@ ul.wc-block-grid__products {
 			animation-iteration-count: infinite;
 		}
 	}
+	form.cart {
+		.qty {
+			background-color: var(--bt-color-content-cards-bg, #f5f5f5);
+		}
+	}
 	.botiga-quick-view-popup-content {
 		position: relative;
 		width: 100%;
 		max-width: 800px;
-		background: #FFF;
+		background: var(--bt-color-content-cards-bg, #f5f5f5);
 		padding: 35px;
 		opacity: 0;
 		visibility: hidden;

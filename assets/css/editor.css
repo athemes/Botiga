@@ -137,10 +137,21 @@ div.editor-styles-wrapper .bt-h1 {
   margin: 60px 0 40px;
 }
 
+div.editor-styles-wrapper h1:not(.has-text-color),
+div.editor-styles-wrapper .page-title:not(.has-text-color),
+div.editor-styles-wrapper .bt-h1:not(.has-text-color) {
+  color: var(--bt-color-heading-1, #212121);
+}
+
 div.editor-styles-wrapper h2,
 div.editor-styles-wrapper .bt-h2 {
   font-size: var(--bt-font-size-h2, 48px);
   margin: 45px 0 30px;
+}
+
+div.editor-styles-wrapper h2:not(.has-text-color),
+div.editor-styles-wrapper .bt-h2:not(.has-text-color) {
+  color: var(--bt-color-heading-2, #212121);
 }
 
 div.editor-styles-wrapper h3,
@@ -149,9 +160,19 @@ div.editor-styles-wrapper .bt-h3 {
   margin: 30px 0 16px;
 }
 
+div.editor-styles-wrapper h3:not(.has-text-color),
+div.editor-styles-wrapper .bt-h3:not(.has-text-color) {
+  color: var(--bt-color-heading-3, #212121);
+}
+
 div.editor-styles-wrapper h4,
 div.editor-styles-wrapper .bt-h4 {
   font-size: var(--bt-font-size-h4, 32px);
+}
+
+div.editor-styles-wrapper h4:not(.has-text-color),
+div.editor-styles-wrapper .bt-h4:not(.has-text-color) {
+  color: var(--bt-color-heading-4, #212121);
 }
 
 div.editor-styles-wrapper h5,
@@ -159,9 +180,19 @@ div.editor-styles-wrapper .bt-h5 {
   font-size: var(--bt-font-size-h5, 18px);
 }
 
+div.editor-styles-wrapper h5:not(.has-text-color),
+div.editor-styles-wrapper .bt-h5:not(.has-text-color) {
+  color: var(--bt-color-heading-5, #212121);
+}
+
 div.editor-styles-wrapper h6,
 div.editor-styles-wrapper .bt-h6 {
   font-size: var(--bt-font-size-h6, 16px);
+}
+
+div.editor-styles-wrapper h6:not(.has-text-color),
+div.editor-styles-wrapper .bt-h6:not(.has-text-color) {
+  color: var(--bt-color-heading-6, #212121);
 }
 
 div.editor-styles-wrapper h4, div.editor-styles-wrapper h5, div.editor-styles-wrapper h6 {
@@ -365,6 +396,14 @@ div.editor-styles-wrapper a:hover, div.editor-styles-wrapper a:active {
   text-decoration: none;
 }
 
+div.editor-styles-wrapper a.wc-forward:not(.checkout-button) {
+  color: var(--bt-color-body-text, #212121);
+}
+
+div.editor-styles-wrapper a.wc-forward:not(.checkout-button):hover {
+  color: var(--bt-color-link-default, #757575);
+}
+
 div.editor-styles-wrapper .wp-block-freeform.block-library-rich-text__tinymce a {
   color: #212121;
   text-decoration: underline;
@@ -511,7 +550,7 @@ div.editor-styles-wrapper .site-header-cart .cart-contents {
 
 div.editor-styles-wrapper .site-header-cart .widget_shopping_cart {
   display: none;
-  background-color: #fff;
+  background-color: var(--bt-color-bg, #FFF);
 }
 
 div.editor-styles-wrapper .site-header-cart .product_list_widget {
@@ -568,7 +607,7 @@ div.editor-styles-wrapper .quantity {
           justify-content: center;
   width: 100%;
   height: 61px;
-  border: 2px solid #212121;
+  border: 2px solid var(--bt-color-body-text, #212121);
   margin-bottom: 1.3rem;
 }
 
@@ -587,7 +626,7 @@ div.editor-styles-wrapper .quantity .botiga-quantity-minus {
   line-height: 1;
   padding: 0 0px 4px;
   width: 100%;
-  color: #212121;
+  color: var(--bt-color-body-text, #212121);
   border: none;
   text-align: center;
   text-decoration: none;
@@ -596,7 +635,7 @@ div.editor-styles-wrapper .quantity .botiga-quantity-minus {
 
 div.editor-styles-wrapper .quantity .botiga-quantity-plus:hover,
 div.editor-styles-wrapper .quantity .botiga-quantity-minus:hover {
-  color: #757575;
+  color: var(--bt-color-link-hover, #757575);
 }
 
 div.editor-styles-wrapper .quantity .qty {
@@ -652,8 +691,8 @@ div.editor-styles-wrapper .quantity-button-style-arrows .botiga-quantity-minus:b
   content: '';
   width: 8px;
   height: 8px;
-  border-top: 2px solid #212121;
-  border-right: 2px solid #212121;
+  border-top: 2px solid var(--bt-color-body-text, #212121);
+  border-right: 2px solid var(--bt-color-body-text, #212121);
   -webkit-transform: translate3d(0, 5px, 0) rotate(-45deg);
           transform: translate3d(0, 5px, 0) rotate(-45deg);
   -webkit-transform-origin: 50%;
@@ -672,6 +711,7 @@ div.editor-styles-wrapper .quantity-button-style-arrows .botiga-quantity-minus:b
 
 div.editor-styles-wrapper .quantity-button-style2 .quantity {
   border-width: 1px;
+  background-color: var(--bt-color-content-cards-bg, transparent);
 }
 
 div.editor-styles-wrapper .quantity-button-style2 .botiga-quantity-plus,
@@ -696,6 +736,10 @@ div.editor-styles-wrapper .quantity-button-style2 .botiga-quantity-minus {
 
 div.editor-styles-wrapper .quantity-button-style2 .qty {
   padding-right: 35px;
+}
+
+div.editor-styles-wrapper .quantity-button-style3 .quantity {
+  border-color: var(--bt-color-body-text, #212121);
 }
 
 @media (min-width: 1025px) {
@@ -726,6 +770,10 @@ div.editor-styles-wrapper .quantity-button-style4 .quantity .botiga-quantity-min
   transition: ease background-color 300ms;
 }
 
+div.editor-styles-wrapper .quantity-button-style4 .quantity .qty {
+  background-color: var(--bt-color-content-cards-bg, transparent);
+}
+
 div.editor-styles-wrapper .quantity-button-style5 .quantity {
   border: none;
 }
@@ -740,8 +788,13 @@ div.editor-styles-wrapper .quantity-button-style5 .quantity .botiga-quantity-plu
 div.editor-styles-wrapper .quantity-button-style5 .quantity .botiga-quantity-minus {
   font-size: 1.4rem;
   max-width: 30%;
+  background-color: var(--bt-color-content-cards-bg, transparent);
   -webkit-transition: ease background-color 300ms;
   transition: ease background-color 300ms;
+}
+
+div.editor-styles-wrapper .quantity-button-style5 .quantity .qty {
+  background-color: var(--bt-color-content-cards-bg, transparent);
 }
 
 div.editor-styles-wrapper .quantity-button-style6 .quantity {
@@ -758,6 +811,7 @@ div.editor-styles-wrapper .quantity-button-style6 .quantity .botiga-quantity-plu
 div.editor-styles-wrapper .quantity-button-style6 .quantity .botiga-quantity-minus {
   font-size: 1.4rem;
   max-width: 30%;
+  background-color: var(--bt-color-content-cards-bg, transparent);
   border-style: solid;
   border-width: 1px;
   -webkit-transition: ease background-color 300ms;
@@ -775,6 +829,7 @@ div.editor-styles-wrapper .quantity-button-style6 .quantity .botiga-quantity-min
 div.editor-styles-wrapper .quantity-button-style6 .quantity .qty {
   border-style: solid;
   border-width: 1px;
+  background-color: var(--bt-color-content-cards-bg, transparent);
 }
 
 div.editor-styles-wrapper .quantity-button-style6 .woocommerce-cart-form .product-price {
@@ -1009,7 +1064,7 @@ div.editor-styles-wrapper p.stars a::before {
   line-height: 1;
   font-family: star;
   content: "\53";
-  color: #212121;
+  color: var(--bt-color-body-text, #212121);
   text-indent: 0;
   opacity: 0.25;
 }
@@ -1096,6 +1151,18 @@ div.editor-styles-wrapper .woocommerce-tabs .panel h2:first-of-type {
     display: block;
     margin-left: 0 !important;
   }
+}
+
+div.editor-styles-wrapper .botiga-tabs-style1 .woocommerce-tabs ul.tabs li a {
+  color: var(--bt-color-heading-4, #212121);
+}
+
+div.editor-styles-wrapper .botiga-tabs-style1 .woocommerce-tabs ul.tabs li a:hover {
+  color: var(--bt-color-heading-4, #212121);
+}
+
+div.editor-styles-wrapper .botiga-tabs-style1 .woocommerce-tabs ul.tabs li.active a {
+  border-color: var(--bt-color-heading-4, #212121);
 }
 
 div.editor-styles-wrapper .botiga-tabs-style1 .woocommerce-tabs ul.tabs li:not(.active) a {
@@ -1330,7 +1397,7 @@ div.editor-styles-wrapper .woocommerce-error,
 div.editor-styles-wrapper .woocommerce-noreviews,
 div.editor-styles-wrapper p.no-comments {
   padding: 15px;
-  background-color: #f2f2f2;
+  background-color: var(--bt-color-content-cards-bg, #f5f5f5);
   clear: both;
 }
 
@@ -1354,6 +1421,7 @@ div.editor-styles-wrapper .checkout_coupon {
   margin-top: -30px;
   margin-bottom: 30px;
   padding: 15px;
+  background-color: var(--bt-color-content-cards-bg, #f5f5f5);
 }
 
 div.editor-styles-wrapper .checkout_coupon .form-row {
@@ -1382,6 +1450,18 @@ div.editor-styles-wrapper .demo_store {
   z-index: 9999;
 }
 
+div.editor-styles-wrapper .woocommerce-mini-cart-item .quantity {
+  color: var(--bt-color-heading-4, #212121);
+}
+
+div.editor-styles-wrapper .woocommerce-mini-cart__total {
+  color: var(--bt-color-heading-4, #212121);
+}
+
+div.editor-styles-wrapper .woocommerce-mini-cart__total .woocommerce-Price-amount {
+  color: var(--bt-color-heading-4, #212121);
+}
+
 div.editor-styles-wrapper .site-header-cart .widget_shopping_cart,
 div.editor-styles-wrapper .botiga-side-mini-cart .widget_shopping_cart {
   position: absolute;
@@ -1401,6 +1481,13 @@ div.editor-styles-wrapper .botiga-side-mini-cart .widget_shopping_cart {
           transform: translate3d(0, 15px, 0);
   -webkit-transition: ease opacity 300ms, ease transform 300ms;
   transition: ease opacity 300ms, ease transform 300ms;
+}
+
+div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__total,
+div.editor-styles-wrapper .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__buttons,
+div.editor-styles-wrapper .botiga-side-mini-cart .widget_shopping_cart .woocommerce-mini-cart__total,
+div.editor-styles-wrapper .botiga-side-mini-cart .widget_shopping_cart .woocommerce-mini-cart__buttons {
+  background-color: var(--bt-color-content-cards-bg, #f5f5f5);
 }
 
 div.editor-styles-wrapper .site-header-cart.widget,
@@ -1475,6 +1562,7 @@ div.editor-styles-wrapper .widget_shopping_cart .botiga-quantity-minus {
 }
 
 div.editor-styles-wrapper .widget_shopping_cart .mini_cart_item a:nth-child(2) {
+  color: var(--bt-color-heading-4, #212121);
   line-height: 1.4;
 }
 
@@ -1595,7 +1683,7 @@ div.editor-styles-wrapper .widget_shopping_cart .botiga-woocommerce-mini-cart__c
 
 div.editor-styles-wrapper .widget_shopping_cart .woocommerce-mini-cart__total,
 div.editor-styles-wrapper .widget_shopping_cart .woocommerce-mini-cart__buttons {
-  background-color: #f5f5f5;
+  background-color: var(--bt-color-content-cards-bg, #f5f5f5);
   margin: 0;
   padding: 0 30px;
 }
@@ -1724,8 +1812,8 @@ div.editor-styles-wrapper .sidebar-wrapper .product_list_widget li a.remove {
   height: 18px;
   font-size: 16px;
   line-height: 16px;
-  background-color: #212121;
-  color: #fff;
+  background-color: var(--bt-color-heading-4, #212121);
+  color: var(--bt-color-bg, #FFF);
   text-align: center;
   border-radius: 50%;
   position: absolute;
@@ -1910,12 +1998,12 @@ div.editor-styles-wrapper span.onsale {
 
 div.editor-styles-wrapper .woocommerce-breadcrumb {
   margin-bottom: 30px;
-  color: #212121;
+  color: var(--bt-color-heading-4, #212121);
   opacity: 0.7;
 }
 
 div.editor-styles-wrapper .woocommerce-breadcrumb a {
-  color: #212121;
+  color: var(--bt-color-heading-4, #212121);
 }
 
 div.editor-styles-wrapper .product-gallery-summary del .amount {
@@ -2037,6 +2125,7 @@ div.editor-styles-wrapper .single-product .botiga-wishlist-wrapper .botiga-wishl
   font-weight: 600;
   border-radius: 0;
   background-color: transparent !important;
+  color: var(--bt-color-body-text, #212121);
 }
 
 div.editor-styles-wrapper .single-product .botiga-wishlist-wrapper .botiga-wishlist-button svg {
@@ -4155,11 +4244,15 @@ div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-loader > s
           animation-iteration-count: infinite;
 }
 
+div.editor-styles-wrapper .botiga-quick-view-popup form.cart .qty {
+  background-color: var(--bt-color-content-cards-bg, #f5f5f5);
+}
+
 div.editor-styles-wrapper .botiga-quick-view-popup .botiga-quick-view-popup-content {
   position: relative;
   width: 100%;
   max-width: 800px;
-  background: #FFF;
+  background: var(--bt-color-content-cards-bg, #f5f5f5);
   padding: 35px;
   opacity: 0;
   visibility: hidden;
@@ -4458,6 +4551,7 @@ div.editor-styles-wrapper {
   /* Attribute filter */
   /* Default WP search */
   /* Woo search */
+  /* Columns block */
 }
 
 div.editor-styles-wrapper .widget_block h3 {
@@ -4516,6 +4610,10 @@ div.editor-styles-wrapper .wp-block-woocommerce-product-search .wc-block-product
   display: block;
   font-weight: 600;
   margin-bottom: 15px;
+}
+
+div.editor-styles-wrapper .wp-block-columns p a {
+  color: var(--bt-color-body-text, #212121);
 }
 
 /*
@@ -4769,6 +4867,18 @@ div.editor-styles-wrapper .post-navigation .nav-previous {
           flex: 1 0 50%;
 }
 
+div.editor-styles-wrapper .comment-navigation .nav-previous a,
+div.editor-styles-wrapper .posts-navigation .nav-previous a,
+div.editor-styles-wrapper .post-navigation .nav-previous a {
+  color: var(--bt-color-body-text, #212121);
+}
+
+div.editor-styles-wrapper .comment-navigation .nav-previous a:hover,
+div.editor-styles-wrapper .posts-navigation .nav-previous a:hover,
+div.editor-styles-wrapper .post-navigation .nav-previous a:hover {
+  color: var(--bt-color-link-default, #757575);
+}
+
 div.editor-styles-wrapper .comment-navigation .nav-next,
 div.editor-styles-wrapper .posts-navigation .nav-next,
 div.editor-styles-wrapper .post-navigation .nav-next {
@@ -4776,6 +4886,18 @@ div.editor-styles-wrapper .post-navigation .nav-next {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 50%;
           flex: 1 0 50%;
+}
+
+div.editor-styles-wrapper .comment-navigation .nav-next a,
+div.editor-styles-wrapper .posts-navigation .nav-next a,
+div.editor-styles-wrapper .post-navigation .nav-next a {
+  color: var(--bt-color-body-text, #212121);
+}
+
+div.editor-styles-wrapper .comment-navigation .nav-next a:hover,
+div.editor-styles-wrapper .posts-navigation .nav-next a:hover,
+div.editor-styles-wrapper .post-navigation .nav-next a:hover {
+  color: var(--bt-color-link-default, #757575);
 }
 
 div.editor-styles-wrapper .navigation.pagination {
@@ -4794,7 +4916,7 @@ div.editor-styles-wrapper .navigation.pagination .page-numbers {
   margin-right: 7px;
   border-radius: 50%;
   background: transparent;
-  color: inherit;
+  color: var(--bt-color-body-text, #212121);
 }
 
 div.editor-styles-wrapper .navigation.pagination .page-numbers:last-child {
@@ -4831,7 +4953,7 @@ div.editor-styles-wrapper .woocommerce-pagination li .page-numbers {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   border-radius: 50%;
-  color: inherit;
+  color: var(--bt-color-body-text, #212121);
 }
 
 div.editor-styles-wrapper .botiga-pagination-load-more .navigation.pagination,
@@ -4896,6 +5018,10 @@ div.editor-styles-wrapper .botiga-pagination-button.loading svg, div.editor-styl
 
 div.editor-styles-wrapper .botiga-pagination-button.loading-anim .botiga-pagination-button__label {
   display: none;
+}
+
+div.editor-styles-wrapper .botiga-pagination-button.loading-anim svg path {
+  fill: var(--bt-color-body-text, #212121);
 }
 
 div.editor-styles-wrapper .botiga-offcanvas-menu {

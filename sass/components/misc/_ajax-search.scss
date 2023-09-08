@@ -43,7 +43,7 @@
     position: absolute;
     top: calc( 100% + 10px );
     left: 0;
-    background: #FFF;
+    background: var(--bt-color-content-cards-bg, #f5f5f5);
     padding: 15px;
     border: 1px solid #dddd;
     width: 100%;
@@ -97,12 +97,14 @@
         @include font-size(14);
         margin: 0;
         line-height: 1.4;
+        color: var(--bt-color-body-text, $color__primary);
     }
 }
 
 .botiga-ajax-search__item-price {
     margin-left: 20px;
     text-align: right;
+    color: var(--bt-color-body-text, $color__primary);
     .woocommerce-Price-amount {
         font-weight: 600;
     }

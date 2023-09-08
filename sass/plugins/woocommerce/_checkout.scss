@@ -2,6 +2,7 @@
 	.woocommerce-form-login {
 		margin-bottom: 30px;
 		padding: 15px;
+		background-color: var(--bt-color-content-cards-bg, #f5f5f5);
 		
 		.form-row {
 			label {
@@ -151,7 +152,7 @@ form.woocommerce-checkout {
 
 	.wc_payment_methods {
 		padding: 24px;
-		background-color: #fff;
+		background-color: var(--bt-color-bg, #FFF);
 		margin-bottom: 30px;
 
 		.woocommerce-notice {
@@ -164,7 +165,7 @@ form.woocommerce-checkout {
 	}
 	
 	.woocommerce-checkout-review-order {
-		background-color: #f2f2f2;
+		background-color: var( --bt-color-content-cards-bg, #f5f5f5 );
 		padding: 30px;
 
 		@media (max-width: 767px) {
@@ -318,10 +319,12 @@ form.woocommerce-checkout {
 .woocommerce-thankyou-order-received {
 	margin-top: 30px;
 	padding: 20px 30px;
+	background-color: var(--bt-color-content-cards-bg, #f5f5f5);
 }
 
 .woocommerce-thankyou-order-details {
 	padding: 30px 30px 30px 35px;
+	background-color: var(--bt-color-content-cards-bg, #f5f5f5);
 	li {
 		list-style: none;
 	}
@@ -353,6 +356,13 @@ form.woocommerce-checkout {
 				}
 			}
 		}
+	}
+}
+
+/* Order total */
+.order-total {
+	.woocommerce-Price-amount {
+		color: var(--bt-color-heading-4, $color__primary);
 	}
 }
 

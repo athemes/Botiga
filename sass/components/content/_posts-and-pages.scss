@@ -265,6 +265,7 @@
 			svg {
 				width: 28px;
 				height: 28px;
+				fill: var(--bt-color-body-text, #212121);
 				&[onclick] {
 					cursor: pointer;
 				}
@@ -325,7 +326,7 @@
 			@include font-size(16);
 
 			a {
-				color: $color__primary;
+				color: var( --bt-color-body-text, $color__primary );
 			}
 		}
 		.post-thumbnail {
