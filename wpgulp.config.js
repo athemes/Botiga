@@ -35,6 +35,8 @@ const woocommerceSRC = './sass/woocommerce.scss';
 
 const dokanSRC = './sass/dokan.scss';
 
+const quickViewSRC = './sass/plugins/woocommerce/quick-view.scss';
+
 // Path to place the compiled CSS file. Default set to root folder.
 const styleDestination = './assets/css';
 
@@ -115,6 +117,9 @@ const jsSidebarSRC = './assets/js/src/botiga-sidebar.js';
 // Path to JS ajax search.
 const jsAjaxSearchSRC = './assets/js/src/botiga-ajax-search.js';
 
+// Path to JS quick view.
+const jsQuickViewSRC = './assets/js/src/botiga-quick-view.js';
+
 // Path to JS custom scripts folder.
 const jsCustomSRC = './assets/js/src/custom.js';
 
@@ -144,6 +149,9 @@ const jsSidebarFile = 'botiga-sidebar';
 
 // Compiled JS ajax search file name.
 const jsAjaxSearchFile = 'botiga-ajax-search';
+
+// Compiled JS quick view file name.
+const jsQuickViewFile = 'botiga-quick-view';
 
 // Images options.
 
@@ -268,6 +276,7 @@ module.exports = {
 	editorStyleSRC,
 	woocommerceSRC,
 	dokanSRC,
+	quickViewSRC,
 	styleDestination,
 	outputStyle,
 	errLogToConsole,
@@ -287,6 +296,7 @@ module.exports = {
 	jsPopupSRC,
 	jsSidebarSRC,
 	jsAjaxSearchSRC,
+	jsQuickViewSRC,
 	jsCustomSRC,
 	jsAdminDestination,
 	jsAdminFunctionsSRC,
@@ -301,6 +311,7 @@ module.exports = {
 	jsPopupFile,
 	jsSidebarFile,
 	jsAjaxSearchFile,
+	jsQuickViewFile,
 	jsCustomFile,
 	imgSRC,
 	imgDST,

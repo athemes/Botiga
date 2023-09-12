@@ -80,9 +80,18 @@ function botiga_quick_view_needed_scripts() {
 		'deps'    => array( 'jquery', 'wp-util', 'jquery-blockui' )
 	);
 
+	$register_scripts['botiga-quick-view'] = array(
+		'src'     => get_template_directory_uri() . '/assets/js/botiga-quick-view.min.js',
+		'deps'    => array( 'jquery' )
+	);
+
+	// Enqueue scripts.
 	foreach ( $register_scripts as $name => $props ) {
-		wp_enqueue_script( $name, $props['src'], $props['deps'], BOTIGA_VERSION );
+		wp_enqueue_script( $name, $props['src'], $props['deps'], BOTIGA_VERSION, true );
 	}
+
+	// Enqueue styles.
+	wp_enqueue_style( 'botiga-quick-view', get_template_directory_uri() . '/assets/css/quick-view.min.css', array(), BOTIGA_VERSION );
 }
 
 /**

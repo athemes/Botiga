@@ -49,6 +49,7 @@ class Botiga_Dashboard
         add_filter('woocommerce_enable_setup_wizard', '__return_false');
 
         add_action('admin_menu', array($this, 'add_menu_page'));
+        add_action('admin_footer', array($this, 'add_admin_footer_style'));
         add_action('admin_notices', array($this, 'html_notice'));
         
         add_action('wp_ajax_botiga_notifications_read', array($this, 'ajax_notifications_read'));
@@ -110,14 +111,65 @@ class Botiga_Dashboard
 
         // Add 'Theme Dashboard' page
         add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-            'themes.php',
+            'botiga-dashboard',
             esc_html__('Theme Dashboard', 'botiga'),
             esc_html__('Theme Dashboard', 'botiga'),
             'manage_options',
             get_admin_url() . 'admin.php?page=botiga-dashboard',
             '',
-            1
+            -5
         );
+
+        // Add 'Customize' link
+        $customize_url = add_query_arg( 'return', urlencode( remove_query_arg( wp_removable_query_args(), wp_unslash( $_SERVER['REQUEST_URI'] ) ) ), 'customize.php' );
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Customize', 'botiga'),
+            esc_html__('Customize', 'botiga'),
+            'manage_options',
+            esc_url( $customize_url ),
+            '',
+            -4
+        );
+
+        // Add 'Starter Sites' link
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Starter Sites', 'botiga'),
+            esc_html__('Starter Sites', 'botiga'),
+            'manage_options',
+            get_admin_url() . 'admin.php?page=botiga-dashboard&tab=starter-sites',
+            '',
+            -3
+        );
+
+        // Add 'Upgrade' link
+        if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+            add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+                'botiga-dashboard',
+                esc_html__('Upgrade Botiga', 'botiga'),
+                esc_html__('Upgrade Botiga', 'botiga'),
+                'manage_options',
+                'https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga',
+                '',
+                -2
+            );
+        }
+    }
+
+    /**
+     * Admin footer style.
+     * 
+     * @return void
+     */
+    public function add_admin_footer_style() {
+        ?>
+        <style>
+            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu .wp-first-item a[href="admin.php?page=botiga-dashboard"] {
+                display: none;
+            }
+        </style>
+        <?php
     }
 
     /**

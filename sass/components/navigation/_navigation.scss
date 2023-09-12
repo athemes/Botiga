@@ -4,6 +4,30 @@
 	display: block;
 	width: 100%;
 
+	&.main-navigation {
+		> div#primary-menu {
+			> ul {
+				list-style: none;
+				padding: 0;
+			}
+		}
+	}
+
+	@media(min-width: 1025px) {
+		&.main-navigation {
+			> div#primary-menu {
+				> ul {
+					display: flex;
+					flex-wrap: wrap;
+	
+					li + li {
+						margin-left: 35px;
+					}
+				}
+			}
+		}
+	}
+
 	.botiga-dropdown-ul {
 		list-style: none;
 		margin: 0;

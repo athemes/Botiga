@@ -416,7 +416,7 @@ ul.wc-block-grid__products {
 					width: 40px;
 					height: 40px;
 					border-radius: 50%;
-					border: 1px solid $color__primary;
+					border: 1px solid #212121;
 					background: #FFF;
 					text-indent: -9999px;
 					transition: all 0.3s;
@@ -429,7 +429,7 @@ ul.wc-block-grid__products {
 					left: 50%;
 					width: 0; 
 					height: 0; 
-					color: $color__primary;
+					color: #212121;
 					display: inline-block;
 					line-height: 37px;
 					text-align: center;
@@ -440,7 +440,7 @@ ul.wc-block-grid__products {
 
 				.flex-next:hover,
 				.flex-prev:hover {
-					background-color: $color__primary;		
+					background-color: #212121;		
 					&:before {
 						border-right-color: #FFF;
 					}
@@ -451,12 +451,12 @@ ul.wc-block-grid__products {
 
 				.flex-next::after {
 					visibility: visible;
-					border-left: 12px solid $color__primary;
+					border-left: 12px solid #212121;
 					transform: translate3d(-40%, -50%, 0);
 				}
 				.flex-prev::before {
 					visibility: visible;
-					border-right: 12px solid $color__primary;
+					border-right: 12px solid #212121;
 					transform: translate3d(-70%, -50%, 0);
 				}
 			}

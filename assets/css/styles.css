@@ -1889,6 +1889,24 @@ html {
   width: 100%;
 }
 
+.botiga-dropdown.main-navigation > div#primary-menu > ul {
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 1025px) {
+  .botiga-dropdown.main-navigation > div#primary-menu > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .botiga-dropdown.main-navigation > div#primary-menu > ul li + li {
+    margin-left: 35px;
+  }
+}
+
 .botiga-dropdown .botiga-dropdown-ul {
   list-style: none;
   margin: 0;

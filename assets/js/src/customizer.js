@@ -1875,39 +1875,73 @@
 
 	$.each( $theme_options_css_vars, function( key, item ) {
 		$.each( item.variables, function( key, option ){
+			const is_responsive = typeof option.defaults === 'string' ? false : true;
 			const devices = {
 				mobile: '(max-width: 575px)',
 				tablet: '(min-width: 576px) and (max-width:  991px)',
 				desktop: '(min-width: 992px)'
 			}
 
-			$.each( devices, function( device, mediaSize ) {
-				wp.customize( option.setting + '_' + device, function( setting_value ) {
+			if ( is_responsive ) {
 
-					setting_value.bind( function( to ) {
-						if( window.matchMedia( mediaSize ).matches ) {
-							let output = '';
-		
-							output += '@media ' + mediaSize + ' { ' + item.selector + ' { '+ option.name +': '+ to + option.unit + '; } }';
-								
-							const $style = $( '#botiga-customizer-styles-css-vars-'+ option.setting + '_' + device );
-		
-							if ( output ) {
-		
-								if ( $style.length ) {
-									$style.text( output );
-								} else {
-									$( 'head' ).append( '<style id="botiga-customizer-styles-css-vars-'+ option.setting + '_' + device +'">' + output + '</style>' );
+				$.each( devices, function( device, mediaSize ) {
+					const setting_name = option.setting + '_' + device;
+	
+					wp.customize( setting_name, function( setting_value ) {
+	
+						setting_value.bind( function( to ) {
+							if( window.matchMedia( mediaSize ).matches ) {
+								let output = '';
+			
+								output += '@media ' + mediaSize + ' { ' + item.selector + ' { '+ option.name +': '+ to + option.unit + '; } }';
+									
+								const $style = $( '#botiga-customizer-styles-css-vars-'+ setting_name );
+			
+								if ( output ) {
+			
+									if ( $style.length ) {
+										$style.text( output );
+									} else {
+										$( 'head' ).append( '<style id="botiga-customizer-styles-css-vars-'+ setting_name +'">' + output + '</style>' );
+									}
+			
+								} else if ( ! output && $style.length ) {
+									$style.remove();
 								}
-		
-							} else if ( ! output && $style.length ) {
-								$style.remove();
 							}
+						} );
+	
+					} );
+				});
+
+			} else {
+				const setting_name = option.setting;
+
+				wp.customize( setting_name, function( setting_value ) {
+	
+					setting_value.bind( function( to ) {
+						let output = '';
+	
+						output += item.selector + ' { '+ option.name +': '+ to + option.unit + '; }';
+							
+						const $style = $( '#botiga-customizer-styles-css-vars-'+ setting_name );
+	
+						if ( output ) {
+	
+							if ( $style.length ) {
+								$style.text( output );
+							} else {
+								$( 'head' ).append( '<style id="botiga-customizer-styles-css-vars-'+ setting_name +'">' + output + '</style>' );
+							}
+	
+						} else if ( ! output && $style.length ) {
+							$style.remove();
 						}
 					} );
 
 				} );
-			});
+
+			}
 
 		} );
 

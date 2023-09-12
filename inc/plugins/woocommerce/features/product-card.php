@@ -153,7 +153,7 @@ function botiga_product_card_hooks() {
 	// Add to cart button text
 	add_filter( 'woocommerce_product_add_to_cart_text', 'botiga_add_to_cart_text', 10, 2);
 }
-add_action( 'init', 'botiga_product_card_hooks' );
+add_action( 'wp', 'botiga_product_card_hooks' );
 
 /**
  * Loop add to cart

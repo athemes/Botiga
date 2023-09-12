@@ -609,6 +609,10 @@ function botiga_woocommerce_post_class( $classes, $product ) {
 		}
 	}
 
+	if( ! empty( $product->get_gallery_image_ids() ) ) {
+		$classes[] = 'has-gallery-images';
+	}
+
 	return $classes;
 }
 add_filter( 'woocommerce_post_class', 'botiga_woocommerce_post_class', 10, 2 );

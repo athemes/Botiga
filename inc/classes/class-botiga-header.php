@@ -742,19 +742,19 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">'. esc_html__( 'Dashboard', 'botiga' ) .'</a>';
 
 					if( ! empty( $endpoints[ 'orders' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Orders', 'botiga-pro' ) . '">' . __( 'Orders', 'botiga-pro' ) . '</a>';
+						$output .= '<a href="' . wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Orders', 'botiga' ) . '">' . __( 'Orders', 'botiga' ) . '</a>';
 					}
 			
 					if( ! empty( $endpoints[ 'downloads' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'downloads', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Downloads', 'botiga-pro' ) . '">' . __( 'Downloads', 'botiga-pro' ) . '</a>';
+						$output .= '<a href="' . wc_get_endpoint_url( 'downloads', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Downloads', 'botiga' ) . '">' . __( 'Downloads', 'botiga' ) . '</a>';
 					}
 			
 					if( ! empty( $endpoints[ 'edit-address' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Addresses', 'botiga-pro' ) . '">' . __( 'Addresses', 'botiga-pro' ) . '</a>';
+						$output .= '<a href="' . wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Addresses', 'botiga' ) . '">' . __( 'Addresses', 'botiga' ) . '</a>';
 					}
 			
 					if( ! empty( $endpoints[ 'edit-account' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'edit-account', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Account details', 'botiga-pro' ) . '">' . __( 'Account Details', 'botiga-pro' ) . '</a>';
+						$output .= '<a href="' . wc_get_endpoint_url( 'edit-account', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Account details', 'botiga' ) . '">' . __( 'Account Details', 'botiga' ) . '</a>';
 					}
 
 					/**
