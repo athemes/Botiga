@@ -117,7 +117,7 @@ class Botiga_Dashboard
             'manage_options',
             get_admin_url() . 'admin.php?page=botiga-dashboard',
             '',
-            -5
+            0
         );
 
         // Add 'Customize' link
@@ -129,7 +129,7 @@ class Botiga_Dashboard
             'manage_options',
             esc_url( $customize_url ),
             '',
-            -4
+            1
         );
 
         // Add 'Starter Sites' link
@@ -140,7 +140,7 @@ class Botiga_Dashboard
             'manage_options',
             get_admin_url() . 'admin.php?page=botiga-dashboard&tab=starter-sites',
             '',
-            -3
+            2
         );
 
         // Add 'Upgrade' link
@@ -152,7 +152,7 @@ class Botiga_Dashboard
                 'manage_options',
                 'https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga',
                 '',
-                -2
+                3
             );
         }
     }
@@ -165,7 +165,7 @@ class Botiga_Dashboard
     public function add_admin_footer_style() {
         ?>
         <style>
-            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu .wp-first-item a[href="admin.php?page=botiga-dashboard"] {
+            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="admin.php?page=botiga-dashboard"] {
                 display: none;
             }
         </style>
