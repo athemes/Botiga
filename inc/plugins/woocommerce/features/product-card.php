@@ -306,7 +306,7 @@ function botiga_equal_height_content_class( $class ) {
 
 	return $class . $equal_height_class;
 }
-add_action( 'init', function(){
+add_action( 'wp', function() {
 	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
 		add_filter( 'botiga_content_class', 'botiga_equal_height_content_class' );
 	}
