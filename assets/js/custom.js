@@ -842,7 +842,7 @@ botiga.stickyHeader = {
 
     if (window.matchMedia('screen and (min-width: 1024px)').matches) {
       if (typeof botiga_sticky_header_logo !== 'undefined') {
-        var logo = document.querySelector('.sticky-header .site-branding img');
+        var logo = document.body.classList.contains('has-bhfb-builder') ? document.querySelector('.bhfb-sticky-header .site-branding img') : document.querySelector('.sticky-header .site-branding img');
 
         if (logo === null) {
           return false;

@@ -817,7 +817,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					),
 					array(
 						'setting'  => 'background_color',
-						'defaults' => '',
+						'defaults' => '#FFF',
 						'name'	   => '--bt-color-bg',
 						'unit'	   => ''
 					),
@@ -2372,7 +2372,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$mod = get_theme_mod( $variable[ 'setting' ], $variable[ 'defaults' ] );
 				}
 
-				if( '--bt-color-bg' === $variable[ 'name' ] ) {
+				if( '--bt-color-bg' === $variable[ 'name' ] && substr( $mod, 0, 1 ) !== '#' ) {
 					$mod = "#$mod";
 				}
 				
@@ -2397,7 +2397,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			if ( $mod !== '' ) {
 
-				if( $setting === 'background_color' ) {
+				if( $setting === 'background_color' && substr( $mod, 0, 1 ) !== '#' ) {
 					$mod = '#'.$mod;
 				}
 

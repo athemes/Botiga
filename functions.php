@@ -563,3 +563,7 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
+
+add_action( 'init', function(){
+	remove_theme_mod( 'background_color' );
+} );

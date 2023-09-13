@@ -27,20 +27,20 @@ if ( $mobile_menu_link_separator ) {
 }
 
 // Text Color
-$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a' );
-$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a + .dropdown-symbol svg' );
+$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a.botiga-dropdown-link' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a.botiga-dropdown-link + .dropdown-symbol svg' );
 
 // Text Color Hover
-$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a:hover' );
-$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a:hover + .dropdown-symbol svg' );
+$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a.botiga-dropdown-link:hover' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation a.botiga-dropdown-link:hover + .dropdown-symbol svg' );
 
 // Submenu Text Color
-$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_submenu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a' );
-$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a + .dropdown-symbol svg' );
+$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_submenu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu.botiga-dropdown-ul a.botiga-dropdown-link' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu.botiga-dropdown-ul a.botiga-dropdown-link + .dropdown-symbol svg' );
 
 // Submenu Text Color Hover
-$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a:hover' );
-$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu a:hover + .dropdown-symbol svg' );
+$css .= Botiga_Custom_CSS::get_color_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu.botiga-dropdown-ul a.botiga-dropdown-link:hover' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'mobile_offcanvas_menu_submenu_color_hover', '', '.bhfb.bhfb-mobile_offcanvas .main-navigation .sub-menu.botiga-dropdown-ul a.botiga-dropdown-link:hover + .dropdown-symbol svg' );
 
 // Padding
 $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
