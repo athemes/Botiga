@@ -485,6 +485,111 @@ function botiga_single_post_comments() {
 add_action( 'botiga_after_single_post_content', 'botiga_single_post_comments', 41 );
 
 /**
+ * Prints the page content.
+ * 
+ */
+if ( ! function_exists( 'botiga_page_content' ) ) :
+	function botiga_page_content() {
+
+		while ( have_posts() ) :
+			the_post();
+
+			get_template_part( 'template-parts/content', 'page' );
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+
+	}
+	add_action( 'botiga_do_page_content', 'botiga_page_content' );
+endif;
+
+/**
+ * Prints the single post content.
+ * 
+ */
+if ( ! function_exists( 'botiga_single_content' ) ) :
+	function botiga_single_content() {
+
+		while ( have_posts() ) :
+			the_post();
+
+			do_action( 'botiga_before_single_post_content' );
+
+			get_template_part( 'template-parts/content', 'single' );
+
+			do_action( 'botiga_after_single_post_content' );
+
+		endwhile; // End of the loop.
+
+	}
+	add_action( 'botiga_do_single_content', 'botiga_single_content' );
+endif;
+
+/**
+ * Prints the archive pages content.
+ * 
+ */
+if ( ! function_exists( 'botiga_archive_content' ) ) :
+	function botiga_archive_content() { 
+		
+		?>
+
+		<?php if ( have_posts() ) : ?>
+
+			<?php if( ! get_theme_mod( 'archive_hide_title', 0 ) ) : ?>
+				<header class="page-header">
+					<?php
+					do_action( 'botiga_before_title' );
+					the_archive_title( '<h1 class="page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' );
+					the_archive_description( '<div class="archive-description">', '</div>' );
+					?>
+				</header><!-- .page-header -->
+			<?php endif; ?>
+
+			<div class="posts-archive <?php echo esc_attr( apply_filters( 'botiga_blog_layout_class', 'layout3' ) ); ?>" <?php botiga_masonry_data(); ?>>
+				<div class="row">
+				<?php
+				/* Start the Loop */
+				while ( have_posts() ) :
+					the_post();
+
+					/*
+					* Include the Post-Type-specific template for the content.
+					* If you want to override this in a child theme, then include a file
+					* called content-___.php (where ___ is the Post Type name) and that will be used instead.
+					*/
+					get_template_part( 'template-parts/content', get_post_type() );
+
+				endwhile; ?>
+				</div>
+			</div>
+		<?php	
+		the_posts_pagination( array(
+			'mid_size'  => 1,
+			'prev_text' => '&#x2190;',
+			'next_text' => '&#x2192;',
+		) );
+
+		do_action( 'botiga_after_the_posts_pagination' );
+
+		else :
+
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+
+		?>
+
+		<?php
+	}
+	add_action( 'botiga_do_archive_content', 'botiga_archive_content' );
+endif;
+
+/**
  * Prints the 404 page content.
  */
 if ( ! function_exists( 'botiga_404_page_content' ) ) :
