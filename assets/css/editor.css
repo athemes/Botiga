@@ -3146,6 +3146,29 @@ div.editor-styles-wrapper .loop-image-wrap {
   overflow: hidden;
 }
 
+div.editor-styles-wrapper .loop-image-wrap > .loop-button-wrap.button-layout3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 145px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  -webkit-transform: translate3d(-50%, -10%, 0);
+          transform: translate3d(-50%, -10%, 0);
+  -webkit-transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+  z-index: 3;
+}
+
+div.editor-styles-wrapper .loop-image-wrap.botiga-add-to-cart-button-layout3:hover > .loop-button-wrap.button-layout3 {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate3d(-50%, 0%, 0);
+          transform: translate3d(-50%, 0%, 0);
+}
+
 div.editor-styles-wrapper .related.products ul.products li.product:hover .button-layout4,
 div.editor-styles-wrapper .upsells.products ul.products li.product:hover .button-layout4,
 div.editor-styles-wrapper .product-grid ul.products li.product:hover .button-layout4 {

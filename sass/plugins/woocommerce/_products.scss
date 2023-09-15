@@ -217,6 +217,30 @@ ul.products {
 .loop-image-wrap {
 	position: relative;
 	overflow: hidden;
+
+	> .loop-button-wrap.button-layout3 {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-width: 145px;
+		text-align: center;;
+		opacity: 0;
+		visibility: hidden;
+		white-space: nowrap;
+		transform: translate3d(-50%, -10%, 0);
+		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
+		z-index: 3;
+	}
+
+	&.botiga-add-to-cart-button-layout3 {
+		&:hover {
+			> .loop-button-wrap.button-layout3 {
+				opacity: 1;
+				visibility: visible;
+				transform: translate3d(-50%, 0%, 0);
+			}
+		}
+	}
 }
 
 .related.products,
