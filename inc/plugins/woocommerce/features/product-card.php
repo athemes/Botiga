@@ -307,7 +307,7 @@ function botiga_equal_height_content_class( $class ) {
 	return $class . $equal_height_class;
 }
 add_action( 'wp', function() {
-	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || botiga_post_content_has_woo_shortcode() || botiga_post_content_has_woo_blocks() ) {
 		add_filter( 'botiga_content_class', 'botiga_equal_height_content_class' );
 	}
 } );

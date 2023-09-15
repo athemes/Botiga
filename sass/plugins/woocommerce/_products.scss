@@ -565,7 +565,8 @@ ul.products {
 			display: flex;
 			flex-direction: column;
 
-			.loop-button-wrap{
+			.loop-button-wrap,
+			.wc-block-grid__product-add-to-cart {
 				flex: 1;
 				display: flex;
 				align-items: flex-end;

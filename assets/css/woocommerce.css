@@ -1076,9 +1076,13 @@ ul.products li.product-category mark {
 }
 
 .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .loop-button-wrap,
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-add-to-cart,
 .product-equal-height ul.wc-block-grid__products li.product .loop-button-wrap,
+.product-equal-height ul.wc-block-grid__products li.product .wc-block-grid__product-add-to-cart,
 .product-equal-height ul.products li.wc-block-grid__product .loop-button-wrap,
-.product-equal-height ul.products li.product .loop-button-wrap {
+.product-equal-height ul.products li.wc-block-grid__product .wc-block-grid__product-add-to-cart,
+.product-equal-height ul.products li.product .loop-button-wrap,
+.product-equal-height ul.products li.product .wc-block-grid__product-add-to-cart {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

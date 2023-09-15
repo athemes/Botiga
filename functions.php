@@ -369,6 +369,11 @@ function botiga_remove_page_templates( $page_templates ) {
 add_filter( 'theme_page_templates', 'botiga_remove_page_templates' );
 
 /**
+ * Helper functions.
+ */
+require get_template_directory() . '/inc/helpers.php';
+
+/**
  * Deactivate Elementor Wizard.
  */
 function botiga_deactivate_ele_onboarding() {
