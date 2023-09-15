@@ -3212,19 +3212,19 @@ div.editor-styles-wrapper .button-layout3.loop-button-wrap:empty {
   display: none !important;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-layout3 .wp-block-button,
-div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button-layout4 .wp-block-button {
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap .button-layout3 .wp-block-button,
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap .button-layout4 .wp-block-button {
   margin-bottom: 0;
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:hover .button-layout3 {
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap:hover .button-layout3 {
   opacity: 1;
   visibility: visible;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
+  -webkit-transform: translate3d(-50%, 0%, 0);
+          transform: translate3d(-50%, 0%, 0);
 }
 
-div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product:hover .button-layout4 {
+div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap:hover .button-layout4 {
   opacity: 1;
 }
 

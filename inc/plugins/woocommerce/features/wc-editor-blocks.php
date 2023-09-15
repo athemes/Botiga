@@ -65,8 +65,8 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	//Add button inside image wrapper for layout4 and layout3
 	if ( 'layout4' === $button_layout || 'layout3' === $button_layout ) {
 		$loop_button_wrapper_classes = apply_filters( 'botiga_loop_button_wrap_classes', array( 'loop-button-wrap', $button_width, 'button-' . $button_layout, $button_with_quantity ) );
-		$button_wrapper_open = $button_layout !== 'layout3' ? '<div class="wp-block-button wc-block-grid__product-add-to-cart"><div class="'. esc_attr( implode( ' ', $loop_button_wrapper_classes ) ) .'">' : '';
-		$button_wrapper_close = $button_layout !== 'layout3' ? '</div></div>' : '';
+		$button_wrapper_open = $button_layout !== 'layout3' ? '<div class="wp-block-button wc-block-grid__product-add-to-cart"><div class="'. esc_attr( implode( ' ', $loop_button_wrapper_classes ) ) .'">' : '<div class="'. esc_attr( implode( ' ', $loop_button_wrapper_classes ) ) .'">';
+		$button_wrapper_close = $button_layout !== 'layout3' ? '</div></div>' : '</div>';
 
 		$markup .= $button_wrapper_open . botiga_gb_add_to_cart_button( $product ) . $button_wrapper_close;
 	}
