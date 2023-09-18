@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.1.2
+Version: 2.1.3
 Tested up to: 6.3
 Requires PHP: 5.6
 Stable tag: 2.1.2
@@ -30,6 +30,11 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.1.3 =
+Fixed - Add To Cart Button Layout 3: Layout is broken when quick view is disabled.
+Fixed - Menus: Some color options from customizer are not applying.
+Fixed - Sticky Header Logo: Sticky logo is not showing when using with header builder.
+
 = 2.1.2 =
 Added - Custom dynamic CSS: Fallback to render the css as internal style if the CSS file is not present in the uploads folder.
 Changed - Custom dynamic CSS: Use CSS variables to control the values (+ performance).

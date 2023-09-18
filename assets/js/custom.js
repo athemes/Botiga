@@ -1093,6 +1093,10 @@ botiga.qtyButton = {
     }
   },
   updateAddToCartQuantity: function updateAddToCartQuantity(qtyItem, qtyValue) {
+    if (qtyItem.closest('.woocommerce-cart-form') !== null) {
+      return false;
+    }
+
     var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
         product = qtyItem.closest(productSelector),
         qtyInput = qtyItem.parentNode.querySelector('.qty');
