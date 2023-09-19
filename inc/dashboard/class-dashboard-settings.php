@@ -104,10 +104,11 @@ function botiga_dashboard_settings() {
 		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga')
 	);
 
-	if ( ( isset( $settings['has_pro'] ) && $settings['has_pro'] && Botiga_Modules::is_module_active( 'templates' ) ) || ! $settings['has_pro'] ) {
+	$is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
+	if ( ! $is_legacy_tb && ( isset( $settings['has_pro'] ) && $settings['has_pro'] && Botiga_Modules::is_module_active( 'templates' ) ) || !$is_legacy_tb && ! $settings['has_pro'] ) {
 		$settings['tabs'] = array_merge(
 			array_slice( $settings['tabs'], 0, 2 ),
-			array( 'builder' => esc_html__( 'Template Builder', 'botiga-pro' ) ),
+			array( 'builder' => esc_html__( 'Templates Builder', 'botiga-pro' ) ),
 			array_slice( $settings['tabs'], 2 )
 		);
 	}

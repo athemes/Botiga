@@ -1319,14 +1319,13 @@ function botiga_get_registered_sidebars() {
  * Display Conditions
  */
 function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_default = '[]' ) {
-
 	$rules  = array();
 	$result = $default;
 
 	if ( is_array( $maybe_rules ) && ! empty( $maybe_rules ) ) {
 		$rules = $maybe_rules;
 	} else {
-		$option = get_theme_mod( $maybe_rules, $mod_default );
+		$option = empty( $maybe_rules ) ? get_theme_mod( '', $mod_default ) : get_theme_mod( $maybe_rules, $mod_default );
 		$rules  = json_decode( $option, true );
 	}
 

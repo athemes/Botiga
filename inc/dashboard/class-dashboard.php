@@ -65,7 +65,8 @@ class Botiga_Dashboard
         add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'ajax_module_activation_handler' ) );
         add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'ajax_module_activation_all_handler' ) );
 
-        if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+        $is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
+        if( defined( 'BOTIGA_PRO_VERSION' ) && ! $is_legacy_tb ) {
             add_action( 'wp_ajax_botiga_template_builder_data', array( $this, 'ajax_template_builder_data' ) );
             add_action( 'wp_ajax_insert_template_part_callback', array( $this, 'insert_template_part_callback' ) );
             add_action( 'wp_ajax_edit_template_part_callback', array( $this, 'edit_template_part_callback' ) );
@@ -188,8 +189,7 @@ class Botiga_Dashboard
      *
      * @param string $page Current page.
      */
-    public function admin_enqueue_scripts($hook)
-    {
+    public function admin_enqueue_scripts( $hook ) {
         wp_enqueue_style('botiga-dashboard', get_template_directory_uri() . '/assets/css/admin/botiga-dashboard.min.css', array(), BOTIGA_VERSION);
 
         if (is_rtl()) {
@@ -197,6 +197,9 @@ class Botiga_Dashboard
         }
 
         wp_enqueue_script('botiga-dashboard', get_template_directory_uri() . '/assets/js/admin/botiga-dashboard.min.js', array('jquery', 'wp-util', 'jquery-ui-sortable'), BOTIGA_VERSION, true);
+
+        wp_enqueue_script( 'botiga-select2-js', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.6', true );
+		wp_enqueue_style( 'botiga-select2-css', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.6', 'all' );
 
         wp_localize_script('botiga-dashboard', 'botiga_dashboard', array(
             'ajax_url' => admin_url('admin-ajax.php'),
@@ -888,9 +891,42 @@ class Botiga_Dashboard
                     ),
                     array(
                         'id'   => 'product-id',
-                        'text' => esc_html__( 'Product name', 'botiga' ),
+                        'text' => esc_html__( 'Product Name', 'botiga' ),
                         'ajax' => true,
                     ),
+                    array(
+                        'id'   => 'product-category-id',
+                        'text' => esc_html__( 'Product Category ID', 'botiga' ),
+                        'ajax' => true,
+                    ),
+                    array(
+                        'id'   => 'cart-page',
+                        'text' => esc_html__( 'Cart Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'checkout-page',
+                        'text' => esc_html__( 'Checkout Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'account-page',
+                        'text' => esc_html__( 'Account Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'view-order-page',
+                        'text' => esc_html__( 'View Order Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'edit-account-page',
+                        'text' => esc_html__( 'Edit Account Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'order-received-page',
+                        'text' => esc_html__( 'Order Received Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'lost-password-page',
+                        'text' => esc_html__( 'Lost Password Page', 'botiga' ),
+                    )
                 ),
             );
 

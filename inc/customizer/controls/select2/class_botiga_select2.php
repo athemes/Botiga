@@ -23,6 +23,7 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 	public $posttype = '';
 	public $posttype_args = array();
 	public $posttype_empty_first_value = '';
+	public $templates_builder_templates = false;
 
 	/**
 	 * Constructor
@@ -65,6 +66,23 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 			$posts = get_posts( $args );
 			foreach( $posts as $post ) {
 				$choices[$post->ID] = $post->post_title;
+			}
+		}
+
+		if( $this->templates_builder_templates ) {
+			$choices = array();
+			$templates = get_option( 'botiga_template_builder_data' );
+
+			if ( ! empty( $templates ) ) {
+				$templates = array_filter( $templates, function( $item ) {
+					return 'global' !== $item[ 'id' ];
+				} );
+
+				foreach( $templates as $template ) {
+					$template_id = $template[ 'content' ];
+
+					$choices[ $template_id ] = $template[ 'template_name' ];
+				}
 			}
 		}
 

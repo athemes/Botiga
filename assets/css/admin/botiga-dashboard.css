@@ -919,6 +919,46 @@
   color: #757575;
 }
 
+/* Alert */
+.botiga-dashboard-alert {
+  background-color: #fbfbfb;
+  border: 1px solid #ebebeb;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.botiga-dashboard-alert p {
+  margin: 0;
+}
+
+.botiga-dashboard-alert.botiga-dashboard-alert-with-icon {
+  position: relative;
+  padding-left: 50px;
+}
+
+.botiga-dashboard-alert.botiga-dashboard-alert-with-icon .alert-icon {
+  position: absolute;
+  top: 21px;
+  left: 20px;
+  max-width: 17px;
+}
+
+.botiga-dashboard-alert.botiga-dashboard-alert-with-icon .alert-icon svg {
+  width: 100%;
+  height: auto;
+}
+
+.botiga-dashboard-alert.botiga-dashboard-alert-with-upsell-link {
+  padding-right: 160px;
+}
+
+.botiga-dashboard-alert.botiga-dashboard-alert-with-upsell-link .botiga-dashboard-external-link {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+}
+
 /* Admin Footer */
 #wpfooter {
   color: #1D2327;
@@ -1551,9 +1591,17 @@
 }
 
 .template-builder-wrapper {
-  background-color: #f7f7f7;
-  padding: 30px 0 30px 30px;
   margin-top: -32px;
+}
+
+.template-builder-wrapper hr {
+  margin: 30px 0;
+  border-bottom-color: #F0F0F1;
+  border-top: none;
+}
+
+.template-builder-wrapper ol {
+  margin: 20px 17px 0px;
 }
 
 .template-builder-wrapper .intro {
@@ -1578,6 +1626,9 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-bottom: 30px;
+  background-color: #f7f7f7;
+  padding: 25px;
+  border-radius: 7px;
 }
 
 .template-name {
@@ -1624,13 +1675,17 @@
 
 .template-item {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(33.333% - 30px);
-          flex: 0 0 calc(33.333% - 30px);
+      -ms-flex: 0 0 calc(33.333% - 20px);
+          flex: 0 0 calc(33.333% - 20px);
   background-color: #fff;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 7px;
   -webkit-box-shadow: 0 0 10px #efefef;
           box-shadow: 0 0 10px #efefef;
+}
+
+.template-item[data-id="global"] {
+  display: none;
 }
 
 .template-part {
