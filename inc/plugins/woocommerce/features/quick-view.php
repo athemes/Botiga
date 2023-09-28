@@ -9,16 +9,33 @@
  * Enqueue quick view scripts 
  */
 function botiga_quick_view_scripts() {
+	global $post;
 
-    //Enqueue gallery scripts for quick view
-	$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
-	
-	if ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() || botiga_page_has_woo_blocks() || is_cart() || is_404() || $shop_cart_show_cross_sell ) {
-		$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
-		
-		if( 'layout1' !== $quick_view_layout ) {
-			botiga_quick_view_needed_scripts();
-		}
+	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
+	if( 'layout1' === $quick_view_layout ) {
+		return;
+	}
+
+	$product 					  = wc_get_product( $post->ID );
+	$shop_cart_show_cross_sell 	  = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
+	$has_related_products 	   	  = is_singular( 'product' ) && get_theme_mod( 'single_related_products', 1 ) && ! empty( wc_get_related_products( $post->ID ) ) ? true : false;
+	$has_recently_viewed_products = is_singular( 'product' ) && get_theme_mod( 'single_recently_viewed_products', 0 ) ? true : false;
+	$has_upsell_products 		  = is_singular( 'product' ) && get_theme_mod( 'single_upsell_products', 1 ) && $product->get_upsell_ids() ? true : false;
+
+	if ( 
+		is_shop() || 
+		is_product_category() || 
+		is_product_tag() || 
+		is_product_taxonomy() || 
+		botiga_page_has_woo_blocks() || 
+		is_cart() || 
+		is_404() || 
+		$shop_cart_show_cross_sell || 
+		$has_related_products || 
+		$has_recently_viewed_products || 
+		$has_upsell_products 
+	) {
+		botiga_quick_view_needed_scripts();
 	}
 }
 add_action( 'wp_enqueue_scripts', 'botiga_quick_view_scripts', 9 );

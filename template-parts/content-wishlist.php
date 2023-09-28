@@ -103,8 +103,8 @@ if( $products ) :
                                 
                                         case 'external':
                                             $button_class = '';
-                                            $button_text  = $_product->single_add_to_cart_text();
-                                            $button_url   = $_product->add_to_cart_url();
+                                            $button_text  = $_product->get_button_text();
+                                            $button_url   = $_product->get_product_url();
                                             break;
                                         
                                         default:
