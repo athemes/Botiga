@@ -854,6 +854,7 @@ function botiga_custom_google_fonts_url() {
 	$font_families = array();
 	$google_fonts  = botiga_get_google_fonts();
 
+	
 	if( 'error' === $google_fonts ) {
 		return;
 	}
@@ -977,26 +978,21 @@ function botiga_custom_google_fonts_url() {
  * Get google fonts
  */
 function botiga_get_google_fonts() {
+	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
-	$fontFile = get_template_directory_uri() . '/inc/customizer/controls/typography/google-fonts-alphabetical.json';
-	$request  = wp_remote_get( $fontFile );
-	$status   = wp_remote_retrieve_response_code( $request );
+	$fontFile 		= get_parent_theme_file_path( '/inc/customizer/controls/typography/google-fonts-alphabetical.json' );
+	$file_system 	= new WP_Filesystem_Direct( false );
+	$content 		= json_decode( $file_system->get_contents( $fontFile ) );
 
-	if( is_wp_error( $request ) || $status !== 200 ) {
-		return "error";
-	}
-
-	$body    = wp_remote_retrieve_body( $request );
-	$content = json_decode( $body, true );
 	$fonts   = array();
 
-	if ( ! empty( $content ) && ! empty( $content['items'] ) ) {
-		$fonts = $content['items'];
+	if ( isset( $content->items ) && ! empty( $content->items ) ) {
+		$fonts = $content->items;
 		unset( $fonts[0] ); // Remove system font option
 	}
 
 	return $fonts;
-
 }
 
 /**
@@ -1578,6 +1574,7 @@ function botiga_get_custom_fonts() {
 						$css .= 'src: url("'. esc_url( $font['eot'] ) .'");';
 					}
 					$css .= 'src: '. join( ',', $src ) .';';
+					$css .= 'font-display: swap;';
 					$css .= '}';
 
 				}
