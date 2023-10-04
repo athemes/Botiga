@@ -1417,13 +1417,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_stroke_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
 				$css .= $this->get_background_color_css( 'shop_product_wishlist_icon_background_color', 'rgba(255,255,255,0)', '.botiga-wishlist-button' );
 			} 
-
-			//Woocommerce Ajax Search
-			$shop_ajax_search = get_theme_mod( 'shop_search_enable_ajax', 0 );
-			if( $shop_ajax_search ) {
-				$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.botiga-ajax-search__wrapper ,.botiga-ajax-search__item+.botiga-ajax-search__item:before', '0.1', true );
-				$css .= $this->get_background_color_rgba_css( 'color_body_text', '#212121', '.botiga-ajax-search__divider', '0.1', true );
-			}
 			
 			//Woocommerce single
 			$single_sku 	 	= get_theme_mod( 'single_product_sku', 1 );
