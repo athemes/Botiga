@@ -5493,6 +5493,23 @@ body {
   font-weight: 400;
 }
 
+.botiga-ajax-search__see-all {
+  text-align: center;
+  padding: 20px 20px 10px;
+}
+
+.botiga-ajax-search__see-all .bas-arrow {
+  display: inline-block;
+  margin-left: 5px;
+  -webkit-transition: ease transform 300ms;
+  transition: ease transform 300ms;
+}
+
+.botiga-ajax-search__see-all:hover .bas-arrow {
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+}
+
 /* Category Items */
 .botiga-ajax-search-categories {
   display: grid;

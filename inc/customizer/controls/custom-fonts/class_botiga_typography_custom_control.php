@@ -92,7 +92,7 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 							<?php $selected = $this->value() === $font->family ? true : false; ?>
 							<?php
 								if ( $this->value( 'font-family' ) === $font->family ) {
-									$google_font_weights = $font['variants'];
+									$google_font_weights = $font->variants;
 								}
 							?>
 							<option value="<?php echo esc_attr( $font->family ); ?>" <?php selected( $selected ); ?>><?php echo esc_html( $font->family ); ?></option>

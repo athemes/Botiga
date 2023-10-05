@@ -50,6 +50,7 @@ function botiga_ajax_search_callback() {
     $order                = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'asc';
     $orderby              = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'title'; 
     $enable_search_by_sku = isset( $_POST['enable_search_by_sku'] ) && sanitize_text_field( wp_unslash( $_POST['enable_search_by_sku'] ) ) ? true : false;
+    $see_all_button       = get_theme_mod( 'shop_search_ajax_display_see_all', 0 );
     
     $args = array(
         'post_type'      => 'product',
@@ -96,6 +97,15 @@ function botiga_ajax_search_callback() {
             endwhile;     
 
         $output .= '</div>';
+        
+        if( $see_all_button ) {
+            $output .= '<div class="botiga-ajax-search__see-all">';
+                $output .= '<a href="'. esc_url( get_search_link( $search_term ) ) .'&post_type=product" class="botiga-ajax-search__see-all-link">' . esc_html( 
+                    /* Translators: 1. Search results quantity */
+                    sprintf( __( 'See all products (%s)', 'botiga' ), $qry->post_count ) 
+                ) . '<span class="bas-arrow">→</span></a>';
+            $output .= '</div>';
+        }
     endif;
 
     // Categories

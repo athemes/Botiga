@@ -501,7 +501,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $body_selector . '{ font-family:"' . esc_attr( $body_font ) . '";}' . "\n";	
 				}
 				
-				if ( 'System default' !== $headings_font ) {
+				if ( ! empty( $headings_font ) && 'System default' !== $headings_font ) {
 					$selectors = array(
 						'h1',
 						'h2',
@@ -517,7 +517,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $selector . '{ font-family:"' . esc_attr( $headings_font ) . '";}' . "\n";
 				}
 				
-				if ( 'System default' !== $button_font ) {
+				if ( ! empty( $button_font ) && 'System default' !== $button_font ) {
 					$selectors = array(
 						'button',
 						'a.button',
@@ -531,19 +531,19 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$css .= $selector . '{ font-family:"' . esc_attr( $button_font ) . '";}' . "\n";
 				}
 
-				if ( 'System default' !== $loop_post_title_font ) {
+				if ( ! empty( $loop_post_title_font ) && 'System default' !== $loop_post_title_font ) {
 					$css .= $empty_selector . '.posts-archive .entry-title { font-family:"' . esc_attr( $loop_post_title_font ) . '";}' . "\n";
 				}
 
-				if ( 'System default' !== $single_post_title_font ) {
+				if ( ! empty( $single_post_title_font ) && 'System default' !== $single_post_title_font ) {
 					$css .= $empty_selector . '.single .entry-header .entry-title { font-family:"' . esc_attr( $single_post_title_font ) . '";}' . "\n";
 				}
 
-				if ( 'System default' !== $single_product_title_font ) {
+				if ( ! empty( $single_product_title_font ) && 'System default' !== $single_product_title_font ) {
 					$css .= $empty_selector . '.product-gallery-summary .entry-title { font-family:"' . esc_attr( $single_product_title_font ) . '";}' . "\n";
 				}
 
-				if ( 'System default' !== $shop_product_title_font ) {
+				if ( ! empty( $shop_product_title_font ) && 'System default' !== $shop_product_title_font ) {
 					$selectors = array(
 						'ul.products li.product .botiga-wc-loop-product__title', 
 						'ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title', 
