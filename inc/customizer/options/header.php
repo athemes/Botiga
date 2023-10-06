@@ -153,7 +153,7 @@ $wp_customize->add_control(
 );
 
 //Layout
-$choices = botiga_header_layouts();
+$choices = botiga_header_layouts(); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 $wp_customize->add_setting(
 	'header_layout_desktop',
@@ -398,8 +398,8 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'main_header
 	)
 );
 
-$header_components 	= botiga_header_elements();
-$default_components = botiga_get_default_header_components();
+$header_components 	= botiga_header_elements(); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+$default_components = botiga_get_default_header_components(); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 //Layout 1&2 elements
 $wp_customize->add_setting( 'header_components_l1', array(

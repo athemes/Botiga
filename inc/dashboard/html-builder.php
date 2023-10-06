@@ -10,6 +10,7 @@ if ( ! defined('ABSPATH') ) {
 	exit; // Exit if accessed directly.
 }
 
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $existing_parts = $this->get_template_parts();
 
 $parts = array( 
@@ -17,7 +18,7 @@ $parts = array(
 );
 
 //disabled links in free
-$disabled = ! $this->settings['has_pro'] ? 'style="pointer-events:none;"' : '';
+$disabled = ! $this->settings['has_pro'] || $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'templates' ) ) ? 'style="pointer-events:none;"' : '';
 
 ?>
 <div class="botiga-dashboard-row">
@@ -25,7 +26,7 @@ $disabled = ! $this->settings['has_pro'] ? 'style="pointer-events:none;"' : '';
 		<div class="botiga-dashboard-card botiga-dashboard-card-top-spacing botiga-dashboard-card-tabs-divider">
 
 		<div class="template-builder-wrapper">
-			<?php if ( !$this->settings['has_pro'] ) : ?>
+			<?php if ( ! $this->settings['has_pro'] ) : ?>
 				<div class="botiga-dashboard-alert botiga-dashboard-alert-warning botiga-dashboard-alert-with-icon botiga-dashboard-alert-with-upsell-link">
 					<div class="alert-icon"><?php echo botiga_get_svg_icon( 'icon-warning' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 					<p class="bt-text-color-grey"><?php echo esc_html__( 'Please note this feature is available only in Botiga Pro', 'botiga' ); ?></p>
@@ -38,13 +39,23 @@ $disabled = ! $this->settings['has_pro'] ? 'style="pointer-events:none;"' : '';
 				</div>
 			<?php endif; ?>
 
+			<?php if ( $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'templates' ) ) ) : ?>
+				<div class="botiga-dashboard-alert botiga-dashboard-alert-warning botiga-dashboard-alert-with-icon botiga-dashboard-alert-with-upsell-link">
+					<div class="alert-icon"><?php echo botiga_get_svg_icon( 'icon-warning' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+					<p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Templates Builder module.', 'botiga' ); ?></p>
+					<a href="#" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-module-activation botiga-dashboard-external-link" data-module-id="templates" data-module-activate="true" data-module-after-activation-redirect="<?php echo esc_url( get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder' ); ?>">
+						<?php echo esc_html__( 'Activate Templates Builder', 'botiga' ); ?>
+					</a>
+				</div>
+			<?php endif; ?>
+
 			<ol>
 				<li class="bt-text-color-grey"><?php esc_html_e( 'Replace theme-built pages like shop archive, single product, search page, 404, etc. with your custom layout.', 'botiga' ); ?></li>
 				<li class="bt-text-color-grey"><?php esc_html_e( 'You can create multiple templates and assign them to specific pages.', 'botiga' ); ?></li>
 			</ol>
 			<hr>
-			<p class="tutorial-video bt-text-color-grey"><span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Need help?', 'botiga' ); ?> <a class="botiga-dashboard-external-link" target="_blank" href="https://youtu.be/MhKdxFeFOd8"><?php esc_html_e( 'Watch a quick tutorial video.', 'botiga' ); ?></a></p>
-			<div id="template-builder">
+			<!-- <p class="tutorial-video bt-text-color-grey"><span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Need help?', 'botiga' ); ?> <a class="botiga-dashboard-external-link" target="_blank" href="https://youtu.be/MhKdxFeFOd8"><?php esc_html_e( 'Watch a quick tutorial video.', 'botiga' ); ?></a></p> -->
+			<div id="template-builder" style="<?php echo $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'templates' ) ) ? 'pointer-events: none; opacity: 0.6;' : ''; ?>">
 				<?php 
 				$templates = array();
 				$custom_templates = get_option( 'botiga_template_builder_data' );
@@ -131,9 +142,9 @@ $disabled = ! $this->settings['has_pro'] ? 'style="pointer-events:none;"' : '';
 								<div class="page-builder-wrapper" style="display:none;">
 									<span class="page-builder-title"><?php esc_html_e( 'Choose your builder:', 'botiga' ); ?></span>
 									<?php if ( class_exists( 'Elementor\Plugin' ) ) : ?>
-									<span class="elementor"><span <?php echo $disabled; ?> class="create-new" data-page-builder="elementor"><?php botiga_get_svg_icon( 'icon-elementor', true ); ?><?php esc_html_e( 'Elementor', 'botiga' ); ?></span></span>
+									<span class="elementor"><span <?php echo $disabled; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="create-new" data-page-builder="elementor"><?php botiga_get_svg_icon( 'icon-elementor', true ); ?><?php esc_html_e( 'Elementor', 'botiga' ); ?></span></span>
 									<?php endif; ?>
-									<span class="editor"><span <?php echo $disabled; ?> class="create-new" data-page-builder="editor"><?php botiga_get_svg_icon( 'icon-wordpress', true ); ?><?php esc_html_e( 'WordPress Editor', 'botiga' ); ?></span></span>
+									<span class="editor"><span <?php echo $disabled; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="create-new" data-page-builder="editor"><?php botiga_get_svg_icon( 'icon-wordpress', true ); ?><?php esc_html_e( 'WordPress Editor', 'botiga' ); ?></span></span>
 								</div>						
 							</div>
 							<?php endforeach; ?>
@@ -148,7 +159,7 @@ $disabled = ! $this->settings['has_pro'] ? 'style="pointer-events:none;"' : '';
 			</div>
 			
 			<div class="buttons" style="display:flex;">
-				<button class="button button-primary" id="save-templates" <?php echo $disabled; ?>><?php esc_html_e( 'Save', 'botiga' ); ?></button>
+				<button class="button button-primary" id="save-templates" <?php echo $disabled; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php esc_html_e( 'Save', 'botiga' ); ?></button>
 			</div>
 
 			<div class="botiga-elementor-iframe-wrapper" style="display:none;">
@@ -160,3 +171,4 @@ $disabled = ! $this->settings['has_pro'] ? 'style="pointer-events:none;"' : '';
 		</div>
 	</div>
 </div>
+<?php // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>

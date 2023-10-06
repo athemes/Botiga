@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */ 
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound ?>
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>
 
 <div class="bhfb-builder-item bhfb-component-copyright" data-component-id="copyright">
     <?php $this->customizer_edit_button(); 
@@ -29,4 +29,4 @@
 </div>
 
 <?php
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

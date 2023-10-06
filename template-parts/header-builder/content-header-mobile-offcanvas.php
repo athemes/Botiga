@@ -6,7 +6,7 @@
  * @package Botiga
  * @var array $args Contains mobile offcanvas data
  */
-
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $row_data   = $args[ 'row_data' ];
 $device     = 'mobile';
 
@@ -48,3 +48,4 @@ $bhfb = Botiga_Header_Footer_Builder::get_instance(); ?>
         endif; ?>
     </div>
 </div>
+<?php // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>

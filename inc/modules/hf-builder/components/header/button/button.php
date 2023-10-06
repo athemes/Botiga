@@ -9,7 +9,7 @@
 <div class="bhfb-builder-item bhfb-component-button" data-component-id="button">
     <?php $this->customizer_edit_button();
 
-    // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+    // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
     $text 	= get_theme_mod( 'header_button_text', esc_html__( 'Click me', 'botiga' ) );
     $url	= get_theme_mod( 'header_button_link', '#' );
     $class  = get_theme_mod( 'header_button_class', '' ); 
@@ -19,7 +19,7 @@
     if ( $newtab ) {
         $open = 'target="_blank"';
     } 
-    // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+    // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
     
     ?>
         <a <?php echo esc_html( $open ); ?> class="button<?php echo esc_attr( ( $class ? ' '. $class : '' ) ); ?>" href="<?php echo esc_url( $url ); ?>">

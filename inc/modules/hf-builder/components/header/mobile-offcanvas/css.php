@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 // Elements Spacing.
 $el_spacing = get_theme_mod( 'mobile_menu_elements_spacing', 20 );
@@ -53,4 +53,4 @@ $css .= Botiga_Custom_CSS::get_responsive_dimensions_css(
     true
 );
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

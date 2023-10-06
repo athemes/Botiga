@@ -34,7 +34,7 @@ if (!defined('ABSPATH')) {
                             </div>
                         </div>
 
-                        <?php foreach ($this->settings['demos'] as $demo) : // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound 
+                        <?php foreach ($this->settings['demos'] as $demo) : // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                         ?>
                             <div class="botiga-dashboard-box">
                                 <div class="botiga-dashboard-box-image">
@@ -58,7 +58,7 @@ if (!defined('ABSPATH')) {
                 <div class="botiga-dashboard-row">
                     <?php
                     if (has_action('atss_starter_sites')) {
-                        do_action('atss_starter_sites'); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+                        do_action('atss_starter_sites'); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
                     } else {
                         wp_redirect(add_query_arg(array('page' => 'starter-sites'), admin_url('admin.php')));
                     }

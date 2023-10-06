@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-component-id="mobile_offcanvas_menu">'; 
     $this->customizer_edit_button();
@@ -42,4 +42,4 @@ echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-c
 <?php
 echo '</div>';
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

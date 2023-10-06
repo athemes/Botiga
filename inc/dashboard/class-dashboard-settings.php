@@ -108,7 +108,7 @@ function botiga_dashboard_settings() {
 	if ( ! $is_legacy_tb && ( isset( $settings['has_pro'] ) && $settings['has_pro'] && Botiga_Modules::is_module_active( 'templates' ) ) || !$is_legacy_tb && ! $settings['has_pro'] ) {
 		$settings['tabs'] = array_merge(
 			array_slice( $settings['tabs'], 0, 2 ),
-			array( 'builder' => esc_html__( 'Templates Builder', 'botiga-pro' ) ),
+			array( 'builder' => esc_html__( 'Templates Builder', 'botiga' ) ),
 			array_slice( $settings['tabs'], 2 )
 		);
 	}
@@ -758,7 +758,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Templates Builder', 'botiga'),
 		'desc'       => esc_html__('Create custom templates for shop catalog, single products, 404 page, mega menu, modal popup and hooks.', 'botiga'),
 		'link_label' => esc_html__('Build Templates', 'botiga'),
-		'link_url'   => add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')),
+		'link_url'   => get_option( 'botiga-legacy-templates-builder' ) ? add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')) : add_query_arg(array('page' => 'botiga-dashboard', 'tab' => 'builder'), admin_url('admin.php')),
+		'link_target'=> '_self',
 		'docs_link'  => 'https://docs.athemes.com/article/pro-templates-builder-overview/'
 	);
 

@@ -6,7 +6,7 @@
  * @package Botiga
  * @var array $args Contains top header row data
  */
-
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $device                 = $args[ 'device' ]; 
 $row                    = $args[ 'row' ];
 $row_data               = $args[ 'row_data' ];
@@ -70,3 +70,4 @@ $row_empty_class = Botiga_Header_Footer_Builder::is_row_empty( $row_data->$devic
         endforeach; ?>
     </div>
 </div>
+<?php // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>

@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
             <div class="botiga-dashboard-license-wrapper">
                 <h2 class="bt-mb-10px"><?php echo esc_html__( 'Botiga Pro License', 'botiga' ); ?></h2>
                 <p class="bt-text-color-grey bt-mb-20px"><?php echo esc_html__( 'Activate your license key for Botiga Pro to get latest theme updates automatically updates right from your WordPress Dashboard.', 'botiga' ); ?> </p>
-                <?php do_action( 'botiga_pro_license_form' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                <?php do_action( 'botiga_pro_license_form' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                 <div class="botiga-dashboard-content-expand bt-mt-20px" data-bt-toggle-expand style="max-width: 360px;">
                     <div class="botiga-dashboard-content-expand-title">
                         <a href="#" class="botiga-dashboard-content-expand-link">

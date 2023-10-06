@@ -7,7 +7,7 @@
  */
 
 global $product;
-
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $product	   = wc_get_product( $args['product_id'] ); 
 $product_id	   = $product->get_id(); 
 $gallery_style = get_theme_mod( 'single_product_gallery', 'gallery-default' ); ?>
@@ -87,4 +87,7 @@ $gallery_style = get_theme_mod( 'single_product_gallery', 'gallery-default' ); ?
 
 </div>
 
-<?php do_action( 'botiga_after_quick_view_popup_content' ); ?>
+<?php 
+do_action( 'botiga_after_quick_view_popup_content' ); 
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+?>

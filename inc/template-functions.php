@@ -1611,7 +1611,7 @@ function botiga_get_permalink( $post = 0 ) {
 
 	// WPML
 	if ( has_filter( 'wpml_object_id' ) ) {
-		$post_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+		$post_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 	}
 
 	return get_permalink( $post_id );

@@ -210,7 +210,9 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 					$this          = $( this ),
 					moduleId 	   = $this.data( 'module-id' ),
 					activate   	   = $this.data( 'module-activate' ) ? true : false,
-					loadingMessage = activate ? window.botiga_dashboard.i18n.activating : window.botiga_dashboard.i18n.deactivating;
+					loadingMessage = activate ? window.botiga_dashboard.i18n.activating : window.botiga_dashboard.i18n.deactivating,
+					hasRedirect    = $this.data( 'module-after-activation-redirect' ) ? true : false,
+					redirectUrl    = hasRedirect ? $this.data( 'module-after-activation-redirect' ) : '';
 
 				$this
 					.html( '<i class="dashicons dashicons-update-alt"></i>' + loadingMessage )
@@ -238,6 +240,9 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 								.find( '.botiga-dashboard-customize-link' )
 								.removeClass( 'bt-d-none' );
 
+							if( hasRedirect ) {
+								window.location = redirectUrl;
+							}
 
 						} else {
 							$this

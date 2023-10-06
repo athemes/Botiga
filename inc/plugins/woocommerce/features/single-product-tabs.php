@@ -70,11 +70,11 @@ function botiga_single_product_tabs_output() {
  * Tabs default style
  */
 function botiga_woocommerce_output_product_data_tabs() {
-
+    
     /**
      * Filter tabs and allow third parties to add their own.
      */
-    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
     if ( ! empty( $product_tabs ) ) : ?>
 
@@ -83,7 +83,7 @@ function botiga_woocommerce_output_product_data_tabs() {
                 <?php foreach ( $product_tabs as $key => $product_tab ) : ?>
                     <li class="<?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
                         <a href="#tab-<?php echo esc_attr( $key ); ?>">
-                            <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                            <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                         </a>
                     </li>
                 <?php endforeach; ?>
@@ -98,7 +98,7 @@ function botiga_woocommerce_output_product_data_tabs() {
                 </div>
             <?php endforeach; ?>
 
-            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
         </div>
 
     <?php endif;
@@ -113,7 +113,7 @@ function botiga_single_product_tabs_as_accordion_output() {
     /**
      * Filter tabs and allow third parties to add their own.
      */
-    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+    $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
     if ( ! empty( $product_tabs ) ) : ?>
 
@@ -123,7 +123,7 @@ function botiga_single_product_tabs_as_accordion_output() {
             foreach ( $product_tabs as $key => $product_tab ) : ?>
             <div class="botiga-accordion__item">
                 <a href="#" class="botiga-accordion__toggle botiga-collapse-toggle<?php echo ( $counter == 0 ? ' active' : '' ); ?>" data-botiga-collapse="{'enable': true, 'id': 'botiga-accordion-<?php echo esc_attr( $key ); ?>', 'options': { 'oneAtTime': <?php echo ( $accordion_one_at_time ? 'true' : 'false' ); ?>, 'oneAtTimeParentSelector': '.botiga-accordion' }}">
-                    <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                    <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                 </a>
                 <div id="botiga-accordion-<?php echo esc_attr( $key ); ?>" class="botiga-accordion__body botiga-collapse<?php echo ( $counter == 0 ? ' active' : '' ); ?>">
                     <div class="botiga-accordion__body-content botiga-collapse__content">
@@ -138,7 +138,7 @@ function botiga_single_product_tabs_as_accordion_output() {
             $counter++;
             endforeach; ?>
 
-            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
         </div>
 
     <?php endif; ?>

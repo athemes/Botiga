@@ -309,7 +309,7 @@ function botiga_variable_add_to_cart( $product, $prefix = '', $remove_botiga_pre
 
 					<div class="woocommerce-variation single_variation"></div>
 					<div class="woocommerce-variation-add-to-cart variations_button">
-						<?php do_action( "{$hook_prefix}before_add_to_cart_button" ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
+						<?php do_action( "{$hook_prefix}before_add_to_cart_button" ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?> 
 
 						<?php
 						do_action( "{$hook_prefix}before_add_to_cart_quantity" );
