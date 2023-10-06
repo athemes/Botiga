@@ -125,6 +125,17 @@ add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_scripts', 9 );
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 /**
+ * Include the fragments script in the cart page.
+ * 
+ */
+function botiga_woocommerce_cart_fragments() {
+	if ( is_cart() ) {
+		wp_enqueue_script( 'wc-cart-fragments', WC()->plugin_url() . '/assets/js/frontend/cart-fragments.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_cart_fragments', 11 );
+
+/**
  * Add 'woocommerce-active' class to the body tag.
  *
  * @param  array $classes CSS classes applied to the body tag.
@@ -229,10 +240,16 @@ function botiga_wc_hooks() {
 		} );
 		add_filter( 'botiga_sidebar', '__return_false' );
 	} elseif ( is_checkout() ) {
-		add_filter( 'botiga_content_class', function() { $layout = get_theme_mod( 'shop_checkout_layout', 'layout1' ); return 'no-sidebar checkout-' . esc_attr( $layout ); } );
+		add_filter( 'botiga_content_class', function() { 
+			$layout = get_theme_mod( 'shop_checkout_layout', 'layout1' ); 
+			
+			return 'no-sidebar checkout-' . esc_attr( $layout ); 
+		} );
 		add_filter( 'botiga_sidebar', '__return_false' );
 	} elseif( is_account_page() ) {
-		add_filter( 'botiga_content_class', function() { return 'no-sidebar'; } );
+		add_filter( 'botiga_content_class', function() { 
+			return 'no-sidebar'; 
+		} );
 		add_filter( 'botiga_sidebar', '__return_false' );
 	}
 
@@ -283,7 +300,9 @@ function botiga_wc_hooks() {
 				add_action( 'woocommerce_single_product_summary', $component, 5 );
 			}
 			
-			add_action( 'woocommerce_single_product_summary', function(){ echo '<div class="elements-order-end"></div>'; }, 50 );
+			add_action( 'woocommerce_single_product_summary', function() { 
+				echo '<div class="elements-order-end"></div>'; 
+			}, 50 );
 			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 		}
 
@@ -341,7 +360,9 @@ function botiga_wc_hooks() {
 	$cart_layout                 = get_theme_mod( 'shop_cart_layout', 'layout1' ); 
 
 	if( $shop_cart_sticky_totals_box && $cart_layout === 'layout2' ) {
-		add_action( 'woocommerce_before_cart', function(){ echo '<div class="cart-totals-sticky"></div>'; }, 999 );
+		add_action( 'woocommerce_before_cart', function() { 
+			echo '<div class="cart-totals-sticky"></div>'; 
+		}, 999 );
 	}
 
 }
