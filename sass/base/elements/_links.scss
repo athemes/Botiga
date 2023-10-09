@@ -32,5 +32,15 @@ a {
 	&.remove,
 	&.button {
 		text-decoration: none;
-	}	
+	}
+
+	&.wc-forward {
+		&:not(.checkout-button) {
+			color: var(--bt-color-body-text, $color__primary);
+
+			&:hover {
+				color: var(--bt-color-link-default, #757575);
+			}
+		}
+	}
 }

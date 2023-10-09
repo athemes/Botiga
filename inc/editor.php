@@ -27,7 +27,7 @@ function botiga_enqueue_gutenberg_assets() {
 				continue;
 			}
 
-			wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.com/' . $kit_id . '.css', array(), BOTIGA_VERSION );
+			wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.net/' . $kit_id . '.css', array(), BOTIGA_VERSION );
 		}
 	}
 	

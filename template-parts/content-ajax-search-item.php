@@ -7,7 +7,7 @@
 
 do_action( 'botiga_before_ajax_search_item' );
 
-if( $args['type'] === 'product' ) {
+if( $args['type'] === 'product' ) { // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
     $item_post_id   = $args['post_id'];
     $product        = wc_get_product( $item_post_id );
     $item_permalink = get_the_permalink( $item_post_id );
@@ -24,7 +24,7 @@ if( $args['type'] === 'product' ) {
     $item_title     = $item_term->name;
     $description    = false;
     $price          = false;
-} ?>
+} // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>
 
 <a class="botiga-ajax-search__item botiga-ajax-search__item-<?php echo esc_attr( $args['type'] ); ?>" href="<?php echo esc_url( $item_permalink ); ?>">
     <?php if( $item_image ) : ?>

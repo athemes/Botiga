@@ -10,11 +10,11 @@
     <?php 
     $this->customizer_edit_button();
     
-    // @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+    // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
     $email 	        = get_theme_mod( 'header_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
     $phone	        = get_theme_mod( 'header_contact_phone', esc_html__( '111222333', 'botiga' ) ); 
     $display_inline = get_theme_mod( 'bhfb_contact_info_display_inline', 0 ); 
-    // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+    // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
     ?>
 

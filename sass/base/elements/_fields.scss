@@ -19,8 +19,9 @@ select,
 .wc-block-product-search .wc-block-product-search__field,
 .woocommerce .select2-container .select2-selection--single,
 .woocommerce-page .select2-container .select2-selection--single {
-	color: $color__primary;
-	border: 1px solid $color__primary;
+	color: var( --bt-color-forms-text, $color__primary );
+	background-color: var( --bt-color-forms-background, transparent );
+	border: 1px solid var( --bt-color-forms-borders, $color__primary );
 	border-radius: 0;
 	padding: 12px 16px;
 	border-radius: 0;
@@ -28,7 +29,7 @@ select,
 	max-width: 100%;
 
 	&:focus {
-		color: $color__text-input-focus;
+		color: var( --bt-color-forms-text, $color__primary );
 		outline: none;
 		box-shadow: 0 0 0 1px;
 	}
@@ -36,7 +37,7 @@ select,
 
 select {
 	width: 100%;
-	border: 1px solid $color__primary;
+	border: 1px solid var( --bt-color-forms-borders, $color__primary );
 	appearance: none;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23212121' viewBox='0 0 448 512'%3E%3Cpath d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z' /%3E%3C/svg%3E");
 	background-repeat: no-repeat;
@@ -52,8 +53,8 @@ select {
 		position: absolute;
 		width: 0.4em;
 		height: 0.4em;
-		border-bottom: 1px solid #212121;
-		border-right: 1px solid #212121;
+		border-bottom: 1px solid var( --bt-color-forms-borders, $color__primary );
+		border-right: 1px solid var( --bt-color-forms-borders, $color__primary );
 		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg) translate3d(0, -50%, 0);
 		right: 1.5em;
@@ -118,7 +119,7 @@ label {
 			top: 0.25rem;
 			width: 0.4rem;
 			height: 0.6rem;
-			border: solid $color__primary;
+			border: solid var( --bt-color-forms-text, $color__primary );
 			border-width: 0 3px 3px 0;
 			transform: rotate(45deg);
 			transition: ease opacity 200ms;

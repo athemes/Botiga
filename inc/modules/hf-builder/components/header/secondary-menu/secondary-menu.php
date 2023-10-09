@@ -26,6 +26,7 @@ if ( ! botiga_get_display_conditions( 'secondary_menu_display_conditions', false
         wp_nav_menu( array(
             'theme_location'=> 'secondary',
             'menu_id'       => 'secondary',
+            'menu_class'    => 'menu botiga-dropdown-ul',
             'fallback_cb'	=> false,
             'depth'			=> 0,
             'walker'        => apply_filters( 'botiga_secondary_wp_nav_menu_walker', '' )

@@ -403,6 +403,7 @@ add_action( 'init', 'botiga_migrate_2_0_5_options' );
 
 /**
  * Migrate quick links options
+ * 
  * @since 2.0.7
  */
 function botiga_migrate_2_0_7_options() {
@@ -425,3 +426,26 @@ function botiga_migrate_2_0_7_options() {
     set_theme_mod( 'botiga_migrate_2_0_7_options_flag', true );
 }
 add_action( 'init', 'botiga_migrate_2_0_7_options' );
+
+/**
+ * Do not enable new templates builder UI to existing users.
+ * 
+ * @since 2.1.4
+ */
+function botiga_templates_builder_new_ui() {
+    $flag = get_theme_mod( 'botiga_templates_builder_new_ui_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+
+    if ( class_exists( 'Botiga_Modules' ) && Botiga_Modules::is_module_active( 'templates' ) ) {
+        update_option( 'botiga-legacy-templates-builder', true );
+    } else {
+        update_option( 'botiga-legacy-templates-builder', false );
+    }
+
+    //Set flag
+    set_theme_mod( 'botiga_templates_builder_new_ui_flag', true );
+}
+add_action( 'init', 'botiga_templates_builder_new_ui' );

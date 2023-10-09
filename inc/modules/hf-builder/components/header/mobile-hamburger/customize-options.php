@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
  
 // List of options we'll need to move.
 $opts_to_move = array(
@@ -265,4 +265,4 @@ if ( isset( $wp_customize->selective_refresh ) ) {
     );
 }
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

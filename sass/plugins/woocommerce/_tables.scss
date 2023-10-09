@@ -90,12 +90,12 @@ table.shop_table_responsive {
 
 	&.order_details,
 	&.woocommerce-MyAccount-orders {
-		background: #F8F8F8;
+		background: var(--bt-color-content-cards-bg, #f5f5f5);
 		padding: 15px 30px;
 		border-collapse: inherit;
 		text-align: left;
 		border: 0;
-		color: #000;
+		color: var(--bt-color-body-text, $color__primary);
 		
 		tr {
 			padding: 0;

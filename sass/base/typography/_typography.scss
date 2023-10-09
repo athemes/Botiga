@@ -11,25 +11,22 @@ textarea {
 }
 
 .has-gigantic-font-size {
-	font-size: 64px;
+	font-size: var( --bt-font-size-h1, 64px );
 }
 .has-huge-font-size {
-	font-size: 48px;
+	font-size: var( --bt-font-size-h2, 48px );
 }
 .has-extra-large-font-size {
-	font-size: 32px;
+	font-size: var( --bt-font-size-h3, 32px );
 }
 .has-larger-font-size {
-	font-size: 24px;
+	font-size: var( --bt-font-size-h4, 24px );
 }
 .has-large-font-size {
-	font-size: 18px;
+	font-size: var( --bt-font-size-h5, 18px );
 }
 .has-normal-font-size {
-	font-size: 16px;
-}
-.has-small-font-size {
-	font-size: 14px;
+	font-size: var( --bt-font-size-h6, 16px );
 }
 
 .smallmargin {

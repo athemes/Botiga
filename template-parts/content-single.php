@@ -10,8 +10,8 @@
 ?>
 
 <?php
-	$single_post_image_placement 	= get_theme_mod( 'single_post_image_placement', 'below' );
-	$single_post_meta_position		= get_theme_mod( 'single_post_meta_position', 'above-title' );
+	$single_post_image_placement 	= get_theme_mod( 'single_post_image_placement', 'below' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+	$single_post_meta_position		= get_theme_mod( 'single_post_meta_position', 'above-title' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php botiga_schema( 'article' ); ?>>

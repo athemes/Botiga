@@ -6,6 +6,7 @@
     .botiga-wc-account-view-order + .woocommerce-notices-wrapper + p,
     .order-info {
         padding: 25px;
+        background-color: var(--bt-color-content-cards-bg, transparent);
         mark {
             padding: 2px 5px;
         }
@@ -13,7 +14,7 @@
 
     .notes {
         padding: 40px;
-        background-color: #f5f5f5;
+        background-color: var(--bt-color-content-cards-bg, #f5f5f5);
 
         .note {
             margin-left: 15px;

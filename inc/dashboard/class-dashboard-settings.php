@@ -104,6 +104,15 @@ function botiga_dashboard_settings() {
 		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga')
 	);
 
+	$is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
+	if ( ! $is_legacy_tb && ( isset( $settings['has_pro'] ) && $settings['has_pro'] && Botiga_Modules::is_module_active( 'templates' ) ) || !$is_legacy_tb && ! $settings['has_pro'] ) {
+		$settings['tabs'] = array_merge(
+			array_slice( $settings['tabs'], 0, 2 ),
+			array( 'builder' => esc_html__( 'Templates Builder', 'botiga' ) ),
+			array_slice( $settings['tabs'], 2 )
+		);
+	}
+
 	//
 	// Settings.
 	//
@@ -115,9 +124,10 @@ function botiga_dashboard_settings() {
 	//
 	// Notifications.
 	//
-	$notifications_response    = wp_remote_get( 'https://athemes.com/wp-json/wp/v2/changelogs?themes=7085&per_page=3' );
+	$notifications_response    = wp_remote_get( 'https://athemes.com/wp-json/wp/v2/notifications?theme=7085&per_page=3' );
 	$settings['notifications'] = ! is_wp_error( $notifications_response ) || wp_remote_retrieve_response_code( $notifications_response ) === 200 ? json_decode( wp_remote_retrieve_body( $notifications_response ) ) : false;
 	$settings['notifications_tabs'] = false;
+
 
 	//
 	// Demos.
@@ -748,7 +758,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Templates Builder', 'botiga'),
 		'desc'       => esc_html__('Create custom templates for shop catalog, single products, 404 page, mega menu, modal popup and hooks.', 'botiga'),
 		'link_label' => esc_html__('Build Templates', 'botiga'),
-		'link_url'   => add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')),
+		'link_url'   => get_option( 'botiga-legacy-templates-builder' ) ? add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')) : add_query_arg(array('page' => 'botiga-dashboard', 'tab' => 'builder'), admin_url('admin.php')),
+		'link_target'=> '_self',
 		'docs_link'  => 'https://docs.athemes.com/article/pro-templates-builder-overview/'
 	);
 

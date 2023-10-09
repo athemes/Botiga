@@ -1,3 +1,9 @@
+#masthead {
+    .main-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
+}
+
 .site-header {
     background-color: #fff;
     position: relative;
@@ -284,7 +290,7 @@
         }
     }
     .botiga-dropdown {
-        li {
+        .botiga-dropdown-li {
             width: 100%;
             margin: 0;
         }
@@ -424,6 +430,10 @@
 .bottom-header-row {
     background-color: #fff;
     z-index: 998;
+
+    .main-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
 }
 .bottom-header-inner {
     padding-top: 15px;
@@ -619,6 +629,7 @@
         display: flex;
 
         .search-field {
+            font-size: var( --bt-font-size-header-search-form, 1rem );
             width: 100%;
         }
         button,
@@ -634,9 +645,15 @@
         }
 
         button {
+            font-size: var( --bt-font-size-header-search-form, 1rem );
             padding: 0.7em 1.25em !important;
             border-radius: 0;
         }
+    }
+
+    .botiga-select,
+    .botiga-select form {
+        font-size: var( --bt-font-size-header-search-form, 1rem );
     }
 
     &.header-search-form-always-visible {
@@ -687,8 +704,11 @@
     padding-bottom: 15px;   
 }
 .top-bar {
-
     border-bottom: 1px solid rgba( $color__primary, 0.1);
+
+    .secondary-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
 
     .social-profile {
         line-height: 1;

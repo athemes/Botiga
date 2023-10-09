@@ -18,28 +18,6 @@
         margin-top: 100px;
         margin-bottom: 40px;
     }
-    h1,
-    .has-gigantic-font-size {
-        @include font-size(42);
-    }
-    h2,
-    .has-huge-font-size {
-        @include font-size(32);
-    }
-    h3,
-    .has-extra-large-font-size {
-        @include font-size(24);
-    }
-    h4,
-    .has-larger-font-size {
-        @include font-size(18);
-    }
-    h5 {
-        @include font-size(16);
-    }
-    h6 {
-        @include font-size(16);
-    }
     .footer-widgets-grid.col4-bigleft,
     .footer-widgets-grid.col4-bigright,
     .footer-widgets-grid.col4 {
@@ -129,30 +107,9 @@
     .footer-widgets-grid {
         grid-template-columns: 1fr !important;
     }      
-    h1,
-    .has-gigantic-font-size,
     .woocommerce-account .entry-title,
     .woocommerce-checkout .entry-title,
     .woocommerce-cart .entry-title {
         @include font-size(32);
     }
-    h2,
-    .has-huge-font-size {
-        @include font-size(24);
-    }
-    h3,
-    .has-extra-large-font-size {
-        @include font-size(20);
-    }
-    h4,
-    .has-larger-font-size {
-        @include font-size(16);
-    }
-    h5 {
-        @include font-size(16);
-    }
-    h6 {
-        @include font-size(16);
-    }
-
 }

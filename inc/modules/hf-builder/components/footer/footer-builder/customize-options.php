@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 // List of options we'll need to move.
 $opts_to_move = array(
@@ -332,12 +332,12 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 			$wp_customize, 
 			'botiga_section_fb_wrapper__footer_builder_upsell',
 			array(
-				'title'         => esc_html__( 'More footer builder components available with Botiga Pro.', 'botiga' ),
+				'title'         => esc_html__( 'Create a more information-rich footer with Botiga Pro!', 'botiga' ),
 				'features_list' => array(
-					esc_html__( 'Extra HTML component', 'botiga' ),
-					esc_html__( 'Shortcode component', 'botiga' ),
-					esc_html__( 'Extra button component', 'botiga' ),
-					esc_html__( 'Footer menu component', 'botiga' )
+					esc_html__( 'An extra HTML component', 'botiga' ),
+					esc_html__( 'A shortcode component', 'botiga' ),
+					esc_html__( 'An additional button component', 'botiga' ),
+					esc_html__( 'An additional footer menu', 'botiga' )
 				),
 				'section'       => 'botiga_section_fb_wrapper',
 				'priority'      => 999
@@ -362,4 +362,4 @@ foreach( $opts_to_move as $control_tabs ) {
     }
 }
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.1.0' );
+	define( 'BOTIGA_VERSION', '2.1.4' );
 }
 
 // aThemes White Label Compatibility
@@ -262,7 +262,7 @@ function botiga_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 			'before_sidebar' => '<div class="sidebar-wrapper"><a href="#" role="button" class="close-sidebar" title="'. esc_attr__( 'Close sidebar', 'botiga' ) .'" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-close\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. botiga_get_svg_icon( 'icon-cancel' ) .'</a>',
-				'after_sidebar'  => '</div>'
+			'after_sidebar'  => '</div>'
 		)
 	);
 
@@ -302,7 +302,7 @@ function botiga_scripts() {
 				continue;
 			}
 
-			wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.com/' . $kit_id . '.css', array(), BOTIGA_VERSION );
+			wp_enqueue_style( 'botiga-typekit-' . $kit_id, 'https://use.typekit.net/' . $kit_id . '.css', array(), BOTIGA_VERSION );
 		}
 	}
 
@@ -367,6 +367,11 @@ function botiga_remove_page_templates( $page_templates ) {
 	return $page_templates;
 }
 add_filter( 'theme_page_templates', 'botiga_remove_page_templates' );
+
+/**
+ * Helper functions.
+ */
+require get_template_directory() . '/inc/helpers.php';
 
 /**
  * Deactivate Elementor Wizard.
@@ -479,9 +484,10 @@ require get_template_directory() . '/inc/classes/class-botiga-custom-css.php';
 require get_template_directory() . '/inc/ajax-callbacks.php';
 
 /**
- * Autoload.
+ * Legacy composer autoload.
+ * Purpose is autoload only needed kirki-framework controls classes. 
  */
-require_once get_parent_theme_file_path( 'vendor/autoload.php' );
+require_once get_parent_theme_file_path( 'vendor-legacy/autoload.php' );
 
 /**
  * Theme dashboard.

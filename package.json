@@ -50,10 +50,9 @@
     "styles-rtl": "gulp stylesRTL",
     "cache-clear": "gulp clearCache",
     "wp-env": "wp-env",
-    "start-default-instance": "wp-env clean all && wp-env start && wp-env run cli wp theme activate botiga && wp-env run tests-cli wp theme install http://localhost:6060/wp-content/zips/theme/botiga.zip --activate && wp-env run tests-cli wp plugin install http://localhost:6060/wp-content/zips/plugin/botiga-pro.zip --activate",
-    "tests-scenario-one": "wp-env clean all && wp-env start && wp-env run cli wp theme activate botiga && wp-env run cli ocdi import --content=wp-content/tests/demos/demos-content/beauty/botiga-dc-beauty.xml --customizer=wp-content/tests/demos/demos-content/beauty/botiga-c-beauty.dat --widgets=wp-content/tests/demos/demos-content/beauty/botiga-w-beauty.wie && wp-env run cli wp eval-file wp-content/themes/botiga/tests/demos/demos-content/beauty/setup-after-demo-import.php && npx playwright test scenario-one",
-    "tests-scenario-two": "wp-env clean all && wp-env start && wp-env run cli wp theme activate botiga && wp-env run cli ocdi import --content=wp-content/tests/demos/demos-content/jewelry/botiga-dc-jewelry.xml --customizer=wp-content/tests/demos/demos-content/jewelry/botiga-c-jewelry.dat --widgets=wp-content/tests/demos/demos-content/jewelry/botiga-w-jewelry.wie && wp-env run cli wp eval-file wp-content/themes/botiga/tests/demos/demos-content/jewelry/setup-after-demo-import.php && npx playwright test scenario-two",
-    "tests-php-errors": "wp-env clean all && wp-env start && wp-env run cli wp theme activate botiga && wp-env run cli ocdi import --content=wp-content/tests/demos/demos-content/beauty/botiga-dc-beauty.xml --customizer=wp-content/tests/demos/demos-content/beauty/botiga-c-beauty.dat --widgets=wp-content/tests/demos/demos-content/beauty/botiga-w-beauty.wie && wp-env run cli wp eval-file wp-content/themes/botiga/tests/php-errors.php && npx playwright test php-errors.spec.js --project=chromium",
+    "tests-scenario-one": "npx playwright test scenario-one",
+    "tests-scenario-two": "npx playwright test scenario-two",
+    "tests-php-errors": "npx playwright test php-errors.spec.js --project=chromium",
     "tests-all": "tests-scenario-one && tests-scenario-two && tests-php-errors"
   }
 }

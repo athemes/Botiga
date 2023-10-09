@@ -9,28 +9,28 @@ test.describe('Front-End — Desktop tests', () => {
 
     // Primary Menu - Dropdowns are visibible when mouse hover
     test('Primary Menu - Dropdowns are visibible when mouse hover', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '.bhfb-desktop #primary-menu .menu-item-has-children' ).first().hover();
         await expect(page.locator( '.bhfb-desktop #primary-menu li.menu-item-has-children > .sub-menu > li:nth-child(1) > a' )).toBeVisible();
     });
 
     // Secondary Menu - Dropdowns are visibible when mouse hover
     test('Secondary Menu - Dropdowns are visibible when mouse hover', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '.bhfb-desktop #secondary .menu-item-has-children' ).hover();
         await expect(page.locator( '.bhfb-desktop #secondary li.menu-item-has-children > .sub-menu > li:nth-child(1) > a' )).toBeVisible();
     });
 
     // Search form toggle is working
     test('Search form toggle is working', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.getByRole('link', { name: 'Search for a product' }).click();
         await expect( page.getByRole('searchbox', { name: 'Search for:' }) ).toBeVisible();
     });
 
     // Mini cart appear when we mouse hover the mini cart
     test('Mini cart appear when we mouse hover the mini cart icon', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '#site-header-cart' ).hover();
         await expect(page.locator( '#site-header-cart .widget_shopping_cart' )).toBeVisible();
     });
@@ -45,14 +45,14 @@ test.describe('Front-End — Mobile tests', () => {
 
     // Mobile offcanvas menu toggle is working
     test('Mobile offcanvas menu toggle is working', async ({ page }) => {        
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '.bhfb-component-mobile_hamburger .menu-toggle' ).click();
         await expect(page.locator( '.bhfb-mobile_offcanvas .menu > li:nth-child(1) > a' )).toBeVisible();
     });
 
     // Mobile offcanvas menu dropdown toggle is working
     test('Mobile offcanvas menu dropdown toggle is working', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '.bhfb-component-mobile_hamburger .menu-toggle' ).click();
         await page.locator( '.bhfb-mobile_offcanvas .menu > li.menu-item-has-children > .dropdown-symbol' ).click();
         await expect(page.locator( '.bhfb-mobile_offcanvas .menu > li.menu-item-has-children > .sub-menu > li:nth-child(1) > a' )).toBeVisible();
@@ -67,7 +67,7 @@ test.describe('Customizer Tests', () => {
 
     const adminLoginAction = async (page) => {
         await page.locator('#user_login').fill('admin');
-        await page.locator('#user_pass').fill('password');
+        await page.locator('#user_pass').fill('admin');
         await page.click('#wp-submit');
     }
 
@@ -77,7 +77,7 @@ test.describe('Customizer Tests', () => {
         // Increase the test timeout
         test.slow();
         
-        await page.goto('http://localhost:1000/wp-admin/customize.php');
+        await page.goto('http://localhost:6062/wp-admin/customize.php');
 
         // Login to admin
         await adminLoginAction( page );

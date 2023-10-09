@@ -17,10 +17,10 @@
 	}
 
 	a {
-		color: $color__text-main;
+		color: var(--bt-color-body-text, $color__primary);
 
 		&:hover {
-			color: $color__primary;
+			color: var(--bt-color-link-hover, #757575);
 		}
 	}
 
@@ -108,6 +108,23 @@
 	li {
 		.reviewer {
 			font-size: 0.8em;
+		}
+	}
+}
+
+// Botiga Widgets
+.botiga-widget {
+	.botiga-widget-list-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+
+		> input[type="checkbox"] {
+			margin-top: 0.4rem;
+		}
+
+		> label {
+			cursor: pointer;
 		}
 	}
 }

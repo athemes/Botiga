@@ -62,7 +62,7 @@
         transition: ease opacity 300ms;
 
         svg {
-            fill: $color__primary;
+            fill: var(--bt-color-body-text, $color__primary);
             width: 14px;
             path {
                 transform: scale(0.75);

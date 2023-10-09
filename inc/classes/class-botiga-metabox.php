@@ -77,8 +77,8 @@ class Botiga_Metabox {
 			),
 		) );
 	
-		wp_enqueue_script( 'botiga-select2', get_template_directory_uri() . '/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true );
-		wp_enqueue_style( 'botiga-select2', get_template_directory_uri() . '/vendor/select2/select2.min.css', array(), '4.0.13', 'all' );
+		wp_enqueue_script( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true );
+		wp_enqueue_style( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.13', 'all' );
 
 		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', BOTIGA_VERSION );
 		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery', 'jquery-ui-sortable' ), BOTIGA_VERSION, true );
@@ -484,7 +484,7 @@ class Botiga_Metabox {
 
 			case 'repeater':
 			case 'uploads':
-				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( array_map( 'sanitize_text_field', $value ) ) : array();
+				return ( is_array( $value ) && ! empty( $value ) ) ? array_filter( map_deep( $value, 'sanitize_text_field' ) ) : array();
 			break;
 
 			case 'size-chart':
@@ -728,20 +728,48 @@ class Botiga_Metabox {
 
 				echo '<div class="botiga-metabox-field-uploads-content">';
 
-					$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
+					$values 	= ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
+					$name 		= $field['library'] === 'video' ? $field_id . '[0][src]' : $field_id . '[]';
+                    $thumb_name = $field_id . '[0][thumb]';
 
 					echo '<ul class="botiga-metabox-field-uploads-list" data-library="'. esc_attr( $field['library'] ) .'">';
 
 						echo '<li class="botiga-metabox-field-uploads-list-item hidden">';
-						echo '<input type="text" name="" value="" data-name="'. esc_attr( $field_id ) .'[]" />';
+						
+						if( 'video' === $field['library'] ) {
+							echo '<div class="botiga-metabox-field-uploads-thumbnail">';
+							echo '<a href="#" class="botiga-metabox-field-uploads-thumbnail-remove dashicons dashicons-dismiss" style="display:none"></a>';
+							echo '<a href="#" class="botiga-metabox-field-uploads-thumbnail-upload"><span>+</span></a>';
+							echo '<input type="hidden" name="" value="" data-name="' . esc_attr( $thumb_name ) . '" />';
+							echo '</div>';
+						}
+ 						echo '<input type="text" name="" value="" data-name="'. esc_attr( $name ) .'" />';
 						echo '<button class="botiga-metabox-field-uploads-upload button">'. esc_html__( 'Upload', 'botiga' ) .'</button>';
 						echo '<span class="botiga-metabox-field-uploads-move dashicons dashicons-menu"></span>';
 						echo '<span class="botiga-metabox-field-uploads-remove dashicons dashicons-trash"></span>';
 						echo '</li>';
 
 						foreach ( $values as $key => $value ) {
+							$item_name 	= $field['library'] === 'video' ? str_replace('0', $key, $name) : $name;
+							$item_value = is_array($value) ? ( isset( $value['src'] ) ? $value['src'] : '' ) : $value;
+
 							echo '<li class="botiga-metabox-field-uploads-list-item">';
-							echo '<input type="text" name="'. esc_attr( $field_id ) .'[]" value="'. esc_attr( $value ) .'" />';
+							if( $field['library'] === 'video' ) {
+								$item_thumb 	 = is_array( $value ) && isset( $value['thumb'] ) ? $value['thumb'] : '';
+								$item_thumb_name = str_replace( '0', $key, $thumb_name );
+
+								echo '<div class="botiga-metabox-field-uploads-thumbnail">';
+                                echo '<a href="#" class="botiga-metabox-field-uploads-thumbnail-remove dashicons dashicons-dismiss" '. ( empty( $item_thumb ) ? 'style="display: none"' : '' ) .'></a>';
+								echo '<a href="#" class="botiga-metabox-field-uploads-thumbnail-upload">';
+								echo empty( $item_thumb )
+									? '<span>+</span>'
+									: '<img src="' . esc_url( wp_get_attachment_thumb_url( $item_thumb ) ) . '" /><span style="display: none">+</span>';
+								echo '</a>';
+								echo '<input type="hidden" name="'. esc_attr( $item_thumb_name ) .'" value="' . absint( $item_thumb ) . '" />';
+								echo '</div>';
+							}
+							echo '<input type="text" name="'. esc_attr( $item_name ) .'" value="'. esc_attr( $item_value ) .'" />';
+
 							echo '<button class="botiga-metabox-field-uploads-upload button">'. esc_html__( 'Upload', 'botiga' ) .'</button>';
 							echo '<span class="botiga-metabox-field-uploads-move dashicons dashicons-menu"></span>';
 							echo '<span class="botiga-metabox-field-uploads-remove dashicons dashicons-trash"></span>';

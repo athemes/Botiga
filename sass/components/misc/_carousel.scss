@@ -7,6 +7,24 @@
 			opacity: 0;
 			visibility: hidden;
 		}
+
+		.botiga-carousel-wrapper {
+			.botiga-carousel-nav {
+				svg {
+					path {
+						color: var(--bt-color-link-default, $color__primary);
+					}
+				}
+
+				&:hover {
+					svg {
+						path {
+							color: var(--bt-color-link-hover, #757575);
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -73,7 +91,8 @@
             justify-content: center;
             top: 50%;
             right: 15px;
-            background: $color__primary;
+			color: var(--bt-color-button, #FFF);
+            background: var(--bt-color-button-bg, $color__primary);
             width: 35px;
             height: 35px;
             opacity: 0;
@@ -88,7 +107,8 @@
                 }
             }
             &:hover {
-                background: $color__hover;
+				color: var(--bt-color-button-hover, #FFF);
+                background: var(--bt-color-button-bg-hover, #757575);
             }
         }
         .botiga-carousel-nav-prev {

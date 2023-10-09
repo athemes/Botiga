@@ -57,7 +57,7 @@
 		z-index: 1;
 		display: block;
 		border: 0;
-		background: $color__primary;
+		background: var(--bt-color-body-text, $color__primary);
 	}
 
 	.price_slider_wrapper .ui-widget-content {

@@ -12,7 +12,7 @@ class Botiga_Color_Group extends WP_Customize_Control {
 	public $remove_bordertop = false;
 
 	public function enqueue() {
-		wp_enqueue_script( 'botiga-pickr', get_template_directory_uri() . '/vendor/pickr/pickr.min.js', array( 'jquery' ), '1.8.2', true );
+		wp_enqueue_script( 'botiga-pickr', get_template_directory_uri() . '/assets/vendor/pickr/pickr.min.js', array( 'jquery' ), '1.8.2', true );
 	}
 
 	public function render_content() {
