@@ -36,7 +36,7 @@ if (!defined('ABSPATH')) {
                                 echo sprintf(
                                     /* translators: 1: athemes website login url */
                                     esc_html__( 'To get your key, please login to your %1$saThemes account%2$s.', 'botiga' ),
-                                    '<a href="https://www.athemes.com/login/" target="_blank">',
+                                    '<a href="https://www.athemes.com/your-account/" target="_blank">',
                                     '</a>'
                                 ); ?>
                             </li>
