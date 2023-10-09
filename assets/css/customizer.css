@@ -507,6 +507,13 @@ li.control-section-botiga-section-hidden {
 }
 
 /* Upsell Section and Panel */
+#customize-theme-controls .control-section.control-section-botiga-section-upsell,
+#customize-theme-controls .control-panel.control-section-botiga-section-upsell,
+#customize-outer-theme-controls .control-section.control-section-botiga-section-upsell,
+#customize-outer-theme-controls .control-panel.control-section-botiga-section-upsell {
+  cursor: pointer;
+}
+
 #customize-theme-controls .control-section.control-section-botiga-section-upsell, #customize-theme-controls .control-section.control-panel-botiga-panel-upsell,
 #customize-theme-controls .control-panel.control-section-botiga-section-upsell,
 #customize-theme-controls .control-panel.control-panel-botiga-panel-upsell,
@@ -1686,6 +1693,10 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
   margin-top: 20px;
 }
 
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list-title {
+  margin-top: 10px;
+}
+
 .botiga-upsell-feature-wrapper .botiga-upsell-features-list {
   list-style: none;
   padding: 0;
@@ -1710,6 +1721,10 @@ label[for="search_icon-icon-custom"] .img-cont, label[for="cart_icon-icon-custom
 
 .botiga-upsell-feature-wrapper .botiga-upsell-features-list li + li {
   margin-top: 10px;
+}
+
+.botiga-upsell-feature-wrapper .botiga-upsell-features-list a {
+  margin-left: 5px;
 }
 
 .botiga-upsell-feature-wrapper .botiga-upsell-features-list + .botiga-upsell-button {

@@ -86,7 +86,13 @@
 .single {
 	.entry-header {
 		.entry-title {
+			color: var(--bt-color-post-title, $color__primary);
 			margin: 0;
+		}
+	}
+	.entry-meta {
+		a {
+			color: var(--bt-color-post-meta, $color__primary);
 		}
 	}
 	.entry-meta-above {
@@ -98,7 +104,7 @@
 }
 
 .entry-meta {
-	@include font-size(14);
+	font-size: var( --bt-font-size-post-meta, 14px );
 	color: $color__grey;
 
 	a {
@@ -265,6 +271,7 @@
 			svg {
 				width: 28px;
 				height: 28px;
+				fill: var(--bt-color-body-text, #212121);
 				&[onclick] {
 					cursor: pointer;
 				}
@@ -315,6 +322,12 @@
 					}
 				}
 			}
+
+			&:hover {
+				svg {
+					fill: var(--bt-color-link-default, $color__primary);
+				}
+			}
         }
     }
 }
@@ -325,7 +338,11 @@
 			@include font-size(16);
 
 			a {
-				color: $color__primary;
+				color: var( --bt-color-body-text, $color__primary );
+
+				&:hover {
+					color: var( --bt-color-link-hover, #757575 );
+				}
 			}
 		}
 		.post-thumbnail {
@@ -334,7 +351,11 @@
 		.posted-on {
 			a {
 				@include font-size(14);
-				color: $color__grey;
+				color: var(--bt-color-link-default, #212121);
+
+				&:hover {
+					color: var(--bt-color-link-hover, #757575);
+				}
 			}
 		}
 	}
@@ -547,12 +568,10 @@
 }
 
 .entry-title {
-	@include font-size(32);
 	margin: 0 0 12px;
 }
 
 .page-title {
-	@include font-size(64);
 	margin: 0 0 12px;
 }
 
@@ -574,18 +593,29 @@
 		}
 	}
 	.entry-title {
-		@include font-size(18);
+		font-size: var( --bt-font-size-loop-post-title, 18px );
 		font-weight: 400;
 		margin: 0;
 
 		a {
-			color: $color__primary;
+			color: var(--bt-color-loop-post-title, $color__primary);
 		}
 	}
 
 	.entry-meta {
+		font-size: var( --bt-font-size-loop-post-meta, 14px );
 		margin: 8px 0;
+
+		a {
+			color: var(--bt-color-loop-post-meta, $color__primary);
+		}
 	}
+
+	.entry-content {
+		color: var(--bt-color-loop-post-text, $color__primary);
+		font-size: var( --bt-font-size-loop-post-text, 16px );
+	}
+
 	.post-align-left {
 		text-align: left;
 

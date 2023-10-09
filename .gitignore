@@ -3,3 +3,5 @@ node_modules
 /playwright-report/
 /test-results/
 /playwright/.cache/
+/vendor/
+**.code-workspace

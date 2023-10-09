@@ -230,8 +230,7 @@
 		text-decoration: underline;
 	}
 	&.botiga-dashboard-link-danger {
-		color: #FA1212 !important;
-		text-decoration: underline;
+		color: #f34343 !important;
 	}
 	&.botiga-dashboard-link-info {
 		color: #3858E9 !important;
@@ -373,7 +372,7 @@
 		&.botiga-dahsboard-modules-deactivate-all {
 			color: #FA1212;
 			background-color: #FFECEC;
-			border-color: #FA1212;
+			border-color: #FFECEC;
 	
 			&:hover,
 			&:focus,
@@ -709,6 +708,46 @@
 
 		p {
 			color: #757575;
+		}
+	}
+}
+
+/* Alert */
+.botiga-dashboard-alert {
+    background-color: #fbfbfb;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    padding: 20px;
+	margin: 20px 0;
+
+	p {
+		margin: 0;
+	}
+
+	&.botiga-dashboard-alert-with-icon {
+		position: relative;
+		padding-left: 50px;
+
+		.alert-icon {
+			position: absolute;
+			top: 21px;
+			left: 20px;
+			max-width: 17px;
+
+			svg {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	&.botiga-dashboard-alert-with-upsell-link {
+		padding-right: 160px;
+
+		.botiga-dashboard-external-link {
+			position: absolute;
+			top: 22px;
+			right: 20px;
 		}
 	}
 }

@@ -98,7 +98,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 			$components = $this->get_topbar_components( $location );
 
 			if( has_nav_menu( 'top-bar-mobile' ) ) {
-				array_splice( $components, array_search( 'secondary_nav', $components ), 0,'secondary_nav_mobile' );
+				array_splice( $components, array_search( 'secondary_nav', $components ), 0, 'secondary_nav_mobile' );
 			}
 
 			foreach ( $components as $component ) {
@@ -206,6 +206,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				wp_nav_menu( array(
 					'theme_location'=> 'top-bar-mobile',
 					'menu_id'       => 'top-bar-mobile',
+					'menu_class'    => 'menu botiga-dropdown-ul',
 					'fallback_cb'	=> false,
 					'depth'			=> 0
 				) );

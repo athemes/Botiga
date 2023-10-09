@@ -95,9 +95,11 @@ class Botiga_WC_Brands {
          * Shop Archive
          */
         // Tabs control
-        $controls_general     = json_decode( $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general );
-        $new_controls_general = array( '#customize-control-shop_archive_header_cats_includes_brands' );
-        $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general = json_encode( array_merge( $controls_general, $new_controls_general ) );
+        if( $wp_customize->get_control( 'botiga_product_catalog_tabs' ) ) {
+            $controls_general     = json_decode( $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general );
+            $new_controls_general = array( '#customize-control-shop_archive_header_cats_includes_brands' );
+            $wp_customize->get_control( 'botiga_product_catalog_tabs' )->controls_general = json_encode( array_merge( $controls_general, $new_controls_general ) );
+        }
 
         // Display brands with categories
         $wp_customize->add_setting(
@@ -125,9 +127,9 @@ class Botiga_WC_Brands {
          * Single Product
          */
         // Tabs control
-        $controls_general     = json_decode( $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general );
+        $controls_general     = json_decode( $wp_customize->get_control( 'botiga_single_product_layout_tabs' )->controls_general );
         $new_controls_general = array( '#customize-control-botiga_wc_brands_brand_image_width', '#customize-control-botiga_wc_brands_brand_image_height' );
-        $wp_customize->get_control( 'botiga_single_product_tabs' )->controls_general = json_encode( array_merge( $controls_general, $new_controls_general ) );
+        $wp_customize->get_control( 'botiga_single_product_layout_tabs' )->controls_general = json_encode( array_merge( $controls_general, $new_controls_general ) );
 
         // Brand image width
         $wp_customize->add_setting( 
@@ -143,7 +145,7 @@ class Botiga_WC_Brands {
                 'botiga_wc_brands_brand_image_width',
                 array(
                     'label' 		=> esc_html__( 'Brand Image Width', 'botiga' ),
-                    'section' 		=> 'botiga_section_single_product',
+                    'section' 		=> 'botiga_section_single_product_layout',
                     'active_callback' => array( $this, 'is_brand_element_active' ),
                     'is_responsive'	=> 0,
                     'settings' 		=> array (
@@ -173,7 +175,7 @@ class Botiga_WC_Brands {
                 'botiga_wc_brands_brand_image_height',
                 array(
                     'label' 		=> esc_html__( 'Brand Image Height', 'botiga' ),
-                    'section' 		=> 'botiga_section_single_product',
+                    'section' 		=> 'botiga_section_single_product_layout',
                     'active_callback' => array( $this, 'is_brand_element_active' ),
                     'is_responsive'	=> 0,
                     'settings' 		=> array (
@@ -203,6 +205,6 @@ function botiga_wc_brands_brand() {
     $height = get_theme_mod( 'botiga_wc_brands_brand_image_height', 65 );
 
     echo '<div class="botiga-wc-brands-brand-wrapper">';
-        echo do_shortcode( "[product_brand width=\"${width}px\" height=\"${height}px\" class=\"botiga-wc-brands-brand-image\"]" );
+        echo do_shortcode( "[product_brand width=\"{$width}px\" height=\"{$height}px\" class=\"botiga-wc-brands-brand-image\"]" );
     echo '</div>';
 }

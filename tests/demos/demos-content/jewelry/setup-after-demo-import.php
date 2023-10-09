@@ -105,43 +105,43 @@ function botiga_setup_after_import( $demo_id ) {
 	update_option( 'show_on_front', 'page' );
 
 	// Asign the front page.
-	$front_page = get_page_by_title( 'Home' );
+	$front_page = tests_custom_get_page_by_title2( 'Home' );
 	if ( ! empty( $front_page ) ) {
 		update_option( 'page_on_front', $front_page->ID );
 	}
 
 	// Asign the blog page.
-	$blog_page  = get_page_by_title( 'Blog' );
+	$blog_page  = tests_custom_get_page_by_title2( 'Blog' );
 	if ( ! empty( $blog_page ) ) {
 		update_option( 'page_for_posts', $blog_page->ID );
 	}
 
 	// My wishlist page
-	$wishlist_page = get_page_by_title( 'My Wishlist' );
+	$wishlist_page = tests_custom_get_page_by_title2( 'My Wishlist' );
 	if ( ! empty( $wishlist_page ) ) {
 		update_option( 'botiga_wishlist_page_id', $wishlist_page->ID );
 	}
 
 	// Asign the shop page.
-	$shop_page = ( 'single-product' === $demo_id ) ? get_page_by_title( 'Listing' ) : get_page_by_title( 'Shop' );
+	$shop_page = ( 'single-product' === $demo_id ) ? tests_custom_get_page_by_title2( 'Listing' ) : tests_custom_get_page_by_title2( 'Shop' );
 	if ( ! empty( $shop_page ) ) {
 		update_option( 'woocommerce_shop_page_id', $shop_page->ID );
 	}
 
 	// Asign the cart page.
-	$cart_page = get_page_by_title( 'Cart' );
+	$cart_page = tests_custom_get_page_by_title2( 'Cart' );
 	if ( ! empty( $cart_page ) ) {
 		update_option( 'woocommerce_cart_page_id', $cart_page->ID );
 	}
 
 	// Asign the checkout page.
-	$checkout_page  = get_page_by_title( 'Checkout' );
+	$checkout_page  = tests_custom_get_page_by_title2( 'Checkout' );
 	if ( ! empty( $checkout_page ) ) {
 		update_option( 'woocommerce_checkout_page_id', $checkout_page->ID );
 	}
 
 	// Asign the myaccount page.
-	$myaccount_page = get_page_by_title( 'My Account' );
+	$myaccount_page = tests_custom_get_page_by_title2( 'My Account' );
 	if ( ! empty( $myaccount_page ) ) {
 		update_option( 'woocommerce_myaccount_page_id', $myaccount_page->ID );
 	}
@@ -249,3 +249,35 @@ insert_widget_in_sidebar( 'botiga_widget_product_swatch_filter', array(
 	'before_title' => '<div class="widget-title">',
 	'after_title' => '</div>'
 ), 'shop-sidebar-1' );
+
+/**
+ * Get page by title
+ * The core WordPress function 'get_page_by_title' were deprecated since 6.2.0
+ * More info: https://make.wordpress.org/core/2023/03/06/get_page_by_title-deprecated/
+ *
+ * @param string $page_title The title of the page.
+ */
+function tests_custom_get_page_by_title2( $page_title ) {
+	$query = new WP_Query(
+		array(
+			'post_type'              => 'page',
+			'title'                  => $page_title,
+			'post_status'            => 'all',
+			'posts_per_page'         => 1,
+			'no_found_rows'          => true,
+			'ignore_sticky_posts'    => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+			'orderby'                => 'post_date ID',
+			'order'                  => 'ASC',
+		)
+	);
+	
+	if ( ! empty( $query->post ) ) {
+		$page_got_by_title = $query->post;
+	} else {
+		$page_got_by_title = null;
+	}
+	
+	return $page_got_by_title;
+}

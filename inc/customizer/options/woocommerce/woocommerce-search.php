@@ -210,6 +210,26 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'shop_search_ajax_display_see_all',
+	array(
+		'default'           => 0,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_ajax_display_see_all',
+		array(
+			'label'         	=> esc_html__( 'Display See All Products Link', 'botiga' ),
+			'section'       	=> 'botiga_section_shop_search',
+			'active_callback'   => 'botiga_shop_search_ajax_is_enabled',
+			'priority'	 		=> 51
+		)
+	)
+);
+
+$wp_customize->add_setting(
 	'shop_search_enable_popular_products',
 	array(
 		'default'           => 0,

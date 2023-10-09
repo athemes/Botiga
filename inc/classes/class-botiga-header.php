@@ -596,8 +596,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					<?php
 					wp_nav_menu(
 						array(
-							'theme_location' => 'primary',
+							'theme_location' => has_nav_menu( 'primary' ) ? 'primary' : '',
 							'menu_id'        => 'primary-menu',
+							'menu_class'     => 'botiga-dropdown-ul menu',
 							'walker'         => apply_filters( 'botiga_primary_wp_nav_menu_walker', '' )
 						)
 					);
@@ -619,8 +620,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				<?php
 				wp_nav_menu(
 					array(
-						'theme_location' => $location,
+						'theme_location' => has_nav_menu( $location ) ? $location : '',
 						'menu_id'        => "$location-menu",
+						'menu_class'     => 'botiga-dropdown-ul menu',
 						'walker'         => apply_filters( 'botiga_mobile_primary_wp_nav_menu_walker', '' )
 					)
 				);
@@ -738,10 +740,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					$output .= apply_filters( 'botiga_header_login_register_before_first_dropdown_item', '' );
 
 					$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">'. esc_html__( 'Dashboard', 'botiga' ) .'</a>';
-					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Orders', 'botiga' ) .'</a>';
-					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'downloads', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Downloads', 'botiga' ) .'</a>';
-					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Addresses', 'botiga' ) .'</a>';
-					$output .= '<a href="'. esc_url( wc_get_endpoint_url( 'edit-account', '', wc_get_page_permalink( 'myaccount' ) ) ) .'">'. esc_html__( 'Account Details', 'botiga' ) .'</a>';
+
+					if( ! empty( $endpoints[ 'orders' ] ) ) {
+						$output .= '<a href="' . wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Orders', 'botiga' ) . '">' . __( 'Orders', 'botiga' ) . '</a>';
+					}
+			
+					if( ! empty( $endpoints[ 'downloads' ] ) ) {
+						$output .= '<a href="' . wc_get_endpoint_url( 'downloads', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Downloads', 'botiga' ) . '">' . __( 'Downloads', 'botiga' ) . '</a>';
+					}
+			
+					if( ! empty( $endpoints[ 'edit-address' ] ) ) {
+						$output .= '<a href="' . wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Addresses', 'botiga' ) . '">' . __( 'Addresses', 'botiga' ) . '</a>';
+					}
+			
+					if( ! empty( $endpoints[ 'edit-account' ] ) ) {
+						$output .= '<a href="' . wc_get_endpoint_url( 'edit-account', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Account details', 'botiga' ) . '">' . __( 'Account Details', 'botiga' ) . '</a>';
+					}
 
 					/**
 					 * Filter: botiga_header_login_register_before_logout_dropdown_item
@@ -779,7 +793,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		/**
 		 * Woocommerce icons
 		 */
-		function woocommerce_icons() {
+		public function woocommerce_icons() {
 
 			if ( !class_exists( 'WooCommerce' ) ) {
 				return;
@@ -791,7 +805,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		/**
 		 * Mobile Woocommerce icons
 		 */
-		function mobile_woocommerce_icons() {
+		public function mobile_woocommerce_icons() {
 
 			if ( !class_exists( 'WooCommerce' ) ) {
 				return;
@@ -803,7 +817,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		/**
 		 * Mobile Offcanvas Woocommerce icons
 		 */
-		function mobile_offcanvas_woocommerce_icons() {
+		public function mobile_offcanvas_woocommerce_icons() {
 
 			if ( !class_exists( 'WooCommerce' ) ) {
 				return;

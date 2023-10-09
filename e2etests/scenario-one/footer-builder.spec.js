@@ -9,7 +9,7 @@ test.describe('Front-End — Desktop tests', () => {
 
     // Footer menu - Dropdowns are visibible when mouse hover
     test('Footer menu - Dropdowns are visibible when mouse hover', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '.bhfb-desktop #footer-copyright-menu .menu-item-has-children' ).hover();
         await expect(page.locator( '.bhfb-desktop #footer-copyright-menu li.menu-item-has-children > .sub-menu > li:nth-child(1) > a' )).toBeVisible();
     });
@@ -24,7 +24,7 @@ test.describe('Front-End — Mobile tests', () => {
 
     // Mobile footer menu dropdown toggle is working
     test('Mobile footer menu dropdown toggle is working', async ({ page }) => {
-        await page.goto('http://localhost:1000/');
+        await page.goto('http://localhost:6062/');
         await page.locator( '.bhfb-component-footer_menu .menu > li.menu-item-has-children > .dropdown-symbol' ).click();
         await expect(page.locator( '.bhfb-component-footer_menu .menu > li.menu-item-has-children > .sub-menu > li:nth-child(1) > a' )).toBeVisible();
     });
@@ -38,7 +38,7 @@ test.describe('Customizer Tests', () => {
 
     const adminLoginAction = async (page) => {
         await page.locator('#user_login').fill('admin');
-        await page.locator('#user_pass').fill('password');
+        await page.locator('#user_pass').fill('admin');
         await page.click('#wp-submit');
     }
 
@@ -48,7 +48,7 @@ test.describe('Customizer Tests', () => {
         // Increase the test timeout
         test.slow();
         
-        await page.goto('http://localhost:1000/wp-admin/customize.php');
+        await page.goto('http://localhost:6062/wp-admin/customize.php');
 
         // Login to admin
         await adminLoginAction( page );

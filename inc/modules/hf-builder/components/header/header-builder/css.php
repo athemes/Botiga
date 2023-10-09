@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 $header_transparent         = get_theme_mod( 'header_transparent', 0 );
 $header_transparent_hb_rows = get_theme_mod( 'header_transparent_hb_rows', 'main-row' );
@@ -77,4 +77,4 @@ if( $hb_background_image ) {
 // Background Color
 $css .= Botiga_Custom_CSS::get_background_color_css( 'botiga_section_hb_wrapper__header_builder_background_color', '', '.bhfb-header.bhfb-desktop, .bhfb-header.bhfb-mobile' );
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

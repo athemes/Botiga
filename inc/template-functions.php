@@ -6,6 +6,50 @@
  */
 
 /**
+ * Add botiga class to nav menu ul sub-menu.
+ *
+ * @param array $classes Classes for the ul element.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @return array $classes Updated classes for the ul element. 
+ */
+function botiga_nav_menu_submenu_css_class( $classes, $args, $depth ) {
+	$classes[] = 'botiga-dropdown-ul';
+	return $classes;
+}
+add_filter( 'nav_menu_submenu_css_class', 'botiga_nav_menu_submenu_css_class', 10, 3 );
+
+/**
+ * Add botiga class to nav menu li.
+ * 
+ * @param array $classes Classes for the li element.
+ * @param WP_Post $menu_item Menu item data object.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @return array $classes Updated classes for the li element.
+ */
+function botiga_nav_menu_css_class( $classes, $menu_item, $args, $depth ) {
+	$classes[] = 'botiga-dropdown-li';
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'botiga_nav_menu_css_class', 10, 4 );
+
+/**
+ * Add botiga class to nav menu anchor.
+ * 
+ * @param array $atts Array with attributes.
+ * @param WP_Post $menu_item Menu item data object.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
+ * @return array $atts Updated attributes for the li element.
+ */
+function botiga_nav_menu_link_attributes( $atts, $menu_item, $args, $depth ) {
+	$atts[ 'class' ] = 'botiga-dropdown-link';
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'botiga_nav_menu_link_attributes', 10, 4 );
+
+/**
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
@@ -156,8 +200,8 @@ add_filter( 'walker_nav_menu_start_el', 'botiga_add_submenu_icons', 10, 4 );
 /**
  * Get SVG code for specific theme icon
  */
-function botiga_get_svg_icon( $icon, $echo = false ) {
-	$svg_code = wp_kses( //From TwentTwenty. Keeps only allowed tags and attributes
+function botiga_get_svg_icon( $icon, $echo = false, $wpkses = true ) {
+	$svg_code = $wpkses ? wp_kses( //From TwentTwenty. Keeps only allowed tags and attributes
 		Botiga_SVG_Icons::get_svg_icon( $icon ),
 		array(
 			'svg'     => array(
@@ -195,7 +239,7 @@ function botiga_get_svg_icon( $icon, $echo = false ) {
 				'transform' => true
 			),				
 		)
-	);	
+	) : Botiga_SVG_Icons::get_svg_icon( $icon );
 
 	if ( $echo != false ) {
 		echo $svg_code; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -792,7 +836,7 @@ function botiga_google_fonts_url() {
 	// Load google fonts locally
 	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
 	if( $load_locally ) {
-		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		require_once get_theme_file_path( 'vendor/wptt/webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 		return wptt_get_webfont_url( $fonts_url );
 	}
@@ -808,7 +852,14 @@ function botiga_custom_google_fonts_url() {
 	$fonts_url     = '';
 	$subsets       = 'latin';
 	$font_families = array();
-	$google_fonts  = array_column( botiga_get_google_fonts(), 'family' );
+	$google_fonts  = botiga_get_google_fonts();
+
+	
+	if( 'error' === $google_fonts ) {
+		return;
+	}
+
+	$google_fonts  = array_column( $google_fonts, 'family' );
 
 	$body_custom_font                        = get_theme_mod( 'botiga_body_custom_font', '' );
 	$body_custom_font_weight                 = get_theme_mod( 'botiga_body_custom_font_weight', '' );
@@ -916,39 +967,32 @@ function botiga_custom_google_fonts_url() {
 	$load_locally = Botiga_Modules::is_module_active( 'local-google-fonts' );
 
 	if ( $load_locally ) {
-		require_once get_theme_file_path( 'vendor/wptt-webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		require_once get_theme_file_path( 'vendor/wptt/webfont-loader/wptt-webfont-loader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		return wptt_get_webfont_url( $fonts_url );
 	}
 
-
 	return esc_url_raw( $fonts_url );
-
 }
 
 /**
  * Get google fonts
  */
 function botiga_get_google_fonts() {
+	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
-	$fontFile = get_template_directory_uri() . '/inc/customizer/controls/typography/google-fonts-alphabetical.json';
-	$request  = wp_remote_get( $fontFile );
-	$status   = wp_remote_retrieve_response_code( $request );
+	$fontFile 		= get_parent_theme_file_path( '/inc/customizer/controls/typography/google-fonts-alphabetical.json' );
+	$file_system 	= new WP_Filesystem_Direct( false );
+	$content 		= json_decode( $file_system->get_contents( $fontFile ) );
 
-	if( is_wp_error( $request ) || $status !== 200 ) {
-		return "error";
-	}
-
-	$body    = wp_remote_retrieve_body( $request );
-	$content = json_decode( $body, true );
 	$fonts   = array();
 
-	if ( ! empty( $content ) && ! empty( $content['items'] ) ) {
-		$fonts = $content['items'];
+	if ( isset( $content->items ) && ! empty( $content->items ) ) {
+		$fonts = $content->items;
 		unset( $fonts[0] ); // Remove system font option
 	}
 
 	return $fonts;
-
 }
 
 /**
@@ -1271,14 +1315,13 @@ function botiga_get_registered_sidebars() {
  * Display Conditions
  */
 function botiga_get_display_conditions( $maybe_rules, $default = true, $mod_default = '[]' ) {
-
 	$rules  = array();
 	$result = $default;
 
 	if ( is_array( $maybe_rules ) && ! empty( $maybe_rules ) ) {
 		$rules = $maybe_rules;
 	} else {
-		$option = get_theme_mod( $maybe_rules, $mod_default );
+		$option = empty( $maybe_rules ) ? get_theme_mod( '', $mod_default ) : get_theme_mod( $maybe_rules, $mod_default );
 		$rules  = json_decode( $option, true );
 	}
 
@@ -1531,6 +1574,7 @@ function botiga_get_custom_fonts() {
 						$css .= 'src: url("'. esc_url( $font['eot'] ) .'");';
 					}
 					$css .= 'src: '. join( ',', $src ) .';';
+					$css .= 'font-display: swap;';
 					$css .= '}';
 
 				}
@@ -1567,7 +1611,7 @@ function botiga_get_permalink( $post = 0 ) {
 
 	// WPML
 	if ( has_filter( 'wpml_object_id' ) ) {
-		$post_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
+		$post_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 	}
 
 	return get_permalink( $post_id );

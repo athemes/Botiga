@@ -14,7 +14,7 @@ if  ( empty( $this->settings['settings'] ) ) {
 	return;
 }
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 ?>
 
@@ -71,4 +71,4 @@ if  ( empty( $this->settings['settings'] ) ) {
 </div>
 
 <?php 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

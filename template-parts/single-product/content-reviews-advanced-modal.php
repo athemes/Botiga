@@ -20,7 +20,7 @@ global $_product; ?>
                 <?php echo get_the_post_thumbnail( $_product->get_id(), 'woocommerce_thumbnail' ); ?>
                 <div class="modal-product-info">
                     <h5><?php echo esc_html( $_product->get_name() ); ?></h5>
-                    <p><?php echo esc_html( $_product->get_short_description() ); ?></p>
+                    <?php echo wp_kses_post( $_product->get_short_description() ); ?>
                 </div>
             </div>
             <div class="botiga-adv-reviews-modal-rating">
@@ -92,7 +92,7 @@ global $_product; ?>
 
                             $comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'botiga' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="5" required></textarea></p>';
 
-                            comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ), $_product->get_id() ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                            comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ), $_product->get_id() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
                             ?>
                         </div>
                     </div>

@@ -8,7 +8,7 @@
 $products = isset( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) ) : false;
 
 if( $products ) : 
-    $products = explode( ',', $products ); ?>
+    $products = explode( ',', $products ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>
     
     <div class="botiga-wishlist-wrapper woocommerce-cart-form">
         <table class="shop_table shop_table_responsive botiga_wishlist_table" cellspacing="0">
@@ -24,11 +24,11 @@ if( $products ) :
             </thead>
             <tbody>
                 <?php
-                foreach ( $products as $product_id ) {
-                    $_product = wc_get_product( $product_id );
+                foreach ( $products as $product_id ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+                    $_product = wc_get_product( $product_id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
                     if ( $_product && $_product->exists() ) {
-                        $product_permalink = $_product->is_visible() ? $_product->get_permalink() : '';
+                        $product_permalink = $_product->is_visible() ? $_product->get_permalink() : ''; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                         ?>
                         <tr class="botiga-wishlist-row-item woocommerce-cart-form__cart-item">
 
@@ -50,7 +50,7 @@ if( $products ) :
 
                             <td class="product-thumbnail">
                                 <?php
-                                $thumbnail = $_product->get_image();
+                                $thumbnail = $_product->get_image(); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
                                 if ( ! $product_permalink ) {
                                     echo $thumbnail; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -88,7 +88,7 @@ if( $products ) :
 
                             <td class="product-addtocart" data-title="<?php esc_attr_e( 'Add to Cart', 'botiga' ); ?>">
                                 <?php
-                                    switch ( $_product->get_type() ) {
+                                    switch ( $_product->get_type() ) { // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                                         case 'grouped':
                                             $button_class = '';
                                             $button_text  = __( 'View Products', 'botiga' );
@@ -103,8 +103,8 @@ if( $products ) :
                                 
                                         case 'external':
                                             $button_class = '';
-                                            $button_text  = $_product->single_add_to_cart_text();
-                                            $button_url   = $_product->add_to_cart_url();
+                                            $button_text  = $_product->get_button_text();
+                                            $button_url   = $_product->get_product_url();
                                             break;
                                         
                                         default:
@@ -112,7 +112,7 @@ if( $products ) :
                                             $button_text  = __( 'Add to Cart', 'botiga' );
                                             $button_url   = $_product->add_to_cart_url();
                                             break;
-                                    }
+                                    } // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                                     echo '<strong><a href="'. esc_url( $button_url ) .'" class="'. esc_attr( $button_class ) .'" data-product-id="'. absint( $product_id ) .'" data-loading-text="'. esc_attr__( 'Loading...', 'botiga' ) .'" data-added-text="'. esc_attr__( 'Added!', 'botiga' ) .'" data-nonce="'. esc_attr( wp_create_nonce( 'botiga-custom-addtocart-nonce' ) ) .'">'. esc_html( $button_text ) .'</a></strong>';
                                 ?>
                             </td>

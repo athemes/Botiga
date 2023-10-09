@@ -44,11 +44,17 @@ class Botiga_Dashboard
 
         if( $this->is_botiga_dashboard_page() ) {
             add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
+
+            if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+                add_action( 'wp_ajax_templates_builder_display_conditions_select_ajax', array( $this, 'templates_builder_display_conditions_select_ajax' ) );
+                add_action( 'admin_footer', array( $this, 'templates_builder_display_conditions_script_template' ) );
+            }
         }
 
         add_filter('woocommerce_enable_setup_wizard', '__return_false');
 
         add_action('admin_menu', array($this, 'add_menu_page'));
+        add_action('admin_footer', array($this, 'add_admin_footer_style'));
         add_action('admin_notices', array($this, 'html_notice'));
         
         add_action('wp_ajax_botiga_notifications_read', array($this, 'ajax_notifications_read'));
@@ -58,6 +64,13 @@ class Botiga_Dashboard
 
         add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'ajax_module_activation_handler' ) );
         add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'ajax_module_activation_all_handler' ) );
+
+        $is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
+        if( defined( 'BOTIGA_PRO_VERSION' ) && ! $is_legacy_tb ) {
+            add_action( 'wp_ajax_botiga_template_builder_data', array( $this, 'ajax_template_builder_data' ) );
+            add_action( 'wp_ajax_insert_template_part_callback', array( $this, 'insert_template_part_callback' ) );
+            add_action( 'wp_ajax_edit_template_part_callback', array( $this, 'edit_template_part_callback' ) );
+        }
 
         add_action('switch_theme', array($this, 'reset_notices'));
         add_action('after_switch_theme', array($this, 'reset_notices'));
@@ -110,14 +123,65 @@ class Botiga_Dashboard
 
         // Add 'Theme Dashboard' page
         add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-            'themes.php',
+            'botiga-dashboard',
             esc_html__('Theme Dashboard', 'botiga'),
             esc_html__('Theme Dashboard', 'botiga'),
             'manage_options',
             get_admin_url() . 'admin.php?page=botiga-dashboard',
             '',
+            0
+        );
+
+        // Add 'Customize' link
+        $customize_url = add_query_arg( 'return', urlencode( remove_query_arg( wp_removable_query_args(), wp_unslash( $_SERVER['REQUEST_URI'] ) ) ), 'customize.php' );
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Customize', 'botiga'),
+            esc_html__('Customize', 'botiga'),
+            'manage_options',
+            esc_url( $customize_url ),
+            '',
             1
         );
+
+        // Add 'Starter Sites' link
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Starter Sites', 'botiga'),
+            esc_html__('Starter Sites', 'botiga'),
+            'manage_options',
+            get_admin_url() . 'admin.php?page=botiga-dashboard&tab=starter-sites',
+            '',
+            2
+        );
+
+        // Add 'Upgrade' link
+        if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+            add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+                'botiga-dashboard',
+                esc_html__('Upgrade Botiga', 'botiga'),
+                esc_html__('Upgrade Botiga', 'botiga'),
+                'manage_options',
+                'https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga',
+                '',
+                3
+            );
+        }
+    }
+
+    /**
+     * Admin footer style.
+     * 
+     * @return void
+     */
+    public function add_admin_footer_style() {
+        ?>
+        <style>
+            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="admin.php?page=botiga-dashboard"] {
+                display: none;
+            }
+        </style>
+        <?php
     }
 
     /**
@@ -125,15 +189,17 @@ class Botiga_Dashboard
      *
      * @param string $page Current page.
      */
-    public function admin_enqueue_scripts($hook)
-    {
+    public function admin_enqueue_scripts( $hook ) {
         wp_enqueue_style('botiga-dashboard', get_template_directory_uri() . '/assets/css/admin/botiga-dashboard.min.css', array(), BOTIGA_VERSION);
 
         if (is_rtl()) {
             wp_enqueue_style('botiga-dashboard-rtl', get_template_directory_uri() . '/assets/css/admin/botiga-dashboard-rtl.min.css', array(), BOTIGA_VERSION);
         }
 
-        wp_enqueue_script('botiga-dashboard', get_template_directory_uri() . '/assets/js/admin/botiga-dashboard.min.js', array('jquery'), BOTIGA_VERSION, true);
+        wp_enqueue_script('botiga-dashboard', get_template_directory_uri() . '/assets/js/admin/botiga-dashboard.min.js', array('jquery', 'wp-util', 'jquery-ui-sortable'), BOTIGA_VERSION, true);
+
+        wp_enqueue_script( 'botiga-select2-js', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.6', true );
+		wp_enqueue_style( 'botiga-select2-css', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.6', 'all' );
 
         wp_localize_script('botiga-dashboard', 'botiga_dashboard', array(
             'ajax_url' => admin_url('admin-ajax.php'),
@@ -144,6 +210,11 @@ class Botiga_Dashboard
                 'installing' => esc_html__('Installing...', 'botiga'),
                 'activating' => esc_html__('Activating...', 'botiga'),
                 'deactivating' => esc_html__('Deactivating...', 'botiga'),
+                'loading' => esc_html__('Loading...', 'botiga'),
+                'saving' => esc_html__('Saving...', 'botiga'),
+                'saved' => esc_html__('Saved!', 'botiga'),
+                'unsaved_changes' => esc_html__('You have unsaved changes.', 'botiga'),
+                'save' => esc_html__('Save', 'botiga'),
                 'redirecting' => esc_html__('Redirecting...', 'botiga'),
                 'activated' => esc_html__('Activated', 'botiga'),
                 'deactivated' => esc_html__('Deactivated', 'botiga'),
@@ -476,7 +547,7 @@ class Botiga_Dashboard
         $user_id                     = get_current_user_id();
         $user_read_meta              = get_user_meta( $user_id, 'botiga_dashboard_notifications_latest_read', true );
 
-        $last_notification_date      = strtotime( is_string( $this->settings[ 'notifications' ][0]->date ) ? $this->settings[ 'notifications' ][0]->date : '' );
+        $last_notification_date      = strtotime( is_string( $this->settings[ 'notifications' ][0]->post_date ) ? $this->settings[ 'notifications' ][0]->post_date : '' );
         $last_notification_date_ondb = $user_read_meta ? strtotime( $user_read_meta ) : false;
 
         if( ! $last_notification_date_ondb ) {
@@ -489,6 +560,827 @@ class Botiga_Dashboard
 
         return true;
     }
+
+    /**
+     * Templates builder
+     */
+    public function ajax_template_builder_data() {
+        check_ajax_referer('nonce-bt-dashboard', 'nonce');
+
+        if( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error();
+        }
+    
+        $data = $_POST[ 'data' ];
+
+        $data = stripslashes_deep($data);
+    
+        update_option('botiga_template_builder_data', $data);
+    
+        wp_send_json_success($data);
+    }    
+
+	/**
+	 * Get option text
+	 */
+	public function get_option_text( $value ) {
+		switch ( $value['condition'] ) {
+
+			case 'post-id':
+			case 'page-id':
+			case 'product-id':
+			case 'cpt-post-id':
+				return get_the_title( $value['id'] );
+			break;
+
+			case 'tag-id':
+			case 'category-id':
+			
+        $term = get_term( $value['id'] );
+
+        if ( ! empty( $term ) ) {
+					return $term->name;
+        }
+
+			break;
+
+			case 'cpt-term-id':
+			
+        $term = get_term( $value['id'] );
+        
+        if ( ! empty( $term ) ) {
+					return $term->name;
+        }
+
+			break;
+
+			case 'cpt-taxonomy-id':
+			
+        $taxonomy = get_taxonomy( $value['id'] );
+        
+        if ( ! empty( $taxonomy ) ) {
+					return $taxonomy->label;
+        }
+
+			break;
+
+			case 'author':
+			case 'author-id':
+				return get_the_author_meta( 'display_name', $value['id'] );
+			break;
+
+		}
+
+		// user-roles
+		if ( substr( $value['condition'], 0, 10 ) === 'user_role_' ) {
+			$user_rules = get_editable_roles();
+			if ( ! empty( $user_rules[ $value['id'] ] ) ) {
+				return $user_rules[ $value['id'] ]['name'];
+			}
+		}
+
+		return $value['id'];
+
+	}    
+
+    /**
+     * Insert a new template
+     */
+    public function insert_template_part_callback() {
+        check_ajax_referer('nonce-bt-dashboard', 'nonce');
+
+		if ( ! isset( $_POST['key'] ) ) {
+			wp_send_json_error();
+		}
+
+		$post_name      = sanitize_text_field( wp_unslash( $_POST['key'] ) ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) );
+        $page_builder   = sanitize_text_field( wp_unslash( $_POST['page_builder'] ) );
+
+		$post_title = '';
+		$args       = array(
+			'post_type'              => 'athemes_hf',
+			'name'                   => $post_name,
+			'post_status'            => 'publish',
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+			'posts_per_page'         => 1,
+		);
+
+		$post = get_posts( $args );
+
+		if ( empty( $post ) ) {
+
+			$key            = sanitize_text_field( wp_unslash( $_POST['key'] ) );
+
+			$post_title     = 'Botiga Template Part - ' . str_replace( 'botiga-template-', '', $key ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) );
+
+			$params = array(
+				'post_content' => '',
+				'post_type'    => 'athemes_hf',
+				'post_title'   => $post_title,
+				'post_name'    => $post_name,
+				'post_status'  => 'publish',
+			);
+
+            if( $page_builder == 'elementor' ) {
+                $params['meta_input'] = array(
+                    '_elementor_edit_mode' => 'builder',
+                    '_wp_page_template'    => 'elementor_canvas',
+                );
+            }
+
+			$post_id = wp_insert_post( $params );
+
+		} else { // edit post.
+			$post_id    = $post[0]->ID;
+			$post_title = $post[0]->post_title;
+		}
+
+        $action = $page_builder == 'elementor' ? 'elementor' : 'edit';
+
+		$edit_url = get_admin_url() . 'post.php?post=' . $post_id . '&action=' . $action;
+
+		$result = array(
+			'url'   => $edit_url,
+			'id'    => $post_id,
+			'title' => $post_title,
+		);
+
+		wp_send_json_success( $result );
+	}    
+
+    /**
+     * Edit template
+     */
+    public function edit_template_part_callback() {
+        check_ajax_referer('nonce-bt-dashboard', 'nonce');
+
+        if ( ! isset( $_POST['key'] ) ) {
+            wp_send_json_error();
+        }
+
+        $post_id = sanitize_text_field( wp_unslash( $_POST['key'] ) );
+
+        $post = get_post( $post_id );
+
+        if ( empty( $post ) ) {
+            wp_send_json_error();
+        }
+
+        $action = 'edit';
+
+        if( class_exists( 'Elementor\Plugin' ) && Elementor\Plugin::$instance->documents->get( $post_id )->is_built_with_elementor() ) {
+            $action = 'elementor';
+        }
+
+        $edit_url = get_admin_url() . 'post.php?post=' . $post_id . '&action=' . $action;
+
+        $result = array(
+            'url'   => $edit_url,
+            'id'    => $post_id,
+            'title' => $post->post_title,
+        );
+
+        wp_send_json_success( $result );
+    }
+
+    /**
+     * Get athemes templates CPT
+     */
+    public function get_template_parts() {
+        $args = array(
+            'numberposts' 	=> -1,
+            'post_type'   	=> 'athemes_hf',
+        );	
+
+        $posts = get_posts( $args );
+
+        $parts = array();
+
+        if ( ! empty( $posts ) ) {
+            foreach ( $posts as $post ) {
+                $parts[ $post->ID ] = $post->post_title;
+            }
+        }
+
+        return $parts;
+    }
+
+    /**
+     * Existing parts select
+     */
+    public function existing_parts_select( $parts = array() ) {
+        $html = '<div class="existing-parts-wrapper">';
+        
+        if ( empty( $parts ) ) {
+            $html .= '<div>' . esc_html__( 'No templates found.', 'botiga' ) . '</div>';
+        } else {
+            $html .= '<select class="existing-parts-select">';
+            $html .= '<option value="">' . esc_html__( 'Select existing', 'botiga' ) . '</option>';
+    
+            foreach ( $parts as $id => $title ) {
+    
+                $page_builder = 'editor';
+                if ( class_exists( 'Elementor\Plugin' ) && Elementor\Plugin::$instance->documents->get( $id )->is_built_with_elementor() ) {
+                    $page_builder = 'elementor';
+                }
+                
+                $html .= '<option data-page-builder="' . $page_builder . '" value="' . $id . '">' . $title . '</option>';
+            }
+    
+            $html .= '</select>';
+        }
+
+        $html .= '</div>';
+
+        return $html;
+    }
+
+    /**
+     * Templates builder display conditions script template.
+     * 
+     */
+    public function templates_builder_display_conditions_script_template() {
+        $settings = array();
+
+        $settings['types'][] = array(
+            'id'   => 'include',
+            'text' => esc_html__( 'Include', 'botiga' ),
+        );
+
+        $settings['types'][] = array(
+            'id'   => 'exclude',
+            'text' => esc_html__( 'Exclude', 'botiga' ),
+        );
+
+        $settings['display'][] = array(
+            'id'   => 'all',
+            'text' => esc_html__( 'Entire Site', 'botiga' ),
+        );
+
+        $settings['display'][] = array(
+            'id'      => 'basic',
+            'text'    => esc_html__( 'Basic', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'singular',
+                    'text' => esc_html__( 'Singulars', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'archive',
+                    'text' => esc_html__( 'Archives', 'botiga' ),
+                ),
+            ),
+        );
+
+        $settings['display'][] = array(
+            'id'      => 'posts',
+            'text'    => esc_html__( 'Posts', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'single-post',
+                    'text' => esc_html__( 'Single Post', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'post-archives',
+                    'text' => esc_html__( 'Post Archives', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'post-categories',
+                    'text' => esc_html__( 'Post Categories', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'post-tags',
+                    'text' => esc_html__( 'Post Tags', 'botiga' ),
+                ),
+            ),
+        );
+
+        $settings['display'][] = array(
+            'id'      => 'pages',
+            'text'    => esc_html__( 'Pages', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'single-page',
+                    'text' => esc_html__( 'Single Page', 'botiga' ),
+                ),
+            ),
+        );
+
+        if ( class_exists( 'WooCommerce' ) ) {
+
+            $settings['display'][] = array(
+                'id'      => 'woocommerce',
+                'text'    => esc_html__( 'WooCommerce', 'botiga' ),
+                'options' => array(
+                    array(
+                        'id'   => 'single-product',
+                        'text' => esc_html__( 'Single Product', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'product-archives',
+                        'text' => esc_html__( 'Product Archives', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'product-categories',
+                        'text' => esc_html__( 'Product Categories', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'product-tags',
+                        'text' => esc_html__( 'Product Tags', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'product-id',
+                        'text' => esc_html__( 'Product Name', 'botiga' ),
+                        'ajax' => true,
+                    ),
+                    array(
+                        'id'   => 'product-category-id',
+                        'text' => esc_html__( 'Product Category ID', 'botiga' ),
+                        'ajax' => true,
+                    ),
+                    array(
+                        'id'   => 'cart-page',
+                        'text' => esc_html__( 'Cart Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'checkout-page',
+                        'text' => esc_html__( 'Checkout Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'account-page',
+                        'text' => esc_html__( 'Account Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'view-order-page',
+                        'text' => esc_html__( 'View Order Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'edit-account-page',
+                        'text' => esc_html__( 'Edit Account Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'order-received-page',
+                        'text' => esc_html__( 'Order Received Page', 'botiga' ),
+                    ),
+                    array(
+                        'id'   => 'lost-password-page',
+                        'text' => esc_html__( 'Lost Password Page', 'botiga' ),
+                    )
+                ),
+            );
+
+        }
+
+        $settings['display'][] = array(
+            'id'      => 'specifics',
+            'text'    => esc_html__( 'Specific', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'post-id',
+                    'text' => esc_html__( 'Post name', 'botiga' ),
+                    'ajax' => true,
+                ),
+                array(
+                    'id'   => 'page-id',
+                    'text' => esc_html__( 'Page name', 'botiga' ),
+                    'ajax' => true,
+                ),
+                array(
+                    'id'   => 'category-id',
+                    'text' => esc_html__( 'Category name', 'botiga' ),
+                    'ajax' => true,
+                ),
+                array(
+                    'id'   => 'tag-id',
+                    'text' => esc_html__( 'Tag name', 'botiga' ),
+                    'ajax' => true,
+                ),
+                array(
+                    'id'   => 'author-id',
+                    'text' => esc_html__( 'Author name', 'botiga' ),
+                    'ajax' => true,
+                ),
+            ),
+        );
+
+        $available_post_types = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
+        $available_post_types = array_diff( array_keys( $available_post_types ), array( 'post', 'page', 'product' ) );
+
+        if ( ! empty( $available_post_types ) ) {
+
+            $settings['display'][] = array(
+                'id'      => 'cpt',
+                'text'    => esc_html__( 'Custom Post Types', 'botiga' ),
+                'options' => array(
+                    array(
+                        'id'   => 'cpt-post-id',
+                        'text' => esc_html__( 'CPT: Post name', 'botiga' ),
+                        'ajax' => true,
+                    ),
+                    array(
+                        'id'   => 'cpt-term-id',
+                        'text' => esc_html__( 'CPT: Term name', 'botiga' ),
+                        'ajax' => true,
+                    ),
+                    array(
+                        'id'   => 'cpt-taxonomy-id',
+                        'text' => esc_html__( 'CPT: Taxonomy name', 'botiga' ),
+                        'ajax' => true,
+                    ),
+                ),
+            );
+
+        }
+
+        $settings['display'][] = array(
+            'id'      => 'other',
+            'text'    => esc_html__( 'Other', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'front-page',
+                    'text' => esc_html__( 'Front Page', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'blog',
+                    'text' => esc_html__( 'Blog', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'search',
+                    'text' => esc_html__( 'Search', 'botiga' ),
+                ),
+                array(
+                    'id'   => '404',
+                    'text' => esc_html__( '404', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'author',
+                    'text' => esc_html__( 'Author', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'privacy-policy-page',
+                    'text' => esc_html__( 'Privacy Policy Page', 'botiga' ),
+                ),
+            ),
+        );
+
+        $user_roles = array();
+        $user_rules = get_editable_roles();
+
+        if ( ! empty( $user_rules ) ) {
+            foreach ( $user_rules as $role_id => $role_data ) {
+                $user_roles[] = array(
+                    'id'   => 'user_role_' . $role_id,
+                    'text' => $role_data['name'],
+                );
+            }
+        }
+
+        $settings['user'][] = array(
+            'id'      => 'user-auth',
+            'text'    => esc_html__( 'User Auth', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'logged-in',
+                    'text' => esc_html__( 'User Logged In', 'botiga' ),
+                ),
+                array(
+                    'id'   => 'logged-out',
+                    'text' => esc_html__( 'User Logged Out', 'botiga' ),
+                ),
+            ),
+        );
+
+        $settings['user'][] = array(
+            'id'      => 'user-roles',
+            'text'    => esc_html__( 'User Roles', 'botiga' ),
+            'options' => $user_roles,
+        );
+
+        $settings['user'][] = array(
+            'id'      => 'other',
+            'text'    => esc_html__( 'Other', 'botiga' ),
+            'options' => array(
+                array(
+                    'id'   => 'author',
+                    'text' => esc_html__( 'Author', 'botiga' ),
+                    'ajax' => true,
+                ),
+            ),
+        );
+
+        /**
+         * Hook: 'botiga_display_conditions_script_settings'
+         * 
+         * @since 1.2.8
+         */
+        $settings = apply_filters( 'botiga_display_conditions_script_settings', $settings );
+
+        ?>
+            <script type="text/javascript">
+                var botigaDCSettings 	= <?php echo json_encode( $settings ); ?>;
+            </script>
+            <script type="text/template" id="tmpl-botiga-display-conditions-template">
+                <div class="botiga-display-conditions-modal">
+                    <div class="botiga-display-conditions-modal-outer">
+                        <div class="botiga-display-conditions-modal-header">
+                            <i class="botiga-button-close botiga-display-conditions-modal-toggle dashicons dashicons-no-alt"></i>
+                        </div>
+                        <div class="botiga-display-conditions-modal-content">
+                            <ul class="botiga-display-conditions-modal-content-list">
+                                <li class="botiga-display-conditions-modal-content-list-item hidden">
+                                    <div class="botiga-display-conditions-select2-type" data-type="include">
+                                        <select name="type">
+                                            <# _.each( botigaDCSettings.types, function( type ) { #>
+                                                <option value="{{ type.id }}">{{ type.text }}</option>
+                                            <# }); #>
+                                        </select>
+                                    </div>
+                                    <div class="botiga-display-conditions-select2-groupped">
+                                        <# _.each( ['display', 'user'], function( conditionGroup ) { #>
+                                            <div class="botiga-display-conditions-select2-condition" data-condition-group="{{ conditionGroup }}">
+                                                <select name="condition">
+                                                    <# _.each( botigaDCSettings[ conditionGroup ], function( condition ) { #>
+                                                        <# if ( _.isEmpty( condition.options ) ) { #>
+                                                            <option value="{{ condition.id }}">{{ condition.text }}</option>
+                                                        <# } else { #>
+                                                            <optgroup label="{{ condition.text }}">
+                                                                <# _.each( condition.options, function( option ) { #>
+                                                                    <# var ajax = ( option.ajax ) ? ' data-ajax="true"' : ''; #>
+                                                                    <option value="{{ option.id }}"{{{ ajax }}}>{{ option.text }}</option>
+                                                                <# }); #>
+                                                            </optgroup>
+                                                        <# } #>
+                                                    <# }); #>
+                                                </select>
+                                            </div>
+                                        <# }); #>
+                                        <div class="botiga-display-conditions-select2-id hidden">
+                                            <select name="id"></select>
+                                        </div>
+                                    </div>
+                                    <div class="botiga-display-conditions-modal-remove">
+                                        <i class="dashicons dashicons-trash"></i>
+                                    </div>
+                                </li>
+                                <# _.each( data.values, function( value ) { #>
+                                    <li class="botiga-display-conditions-modal-content-list-item">
+                                        <div class="botiga-display-conditions-select2-type" data-type="{{ value.type }}">
+                                            <select name="type">
+                                                <# _.each( botigaDCSettings.types, function( type ) { #>
+                                                    <# var selected = ( value.type == type.id ) ? ' selected="selected"' : ''; #>
+                                                    <option value="{{ type.id }}"{{{ selected }}}>{{ type.text }}</option>
+                                                <# }); #>
+                                            </select>
+                                        </div>
+                                        <div class="botiga-display-conditions-select2-groupped">
+                                            <# 
+                                                var currentCondition;
+                                                _.each( botigaDCSettings, function( conditionValues, conditionKey ) {
+                                                    _.each( conditionValues, function( condition ) {
+                                                        if ( _.isEmpty( condition.options ) ) {
+                                                            if ( value.condition == condition.id ) {
+                                                                currentCondition = conditionKey;
+                                                            }
+                                                        } else {
+                                                            _.each( condition.options, function( option ) {
+                                                                if ( value.condition == option.id ) {
+                                                                    currentCondition = conditionKey;
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                });
+                                            #>
+                                            <# if ( ! _.isEmpty( currentCondition ) ) { #>
+                                                <div class="botiga-display-conditions-select2-condition" data-condition-group="{{ currentCondition }}">
+                                                    <select name="condition">
+                                                        <# _.each( botigaDCSettings[ currentCondition ], function( condition ) { #>
+                                                            <# if ( _.isEmpty( condition.options ) ) { #>
+                                                                <option value="{{ condition.id }}">{{ condition.text }}</option>
+                                                            <# } else { #>
+                                                                <optgroup label="{{ condition.text }}">
+                                                                    <# _.each( condition.options, function( option ) { #>
+                                                                        <# var ajax = ( option.ajax ) ? ' data-ajax="true"' : ''; #>
+                                                                        <# var selected = ( value.condition == option.id ) ? ' selected="selected"' : ''; #>
+                                                                        <option value="{{ option.id }}"{{{ ajax }}}{{{ selected }}}>{{ option.text }}</option>
+                                                                    <# }); #>
+                                                                </optgroup>
+                                                            <# } #>
+                                                        <# }); #>
+                                                    </select>
+                                                </div>
+                                            <# } #>
+                                            <div class="botiga-display-conditions-select2-id hidden">
+                                                <select name="id">
+                                                    <# if ( ! _.isEmpty( value.id ) ) { #>
+                                                        <option value="{{ value.id }}" selected="selected">{{ data.labels[ value.id ] }}</option>
+                                                    <# } #>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="botiga-display-conditions-modal-remove">
+                                            <i class="dashicons dashicons-trash"></i>
+                                        </div>
+                                    </li>
+                                <# }); #>
+                            </ul>
+                            <div class="botiga-display-conditions-modal-content-footer">
+                                <a href="#" class="button botiga-display-conditions-modal-add" data-condition-group="display"><?php esc_html_e( 'Add Display Condition', 'botiga' ); ?></a>
+                                <a href="#" class="button botiga-display-conditions-modal-add" data-condition-group="user"><?php esc_html_e( 'Add User Condition', 'botiga' ); ?></a>
+                            </div>
+                        </div>
+                        <div class="botiga-display-conditions-modal-footer">
+                            <a href="#" class="button button-primary botiga-display-conditions-modal-save botiga-display-conditions-modal-toggle"><?php esc_html_e( 'Save Conditions', 'botiga' ); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </script>
+        <?php
+    }
+
+    /**
+     * Templates Buidler Display conditions ajax callback
+     * 
+     */
+    public function templates_builder_display_conditions_select_ajax() {
+        $term   = ( isset( $_GET['term'] ) ) ? sanitize_text_field( wp_unslash( $_GET['term'] ) ) : '';
+        $nonce  = ( isset( $_GET['nonce'] ) ) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
+        $source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( wp_unslash( $_GET['source'] ) ) : '';
+
+        if ( ! empty( $term ) && ! empty( $source ) && ! empty( $nonce ) && wp_verify_nonce( $nonce, 'nonce-bt-dashboard' ) ) {
+
+            $options = array();
+
+            switch ( $source ) {
+                case 'post-id':
+                case 'page-id':
+                case 'product-id':
+                    $post_type = 'post';
+
+                    if ( 'page-id' === $source ) {
+                        $post_type = 'page';
+                    }
+
+                    if ( 'product-id' === $source ) {
+                        $post_type = 'product';
+                    }
+
+                    $query = new WP_Query( array(
+                        's'			  => $term,
+                        'post_type'	  => $post_type,
+                        'post_status'	=> 'publish',
+                        'posts_per_page' => 25,
+                        'order'		  => 'DESC',
+                    ) );
+
+                    if ( ! empty( $query->posts ) ) {
+                        foreach( $query->posts as $post ) {
+                            $options[] = array(
+                                'id'   => $post->ID,
+                                'text' => $post->post_title,
+                            );
+                        }
+                    }
+            
+                break;
+
+                case 'tag-id':
+                case 'category-id':
+
+                    $taxonomy = 'category';
+
+                    if ( $source === 'tag-id' ) {
+                        $taxonomy = 'post_tag';
+                    }
+
+                    $query = new WP_Term_Query( array(
+                        'search'	 => $term,
+                        'taxonomy'   => $taxonomy,
+                        'number'	 => 25,
+                        'hide_empty' => false,
+                    ) );
+                
+                    if ( ! empty( $query->terms ) ) {
+                        foreach ( $query->terms as $term ) {
+                            $options[] = array(
+                                'id'   => $term->term_id,
+                                'text' => $term->name,
+                            );
+                        }
+                    }
+
+                break;
+
+                case 'author':
+                case 'author-id':
+
+                    $query	  = new WP_User_Query( array(
+                        'search'  => '*'. $term .'*',
+                        'number'  => 25,
+                        'order'   => 'DESC',
+                        'fields'  => array( 'display_name', 'ID' ),
+                    ) );
+                    
+                    $authors = $query->get_results();
+
+                    if ( ! empty( $authors ) ) {
+                        foreach ( $authors as $author ) {
+                            $options[] = array(
+                                'id'   => $author->ID,
+                                'text' => $author->display_name,
+                            );
+                        }
+                    }
+
+                break;
+
+                case 'cpt-post-id':
+
+                    $post_types = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
+
+                    if ( ! empty( $post_types ) ) {
+                        foreach ( $post_types as $post_type_key => $post_type ) {
+                            if ( in_array( $post_type_key, array( 'post', 'page' ) ) ) {
+                                continue;
+                            }
+                            $query = new WP_Query( array(
+                                's'			  => $term,
+                                'post_type'	  => $post_type_key,
+                                'post_status'	=> 'publish',
+                                'posts_per_page' => 25,
+                                'order'		  => 'DESC',
+                            ) );
+                            if ( ! empty( $query->posts ) ) {
+                                foreach( $query->posts as $post ) {
+                                    $options[] = array(
+                                        'id'   => $post->ID,
+                                        'text' => $post->post_title,
+                                    );
+                                }
+                            }
+                        }
+                    }
+
+                break;
+
+                case 'cpt-term-id':
+
+                    $terms = get_terms( array(
+                        'search'	 => $term,
+                        'number'	 => 25,
+                        'hide_empty' => false,
+                    ) );
+
+                    if ( ! empty( $terms ) ) {
+                        foreach ( $terms as $term ) {
+                            if ( in_array( $term->taxonomy, array( 'category', 'post_tag' ) ) ) {
+                                continue;
+                            }
+                            $taxonomy = get_taxonomy( $term->taxonomy );
+                            if ( $taxonomy->show_in_nav_menus ) {
+                                $options[] = array(
+                                    'id'   => $term->term_id,
+                                    'text' => $term->name,
+                                );
+                            }
+                        }
+                    }
+
+                break;
+
+                case 'cpt-taxonomy-id':
+
+                    $taxonomies = get_taxonomies( array( 'show_in_nav_menus' => true ), 'objects' );
+
+                    if ( ! empty( $taxonomies ) ) {
+                        foreach ( $taxonomies as $taxonomy_key => $taxonomy ) {
+                            if ( in_array( $taxonomy_key, array( 'category', 'post_tag', 'post_format' ) ) ) {
+                                continue;
+                            }
+                            if ( preg_match( '/'. strtolower( $term ) .'/', strtolower( $taxonomy->label ) ) ) {
+                                $options[] = array(
+                                    'id'   => $taxonomy_key,
+                                    'text' => $taxonomy->label,
+                                );
+                            }
+                        }
+                    }
+
+                break;
+
+            }
+
+            wp_send_json_success( $options );
+
+        } else {
+
+            wp_send_json_error();
+
+        }
+
+    }
+
 
     /**
      * HTML Dashboard
@@ -527,9 +1419,7 @@ class Botiga_Dashboard
 						</a>
 					</div>
 					<div class="botiga-dashboard-top-bar-info-item">
-                        <?php $link = $this->settings[ 'has_pro' ] ? $this->settings['website_link'] : $this->settings['upgrade_pro']; ?>
-
-						<a href="<?php echo esc_url( $link ); ?>" class="botiga-dashboard-theme-website" target="_blank">
+						<a href="<?php echo esc_url( $this->settings['website_link'] ); ?>" class="botiga-dashboard-theme-website" target="_blank">
 							<?php echo esc_html__( 'Website', 'botiga' ); ?>
 							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6 2.40002H7.20002L8.00002 4.00002H11.264L6.39202 8.88002L7.52002 10.008L12 5.53602V8.00002L13.6 8.80002V2.40002ZM9.60002 9.60002V12H4.00002V6.40002H7.20002L8.80002 4.80002H2.40002V13.6H11.2V8.00002L9.60002 9.60002Z" fill="#3858E9"/>

@@ -59,3 +59,12 @@ input.wc-block-components-price-slider__range-input {
 		margin-bottom: 15px;
 	}
 }
+
+/* Columns block */
+.wp-block-columns {
+	p {
+		a {
+			color: var(--bt-color-body-text, $color__primary);
+		}
+	}
+}

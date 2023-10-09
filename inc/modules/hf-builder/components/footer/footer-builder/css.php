@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 // Padding
 $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
@@ -55,4 +55,4 @@ if( $fb_background_image ) {
 // Background Color
 $css .= Botiga_Custom_CSS::get_background_color_css( 'botiga_section_fb_wrapper__footer_builder_background_color', '', '.bhfb-footer' );
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

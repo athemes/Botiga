@@ -4,12 +4,36 @@
 	display: block;
 	width: 100%;
 
-	ul {
+	&.main-navigation {
+		> div#primary-menu {
+			> ul {
+				list-style: none;
+				padding: 0;
+			}
+		}
+	}
+
+	@media(min-width: 1025px) {
+		&.main-navigation {
+			> div#primary-menu {
+				> ul {
+					display: flex;
+					flex-wrap: wrap;
+	
+					li + li {
+						margin-left: 35px;
+					}
+				}
+			}
+		}
+	}
+
+	.botiga-dropdown-ul {
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
 
-		ul {
+		.botiga-dropdown-ul {
 			width: 200px;
 			box-shadow: 0 0 15px rgba(0,0,0,.1);
 			float: left;
@@ -23,19 +47,19 @@
 			height: 0; 
 			overflow: hidden;
 
-			ul {
+			.botiga-dropdown-ul {
 				left: -999em;
 				top: 0;
 			}
 
-			li {
+			.botiga-dropdown-li {
 				background: #fff;
 				padding: 0;
 				display: flex;
 				margin-right: 0;
 
-				&:hover > ul,
-				&.focus > ul {
+				&:hover > .botiga-dropdown-ul,
+				&.focus > .botiga-dropdown-ul {
 					display: block;
 					left: 100%;
 				}
@@ -51,12 +75,12 @@
 			}
 
 			&.toggled {
-				li {
+				.botiga-dropdown-li {
 					background-color: transparent;
 				}
 			}
 
-			a {
+			.botiga-dropdown-link {
 				width: 100%;
 				display: inline-block;
 				text-transform: none;
@@ -64,8 +88,8 @@
 			}
 		}
 
-		li:hover > ul,
-		li.focus > ul {
+		.botiga-dropdown-li:hover > .botiga-dropdown-ul,
+		.botiga-dropdown-li.focus > .botiga-dropdown-ul {
 			left: auto;
 			top: 100%;
 			opacity: 1;
@@ -83,7 +107,7 @@
 				bottom: 100%;
 			}
 
-			ul {
+			.botiga-dropdown-ul {
 				top: 0;
 
 				&.sub-menu-reverse {
@@ -99,7 +123,7 @@
 		}
 	}
 
-	li {
+	.botiga-dropdown-li {
 		position: relative;
 		margin-right: 35px;
 		padding-bottom: 0;
@@ -109,7 +133,7 @@
 		}
 	}
 
-	a {
+	.botiga-dropdown-link {
 		padding: 10px 0;
 		display: inline-block;
 		text-decoration: none;
@@ -129,13 +153,13 @@
 	@media(max-width: 1024px) {
 
 		&.botiga-dropdown-mobile-accordion {
-			li {
+			.botiga-dropdown-li {
 				margin-right: 0;
 
 				&.menu-item-has-children {
 					display: flex;
 					flex-wrap: wrap;
-					> a {
+					> .botiga-dropdown-link {
 						width: calc( 100% - ( var(--dropdown--symbol--size) + 0.5em ) );
 					}
 
@@ -144,10 +168,11 @@
 						width: 100%;
 						left: 0;
 						top: 0;
+						right: auto !important;
 						transform: none;
 						box-shadow: none;
 
-						> li {
+						> .botiga-dropdown-li {
 							background-color: transparent;
 						}
 
@@ -174,9 +199,9 @@
 				}
 
 				.dropdown-symbol {
-					margin: 0;
+					margin: 0 !important;
 					svg {
-						transform: none;
+						transform: none !important;
 					}
 				}
 			}
@@ -202,12 +227,12 @@
 }
 
 /* Small menu. */
-.botiga-dropdown.toggled ul {
+.botiga-dropdown.toggled .botiga-dropdown-ul {
 	display: block;
 }
 
 @media screen and (min-width: 1025px) {
-	.botiga-dropdown ul {
+	.botiga-dropdown .botiga-dropdown-ul {
 		display: flex;
 		flex-wrap: wrap;
 	}
@@ -227,11 +252,27 @@
 
 	.nav-previous {
 		flex: 1 0 50%;
+
+		a {
+			color: var(--bt-color-body-text, #212121);
+
+			&:hover {
+				color: var(--bt-color-link-default, #757575);
+			}
+		}
 	}
 
 	.nav-next {
 		text-align: end;
 		flex: 1 0 50%;
+
+		a {
+			color: var(--bt-color-body-text, #212121);
+
+			&:hover {
+				color: var(--bt-color-link-default, #757575);
+			}
+		}
 	}
 }
 
@@ -251,7 +292,7 @@
 		margin-right: 7px;
 		border-radius: 50%;
 		background: transparent;
-		color: inherit;
+		color: var(--bt-color-body-text, $color__primary);
 
 		&:last-child {
 			margin-right: 0;
@@ -285,7 +326,7 @@
 			background: transparent;
 			transition: background-color 0.3s;
 			border-radius: 50%;
-			color: inherit;	
+			color: var(--bt-color-body-text, $color__primary);	
 		}
 	}
 }
@@ -341,6 +382,12 @@
 		.botiga-pagination-button__label {
 			display: none;
 		}
+
+		svg {
+			path {
+				fill: var(--bt-color-body-text, $color__primary);
+			}
+		}
 	}
 }
 
@@ -355,11 +402,47 @@
     padding: 30px;
     margin: 0;
     z-index: 99999;
-    background-color: #fff;
+	color: var( --bt-color-menu-text, #212121 );
+    background-color: var( --bt-color-menu-bg, #FFF );
     width: 100%;
     max-width: 300px;
     height: 100%;
     overflow-y: auto;
+
+	a {
+		&:not(.button) {
+			color: var( --bt-color-menu-text, #212121 );
+		}
+	}
+
+	svg {
+		&.stroke-based {
+			stroke: var( --bt-color-menu-text, #212121 );
+		}
+		&:not(.stroke-based) {
+			fill: var( --bt-color-menu-text, #212121 );
+		}
+	}
+
+	.dropdown-symbol {
+		.ws-svg-icon {
+			svg {
+				fill: var( --bt-color-menu-text, #212121 );
+			}
+		}
+	}
+
+	.header-item {
+		.botiga-image {
+			&.is-svg {
+				background-color: var( --bt-color-menu-text, #212121 );
+			}
+		}
+	}
+
+	.main-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
 
 	.mobile-header-item {
 		visibility: hidden;
@@ -384,21 +467,21 @@
 
 	.botiga-dropdown {
 
-		a {
+		.botiga-dropdown-link {
 			width: 100%;
 		}
 		.menu-item-has-children {
-			a {
+			.botiga-dropdown-link {
 				width: calc(100% - 26px);
 			}	
 		}
 
-		ul ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul {
 			width: 100%;
-			a {
+			.botiga-dropdown-link {
 				width: calc(100% - 26px);
 			}
-			li {
+			.botiga-dropdown-li {
 				display: block;
 				padding: 0;
 
@@ -415,32 +498,33 @@
 			}
 		}
 		
-		> ul > li {
+		> .botiga-dropdown-ul > .botiga-dropdown-li {
 			&:first-child {
-				> a {
+				> .botiga-dropdown-link {
 					padding-top: 0;
 				}
 			}
 			&:last-child {
 				border-bottom: 0;
-				> a {
+				> .botiga-dropdown-link {
 					padding-bottom: 0;
 				}
 			}
 		}
 
-		ul li {
+		.botiga-dropdown-ul .botiga-dropdown-li {
 			margin-right: 0;
+			padding-top: 5px;
 			&:last-child {
 				border-bottom: 0;
 			}
 		}
 	
-		ul ul ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-ul {
 			position: static;
 		}
 	
-		ul ul li:hover>ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li > .botiga-dropdown-ul {
 			display: none;
 		}
 	
@@ -456,7 +540,7 @@
 			overflow: visible;
 	
 			&.toggled {
-				display: block;
+				display: block !important;
 				height: auto;
 				visibility: visible;
 			}
@@ -478,14 +562,14 @@
 .botiga-desktop-offcanvas-menu {
 
 	.botiga-dropdown {
-		ul ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul {
 			width: 100%;
-			a {
+			.botiga-dropdown-link {
 				width: auto;
 				padding-right: 0;
 				padding-left: 0;
 			}
-			li {
+			.botiga-dropdown-li {
 				display: block;
 				padding: 0;
 
@@ -502,32 +586,32 @@
 			}
 		}
 
-		> ul > li {
+		> .botiga-dropdown-ul > .botiga-dropdown-li {
 			&:first-child {
-				> a {
+				> .botiga-dropdown-link {
 					padding-top: 0;
 				}
 			}
 			&:last-child {
 				border-bottom: 0;
-				> a {
+				> .botiga-dropdown-link {
 					padding-bottom: 0;
 				}
 			}
 		}
 
-		ul li {
+		.botiga-dropdown-ul .botiga-dropdown-li {
 			margin-right: 0;
 			&:last-child {
 				border-bottom: 0;
 			}
 		}
 
-		ul ul ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-ul {
 			position: static;
 		}
 
-		ul ul li:hover>ul {
+		.botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover>.botiga-dropdown-ul {
 			display: none;
 		}
 
@@ -545,11 +629,12 @@
 			box-shadow: none;
 
 			&.toggled {
-				display: block;
+				float: none !important;
+				display: block !important;
 				height: auto;
 				overflow: visible;
 
-				li{
+				.botiga-dropdown-link{
 					background-color: transparent;
 				}
 			}
@@ -560,7 +645,7 @@
 @media screen and (max-width: 1024px) {
 	.botiga-offcanvas-menu {
 		.botiga-dropdown {
-			ul ul {
+			.botiga-dropdown-ul .botiga-dropdown-ul {
 				transform: none;
 				opacity: 1;
 			}
@@ -604,13 +689,13 @@ body.mobile-menu-visible {
 	&.botiga-dropdown {
 		width: auto;
 		.menu { 
-			> li {
+			> .botiga-dropdown-li {
 				margin-right: 20px;
 				&:last-child {
 					margin-right: 0;
 				}
 	
-				> a {
+				> .botiga-dropdown-link {
 					position: relative;
 					padding-top: 0;
 					padding-bottom: 0;
@@ -632,18 +717,18 @@ body.mobile-menu-visible {
 					margin-left: 7px;
 				}
 
-				> ul {
+				> .botiga-dropdown-ul {
 					transform: translate3d(0, 30px, 0);
 
-					li {
-						a {
+					.botiga-dropdown-li {
+						.botiga-dropdown-link {
 							padding: 14px 0;
 						}
 					}
 				}
 
 				&:hover {
-					> ul {
+					> .botiga-dropdown-ul {
 						transform: translate3d(0, 15px, 0);
 					}
 				}

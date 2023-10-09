@@ -6,7 +6,7 @@
  * @package Botiga_Pro
  */
 
-// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-component-id="mobile_offcanvas_menu">'; 
     $this->customizer_edit_button();
@@ -27,8 +27,9 @@ echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-c
             <?php
             wp_nav_menu(
                 array(
-                    'theme_location' => $location,
+                    'theme_location' => has_nav_menu( $location ) ? $location : '',
                     'menu_id'        => "$location-menu",
+                    'menu_class'     => 'botiga-dropdown-ul menu',
                     'walker'         => apply_filters( 'botiga_mobile_primary_wp_nav_menu_walker', '' )
                 )
             );
@@ -41,4 +42,4 @@ echo '<div class="bhfb-builder-item bhfb-component-mobile_offcanvas_menu" data-c
 <?php
 echo '</div>';
 
-// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

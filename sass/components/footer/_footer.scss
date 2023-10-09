@@ -38,7 +38,7 @@
         }
 
         .widget-title {
-            @include font-size(20);
+            font-size: var( --bt-font-size-footer-widgets-title, 20px );
         }
     }
 }

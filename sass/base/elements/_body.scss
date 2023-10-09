@@ -1,7 +1,16 @@
+::placeholder,
+:-ms-input-placeholder,
+::-ms-input-placeholder {
+	color: var( --bt-color-forms-placeholder, #848484 );
+}
+
 body {
+	color: var(--bt-color-body-text, $color__primary);
+	font-size: var( --bt-font-size-body, 16px );
 	background: $color__background-body; // Fallback for when there is no custom background color defined.
 	overflow-x: hidden;
 }
+
 .ws-svg-icon {
 	svg {
 		&:not(.stroke-based) {

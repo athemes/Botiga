@@ -3,7 +3,7 @@
  * Header Icons Template File
  * 
  */
-
+// @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $show_cart 		             = get_theme_mod( 'enable_header_cart', 1 );
 $show_account                = get_theme_mod( 'enable_header_account', 1 );
 $show_wishlist               = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) !== 'layout1' ? true : false;
@@ -51,4 +51,6 @@ if ( is_cart() ) {
         <span class="count-number"><?php echo esc_html( $wishlist_count ); ?></span>
         <i class="ws-svg-icon"><?php botiga_get_header_icon( 'wishlist', true ); ?></i>
     </a>
-<?php endif; ?>
+<?php endif; 
+// @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+?>

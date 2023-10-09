@@ -839,6 +839,59 @@ gulp.task('dokanStylesMin', () => {
 			})
 		);
 });
+
+gulp.task('quickViewStyles', () => {
+	return gulp
+		.src(config.quickViewSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Quick View Styles Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('quickViewStylesMin', () => {
+	return gulp
+		.src(config.quickViewSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Quick View Styles Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
 	* Task: `stylesRTL`.
@@ -1492,6 +1545,59 @@ gulp.task('dokanStylesMin', () => {
 });
 
 /**
+	* Task: `botigaQuickViewJS`.
+	*
+	* Concatenate and uglify custom JS scripts.
+	*
+	* This task does the following:
+	*     1. Gets the source folder for JS custom files
+	*     2. Concatenates all the files and generates custom.js
+	*     3. Renames the JS file with suffix .min.js
+	*     4. Uglifes/Minifies the JS file and generates custom.min.js
+	*/
+	gulp.task('botigaQuickViewJS', () => {
+		return gulp
+			.src(config.jsQuickViewSRC, {since: gulp.lastRun('botigaQuickViewJS')}) // Only run on changed files.
+			.pipe(newer(config.jsCustomDestination))
+			.pipe(plumber(errorHandler))
+			.pipe(
+				babel({
+					presets: [
+						[
+							'@babel/preset-env', // Preset to compile your modern JS to ES5.
+							{
+								targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+							}
+						]
+					]
+				})
+			)
+			.pipe(remember(config.jsQuickViewSRC)) // Bring all files back to stream.
+			.pipe(concat(config.jsQuickViewFile + '.js'))
+			.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+			.pipe(gulp.dest(config.jsCustomDestination))
+			.pipe(
+				rename({
+					basename: config.jsQuickViewFile,
+					suffix: '.min'
+				})
+			)
+			.pipe(uglify({
+				output: {
+					comments: 'some'
+				}
+			}))
+			.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+			.pipe(gulp.dest(config.jsCustomDestination))
+			.pipe(
+				notify({
+					message: '\n\n✅  ===> Quick View JS — completed!\n',
+					onLast: true
+				})
+			);
+	});
+
+/**
 	* Admin Files.
 	* Task: `botigaAdminBHFBJS`.
 	*/
@@ -1713,6 +1819,8 @@ gulp.task(
 		'woocommerceStylesMin',
 		'dokanStyles',
 		'dokanStylesMin',
+		'quickViewStyles',
+		'quickViewStylesMin',
 		'BHFBStyles',
 		'BHFBStylesMin',
 		'editorStyles',
@@ -1741,6 +1849,7 @@ gulp.task(
 		'botigaSwiperJS',
 		'botigaSidebarJS',
 		'botigaAjaxSearchJS',
+		'botigaQuickViewJS',
 		'adminFunctionsJS',
 		'customizerJS',
 		'customizerScriptsJS',
@@ -1760,6 +1869,8 @@ gulp.task(
 		gulp.watch(config.watchStyles, gulp.parallel('woocommerceStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('dokanStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('dokanStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('quickViewStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('quickViewStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('BHFBStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('BHFBStylesMin'));
 
@@ -1792,6 +1903,7 @@ gulp.task(
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaSwiperJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaSidebarJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaAjaxSearchJS', reload));
+		gulp.watch(config.watchJsAdmin, gulp.series('botigaQuickViewJS', reload));
 
 		// Backend JS
 		gulp.watch(config.watchJsAdmin, gulp.series('adminFunctionsJS', reload));

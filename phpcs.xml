@@ -32,6 +32,15 @@
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
 		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" />
 		<exclude name="WordPress.WhiteSpace" />
+		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword" />
+		<exclude name="Generic.PHP.LowerCaseConstant.Found" />
+		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen" />
+		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceBeforeClose" />
+		<exclude name="WooCommerce.Commenting.CommentHooks.MissingSinceComment" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen" />
+		
 	</rule>
 
 	<rule ref="WooCommerce-Core">
@@ -40,6 +49,8 @@
 		<exclude name="WordPress.PHP.YodaConditions" />
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="WooCommerce.Commenting.CommentHooks.MissingHookComment" />
+		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 	</rule>
 
 	<rule ref="PHPCompatibility">

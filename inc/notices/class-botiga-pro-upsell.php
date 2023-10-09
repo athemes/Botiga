@@ -68,17 +68,17 @@ class Botiga_Pro_Upsell_Notice {
 		?>
 
 		<div class="botiga-notice botiga-notice-with-thumbnail notice" style="position:relative;">
-			<h3><?php echo esc_html__( 'One theme fully integrated with 35+ plugins features', 'botiga' ); ?></h3>
+			<h3><?php echo esc_html__( 'Earn More with Your Botiga Store! 💰', 'botiga' ); ?></h3>
 
 			<p>
 				<?php
 					echo esc_html__(
-						'Our all-in-one plugin (that extends Botiga theme) is packed with features to help you boost sales and grow your business. Join the thousands of satisfied entrepreneurs who have already taken their website to the next level with Botiga Pro. Don\'t wait - start achieving your website goals today!', 'botiga'
+						'Botiga Pro is an all-in-one WooCommerce plugin with 40+ conversion-boosting features created specifically for the free Botiga theme. Reasons-to-buy lists, product trust badges, custom eCommerce templates, floating mini cart icons, size charts, and many more! Join the thousands of happy entrepreneurs who have already taken their Botiga stores to the next level.', 'botiga'
 					);
 				?>
 			</p>
 
-			<a href="https://athemes.com/botiga-upgrade?utm_source=theme_notice&utm_medium=button&utm_campaign=Botiga" class="botiga-btn botiga-btn-secondary" target="_blank"><?php esc_html_e( 'Update To Pro Version', 'botiga' ); ?></a>
+			<a href="https://athemes.com/botiga-upgrade?utm_source=theme_notice&utm_medium=button&utm_campaign=Botiga" class="botiga-btn botiga-btn-secondary" target="_blank"><?php esc_html_e( 'Upgrade To Botiga Pro', 'botiga' ); ?></a>
 			
 			<a class="notice-dismiss" href="?botiga_pro_upsell_notice_dismiss=1" style="text-decoration:none;"></a>
 		</div>

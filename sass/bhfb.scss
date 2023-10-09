@@ -326,6 +326,11 @@
 
 .bhfb.bhfb-header,
 .bhfb-mobile_offcanvas {
+    .main-navigation,
+    .secondary-navigation {
+        font-size: var( --bt-font-size-header-menu, 16px );
+    }
+
     .social-profile {
         a {
             margin-right: 0;
