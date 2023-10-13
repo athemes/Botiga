@@ -21,11 +21,48 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		 * Check if a specific module is activated
 		 */
 		public static function is_module_active( $module ) {
-
 			$all_modules = get_option( 'botiga-modules' );
 			$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
 
 			if ( array_key_exists( $module, $all_modules ) && true === $all_modules[$module] ) {
+				/**
+				 * Compatibility with Merchant.
+				 */
+				$overlaping_modules = array(
+					'size-chart',
+					'sticky-add-to-cart',
+					'advanced-reviews',
+					'buy-now',
+					'video-gallery',
+					'wishlist',
+					'product-swatches'
+				);
+
+				// Some modules have different id's, so we need to map them
+				$modules_map = array(
+					'size-chart' => 'size-chart',
+					'sticky-add-to-cart' => 'sticky-add-to-cart',
+					'advanced-reviews' => 'advanced-reviews',
+					'buy-now' => 'buy-now',
+					'video-gallery' => array( 'product-video', 'product-audio' ),
+					'wishlist' => 'wishlist',
+					'product-swatches' => 'product-swatches'
+				);
+
+				if ( class_exists( 'Merchant' ) && in_array( $module, $overlaping_modules ) ) {
+					if ( is_array( $modules_map[$module] ) ) {
+						foreach( $modules_map[$module] as $mmodule_id ) {
+							add_filter( "merchant_module_{$mmodule_id}_deactivate", function() {
+								return true;
+							} );
+						}
+					} else {
+						add_filter( "merchant_module_{$modules_map[$module]}_deactivate", function() {
+							return true;
+						} );
+					}
+				}
+
 				return true;
 			}
 		

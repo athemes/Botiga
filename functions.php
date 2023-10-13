@@ -433,6 +433,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
+ * Load Merchant compatibility file.
+ */
+if ( class_exists( 'Merchant' ) ) {
+	require get_template_directory() . '/inc/plugins/merchant/merchant.php';
+}
+
+/**
  * Load WooCommerce Brands compatibility file.
  */
 if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
