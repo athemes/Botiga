@@ -82,6 +82,8 @@ class Botiga_Merchant_Compatibility {
 	 * @return void
 	 */
 	public function disable_modules_by_customizer_settings() {
+		$default_single_product_components = function_exists( 'botiga_get_default_single_product_components' ) ? botiga_get_default_single_product_components() : array();
+
 		$required_opts_to_disable_merchant_modules = array(
 			'recently-viewed-products' => array(
 				'mod_name'    => 'single_recently_viewed_products',
@@ -111,17 +113,17 @@ class Botiga_Merchant_Compatibility {
 			'reasons-to-buy' => array(
 				'mod_name'    => 'single_product_elements_order',
 				'mod_value'   => array( 'botiga_single_product_reasons_to_buy' ),
-				'mod_default' => botiga_get_default_single_product_components()
+				'mod_default' => $default_single_product_components
 			),
 			'product-brand-image' => array(
 				'mod_name'    => 'single_product_elements_order',
 				'mod_value'   => array( 'botiga_single_product_brand_image' ),
-				'mod_default' => botiga_get_default_single_product_components()
+				'mod_default' => $default_single_product_components
 			),
 			'trust-badges' => array(
 				'mod_name'    => 'single_product_elements_order',
 				'mod_value'   => array( 'botiga_single_product_trust_badge_image' ),
-				'mod_default' => botiga_get_default_single_product_components()
+				'mod_default' => $default_single_product_components
 			),
 			'real-time-search' => array(
 				'mod_name'    => 'shop_search_enable_ajax',

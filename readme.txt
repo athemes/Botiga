@@ -31,6 +31,7 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 = 2.1.5 =
+Changed - Botiga modules will take precedence over Merchant modules.
 Fixed - Blog Page: Displaying the 'Archive' title along with 'Blog'.
 
 = 2.1.4 =
