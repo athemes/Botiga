@@ -5,7 +5,8 @@
  * @package Botiga
  */
 // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-global $_product;
+global $product;
+$_product = $product;
 $product_id   = $_product->get_id();
 $review_count = $_product->get_review_count();
 $average      = $_product->get_average_rating();

@@ -155,7 +155,7 @@ class Botiga_Merchant_Compatibility {
 		$botiga_modules = ( is_array( $botiga_modules ) ) ? $botiga_modules : (array) $botiga_modules;
 
 		foreach( $this->overlaping_modules as $module ) {
-			if ( in_array( $module, $botiga_modules ) && $botiga_modules[ $module ] ) {
+			if ( in_array( $module, $botiga_modules ) && isset( $botiga_modules[ $module ] ) && $botiga_modules[ $module ] ) {
 				if ( is_array( $this->modules_map[$module] ) ) {
 					foreach( $this->modules_map[$module] as $mmodule_id ) {
 						add_filter( "merchant_module_{$mmodule_id}_deactivate", function() {
