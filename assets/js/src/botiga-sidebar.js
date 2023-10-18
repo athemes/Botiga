@@ -38,7 +38,7 @@ botiga.sidebar = {
         document.addEventListener( 'click', function(e) {
             var sidebar = document.querySelector( '.sidebar-wrapper' ).parentElement;
 
-            if(  e.target.closest( '.sidebar-wrapper' ) === null ) {
+            if( e.target.closest( '.sidebar-wrapper' ) === null ) {
                 sidebar.classList.remove( 'show' );
                 window.dispatchEvent(ev);
             }

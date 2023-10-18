@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.1.4' );
+	define( 'BOTIGA_VERSION', '2.1.5' );
 }
 
 // aThemes White Label Compatibility
@@ -430,6 +430,13 @@ if ( class_exists( 'Mega_Menu' ) ) {
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/woocommerce/woocommerce.php';
+}
+
+/**
+ * Load Merchant compatibility file.
+ */
+if ( class_exists( 'Merchant' ) ) {
+	require get_template_directory() . '/inc/plugins/merchant/merchant.php';
 }
 
 /**

@@ -251,7 +251,11 @@ if (!defined('ABSPATH')) {
                     <h2><?php echo esc_html__( 'Documentation', 'botiga' ); ?></h2>
                 </div>
                 <div class="botiga-dashboard-card-body">
-                    <p><?php echo esc_html__( 'Browse documentation, reference material, and tutorials for Botiga Theme.', 'botiga' ); ?></p>
+                    <?php if ( ! defined( 'BOTIGA_PRO_VERSION' ) ) : ?>
+                        <p><?php echo esc_html__( 'Our documentation is here to guide you through Botiga\'s features.', 'botiga' ); ?></p>
+                    <?php else : ?>
+                        <p><?php echo esc_html__( 'Our documentation is here to guide you through Botiga Pro\'s features.', 'botiga' ); ?></p>
+                    <?php endif; ?>
                     <a href="<?php echo esc_url( $this->settings['knowledge_base_link'] ); ?>" class="button button-primary button-outline button-medium bt-font-weight-500" target="_blank">
                         <?php echo esc_html__( 'View All', 'botiga' ); ?>
                     </a>
@@ -270,7 +274,7 @@ if (!defined('ABSPATH')) {
                         <p><?php echo esc_html__( 'Need help? Submit a ticket and a member of our support team will aim to respond within one business day.', 'botiga' ); ?></p>
                     <?php endif; ?>
                     <a href="<?php echo esc_url( $this->settings['support_link'] ); ?>" class="button button-primary button-outline button-medium bt-font-weight-500" target="_blank">
-                        <?php echo esc_html__( 'Submit a Ticket', 'botiga' ); ?>
+                        <?php echo ! defined( 'BOTIGA_PRO_VERSION' ) ? esc_html__( 'Create a Topic', 'botiga' ) : esc_html__( 'Submit a Ticket', 'botiga' ); ?>
                     </a>
                 </div>
             </div>

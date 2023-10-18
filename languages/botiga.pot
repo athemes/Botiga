@@ -141,11 +141,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:522
+#: functions.php:529
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:525
+#: functions.php:532
 msgid "Plugins"
 msgstr ""
 
@@ -3409,55 +3409,63 @@ msgstr ""
 msgid "Submit a Review"
 msgstr ""
 
-#: inc/dashboard/html-home.php:254
-msgid "Browse documentation, reference material, and tutorials for Botiga Theme."
+#: inc/dashboard/html-home.php:257
+msgid "Our documentation is here to guide you through Botiga Pro's features."
 msgstr ""
 
-#: inc/dashboard/html-home.php:256
+#: inc/dashboard/html-home.php:255
+msgid "Our documentation is here to guide you through Botiga's features."
+msgstr ""
+
+#: inc/dashboard/html-home.php:260
 msgid "View All"
 msgstr ""
 
-#: inc/dashboard/html-home.php:264
+#: inc/dashboard/html-home.php:268
 msgid "Free support"
 msgstr ""
 
-#: inc/dashboard/html-home.php:264
+#: inc/dashboard/html-home.php:268
 msgid "Support"
 msgstr ""
 
-#: inc/dashboard/html-home.php:270
+#: inc/dashboard/html-home.php:274
 msgid "Need help? Submit a ticket and a member of our support team will aim to respond within one business day."
 msgstr ""
 
-#: inc/dashboard/html-home.php:268
+#: inc/dashboard/html-home.php:272
 msgid "Post your question on the WordPress.org forum where a member of the team or community will get back to you."
 msgstr ""
 
-#: inc/dashboard/html-home.php:273
+#: inc/dashboard/html-home.php:277
+msgid "Create a Topic"
+msgstr ""
+
+#: inc/dashboard/html-home.php:277
 msgid "Submit a Ticket"
 msgstr ""
 
-#: inc/dashboard/html-home.php:281
+#: inc/dashboard/html-home.php:285
 msgid "Have an idea or feedback?"
 msgstr ""
 
-#: inc/dashboard/html-home.php:284
+#: inc/dashboard/html-home.php:288
 msgid "Got an idea for how to improve Botiga and Botiga Pro? Let us know."
 msgstr ""
 
-#: inc/dashboard/html-home.php:286
+#: inc/dashboard/html-home.php:290
 msgid "Suggest An Idea"
 msgstr ""
 
-#: inc/dashboard/html-home.php:297
+#: inc/dashboard/html-home.php:301
 msgid "Join our Facebook community"
 msgstr ""
 
-#: inc/dashboard/html-home.php:300
+#: inc/dashboard/html-home.php:304
 msgid "Want to share your awesome project or just say hi? Join our wonderful community!"
 msgstr ""
 
-#: inc/dashboard/html-home.php:302
+#: inc/dashboard/html-home.php:306
 msgid "Join Now"
 msgstr ""
 
@@ -4083,7 +4091,7 @@ msgstr ""
 msgid "Register Now"
 msgstr ""
 
-#: inc/plugins/dokan/dokan.php:172, inc/plugins/wc-vendors/wc-vendors.php:20
+#: inc/plugins/dokan/dokan.php:172, inc/plugins/wc-vendors/wc-vendors.php:25
 msgid "Vendor Dashboard"
 msgstr ""
 
@@ -4396,15 +4404,15 @@ msgstr ""
 msgid "See all posts by %s <span aria-hidden=\"true\">&rarr;</span>"
 msgstr ""
 
-#: inc/template-tags.php:600
+#: inc/template-tags.php:589
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: inc/template-tags.php:604
+#: inc/template-tags.php:593
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
 
-#: inc/template-tags.php:614
+#: inc/template-tags.php:603
 msgid "Most Popular"
 msgstr ""
 
@@ -4629,31 +4637,31 @@ msgstr ""
 msgid "Your review"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:21
+#: template-parts/single-product/content-reviews-advanced.php:22
 msgid "Why people love our products"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:22
+#: template-parts/single-product/content-reviews-advanced.php:23
 msgid "High-quality, ethically sourced products at affordable prices"
 msgstr ""
 
 #. translators: %s is average rating value
-#: template-parts/single-product/content-reviews-advanced.php:35, template-parts/single-product/content-reviews-advanced.php:261, template-parts/single-product/content-reviews-advanced.php:206
+#: template-parts/single-product/content-reviews-advanced.php:36, template-parts/single-product/content-reviews-advanced.php:262, template-parts/single-product/content-reviews-advanced.php:207
 msgid "Rated %s out of 5 based on customer ratings."
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:49
+#: template-parts/single-product/content-reviews-advanced.php:50
 msgid "Be the first to leave a review."
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:46
+#: template-parts/single-product/content-reviews-advanced.php:47
 msgctxt "review count"
 msgid "%s Review"
 msgid_plural "%s Reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/single-product/content-reviews-advanced.php:56
+#: template-parts/single-product/content-reviews-advanced.php:57
 msgid "5 Stars"
 msgstr ""
 
@@ -4662,54 +4670,54 @@ msgstr ""
 #. translators: %s is stars quantity
 #. translators: %s is stars quantity
 #. translators: %s is stars quantity
-#: template-parts/single-product/content-reviews-advanced.php:63, template-parts/single-product/content-reviews-advanced.php:75, template-parts/single-product/content-reviews-advanced.php:87, template-parts/single-product/content-reviews-advanced.php:99, template-parts/single-product/content-reviews-advanced.php:111
+#: template-parts/single-product/content-reviews-advanced.php:64, template-parts/single-product/content-reviews-advanced.php:76, template-parts/single-product/content-reviews-advanced.php:88, template-parts/single-product/content-reviews-advanced.php:100, template-parts/single-product/content-reviews-advanced.php:112
 msgid "(%s)"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:68
+#: template-parts/single-product/content-reviews-advanced.php:69
 msgid "4 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:80
+#: template-parts/single-product/content-reviews-advanced.php:81
 msgid "3 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:92
+#: template-parts/single-product/content-reviews-advanced.php:93
 msgid "2 Stars"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:104
+#: template-parts/single-product/content-reviews-advanced.php:105
 msgid "1 Star"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:120
+#: template-parts/single-product/content-reviews-advanced.php:121
 msgid "Write a Review"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:125
+#: template-parts/single-product/content-reviews-advanced.php:126
 msgid "Newest"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:126
+#: template-parts/single-product/content-reviews-advanced.php:127
 msgid "Oldest"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:127
+#: template-parts/single-product/content-reviews-advanced.php:128
 msgid "Top rated"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:128
+#: template-parts/single-product/content-reviews-advanced.php:129
 msgid "Low rated"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:292
+#: template-parts/single-product/content-reviews-advanced.php:293
 msgid "There are no reviews yet."
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:276, template-parts/single-product/content-reviews-advanced.php:221
+#: template-parts/single-product/content-reviews-advanced.php:277, template-parts/single-product/content-reviews-advanced.php:222
 msgid " — verified owner"
 msgstr ""
 
-#: template-parts/single-product/content-reviews-advanced.php:281
+#: template-parts/single-product/content-reviews-advanced.php:282
 msgid "Your review is awaiting approval."
 msgstr ""
