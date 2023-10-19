@@ -122,7 +122,8 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
 
                 <?php if( $review_count > 0 ) : ?>
                 <form class="botiga-reviews-orderby-form" method="get" action="<?php echo esc_url( get_the_permalink( $product_id ) ); ?>#reviews-stars">
-                    <select class="botiga-reviews-orderby" name="orderby" onChange="this.parentNode.submit();">
+                    <label for="botiga-reviews-orderby" class="screen-reader-text"><?php echo esc_html__( 'Sort by', 'botiga' ); ?></label>
+                    <select id="botiga-reviews-orderby" class="botiga-reviews-orderby" name="orderby" onChange="this.parentNode.submit();">
                         <option value="newest"<?php echo selected( $sort_orderby, 'newest' ); ?>><?php echo esc_html__( 'Newest', 'botiga' ); ?></option>
                         <option value="oldest"<?php echo selected( $sort_orderby, 'oldest' ); ?>><?php echo esc_html__( 'Oldest', 'botiga' ); ?></option>
                         <option value="top-rated"<?php echo selected( $sort_orderby, 'top-rated' ); ?>><?php echo esc_html__( 'Top rated', 'botiga' ); ?></option>
