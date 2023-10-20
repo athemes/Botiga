@@ -468,6 +468,13 @@ if( class_exists( 'WC_Vendors' ) && class_exists( 'Woocommerce' ) ) {
 }
 
 /**
+ * Load WC Germanized compatibility file.
+ */
+if( class_exists( 'WooCommerce_Germanized' ) && class_exists( 'Woocommerce' ) ) {
+	require get_template_directory() . '/inc/plugins/wc-germanized/class-wc-germanized.php';
+}
+
+/**
  * Upsell.
  */
 if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
