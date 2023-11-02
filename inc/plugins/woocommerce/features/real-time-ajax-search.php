@@ -71,7 +71,7 @@ function botiga_ajax_search_callback() {
 
     // Enable search by SKU
     if( $enable_search_by_sku ) {
-        $qry->posts = array_merge( $qry->posts, botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $orderby, $search_term ) );
+        $qry->posts = array_unique( array_merge( $qry->posts, botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $orderby, $search_term ) ), SORT_REGULAR );
         $qry->post_count = count( $qry->posts );
     }
 
@@ -202,7 +202,7 @@ function botiga_merge_sku_search_with_default_search( $posts, $query ) {
 
     if ( $query->is_main_query() && $query->is_search() && $query->get( 'post_type' ) === 'product' && $query->get( 's' ) !== '' ) {
         $additional_posts = botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $orderby, $query->get( 's' ) );
-        $merged_posts = array_merge( $posts, $additional_posts );
+        $merged_posts = array_unique( array_merge( $posts, $additional_posts ), SORT_REGULAR );
 
 		$query->posts = $merged_posts;
 		$query->post_count = count( $merged_posts );

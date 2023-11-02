@@ -30,6 +30,9 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.1.6 =
+Fixed - Display Conditions: Not working conditions with input, e.g product name, category name.
+
 = 2.1.5 =
 Changed - Botiga modules will take precedence over Merchant modules.
 Fixed - Blog Page: Displaying the 'Archive' title along with 'Blog'.

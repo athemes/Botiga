@@ -78,7 +78,7 @@ class Botiga_Custom_Sidebars_Control extends WP_Customize_Control {
 							if ( is_array( $conditions ) && ! empty( $conditions ) ) {
 								foreach ( $conditions as $condition ) {
 									if ( ! empty( $condition['id'] ) ) {
-										$labels[ $condition['id'] ] = Botiga_Display_Conditions_Control::get_option_text( $condition );
+										$labels[ $condition['id'] ] = botiga_get_display_condition_value_text( $condition );
 									}
 								}
 							}

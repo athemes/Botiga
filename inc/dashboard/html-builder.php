@@ -85,7 +85,7 @@ $disabled = ! $this->settings['has_pro'] || $this->settings['has_pro'] && ( clas
 						if ( ! empty( $conditions ) ) {
 							foreach ( $conditions as $value ) {
 								if ( ! empty( $value['id'] ) ) {
-									$labels[ $value['id'] ] = $this->get_option_text($value);
+									$labels[ $value['id'] ] = botiga_get_display_condition_value_text( $value );
 								}
 							}
 						}
