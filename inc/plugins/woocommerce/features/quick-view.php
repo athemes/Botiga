@@ -11,6 +11,10 @@
 function botiga_quick_view_scripts() {
 	global $post;
 
+	if( empty( $post ) ) {
+		return;
+	}
+
 	$quick_view_layout = get_theme_mod( 'shop_product_quickview_layout', 'layout1' );
 	if( 'layout1' === $quick_view_layout ) {
 		return;
@@ -150,7 +154,14 @@ function botiga_quick_view_button( $product = false, $echo = true, $block_layout
 /**
  * Quick view popup
  */
-function botiga_quick_view_popup() { ?>
+function botiga_quick_view_popup() { 
+	global $post;
+
+	if( empty( $post ) ) {
+		return;
+	}
+	
+	?>
 	<div class="single-product botiga-quick-view-popup">
 		<div class="botiga-quick-view-loader">
 			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
