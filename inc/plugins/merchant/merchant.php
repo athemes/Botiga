@@ -132,7 +132,7 @@ class Botiga_Merchant_Compatibility {
 			),
 			'scroll-to-top-button' => array(
 				'mod_name'    => 'enable_scrolltop',
-				'mod_value'   => 0,
+				'mod_value'   => '',
 				'mod_default' => 1
 			),
 		);
