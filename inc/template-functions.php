@@ -1974,7 +1974,7 @@ function botiga_display_conditions_script_template() {
 				),
 				array(
 					'id'   => 'order-received-page',
-					'text' => esc_html__( 'Order Received', 'botiga' ),
+					'text' => esc_html__( 'Order Thank You', 'botiga' ),
 				),
 				array(
 					'id'   => 'view-order-page',

@@ -502,32 +502,27 @@ class Botiga_Metabox {
 	}
 
 	public function get_field( $field_id, $field, $value ) {
-
 		switch ( $field['type'] ) {
-
 			case 'text':
 				echo '<input type="text" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $value ) .'" />';
-			break;
+				break;
 
 			case 'number':
 				echo '<input type="number" name="'. esc_attr( $field_id ) .'" value="'. esc_attr( $value ) .'" />';
-			break;
+				break;
 
 			case 'textarea':
 				echo '<textarea name="'. esc_attr( $field_id ) .'">'. esc_textarea( $value ) .'</textarea>';
-			break;
+				break;
 
 			case 'checkbox':
 			case 'switcher':
-
 				$field = wp_parse_args( $field, array(
 					'label' => '',
 				) );
 
 				echo '<label>';
-
 					echo '<input type="checkbox" name="'. esc_attr( $field_id ) .'" value="1"'. checked( $value, true, false ) .' />';
-
 					if ( $field['type'] === 'switcher' ) {
 						echo '<i></i>';
 					}
@@ -535,25 +530,20 @@ class Botiga_Metabox {
 					if ( ! empty( $field['label'] ) ) {
 						echo '<span>'. esc_html( $field['label'] ) .'</span>';
 					}
-
 				echo '</label>';
 
-			break;
+				break;
 
 			case 'select':
-
 				echo '<select name="'. esc_attr( $field_id ) .'">';
-
 					foreach ( $field['options'] as $key => $option ) {
 						echo '<option value="'. esc_attr( $key ) .'"'. selected( $key, $value, false ) .'>'. esc_html( $option ) .'</option>';
 					}
-
 				echo '</select>';
 
-			break;
+				break;
 
 			case 'select-ajax':
-				
 				$field = wp_parse_args( $field, array(
 					'source' => 'post',
 				) );
@@ -561,13 +551,9 @@ class Botiga_Metabox {
 				$ids = ( is_array( $value ) && ! empty( $value ) ) ? $value : (array) $value;
 
 				echo '<select name="'. esc_attr( $field_id ) .'[]" multiple data-source="'. esc_attr( $field['source'] ) .'">';
-
 					if ( ! empty( $ids ) ) {
-
 						foreach ( $ids as $id ) {
-
 							switch ( $field['source'] ) {
-
 								case 'post':
 								case 'product':
 		
@@ -577,22 +563,16 @@ class Botiga_Metabox {
 										echo '<option value="'. esc_attr( $post->ID ) .'" selected>'. esc_html( $post->post_title ) .'</option>';
 									}
 
-								break;
-
+									break;
 							}
-						
 						}
-
 					}
-
 				echo '</select>';
 
-			break;
+				break;
 
 			case 'wc-attributes':
-
 				$attributes = wp_list_pluck( wc_get_attribute_taxonomies(), 'attribute_label', 'attribute_id' );
-			
 				$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
 
 				if ( ! empty( $attributes ) ) {
@@ -629,13 +609,11 @@ class Botiga_Metabox {
 						echo '</ul>';
 				
 					echo '</div>';
-
 				}
 
-			break;
+				break;
 
 			case 'choices':
-
 				echo '<div class="botiga-metabox-field-choices-images">';
 
 				foreach ( $field['options'] as $key => $option ) {
@@ -649,26 +627,22 @@ class Botiga_Metabox {
 
 				echo '</div>';
 
-			break;
+				break;
 
 			case 'content':
-
 				echo wp_kses_post( $field['content'] );
 
-			break;
+				break;
 
 			case 'repeater':
-
 				$field = wp_parse_args( $field, array(
 					'button' => '',
 				) );
 
 				echo '<div class="botiga-metabox-field-repeater-content">';
-
 					$values = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
 
 					echo '<ul class="botiga-metabox-field-repeater-list">';
-
 						echo '<li class="botiga-metabox-field-repeater-list-item hidden">';
 						echo '<input type="text" name="" value="" data-name="'. esc_attr( $field_id ) .'[]" />';
 						echo '<span class="botiga-metabox-field-repeater-move dashicons dashicons-menu"></span>';
@@ -682,31 +656,27 @@ class Botiga_Metabox {
 							echo '<span class="botiga-metabox-field-repeater-remove dashicons dashicons-trash"></span>';
 							echo '</li>';
 						}
-	
 					echo '</ul>';
-
 					echo '<button class="botiga-metabox-field-repeater-add button button-primary">'. esc_html( $field['button'] ) .'</button>';
-
 				echo '</div>';
 
-			break;
+				break;
 
 			case 'media':
+				$placeholder  = class_exists( 'Woocommerce' ) ? wc_placeholder_img_src( 'thumbnail' ) : get_template_directory_uri() . '/assets/placeholder.svg';
+				$hidden_class = ( empty( $value ) ) ? ' hidden' : '';
 
-        $placeholder  = class_exists( 'Woocommerce' ) ? wc_placeholder_img_src( 'thumbnail' ) : get_template_directory_uri() . '/assets/placeholder.svg';
-        $hidden_class = ( empty( $value ) ) ? ' hidden' : '';
+				if ( ! empty( $value ) ) {
+					$attachment = wp_get_attachment_image_src( $value, 'thumbnail' );
+					$thumbnail  = ( is_array( $attachment ) && ! empty( $attachment[0] ) ) ? $attachment[0] : $placeholder;
+				} else {
+					$thumbnail = $placeholder;
+				}
 
-        if ( ! empty( $value ) ) {
-            $attachment = wp_get_attachment_image_src( $value, 'thumbnail' );
-            $thumbnail  = ( is_array( $attachment ) && ! empty( $attachment[0] ) ) ? $attachment[0] : $placeholder;
-        } else {
-            $thumbnail = $placeholder;
-        }
+				echo '<div class="botiga-metabox-field-media-content">';
 
-        echo '<div class="botiga-metabox-field-media-content">';
-
-	        echo '<figure class="botiga-metabox-field-media-preview">';
-	        	echo '<img src="'. esc_url( $thumbnail ) .'" data-placeholder="'. esc_url( $placeholder ) .'" />';
+					echo '<figure class="botiga-metabox-field-media-preview">';
+						echo '<img src="'. esc_url( $thumbnail ) .'" data-placeholder="'. esc_url( $placeholder ) .'" />';
 					echo '</figure>';
 
 					echo '<div class="botiga-metabox-field-media-button">';
@@ -717,10 +687,9 @@ class Botiga_Metabox {
 				
 				echo '</div>';
 
-			break;
+				break;
 
 			case 'uploads':
-
 				$field = wp_parse_args( $field, array(
 					'button'  => '',
 					'library' => 'image',
@@ -782,7 +751,7 @@ class Botiga_Metabox {
 
 				echo '</div>';
 
-			break;
+				break;
 
 			case 'size-chart':
 
@@ -879,10 +848,9 @@ class Botiga_Metabox {
 					echo '<button class="botiga-add button button-primary">'. esc_html__( 'Add Size Chart', 'botiga' ) .'</button>';
 				echo '</div>';
 
-			break;
+				break;
 
 			case 'size-chart-select':
-
 				$options = array();
 				
 				$posts = get_posts( array(
@@ -904,10 +872,9 @@ class Botiga_Metabox {
 					}
 				echo '</select>';
 
-			break;
+				break;
 
 			case 'sidebar-select':
-
 				$options = array();
 				
 				global $wp_registered_sidebars;
@@ -925,10 +892,9 @@ class Botiga_Metabox {
 					}
 				echo '</select>';
 
-			break;
+				break;
 			
 			case 'wp-editor':
-
 				$field = wp_parse_args( $field, array(
 					'height' => 150,
 				) );
@@ -937,11 +903,26 @@ class Botiga_Metabox {
 					'editor_height' => $field['height'],
 				) );
 
-			break;
+				break;
 
 			case 'code-editor':
 				echo '<textarea name="'. esc_attr( $field_id ) .'">'. esc_textarea( $value ) .'</textarea>';
-			break;
+				break;
+
+			case 'hook-select':
+				$value = ! is_array( $value ) ? array( 'hook-name' => '', 'hook-priority' => '' ) : $value;
+				$priority_value = ! empty( $value[ 'hook-priority' ] ) ? $value[ 'hook-priority' ] : 10;
+
+				echo '<div class="hook-select-wrapper">';
+					echo '<select name="'. esc_attr( $field_id ) .'[hook-name]">';
+						foreach ( $field['options'] as $key => $option ) {
+							echo '<option value="'. esc_attr( $key ) .'"'. selected( $key, $value[ 'hook-name' ], false ) .'>'. esc_html( $option ) .'</option>';
+						}
+					echo '</select>';
+					echo '<input type="number" name="'. esc_attr( $field_id ) .'[hook-priority]" min="-9999" step="1" max="9999" value="'. esc_attr( $priority_value ) .'" />';
+				echo '</div>';
+
+				break;
 
 		}
 
