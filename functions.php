@@ -475,6 +475,13 @@ if( class_exists( 'WooCommerce_Germanized' ) && class_exists( 'Woocommerce' ) ) 
 }
 
 /**
+ * Load WC Germanized EU VAT Compilance compatibility file.
+ */
+if( class_exists( 'WC_EU_VAT_Compliance' ) && class_exists( 'Woocommerce' ) ) {
+	require get_template_directory() . '/inc/plugins/woocommerce-eu-vat-compliance-premium/class-woocommerce-eu-vat-compliance-premium.php';
+}
+
+/**
  * Upsell.
  */
 if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {

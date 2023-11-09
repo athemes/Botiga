@@ -50,7 +50,7 @@ $disabled = ! $this->settings['has_pro'] || $this->settings['has_pro'] && ( clas
 			<?php endif; ?>
 
 			<ol>
-				<li class="bt-text-color-grey"><?php esc_html_e( 'Replace theme-built pages like shop archive, single product, search page, 404, etc. with your custom layout.', 'botiga' ); ?></li>
+				<li class="bt-text-color-grey"><?php esc_html_e( 'Replace theme-built pages like shop archive, single product, search page, 404, order thank you, etc. with your custom layout.', 'botiga' ); ?></li>
 				<li class="bt-text-color-grey"><?php esc_html_e( 'You can create multiple templates and assign them to specific pages.', 'botiga' ); ?></li>
 			</ol>
 			<hr>
