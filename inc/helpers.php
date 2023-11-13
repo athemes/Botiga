@@ -58,3 +58,57 @@ function botiga_post_content_has_woo_blocks() {
 
 	return false;
 }
+
+/**
+ * Check if WooCommerce checkout page is being rendered by block.
+ * Since WooCommerce 8.3.0 the checkout page is rendered by block.
+ * 
+ * @return bool
+ */
+function botiga_is_checkout_block_layout() {
+	$checkout_page = wc_get_page_id( 'checkout' );
+
+	if ( empty( $checkout_page ) ) {
+		return false;
+	}
+
+	if ( function_exists( 'has_blocks' ) && has_blocks( $checkout_page ) ) {
+		$post   = get_post( $checkout_page );
+		$blocks = parse_blocks( $post->post_content );
+
+		foreach ( $blocks as $block ) {
+			if ( 'woocommerce/checkout' === $block['blockName'] ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Check if WooCommerce cart page is being rendered by block.
+ * Since WooCommerce 8.3.0 the cart page is rendered by block.
+ * 
+ * @return bool
+ */
+function botiga_is_cart_block_layout() {
+	$cart_page = wc_get_page_id( 'cart' );
+
+	if ( empty( $cart_page ) ) {
+		return false;
+	}
+
+	if ( function_exists( 'has_blocks' ) && has_blocks( $cart_page ) ) {
+		$post   = get_post( $cart_page );
+		$blocks = parse_blocks( $post->post_content );
+
+		foreach ( $blocks as $block ) {
+			if ( 'woocommerce/cart' === $block['blockName'] ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}

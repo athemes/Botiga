@@ -1,0 +1,23 @@
+/* WooCommerce Checkout Block (WC 8.3+) */
+.wc-block-components-order-summary {
+	.wc-block-components-panel__button {
+		background-color: transparent !important;
+		color: var( --bt-color-body-text, $color__primary ) !important;
+	}
+}
+
+.wc-block-components-order-summary {
+	.wc-block-components-panel__content {
+		padding-top: 10px;
+	}
+}
+
+.wc-block-components-checkout-return-to-cart-button {
+	text-decoration: none !important;
+}
+
+.wc-block-components-checkout-step--with-step-number {
+	.wc-block-components-checkout-step__container:after {
+		border-color: var( --bt-color-forms-borders, $color__primary ) !important;
+	}
+}

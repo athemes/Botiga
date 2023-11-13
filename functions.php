@@ -21,6 +21,18 @@ if( function_exists( 'athemes_wl_get_data' ) ) {
 	}
 }
 
+/**
+ * Declare incompatibility with WooCommerce 8.3+ new default cart and checkout blocks.
+ * 
+ */
+add_action( 'plugins_loaded', function(){
+	add_action( 'before_woocommerce_init', function() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, false );
+		}
+	} );
+} );
+
 if ( ! function_exists( 'botiga_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

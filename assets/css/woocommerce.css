@@ -4019,6 +4019,56 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   }
 }
 
+/* WooCommerce Cart Block (WC 8.3+) */
+.wc-block-cart table th, .wc-block-cart table td, .wc-block-cart table tr {
+  border: none;
+}
+
+.wc-block-cart table td {
+  text-align: left;
+}
+
+.wc-block-cart table.wc-block-cart-items .wc-block-cart-items__header,
+.wc-block-cart table.wc-block-cart-items .wc-block-cart-items__header,
+.wc-block-cart .wc-block-cart__totals-title {
+  font-size: .8125rem !important;
+}
+
+.wc-block-cart .wc-block-components-quantity-selector__input {
+  min-height: 30px;
+}
+
+.wc-block-cart .wc-block-components-product-name {
+  text-decoration: none;
+}
+
+.wc-block-cart .wc-block-components-quantity-selector__button {
+  background-color: transparent !important;
+}
+
+.wc-block-cart .wc-block-cart__submit .wp-element-button {
+  background-color: var(--bt-color-button-bg, #212121);
+  color: var(--bt-color-button, #FFF);
+  text-decoration: none !important;
+}
+
+.wc-block-cart .wc-block-cart__submit .wp-element-button:hover {
+  background-color: var(--bt-color-button-bg-hover, #757575);
+  color: var(--bt-color-button-hover, #FFF);
+}
+
+.is-large.wc-block-cart .wc-block-cart-items th {
+  padding: 0.75rem 16px 0.75rem 0 !important;
+}
+
+.is-large.wc-block-cart .wc-block-cart-items td {
+  padding: 36px 0 36px 16px !important;
+}
+
+.is-large.wc-block-cart .wc-block-cart__totals-title {
+  padding: 0.75rem 0 !important;
+}
+
 /**
  * Checkout
  */
@@ -4422,6 +4472,24 @@ form.woocommerce-checkout {
 #amazon_customer_details .col-1,
 #amazon_customer_details .col-2 {
   max-width: 100%;
+}
+
+/* WooCommerce Checkout Block (WC 8.3+) */
+.wc-block-components-order-summary .wc-block-components-panel__button {
+  background-color: transparent !important;
+  color: var(--bt-color-body-text, #212121) !important;
+}
+
+.wc-block-components-order-summary .wc-block-components-panel__content {
+  padding-top: 10px;
+}
+
+.wc-block-components-checkout-return-to-cart-button {
+  text-decoration: none !important;
+}
+
+.wc-block-components-checkout-step--with-step-number .wc-block-components-checkout-step__container:after {
+  border-color: var(--bt-color-forms-borders, #212121) !important;
 }
 
 /**
