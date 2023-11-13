@@ -4020,6 +4020,10 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 }
 
 /* WooCommerce Cart Block (WC 8.3+) */
+.wc-block-cart table {
+  border: none;
+}
+
 .wc-block-cart table th, .wc-block-cart table td, .wc-block-cart table tr {
   border: none;
 }
@@ -4044,15 +4048,18 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 
 .wc-block-cart .wc-block-components-quantity-selector__button {
   background-color: transparent !important;
+  border: none;
+  padding: 0;
+  color: var(--bt-color-button, #212121) !important;
 }
 
-.wc-block-cart .wc-block-cart__submit .wp-element-button {
+.wc-block-cart .wc-block-cart__submit-button {
   background-color: var(--bt-color-button-bg, #212121);
   color: var(--bt-color-button, #FFF);
   text-decoration: none !important;
 }
 
-.wc-block-cart .wc-block-cart__submit .wp-element-button:hover {
+.wc-block-cart .wc-block-cart__submit-button:hover {
   background-color: var(--bt-color-button-bg-hover, #757575);
   color: var(--bt-color-button-hover, #FFF);
 }
@@ -4475,9 +4482,14 @@ form.woocommerce-checkout {
 }
 
 /* WooCommerce Checkout Block (WC 8.3+) */
+.wc-block-components-checkout-step__description {
+  margin-bottom: 16px;
+}
+
 .wc-block-components-order-summary .wc-block-components-panel__button {
   background-color: transparent !important;
   color: var(--bt-color-body-text, #212121) !important;
+  border: none;
 }
 
 .wc-block-components-order-summary .wc-block-components-panel__content {
@@ -4490,6 +4502,25 @@ form.woocommerce-checkout {
 
 .wc-block-components-checkout-step--with-step-number .wc-block-components-checkout-step__container:after {
   border-color: var(--bt-color-forms-borders, #212121) !important;
+}
+
+.wc-block-components-order-summary-item__quantity {
+  padding: 0;
+}
+
+.wc-block-components-totals-coupon__button {
+  padding: 0 24px;
+}
+
+.wc-block-components-checkout-place-order-button {
+  background-color: var(--bt-color-button-bg, #212121);
+  color: var(--bt-color-button, #FFF);
+  text-decoration: none !important;
+}
+
+.wc-block-components-checkout-place-order-button:hover {
+  background-color: var(--bt-color-button-bg-hover, #757575);
+  color: var(--bt-color-button-hover, #FFF);
 }
 
 /**
