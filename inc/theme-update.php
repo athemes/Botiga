@@ -84,6 +84,12 @@ add_action('after_switch_theme', 'botiga_hf_enable_to_new_users');
  * 
  */
 function botiga_hf_update_notice_1_1_9() {
+    $theme = wp_get_theme();
+    $theme_version = $theme->get( 'Version' );
+
+    if ( version_compare( $theme_version, '2.1.6', '>' ) ) {
+        return;
+    }
 
     if ( get_option( 'botiga-update-hf-dismiss' ) ) {
         return;

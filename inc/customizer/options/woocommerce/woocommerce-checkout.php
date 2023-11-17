@@ -32,6 +32,31 @@ if ( botiga_is_checkout_block_layout() ) {
 	$wp_customize->remove_control( 'woocommerce_checkout_highlight_required_fields' );
 	$wp_customize->remove_control( 'wp_page_for_privacy_policy' );
 	$wp_customize->remove_control( 'woocommerce_terms_page_id' );
+	$wp_customize->remove_control( 'woocommerce_checkout_privacy_policy_text' );
+
+	// Woo 8.3+ checkout/cart info
+	$wp_customize->add_setting( 
+		'woocommerce_checkout_incompat_info',
+		array(
+			'default' 			=> '',
+			'sanitize_callback' => 'esc_attr'
+		)
+	);
+	$wp_customize->add_control( 
+		new Botiga_Text_Control( 
+			$wp_customize, 
+			'woocommerce_checkout_incompat_info',
+			array(
+				'label'			  => '',
+				'description'     => esc_html__( 'Your checkout page is being rendered through the new WooCommerce 8.3.0 checkout block. To have all Botiga checkout features working, you must edit the checkout page to use the classic checkout shortcode instead.', 'botiga-pro' ),
+				'link_title'        => esc_html__( 'Learn More', 'botiga-pro' ),
+				'link'              => 'https://docs.athemes.com/article/how-to-switch-cart-checkout-blocks-to-the-classic-shortcodes/',
+				'check_white_label' => false,
+				'section' 		  => 'woocommerce_checkout',
+				'priority'	 	  => 20
+			)
+		)
+	);
 } else {
 	// Checkout
 	$wp_customize->add_setting(

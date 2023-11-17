@@ -36,6 +36,30 @@ if ( botiga_is_cart_block_layout() ) {
 			)
 		)
 	);
+
+	// Woo 8.3+ checkout/cart info
+	$wp_customize->add_setting( 
+		'woocommerce_cart_incompat_info',
+		array(
+			'default' 			=> '',
+			'sanitize_callback' => 'esc_attr'
+		)
+	);
+	$wp_customize->add_control( 
+		new Botiga_Text_Control( 
+			$wp_customize, 
+			'woocommerce_cart_incompat_info',
+			array(
+				'label'			  => '',
+				'description'     => esc_html__( 'Your cart page is being rendered through the new WooCommerce 8.3.0 cart block. To have all Botiga cart features working, you must edit the cart page to use the classic cart shortcode instead.', 'botiga-pro' ),
+				'link_title'        => esc_html__( 'Learn More', 'botiga-pro' ),
+				'link'              => 'https://docs.athemes.com/article/how-to-switch-cart-checkout-blocks-to-the-classic-shortcodes/',
+				'check_white_label' => false,
+				'section' 		  => 'botiga_section_shop_cart',
+				'priority'	 	  => 20
+			)
+		)
+	);
 } else {
 	$wp_customize->add_setting(
 		'shop_cart_layout',
