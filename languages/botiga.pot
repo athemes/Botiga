@@ -341,7 +341,7 @@ msgstr ""
 msgid "Project Name: %s"
 msgstr ""
 
-#: inc/customizer.php:299, inc/customizer.php:297, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58, inc/dashboard/class-dashboard.php:215, template-parts/content-wishlist.php:116
+#: inc/customizer.php:299, inc/customizer.php:297, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58, inc/dashboard/class-dashboard.php:231, template-parts/content-wishlist.php:116
 msgid "Loading..."
 msgstr ""
 
@@ -405,7 +405,7 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37, inc/dashboard/class-dashboard.php:788
+#: inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37, inc/dashboard/class-dashboard.php:804
 msgid "PRO"
 msgstr ""
 
@@ -1841,7 +1841,7 @@ msgid "Custom Sidebar"
 msgstr ""
 
 #: inc/customizer/options/upsell.php:394
-msgid "Product Swatch"
+msgid "Variation Swatch"
 msgstr ""
 
 #: inc/customizer/options/upsell.php:406, inc/dashboard/class-dashboard-settings.php:647
@@ -1872,7 +1872,7 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:492
+#: inc/customizer/options/upsell.php:492, inc/dashboard/class-dashboard-settings.php:431
 msgid "Size Chart"
 msgstr ""
 
@@ -1884,7 +1884,7 @@ msgstr ""
 msgid "Sticky Add To Cart"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:528
+#: inc/customizer/options/upsell.php:528, inc/dashboard/class-dashboard-settings.php:509
 msgid "Linked Variations"
 msgstr ""
 
@@ -2613,11 +2613,11 @@ msgid "Your customers can save their favorite products to find them easily when 
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:396
-msgid "Product Swatches"
+msgid "Variation Swatches"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:397
-msgid "Enable your customers to see all the available color, size, and other options as beautiful product swatches."
+msgid "Enable your customers to see all the available color, size, and other options as beautiful variation swatches."
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:406
@@ -2637,15 +2637,11 @@ msgid "Swap the product image on mouse over."
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:423
-msgid "Product Variations Gallery"
+msgid "Variations Gallery"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:424
 msgid "Set different galleries for product each product variation."
-msgstr ""
-
-#: inc/dashboard/class-dashboard-settings.php:431
-msgid "Product Size Chart"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:432
@@ -2693,15 +2689,11 @@ msgid "Set the min, max, step and default preset from all quantity inputs."
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:499
-msgid "Product Sticky Add to Cart"
+msgid "Sticky Add to Cart"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:500
 msgid "Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product."
-msgstr ""
-
-#: inc/dashboard/class-dashboard-settings.php:509
-msgid "Product Linked Variations"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:510
@@ -2709,7 +2701,7 @@ msgid "Allows users to connect a group of any product types together by attribut
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:518
-msgid "Product Trust Badge"
+msgid "Trust Badge"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:519
@@ -2717,7 +2709,7 @@ msgid "Display a trust badge on single product pages."
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:527
-msgid "Product Reasons to Buy List"
+msgid "Reasons to Buy List"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:528
@@ -2725,7 +2717,7 @@ msgid "Display a list with reasons to buy on single product pages."
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:536
-msgid "Product Brand Image Upload"
+msgid "Brand Image Upload"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:537
@@ -2733,7 +2725,7 @@ msgid "Display a brand image on single product pages."
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:545
-msgid "Product Next/Prev Buttons"
+msgid "Next/Prev Buttons"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:546
@@ -2932,88 +2924,88 @@ msgstr ""
 msgid "Upgrade Botiga"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:210, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
+#: inc/dashboard/class-dashboard.php:226, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
 msgid "Activate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:211, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:158, inc/dashboard/html-settings-performance.php:27
+#: inc/dashboard/class-dashboard.php:227, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:158, inc/dashboard/html-settings-performance.php:27
 msgid "Deactivate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:212
+#: inc/dashboard/class-dashboard.php:228
 msgid "Installing..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:213
+#: inc/dashboard/class-dashboard.php:229
 msgid "Activating..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:214
+#: inc/dashboard/class-dashboard.php:230
 msgid "Deactivating..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:216
+#: inc/dashboard/class-dashboard.php:232
 msgid "Saving..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:217
+#: inc/dashboard/class-dashboard.php:233
 msgid "Saved!"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:218
+#: inc/dashboard/class-dashboard.php:234
 msgid "You have unsaved changes."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:219, inc/dashboard/html-builder.php:162
+#: inc/dashboard/class-dashboard.php:235, inc/dashboard/html-builder.php:162
 msgid "Save"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:220
+#: inc/dashboard/class-dashboard.php:236
 msgid "Redirecting..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:221
+#: inc/dashboard/class-dashboard.php:237
 msgid "Activated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:222
+#: inc/dashboard/class-dashboard.php:238
 msgid "Deactivated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:223
+#: inc/dashboard/class-dashboard.php:239
 msgid "Something went wrong, contact support."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:406
+#: inc/dashboard/class-dashboard.php:422
 msgid "Insufficient permissions to install the plugin."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:436
+#: inc/dashboard/class-dashboard.php:452
 msgid "Failed to initialize or activate importer plugin."
 msgstr ""
 
 #. translators: %s: https://wordpress.org/
-#: inc/dashboard/class-dashboard.php:534
+#: inc/dashboard/class-dashboard.php:550
 msgid "Thank you for creating the website with <a href=\"%s\" class=\"botiga-dashboard-footer-link\" target=\"_blank\">Botiga</a>."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:718
+#: inc/dashboard/class-dashboard.php:734
 msgid "Select existing"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:715
+#: inc/dashboard/class-dashboard.php:731
 msgid "No templates found."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:788
+#: inc/dashboard/class-dashboard.php:804
 msgid "FREE"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:793
+#: inc/dashboard/class-dashboard.php:809
 msgid "Theme News"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:802
+#: inc/dashboard/class-dashboard.php:818
 msgid "Website"
 msgstr ""
 
@@ -3820,18 +3812,18 @@ msgstr ""
 
 #. translators: %1$s current user display name.
 #: inc/notices/class-botiga-review.php:68
-msgid "Hi %1$s, it's so exciting to see that you've made significant progress in building your website. We have a small request that would mean the world to us. Could you please take a moment to give our website a glowing 5-star rating on WordPress? Your support and positive feedback will not only fuel our motivation but also help other users feel confident in choosing our theme. We truly appreciate your consideration and support. Thank you!"
-msgstr ""
-
-#: inc/notices/class-botiga-review.php:76
-msgid "Ok, you deserve it"
+msgid "Hi %1$s, it's so exciting to see that you've made significant progress in building your website. We have a small request that would mean the world to us. Could you please take a moment to write a review for Botiga on WordPress.org? Your support will not only fuel our motivation but also help other users feel confident in choosing our theme. Thank you!"
 msgstr ""
 
 #: inc/notices/class-botiga-review.php:77
-msgid "Nope, maybe later"
+msgid "Ok, you deserve it"
 msgstr ""
 
 #: inc/notices/class-botiga-review.php:78
+msgid "Nope, maybe later"
+msgstr ""
+
+#: inc/notices/class-botiga-review.php:79
 msgid "I already rated it"
 msgstr ""
 
@@ -4043,7 +4035,15 @@ msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
 #: inc/plugins/woocommerce/woocommerce.php:414
+msgid "Decrease quantity"
+msgstr ""
+
+#: inc/plugins/woocommerce/woocommerce.php:414
 msgid "Decrease product quantity."
+msgstr ""
+
+#: inc/plugins/woocommerce/woocommerce.php:419
+msgid "Increase quantity"
 msgstr ""
 
 #: inc/plugins/woocommerce/woocommerce.php:419

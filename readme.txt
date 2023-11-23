@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.1.7
+Version: 2.1.8
 Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 2.1.7
+Stable tag: 2.1.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,11 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.1.8 =
+Fixed - Payment Options: BACS isn’t styled in the order thank you page.
+Fixed - Quantity input: Lighthouse error - Links do not have a discernible name.
+Fixed - Search By Sku: Returning duplicated values in some cases.
+
 = 2.1.7 =
 Added - Notice regarding WooCommerce 8.3 new cart and checkout blocks.
 

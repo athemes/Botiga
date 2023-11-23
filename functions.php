@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.1.7' );
+	define( 'BOTIGA_VERSION', '2.1.8' );
 }
 
 // aThemes White Label Compatibility
@@ -601,16 +601,3 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
-
-
-add_shortcode( 'short1', function(){
-	echo 'SHORTCODE 1';
-} );
-
-add_shortcode( 'short2', function(){
-	echo 'SHORTCODE 2';
-} );
-
-add_shortcode( 'short3', function(){
-	echo 'SHORTCODE 3';
-} );
