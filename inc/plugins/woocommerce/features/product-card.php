@@ -152,6 +152,7 @@ function botiga_product_card_hooks() {
 
 	// Add to cart button text
 	add_filter( 'woocommerce_product_add_to_cart_text', 'botiga_add_to_cart_text', 10, 2);
+
 }
 add_action( 'wp', 'botiga_product_card_hooks' );
 
@@ -161,11 +162,15 @@ add_action( 'wp', 'botiga_product_card_hooks' );
 function botiga_filter_loop_add_to_cart( $button, $product, $args ) {
 	global $product;
 
-	//Return if not button layout 4
 	$button_layout 	= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-	$layout 		= get_theme_mod( 'shop_archive_layout', 'product-grid' );	
+
+	$args['attributes'] = array(
+		'title' => $product->add_to_cart_text(),
+	);
 
 	if ( 'layout4' !== $button_layout ) {
+		$button = str_replace( 'href=', 'title="' . $product->add_to_cart_description() . '" href=', $button );
+
 		return $button;
 	}
 
