@@ -393,8 +393,8 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'product-swatches',
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Swatches', 'botiga'),
-		'desc'       => esc_html__('Enable your customers to see all the available color, size, and other options as beautiful product swatches.', 'botiga'),
+		'title'      => esc_html__('Variation Swatches', 'botiga'),
+		'desc'       => esc_html__('Enable your customers to see all the available color, size, and other options as beautiful variation swatches.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_product_swatches', admin_url('customize.php')),
 		'docs_link'  => 'https://docs.athemes.com/article/pro-product-swatch/'

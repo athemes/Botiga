@@ -232,7 +232,7 @@ if (!defined('ABSPATH')) {
                                     <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
                                 </div>
                                 <div class="botiga-dashboard-freevspro-table__row">
-                                    <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Product Swatch</strong></div>
+                                    <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Variation Swatch</strong></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
                                 </div>
