@@ -56,7 +56,7 @@ class Botiga_Dashboard
         add_filter('woocommerce_enable_setup_wizard', '__return_false');
 
         add_action('admin_menu', array($this, 'add_menu_page'));
-        add_action('admin_footer', array($this, 'add_admin_footer_style'));
+        add_action('admin_footer', array($this, 'add_admin_footer_internal_scripts'));
         add_action('admin_notices', array($this, 'html_notice'));
         
         add_action('wp_ajax_botiga_notifications_read', array($this, 'ajax_notifications_read'));
@@ -176,13 +176,29 @@ class Botiga_Dashboard
      * 
      * @return void
      */
-    public function add_admin_footer_style() {
+    public function add_admin_footer_internal_scripts() {
         ?>
         <style>
             #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="admin.php?page=botiga-dashboard"] {
                 display: none;
             }
+            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga"] {
+                background-color: green;
+                color: #FFF;
+            }
         </style>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                const botigaUpsellMenuItem = document.querySelector( '#adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga"]' );
+
+                botigaUpsellMenuItem.addEventListener( 'click', function( e ){
+                    e.preventDefault();
+
+                    const href = this.getAttribute( 'href' );
+                    window.open( href, '_blank' );
+                } );
+            });
+        </script>
         <?php
     }
 
