@@ -903,6 +903,7 @@ div.editor-styles-wrapper .quantity-button-style9 .quantity .botiga-quantity-plu
 }
 
 div.editor-styles-wrapper .quantity-button-style9 .quantity .botiga-quantity-plus:before {
+  border-color: inherit;
   -webkit-transform: translate3d(0, 1px, 0) rotate(45deg);
           transform: translate3d(0, 1px, 0) rotate(45deg);
 }
@@ -912,6 +913,7 @@ div.editor-styles-wrapper .quantity-button-style9 .quantity .botiga-quantity-min
 }
 
 div.editor-styles-wrapper .quantity-button-style9 .quantity .botiga-quantity-minus:before {
+  border-color: inherit;
   -webkit-transform: translate3d(0, 1px, 0) rotate(-135deg);
           transform: translate3d(0, 1px, 0) rotate(-135deg);
 }

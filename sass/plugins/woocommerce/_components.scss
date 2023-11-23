@@ -324,12 +324,14 @@
 		.botiga-quantity-plus {
 			margin-right: 10px;
 			&:before {
+				border-color: inherit;
 				transform: translate3d(0, 1px, 0) rotate(45deg);
 			}
 		}
 		.botiga-quantity-minus {
 			margin-left: 10px;
 			&:before {
+				border-color: inherit;
 				transform: translate3d(0, 1px, 0) rotate(-135deg);
 			}
 		}
