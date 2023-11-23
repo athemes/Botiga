@@ -601,3 +601,16 @@ function botiga_get_template_part( $slug, $name = null, $args = array() ) {
 		return include( locate_template($templates) );
 	}
 }
+
+
+add_shortcode( 'short1', function(){
+	echo 'SHORTCODE 1';
+} );
+
+add_shortcode( 'short2', function(){
+	echo 'SHORTCODE 2';
+} );
+
+add_shortcode( 'short3', function(){
+	echo 'SHORTCODE 3';
+} );
