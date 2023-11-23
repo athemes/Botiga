@@ -413,5 +413,17 @@ form.woocommerce-checkout {
 	}
 }
 
+.wc-bacs-bank-details-account-name,
+.wc-bacs-bank-details-heading {
+	margin-bottom: 15px !important;
+}
+
+.bacs_details {
+	& + .bacs_details,
+	& + .wc-bacs-bank-details-account-name {
+		margin-top: 25px;
+	}
+}
+
 /* WooCommerce Checkout Block (WC 8.3+) */
 @import "_checkout-block";
