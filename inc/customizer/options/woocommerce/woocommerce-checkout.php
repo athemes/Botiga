@@ -48,8 +48,8 @@ if ( botiga_is_checkout_block_layout() ) {
 			'woocommerce_checkout_incompat_info',
 			array(
 				'label'			  => '',
-				'description'     => esc_html__( 'Your checkout page is being rendered through the new WooCommerce 8.3.0 checkout block. To have all Botiga checkout features working, you must edit the checkout page to use the classic checkout shortcode instead.', 'botiga-pro' ),
-				'link_title'        => esc_html__( 'Learn More', 'botiga-pro' ),
+				'description'     => esc_html__( 'Your checkout page is being rendered through the new WooCommerce 8.3.0 checkout block. To have all Botiga checkout features working, you must edit the checkout page to use the classic checkout shortcode instead.', 'botiga' ),
+				'link_title'        => esc_html__( 'Learn More', 'botiga' ),
 				'link'              => 'https://docs.athemes.com/article/how-to-switch-cart-checkout-blocks-to-the-classic-shortcodes/',
 				'check_white_label' => false,
 				'section' 		  => 'woocommerce_checkout',
