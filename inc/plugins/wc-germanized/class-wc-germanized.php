@@ -38,5 +38,5 @@ class Botiga_Woocommerce_Germanized_Compatibility {
     }
 }
 
-require get_template_directory() . '/inc/plugins/wc-germanized/class-wc-germanized-single-product.php';
+require get_template_directory() . '/inc/plugins/wc-germanized/class-wc-germanized-single-product.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 new Botiga_Woocommerce_Germanized_Compatibility();

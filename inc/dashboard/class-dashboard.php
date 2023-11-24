@@ -135,7 +135,7 @@ class Botiga_Dashboard
         );
 
         // Add 'Customize' link
-        $customize_url = add_query_arg( 'return', urlencode( remove_query_arg( wp_removable_query_args(), wp_unslash( $_SERVER['REQUEST_URI'] ) ) ), 'customize.php' );
+        $customize_url = add_query_arg( 'return', urlencode( remove_query_arg( wp_removable_query_args(), isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '' ) ), 'customize.php' );
         add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
             'botiga-dashboard',
             esc_html__('Customize', 'botiga'),
@@ -588,10 +588,8 @@ class Botiga_Dashboard
         if( ! current_user_can( 'manage_options' ) ) {
             wp_send_json_error();
         }
-    
-        $data = $_POST[ 'data' ];
 
-        $data = stripslashes_deep($data);
+        $data = isset( $_POST[ 'data' ] ) ? stripslashes_deep( $_POST[ 'data' ] ) : array();
     
         update_option('botiga_template_builder_data', $data);
     
@@ -608,8 +606,8 @@ class Botiga_Dashboard
 			wp_send_json_error();
 		}
 
-		$post_name      = sanitize_text_field( wp_unslash( $_POST['key'] ) ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) );
-        $page_builder   = sanitize_text_field( wp_unslash( $_POST['page_builder'] ) );
+		$post_name      = isset( $_POST['key'] ) && isset( $_POST['part_type'] ) ? sanitize_text_field( wp_unslash( $_POST['key'] ) ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) ) : '';
+        $page_builder   = isset( $_POST['page_builder'] ) ? sanitize_text_field( wp_unslash( $_POST['page_builder'] ) ) : '';
 
 		$post_title = '';
 		$args       = array(
@@ -627,7 +625,7 @@ class Botiga_Dashboard
 
 			$key            = sanitize_text_field( wp_unslash( $_POST['key'] ) );
 
-			$post_title     = 'Botiga Template Part - ' . str_replace( 'botiga-template-', '', $key ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) );
+			$post_title     = __( 'Botiga Template Part - ', 'botiga' ) . str_replace( 'botiga-template-', '', $key ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) );
 
 			$params = array(
 				'post_content' => '',
@@ -704,7 +702,7 @@ class Botiga_Dashboard
      */
     public function get_template_parts() {
         $args = array(
-            'numberposts' 	=> -1,
+            'numberposts' 	=> -1, // phpcs:ignore WPThemeReview.CoreFunctionality.PostsPerPage.posts_per_page_numberposts
             'post_type'   	=> 'athemes_hf',
         );	
 

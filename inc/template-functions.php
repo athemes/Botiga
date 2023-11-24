@@ -978,8 +978,8 @@ function botiga_custom_google_fonts_url() {
  * Get google fonts
  */
 function botiga_get_google_fonts() {
-	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
-	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+	require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 	$fontFile 		= get_parent_theme_file_path( '/inc/customizer/controls/typography/google-fonts-alphabetical.json' );
 	$file_system 	= new WP_Filesystem_Direct( false );
