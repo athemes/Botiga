@@ -226,7 +226,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-3 botiga-review-date-wrapper">
-                                            <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'F j, Y', $comment ) ); ?></time>
+                                            <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( apply_filters( 'botiga_advanced_reviews_time_format', get_option( 'time_format' ) ), $comment ) ); ?>"><?php echo esc_html( get_comment_date( apply_filters( 'botiga_advanced_reviews_date_format', get_option( 'date_format' ) ), $comment ) ); ?></time>
                                         </div>
                                         <div class="col-12">
                                             <div class="botiga-review-content">
