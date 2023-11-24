@@ -405,7 +405,7 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37, inc/dashboard/class-dashboard.php:804
+#: inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37, inc/dashboard/class-dashboard.php:802
 msgid "PRO"
 msgstr ""
 
@@ -2196,6 +2196,14 @@ msgstr ""
 msgid "Edit cart layout"
 msgstr ""
 
+#: inc/customizer/options/woocommerce/woocommerce-cart.php:54
+msgid "Your cart page is being rendered through the new WooCommerce 8.3.0 cart block. To have all Botiga cart features working, you must edit the cart page to use the classic cart shortcode instead."
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-cart.php:55, inc/customizer/options/woocommerce/woocommerce-checkout.php:52, inc/dashboard/class-dashboard-settings.php:771, inc/dashboard/html-home.php:135
+msgid "Learn More"
+msgstr ""
+
 #: inc/customizer/options/woocommerce/woocommerce-cart.php:164
 msgid "Mini Cart"
 msgstr ""
@@ -2226,6 +2234,10 @@ msgstr ""
 
 #: inc/customizer/options/woocommerce/woocommerce-checkout.php:22
 msgid "Edit checkout layout"
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-checkout.php:51
+msgid "Your checkout page is being rendered through the new WooCommerce 8.3.0 checkout block. To have all Botiga checkout features working, you must edit the checkout page to use the classic checkout shortcode instead."
 msgstr ""
 
 #: inc/customizer/options/woocommerce/woocommerce-general.php:13
@@ -2908,10 +2920,6 @@ msgstr ""
 msgid "Rename and present Botiga as your own."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:771, inc/dashboard/html-home.php:135
-msgid "Learn More"
-msgstr ""
-
 #: inc/dashboard/class-dashboard-settings.php:821
 msgid "Get Pro"
 msgstr ""
@@ -2989,23 +2997,27 @@ msgstr ""
 msgid "Thank you for creating the website with <a href=\"%s\" class=\"botiga-dashboard-footer-link\" target=\"_blank\">Botiga</a>."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:734
+#: inc/dashboard/class-dashboard.php:628
+msgid "Botiga Template Part - "
+msgstr ""
+
+#: inc/dashboard/class-dashboard.php:732
 msgid "Select existing"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:731
+#: inc/dashboard/class-dashboard.php:729
 msgid "No templates found."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:804
+#: inc/dashboard/class-dashboard.php:802
 msgid "FREE"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:809
+#: inc/dashboard/class-dashboard.php:807
 msgid "Theme News"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:818
+#: inc/dashboard/class-dashboard.php:816
 msgid "Website"
 msgstr ""
 
