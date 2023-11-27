@@ -66,7 +66,8 @@ class Botiga_Theme_Review_Notice {
 				printf(
 				    /* Translators: %1$s current user display name. */
 					esc_html__(
-						'Hi %1$s, it\'s so exciting to see that you\'ve made significant progress in building your website. We have a small request that would mean the world to us. Could you please take a moment to give our website a glowing 5-star rating on WordPress? Your support and positive feedback will not only fuel our motivation but also help other users feel confident in choosing our theme. We truly appreciate your consideration and support. Thank you!', 'botiga'
+						'Hi %1$s, it\'s so exciting to see that you\'ve made significant progress in building your website. We have a small request that would mean the world to us. Could you please take a moment to write a review for Botiga on WordPress.org? Your support will not only fuel our motivation but also help other users feel confident in choosing our theme. Thank you!', 
+						'botiga'
 					),
 					'<strong>' . esc_html( $current_user->display_name ) . '</strong>'
 				);

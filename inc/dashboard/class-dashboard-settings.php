@@ -393,8 +393,8 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'product-swatches',
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Swatches', 'botiga'),
-		'desc'       => esc_html__('Enable your customers to see all the available color, size, and other options as beautiful product swatches.', 'botiga'),
+		'title'      => esc_html__('Variation Swatches', 'botiga'),
+		'desc'       => esc_html__('Enable your customers to see all the available color, size, and other options as beautiful variation swatches.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_product_swatches', admin_url('customize.php')),
 		'docs_link'  => 'https://docs.athemes.com/article/pro-product-swatch/'
@@ -420,7 +420,7 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module' => 'variations-gallery',
 		'type'   => 'pro',
-		'title'  => esc_html__('Product Variations Gallery', 'botiga'),
+		'title'  => esc_html__('Variations Gallery', 'botiga'),
 		'desc'   => esc_html__('Set different galleries for product each product variation.', 'botiga'),
 		'docs_link'  => 'https://docs.athemes.com/article/pro-product-variations-gallery/'
 	);
@@ -428,7 +428,7 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'size-chart',
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Size Chart', 'botiga'),
+		'title'      => esc_html__('Size Chart', 'botiga'),
 		'desc'       => esc_html__('Add custom size charts to your products, e.g. size charts for clothes, shoes, bags, or jewelry.', 'botiga'),
 		'link_label' => esc_html__('Size Charts', 'botiga'),
 		'link_url'   => add_query_arg('post_type', 'size_chart', admin_url('edit.php')),
@@ -496,7 +496,7 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'sticky-add-to-cart',
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Sticky Add to Cart', 'botiga'),
+		'title'      => esc_html__('Sticky Add to Cart', 'botiga'),
 		'desc'       => esc_html__('Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product_sticky_add_to_cart'), admin_url('customize.php')),
@@ -506,7 +506,7 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'linked-variations',
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Linked Variations', 'botiga'),
+		'title'      => esc_html__('Linked Variations', 'botiga'),
 		'desc'       => esc_html__('Allows users to connect a group of any product types together by attribute(s) while they can still be managed as separate products.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('post_type', 'linked_variation', admin_url('edit.php')),
@@ -515,7 +515,7 @@ function botiga_dashboard_settings() {
 
 	$settings['features'][] = array(
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Trust Badge', 'botiga'),
+		'title'      => esc_html__('Trust Badge', 'botiga'),
 		'desc'       => esc_html__('Display a trust badge on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_elements_order'), admin_url('customize.php')),
@@ -524,7 +524,7 @@ function botiga_dashboard_settings() {
 
 	$settings['features'][] = array(
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Reasons to Buy List', 'botiga'),
+		'title'      => esc_html__('Reasons to Buy List', 'botiga'),
 		'desc'       => esc_html__('Display a list with reasons to buy on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_elements_order'), admin_url('customize.php')),
@@ -533,7 +533,7 @@ function botiga_dashboard_settings() {
 
 	$settings['features'][] = array(
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Brand Image Upload', 'botiga'),
+		'title'      => esc_html__('Brand Image Upload', 'botiga'),
 		'desc'       => esc_html__('Display a brand image on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_elements_order'), admin_url('customize.php')),
@@ -542,7 +542,7 @@ function botiga_dashboard_settings() {
 
 	$settings['features'][] = array(
 		'type'       => 'pro',
-		'title'      => esc_html__('Product Next/Prev Buttons', 'botiga'),
+		'title'      => esc_html__('Next/Prev Buttons', 'botiga'),
 		'desc'       => esc_html__('Display next/prev buttons on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_navigation'), admin_url('customize.php')),

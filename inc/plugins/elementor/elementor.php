@@ -13,6 +13,9 @@ class Botiga_Elementor_Compatibility {
 
         // Init
         add_action( 'wp', array( $this, 'init' ) );
+
+        // add inline style
+        add_action( 'wp_enqueue_scripts', array( $this, 'add_inline_style' ), 20 );
         
     }
 
@@ -25,6 +28,33 @@ class Botiga_Elementor_Compatibility {
         // Register elementor locations (Theme Builder)
         add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
 
+    }
+
+    /**
+     * Add inline style
+     * 
+     */
+    public function add_inline_style() {
+        $inline_style = '';
+
+        if ( Botiga_Elementor_Helpers::elementor_has_location( 'single' ) || Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
+            $inline_style .= '
+                .container.content-wrapper {
+                    max-width: 100%;
+                    padding: 0;
+                }
+                
+                div[data-elementor-type="product"],
+                div[data-elementor-type="product-archive"] {
+                    width: 100%;
+                }
+            ';
+        }
+
+        // Add inline style
+        if ( ! empty( $inline_style ) ) {
+            wp_add_inline_style( 'botiga-style', $inline_style );
+        }
     }
 
     /**

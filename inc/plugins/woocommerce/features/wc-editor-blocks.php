@@ -53,7 +53,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	$markup = "<li class=\"wc-block-grid__product product-grid $wc_block_grid_item_class\">
 				<div class=\"loop-image-wrap ". apply_filters( 'botiga_wc_block_product_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ."\">
-					<a href=\"{$data->permalink}\" class=\"wc-block-grid__product-link\">
+					<a href=\"{$data->permalink}\" class=\"wc-block-grid__product-link\" title=\"{$product->add_to_cart_text()}\">
 						". apply_filters( 'botiga_wc_block_product_loop_image_wrap_image_output', $data->image, $product ) ."
 					</a>";
 

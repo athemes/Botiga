@@ -281,6 +281,18 @@
                 'prop'     : 'text-align'
             },
 
+            // Header Shortcode 2 Component Text Alignment.
+            'botiga_section_hb_component__shortcode2_text_align' : {
+                'selector' : '.bhfb.bhfb-header .bhfb-component-shortcode2',
+                'prop'     : 'text-align'
+            },
+
+            // Header Shortcode 3 Component Text Alignment.
+            'botiga_section_hb_component__shortcode3_text_align' : {
+                'selector' : '.bhfb.bhfb-header .bhfb-component-shortcode3',
+                'prop'     : 'text-align'
+            },
+
             // Footer HTML Component Text Alignment.
             'botiga_section_fb_component__html_text_align' : {
                 'selector' : '.bhfb.bhfb-footer .bhfb-component-html',

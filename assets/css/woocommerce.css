@@ -2560,7 +2560,7 @@ form.cart .quantity.hidden {
 }
 
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .quantity {
-  width: 125px;
+  width: 175px;
   max-height: 51px;
   margin: 0;
 }
@@ -4019,6 +4019,63 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
   }
 }
 
+/* WooCommerce Cart Block (WC 8.3+) */
+.wc-block-cart table {
+  border: none;
+}
+
+.wc-block-cart table th, .wc-block-cart table td, .wc-block-cart table tr {
+  border: none;
+}
+
+.wc-block-cart table td {
+  text-align: left;
+}
+
+.wc-block-cart table.wc-block-cart-items .wc-block-cart-items__header,
+.wc-block-cart table.wc-block-cart-items .wc-block-cart-items__header,
+.wc-block-cart .wc-block-cart__totals-title {
+  font-size: .8125rem !important;
+}
+
+.wc-block-cart .wc-block-components-quantity-selector__input {
+  min-height: 30px;
+}
+
+.wc-block-cart .wc-block-components-product-name {
+  text-decoration: none;
+}
+
+.wc-block-cart .wc-block-components-quantity-selector__button {
+  background-color: transparent !important;
+  border: none;
+  padding: 0;
+  color: var(--bt-color-button, #212121) !important;
+}
+
+.wc-block-cart .wc-block-cart__submit-button {
+  background-color: var(--bt-color-button-bg, #212121);
+  color: var(--bt-color-button, #FFF);
+  text-decoration: none !important;
+}
+
+.wc-block-cart .wc-block-cart__submit-button:hover {
+  background-color: var(--bt-color-button-bg-hover, #757575);
+  color: var(--bt-color-button-hover, #FFF);
+}
+
+.is-large.wc-block-cart .wc-block-cart-items th {
+  padding: 0.75rem 16px 0.75rem 0 !important;
+}
+
+.is-large.wc-block-cart .wc-block-cart-items td {
+  padding: 36px 0 36px 16px !important;
+}
+
+.is-large.wc-block-cart .wc-block-cart__totals-title {
+  padding: 0.75rem 0 !important;
+}
+
 /**
  * Checkout
  */
@@ -4424,6 +4481,73 @@ form.woocommerce-checkout {
   max-width: 100%;
 }
 
+/* BACS */
+.wc-bacs-bank-details-account-name {
+  font-size: var(--bt-font-size-h4, 32px);
+}
+
+.wc-bacs-bank-details {
+  list-style: none;
+  padding: 0;
+}
+
+.woocommerce-bacs-bank-details .wc-bacs-bank-details {
+  padding: 30px 30px 30px 35px;
+  background-color: var(--bt-color-content-cards-bg, #f5f5f5);
+}
+
+.wc-bacs-bank-details-account-name,
+.wc-bacs-bank-details-heading {
+  margin-bottom: 15px !important;
+}
+
+.bacs_details + .bacs_details,
+.bacs_details + .wc-bacs-bank-details-account-name {
+  margin-top: 25px;
+}
+
+/* WooCommerce Checkout Block (WC 8.3+) */
+.wc-block-components-checkout-step__description {
+  margin-bottom: 16px;
+}
+
+.wc-block-components-order-summary .wc-block-components-panel__button {
+  background-color: transparent !important;
+  color: var(--bt-color-body-text, #212121) !important;
+  border: none;
+}
+
+.wc-block-components-order-summary .wc-block-components-panel__content {
+  padding-top: 10px;
+}
+
+.wc-block-components-checkout-return-to-cart-button {
+  text-decoration: none !important;
+}
+
+.wc-block-components-checkout-step--with-step-number .wc-block-components-checkout-step__container:after {
+  border-color: var(--bt-color-forms-borders, #212121) !important;
+}
+
+.wc-block-components-order-summary-item__quantity {
+  padding: 0;
+}
+
+.wc-block-components-totals-coupon__button {
+  padding: 0 24px;
+}
+
+.wc-block-components-checkout-place-order-button {
+  background-color: var(--bt-color-button-bg, #212121);
+  color: var(--bt-color-button, #FFF);
+  text-decoration: none !important;
+}
+
+.wc-block-components-checkout-place-order-button:hover {
+  background-color: var(--bt-color-button-bg-hover, #757575);
+  color: var(--bt-color-button-hover, #FFF);
+}
+
 /**
  * General WooCommerce components
  */
@@ -4803,6 +4927,7 @@ form.woocommerce-checkout {
 }
 
 .quantity-button-style9 .quantity .botiga-quantity-plus:before {
+  border-color: inherit;
   -webkit-transform: translate3d(0, 1px, 0) rotate(45deg);
           transform: translate3d(0, 1px, 0) rotate(45deg);
 }
@@ -4812,6 +4937,7 @@ form.woocommerce-checkout {
 }
 
 .quantity-button-style9 .quantity .botiga-quantity-minus:before {
+  border-color: inherit;
   -webkit-transform: translate3d(0, 1px, 0) rotate(-135deg);
           transform: translate3d(0, 1px, 0) rotate(-135deg);
 }

@@ -395,3 +395,35 @@ form.woocommerce-checkout {
 		max-width: 100%;
 	}
 }
+
+/* BACS */
+.wc-bacs-bank-details-account-name {
+	font-size: var( --bt-font-size-h4, 32px );
+}
+
+.wc-bacs-bank-details {
+	list-style: none;
+	padding: 0;
+}
+
+.woocommerce-bacs-bank-details { 
+	.wc-bacs-bank-details {
+		padding: 30px 30px 30px 35px;
+		background-color: var(--bt-color-content-cards-bg, #f5f5f5);
+	}
+}
+
+.wc-bacs-bank-details-account-name,
+.wc-bacs-bank-details-heading {
+	margin-bottom: 15px !important;
+}
+
+.bacs_details {
+	& + .bacs_details,
+	& + .wc-bacs-bank-details-account-name {
+		margin-top: 25px;
+	}
+}
+
+/* WooCommerce Checkout Block (WC 8.3+) */
+@import "_checkout-block";

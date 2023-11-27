@@ -306,9 +306,6 @@ function botiga_wc_hooks() {
 			add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 		}
 
-		//Move sale tag
-		// remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
-		// add_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_sale_flash', 99 );
 	}
 
 	//Move cart collaterals
@@ -414,12 +411,12 @@ function botiga_single_addtocart_wrapper_close() {
  * Quantity buttons
  */
 function botiga_woocommerce_before_quantity_input_field() {
-	echo '<a href="#" class="botiga-quantity-minus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'minus' ) ) .'<span class="bt-d-none">'. esc_html__( 'Decrease product quantity.', 'botiga' ) .'</span></a>';
+	echo '<a href="#" class="botiga-quantity-minus" title="' . esc_attr__( 'Decrease quantity', 'botiga' ) . '" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'minus' ) ) .'<span class="bt-d-none">'. esc_html__( 'Decrease product quantity.', 'botiga' ) .'</span></a>';
 }
 add_action( 'woocommerce_before_quantity_input_field', 'botiga_woocommerce_before_quantity_input_field' );
 
 function botiga_woocommerce_after_quantity_input_field() {
-	echo '<a href="#" class="botiga-quantity-plus" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'plus' ) ) .'<span class="bt-d-none">'. esc_html__( 'Increase product quantity.', 'botiga' ) .'</span></a>';
+	echo '<a href="#" class="botiga-quantity-plus" title="' . esc_attr__( 'Increase quantity', 'botiga' ) . '" role="button">'. esc_html( botiga_get_quantity_symbols_output( 'plus' ) ) .'<span class="bt-d-none">'. esc_html__( 'Increase product quantity.', 'botiga' ) .'</span></a>';
 }
 add_action( 'woocommerce_after_quantity_input_field', 'botiga_woocommerce_after_quantity_input_field' );
 
