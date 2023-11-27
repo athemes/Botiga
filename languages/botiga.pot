@@ -3871,19 +3871,19 @@ msgstr ""
 msgid "Vendor Dashboard"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:45
+#: inc/plugins/elementor/elementor.php:75
 msgid "Fade In Up Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:46
+#: inc/plugins/elementor/elementor.php:76
 msgid "Fade In Down Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:47
+#: inc/plugins/elementor/elementor.php:77
 msgid "Fade In Left Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:48
+#: inc/plugins/elementor/elementor.php:78
 msgid "Fade In Right Shorter"
 msgstr ""
 
