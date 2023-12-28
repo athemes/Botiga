@@ -18,21 +18,21 @@ $css .= Botiga_Custom_CSS::get_responsive_css(
 );
 
 // Icon Color
-$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_color', '', '.bhfb-component-search .header-search svg' );
-$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_color', '', '.bhfb-component-search .header-search .botiga-image.is-svg' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_color', '#212121', '.bhfb-component-search .header-search svg' );
+$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_color', '#212121', '.bhfb-component-search .header-search .botiga-image.is-svg' );
 
 // Icon Color Hover
-$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_color_hover', '', '.bhfb-component-search .header-search:hover svg' );
-$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_color_hover', '', '.bhfb-component-search .header-search:hover .botiga-image.is-svg' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_color_hover', '#757575', '.bhfb-component-search .header-search:hover svg' );
+$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_color_hover', '#757575', '.bhfb-component-search .header-search:hover .botiga-image.is-svg' );
 
 if( botiga_sticky_header_enabled() ) {
     // Sticky Header - Icon Color
-    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_sticky_color', '', '.sticky-header-active .bhfb-component-search .header-search svg' );
-    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_sticky_color', '', '.sticky-header-active .bhfb-component-search .header-search .botiga-image.is-svg' );
+    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_sticky_color', '#212121', '.sticky-header-active .bhfb-component-search .header-search svg' );
+    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_sticky_color', '#212121', '.sticky-header-active .bhfb-component-search .header-search .botiga-image.is-svg' );
 
     // Sticky Header - Icon Color Hover
-    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_sticky_color_hover', '', '.sticky-header-active .bhfb-component-search .header-search:hover svg' );
-    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_sticky_color_hover', '', '.sticky-header-active .bhfb-component-search .header-search:hover .botiga-image.is-svg' );
+    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_search_icon_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-search .header-search:hover svg' );
+    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_search_icon_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-search .header-search:hover .botiga-image.is-svg' );
 }
 
 // Padding
