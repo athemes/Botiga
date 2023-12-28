@@ -30,6 +30,9 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.1.9 =
+Fixed - Single Blog Posts: Font size customizer control not working.
+
 = 2.1.8 =
 Fixed - Payment Options: BACS isn’t styled in the order thank you page.
 Fixed - Quantity input: Lighthouse error - Links do not have a discernible name.
