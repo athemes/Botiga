@@ -101,6 +101,14 @@
 	.entry-meta-below {
 		margin-top: 8px;
 	}
+
+	&.single-post {
+		.entry-header {
+			.entry-title {
+				font-size: var( --bt-font-size-post-title, 32px );
+			}
+		}
+	}
 }
 
 .entry-meta {
