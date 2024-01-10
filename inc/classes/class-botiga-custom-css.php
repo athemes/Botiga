@@ -787,7 +787,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					),
 					array(
 						'setting'  => 'color_forms_background',
-						'defaults' => '',
+						'defaults' => '#ffffff',
 						'name'	   => '--bt-color-forms-background',
 						'unit'	   => ''
 					),
