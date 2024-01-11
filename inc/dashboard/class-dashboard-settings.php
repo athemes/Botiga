@@ -819,7 +819,7 @@ function botiga_demos_settings($settings) {
 	// Pro.
 	$settings['has_pro']   = false;
 	$settings['pro_label'] = esc_html__('Get Pro', 'botiga');
-	$settings['pro_link']  = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
+	$settings['pro_link']  = 'https://athemes.com/botiga-upgrade/?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
 
 	return $settings;
 }
