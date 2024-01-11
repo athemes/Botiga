@@ -391,7 +391,7 @@ $wp_customize->add_section(
         $wp_customize, 
         'botiga_section_product_swatches',
         array(
-            'title'         => esc_html__( 'Product Swatch', 'botiga' ),
+            'title'         => esc_html__( 'Variation Swatch', 'botiga' ),
             'priority'      => 150
         )
     ) 

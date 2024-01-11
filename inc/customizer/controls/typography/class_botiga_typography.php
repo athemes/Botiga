@@ -153,8 +153,8 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 	 * Return the list of Google Fonts from our json file. Unless otherwise specfied, list will be limited to 30 fonts.
 	 */
 	public function get_google_fonts( $count = 30 ) {
-		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
-		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 		$fontFile 		= get_parent_theme_file_path( '/inc/customizer/controls/typography/google-fonts-alphabetical.json' );
 		$file_system 	= new WP_Filesystem_Direct( false );

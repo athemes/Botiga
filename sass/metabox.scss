@@ -140,7 +140,7 @@
 }
 
 .botiga-metabox-field-description {
-	font-size: 80%;
+	font-size: 95%;
 	opacity: 0.75;
 	margin-top: 10px;
 
@@ -150,7 +150,6 @@
 }
 
 .botiga-metabox-field-text {
-
 	input {
 		width: 50%;
 		max-width: 100%;
@@ -186,6 +185,19 @@
 		input {
 			margin: 0;
 		}
+	}
+}
+
+.botiga-metabox-field-hook-select .hook-select-wrapper {
+	display: flex;
+	gap: 10px;
+
+	select {
+		min-width: 280px;
+	}
+
+	input {
+		max-width: 70px;
 	}
 }
 

@@ -5,6 +5,11 @@
  * @package Botiga
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * Add vendor profile link to botiga header login register dropdown
  */

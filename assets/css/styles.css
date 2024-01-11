@@ -3632,6 +3632,10 @@ body.mobile-menu-visible:before {
   margin-top: 8px;
 }
 
+.single.single-post .entry-header .entry-title {
+  font-size: var(--bt-font-size-post-title, 32px);
+}
+
 .entry-meta {
   font-size: var(--bt-font-size-post-meta, 14px);
   color: #666666;

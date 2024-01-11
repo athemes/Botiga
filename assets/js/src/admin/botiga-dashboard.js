@@ -742,7 +742,7 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 					cache: true,
 					data: function data(params) {
 						return {
-							action: 'botiga_templates_display_conditions_select_ajax',
+							action: 'templates_builder_display_conditions_select_ajax',
 							term: params.term,
 							nonce: window.botiga_dashboard.nonce,
 							source: $conditionSelect.val()

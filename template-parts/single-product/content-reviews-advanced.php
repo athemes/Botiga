@@ -5,7 +5,8 @@
  * @package Botiga
  */
 // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-global $_product;
+global $product;
+$_product = $product;
 $product_id   = $_product->get_id();
 $review_count = $_product->get_review_count();
 $average      = $_product->get_average_rating();
@@ -121,7 +122,8 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
 
                 <?php if( $review_count > 0 ) : ?>
                 <form class="botiga-reviews-orderby-form" method="get" action="<?php echo esc_url( get_the_permalink( $product_id ) ); ?>#reviews-stars">
-                    <select class="botiga-reviews-orderby" name="orderby" onChange="this.parentNode.submit();">
+                    <label for="botiga-reviews-orderby" class="screen-reader-text"><?php echo esc_html__( 'Sort by', 'botiga' ); ?></label>
+                    <select id="botiga-reviews-orderby" class="botiga-reviews-orderby" name="orderby" onChange="this.parentNode.submit();">
                         <option value="newest"<?php echo selected( $sort_orderby, 'newest' ); ?>><?php echo esc_html__( 'Newest', 'botiga' ); ?></option>
                         <option value="oldest"<?php echo selected( $sort_orderby, 'oldest' ); ?>><?php echo esc_html__( 'Oldest', 'botiga' ); ?></option>
                         <option value="top-rated"<?php echo selected( $sort_orderby, 'top-rated' ); ?>><?php echo esc_html__( 'Top rated', 'botiga' ); ?></option>
@@ -224,7 +226,7 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
                                             </div>
                                         </div>
                                         <div class="col-md-3 botiga-review-date-wrapper">
-                                            <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( 'c', $comment ) ); ?>"><?php echo esc_html( get_comment_date( 'F j, Y', $comment ) ); ?></time>
+                                            <time class="botiga-review-date" datetime="<?php echo esc_attr( get_comment_date( apply_filters( 'botiga_advanced_reviews_time_format', get_option( 'time_format' ) ), $comment ) ); ?>"><?php echo esc_html( get_comment_date( apply_filters( 'botiga_advanced_reviews_date_format', get_option( 'date_format' ) ), $comment ) ); ?></time>
                                         </div>
                                         <div class="col-12">
                                             <div class="botiga-review-content">

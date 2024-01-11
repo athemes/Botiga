@@ -47,7 +47,7 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 
 		foreach ($values as $value) {
 			if (!empty($value['id'])) {
-				$labels[$value['id']] = self::get_option_text($value);
+				$labels[$value['id']] = botiga_get_display_condition_value_text( $value );
 			}
 		}
 
@@ -70,68 +70,5 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 			<textarea id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" class="botiga-display-conditions-textarea hidden" <?php $this->link(); ?>><?php echo wp_kses( $this->value(), array() ); ?></textarea>
 		</div>
 		<?php
-	}
-
-	/**
-	 * Get option text
-	 */
-	public static function get_option_text($value) {
-
-		switch ($value['condition']) {
-
-			case 'post-id':
-			case 'page-id':
-			case 'product-id':
-			case 'cpt-post-id':
-				return get_the_title($value['id']);
-				break;
-
-			case 'tag-id':
-			case 'category-id':
-			case 'product-category-id':
-
-				$term = get_term($value['id']);
-
-				if (!empty($term)) {
-					return $term->name;
-				}
-
-				break;
-
-			case 'cpt-term-id':
-
-				$term = get_term($value['id']);
-
-				if (!empty($term)) {
-					return $term->name;
-				}
-
-				break;
-
-			case 'cpt-taxonomy-id':
-
-				$taxonomy = get_taxonomy($value['id']);
-
-				if (!empty($taxonomy)) {
-					return $taxonomy->label;
-				}
-
-				break;
-
-			case 'author':
-			case 'author-id':
-				return get_the_author_meta('display_name', $value['id']);
-				break;
-		}
-
-		// user-roles
-		if (substr($value['condition'], 0, 10) === 'user_role_') {
-			$user_rules = get_editable_roles();
-			if (!empty($user_rules[$value['id']])) {
-				return $user_rules[$value['id']]['name'];
-			}
-		}
-
-		return $value['id'];
 	}
 }

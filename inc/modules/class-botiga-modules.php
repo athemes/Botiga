@@ -21,7 +21,6 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		 * Check if a specific module is activated
 		 */
 		public static function is_module_active( $module ) {
-
 			$all_modules = get_option( 'botiga-modules' );
 			$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
 

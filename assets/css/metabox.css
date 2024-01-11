@@ -173,7 +173,7 @@
 }
 
 .botiga-metabox-field-description {
-  font-size: 80%;
+  font-size: 95%;
   opacity: 0.75;
   margin-top: 10px;
 }
@@ -215,6 +215,21 @@
 
 .botiga-metabox-field-checkbox label input {
   margin: 0;
+}
+
+.botiga-metabox-field-hook-select .hook-select-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.botiga-metabox-field-hook-select .hook-select-wrapper select {
+  min-width: 280px;
+}
+
+.botiga-metabox-field-hook-select .hook-select-wrapper input {
+  max-width: 70px;
 }
 
 .botiga-metabox-field-switcher label {

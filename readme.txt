@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.1.4
-Tested up to: 6.3
+Version: 2.1.8
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 2.1.4
+Stable tag: 2.1.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,24 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.1.9 =
+Fixed - Single Blog Posts: Font size customizer control not working.
+
+= 2.1.8 =
+Fixed - Payment Options: BACS isn’t styled in the order thank you page.
+Fixed - Quantity input: Lighthouse error - Links do not have a discernible name.
+Fixed - Search By Sku: Returning duplicated values in some cases.
+
+= 2.1.7 =
+Added - Notice regarding WooCommerce 8.3 new cart and checkout blocks.
+
+= 2.1.6 =
+Fixed - Display Conditions: Not working conditions with input, e.g product name, category name.
+
+= 2.1.5 =
+Changed - Botiga modules will take precedence over Merchant modules.
+Fixed - Blog Page: Displaying the 'Archive' title along with 'Blog'.
+
 = 2.1.4 =
 Added - Real Time Ajax Search: New option to add 'See all products' button on search results.
 Changed - Real Time Ajax Search: Include variations in the results when 'include SKU' is enabled.

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.1.4' );
+	define( 'BOTIGA_VERSION', '2.1.8' );
 }
 
 // aThemes White Label Compatibility
@@ -20,6 +20,18 @@ if( function_exists( 'athemes_wl_get_data' ) ) {
 		define( 'BOTIGA_AWL_ACTIVE', true );
 	}
 }
+
+/**
+ * Declare incompatibility with WooCommerce 8.3+ new default cart and checkout blocks.
+ * 
+ */
+add_action( 'plugins_loaded', function(){
+	add_action( 'before_woocommerce_init', function() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, false );
+		}
+	} );
+} );
 
 if ( ! function_exists( 'botiga_setup' ) ) :
 	/**
@@ -433,6 +445,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
+ * Load Merchant compatibility file.
+ */
+if ( class_exists( 'Merchant' ) ) {
+	require get_template_directory() . '/inc/plugins/merchant/merchant.php';
+}
+
+/**
  * Load WooCommerce Brands compatibility file.
  */
 if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
@@ -458,6 +477,20 @@ if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {
  */
 if( class_exists( 'WC_Vendors' ) && class_exists( 'Woocommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/wc-vendors/wc-vendors.php';
+}
+
+/**
+ * Load WC Germanized compatibility file.
+ */
+if( class_exists( 'WooCommerce_Germanized' ) && class_exists( 'Woocommerce' ) ) {
+	require get_template_directory() . '/inc/plugins/wc-germanized/class-wc-germanized.php';
+}
+
+/**
+ * Load WC Germanized EU VAT Compilance compatibility file.
+ */
+if( class_exists( 'WC_EU_VAT_Compliance' ) && class_exists( 'Woocommerce' ) ) {
+	require get_template_directory() . '/inc/plugins/woocommerce-eu-vat-compliance-premium/class-woocommerce-eu-vat-compliance-premium.php';
 }
 
 /**
