@@ -1,0 +1,64 @@
+# GitHub Actions Workflow for Code Tests
+# This workflow runs PHP tests on pull requests targeting the develop branch.
+
+name: Code Tests
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  # Run php tests.
+  php-tests:
+    runs-on: ubuntu-20.04
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    strategy:
+      matrix:
+        # Run on several php versions.
+        php-version: [7.4, 8.0, 8.2]
+    steps:
+      - name: Setup PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          tools: composer, cs2pr
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate composer.json
+        run: composer validate
+
+      - name: show files
+        run: ls -la
+
+      - name: Cache Composer dependencies
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.composer/cache
+            vendor
+          key: composer-${{ runner.os }}-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            composer-${{ runner.os }}-
+
+      - name: Install Composer dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        uses: ramsey/composer-install@v2
+        with:
+          composer-options: -q -n -a --no-progress --prefer-dist
+
+      # Run composer script to run php syntax checks.
+      - name: Run Check PHP Syntax
+        run: composer phpcs:fix
+
+      # Run php coding standards checks.
+      - name: Run check PHP Coding Standards
+        run: ./vendor/bin/phpcs --report-full --report-checkstyle=./phpcs-report.xml
+
+      - name: Annotate PHP_CodeSniffer report
+        if: ${{ always() }}
+        run: cs2pr --colorize --prepend-filename --notices-as-warnings --graceful-warnings --prepend-source ./phpcs-report.xml

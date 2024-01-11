@@ -49,7 +49,6 @@
     "translate": "gulp translate",
     "styles-rtl": "gulp stylesRTL",
     "cache-clear": "gulp clearCache",
-    "wp-env": "wp-env",
     "tests-scenario-one": "npx playwright test scenario-one",
     "tests-scenario-two": "npx playwright test scenario-two",
     "tests-php-errors": "npx playwright test php-errors.spec.js --project=chromium",

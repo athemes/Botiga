@@ -1,11 +1,38 @@
 {
+    "name": "athemes/botiga",
+    "description": "A beautiful theme that is optimized for both the block editor and Elementor. We proudly introduce Botiga, with a modern and clean design that will effortlessly match your brand. Botiga has been developed from the ground up with clean code for optimal performance. You’ll get a mobile-optimized theme that looks and works great on any device and comes with plenty of customization options as well. Discover the theme that will transform your online business.",
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://athemes.com/theme/botiga",
+    "authors": [
+        {
+            "name": "aThemes",
+            "homepage": "https://athemes.com"
+        },
+        {
+            "name": "Vlad",
+            "role": "Developer"
+        },
+        {
+            "name": "Rodrigo Teixeira",
+            "role": "Developer"
+        }
+    ],
+    "scripts": {
+        "phpcs": "@php ./vendor/bin/phpcs",
+        "phpcs:fix": "@php ./vendor/bin/phpcbf",
+        "run-tests": [
+            "@phpcs:fix",
+            "@phpcs"
+        ]
+    },
     "require": {
         "wptt/webfont-loader": "1.1.3"
     },
     "require-dev": {
-        "woocommerce/woocommerce-sniffs": "^0.1.3",
-        "wptrt/wpthemereview": "*",
-        "dealerdirect/phpcodesniffer-composer-installer": "0.7"
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
+        "wp-coding-standards/wpcs": "^3.0.0",
+        "woocommerce/woocommerce-sniffs": "^1.0",
+        "phpcompatibility/phpcompatibility-wp": "*"
     },
     "config": {
         "allow-plugins": {
