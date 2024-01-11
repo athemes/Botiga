@@ -8,7 +8,11 @@
  * @package Botiga
  */
 
-// Remove header and footer from canvas template
+/**
+ * Hook 'botiga_template_canvas_remove_header_footer'
+ *
+ * @since 1.0.0
+ */
 if( apply_filters( 'botiga_template_canvas_remove_header_footer', true ) ) {
     remove_all_actions( 'botiga_header' );
     remove_all_actions( 'botiga_footer' );
@@ -18,9 +22,15 @@ get_header();
 
 $hide_page_title = get_post_meta( $post->ID, '_botiga_hide_page_title', true );
 
+/**
+ * Hook 'botiga_content_class'
+ *
+ * @since 1.0.0
+ */
+$content_class = apply_filters( 'botiga_content_class', '' );
 ?>
 
-<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>">
+<main id="primary" class="site-main <?php echo esc_attr( $content_class ); ?>">
 
     <?php
     while ( have_posts() ) :

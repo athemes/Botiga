@@ -10,7 +10,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 		/**
 		 * Instance
-		 */		
+		 */     
 		private static $instance;
 
 		/**
@@ -18,7 +18,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -32,7 +32,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 			add_action( 'botiga_header', array( $this, 'header_markup' ), 10 );
 			add_action( 'botiga_header', array( $this, 'header_mobile_offcanvas' ), 19 );
-			add_action( 'botiga_header', array( $this, 'header_mobile_markup'), 20 );
+			add_action( 'botiga_header', array( $this, 'header_mobile_markup' ), 20 );
 			add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
 		}
 
@@ -48,7 +48,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 
 			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ) ) ) {
+			if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ), true ) ) {
 				return;
 			}
 
@@ -60,6 +60,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function header_image() {
 			$output = '<div class="header-image">';
+				/**
+				 * Hook 'botiga_header_image_tag'
+				 * 
+				 * @since 1.0.0
+				 */
 				$output .= apply_filters( 'botiga_header_image_tag', get_header_image_tag() );
 			$output .= '</div>';
 
@@ -100,7 +105,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							} ?>
 						</div>
 						<div class="col align-right">
-							<a class="mobile-menu-close" href="#" title="<?php echo esc_attr( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
+							<a class="mobile-menu-close" href="#" title="<?php echo esc_attr__( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
 						</div>
 					</div>
 				</div>
@@ -116,7 +121,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 		/**
 		 * Mobile header markup
-		 */		
+		 */     
 		public function header_mobile_markup() {
 			$layout = get_theme_mod( 'header_layout_mobile', 'header_mobile_layout_1' );
 
@@ -130,10 +135,16 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Desktop: header layout 1
 		 */
 		public function header_layout_1() {
-			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
+			$layout     = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$container  = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -153,10 +164,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 			<?php
 		}
 
@@ -164,11 +187,17 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Desktop: header layout 2
 		 */
 		public function header_layout_2() {
-			$layout 		= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			$container 		= get_theme_mod( 'header_container', 'container-fluid' );
-			$menu_position 	= empty( get_theme_mod( 'main_header_menu_position' ) ) ? 'right' : get_theme_mod( 'main_header_menu_position' );
+			$layout         = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$container      = get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position  = empty( get_theme_mod( 'main_header_menu_position' ) ) ? 'right' : get_theme_mod( 'main_header_menu_position' );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -188,10 +217,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 			<?php
 		}
 		
@@ -199,11 +240,17 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Desktop: header layout 3
 		 */
 		public function header_layout_3() {
-			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
-			$menu_position 	= empty( get_theme_mod( 'main_header_menu_position' ) ) ? 'center' : get_theme_mod( 'main_header_menu_position' );
+			$layout     = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$container  = get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position  = empty( get_theme_mod( 'main_header_menu_position' ) ) ? 'center' : get_theme_mod( 'main_header_menu_position' );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -223,10 +270,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>	
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 
 				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -239,7 +298,13 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>
 					</div>
 
-					<?php do_action( 'botiga_before_bottom_header_row_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_bottom_header_row_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_bottom_header_row_close' ); ?>
 				</div>				
 			<?php
 		}
@@ -248,11 +313,17 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Desktop: header layout 4
 		 */
 		public function header_layout_4() {
-			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
-			$menu_position 	= get_theme_mod( 'main_header_menu_position' );
+			$layout     = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$container  = get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position  = get_theme_mod( 'main_header_menu_position' );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -270,10 +341,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>	
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 
 				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -289,20 +372,32 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>
 					</div>
 
-					<?php do_action( 'botiga_before_bottom_header_row_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_bottom_header_row_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_bottom_header_row_close' ); ?>
 				</div>				
 			<?php
-		}	
+		}   
 		
 		/**
 		 * Desktop: header layout 5
 		 */
 		public function header_layout_5() {
-			$layout 	= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			$container 	= get_theme_mod( 'header_container', 'container-fluid' );
-			$menu_position 	= get_theme_mod( 'main_header_menu_position' );
+			$layout     = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$container  = get_theme_mod( 'header_container', 'container-fluid' );
+			$menu_position  = get_theme_mod( 'main_header_menu_position' );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -322,10 +417,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>		
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 
 				<div class="bottom-header-row bottom-<?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>">
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -341,20 +448,32 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>
 					</div>
 
-					<?php do_action( 'botiga_before_bottom_header_row_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_bottom_header_row_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_bottom_header_row_close' ); ?>
 				</div>				
 			<?php
-		}			
+		}           
 
 		/**
 		 * Desktop: header layout 6
 		 */
 		public function header_layout_6() {
-			$layout 			= get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$layout             = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$vertical_alignment = get_theme_mod( 'main_header_vertical_alignment_l6', 'center' );
 			$content_alignment  = get_theme_mod( 'main_header_content_alignment_l6', 'left' );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="botiga-desktop-offcanvas botiga-desktop-offcanvas-menu botiga-desktop-offcanvas-show vertical-align-<?php echo esc_attr( $vertical_alignment ); ?> content-align-<?php echo esc_attr( $content_alignment ); ?>">
@@ -372,10 +491,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 				
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 			<?php
 		}
 
@@ -383,13 +514,19 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Desktop: header layout 7
 		 */
 		public function header_layout_7() {
-			$layout 						   = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$layout                            = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
 			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'center' );
-			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
+			$container                         = get_theme_mod( 'header_container', 'container-fluid' );
 			$hide_offcanvas_logo               = get_theme_mod( 'desktop_offcanvas_hide_logo', 0 );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -427,10 +564,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>	
 					</div>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 			<?php
 		}
 
@@ -438,13 +587,19 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Desktop: header layout 8
 		 */
 		public function header_layout_8() {
-			$layout 						   = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
+			$layout                            = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 			$desk_offcanvas_vertical_alignment = get_theme_mod( 'desktop_offcanvas_vertical_align', 'center' );
 			$desk_offcanvas_content_alignment  = get_theme_mod( 'desktop_offcanvas_link_align', 'center' );
-			$container 						   = get_theme_mod( 'header_container', 'container-fluid' );
+			$container                         = get_theme_mod( 'header_container', 'container-fluid' );
 			$hide_offcanvas_logo               = get_theme_mod( 'desktop_offcanvas_hide_logo', 0 );
 			?>
-				<?php do_action( 'botiga_before_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_before_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_before_header' ); ?>
 
 				<header id="masthead" class="site-header <?php echo esc_attr( $layout ); echo esc_attr( $this->sticky() ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
@@ -479,16 +634,28 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						</div>	
 					</div>
 
-					<?php do_action( 'botiga_before_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_header_close' ); ?>
 				</header>
 
-				<?php do_action( 'botiga_after_header' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_after_header'
+				 *
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_after_header' ); ?>
 			<?php
 		}
 
 		/**
 		 * Mobile: layout 1
-		 */		
+		 */     
 		public function header_mobile_layout_1() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
@@ -507,14 +674,20 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_mobile_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_mobile_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_mobile_header_close' ); ?>
 				</header>
 			<?php
-		}	
+		}   
 
 		/**
 		 * Mobile: layout 2
-		 */		
+		 */     
 		public function header_mobile_layout_2() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
@@ -534,14 +707,20 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>
 					<?php $this->search_form(); ?>
 					
-					<?php do_action( 'botiga_before_mobile_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_mobile_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_mobile_header_close' ); ?>
 				</header>
 			<?php
-		}	
+		}   
 
 		/**
 		 * Mobile: layout 3
-		 */		
+		 */     
 		public function header_mobile_layout_3() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
@@ -561,16 +740,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					</div>
 					<?php $this->search_form(); ?>
 
-					<?php do_action( 'botiga_before_mobile_header_close' ); ?>
+					<?php 
+					/**
+					 * Hook 'botiga_before_mobile_header_close'
+					 *
+					 * @since 1.0.0
+					 */
+					do_action( 'botiga_before_mobile_header_close' ); ?>
 				</header>
 			<?php
-		}			
+		}           
 				
 		/**
 		 * Render header components
 		 */
 		public function render_components( $location ) {
-			$defaults 	= botiga_get_default_header_components();
+			$defaults   = botiga_get_default_header_components();
 			$components = get_theme_mod( 'header_components_' . $location, $defaults[$location] );
 
 			foreach ( $components as $component ) {
@@ -590,7 +775,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function menu() {
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) ) : ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 			<?php else: ?>	
 				<nav id="site-navigation" class="botiga-dropdown main-navigation" <?php botiga_schema( 'nav' ); ?>>
 					<?php
@@ -599,7 +784,13 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 							'theme_location' => has_nav_menu( 'primary' ) ? 'primary' : '',
 							'menu_id'        => 'primary-menu',
 							'menu_class'     => 'botiga-dropdown-ul menu',
-							'walker'         => apply_filters( 'botiga_primary_wp_nav_menu_walker', '' )
+
+							/**
+							 * Hook 'botiga_primary_wp_nav_menu_walker'
+							 *
+							 * @since 1.0.0
+							 */
+							'walker'         => apply_filters( 'botiga_primary_wp_nav_menu_walker', '' ),
 						)
 					);
 					?>
@@ -623,7 +814,13 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 						'theme_location' => has_nav_menu( $location ) ? $location : '',
 						'menu_id'        => "$location-menu",
 						'menu_class'     => 'botiga-dropdown-ul menu',
-						'walker'         => apply_filters( 'botiga_mobile_primary_wp_nav_menu_walker', '' )
+
+						/**
+						 * Hook 'botiga_mobile_primary_wp_nav_menu_walker'
+						 *
+						 * @since 1.0.0
+						 */
+						'walker'         => apply_filters( 'botiga_mobile_primary_wp_nav_menu_walker', '' ),
 					)
 				);
 				?>
@@ -636,12 +833,12 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Button
 		 */
 		public function button( $location ) {
-			$text 	= get_theme_mod( 'header_button_text', esc_html__( 'Click me', 'botiga' ) );
-			$url	= get_theme_mod( 'header_button_link', '#' );
+			$text   = get_theme_mod( 'header_button_text', esc_html__( 'Click me', 'botiga' ) );
+			$url    = get_theme_mod( 'header_button_link', '#' );
 			$class  = get_theme_mod( 'header_button_class', '' ); 
 			$newtab = get_theme_mod( 'header_button_newtab', 0 );
 
-			$open	= '';
+			$open   = '';
 			if ( $newtab ) {
 				$open = 'target="_blank"';
 			}
@@ -659,8 +856,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Contact info
 		 */
 		public function contact_info() {
-			$email 	= get_theme_mod( 'header_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
-			$phone	= get_theme_mod( 'header_contact_phone', esc_html__( '111222333', 'botiga' ) );
+			$email  = get_theme_mod( 'header_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
+			$phone  = get_theme_mod( 'header_contact_phone', esc_html__( '111222333', 'botiga' ) );
 
 			?>
 				<div class="header-item header-contact">
@@ -726,7 +923,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				$welcome_message_text = get_theme_mod( 'login_register_welcome_message_text', sprintf( esc_html__( 'Welcome %s', 'botiga' ), '{display_name}' ) );
 				$welcome_message_text = str_replace(
 					array( '{user_firstname}', '{user_lastname}', '{user_email}', '{user_login}', '{display_name}' ),
-					array($current_user->user_firstname, $current_user->user_lastname, $current_user->user_email, $current_user->user_login, $current_user->display_name ),
+					array( $current_user->user_firstname, $current_user->user_lastname, $current_user->user_email, $current_user->user_login, $current_user->display_name ),
 					$welcome_message_text
 				);
 				
@@ -734,8 +931,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				$output .= '<nav>';
 
 					/**
-					 * Filter: botiga_header_login_register_after_last_dropdown_item
-					 * 
+					 * Hook 'botiga_header_login_register_before_first_dropdown_item'
+					 *
+					 * @since 1.0.0
 					 */
 					$output .= apply_filters( 'botiga_header_login_register_before_first_dropdown_item', '' );
 
@@ -758,16 +956,18 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 					}
 
 					/**
-					 * Filter: botiga_header_login_register_before_logout_dropdown_item
-					 * 
+					 * Hook 'botiga_header_login_register_before_logout_dropdown_item'
+					 *
+					 * @since 1.0.0
 					 */
 					$output .= apply_filters( 'botiga_header_login_register_before_logout_dropdown_item', '' );
 
 					$output .= '<a href="'. esc_url( wc_logout_url() ) .'">'. esc_html__( 'Logout', 'botiga' ) .'</a>';
 
 					/**
-					 * Filter: botiga_header_login_register_after_last_dropdown_item
-					 * 
+					 * Hook 'botiga_header_login_register_after_last_dropdown_item'
+					 *
+					 * @since 1.0.0
 					 */
 					$output .= apply_filters( 'botiga_header_login_register_after_last_dropdown_item', '' );
 
@@ -786,7 +986,12 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 
 			echo '<div class="header-item header-login-register">';
-				echo apply_filters( 'botiga_header_login_register_component_output', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
+			/**
+			 * Hook 'botiga_header_login_register_component_output'
+			 *
+			 * @since 1.0.0
+			 */
+			echo apply_filters( 'botiga_header_login_register_component_output', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- previously escaped
 			echo '</div>';
 		}
 
@@ -856,7 +1061,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 		/**
 		 * Site branding
-		*/		
+		*/      
 		public function logo() {
 			?>
 			<div class="site-branding" <?php botiga_schema( 'logo' ); ?>>
@@ -895,11 +1100,11 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 */
 		public function trigger() { 
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'primary' ) && ! has_nav_menu( 'mobile' ) ) {
-				return wp_nav_menu( array( 'theme_location' => 'primary') );
+				return wp_nav_menu( array( 'theme_location' => 'primary' ) );
 			}
 			
 			$icon = get_theme_mod( 'mobile_menu_icon', 'mobile-icon2' ); ?>
-			<a href="#" class="menu-toggle" title="<?php echo esc_attr( 'Open mobile offcanvas menu', 'botiga' ); ?>">
+			<a href="#" class="menu-toggle" title="<?php echo esc_attr__( 'Open mobile offcanvas menu', 'botiga' ); ?>">
 				<i class="ws-svg-icon"><?php botiga_get_svg_icon( $icon, true ); ?></i>
 			</a>
 			<?php
@@ -909,9 +1114,9 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Sticky mode
 		 */
 		public function sticky() {
-			$enabled 	= get_theme_mod( 'enable_sticky_header', 0 );
-			$type 		= get_theme_mod( 'sticky_header_type', 'always' );
-			$sticky		= '';
+			$enabled    = get_theme_mod( 'enable_sticky_header', 0 );
+			$type       = get_theme_mod( 'sticky_header_type', 'always' );
+			$sticky     = '';
 
 			if ( $enabled ) {
 				$sticky = ' sticky-header sticky-' . esc_html( $type );
@@ -972,7 +1177,6 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_transparent_wrapper_close() {
 			echo '</div>';
 		}
-
 	}
 
 	/**

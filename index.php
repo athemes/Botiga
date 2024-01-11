@@ -53,5 +53,10 @@ get_header();
 	</main><!-- #main -->
 
 <?php
+/**
+ * Hook 'botiga_do_sidebar'
+ *
+ * @since 1.0.0
+ */
 do_action( 'botiga_do_sidebar' );
 get_footer();

@@ -27,7 +27,7 @@ $wp_customize->add_section(
     array(
         'panel'       => 'botiga_panel_single_product',
         'title'       => esc_html__('Layout', 'botiga'),
-        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product pages.', 'botiga' )
+        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product pages.', 'botiga' ),
     )
 );
 
@@ -46,7 +46,7 @@ $wp_customize->add_control(
         array(
             'label' => '',
             'section' => 'botiga_section_single_product_layout',
-            'controls_general' => json_encode(array(
+            'controls_general' => wp_json_encode(array(
                 '#customize-control-single_gallery_slider',
                 '#customize-control-single_product_gallery',
                 '#customize-control-single_zoom_effects',
@@ -66,7 +66,7 @@ $wp_customize->add_control(
                 '#customize-control-single_product_categories',
                 '#customize-control-single_product_tags',
             )),
-            'controls_design' => json_encode(array(
+            'controls_design' => wp_json_encode(array(
                 '#customize-control-single_product_title_title',
                 '#customize-control-single_product_title_font_style',
                 '#customize-control-single_product_title_adobe_font',
@@ -97,7 +97,7 @@ $wp_customize->add_section(
     array(
         'panel'       => 'botiga_panel_single_product',
         'title'       => esc_html__('Product Tab', 'botiga'),
-        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product tabs.', 'botiga' )
+        'description' => esc_html__( 'Manage the overall design and functionality from the shop single product tabs.', 'botiga' ),
     )
 );
 
@@ -117,10 +117,10 @@ if( defined( 'BOTIGA_PRO_VERSION' ) ) {
             array(
                 'label' => '',
                 'section' => 'botiga_section_single_product_tabs',
-                'controls_general' => json_encode(array(
+                'controls_general' => wp_json_encode(array(
                     '#customize-control-single_product_tabs',
                 )),
-                'controls_design' => json_encode(array()),
+                'controls_design' => wp_json_encode(array()),
             )
         )
     );

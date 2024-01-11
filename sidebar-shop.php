@@ -12,7 +12,7 @@ $botiga_shop_sidebar_id = '';
 
 if (is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy()) {
 	$botiga_shop_sidebar_id = get_theme_mod('shop_sidebar', 'shop-sidebar-1');
-} else if (is_singular('product')) {
+} elseif (is_singular('product')) {
 	$botiga_shop_sidebar_mod  = get_theme_mod('shop_single_sidebar', 'shop-sidebar-1');
 	$botiga_shop_sidebar_meta = get_post_meta(get_the_ID(), '_botiga_sidebar', true);
 	$botiga_shop_sidebar_id   = (!empty($botiga_shop_sidebar_meta)) ? $botiga_shop_sidebar_meta : $botiga_shop_sidebar_mod;
@@ -39,11 +39,23 @@ if (!is_active_sidebar($botiga_shop_sidebar_id) && !is_active_sidebar('sidebar-1
 ?>
 
 <aside id="secondary" class="widget-area" <?php botiga_schema( 'sidebar' ); ?>>
-	<?php do_action('botiga_before_sidebar'); ?>
+	<?php 
+	/**
+	 * Hook 'botiga_before_sidebar'
+	 *
+	 * @since 1.0.0
+	 */
+	do_action('botiga_before_sidebar'); ?>
 	<?php if (is_active_sidebar($botiga_shop_sidebar_id)) {
 		dynamic_sidebar($botiga_shop_sidebar_id);
 	} else {
 		dynamic_sidebar('sidebar-1');
 	} ?>
-	<?php do_action('botiga_after_sidebar'); ?>
+	<?php 
+	/**
+	 * Hook 'botiga_after_sidebar'
+	 *
+	 * @since 1.0.0
+	 */
+	do_action('botiga_after_sidebar'); ?>
 </aside><!-- #secondary -->

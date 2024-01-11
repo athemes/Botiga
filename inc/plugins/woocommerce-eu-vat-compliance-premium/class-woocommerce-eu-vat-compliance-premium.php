@@ -28,7 +28,6 @@ class Botiga_Woocommerce_Eu_Vat_Compilance_Compatibility {
 		$shortcode_checkout = new WC_VAT_Compliance_Shortcode_Checkout( new WC_EU_VAT_Compliance_VAT_Number() );
 		$shortcode_checkout->vat_number_field();
 	}
-
 }
 
 new Botiga_Woocommerce_Eu_Vat_Compilance_Compatibility();

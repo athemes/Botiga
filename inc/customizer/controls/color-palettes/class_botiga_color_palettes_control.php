@@ -33,7 +33,7 @@ class Botiga_Color_Palettes_Control extends WP_Customize_Control {
 					</span>	
 				</div>	
 
-				<div class="radio-buttons palette-radio-buttons" data-palettes='<?php echo json_encode( $this->choices ); ?>'>
+				<div class="radio-buttons palette-radio-buttons" data-palettes='<?php echo wp_json_encode( $this->choices ); ?>'>
 					<?php foreach ( $this->choices as $key => $values ) { ?>						
 						<label class="radio-button-label palette-label">
 							<input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php $this->link(); ?> <?php checked( esc_attr( $key ), $this->value() ); ?>/>

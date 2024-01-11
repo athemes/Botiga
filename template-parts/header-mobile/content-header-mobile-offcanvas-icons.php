@@ -4,7 +4,7 @@
  * 
  */
 
-$show_cart 		             = get_theme_mod( 'enable_mobile_header_offcanvas_cart', 1 );
+$show_cart                   = get_theme_mod( 'enable_mobile_header_offcanvas_cart', 1 );
 $show_account                = get_theme_mod( 'enable_mobile_header_offcanvas_account', 1 );
 $show_wishlist               = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) !== 'layout1' ? true : false;
 $enable_header_wishlist_icon = get_theme_mod( 'enable_mobile_header_offcanvas_wishlist_icon', 1 );
@@ -32,12 +32,12 @@ if ( is_cart() ) {
     $mini_cart_style = get_theme_mod( 'mini_cart_style', 'default' );
     if( $mini_cart_style === 'default' ) {
         $instance = array(
-            'title' => esc_html__( 'Your Cart', 'botiga' )
+            'title' => esc_html__( 'Your Cart', 'botiga' ),
         );
 
         the_widget( 'WC_Widget_Cart', $instance, array(
             'before_title' => '<div class="widgettitle">',
-            'after_title'  => '</div>'
+            'after_title'  => '</div>',
         )  );
     }
     

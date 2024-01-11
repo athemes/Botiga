@@ -75,7 +75,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'primary'	=> esc_html__( 'Primary', 'botiga' ),
+				'primary'   => esc_html__( 'Primary', 'botiga' ),
 				'secondary' => esc_html__( 'Secondary Menu', 'botiga' ),
 			)
 		);
@@ -115,11 +115,17 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		// Set up the WordPress core custom background feature.
 		add_theme_support(
 			'custom-background',
+
+			/**
+			 * Hook 'botiga_custom_background_args'
+			 * 
+			 * @since 1.0.0
+			 */
 			apply_filters(
 				'botiga_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
-					'default-image' => ''
+					'default-image' => '',
 				)
 			)
 		);
@@ -145,14 +151,14 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		/**
 		 * Wide alignments
 		 *
-		 */		
+		 */     
 		add_theme_support( 'align-wide' );
 
 		/**
 		 * Color palettes
 		 */
-		$selected_palette 	= get_theme_mod( 'color_palettes', 'palette1' );
-		$palettes 			= botiga_global_color_palettes();
+		$selected_palette   = get_theme_mod( 'color_palettes', 'palette1' );
+		$palettes           = botiga_global_color_palettes();
 
 		$colors = array();
 		
@@ -163,7 +169,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 					/* translators: %s: color palette */
 					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
 					'slug'  => 'color-' . $i,
-					'color' => get_theme_mod( 'custom_color' . ($i+1), '#212121' )
+					'color' => get_theme_mod( 'custom_color' . ($i+1), '#212121' ),
 				);
 			}
 		} else {
@@ -180,7 +186,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		add_theme_support(
 			'editor-color-palette',
 			$colors
-		);	
+		);  
 		
 		/**
 		 * Editor font sizes
@@ -193,7 +199,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 					'shortName' => esc_html_x( 'S', 'Font size', 'botiga' ),
 					'size'      => 14,
 					'slug'      => 'small',
-				),				
+				),              
 				array(
 					'name'      => esc_html__( 'Normal', 'botiga' ),
 					'shortName' => esc_html_x( 'N', 'Font size', 'botiga' ),
@@ -231,7 +237,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 					'slug'      => 'gigantic',
 				),
 			)
-		);		
+		);      
 
 		/**
 		 * Responsive embeds
@@ -254,6 +260,11 @@ add_action( 'after_setup_theme', 'botiga_setup' );
  * @global int $content_width
  */
 function botiga_content_width() {
+	/**
+	 * Hook 'botiga_content_width'
+	 *
+	 * @since 1.0.0
+	 */
 	$GLOBALS['content_width'] = apply_filters( 'botiga_content_width', 1140 ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
 }
 add_action( 'after_setup_theme', 'botiga_content_width', 0 );
@@ -274,7 +285,7 @@ function botiga_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 			'before_sidebar' => '<div class="sidebar-wrapper"><a href="#" role="button" class="close-sidebar" title="'. esc_attr__( 'Close sidebar', 'botiga' ) .'" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-close\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. botiga_get_svg_icon( 'icon-cancel' ) .'</a>',
-			'after_sidebar'  => '</div>'
+			'after_sidebar'  => '</div>',
 		)
 	);
 
@@ -303,14 +314,14 @@ function botiga_scripts() {
 	
 	if( $fonts_library === 'google' ) {
 		wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
-	} else if( $fonts_library === 'custom' ) {
+	} elseif( $fonts_library === 'custom' ) {
 		wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), botiga_google_fonts_version() );
 	} else {
 		$kits = get_option( 'botiga_adobe_fonts_kits', array() );
 
 		foreach ( $kits as $kit_id => $kit_data ) {
 
-			if ( $kit_data['enable'] == false ) {
+			if ( $kit_data['enable'] === false ) {
 				continue;
 			}
 
@@ -323,8 +334,8 @@ function botiga_scripts() {
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		'i18n'    => array(
 			'botiga_sharebox_copy_link' => __( 'Copy link', 'botiga' ),
-			'botiga_sharebox_copy_link_copied' => __( 'Copied!', 'botiga' )
-		)
+			'botiga_sharebox_copy_link_copied' => __( 'Copied!', 'botiga' ),
+		),
 	) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -354,16 +365,16 @@ add_action( 'wp_enqueue_scripts', 'botiga_style_css', 12 );
  * Enqueue admin scripts and styles.
  */
 function botiga_admin_scripts() {
-	wp_enqueue_script( 'botiga-admin-functions', get_template_directory_uri() . '/assets/js/admin-functions.min.js', array('jquery'), BOTIGA_VERSION, true );
+	wp_enqueue_script( 'botiga-admin-functions', get_template_directory_uri() . '/assets/js/admin-functions.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-admin-functions', 'botigaadm', array(
 		'hfUpdate' => array(
 			'confirmMessage' => __( 'Are you sure you want to upgrade your header?', 'botiga' ),
-			'errorMessage' => __( 'It was not possible complete the request, please reload the page and try again.', 'botiga' )
+			'errorMessage' => __( 'It was not possible complete the request, please reload the page and try again.', 'botiga' ),
 		),
 		'hfUpdateDimiss' => array(
 			'confirmMessage' => __( 'Are you sure you want to dismiss this notice?', 'botiga' ),
-			'errorMessage' => __( 'It was not possible complete the request, please reload the page and try again.', 'botiga' )
-		),						
+			'errorMessage' => __( 'It was not possible complete the request, please reload the page and try again.', 'botiga' ),
+		),                      
 	) );
 }
 add_action( 'admin_enqueue_scripts', 'botiga_admin_scripts' );

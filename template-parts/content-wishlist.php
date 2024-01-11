@@ -34,8 +34,12 @@ if( $products ) :
 
                             <td class="product-remove">
                                 <?php
-                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                                    echo apply_filters(
+                                    /**
+                                     * Hook 'botiga_wishlist_remove_item_button'
+                                     *
+                                     * @since 1.0.0
+                                     */
+                                    echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                         'botiga_wishlist_remove_item_button',
                                         sprintf(
                                             '<a href="#" class="botiga-wishlist-remove-item remove" data-type="remove" aria-label="%s" data-product-id="%s" data-product_sku="%s" data-nonce="%s">&times;</a>',
@@ -67,6 +71,11 @@ if( $products ) :
                                     echo wp_kses_post( sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ) );
                                 } 
                                 
+                                /**
+                                 * Hook 'botiga_wishlist_after_item_name'
+                                 *
+                                 * @since 1.0.0
+                                 */
                                 do_action( 'botiga_wishlist_after_item_name', $_product, $product_id ); ?>
                             </td>
 
@@ -79,8 +88,18 @@ if( $products ) :
                             <td class="product-stock" data-title="<?php esc_attr_e( 'Stock', 'botiga' ); ?>">
                                 <?php
                                 if ( ! $_product->is_in_stock() ) {
+                                    /**
+                                     * Hook 'botiga_wishlist_out_of_stock'
+                                     *
+                                     * @since 1.0.0
+                                     */
                                     echo apply_filters( 'botiga_wishlist_out_of_stock', esc_html__( 'Out of Stock', 'botiga' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 } else {
+                                    /**
+                                     * Hook 'botiga_wishlist_in_stock'
+                                     *
+                                     * @since 1.0.0
+                                     */
                                     echo apply_filters( 'botiga_wishlist_in_stock', esc_html__( 'In Stock', 'botiga' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 } 
                                 ?>

@@ -17,12 +17,12 @@ function botiga_typography_adobe_kits_control() {
     $url       = 'https://typekit.com/api/v1/json/kits/';
     $response  = wp_remote_request( $url . '?token=' . esc_attr( $token ), array() );
 
-    if ( wp_remote_retrieve_response_code( $response ) != '200' ) {
+    if ( wp_remote_retrieve_response_code( $response ) !== '200' ) {
         update_option( 'botiga_adobe_fonts_kits', array() );
 
         wp_send_json( array(
             'status' => 'error',
-            'output' => '<p>' . esc_html__( 'Invalid API token.', 'botiga' ) . '</p>'
+            'output' => '<p>' . esc_html__( 'Invalid API token.', 'botiga' ) . '</p>',
         ) );
     }
 
@@ -37,7 +37,7 @@ function botiga_typography_adobe_kits_control() {
 
             $fonts[ $response_body->kit->id ] = array(
                 'enable'       => true,
-                'project_name' => $response_body->kit->name
+                'project_name' => $response_body->kit->name,
             );
 
             foreach( $response_body->kit->families as $family ) {
@@ -46,7 +46,7 @@ function botiga_typography_adobe_kits_control() {
                     'css_name'   => $family->css_names,
                     'css_stack'  => $family->css_stack,
                     'subset'     => $family->subset,
-                    'variations' => $family->variations
+                    'variations' => $family->variations,
                 );
             }
 
@@ -69,7 +69,7 @@ function botiga_typography_adobe_kits_control() {
 
         wp_send_json( array(
             'status'  => 'error',
-            'output'  => '<p>' . wp_kses_post( $output ) . '</p>'
+            'output'  => '<p>' . wp_kses_post( $output ) . '</p>',
         ) );
     }
 
@@ -77,7 +77,7 @@ function botiga_typography_adobe_kits_control() {
     // There's fonts attached to the token
     wp_send_json( array(
         'status'  => 'success',
-        'output'  => botiga_customize_control_adobe_font_kits_output( get_option( 'botiga_adobe_fonts_kits' ), false )
+        'output'  => botiga_customize_control_adobe_font_kits_output( get_option( 'botiga_adobe_fonts_kits' ), false ),
     ) );
 }
 add_action('wp_ajax_botiga_typography_adobe_kits_control', 'botiga_typography_adobe_kits_control');
@@ -103,7 +103,7 @@ function botiga_typography_adobe_kits_control_enable_disable() {
     wp_send_json( array(
         'status'      => 'success',
         'kit_id'      => $kit_id,
-        'kit_enabled' => $kits[ $kit_id ]['enable']
+        'kit_enabled' => $kits[ $kit_id ]['enable'],
     ) );
 }
 add_action('wp_ajax_botiga_typography_adobe_kits_control_enable_disable', 'botiga_typography_adobe_kits_control_enable_disable');
@@ -122,7 +122,7 @@ function botiga_create_page_control() {
     $meta_input = array();
     if( $page_meta_key && $page_meta_value ) { 
         $meta_input = array(
-            $page_meta_key => $page_meta_value
+            $page_meta_key => $page_meta_value,
         );
     }
 
@@ -131,7 +131,7 @@ function botiga_create_page_control() {
         'post_status'  => 'publish',
         'post_title'    => $page_title,
         'post_content' => '',
-        'meta_input'   => $meta_input
+        'meta_input'   => $meta_input,
     );
 
 	$page_id = wp_insert_post( $postarr );
@@ -143,11 +143,11 @@ function botiga_create_page_control() {
 
         wp_send_json( array(
             'status'  => 'success',
-            'page_id' => $page_id
+            'page_id' => $page_id,
         ) );
     } else {
         wp_send_json( array(
-            'status'  => 'error'
+            'status'  => 'error',
         ) );
     }
 }

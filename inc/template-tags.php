@@ -28,7 +28,6 @@ if ( ! function_exists( 'botiga_posted_on' ) ) :
 		$posted_on = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>';
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -48,7 +47,6 @@ if ( ! function_exists( 'botiga_posted_by' ) ) :
 		$byline .= '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" '. botiga_get_schema( 'author_url' ) .'>' . esc_html( get_the_author() ) . '</a></span>';
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -61,7 +59,7 @@ if ( ! function_exists( 'botiga_post_categories' ) ) :
 				/* translators: 1: list of categories. */
 				printf( '<span class="cat-links">' . '%1$s' . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
-		}		
+		}       
 	}
 endif;
 
@@ -71,7 +69,7 @@ if ( ! function_exists( 'botiga_entry_comments' ) ) :
 			echo '<span class="comments-link">';
 			comments_popup_link( esc_html__( '0 comments', 'botiga' ), esc_html__( '1 comment', 'botiga' ), esc_html__( '% comments', 'botiga' ) );
 			echo '</span>';
-		}		
+		}       
 	}
 endif;
 
@@ -79,9 +77,14 @@ if ( ! function_exists( 'botiga_post_reading_time' ) ) :
 	function botiga_post_reading_time() {
 		global $post;
 
+		/**
+		 * Hook 'botiga_post_reading_time_words_per_minute'
+		 *
+		 * @since 1.0.0
+		 */
 		$words_per_min = apply_filters( 'botiga_post_reading_time_words_per_minute', 300 );
 
-		$words = str_word_count(strip_tags($post->post_content));
+		$words = str_word_count(wp_strip_all_tags($post->post_content));
 		$m     = $words / $words_per_min;
 		$mins  = ( $m < 1 ? '1' : ceil($m) );
 
@@ -89,7 +92,7 @@ if ( ! function_exists( 'botiga_post_reading_time' ) ) :
 		$time  = sprintf( _n( '%1$s min read', '%1$s mins read', $mins, 'botiga' ), $mins );
 
 		echo '<span class="reading-time">';
-			echo esc_html( $time );	
+			echo esc_html( $time ); 
 		echo '</span>';
 	}
 endif;
@@ -197,7 +200,7 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 	 */
 	// phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedFunctionFound
 	function wp_body_open() {
-		do_action( 'wp_body_open' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+		do_action( 'wp_body_open' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound, WooCommerce.Commenting.CommentHooks.MissingHookComment
 	}
 endif;
 
@@ -207,7 +210,7 @@ if ( ! function_exists( 'botiga_single_post_meta' ) ) :
 	 */
 	function botiga_single_post_meta( $location ) {
 		
-		$elements 				= get_theme_mod( 'single_post_meta_elements', array( 'botiga_posted_on', 'botiga_posted_by' ) );
+		$elements               = get_theme_mod( 'single_post_meta_elements', array( 'botiga_posted_on', 'botiga_posted_by' ) );
 		$archive_meta_delimiter = get_theme_mod( 'archive_meta_delimiter', 'none' );
 
 		echo '<div class="entry-meta ' . esc_attr( $location ) . ' delimiter-' . esc_attr( $archive_meta_delimiter ) . '">';
@@ -215,8 +218,8 @@ if ( ! function_exists( 'botiga_single_post_meta' ) ) :
 			if( function_exists( $element ) ) {
 				call_user_func( $element );
 			}
-		}			
-		echo '</div>';		
+		}           
+		echo '</div>';      
 	}
 endif;
 
@@ -233,64 +236,64 @@ if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
 
 		global $post;
 
-		$post_url   	= urlencode( esc_url( get_permalink($post->ID) ) );
-		$post_title 	= urlencode( $post->post_title );
-		$sharing_title 	= get_theme_mod( 'single_post_share_box_title', esc_html__( 'SHARE:', 'botiga' ) );
+		$post_url       = rawurlencode( esc_url( get_permalink($post->ID) ) );
+		$post_title     = rawurlencode( $post->post_title );
+		$sharing_title  = get_theme_mod( 'single_post_share_box_title', esc_html__( 'SHARE:', 'botiga' ) );
 
 		$enabled_networks = get_theme_mod( 'single_post_share_box_networks', array( 'facebook', 'twitter', 'linkedin' ) );
 
 		$networks = array(
-			'facebook' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.facebook.com/sharer.php?u={url}' ) ),
-				'tooltip'   => esc_html__( 'Facebook', 'botiga' )
+			'facebook'  => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.facebook.com/sharer.php?u={url}' ) ),
+				'tooltip'   => esc_html__( 'Facebook', 'botiga' ),
 			),
-			'twitter' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://twitter.com/intent/tweet?url={url}&text={title}' ) ),
-				'tooltip'   => esc_html__( 'Twitter', 'botiga' )
+			'twitter'   => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://twitter.com/intent/tweet?url={url}&text={title}' ) ),
+				'tooltip'   => esc_html__( 'Twitter', 'botiga' ),
 			),
-			'linkedin' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.linkedin.com/sharing/share-offsite/?url={url}' ) ),
-				'tooltip'   => esc_html__( 'LinkedIn', 'botiga' )
+			'linkedin'  => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.linkedin.com/sharing/share-offsite/?url={url}' ) ),
+				'tooltip'   => esc_html__( 'LinkedIn', 'botiga' ),
 			),
-			'reddit' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://reddit.com/submit?url={url}&title={title}' ) ),
-				'tooltip'   => esc_html__( 'Reddit', 'botiga' )
+			'reddit'    => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://reddit.com/submit?url={url}&title={title}' ) ),
+				'tooltip'   => esc_html__( 'Reddit', 'botiga' ),
 			),
-			'whatsapp' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'whatsapp://send/?text={url}' ) ),
-				'tooltip'   => esc_html__( 'WhatsApp', 'botiga' )
+			'whatsapp'  => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'whatsapp://send/?text={url}' ) ),
+				'tooltip'   => esc_html__( 'WhatsApp', 'botiga' ),
 			),
-			'pinterest' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://pinterest.com/pin/create/link/?url={url}' ) ),
-				'tooltip'   => esc_html__( 'Pinterest', 'botiga' )
+			'pinterest'     => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://pinterest.com/pin/create/link/?url={url}' ) ),
+				'tooltip'   => esc_html__( 'Pinterest', 'botiga' ),
 			),
-			'telegram' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://t.me/share/url?url={url}&text={title}' ) ),
-				'tooltip'   => esc_html__( 'Telegram', 'botiga' )
+			'telegram'  => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://t.me/share/url?url={url}&text={title}' ) ),
+				'tooltip'   => esc_html__( 'Telegram', 'botiga' ),
 			),
-			'weibo' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://service.weibo.com/share/share.php?url={url}&appkey=&title={title}&pic=&ralateUid=' ) ),
-				'tooltip'   => esc_html__( 'Weibo', 'botiga' )
+			'weibo'     => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://service.weibo.com/share/share.php?url={url}&appkey=&title={title}&pic=&ralateUid=' ) ),
+				'tooltip'   => esc_html__( 'Weibo', 'botiga' ),
 			),
-			'vk' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://vk.com/share.php?url={url}&title={title}&comment={text}' ) ),
-				'tooltip'   => esc_html__( 'VK', 'botiga' )
+			'vk'    => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'http://vk.com/share.php?url={url}&title={title}&comment={text}' ) ),
+				'tooltip'   => esc_html__( 'VK', 'botiga' ),
 			),
-			'ok' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl={url}' ) ),
-				'tooltip'   => esc_html__( 'OK', 'botiga' )
-			),		
-			'xing' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.xing.com/spi/shares/new?url={url}' ) ),
-				'tooltip'   => esc_html__( 'Xing', 'botiga' )
-			),		
-			'mail' 	=> array(
-				'url' 		=> str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'mailto:?subject=' . $post->post_title . '&body={url}' ) ),
-				'tooltip'   => esc_html__( 'Mail', 'botiga' )
+			'ok'    => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl={url}' ) ),
+				'tooltip'   => esc_html__( 'OK', 'botiga' ),
+			),      
+			'xing'  => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://www.xing.com/spi/shares/new?url={url}' ) ),
+				'tooltip'   => esc_html__( 'Xing', 'botiga' ),
+			),      
+			'mail'  => array(
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'mailto:?subject=' . $post->post_title . '&body={url}' ) ),
+				'tooltip'   => esc_html__( 'Mail', 'botiga' ),
 			),
 			'copyclipboard' => array(
-				'url' 		=> $post_url,
-				'tooltip'   => esc_html__( 'Copy Link', 'botiga' )
+				'url'       => $post_url,
+				'tooltip'   => esc_html__( 'Copy Link', 'botiga' ),
 			),
 		); ?>
 
@@ -401,8 +404,8 @@ add_action( 'botiga_after_single_post_content', 'botiga_post_author_bio', 21 );
  */
 function botiga_related_posts() {
 
-	$single_post_show_related_posts   		  = get_theme_mod( 'single_post_show_related_posts', 0 );
-	$single_post_related_posts_number 		  = get_theme_mod( 'single_post_related_posts_number', 3 );
+	$single_post_show_related_posts           = get_theme_mod( 'single_post_show_related_posts', 0 );
+	$single_post_related_posts_number         = get_theme_mod( 'single_post_related_posts_number', 3 );
 	$single_post_related_posts_columns_number = get_theme_mod( 'single_post_related_posts_columns_number', 3 );
 	$single_post_related_posts_slider         = get_theme_mod( 'single_post_related_posts_slider', 0 );
 	$single_post_related_posts_slider_nav     = get_theme_mod( 'single_post_related_posts_slider_nav', 'always-show' );
@@ -411,21 +414,21 @@ function botiga_related_posts() {
 		return;
 	}
 
-    $post_id 	= get_the_ID();
-    $cat_ids 	= array();
+    $post_id    = get_the_ID();
+    $cat_ids    = array();
     $categories = get_the_category( $post_id );
 
-    if(	!empty($categories) && !is_wp_error( $categories ) ):
+    if( !empty($categories) && !is_wp_error( $categories ) ):
         foreach ( $categories as $category ):
             array_push( $cat_ids, $category->term_id );
         endforeach;
     endif;
 
     $query_args = array( 
-        'category__in'   	=> $cat_ids,
-        'post__not_in'    	=> array( $post_id ),
-        'posts_per_page'  	=> $single_post_related_posts_number,
-     );
+        'category__in'      => $cat_ids,
+        'post__not_in'      => array( $post_id ),
+        'posts_per_page'    => $single_post_related_posts_number,
+    );
 
     $related_cats_post = new WP_Query( $query_args );
 
@@ -469,7 +472,6 @@ function botiga_related_posts() {
 
         wp_reset_postdata();
     endif;
-
 }
 add_action( 'botiga_after_single_post_content', 'botiga_related_posts', 31 );
 
@@ -502,7 +504,6 @@ if ( ! function_exists( 'botiga_page_content' ) ) :
 			endif;
 
 		endwhile; // End of the loop.
-
 	}
 	add_action( 'botiga_do_page_content', 'botiga_page_content' );
 endif;
@@ -517,14 +518,23 @@ if ( ! function_exists( 'botiga_single_content' ) ) :
 		while ( have_posts() ) :
 			the_post();
 
+			/**
+			 * Hook 'botiga_before_single_post_content'
+			 *
+			 * @since 1.0.0
+			 */
 			do_action( 'botiga_before_single_post_content' );
 
 			get_template_part( 'template-parts/content', 'single' );
 
+			/**
+			 * Hook 'botiga_after_single_post_content'
+			 *
+			 * @since 1.0.0
+			 */
 			do_action( 'botiga_after_single_post_content' );
 
 		endwhile; // End of the loop.
-
 	}
 	add_action( 'botiga_do_single_content', 'botiga_single_content' );
 endif;
@@ -538,8 +548,15 @@ if ( ! function_exists( 'botiga_archive_content' ) ) :
 		
 		?>
 
-		<?php if ( have_posts() ) : ?>
-			<div class="posts-archive <?php echo esc_attr( apply_filters( 'botiga_blog_layout_class', 'layout3' ) ); ?>" <?php botiga_masonry_data(); ?>>
+		<?php if ( have_posts() ) : 
+			/**
+			 * Hook 'botiga_blog_layout_class'
+			 *
+			 * @since 1.0.0
+			 */
+			$blog_layout_class = apply_filters( 'botiga_blog_layout_class', 'layout3' );
+			?>
+			<div class="posts-archive <?php echo esc_attr( $blog_layout_class ); ?>" <?php botiga_masonry_data(); ?>>
 				<div class="row">
 				<?php
 				/* Start the Loop */
@@ -563,6 +580,11 @@ if ( ! function_exists( 'botiga_archive_content' ) ) :
 			'next_text' => '&#x2192;',
 		) );
 
+		/**
+		 * Hook 'botiga_after_the_posts_pagination'
+		 *
+		 * @since 1.0.0
+		 */
 		do_action( 'botiga_after_the_posts_pagination' );
 
 		else :

@@ -53,14 +53,16 @@ class Botiga_Pro_Upsell_Notice {
 		// Display Conditions
 		global $hook_suffix;
 		
-		if( ! in_array( $hook_suffix, array( 'woocommerce_page_wc-settings', 'index.php', 'plugins.php', 'edit.php', 'plugin-install.php' ) ) ) {
+		if( ! in_array( $hook_suffix, array( 'woocommerce_page_wc-settings', 'index.php', 'plugins.php', 'edit.php', 'plugin-install.php' ), true ) ) {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if( $hook_suffix === 'edit.php' && ! isset( $_GET[ 'post_type' ] ) ) {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if( $hook_suffix === 'edit.php' && ( isset( $_GET[ 'post_type' ] ) && $_GET[ 'post_type' ] !== 'product' ) ) {
 			return;
 		}
@@ -89,7 +91,9 @@ class Botiga_Pro_Upsell_Notice {
 	 * Dismiss notice permanently
 	 */
 	public function dimiss_notice() {
-		if ( isset( $_GET['botiga_pro_upsell_notice_dismiss'] ) && '1' == $_GET['botiga_pro_upsell_notice_dismiss'] ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, Universal.Operators.StrictComparisons.LooseEqual
+		$notice_dismiss = isset( $_GET['botiga_pro_upsell_notice_dismiss'] ) && '1' == $_GET['botiga_pro_upsell_notice_dismiss'];
+		if ( $notice_dismiss ) { 
 			add_user_meta( get_current_user_id(), 'botiga_pro_upsell_notice_dismiss', 'true', true );
 		}
 	}

@@ -1,14 +1,11 @@
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 var botiga = botiga || {};
+
 /**
  * Is the DOM ready?
  *
@@ -16,17 +13,14 @@ var botiga = botiga || {};
  *
  * @param {Function} fn Callback function to run.
  */
-
 botiga.helpers = {
   botigaDomReady: function botigaDomReady(fn) {
     if (typeof fn !== 'function') {
       return;
     }
-
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       return fn();
     }
-
     document.addEventListener('DOMContentLoaded', fn, false);
   },
   isInVerticalViewport: function isInVerticalViewport(el) {
@@ -41,20 +35,16 @@ botiga.helpers = {
     var ajax = new XMLHttpRequest();
     ajax.open('POST', botiga.ajaxurl, true);
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
     ajax.onload = function () {
       if (this.status >= 200 && this.status < 400) {
         successCallback.apply(this);
       }
     };
-
     var extraParamsStr = '';
     extraParams = Object.entries(extraParams);
-
     for (var i = 0; i < extraParams.length; i++) {
       extraParamsStr += '&' + extraParams[i].join('=');
     }
-
     ajax.send('action=' + action + '&nonce=' + nonce + extraParamsStr);
   },
   setCookie: function setCookie(cname, cvalue, exdays) {
@@ -65,78 +55,69 @@ botiga.helpers = {
   },
   getCookie: function getCookie(cname) {
     var name = cname + "=",
-        ca = document.cookie.split(';');
-
+      ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
-
       if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
       }
     }
-
     return "";
   }
 };
+
 /**
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-
 botiga.navigation = {
   init: function init() {
     var siteNavigation = document.getElementById('site-navigation') == null ? document.getElementById('site-navigation-mobile') : document.getElementById('site-navigation'),
-        offCanvas = document.getElementsByClassName('botiga-offcanvas-menu')[0],
-        button = document.getElementsByClassName('menu-toggle')[0];
-
+      offCanvas = document.getElementsByClassName('botiga-offcanvas-menu')[0],
+      button = document.getElementsByClassName('menu-toggle')[0];
     if (siteNavigation === null) {
       return;
-    } // Return early if the navigation don't exist.
+    }
 
-
+    // Return early if the navigation don't exist.
     if (!siteNavigation && typeof button === 'undefined') {
       return;
     }
-
     if (typeof offCanvas === 'undefined') {
       return;
     }
+    var closeButton = document.getElementsByClassName('mobile-menu-close')[0];
 
-    var closeButton = document.getElementsByClassName('mobile-menu-close')[0]; // Return early if the button don't exist.
-
+    // Return early if the button don't exist.
     if ('undefined' === typeof button) {
       return;
     }
-
     var menu = siteNavigation.getElementsByTagName('ul')[0];
-    var mobileMenuClose = siteNavigation.getElementsByClassName('mobile-menu-close')[0]; // Hide menu toggle button if menu is empty and return early.
+    var mobileMenuClose = siteNavigation.getElementsByClassName('mobile-menu-close')[0];
 
+    // Hide menu toggle button if menu is empty and return early.
     if ('undefined' === typeof menu) {
       button.style.display = 'none';
       return;
     }
-
     if (!menu.classList.contains('nav-menu')) {
       menu.classList.add('nav-menu');
     }
-
     var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled]):not(.mobile-menu-close)');
     var firstFocusableEl = focusableEls[0];
     button.addEventListener('click', function (e) {
       e.preventDefault();
       button.classList.add('open');
       offCanvas.classList.add('toggled');
-      document.body.classList.add('mobile-menu-visible'); //Toggle submenus
+      document.body.classList.add('mobile-menu-visible');
 
+      //Toggle submenus
       var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
-
       var _iterator = _createForOfIteratorHelper(submenuToggles),
-          _step;
-
+        _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var submenuToggle = _step.value;
@@ -144,39 +125,34 @@ botiga.navigation = {
           submenuToggle.addEventListener('click', submenuToggleHandler);
           submenuToggle.addEventListener('keydown', function (e) {
             var isTabPressed = e.key === 'Enter' || e.keyCode === 13;
-
             if (!isTabPressed) {
               return;
             }
-
             e.preventDefault();
             var parent = submenuToggle.parentNode.parentNode;
             parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
           });
-        } //Trap focus inside modal
+        }
 
+        //Trap focus inside modal
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
-
       firstFocusableEl.focus();
     });
-
     function submenuToggleHandler(e) {
       e.preventDefault();
       var parent = e.target.closest('li');
       parent.querySelector('.sub-menu').classList.toggle('toggled');
-    } // Close the offcanvas when a anchor that contains a hash is clicked
+    }
 
-
+    // Close the offcanvas when a anchor that contains a hash is clicked
     var anchors = offCanvas.querySelectorAll('a[href*="#"]');
-
     if (anchors.length) {
       var _iterator2 = _createForOfIteratorHelper(anchors),
-          _step2;
-
+        _step2;
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var anchor = _step2.value;
@@ -194,34 +170,25 @@ botiga.navigation = {
         _iterator2.f();
       }
     }
-
     var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled])');
     var firstFocusableEl = focusableEls[0];
     var lastFocusableEl = focusableEls[focusableEls.length - 1];
     var KEYCODE_TAB = 9;
     lastFocusableEl.addEventListener('keydown', function (e) {
       var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
-
       if (!isTabPressed) {
         return;
       }
-
-      if (e.shiftKey)
-        /* shift + tab */
-        {} else
-        /* tab */
-        {
+      if (e.shiftKey) /* shift + tab */{} else /* tab */{
           firstFocusableEl.focus();
         }
     });
     closeButton.addEventListener('click', function (e) {
       e.preventDefault();
       var buttonRect = button.getBoundingClientRect();
-
       if (buttonRect.top + buttonRect.height > 0) {
         button.focus();
       }
-
       button.classList.remove('open');
       offCanvas.classList.remove('toggled');
       document.body.classList.remove('mobile-menu-visible');
@@ -232,72 +199,66 @@ botiga.navigation = {
         offCanvas.classList.remove('toggled');
         document.body.classList.remove('mobile-menu-visible');
       }
-    }); // Get all the link elements within the menu.
+    });
 
-    var links = menu.getElementsByTagName('a'); // Get all the link elements with children within the menu.
+    // Get all the link elements within the menu.
+    var links = menu.getElementsByTagName('a');
 
-    var linksWithChildren = menu.querySelectorAll('.menu-item-has-children > a, .page_item_has_children > a'); // Toggle focus each time a menu link is focused or blurred.
+    // Get all the link elements with children within the menu.
+    var linksWithChildren = menu.querySelectorAll('.menu-item-has-children > a, .page_item_has_children > a');
 
+    // Toggle focus each time a menu link is focused or blurred.
     var _iterator3 = _createForOfIteratorHelper(links),
-        _step3;
-
+      _step3;
     try {
       for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
         var link = _step3.value;
         link.addEventListener('focus', toggleFocus, true);
         link.addEventListener('blur', toggleFocus, true);
-      } // Toggle focus each time a menu link with children receive a touch event.
+      }
 
+      // Toggle focus each time a menu link with children receive a touch event.
     } catch (err) {
       _iterator3.e(err);
     } finally {
       _iterator3.f();
     }
-
     var _iterator4 = _createForOfIteratorHelper(linksWithChildren),
-        _step4;
-
+      _step4;
     try {
       for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
         var _link = _step4.value;
-
         _link.addEventListener('touchstart', toggleFocus, false);
       }
+
       /**
        * Sets or removes .focus class on an element.
        */
-
     } catch (err) {
       _iterator4.e(err);
     } finally {
       _iterator4.f();
     }
-
     function toggleFocus() {
       if (event.type === 'focus' || event.type === 'blur') {
-        var self = this; // Move up through the ancestors of the current link until we hit .nav-menu.
-
+        var self = this;
+        // Move up through the ancestors of the current link until we hit .nav-menu.
         while (!self.classList.contains('nav-menu')) {
           // On li elements toggle the class .focus.
           if ('li' === self.tagName.toLowerCase()) {
             self.classList.toggle('focus');
           }
-
           self = self.parentNode;
         }
       }
-
       if (event.type === 'touchstart') {
         var menuItem = this.parentNode;
         event.preventDefault();
-
         var _iterator5 = _createForOfIteratorHelper(menuItem.parentNode.children),
-            _step5;
-
+          _step5;
         try {
           for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
             var link = _step5.value;
-
             if (menuItem !== link) {
               link.classList.remove('focus');
             }
@@ -307,42 +268,35 @@ botiga.navigation = {
         } finally {
           _iterator5.f();
         }
-
         menuItem.classList.toggle('focus');
       }
-    } // Mobile accordion style navigation
+    }
 
+    // Mobile accordion style navigation
+    this.mobileAccordionNavigation();
 
-    this.mobileAccordionNavigation(); // Menu reverse
-
+    // Menu reverse
     this.checkMenuReverse();
   },
-
   /*
   * Mobile navigation (accordion style navigation)
   */
   mobileAccordionNavigation: function mobileAccordionNavigation() {
     var navs = document.querySelectorAll('.botiga-dropdown-mobile-accordion');
-
     if (!navs.length) {
       return false;
     }
-
     var _iterator6 = _createForOfIteratorHelper(navs),
-        _step6;
-
+      _step6;
     try {
       for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
         var nav = _step6.value;
         var nav_item = nav.querySelectorAll('.menu-item-has-children');
-
         if (!nav_item.length) {
           return false;
         }
-
         var _iterator7 = _createForOfIteratorHelper(nav_item),
-            _step7;
-
+          _step7;
         try {
           for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
             var item = _step7.value;
@@ -350,7 +304,6 @@ botiga.navigation = {
             dropdownToggler[0].addEventListener('click', function (e) {
               e.stopPropagation();
               var parent = this.parentNode;
-
               if (parent.classList.contains('expand')) {
                 parent.classList.remove('expand');
               } else {
@@ -370,16 +323,13 @@ botiga.navigation = {
       _iterator6.f();
     }
   },
-
   /* 
   * Check if sub-menu items are visible. If not, reverse the item position 
   */
   checkMenuReverse: function checkMenuReverse() {
     var items = document.querySelectorAll('.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li');
-
     var _iterator8 = _createForOfIteratorHelper(items),
-        _step8;
-
+      _step8;
     try {
       for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
         var element = _step8.value;
@@ -397,28 +347,24 @@ botiga.navigation = {
   menuReverseEventHandler: function menuReverseEventHandler() {
     event.stopPropagation();
     var submenu = event.currentTarget.querySelector('.header-login-register>nav, .top-bar-login-register>nav, .sub-menu');
-
     if (submenu === null) {
       return false;
-    } // Reverse horizontally
+    }
 
-
+    // Reverse horizontally
     submenu.classList.remove('sub-menu-reverse');
-
     if (botiga.helpers.isInHorizontalViewport(submenu) == false && !submenu.closest('.menu-item').classList.contains('botiga-mega-menu')) {
       submenu.classList.add('sub-menu-reverse');
     } else {
       submenu.classList.remove('sub-menu-reverse');
-    } // Reverse vertically
+    }
+
+    // Reverse vertically
     // Do not reverse vertically if the menu is in the header
-
-
     if (submenu.closest('.site-header') || submenu.closest('.bottom-header-row') || submenu.closest('.bhfb-header')) {
       return false;
     }
-
     submenu.classList.remove('sub-menu-reverse-vertically');
-
     if (botiga.helpers.isInVerticalViewport(submenu) == false && !submenu.closest('.menu-item').classList.contains('botiga-mega-menu')) {
       submenu.classList.add('sub-menu-reverse-vertically');
     } else {
@@ -426,25 +372,24 @@ botiga.navigation = {
     }
   }
 };
+
 /**
  * Desktop off canvas toggle navigation
  */
-
 botiga.desktopOffCanvasToggleNav = {
   init: function init() {
     var siteNavigation = document.getElementById('site-navigation'),
-        offCanvas = document.getElementsByClassName('botiga-desktop-offcanvas-menu')[0]; // Return early if the navigation don't exist.
+      offCanvas = document.getElementsByClassName('botiga-desktop-offcanvas-menu')[0];
 
+    // Return early if the navigation don't exist.
     if (!siteNavigation || typeof offCanvas === 'undefined') {
       return;
-    } //Toggle submenus
+    }
 
-
+    //Toggle submenus
     var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
-
     var _iterator9 = _createForOfIteratorHelper(submenuToggles),
-        _step9;
-
+      _step9;
     try {
       for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
         var submenuToggle = _step9.value;
@@ -452,11 +397,9 @@ botiga.desktopOffCanvasToggleNav = {
         submenuToggle.addEventListener('click', submenuToggleHandler);
         submenuToggle.addEventListener('keydown', function (e) {
           var isTabPressed = e.key === 'Enter' || e.keyCode === 13;
-
           if (!isTabPressed) {
             return;
           }
-
           e.preventDefault();
           var parent = submenuToggle.parentNode.parentNode;
           parent.getElementsByClassName('sub-menu')[0].classList.toggle('toggled');
@@ -467,7 +410,6 @@ botiga.desktopOffCanvasToggleNav = {
     } finally {
       _iterator9.f();
     }
-
     function submenuToggleHandler(e) {
       e.preventDefault();
       var parent = e.target.closest('li');
@@ -475,24 +417,21 @@ botiga.desktopOffCanvasToggleNav = {
     }
   }
 };
+
 /**
  * Desktop offcanvas menu navigation
  */
-
 botiga.desktopOffcanvasNav = {
   init: function init() {
     var buttons = document.querySelectorAll('.desktop-menu-toggle'),
-        closeButton = document.getElementsByClassName('desktop-menu-close')[0],
-        offcanvas = document.getElementsByClassName('botiga-desktop-offcanvas')[0];
-
+      closeButton = document.getElementsByClassName('desktop-menu-close')[0],
+      offcanvas = document.getElementsByClassName('botiga-desktop-offcanvas')[0];
     if (!buttons.length) {
       return false;
     }
-
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener('click', function (e) {
         e.preventDefault();
-
         if (offcanvas.classList.contains('botiga-desktop-offcanvas-show')) {
           offcanvas.classList.remove('botiga-desktop-offcanvas-show');
         } else {
@@ -500,12 +439,12 @@ botiga.desktopOffcanvasNav = {
         }
       });
     }
-
     closeButton.addEventListener('click', function (e) {
       e.preventDefault();
       offcanvas.classList.remove('botiga-desktop-offcanvas-show');
-    }); // Close mega menu when clicking outside
+    });
 
+    // Close mega menu when clicking outside
     document.addEventListener('click', function (e) {
       if (e.target.closest('.botiga-desktop-offcanvas-menu') === null && offcanvas.querySelector('.botiga-mega-menu .sub-menu.toggled') !== null) {
         offcanvas.querySelector('.botiga-mega-menu .sub-menu.toggled').classList.remove('toggled');
@@ -513,40 +452,36 @@ botiga.desktopOffcanvasNav = {
     });
   }
 };
+
 /**
  * Header search
  */
-
 botiga.headerSearch = {
   init: function init() {
     var self = this,
-        button = document.querySelectorAll('.header-search'),
-        form = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('#masthead-mobile .header-search-form') : document.querySelector('#masthead .header-search-form'),
-        overlay = document.getElementsByClassName('search-overlay')[0],
-        searchBtn = form !== null ? form.getElementsByClassName('search-submit')[0] : undefined;
-
+      button = document.querySelectorAll('.header-search'),
+      form = window.matchMedia('(max-width: 1024px)').matches ? document.querySelector('#masthead-mobile .header-search-form') : document.querySelector('#masthead .header-search-form'),
+      overlay = document.getElementsByClassName('search-overlay')[0],
+      searchBtn = form !== null ? form.getElementsByClassName('search-submit')[0] : undefined;
     if (button.length === 0) {
       return;
     }
-
     if (document.body.classList.contains('has-bhfb-builder')) {
       form = document.querySelector('.header-search-form');
     }
-
     if (typeof overlay !== 'undefined') {
       var _iterator10 = _createForOfIteratorHelper(button),
-          _step10;
-
+        _step10;
       try {
         for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
           var buttonEl = _step10.value;
           buttonEl.addEventListener('click', function (e) {
-            e.preventDefault(); // Hide other search icons 
+            e.preventDefault();
 
+            // Hide other search icons 
             if (button.length > 1) {
               var _iterator11 = _createForOfIteratorHelper(button),
-                  _step11;
-
+                _step11;
               try {
                 for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
                   var btn = _step11.value;
@@ -558,7 +493,6 @@ botiga.headerSearch = {
                 _iterator11.f();
               }
             }
-
             form.classList.toggle('active');
             overlay.classList.toggle('active');
             document.body.classList.toggle('header-search-form-active');
@@ -567,21 +501,17 @@ botiga.headerSearch = {
             e.target.closest('.header-search').classList.add('active');
             e.target.closest('.header-search').classList.remove('hide');
             var searchInput = '';
-
             if (window.matchMedia('screen and (min-width: 1024px)').matches) {
               searchInput = document.querySelectorAll('.bhfb-desktop .header-search-form .search-field')[0];
             } else {
               searchInput = document.querySelectorAll('.bhfb-mobile .header-search-form .search-field')[0];
             }
-
             if (e.target.closest('.header-search').parentNode.classList.contains('header-search-form-hide-input-on-mobile')) {
               searchInput = document.querySelectorAll('.bhfb-mobile .header-search-form .search-field')[1];
             }
-
             if (typeof searchInput !== 'undefined') {
               searchInput.focus();
             }
-
             if (e.target.closest('.botiga-offcanvas-menu') !== null) {
               e.target.closest('.botiga-offcanvas-menu').classList.remove('toggled');
             }
@@ -592,53 +522,48 @@ botiga.headerSearch = {
       } finally {
         _iterator10.f();
       }
-
       overlay.addEventListener('click', function () {
         form.classList.remove('active');
         overlay.classList.remove('active');
-        document.body.classList.remove('header-search-form-active'); // Back buttons to default state
+        document.body.classList.remove('header-search-form-active');
 
+        // Back buttons to default state
         self.backButtonsToDefaultState(button);
       });
     }
-
     if (typeof searchBtn !== 'undefined') {
       searchBtn.addEventListener('keydown', function (e) {
         var isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
-
         if (!isTabPressed) {
           return;
         }
-
         form.classList.remove('active');
         overlay.classList.remove('active');
-        document.body.classList.remove('header-search-form-active'); // Back buttons to default state
+        document.body.classList.remove('header-search-form-active');
 
+        // Back buttons to default state
         self.backButtonsToDefaultState(button);
         button.focus();
       });
     }
-
     var desktop_offcanvas = document.getElementsByClassName('header-desktop-offcanvas-layout2')[0] !== null ? document.getElementsByClassName('botiga-desktop-offcanvas')[0] : false;
-
     if (desktop_offcanvas) {
       desktop_offcanvas.addEventListener('click', function (e) {
         if (e.target.closest('.header-search') === null) {
           form.classList.remove('active');
           overlay.classList.remove('active');
-          document.body.classList.remove('header-search-form-active'); // Back buttons to default state
+          document.body.classList.remove('header-search-form-active');
 
+          // Back buttons to default state
           self.backButtonsToDefaultState(button);
         }
       });
     }
-
     return this;
   },
   backButtonsToDefaultState: function backButtonsToDefaultState(button) {
     var _iterator12 = _createForOfIteratorHelper(button),
-        _step12;
-
+      _step12;
     try {
       for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
         var btn = _step12.value;
@@ -653,94 +578,73 @@ botiga.headerSearch = {
     }
   }
 };
+
 /**
  * Sticky header
  */
-
 botiga.stickyHeader = {
   init: function init() {
     var _this = this,
-        sticky = document.getElementsByClassName('sticky-header')[0],
-        bhfb_sticky = document.getElementsByClassName('bhfb-sticky-header')[0],
-        body = document.getElementsByTagName('body')[0];
-
+      sticky = document.getElementsByClassName('sticky-header')[0],
+      bhfb_sticky = document.getElementsByClassName('bhfb-sticky-header')[0],
+      body = document.getElementsByTagName('body')[0];
     if ('undefined' === typeof sticky && 'undefined' === typeof bhfb_sticky) {
       return;
     }
-
     var sticky_selector = 'undefined' !== typeof sticky ? '.sticky-header' : '.bhfb-sticky-header';
-
     if ('undefined' === typeof sticky) {
       sticky = bhfb_sticky;
     }
-
     this.stickyChangeLogo();
     var topOffset = window.pageYOffset || document.documentElement.scrollTop;
-
     if (topOffset > 10) {
       sticky.classList.add('is-sticky');
       body.classList.add('sticky-header-active');
       window.dispatchEvent(new Event('botiga.sticky.header.activated'));
     }
-
     var header_offset_y = document.querySelector(sticky_selector).getBoundingClientRect().y;
-
     if (document.body.classList.contains('admin-bar')) {
       header_offset_y = header_offset_y - 32;
     }
-
     if (document.body.classList.contains('botiga-site-layout-padded')) {
       header_offset_y = header_offset_y - parseInt(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
     }
-
     if (sticky.classList.contains('sticky-scrolltop') || document.querySelector('.bhfb.sticky-scrolltop') !== null) {
       var lastScrollTop = 0;
       window.addEventListener('scroll', function () {
         var scroll = window.pageYOffset || document.documentElement.scrollTop,
-            is_sticky = scroll > lastScrollTop || scroll < 10;
-
+          is_sticky = scroll > lastScrollTop || scroll < 10;
         if (document.querySelector('.bhfb.sticky-scrolltop') !== null) {
           var bhfb_header_height = document.querySelector('.bhfb.sticky-scrolltop').getBoundingClientRect().height;
           is_sticky = scroll < bhfb_header_height;
         }
-
         if (is_sticky) {
           sticky.classList.remove('is-sticky');
           body.classList.remove('sticky-header-active');
-
           _this.isHBStickyDeactivated('scrolltop');
-
           body.classList.add('on-header-area');
           window.dispatchEvent(new Event('botiga.sticky.header.deactivated'));
         } else {
           sticky.classList.add('is-sticky');
           body.classList.add('sticky-header-active');
-
           _this.isHBStickyActive('scrolltop');
-
           body.classList.remove('on-header-area');
           window.dispatchEvent(new Event('botiga.sticky.header.activated'));
         }
-
         lastScrollTop = scroll <= 0 ? 0 : scroll;
       }, false);
     } else {
       window.addEventListener('scroll', function () {
         var vertDist = window.scrollY;
-
         if (vertDist > header_offset_y) {
           sticky.classList.add('sticky-shadow');
           body.classList.add('sticky-header-active');
-
           _this.isHBStickyActive();
-
           window.dispatchEvent(new Event('botiga.sticky.header.activated'));
         } else {
           sticky.classList.remove('sticky-shadow');
           body.classList.remove('sticky-header-active');
-
           _this.isHBStickyDeactivated();
-
           window.dispatchEvent(new Event('botiga.sticky.header.deactivated'));
         }
       }, false);
@@ -748,48 +652,43 @@ botiga.stickyHeader = {
   },
   isHBStickyActive: function isHBStickyActive(effect) {
     var bhfb = document.querySelector('header.bhfb'),
-        has_admin_bar = document.body.classList.contains('admin-bar'),
-        above_header_row = document.querySelector('.bhfb-above_header_row'),
-        main_header_row = document.querySelector('.bhfb-main_header_row'),
-        below_header_row = document.querySelector('.bhfb-below_header_row');
-
+      has_admin_bar = document.body.classList.contains('admin-bar'),
+      above_header_row = document.querySelector('.bhfb-above_header_row'),
+      main_header_row = document.querySelector('.bhfb-main_header_row'),
+      below_header_row = document.querySelector('.bhfb-below_header_row');
     if (bhfb === null) {
       return false;
     }
-
     var topVal = 0,
-        convertToPositive = false;
-
+      convertToPositive = false;
     if (bhfb.classList.contains('sticky-row-main-header-row')) {
       if (!above_header_row.classList.contains('bt-d-none')) {
         topVal = above_header_row.clientHeight;
-
         if (document.body.classList.contains('botiga-site-layout-padded')) {
           convertToPositive = true;
         }
       } else {
         convertToPositive = true;
-      } // Admin Bar
+      }
 
-
+      // Admin Bar
       if (has_admin_bar) {
         topVal = topVal - 32;
       } else {
         if (!above_header_row.classList.contains('bt-d-none') && document.body.classList.contains('botiga-site-layout-padded')) {
           convertToPositive = false;
         }
-      } // Padded Layout
+      }
 
-
+      // Padded Layout
       if (document.body.classList.contains('botiga-site-layout-padded')) {
         topVal = topVal - parseFloat(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
-      } // Conert to negative value
+      }
 
-
+      // Conert to negative value
       topVal = convertToPositive ? +Math.abs(topVal) : -Math.abs(topVal);
       bhfb.style.top = "".concat(topVal, "px");
     }
-
     if (bhfb.classList.contains('sticky-row-below-header-row')) {
       if (!below_header_row.classList.contains('bt-d-none')) {
         if (has_admin_bar) {
@@ -798,21 +697,19 @@ botiga.stickyHeader = {
           topVal = bhfb.clientHeight - below_header_row.clientHeight - parseFloat(getComputedStyle(below_header_row).borderBottomWidth);
         }
       }
-
       if (above_header_row.classList.contains('bt-d-none') && main_header_row.classList.contains('bt-d-none')) {
         convertToPositive = true;
-      } // Padded Layout
+      }
 
-
+      // Padded Layout
       if (document.body.classList.contains('botiga-site-layout-padded')) {
         topVal = topVal - parseFloat(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
-      } // Conert to negative value
+      }
 
-
+      // Conert to negative value
       topVal = convertToPositive ? +Math.abs(topVal) : -Math.abs(topVal);
       bhfb.style.top = "".concat(topVal, "px");
     }
-
     if (effect === 'scrolltop' && document.body.classList.contains('on-header-area')) {
       bhfb.classList.add('bhfb-no-transition');
       setTimeout(function () {
@@ -822,15 +719,12 @@ botiga.stickyHeader = {
   },
   isHBStickyDeactivated: function isHBStickyDeactivated(effect) {
     var bhfb = document.querySelector('header.bhfb');
-
     if (bhfb === null) {
       return false;
     }
-
     if (bhfb.classList.contains('sticky-row-main-header-row')) {
       bhfb.style.top = '0px';
     }
-
     if (bhfb.classList.contains('sticky-row-below-header-row')) {
       if (!document.querySelector('.bhfb-below_header_row').classList.contains('bt-d-none')) {
         bhfb.style.top = '0px';
@@ -839,22 +733,18 @@ botiga.stickyHeader = {
   },
   stickyChangeLogo: function stickyChangeLogo() {
     var sticky_flag = false;
-
     if (window.matchMedia('screen and (min-width: 1024px)').matches) {
       if (typeof botiga_sticky_header_logo !== 'undefined') {
         var logo = document.body.classList.contains('has-bhfb-builder') ? document.querySelector('.bhfb-sticky-header .site-branding img') : document.querySelector('.sticky-header .site-branding img');
-
         if (logo === null) {
           return false;
         }
-
         var initialSrc = logo.getAttribute('src'),
-            initialHeight = logo.clientHeight;
+          initialHeight = logo.clientHeight;
         window.addEventListener('botiga.sticky.header.activated', function () {
           if (sticky_flag) {
             return false;
           }
-
           logo.setAttribute('src', botiga_sticky_header_logo[0]);
           logo.setAttribute('style', 'max-height: ' + initialHeight + 'px;');
           sticky_flag = true;
@@ -863,7 +753,6 @@ botiga.stickyHeader = {
           if (!sticky_flag) {
             return false;
           }
-
           logo.setAttribute('src', initialSrc);
           sticky_flag = false;
         });
@@ -871,23 +760,20 @@ botiga.stickyHeader = {
     }
   }
 };
+
 /**
  * Botiga scroll direction
  */
-
 botiga.scrollDirection = {
   init: function init() {
     var elements = document.querySelectorAll('.botiga-single-sticky-add-to-cart-wrapper.hide-when-scroll'),
-        body = document.getElementsByTagName('body')[0];
-
+      body = document.getElementsByTagName('body')[0];
     if ('null' === typeof elements) {
       return;
     }
-
     var lastScrollTop = 0;
     window.addEventListener('scroll', function () {
       var scroll = window.pageYOffset || document.documentElement.scrollTop;
-
       if (scroll > lastScrollTop) {
         body.classList.remove('botiga-scrolling-up');
         body.classList.add('botiga-scrolling-down');
@@ -895,38 +781,34 @@ botiga.scrollDirection = {
         body.classList.remove('botiga-scrolling-down');
         body.classList.add('botiga-scrolling-up');
       }
-
       lastScrollTop = scroll <= 0 ? 0 : scroll;
     }, false);
   }
 };
+
 /**
  * Botiga custom add to cart button
  * 
  */
-
 botiga.customAddToCartButton = {
   init: function init() {
     var button = document.querySelectorAll('.botiga-custom-addtocart');
-
     if (!button.length) {
       return false;
     }
-
     for (var i = 0; i < button.length; i++) {
       button[i].addEventListener('click', function (e) {
         e.preventDefault();
         var button = this,
-            productId = this.getAttribute('data-product-id'),
-            initial_text = this.innerHTML,
-            loading_text = this.getAttribute('data-loading-text'),
-            added_text = this.getAttribute('data-added-text'),
-            nonce = this.getAttribute('data-nonce');
+          productId = this.getAttribute('data-product-id'),
+          initial_text = this.innerHTML,
+          loading_text = this.getAttribute('data-loading-text'),
+          added_text = this.getAttribute('data-added-text'),
+          nonce = this.getAttribute('data-nonce');
         var ajax = new XMLHttpRequest();
         ajax.open('POST', botiga.ajaxurl, true);
         ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         button.innerHTML = loading_text;
-
         ajax.onload = function () {
           if (this.status >= 200 && this.status < 400) {
             button.innerHTML = added_text;
@@ -938,16 +820,15 @@ botiga.customAddToCartButton = {
             document.body.dispatchEvent(new Event('botiga.custom_added_to_cart'));
           }
         };
-
         ajax.send('action=botiga_custom_addtocart&product_id=' + productId + '&nonce=' + nonce);
       });
     }
   }
 };
+
 /**
  * Back to top button
  */
-
 botiga.backToTop = {
   init: function init() {
     this.backToTop();
@@ -958,16 +839,13 @@ botiga.backToTop = {
   },
   backToTop: function backToTop() {
     var button = document.getElementsByClassName('back-to-top')[0];
-
     if ('undefined' !== typeof button) {
       var scrolled = window.pageYOffset;
-
       if (scrolled > 300) {
         button.classList.add('display');
       } else {
         button.classList.remove('display');
       }
-
       button.removeEventListener('click', this.scrollToTop);
       button.addEventListener('click', this.scrollToTop);
     }
@@ -983,14 +861,11 @@ botiga.backToTop = {
   // Fixes: https://wordpress.org/support/topic/double-tap-issue-on-mobile/
   safariDoubleClickFix: function safariDoubleClickFix() {
     var links = document.querySelectorAll('.product-gallery-summary .botiga-single-addtocart-wrapper .button, .single-product .content-wrapper a, .single-product .footer-widgets a, .single-product .site-footer a');
-
     if (!links.length) {
       return false;
     }
-
     var _iterator13 = _createForOfIteratorHelper(links),
-        _step13;
-
+      _step13;
     try {
       for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
         var link = _step13.value;
@@ -1003,10 +878,10 @@ botiga.backToTop = {
     }
   }
 };
+
 /**
  * Quantity button
  */
-
 botiga.qtyButton = {
   init: function init(type) {
     this.events(type);
@@ -1015,26 +890,21 @@ botiga.qtyButton = {
   events: function events(type) {
     var self = this;
     var qty = document.querySelectorAll('.botiga-quantity-minus');
-
     if (qty.length < 1) {
       return false;
     }
-
     for (var i = 0; i < qty.length; i++) {
       var wrapper = qty[i].closest('.quantity');
-
       if (wrapper === null || wrapper.dataset.qtyInitialized) {
         continue;
       }
-
       if (wrapper.classList.contains('hidden')) {
         return false;
       }
-
       var qtyInput = wrapper.querySelector('.qty'),
-          plus = wrapper.querySelector('.botiga-quantity-plus'),
-          minus = wrapper.querySelector('.botiga-quantity-minus'),
-          input = wrapper.querySelector('.input-text');
+        plus = wrapper.querySelector('.botiga-quantity-plus'),
+        minus = wrapper.querySelector('.botiga-quantity-minus'),
+        input = wrapper.querySelector('.input-text');
       plus.classList.add('show');
       minus.classList.add('show');
       qtyInput.addEventListener('change', function (e) {
@@ -1046,11 +916,11 @@ botiga.qtyButton = {
       plus.addEventListener('click', function (e) {
         e.preventDefault();
         var input = this.parentNode.querySelector('.qty'),
-            qtyMax = Number(input.getAttribute('max')) || 99999,
-            qtyMin = Number(input.getAttribute('min')),
-            qtyStep = Number(input.getAttribute('step')),
-            qtyValue = Number(input.value),
-            changeEvent = document.createEvent('HTMLEvents');
+          qtyMax = Number(input.getAttribute('max')) || 99999,
+          qtyMin = Number(input.getAttribute('min')),
+          qtyStep = Number(input.getAttribute('step')),
+          qtyValue = Number(input.value),
+          changeEvent = document.createEvent('HTMLEvents');
         input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue + qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
@@ -1061,11 +931,11 @@ botiga.qtyButton = {
       minus.addEventListener('click', function (e) {
         e.preventDefault();
         var input = this.parentNode.querySelector('.qty'),
-            qtyMax = Number(input.getAttribute('max')) || 99999,
-            qtyMin = Number(input.getAttribute('min')),
-            qtyStep = Number(input.getAttribute('step')),
-            qtyValue = Number(input.value),
-            changeEvent = document.createEvent('HTMLEvents');
+          qtyMax = Number(input.getAttribute('max')) || 99999,
+          qtyMin = Number(input.getAttribute('min')),
+          qtyStep = Number(input.getAttribute('step')),
+          qtyValue = Number(input.value),
+          changeEvent = document.createEvent('HTMLEvents');
         input.value = Math.max(qtyMin, Math.min(qtyMax, (qtyValue - qtyStep).toFixed(1)));
         changeEvent.initEvent('change', true, false);
         input.dispatchEvent(changeEvent);
@@ -1082,7 +952,6 @@ botiga.qtyButton = {
   },
   wooEvents: function wooEvents() {
     var _self = this;
-
     if (typeof jQuery !== 'undefined') {
       jQuery('body').on('updated_cart_totals', function () {
         _self.events();
@@ -1096,21 +965,16 @@ botiga.qtyButton = {
     if (qtyItem.closest('.woocommerce-cart-form') !== null) {
       return false;
     }
-
     var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
-        product = qtyItem.closest(productSelector),
-        qtyInput = qtyItem.parentNode.querySelector('.qty');
-
+      product = qtyItem.closest(productSelector),
+      qtyInput = qtyItem.parentNode.querySelector('.qty');
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
-
       if (addToCartButton) {
         addToCartButton.setAttribute('data-quantity', qtyValue);
       }
     }
-
     var miniCartItem = qtyItem.closest('.mini_cart_item') ? qtyItem.closest('.mini_cart_item') : qtyItem.closest('.woocommerce-cart-form__cart-item');
-
     if (miniCartItem) {
       var $cart = jQuery(qtyItem.closest('.widget_shopping_cart'));
       $cart.block({
@@ -1139,32 +1003,26 @@ botiga.qtyButton = {
   },
   updateBuyNowButtonQuantity: function updateBuyNowButtonQuantity(qtyItem, qtyValue) {
     var is_checkout_quantity = qtyItem.parentNode.parentNode.classList.contains('botiga-sc-product-name') || qtyItem.parentNode.parentNode.classList.contains('product-name') ? true : false,
-        is_mini_cart_quantity = qtyItem.closest('.woocommerce-mini-cart-item') !== null ? true : false;
-
+      is_mini_cart_quantity = qtyItem.closest('.woocommerce-mini-cart-item') !== null ? true : false;
     if (is_checkout_quantity || is_mini_cart_quantity) {
       return false;
     }
-
     var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
-        product = qtyItem.closest(productSelector),
-        qtyInput = qtyItem.parentNode.querySelector('.qty'),
-        buyNowButton = product ? product.querySelector('.botiga-buy-now-button') : null;
-
+      product = qtyItem.closest(productSelector),
+      qtyInput = qtyItem.parentNode.querySelector('.qty'),
+      buyNowButton = product ? product.querySelector('.botiga-buy-now-button') : null;
     if (buyNowButton === null) {
       return false;
     }
-
     var url = new URL(buyNowButton.getAttribute('href'));
     url.searchParams.set('quantity', qtyValue);
     buyNowButton.setAttribute('href', url);
   },
   behaviorsBasedOnQuantityValue: function behaviorsBasedOnQuantityValue(qtyItem, qtyValue) {
     var productSelector = qtyItem.closest('.product') ? '.product' : '.wc-block-grid__product',
-        product = qtyItem.closest(productSelector);
-
+      product = qtyItem.closest(productSelector);
     if (product) {
       var addToCartButton = product.querySelector('.add_to_cart_button:not(.single_add_to_cart_button)');
-
       if (addToCartButton) {
         if (qtyValue == 0) {
           addToCartButton.classList.add('disabled');
@@ -1175,10 +1033,10 @@ botiga.qtyButton = {
     }
   }
 };
+
 /**
  * Carousel 
  */
-
 botiga.carousel = {
   init: function init() {
     this.build();
@@ -1188,23 +1046,17 @@ botiga.carousel = {
     if (document.querySelector('.botiga-carousel') === null && document.querySelector('.has-cross-sells-carousel') === null && document.querySelector('.botiga-woocommerce-mini-cart__cross-sell') === null) {
       return false;
     }
-
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
-
     var _iterator14 = _createForOfIteratorHelper(carouselEls),
-        _step14;
-
+      _step14;
     try {
       for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
         var carouselEl = _step14.value;
-
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
         }
-
         if (carouselEl.getAttribute('data-initialized') !== 'true') {
           var perPage = carouselEl.getAttribute('data-per-page');
-
           if (perPage === null) {
             var stageClassList = carouselEl.querySelector('.products').classList.value;
             [1, 2, 3, 4, 5].forEach(function (columns) {
@@ -1212,25 +1064,25 @@ botiga.carousel = {
                 perPage = columns;
               }
             });
-          } // Mount carousel wrapper
+          }
 
-
+          // Mount carousel wrapper
           var wrapper = document.createElement('div'),
-              stage = carouselEl.querySelector('.botiga-carousel-stage');
+            stage = carouselEl.querySelector('.botiga-carousel-stage');
           wrapper.className = 'botiga-carousel-wrapper';
           wrapper.innerHTML = stage.outerHTML;
           stage.remove();
-          carouselEl.append(wrapper); // Margin
+          carouselEl.append(wrapper);
 
+          // Margin
           var margin = 30;
-
           if (typeof botiga_carousel !== 'undefined') {
             margin = parseInt(botiga_carousel.margin_desktop);
           } else if (carouselEl.closest('.botiga-woocommerce-mini-cart__cross-sell') !== null) {
             margin = 15;
-          } // Initialize
+          }
 
-
+          // Initialize
           var carousel = new Siema({
             parentSelector: carouselEl,
             selector: '.botiga-carousel-stage',
@@ -1263,14 +1115,12 @@ botiga.carousel = {
   },
   events: function events() {
     var _this = this;
-
     if (typeof jQuery !== 'undefined') {
       var onpageload = true;
       jQuery(document.body).on('wc_fragment_refresh added_to_cart removed_from_cart', function () {
         setTimeout(function () {
           var mini_cart = document.getElementById('site-header-cart'),
-              mini_cart_list = mini_cart.querySelector('.cart_list');
-
+            mini_cart_list = mini_cart.querySelector('.cart_list');
           if (mini_cart_list !== null) {
             if (mini_cart_list.children.length > 2) {
               mini_cart.classList.remove('mini-cart-has-no-scroll');
@@ -1280,19 +1130,17 @@ botiga.carousel = {
               mini_cart.classList.add('mini-cart-has-no-scroll');
             }
           }
-
           _this.build();
-
           onpageload = false;
         }, onpageload ? 1000 : 0);
       });
     }
   }
 };
+
 /**
  * Copy link to clipboard
  */
-
 botiga.copyLinkToClipboard = {
   init: function init(event, el) {
     event.preventDefault();
@@ -1305,25 +1153,22 @@ botiga.copyLinkToClipboard = {
     }, 1000);
   }
 };
+
 /**
  * Toggle class
  */
-
 botiga.toggleClass = {
   init: function init(event, el, triggerEvent) {
     event.preventDefault();
     event.stopPropagation();
     var selector = document.querySelector(el.getAttribute('data-botiga-selector')),
-        removeClass = el.getAttribute('data-botiga-toggle-class-remove'),
-        classname = el.getAttribute('data-botiga-toggle-class'),
-        classes = selector.classList;
-
+      removeClass = el.getAttribute('data-botiga-toggle-class-remove'),
+      classname = el.getAttribute('data-botiga-toggle-class'),
+      classes = selector.classList;
     if (typeof removeClass === 'string') {
       classes.remove(removeClass);
     }
-
     classes.toggle(classname);
-
     if (triggerEvent) {
       var ev = document.createEvent('HTMLEvents');
       ev.initEvent(triggerEvent, true, false);
@@ -1331,59 +1176,47 @@ botiga.toggleClass = {
     }
   }
 };
+
 /**
  * Collapse
  */
-
 botiga.collapse = {
   init: function init() {
     var elements = document.querySelectorAll('[data-botiga-collapse]');
-
     if (!elements.length) {
       return false;
     }
-
     var _this = this;
-
     var _loop = function _loop(i) {
       var opts = elements[i].getAttribute('data-botiga-collapse'),
-          options = JSON.parse(opts.replace(/'/g, '"').replace(';', ''));
-
+        options = JSON.parse(opts.replace(/'/g, '"').replace(';', ''));
       if (!options.enable) {
         return {
           v: false
         };
       }
-
       _this.expand(elements[i], options, true);
-
       elements[i].addEventListener('click', function (e) {
         e.preventDefault();
         this.dispatchEvent(new Event('botiga.collapse.before.expand'));
-
         if (!elements[i].classList.contains('active')) {
           _this.expand(elements[i], options);
         } else {
           _this.collapse(elements[i], options);
         }
-
         this.dispatchEvent(new Event('botiga.collapse.after.collapse'));
       });
-
       if (options.options.oneAtTime) {
         elements[i].addEventListener('botiga.collapse.before.expand', function () {
           var botiga_collapse = document.querySelectorAll(options.options.oneAtTimeParentSelector + ' [data-botiga-collapse]');
-
           for (var u = 0; u < botiga_collapse.length; u++) {
             _this.collapseAll(botiga_collapse[u], options);
           }
         });
       }
     };
-
     for (var i = 0; i < elements.length; i++) {
       var _ret = _loop(i);
-
       if (_typeof(_ret) === "object") return _ret.v;
     }
   },
@@ -1391,10 +1224,9 @@ botiga.collapse = {
     if (first_load && !el.classList.contains('active')) {
       return false;
     }
-
     var targetSelectorId = options.id,
-        target = document.getElementById(targetSelectorId),
-        targetContent = target.querySelector('.botiga-collapse__content');
+      target = document.getElementById(targetSelectorId),
+      targetContent = target.querySelector('.botiga-collapse__content');
     target.style = 'max-height: ' + targetContent.clientHeight + 'px;';
     el.classList.add('active');
     target.classList.add('active');
@@ -1402,7 +1234,7 @@ botiga.collapse = {
   },
   collapse: function collapse(el, options, a) {
     var targetSelectorId = options.id,
-        target = document.getElementById(targetSelectorId);
+      target = document.getElementById(targetSelectorId);
     target.style = 'max-height: 0px;';
     el.classList.remove('active');
     target.classList.remove('active');
@@ -1417,36 +1249,28 @@ botiga.collapse = {
 botiga.tabsNav = {
   init: function init() {
     var tabsNav = document.querySelectorAll('.botiga-tabs-nav');
-
     if (!tabsNav.length) {
       return false;
     }
-
     this.events();
   },
   events: function events() {
     var tabsNavItems = document.querySelectorAll('.botiga-tabs-nav-item');
-
     var _iterator15 = _createForOfIteratorHelper(tabsNavItems),
-        _step15;
-
+      _step15;
     try {
       for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
         var tabItem = _step15.value;
         tabItem.addEventListener('click', function (e) {
           e.preventDefault();
           var tabId = this.querySelector('.botiga-tabs-nav-link').getAttribute('href'),
-              tabContent = document.querySelector(tabId);
-
+            tabContent = document.querySelector(tabId);
           var _iterator16 = _createForOfIteratorHelper(tabsNavItems),
-              _step16;
-
+            _step16;
           try {
             for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
               var _tabItem = _step16.value;
-
               _tabItem.classList.remove('is-active');
-
               document.querySelector(_tabItem.querySelector('.botiga-tabs-nav-link').getAttribute('href')).classList.remove('is-active');
             }
           } catch (err) {
@@ -1454,7 +1278,6 @@ botiga.tabsNav = {
           } finally {
             _iterator16.f();
           }
-
           this.classList.add('is-active');
           tabContent.classList.add('is-active');
         });
@@ -1466,10 +1289,10 @@ botiga.tabsNav = {
     }
   }
 };
+
 /**
  * Misc
  */
-
 botiga.misc = {
   init: function init() {
     this.wcExpressPayButtons();
@@ -1479,19 +1302,16 @@ botiga.misc = {
   },
   wcExpressPayButtons: function wcExpressPayButtons() {
     var is_checkout_page = document.querySelector('body.woocommerce-checkout'),
-        is_cart_page = document.querySelector('body.woocommerce-cart'),
-        is_single_product = document.querySelector('body.single-product');
-
+      is_cart_page = document.querySelector('body.woocommerce-cart'),
+      is_single_product = document.querySelector('body.single-product');
     if (is_single_product === null && is_checkout_page === null && is_cart_page === null) {
       return false;
     }
-
     if (typeof jQuery === 'function') {
       (function ($) {
         if (typeof $('#wc-stripe-payment-request-button-separator, #wcpay-payment-request-wrapper').get(0) === 'undefined') {
           return false;
         }
-
         if (is_checkout_page === null) {
           $('#wc-stripe-payment-request-button-separator, #wcpay-payment-request-button-separator').appendTo('form.cart');
           $('#wc-stripe-payment-request-wrapper, #wcpay-payment-request-wrapper').appendTo('form.cart');
@@ -1502,37 +1322,37 @@ botiga.misc = {
   },
   singleProduct: function singleProduct() {
     var _this = this,
-        is_product_page = document.querySelector('body.single-product');
-
+      is_product_page = document.querySelector('body.single-product');
     if (is_product_page === null) {
       return false;
-    } // Move reset variations button for better styling
+    }
 
-
+    // Move reset variations button for better styling
     if (typeof jQuery === 'function') {
       (function ($) {
         $('.variations_form').each(function () {
           if ($(this).data('misc-variations') === true) {
             return false;
-          } // Move reset button
+          }
 
+          // Move reset button
+          _this.moveResetVariationButton($(this));
 
-          _this.moveResetVariationButton($(this)); // First load
+          // First load
+          _this.checkIfHasVariationSelected($(this));
 
-
-          _this.checkIfHasVariationSelected($(this)); // on change variation select
-
-
+          // on change variation select
           $(this).on('woocommerce_variation_select_change', function () {
             _this.checkIfHasVariationSelected($(this));
           });
           $(this).data('misc-variations', true);
-        }); // Single Product - In Cart Flag.
+        });
 
+        // Single Product - In Cart Flag.
         if ($('.botiga-in-cart-flag').length) {
           var $form = $('body.single-product .entry-summary .variations_form, .botiga-tb-sp-add-to-cart'),
-              addToCartButton = $form.find('.single_add_to_cart_button'),
-              defaultAddToCartButtonText = addToCartButton.text();
+            addToCartButton = $form.find('.single_add_to_cart_button'),
+            defaultAddToCartButtonText = addToCartButton.text();
           $form.each(function () {
             $(this).on('found_variation', function (event, variation) {
               var variationInCart = botigaInCartFlag.variations_in_cart.filter(function (a) {
@@ -1565,7 +1385,6 @@ botiga.misc = {
         jQuery(this).closest('table').removeClass('has-variation-selected');
       }
     });
-
     if (all_empty) {
       $this.closest('.variations_form').find('.reset_variations').css('display', 'none');
     } else {
@@ -1574,16 +1393,14 @@ botiga.misc = {
   },
   checkout: function checkout() {
     var is_checkout_page = document.querySelector('body.woocommerce-checkout');
-
     if (is_checkout_page === null) {
       return false;
-    } // There's no woo hook for that, so we need do that with js
+    }
 
-
+    // There's no woo hook for that, so we need do that with js
     if (typeof jQuery === 'function') {
       jQuery(document).on('updated_checkout', function () {
         var shipping_totals_table_column = document.querySelector('#order_review .woocommerce-shipping-totals > td');
-
         if (shipping_totals_table_column !== null) {
           document.querySelector('#order_review .woocommerce-shipping-totals > td').setAttribute('colspan', 2);
         }
@@ -1594,10 +1411,8 @@ botiga.misc = {
     if (!window.parent.document.body.classList.contains('wp-customizer')) {
       return false;
     }
-
     window.onload = function () {
       var cart_count = document.querySelectorAll('.cart-count');
-
       if (cart_count.length) {
         jQuery(document.body).trigger('wc_fragment_refresh');
       }

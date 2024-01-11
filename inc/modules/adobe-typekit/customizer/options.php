@@ -24,7 +24,7 @@ $wp_customize->add_control(
 		'adobe_fonts_kits_generator',
 		array(
 			'section'         => 'botiga_section_typography_general',
-			'active_callback' => 'botiga_font_library_adobe'
+			'active_callback' => 'botiga_font_library_adobe',
 		)
 	) 
 );

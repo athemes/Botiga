@@ -10,7 +10,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 
 		/**
 		 * Instance
-		 */		
+		 */     
 		private static $instance;
 
 		/**
@@ -18,7 +18,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -26,7 +26,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 		/**
 		 * Constructor
 		 */
-		public function __construct() {		
+		public function __construct() {     
 			add_action( 'init', array( $this, 'customize_wp_init' ) );
 			add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ) );
 			add_action( 'customize_register', array( $this, 'customize_register' ), 99 );
@@ -44,7 +44,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 
 		/**
 		 * Options
-		 */		
+		 */     
 		function customize_register( $wp_customize ) {
 
 			// @codingStandardsIgnoreStart WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
@@ -95,9 +95,9 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 			$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-			$wp_customize->get_section( 'title_tagline' )->priority 	= 1;
-			$wp_customize->get_section( 'title_tagline' )->panel 		= 'botiga_panel_header';
-			$wp_customize->get_section( 'header_image' )->panel 		= 'botiga_panel_header';
+			$wp_customize->get_section( 'title_tagline' )->priority     = 1;
+			$wp_customize->get_section( 'title_tagline' )->panel        = 'botiga_panel_header';
+			$wp_customize->get_section( 'header_image' )->panel         = 'botiga_panel_header';
 
 			$wp_customize->remove_control( 'header_textcolor' );
 
@@ -138,7 +138,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 					array(
 						'selector'        => '.site-title a',
 						'render_callback' => 'botiga_customize_partial_blogname',
-						'container_inclusive' => false
+						'container_inclusive' => false,
 					)
 				);
 				$wp_customize->selective_refresh->add_partial(
@@ -146,7 +146,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 					array(
 						'selector'        => '.site-description',
 						'render_callback' => 'botiga_customize_partial_blogdescription',
-						'container_inclusive' => false
+						'container_inclusive' => false,
 					)
 				);
 				$wp_customize->selective_refresh->add_partial( 
@@ -154,7 +154,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 					array(
 						'selector'          => '.site-info .social-profile',
 						'render_callback'   => function() { botiga_social_profile( 'social_profiles_footer' ); },
-						'container_inclusive' => false
+						'container_inclusive' => false,
 					) 
 				); 
 				$wp_customize->selective_refresh->add_partial( 
@@ -162,16 +162,15 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 					array(
 						'selector'          => '.site-info .botiga-credits',
 						'render_callback'   => 'botiga_customize_partial_footer_credits',
-						'container_inclusive' => false
+						'container_inclusive' => false,
 					) 
 				); 
 			}
-
 		}
 
 		public function customize_preview_js() {
 			wp_enqueue_script( 'botiga-customizer', get_template_directory_uri() . '/assets/js/customizer.min.js', array( 'jquery', 'customize-preview' ), BOTIGA_VERSION, true );
-		}		
+		}       
 
 		public function styles() {
 
@@ -179,11 +178,12 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			
 			if( $fonts_library === 'google' ) {
 				wp_enqueue_style( 'botiga-google-fonts', botiga_google_fonts_url(), array(), botiga_google_fonts_version() );
-			} else if ( $fonts_library === 'custom' ) {
+			} elseif ( $fonts_library === 'custom' ) {
 				wp_enqueue_style( 'botiga-custom-google-fonts', botiga_custom_google_fonts_url(), array(), botiga_google_fonts_version() );
 			} else {
 				$kits = get_option( 'botiga_adobe_fonts_kits', array() );
 				foreach ( $kits as $kit_id => $kit_data ) {
+					// phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual
 					if ( $kit_data['enable'] == false ) {
 						continue;
 					}
@@ -197,7 +197,6 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			if ( is_rtl() ) {
 				wp_enqueue_style( 'botiga-customizer-styles-rtl', get_template_directory_uri() . '/assets/css/customizer-rtl.min.css', array(), BOTIGA_VERSION );
 			}
-
 		}
 
 		public function scripts() {
@@ -208,114 +207,11 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 				'ajax_url'   => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce' => wp_create_nonce( 'botiga_ajax_nonce' ),
 			) );
-
 		}
-		
 	}
 }
 
 //Initiate
 Botiga_Customizer::get_instance();
 
-/**
- * Render the site title for the selective refresh partial.
- *
- * @return void
- */
-function botiga_customize_partial_blogname() {
-	bloginfo( 'name' );
-}
-
-/**
- * Render the site tagline for the selective refresh partial.
- *
- * @return void
- */
-function botiga_customize_partial_blogdescription() {
-	bloginfo( 'description' );
-}
-
-/**
- * Render the footer credits for the selective refresh partial.
- *
- * @return void
- */
-function botiga_customize_partial_footer_credits() {
-	$footer = new Botiga_Footer();
-	echo wp_kses_post( $footer->footer_credits() );
-}
-
-/**
- * Render adobe fonts control kits
- *
- */
-function botiga_customize_control_adobe_font_kits_output( $kits = false, $echo = true ) {
-	if( $kits ) {
-
-		if( ! $echo ) {
-			ob_start();
-		} ?>
-		
-		<div class="botiga-adobe_fonts_kits_wrapper" style="margin-bottom: 25px;">
-
-			<p><?php echo esc_html__( 'You have the following data in your Adobe Fonts account.', 'botiga' ); ?></p>
-
-			<?php foreach( $kits as $kit_id => $project ) : ?>
-
-				<div class="botiga-adobe_fonts_kits_wrapper-item<?php echo ( $project[ 'enable' ] ? '' : ' disabled' ); ?>">
-					<ul>
-						<li>
-							<strong>
-								<?php 
-								echo sprintf( 
-									/* translators: 1: Adobe fonts kit id */
-									esc_html__( 'Kit ID: %s', 'botiga' ), 
-									esc_html( $kit_id ) 
-								); ?>
-							</strong>
-						</li>
-						<li>
-							<?php echo sprintf( 
-								/* translators: 1: Adobe fonts project name */
-								esc_html__( 'Project Name: %s', 'botiga' ), 
-								esc_html( $project[ 'project_name' ] ) 
-							); ?>
-						</li>
-						<li>
-							<?php 
-							$fonts_name = array();
-							foreach( $project[ 'families' ] as $family ) {
-								$fonts_name[] = $family[ 'name' ];
-							}
-
-							echo esc_html( implode( ', ', $fonts_name ) ); ?>
-						</li>
-					</ul>
-					<div>
-						<?php 
-						if( $project[ 'enable' ] ) : ?>
-							<a href="#" class="botiga-adobe_fonts_kit_onoff" data-kit="<?php echo esc_attr( $kit_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'customize-typography-adobe-kits-control-onoff-nonce' ) ); ?>" data-loading-text="<?php echo esc_attr__( 'Loading...', 'botiga' ); ?>" data-enable-text="<?php echo esc_attr__( 'Enable', 'botiga' ); ?>" data-disable-text="<?php echo esc_attr__( 'Disable', 'botiga' ); ?>"><?php echo esc_html__( 'Disable', 'botiga' ); ?></a>
-						<?php else : ?>
-							<a href="#" class="botiga-adobe_fonts_kit_onoff" data-kit="<?php echo esc_attr( $kit_id ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'customize-typography-adobe-kits-control-onoff-nonce' ) ); ?>" data-loading-text="<?php echo esc_attr__( 'Loading...', 'botiga' ); ?>" data-enable-text="<?php echo esc_attr__( 'Enable', 'botiga' ); ?>" data-disable-text="<?php echo esc_attr__( 'Disable', 'botiga' ); ?>"><?php echo esc_html__( 'Enable', 'botiga' ); ?></a>
-						<?php endif; ?>
-					</div>
-					<div class="reload-message">
-						<em>
-							<?php echo wp_kses_post(
-								/* Translators:  */
-								sprintf( __( 'Reload the page is required to get it working across all typography options. <a href="%s">Click here</a> to reload the page.', 'botiga' ), admin_url( '/customize.php?autofocus[section]=botiga_section_typography_general' ) )
-							); ?>
-						</em>
-					</div>
-				</div>
-
-			<?php endforeach; ?>
-
-		</div>
-
-	<?php 
-		if( ! $echo ) {
-			return ob_get_clean();
-		}
-	}
-}
+require get_template_directory() . '/inc/customizer-helpers.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

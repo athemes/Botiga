@@ -18,7 +18,7 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 	 */
 	public $type          = 'botiga-upsell-features';
 	public $title         = '';
-	public $sub_title	  = '';
+	public $sub_title     = '';
 	public $display_thumb = false;
 	public $features_list = array();
 	public $features_list_last_item_text = array();
@@ -35,13 +35,13 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 		$this->button_text = esc_html__( 'Upgrade to Botiga Pro', 'botiga' );
 
 		if ( empty( $this->sub_title ) ) {
-			$this->sub_title = esc_html( 'You\'ll unlock:', 'botiga' );
+			$this->sub_title = esc_html__( 'You\'ll unlock:', 'botiga' );
 		}
 
 		if ( empty( $this->features_list_last_item_text ) ) {
 			$this->features_list_last_item_text = array(
 				'text_before_link' => '...',
-				'link_text' 	   => esc_html__( 'and many other premium features', 'botiga' )
+				'link_text'        => esc_html__( 'and many other premium features', 'botiga' ),
 			);
 		}
 	}
@@ -87,7 +87,7 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 						</svg>
 						<?php 
 						/* translators: %1$s: link to Botiga Pro, %2$s: link text */
-						echo sprintf(
+						printf(
 							'%1$s <a href="%2$s" target="_blank">%3$s</a>',
 							$this->features_list_last_item_text[ 'text_before_link' ], // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							$this->all_features_link, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

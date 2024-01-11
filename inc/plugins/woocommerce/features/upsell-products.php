@@ -10,6 +10,12 @@
  */
 function botiga_upsell_products_hooks() {
     $single_upsell = get_theme_mod( 'single_upsell_products', 1 );
+
+	/**
+	 * Hook 'botiga_woocommerce_after_single_product_summary_upsell_products_order'
+	 *
+	 * @since 1.0.0
+	 */
 	$hook_order    = apply_filters( 'botiga_woocommerce_after_single_product_summary_upsell_products_order', 15 );
 
     if ( !$single_upsell ) {
@@ -17,13 +23,13 @@ function botiga_upsell_products_hooks() {
     } else {
         $shop_single_upsell_products_number         = get_theme_mod( 'shop_single_upsell_products_number', 3 );
         $shop_single_upsell_products_columns_number = get_theme_mod( 'shop_single_upsell_products_columns_number', 3 );
-        $single_upsell_products_slider 			    = get_theme_mod( 'shop_single_upsell_products_slider', 0 );
+        $single_upsell_products_slider              = get_theme_mod( 'shop_single_upsell_products_slider', 0 );
         
-        if( $shop_single_upsell_products_columns_number == 2 ) {
+        if( (int) $shop_single_upsell_products_columns_number === 2 ) {
             add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-large'; } );
         }
 
-        if( $shop_single_upsell_products_columns_number == 1 ) {
+        if( (int) $shop_single_upsell_products_columns_number === 1 ) {
             add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-extra-large'; } );
         }
         
@@ -63,7 +69,7 @@ function botiga_woocommerce_output_upsell_products_slider( $args = array() ) {
     $limit = $posts_per_page;
 	$defaults = array(
 		'orderby'        => 'rand',
-		'order'          => 'desc'
+		'order'          => 'desc',
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -79,6 +85,11 @@ function botiga_woocommerce_output_upsell_products_slider( $args = array() ) {
 	<section class="up-sells upsells products">
 
 		<?php
+		/**
+		 * Hook 'botiga_woocommerce_product_upsell_products_heading'
+		 *
+		 * @since 1.0.0
+		 */
 		$heading = apply_filters( 'botiga_woocommerce_product_upsell_products_heading', __( 'You may also like...', 'botiga' ) );
 
 		if ( $heading ) : ?>
@@ -91,7 +102,7 @@ function botiga_woocommerce_output_upsell_products_slider( $args = array() ) {
 		$wrapper_classes = array( 'botiga-upsell-products' );
 
 		wp_enqueue_script( 'botiga-carousel' );
-		wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() );	
+		wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() ); 
 
 		$wrapper_classes[] = 'botiga-carousel botiga-carousel-nav2';
 

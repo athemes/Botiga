@@ -32,7 +32,7 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 	 * Enqueue our scripts and styles
 	 */
 	public function enqueue() {
-		wp_enqueue_script('botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array('jquery'), '4.0.13', true);
+		wp_enqueue_script('botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true);
 		wp_enqueue_style('botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.13', 'all');
 	}
 
@@ -59,7 +59,7 @@ class Botiga_Display_Conditions_Control extends WP_Customize_Control {
 		);
 
 		?>
-		<div class="botiga-display-conditions-control" data-condition-settings="<?php echo esc_attr(json_encode($settings)); ?>">
+		<div class="botiga-display-conditions-control" data-condition-settings="<?php echo esc_attr(wp_json_encode($settings)); ?>">
 			<?php if (!empty($this->label)) { ?>
 				<span class="customize-control-title"><?php echo wp_kses_post($this->label); ?></span>
 			<?php } ?>

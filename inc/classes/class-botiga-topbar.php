@@ -10,7 +10,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 
 		/**
 		 * Instance
-		 */		
+		 */     
 		private static $instance;
 
 		/**
@@ -18,7 +18,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -34,15 +34,15 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 * Desktop header markup
 		 */
 		public function topbar_markup() {
-			$enable 	= get_theme_mod( 'enable_top_bar', 0 );
+			$enable     = get_theme_mod( 'enable_top_bar', 0 );
 
 			if ( !$enable ) {
 				return;
 			}
 
-			$container 	= get_theme_mod( 'topbar_container', 'container-fluid' );
+			$container  = get_theme_mod( 'topbar_container', 'container-fluid' );
 			$visibility = get_theme_mod( 'topbar_visibility', 'desktop-only' );
-			$delimiter 	= get_theme_mod( 'topbar_delimiter', 'none' );
+			$delimiter  = get_theme_mod( 'topbar_delimiter', 'none' );
 			?>
 
 			<div class="top-bar visibility-<?php echo esc_attr( $visibility ); ?>">
@@ -72,7 +72,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 * Get topbar components
 		 */
 		public function get_topbar_components( $location ) {
-			$defaults 	= botiga_get_default_topbar_components();
+			$defaults   = botiga_get_default_topbar_components();
 			$components = get_theme_mod( 'topbar_components_' . $location, $defaults[$location] );
 
 			return $components;
@@ -98,7 +98,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 			$components = $this->get_topbar_components( $location );
 
 			if( has_nav_menu( 'top-bar-mobile' ) ) {
-				array_splice( $components, array_search( 'secondary_nav', $components ), 0, 'secondary_nav_mobile' );
+				array_splice( $components, array_search( 'secondary_nav', $components, true ), 0, 'secondary_nav_mobile' );
 			}
 
 			foreach ( $components as $component ) {
@@ -135,8 +135,8 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 * Contact info
 		 */
 		public function contact_info() {
-			$email 	= get_theme_mod( 'topbar_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
-			$phone	= get_theme_mod( 'topbar_contact_phone', esc_html__( '111222333', 'botiga' ) );
+			$email  = get_theme_mod( 'topbar_contact_mail', esc_html__( 'office@example.org', 'botiga' ) );
+			$phone  = get_theme_mod( 'topbar_contact_phone', esc_html__( '111222333', 'botiga' ) );
 
 			?>
 				<div class="header-item top-bar-contact">
@@ -148,7 +148,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 					<?php endif; ?>					
 				</div>
 			<?php
-		}	
+		}   
 		
 		/**
 		 * Text
@@ -177,7 +177,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		public function secondary_nav() {
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) ) : ?>
 				<nav class="header-item secondary-navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
 				</nav>
 			<?php else: ?>				
 			<nav class="header-item top-bar-secondary-navigation secondary-navigation botiga-dropdown">
@@ -185,9 +185,15 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				wp_nav_menu( array(
 					'theme_location'=> 'secondary',
 					'menu_id'       => 'secondary',
-					'fallback_cb'	=> false,
-					'depth'			=> 0,
-					'walker'        => apply_filters( 'botiga_secondary_wp_nav_menu_walker', '' )
+					'fallback_cb'   => false,
+					'depth'         => 0,
+
+					/**
+					 * Hook 'botiga_secondary_wp_nav_menu_walker'
+					 *
+					 * @since 1.0.0
+					 */
+					'walker'        => apply_filters( 'botiga_secondary_wp_nav_menu_walker', '' ),
 				) );
 				?>
 			</nav>
@@ -199,7 +205,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 		 */
 		public function secondary_nav_mobile() {
 			if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) && ! has_nav_menu( 'top-bar-mobile' ) ) : ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
 			<?php else: ?>				
 			<nav class="header-item top-bar-secondary-navigation secondary-navigation top-bar-mobile-navigation botiga-dropdown">
 				<?php
@@ -207,8 +213,8 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 					'theme_location'=> 'top-bar-mobile',
 					'menu_id'       => 'top-bar-mobile',
 					'menu_class'    => 'menu botiga-dropdown-ul',
-					'fallback_cb'	=> false,
-					'depth'			=> 0
+					'fallback_cb'   => false,
+					'depth'         => 0,
 				) );
 				?>
 			</nav>
@@ -267,7 +273,7 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				$welcome_message_text = get_theme_mod( 'login_register_welcome_message_text', sprintf( esc_html__( 'Welcome %s', 'botiga' ), '{display_name}' ) );
 				$welcome_message_text = str_replace(
 					array( '{user_firstname}', '{user_lastname}', '{user_email}', '{user_login}', '{display_name}' ),
-					array($current_user->user_firstname, $current_user->user_lastname, $current_user->user_email, $current_user->user_login, $current_user->display_name ),
+					array( $current_user->user_firstname, $current_user->user_lastname, $current_user->user_email, $current_user->user_login, $current_user->display_name ),
 					$welcome_message_text
 				);
 				

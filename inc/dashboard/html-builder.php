@@ -106,7 +106,7 @@ $disabled = ! $this->settings['has_pro'] || $this->settings['has_pro'] && ( clas
 								<?php endif; ?>
 
 								<div class="template-options" style="display: <?php echo ( isset( $template['id'] ) && 'global' == $template['id'] ) ? 'none' : 'block'; ?>">
-									<div class="botiga-display-conditions-control" data-condition-settings="<?php echo esc_attr( json_encode( $settings ) ); ?>">
+									<div class="botiga-display-conditions-control" data-condition-settings="<?php echo esc_attr( wp_json_encode( $settings ) ); ?>">
 										<a href="#" title="<?php esc_attr_e( 'Display conditions', 'botiga' ); ?>" class="botiga-display-conditions-modal-toggle"><span class="dashicons dashicons-admin-generic"></span><span style="min-width:120px;margin-left:-60px;" class="tooltip"><?php esc_html_e( 'Display conditions', 'botiga' ); ?></span></a>
 										<div class="botiga-display-conditions-modal">
 										<!-- Modal content goes here -->

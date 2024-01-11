@@ -171,5 +171,4 @@ class Botiga_Custom_Fonts_Control extends WP_Customize_Control {
 		</div>
 		<?php
 	}
-
 }

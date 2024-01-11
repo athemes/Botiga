@@ -53,5 +53,8 @@
     "tests-scenario-two": "npx playwright test scenario-two",
     "tests-php-errors": "npx playwright test php-errors.spec.js --project=chromium",
     "tests-all": "tests-scenario-one && tests-scenario-two && tests-php-errors"
+  },
+  "dependencies": {
+    "install": "^0.13.0"
   }
 }
