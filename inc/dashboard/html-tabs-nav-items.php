@@ -15,7 +15,8 @@ echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
 
         $num = 0; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
-        $nav_tab = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : ''; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+        
+        $nav_tab = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         foreach ($this->settings['tabs'] as $nav_tab_id => $nav_tab_title) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
@@ -23,12 +24,12 @@ echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
                 continue;
             }
 
-            $nav_tab_link   = add_query_arg(array('page' => $this->settings['menu_slug'], 'tab' => $nav_tab_id), admin_url('admin.php')); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+            $nav_tab_link   = add_query_arg(array( 'page' => $this->settings['menu_slug'], 'tab' => $nav_tab_id ), admin_url('admin.php')); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
             $nav_tab_active = (($nav_tab && $nav_tab === $nav_tab_id) || (!$nav_tab && $num === 0)) ? 'active' : ''; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
-            echo sprintf('<li class="botiga-dashboard-tabs-nav-item %s"><a href="#" class="botiga-dashboard-tabs-nav-link" data-tab-to="%s">%s</a></li>', esc_attr($nav_tab_active), esc_attr($nav_tab_id), esc_html($nav_tab_title));
+            printf('<li class="botiga-dashboard-tabs-nav-item %s"><a href="#" class="botiga-dashboard-tabs-nav-link" data-tab-to="%s">%s</a></li>', esc_attr($nav_tab_active), esc_attr($nav_tab_id), esc_html($nav_tab_title));
 
-            $num++;
+            ++$num;
         }
 
     echo '</ul>';

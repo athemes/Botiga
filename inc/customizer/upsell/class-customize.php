@@ -3,7 +3,6 @@
  * Singleton class for handling the theme's customizer integration.
  *
  * @since  1.0.0
- * @access public
  */
 final class Botiga_Customize_Upsell {
 
@@ -11,7 +10,6 @@ final class Botiga_Customize_Upsell {
 	 * Returns the instance.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @return object
 	 */
 	public static function get_instance() {
@@ -19,7 +17,7 @@ final class Botiga_Customize_Upsell {
 		static $instance = null;
 
 		if ( is_null( $instance ) ) {
-			$instance = new self;
+			$instance = new self();
 			$instance->setup_actions();
 		}
 
@@ -30,7 +28,6 @@ final class Botiga_Customize_Upsell {
 	 * Constructor method.
 	 *
 	 * @since  1.0.0
-	 * @access private
 	 * @return void
 	 */
 	private function __construct() {}
@@ -39,7 +36,6 @@ final class Botiga_Customize_Upsell {
 	 * Sets up initial actions.
 	 *
 	 * @since  1.0.0
-	 * @access private
 	 * @return void
 	 */
 	private function setup_actions() {
@@ -59,7 +55,6 @@ final class Botiga_Customize_Upsell {
 	 * Sets up the customizer sections.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @param  object  $manager
 	 * @return void
 	 */
@@ -89,13 +84,11 @@ final class Botiga_Customize_Upsell {
 	 * Loads theme customizer CSS.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @return void
 	 */
 	public function enqueue_control_scripts() {
 
-		wp_enqueue_script( 'botiga-upsell-customize-controls', trailingslashit( get_template_directory_uri() ) . 'inc/customizer/upsell/customize-controls.js', array( 'customize-controls' ) );
-
+		wp_enqueue_script( 'botiga-upsell-customize-controls', trailingslashit( get_template_directory_uri() ) . 'inc/customizer/upsell/customize-controls.js', array( 'customize-controls' ), BOTIGA_VERSION, false );
 	}
 }
 

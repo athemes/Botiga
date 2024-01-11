@@ -12,7 +12,7 @@ $wp_customize->add_section(
         'botiga_section_fb_component__button',
         array(
             'title'      => esc_html__( 'Button 1', 'botiga' ),
-            'panel'      => 'botiga_panel_footer'
+            'panel'      => 'botiga_panel_footer',
         )
     )
 );
@@ -21,7 +21,7 @@ $wp_customize->add_setting(
     'botiga_section_fb_component__button_tabs',
     array(
         'default'           => '',
-        'sanitize_callback' => 'esc_attr'
+        'sanitize_callback' => 'esc_attr',
     )
 );
 $wp_customize->add_control(
@@ -29,28 +29,28 @@ $wp_customize->add_control(
         $wp_customize,
         'botiga_section_fb_component__button_tabs',
         array(
-            'label' 				=> '',
-            'section'       		=> 'botiga_section_fb_component__button',
-            'controls_general'		=> json_encode(
+            'label'                 => '',
+            'section'               => 'botiga_section_fb_component__button',
+            'controls_general'      => wp_json_encode(
                 array(
                     '#customize-control-bhfb_footer_button_text',
                     '#customize-control-bhfb_footer_button_link',
                     '#customize-control-bhfb_footer_button_class',
                     '#customize-control-bhfb_footer_button_newtab',
-                    '#customize-control-bhfb_footer_button_visibility'
+                    '#customize-control-bhfb_footer_button_visibility',
                 )
             ),
-            'controls_design'		=> json_encode(
+            'controls_design'       => wp_json_encode(
                 array(
                     '#customize-control-bhfb_footer_button_colors_title',
                     '#customize-control-bhfb_footer_button_background',
                     '#customize-control-bhfb_footer_button',
                     '#customize-control-bhfb_footer_button_border',
 					'#customize-control-bhfb_footer_button_padding',
-					'#customize-control-bhfb_footer_button_margin'
+					'#customize-control-bhfb_footer_button_margin',
                 )
             ),
-            'priority' 				=> 20
+            'priority'              => 20,
         )
     )
 );
@@ -67,7 +67,7 @@ $wp_customize->add_control( 'bhfb_footer_button_text', array(
 	'label'       => esc_html__( 'Button text', 'botiga' ),
 	'type'        => 'text',
 	'section'     => 'botiga_section_fb_component__button',
-	'priority'			=> 25
+	'priority'          => 25,
 ) );
 
 // Button Link
@@ -82,7 +82,7 @@ $wp_customize->add_control( 'bhfb_footer_button_link', array(
 	'label'       => esc_html__( 'Button link', 'botiga' ),
 	'type'        => 'text',
 	'section'     => 'botiga_section_fb_component__button',
-	'priority'			=> 30
+	'priority'          => 30,
 ) );
 
 // Button Class
@@ -97,7 +97,7 @@ $wp_customize->add_control( 'bhfb_footer_button_class', array(
 	'label'       => esc_html__( 'Button Class', 'botiga' ),
 	'type'        => 'text',
 	'section'     => 'botiga_section_fb_component__button',
-	'priority'			=> 35
+	'priority'          => 35,
 ) );
 
 // Button Target
@@ -113,9 +113,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'bhfb_footer_button_newtab',
 		array(
-			'label'         	=> esc_html__( 'Open in a new tab?', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__button',
-			'priority'			=> 40
+			'label'             => esc_html__( 'Open in a new tab?', 'botiga' ),
+			'section'           => 'botiga_section_fb_component__button',
+			'priority'          => 40,
 		)
 	)
 );
@@ -124,25 +124,25 @@ $wp_customize->add_control(
 $wp_customize->add_setting( 
     'bhfb_footer_button_visibility_desktop',
     array(
-        'default' 			=> 'visible',
+        'default'           => 'visible',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_setting( 
     'bhfb_footer_button_visibility_tablet',
     array(
-        'default' 			=> 'visible',
+        'default'           => 'visible',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_setting( 
     'bhfb_footer_button_visibility_mobile',
     array(
-        'default' 			=> 'visible',
+        'default'           => 'visible',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_control( 
@@ -154,15 +154,15 @@ $wp_customize->add_control(
             'section'       => 'botiga_section_fb_component__button',
             'is_responsive' => true,
             'settings' => array(
-                'desktop' 		=> 'bhfb_footer_button_visibility_desktop',
-                'tablet' 		=> 'bhfb_footer_button_visibility_tablet',
-                'mobile' 		=> 'bhfb_footer_button_visibility_mobile'
+                'desktop'       => 'bhfb_footer_button_visibility_desktop',
+                'tablet'        => 'bhfb_footer_button_visibility_tablet',
+                'mobile'        => 'bhfb_footer_button_visibility_mobile',
             ),
             'choices'       => array(
                 'visible' => esc_html__( 'Visible', 'botiga' ),
-                'hidden'  => esc_html__( 'Hidden', 'botiga' )
+                'hidden'  => esc_html__( 'Hidden', 'botiga' ),
             ),
-            'priority'      => 42
+            'priority'      => 42,
         )
     ) 
 );
@@ -170,15 +170,15 @@ $wp_customize->add_control(
 // Colors Title.
 $wp_customize->add_setting( 'bhfb_footer_button_colors_title',
 	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'bhfb_footer_button_colors_title',
 		array(
-			'label'			=> esc_html__( 'Colors', 'botiga' ),
-			'section' 		=> 'botiga_section_fb_component__button',
-            'priority'      => 45
+			'label'         => esc_html__( 'Colors', 'botiga' ),
+			'section'       => 'botiga_section_fb_component__button',
+            'priority'      => 45,
 		)
 	)
 );
@@ -189,7 +189,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -197,7 +197,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#757575',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -211,7 +211,7 @@ $wp_customize->add_control(
                 'normal' => 'bhfb_footer_button_background_color',
                 'hover'  => 'bhfb_footer_button_background_color_hover',
             ),
-            'priority' => 50
+            'priority' => 50,
         )
     )
 );
@@ -222,7 +222,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -230,7 +230,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -244,7 +244,7 @@ $wp_customize->add_control(
                 'normal' => 'bhfb_footer_button_color',
                 'hover'  => 'bhfb_footer_button_color_hover',
             ),
-            'priority' => 55
+            'priority' => 55,
         )
     )
 );
@@ -255,7 +255,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -263,7 +263,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#757575',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -277,7 +277,7 @@ $wp_customize->add_control(
                 'normal' => 'bhfb_footer_button_border_color',
                 'hover'  => 'bhfb_footer_button_border_color_hover',
             ),
-            'priority' => 60
+            'priority' => 60,
         )
     )
 );
@@ -288,7 +288,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -296,7 +296,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -304,7 +304,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_control( 
@@ -312,23 +312,23 @@ $wp_customize->add_control(
         $wp_customize, 
         'bhfb_footer_button_padding',
         array(
-            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
-            'section'         	=> 'botiga_section_fb_component__button',
+            'label'             => __( 'Wrapper Padding', 'botiga' ),
+            'section'           => 'botiga_section_fb_component__button',
             'sides'             => array(
                 'top'    => true,
                 'right'  => true,
                 'bottom' => true,
-                'left'   => true
+                'left'   => true,
             ),
             'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
             'link_values_toggle' => true,
-            'is_responsive'   	 => true,
-            'settings'        	 => array(
+            'is_responsive'      => true,
+            'settings'           => array(
                 'desktop' => 'bhfb_footer_button_padding_desktop',
                 'tablet'  => 'bhfb_footer_button_padding_tablet',
-                'mobile'  => 'bhfb_footer_button_padding_mobile'
+                'mobile'  => 'bhfb_footer_button_padding_mobile',
             ),
-            'priority'	      	 => 72
+            'priority'           => 72,
         )
     )
 );
@@ -339,7 +339,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -347,7 +347,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -355,7 +355,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_control( 
@@ -363,23 +363,23 @@ $wp_customize->add_control(
         $wp_customize, 
         'bhfb_footer_button_margin',
         array(
-            'label'           	=> __( 'Wrapper Margin', 'botiga' ),
-            'section'         	=> 'botiga_section_fb_component__button',
+            'label'             => __( 'Wrapper Margin', 'botiga' ),
+            'section'           => 'botiga_section_fb_component__button',
             'sides'             => array(
                 'top'    => true,
                 'right'  => true,
                 'bottom' => true,
-                'left'   => true
+                'left'   => true,
             ),
             'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
             'link_values_toggle' => true,
-            'is_responsive'   	 => true,
-            'settings'        	 => array(
+            'is_responsive'      => true,
+            'settings'           => array(
                 'desktop' => 'bhfb_footer_button_margin_desktop',
                 'tablet'  => 'bhfb_footer_button_margin_tablet',
-                'mobile'  => 'bhfb_footer_button_margin_mobile'
+                'mobile'  => 'bhfb_footer_button_margin_mobile',
             ),
-            'priority'	      	 => 72
+            'priority'           => 72,
         )
     )
 );

@@ -61,14 +61,14 @@ foreach( $this->footer_rows as $row ) {
             array(
                 'label' 				=> '',
                 'section'       		=> $row['section'],
-                'controls_general'		=> json_encode( array( 
+                'controls_general'		=> wp_json_encode( array( 
                     '#customize-control-botiga_footer_row__' . $row['id'] ,
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_height',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_desktop',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_columns_layout_desktop',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_available_columns'
                 ) ),
-                'controls_design'		=> json_encode( array( 
+                'controls_design'		=> wp_json_encode( array( 
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_background_color',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_divider2',
                     '#customize-control-botiga_footer_row__' . $row['id'] . '_background_image',

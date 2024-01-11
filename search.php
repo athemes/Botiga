@@ -8,9 +8,24 @@
  */
 
 get_header();
+
+/**
+ * Hook 'botiga_content_class'
+ *
+ * @since 1.0.0
+ */
+$content_class = apply_filters( 'botiga_content_class', '' );
+
+/**
+ * Hook 'botiga_blog_layout_class'
+ *
+ * @since 1.0.0
+ */
+$blog_layout_class = apply_filters( 'botiga_blog_layout_class', 'layout3' );
+
 ?>
 
-	<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>" <?php botiga_schema( 'search' ); ?>>
+	<main id="primary" class="site-main <?php echo esc_attr( $content_class ); ?>" <?php botiga_schema( 'search' ); ?>>
 		<?php
 		if ( have_posts() ) : ?>
 			<header class="page-header">
@@ -22,7 +37,7 @@ get_header();
 				</h1>
 			</header><!-- .page-header -->
 
-			<div class="posts-archive <?php echo esc_attr( apply_filters( 'botiga_blog_layout_class', 'layout3' ) ); ?>" <?php botiga_masonry_data(); ?>>
+			<div class="posts-archive <?php echo esc_attr( $blog_layout_class ); ?>" <?php botiga_masonry_data(); ?>>
 				<div class="row">
 				<?php
 				/* Start the Loop */
@@ -46,6 +61,11 @@ get_header();
 			'next_text' => '&#x2192;',
 		) );
 
+		/**
+		 * Hook 'botiga_after_the_posts_pagination'
+		 *
+		 * @since 1.0.0
+		 */
 		do_action( 'botiga_after_the_posts_pagination' );
 
 		else :
@@ -57,5 +77,10 @@ get_header();
 	</main><!-- #main -->
 
 <?php
+/**
+ * Hook 'botiga_do_sidebar'
+ *
+ * @since 1.0.0
+ */
 do_action( 'botiga_do_sidebar' );
 get_footer();

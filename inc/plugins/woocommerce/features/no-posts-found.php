@@ -20,15 +20,43 @@ function botiga_woocommerce_no_products_found_popular_products() {
 	<section class="products botiga-no-products-found-popular-products">
 		<?php
 
+			/**
+			 * Hook 'botiga_woocommerce_no_products_found_popular_products_heading'
+			 *
+			 * @since 1.0.0
+			 */
 			$heading_text = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_heading', esc_html__( 'Popular Products', 'botiga' ) );
+
+			/**
+			 * Hook 'botiga_woocommerce_no_products_found_popular_products_heading_tag'
+			 *
+			 * @since 1.0.0
+			 */
 			$heading_tag  = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_heading_tag', 'h2' );
 
 			if ( $heading_text ) {
-				echo sprintf( '<%1$s>%2$s</%1$s>', tag_escape( $heading_tag ), esc_html( $heading_text ) );
+				printf( '<%1$s>%2$s</%1$s>', tag_escape( $heading_tag ), esc_html( $heading_text ) );
 			}
 
+			/**
+			 * Hook 'botiga_woocommerce_no_products_found_popular_products_grid_columns'
+			 *
+			 * @since 1.0.0
+			 */
 			$columns = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_grid_columns', 5 );
+
+			/**
+			 * Hook 'botiga_woocommerce_no_products_found_popular_products_grid_rows'
+			 *
+			 * @since 1.0.0
+			 */
 			$rows    = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_grid_rows', 1 );
+
+			/**
+			 * Hook 'botiga_woocommerce_no_products_found_popular_products_grid_orderby'
+			 *
+			 * @since 1.0.0
+			 */
 			$orderby = apply_filters( 'botiga_woocommerce_no_products_found_popular_products_grid_orderby', 'popularity' );
 			$limit   = $columns * $rows;
 

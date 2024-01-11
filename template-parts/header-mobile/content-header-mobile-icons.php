@@ -32,12 +32,12 @@ if ( is_cart() ) {
     $mini_cart_style = get_theme_mod( 'mini_cart_style', 'default' );
     if( $mini_cart_style === 'default' ) {
         $instance = array(
-            'title' => esc_html__( 'Your Cart', 'botiga' )
+            'title' => esc_html__( 'Your Cart', 'botiga' ),
         );
 
         the_widget( 'WC_Widget_Cart', $instance, array(
             'before_title' => '<div class="widgettitle">',
-            'after_title'  => '</div>'
+            'after_title'  => '</div>',
         )  );
     }
     

@@ -10,19 +10,25 @@
  */
 function botiga_related_products_hooks() {
     $single_related = get_theme_mod( 'single_related_products', 1 );
+
+	/**
+	 * Hook 'botiga_woocommerce_after_single_product_summary_related_products_order'
+	 *
+	 * @since 1.0.0
+	 */
 	$hook_order     = apply_filters( 'botiga_woocommerce_after_single_product_summary_related_products_order', 20 );
 
     if ( ! $single_related ) {
         remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', $hook_order );
     } else {
         $shop_single_related_products_columns_number = get_theme_mod( 'shop_single_related_products_columns_number', 3 );
-        $single_related_products_slider 			 = get_theme_mod( 'shop_single_related_products_slider', 0 );
-        
-        if( $shop_single_related_products_columns_number == 2 ) {
+        $single_related_products_slider              = get_theme_mod( 'shop_single_related_products_slider', 0 );
+
+		if( (int) $shop_single_related_products_columns_number === 2 ) {
             add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-large'; } );
         }
 
-        if( $shop_single_related_products_columns_number == 1 ) {
+        if( (int) $shop_single_related_products_columns_number === 1 ) {
             add_filter( 'single_product_archive_thumbnail_size', function(){ return 'botiga-extra-large'; } );
         }
         
@@ -71,8 +77,20 @@ function botiga_woocommerce_output_related_products_slider( $args = array() ) {
 
 	$defaults = array(
 		'posts_per_page' => $posts_per_page,
+
+		/**
+		 * Hook 'botiga_related_products_as_slider_orderby'
+		 *
+		 * @since 1.0.0
+		 */
 		'orderby'        => apply_filters( 'botiga_related_products_as_slider_orderby', 'rand' ),
-		'order'          => apply_filters( 'botiga_related_products_as_slider_order', 'desc' )
+
+		/**
+		 * Hook 'botiga_related_products_as_slider_order'
+		 *
+		 * @since 1.0.0
+		 */
+		'order'          => apply_filters( 'botiga_related_products_as_slider_order', 'desc' ),
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -90,7 +108,18 @@ function botiga_woocommerce_output_related_products_slider( $args = array() ) {
 	<section class="related products">
 
 		<?php
+		/**
+		 * Hook 'botiga_woocommerce_product_related_products_heading'
+		 *
+		 * @since 1.0.0
+		 */
 		$heading_text = apply_filters( 'botiga_woocommerce_product_related_products_heading', __( 'Related products', 'botiga' ) );
+
+		/**
+		 * Hook 'botiga_woocommerce_product_related_products_heading_tag'
+		 *
+		 * @since 1.0.0
+		 */
 		$heading_tag  = tag_escape( apply_filters( 'botiga_woocommerce_product_related_products_heading_tag', 'h2' ) );
 
 		if ( $heading_text ) {
@@ -101,7 +130,7 @@ function botiga_woocommerce_output_related_products_slider( $args = array() ) {
 		$wrapper_classes = array( 'botiga-related-products' );
 
 		wp_enqueue_script( 'botiga-carousel' );
-		wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() );	
+		wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() ); 
 
 		$wrapper_classes[] = 'botiga-carousel botiga-carousel-nav2';
 

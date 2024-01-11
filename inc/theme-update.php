@@ -114,7 +114,7 @@ function botiga_hf_update_notice_1_1_9() {
         <p>
             <?php 
             /* translators: 1: documentation link. */
-            echo sprintf( esc_html__( 'Want to see the new header and footer builder before upgrading? Check out our %s.', 'botiga' ), '<a target="_blank" href="https://docs.athemes.com/article/pro-header-builder/">documentation</a>' ); ?>
+            printf( esc_html__( 'Want to see the new header and footer builder before upgrading? Check out our %s.', 'botiga' ), '<a target="_blank" href="https://docs.athemes.com/article/pro-header-builder/">documentation</a>' ); ?>
         </p>
         <a href="#" class="button botiga-update-hf" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-update-hf-nonce' ) ); ?>" style="margin-top: 15px;"><?php esc_html_e( 'Update theme header and footer', 'botiga' ); ?></a>
         <a href="#" class="button botiga-update-hf-dismiss" data-nonce="<?php echo esc_attr( wp_create_nonce( 'botiga-update-hf-dismiss-nonce' ) ); ?>" style="margin-top: 15px;"><?php esc_html_e( 'Continue to use the old header and footer system', 'botiga' ); ?></a> 
@@ -139,7 +139,7 @@ function botiga_hf_update_notice_1_1_9_callback() {
     update_option( 'botiga-modules', array_merge( $all_modules, array( 'hf-builder' => true ) ) );
 
 	wp_send_json( array(
-		'success' => true
+		'success' => true,
 	) );
 }
 add_action( 'wp_ajax_botiga_hf_update_notice_1_1_9_callback', 'botiga_hf_update_notice_1_1_9_callback' );
@@ -155,7 +155,7 @@ function botiga_hf_update_dismiss_notice_1_1_9_callback() {
 	update_option( 'botiga-update-hf-dismiss', true );
 
 	wp_send_json( array(
-		'success' => true
+		'success' => true,
 	) );
 }
 add_action( 'wp_ajax_botiga_hf_update_dismiss_notice_1_1_9_callback', 'botiga_hf_update_dismiss_notice_1_1_9_callback' );
@@ -203,29 +203,29 @@ function botiga_migrate_1_2_1_options() {
         $new_value[] = array(
             'type'      => 'include',
             'condition' => $val,
-            'id'        => null
+            'id'        => null,
         );
     }
 
-    set_theme_mod( 'header_transparent_display_on', json_encode( $new_value ) );
+    set_theme_mod( 'header_transparent_display_on', wp_json_encode( $new_value ) );
 
     // Header Image
     $show_header_image_only_home = get_theme_mod( 'show_header_image_only_home', 0 );
     if( $show_header_image_only_home ) {
-        set_theme_mod( 'header_image_display_conditions', json_encode( array(
+        set_theme_mod( 'header_image_display_conditions', wp_json_encode( array(
             array(
                 'type'      => 'include',
                 'condition' => 'front-page',
-                'id'        => null
-            )
+                'id'        => null,
+            ),
         ) ) );
     } else {
-        set_theme_mod( 'header_image_display_conditions', json_encode( array(
+        set_theme_mod( 'header_image_display_conditions', wp_json_encode( array(
             array(
                 'type'      => 'include',
                 'condition' => 'all',
-                'id'        => null
-            )
+                'id'        => null,
+            ),
         ) ) );
     }
 
@@ -327,7 +327,6 @@ function botiga_migrate_2_0_0_modules( $old_theme_name ) {
 
     //Set flag
     set_theme_mod( 'botiga_migrate_2_0_0_modules_flag', true );
-
 }
 add_action( 'admin_init', 'botiga_migrate_2_0_0_modules' );
 
@@ -354,7 +353,6 @@ function botiga_migrate_2_1_0_options() {
 
     //Set flag
     set_theme_mod( 'botiga_migrate_2_1_0_options_flag', true );
-
 }
 add_action( 'admin_init', 'botiga_migrate_2_1_0_options' );
 

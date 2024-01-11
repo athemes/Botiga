@@ -203,9 +203,9 @@ function botiga_dokan_custom_css( $css ) {
     $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '', '.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.active, .dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li:hover, .dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.dokan-common-links a:hover' );
     
     // Single Product Vendor Info Box
-    $defaults 	= botiga_get_default_single_product_components();
+    $defaults   = botiga_get_default_single_product_components();
     $components = get_theme_mod( 'single_product_elements_order', $defaults );
-    if( in_array( 'botiga_dokan_vendor_infobox', $components ) ) {
+    if( in_array( 'botiga_dokan_vendor_infobox', $components, true ) ) {
         $css .= Botiga_Custom_CSS::get_background_color_css( 'content_cards_background', '', '.botiga-vendor-infobox' );
 
         $css .= '

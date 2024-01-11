@@ -5,6 +5,11 @@
  * @package Botiga
  */
 
+/**
+ * Hook 'botiga_before_ajax_search_item'
+ *
+ * @since 1.0.0
+ */
 do_action( 'botiga_before_ajax_search_item' );
 
 if( $args['type'] === 'product' ) { // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
@@ -43,4 +48,10 @@ if( $args['type'] === 'product' ) { // @codingStandardsIgnoreStart WordPress.Nam
     </div>
 </a>
 
-<?php do_action( 'botiga_after_ajax_search_item' ); ?>
+<?php 
+/**
+ * Hook 'botiga_after_ajax_search_item'
+ *
+ * @since 1.0.0
+ */
+do_action( 'botiga_after_ajax_search_item' ); ?>

@@ -55,7 +55,7 @@ global $_product; ?>
                                     'type'     => 'email',
                                     'value'    => $commenter['comment_author_email'],
                                     'required' => $name_email_required,
-                                )
+                                ),
                             );
 
                             $comment_form['fields'] = array();
@@ -91,8 +91,9 @@ global $_product; ?>
                             }
 
                             $comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'botiga' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="5" required></textarea></p>';
-
-                            comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ), $_product->get_id() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Ensure compatibility with WooCommerce plugins
+                            
+                            // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+                            comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ), $_product->get_id() );
                             ?>
                         </div>
                     </div>

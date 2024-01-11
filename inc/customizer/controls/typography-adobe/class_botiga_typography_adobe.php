@@ -26,9 +26,9 @@ class Botiga_Typography_Adobe_Control extends WP_Customize_Control {
                             'name' => 'System Default',
                             'css_name' => array( 'system-default' ),
                             'css_stack' => '"system-default", sans-serif',
-                            'variations' => array( 'n4', 'n5', 'n8' )
-                        )
-                    )
+                            'variations' => array( 'n4', 'n5', 'n8' ),
+                        ),
+                    ),
                 );
 
                 $this->kits = $kits;

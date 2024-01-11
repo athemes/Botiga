@@ -71,5 +71,4 @@ class Botiga_Section_Upsell extends WP_Customize_Section {
 		</li>
 		<?php
 	}
-
 }

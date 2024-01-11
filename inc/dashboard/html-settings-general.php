@@ -20,7 +20,13 @@ if (!defined('ABSPATH')) {
             <div class="botiga-dashboard-license-wrapper">
                 <h2 class="bt-mb-10px"><?php echo esc_html__( 'Botiga Pro License', 'botiga' ); ?></h2>
                 <p class="bt-text-color-grey bt-mb-20px"><?php echo esc_html__( 'Activate your license key for Botiga Pro to get latest theme updates automatically updates right from your WordPress Dashboard.', 'botiga' ); ?> </p>
-                <?php do_action( 'botiga_pro_license_form' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                <?php 
+                /**
+                 * Hook 'botiga_pro_license_form'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_pro_license_form' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                 <div class="botiga-dashboard-content-expand bt-mt-20px" data-bt-toggle-expand style="max-width: 360px;">
                     <div class="botiga-dashboard-content-expand-title">
                         <a href="#" class="botiga-dashboard-content-expand-link">
@@ -33,7 +39,7 @@ if (!defined('ABSPATH')) {
                             <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 <?php 
-                                echo sprintf(
+                                printf(
                                     /* translators: 1: athemes website login url */
                                     esc_html__( 'To get your key, please login to your %1$saThemes account%2$s.', 'botiga' ),
                                     '<a href="https://www.athemes.com/your-account/" target="_blank">',
@@ -43,7 +49,7 @@ if (!defined('ABSPATH')) {
                             <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 <?php 
-                                echo sprintf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                printf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                     /* translators: 1: key icon */
                                     esc_html__( 'In licenses section, click on the %s key icon. A license number will appear. Copy and paste the number here', 'botiga' ),
                                     '<i>🔑</i>'

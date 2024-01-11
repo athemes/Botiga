@@ -19,6 +19,12 @@
 function botiga_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
+
+		/**
+		 * Hook 'botiga_custom_header_args'
+		 *
+		 * @since 1.0.0
+		 */
 		apply_filters(
 			'botiga_custom_header_args',
 			array(

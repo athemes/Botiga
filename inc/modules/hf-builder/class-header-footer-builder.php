@@ -12,7 +12,7 @@ if ( ! Botiga_Modules::is_module_active( 'hf-builder' ) ) {
 class Botiga_Header_Footer_Builder {
     /**
      * Instance
-     */		
+     */     
     private static $instance;
 
     /**
@@ -31,7 +31,7 @@ class Botiga_Header_Footer_Builder {
      */
     public static function get_instance() {
         if ( ! isset( self::$instance ) ) {
-            self::$instance = new self;
+            self::$instance = new self();
         }
         return self::$instance;
     }
@@ -45,88 +45,88 @@ class Botiga_Header_Footer_Builder {
         $this->desktop_components = array(
             array(
                 'id'    => 'menu',
-                'label' => esc_html__( 'Primary Menu', 'botiga' )
+                'label' => esc_html__( 'Primary Menu', 'botiga' ),
             ),
             array(
                 'id'    => 'secondary_menu',
-                'label' => esc_html__( 'Secondary Menu', 'botiga' )
+                'label' => esc_html__( 'Secondary Menu', 'botiga' ),
             ),
             array(
                 'id'    => 'social',
-                'label' => esc_html__( 'Social', 'botiga' )
+                'label' => esc_html__( 'Social', 'botiga' ),
             ),
             array(
                 'id'    => 'search',
-                'label' => esc_html__( 'Search', 'botiga' )
+                'label' => esc_html__( 'Search', 'botiga' ),
             ),
             array(
                 'id'    => 'logo',
-                'label' => esc_html__( 'Site Identity', 'botiga' )
+                'label' => esc_html__( 'Site Identity', 'botiga' ),
             ),
             array(
                 'id'    => 'button',
-                'label' => esc_html__( 'Button', 'botiga' )
+                'label' => esc_html__( 'Button', 'botiga' ),
             ),
             array(
                 'id'    => 'contact_info',
-                'label' => esc_html__( 'Contact Info', 'botiga' )
+                'label' => esc_html__( 'Contact Info', 'botiga' ),
             ),
             array(
                 'id'    => 'html',
-                'label' => esc_html__( 'HTML', 'botiga' )
-            )
+                'label' => esc_html__( 'HTML', 'botiga' ),
+            ),
         );
 
         // Mobile components.
         $this->mobile_components = array(
             array(
                 'id'    => 'mobile_offcanvas_menu',
-                'label' => esc_html__( 'Off-Canvas Menu', 'botiga' )
+                'label' => esc_html__( 'Off-Canvas Menu', 'botiga' ),
             ),
             array(
                 'id'    => 'secondary_menu',
-                'label' => esc_html__( 'Secondary Menu', 'botiga' )
+                'label' => esc_html__( 'Secondary Menu', 'botiga' ),
             ),
             array(
                 'id'    => 'mobile_hamburger',
-                'label' => esc_html__( 'Menu Toggle', 'botiga' )
+                'label' => esc_html__( 'Menu Toggle', 'botiga' ),
             ),
             array(
                 'id'    => 'social',
-                'label' => esc_html__( 'Social', 'botiga' )
+                'label' => esc_html__( 'Social', 'botiga' ),
             ),
             array(
                 'id'    => 'search',
-                'label' => esc_html__( 'Search', 'botiga' )
+                'label' => esc_html__( 'Search', 'botiga' ),
             ),
             array(
                 'id'    => 'logo',
-                'label' => esc_html__( 'Site Identity', 'botiga' )
+                'label' => esc_html__( 'Site Identity', 'botiga' ),
             ),
             array(
                 'id'    => 'button',
-                'label' => esc_html__( 'Button', 'botiga' )
+                'label' => esc_html__( 'Button', 'botiga' ),
             ),
             array(
                 'id'    => 'contact_info',
-                'label' => esc_html__( 'Contact Info', 'botiga' )
+                'label' => esc_html__( 'Contact Info', 'botiga' ),
             ),
             array(
                 'id'    => 'html',
-                'label' => esc_html__( 'HTML', 'botiga' )
-            )
+                'label' => esc_html__( 'HTML', 'botiga' ),
+            ),
         );
 
         // WooCommerce components.
         if( class_exists( 'Woocommerce' ) ) {
             $this->desktop_components[] = array(
                 'id'    => 'woo_icons',
-                'label' => esc_html__( 'WooCommerce Icons', 'botiga' )
+                'label' => esc_html__( 'WooCommerce Icons', 'botiga' ),
             );
 
             $this->mobile_components[] = array(
                 'id'    => 'woo_icons',
-                'label' => esc_html__( 'WooCommerce Icons', 'botiga' )
+                'label' => esc_html__( 'WooCommerce Icons', 'botiga' ),
             );
         }
 
@@ -134,35 +134,35 @@ class Botiga_Header_Footer_Builder {
         $this->footer_components = array(
             array(
                 'id'    => 'copyright',
-                'label' => esc_html__( 'Copyright', 'botiga' )
+                'label' => esc_html__( 'Copyright', 'botiga' ),
             ),
             array(
                 'id'    => 'social',
-                'label' => esc_html__( 'Social', 'botiga' )
+                'label' => esc_html__( 'Social', 'botiga' ),
             ),
             array(
                 'id'    => 'button',
-                'label' => esc_html__( 'Button 1', 'botiga' )
+                'label' => esc_html__( 'Button 1', 'botiga' ),
             ),
             array(
                 'id'    => 'html',
-                'label' => esc_html__( 'HTML', 'botiga' )
+                'label' => esc_html__( 'HTML', 'botiga' ),
             ),
             array(
                 'id'    => 'widget1',
-                'label' => esc_html__( 'Widget Area 1', 'botiga' )
+                'label' => esc_html__( 'Widget Area 1', 'botiga' ),
             ),
             array(
                 'id'    => 'widget2',
-                'label' => esc_html__( 'Widget Area 2', 'botiga' )
+                'label' => esc_html__( 'Widget Area 2', 'botiga' ),
             ),
             array(
                 'id'    => 'widget3',
-                'label' => esc_html__( 'Widget Area 3', 'botiga' )
+                'label' => esc_html__( 'Widget Area 3', 'botiga' ),
             ),
             array(
                 'id'    => 'widget4',
-                'label' => esc_html__( 'Widget Area 4', 'botiga' )
+                'label' => esc_html__( 'Widget Area 4', 'botiga' ),
             ),
         );
 
@@ -170,32 +170,32 @@ class Botiga_Header_Footer_Builder {
         $this->header_upsell_components = array(
             array(
                 'id'    => 'button2',
-                'label' => esc_html__( 'Button 2', 'botiga' )
+                'label' => esc_html__( 'Button 2', 'botiga' ),
             ),
             array(
                 'id'    => 'html2',
-                'label' => esc_html__( 'HTML 2', 'botiga' )
+                'label' => esc_html__( 'HTML 2', 'botiga' ),
             ),
             array(
                 'id'    => 'social',
-                'label' => esc_html__( 'Login/Register', 'botiga' )
-            )
+                'label' => esc_html__( 'Login/Register', 'botiga' ),
+            ),
         );
 
         // Upsell Footer Components
         $this->footer_upsell_components = array(
             array(
                 'id'    => 'footer_menu',
-                'label' => esc_html__( 'Footer Menu', 'botiga' )
+                'label' => esc_html__( 'Footer Menu', 'botiga' ),
             ),
             array(
                 'id'    => 'html2',
-                'label' => esc_html__( 'HTML 2', 'botiga' )
+                'label' => esc_html__( 'HTML 2', 'botiga' ),
             ),
             array(
                 'id'    => 'button2',
-                'label' => esc_html__( 'Button 2', 'botiga' )
-            )
+                'label' => esc_html__( 'Button 2', 'botiga' ),
+            ),
         );
 
         // Header Rows Options
@@ -205,22 +205,22 @@ class Botiga_Header_Footer_Builder {
                 'label'       => esc_html__( 'Top Row', 'botiga' ),
                 'description' => esc_html__( 'The settings from the first row from header builder.', 'botiga' ),
                 'section'     => 'botiga_section_hb_above_header_row',
-                'default'     => $this->get_row_default_value( 'above_header_row' )
+                'default'     => $this->get_row_default_value( 'above_header_row' ),
             ),
             array(
                 'id'          => 'main_header_row',
                 'label'       => esc_html__( 'Main Row', 'botiga' ),
                 'description' => esc_html__( 'The settings from the second row from header builder.', 'botiga' ),
                 'section'     => 'botiga_section_hb_main_header_row',
-                'default'     => $this->get_row_default_value( 'main_header_row' )
+                'default'     => $this->get_row_default_value( 'main_header_row' ),
             ),
             array(
                 'id'          => 'below_header_row',
                 'label'       => esc_html__( 'Bottom Row', 'botiga' ),
                 'description' => esc_html__( 'The settings from the third row from header builder.', 'botiga' ),
                 'section'     => 'botiga_section_hb_below_header_row',
-                'default'     => $this->get_row_default_value( 'below_header_row' )
-            )
+                'default'     => $this->get_row_default_value( 'below_header_row' ),
+            ),
         );
 
         // Footer Rows Options
@@ -230,22 +230,22 @@ class Botiga_Header_Footer_Builder {
                 'label'       => esc_html__( 'Top Row', 'botiga' ),
                 'description' => esc_html__( 'The settings from the first row from footer builder.', 'botiga' ),
                 'section'     => 'botiga_section_fb_above_footer_row',
-                'default'     => $this->get_row_default_value( 'above_footer_row' )
+                'default'     => $this->get_row_default_value( 'above_footer_row' ),
             ),
             array(
                 'id'          => 'main_footer_row',
                 'label'       => esc_html__( 'Main Row', 'botiga' ),
                 'description' => esc_html__( 'The settings from the second row from footer builder.', 'botiga' ),
                 'section'     => 'botiga_section_fb_main_footer_row',
-                'default'     => $this->get_row_default_value( 'main_footer_row' )
+                'default'     => $this->get_row_default_value( 'main_footer_row' ),
             ),
             array(
                 'id'          => 'below_footer_row',
                 'label'       => esc_html__( 'Bottom Row', 'botiga' ),
                 'description' => esc_html__( 'The settings from the third row from footer builder.', 'botiga' ),
                 'section'     => 'botiga_section_fb_below_footer_row',
-                'default'     => $this->get_row_default_value( 'below_footer_row' )
-            )
+                'default'     => $this->get_row_default_value( 'below_footer_row' ),
+            ),
         );
 
         if( is_customize_preview() ) {
@@ -295,27 +295,57 @@ class Botiga_Header_Footer_Builder {
                     'mobile_offcanvas' => $this::get_row_default_value( 'mobile_offcanvas' ),
                     'above_footer_row' => $this::get_row_default_value( 'above_footer_row' ),
                     'main_footer_row'  => $this::get_row_default_value( 'main_footer_row' ),
-                    'below_footer_row' => $this::get_row_default_value( 'below_footer_row' )
-                )
+                    'below_footer_row' => $this::get_row_default_value( 'below_footer_row' ),
+                ),
             ),
             'components' => array(
+
+                /**
+                 * Hook 'botiga_header_builder_desktop_components'
+                 *
+                 * @since 1.0.0
+                 */
                 'desktop' => apply_filters( 'botiga_header_builder_desktop_components', $this->desktop_components ),
+
+                /**
+                 * Hook 'botiga_header_builder_mobile_components'
+                 *
+                 * @since 1.0.0
+                 */
                 'mobile'  => apply_filters( 'botiga_header_builder_mobile_components', $this->mobile_components ),
-                'footer'  => apply_filters( 'botiga_header_builder_footer_components', $this->footer_components )
+
+                /**
+                 * Hook 'botiga_header_builder_footer_components'
+                 *
+                 * @since 1.0.0
+                 */
+                'footer'  => apply_filters( 'botiga_header_builder_footer_components', $this->footer_components ),
             ),
             'upsell_components' => array(
                 'enable' => ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ? true : false,
+
+                /**
+                 * Hook 'botiga_header_builder_upsell_components'
+                 *
+                 * @since 1.0.0
+                 */
                 'header' => apply_filters( 'botiga_header_builder_upsell_components', $this->header_upsell_components ),
+
+                /**
+                 * Hook 'botiga_header_builder_footer_upsell_components'
+                 *
+                 * @since 1.0.0
+                 */
                 'footer' => apply_filters( 'botiga_header_builder_footer_upsell_components', $this->footer_upsell_components ),
                 'title'  => esc_html__( 'PRO Components', 'botiga' ),
                 'total'  => esc_html__( '13+ Components Available', 'botiga' ),
                 'button' => esc_html__( 'Get Botiga Pro Now!', 'botiga' ),
-                'link'   => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga'
+                'link'   => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga',
             ),
             'header_presets' => $this->header_presets_values(),
             'i18n' => array(
-                'elementsMessage' => esc_html__( 'It looks like you already are using all available components.', 'botiga' )
-            )
+                'elementsMessage' => esc_html__( 'It looks like you already are using all available components.', 'botiga' ),
+            ),
         ) );
     }
 
@@ -368,7 +398,7 @@ class Botiga_Header_Footer_Builder {
             array(
                 'title'       => esc_html__( 'Header Builder', 'botiga' ),
                 'description' => esc_html__( 'Powerful drag and drop tool to build your own header.', 'botiga' ),
-                'panel'       => 'botiga_panel_header'
+                'panel'       => 'botiga_panel_header',
             )
         );
 
@@ -380,7 +410,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Top Row', 'botiga' ),
                     'description' => esc_html__( 'The settings from the first row from header builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_header'
+                    'panel'       => 'botiga_panel_header',
                 )
             )
         );
@@ -393,7 +423,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Main Row', 'botiga' ),
                     'description' => esc_html__( 'The settings from the second row from header builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_header'
+                    'panel'       => 'botiga_panel_header',
                 )
             )
         );
@@ -406,7 +436,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Bottom Row', 'botiga' ),
                     'description' => esc_html__( 'The settings from the third row from header builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_header'
+                    'panel'       => 'botiga_panel_header',
                 )
             )
         );
@@ -419,7 +449,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Mobile Offcanvas', 'botiga' ),
                     'description' => esc_html__( 'The settings from the mobile offcanvas from header builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_header'
+                    'panel'       => 'botiga_panel_header',
                 )
             )
         );
@@ -458,7 +488,7 @@ class Botiga_Header_Footer_Builder {
             array(
                 'title'       => esc_html__( 'Footer Builder', 'botiga' ),
                 'description' => esc_html__( 'Powerful drag and drop tool to build your own footer.', 'botiga' ),
-                'panel'       => 'botiga_panel_footer'
+                'panel'       => 'botiga_panel_footer',
             )
         );
 
@@ -470,7 +500,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Top Row', 'botiga' ),
                     'description' => esc_html__( 'The settings from the first row from footer builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_footer'
+                    'panel'       => 'botiga_panel_footer',
                 )
             )
         );
@@ -483,7 +513,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Main Row', 'botiga' ),
                     'description' => esc_html__( 'The settings from the second row from footer builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_footer'
+                    'panel'       => 'botiga_panel_footer',
                 )
             )
         );
@@ -496,7 +526,7 @@ class Botiga_Header_Footer_Builder {
                 array(
                     'title'       => esc_html__( 'Bottom Row', 'botiga' ),
                     'description' => esc_html__( 'The settings from the third row from footer builder.', 'botiga' ),
-                    'panel'       => 'botiga_panel_footer'
+                    'panel'       => 'botiga_panel_footer',
                 )
             )
         );
@@ -517,7 +547,6 @@ class Botiga_Header_Footer_Builder {
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/row/customize-options.php';
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/columns/customize-options.php';
         // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-
     }
 
     /**
@@ -549,7 +578,7 @@ class Botiga_Header_Footer_Builder {
                 'above_row' => '{ "desktop": [[], [], []], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
                 'main_row'  => '{ "desktop": [["search"], ["logo"], ["woo_icons"]], "mobile": [["mobile_hamburger"], ["logo"], ["search", "woo_icons"]], "mobile_offcanvas": [["mobile_offcanvas_menu"]] }',
                 'below_row' => '{ "desktop": [["menu"],["button"]], "mobile": [[], [], []], "mobile_offcanvas": [[]] }',
-            )
+            ),
         );
     }
 
@@ -606,7 +635,7 @@ class Botiga_Header_Footer_Builder {
             'area'     => $area,
             'row'      => $row,
             'device'   => $device,
-            'row_data' => $this->get_row_data( $row, $area )
+            'row_data' => $this->get_row_data( $row, $area ),
         );
 
         if( 'header' === $area ) {
@@ -623,7 +652,7 @@ class Botiga_Header_Footer_Builder {
      */
     public function mobile_offcanvas_callback() { 
         $args = array(
-            'row_data' => json_decode( get_theme_mod( 'botiga_header_row__mobile_offcanvas', $this->get_row_default_value( 'mobile_offcanvas' ) ) )
+            'row_data' => json_decode( get_theme_mod( 'botiga_header_row__mobile_offcanvas', $this->get_row_default_value( 'mobile_offcanvas' ) ) ),
         );
 
         botiga_get_template_part( 'template-parts/header-builder/content', 'header-mobile-offcanvas', $args );
@@ -830,11 +859,23 @@ class Botiga_Header_Footer_Builder {
         $devices = array( 'desktop', 'mobile' );
         foreach( $devices as $device ) { ?>
 
-            <?php do_action( 'botiga_before_header' ); ?>
+            <?php 
+            /**
+             * Hook 'botiga_before_header'
+             *
+             * @since 1.0.0
+             */
+            do_action( 'botiga_before_header' ); ?>
 
             <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?> <?php botiga_schema( 'header' ); ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-                <?php do_action( 'botiga_bhfb_header_inner_before' ); ?>
+                <?php 
+                /**
+                 * Hook 'botiga_bhfb_header_inner_before'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_bhfb_header_inner_before' ); ?>
 
                 <div class="bhfb-rows">
                     <?php
@@ -874,11 +915,23 @@ class Botiga_Header_Footer_Builder {
 
                         <div <?php echo implode( ' ', $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
-                            <?php do_action( "botiga_bhfb_header_{$row['id']}_before" ); ?>
+                            <?php 
+                            /**
+                             * Hook 'botiga_bhfb_header_{$row['id']}_before'
+                             *
+                             * @since 1.0.0
+                             */
+                            do_action( "botiga_bhfb_header_{$row['id']}_before" ); ?>
 
                             <?php $this->rows_callback( 'header', $row['id'], $device ); ?>
 
-                            <?php do_action( "botiga_bhfb_header_{$row['id']}_after" ); ?>
+                            <?php 
+                            /**
+                             * Hook 'botiga_bhfb_header_{$row['id']}_after'
+                             *
+                             * @since 1.0.0
+                             */
+                            do_action( "botiga_bhfb_header_{$row['id']}_after" ); ?>
                         </div>
 
                     <?php
@@ -887,22 +940,45 @@ class Botiga_Header_Footer_Builder {
 
                 <?php $this->search_form( 'header' ); ?>
 
-                <?php do_action( 'botiga_bhfb_header_inner_after' ); ?>
+                <?php 
+                /**
+                 * Hook 'botiga_bhfb_header_inner_after'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_bhfb_header_inner_after' ); ?>
 
-                <?php do_action( "botiga_before_bhfb_header_output_close_$device" ); ?>
+                <?php 
+                /**
+                 * Hook 'botiga_before_bhfb_header_output_close_$device'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( "botiga_before_bhfb_header_output_close_$device" ); ?>
             </header>
 
-            <?php do_action( 'botiga_after_header' ); ?>
+            <?php 
+            /**
+             * Hook 'botiga_after_header'
+             *
+             * @since 1.0.0
+             */
+            do_action( 'botiga_after_header' ); ?>
 
             <?php 
         } 
         
+        /**
+         * Hook 'botiga_mobile_offcanvas_classes'
+         *
+         * @since 1.0.0
+         */
         $mobile_offcanvas_classes = apply_filters( 'botiga_mobile_offcanvas_classes', array( 'bhfb', 'bhfb-mobile_offcanvas', 'botiga-offcanvas-menu' ) );
         
         ?>
 
         <div class="<?php echo esc_attr( implode( ' ', $mobile_offcanvas_classes ) ); ?>">
-            <a class="mobile-menu-close" href="#" title="<?php echo esc_attr( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
+            <a class="mobile-menu-close" href="#" title="<?php echo esc_attr__( 'Close mobile menu', 'botiga' ); ?>"><i class="ws-svg-icon icon-cancel"><?php botiga_get_svg_icon( 'icon-cancel', true ); ?></i></a>
             <div class="bhfb-mobile-offcanvas-rows">
                 <?php $this->mobile_offcanvas_callback( 'mobile_offcanvas' ); ?>
             </div>
@@ -924,7 +1000,13 @@ class Botiga_Header_Footer_Builder {
 
             <footer class="bhfb bhfb-footer bhfb-<?php echo esc_attr( $device ); ?>" <?php botiga_schema( 'footer' ); ?>>
 
-                <?php do_action( 'botiga_bhfb_footer_inner_before' ); ?>
+                <?php 
+                /**
+                 * Hook 'botiga_bhfb_footer_inner_before'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_bhfb_footer_inner_before' ); ?>
 
                 <div class="bhfb-rows">
                     <?php
@@ -953,20 +1035,44 @@ class Botiga_Header_Footer_Builder {
 
                         <div <?php echo implode( ' ', $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
-                            <?php do_action( "botiga_bhfb_footer_{$row['id']}_before" ); ?>
+                            <?php 
+                            /**
+                             * Hook 'botiga_bhfb_footer_{$row['id']}_before'
+                             *
+                             * @since 1.0.0
+                             */
+                            do_action( "botiga_bhfb_footer_{$row['id']}_before" ); ?>
 
                             <?php $this->rows_callback( 'footer', $row['id'], $device ); ?>
 
-                            <?php do_action( "botiga_bhfb_footer_{$row['id']}_after" ); ?>
+                            <?php 
+                            /**
+                             * Hook 'botiga_bhfb_footer_{$row['id']}_after'
+                             *
+                             * @since 1.0.0
+                             */
+                            do_action( "botiga_bhfb_footer_{$row['id']}_after" ); ?>
                         </div>
 
                     <?php
                     } ?>
                 </div>
                 
-                <?php do_action( 'botiga_bhfb_footer_inner_after' ); ?>
+                <?php 
+                /**
+                 * Hook 'botiga_bhfb_footer_inner_after'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_bhfb_footer_inner_after' ); ?>
 
-                <?php do_action( "botiga_before_bhfb_footer_output_close_$device" ); ?>
+                <?php 
+                /**
+                 * Hook 'botiga_before_bhfb_footer_output_close_$device'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( "botiga_before_bhfb_footer_output_close_$device" ); ?>
             </footer>
 
             <?php 
@@ -980,7 +1086,7 @@ class Botiga_Header_Footer_Builder {
         $cols = 0;
 
         foreach( $columns as $columnComponents ) {
-            $cols++;
+            ++$cols;
         }
     
         return $cols; 
@@ -1029,13 +1135,13 @@ class Botiga_Header_Footer_Builder {
     /**
      * Get columns layout class (responsive)
      */
-    public static function get_columns_layout_class_responsive( $mod, $default ) {
+    public static function get_columns_layout_class_responsive( $mod, $default_value ) {
         $classes = array();
 
         $devices = array( 'desktop', 'tablet' );
 
         foreach( $devices as $device ) {
-            $val = get_theme_mod( $mod . '_' . $device, $default );
+            $val = get_theme_mod( $mod . '_' . $device, $default_value );
 
             if( strpos( $val, 'equal' ) !== FALSE ) {
                 $classes[] = 'bhfb-cols-layout-equal-' . $device;
@@ -1196,10 +1302,10 @@ class Botiga_Header_Footer_Builder {
      * Generate responsive css output (specific to header/footer builder).
      */
     public static function get_responsive_css( $setting = '', $defaults = array(), $selector = '', $css_prop = '', $unit = 'px', $row = '', $column = '' ) {
-        $devices 	= array( 
-            'desktop' 	=> '@media (min-width: 1025px)',
-            'tablet'	=> '@media (min-width: 576px) and (max-width: 1024px)',
-            'mobile'	=> '@media (max-width: 575px)'
+        $devices    = array( 
+            'desktop'   => '@media (min-width: 1025px)',
+            'tablet'    => '@media (min-width: 576px) and (max-width: 1024px)',
+            'mobile'    => '@media (max-width: 575px)',
         );
 
         $css = '';
@@ -1223,25 +1329,20 @@ class Botiga_Header_Footer_Builder {
                     // Vertical and Horizontal alignment.
                     if( $css_prop === 'align-items' ) {
                         $new_css_prop = 'justify-content';
-                    } else if( $css_prop === 'justify-content' ) {
+                    } elseif( $css_prop === 'justify-content' ) {
                         $new_css_prop = 'align-items';
                     }
 
                     // Elements Spacing.
                     if( $css_prop === 'margin-left' ) {
                         $new_css_prop = 'margin-top';
-                    } else if( $css_prop === 'margin-top' ) {
+                    } elseif( $css_prop === 'margin-top' ) {
                         $new_css_prop = 'margin-left';
                     }
 
                 // Inline.
-                } else {
-
-                    // Elements Spacing.
-                    if( $css_prop === 'margin-top' ) {
-                        $new_css_prop = 'margin-left';
-                    }
-
+                } elseif( $css_prop === 'margin-top' ) {
+                    $new_css_prop = 'margin-left';
                 }
                 
             }
@@ -1258,7 +1359,7 @@ class Botiga_Header_Footer_Builder {
                 $new_css_prop = $css_prop;
             }
 
-            $css .= $media . ' { ' . $selector . ' { ' . $new_css_prop . ':' . $mod . $unit . '; } }' . "\n";	
+            $css .= $media . ' { ' . $selector . ' { ' . $new_css_prop . ':' . $mod . $unit . '; } }' . "\n";   
         }
 
         return $css;
@@ -1274,6 +1375,12 @@ class Botiga_Header_Footer_Builder {
 
         // output
         $output = '<div class="header-image">';
+
+            /**
+             * Hook 'botiga_header_image_tag'
+             *
+             * @since 1.0.0
+             */
             $output .= apply_filters( 'botiga_header_image_tag', get_header_image_tag() );
         $output .= '</div>';
 
@@ -1330,7 +1437,7 @@ class Botiga_Header_Footer_Builder {
 
     /**
      * Site branding
-     */		
+     */     
     public function logo( $params ) {
         return $this->require_wrapper(
             get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/logo/logo.php',
@@ -1340,42 +1447,42 @@ class Botiga_Header_Footer_Builder {
 
     /**
      * Copyright
-     */		
+     */     
     public function copyright( $params ) {
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/copyright/copyright.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
      * Button
-     */		
+     */     
     public function button( $params ) {
         require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/button/button.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
      * Contact Info
-     */		
+     */     
     public function contact_info( $params ) {
         require get_template_directory() . '/inc/modules/hf-builder/components/header/contact-info/contact-info.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
      * WooCommerce Icons
-    */		
+    */      
     public function woo_icons( $params ) {
         require get_template_directory() . '/inc/modules/hf-builder/components/header/wc-icons/wc-icons.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
      * HTML
-     */		
+     */     
     public function html( $params ) {
         require get_template_directory() . '/inc/modules/hf-builder/components/'. $params[ 'builder_type' ] .'/html/html.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
 
     /**
      * Widget(s)
-     */		
+     */     
     public function widget1( $params ) {
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/widget-1/widget.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
     }
@@ -1452,6 +1559,11 @@ class Botiga_Header_Footer_Builder {
         require get_template_directory() . '/inc/modules/hf-builder/components/footer/html/css.php';
         // @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
+        /**
+         * Hook 'botiga_hf_builder_custom_css'
+         *
+         * @since 1.0.0
+         */
         return apply_filters( 'botiga_hf_builder_custom_css', $css );
     }
 }

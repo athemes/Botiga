@@ -33,7 +33,6 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 		$this->custom_fonts = json_decode( get_theme_mod( 'custom_fonts', '[]' ), true );
 
 		$this->google_fonts = botiga_get_google_fonts();
-
 	}
 
 	/**
@@ -118,5 +117,4 @@ class Botiga_Typography_Custom_Control extends WP_Customize_Control {
 		</div>
 		<?php
 	}
-
 }

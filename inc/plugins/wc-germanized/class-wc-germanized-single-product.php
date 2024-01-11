@@ -86,7 +86,7 @@ class Botiga_Woocommerce_Germanized_Single_Product {
             'defect_description'     => esc_html__( 'WCGZ: Defect Description', 'botiga' ),
             'deposit'                => esc_html__( 'WCGZ: Deposit', 'botiga' ),
             'deposit_packaging_type' => esc_html__( 'WCGZ: Deposit Packaging Type', 'botiga' ),
-            'nutri_score'            => esc_html__( 'WCGZ: Nutri Score', 'botiga' )
+            'nutri_score'            => esc_html__( 'WCGZ: Nutri Score', 'botiga' ),
         );
 
         return $titles[ $slug ];

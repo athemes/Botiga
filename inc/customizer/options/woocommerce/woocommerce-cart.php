@@ -11,7 +11,7 @@ $wp_customize->add_section(
 	array(
 		'title'       => esc_html__( 'Cart', 'botiga'),
 		'description' => esc_html__( 'Manage the overall design and functionality from the shop cart page.', 'botiga' ),
-		'priority'    => 120
+		'priority'    => 120,
 	)
 );
 
@@ -29,7 +29,7 @@ if ( botiga_is_cart_block_layout() ) {
 			$wp_customize,
 			'shop_cart_layout_edit_block_settings',
 			array(
-				'label'    	=> esc_html__( 'Layout', 'botiga' ),
+				'label'     => esc_html__( 'Layout', 'botiga' ),
 				'description' => '<a class="botiga-to-widget-area-link" href="' . esc_url( get_admin_url() . 'post.php?post=' . wc_get_page_id( 'cart' ) . '&action=edit' ) . '" target="_blank">' . esc_html__( 'Edit cart layout', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
 				'section' => 'botiga_section_shop_cart',
 				'priority' => 20,
@@ -41,8 +41,8 @@ if ( botiga_is_cart_block_layout() ) {
 	$wp_customize->add_setting( 
 		'woocommerce_cart_incompat_info',
 		array(
-			'default' 			=> '',
-			'sanitize_callback' => 'esc_attr'
+			'default'           => '',
+			'sanitize_callback' => 'esc_attr',
 		)
 	);
 	$wp_customize->add_control( 
@@ -50,13 +50,13 @@ if ( botiga_is_cart_block_layout() ) {
 			$wp_customize, 
 			'woocommerce_cart_incompat_info',
 			array(
-				'label'			  => '',
+				'label'           => '',
 				'description'     => esc_html__( 'Your cart page is being rendered through the new WooCommerce 8.3.0 cart block. To have all Botiga cart features working, you must edit the cart page to use the classic cart shortcode instead.', 'botiga' ),
 				'link_title'        => esc_html__( 'Learn More', 'botiga' ),
 				'link'              => 'https://docs.athemes.com/article/how-to-switch-cart-checkout-blocks-to-the-classic-shortcodes/',
 				'check_white_label' => false,
-				'section' 		  => 'botiga_section_shop_cart',
-				'priority'	 	  => 20
+				'section'         => 'botiga_section_shop_cart',
+				'priority'        => 20,
 			)
 		)
 	);
@@ -73,20 +73,20 @@ if ( botiga_is_cart_block_layout() ) {
 			$wp_customize,
 			'shop_cart_layout',
 			array(
-				'label'    	=> esc_html__( 'Layout', 'botiga' ),
-				'section'  	=> 'botiga_section_shop_cart',
-				'cols'		=> 2,
+				'label'     => esc_html__( 'Layout', 'botiga' ),
+				'section'   => 'botiga_section_shop_cart',
+				'cols'      => 2,
 				'choices'  => array(
 					'layout1' => array(
 						'label' => esc_html__( 'Layout 1', 'botiga' ),
-						'url'   => '%s/assets/img/cart1.svg'
+						'url'   => '%s/assets/img/cart1.svg',
 					),
 					'layout2' => array(
 						'label' => esc_html__( 'Layout 2', 'botiga' ),
-						'url'   => '%s/assets/img/cart2.svg'
-					),		
+						'url'   => '%s/assets/img/cart2.svg',
+					),      
 				),
-				'priority'	 => 20
+				'priority'   => 20,
 			)
 		)
 	);
@@ -104,9 +104,9 @@ if ( botiga_is_cart_block_layout() ) {
 			$wp_customize,
 			'shop_cart_show_cross_sell',
 			array(
-				'label'         	=> esc_html__( 'Cross Sell', 'botiga' ),
-				'section'       	=> 'botiga_section_shop_cart',
-				'priority'	 		=> 40
+				'label'             => esc_html__( 'Cross Sell', 'botiga' ),
+				'section'           => 'botiga_section_shop_cart',
+				'priority'          => 40,
 			)
 		)
 	);
@@ -117,7 +117,7 @@ if ( botiga_is_cart_block_layout() ) {
 		array(
 			'default'           => 1,
 			'sanitize_callback' => 'botiga_sanitize_checkbox',
-			'transport'         => 'postMessage'
+			'transport'         => 'postMessage',
 		)
 	);
 	$wp_customize->add_control(
@@ -125,9 +125,9 @@ if ( botiga_is_cart_block_layout() ) {
 			$wp_customize,
 			'shop_cart_show_coupon_form',
 			array(
-				'label'         	=> esc_html__( 'Display Coupon Form', 'botiga' ),
-				'section'       	=> 'botiga_section_shop_cart',
-				'priority'	 		=> 41
+				'label'             => esc_html__( 'Display Coupon Form', 'botiga' ),
+				'section'           => 'botiga_section_shop_cart',
+				'priority'          => 41,
 			)
 		)
 	);
@@ -135,7 +135,7 @@ if ( botiga_is_cart_block_layout() ) {
 	// Divider
 	$wp_customize->add_setting( 'shop_cart_divider_1',
 		array(
-			'sanitize_callback' => 'esc_attr'
+			'sanitize_callback' => 'esc_attr',
 		)
 	);
 	$wp_customize->add_control( 
@@ -143,8 +143,8 @@ if ( botiga_is_cart_block_layout() ) {
 			$wp_customize, 
 			'shop_cart_divider_1',
 			array(
-				'section' 			=> 'botiga_section_shop_cart',
-				'priority'	 		=> 50
+				'section'           => 'botiga_section_shop_cart',
+				'priority'          => 50,
 			)
 		)
 	);
@@ -153,17 +153,17 @@ if ( botiga_is_cart_block_layout() ) {
 // Mini Cart Title
 $wp_customize->add_setting( 'mini_cart_title',
 	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control( new Botiga_Text_Control( 
 	$wp_customize, 
 	'mini_cart_title',
 		array(
-			'label'			=> esc_html__( 'Mini Cart', 'botiga' ),
-			'section' 		=> 'botiga_section_shop_cart',
-			'priority'	 	=> 60
+			'label'         => esc_html__( 'Mini Cart', 'botiga' ),
+			'section'       => 'botiga_section_shop_cart',
+			'priority'      => 60,
 		)
 	)
 );
@@ -187,15 +187,15 @@ $wp_customize->add_control(
 			'choices'  => array(
 				'default' => array(
 					'label' => esc_html__( 'Default', 'botiga' ),
-					'url'   => '%s/assets/img/mini-cart-style1.svg'
+					'url'   => '%s/assets/img/mini-cart-style1.svg',
 				),
 				'side' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Side', 'botiga' ),
-					'url'    => '%s/assets/img/mini-cart-style2.svg'
+					'url'    => '%s/assets/img/mini-cart-style2.svg',
 				),      
 			),
-			'priority'   => 61
+			'priority'   => 61,
 		)
 	)
 );
@@ -213,10 +213,10 @@ $wp_customize->add_control(
 		$wp_customize,
 		'enable_mini_cart_cross_sell',
 		array(
-			'label'         	=> esc_html__( 'Mini Cart Cross Sell', 'botiga' ),
-			'section'       	=> 'botiga_section_shop_cart',
-			'active_callback' 	=> 'botiga_callback_header_show_minicart',
-			'priority'			=> 70
+			'label'             => esc_html__( 'Mini Cart Cross Sell', 'botiga' ),
+			'section'           => 'botiga_section_shop_cart',
+			'active_callback'   => 'botiga_callback_header_show_minicart',
+			'priority'          => 70,
 		)
 	)
 );

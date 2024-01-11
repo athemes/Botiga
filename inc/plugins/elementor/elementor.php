@@ -16,7 +16,6 @@ class Botiga_Elementor_Compatibility {
 
         // add inline style
         add_action( 'wp_enqueue_scripts', array( $this, 'add_inline_style' ), 20 );
-        
     }
 
     /**
@@ -27,7 +26,6 @@ class Botiga_Elementor_Compatibility {
 
         // Register elementor locations (Theme Builder)
         add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
-
     }
 
     /**
@@ -75,7 +73,7 @@ class Botiga_Elementor_Compatibility {
             'fadeInUpShorter' => esc_html__( 'Fade In Up Shorter', 'botiga' ),
             'fadeInDownShorter' => esc_html__( 'Fade In Down Shorter', 'botiga' ),
             'fadeInLeftShorter' => esc_html__( 'Fade In Left Shorter', 'botiga' ),
-            'fadeInRightShorter' => esc_html__( 'Fade In Right Shorter', 'botiga' )
+            'fadeInRightShorter' => esc_html__( 'Fade In Right Shorter', 'botiga' ),
         );
 
         return $additional_animations;
@@ -107,6 +105,5 @@ class Botiga_Elementor_Helpers {
         $documents          = $conditions_manager->get_documents_for_location( $location );
 
         return ! empty( $documents );
-    } 
-
+    }
 }

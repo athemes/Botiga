@@ -22,7 +22,7 @@ $wp_customize->get_control( 'woocommerce_default_catalog_orderby' )->section  = 
 $wp_customize->add_setting( 
 	'shop_general_pro_divider1',
 	array(
-		'sanitize_callback' => 'esc_attr'
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control( 
@@ -31,7 +31,7 @@ $wp_customize->add_control(
 		'shop_general_pro_divider1',
 		array(
 			'section'         => 'botiga_section_catalog_general',
-			'priority'        => 21
+			'priority'        => 21,
 		)
 	)
 );
@@ -56,50 +56,50 @@ $wp_customize->add_control(
 			'choices'  => array(
 				'style1' => array(
 					'label' => esc_html__( 'Style 1', 'botiga' ),
-					'url'   => '%s/assets/img/qty1.svg'
+					'url'   => '%s/assets/img/qty1.svg',
 				),
 				'style2' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 2', 'botiga' ),
-					'url'    => '%s/assets/img/qty2.svg'
+					'url'    => '%s/assets/img/qty2.svg',
 				),
 				'style3' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 3', 'botiga' ),
-					'url'    => '%s/assets/img/qty3.svg'
+					'url'    => '%s/assets/img/qty3.svg',
 				),
 				'style4' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 4', 'botiga' ),
-					'url'    => '%s/assets/img/qty4.svg'
+					'url'    => '%s/assets/img/qty4.svg',
 				),
 				'style5' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 5', 'botiga' ),
-					'url'    => '%s/assets/img/qty5.svg'
+					'url'    => '%s/assets/img/qty5.svg',
 				),
 				'style6' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 6', 'botiga' ),
-					'url'    => '%s/assets/img/qty6.svg'
+					'url'    => '%s/assets/img/qty6.svg',
 				),
 				'style7' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 7', 'botiga' ),
-					'url'    => '%s/assets/img/qty7.svg'
+					'url'    => '%s/assets/img/qty7.svg',
 				),
 				'style8' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 8', 'botiga' ),
-					'url'    => '%s/assets/img/qty8.svg'
+					'url'    => '%s/assets/img/qty8.svg',
 				),
 				'style9' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Style 9', 'botiga' ),
-					'url'    => '%s/assets/img/qty9.svg'
-				)
+					'url'    => '%s/assets/img/qty9.svg',
+				),
 			),
-			'priority'   => 22
+			'priority'   => 22,
 		)
 	)
 );

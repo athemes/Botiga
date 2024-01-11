@@ -11,7 +11,13 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-		<?php do_action( 'botiga_404_content' ); ?>
+		<?php 
+		/**
+		 * Hook 'botiga_404_content'
+		 * 
+		 * @since 1.0.0
+		 */
+		do_action( 'botiga_404_content' ); ?>
 	</main><!-- #main -->
 
 <?php

@@ -14,7 +14,7 @@ class Botiga_Multi_List_Toggle_Control extends WP_Customize_Control {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'botiga-multi-list-toggle-control', get_template_directory_uri() . '/inc/customizer/controls/multi-list-toggle/js/control.js', [ 'jquery', 'customize-base' ], BOTIGA_VERSION, false );
+		wp_enqueue_script( 'botiga-multi-list-toggle-control', get_template_directory_uri() . '/inc/customizer/controls/multi-list-toggle/js/control.js', array( 'jquery', 'customize-base' ), BOTIGA_VERSION, false );
 	}
 
 	public function to_json() {

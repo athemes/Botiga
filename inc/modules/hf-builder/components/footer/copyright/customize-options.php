@@ -41,7 +41,7 @@ $wp_customize->add_control(
         array(
             'label' 				=> '',
             'section'       		=> 'botiga_section_fb_component__copyright',
-            'controls_general'		=> json_encode(
+            'controls_general'		=> wp_json_encode(
                 array_merge(
                     array(
                         '#customize-control-botiga_section_fb_component__copyright_visibility'
@@ -49,7 +49,7 @@ $wp_customize->add_control(
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
                 ),
             ),
-            'controls_design'		=> json_encode(
+            'controls_design'		=> wp_json_encode(
                 array(
                     '#customize-control-botiga_section_fb_component__copyright_text_color',
                     '#customize-control-botiga_section_fb_component__copyright_links',

@@ -43,5 +43,4 @@ class Botiga_Panel_Upsell extends WP_Customize_Panel {
 		</li>
 		<?php
 	}
-
 }

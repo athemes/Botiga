@@ -25,90 +25,94 @@ function botiga_get_schema( $location ) {
 			} else {
 				$schema = 'itemscope="itemscope" itemtype="https://schema.org/WebPage"';
 			}
-		break;
+		    break;
 
-		case 'header';
+		case 'header':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/WPHeader"';
-		break;
+			break;
 
-		case 'article';
+		case 'article':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/CreativeWork"';
-		break;
+			break;
 
-		case 'blog';
+		case 'blog':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/Blog"';
-		break;
+			break;
 
-		case 'search';
+		case 'search':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/SearchResultsPage"';
-		break;
+			break;
 
-		case 'logo';
+		case 'logo':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/Brand"';
-		break;
+			break;
 
-		case 'nav';
+		case 'nav':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement"';
-		break;
+			break;
 
-		case 'sidebar';
+		case 'sidebar':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/WPSideBar"';
-		break;
+			break;
 
-		case 'footer';
+		case 'footer':
 			$schema = 'itemscope="itemscope" itemtype="https://schema.org/WPFooter"';
-		break;
+			break;
 
-		case 'thumbnail';
+		case 'thumbnail':
 			$schema = 'itemscope="itemscope" itemprop="image" itemtype="https://schema.org/ImageObject"';
-		break;
+			break;
 
-		case 'headline';
+		case 'headline':
 			$schema = 'itemprop="headline"';
-		break;
+			break;
 
-		case 'entry_content';
+		case 'entry_content':
 			$schema = 'itemprop="text"';
-		break;
+			break;
 
-		case 'published_date';
+		case 'published_date':
 			$schema = 'itemprop="datePublished"';
-		break;
+			break;
 
-		case 'modified_date';
+		case 'modified_date':
 			$schema = 'itemprop="dateModified"';
-		break;
+			break;
 
-		case 'author';
+		case 'author':
 			$schema = 'itemscope="itemscope" itemprop="author" itemtype="https://schema.org/Person"';
-		break;
+			break;
 
-		case 'author_name';
+		case 'author_name':
 			$schema = 'itemprop="name"';
-		break;
+			break;
 
-		case 'author_url';
+		case 'author_url':
 			$schema = 'itemprop="url"';
-		break;
+			break;
 
-		case 'image';
+		case 'image':
 			$schema = 'itemprop="image"';
-		break;
+			break;
 
 		default:
 			$schema = '';
-		break;
+			break;
 
 	}
 
+	/**
+	 * Hook 'botiga_schema_'
+	 *
+	 * @since 1.0.0
+	 */
 	$schema = apply_filters( 'botiga_schema_'. $location, $schema );
 
 	return $schema;
-
 }
 
-function botiga_schema( $location, $echo = true ) {
-	if( $echo ) {
+function botiga_schema( $location, $do_echo = true ) {
+	if( $do_echo ) {
 		echo botiga_get_schema( $location ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		return botiga_get_schema( $location );
@@ -125,6 +129,5 @@ function botiga_attachment_image_schema( $attr ) {
 	}
 
 	return $attr;
-
 }
 add_filter( 'wp_get_attachment_image_attributes', 'botiga_attachment_image_schema' );

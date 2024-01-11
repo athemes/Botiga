@@ -12,7 +12,7 @@ $botiga_sidebar_id = '';
 
 if (is_home() && !is_front_page()) {
 	$botiga_sidebar_id = get_theme_mod('blog_archive_sidebar', 'sidebar-1');
-} else if (is_singular()) {
+} elseif (is_singular()) {
 	$botiga_sidebar_mod  = get_theme_mod('blog_single_sidebar', 'sidebar-1');
 	$botiga_sidebar_meta = get_post_meta(get_the_ID(), '_botiga_sidebar', true);
 	$botiga_sidebar_id   = (!empty($botiga_sidebar_meta)) ? $botiga_sidebar_meta : $botiga_sidebar_mod;
@@ -39,7 +39,19 @@ if (!is_active_sidebar($botiga_sidebar_id)) {
 ?>
 
 <aside id="secondary" class="widget-area" <?php botiga_schema( 'sidebar' ); ?>>
-	<?php do_action('botiga_before_sidebar'); ?>
+	<?php 
+	/**
+	 * Hook 'botiga_before_sidebar'
+	 *
+	 * @since 1.0.0
+	 */
+	do_action('botiga_before_sidebar'); ?>
 	<?php dynamic_sidebar($botiga_sidebar_id); ?>
-	<?php do_action('botiga_after_sidebar'); ?>
+	<?php 
+	/**
+	 * Hook 'botiga_after_sidebar'
+	 *
+	 * @since 1.0.0
+	 */
+	do_action('botiga_after_sidebar'); ?>
 </aside><!-- #secondary -->

@@ -68,7 +68,7 @@ $wp_customize->add_control(
         array(
             'label' 				=> '',
             'section'       		=> 'botiga_section_hb_mobile_offcanvas',
-            'controls_general'		=> json_encode(
+            'controls_general'		=> wp_json_encode(
                 array_merge(
                     array(
                         '#customize-control-botiga_header_row__mobile_offcanvas',
@@ -78,7 +78,7 @@ $wp_customize->add_control(
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
                 )
             ),
-            'controls_design'		=> json_encode(
+            'controls_design'		=> wp_json_encode(
                 array_merge(
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'style' ] ),
                     array(

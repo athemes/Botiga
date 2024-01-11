@@ -46,7 +46,7 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 		} else {
 			echo '<div class="botiga-create-page-control-create-message">';
 				echo wp_kses_post( 
-					sprintf( /* translators: 1: page name */	 
+					sprintf( /* translators: 1: page name */     
 						__( 'It looks like you haven\'t created a <strong>%s</strong> page yet. Click the below button to create the page.', 'botiga' ), esc_html( $this->page_title ) 
 					)
 				);
@@ -54,13 +54,13 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 			echo '</div>';
 			echo '<div class="botiga-create-page-control-success-message" style="display: none;">';
 				echo wp_kses_post( 
-					sprintf( /* translators: 1: link to edit page */	
+					sprintf( /* translators: 1: link to edit page */    
 						__( 'Page created with success!<br>Click <a href="%s" target="_blank">here</a> if you want to edit the page.<br><br>If you want to show a link to this page, assign the page to a menu by clicking <a href="#" data-goto="nav_menus" data-type="panel">here</a>', 'botiga' ), esc_url( get_admin_url() . 'post.php?post=&action=edit' ) 
 					) 
 				);
 			echo '</div>';
 			echo wp_kses_post( 
-				sprintf( /* translators: 1: page title, 2: page meta key, 3: page meta value, 4: option name, 5: nonce, 6: loading text, 7: success text  */	
+				sprintf( /* translators: 1: page title, 2: page meta key, 3: page meta value, 4: option name, 5: nonce, 6: loading text, 7: success text  */    
 					__( '<a href="#" class="botiga-create-page-control-button button" data-page-title="%2$s" data-page-meta-key="%3$s" data-page-meta-value="%4$s" data-option-name="%5$s" data-nonce="%6$s" data-creating-text="%7$s" data-created-text="%8$s">%1$s</a>', 'botiga' ),
 					esc_html__( 'Create Page', 'botiga' ),
 					esc_attr( $this->page_title ),
@@ -73,6 +73,5 @@ class Botiga_Create_Page_Control extends WP_Customize_Control {
 				) 
 			);
 		}
-
 	}
 }

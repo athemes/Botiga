@@ -24,7 +24,7 @@ $device = isset( $params['device'] ) ? $params['device'] : 'desktop';
 
     if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled( 'secondary' ) ) : ?>
         <nav class="secondary-navigation" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga' ); ?>">
-            <?php wp_nav_menu( array( 'theme_location' => 'secondary') ); ?>
+            <?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
         </nav>
     <?php else: ?>				
     <nav class="top-bar-secondary-navigation secondary-navigation botiga-dropdown bhfb-navigation" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga' ); ?>">
@@ -33,9 +33,15 @@ $device = isset( $params['device'] ) ? $params['device'] : 'desktop';
             'theme_location'=> 'mobile' === $device && has_nav_menu( 'top-bar-mobile' ) ? 'top-bar-mobile' : 'secondary',
             'menu_id'       => 'secondary',
             'menu_class'    => 'menu botiga-dropdown-ul',
-            'fallback_cb'	=> false,
-            'depth'			=> 0,
-            'walker'        => apply_filters( 'botiga_secondary_wp_nav_menu_walker', '' )
+            'fallback_cb'   => false,
+            'depth'         => 0,
+
+            /**
+             * Hook 'botiga_secondary_wp_nav_menu_walker'
+             *
+             * @since 1.0.0
+             */
+            'walker'        => apply_filters( 'botiga_secondary_wp_nav_menu_walker', '' ),
         ) );
         ?>
     </nav>

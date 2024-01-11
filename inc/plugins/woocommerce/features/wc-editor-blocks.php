@@ -23,7 +23,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$button_with_quantity     = '';
 	$wc_block_grid_item_class = array();
 
-	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
+	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ), true ) ) {
 		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
 			$button_with_quantity = ' button-with-quantity';
 		}
@@ -49,12 +49,31 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		}
 	}
 
+	/**
+	 * Hook 'botiga_wc_block_grid_item_class'
+	 *
+	 * @since 1.0.0
+	 */
 	$wc_block_grid_item_class = implode( ' ', apply_filters( 'botiga_wc_block_grid_item_class', $wc_block_grid_item_class, $product ) );
 
+	/**
+	 * Hook 'botiga_wc_block_product_loop_image_wrap_extra_class'
+	 *
+	 * @since 1.0.0
+	 */
+	$product_loop_image_wrap_extra_class = apply_filters( 'botiga_wc_block_product_loop_image_wrap_extra_class', $loop_image_wrap_extra_class );
+
+	/**
+	 * Hook 'botiga_wc_block_product_loop_image_wrap_image_output'
+	 *
+	 * @since 1.0.0
+	 */
+	$product_loop_image_wrap_image_output = apply_filters( 'botiga_wc_block_product_loop_image_wrap_image_output', $data->image, $product );
+
 	$markup = "<li class=\"wc-block-grid__product product-grid $wc_block_grid_item_class\">
-				<div class=\"loop-image-wrap ". apply_filters( 'botiga_wc_block_product_loop_image_wrap_extra_class', $loop_image_wrap_extra_class ) ."\">
+				<div class=\"loop-image-wrap ". $product_loop_image_wrap_extra_class ."\">
 					<a href=\"{$data->permalink}\" class=\"wc-block-grid__product-link\" title=\"{$product->add_to_cart_text()}\">
-						". apply_filters( 'botiga_wc_block_product_loop_image_wrap_image_output', $data->image, $product ) ."
+						". $product_loop_image_wrap_image_output ."
 					</a>";
 
 	// Sale badge
@@ -64,6 +83,11 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	//Add button inside image wrapper for layout4 and layout3
 	if ( 'layout4' === $button_layout || 'layout3' === $button_layout ) {
+		/**
+		 * Hook 'botiga_loop_button_wrap_classes'
+		 *
+		 * @since 1.0.0
+		 */
 		$loop_button_wrapper_classes = apply_filters( 'botiga_loop_button_wrap_classes', array( 'loop-button-wrap', $button_width, 'button-' . $button_layout, $button_with_quantity ) );
 		$button_wrapper_open = $button_layout !== 'layout3' ? '<div class="wp-block-button wc-block-grid__product-add-to-cart"><div class="'. esc_attr( implode( ' ', $loop_button_wrapper_classes ) ) .'">' : '<div class="'. esc_attr( implode( ' ', $loop_button_wrapper_classes ) ) .'">';
 		$button_wrapper_close = $button_layout !== 'layout3' ? '</div></div>' : '</div>';
@@ -103,8 +127,13 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 		</div>";
 	}
 		
-	//Add button outside image wrapper		
+	//Add button outside image wrapper      
 	if ( 'layout1' !== $button_layout && 'layout4' !== $button_layout && 'layout3' !== $button_layout ) {
+		/**
+		 * Hook 'botiga_loop_button_wrap_classes'
+		 *
+		 * @since 1.0.0
+		 */
 		$loop_button_wrapper_classes = apply_filters( 'botiga_loop_button_wrap_classes', array( 'loop-button-wrap', $button_width, 'button-' . $button_layout, $button_with_quantity ) );
 
 		$markup .= '<div class="wp-block-button wc-block-grid__product-add-to-cart">';
@@ -128,6 +157,11 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 
 	}
 
+	/**
+	 * Hook 'botiga_after_shop_loop_item_inside_wc_block'
+	 *
+	 * @since 1.0.0
+	 */
 	$markup .= apply_filters( 'botiga_after_shop_loop_item_inside_wc_block', '', $product );
 
 	$markup .= "</li>";
@@ -146,17 +180,15 @@ function botiga_gb_add_to_cart_button( $_product ) {
 
 	$product = $_product; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
-	$button_layout 	= get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	$button_layout  = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 
 	//Button text
 	if ( 'layout4' !== $button_layout ) {
 		$text = esc_html( $_product->add_to_cart_text() );
-	} else {
-		if ( $_product->is_type( 'simple' ) ) {
+	} elseif ( $_product->is_type( 'simple' ) ) {
 			$text = '<i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-cart', false ) . '</i>';
 		} else {
 			$text = '<i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-eye', false ) . '</i>';
-		}
 	}
 
 	//Start markup
@@ -193,6 +225,11 @@ function botiga_gb_add_to_cart_button( $_product ) {
 			$attributes['class'] .= ' ajax_add_to_cart';
 		}
 
+		/**
+		 * Hook 'botiga_loop_add_to_cart_link_inside_wc_block'
+		 *
+		 * @since 1.0.0
+		 */
 		$markup .= apply_filters( 
 			'botiga_loop_add_to_cart_link_inside_wc_block', 
 			sprintf(

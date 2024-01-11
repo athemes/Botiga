@@ -60,13 +60,25 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 
 	$posts_per_page = get_theme_mod( 'shop_single_recently_viewed_products_number', 3 );
 	$columns        = get_theme_mod( 'shop_single_recently_viewed_products_columns_number', 3 );
-	$slider		    = get_theme_mod( 'shop_single_recently_viewed_products_slider', 0 );
+	$slider         = get_theme_mod( 'shop_single_recently_viewed_products_slider', 0 );
 	$slider_nav     = get_theme_mod( 'shop_single_recently_viewed_products_slider_nav', 'always-show' );
 
 	$defaults = array(
 		'posts_per_page' => $posts_per_page,
+
+		/**
+		 * Hook 'botiga_recently_viewed_products_orderby'
+		 *
+		 * @since 1.0.0
+		 */
 		'orderby'        => apply_filters( 'botiga_recently_viewed_products_orderby', 'rand' ),
-		'order'          => apply_filters( 'botiga_recently_viewed_products_order', 'desc' )
+
+		/**
+		 * Hook 'botiga_recently_viewed_products_order'
+		 *
+		 * @since 1.0.0
+		 */
+		'order'          => apply_filters( 'botiga_recently_viewed_products_order', 'desc' ),
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -84,6 +96,11 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 	<section class="recently-viewed-products products">
 
 		<?php
+		/**
+		 * Hook 'botiga_woocommerce_product_recently_viewed_products_heading'
+		 *
+		 * @since 1.0.0
+		 */
 		$heading = apply_filters( 'botiga_woocommerce_product_recently_viewed_products_heading', __( 'Recently viewed products', 'botiga' ) );
 
 		if ( $heading ) : ?>
@@ -97,7 +114,7 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 		
 		if( $slider ) {
 			wp_enqueue_script( 'botiga-carousel' );
-			wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() );	
+			wp_localize_script( 'botiga-carousel', 'botiga_carousel', botiga_localize_carousel_options() ); 
 		
 
 			$wrapper_classes[] = 'botiga-carousel botiga-carousel-nav2';
@@ -131,4 +148,10 @@ function botiga_woocommerce_output_recently_viewed_products( $args = array() ) {
 	
 	<?php
 }
+
+/**
+ * Hook 'botiga_woocommerce_after_single_product_summary_recently_viewed_products_order'
+ *
+ * @since 1.0.0
+ */
 add_action( 'woocommerce_after_single_product_summary', 'botiga_woocommerce_output_recently_viewed_products', apply_filters( 'botiga_woocommerce_after_single_product_summary_recently_viewed_products_order', 21 ) );
