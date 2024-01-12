@@ -3534,8 +3534,10 @@ body.mobile-menu-visible:before {
   margin-bottom: 120px;
 }
 
-.single-post .content-wrapper {
-  margin-top: 120px;
+@media (min-width: 1025px) {
+  .single-post .content-wrapper {
+    margin-top: 120px;
+  }
 }
 
 .site-main {
