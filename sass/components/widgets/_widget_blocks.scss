@@ -39,6 +39,7 @@ input.wc-block-components-price-slider__range-input {
 	.wp-block-search__label {
 		font-weight: 600;
 		margin-bottom: 15px;
+		color: var( --bt-color-heading-2, $color__primary );
 	}
 	.wp-block-search__button {
 		background: $color__primary;

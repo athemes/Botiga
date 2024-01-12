@@ -3913,6 +3913,7 @@ div.editor-styles-wrapper .wp-block-woocommerce-attribute-filter input {
 div.editor-styles-wrapper .wp-block-search .wp-block-search__label {
   font-weight: 600;
   margin-bottom: 15px;
+  color: var(--bt-color-heading-2, #212121);
 }
 
 div.editor-styles-wrapper .wp-block-search .wp-block-search__button {

@@ -3621,7 +3621,7 @@ body.mobile-menu-visible:before {
 }
 
 .single .entry-meta a {
-  color: var(--bt-color-post-meta, #212121);
+  color: var(--bt-color-post-meta, #666666);
 }
 
 .single .entry-meta-above {
@@ -4789,6 +4789,7 @@ input.wc-block-components-price-slider__range-input {
 .wp-block-search .wp-block-search__label {
   font-weight: 600;
   margin-bottom: 15px;
+  color: var(--bt-color-heading-2, #212121);
 }
 
 .wp-block-search .wp-block-search__button {
