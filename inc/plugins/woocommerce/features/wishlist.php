@@ -25,7 +25,7 @@ add_filter( 'woocommerce_post_class', 'botiga_wishlist_post_class' );
  * Wishlist button
  */
 function botiga_wishlist_button( $product = false, $do_echo = true  ) {
-	if( $product === false ) {
+	if( $product == false ) {
 		global $product; 
 	}
 
