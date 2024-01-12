@@ -125,7 +125,7 @@ function botiga_quick_view_needed_scripts() {
  * @return string
  */
 function botiga_quick_view_button( $product = false, $do_echo = true, $block_layout = 'layout1' ) {
-	if( $product === false ) {
+	if( $product == false ) {
 		global $product; 
 	}
 

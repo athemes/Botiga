@@ -61,7 +61,7 @@ function botiga_body_classes( $classes ) {
 	$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	$classes[] = 'header-' . $header_layout;
 
-	if( in_array( $header_layout, array( 'header_layout_7', 'header_layout_8' ), true ) ) {
+	if( in_array( $header_layout, array( 'header_layout_7', 'header_layout_8' ) ) ) {
 		$main_header_desktop_offcanvas = get_theme_mod( 'main_header_desktop_offcanvas', 'layout1' );
 
 		$classes[] = 'header-desktop-offcanvas-' . $main_header_desktop_offcanvas;
@@ -194,7 +194,7 @@ function botiga_add_submenu_icons( $item_output, $item, $depth, $args ) {
 		return $item_output;
 	}
 
-	if ( ! empty( $item->classes ) && in_array( 'menu-item-has-children', $item->classes, true ) ) {
+	if ( ! empty( $item->classes ) && in_array( 'menu-item-has-children', $item->classes ) ) {
 		return $item_output . '<span tabindex=0 class="dropdown-symbol"><i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-down', false ) . '</i></span>';
 	}
 
@@ -988,42 +988,42 @@ function botiga_custom_google_fonts_url() {
 		$shop_product_title_custom_font = $headings_custom_font;
 	}
 
-	if ( in_array( $body_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $body_custom_font, $google_fonts ) ) {
 		$body_custom_font .= ( $body_custom_font_weight ) ? ':wght@'. $body_custom_font_weight : '';
 		$font_families[ $body_custom_font ] = $body_custom_font;
 	}
 
-	if ( in_array( $headings_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $headings_custom_font, $google_fonts ) ) {
 		$headings_custom_font .= ( $headings_custom_font_weight ) ? ':wght@'. $headings_custom_font_weight : '';
 		$font_families[ $headings_custom_font ] = $headings_custom_font;
 	}
 
-	if ( in_array( $header_menu_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $header_menu_custom_font, $google_fonts ) ) {
 		$header_menu_custom_font .= ( $header_menu_custom_font_weight ) ? ':wght@'. $header_menu_custom_font_weight : '';
 		$font_families[ $header_menu_custom_font ] = $header_menu_custom_font;
 	}
 
-	if ( in_array( $button_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $button_custom_font, $google_fonts ) ) {
 		$button_custom_font .= ( $button_custom_font_weight ) ? ':wght@'. $button_custom_font_weight : '';
 		$font_families[ $button_custom_font ] = $button_custom_font;
 	}
 
-	if ( in_array( $loop_post_title_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $loop_post_title_custom_font, $google_fonts ) ) {
 		$loop_post_title_custom_font .= ( $loop_post_title_custom_font_weight ) ? ':wght@'. $loop_post_title_custom_font_weight : '';
 		$font_families[ $loop_post_title_custom_font ] = $loop_post_title_custom_font;
 	}
 
-	if ( in_array( $single_post_title_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $single_post_title_custom_font, $google_fonts ) ) {
 		$single_post_title_custom_font .= ( $single_post_title_custom_font_weight ) ? ':wght@'. $single_post_title_custom_font_weight : '';
 		$font_families[ $single_post_title_custom_font ] = $single_post_title_custom_font;
 	}
 
-	if ( in_array( $single_product_title_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $single_product_title_custom_font, $google_fonts ) ) {
 		$single_product_title_custom_font .= ( $single_product_title_custom_font_weight ) ? ':wght@'. $single_product_title_custom_font_weight : '';
 		$font_families[ $single_product_title_custom_font ] = $single_product_title_custom_font;
 	}
 
-	if ( in_array( $shop_product_title_custom_font, $google_fonts, true ) ) {
+	if ( in_array( $shop_product_title_custom_font, $google_fonts ) ) {
 		$shop_product_title_custom_font .= ( $shop_product_title_custom_font_weight ) ? ':wght@'. $shop_product_title_custom_font_weight : '';
 		$font_families[ $shop_product_title_custom_font ] = $shop_product_title_custom_font;
 	}
@@ -1673,7 +1673,7 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 				$user_id    = get_current_user_id();
 				$user_roles = get_userdata( $user_id )->roles;
 
-				if ( in_array( $user_role, $user_roles, true ) ) {
+				if ( in_array( $user_role, $user_roles ) ) {
 					$result = $boolean;
 				}
 
@@ -1825,7 +1825,7 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 
 			if ( ! empty( $post_types ) ) {
 				foreach ( $post_types as $post_type_key => $post_type ) {
-					if ( in_array( $post_type_key, array( 'post', 'page' ), true ) ) {
+					if ( in_array( $post_type_key, array( 'post', 'page' ) ) ) {
 						continue;
 					}
 					$query = new WP_Query( array(
@@ -1856,7 +1856,7 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 
 			if ( ! empty( $terms ) ) {
 				foreach ( $terms as $term ) {
-					if ( in_array( $term->taxonomy, array( 'category', 'post_tag' ), true ) ) {
+					if ( in_array( $term->taxonomy, array( 'category', 'post_tag' ) ) ) {
 						continue;
 					}
 					$taxonomy = get_taxonomy( $term->taxonomy );
@@ -1875,7 +1875,7 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 
 			if ( ! empty( $taxonomies ) ) {
 				foreach ( $taxonomies as $taxonomy_key => $taxonomy ) {
-					if ( in_array( $taxonomy_key, array( 'category', 'post_tag', 'post_format' ), true ) ) {
+					if ( in_array( $taxonomy_key, array( 'category', 'post_tag', 'post_format' ) ) ) {
 						continue;
 					}
 					if ( preg_match( '/'. strtolower( $term ) .'/', strtolower( $taxonomy->label ) ) ) {

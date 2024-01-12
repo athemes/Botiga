@@ -54,7 +54,7 @@ function botiga_product_card_hooks() {
 			add_action( 'woocommerce_after_subcategory', function() { echo '</div>'; }, PHP_INT_MAX );
 		}
 
-		if ( in_array( $layout, array( 'product-grid', 'product-masonry' ), true ) ) {
+		if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) ) {
 			$shop_woocommerce_catalog_columns_desktop = get_theme_mod( 'shop_woocommerce_catalog_columns_desktop', 4 );
 		
 			if( $shop_woocommerce_catalog_columns_desktop === 2 ) {
@@ -80,7 +80,7 @@ function botiga_product_card_hooks() {
 	add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 12 );
 
 	//Wrap loop image
-	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ), true ) || is_product() || ( $layout === 'product-list' && ! is_shop() && ! is_product_category() && ! is_product_tag() && ! is_product_taxonomy() ) ) {
+	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) || is_product() || ( $layout === 'product-list' && ! is_shop() && ! is_product_category() && ! is_product_tag() && ! is_product_taxonomy() ) ) {
 
 		/**
 		 * Hook 'botiga_wc_loop_image_wrap_extra_class'
@@ -91,7 +91,7 @@ function botiga_product_card_hooks() {
 		add_action( 'woocommerce_before_shop_loop_item_title', function() { echo '</div>'; }, 11 );
 	}
 
-	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ), true ) ) {
+	if ( in_array( $layout, array( 'product-grid', 'product-masonry' ) ) ) {
 		//Move button inside image wrap
 		if ( 'layout4' === $button_layout && 'layout3' !== $quick_view_layout || 'layout3' === $button_layout && 'layout2' !== $quick_view_layout ) {
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
@@ -297,12 +297,12 @@ function botiga_loop_product_structure() {
 			}       
 			echo '</div>';
 			echo '<div class="col-md-5 loop-price-inline text-sm-left">';
-				if( in_array( 'woocommerce_template_loop_price', $elements, true ) ) {
+				if( in_array( 'woocommerce_template_loop_price', $elements ) ) {
 					woocommerce_template_loop_price();
 				}
 			echo '</div>';
 			echo '<div class="col-12 product-description-column">';
-				if( in_array( 'botiga_loop_product_description', $elements, true ) ) {
+				if( in_array( 'botiga_loop_product_description', $elements ) ) {
 					botiga_loop_product_description();
 				}
 			echo '</div>';

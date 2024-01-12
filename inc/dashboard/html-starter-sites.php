@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
         <div class="botiga-dashboard-card botiga-dashboard-card-top-spacing botiga-dashboard-card-tabs-divider">
             <div class="botiga-dashboard-card-body">
                 
-                <?php if ( in_array( $this->get_plugin_status( $this->settings['starter_plugin_path'] ), array( 'inactive', 'not_installed' ), true ) ) : ?>
+                <?php if ( in_array( $this->get_plugin_status( $this->settings['starter_plugin_path'] ), array( 'inactive', 'not_installed' ) ) ) : ?>
 
                 <div class="botiga-dashboard-row">
 

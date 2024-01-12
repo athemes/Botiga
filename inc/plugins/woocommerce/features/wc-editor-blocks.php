@@ -23,7 +23,7 @@ function botiga_filter_woocommerce_blocks( $html, $data, $product ){
 	$button_with_quantity     = '';
 	$wc_block_grid_item_class = array();
 
-	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ), true ) ) {
+	if ( $shop_product_quantity && in_array( $button_layout, array( 'layout2', 'layout3', 'layout4' ) ) ) {
 		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
 			$button_with_quantity = ' button-with-quantity';
 		}

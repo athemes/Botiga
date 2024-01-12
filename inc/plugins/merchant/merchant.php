@@ -29,6 +29,7 @@ class Botiga_Merchant_Compatibility {
 		'wishlist',
 		'product-swatches',
 		'quick-links',
+		'google-autocomplete',
 	);
 
 	/**
@@ -45,6 +46,7 @@ class Botiga_Merchant_Compatibility {
 		'wishlist' => 'wishlist',
 		'product-swatches' => 'product-swatches',
 		'quick-links' => 'quick-social-links',
+		'google-autocomplete' => 'address-autocomplete',
 	);
 
 	/**
@@ -67,7 +69,7 @@ class Botiga_Merchant_Compatibility {
 			if ( ! is_array( $theme_mod[ 'mod_value' ] ) ) {
 				return get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ) !== $theme_mod[ 'mod_value' ] ? $mmodule_id : false;
 			} elseif( ! is_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ) ) ) {
-					return ! in_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ], true ) ? $mmodule_id : false;
+					return ! in_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
 				} else {
 					return array_intersect( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
 			}
@@ -155,7 +157,7 @@ class Botiga_Merchant_Compatibility {
 		$botiga_modules = ( is_array( $botiga_modules ) ) ? $botiga_modules : (array) $botiga_modules;
 
 		foreach( $this->overlaping_modules as $module ) {
-			if ( in_array( $module, $botiga_modules, true ) && isset( $botiga_modules[ $module ] ) && $botiga_modules[ $module ] ) {
+			if ( in_array( $module, $botiga_modules ) && isset( $botiga_modules[ $module ] ) && $botiga_modules[ $module ] ) {
 				if ( is_array( $this->modules_map[$module] ) ) {
 					foreach( $this->modules_map[$module] as $mmodule_id ) {
 						add_filter( "merchant_module_{$mmodule_id}_deactivate", function() {

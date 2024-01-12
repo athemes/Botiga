@@ -23,7 +23,7 @@ function botiga_enqueue_gutenberg_assets() {
 
 		foreach ( $kits as $kit_id => $kit_data ) {
 
-			if ( $kit_data['enable'] === false ) {
+			if ( $kit_data['enable'] == false ) {
 				continue;
 			}
 
@@ -69,7 +69,7 @@ function botiga_enqueue_gutenberg_assets() {
 	$content_background_color = get_theme_mod( 'content_background_color', '#fff' );
 	$site_layout              = get_theme_mod( 'site_layout', 'default' );
 	
-	if ( in_array( $site_layout, array( 'boxed', 'padded' ), true ) ) {
+	if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
 		$css .= "div.editor-styles-wrapper { background-color:#" . ltrim( esc_attr( $content_background_color ), '#' ) . ";}" . "\n";
 	} else {
 		$css .= "div.editor-styles-wrapper { background-color:#" . ltrim( esc_attr( $background_color ), '#' ) . ";}" . "\n";

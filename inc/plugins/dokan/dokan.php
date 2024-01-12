@@ -205,7 +205,7 @@ function botiga_dokan_custom_css( $css ) {
     // Single Product Vendor Info Box
     $defaults   = botiga_get_default_single_product_components();
     $components = get_theme_mod( 'single_product_elements_order', $defaults );
-    if( in_array( 'botiga_dokan_vendor_infobox', $components, true ) ) {
+    if( in_array( 'botiga_dokan_vendor_infobox', $components ) ) {
         $css .= Botiga_Custom_CSS::get_background_color_css( 'content_cards_background', '', '.botiga-vendor-infobox' );
 
         $css .= '

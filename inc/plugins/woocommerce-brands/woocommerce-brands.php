@@ -70,7 +70,7 @@ class Botiga_WC_Brands {
         $element  = 'botiga_wc_brands_brand';
         $elements = get_theme_mod( 'single_product_elements_order' );
 
-        if ( in_array( $element, $elements, true ) ) {
+        if ( in_array( $element, $elements ) ) {
             return true;
         } else {
             return false;

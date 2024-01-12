@@ -25,7 +25,7 @@ add_filter( 'woocommerce_post_class', 'botiga_wishlist_post_class' );
  * Wishlist button
  */
 function botiga_wishlist_button( $product = false, $do_echo = true  ) {
-	if( $product === false ) {
+	if( $product == false ) {
 		global $product; 
 	}
 
@@ -59,7 +59,7 @@ function botiga_wishlist_button( $product = false, $do_echo = true  ) {
  * Wishlist button for single product and quick view
  */
 function botiga_single_wishlist_button( $product = false, $do_echo = true  ) {
-	if( $product === false ) {
+	if( $product == false ) {
 		global $product; 
 	}
 
@@ -136,7 +136,7 @@ function botiga_button_wishlist_callback_function(){
 			$newvalue          = $wishlist_products . ',' . absint( $_POST['product_id'] );
 			$qty               = count( $arr ) + 1;
 	
-			if( !in_array( $_POST['product_id'], $arr, true ) ) {
+			if( !in_array( $_POST['product_id'], $arr ) ) {
 
 				/**
 				 * Hook 'botiga_wishlist_cookie_expiration_time'
@@ -191,7 +191,7 @@ function botiga_product_is_inthe_wishlist( $product_id ) {
 
 	$wishlist_products = sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) );
 	$products          = explode( ',', $wishlist_products );
-	if( in_array( $product_id, $products, true ) ) {
+	if( in_array( $product_id, $products ) ) {
 		return true;
 	}
 

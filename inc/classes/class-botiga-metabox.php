@@ -192,11 +192,11 @@ class Botiga_Metabox {
 
 	public function add_section( $id, $args ) {
 
-		if ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'], true ) ) {
+		if ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) {
 			return;
 		}
 
-		if ( ! empty( $args['exclude'] ) && in_array( get_post_type(), $args['exclude'], true ) ) {
+		if ( ! empty( $args['exclude'] ) && in_array( get_post_type(), $args['exclude'] ) ) {
 			return;
 		}
 
@@ -211,7 +211,7 @@ class Botiga_Metabox {
 
 	public function add_field( $id, $args ) {
 
-		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'], true ) ) || empty( self::$options[ $args['section'] ] ) ) {
+		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) || empty( self::$options[ $args['section'] ] ) ) {
 			return;
 		}
 
@@ -241,7 +241,7 @@ class Botiga_Metabox {
 			'public' => true,
 		) );
 
-		if ( ! in_array( $post_type, $types, true ) ) {
+		if ( ! in_array( $post_type, $types ) ) {
 			return;
 		}
 
@@ -449,7 +449,7 @@ class Botiga_Metabox {
 
 				foreach ( $option['fields'] as $field_id => $field ) {
 
-					if ( in_array( $field['type'], array( 'content' ), true ) ) {
+					if ( in_array( $field['type'], array( 'content' ) ) ) {
 						continue;
 					}
 
@@ -718,7 +718,7 @@ class Botiga_Metabox {
 				echo '<div class="botiga-metabox-field-uploads-content">';
 
 					$values     = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
-					$name       = $field['library'] === 'video' ? $field_id . '[0][src]' : $field_id . '[]';
+					$name       = $field['library'] == 'video' ? $field_id . '[0][src]' : $field_id . '[]';
                     $thumb_name = $field_id . '[0][thumb]';
 
 					echo '<ul class="botiga-metabox-field-uploads-list" data-library="'. esc_attr( $field['library'] ) .'">';
@@ -739,7 +739,7 @@ class Botiga_Metabox {
 						echo '</li>';
 
 						foreach ( $values as $key => $value ) {
-							$item_name  = $field['library'] === 'video' ? str_replace('0', $key, $name) : $name;
+							$item_name  = $field['library'] == 'video' ? str_replace('0', $key, $name) : $name;
 							$item_value = is_array($value) ? ( isset( $value['src'] ) ? $value['src'] : '' ) : $value;
 
 							echo '<li class="botiga-metabox-field-uploads-list-item">';

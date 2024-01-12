@@ -321,7 +321,7 @@ function botiga_scripts() {
 
 		foreach ( $kits as $kit_id => $kit_data ) {
 
-			if ( $kit_data['enable'] === false ) {
+			if ( $kit_data['enable'] == false ) {
 				continue;
 			}
 

@@ -927,12 +927,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				
 				if ( 'fullwidth' === $main_header_divider_width ) {
 					$css .= ".site-header, .bottom-header-row { border-bottom:" . esc_attr( $main_header_divider_size ) . 'px solid ' . esc_attr( $main_header_divider_color ) . ";}" . "\n";
-					if ( 0 === $main_header_divider_size ) {
+					if ( 0 == $main_header_divider_size ) {
 						$css .= ".header_layout_3,.header_layout_4,.header_layout_5 { border-bottom: 1px solid " . esc_attr( $main_header_divider_color ) . ";}" . "\n";
 					}            
 				} else {
 					$css .= ".top-header-row,.site-header-inner, .bottom-header-inner { border-bottom:" . esc_attr( $main_header_divider_size ) . 'px solid ' . esc_attr( $main_header_divider_color ) . ";} .site-header,.bottom-header-row {border:0;}" . "\n";
-					if ( 0 === $main_header_divider_size ) {
+					if ( 0 == $main_header_divider_size ) {
 						$css .= ".top-header-row { border-bottom: 1px solid " . esc_attr( $main_header_divider_color ) . ";}" . "\n";
 					}            
 				}
@@ -994,7 +994,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				if( $sticky_header ) {
 
 					$site_header_inner_selector = '.site-header-inner';
-					if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ), true ) ) {
+					if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ) ) ) {
 						$site_header_inner_selector = '.bottom-header-inner';
 					}
 
@@ -1726,7 +1726,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$site_layout = get_theme_mod( 'site_layout', 'default' );
 
 			// Default, Boxed, Padded
-			if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ), true ) ) {
+			if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ) ) ) {
 				$css .= $this->get_variable_css( 'content_max_width', 1140, ':root', 'botiga_content_width', 'px' );
 			}
 
@@ -1747,7 +1747,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			// Boxed, Padded
-			if ( in_array( $site_layout, array( 'boxed', 'padded' ), true ) ) {
+			if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
 				$css .= $this->get_background_color_rgba_css( 'content_background_color', '#ffffff', '.site', 1 );          
 			}
 
@@ -2436,14 +2436,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 		 
 			if ( $color ) {
-				if ( $color[0] === '#' ) {
+				if ( $color[0] == '#' ) {
 					$color = substr( $color, 1 );
 				}   
 			}
 
-			if (strlen($color) === 6) {
+			if (strlen($color) == 6) {
 				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-			} elseif ( strlen( $color ) === 3 ) {
+			} elseif ( strlen( $color ) == 3 ) {
 				$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
 			} else {
 				return $default;

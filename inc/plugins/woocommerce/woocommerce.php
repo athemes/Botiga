@@ -70,7 +70,7 @@ add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
 function botiga_woocommerce_scripts() {
 	$single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
-	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-vertical', 'gallery-showcase' ), true ) ) {
+	if ( current_theme_supports( 'wc-product-gallery-slider' ) && in_array( $single_product_gallery, array( 'gallery-vertical', 'gallery-showcase' ) ) ) {
 		wp_enqueue_script( 'botiga-swiper', get_template_directory_uri() . '/assets/js/botiga-swiper.min.js', array(), BOTIGA_VERSION, true );
 	}
 
@@ -426,7 +426,7 @@ add_action( 'woocommerce_after_quantity_input_field', 'botiga_woocommerce_after_
 function botiga_get_quantity_symbols_output( $type = 'plus' ) {
 	$qty_style = get_theme_mod( 'shop_general_quantity_style', 'style1' );
 
-	if( in_array( $qty_style, array( 'style1', 'style2', 'style4', 'style5', 'style6', 'style8' ), true ) ) {
+	if( in_array( $qty_style, array( 'style1', 'style2', 'style4', 'style5', 'style6', 'style8' ) ) ) {
 		if( $type === 'plus' ) {
 			return '+';
 		} else {
@@ -599,7 +599,7 @@ function botiga_woocommerce_post_class( $classes, $product ) {
 	if( $product->get_manage_stock() ) {
 		$classes[] = 'has-manage-stock';
 
-		if( $product->get_stock_quantity() === 1 ) {
+		if( $product->get_stock_quantity() == 1 ) {
 			$classes[] = 'has-only-one-instock';
 		}
 	}
