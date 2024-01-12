@@ -994,7 +994,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				if( $sticky_header ) {
 
 					$site_header_inner_selector = '.site-header-inner';
-					if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ), true ) ) {
+					if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ) ) ) {
 						$site_header_inner_selector = '.bottom-header-inner';
 					}
 
@@ -1726,7 +1726,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$site_layout = get_theme_mod( 'site_layout', 'default' );
 
 			// Default, Boxed, Padded
-			if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ), true ) ) {
+			if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ) ) ) {
 				$css .= $this->get_variable_css( 'content_max_width', 1140, ':root', 'botiga_content_width', 'px' );
 			}
 
@@ -1747,7 +1747,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			// Boxed, Padded
-			if ( in_array( $site_layout, array( 'boxed', 'padded' ), true ) ) {
+			if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
 				$css .= $this->get_background_color_rgba_css( 'content_background_color', '#ffffff', '.site', 1 );          
 			}
 

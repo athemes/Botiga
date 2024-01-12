@@ -192,11 +192,11 @@ class Botiga_Metabox {
 
 	public function add_section( $id, $args ) {
 
-		if ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'], true ) ) {
+		if ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) {
 			return;
 		}
 
-		if ( ! empty( $args['exclude'] ) && in_array( get_post_type(), $args['exclude'], true ) ) {
+		if ( ! empty( $args['exclude'] ) && in_array( get_post_type(), $args['exclude'] ) ) {
 			return;
 		}
 
@@ -211,7 +211,7 @@ class Botiga_Metabox {
 
 	public function add_field( $id, $args ) {
 
-		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'], true ) ) || empty( self::$options[ $args['section'] ] ) ) {
+		if ( ( ! empty( $args['post_type'] ) && ! in_array( get_post_type(), $args['post_type'] ) ) || empty( self::$options[ $args['section'] ] ) ) {
 			return;
 		}
 
@@ -241,7 +241,7 @@ class Botiga_Metabox {
 			'public' => true,
 		) );
 
-		if ( ! in_array( $post_type, $types, true ) ) {
+		if ( ! in_array( $post_type, $types ) ) {
 			return;
 		}
 
@@ -449,7 +449,7 @@ class Botiga_Metabox {
 
 				foreach ( $option['fields'] as $field_id => $field ) {
 
-					if ( in_array( $field['type'], array( 'content' ), true ) ) {
+					if ( in_array( $field['type'], array( 'content' ) ) ) {
 						continue;
 					}
 

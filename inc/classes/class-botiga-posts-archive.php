@@ -182,7 +182,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_meta() {
 
-			if ( in_array( get_post_format(), array( 'aside', 'status' ), true ) ) {
+			if ( in_array( get_post_format(), array( 'aside', 'status' ) ) ) {
 				return;
 			}
 
@@ -205,11 +205,11 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_title() {
 
-			if ( in_array( get_post_format(), array( 'aside', 'status' ), true ) ) {
+			if ( in_array( get_post_format(), array( 'aside', 'status' ) ) ) {
 				return;
 			}
 
-			if ( in_array( get_post_format(), array( 'link' ), true ) ) {
+			if ( in_array( get_post_format(), array( 'link' ) ) ) {
 				$content_url = get_url_in_content( get_the_content() );
 				$post_url = ( ! empty( $content_url ) ) ? $content_url : get_permalink();
 			} else {
@@ -231,7 +231,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_excerpt() {
 
-			if ( in_array( get_post_format(), array( 'aside', 'quote', 'link', 'image', 'video', 'status' ), true ) ) {
+			if ( in_array( get_post_format(), array( 'aside', 'quote', 'link', 'image', 'video', 'status' ) ) ) {
 
 				echo '<div class="entry-content" '. botiga_get_schema( 'entry_content' ) .'>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 

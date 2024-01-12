@@ -48,7 +48,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 			}
 
 			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
-			if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ), true ) ) {
+			if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ) ) ) {
 				return;
 			}
 

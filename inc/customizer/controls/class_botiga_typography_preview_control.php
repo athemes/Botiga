@@ -103,14 +103,14 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 
 			foreach ( $common_props as $common_prop => $setting_id ) {
 
-				if ( in_array( $common_prop, array( 'google_font', 'adobe_font', 'custom_font' ), true ) ) {
+				if ( in_array( $common_prop, array( 'google_font', 'adobe_font', 'custom_font' ) ) ) {
 					continue;
 				}
 
 				$value = $this->manager->get_setting( $setting_id )->value();
 
 				if ( $value !== '' ) {
-					$unit = ( in_array( $common_prop, array( 'font-size', 'letter-spacing' ), true ) ) ? 'px' : '';
+					$unit = ( in_array( $common_prop, array( 'font-size', 'letter-spacing' ) ) ) ? 'px' : '';
 					$props[ $common_prop ] = $value . $unit;
 				}
 

@@ -154,7 +154,7 @@ function botiga_callback_footer_copyright_alignment() {
 function botiga_callback_footer_copyright_elements( $element, $check_columns_number = false ) {
 	$elements = get_theme_mod( 'footer_copyright_elements', array( 'footer_credits', 'footer_social_profiles' ) );
 
-	if ( in_array( $element, $elements, true ) ) {
+	if ( in_array( $element, $elements ) ) {
 		if( $check_columns_number ) {
 			$cols = get_theme_mod( 'footer_copyright_layout', 'col2' );
 
@@ -279,7 +279,7 @@ function botiga_callback_list_general_archives() {
 function botiga_callback_author_avatar() {
 	$meta = get_theme_mod( 'archive_meta_elements', array( 'post_date' ) );
 
-	if ( in_array( 'post_author', $meta, true ) ) {
+	if ( in_array( 'post_author', $meta ) ) {
 		return true;
 	} else {
 		return false;
@@ -353,7 +353,7 @@ function botiga_callback_header_layout_not_6() {
 function botiga_callback_header_layout_not_6_7_8() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	
-	if ( ! in_array( $layout, array( 'header_layout_6', 'header_layout_7', 'header_layout_8' ), true ) ) {
+	if ( ! in_array( $layout, array( 'header_layout_6', 'header_layout_7', 'header_layout_8' ) ) ) {
 		return true;
 	} else { 
 		return false;
@@ -363,7 +363,7 @@ function botiga_callback_header_layout_not_6_7_8() {
 function botiga_callback_header_layout_not_7_8() {
 	$layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	
-	if ( ! in_array( $layout, array( 'header_layout_7', 'header_layout_8' ), true ) ) {
+	if ( ! in_array( $layout, array( 'header_layout_7', 'header_layout_8' ) ) ) {
 		return true;
 	} else { 
 		return false;
@@ -420,7 +420,7 @@ function botiga_callback_sticky_header_logo() {
 	$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
 	$enable        = get_theme_mod( 'enable_sticky_header', 0 );
 
-	if ( $enable && ! in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ), true ) ) {
+	if ( $enable && ! in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5', 'header_layout_6' ) ) ) {
 		return true;
 	} else {
 		return false;
@@ -452,7 +452,7 @@ function botiga_callback_header_elements( $element ) {
 			$elements       = get_theme_mod( 'header_components_l3left' );
 			$elements_right = get_theme_mod( 'header_components_l3right' );
 
-			if ( in_array( $element, $elements, true ) || in_array( $element, $elements_right, true ) ) {
+			if ( in_array( $element, $elements, true ) || in_array( $element, $elements_right ) ) {
 				return true;
 			} else {
 				return false;
@@ -464,7 +464,7 @@ function botiga_callback_header_elements( $element ) {
 			$elements           = get_theme_mod( 'header_components_l4top' );
 			$elements_bottom    = get_theme_mod( 'header_components_l4bottom' );
 
-			if ( in_array( $element, $elements, true ) || in_array( $element, $elements_bottom, true ) ) {
+			if ( in_array( $element, $elements ) || in_array( $element, $elements_bottom ) ) {
 				return true;
 			} else {
 				return false;
@@ -477,7 +477,7 @@ function botiga_callback_header_elements( $element ) {
 			$elements_right     = get_theme_mod( 'header_components_l5topright' );
 			$elements_bottom    = get_theme_mod( 'header_components_l5bottom' );
 
-			if ( in_array( $element, $elements, true ) || in_array( $element, $elements_bottom, true ) || in_array( $element, $elements_right, true ) ) {
+			if ( in_array( $element, $elements ) || in_array( $element, $elements_bottom ) || in_array( $element, $elements_right ) ) {
 				return true;
 			} else {
 				return false;
@@ -490,7 +490,7 @@ function botiga_callback_header_elements( $element ) {
 			$elements           = get_theme_mod( 'header_components_l7left' );
 			$elements_right     = get_theme_mod( 'header_components_l7right' );
 
-			if ( in_array( $element, $elements, true ) || in_array( $element, $elements_right, true ) ) {
+			if ( in_array( $element, $elements ) || in_array( $element, $elements_right ) ) {
 				return true;
 			} else {
 				return false;
@@ -513,7 +513,7 @@ function botiga_callback_mobile_header_elements( $element ) {
 
 	$elements = get_theme_mod( 'header_components_mobile', $default_components[ 'mobile' ] );
 
-	if ( in_array( $element, $elements, true ) ) {
+	if ( in_array( $element, $elements ) ) {
 		return true;
 	} else {
 		return false;
@@ -528,7 +528,7 @@ function botiga_callback_mobile_header_offcanvas_elements( $element ) {
 
 	$elements = get_theme_mod( 'header_components_offcanvas', $default_components[ 'mobile' ] );
 
-	if ( in_array( $element, $elements, true ) ) {
+	if ( in_array( $element, $elements ) ) {
 		return true;
 	} else {
 		return false;
@@ -556,7 +556,7 @@ function botiga_callback_topbar_elements( $element ) {
 	$elements_left  = get_theme_mod( 'topbar_components_left' );
 	$elements_right = get_theme_mod( 'topbar_components_right' );
 
-	if ( in_array( $element, $elements_left, true ) || in_array( $element, $elements_right, true ) ) {
+	if ( in_array( $element, $elements_left ) || in_array( $element, $elements_right ) ) {
 		return true;
 	} else {
 		return false;
@@ -604,7 +604,7 @@ function botiga_callback_single_product_elements( $element ) {
 
 	$elements = get_theme_mod( 'single_product_elements_order' );
 
-	if ( in_array( $element, $elements, true ) ) {
+	if ( in_array( $element, $elements ) ) {
 		return true;
 	} else {
 		return false;
@@ -618,7 +618,7 @@ function botiga_callback_site_layout_default_boxed_padded() {
 
 	$site_layout = get_theme_mod( 'site_layout', 'default' );
 
-	if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ), true ) ) {
+	if ( in_array( $site_layout, array( 'default', 'boxed', 'padded' ) ) ) {
 		return true;
 	} else {
 		return false;
@@ -674,7 +674,7 @@ function botiga_callback_site_layout_boxed_padded() {
 
 	$site_layout = get_theme_mod( 'site_layout', 'default' );
 
-	if ( in_array( $site_layout, array( 'boxed', 'padded' ), true ) ) {
+	if ( in_array( $site_layout, array( 'boxed', 'padded' ) ) ) {
 		return true;
 	} else {
 		return false;

@@ -53,7 +53,7 @@ class Botiga_Pro_Upsell_Notice {
 		// Display Conditions
 		global $hook_suffix;
 		
-		if( ! in_array( $hook_suffix, array( 'woocommerce_page_wc-settings', 'index.php', 'plugins.php', 'edit.php', 'plugin-install.php' ), true ) ) {
+		if( ! in_array( $hook_suffix, array( 'woocommerce_page_wc-settings', 'index.php', 'plugins.php', 'edit.php', 'plugin-install.php' ) ) ) {
 			return;
 		}
 

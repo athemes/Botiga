@@ -265,7 +265,7 @@ class Botiga_Dashboard
 
         if (!file_exists(WP_PLUGIN_DIR . '/' . $plugin_path)) {
             return 'not_installed';
-        } elseif (in_array($plugin_path, (array) get_option('active_plugins', array()), true) || is_plugin_active_for_network($plugin_path)) {
+        } elseif (in_array($plugin_path, (array) get_option('active_plugins', array())) || is_plugin_active_for_network($plugin_path)) {
             return 'active';
         } else {
             return 'inactive';
@@ -530,7 +530,7 @@ class Botiga_Dashboard
         foreach( $all_modules_ids as $module_id ) {
 
             // Skip some modules
-            if( in_array( $module_id, array( 'hf-builder', 'schema-markup', 'adobe-typekit' ), true ) ) {
+            if( in_array( $module_id, array( 'hf-builder', 'schema-markup', 'adobe-typekit' ) ) ) {
                 $modules[ $module_id ] = $current_modules[ $module_id ];
             } else {
                 $modules[ $module_id ] = $activate;
