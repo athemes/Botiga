@@ -59,7 +59,7 @@ function botiga_wishlist_button( $product = false, $do_echo = true  ) {
  * Wishlist button for single product and quick view
  */
 function botiga_single_wishlist_button( $product = false, $do_echo = true  ) {
-	if( $product === false ) {
+	if( $product == false ) {
 		global $product; 
 	}
 

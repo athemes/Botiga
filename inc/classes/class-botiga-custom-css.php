@@ -927,12 +927,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				
 				if ( 'fullwidth' === $main_header_divider_width ) {
 					$css .= ".site-header, .bottom-header-row { border-bottom:" . esc_attr( $main_header_divider_size ) . 'px solid ' . esc_attr( $main_header_divider_color ) . ";}" . "\n";
-					if ( 0 === $main_header_divider_size ) {
+					if ( 0 == $main_header_divider_size ) {
 						$css .= ".header_layout_3,.header_layout_4,.header_layout_5 { border-bottom: 1px solid " . esc_attr( $main_header_divider_color ) . ";}" . "\n";
 					}            
 				} else {
 					$css .= ".top-header-row,.site-header-inner, .bottom-header-inner { border-bottom:" . esc_attr( $main_header_divider_size ) . 'px solid ' . esc_attr( $main_header_divider_color ) . ";} .site-header,.bottom-header-row {border:0;}" . "\n";
-					if ( 0 === $main_header_divider_size ) {
+					if ( 0 == $main_header_divider_size ) {
 						$css .= ".top-header-row { border-bottom: 1px solid " . esc_attr( $main_header_divider_color ) . ";}" . "\n";
 					}            
 				}
@@ -2436,14 +2436,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 		 
 			if ( $color ) {
-				if ( $color[0] === '#' ) {
+				if ( $color[0] == '#' ) {
 					$color = substr( $color, 1 );
 				}   
 			}
 
-			if (strlen($color) === 6) {
+			if (strlen($color) == 6) {
 				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-			} elseif ( strlen( $color ) === 3 ) {
+			} elseif ( strlen( $color ) == 3 ) {
 				$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
 			} else {
 				return $default;

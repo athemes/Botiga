@@ -137,7 +137,7 @@ function botiga_single_product_tabs_as_accordion_output() {
             $counter = 0;
             foreach ( $product_tabs as $key => $product_tab ) : ?>
             <div class="botiga-accordion__item">
-                <a href="#" class="botiga-accordion__toggle botiga-collapse-toggle<?php echo ( $counter === 0 ? ' active' : '' ); ?>" data-botiga-collapse="{'enable': true, 'id': 'botiga-accordion-<?php echo esc_attr( $key ); ?>', 'options': { 'oneAtTime': <?php echo ( $accordion_one_at_time ? 'true' : 'false' ); ?>, 'oneAtTimeParentSelector': '.botiga-accordion' }}">
+                <a href="#" class="botiga-accordion__toggle botiga-collapse-toggle<?php echo ( $counter == 0 ? ' active' : '' ); ?>" data-botiga-collapse="{'enable': true, 'id': 'botiga-accordion-<?php echo esc_attr( $key ); ?>', 'options': { 'oneAtTime': <?php echo ( $accordion_one_at_time ? 'true' : 'false' ); ?>, 'oneAtTimeParentSelector': '.botiga-accordion' }}">
                     <?php 
                     /**
                      * Hook "woocommerce_product_' . $key . '_tab_title"
@@ -146,7 +146,7 @@ function botiga_single_product_tabs_as_accordion_output() {
                      */
                     echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                 </a>
-                <div id="botiga-accordion-<?php echo esc_attr( $key ); ?>" class="botiga-accordion__body botiga-collapse<?php echo ( $counter === 0 ? ' active' : '' ); ?>">
+                <div id="botiga-accordion-<?php echo esc_attr( $key ); ?>" class="botiga-accordion__body botiga-collapse<?php echo ( $counter == 0 ? ' active' : '' ); ?>">
                     <div class="botiga-accordion__body-content botiga-collapse__content">
                         <?php
                         if ( isset( $product_tab['callback'] ) ) {

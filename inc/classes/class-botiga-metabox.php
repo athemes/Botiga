@@ -718,7 +718,7 @@ class Botiga_Metabox {
 				echo '<div class="botiga-metabox-field-uploads-content">';
 
 					$values     = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
-					$name       = $field['library'] === 'video' ? $field_id . '[0][src]' : $field_id . '[]';
+					$name       = $field['library'] == 'video' ? $field_id . '[0][src]' : $field_id . '[]';
                     $thumb_name = $field_id . '[0][thumb]';
 
 					echo '<ul class="botiga-metabox-field-uploads-list" data-library="'. esc_attr( $field['library'] ) .'">';
@@ -739,7 +739,7 @@ class Botiga_Metabox {
 						echo '</li>';
 
 						foreach ( $values as $key => $value ) {
-							$item_name  = $field['library'] === 'video' ? str_replace('0', $key, $name) : $name;
+							$item_name  = $field['library'] == 'video' ? str_replace('0', $key, $name) : $name;
 							$item_value = is_array($value) ? ( isset( $value['src'] ) ? $value['src'] : '' ) : $value;
 
 							echo '<li class="botiga-metabox-field-uploads-list-item">';

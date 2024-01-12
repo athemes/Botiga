@@ -60,7 +60,7 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 				}
 			}
 
-		} elseif ( $library === 'adobe' && isset( $this->options['adobe_font'] ) ) {
+		} elseif ( $library == 'adobe' && isset( $this->options['adobe_font'] ) ) {
 
 			$value = $this->manager->get_setting( $this->options['adobe_font'] )->value();
 
@@ -74,7 +74,7 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 				}
 			}
 
-		} elseif ( $library === 'custom' && isset( $this->options['custom_font'] ) ) {
+		} elseif ( $library == 'custom' && isset( $this->options['custom_font'] ) ) {
 
 			$value = $this->manager->get_setting( $this->options['custom_font'] )->value();
 

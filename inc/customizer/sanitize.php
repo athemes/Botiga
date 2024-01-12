@@ -249,7 +249,7 @@ function botiga_sanitize_hex_rgba( $input, $setting ) {
 
     if ( false === strpos( $input, 'rgb' ) ) {
         $input = sanitize_hex_color( $input );
-    } elseif ( false === strpos( $input, 'rgba' ) ) {
+    } elseif ( false == strpos( $input, 'rgba' ) ) {
             // Sanitize as RGB color
             $input = str_replace( ' ', '', $input );
             sscanf( $input, 'rgb(%d,%d,%d)', $red, $green, $blue );
@@ -281,7 +281,7 @@ function botiga_in_range( $input, $min, $max ){
  * Sanitize checkboxes
  */
 function botiga_sanitize_checkbox( $input ) {
-    if ( $input === 1 ) {
+    if ( $input == 1 ) {
         return 1;
     } else {
         return '';

@@ -103,7 +103,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 
 				<div class="range-slider-wrapper cols2-control">
 				<div class="customize-control-title"><?php esc_html_e( 'Font weight', 'botiga' ) ?></div>
-				<?php if ( $this->input_attrs['disableRegular'] === false ) : ?>
+				<?php if ( $this->input_attrs['disableRegular'] == false ) : ?>
 					<select class="google-fonts-regularweight-style w50">
 						<?php
 							foreach( $this->fontList[$this->fontListIndex]->variants as $key => $value ) {
@@ -117,7 +117,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 				<input type="hidden" class="google-fonts-category" value="<?php echo esc_html( $this->fontValues->category ); ?>">
 			</div>
 			<?php
-		} elseif( $this->fontList === 'error' ) {
+		} elseif( $this->fontList == 'error' ) {
 			$error_message = sprintf(
 				/* translators: 1: How to use adobe fonts docs link */
 				__( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded. Please contact our support <a href="%s" target="_blank">here</a> to get help.', 'botiga' ),
@@ -141,7 +141,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 		}
 
 		foreach( $haystack as $key => $value ) {
-			if( $value->family === $needle ) {
+			if( $value->family == $needle ) {
 				return $key;
 			}
 		}

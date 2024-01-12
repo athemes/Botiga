@@ -599,7 +599,7 @@ function botiga_woocommerce_post_class( $classes, $product ) {
 	if( $product->get_manage_stock() ) {
 		$classes[] = 'has-manage-stock';
 
-		if( $product->get_stock_quantity() === 1 ) {
+		if( $product->get_stock_quantity() == 1 ) {
 			$classes[] = 'has-only-one-instock';
 		}
 	}

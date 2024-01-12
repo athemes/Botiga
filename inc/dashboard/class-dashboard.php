@@ -67,7 +67,7 @@ class Botiga_Dashboard
         add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'ajax_module_activation_handler' ) );
         add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'ajax_module_activation_all_handler' ) );
 
-        $is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) === true;
+        $is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
         if( defined( 'BOTIGA_PRO_VERSION' ) && ! $is_legacy_tb ) {
             add_action( 'wp_ajax_botiga_template_builder_data', array( $this, 'ajax_template_builder_data' ) );
             add_action( 'wp_ajax_insert_template_part_callback', array( $this, 'insert_template_part_callback' ) );
@@ -433,7 +433,7 @@ class Botiga_Dashboard
                 $this->install_plugin($plugin_slug);
                 $this->activate_plugin($plugin_path);
 
-            } elseif ('inactive' === $this->get_plugin_status($plugin_path)) {
+            } elseif ('inactive' == $this->get_plugin_status($plugin_path)) {
 
                 $this->activate_plugin($plugin_path);
 
@@ -443,7 +443,7 @@ class Botiga_Dashboard
                 wp_send_json_success();
             }
 
-        } elseif ($plugin_type === 'deactivate') {
+        } elseif ($plugin_type == 'deactivate') {
 
             $this->deactivate_plugin($plugin_path);
 
@@ -657,7 +657,7 @@ class Botiga_Dashboard
 				'post_status'  => 'publish',
 			);
 
-            if( $page_builder === 'elementor' ) {
+            if( $page_builder == 'elementor' ) {
                 $params['meta_input'] = array(
                     '_elementor_edit_mode' => 'builder',
                     '_wp_page_template'    => 'elementor_canvas',
@@ -671,7 +671,7 @@ class Botiga_Dashboard
 			$post_title = $post[0]->post_title;
 		}
 
-        $action = $page_builder === 'elementor' ? 'elementor' : 'edit';
+        $action = $page_builder == 'elementor' ? 'elementor' : 'edit';
 
 		$edit_url = get_admin_url() . 'post.php?post=' . $post_id . '&action=' . $action;
 
