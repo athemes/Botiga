@@ -780,7 +780,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				array(
 					array(
 						'setting'  => 'color_forms_text',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-forms-text',
 						'unit'     => '',
 					),
@@ -792,25 +792,25 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					),
 					array(
 						'setting'  => 'color_forms_borders',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-forms-borders',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'color_forms_dividers',
-						'defaults' => '',
+						'defaults' => '#dddddd',
 						'name'     => '--bt-color-forms-dividers',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'color_forms_placeholder',
-						'defaults' => '',
+						'defaults' => '#848484',
 						'name'     => '--bt-color-forms-placeholder',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'content_cards_background',
-						'defaults' => '',
+						'defaults' => '#f2f2f2',
 						'name'     => '--bt-color-content-cards-bg',
 						'unit'     => '',
 					),
@@ -821,50 +821,80 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 						'unit'     => '',
 					),
 					array(
+						'setting'  => 'color_heading_1',
+						'defaults' => '#212121',
+						'name'     => '--bt-color-heading-1',
+						'unit'     => '',
+					),
+					array(
+						'setting'  => 'color_heading_2',
+						'defaults' => '#212121',
+						'name'     => '--bt-color-heading-2',
+						'unit'     => '',
+					),
+					array(
+						'setting'  => 'color_heading_3',
+						'defaults' => '#212121',
+						'name'     => '--bt-color-heading-3',
+						'unit'     => '',
+					),
+					array(
 						'setting'  => 'color_heading_4',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-heading-4',
 						'unit'     => '',
 					),
 					array(
+						'setting'  => 'color_heading_5',
+						'defaults' => '#212121',
+						'name'     => '--bt-color-heading-5',
+						'unit'     => '',
+					),
+					array(
+						'setting'  => 'color_heading_6',
+						'defaults' => '#212121',
+						'name'     => '--bt-color-heading-6',
+						'unit'     => '',
+					),
+					array(
 						'setting'  => 'color_body_text',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-body-text',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'color_link_default',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-link-default',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'color_link_hover',
-						'defaults' => '',
+						'defaults' => '#757575',
 						'name'     => '--bt-color-link-hover',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'button_color',
-						'defaults' => '',
+						'defaults' => '#FFF',
 						'name'     => '--bt-color-button',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'button_color_hover',
-						'defaults' => '',
+						'defaults' => '#FFF',
 						'name'     => '--bt-color-button-hover',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'button_background_color',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-button-bg',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'button_background_color_hover',
-						'defaults' => '',
+						'defaults' => '#757575',
 						'name'     => '--bt-color-button-bg-hover',
 						'unit'     => '',
 					),
@@ -876,11 +906,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_color_css( 'site_description_color', '', '.site-description' );
 			$css .= $this->get_color_css( 'color_link_default', '', 'a' );
 			$css .= $this->get_color_css( 'color_link_hover', '', 'a:hover, .wp-block-columns p a:hover,.widget a:hover' );
-			$css .= $this->get_color_css( 'color_heading_1', '', 'h1:not(.has-text-color)' );
-			$css .= $this->get_color_css( 'color_heading_2', '', 'h2:not(.has-text-color),.wp-block-search .wp-block-search__label' );
-			$css .= $this->get_color_css( 'color_heading_3', '', 'h3:not(.has-text-color)' );
-			$css .= $this->get_color_css( 'color_heading_5', '', 'h5:not(.has-text-color)' );
-			$css .= $this->get_color_css( 'color_heading_6', '', 'h6:not(.has-text-color)' );
 
 			//Header
 			$header_layout = get_theme_mod( 'header_layout_desktop', 'header_layout_1' );
@@ -1139,13 +1164,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				array(
 					array(
 						'setting'  => 'single_post_title_color',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-post-title',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'single_post_meta_color',
-						'defaults' => '',
+						'defaults' => '#666666',
 						'name'     => '--bt-color-post-meta',
 						'unit'     => '',
 					),
@@ -1156,19 +1181,19 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				array(
 					array(
 						'setting'  => 'loop_post_text_color',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-loop-post-text',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'loop_post_title_color',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-loop-post-title',
 						'unit'     => '',
 					),
 					array(
 						'setting'  => 'loop_post_meta_color',
-						'defaults' => '',
+						'defaults' => '#212121',
 						'name'     => '--bt-color-loop-post-meta',
 						'unit'     => '',
 					),
