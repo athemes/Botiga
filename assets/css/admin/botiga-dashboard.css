@@ -2488,10 +2488,6 @@
   min-width: 8px;
 }
 
-.botiga-dashboard-content-expand .botiga-dashboard-content-expand-list li a {
-  padding-left: 5px;
-}
-
 /* Free Vs Pro Table */
 .botiga-dashboard-freevspro-table__header {
   position: sticky;

@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 
             <div class="botiga-dashboard-license-wrapper">
                 <h2 class="bt-mb-10px"><?php echo esc_html__( 'Botiga Pro License', 'botiga' ); ?></h2>
-                <p class="bt-text-color-grey bt-mb-20px"><?php echo esc_html__( 'Activate your license key for Botiga Pro to get latest theme updates automatically updates right from your WordPress Dashboard.', 'botiga' ); ?> </p>
+                <p class="bt-text-color-grey bt-mb-20px"><?php echo esc_html__( 'Activate your license key for Botiga Pro to get the latest plugin updates automatically right from your WordPress Dashboard.', 'botiga' ); ?> </p>
                 <?php 
                 /**
                  * Hook 'botiga_pro_license_form'
@@ -51,13 +51,13 @@ if (!defined('ABSPATH')) {
                                 <?php 
                                 printf( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                     /* translators: 1: key icon */
-                                    esc_html__( 'In licenses section, click on the %s key icon. A license number will appear. Copy and paste the number here', 'botiga' ),
+                                    esc_html__( 'Under the Licenses tab, click on the %s key icon next to your product name. Copy and paste the key in the field above.', 'botiga' ),
                                     '<i>🔑</i>'
                                 ); ?>
                             </li>
                             <li>
                                 <?php echo botiga_dashboard_get_setting_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                                <?php echo esc_html__( 'Voilà! you have successfully unlock all premium features', 'botiga' ); ?>
+                                <?php echo esc_html__( 'Click the blue Activate button above. Congratulations! Your key is now activated.', 'botiga' ); ?>
                             </li>
                         </ul>
                     </div>
