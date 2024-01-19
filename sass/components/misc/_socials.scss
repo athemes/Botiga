@@ -2,13 +2,11 @@
     > .row {
         justify-content: space-between;
         align-items: center;
+        gap: 20px;
     }
     .botiga-share-box-items-wrapper {
         display: flex;
-        .botiga-share-box-item {
-            & + .botiga-share-box-item {
-                margin-left: 20px;
-            }
-        }
+        flex-wrap: wrap;
+        gap: 20px;
     }
 }
