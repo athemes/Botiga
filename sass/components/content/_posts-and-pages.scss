@@ -270,14 +270,14 @@
     > .row {
         justify-content: space-between;
         align-items: center;
+		gap: 20px;
     }
     .botiga-share-box-items-wrapper {
         display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
         .botiga-share-box-item {
 			height: 28px;
-            & + .botiga-share-box-item {
-                margin-left: 20px;
-            }
 			svg {
 				width: 28px;
 				height: 28px;

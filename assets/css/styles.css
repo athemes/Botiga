@@ -3808,20 +3808,20 @@ body.mobile-menu-visible:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 20px;
 }
 
 .botiga-share-box .botiga-share-box-items-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
 }
 
 .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item {
   height: 28px;
-}
-
-.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item + .botiga-share-box-item {
-  margin-left: 20px;
 }
 
 .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item svg {

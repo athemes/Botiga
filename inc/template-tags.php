@@ -260,7 +260,7 @@ if ( ! function_exists( 'botiga_single_post_share_box' ) ) :
 				'tooltip'   => esc_html__( 'Reddit', 'botiga' ),
 			),
 			'whatsapp'  => array(
-				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'whatsapp://send/?text={url}' ) ),
+				'url'       => str_replace( '{title}', $post_title, str_replace( '{url}', $post_url, 'https://api.whatsapp.com/send/?text={{url}}' ) ),
 				'tooltip'   => esc_html__( 'WhatsApp', 'botiga' ),
 			),
 			'pinterest'     => array(
