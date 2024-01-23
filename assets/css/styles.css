@@ -929,6 +929,7 @@ select:focus,
 select {
   width: 100%;
   border: 1px solid var(--bt-color-forms-borders, #212121);
+  font-family: inherit;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
