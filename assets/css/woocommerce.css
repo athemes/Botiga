@@ -410,6 +410,12 @@ table.woocommerce-product-attributes p {
 /**
  * Products
  */
+.wc-block-grid__product .wc-block-grid__product-price,
+.wc-block-grid__product .wc-block-grid__product-add-to-cart {
+  margin-left: inherit !important;
+  margin-right: inherit !important;
+}
+
 ul.wc-block-grid__products,
 ul.products {
   display: grid !important;
@@ -531,6 +537,13 @@ ul.products li.product .button {
   display: table;
   margin: 17px auto 0;
   line-height: 1;
+}
+
+ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title,
+ul.wc-block-grid__products li.product .wc-block-grid__product-title,
+ul.products li.wc-block-grid__product .wc-block-grid__product-title,
+ul.products li.product .wc-block-grid__product-title {
+  margin-bottom: 0;
 }
 
 ul.wc-block-grid__products li.wc-block-grid__product .wc-block-grid__product-title,
@@ -1098,7 +1111,7 @@ ul.products li.product-category mark {
 .product-equal-height ul.wc-block-grid__products li.product .variations_form,
 .product-equal-height ul.products li.wc-block-grid__product .variations_form,
 .product-equal-height ul.products li.product .variations_form {
-  margin-bottom: 7px;
+  margin-bottom: 15px;
 }
 
 .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .add_to_cart_button,
@@ -6298,6 +6311,7 @@ dl.variation p {
 }
 
 .botiga-product-swatches {
+  width: 100%;
   margin-bottom: 0 !important;
 }
 
