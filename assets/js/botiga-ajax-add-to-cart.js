@@ -56,6 +56,12 @@ botiga.single_ajax_add_to_cart = {
       step = qtyInput.attr('step') !== '' ? parseFloat(qtyInput.attr('step')) : 1,
       qtyVal = Math.floor((parseFloat(qtyInput.val()) - min) / step) * step + min;
 
+    // Empty.
+    if (qtyInput.val() === '') {
+      qtyInput.val(min);
+      return false;
+    }
+
     // Min.
     if (min && qtyVal < min) {
       qtyInput.val(min);
