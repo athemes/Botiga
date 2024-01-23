@@ -413,7 +413,6 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 					esc_html__( 'An extra HTML component', 'botiga' ),
 					esc_html__( 'A shortcode component', 'botiga' ),
 					esc_html__( 'A login button', 'botiga' ),
-					esc_html__( 'A Polylang/WPML language switcher', 'botiga' ),
 					esc_html__( 'Polylang/WPML language switcher component', 'botiga' )
 				),
 				'section'       => 'botiga_section_hb_wrapper',
