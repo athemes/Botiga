@@ -132,8 +132,7 @@ botiga.quickView = {
 	}
 
 }
-console.log(botiga);
+
 jQuery(document).ready(function () {
-	console.log(botiga);
-    botiga.quickView.init();
+	botiga.quickView.init();
 });
