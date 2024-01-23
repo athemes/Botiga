@@ -2627,6 +2627,28 @@ body.mobile-menu-visible:before {
           transform: translate3d(0, 15px, 0);
 }
 
+.botiga-footer-copyright-navigation.not-footer-builder {
+  display: block;
+}
+
+.botiga-footer-copyright-navigation.not-footer-builder ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.botiga-footer-copyright-navigation.not-footer-builder ul li {
+  padding-bottom: 0;
+}
+
+.botiga-footer-copyright-navigation.not-footer-builder ul li a {
+  padding: 0 10px;
+  text-decoration: none;
+}
+
 .header-elements:nth-child(1) ul li:first-child a,
 .footer-copyright-elements:nth-child(1) ul li:first-child a {
   padding-left: 0;

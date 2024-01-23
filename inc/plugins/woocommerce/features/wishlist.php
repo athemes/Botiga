@@ -29,9 +29,10 @@ function botiga_wishlist_button( $product = false, $do_echo = true  ) {
 		global $product; 
 	}
 
-	$product_id        = $product->get_id(); 
-	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
-	if( 'layout1' === $wishlist_layout ) {
+	$product_id          = $product->get_id(); 
+	$is_wishlist_enabled = Botiga_Modules::is_module_active( 'wishlist' );
+	$wishlist_layout     = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
+	if ( ! $is_wishlist_enabled || $is_wishlist_enabled && 'layout1' === $wishlist_layout ) {
 		return '';
 	}
 	$shop_product_wishlist_tooltip = get_theme_mod( 'shop_product_wishlist_tooltip', 0 );

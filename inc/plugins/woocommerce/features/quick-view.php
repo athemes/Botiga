@@ -42,7 +42,7 @@ function botiga_quick_view_scripts() {
 		botiga_quick_view_needed_scripts();
 	}
 }
-add_action( 'wp_enqueue_scripts', 'botiga_quick_view_scripts', 9 );
+add_action( 'wp_enqueue_scripts', 'botiga_quick_view_scripts', 11 );
 
 /**
  * Function to enqueue needed quick view scripts

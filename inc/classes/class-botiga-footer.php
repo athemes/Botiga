@@ -163,7 +163,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 									<?php 
 									foreach( $elements as $element ) {
-										echo wp_kses_post( call_user_func( array( $this, $element ), 'left' ) );
+										$content = call_user_func( array( $this, $element ), 'left' );
+
+										if( $content ) {
+											echo wp_kses_post( $content );
+										}
 									} ?>	
 								
 								</div>
@@ -171,7 +175,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 									<?php 
 									foreach( $elements as $element ) {
-										echo wp_kses_post( call_user_func( array( $this, $element ), 'right' ) );
+										$content = call_user_func( array( $this, $element ), 'right' );
+
+										if( $content ) {
+											echo wp_kses_post( $content );
+										}
 									} ?>
 
 								</div>
@@ -182,7 +190,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 									<?php 
 									foreach( $elements as $element ) {
-										echo wp_kses_post( call_user_func( array( $this, $element ), 'all' ) );
+										$content = call_user_func( array( $this, $element ), 'all' );
+
+										if( $content ) {
+											echo wp_kses_post( $content );
+										}
 									} ?>
 
 								</div>
@@ -284,7 +296,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 				return '';
 			} ?> 
 
-			<div class="botiga-footer-copyright-navigation">
+			<div class="botiga-footer-copyright-navigation not-footer-builder">
 				<?php
 				wp_nav_menu(
 					array(
