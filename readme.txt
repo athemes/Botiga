@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.1.8
+Version: 2.1.9
 Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 2.1.8
+Stable tag: 2.1.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,11 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 == Changelog ==
 = 2.1.9 =
 Fixed - Single Blog Posts: Font size customizer control not working.
+Fixed - Some header builder components are breaking the layout when WooCommerce plugin is deactivated.
+Fixed - Blog Posts: There’s a margin-top causing layout inconcistency.
+Fixed - h1 tag it's not following customize color options.
+Fixed - Sorting select is not following font-family defined from customizer.
+Fixed - Single Product Ajax Add To cart: Quantity accepting empty values.
 
 = 2.1.8 =
 Fixed - Payment Options: BACS isn’t styled in the order thank you page.
