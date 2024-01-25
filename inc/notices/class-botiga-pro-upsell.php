@@ -57,10 +57,12 @@ class Botiga_Pro_Upsell_Notice {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if( $hook_suffix === 'edit.php' && ! isset( $_GET[ 'post_type' ] ) ) {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if( $hook_suffix === 'edit.php' && ( isset( $_GET[ 'post_type' ] ) && $_GET[ 'post_type' ] !== 'product' ) ) {
 			return;
 		}
@@ -73,7 +75,7 @@ class Botiga_Pro_Upsell_Notice {
 			<p>
 				<?php
 					echo esc_html__(
-						'Botiga Pro is an all-in-one WooCommerce plugin with 40+ conversion-boosting features created specifically for the free Botiga theme. Reasons-to-buy lists, product trust badges, custom eCommerce templates, floating mini cart icons, size charts, and many more! Join the thousands of happy entrepreneurs who have already taken their Botiga stores to the next level.', 'botiga'
+						'Botiga Pro offers 40+ conversion-boosting features created specifically for the Botiga theme. Wishlists, size charts, advanced reviews, variation swatches, gallery styles, and many more! Join the thousands of happy entrepreneurs who have already taken their Botiga store to the next level.', 'botiga'
 					);
 				?>
 			</p>
@@ -89,7 +91,9 @@ class Botiga_Pro_Upsell_Notice {
 	 * Dismiss notice permanently
 	 */
 	public function dimiss_notice() {
-		if ( isset( $_GET['botiga_pro_upsell_notice_dismiss'] ) && '1' == $_GET['botiga_pro_upsell_notice_dismiss'] ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, Universal.Operators.StrictComparisons.LooseEqual
+		$notice_dismiss = isset( $_GET['botiga_pro_upsell_notice_dismiss'] ) && '1' == $_GET['botiga_pro_upsell_notice_dismiss'];
+		if ( $notice_dismiss ) { 
 			add_user_meta( get_current_user_id(), 'botiga_pro_upsell_notice_dismiss', 'true', true );
 		}
 	}

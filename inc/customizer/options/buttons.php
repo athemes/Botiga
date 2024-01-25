@@ -23,7 +23,7 @@ $wp_customize->add_setting(
 	'button_archive_tabs',
 	array(
 		'default'           => '',
-		'sanitize_callback'	=> 'esc_attr'
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control(
@@ -33,7 +33,7 @@ $wp_customize->add_control(
 		array(
 			'label'   => '',
 			'section' => 'botiga_section_buttons',
-			'controls_general' => json_encode(array(
+			'controls_general' => wp_json_encode(array(
 				'#customize-control-button_font_style',
 				'#customize-control-button_adobe_font',
 				'#customize-control-button_font',
@@ -45,7 +45,7 @@ $wp_customize->add_control(
 				'#customize-control-button_left_right_padding',
 				'#customize-control-button_border_radius',
 			)),
-			'controls_design'  => json_encode(array(
+			'controls_design'  => wp_json_encode(array(
 				'#customize-control-button_background',
 				'#customize-control-button',
 				'#customize-control-button_border',
@@ -100,7 +100,7 @@ $wp_customize->add_control(new Botiga_Typography_Custom_Control(
 			'font-family'   => 'button_custom_font',
 			'font-weight'   => 'button_custom_font_weight',
 		),
-		'active_callback' => 'botiga_button_font_library_custom_and_custom_style'
+		'active_callback' => 'botiga_button_font_library_custom_and_custom_style',
 	)
 ));
 
@@ -118,7 +118,7 @@ $wp_customize->add_control(new Botiga_Typography_Adobe_Control(
 	'button_adobe_font',
 	array(
 		'section'         => 'botiga_section_buttons',
-		'active_callback' => 'botiga_button_font_library_adobe_and_custom_style'
+		'active_callback' => 'botiga_button_font_library_adobe_and_custom_style',
 	)
 ));
 
@@ -144,7 +144,7 @@ $wp_customize->add_control(new Botiga_Typography_Control(
 			'orderby'        => 'alpha',
 			'disableRegular' => false,
 		),
-		'active_callback' => 'botiga_button_font_library_google_and_custom_style'
+		'active_callback' => 'botiga_button_font_library_google_and_custom_style',
 	)
 ));
 
@@ -179,9 +179,9 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 			'size_mobile'  => 'button_font_size_mobile',
 		),
 		'input_attrs' => array(
-			'min'	=> 0,
-			'max'	=> 50
-		)
+			'min'   => 0,
+			'max'   => 50,
+		),
 	)
 ));
 
@@ -205,7 +205,7 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 			'min'  => 0,
 			'max'  => 5,
 			'step' => 0.5,
-		)
+		),
 	)
 ));
 
@@ -238,7 +238,7 @@ $wp_customize->add_control(new Botiga_Text_Style_Control(
 $wp_customize->add_setting( 
 	'buttons_divider_0',
 	array(
-		'sanitize_callback' => 'esc_attr'
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control(
@@ -273,18 +273,18 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 	$wp_customize,
 	'button_top_bottom_padding',
 	array(
-		'label' 		=> esc_html__('Top/Bottom padding', 'botiga'),
-		'section' 		=> 'botiga_section_buttons',
-		'is_responsive'	=> 1,
-		'settings' 		=> array(
-			'size_desktop' 		=> 'button_top_bottom_padding_desktop',
-			'size_tablet' 		=> 'button_top_bottom_padding_tablet',
-			'size_mobile' 		=> 'button_top_bottom_padding_mobile',
+		'label'         => esc_html__('Top/Bottom padding', 'botiga'),
+		'section'       => 'botiga_section_buttons',
+		'is_responsive' => 1,
+		'settings'      => array(
+			'size_desktop'      => 'button_top_bottom_padding_desktop',
+			'size_tablet'       => 'button_top_bottom_padding_tablet',
+			'size_mobile'       => 'button_top_bottom_padding_mobile',
 		),
 		'input_attrs' => array(
-			'min'	=> 0,
-			'max'	=> 50
-		)
+			'min'   => 0,
+			'max'   => 50,
+		),
 	)
 ));
 
@@ -308,18 +308,18 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 	$wp_customize,
 	'button_left_right_padding',
 	array(
-		'label' 		=> esc_html__('Left/Right padding', 'botiga'),
-		'section' 		=> 'botiga_section_buttons',
-		'is_responsive'	=> 1,
-		'settings' 		=> array(
-			'size_desktop' 		=> 'button_left_right_padding_desktop',
-			'size_tablet' 		=> 'button_left_right_padding_tablet',
-			'size_mobile' 		=> 'button_left_right_padding_mobile',
+		'label'         => esc_html__('Left/Right padding', 'botiga'),
+		'section'       => 'botiga_section_buttons',
+		'is_responsive' => 1,
+		'settings'      => array(
+			'size_desktop'      => 'button_left_right_padding_desktop',
+			'size_tablet'       => 'button_left_right_padding_tablet',
+			'size_mobile'       => 'button_left_right_padding_mobile',
 		),
 		'input_attrs' => array(
-			'min'	=> 0,
-			'max'	=> 50
-		)
+			'min'   => 0,
+			'max'   => 50,
+		),
 	)
 ));
 
@@ -333,15 +333,15 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 	$wp_customize,
 	'button_border_radius',
 	array(
-		'label' 		=> esc_html__('Button radius', 'botiga'),
-		'section' 		=> 'botiga_section_buttons',
-		'is_responsive'	=> 0,
-		'settings' 		=> array(
-			'size_desktop' 		=> 'button_border_radius',
+		'label'         => esc_html__('Button radius', 'botiga'),
+		'section'       => 'botiga_section_buttons',
+		'is_responsive' => 0,
+		'settings'      => array(
+			'size_desktop'      => 'button_border_radius',
 		),
 		'input_attrs' => array(
-			'min'	=> 0,
-			'max'	=> 100
+			'min'   => 0,
+			'max'   => 100,
 		),
 	)
 ));
@@ -352,7 +352,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -360,7 +360,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#757575',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -384,7 +384,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -392,7 +392,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#FFF',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -416,7 +416,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -424,7 +424,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#757575',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(

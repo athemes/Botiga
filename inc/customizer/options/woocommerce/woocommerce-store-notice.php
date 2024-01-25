@@ -10,7 +10,7 @@ $wp_customize->add_setting(
 	'shop_store_notice_tabs',
 	array(
 		'default'           => '',
-		'sanitize_callback' => 'esc_attr'
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control(
@@ -20,17 +20,17 @@ $wp_customize->add_control(
 		array(
 			'label'            => '',
 			'section'          => 'woocommerce_store_notice',
-			'controls_general' => json_encode( array( 
+			'controls_general' => wp_json_encode( array( 
 				'#customize-control-woocommerce_demo_store_notice',
-				'#customize-control-woocommerce_demo_store'
+				'#customize-control-woocommerce_demo_store',
 			) ),
-			'controls_design'  => json_encode( array( 
+			'controls_design'  => wp_json_encode( array( 
 				'#customize-control-shop_store_notice_background_color',
 				'#customize-control-shop_store_notice_text_color',
 				'#customize-control-shop_store_notice_link_color',
-				'#customize-control-shop_store_notice_wrapper_padding'
+				'#customize-control-shop_store_notice_wrapper_padding',
 			) ),
-			'priority'         =>	-10
+			'priority'         =>   -10,
 		)
 	)
 );
@@ -44,7 +44,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#3d9cd2',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -52,9 +52,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_store_notice_background_color',
 		array(
-			'label'         	=> esc_html__( 'Background color', 'botiga' ),
-			'section'       	=> 'woocommerce_store_notice',
-			'priority'	 		=> 50
+			'label'             => esc_html__( 'Background color', 'botiga' ),
+			'section'           => 'woocommerce_store_notice',
+			'priority'          => 50,
 		)
 	)
 );
@@ -65,7 +65,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -73,9 +73,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_store_notice_text_color',
 		array(
-			'label'         	=> esc_html__( 'Text color', 'botiga' ),
-			'section'       	=> 'woocommerce_store_notice',
-			'priority'	 		=> 52
+			'label'             => esc_html__( 'Text color', 'botiga' ),
+			'section'           => 'woocommerce_store_notice',
+			'priority'          => 52,
 		)
 	)
 );
@@ -86,7 +86,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -94,7 +94,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#757575',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -108,7 +108,7 @@ $wp_customize->add_control(
                 'normal' => 'shop_store_notice_link_color',
                 'hover'  => 'shop_store_notice_link_color_hover',
             ),
-            'priority' => 54
+            'priority' => 54,
         )
     )
 );
@@ -119,7 +119,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -127,7 +127,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -135,7 +135,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_control( 
@@ -143,23 +143,23 @@ $wp_customize->add_control(
         $wp_customize, 
         'shop_store_notice_wrapper_padding',
         array(
-            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
-            'section'         	=> 'woocommerce_store_notice',
+            'label'             => __( 'Wrapper Padding', 'botiga' ),
+            'section'           => 'woocommerce_store_notice',
             'sides'             => array(
                 'top'    => true,
                 'right'  => true,
                 'bottom' => true,
-                'left'   => true
+                'left'   => true,
             ),
             'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
             'link_values_toggle' => true,
-            'is_responsive'   	 => true,
-            'settings'        	 => array(
+            'is_responsive'      => true,
+            'settings'           => array(
                 'desktop' => 'shop_store_notice_wrapper_padding_desktop',
                 'tablet'  => 'shop_store_notice_wrapper_padding_tablet',
-                'mobile'  => 'shop_store_notice_wrapper_padding_mobile'
+                'mobile'  => 'shop_store_notice_wrapper_padding_mobile',
             ),
-            'priority'	      	 => 56
+            'priority'           => 56,
         )
     )
 );

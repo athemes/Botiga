@@ -30,7 +30,6 @@ function botiga_single_product_tabs_wc_hooks() {
             }
 		}
 	}
-
 }
 add_action( 'wp', 'botiga_single_product_tabs_wc_hooks' );
 
@@ -43,14 +42,14 @@ add_filter( 'woocommerce_product_description_heading', '__return_false' );
 /**
  * Layout single product
  */
-function botiga_single_product_tabs_wc_single_layout( $class ) {
+function botiga_single_product_tabs_wc_single_layout( $tabs_class ) {
 	$single_product_tabs_layout    = get_theme_mod( 'single_product_tabs_layout', 'style1' );
 	$single_product_tabs_alignment = get_theme_mod( 'single_product_tabs_alignment', 'left' );
-	$tabs_position 				   = get_theme_mod( 'single_product_tabs_position', 'default' );
+	$tabs_position                 = get_theme_mod( 'single_product_tabs_position', 'default' );
 
-	$class .= ' botiga-tabs-' . $single_product_tabs_layout . ' botiga-tabs-align-' . $single_product_tabs_alignment . ' botiga-tabs-position-' . $tabs_position;
+	$tabs_class .= ' botiga-tabs-' . $single_product_tabs_layout . ' botiga-tabs-align-' . $single_product_tabs_alignment . ' botiga-tabs-position-' . $tabs_position;
 
-    return $class;
+    return $tabs_class;
 }
 
 /**
@@ -72,7 +71,9 @@ function botiga_single_product_tabs_output() {
 function botiga_woocommerce_output_product_data_tabs() {
     
     /**
-     * Filter tabs and allow third parties to add their own.
+     * Hook 'woocommerce_product_tabs'
+     *
+     * @since 1.0.0
      */
     $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
@@ -83,7 +84,13 @@ function botiga_woocommerce_output_product_data_tabs() {
                 <?php foreach ( $product_tabs as $key => $product_tab ) : ?>
                     <li class="<?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
                         <a href="#tab-<?php echo esc_attr( $key ); ?>">
-                            <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                            <?php 
+                            /**
+                             * Hook "woocommerce_product_' . $key . '_tab_title"
+                             *
+                             * @since 1.0.0
+                             */
+                            echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                         </a>
                     </li>
                 <?php endforeach; ?>
@@ -98,7 +105,13 @@ function botiga_woocommerce_output_product_data_tabs() {
                 </div>
             <?php endforeach; ?>
 
-            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+            <?php 
+            /**
+             * Hook 'woocommerce_product_after_tabs'
+             *
+             * @since 1.0.0
+             */
+            do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
         </div>
 
     <?php endif;
@@ -111,7 +124,9 @@ function botiga_single_product_tabs_as_accordion_output() {
     $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 1 );
 
     /**
-     * Filter tabs and allow third parties to add their own.
+     * Hook 'woocommerce_product_tabs'
+     *
+     * @since 1.0.0
      */
     $product_tabs = apply_filters( 'woocommerce_product_tabs', array() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
@@ -123,7 +138,13 @@ function botiga_single_product_tabs_as_accordion_output() {
             foreach ( $product_tabs as $key => $product_tab ) : ?>
             <div class="botiga-accordion__item">
                 <a href="#" class="botiga-accordion__toggle botiga-collapse-toggle<?php echo ( $counter == 0 ? ' active' : '' ); ?>" data-botiga-collapse="{'enable': true, 'id': 'botiga-accordion-<?php echo esc_attr( $key ); ?>', 'options': { 'oneAtTime': <?php echo ( $accordion_one_at_time ? 'true' : 'false' ); ?>, 'oneAtTimeParentSelector': '.botiga-accordion' }}">
-                    <?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+                    <?php 
+                    /**
+                     * Hook "woocommerce_product_' . $key . '_tab_title"
+                     *
+                     * @since 1.0.0
+                     */
+                    echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
                 </a>
                 <div id="botiga-accordion-<?php echo esc_attr( $key ); ?>" class="botiga-accordion__body botiga-collapse<?php echo ( $counter == 0 ? ' active' : '' ); ?>">
                     <div class="botiga-accordion__body-content botiga-collapse__content">
@@ -135,10 +156,16 @@ function botiga_single_product_tabs_as_accordion_output() {
                 </div>
             </div>
             <?php 
-            $counter++;
+            ++$counter;
             endforeach; ?>
 
-            <?php do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
+            <?php 
+            /**
+             * Hook 'woocommerce_product_after_tabs'
+             *
+             * @since 1.0.0
+             */
+            do_action( 'woocommerce_product_after_tabs' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>
         </div>
 
     <?php endif; ?>

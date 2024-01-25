@@ -16,7 +16,6 @@ function botiga_sanitize_select( $input, $setting ){
     $choices = $setting->manager->get_control( $setting->id )->choices;
                       
     return ( array_key_exists( $input, $choices ) ? $input : $setting->default );                
-      
 }
 
 /**
@@ -49,7 +48,7 @@ function botiga_sanitize_blog_meta_elements( $input ) {
     $sanitized = array();
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, array( 'post_date', 'post_categories', 'post_author', 'post_comments' ), true ) ) {
+        if ( in_array( $sub_value, array( 'post_date', 'post_categories', 'post_author', 'post_comments' ) ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -61,7 +60,7 @@ function botiga_sanitize_single_meta_elements( $input ) {
     $sanitized = array();
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, array( 'botiga_posted_on', 'botiga_posted_by', 'botiga_post_categories', 'botiga_entry_comments', 'botiga_post_reading_time' ), true ) ) {
+        if ( in_array( $sub_value, array( 'botiga_posted_on', 'botiga_posted_by', 'botiga_post_categories', 'botiga_entry_comments', 'botiga_post_reading_time' ) ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -77,7 +76,7 @@ function botiga_sanitize_header_components( $input ) {
     $elements   = array_keys( botiga_header_elements() );
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -90,7 +89,7 @@ function botiga_sanitize_header_components_layout_7_8( $input ) {
     $elements   = array_keys( botiga_header_elements_layout_7_8() );
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -106,7 +105,7 @@ function botiga_sanitize_mobile_header_components( $input ) {
     $elements   = array_keys( botiga_mobile_header_elements() );
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -122,7 +121,7 @@ function botiga_sanitize_mobile_offcanvas_header_components( $input ) {
     $elements   = array_keys( botiga_mobile_offcanvas_header_elements() );
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -135,10 +134,16 @@ function botiga_sanitize_mobile_offcanvas_header_components( $input ) {
 function botiga_sanitize_product_loop_components( $input ) {
     $input      = (array) $input;
     $sanitized  = array();
+
+    /**
+     * Hook 'botiga_sanitize_product_loop_components'
+     *
+     * @since 1.0.0
+     */
     $elements   = apply_filters( 'botiga_sanitize_product_loop_components', array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_rating', 'woocommerce_template_loop_price', 'botiga_loop_product_category', 'botiga_loop_product_description' ) );
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -154,7 +159,7 @@ function botiga_sanitize_single_product_components( $input ) {
     $elements   = botiga_get_default_single_product_components();
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -169,7 +174,7 @@ function botiga_sanitize_single_add_to_cart_elements( $input ) {
     $sanitized = array();
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, array( 'botiga_sticky_add_to_cart_product_image', 'botiga_sticky_add_to_cart_product_title', 'botiga_single_product_price', 'botiga_sticky_add_to_cart_product_addtocart' ), true ) ) {
+        if ( in_array( $sub_value, array( 'botiga_sticky_add_to_cart_product_image', 'botiga_sticky_add_to_cart_product_title', 'botiga_single_product_price', 'botiga_sticky_add_to_cart_product_addtocart' ) ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -184,7 +189,7 @@ function botiga_sanitize_footer_copyright_elements( $input ) {
     $sanitized = array();
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, array( 'footer_credits', 'footer_social_profiles', 'footer_payment_icons', 'footer_navigation_menu', 'footer_html', 'footer_shortcode' ), true ) ) {
+        if ( in_array( $sub_value, array( 'footer_credits', 'footer_social_profiles', 'footer_payment_icons', 'footer_navigation_menu', 'footer_html', 'footer_shortcode' ) ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -200,7 +205,7 @@ function botiga_sanitize_topbar_components( $input ) {
     $elements   = array_keys( botiga_topbar_elements() );
 
     foreach ( $input as $sub_value ) {
-        if ( in_array( $sub_value, $elements, true ) ) {
+        if ( in_array( $sub_value, $elements ) ) {
             $sanitized[] = $sub_value;
         }
     }
@@ -244,8 +249,7 @@ function botiga_sanitize_hex_rgba( $input, $setting ) {
 
     if ( false === strpos( $input, 'rgb' ) ) {
         $input = sanitize_hex_color( $input );
-    } else {
-        if ( false === strpos( $input, 'rgba' ) ) {
+    } elseif ( false == strpos( $input, 'rgba' ) ) {
             // Sanitize as RGB color
             $input = str_replace( ' ', '', $input );
             sscanf( $input, 'rgb(%d,%d,%d)', $red, $green, $blue );
@@ -256,7 +260,6 @@ function botiga_sanitize_hex_rgba( $input, $setting ) {
             $input = str_replace( ' ', '', $input );
             sscanf( $input, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
             $input = 'rgba(' . botiga_in_range( $red, 0, 255 ) . ',' . botiga_in_range( $green, 0, 255 ) . ',' . botiga_in_range( $blue, 0, 255 ) . ',' . botiga_in_range( $alpha, 0, 1 ) . ')';
-        }
     }
     return $input;
 }
@@ -294,10 +297,10 @@ function botiga_google_fonts_sanitize( $input ) {
         foreach ( $val as $key => $value ) {
             $val[$key] = sanitize_text_field( $value );
         }
-        $input = json_encode( $val );
+        $input = wp_json_encode( $val );
     }
     else {
-        $input = json_encode( sanitize_text_field( $val ) );
+        $input = wp_json_encode( sanitize_text_field( $val ) );
     }
     return $input;
 }

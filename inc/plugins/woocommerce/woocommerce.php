@@ -18,7 +18,7 @@
  */
 function botiga_woocommerce_setup() {
 
-	$enable_zoom 	= get_theme_mod( 'single_zoom_effects', 1 );
+	$enable_zoom    = get_theme_mod( 'single_zoom_effects', 1 );
 	$enable_gallery = get_theme_mod( 'single_gallery_slider', 1 );
 
 	add_theme_support(
@@ -32,7 +32,7 @@ function botiga_woocommerce_setup() {
 				'default_columns' => 3,
 				'min_columns'     => 1,
 				'max_columns'     => 4,
-			)
+			),
 		)
 	);
 	
@@ -178,7 +178,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
  */
 function botiga_wc_archive_layout() {
 
-	$archive_sidebar 	    = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
+	$archive_sidebar        = get_theme_mod( 'shop_archive_sidebar', 'no-sidebar' );
 	$shop_categories_layout = get_theme_mod( 'shop_categories_layout', 'layout1' );
 	$shop_archive_sidebar_filter_in_desktop = get_theme_mod( 'shop_archive_sidebar_filter_in_desktop', 1 );
 
@@ -198,7 +198,7 @@ function botiga_wc_archive_layout() {
 
 	$archive_sidebar .= ' product-category-item-' . $shop_categories_layout;
 	
-	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );		
+	$layout = get_theme_mod( 'shop_archive_layout', 'product-grid' );       
 
 	return $archive_sidebar . ' ' . $layout;
 }
@@ -289,7 +289,7 @@ function botiga_wc_hooks() {
 			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 	
-			$defaults 	= botiga_get_default_single_product_components();
+			$defaults   = botiga_get_default_single_product_components();
 			$components = get_theme_mod( 'single_product_elements_order', $defaults );
 
 			foreach ( $components as $component ) {
@@ -316,8 +316,8 @@ function botiga_wc_hooks() {
 	} );
 
 	//Results and sorting
-	$shop_results_count 	= get_theme_mod( 'shop_results_count', 1 );
-	$shop_product_sorting 	= get_theme_mod( 'shop_product_sorting', 1 );
+	$shop_results_count     = get_theme_mod( 'shop_results_count', 1 );
+	$shop_product_sorting   = get_theme_mod( 'shop_product_sorting', 1 );
 
 	if ( !$shop_product_sorting ) {
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
@@ -348,7 +348,6 @@ function botiga_wc_hooks() {
 			echo '<div class="sidebar-open-wrapper'. ( $text ? ' has-text' : '' ) .'">';
 			echo '    <a href="#" role="button" class="sidebar-open" onclick="botiga.toggleClass.init(event, this, \'sidebar-slide-open\');" data-botiga-selector=".sidebar-slide+.widget-area" data-botiga-toggle-class="show">'. $icon . esc_html( $text ) .'</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
-			
 		}, 19 );
 	}
 
@@ -361,7 +360,6 @@ function botiga_wc_hooks() {
 			echo '<div class="cart-totals-sticky"></div>'; 
 		}, 999 );
 	}
-
 }
 add_action( 'wp', 'botiga_wc_hooks' );
 
@@ -393,6 +391,11 @@ function botiga_shop_loop_product_title() {
 	the_title( '<h2 class="woocommerce-loop-product__title"><a class="botiga-wc-loop-product__title" href="'. esc_url( get_the_permalink( $post->ID ) ) .'">', '</a></h2>' );
 	$the_title = ob_get_clean();
 
+	/**
+	 * Hook 'botiga_shop_loop_product_title'
+	 *
+	 * @since 1.0.0
+	 */
 	echo wp_kses_post( apply_filters( 'botiga_shop_loop_product_title', $the_title, $post ) );
 }
 
@@ -459,8 +462,14 @@ if ( ! function_exists( 'botiga_woocommerce_wrapper_before' ) ) {
 	 * @return void
 	 */
 	function botiga_woocommerce_wrapper_before() {
+		/**
+		 * Hook 'botiga_content_class'
+		 *
+		 * @since 1.0.0
+		 */
+		$content_class = apply_filters( 'botiga_content_class', '' );
 		?>
-			<main id="primary" class="site-main <?php echo esc_attr( apply_filters( 'botiga_content_class', '' ) ); ?>">
+			<main id="primary" class="site-main <?php echo esc_attr( $content_class ); ?>">
 		<?php
 	}
 }

@@ -929,6 +929,7 @@ select:focus,
 select {
   width: 100%;
   border: 1px solid var(--bt-color-forms-borders, #212121);
+  font-family: inherit;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -2627,6 +2628,28 @@ body.mobile-menu-visible:before {
           transform: translate3d(0, 15px, 0);
 }
 
+.botiga-footer-copyright-navigation.not-footer-builder {
+  display: block;
+}
+
+.botiga-footer-copyright-navigation.not-footer-builder ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.botiga-footer-copyright-navigation.not-footer-builder ul li {
+  padding-bottom: 0;
+}
+
+.botiga-footer-copyright-navigation.not-footer-builder ul li a {
+  padding: 0 10px;
+  text-decoration: none;
+}
+
 .header-elements:nth-child(1) ul li:first-child a,
 .footer-copyright-elements:nth-child(1) ul li:first-child a {
   padding-left: 0;
@@ -3534,8 +3557,10 @@ body.mobile-menu-visible:before {
   margin-bottom: 120px;
 }
 
-.single-post .content-wrapper {
-  margin-top: 120px;
+@media (min-width: 1025px) {
+  .single-post .content-wrapper {
+    margin-top: 120px;
+  }
 }
 
 .site-main {
@@ -3621,7 +3646,7 @@ body.mobile-menu-visible:before {
 }
 
 .single .entry-meta a {
-  color: var(--bt-color-post-meta, #212121);
+  color: var(--bt-color-post-meta, #666666);
 }
 
 .single .entry-meta-above {
@@ -3630,6 +3655,10 @@ body.mobile-menu-visible:before {
 
 .single .entry-meta-below {
   margin-top: 8px;
+}
+
+.single.single-post .entry-header .entry-title {
+  font-size: var(--bt-font-size-post-title, 32px);
 }
 
 .entry-meta {
@@ -3802,20 +3831,20 @@ body.mobile-menu-visible:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 20px;
 }
 
 .botiga-share-box .botiga-share-box-items-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
 }
 
 .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item {
   height: 28px;
-}
-
-.botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item + .botiga-share-box-item {
-  margin-left: 20px;
 }
 
 .botiga-share-box .botiga-share-box-items-wrapper .botiga-share-box-item svg {
@@ -4785,6 +4814,7 @@ input.wc-block-components-price-slider__range-input {
 .wp-block-search .wp-block-search__label {
   font-weight: 600;
   margin-bottom: 15px;
+  color: var(--bt-color-heading-2, #212121);
 }
 
 .wp-block-search .wp-block-search__button {

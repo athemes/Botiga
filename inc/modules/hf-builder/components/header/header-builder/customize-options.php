@@ -39,7 +39,7 @@ $wp_customize->add_control(
         array(
             'label' 				=> '',
             'section'       		=> 'botiga_section_hb_wrapper',
-            'controls_general'		=> json_encode(
+            'controls_general'		=> wp_json_encode(
 				array_merge(
 					array(
 						'#customize-control-botiga_section_hb_wrapper__header_builder_goto_sections',
@@ -49,7 +49,7 @@ $wp_customize->add_control(
 					array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
 				)
             ),
-            'controls_design'		=> json_encode(
+            'controls_design'		=> wp_json_encode(
 				array(
 					'#customize-control-botiga_section_hb_wrapper__header_builder_background_color',
 					'#customize-control-botiga_section_hb_wrapper__header_builder_divider2',
@@ -413,7 +413,6 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 					esc_html__( 'An extra HTML component', 'botiga' ),
 					esc_html__( 'A shortcode component', 'botiga' ),
 					esc_html__( 'A login button', 'botiga' ),
-					esc_html__( 'A Polylang/WPML language switcher', 'botiga' ),
 					esc_html__( 'Polylang/WPML language switcher component', 'botiga' )
 				),
 				'section'       => 'botiga_section_hb_wrapper',

@@ -4,6 +4,7 @@
  * jQuery Dependant: true
  * 
  */
+
 'use strict';
 
 var botiga = botiga || {};
@@ -13,8 +14,8 @@ botiga.single_ajax_add_to_cart = {
     jQuery(document).on('click', '.single_add_to_cart_button', function (e) {
       e.preventDefault();
       var $button = jQuery(this),
-          $form = $button.closest('form.cart'),
-          data = {};
+        $form = $button.closest('form.cart'),
+        data = {};
       data['add-to-cart'] = $button.val();
       data = $form.serializeArray().reduce(function (obj, item) {
         obj[item.name] = item.value;
@@ -28,17 +29,14 @@ botiga.single_ajax_add_to_cart = {
           if (!response) {
             return;
           }
-
           if (response.error && response.product_url) {
             window.location = response.product_url;
             return;
           }
-
           if (wc_add_to_cart_params.cart_redirect_after_add === 'yes') {
             window.location = wc_add_to_cart_params.cart_url;
             return;
           }
-
           jQuery(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $button]);
           jQuery('.woocommerce-error, .woocommerce-message, .woocommerce-info').remove();
           jQuery('.woocommerce-notices-wrapper').append(response.fragments.notices);
@@ -50,27 +48,31 @@ botiga.single_ajax_add_to_cart = {
   },
   quantityValidation: function quantityValidation() {
     var qtyInput = jQuery(this);
-
     if (!qtyInput.length) {
       return false;
     }
-
     var min = qtyInput.attr('min') !== '' ? parseFloat(qtyInput.attr('min')) : false,
-        max = qtyInput.attr('max') !== '' ? parseFloat(qtyInput.attr('max')) : false,
-        step = qtyInput.attr('step') !== '' ? parseFloat(qtyInput.attr('step')) : 1,
-        qtyVal = Math.floor((parseFloat(qtyInput.val()) - min) / step) * step + min; // Min.
+      max = qtyInput.attr('max') !== '' ? parseFloat(qtyInput.attr('max')) : false,
+      step = qtyInput.attr('step') !== '' ? parseFloat(qtyInput.attr('step')) : 1,
+      qtyVal = Math.floor((parseFloat(qtyInput.val()) - min) / step) * step + min;
 
+    // Empty.
+    if (qtyInput.val() === '') {
+      qtyInput.val(min);
+      return false;
+    }
+
+    // Min.
     if (min && qtyVal < min) {
       qtyInput.val(min);
       return false;
-    } // Max.
+    }
 
-
+    // Max.
     if (max && qtyVal > max) {
       qtyInput.val(max);
       return false;
     }
-
     qtyInput.val(qtyVal);
   }
 };

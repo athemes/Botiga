@@ -41,5 +41,4 @@ class Botiga_Color_Group extends WP_Customize_Control {
 			</div>
 		<?php 
 	}
-
 }

@@ -10,7 +10,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 		/**
 		 * Instance
-		 */		
+		 */     
 		private static $instance;
 
 		/**
@@ -18,7 +18,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -29,16 +29,16 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		public function __construct() {
 			add_action( 'botiga_footer', array( $this, 'footer_widgets' ), 9 );
 			add_action( 'botiga_footer', array( $this, 'footer_markup' ) );
-			add_action( 'botiga_footer_after', array( $this, 'scroll_to_top') );
+			add_action( 'botiga_footer_after', array( $this, 'scroll_to_top' ) );
 		}
 
 		/**
 		 * Widgets
 		 */
 		public function footer_widgets() {
-			$container 	= get_theme_mod( 'footer_container', 'container' );
-			$layout 	= get_theme_mod( 'footer_widgets', 'col3' );
-			$alignment 	= get_theme_mod( 'footer_widgets_alignment', 'top' );
+			$container  = get_theme_mod( 'footer_container', 'container' );
+			$layout     = get_theme_mod( 'footer_widgets', 'col3' );
+			$alignment  = get_theme_mod( 'footer_widgets_alignment', 'top' );
 			$visibility = get_theme_mod( 'footer_widgets_visibility', 'all' );
 
 			if ( !is_active_sidebar( 'footer-1' ) || 'disabled' === $layout ) {
@@ -49,8 +49,8 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 				case 'col4':
 				case 'col4-bigleft':
-				case 'col4-bigright':	
-					$columns 	= 'col-3';
+				case 'col4-bigright':   
+					$columns    = 'col-3';
 					$column_no  = 4;
 					break;
 
@@ -76,11 +76,23 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 			?>
 
-			<?php do_action( 'botiga_before_footer_widgets' ); ?>
+			<?php 
+			/**
+			 * Hook 'botiga_before_footer_widgets'
+			 * 
+			 * @since 1.0.0
+			 */
+			do_action( 'botiga_before_footer_widgets' ); ?>
 
 			<div class="footer-widgets visibility-<?php echo esc_attr( $visibility ); ?>">
 
-				<?php do_action( 'botiga_footer_widgets_content_start' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_footer_widgets_content_start'
+				 * 
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_footer_widgets_content_start' ); ?>
 
 				<div class="<?php echo esc_attr( $container ); ?>">
 					<div class="footer-widgets-grid <?php echo esc_attr( $layout ); ?> align-<?php echo esc_attr( $alignment ); ?>">
@@ -94,11 +106,23 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 					</div>
 				</div>
 
-				<?php do_action( 'botiga_footer_widgets_content_end' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_footer_widgets_content_end'
+				 * 
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_footer_widgets_content_end' ); ?>
 
 			</div>
 			
-			<?php do_action( 'botiga_after_footer_widgets' ); ?>
+			<?php 
+			/**
+			 * Hook 'botiga_after_footer_widgets'
+			 * 
+			 * @since 1.0.0
+			 */
+			do_action( 'botiga_after_footer_widgets' ); ?>
 
 			<?php
 		}
@@ -107,16 +131,28 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 		 * Markup for the footer
 		 */
 		public function footer_markup() {
-			$layout 	= get_theme_mod( 'footer_copyright_layout', 'col2' );
-			$container 	= get_theme_mod( 'footer_credits_container', 'container' );
+			$layout     = get_theme_mod( 'footer_copyright_layout', 'col2' );
+			$container  = get_theme_mod( 'footer_credits_container', 'container' );
 			$elements   = get_theme_mod( 'footer_copyright_elements', array( 'footer_credits', 'footer_social_profiles' ) );
 			?>
 
-			<?php do_action( 'botiga_before_footer_copyright' ); ?>
+			<?php 
+			/**
+			 * Hook 'botiga_before_footer_copyright'
+			 * 
+			 * @since 1.0.0
+			 */
+			do_action( 'botiga_before_footer_copyright' ); ?>
 
 			<footer id="colophon" class="site-footer" <?php botiga_schema( 'footer' ); ?>>
 
-				<?php do_action( 'botiga_footer_copyright_content_start' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_footer_copyright_content_start'
+				 * 
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_footer_copyright_content_start' ); ?>
 
 				<div class="<?php echo esc_attr( $container ); ?>">
 					<div class="site-info">
@@ -127,7 +163,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 									<?php 
 									foreach( $elements as $element ) {
-										echo wp_kses_post( call_user_func( array( $this, $element ), 'left' ) );
+										$content = call_user_func( array( $this, $element ), 'left' );
+
+										if( $content ) {
+											echo wp_kses_post( $content );
+										}
 									} ?>	
 								
 								</div>
@@ -135,7 +175,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 									<?php 
 									foreach( $elements as $element ) {
-										echo wp_kses_post( call_user_func( array( $this, $element ), 'right' ) );
+										$content = call_user_func( array( $this, $element ), 'right' );
+
+										if( $content ) {
+											echo wp_kses_post( $content );
+										}
 									} ?>
 
 								</div>
@@ -146,7 +190,11 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 
 									<?php 
 									foreach( $elements as $element ) {
-										echo wp_kses_post( call_user_func( array( $this, $element ), 'all' ) );
+										$content = call_user_func( array( $this, $element ), 'all' );
+
+										if( $content ) {
+											echo wp_kses_post( $content );
+										}
 									} ?>
 
 								</div>
@@ -156,11 +204,23 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 					</div>
 				</div><!-- .site-info -->
 
-				<?php do_action( 'botiga_footer_copyright_content_end' ); ?>
+				<?php 
+				/**
+				 * Hook 'botiga_footer_copyright_content_end'
+				 * 
+				 * @since 1.0.0
+				 */
+				do_action( 'botiga_footer_copyright_content_end' ); ?>
 
 			</footer><!-- #colophon -->
 
-			<?php do_action( 'botiga_after_footer_copyright' ); ?>
+			<?php 
+			/**
+			 * Hook 'botiga_after_footer_copyright'
+			 * 
+			 * @since 1.0.0
+			 */
+			do_action( 'botiga_after_footer_copyright' ); ?>
 
 			<?php
 		}
@@ -176,10 +236,10 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 			}
 
 			/* translators: %1$1s, %2$2s theme copyright tags*/
-			$credits 	= get_theme_mod( 'footer_credits', sprintf( esc_html__( '%1$1s. Proudly powered by %2$2s', 'botiga' ), '{copyright} {year} {site_title}', '{theme_author}' ) );
+			$credits    = get_theme_mod( 'footer_credits', sprintf( esc_html__( '%1$1s. Proudly powered by %2$2s', 'botiga' ), '{copyright} {year} {site_title}', '{theme_author}' ) );
 
-			$tags 		= array( '{theme_author}', '{site_title}', '{copyright}', '{year}' );
-			$replace 	= array( '<a rel="nofollow" href="https://athemes.com/theme/botiga/">' . esc_html__( 'Botiga', 'botiga' ) . '</a>', get_bloginfo( 'name' ), '&copy;', date('Y') );
+			$tags       = array( '{theme_author}', '{site_title}', '{copyright}', '{year}' );
+			$replace    = array( '<a rel="nofollow" href="https://athemes.com/theme/botiga/">' . esc_html__( 'Botiga', 'botiga' ) . '</a>', get_bloginfo( 'name' ), '&copy;', gmdate('Y') );
 
 			// White Label
 			if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
@@ -187,7 +247,7 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 				$replace[0] = '<a rel="nofollow" href="'. esc_url( $awl_data[ 'awl_agency_url' ] ) .'">' . esc_html( $awl_data[ 'awl_agency_name' ] ) . '</a>';
 			}
 
-			$credits 	= str_replace( $tags, $replace, $credits );
+			$credits    = str_replace( $tags, $replace, $credits );
 
 			return '<div class="botiga-credits">' . $credits . '</div>';
 		}
@@ -236,13 +296,13 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 				return '';
 			} ?> 
 
-			<div class="botiga-footer-copyright-navigation">
+			<div class="botiga-footer-copyright-navigation not-footer-builder">
 				<?php
 				wp_nav_menu(
 					array(
 						'theme_location' => 'footer-copyright-menu',
 						'menu_id'        => 'footer-copyright-menu',
-						'depth'			 => 1
+						'depth'          => 1,
 					)
 				); ?>
 			</div>
@@ -296,17 +356,17 @@ if ( !class_exists( 'Botiga_Footer' ) ) :
 				return;
 			}
 
-			$type 		= get_theme_mod( 'scrolltop_type', 'icon' );			
-			$text 		= get_theme_mod( 'scrolltop_text', esc_html__( 'Back to top', 'botiga' ) );	
-			$icon		= get_theme_mod( 'scrolltop_icon', 'icon1' );
+			$type       = get_theme_mod( 'scrolltop_type', 'icon' );            
+			$text       = get_theme_mod( 'scrolltop_text', esc_html__( 'Back to top', 'botiga' ) ); 
+			$icon       = get_theme_mod( 'scrolltop_icon', 'icon1' );
 			$visibility = get_theme_mod( 'scrolltop_visibility', 'all' );
-			$position 	= get_theme_mod( 'scrolltop_position', 'right' );
+			$position   = get_theme_mod( 'scrolltop_position', 'right' );
 
 			echo '<div class="back-to-top visibility-' . esc_attr( $visibility ) . ' position-' . esc_attr( $position ) . '">';
 			if ( 'text' === $type ) {
 				echo '<span>' . esc_html( $text ) . '</span>';
 			}
-			echo 	'<i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-btt-' . $icon, false ) . '</i>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo    '<i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-btt-' . $icon, false ) . '</i>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 		}
 	}

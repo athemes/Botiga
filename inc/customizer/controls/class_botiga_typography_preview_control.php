@@ -60,7 +60,7 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 				}
 			}
 
-		} else if ( $library === 'adobe' && isset( $this->options['adobe_font'] ) ) {
+		} elseif ( $library == 'adobe' && isset( $this->options['adobe_font'] ) ) {
 
 			$value = $this->manager->get_setting( $this->options['adobe_font'] )->value();
 
@@ -74,7 +74,7 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 				}
 			}
 
-		} else if ( $library === 'custom' && isset( $this->options['custom_font'] ) ) {
+		} elseif ( $library == 'custom' && isset( $this->options['custom_font'] ) ) {
 
 			$value = $this->manager->get_setting( $this->options['custom_font'] )->value();
 
@@ -128,7 +128,7 @@ class Botiga_Typography_Preview_Control extends WP_Customize_Control {
 		}
 
 	?>
-		<div class="botiga-typography-preview" data-options="<?php echo esc_attr( json_encode( $this->options ) ); ?>" style="<?php echo esc_attr( $styles ); ?>">Aa</div>
+		<div class="botiga-typography-preview" data-options="<?php echo esc_attr( wp_json_encode( $this->options ) ); ?>" style="<?php echo esc_attr( $styles ); ?>">Aa</div>
 	<?php
 	}
 }

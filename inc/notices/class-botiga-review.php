@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Class to display the theme review notice after certain period.
  *
-  */
+ */
 class Botiga_Theme_Review_Notice {
 
 	/**
@@ -87,6 +87,7 @@ class Botiga_Theme_Review_Notice {
 	 * Disable review notice permanently
 	 */
 	public function ignore_theme_review_notice() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, Universal.Operators.StrictComparisons.LooseEqual
 		if ( isset( $_GET['nag_botiga_disable_review_notice'] ) && '0' == $_GET['nag_botiga_disable_review_notice'] ) {
 			add_user_meta( get_current_user_id(), 'botiga_disable_review_notice', 'true', true );
 		}
@@ -96,6 +97,7 @@ class Botiga_Theme_Review_Notice {
 	 * Delay review notice
 	 */
 	public function ignore_theme_review_notice_partially() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, Universal.Operators.StrictComparisons.LooseEqual
 		if ( isset( $_GET['delay_botiga_disable_review_notice_partially'] ) && '0' == $_GET['delay_botiga_disable_review_notice_partially'] ) {
 			update_user_meta( get_current_user_id(), 'delay_botiga_disable_review_notice_partially', time() );
 		}

@@ -49,7 +49,7 @@ foreach( $this->header_rows as $row ) {
                 array(
                     'label' 				=> '',
                     'section'       		=> $section_id,
-                    'controls_general'		=> json_encode(
+                    'controls_general'		=> wp_json_encode(
                         array(
                             "#customize-control-{$section_id}_vertical_alignment",
                             "#customize-control-{$section_id}_inner_layout",
@@ -57,7 +57,7 @@ foreach( $this->header_rows as $row ) {
                             "#customize-control-{$section_id}_elements_spacing",
                         ),
                     ),
-                    'controls_design'		=> json_encode(
+                    'controls_design'		=> wp_json_encode(
                         array(
                             "#customize-control-{$section_id}_padding",
                             "#customize-control-{$section_id}_margin",

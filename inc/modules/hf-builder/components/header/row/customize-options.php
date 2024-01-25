@@ -59,7 +59,7 @@ foreach( $this->header_rows as $row ) {
             array(
                 'label' 				=> '',
                 'section'       		=> $row['section'],
-                'controls_general'		=> json_encode( array( 
+                'controls_general'		=> wp_json_encode( array( 
                     '#customize-control-botiga_header_row__mobile_above_header_row',
                     '#customize-control-botiga_header_row__mobile_main_header_row',
                     '#customize-control-botiga_header_row__mobile_below_header_row',
@@ -69,7 +69,7 @@ foreach( $this->header_rows as $row ) {
                     '#customize-control-botiga_header_row__' . $row['id'] . '_columns_layout',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_available_columns'
                 ) ),
-                'controls_design'		=> json_encode( array( 
+                'controls_design'		=> wp_json_encode( array( 
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_color',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_divider2',
                     '#customize-control-botiga_header_row__' . $row['id'] . '_background_image',

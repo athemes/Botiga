@@ -25,7 +25,7 @@ function botiga_post_content_has_woo_shortcode() {
 
 	$shortcodes = array(
 		'products',
-		'product_page'
+		'product_page',
 	);
 
 	if ( isset( $post->post_content ) ) {

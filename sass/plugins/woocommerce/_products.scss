@@ -1,3 +1,11 @@
+.wc-block-grid__product {
+	.wc-block-grid__product-price,
+	.wc-block-grid__product-add-to-cart {
+		margin-left: inherit !important;
+		margin-right: inherit !important;
+	}
+}
+
 ul.wc-block-grid__products,
 ul.products {
 	display: grid !important;
@@ -67,6 +75,10 @@ ul.products {
 			display: table;
 			margin: 17px auto 0;
 			line-height: 1;
+		}
+
+		.wc-block-grid__product-title {
+			margin-bottom: 0;
 		}
 
 		.wc-block-grid__product-title,
@@ -573,7 +585,7 @@ ul.products {
 			}
 
 			.variations_form{
-				margin-bottom: 7px;
+				margin-bottom: 15px;
 			}
 
 			.add_to_cart_button,

@@ -1,59 +1,95 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Coding Standards">
-	<description>WooCommerce extension PHP_CodeSniffer ruleset.</description>
+<ruleset
+        name="Botiga"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
-	<!-- Exclude paths -->
-	<exclude-pattern>tests/</exclude-pattern>
-	<exclude-pattern>woo-includes/woo-functions.php</exclude-pattern>
-	<exclude-pattern>woo-includes/class-wc-dependencies.php</exclude-pattern>
+    <description>aThemes coding standards ruleset.</description>
+
+    <!-- Include paths -->
+    <file>.</file>
+
+    <!-- Exclude paths -->
+    <exclude-pattern>*/e2etests/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/playwright-report/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/vendor-legacy/*</exclude-pattern>
 
-	<!-- Configs -->
-	<config name="minimum_supported_wp_version" value="4.7" />
-	<config name="testVersion" value="5.6-" />
+    <!-- Scan args -->
+    <arg value="sp"/><!-- Show sniff and progress -->
+    <arg name="colors"/><!-- Show results with colors -->
+    <arg name="parallel" value="50"/><!-- Enables parallel processing when available for faster results. -->
+    <arg name="extensions" value="php"/><!-- Limit to PHP files -->
+    <arg name="warning-severity" value="0"/><!-- Warning severity -->
 
-	<!-- Rules -->
-	<rule ref="WordPress-Extra">
-		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
-		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
-	</rule>
-	<rule ref="WordPress-Extra">
-		<exclude name="Generic.Commenting.DocComment.SpacingAfter" />
-		<exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
-		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma" />
-		<exclude name="PEAR.Functions.FunctionCallSignature" />
-		<exclude name="Squiz.Commenting" />
-		<exclude name="Squiz.PHP.DisallowSizeFunctionsInLoops.Found" />
-		<exclude name="Squiz.WhiteSpace" />
-		<exclude name="WordPress.Arrays" />
-		<exclude name="WordPress.Files.FileName" />
-		<exclude name="WordPress.NamingConventions" />
-		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
-		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" />
-		<exclude name="WordPress.WhiteSpace" />
-		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
-		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword" />
-		<exclude name="Generic.PHP.LowerCaseConstant.Found" />
-		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen" />
-		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceBeforeClose" />
-		<exclude name="WooCommerce.Commenting.CommentHooks.MissingSinceComment" />
-		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd" />
-		<exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen" />
-		
+    <!-- Configs -->
+    <rule ref="PHPCompatibility">
+        <exclude-pattern>tests/</exclude-pattern>
+    </rule>
+    <config name="testVersion" value="7.3-"/>
+    <config name="minimum_supported_wp_version" value="5.0"/>
+
+    <!-- Rules -->
+    <rule ref="WordPress">
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+    </rule>
+
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound"/>
+
+    <rule ref="WordPress-Extra">
+        <exclude name="Generic"/>
+        <exclude name="Squiz"/>
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+        <exclude name="Generic.Commenting.DocComment.SpacingAfter"/>
+        <exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+        <exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature"/>
+        <exclude name="Squiz.Commenting"/>
+        <exclude name="Squiz.PHP.DisallowSizeFunctionsInLoops.Found"/>
+        <exclude name="Squiz.WhiteSpace"/>
+        <exclude name="WordPress.Arrays"/>
+        <exclude name="WordPress.Files.FileName"/>
+        <exclude name="WordPress.NamingConventions"/>
+        <exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash"/>
+        <exclude name="WordPress.WP.I18n.NonSingularStringLiteralText"/>
+        <exclude name="WordPress.WhiteSpace"/>
+    </rule>
+
+    <rule ref="WooCommerce-Core">
+        <exclude name="Core.Commenting.CommentTags.AuthorTag"/>
+        <exclude name="WordPress.PHP.DontExtract"/>
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+        <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect"/>
+    </rule>
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="botiga"/>
+                <element value="library-textdomain"/>
+            </property>
+        </properties>
+    </rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="botiga"/>
+			</property>
+		</properties>
 	</rule>
 
-	<rule ref="WooCommerce-Core">
-		<exclude name="Core.Commenting.CommentTags.AuthorTag" />
-		<exclude name="WordPress.PHP.DontExtract" />
-		<exclude name="WordPress.PHP.YodaConditions" />
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
-		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
-		<exclude name="WooCommerce.Commenting.CommentHooks.MissingHookComment" />
-		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
-	</rule>
+    <rule ref="WordPress-Docs">
+        <exclude name="Squiz.Commenting.FileComment.Missing"/>
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+        <exclude name="Squiz.Commenting.ClassComment.Missing"/>
+    </rule>
 
-	<rule ref="PHPCompatibility">
-		<exclude-pattern>tests/</exclude-pattern>
-	</rule>
+    <rule ref="WordPress.Files.FileName">
+        <properties>
+            <property name="strict_class_file_names" value="false"/>
+        </properties>
+    </rule>
 </ruleset>

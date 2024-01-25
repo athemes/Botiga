@@ -16,10 +16,10 @@ function botiga_enqueue_ajax_search_css_and_js() {
 	$ajax_search = get_theme_mod( 'shop_search_enable_ajax', 0 );
 
 	if( $ajax_search ) {
-		$posts_per_page  	  = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
-		$order 			 	  = get_theme_mod( 'shop_search_ajax_order', 'asc' );
-		$orderby 		 	  = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
-		$show_categories 	  = get_theme_mod( 'shop_search_ajax_show_categories', 1 );
+		$posts_per_page       = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
+		$order                = get_theme_mod( 'shop_search_ajax_order', 'asc' );
+		$orderby              = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
+		$show_categories      = get_theme_mod( 'shop_search_ajax_show_categories', 1 );
 		$enable_search_by_sku = get_theme_mod( 'shop_search_ajax_enable_search_by_sku', 0 );
 
 		wp_register_script( 'botiga-ajax-search', get_template_directory_uri() . '/assets/js/botiga-ajax-search.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
@@ -27,12 +27,42 @@ function botiga_enqueue_ajax_search_css_and_js() {
 		wp_localize_script( 'botiga-ajax-search', 'botiga_ajax_search', array(
 			'nonce' => wp_create_nonce( 'botiga-ajax-search-random-nonce' ),
 			'query_args' => array(
-				'posts_per_page'  	   => apply_filters( 'botiga_shop_ajax_search_posts_per_page', $posts_per_page ),
-				'order' 		  	   => apply_filters( 'botiga_shop_ajax_search_order', $order ),
-				'orderby' 		  	   => apply_filters( 'botiga_shop_ajax_search_orderby', $orderby ),
-				'show_categories' 	   => apply_filters( 'botiga_shop_ajax_search_show_categories', $show_categories ),
+
+                /**
+                 * Hook 'botiga_shop_ajax_search_posts_per_page'
+                 *
+                 * @since 1.0.0
+                 */
+				'posts_per_page'       => apply_filters( 'botiga_shop_ajax_search_posts_per_page', $posts_per_page ),
+
+                /**
+                 * Hook 'botiga_shop_ajax_search_order'
+                 *
+                 * @since 1.0.0
+                 */
+				'order'                => apply_filters( 'botiga_shop_ajax_search_order', $order ),
+
+                /**
+                 * Hook 'botiga_shop_ajax_search_orderby'
+                 *
+                 * @since 1.0.0
+                 */
+				'orderby'              => apply_filters( 'botiga_shop_ajax_search_orderby', $orderby ),
+
+                /**
+                 * Hook 'botiga_shop_ajax_search_show_categories'
+                 *
+                 * @since 1.0.0
+                 */
+				'show_categories'      => apply_filters( 'botiga_shop_ajax_search_show_categories', $show_categories ),
+
+                /**
+                 * Hook 'botiga_shop_ajax_search_enable_search_by_sku'
+                 *
+                 * @since 1.0.0
+                 */
 				'enable_search_by_sku' => apply_filters( 'botiga_shop_ajax_search_enable_search_by_sku', $enable_search_by_sku ),
-			)
+			),
 		) );
 	}
 }
@@ -45,6 +75,11 @@ add_action( 'wp_enqueue_scripts', 'botiga_enqueue_ajax_search_css_and_js', 11 );
 function botiga_ajax_search_callback() {
 	check_ajax_referer( 'botiga-ajax-search-random-nonce', 'nonce' );
 
+    /**
+     * Hook 'botiga_ajax_search_search_term'
+     *
+     * @since 1.0.0
+     */
     $search_term          = isset( $_POST['search_term'] ) ? apply_filters( 'botiga_ajax_search_search_term', sanitize_text_field( wp_unslash( $_POST['search_term'] ) ) ) : '';
     $posts_per_page       = isset( $_POST['posts_per_page'] ) ? absint( $_POST['posts_per_page'] ) : 15;
     $order                = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'asc';
@@ -58,11 +93,11 @@ function botiga_ajax_search_callback() {
         's'              => $search_term,
         'order'          => $order,
         'orderby'        => $orderby,
-        'post_status'    => array( 'publish' )
+        'post_status'    => array( 'publish' ),
     );
     
     if( $orderby === 'price' ) {
-        $args[ 'meta_key' ] = '_price';
+        $args[ 'meta_key' ] = '_price'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
         $args[ 'orderby' ]  = 'meta_value_num';
     }
 
@@ -87,7 +122,7 @@ function botiga_ajax_search_callback() {
 
                 $args = array(
                     'post_id' => $post->ID,
-                    'type'    => 'product'
+                    'type'    => 'product',
                 );
 
                 ob_start();
@@ -113,7 +148,7 @@ function botiga_ajax_search_callback() {
     if( $show_categories ) {
         $args = array(
             'taxonomy' => 'product_cat',
-            'name__like' => $search_term
+            'name__like' => $search_term,
         );
         $cats = get_terms( $args );
     
@@ -125,7 +160,7 @@ function botiga_ajax_search_callback() {
                 foreach( $cats as $category ) {
                     $args = array(
                         'term_id' => $category->term_id,
-                        'type'    => 'category'
+                        'type'    => 'category',
                     );
     
                     ob_start();
@@ -140,7 +175,7 @@ function botiga_ajax_search_callback() {
     if( $output ) {
         wp_send_json( array(
             'status'  => 'success',
-            'output'  => wp_kses_post( $output )
+            'output'  => wp_kses_post( $output ),
         ) );
     } else {
         $output = '<p class="botiga-ajax-search__no-results">'. esc_html__( 'No products found.', 'botiga' ) .'</p>';
@@ -148,7 +183,7 @@ function botiga_ajax_search_callback() {
         wp_send_json( array(
             'status'  => 'success',
             'type'    => 'no-results',
-            'output'  => wp_kses_post( $output )
+            'output'  => wp_kses_post( $output ),
         ) );
     }
 }
@@ -166,18 +201,18 @@ function botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $order
         'order'          => $order,
         'orderby'        => $orderby,
         'post_status'    => array( 'publish' ),
-        'meta_query'     => array(
+        'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
             'relation' => 'OR',
             array(
                 'key' => '_sku',
                 'value' => $search_term,
-                'compare' => 'LIKE'
-            )
-        )
+                'compare' => 'LIKE',
+            ),
+        ),
     );
     
     if( $orderby === 'price' ) {
-        $args[ 'meta_key' ] = '_price';
+        $args[ 'meta_key' ] = '_price'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
         $args[ 'orderby' ]  = 'meta_value_num';
     }
 
@@ -191,9 +226,9 @@ function botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $order
  * 
  */
 function botiga_merge_sku_search_with_default_search( $posts, $query ) {
-    $posts_per_page  	  = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
-    $order 			 	  = get_theme_mod( 'shop_search_ajax_order', 'asc' );
-    $orderby 		 	  = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
+    $posts_per_page       = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
+    $order                = get_theme_mod( 'shop_search_ajax_order', 'asc' );
+    $orderby              = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
     $enable_search_by_sku = get_theme_mod( 'shop_search_ajax_enable_search_by_sku', 0 );
 
     if( ! $enable_search_by_sku ) {

@@ -19,7 +19,7 @@ class Botiga_Radio_Buttons extends WP_Customize_Control {
 
 		$allowed_tags = array(
 			'div' => array(
-				'style' => array()
+				'style' => array(),
 			),
 			'svg'     => array(
 				'class'       => true,
@@ -39,8 +39,8 @@ class Botiga_Radio_Buttons extends WP_Customize_Control {
 				'y'      => true,
 				'width'  => true,
 				'height' => true,
-				'transform' => true
-			),			
+				'transform' => true,
+			),          
 		);
 
 		$responsive = '';

@@ -26,6 +26,11 @@ function botiga_get_default_single_product_components() {
 		$components[] = 'botiga_single_wishlist_button';
 	}
 
+	/**
+	 * Hook 'botiga_default_single_product_components'
+	 *
+	 * @since 1.0.0
+	 */
 	return apply_filters( 'botiga_default_single_product_components', $components );
 }
 
@@ -35,13 +40,13 @@ function botiga_get_default_single_product_components() {
 function botiga_single_product_elements() {
 
 	$elements = array(
-		'woocommerce_template_single_title' 	  => esc_html__( 'Product Title', 'botiga' ),
-		'woocommerce_template_single_rating' 	  => esc_html__( 'Rating', 'botiga' ),
-		'woocommerce_template_single_price'		  => esc_html__( 'Price', 'botiga' ),
-		'woocommerce_template_single_excerpt' 	  => esc_html__( 'Short Description', 'botiga' ),
+		'woocommerce_template_single_title'       => esc_html__( 'Product Title', 'botiga' ),
+		'woocommerce_template_single_rating'      => esc_html__( 'Rating', 'botiga' ),
+		'woocommerce_template_single_price'       => esc_html__( 'Price', 'botiga' ),
+		'woocommerce_template_single_excerpt'     => esc_html__( 'Short Description', 'botiga' ),
 		'woocommerce_template_single_add_to_cart' => esc_html__( 'Add to Cart', 'botiga' ),
 		'botiga_divider_output'                   => esc_Html__( 'Divider', 'botiga' ),
-		'woocommerce_template_single_meta' 		  => esc_html__( 'Meta', 'botiga' )
+		'woocommerce_template_single_meta'        => esc_html__( 'Meta', 'botiga' ),
 	);
 
 	$wishlist_enable = Botiga_Modules::is_module_active( 'wishlist' );
@@ -51,6 +56,11 @@ function botiga_single_product_elements() {
 		$elements[ 'botiga_single_wishlist_button' ] = esc_html__( 'Wishlist Button', 'botiga' );
 	}
 
+	/**
+	 * Hook 'botiga_single_product_elements'
+	 *
+	 * @since 1.0.0
+	 */
 	return apply_filters( 'botiga_single_product_elements', $elements );
 }
 
@@ -68,6 +78,11 @@ function botiga_get_quick_view_summary_components( $components = array() ) {
 		return $component;
 	}, $components );
 
+	/**
+	 * Hook 'botiga_quick_view_product_components'
+	 *
+	 * @since 1.0.0
+	 */
 	return apply_filters( 'botiga_quick_view_product_components', $components );
 }
 

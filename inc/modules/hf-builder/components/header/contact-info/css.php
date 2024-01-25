@@ -18,31 +18,31 @@ $css .= Botiga_Custom_CSS::get_responsive_css(
 );
 
 // Icons Color
-$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_color', '', '.bhfb-component-contact_info .header-contact > a svg' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_color', '#212121', '.bhfb-component-contact_info .header-contact > a svg' );
 
 // Icons Color Hover
-$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_color_hover', '', '.bhfb-component-contact_info .header-contact > a:hover svg' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_color_hover', '#757575', '.bhfb-component-contact_info .header-contact > a:hover svg' );
 
 // Text Color
-$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_color', '', '.bhfb-component-contact_info .header-contact > a' );
+$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_color', '#212121', '.bhfb-component-contact_info .header-contact > a' );
 
 // Text Color Hover
-$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_color_hover', '', '.bhfb-component-contact_info .header-contact > a:hover' );
+$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_color_hover', '#757575', '.bhfb-component-contact_info .header-contact > a:hover' );
 
 // Sticky Header Active
 if( botiga_sticky_header_enabled() ) {
 
     // Icons Color
-    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_sticky_color', '', '.sticky-header-active .bhfb-component-contact_info .header-contact > a svg' );
+    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_sticky_color', '#212121', '.sticky-header-active .bhfb-component-contact_info .header-contact > a svg' );
 
     // Icons Color Hover
-    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_sticky_color_hover', '', '.sticky-header-active .bhfb-component-contact_info .header-contact > a:hover svg' );
+    $css .= Botiga_Custom_CSS::get_fill_css( 'bhfb_contact_info_icon_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-contact_info .header-contact > a:hover svg' );
 
     // Text Color
-    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_sticky_color', '', '.sticky-header-active .bhfb-component-contact_info .header-contact > a' );
+    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_sticky_color', '#212121', '.sticky-header-active .bhfb-component-contact_info .header-contact > a' );
 
     // Text Color Hover
-    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_sticky_color_hover', '', '.sticky-header-active .bhfb-component-contact_info .header-contact > a:hover' );
+    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_contact_info_text_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-contact_info .header-contact > a:hover' );
 
 }
 

@@ -5,7 +5,7 @@
  * @package Botiga
  */
 
- $wp_customize->add_setting(
+$wp_customize->add_setting(
     'single_product_gallery',
     array(
         'default' => 'gallery-default',
@@ -36,23 +36,23 @@ $wp_customize->add_control(
                 'gallery-grid' => array(
                     'is_pro' => true,
                     'label'  => esc_html__( 'Layout 4', 'botiga' ),
-                    'url'    => '%s/assets/img/sg4.svg'
+                    'url'    => '%s/assets/img/sg4.svg',
                 ),
                 'gallery-scrolling' => array(
                     'is_pro' => true,
                     'label'  => esc_html__( 'Layout 5', 'botiga' ),
-                    'url'    => '%s/assets/img/sg5.svg'
+                    'url'    => '%s/assets/img/sg5.svg',
                 ),
                 'gallery-showcase' => array(
                     'is_pro' => true,
                     'label'  => esc_html__( 'Layout 6', 'botiga' ),
-                    'url'    => '%s/assets/img/sg6.svg'
+                    'url'    => '%s/assets/img/sg6.svg',
                 ),
                 'gallery-full-width' => array(
                     'is_pro' => true,
                     'label'  => esc_html__( 'Layout 7', 'botiga' ),
-                    'url'    => '%s/assets/img/sg7.svg'
-                )
+                    'url'    => '%s/assets/img/sg7.svg',
+                ),
             ),
             'priority' => 20,
         )
@@ -191,20 +191,20 @@ $wp_customize->add_control(
                 'no-sidebar'    => array(
                     'is_pro'    => false,
                     'label'     => esc_html__( 'No Sidebar', 'botiga' ),
-                    'url'       => '%s/assets/img/meta-sidebar-none.svg'
+                    'url'       => '%s/assets/img/meta-sidebar-none.svg',
                 ),
                 'sidebar-left'  => array(
                     'is_pro'    => true,
                     'label'     => esc_html__( 'Left', 'botiga' ),
-                    'url'       => '%s/assets/img/meta-sidebar-left.svg'
+                    'url'       => '%s/assets/img/meta-sidebar-left.svg',
                 ),
                 'sidebar-right' => array(
                     'is_pro'    => true,
                     'label'     => esc_html__( 'Right', 'botiga' ),
-                    'url'       => '%s/assets/img/meta-sidebar-right.svg'
+                    'url'       => '%s/assets/img/meta-sidebar-right.svg',
                 ),  
             ),
-            'priority' => 60
+            'priority' => 60,
         )
     )
 );
@@ -592,7 +592,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting( 
 	'single_product_title_and_price_divider',
 	array(
-		'sanitize_callback' => 'esc_attr'
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control( 
@@ -600,8 +600,8 @@ $wp_customize->add_control(
 		$wp_customize, 
 		'single_product_title_and_price_divider',
 		array(
-			'section' 		  => 'botiga_section_single_product_layout',
-			'priority'	 	  => 145
+			'section'         => 'botiga_section_single_product_layout',
+			'priority'        => 145,
 		)
 	)
 );

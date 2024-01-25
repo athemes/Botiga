@@ -11,24 +11,52 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php botiga_schema( 'article' ); ?>>
 
-	<?php if ( apply_filters( 'botiga_entry_header', true ) ) : ?>
+	<?php 
+	/**
+	 * Hook 'botiga_entry_header'
+	 *
+	 * @since 1.0.0
+	 */
+	if ( apply_filters( 'botiga_entry_header', true ) ) : ?>
 	<header class="entry-header">
-		<?php do_action( 'botiga_before_title' ); ?>
+		<?php 
+		/**
+		 * Hook 'botiga_before_title'
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'botiga_before_title' ); ?>
 		<?php the_title( '<h1 class="entry-title page-title" '. botiga_get_schema( 'headline' ) .'>', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 	<?php endif; ?>
 
 	<?php botiga_post_thumbnail(); ?>
 
-	<?php do_action( 'botiga_before_page_entry_content' ); ?>
+	<?php 
+	/**
+	 * Hook 'botiga_before_page_entry_content'
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'botiga_before_page_entry_content' ); ?>
 
 	<div class="entry-content" <?php botiga_schema( 'entry_content' ); ?>>
 		<?php
 
+		/**
+		 * Hook 'botiga_before_page_the_content'
+		 *
+		 * @since 1.0.0
+		 */
 		do_action( 'botiga_before_page_the_content' );
 
 		the_content();
 
+		/**
+		 * Hook 'botiga_after_page_the_content'
+		 *
+		 * @since 1.0.0
+		 */
 		do_action( 'botiga_after_page_the_content' );
 
 		wp_link_pages(
@@ -40,9 +68,21 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<?php do_action( 'botiga_after_page_entry_content' ); ?>
+	<?php 
+	/**
+	 * Hook 'botiga_after_page_entry_content'
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'botiga_after_page_entry_content' ); ?>
 
-	<?php if ( get_edit_post_link() && apply_filters( 'botiga_entry_footer', true ) ) : ?>
+	<?php 
+	/**
+	 * Hook 'botiga_entry_footer'
+	 *
+	 * @since 1.0.0
+	 */
+	if ( get_edit_post_link() && apply_filters( 'botiga_entry_footer', true ) ) : ?>
 		<footer class="entry-footer">
 			<?php
 			edit_post_link(

@@ -90,7 +90,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	if ( $wp_customize->get_section( 'woocommerce_product_catalog' ) ) {
 		$wp_customize->get_section( 'woocommerce_product_catalog' )->panel       = null;
 		$wp_customize->get_section( 'woocommerce_product_catalog' )->description = esc_html__( 'Manage the overall design and functionality from the shop archive pages.', 'botiga' );
-		$wp_customize->get_section( 'woocommerce_product_catalog' )->priority 	 = 105;
+		$wp_customize->get_section( 'woocommerce_product_catalog' )->priority    = 105;
 	}
 	//
 	// @priority 110 (Single Products)

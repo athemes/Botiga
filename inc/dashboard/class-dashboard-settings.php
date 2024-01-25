@@ -101,7 +101,7 @@ function botiga_dashboard_settings() {
 		'home'           => esc_html__('Home', 'botiga'),
 		'starter-sites'  => esc_html__('Starter Sites', 'botiga'),
 		'settings'       => esc_html__('Settings', 'botiga'),
-		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga')
+		'free-vs-pro'    => esc_html__('Free vs Pro', 'botiga'),
 	);
 
 	$is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
@@ -260,7 +260,7 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Global Colors', 'botiga'),
 		'desc'       => esc_html__('Create your own palette and set the global colors.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg('autofocus[section]', 'colors', admin_url('customize.php'))
+		'link_url'   => add_query_arg('autofocus[section]', 'colors', admin_url('customize.php')),
 	);
 
 	$settings['features'][] = array(
@@ -268,7 +268,7 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Typography', 'botiga'),
 		'desc'       => esc_html__('Set the global font size, style and library.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg('autofocus[panel]', 'botiga_panel_typography', admin_url('customize.php'))
+		'link_url'   => add_query_arg('autofocus[panel]', 'botiga_panel_typography', admin_url('customize.php')),
 	);
 
 	$settings['features'][] = array(
@@ -276,7 +276,7 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Page Layout', 'botiga'),
 		'desc'       => esc_html__('Set the page layout.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_layout', admin_url('customize.php'))
+		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_layout', admin_url('customize.php')),
 	);
 
 	$settings['features'][] = array(
@@ -352,11 +352,11 @@ function botiga_dashboard_settings() {
 	);
 
 	$settings['features'][] = array(
-		'module' 	=> 'schema-markup',
-		'type'   	=> 'free',
-		'title'  	=> esc_html__('Schema Markup', 'botiga'),
+		'module'    => 'schema-markup',
+		'type'      => 'free',
+		'title'     => esc_html__('Schema Markup', 'botiga'),
 		'desc'      => esc_html__('Add the schema structured data to your website.', 'botiga'),
-		'docs_link' => 'https://docs.athemes.com/article/schema-markup/'
+		'docs_link' => 'https://docs.athemes.com/article/schema-markup/',
 	);
 
 	$settings['features'][] = array(
@@ -366,7 +366,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Set and use Adobe Fonts.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_typography_general', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/how-to-use-adobe-fonts/'
+		'docs_link'  => 'https://docs.athemes.com/article/how-to-use-adobe-fonts/',
 	);
 
 	// Pro features.
@@ -377,7 +377,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Upload your own custom fonts.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_typography_general', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-custom-fonts/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-custom-fonts/',
 	);
 
 	$settings['features'][] = array(
@@ -387,7 +387,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Your customers can save their favorite products to find them easily when they\'re ready to buy.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_wishlist', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-wishlist/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-wishlist/',
 	);
 
 	$settings['features'][] = array(
@@ -397,15 +397,15 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Enable your customers to see all the available color, size, and other options as beautiful variation swatches.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_product_swatches', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-product-swatch/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-swatch/',
 	);
 
 	$settings['features'][] = array(
-		'module' 	=> 'video-gallery',
-		'type'   	=> 'pro',
-		'title'  	=> esc_html__('Product Video & Audio', 'botiga'),
-		'desc'   	=> esc_html__('Add videos to your products along with the image gallery. Featured videos to display in the shop catalog page are available as well.', 'botiga'),
-		'docs_link' => 'https://docs.athemes.com/article/pro-product-featured-and-gallery-video-audio/'
+		'module'    => 'video-gallery',
+		'type'      => 'pro',
+		'title'     => esc_html__('Product Video & Audio', 'botiga'),
+		'desc'      => esc_html__('Add videos to your products along with the image gallery. Featured videos to display in the shop catalog page are available as well.', 'botiga'),
+		'docs_link' => 'https://docs.athemes.com/article/pro-product-featured-and-gallery-video-audio/',
 	);
 
 	$settings['features'][] = array(
@@ -413,8 +413,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Image Hover Swap', 'botiga'),
 		'desc'       => esc_html__('Swap the product image on mouse over.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'shop_product_image_swap'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-product-image-hover-swap/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'shop_product_image_swap' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-image-hover-swap/',
 	);
 
 	$settings['features'][] = array(
@@ -422,7 +422,7 @@ function botiga_dashboard_settings() {
 		'type'   => 'pro',
 		'title'  => esc_html__('Variations Gallery', 'botiga'),
 		'desc'   => esc_html__('Set different galleries for product each product variation.', 'botiga'),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-product-variations-gallery/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-variations-gallery/',
 	);
 
 	$settings['features'][] = array(
@@ -432,7 +432,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Add custom size charts to your products, e.g. size charts for clothes, shoes, bags, or jewelry.', 'botiga'),
 		'link_label' => esc_html__('Size Charts', 'botiga'),
 		'link_url'   => add_query_arg('post_type', 'size_chart', admin_url('edit.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-size-chart/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-size-chart/',
 	);
 
 	$settings['features'][] = array(
@@ -441,8 +441,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Advanced Reviews', 'botiga'),
 		'desc'       => esc_html__('Replace the default WooCommerce reviews workflow and style with a modern and intuitive star rating reviews.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product_advanced_reviews'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-advanced-reviews/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'botiga_section_single_product_advanced_reviews' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-advanced-reviews/',
 	);
 
 	$settings['features'][] = array(
@@ -450,8 +450,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Product Gallery Layouts', 'botiga'),
 		'desc'       => esc_html__('Set the gallery slideshow layout and more.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product_layout'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-product-gallery-layouts/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'botiga_section_single_product_layout' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-gallery-layouts/',
 	);
 
 	$settings['features'][] = array(
@@ -459,8 +459,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Product Tab Styles', 'botiga'),
 		'desc'       => esc_html__('Set the tab layout, position, alignment and more.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product_tabs'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-tabs-styles/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'botiga_section_single_product_tabs' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-tabs-styles/',
 	);
 
 	$settings['features'][] = array(
@@ -470,7 +470,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Allows to redirect customers directly to the checkout for quick buy.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_buy_now', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-buy-now-feature/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-buy-now-feature/',
 	);
 
 	$settings['features'][] = array(
@@ -480,7 +480,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Display a progress bar to show how close you are to getting free delivery.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_free_shipping_progress_bar', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-free-shipping-progress-bar/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-free-shipping-progress-bar/',
 	);
 
 	$settings['features'][] = array(
@@ -490,7 +490,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Set the min, max, step and default preset from all quantity inputs.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_catalog_general', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-quantity-step-control/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-quantity-step-control/',
 	);
 
 	$settings['features'][] = array(
@@ -499,8 +499,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Sticky Add to Cart', 'botiga'),
 		'desc'       => esc_html__('Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'botiga_section_single_product_sticky_add_to_cart'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-sticky-add-to-cart/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'botiga_section_single_product_sticky_add_to_cart' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-sticky-add-to-cart/',
 	);
 
 	$settings['features'][] = array(
@@ -510,7 +510,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Allows users to connect a group of any product types together by attribute(s) while they can still be managed as separate products.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('post_type', 'linked_variation', admin_url('edit.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-linked-variations/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-linked-variations/',
 	);
 
 	$settings['features'][] = array(
@@ -518,8 +518,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Trust Badge', 'botiga'),
 		'desc'       => esc_html__('Display a trust badge on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_elements_order'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-product-trust-badge/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'single_product_elements_order' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-trust-badge/',
 	);
 
 	$settings['features'][] = array(
@@ -527,8 +527,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Reasons to Buy List', 'botiga'),
 		'desc'       => esc_html__('Display a list with reasons to buy on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_elements_order'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-reasons-to-buy-list/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'single_product_elements_order' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-reasons-to-buy-list/',
 	);
 
 	$settings['features'][] = array(
@@ -536,8 +536,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Brand Image Upload', 'botiga'),
 		'desc'       => esc_html__('Display a brand image on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_elements_order'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-brand-image/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'single_product_elements_order' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-single-product-brand-image/',
 	);
 
 	$settings['features'][] = array(
@@ -545,8 +545,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Next/Prev Buttons', 'botiga'),
 		'desc'       => esc_html__('Display next/prev buttons on single product pages.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_product_navigation'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-next-prev-product-navigation/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'single_product_navigation' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-next-prev-product-navigation/',
 	);
 
 	$settings['features'][] = array(
@@ -554,8 +554,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Shop Header Styles', 'botiga'),
 		'desc'       => esc_html__('Set the shop header colors, spacing and more.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'shop_archive_header_style'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-header-styles/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'shop_archive_header_style' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-header-styles/',
 	);
 
 	$settings['features'][] = array(
@@ -563,8 +563,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Upsell Products Slider', 'botiga'),
 		'desc'       => esc_html__('Display the upsell products as a slider.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_upsell_products'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-related-upsell-and-recently-viewed-products/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'single_upsell_products' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-related-upsell-and-recently-viewed-products/',
 	);
 
 	$settings['features'][] = array(
@@ -572,8 +572,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Related Products Slider', 'botiga'),
 		'desc'       => esc_html__('Display the related products as a slider.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'single_related_products'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-advanced-related-products-options/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'single_related_products' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-advanced-related-products-options/',
 	);
 
 	$settings['features'][] = array(
@@ -581,8 +581,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Shop Sidebar Layouts', 'botiga'),
 		'desc'       => esc_html__('Set the shop sidebar layout, position and more.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[control]' => 'shop_archive_sidebar'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-sidebar-positions/'
+		'link_url'   => add_query_arg(array( 'autofocus[control]' => 'shop_archive_sidebar' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-sidebar-positions/',
 	);
 
 	$settings['features'][] = array(
@@ -592,7 +592,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Create any number of custom sidebars.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_sidebar', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-custom-sidebars/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-custom-sidebars/',
 	);
 
 	$settings['features'][] = array(
@@ -602,7 +602,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Create beautiful and unique mega menus.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => admin_url('nav-menus.php'),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-mega-menu/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-mega-menu/',
 	);
 
 	$settings['features'][] = array(
@@ -610,8 +610,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Multi-Step Checkout', 'botiga'),
 		'desc'       => esc_html__('Multi-step style for the checkout.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'woocommerce_checkout'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-layouts/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'woocommerce_checkout' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-layouts/',
 	);
 
 	$settings['features'][] = array(
@@ -619,8 +619,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Shopify Style Checkout', 'botiga'),
 		'desc'       => esc_html__('Shopify style for the checkout.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'woocommerce_checkout'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-layouts/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'woocommerce_checkout' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-layouts/',
 	);
 
 	$settings['features'][] = array(
@@ -628,8 +628,8 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('One-Step Checkout', 'botiga'),
 		'desc'       => esc_html__('One-step style for the checkout.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
-		'link_url'   => add_query_arg(array('autofocus[section]' => 'woocommerce_checkout'), admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-layouts/'
+		'link_url'   => add_query_arg(array( 'autofocus[section]' => 'woocommerce_checkout' ), admin_url('customize.php')),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-layouts/',
 	);
 
 	$settings['features'][] = array(
@@ -638,7 +638,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Increase your store conversion rate with the distraction free checkout.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'woocommerce_checkout', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
 	);
 
 	$settings['features'][] = array(
@@ -648,7 +648,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Display a notification when a product is added to cart.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_adtcnotif', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-add-to-cart-notifications/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-add-to-cart-notifications/',
 	);
 
 	$settings['features'][] = array(
@@ -657,7 +657,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Display the mini cart inside of a offcanvas sidebar.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[control]', 'mini_cart_style', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
 	);
 
 	$settings['features'][] = array(
@@ -666,7 +666,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Display the mini cart icon floating on the screen.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[control]', 'mini_cart_style', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
 	);
 
 	$settings['features'][] = array(
@@ -676,15 +676,15 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Displays a modal popup to highlight any content. Display conditions are available.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_section_modal_popup', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-modal-popup/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-modal-popup/',
 	);
 
 	$settings['features'][] = array(
-		'module' 	=> 'login-popup',
-		'type'   	=> 'pro',
-		'title'  	=> esc_html__('Login Popup', 'botiga'),
-		'desc'   	=> esc_html__('Display the login/register form inside a popup.', 'botiga'),
-		'docs_link' => 'https://docs.athemes.com/article/pro-header-top-bar-login-register-link-with-popup/'
+		'module'    => 'login-popup',
+		'type'      => 'pro',
+		'title'     => esc_html__('Login Popup', 'botiga'),
+		'desc'      => esc_html__('Display the login/register form inside a popup.', 'botiga'),
+		'docs_link' => 'https://docs.athemes.com/article/pro-header-top-bar-login-register-link-with-popup/',
 	);
 
 	$settings['features'][] = array(
@@ -694,7 +694,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Set the breadcrumb engine, spacing and styles.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_breadcrumbs', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-breadcrumbs-2/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-breadcrumbs-2/',
 	);
 
 	$settings['features'][] = array(
@@ -704,7 +704,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Floating quick links bar (contact, social, etc).', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_quicklinks', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/botiga-pro-quick-links/'
+		'docs_link'  => 'https://docs.athemes.com/article/botiga-pro-quick-links/',
 	);
 
 	$settings['features'][] = array(
@@ -714,7 +714,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Help customers autocomplete their addresses on checkout with Google Maps API.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[section]', 'botiga_google_autocomplete_section', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-how-to-enable-google-autocomplete-on-checkout-address-fields/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-how-to-enable-google-autocomplete-on-checkout-address-fields/',
 	);
 
 	$settings['features'][] = array(
@@ -723,7 +723,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Display reading post time as a meta on single posts.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[control]', 'single_post_meta_elements', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
 	);
 
 	$settings['features'][] = array(
@@ -732,15 +732,15 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Display a reading progress bar on single posts.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[control]', 'single_post_reading_progress', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
 	);
 
 	$settings['features'][] = array(
-		'module' 	=> 'table-of-contents',
-		'type'   	=> 'pro',
-		'title'  	=> esc_html__('Table of Contents', 'botiga'),
-		'desc'   	=> esc_html__('Display a table of contents inside your blog posts.', 'botiga'),
-		'docs_link' => 'https://docs.athemes.com/article/pro-single-blog-post-table-of-contents/'
+		'module'    => 'table-of-contents',
+		'type'      => 'pro',
+		'title'     => esc_html__('Table of Contents', 'botiga'),
+		'desc'      => esc_html__('Display a table of contents inside your blog posts.', 'botiga'),
+		'docs_link' => 'https://docs.athemes.com/article/pro-single-blog-post-table-of-contents/',
 	);
 
 	$settings['features'][] = array(
@@ -749,7 +749,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Inject custom code across multiple available areas.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[panel]', 'botiga_panel_hooks', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
 	);
 
 	$settings['features'][] = array(
@@ -758,9 +758,9 @@ function botiga_dashboard_settings() {
 		'title'      => esc_html__('Templates Builder', 'botiga'),
 		'desc'       => esc_html__('Create custom templates for shop catalog, single products, 404 page, mega menu, modal popup and hooks.', 'botiga'),
 		'link_label' => esc_html__('Build Templates', 'botiga'),
-		'link_url'   => get_option( 'botiga-legacy-templates-builder' ) ? add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')) : add_query_arg(array('page' => 'botiga-dashboard', 'tab' => 'builder'), admin_url('admin.php')),
+		'link_url'   => get_option( 'botiga-legacy-templates-builder' ) ? add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')) : add_query_arg(array( 'page' => 'botiga-dashboard', 'tab' => 'builder' ), admin_url('admin.php')),
 		'link_target'=> '_self',
-		'docs_link'  => 'https://docs.athemes.com/article/pro-templates-builder-overview/'
+		'docs_link'  => 'https://docs.athemes.com/article/pro-templates-builder-overview/',
 	);
 
 	$settings['features'][] = array(
@@ -769,7 +769,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Rename and present Botiga as your own.', 'botiga'),
 		'docs_link'  => 'https://docs.athemes.com/article/pro-white-label-botiga/',
 		'link_label' => esc_html__('Learn More', 'botiga'),
-		'pro_use_docs_link' => true
+		'pro_use_docs_link' => true,
 	);
 
 	return $settings;
@@ -819,7 +819,7 @@ function botiga_demos_settings($settings) {
 	// Pro.
 	$settings['has_pro']   = false;
 	$settings['pro_label'] = esc_html__('Get Pro', 'botiga');
-	$settings['pro_link']  = 'https://athemes.com/theme/botiga?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
+	$settings['pro_link']  = 'https://athemes.com/botiga-upgrade/?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
 
 	return $settings;
 }
@@ -886,9 +886,9 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 				'fill-rule' => true,
 				'd'         => true,
 				'transform' => true,
-				'stroke'	=> true,
+				'stroke'    => true,
 				'stroke-width' => true,
-				'stroke-linejoin' => true
+				'stroke-linejoin' => true,
 			),
 			'polygon' => array(
 				'fill'      => true,
@@ -902,8 +902,8 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 				'y'      => true,
 				'width'  => true,
 				'height' => true,
-				'transform' => true
-			),				
+				'transform' => true,
+			),              
 		)
 	);
 }

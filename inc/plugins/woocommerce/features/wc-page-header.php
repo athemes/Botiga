@@ -13,13 +13,13 @@ function botiga_woocommerce_page_header() {
 		return;
 	}
 
-	$shop_archive_header_style 					   = get_theme_mod( 'shop_archive_header_style', 'style1' );
-	$shop_archive_header_style_alignment 		   = $shop_archive_header_style !== 'style2' ? get_theme_mod( 'shop_archive_header_style_alignment', 'center' ) : 'left';
-	$shop_archive_header_style_show_categories 	   = get_theme_mod( 'shop_archive_header_style_show_categories', 0 );
+	$shop_archive_header_style                     = get_theme_mod( 'shop_archive_header_style', 'style1' );
+	$shop_archive_header_style_alignment           = $shop_archive_header_style !== 'style2' ? get_theme_mod( 'shop_archive_header_style_alignment', 'center' ) : 'left';
+	$shop_archive_header_style_show_categories     = get_theme_mod( 'shop_archive_header_style_show_categories', 0 );
 	$shop_archive_header_style_show_sub_categories = get_theme_mod( 'shop_archive_header_style_show_sub_categories', 0 );
-	$shop_page_title           					   = get_theme_mod( 'shop_page_title', 1 );
-	$shop_page_description           			   = get_theme_mod( 'shop_page_description', 1 );
-	$shop_breadcrumbs 							   = get_theme_mod( 'shop_breadcrumbs', 1 );
+	$shop_page_title                               = get_theme_mod( 'shop_page_title', 1 );
+	$shop_page_description                         = get_theme_mod( 'shop_page_description', 1 );
+	$shop_breadcrumbs                              = get_theme_mod( 'shop_breadcrumbs', 1 );
 
 	// Do not show page header if Elementor is active and has a theme builder template assigned to the shop archive location
 	if( class_exists( 'Botiga_Elementor_Helpers' ) && Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
@@ -39,8 +39,14 @@ function botiga_woocommerce_page_header() {
 			'taxonomy' => 'product_cat',
 			'fields'   => 'id=>name',
 			'parent'   => 0,
-			'hide_empty' => true
+			'hide_empty' => true,
 		);
+
+		/**
+		 * Hook 'botiga_shop_page_header_cats_query_args'
+		 *
+		 * @since 1.0.0
+		 */
 		$categories = get_terms( apply_filters( 'botiga_shop_page_header_cats_query_args', $args ) ); 
 	}
 
@@ -52,8 +58,14 @@ function botiga_woocommerce_page_header() {
 			'taxonomy' => 'product_cat',
 			'parent'   => isset( $category->term_id ) ? $category->term_id : 0,
 			'fields'   => 'id=>name',
-			'hide_empty' => true
+			'hide_empty' => true,
 		);
+
+		/**
+		 * Hook 'botiga_shop_page_header_sub_cats_query_args'
+		 *
+		 * @since 1.0.0
+		 */
 		$sub_categories = get_terms( apply_filters( 'botiga_shop_page_header_sub_cats_query_args', $args ) ); 
 	}
 
@@ -72,7 +84,11 @@ function botiga_woocommerce_page_header() {
 		<header class="woocommerce-page-header woocommerce-page-header-<?php echo esc_attr( $shop_archive_header_style ); ?> woocommerce-page-header-alignment-<?php echo esc_attr( $shop_archive_header_style_alignment ); ?>">
 			<div class="container">
 				<?php 
-
+				/**
+				 * Hook 'botiga_show_woo_page_header_breadcrumbs'
+				 *
+				 * @since 1.0.0
+				 */
 				if ( $shop_breadcrumbs && apply_filters( 'botiga_show_woo_page_header_breadcrumbs', true )) { ?>
 					<?php woocommerce_breadcrumb(); ?>
 					</div>
@@ -80,12 +96,23 @@ function botiga_woocommerce_page_header() {
 				<?php
 				}
 
+				/**
+				 * Hook 'botiga_before_shop_archive_title'
+				 *
+				 * @since 1.0.0
+				 */
 				do_action( 'botiga_before_shop_archive_title' );
 
 				if ( ( $shop_page_title && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {
+
+					/**
+					 * Hook 'botiga_shop_page_title_html_tag'
+					 *
+					 * @since 1.0.0
+					 */
 					$title_html_tag = apply_filters( 'botiga_shop_page_title_html_tag', 'h1' );
 
-					echo sprintf(
+					printf(
 						'<%1$s class="woocommerce-products-header__title page-title" %2$s>%3$s</%1$s>',
 						tag_escape( $title_html_tag ),
 						botiga_schema( 'headline', false ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -131,12 +158,18 @@ function botiga_shop_page_header_category_links( $categories ) {
 	
 	<div class="container">
 
-		<?php 		
+		<?php       
 		if( count( $categories ) > 0 ) : ?>
 			<div class="categories-wrapper">
 				<?php  
 				foreach( $categories as $cat_id => $cat_name ) {
 					$cat_link = get_term_link( $cat_id );
+
+					/**
+					 * Hook 'botiga_shop_page_header_category_inner_item_after_name'
+					 *
+					 * @since 1.0.0
+					 */
 					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . esc_html( apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) ) .'</a>';
 				} ?>
 			</div>
@@ -145,7 +178,12 @@ function botiga_shop_page_header_category_links( $categories ) {
 
 	<?php
 	$output = ob_get_clean();
-
+	
+	/**
+	 * Hook 'botiga_shop_page_header_category_links_output'
+	 *
+	 * @since 1.0.0
+	 */
 	echo apply_filters( 'botiga_shop_page_header_category_links_output', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
@@ -170,6 +208,12 @@ function botiga_shop_page_header_sub_category_links( $sub_categories ) {
 				<?php 
 				foreach( $sub_categories as $cat_id => $cat_name ) {
 					$cat_link = get_term_link( $cat_id );
+
+					/**
+					 * Hook 'botiga_shop_page_header_category_inner_item_after_name'
+					 *
+					 * @since 1.0.0
+					 */
 					echo '<a href="'. esc_url( $cat_link ) .'" class="category-button" role="button">'. esc_html( $cat_name ) . esc_html( apply_filters( 'botiga_shop_page_header_category_inner_item_after_name', '', $cat_id ) ) .'</a>';
 				} ?>
 			</div>
@@ -179,6 +223,11 @@ function botiga_shop_page_header_sub_category_links( $sub_categories ) {
 	<?php
 
 	$output = ob_get_clean();
-
+	
+	/**
+	 * Hook 'botiga_shop_page_header_sub_category_links_output'
+	 *
+	 * @since 1.0.0
+	 */
 	echo apply_filters( 'botiga_shop_page_header_sub_category_links_output', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }

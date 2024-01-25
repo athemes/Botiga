@@ -134,5 +134,5 @@ botiga.quickView = {
 }
 
 jQuery(document).ready(function () {
-    botiga.quickView.init();
+	botiga.quickView.init();
 });

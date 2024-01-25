@@ -45,7 +45,7 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-		$choices 		 = $this->choices; 
+		$choices         = $this->choices; 
 		$select2_options = $this->select2_options; 
 		$multiple        = $this->multiple; 
 		$posttype        = $this->posttype; 
@@ -53,7 +53,7 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 		if( $posttype ) {
 			$defaults = array( 
 				'post_type' => 'page',
-				'posts_per_page' => -1 
+				'posts_per_page' => -1, 
 			);
 			$args = wp_parse_args( $this->posttype_args, $defaults );
 
@@ -120,6 +120,5 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 		<?php endif; ?>
 
 		<?php
-
 	}
 }

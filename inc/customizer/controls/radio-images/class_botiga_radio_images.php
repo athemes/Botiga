@@ -129,7 +129,6 @@ class Botiga_Radio_Images extends WP_Customize_Control {
 	 * Loads the jQuery UI Button script and hooks our custom styles in.
 	 *
 	 * @since  3.0.0
-	 * @access public
 	 * @return void
 	 */
 	public function enqueue() {

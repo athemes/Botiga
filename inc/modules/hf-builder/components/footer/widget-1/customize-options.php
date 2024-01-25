@@ -12,7 +12,7 @@ $wp_customize->add_section(
         'botiga_section_fb_component__widget1',
         array(
             'title'      => esc_html__( 'Widget Area 1', 'botiga' ),
-            'panel'      => 'botiga_panel_footer'
+            'panel'      => 'botiga_panel_footer',
         )
     )
 );
@@ -21,7 +21,7 @@ $wp_customize->add_setting(
     'botiga_section_fb_component__widget1_tabs',
     array(
         'default'           => '',
-        'sanitize_callback' => 'esc_attr'
+        'sanitize_callback' => 'esc_attr',
     )
 );
 $wp_customize->add_control(
@@ -29,23 +29,23 @@ $wp_customize->add_control(
         $wp_customize,
         'botiga_section_fb_component__widget1_tabs',
         array(
-            'section'       		=> 'botiga_section_fb_component__widget1',
-            'controls_general'		=> json_encode(
+            'section'               => 'botiga_section_fb_component__widget1',
+            'controls_general'      => wp_json_encode(
                 array(
                     '#customize-control-botiga_section_fb_component__widget1_goto_edit',
-                    '#customize-control-botiga_section_fb_component__widget1_visibility'
+                    '#customize-control-botiga_section_fb_component__widget1_visibility',
                 )
             ),
-            'controls_design'		=> json_encode(
+            'controls_design'       => wp_json_encode(
                 array(
                     '#customize-control-botiga_section_fb_component__widget1_title_color',
                     '#customize-control-botiga_section_fb_component__widget1_text_color',
                     '#customize-control-botiga_section_fb_component__widget1_links',
 					'#customize-control-botiga_section_fb_component__widget1_padding',
-					'#customize-control-botiga_section_fb_component__widget1_margin'
+					'#customize-control-botiga_section_fb_component__widget1_margin',
                 )
             ),
-            'priority' 				=> 20
+            'priority'              => 20,
         )
     )
 );
@@ -53,15 +53,15 @@ $wp_customize->add_control(
 // Go to button (edit widget)
 $wp_customize->add_setting( 'botiga_section_fb_component__widget1_goto_edit',
 	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_section_fb_component__widget1_goto_edit',
 		array(
-			'description' 	=> '<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-1\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-1\' ).focus();">' . esc_html__( 'Footer Widget Area 1', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
-			'section' 		=> 'botiga_section_fb_component__widget1',
-            'priority' 		=> 30
+			'description'   => '<a class="botiga-to-widget-area-link" href="javascript:wp.customize.section( \'sidebar-widgets-footer-1\' ).active(true); wp.customize.section( \'sidebar-widgets-footer-1\' ).focus();">' . esc_html__( 'Footer Widget Area 1', 'botiga' ) . '<span class="dashicons dashicons-arrow-right-alt2"></span></a>',
+			'section'       => 'botiga_section_fb_component__widget1',
+            'priority'      => 30,
 		)
 	)
 );
@@ -70,25 +70,25 @@ $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'botiga_sect
 $wp_customize->add_setting( 
     'botiga_section_fb_component__widget1_visibility_desktop',
     array(
-        'default' 			=> 'visible',
+        'default'           => 'visible',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_setting( 
     'botiga_section_fb_component__widget1_visibility_tablet',
     array(
-        'default' 			=> 'visible',
+        'default'           => 'visible',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_setting( 
     'botiga_section_fb_component__widget1_visibility_mobile',
     array(
-        'default' 			=> 'visible',
+        'default'           => 'visible',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     )
 );
 $wp_customize->add_control( 
@@ -100,15 +100,15 @@ $wp_customize->add_control(
             'section'       => 'botiga_section_fb_component__widget1',
             'is_responsive' => true,
             'settings' => array(
-                'desktop' 		=> 'botiga_section_fb_component__widget1_visibility_desktop',
-                'tablet' 		=> 'botiga_section_fb_component__widget1_visibility_tablet',
-                'mobile' 		=> 'botiga_section_fb_component__widget1_visibility_mobile'
+                'desktop'       => 'botiga_section_fb_component__widget1_visibility_desktop',
+                'tablet'        => 'botiga_section_fb_component__widget1_visibility_tablet',
+                'mobile'        => 'botiga_section_fb_component__widget1_visibility_mobile',
             ),
             'choices'       => array(
                 'visible' => esc_html__( 'Visible', 'botiga' ),
-                'hidden'  => esc_html__( 'Hidden', 'botiga' )
+                'hidden'  => esc_html__( 'Hidden', 'botiga' ),
             ),
-            'priority'      => 42
+            'priority'      => 42,
         )
     ) 
 );
@@ -119,7 +119,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -127,9 +127,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'botiga_section_fb_component__widget1_title_color',
 		array(
-			'label'         	=> esc_html__( 'Widget Title Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__widget1',
-			'priority'			=> 50
+			'label'             => esc_html__( 'Widget Title Color', 'botiga' ),
+			'section'           => 'botiga_section_fb_component__widget1',
+			'priority'          => 50,
 		)
 	)
 );
@@ -140,7 +140,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -148,9 +148,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'botiga_section_fb_component__widget1_text_color',
 		array(
-			'label'         	=> esc_html__( 'Text Color', 'botiga' ),
-			'section'       	=> 'botiga_section_fb_component__widget1',
-			'priority'			=> 50
+			'label'             => esc_html__( 'Text Color', 'botiga' ),
+			'section'           => 'botiga_section_fb_component__widget1',
+			'priority'          => 50,
 		)
 	)
 );
@@ -161,7 +161,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_setting(
@@ -169,7 +169,7 @@ $wp_customize->add_setting(
 	array(
 		'default'           => '#212121',
 		'sanitize_callback' => 'botiga_sanitize_hex_rgba',
-		'transport'         => 'postMessage'
+		'transport'         => 'postMessage',
 	)
 );
 $wp_customize->add_control(
@@ -183,7 +183,7 @@ $wp_customize->add_control(
                 'normal' => 'botiga_section_fb_component__widget1_links_color',
                 'hover'  => 'botiga_section_fb_component__widget1_links_color_hover',
             ),
-            'priority' => 50
+            'priority' => 50,
         )
     )
 );
@@ -194,7 +194,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -202,7 +202,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -210,7 +210,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_control( 
@@ -218,23 +218,23 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_section_fb_component__widget1_padding',
         array(
-            'label'           	=> __( 'Wrapper Padding', 'botiga' ),
-            'section'         	=> 'botiga_section_fb_component__widget1',
+            'label'             => __( 'Wrapper Padding', 'botiga' ),
+            'section'           => 'botiga_section_fb_component__widget1',
             'sides'             => array(
                 'top'    => true,
                 'right'  => true,
                 'bottom' => true,
-                'left'   => true
+                'left'   => true,
             ),
             'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
             'link_values_toggle' => true,
-            'is_responsive'   	 => true,
-            'settings'        	 => array(
+            'is_responsive'      => true,
+            'settings'           => array(
                 'desktop' => 'botiga_section_fb_component__widget1_padding_desktop',
                 'tablet'  => 'botiga_section_fb_component__widget1_padding_tablet',
-                'mobile'  => 'botiga_section_fb_component__widget1_padding_mobile'
+                'mobile'  => 'botiga_section_fb_component__widget1_padding_mobile',
             ),
-            'priority'	      	 => 72
+            'priority'           => 72,
         )
     )
 );
@@ -245,7 +245,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -253,7 +253,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_setting( 
@@ -261,7 +261,7 @@ $wp_customize->add_setting(
     array(
         'default'           => '{ "unit": "px", "linked": false, "top": "", "right": "", "bottom": "", "left": "" }',
         'sanitize_callback' => 'botiga_sanitize_text',
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
     ) 
 );
 $wp_customize->add_control( 
@@ -269,23 +269,23 @@ $wp_customize->add_control(
         $wp_customize, 
         'botiga_section_fb_component__widget1_margin',
         array(
-            'label'           	=> __( 'Wrapper Margin', 'botiga' ),
-            'section'         	=> 'botiga_section_fb_component__widget1',
+            'label'             => __( 'Wrapper Margin', 'botiga' ),
+            'section'           => 'botiga_section_fb_component__widget1',
             'sides'             => array(
                 'top'    => true,
                 'right'  => true,
                 'bottom' => true,
-                'left'   => true
+                'left'   => true,
             ),
             'units'              => array( 'px', '%', 'rem', 'em', 'vw', 'vh' ),
             'link_values_toggle' => true,
-            'is_responsive'   	 => true,
-            'settings'        	 => array(
+            'is_responsive'      => true,
+            'settings'           => array(
                 'desktop' => 'botiga_section_fb_component__widget1_margin_desktop',
                 'tablet'  => 'botiga_section_fb_component__widget1_margin_tablet',
-                'mobile'  => 'botiga_section_fb_component__widget1_margin_mobile'
+                'mobile'  => 'botiga_section_fb_component__widget1_margin_mobile',
             ),
-            'priority'	      	 => 72
+            'priority'           => 72,
         )
     )
 );

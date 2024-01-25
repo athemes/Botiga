@@ -12,11 +12,11 @@ function botiga_sale_badge( $html, $post, $product ) {
 
 	if ( !$product->is_on_sale() ) {
 		return;
-	}	
+	}   
 
-	$text 			= get_theme_mod( 'sale_badge_text', esc_html__( 'Sale!', 'botiga' ) );
-	$enable_perc 	= get_theme_mod( 'sale_badge_percent', 0 );
-	$perc_text 		= get_theme_mod( 'sale_percentage_text', '-{value}%' );
+	$text           = get_theme_mod( 'sale_badge_text', esc_html__( 'Sale!', 'botiga' ) );
+	$enable_perc    = get_theme_mod( 'sale_badge_percent', 0 );
+	$perc_text      = get_theme_mod( 'sale_percentage_text', '-{value}%' );
 
 	if ( !$enable_perc ) {
 		$badge = '<span class="onsale">' . esc_html( $text ) . '</span>';
@@ -33,8 +33,8 @@ function botiga_sale_badge( $html, $post, $product ) {
 			$percentage = max( $percentages );
 	  
 		} elseif ( $product->is_type('grouped') ) {
-			$percentages 	= array();
-			$children_ids 	= $product->get_children();
+			$percentages    = array();
+			$children_ids   = $product->get_children();
 	  
 			foreach ( $children_ids as $child_id ) {
 				$child_product = wc_get_product($child_id);
@@ -42,7 +42,7 @@ function botiga_sale_badge( $html, $post, $product ) {
 				$regular_price = (float) $child_product->get_regular_price();
 				$sale_price    = (float) $child_product->get_sale_price();
 	  
-				if ( $sale_price != 0 || ! empty($sale_price) ) {
+				if ( $sale_price !== 0 || ! empty($sale_price) ) {
 					$percentages[] = round(100 - ($sale_price / $regular_price * 100));
 				}
 			}
@@ -51,7 +51,7 @@ function botiga_sale_badge( $html, $post, $product ) {
 			$regular_price = (float) $product->get_regular_price();
 			$sale_price    = (float) $product->get_sale_price();
 	  
-			if ( $sale_price != 0 || ! empty($sale_price) ) {
+			if ( $sale_price !== 0 || ! empty($sale_price) ) {
 				$percentage = round(100 - ($sale_price / $regular_price * 100) );
 			} else {
 				return $html;

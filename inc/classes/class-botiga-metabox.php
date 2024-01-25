@@ -34,7 +34,6 @@ class Botiga_Metabox {
 
 				case 'post':
 				case 'product':
-					
 					$query = new WP_Query( array(
 						's'              => $term,
 						'post_type'      => $source,
@@ -52,7 +51,7 @@ class Botiga_Metabox {
 						}
 					}
 		
-				break;
+				    break;
 				
 			}
 
@@ -63,7 +62,6 @@ class Botiga_Metabox {
 			wp_send_json_error();
 
 		}
-
 	}
 
 	public function enqueue_metabox_scripts() {
@@ -80,14 +78,13 @@ class Botiga_Metabox {
 		wp_enqueue_script( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.13', true );
 		wp_enqueue_style( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.13', 'all' );
 
-		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', BOTIGA_VERSION );
+		wp_enqueue_style( 'botiga-metabox-styles', get_template_directory_uri() . '/assets/css/metabox.min.css', array(), BOTIGA_VERSION );
 		wp_enqueue_script( 'botiga-metabox-scripts', get_template_directory_uri() . '/assets/js/metabox.min.js', array( 'jquery', 'jquery-ui-sortable' ), BOTIGA_VERSION, true );
 		
 		wp_localize_script( 'botiga-metabox-scripts', 'botiga_metabox', array(
 			'ajaxurl'   => admin_url( 'admin-ajax.php' ),
 			'ajaxnonce' => wp_create_nonce( 'botiga_metabox' ),
 		) );
-
 	}
 
 	public function metabox_options() {
@@ -96,6 +93,12 @@ class Botiga_Metabox {
 		// Begin: General Options
 		$this->add_section( 'general', array(
 			'title'   => esc_html__( 'General', 'botiga' ),
+
+			/**
+			 * Hook 'botiga_metabox_exclude_post_types_from_general_section'
+			 *
+			 * @since 1.0.0
+			 */
 			'exclude' => apply_filters( 'botiga_metabox_exclude_post_types_from_general_section', array() ),
 		) );
 
@@ -125,6 +128,12 @@ class Botiga_Metabox {
 		//
 		// Begin: Sidebar Options
 		$this->add_section( 'sidebar', array(
+
+			/**
+			 * Hook 'botiga_metabox_exclude_post_types_from_sidebar_section'
+			 *
+			 * @since 1.0.0
+			 */
 			'exclude' => apply_filters( 'botiga_metabox_exclude_post_types_from_sidebar_section', array() ),
 			'title'   => esc_html__( 'Sidebar', 'botiga' ),
 		) );
@@ -155,8 +164,18 @@ class Botiga_Metabox {
 		// End: Sidebar Options
 		//
 
+		/**
+		 * Hook 'botiga_metabox_options'
+		 *
+		 * @since 1.0.0
+		 */
 		do_action( 'botiga_metabox_options', self::$options );
 
+		/**
+		 * Hook 'botiga_metabox_options_filter'
+		 *
+		 * @since 1.0.0
+		 */
 		self::$options = apply_filters( 'botiga_metabox_options_filter', self::$options );
 
 		//
@@ -169,7 +188,6 @@ class Botiga_Metabox {
 		}
 
 		return self::$options;
-
 	}
 
 	public function add_section( $id, $args ) {
@@ -189,7 +207,6 @@ class Botiga_Metabox {
 		) );
 
 		self::$options[ $id ] = $args;
-
 	}
 
 	public function add_field( $id, $args ) {
@@ -203,7 +220,6 @@ class Botiga_Metabox {
 		) );
 
 		self::$options[ $args['section'] ]['fields'][ $id ] = $args;
-
 	}
 
 	public function add_metabox( $post_type ) {
@@ -211,6 +227,8 @@ class Botiga_Metabox {
 		
 		// Do not render the metabox in the page for posts (blog page).
 		$page_for_posts = get_option( 'page_for_posts' );
+
+		// phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual
 		if( $page_for_posts && $post->ID == $page_for_posts ) {
 			return;
 		}
@@ -233,23 +251,23 @@ class Botiga_Metabox {
 
 			case 'post':
 				$metabox_title = esc_html__( 'Botiga Post Options', 'botiga' );
-			break;
+			    break;
 
 			case 'page':
 				$metabox_title = esc_html__( 'Botiga Page Options', 'botiga' );
-			break;
+			    break;
 
 			case 'product':
 				$metabox_title = esc_html__( 'Botiga Product Options', 'botiga' );
-			break;
+			    break;
 
 			case 'size_chart':
 				$metabox_title = esc_html__( 'Botiga Size Chart Options', 'botiga' );
-			break;
+			    break;
 
 			case 'linked_variation':
 				$metabox_title = esc_html__( 'Botiga Linked Variation Options', 'botiga' );
-			break;
+			    break;
 
 		}
 
@@ -257,10 +275,14 @@ class Botiga_Metabox {
 			unset( $types[ 'athemes_hf' ] );
 		}
 
+		/**
+		 * Hook 'botiga_metabox_title'
+		 *
+		 * @since 1.0.0
+		 */
 		$metabox_title = apply_filters( 'botiga_metabox_title', $metabox_title, $post_type );
 
 		add_meta_box( 'botiga_metabox', $metabox_title, array( $this, 'render_metabox_content' ), $types, 'normal', 'low' );
-
 	}
 
 	public function render_metabox_content( $post ) {
@@ -289,7 +311,7 @@ class Botiga_Metabox {
 							
 							echo '<a href="#" class="botiga-metabox-tab'. esc_attr( $active ) .'">'. esc_html( $option['title'] ) .'</a>';
 							
-							$num++;
+							++$num;
 						
 						}
 
@@ -386,14 +408,13 @@ class Botiga_Metabox {
 
 					echo '</div>';
 
-					$num++;
+					++$num;
 
 				}
 
 			echo '</div>';
 
 		echo '</div>';
-
 	}
 
 	public function save_metabox( $post_id ) {
@@ -443,7 +464,6 @@ class Botiga_Metabox {
 			}
 
 		}
-
 	}
 
 	public function sanitize( $field, $value ) {
@@ -471,6 +491,7 @@ class Botiga_Metabox {
 
 			case 'select':
 			case 'choices':
+				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				return ( in_array( $value, array_keys( $field['options'] ) ) ) ? sanitize_key( $value ) : '';
 			break;
 
@@ -498,7 +519,6 @@ class Botiga_Metabox {
 		}
 
 		return $value;
-
 	}
 
 	public function get_field( $field_id, $field, $value ) {
@@ -556,7 +576,6 @@ class Botiga_Metabox {
 							switch ( $field['source'] ) {
 								case 'post':
 								case 'product':
-		
 									$post = get_post( $id );
 
 									if ( ! empty( $post ) ) {
@@ -594,6 +613,7 @@ class Botiga_Metabox {
 
 							foreach ( $attributes as $attribute_id => $attribute_label ) {
 
+								// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 								$checked = ( in_array( $attribute_id, $values ) ) ? ' checked' : '';
 
 								echo '<li class="botiga-sortable-item">';
@@ -697,8 +717,8 @@ class Botiga_Metabox {
 
 				echo '<div class="botiga-metabox-field-uploads-content">';
 
-					$values 	= ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
-					$name 		= $field['library'] === 'video' ? $field_id . '[0][src]' : $field_id . '[]';
+					$values     = ( is_array( $value ) && ! empty( $value ) ) ? $value : array();
+					$name       = $field['library'] == 'video' ? $field_id . '[0][src]' : $field_id . '[]';
                     $thumb_name = $field_id . '[0][thumb]';
 
 					echo '<ul class="botiga-metabox-field-uploads-list" data-library="'. esc_attr( $field['library'] ) .'">';
@@ -719,12 +739,12 @@ class Botiga_Metabox {
 						echo '</li>';
 
 						foreach ( $values as $key => $value ) {
-							$item_name 	= $field['library'] === 'video' ? str_replace('0', $key, $name) : $name;
+							$item_name  = $field['library'] == 'video' ? str_replace('0', $key, $name) : $name;
 							$item_value = is_array($value) ? ( isset( $value['src'] ) ? $value['src'] : '' ) : $value;
 
 							echo '<li class="botiga-metabox-field-uploads-list-item">';
 							if( $field['library'] === 'video' ) {
-								$item_thumb 	 = is_array( $value ) && isset( $value['thumb'] ) ? $value['thumb'] : '';
+								$item_thumb      = is_array( $value ) && isset( $value['thumb'] ) ? $value['thumb'] : '';
 								$item_thumb_name = str_replace( '0', $key, $thumb_name );
 
 								echo '<div class="botiga-metabox-field-uploads-thumbnail">';
@@ -754,7 +774,6 @@ class Botiga_Metabox {
 				break;
 
 			case 'size-chart':
-
 				$field = wp_parse_args( $field, array(
 					'button' => '',
 				) );
@@ -856,7 +875,7 @@ class Botiga_Metabox {
 				$posts = get_posts( array(
 					'post_type'      => 'size_chart',
 					'posts_per_page' => -1, // phpcs:ignore WPThemeReview.CoreFunctionality.PostsPerPage.posts_per_page_posts_per_page
-					'post_status'    => 'publish'
+					'post_status'    => 'publish',
 				) );
 					
 				if ( ! is_wp_error( $posts ) && ! empty( $posts ) ) {
@@ -925,9 +944,7 @@ class Botiga_Metabox {
 				break;
 
 		}
-
 	}
-
 }
 
 new Botiga_Metabox();

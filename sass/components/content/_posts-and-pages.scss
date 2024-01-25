@@ -6,8 +6,10 @@
 	margin-top: 80px;
 	margin-bottom: 120px;
 
-	.single-post & {
-		margin-top: 120px;
+	@media(min-width: 1025px) {
+		.single-post & {
+			margin-top: 120px;
+		}
 	}
 }
 .site-main {
@@ -92,7 +94,7 @@
 	}
 	.entry-meta {
 		a {
-			color: var(--bt-color-post-meta, $color__primary);
+			color: var(--bt-color-post-meta, #666666);
 		}
 	}
 	.entry-meta-above {
@@ -100,6 +102,14 @@
 	}
 	.entry-meta-below {
 		margin-top: 8px;
+	}
+
+	&.single-post {
+		.entry-header {
+			.entry-title {
+				font-size: var( --bt-font-size-post-title, 32px );
+			}
+		}
 	}
 }
 
@@ -260,14 +270,14 @@
     > .row {
         justify-content: space-between;
         align-items: center;
+		gap: 20px;
     }
     .botiga-share-box-items-wrapper {
         display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
         .botiga-share-box-item {
 			height: 28px;
-            & + .botiga-share-box-item {
-                margin-left: 20px;
-            }
 			svg {
 				width: 28px;
 				height: 28px;

@@ -737,24 +737,24 @@ body.mobile-menu-visible {
 	}
 }
 
-// .botiga-footer-copyright-navigation {
-// 	display: block;
+.botiga-footer-copyright-navigation.not-footer-builder {
+	display: block;
 
-// 	ul {
-// 		display: flex;
-// 		list-style: none;
-// 		margin: 0;
-// 		padding-left: 0;
+	ul {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
 
-// 		li {
-// 			padding-bottom: 0;
-// 			a {
-// 				padding: 0 10px;
-// 				text-decoration: none;
-// 			}
-// 		}
-// 	}
-// }
+		li {
+			padding-bottom: 0;
+			a {
+				padding: 0 10px;
+				text-decoration: none;
+			}
+		}
+	}
+}
 
 .header-elements,
 .footer-copyright-elements {

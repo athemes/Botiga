@@ -24,21 +24,22 @@ add_filter( 'woocommerce_post_class', 'botiga_wishlist_post_class' );
 /**
  * Wishlist button
  */
-function botiga_wishlist_button( $product = false, $echo = true  ) {
+function botiga_wishlist_button( $product = false, $do_echo = true  ) {
 	if( $product == false ) {
 		global $product; 
 	}
 
-	$product_id        = $product->get_id(); 
-	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
-	if( 'layout1' == $wishlist_layout ) {
+	$product_id          = $product->get_id(); 
+	$is_wishlist_enabled = Botiga_Modules::is_module_active( 'wishlist' );
+	$wishlist_layout     = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
+	if ( ! $is_wishlist_enabled || $is_wishlist_enabled && 'layout1' === $wishlist_layout ) {
 		return '';
 	}
 	$shop_product_wishlist_tooltip = get_theme_mod( 'shop_product_wishlist_tooltip', 0 );
-	$tooltip_text 				   = $shop_product_wishlist_tooltip ? get_theme_mod( 'shop_product_wishlist_tooltip_text' ) : '';
+	$tooltip_text                  = $shop_product_wishlist_tooltip ? get_theme_mod( 'shop_product_wishlist_tooltip_text' ) : '';
 	$wishlist_page_link            = get_the_permalink( get_option( 'botiga_wishlist_page_id' ) );
 
-	if( $echo == false ) {
+	if( $do_echo === false ) {
 		ob_start();
 	} ?>
 
@@ -49,7 +50,7 @@ function botiga_wishlist_button( $product = false, $echo = true  ) {
 	</a>
 
 	<?php
-	if( $echo == false ) {
+	if( $do_echo === false ) {
 		$output = ob_get_clean();
 		return $output;
 	}
@@ -58,21 +59,21 @@ function botiga_wishlist_button( $product = false, $echo = true  ) {
 /**
  * Wishlist button for single product and quick view
  */
-function botiga_single_wishlist_button( $product = false, $echo = true  ) {
+function botiga_single_wishlist_button( $product = false, $do_echo = true  ) {
 	if( $product == false ) {
 		global $product; 
 	}
 
 	$product_id        = $product->get_id(); 
 	$wishlist_layout   = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ); 
-	if( 'layout1' == $wishlist_layout ) {
+	if( 'layout1' === $wishlist_layout ) {
 		return '';
 	}
 
 	$wishlist_page_link        = get_the_permalink( get_option( 'botiga_wishlist_page_id' ) );
 	$product_is_inthe_wishlist = botiga_product_is_inthe_wishlist( $product_id );
 	
-	if( $echo == false ) {
+	if( $do_echo === false ) {
 		ob_start();
 	} ?>
 
@@ -93,7 +94,7 @@ function botiga_single_wishlist_button( $product = false, $echo = true  ) {
 	</div>	
 
 	<?php
-	if( $echo == false ) {
+	if( $do_echo === false ) {
 		$output = ob_get_clean();
 		return $output;
 	}
@@ -137,15 +138,27 @@ function botiga_button_wishlist_callback_function(){
 			$qty               = count( $arr ) + 1;
 	
 			if( !in_array( $_POST['product_id'], $arr ) ) {
+
+				/**
+				 * Hook 'botiga_wishlist_cookie_expiration_time'
+				 *
+				 * @since 1.0.0
+				 */
 				setcookie( 'woocommerce_items_in_cart_botiga_wishlist', $newvalue, apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
 			}
 		} else {
+
+			/**
+			 * Hook 'botiga_wishlist_cookie_expiration_time'
+			 *
+			 * @since 1.0.0
+			 */
 			setcookie( 'woocommerce_items_in_cart_botiga_wishlist', absint( $_POST['product_id'] ), apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
 		}
 	} else {
 		$wishlist_products = sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_items_in_cart_botiga_wishlist'] ) );
 		$arr               = explode( ',', $wishlist_products );
-		$key               = array_search( $_POST['product_id'], $arr );
+		$key               = array_search( $_POST['product_id'], $arr, true );
 
 		unset( $arr[ $key ] );
 
@@ -153,12 +166,17 @@ function botiga_button_wishlist_callback_function(){
 
 		$qty = count( $arr );
 
+		/**
+		 * Hook 'botiga_wishlist_cookie_expiration_time'
+		 *
+		 * @since 1.0.0
+		 */
 		setcookie( 'woocommerce_items_in_cart_botiga_wishlist', $newvalue, apply_filters( 'botiga_wishlist_cookie_expiration_time', time()+2592000 ), COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN );
 	}
 
 	wp_send_json( array(
 		'status' => 'success',
-		'qty'    => absint( $qty )
+		'qty'    => absint( $qty ),
 	) );
 }
 add_action('wp_ajax_botiga_button_wishlist', 'botiga_button_wishlist_callback_function');

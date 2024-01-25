@@ -18,7 +18,7 @@ function botiga_cross_sell_scripts() {
 		( ! is_cart() && $enable_mini_cart_cross_sell ) 
 	) {
 		// We need register this script again because the order of 'wp_enqueue_scripts'
-		wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION );
+		wp_register_script( 'botiga-carousel', get_template_directory_uri() . '/assets/js/botiga-carousel.min.js', NULL, BOTIGA_VERSION, false );
 		wp_enqueue_script( 'botiga-carousel' );
 	}
 }
@@ -29,15 +29,15 @@ add_action( 'wp_enqueue_scripts', 'botiga_cross_sell_scripts', 9 );
  */
 function botiga_cross_sell_hooks() {
     if ( is_cart() ) {
-		add_filter( 'botiga_content_class', function( $class ) { 
+		add_filter( 'botiga_content_class', function( $content_class ) { 
 			$shop_cart_show_cross_sell = get_theme_mod( 'shop_cart_show_cross_sell', 1 );
 			$layout                    = get_theme_mod( 'shop_cart_layout', 'layout1' ); 
 
 			if( $shop_cart_show_cross_sell && count( WC()->cart->get_cross_sells() ) > 2 ) {
-				$class .= ' has-cross-sells-carousel';
+				$content_class .= ' has-cross-sells-carousel';
 			}
 			
-			return $class; 
+			return $content_class; 
 		} );
 
         //Cart cross sell

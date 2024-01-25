@@ -11,7 +11,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 		/**
 		 * Instance
-		 */		
+		 */     
 		private static $instance;
 
 		/**
@@ -19,7 +19,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -62,9 +62,9 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 		public function post_classes( $classes ) {
 			$text_align = get_theme_mod( 'archive_text_align', 'center' );
-			$columns 	= get_theme_mod( 'archives_grid_columns', '3' );
-			$columns	= 'col-lg-' . 12/$columns . ' col-md-' . 12/$columns;
-			$classes[] 	= 'post-align-' . esc_attr( $text_align );
+			$columns    = get_theme_mod( 'archives_grid_columns', '3' );
+			$columns    = 'col-lg-' . 12/$columns . ' col-md-' . 12/$columns;
+			$classes[]  = 'post-align-' . esc_attr( $text_align );
 
 			$vertical_align = get_theme_mod( 'archives_list_vertical_alignment', 'middle' );
 			$classes[] = 'post-vertical-align-' . esc_attr( $vertical_align );
@@ -104,9 +104,9 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_markup() {
 
-			$layout 			= $this->blog_layout();
-			$image_placement 	= get_theme_mod( 'archive_list_image_placement', 'left' );
-			$meta_position 		= get_theme_mod( 'archive_meta_position', 'above-title' );
+			$layout             = $this->blog_layout();
+			$image_placement    = get_theme_mod( 'archive_list_image_placement', 'left' );
+			$meta_position      = get_theme_mod( 'archive_meta_position', 'above-title' );
 
 			switch ( $layout ) {
 				case 'layout3':
@@ -123,33 +123,33 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 					break;
 
-				case 'layout1':	
+				case 'layout1': 
 					$this->post_image();
 					if ( 'above-title' === $meta_position ) {
 						$this->post_meta();
 					}
 					$this->post_title();
-					$this->post_excerpt();	
+					$this->post_excerpt();  
 					if ( 'below-excerpt' === $meta_position ) {
 						$this->post_meta();
 					}
 
 					break;
 
-				case 'layout2':	
+				case 'layout2': 
 					if ( 'above-title' === $meta_position ) {
 						$this->post_meta();
 					}
 					$this->post_title();
 					$this->post_image();
-					$this->post_excerpt();	
+					$this->post_excerpt();  
 					if ( 'below-excerpt' === $meta_position ) {
 						$this->post_meta();
 					}
 
-					break;	
+					break;  
 					
-				case 'layout4':	
+				case 'layout4': 
 				case 'layout6':
 					echo '<div class="list-image image-' . esc_attr( $image_placement ) . '">';
 					$this->post_image();
@@ -163,10 +163,10 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 					$this->post_excerpt();
 					if ( 'below-excerpt' === $meta_position ) {
 						$this->post_meta();
-					}					
-					echo '</div>';	
+					}                   
+					echo '</div>';  
 					
-					break;						
+					break;                      
 			}
 		}
 
@@ -186,7 +186,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 				return;
 			}
 
-			$elements 				= get_theme_mod( 'archive_meta_elements', $this->default_meta_elements() );
+			$elements               = get_theme_mod( 'archive_meta_elements', $this->default_meta_elements() );
 			$archive_meta_delimiter = get_theme_mod( 'archive_meta_delimiter', 'none' );
 
 			if ( 'post' !== get_post_type() || empty( $elements ) ) {
@@ -196,9 +196,9 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 			echo '<div class="entry-meta delimiter-' . esc_attr( $archive_meta_delimiter ) . '">';
 			foreach( $elements as $element ) {
 				call_user_func( array( $this, $element ) );
-			}			
+			}           
 			echo '</div>';
-		}	
+		}   
 		
 		/**
 		 * Post title
@@ -224,7 +224,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 				?>
 			</header><!-- .entry-header -->
 			<?php
-		}	
+		}   
 
 		/**
 		 * Post excerpt
@@ -241,8 +241,8 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 
 			} else {
 
-				$excerpt 	= get_theme_mod( 'show_excerpt', 1 );
-				$read_more 	= get_theme_mod( 'read_more_link', 0 );
+				$excerpt    = get_theme_mod( 'show_excerpt', 1 );
+				$read_more  = get_theme_mod( 'read_more_link', 0 );
 
 				if ( !$excerpt ) {
 					return;
@@ -252,12 +252,11 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 				the_excerpt();
 
 				if ( $read_more ) {
-					echo '<a title="' . esc_attr( strip_tags( get_the_title() ) ) . '" href="' . esc_url( get_permalink() ) . '">' . esc_html__( 'Read more', 'botiga' ) . '</a>';
+					echo '<a title="' . esc_attr( wp_strip_all_tags( get_the_title() ) ) . '" href="' . esc_url( get_permalink() ) . '">' . esc_html__( 'Read more', 'botiga' ) . '</a>';
 				}
 				echo '</div>';
 
 			}
-
 		}
 		
 		/**
@@ -272,7 +271,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_author() {
 			botiga_posted_by();
-		}	
+		}   
 		
 		/**
 		 * Post categories
@@ -286,7 +285,7 @@ if ( !class_exists( 'Botiga_Posts_Archive' ) ) :
 		 */
 		public function post_comments() {
 			botiga_entry_comments();
-		}		
+		}       
 	}
 
 	/**

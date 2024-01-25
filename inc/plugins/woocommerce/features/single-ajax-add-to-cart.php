@@ -25,7 +25,6 @@ function botiga_single_ajax_add_to_cart_script() {
     }
 
     wp_enqueue_script( 'botiga-single-ajax-add-to-cart', get_template_directory_uri() . '/assets/js/botiga-ajax-add-to-cart.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
-
 }
 add_action('wp_enqueue_scripts', 'botiga_single_ajax_add_to_cart_script' );
 
@@ -42,8 +41,7 @@ add_action( 'wc_ajax_nopriv_botiga_single_ajax_add_to_cart', 'botiga_single_ajax
  * Single ajax add to cart to add fragments for notices.
  */
 function botiga_single_ajax_add_to_cart_add_fragments( $fragments ) {
-
-    $wc_ajax = ( isset( $_GET['wc-ajax'] ) ) ? sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) : '';
+    $wc_ajax = ( isset( $_GET['wc-ajax'] ) ) ? sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
     if ( $wc_ajax === 'botiga_single_ajax_add_to_cart' ) {
         $notices = wc_get_notices();
@@ -58,6 +56,5 @@ function botiga_single_ajax_add_to_cart_add_fragments( $fragments ) {
     }
 
     return $fragments;
-
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'botiga_single_ajax_add_to_cart_add_fragments' );

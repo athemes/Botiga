@@ -3,7 +3,6 @@
  * Pro customizer section.
  *
  * @since  1.0.0
- * @access public
  */
 class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 
@@ -11,7 +10,6 @@ class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 	 * The type of customize section being rendered.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @var    string
 	 */
 	public $type = 'botiga-upsell';
@@ -20,7 +18,6 @@ class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 	 * Custom button text to output.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @var    string
 	 */
 	public $pro_text = '';
@@ -29,7 +26,6 @@ class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 	 * Custom pro button URL.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @var    string
 	 */
 	public $pro_url = '';
@@ -38,7 +34,6 @@ class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 	 * Add custom parameters to pass to the JS via JSON.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @return void
 	 */
 	public function json() {
@@ -54,7 +49,6 @@ class Botiga_Customize_Upsell_Section_Pro extends WP_Customize_Section {
 	 * Outputs the Underscore.js template.
 	 *
 	 * @since  1.0.0
-	 * @access public
 	 * @return void
 	 */
 	protected function render_template() { ?>

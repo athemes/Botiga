@@ -11,7 +11,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 	/**
 	 * The saved font values decoded from json
 	 */
-	private $fontValues = [];
+	private $fontValues = array();
 	/**
 	 * The index of the saved font within the list of Google fonts
 	 */
@@ -35,7 +35,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 		}
 		// Get the list of Google fonts
 		if ( isset( $this->input_attrs['font_count'] ) ) {
-			if ( 'all' != strtolower( $this->input_attrs['font_count'] ) ) {
+			if ( 'all' !== strtolower( $this->input_attrs['font_count'] ) ) {
 				$this->fontCount = ( abs( (int) $this->input_attrs['font_count'] ) > 0 ? abs( (int) $this->input_attrs['font_count'] ) : 'all' );
 			}
 		}
@@ -82,7 +82,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 					<select class="google-fonts-list" control-name="<?php echo esc_attr( $this->id ); ?>">
 						<?php
 							foreach( $this->fontList as $key => $value ) {
-								$fontCounter++;
+								++$fontCounter;
 								$fontListStr .= '<option value="' . $value->family . '" ' . selected( $this->fontValues->font, $value->family, false ) . '>' . $value->family . '</option>';
 								if ( $this->fontValues->font === $value->family ) {
 									$isFontInList = true;
@@ -117,7 +117,7 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 				<input type="hidden" class="google-fonts-category" value="<?php echo esc_html( $this->fontValues->category ); ?>">
 			</div>
 			<?php
-		} else if( $this->fontList === 'error' ) {
+		} elseif( $this->fontList == 'error' ) {
 			$error_message = sprintf(
 				/* translators: 1: How to use adobe fonts docs link */
 				__( '<p class="botiga-customize-error">Something went wrong and the Google Fonts couldn\'t be loaded. Please contact our support <a href="%s" target="_blank">here</a> to get help.', 'botiga' ),
@@ -156,11 +156,10 @@ class Botiga_Typography_Control extends WP_Customize_Control {
 		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
-		$fontFile 		= get_parent_theme_file_path( '/inc/customizer/controls/typography/google-fonts-alphabetical.json' );
-		$file_system 	= new WP_Filesystem_Direct( false );
-		$content 		= json_decode( $file_system->get_contents( $fontFile ) );
+		$fontFile       = get_parent_theme_file_path( '/inc/customizer/controls/typography/google-fonts-alphabetical.json' );
+		$file_system    = new WP_Filesystem_Direct( false );
+		$content        = json_decode( $file_system->get_contents( $fontFile ) );
 
 		return $content->items;
-
 	}
 }

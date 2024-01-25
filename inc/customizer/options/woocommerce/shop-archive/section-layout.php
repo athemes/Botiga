@@ -9,44 +9,44 @@
 $wp_customize->add_setting( 
 	'shop_woocommerce_catalog_columns_desktop', 
 	array(
-		'default'   		=> 4,
-		'sanitize_callback' => 'absint'
+		'default'           => 4,
+		'sanitize_callback' => 'absint',
 	) 
 );
 $wp_customize->add_setting( 
 	'shop_woocommerce_catalog_columns_tablet', 
 	array(
-		'default'   		=> 3,
-		'sanitize_callback' => 'absint'
+		'default'           => 3,
+		'sanitize_callback' => 'absint',
 	) 
 );
 $wp_customize->add_setting( 
 	'shop_woocommerce_catalog_columns_mobile', 
 	array(
-		'default'   		=> 1,
-		'sanitize_callback' => 'absint'
+		'default'           => 1,
+		'sanitize_callback' => 'absint',
 	) 
-);			
+);          
 $wp_customize->add_control( 
 	new Botiga_Responsive_Slider( 
 		$wp_customize, 
 		'shop_woocommerce_catalog_columns_desktop',
 		array(
-			'label' 		=> esc_html__( 'Products Per Row', 'botiga' ),
-			'section' 		=> 'woocommerce_product_catalog',
-			'is_responsive'	=> 1,
-			'settings' 		=> array (
-				'size_desktop' 		=> 'shop_woocommerce_catalog_columns_desktop',
-				'size_tablet' 		=> 'shop_woocommerce_catalog_columns_tablet',
-				'size_mobile' 		=> 'shop_woocommerce_catalog_columns_mobile'
+			'label'         => esc_html__( 'Products Per Row', 'botiga' ),
+			'section'       => 'woocommerce_product_catalog',
+			'is_responsive' => 1,
+			'settings'      => array(
+				'size_desktop'      => 'shop_woocommerce_catalog_columns_desktop',
+				'size_tablet'       => 'shop_woocommerce_catalog_columns_tablet',
+				'size_mobile'       => 'shop_woocommerce_catalog_columns_mobile',
 			),
-			'input_attrs' => array (
-				'min'	=> 1,
-				'max'	=> 6,
+			'input_attrs' => array(
+				'min'   => 1,
+				'max'   => 6,
 				'step'  => 1,
 				'unit'  => '',
 			),
-			'priority'      => 1
+			'priority'      => 1,
 		)
 	) 
 );
@@ -55,8 +55,8 @@ $wp_customize->add_control(
 $wp_customize->add_setting( 
 	'shop_woocommerce_catalog_rows', 
 	array(
-		'default'   		=> 4,
-		'sanitize_callback' => 'absint'
+		'default'           => 4,
+		'sanitize_callback' => 'absint',
 	) 
 );
 $wp_customize->add_control( 
@@ -64,19 +64,25 @@ $wp_customize->add_control(
 		$wp_customize, 
 		'shop_woocommerce_catalog_rows',
 		array(
-			'label' 		=> esc_html__( 'Rows Per Page', 'botiga' ),
-			'section' 		=> 'woocommerce_product_catalog',
-			'is_responsive'	=> 0,
-			'settings' 		=> array (
-				'size_desktop' 		=> 'shop_woocommerce_catalog_rows'
+			'label'         => esc_html__( 'Rows Per Page', 'botiga' ),
+			'section'       => 'woocommerce_product_catalog',
+			'is_responsive' => 0,
+			'settings'      => array(
+				'size_desktop'      => 'shop_woocommerce_catalog_rows',
 			),
-			'input_attrs' => array (
-				'min'	=> 1,
-				'max'	=> apply_filters( 'botiga_shop_woocommerce_catalog_rows_max', 20 ),
+			'input_attrs' => array(
+				'min'   => 1,
+
+				/**
+				 * Hook 'botiga_shop_woocommerce_catalog_rows_max'
+				 *
+				 * @since 1.0.0
+				 */
+				'max'   => apply_filters( 'botiga_shop_woocommerce_catalog_rows_max', 20 ),
 				'step'  => 1,
 				'unit'  => '',
 			),
-			'priority'      => 1
+			'priority'      => 1,
 		)
 	) 
 );
@@ -84,19 +90,19 @@ $wp_customize->add_control(
 // Layout Type
 $wp_customize->add_setting( 'shop_archive_layout',
 	array(
-		'default' 			=> 'product-grid',
-		'sanitize_callback' => 'botiga_sanitize_text'
+		'default'           => 'product-grid',
+		'sanitize_callback' => 'botiga_sanitize_text',
 	)
 );
 $wp_customize->add_control( new Botiga_Radio_Buttons( $wp_customize, 'shop_archive_layout',
 	array(
-		'label' 	=> esc_html__( 'Layout Type', 'botiga' ),
-		'section' 	=> 'woocommerce_product_catalog',
-		'choices' 	=> array(
-			'product-grid' 		=> esc_html__( 'Grid', 'botiga' ),
-			'product-list' 		=> esc_html__( 'List', 'botiga' ),
+		'label'     => esc_html__( 'Layout Type', 'botiga' ),
+		'section'   => 'woocommerce_product_catalog',
+		'choices'   => array(
+			'product-grid'      => esc_html__( 'Grid', 'botiga' ),
+			'product-list'      => esc_html__( 'List', 'botiga' ),
 		),
-		'priority'	 => 20
+		'priority'   => 20,
 	)
 ) );
 
@@ -119,20 +125,20 @@ $wp_customize->add_control(
             'choices'  => array(
                 'style1' => array(
                     'label' => esc_html__( 'Style 1', 'botiga' ),
-                    'url'   => '%s/assets/img/shop-page-header-style-1.svg'
+                    'url'   => '%s/assets/img/shop-page-header-style-1.svg',
                 ),
                 'style2' => array(
 					'is_pro' => true,
                     'label'  => esc_html__( 'Style 2', 'botiga' ),
-                    'url'    => '%s/assets/img/shop-page-header-style-2.svg'
+                    'url'    => '%s/assets/img/shop-page-header-style-2.svg',
                 ),
                 'style3' => array(
 					'is_pro' => true,
                     'label'  => esc_html__( 'Style 3', 'botiga' ),
-                    'url'    => '%s/assets/img/shop-page-header-style-3.svg'
-                )       
+                    'url'    => '%s/assets/img/shop-page-header-style-3.svg',
+                ),       
             ),
-            'priority'   => 21
+            'priority'   => 21,
         )
     )
 );
@@ -152,32 +158,32 @@ $wp_customize->add_control(
 		array(
 			'label'    => esc_html__( 'Sidebar Layout', 'botiga' ),
 			'section'  => 'woocommerce_product_catalog',
-			'cols' 		=> 2,
+			'cols'      => 2,
 			'choices'  => array(
 				'no-sidebar'   => array(
 					'label' => esc_html__( 'No Sidebar', 'botiga' ),
-					'url'   => '%s/assets/img/sidebar-disabled.svg'
+					'url'   => '%s/assets/img/sidebar-disabled.svg',
 				),
 				'sidebar-left' => array(
 					'label' => esc_html__( 'Left', 'botiga' ),
-					'url'   => '%s/assets/img/sidebar-left.svg'
+					'url'   => '%s/assets/img/sidebar-left.svg',
 				),
 				'sidebar-right' => array(
 					'label' => esc_html__( 'Right', 'botiga' ),
-					'url'   => '%s/assets/img/sidebar-right.svg'
+					'url'   => '%s/assets/img/sidebar-right.svg',
 				),
 				'sidebar-top' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Top', 'botiga' ),
-					'url'    => '%s/assets/img/sidebar-top.svg'
+					'url'    => '%s/assets/img/sidebar-top.svg',
 				),
 				'sidebar-slide' => array(
 					'is_pro' => true,
 					'label'  => esc_html__( 'Slide-out', 'botiga' ),
-					'url'    => '%s/assets/img/sidebar-slide.svg'
-				)
+					'url'    => '%s/assets/img/sidebar-slide.svg',
+				),
 			),
-			'priority'	 => 30
+			'priority'   => 30,
 		)
 	)
 );
@@ -185,14 +191,14 @@ $wp_customize->add_control(
 // Divider
 $wp_customize->add_setting( 'shop_archive_divider_1',
 	array(
-		'sanitize_callback' => 'esc_attr'
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 
 $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'shop_archive_divider_1',
 		array(
-			'section' 			=> 'woocommerce_product_catalog',
-			'priority'	 		=> 40
+			'section'           => 'woocommerce_product_catalog',
+			'priority'          => 40,
 		)
 	)
 );
@@ -200,15 +206,15 @@ $wp_customize->add_control( new Botiga_Divider_Control( $wp_customize, 'shop_arc
 // Page elements
 $wp_customize->add_setting( 'shop_page_elements_title',
 	array(
-		'default' 			=> '',
-		'sanitize_callback' => 'esc_attr'
+		'default'           => '',
+		'sanitize_callback' => 'esc_attr',
 	)
 );
 $wp_customize->add_control( new Botiga_Text_Control( $wp_customize, 'shop_page_elements_title',
 		array(
-			'label'			=> esc_html__( 'Page elements', 'botiga' ),
-			'section' 		=> 'woocommerce_product_catalog',
-			'priority'	 	=> 50
+			'label'         => esc_html__( 'Page elements', 'botiga' ),
+			'section'       => 'woocommerce_product_catalog',
+			'priority'      => 50,
 		)
 	)
 );
@@ -226,9 +232,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_page_title',
 		array(
-			'label'         	=> esc_html__( 'Page title', 'botiga' ),
-			'section'       	=> 'woocommerce_product_catalog',
-			'priority'	 		=> 60
+			'label'             => esc_html__( 'Page title', 'botiga' ),
+			'section'           => 'woocommerce_product_catalog',
+			'priority'          => 60,
 		)
 	)
 );
@@ -246,9 +252,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_page_description',
 		array(
-			'label'         	=> esc_html__( 'Page Description', 'botiga' ),
-			'section'       	=> 'woocommerce_product_catalog',
-			'priority'	 		=> 60
+			'label'             => esc_html__( 'Page Description', 'botiga' ),
+			'section'           => 'woocommerce_product_catalog',
+			'priority'          => 60,
 		)
 	)
 );
@@ -266,10 +272,10 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_product_sorting',
 		array(
-			'label'         	=> esc_html__( 'Product Sorting', 'botiga' ),
+			'label'             => esc_html__( 'Product Sorting', 'botiga' ),
 			'description'       => esc_html__( 'Show options for sorting products.', 'botiga' ),
-			'section'       	=> 'woocommerce_product_catalog',
-			'priority'	 		=> 70
+			'section'           => 'woocommerce_product_catalog',
+			'priority'          => 70,
 		)
 	)
 );
@@ -287,9 +293,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_results_count',
 		array(
-			'label'         	=> esc_html__( 'Results count', 'botiga' ),
-			'section'       	=> 'woocommerce_product_catalog',
-			'priority'	 		=> 80
+			'label'             => esc_html__( 'Results count', 'botiga' ),
+			'section'           => 'woocommerce_product_catalog',
+			'priority'          => 80,
 		)
 	)
 );
@@ -307,9 +313,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'shop_breadcrumbs',
 		array(
-			'label'         	=> esc_html__( 'Display breadcrumbs', 'botiga' ),
-			'section'       	=> 'woocommerce_product_catalog',
-			'priority'	 		=> 90
+			'label'             => esc_html__( 'Display breadcrumbs', 'botiga' ),
+			'section'           => 'woocommerce_product_catalog',
+			'priority'          => 90,
 		)
 	)
 );
