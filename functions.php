@@ -477,6 +477,13 @@ if( defined( 'ELEMENTOR_VERSION' ) ) {
 }
 
 /**
+ * Load Elementor Pro compatibility file.
+ */
+if( defined( 'ELEMENTOR_PRO_VERSION' ) ) {
+	require get_template_directory() . '/inc/plugins/elementor-pro/elementor-pro.php';
+}
+
+/**
  * Load Dokan compatibility file.
  */
 if( defined( 'DOKAN_PLUGIN_VERSION' ) && class_exists( 'Woocommerce' ) ) {

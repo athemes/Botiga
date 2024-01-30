@@ -6041,7 +6041,7 @@ span.onsale {
   font-size: 0.875rem;
   text-transform: uppercase;
   color: #fff;
-  padding: 3px 20px;
+  padding: 3px 20px !important;
   border-radius: 0;
   z-index: 11;
 }
