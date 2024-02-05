@@ -7173,6 +7173,38 @@ dl.variation p {
           transform: rotate(-45deg);
 }
 
+.botiga_widget_product_swatch_active_filter.horizontal-style ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 20px;
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul li {
+  background-color: var(--bt-color-content-cards-bg, #f2f2f2);
+  border-radius: 35px;
+  line-height: 1;
+  padding: 11px 16px;
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul li a {
+  top: 0;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  background-color: transparent;
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul li:last-of-type {
+  background-color: transparent;
+  padding: 0;
+}
+
 /**
  * Account
  */

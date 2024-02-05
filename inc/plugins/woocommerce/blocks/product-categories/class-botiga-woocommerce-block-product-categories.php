@@ -18,6 +18,7 @@ class Botiga_Woocommerce_Block_Product_Categories {
 	public function __construct() {
 		add_filter( 'render_block_woocommerce/product-categories', array( $this, 'render' ), 10, 3 );
 		add_filter( 'botiga_wc_block_product_categories_render', array( $this, 'add_active_class' ), 10, 2 );
+		add_filter( 'botiga_wc_block_product_categories_render', array( $this, 'filter_items_links' ), 10, 3 );
 	}
 
 	/**
@@ -67,6 +68,33 @@ class Botiga_Woocommerce_Block_Product_Categories {
 					$element->parentNode->setAttribute( 'class', $li_class );
 					break;
 				}
+			}
+	
+			$block_content = $dom->saveHTML();
+		}
+
+		return $block_content;
+	}
+
+	/**
+	 * Filter items links.
+	 * 
+	 */
+	public function filter_items_links( $block_content, $current_url ) {
+		global $wp;
+
+		$has_bp_active_filter = strpos( $wp->query_string, 'filter_' ) !== FALSE;
+
+		$dom = new DOMDocument();
+		$dom->loadHTML( $block_content );
+		$elements = $dom->getElementsByTagName( 'a' );
+
+		if ( $elements->length ) {
+			foreach ( $elements as $element ) {
+				$href = $element->getAttribute( 'href' ) . ( $has_bp_active_filter ? '?' . $wp->query_string : '' );
+				$href = remove_query_arg( 'product_cat', $href );
+
+				$element->setAttribute( 'href', $href );
 			}
 	
 			$block_content = $dom->saveHTML();
