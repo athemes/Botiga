@@ -638,6 +638,11 @@ function botiga_remove_last_item_from_breadcrumb( $crumbs, $breadcrumb ) {
 }
 
 /**
+ * WooCommerce Blocks
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/blocks/product-categories/class-botiga-woocommerce-block-product-categories.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
  * Real Time Ajax Search
  */
 require get_template_directory() . '/inc/plugins/woocommerce/features/real-time-ajax-search.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
