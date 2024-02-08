@@ -175,7 +175,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 						'h5', 
 						'h6', 
 						'.site-title', 
-						'.wc-block-grid__product-title', 
+						'.wc-block-grid__product-title',
+						'.checkout .recurring-totals > th',
 					);
 					$selector = self::get_mounted_selector( $selectors, $empty_selector );
 					

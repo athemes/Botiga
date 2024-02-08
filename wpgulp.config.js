@@ -37,6 +37,8 @@ const dokanSRC = './sass/dokan.scss';
 
 const quickViewSRC = './sass/plugins/woocommerce/quick-view.scss';
 
+const accordionSRC = './sass/accordion.scss';
+
 // Path to place the compiled CSS file. Default set to root folder.
 const styleDestination = './assets/css';
 
@@ -96,6 +98,9 @@ const jsAdminDashboardFile = 'botiga-dashboard';
 
 // JS Custom options.
 
+// Path to JS accordion.
+const jsAccordionSRC = './assets/js/src/botiga-accordion.js';
+
 // Path to JS carousel.
 const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
 
@@ -131,6 +136,9 @@ const jsCustomFile = 'custom';
 
 // Compiled JS carousel file name.
 const jsCarouselFile = 'botiga-carousel';
+
+// Compiled JS carousel file name.
+const jsAccordionFile = 'botiga-accordion';
 
 // Compiled JS swiper file name.
 const jsSwiperFile = 'botiga-swiper';
@@ -277,6 +285,7 @@ module.exports = {
 	woocommerceSRC,
 	dokanSRC,
 	quickViewSRC,
+	accordionSRC,
 	styleDestination,
 	outputStyle,
 	errLogToConsole,
@@ -290,6 +299,7 @@ module.exports = {
 	adminFunctionsScriptsFile,
 	custFile,
 	jsCarouselSRC,
+	jsAccordionSRC,
 	jsSwiperSRC,
 	jsGallerySRC,
 	jsAjaxAddToCartSRC,
@@ -305,6 +315,7 @@ module.exports = {
 	metaboxScriptsDestination,
 	adminFunctionsDestination,
 	jsCarouselFile,
+	jsAccordionFile,
 	jsSwiperFile,
 	jsGalleryFile,
 	jsAjaxAddToCartFile,
