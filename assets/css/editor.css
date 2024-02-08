@@ -3961,6 +3961,7 @@ div.editor-styles-wrapper {
   /* Default WP search */
   /* Woo search */
   /* Columns block */
+  /* Woo Product Categories List */
 }
 
 div.editor-styles-wrapper .widget_block h3 {
@@ -4024,6 +4025,10 @@ div.editor-styles-wrapper .wp-block-woocommerce-product-search .wc-block-product
 
 div.editor-styles-wrapper .wp-block-columns p a {
   color: var(--bt-color-body-text, #212121);
+}
+
+div.editor-styles-wrapper .wc-block-product-categories-list-item.active a {
+  font-weight: 700;
 }
 
 /*

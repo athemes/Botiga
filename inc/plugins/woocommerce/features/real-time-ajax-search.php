@@ -225,31 +225,31 @@ function botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $order
  * Include the search by SKU in the default search.
  * 
  */
-function botiga_merge_sku_search_with_default_search( $posts, $query ) {
-    $posts_per_page       = get_theme_mod( 'shop_search_ajax_posts_per_page', 15 );
-    $order                = get_theme_mod( 'shop_search_ajax_order', 'asc' );
-    $orderby              = get_theme_mod( 'shop_search_ajax_orderby', 'none' );
+function botiga_merge_sku_search_with_default_search( $clauses, $query ) {
+	global $wpdb;
+	
     $enable_search_by_sku = get_theme_mod( 'shop_search_ajax_enable_search_by_sku', 0 );
 
     if( ! $enable_search_by_sku ) {
-        return $posts;
+        return $clauses;
     }
 
-    if ( $query->is_main_query() && $query->is_search() && $query->get( 'post_type' ) === 'product' && $query->get( 's' ) !== '' ) {
-        $additional_posts = botiga_ajax_search_get_products_by_sku( $posts_per_page, $order, $orderby, $query->get( 's' ) );
-        $merged_posts = array_unique( array_merge( $posts, $additional_posts ), SORT_REGULAR );
+	// Do not implement the search by sku whether the search is being made by extra plugins.
+	// Otherwise it might break the extra plugin functionality.
+	if( isset( $_GET[ 'yith_wcan' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		return $clauses;
+	}
 
-		$query->posts = $merged_posts;
-		$query->post_count = count( $merged_posts );
-		$query->found_posts = count( $merged_posts );
-		$query->max_num_pages = ceil( count( $merged_posts ) / $query->get( 'posts_per_page' ) );
-
-        return $merged_posts;
-    }
-
-    return $posts;
+    if ( ! is_admin() && $query->is_main_query() && $query->is_search() && $query->get( 'post_type' ) === 'product' && $query->get( 's' ) !== '' ) {
+		$search_term = $wpdb->esc_like( $query->get('s') );
+		
+		$clauses['join'] = " LEFT JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id )";
+		$clauses['where'] .= $wpdb->prepare( " OR ( {$wpdb->prefix}postmeta.meta_key = '_sku' AND {$wpdb->prefix}postmeta.meta_value LIKE %s )", "%{$search_term}%" );
+	}
+		
+	return $clauses;
 }
-add_filter( 'posts_results', 'botiga_merge_sku_search_with_default_search', 10, 2 );
+add_filter( 'posts_clauses', 'botiga_merge_sku_search_with_default_search', 10, 2 );
 
 /**
  * Custom CSS

@@ -69,3 +69,12 @@ input.wc-block-components-price-slider__range-input {
 		}
 	}
 }
+
+/* Woo Product Categories List */
+.wc-block-product-categories-list-item {
+	&.active {
+		a {
+			font-weight: 700;
+		}
+	}
+}

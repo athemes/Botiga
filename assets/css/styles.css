@@ -4840,6 +4840,11 @@ input.wc-block-components-price-slider__range-input {
   color: var(--bt-color-body-text, #212121);
 }
 
+/* Woo Product Categories List */
+.wc-block-product-categories-list-item.active a {
+  font-weight: 700;
+}
+
 /* Media
 --------------------------------------------- */
 .page-content .wp-smiley,
