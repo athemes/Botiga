@@ -136,7 +136,7 @@
 		li {
 			margin: 0;
 			display: flex;
-			grid-gap: 6px;
+			grid-gap: 9px;
 			align-items: center;
 
 			&:last-child {
@@ -166,7 +166,6 @@
 				background-color: #e5e5e5;
 				border-radius: 100%;
 				position: relative;
-				top: -1px;
 
 				&:hover{
 					opacity: 0.75;
