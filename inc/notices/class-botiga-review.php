@@ -60,7 +60,7 @@ class Botiga_Theme_Review_Notice {
 		}
 		
 		?>
-		<div class="botiga-notice botiga-notice-with-thumbnail notice" style="position:relative;">
+		<div class="botiga-notice notice" style="position:relative;">
 			<p>
 				<?php
 				printf(
