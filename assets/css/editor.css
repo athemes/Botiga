@@ -1,6 +1,81 @@
 /*
 * Import variables
 */
+/* Helpers */
+.bt-m-0 {
+  margin: 0 !important;
+}
+
+.bt-mt-0 {
+  margin-top: 0 !important;
+}
+
+.bt-mt-10px {
+  margin-top: 10px !important;
+}
+
+.bt-mt-20px {
+  margin-top: 20px !important;
+}
+
+.bt-mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.bt-mb-10px {
+  margin-bottom: 10px !important;
+}
+
+.bt-mb-20px {
+  margin-bottom: 20px !important;
+}
+
+.bt-pt-0 {
+  padding-top: 0 !important;
+}
+
+.bt-p-relative {
+  position: relative;
+}
+
+.bt-d-none {
+  display: none !important;
+}
+
+.bt-d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bt-justify-content-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bt-align-items-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bt-zindex-2 {
+  z-index: 2;
+}
+
+.bt-font-weight-500 {
+  font-weight: 500;
+}
+
+.bt-border-color-primary {
+  border-color: #3858E9 !important;
+}
+
+.bt-text-color-grey {
+  color: #757575 !important;
+}
+
 /*
 * General
 */
@@ -1984,7 +2059,7 @@ div.editor-styles-wrapper span.onsale {
   font-size: 0.875rem;
   text-transform: uppercase;
   color: #fff;
-  padding: 3px 20px;
+  padding: 3px 20px !important;
   border-radius: 0;
   z-index: 11;
 }
