@@ -226,6 +226,7 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/{vendor/bin,vendor/bin/**/*}',
 	'!../@(Botiga|botiga)/{vendor/dealerdirect,vendor/dealerdirect/**/*}',
 	'!../@(Botiga|botiga)/{vendor/phpcompatibility,vendor/phpcompatibility/**/*}',
+	'!../@(Botiga|botiga)/{vendor/phpcsstandards,vendor/phpcsstandards/**/*}',
 	'!../@(Botiga|botiga)/{vendor/squizlabs,vendor/squizlabs/**/*}',
 	'!../@(Botiga|botiga)/{vendor/woocommerce,vendor/woocommerce/**/*}',
 	'!../@(Botiga|botiga)/{vendor/wp-coding-standards,vendor/wp-coding-standards/**/*}',

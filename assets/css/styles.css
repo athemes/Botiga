@@ -4842,10 +4842,11 @@ input.wc-block-components-price-slider__range-input {
 
 /* Filter reset button */
 button.wc-block-components-filter-reset-button {
-  padding: 0.3rem 0.9rem;
+  padding: 0.6rem 0.9rem;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 0.8rem;
+  line-height: 1;
 }
 
 button.wc-block-components-filter-reset-button:hover {

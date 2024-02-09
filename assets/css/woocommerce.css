@@ -7181,7 +7181,7 @@ dl.variation p {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  gap: 20px;
+  gap: 10px;
 }
 
 .botiga_widget_product_swatch_active_filter.horizontal-style ul li {
@@ -7202,6 +7202,7 @@ dl.variation p {
 .botiga_widget_product_swatch_active_filter.horizontal-style ul li:last-of-type {
   background-color: transparent;
   padding: 0;
+  margin-left: 10px;
 }
 
 /**
