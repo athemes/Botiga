@@ -1,0 +1,30 @@
+.botiga-accordion-toggle {
+	position: relative;
+	cursor: pointer;
+	margin: 0 !important;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 4px;
+		width: 8px;
+		height: 8px;
+		border-left: 1px solid #000;
+		border-bottom: 1px solid #000;
+		transform: translateY(-50%) rotate(-45deg);
+		transition: ease opacity 300ms;
+		opacity: 0.6;
+	}
+
+	&.active {
+		&:after {
+			transform: translateY(-50%) rotate(135deg);
+			opacity: 1;
+		}
+	}
+
+	& + .botiga-accordion-body {
+		padding-top: 20px;
+	}
+}

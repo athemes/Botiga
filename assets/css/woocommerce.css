@@ -6041,7 +6041,7 @@ span.onsale {
   font-size: 0.875rem;
   text-transform: uppercase;
   color: #fff;
-  padding: 3px 20px;
+  padding: 3px 20px !important;
   border-radius: 0;
   z-index: 11;
 }
@@ -7111,7 +7111,7 @@ dl.variation p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  grid-gap: 6px;
+  grid-gap: 9px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -7149,7 +7149,6 @@ dl.variation p {
   background-color: #e5e5e5;
   border-radius: 100%;
   position: relative;
-  top: -1px;
 }
 
 .botiga_widget_product_swatch_active_filter ul li a:not(.botiga-clear):hover {
@@ -7171,6 +7170,39 @@ dl.variation p {
 .botiga_widget_product_swatch_active_filter ul li a:not(.botiga-clear):after {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 10px;
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul li {
+  background-color: var(--bt-color-content-cards-bg, #f2f2f2);
+  border-radius: 35px;
+  line-height: 1;
+  padding: 11px 16px;
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul li a {
+  top: 0;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  background-color: transparent;
+}
+
+.botiga_widget_product_swatch_active_filter.horizontal-style ul li:last-of-type {
+  background-color: transparent;
+  padding: 0;
+  margin-left: 10px;
 }
 
 /**

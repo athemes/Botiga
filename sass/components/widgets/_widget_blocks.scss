@@ -13,24 +13,67 @@ input.wc-block-components-price-slider__range-input {
 	border: 0;
 	padding: 0;
 }
+.wc-block-components-price-slider {
+	margin-bottom: 0 !important;
+}
 .wc-block-components-price-slider__range-input-wrapper {
 	margin-bottom: 25px;
 }
 .wc-block-components-price-slider__range-input-progress {
 	--range-color: #{$color__primary};
 }
-.wc-block-components-price-slider__controls .wc-block-components-price-slider__amount {
-	padding: 5px 10px;
-	min-height: auto;
+.wc-block-components-price-slider__controls {
+	margin-bottom: 0;
+
+	.wc-block-components-price-slider__amount {
+		padding: 5px 10px;
+		min-height: auto;
+	}
+}
+
+/* Stock filter */
+.wc-block-stock-filter {
+	margin-bottom: 0 !important;
+}
+
+/* Rating filter */
+.wp-block-woocommerce-rating-filter {
+	margin-bottom: 0 !important;
 }
 
 /* Attribute filter */
+.wc-block-attribute-filter {
+	margin-bottom: 0 !important;
+}
+
 .wp-block-woocommerce-attribute-filter {
 	.wc-block-attribute-filter-list li {
 		text-decoration: none;
 	}
 	input {
 		margin-right: 5px;
+	}
+}
+
+/* Fitler actions */
+.wc-block-attribute-filter__actions:empty,
+.wc-block-stock-filter__actions:empty,
+.wc-block-rating-filter__actions:empty,
+.wc-block-components-price-slider__actions:empty {
+	display: none;
+}
+
+/* Filter reset button */
+button.wc-block-components-filter-reset-button {
+	padding: 0.6rem 0.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+	line-height: 1;
+
+	&:hover {
+		color: var(--bt-button-color-hover, #FFF);
+		background-color: var(--bt-color-button-bg-hover, $color__primary);
 	}
 }
 
@@ -66,6 +109,34 @@ input.wc-block-components-price-slider__range-input {
 	p {
 		a {
 			color: var(--bt-color-body-text, $color__primary);
+		}
+	}
+}
+
+/* Woo Product Categories List */
+.wc-block-product-categories-list-item {
+	&.active {
+		a {
+			font-weight: 700;
+		}
+	}
+}
+
+/* Block checkbox component */
+.wc-block-components-checkbox { 
+	.wc-block-components-checkbox__input[type=checkbox] {
+		margin: 0 0.7em 0 0 !important;
+	}
+}
+.wc-block-components-checkbox-list {
+	li {
+		margin: 0 !important;
+	}
+}
+.widget {
+	li {
+		> .wc-block-components-checkbox {
+			margin-top: 0;
 		}
 	}
 }

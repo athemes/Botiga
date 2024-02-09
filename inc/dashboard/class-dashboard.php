@@ -167,8 +167,8 @@ class Botiga_Dashboard
         if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
             add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
                 'botiga-dashboard',
-                esc_html__('Upgrade Botiga', 'botiga'),
-                esc_html__('Upgrade Botiga', 'botiga'),
+                esc_html__('Upgrade to Pro', 'botiga'),
+                esc_html__('Upgrade to Pro', 'botiga'),
                 'manage_options',
                 'https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga',
                 '',

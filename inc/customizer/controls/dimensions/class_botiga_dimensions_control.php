@@ -17,9 +17,9 @@ class Botiga_Dimensions_Control extends WP_Customize_Control {
 	 */
 	public function render_content(){
         $value = array(
-            'desktop' => json_decode( $this->value( 'desktop' ) ),
-            'tablet'  => json_decode( $this->value( 'tablet' ) ),
-            'mobile'  => json_decode( $this->value( 'mobile' ) ),
+            'desktop' => $this->value( 'desktop' ) ? json_decode( $this->value( 'desktop' ) ) : '',
+            'tablet'  => $this->value( 'tablet' ) ? json_decode( $this->value( 'tablet' ) ) : '',
+            'mobile'  => $this->value( 'mobile' ) ? json_decode( $this->value( 'mobile' ) ) : '',
         );
 
         // Responsive identifier

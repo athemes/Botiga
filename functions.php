@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.1.9' );
+	define( 'BOTIGA_VERSION', '2.2.0' );
 }
 
 // aThemes White Label Compatibility
@@ -474,6 +474,13 @@ if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Brands' ) ) {
  */
 if( defined( 'ELEMENTOR_VERSION' ) ) {
 	require get_template_directory() . '/inc/plugins/elementor/elementor.php';
+}
+
+/**
+ * Load Elementor Pro compatibility file.
+ */
+if( defined( 'ELEMENTOR_PRO_VERSION' ) ) {
+	require get_template_directory() . '/inc/plugins/elementor-pro/elementor-pro.php';
 }
 
 /**

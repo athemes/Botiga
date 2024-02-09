@@ -892,6 +892,59 @@ gulp.task('quickViewStylesMin', () => {
 			})
 		);
 });
+
+gulp.task('accordionStyles', () => {
+	return gulp
+		.src(config.accordionSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'expanded',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Accordion Styles Expanded — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+gulp.task('accordionStylesMin', () => {
+	return gulp
+		.src(config.accordionSRC, {allowEmpty: true})
+		.pipe(plumber(errorHandler))
+		.pipe(
+			sass({
+				errLogToConsole: config.errLogToConsole,
+				outputStyle: 'compressed',
+				precision: config.precision
+			})
+		)
+		.on('error', sass.logError)
+		.pipe(autoprefixer(config.BROWSERS_LIST))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.styleDestination))
+		.pipe(filter('**/*.css')) // Filtering stream to only css files.
+		.pipe(mmq({log: true})) // Merge Media Queries only for .min.css version.
+		.pipe(browserSync.stream()) // Reloads style.css if that is enqueued.
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> Accordion Styles Minified — completed!\n',
+				onLast: true
+			})
+		);
+});
  
  /**
 	* Task: `stylesRTL`.
@@ -1262,18 +1315,18 @@ gulp.task('quickViewStylesMin', () => {
 		);
 });
 
- /**
-	* Task: `botigaCarouselJS`.
-	*
-	* Concatenate and uglify custom JS scripts.
-	*
-	* This task does the following:
-	*     1. Gets the source folder for JS custom files
-	*     2. Concatenates all the files and generates custom.js
-	*     3. Renames the JS file with suffix .min.js
-	*     4. Uglifes/Minifies the JS file and generates custom.min.js
-	*/
-	gulp.task('botigaCarouselJS', () => {
+/**
+ * Task: `botigaCarouselJS`.
+ *
+ * Concatenate and uglify custom JS scripts.
+ *
+ * This task does the following:
+ *     1. Gets the source folder for JS custom files
+ *     2. Concatenates all the files and generates custom.js
+ *     3. Renames the JS file with suffix .min.js
+ *     4. Uglifes/Minifies the JS file and generates custom.min.js
+ */
+gulp.task('botigaCarouselJS', () => {
 	return gulp
 		.src(config.jsCarouselSRC, {since: gulp.lastRun('botigaCarouselJS')}) // Only run on changed files.
 		.pipe(newer(config.jsCustomDestination))
@@ -1310,6 +1363,59 @@ gulp.task('quickViewStylesMin', () => {
 		.pipe(
 			notify({
 				message: '\n\n✅  ===> CAROUSEL JS — completed!\n',
+				onLast: true
+			})
+		);
+});
+
+/**
+ * Task: `botigaAccordionJS`.
+ *
+ * Concatenate and uglify custom JS scripts.
+ *
+ * This task does the following:
+ *     1. Gets the source folder for JS custom files
+ *     2. Concatenates all the files and generates custom.js
+ *     3. Renames the JS file with suffix .min.js
+ *     4. Uglifes/Minifies the JS file and generates custom.min.js
+ */
+gulp.task('botigaAccordionJS', () => {
+	return gulp
+		.src(config.jsAccordionSRC, {since: gulp.lastRun('botigaAccordionJS')}) // Only run on changed files.
+		.pipe(newer(config.jsCustomDestination))
+		.pipe(plumber(errorHandler))
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: {browsers: config.BROWSERS_LIST} // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe(remember(config.jsAccordionSRC)) // Bring all files back to stream.
+		.pipe(concat(config.jsAccordionFile + '.js'))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			rename({
+				basename: config.jsAccordionFile,
+				suffix: '.min'
+			})
+		)
+		.pipe(uglify({
+			output: {
+				comments: 'some'
+			}
+		}))
+		.pipe(lineec()) // Consistent Line Endings for non UNIX systems.
+		.pipe(gulp.dest(config.jsCustomDestination))
+		.pipe(
+			notify({
+				message: '\n\n✅  ===> ACCORDION JS — completed!\n',
 				onLast: true
 			})
 		);
@@ -1821,6 +1927,8 @@ gulp.task(
 		'dokanStylesMin',
 		'quickViewStyles',
 		'quickViewStylesMin',
+		'accordionStyles',
+		'accordionStylesMin',
 		'BHFBStyles',
 		'BHFBStylesMin',
 		'editorStyles',
@@ -1844,6 +1952,7 @@ gulp.task(
 		'customJS',
 		'botigaPopupJS',
 		'botigaCarouselJS',
+		'botigaAccordionJS',
 		'botigaGalleryJS',
 		'botigaAjaxAddToCartJS',
 		'botigaSwiperJS',
@@ -1871,6 +1980,8 @@ gulp.task(
 		gulp.watch(config.watchStyles, gulp.parallel('dokanStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('quickViewStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('quickViewStylesMin'));
+		gulp.watch(config.watchStyles, gulp.parallel('accordionStyles'));
+		gulp.watch(config.watchStyles, gulp.parallel('accordionStylesMin'));
 		gulp.watch(config.watchStyles, gulp.parallel('BHFBStyles'));
 		gulp.watch(config.watchStyles, gulp.parallel('BHFBStylesMin'));
 
@@ -1898,6 +2009,7 @@ gulp.task(
 		gulp.watch(config.watchJsAdmin, gulp.series('customJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaPopupJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaCarouselJS', reload));
+		gulp.watch(config.watchJsAdmin, gulp.series('botigaAccordionJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaGalleryJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaAjaxAddToCartJS', reload));
 		gulp.watch(config.watchJsAdmin, gulp.series('botigaSwiperJS', reload));

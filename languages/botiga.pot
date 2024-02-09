@@ -141,11 +141,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:566
+#: functions.php:573
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:569
+#: functions.php:576
 msgid "Plugins"
 msgstr ""
 
@@ -2436,7 +2436,7 @@ msgstr ""
 msgid "Botiga is now installed and ready to go. To help you with the next step, we’ve gathered together on this page all the resources you might need. We hope you enjoy using Botiga."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:51
+#: inc/dashboard/class-dashboard-settings.php:51, inc/dashboard/class-dashboard.php:170, inc/dashboard/class-dashboard.php:171
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -2938,10 +2938,6 @@ msgstr ""
 
 #: inc/dashboard/class-dashboard.php:135, inc/dashboard/class-dashboard.php:136, inc/dashboard/html-hero.php:58
 msgid "Theme Dashboard"
-msgstr ""
-
-#: inc/dashboard/class-dashboard.php:170, inc/dashboard/class-dashboard.php:171
-msgid "Upgrade Botiga"
 msgstr ""
 
 #: inc/dashboard/class-dashboard.php:232, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
