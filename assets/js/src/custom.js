@@ -314,10 +314,10 @@ botiga.navigation = {
 		const items = document.querySelectorAll( '.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li' );
 		for(const element of items) {
 			element.removeEventListener( 'mouseover', this.menuReverseEventHandler );
-			element.addEventListener( 'mouseover', this.menuReverseEventHandler );
+			element.addEventListener( 'mouseover', this.menuReverseEventHandler, { passive: true } );
 
 			element.removeEventListener( 'touchstart', this.menuReverseEventHandler );
-			element.addEventListener( 'touchstart', this.menuReverseEventHandler );
+			element.addEventListener( 'touchstart', this.menuReverseEventHandler, { passive: true } );
 		}
 	},
 
