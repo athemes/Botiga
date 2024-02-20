@@ -6340,6 +6340,10 @@ body {
 
 /* Display
 --------------------------------------------- */
+.bt-d-none-ni {
+  display: none;
+}
+
 .bt-d-none {
   display: none !important;
 }
