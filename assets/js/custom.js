@@ -334,9 +334,13 @@ botiga.navigation = {
       for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
         var element = _step8.value;
         element.removeEventListener('mouseover', this.menuReverseEventHandler);
-        element.addEventListener('mouseover', this.menuReverseEventHandler);
+        element.addEventListener('mouseover', this.menuReverseEventHandler, {
+          passive: true
+        });
         element.removeEventListener('touchstart', this.menuReverseEventHandler);
-        element.addEventListener('touchstart', this.menuReverseEventHandler);
+        element.addEventListener('touchstart', this.menuReverseEventHandler, {
+          passive: true
+        });
       }
     } catch (err) {
       _iterator8.e(err);
