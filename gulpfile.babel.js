@@ -31,7 +31,6 @@ const rename      = require('gulp-rename');
 const lineec      = require('gulp-line-ending-corrector');
 const filter      = require('gulp-filter');
 const notify      = require('gulp-notify');
-const browserSync = require('browser-sync').create();
 const wpPot       = require('gulp-wp-pot');
 const sort        = require('gulp-sort');
 const cache       = require('gulp-cache');
@@ -46,27 +45,6 @@ const zip         = require('gulp-zip');
 const errorHandler = r => {
 	notify.onError('\n\n❌  ===> ERROR: <%= error.message %>\n')(r);
 	beep();
-};
-
-/**
- * Helper function to allow browser reload with Gulp 4.
- */
-const reload = done => {
-	browserSync.reload();
-	done();
-};
- 
-/**
-* Task: `browser-sync`.
-*/
-const browsersync = done => {
-	browserSync.init({
-		proxy: config.projectURL,
-		open: config.browserAutoOpen,
-		injectChanges: config.injectChanges,
-		watchEvents: ['change', 'add', 'unlink', 'addDir', 'unlinkDir']
-	});
-	done();
 };
  
 /**
@@ -92,7 +70,6 @@ const styleTasks = config.styles.map((style) => {
 			.pipe(gulp.dest(style.destination))
 			.pipe(filter('**/*.css'))
 			.pipe(mmq({log: true}))
-			.pipe(browserSync.stream())
 			.pipe(
 				notify({
 					message: '\n\n✅  ===> CSS - ' + style.name + ' Expanded — completed!\n',
@@ -128,7 +105,6 @@ const styleMinTasks = config.styles.map((style) => {
 			.pipe(gulp.dest(style.destination))
 			.pipe(filter('**/*.css'))
 			.pipe(mmq({log: true}))
-			.pipe(browserSync.stream())
 			.pipe(
 				notify({
 					message: '\n\n✅  ===> CSS - ' + style.name + ' Minified — completed!\n',
@@ -235,11 +211,10 @@ gulp.task(
 	gulp.parallel(
 		...styleTasks,
 		...styleMinTasks,
-		...scriptTasks,
-		browsersync, () => {
+		...scriptTasks, () => {
 
 		// Global.
-		gulp.watch(config.watchPhp, reload);
+		gulp.watch(config.watchPhp);
 		
 		// Styles.
 		for (const style of config.styles) {
@@ -249,7 +224,7 @@ gulp.task(
 
 		// Scripts.
 		for (const script of config.scripts) {
-			gulp.watch(config.watchScripts, gulp.series(script.name + 'ScriptTask', reload));
+			gulp.watch(config.watchScripts, gulp.series(script.name + 'ScriptTask'));
 		}
 
 	})
