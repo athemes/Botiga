@@ -9,5 +9,5 @@ node_modules
 .DS_Store
 .idea
 assets/css
-assets/js
+assets/js/**/*
 !assets/js/src
