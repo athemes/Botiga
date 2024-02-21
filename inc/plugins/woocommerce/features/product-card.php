@@ -136,7 +136,7 @@ function botiga_product_card_hooks() {
 		if( 'layout1' !== $quick_view_layout || ( $wishlist_enable && 'layout1' !== $wishlist_layout ) ) {
 			remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open' );
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
-			add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_open', 9 );
+			add_action( 'woocommerce_before_shop_loop_item_title', 'botiga_woocommerce_template_loop_product_link_open', 9 );
 			add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 11 );
 		}
 
