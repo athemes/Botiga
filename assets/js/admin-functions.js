@@ -8,7 +8,6 @@
 
   $(document).on('click', '.botiga-update-hf', function (e) {
     e.preventDefault();
-
     if (confirm(botigaadm.hfUpdate.confirmMessage)) {
       $.ajax({
         type: 'post',
@@ -28,17 +27,15 @@
     }
   });
 })(jQuery);
+
 /**
  * Header/Footer Update Dismiss.
  */
-
-
 (function ($) {
   'use strict';
 
   $(document).on('click', '.botiga-update-hf-dismiss', function (e) {
     e.preventDefault();
-
     if (confirm(botigaadm.hfUpdateDimiss.confirmMessage)) {
       $.ajax({
         type: 'post',

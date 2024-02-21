@@ -16,7 +16,6 @@
   background-color: #f7f7f7;
   border: 1px solid #ddd;
 }
-
 .botiga-metabox-tabs a {
   position: relative;
   display: -webkit-box;
@@ -25,15 +24,13 @@
   color: #1a1a1a;
   padding: 15px 20px;
   text-decoration: none;
-  -webkit-transition: all .1s;
-  transition: all .1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   border-bottom: 1px solid #ddd;
 }
-
 .botiga-metabox-tabs a:last-child {
   border-bottom: 0;
 }
-
 .botiga-metabox-tabs a.active:after {
   content: "";
   position: absolute;
@@ -45,17 +42,14 @@
   border-right-color: #fff;
   border-width: 8px;
 }
-
 .botiga-metabox-tabs a:focus, .botiga-metabox-tabs a:active {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
 }
-
 .botiga-metabox-tabs a:hover {
   background-color: #eee;
 }
-
 .botiga-metabox-tabs a.active {
   color: #fff;
   background-color: #007cba;
@@ -88,7 +82,6 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .botiga-metabox-content:not(.active) {
   display: none;
 }
@@ -110,11 +103,9 @@
   grid-gap: 20px;
   padding: 20px;
 }
-
 .botiga-metabox-field:first-child {
   border-top: none;
 }
-
 .botiga-metabox-field:last-child {
   border-bottom: none;
 }
@@ -152,16 +143,13 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .botiga-metabox-field-title h4 {
   margin: 0;
   color: #1e1e1e;
 }
-
 .botiga-metabox-field-title small {
   opacity: 0.75;
 }
-
 .botiga-metabox-field-title small code {
   font-size: 1em;
 }
@@ -177,7 +165,6 @@
   opacity: 0.75;
   margin-top: 10px;
 }
-
 .botiga-metabox-field-description code {
   font-size: 1em;
 }
@@ -212,7 +199,6 @@
       -ms-user-select: none;
           user-select: none;
 }
-
 .botiga-metabox-field-checkbox label input {
   margin: 0;
 }
@@ -223,11 +209,9 @@
   display: flex;
   gap: 10px;
 }
-
 .botiga-metabox-field-hook-select .hook-select-wrapper select {
   min-width: 280px;
 }
-
 .botiga-metabox-field-hook-select .hook-select-wrapper input {
   max-width: 70px;
 }
@@ -245,7 +229,6 @@
       -ms-user-select: none;
           user-select: none;
 }
-
 .botiga-metabox-field-switcher i {
   position: relative;
   overflow: hidden;
@@ -259,7 +242,6 @@
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
-
 .botiga-metabox-field-switcher i:before {
   content: "";
   position: absolute;
@@ -273,15 +255,12 @@
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
 }
-
 .botiga-metabox-field-switcher input {
   display: none;
 }
-
 .botiga-metabox-field-switcher input:checked + i {
   background-color: #2271b1;
 }
-
 .botiga-metabox-field-switcher input:checked + i:before {
   left: 26px;
 }
@@ -294,7 +273,6 @@
       flex-wrap: wrap;
   grid-gap: 2px;
 }
-
 .botiga-metabox-field-choices-images label {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -304,31 +282,26 @@
       -ms-user-select: none;
           user-select: none;
 }
-
 .botiga-metabox-field-choices-images figure {
   padding: 4px;
   margin: 0;
   border: 2px solid transparent;
   border-radius: 4px;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
   max-width: 80px;
   max-height: 80px;
 }
-
 .botiga-metabox-field-choices-images figure img {
   width: 100%;
   vertical-align: top;
 }
-
 .botiga-metabox-field-choices-images input {
   display: none;
 }
-
 .botiga-metabox-field-choices-images input:checked + figure {
   border-color: #1e1e1e;
 }
-
 .botiga-metabox-field-choices-images input:checked + figure:before {
   left: 26px;
 }
@@ -351,7 +324,6 @@
   width: 18px;
   height: 18px;
 }
-
 .botiga-metabox-field-uploads-thumbnail-remove:hover {
   color: #a00;
 }
@@ -376,7 +348,6 @@
   font-weight: 200;
   text-decoration: none;
 }
-
 .botiga-metabox-field-uploads-thumbnail-upload img {
   width: 100%;
   height: 100%;
@@ -399,7 +370,6 @@
       -ms-flex-align: start;
           align-items: flex-start;
 }
-
 .botiga-metabox-field-uploads-content ul,
 .botiga-metabox-field-repeater-content ul {
   margin: 0;
@@ -407,7 +377,6 @@
   list-style: none;
   width: 100%;
 }
-
 .botiga-metabox-field-uploads-content ul li,
 .botiga-metabox-field-repeater-content ul li {
   margin: 0;
@@ -423,12 +392,10 @@
           justify-content: flex-start;
   margin-bottom: 10px;
 }
-
 .botiga-metabox-field-uploads-content ul li.hidden,
 .botiga-metabox-field-repeater-content ul li.hidden {
   display: none;
 }
-
 .botiga-metabox-field-uploads-content ul li span,
 .botiga-metabox-field-repeater-content ul li span {
   cursor: pointer;
@@ -442,21 +409,18 @@
           user-select: none;
   color: #1e1e1e;
   opacity: 0.5;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
-
 .botiga-metabox-field-uploads-content ul li span:hover,
 .botiga-metabox-field-repeater-content ul li span:hover {
   opacity: 1;
 }
-
 .botiga-metabox-field-uploads-content ul li span.dashicons-trash,
 .botiga-metabox-field-repeater-content ul li span.dashicons-trash {
   color: #a00;
   font-size: 18px;
 }
-
 .botiga-metabox-field-uploads-content input,
 .botiga-metabox-field-repeater-content input {
   width: 50%;
@@ -470,38 +434,31 @@
   padding: 0;
   list-style: none;
 }
-
 .botiga-metabox-field-size-chart ul li {
   margin-bottom: 20px;
 }
-
 .botiga-metabox-field-size-chart ul li.hidden {
   display: none;
 }
-
 .botiga-metabox-field-size-chart table {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
   background-color: #fff;
 }
-
 .botiga-metabox-field-size-chart table th,
 .botiga-metabox-field-size-chart table td {
   padding: 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .botiga-metabox-field-size-chart table th:last-child,
 .botiga-metabox-field-size-chart table td:last-child {
   width: 1%;
   min-width: 75px;
 }
-
 .botiga-metabox-field-size-chart table thead {
   text-align: center;
 }
-
 .botiga-metabox-field-size-chart table thead label {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -514,21 +471,17 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
 .botiga-metabox-field-size-chart table tbody input {
   width: 100%;
   max-width: 100%;
   text-align: center;
 }
-
 .botiga-metabox-field-size-chart table tbody tr:nth-child(2) td:not(:last-child) {
   background-color: #eee;
 }
-
 .botiga-metabox-field-size-chart table tfoot {
   text-align: right;
 }
-
 .botiga-metabox-field-size-chart .botiga-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -541,7 +494,6 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
 .botiga-metabox-field-size-chart .botiga-buttons a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -567,44 +519,36 @@
           box-shadow: none;
   text-decoration: none;
 }
-
 .botiga-metabox-field-size-chart .botiga-buttons a:active {
   opacity: 0.5;
 }
-
 .botiga-metabox-field-size-chart .botiga-add-col,
 .botiga-metabox-field-size-chart .botiga-add-row {
   color: #27ae60;
   background-color: #d5f5e3;
 }
-
 .botiga-metabox-field-size-chart .botiga-del-col,
 .botiga-metabox-field-size-chart .botiga-del-row {
   color: #e74c3c;
   background-color: #f2d7d5;
 }
-
 .botiga-metabox-field-size-chart .botiga-remove {
   color: #fff;
   border-color: #d50204;
   background: #d50204;
 }
-
 .botiga-metabox-field-size-chart .botiga-remove:hover, .botiga-metabox-field-size-chart .botiga-remove:focus {
   border-color: #b32d2e;
   background: #b32d2e;
 }
-
 .botiga-metabox-field-size-chart .botiga-remove:focus {
   -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #b32d2e;
           box-shadow: 0 0 0 1px #fff, 0 0 0 3px #b32d2e;
 }
-
 .botiga-metabox-field-size-chart .botiga-remove:active {
   border-color: #b32d2e;
   background: #b32d2e;
 }
-
 .botiga-metabox-field-size-chart .botiga-duplicate {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -623,11 +567,9 @@
           box-shadow: none;
   text-decoration: none;
 }
-
 .botiga-metabox-field-size-chart .botiga-duplicate:active {
   opacity: 0.5;
 }
-
 .botiga-metabox-field-size-chart .botiga-duplicate svg {
   width: 16px;
   height: 16px;
@@ -653,28 +595,23 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 .botiga-metabox-field-media figure img {
   max-width: 100%;
   height: auto;
 }
-
 .botiga-metabox-field-media input {
   display: none;
 }
-
 .botiga-metabox-field-media .botiga-button-remove {
   color: #b32d2e;
   border-color: #b32d2e;
   background: #fff8f8;
 }
-
 .botiga-metabox-field-media .botiga-button-remove:hover, .botiga-metabox-field-media .botiga-button-remove:focus, .botiga-metabox-field-media .botiga-button-remove:active {
   color: #b32d2e;
   border-color: #b32d2e;
   background: #fff0f0;
 }
-
 .botiga-metabox-field-media .botiga-button-remove:focus {
   -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #b32d2e;
           box-shadow: 0 0 0 1px #fff, 0 0 0 3px #b32d2e;
@@ -684,48 +621,39 @@
   display: none;
   width: 100%;
 }
-
 .botiga-metabox-field-select-ajax ul {
   margin: 0;
   padding: 0;
   list-style: none;
   vertical-align: top;
 }
-
 .botiga-metabox-field-select-ajax ul li {
   margin: 0;
   padding: 0;
 }
-
 .botiga-metabox-field-select-ajax .select2-container--default .select2-selection--multiple .select2-selection__rendered {
   width: auto;
   display: inline;
   padding: 0;
 }
-
 .botiga-metabox-field-select-ajax .select2-container .select2-search--inline .select2-search__field {
   margin: 0;
   padding: 0;
 }
-
 .botiga-metabox-field-select-ajax .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-color: #aaa;
 }
-
 .botiga-metabox-field-select-ajax .select2-container--default .select2-selection--multiple {
   padding: 0 5px;
 }
-
 .botiga-metabox-field-select-ajax .select2-container--default .select2-selection--multiple .select2-selection__choice {
   margin-left: 0;
 }
-
 .botiga-metabox-field-select-ajax .botiga-select2-clear {
   display: block;
   width: 100%;
   clear: both;
 }
-
 .botiga-metabox-field-select-ajax .botiga-metabox-field-content {
   min-height: 32px;
 }
@@ -743,7 +671,6 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .botiga-metabox-field-wc-attributes ul li {
   margin: 0;
   padding: 0;
@@ -758,11 +685,9 @@
   background-color: #fdfdfd;
   border-radius: 3px;
 }
-
 .botiga-metabox-field-wc-attributes ul li:hover {
   border-color: #ccc;
 }
-
 .botiga-metabox-field-wc-attributes ul li label {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -780,11 +705,9 @@
       -ms-user-select: none;
           user-select: none;
 }
-
 .botiga-metabox-field-wc-attributes ul li label input {
   margin: 0;
 }
-
 .botiga-metabox-field-wc-attributes ul li .botiga-sortable-move {
   cursor: pointer;
   padding: 8px;
@@ -823,13 +746,11 @@ body:not(.block-editor-page) #botiga_metabox .inside {
   margin: 0;
   padding: 0;
 }
-
 body:not(.block-editor-page) #botiga_metabox .botiga-metabox-tabs {
   border-top: 0;
   border-left: 0;
   border-bottom: 0;
 }
-
 body:not(.block-editor-page) #botiga_metabox .botiga-metabox-contents {
   border: 0;
 }
@@ -837,12 +758,10 @@ body:not(.block-editor-page) #botiga_metabox .botiga-metabox-contents {
 #side-sortables .botiga-metabox-tabs {
   display: none;
 }
-
 #side-sortables .botiga-metabox-content-title,
 #side-sortables .botiga-metabox-content:not(.active) {
   display: block;
 }
-
 #side-sortables .botiga-metabox-field {
   grid-gap: 8px;
   padding: 10px 15px;
@@ -851,36 +770,29 @@ body:not(.block-editor-page) #botiga_metabox .botiga-metabox-contents {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 #side-sortables .botiga-metabox-field-title {
   width: auto;
   font-size: 12px;
 }
-
 #side-sortables .botiga-metabox-field-title:empty {
   display: none;
 }
-
 #side-sortables .botiga-metabox-contents {
   border-left: none;
   border-right: none;
 }
-
 #side-sortables #botiga_metabox .postbox-header {
   border-top: none;
 }
-
 #side-sortables #botiga_metabox .postbox-header h2 {
   color: #1e1e1e;
   padding: 0 0 0 15px;
   font-size: 13px;
   font-weight: 500;
 }
-
 #side-sortables #botiga_metabox .inside {
   padding: 0;
 }
-
 #side-sortables .botiga-metabox-field-text input,
 #side-sortables .botiga-metabox-field-uploads-content input,
 #side-sortables .botiga-metabox-field-repeater-content input {

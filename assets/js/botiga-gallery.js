@@ -4,6 +4,7 @@
  * jQuery Dependant: true
  * 
  */
+
 'use strict';
 
 var botiga = botiga || {};
@@ -12,33 +13,27 @@ botiga.gallery = {
     // fix quickview gallery thumbnails in "layout 2" mode
     jQuery(document).on('wc-product-gallery-after-init', '.woocommerce-product-gallery', function (event, gallery) {
       var $gallery = jQuery(gallery);
-
       if (!$gallery.parent().is('.gallery-quickview')) {
         return;
       }
-
       wc_single_product_params.flexslider.controlNav = 'thumbnails';
     });
     jQuery(document).on('wc-product-gallery-after-init', '.woocommerce-product-gallery', function (event, gallery) {
       var $gallery = jQuery(gallery);
-
       if (!$gallery.parent().is('.gallery-default, .gallery-vertical, .gallery-quickview, .gallery-showcase, .gallery-full-width')) {
         return;
       }
-
       var flexdata = $gallery.data('product_gallery');
-
       if (!flexdata || !flexdata.$images) {
         return;
       }
-
       var $flexItems = flexdata.$images;
-      var $flexThumbs = $gallery.find('.flex-control-thumbs'); // pass carousel sliders if less than 5 items
+      var $flexThumbs = $gallery.find('.flex-control-thumbs');
 
+      // pass carousel sliders if less than 5 items
       if ($flexItems.length <= 5) {
         return;
       }
-
       if ($gallery.parent().is('.gallery-vertical, .gallery-showcase')) {
         $flexThumbs.addClass('swiper-wrapper botiga-slides');
         $flexThumbs.find('li').addClass('swiper-slide');
@@ -57,7 +52,6 @@ botiga.gallery = {
         });
         jQuery(window).on('resize botiga.resize', function () {
           var winWidth = window.innerWidth || document.documentElement.clientWidth;
-
           if (winWidth < 991 && swiper.params.direction !== 'horizontal') {
             swiper.changeDirection('horizontal');
             swiper.params.slidesPerView = 5;

@@ -3,9 +3,8 @@
   cursor: pointer;
   margin: 0 !important;
 }
-
 .botiga-accordion-toggle:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   right: 4px;
@@ -19,13 +18,11 @@
   transition: ease opacity 300ms;
   opacity: 0.6;
 }
-
 .botiga-accordion-toggle.active:after {
   -webkit-transform: translateY(-50%) rotate(135deg);
           transform: translateY(-50%) rotate(135deg);
   opacity: 1;
 }
-
 .botiga-accordion-toggle + .botiga-accordion-body {
   padding-top: 20px;
 }
