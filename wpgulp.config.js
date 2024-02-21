@@ -104,6 +104,14 @@ const styles = [
 		file: 'styles',
 	},
 
+	// RTL.
+	{
+		name: 'rtl',
+		src: './assets/sass/rtl.scss',
+		destination: './',
+		file: 'rtl',
+	},
+
 	// Editor.
 	{
 		name: 'editor',
