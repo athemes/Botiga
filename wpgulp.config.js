@@ -24,45 +24,60 @@ const styles = [
 	// BHFB.
 	{
 		name: 'adminBHFB',
-		src: './sass/admin/bhfb.scss',
+		src: './assets/sass/admin/bhfb.scss',
 		destination: './assets/css/admin',
+		file: 'botiga-bhfb',
 	},
 
 	// BHFB Customizer Preview.
 	{
 		name: 'adminCustPrevBHFB',
-		src: './sass/admin/bhfb-customize-preview.scss',
+		src: './assets/sass/admin/bhfb-customize-preview.scss',
 		destination: './assets/css/admin',
+		file: 'botiga-bhfb-customize-preview',
+
 	},
 
 	// Dashboard.
 	{
 		name: 'adminDashboard',
-		src: './sass/admin/dashboard.scss',
+		src: './assets/sass/admin/dashboard.scss',
 		destination: './assets/css/admin',
+		file: 'botiga-dashboard',
 	},
 
 	// Dashboard RTL.
 	{
 		name: 'adminDashboardRTL',
-		src: './sass/admin/dashboard-rtl.scss',
+		src: './assets/sass/admin/dashboard-rtl.scss',
 		destination: './assets/css/admin',
+		file: 'botiga-dashboard-rtl',
 	},
 
 	// Notices.
 	{
 		name: 'adminNotices',
-		src: './sass/admin/notices.scss',
+		src: './assets/sass/admin/notices.scss',
 		destination: './assets/css/admin',
+		file: 'botiga-notices',
 	},
 
 	// Frontend styles. ##############################
+
+	// BHFB.
+	{
+		name: 'bhfb',
+		src: './assets/sass/bhfb.scss',
+		destination: './assets/css',
+		file: 'botiga-bhfb',
+	},
 
 	// Customizer.
 	{
 		name: 'customizer',
 		src: './assets/sass/customizer.scss',
 		destination: './assets/css',
+		file: 'customizer',
 	},
 
 	// Customizer RTL.
@@ -70,6 +85,7 @@ const styles = [
 		name: 'customizerRTL',
 		src: './assets/sass/customizer-rtl.scss',
 		destination: './assets/css',
+		file: 'customizer-rtl',
 	},
 
 	// Metabox.
@@ -77,6 +93,7 @@ const styles = [
 		name: 'metabox',
 		src: './assets/sass/metabox.scss',
 		destination: './assets/css',
+		file: 'metabox',
 	},
 
 	// Styles.
@@ -84,6 +101,7 @@ const styles = [
 		name: 'styles',
 		src: './assets/sass/styles.scss',
 		destination: './assets/css',
+		file: 'styles',
 	},
 
 	// Editor.
@@ -91,6 +109,7 @@ const styles = [
 		name: 'editor',
 		src: './assets/sass/editor.scss',
 		destination: './assets/css',
+		file: 'editor',
 	},
 
 	// WooCommerce.
@@ -98,6 +117,7 @@ const styles = [
 		name: 'woocommerce',
 		src: './assets/sass/woocommerce.scss',
 		destination: './assets/css',
+		file: 'woocommerce',
 	},
 
 	// Dokan.
@@ -105,6 +125,7 @@ const styles = [
 		name: 'dokan',
 		src: './assets/sass/dokan.scss',
 		destination: './assets/css',
+		file: 'dokan',
 	},
 
 	// Quick View.
@@ -112,6 +133,7 @@ const styles = [
 		name: 'quickView',
 		src: './assets/sass/plugins/woocommerce/quick-view.scss',
 		destination: './assets/css',
+		file: 'quick-view',
 	},
 
 	// Accordion.
@@ -119,13 +141,7 @@ const styles = [
 		name: 'accordion',
 		src: './assets/sass/accordion.scss',
 		destination: './assets/css',
-	},
-
-	// Accordion.
-	{
-		name: 'accordion',
-		src: './assets/sass/accordion.scss',
-		destination: './assets/css',
+		file: 'accordion',
 	},
 
 ];
