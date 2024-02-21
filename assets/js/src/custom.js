@@ -108,7 +108,6 @@ botiga.navigation = {
 		}
 	
 		const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
-
 		const mobileMenuClose = siteNavigation.getElementsByClassName( 'mobile-menu-close' )[ 0 ];
 
 		// Hide menu toggle button if menu is empty and return early.
@@ -322,6 +321,8 @@ botiga.navigation = {
 	},
 
 	menuReverseEventHandler: function() {
+		const is_rtl = 'rtl' === document.querySelector('html').getAttribute( 'dir' );
+
 		event.stopPropagation();
 
 		var submenu = event.currentTarget.querySelector( '.header-login-register>nav, .top-bar-login-register>nav, .sub-menu' );
@@ -331,10 +332,15 @@ botiga.navigation = {
 		
 		// Reverse horizontally
 		submenu.classList.remove( 'sub-menu-reverse' );
-		if( botiga.helpers.isInHorizontalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+
+		if( is_rtl ) {
 			submenu.classList.add( 'sub-menu-reverse' );
 		} else {
-			submenu.classList.remove( 'sub-menu-reverse' );
+			if( botiga.helpers.isInHorizontalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+				submenu.classList.add( 'sub-menu-reverse' );
+			} else {
+				submenu.classList.remove( 'sub-menu-reverse' );
+			}
 		}
 
 		// Reverse vertically
