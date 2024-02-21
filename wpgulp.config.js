@@ -7,191 +7,283 @@
  * @package WPGulp
  */
 
-// Project options.
-
-// Local project URL of your already running WordPress site.
-// > Could be something like "wpgulp.local" or "localhost"
-// > depending upon your local WordPress setup.
-const projectURL = 'http://localhost:6060';
-
-// Theme/Plugin URL. Leave it like it is; since our gulpfile.js lives in the root folder.
-const productURL = './';
+// General options.
+const projectURL      = 'http://localhost/botiga';
+const productURL      = './';
 const browserAutoOpen = false;
-const injectChanges = true;
-
-// >>>>> Style options.
-// Path to main .scss file.
-const customizerSRC = './sass/customizer.scss';
-
-const customizerRtlSRC = './sass/customizer-rtl.scss';
-
-const metaboxSRC = './sass/metabox.scss';
-
-const styleSRC = './sass/styles.scss';
-
-const editorStyleSRC = './sass/editor.scss';
-
-const woocommerceSRC = './sass/woocommerce.scss';
-
-const dokanSRC = './sass/dokan.scss';
-
-const quickViewSRC = './sass/plugins/woocommerce/quick-view.scss';
-
-const accordionSRC = './sass/accordion.scss';
-
-// Path to place the compiled CSS file. Default set to root folder.
-const styleDestination = './assets/css';
-
-// Available options → 'compact' or 'compressed' or 'nested' or 'expanded'
-const outputStyle = 'compressed';
+const injectChanges   = true;
+const outputStyle     = 'compressed';
 const errLogToConsole = true;
-const precision = 10;
+const precision       = 10;
 
-// Path to customizer js file
-const custSRC = './assets/js/src/customizer.js';
+// Styles to process.
+const styles = [
 
-// Path to place the customizer scripts file.
-const custDestination = './assets/js/';
+	// Admin styles. ##############################
 
-//Path to customizer-scripts js file
-const custScriptsSRC = './assets/js/src/customizer-scripts.js';
+	// BHFB.
+	{
+		name: 'adminBHFB',
+		src: './sass/admin/bhfb.scss',
+		destination: './assets/css/admin',
+	},
 
-// Path to place the customizer scripts file.
-const custScriptsDestination = './assets/js/';
+	// BHFB Customizer Preview.
+	{
+		name: 'adminCustPrevBHFB',
+		src: './sass/admin/bhfb-customize-preview.scss',
+		destination: './assets/css/admin',
+	},
 
-//Path to metabox-scripts js file
-const metaboxScriptsSRC = './assets/js/src/metabox.js';
+	// Dashboard.
+	{
+		name: 'adminDashboard',
+		src: './sass/admin/dashboard.scss',
+		destination: './assets/css/admin',
+	},
 
-// Path to place the metabox scripts file.
-const metaboxScriptsDestination = './assets/js/';
+	// Dashboard RTL.
+	{
+		name: 'adminDashboardRTL',
+		src: './sass/admin/dashboard-rtl.scss',
+		destination: './assets/css/admin',
+	},
 
-const custFile = 'customizer';
+	// Notices.
+	{
+		name: 'adminNotices',
+		src: './sass/admin/notices.scss',
+		destination: './assets/css/admin',
+	},
 
-const custScriptsFile = 'customizer-scripts';
+	// Frontend styles. ##############################
 
-const metaboxScriptsFile = 'metabox';
+	// Customizer.
+	{
+		name: 'customizer',
+		src: './assets/sass/customizer.scss',
+		destination: './assets/css',
+	},
 
-const jsAdminDestination = './assets/js/admin/';
+	// Customizer RTL.
+	{
+		name: 'customizerRTL',
+		src: './assets/sass/customizer-rtl.scss',
+		destination: './assets/css',
+	},
 
-// JS Admin Functions.
-const jsAdminFunctionsSRC = './assets/js/src/admin-functions.js';
-const adminFunctionsDestination = './assets/js/';
-const adminFunctionsScriptsFile = 'admin-functions';
+	// Metabox.
+	{
+		name: 'metabox',
+		src: './assets/sass/metabox.scss',
+		destination: './assets/css',
+	},
 
-const adminStyleDestination = './assets/css/admin/';
+	// Styles.
+	{
+		name: 'styles',
+		src: './assets/sass/styles.scss',
+		destination: './assets/css',
+	},
 
-// Styles BHFB
-const BHFBSRC = './sass/bhfb.scss';
-const adminBHFBSRC = './sass/admin/bhfb.scss';
-const adminCustPrevBHFBSRC = './sass/admin/bhfb-customize-preview.scss';
-const adminDashboardSRC = './sass/admin/dashboard.scss';
-const adminDashboardRtlSRC = './sass/admin/dashboard-rtl.scss';
-const adminNoticesSRC = './sass/admin/notices.scss';
+	// Editor.
+	{
+		name: 'editor',
+		src: './assets/sass/editor.scss',
+		destination: './assets/css',
+	},
 
-// JS BHFB
-const jsAdminBHFBSRC = './assets/js/src/admin/botiga-bhfb.js';
-const jsAdminCustPrevBHFBSRC = './assets/js/src/admin/botiga-bhfb-customize-preview.js';
-const jsAdminDashboardSRC = './assets/js/src/admin/botiga-dashboard.js';
-const jsAdminBHFBFile = 'botiga-bhfb';
-const jsAdminCustPrevBHFBFile = 'botiga-bhfb-customize-preview';
-const jsAdminDashboardFile = 'botiga-dashboard';
+	// WooCommerce.
+	{
+		name: 'woocommerce',
+		src: './assets/sass/woocommerce.scss',
+		destination: './assets/css',
+	},
 
-// JS Custom options.
+	// Dokan.
+	{
+		name: 'dokan',
+		src: './assets/sass/dokan.scss',
+		destination: './assets/css',
+	},
 
-// Path to JS accordion.
-const jsAccordionSRC = './assets/js/src/botiga-accordion.js';
+	// Quick View.
+	{
+		name: 'quickView',
+		src: './assets/sass/plugins/woocommerce/quick-view.scss',
+		destination: './assets/css',
+	},
 
-// Path to JS carousel.
-const jsCarouselSRC = './assets/js/src/botiga-carousel.js';
+	// Accordion.
+	{
+		name: 'accordion',
+		src: './assets/sass/accordion.scss',
+		destination: './assets/css',
+	},
 
-// Path to JS swiper.
-const jsSwiperSRC = './assets/js/src/botiga-swiper.js';
+	// Accordion.
+	{
+		name: 'accordion',
+		src: './assets/sass/accordion.scss',
+		destination: './assets/css',
+	},
 
-// Path to JS gallery.
-const jsGallerySRC = './assets/js/src/botiga-gallery.js';
+];
 
-// Path to JS ajax add to cart.
-const jsAjaxAddToCartSRC = './assets/js/src/botiga-ajax-add-to-cart.js';
+// Scripts to process.
+const scripts = [
 
-// Path to JS popup.
-const jsPopupSRC = './assets/js/src/botiga-popup.js';
+	// Admin styles. ##############################
 
-// Path to JS sidebar.
-const jsSidebarSRC = './assets/js/src/botiga-sidebar.js';
+	// Customizer.
+	{
+		name: 'customizer',
+		src: './assets/js/src/customizer.js',
+		destination: './assets/js',
+		file: 'customizer',
+	},
 
-// Path to JS ajax search.
-const jsAjaxSearchSRC = './assets/js/src/botiga-ajax-search.js';
+	// Customizer Scripts.
+	{
+		name: 'customizerScripts',
+		src: './assets/js/src/customizer-scripts.js',
+		destination: './assets/js',
+		file: 'customizer-scripts',
+	},
 
-// Path to JS quick view.
-const jsQuickViewSRC = './assets/js/src/botiga-quick-view.js';
+	// Metabox Scripts.
+	{
+		name: 'metaboxScripts',
+		src: './assets/js/src/metabox.js',
+		destination: './assets/js',
+		file: 'metabox',
+	},
 
-// Path to JS custom scripts folder.
-const jsCustomSRC = './assets/js/src/custom.js';
+	// Admin Functions.
+	{
+		name: 'adminFunctions',
+		src: './assets/js/src/admin-functions.js',
+		destination: './assets/js',
+		file: 'admin-functions',
+	},
 
-// Path to place the compiled JS custom scripts file.
-const jsCustomDestination = './assets/js/';
+	// BHFB.
+	{
+		name: 'adminBHFB',
+		src: './assets/js/src/admin/botiga-bhfb.js',
+		destination: './assets/js/admin',
+		file: 'botiga-bhfb',
+	},
 
-// Compiled JS custom file name. Default set to custom i.e. custom.js.
-const jsCustomFile = 'custom';
+	// BHFB Customizer Preview.
+	{
+		name: 'adminCustPrevBHFB',
+		src: './assets/js/src/admin/botiga-bhfb-customize-preview.js',
+		destination: './assets/js/admin',
+		file: 'botiga-bhfb-customize-preview',
+	},
 
-// Compiled JS carousel file name.
-const jsCarouselFile = 'botiga-carousel';
+	// Dashboard.
+	{
+		name: 'adminDashboard',
+		src: './assets/js/src/admin/botiga-dashboard.js',
+		destination: './assets/js/admin',
+		file: 'botiga-dashboard',
+	},
 
-// Compiled JS carousel file name.
-const jsAccordionFile = 'botiga-accordion';
+	// Frontend styles. ##############################
 
-// Compiled JS swiper file name.
-const jsSwiperFile = 'botiga-swiper';
+	// Accordion.
+	{
+		name: 'accordion',
+		src: './assets/js/src/botiga-accordion.js',
+		destination: './assets/js',
+		file: 'botiga-accordion',
+	},
 
-// Compiled JS gallery file name.
-const jsGalleryFile = 'botiga-gallery';
+	// Carousel.
+	{
+		name: 'carousel',
+		src: './assets/js/src/botiga-carousel.js',
+		destination: './assets/js',
+		file: 'botiga-carousel',
+	},
 
-// Compiled JS gallery file name.
-const jsAjaxAddToCartFile = 'botiga-ajax-add-to-cart';
+	// Swiper.
+	{
+		name: 'swiper',
+		src: './assets/js/src/botiga-swiper.js',
+		destination: './assets/js',
+		file: 'botiga-swiper',
+	},
 
-// Compiled JS popup file name.
-const jsPopupFile = 'botiga-popup';
+	// Gallery.
+	{
+		name: 'gallery',
+		src: './assets/js/src/botiga-gallery.js',
+		destination: './assets/js',
+		file: 'botiga-gallery',
+	},
 
-// Compiled JS sidebar file name.
-const jsSidebarFile = 'botiga-sidebar';
+	// Ajax Add to Cart.
+	{
+		name: 'ajaxAddToCart',
+		src: './assets/js/src/botiga-ajax-add-to-cart.js',
+		destination: './assets/js',
+		file: 'botiga-ajax-add-to-cart',
+	},
 
-// Compiled JS ajax search file name.
-const jsAjaxSearchFile = 'botiga-ajax-search';
+	// Popup.
+	{
+		name: 'popup',
+		src: './assets/js/src/botiga-popup.js',
+		destination: './assets/js',
+		file: 'botiga-popup',
+	},
 
-// Compiled JS quick view file name.
-const jsQuickViewFile = 'botiga-quick-view';
+	// Sidebar.
+	{
+		name: 'sidebar',
+		src: './assets/js/src/botiga-sidebar.js',
+		destination: './assets/js',
+		file: 'botiga-sidebar',
+	},
 
-// Images options.
+	// Ajax Search.
+	{
+		name: 'ajaxSearch',
+		src: './assets/js/src/botiga-ajax-search.js',
+		destination: './assets/js',
+		file: 'botiga-ajax-search',
+	},
 
-// Source folder of images which should be optimized and watched.
-// > You can also specify types e.g. raw/**.{png,jpg,gif} in the glob.
-const imgSRC = './assets/img/raw/**/*';
+	// Quick View.
+	{
+		name: 'quickView',
+		src: './assets/js/src/botiga-quick-view.js',
+		destination: './assets/js',
+		file: 'botiga-quick-view',
+	},
 
-// Destination folder of optimized images.
-// > Must be different from the imagesSRC folder.
-const imgDST = './assets/img/';
+	// Custom.
+	{
+		name: 'custom',
+		src: './assets/js/src/custom.js',
+		destination: './assets/js',
+		file: 'custom',
+	},
 
-// >>>>> Watch files paths.
-// Path to all *.scss files inside css folder and inside them.
-const watchStyles = './sass/**/*.scss';
+];
 
-// Path to all admin JS files.
-const watchJsAdmin = './assets/js/src/**/*.js';
+// Watch options.
+const watchStyles  = './assets/sass/**/*.scss';
+const watchScripts = './assets/js/src/**/*.js';
+const watchPhp     = './**/*.php';
 
-// Path to all PHP files.
-const watchPhp = './**/*.php';
-
-// >>>>> Zip file config.
-// Must have.zip at the end.
+// Zip options.
 const zipName = 'botiga.zip';
-
-// Must be a folder outside of the zip folder.
 const zipDestination = './../'; // Default: Parent folder.
-
-//Include all files/folders in current directory.
 const zipIncludeGlob = ['../@(Botiga|botiga)/**/*'];
-
-// Default ignored files and folders for the zip file.
 const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*{node_modules,node_modules/**/*}',
 	'!../@(Botiga|botiga)/**/*.git',
@@ -233,113 +325,57 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/{vendor/wptrt,vendor/wptrt/**/*}'
 ];
 
-// >>>>> Translation options.
-// Your text domain here.
+// Translation options.
 const textDomain = 'botiga';
-
-// Name of the translation file.
 const translationFile = 'botiga.pot';
-
-// Where to save the translation files.
 const translationDestination = './languages';
 
-// Package name.
+// Others.
 const packageName = 'botiga';
-
-// Where can users report bugs.
 const bugReport = 'https://athemes.com/contact/';
-
-// Last translator Email ID.
 const lastTranslator = 'aThemes <team@athemes.com>';
-
-// Team's Email ID.
 const team = 'aThemes <team@athemes.com>';
-
-// Browsers you care about for auto-prefixing. Browserlist https://github.com/ai/browserslist
-// The following list is set as per WordPress requirements. Though; Feel free to change.
 const BROWSERS_LIST = ['last 2 version', '> 1%'];
 
 // Export.
 module.exports = {
+
+	// General options.
 	projectURL,
 	productURL,
 	browserAutoOpen,
 	injectChanges,
-	adminStyleDestination,
-	BHFBSRC,
-	adminBHFBSRC,
-	adminCustPrevBHFBSRC,
-	adminDashboardSRC,
-	adminDashboardRtlSRC,
-	adminNoticesSRC,
-	jsAdminBHFBSRC,
-	jsAdminCustPrevBHFBSRC,
-	jsAdminDashboardSRC,
-	jsAdminBHFBFile,
-	jsAdminCustPrevBHFBFile,
-	jsAdminDashboardFile,
-	styleSRC,
-	customizerSRC,
-	customizerRtlSRC,
-	metaboxSRC,
-	editorStyleSRC,
-	woocommerceSRC,
-	dokanSRC,
-	quickViewSRC,
-	accordionSRC,
-	styleDestination,
 	outputStyle,
 	errLogToConsole,
 	precision,
-	custSRC,
-	custDestination,
-	custScriptsSRC,
-	metaboxScriptsSRC,
-	custScriptsFile,
-	metaboxScriptsFile,
-	adminFunctionsScriptsFile,
-	custFile,
-	jsCarouselSRC,
-	jsAccordionSRC,
-	jsSwiperSRC,
-	jsGallerySRC,
-	jsAjaxAddToCartSRC,
-	jsPopupSRC,
-	jsSidebarSRC,
-	jsAjaxSearchSRC,
-	jsQuickViewSRC,
-	jsCustomSRC,
-	jsAdminDestination,
-	jsAdminFunctionsSRC,
-	jsCustomDestination,
-	custScriptsDestination,
-	metaboxScriptsDestination,
-	adminFunctionsDestination,
-	jsCarouselFile,
-	jsAccordionFile,
-	jsSwiperFile,
-	jsGalleryFile,
-	jsAjaxAddToCartFile,
-	jsPopupFile,
-	jsSidebarFile,
-	jsAjaxSearchFile,
-	jsQuickViewFile,
-	jsCustomFile,
-	imgSRC,
-	imgDST,
+
+	// Style options.
+	styles,
+
+	// Script options.
+	scripts,
+
+	// Watch options.
 	watchStyles,
-	watchJsAdmin,
+	watchScripts,
 	watchPhp,
+
+	// Zip options.
 	zipName,
 	zipDestination,
 	zipIncludeGlob,
 	zipIgnoreGlob,
+
+	// Translation options.
 	textDomain,
 	translationFile,
 	translationDestination,
+
+	// Others.
 	packageName,
 	bugReport,
 	lastTranslator,
 	team,
-	BROWSERS_LIST
+	BROWSERS_LIST,
+
 };
