@@ -1,0 +1,19 @@
+.widget ul {
+	padding-right: 0;
+}
+
+.widget .wp-block-latest-comments {
+	padding-right: 0;
+}
+
+.widget-area .widget_products li .product-title, 
+.widget-area .widget_top_rated_products li .product-title, 
+.widget-area .widget_recently_viewed_products li .product-title, 
+.widget-area .widget_recent_reviews li .product-title, 
+.widget-column .widget_products li .product-title, 
+.widget-column .widget_top_rated_products li .product-title, 
+.widget-column .widget_recently_viewed_products li .product-title, 
+.widget-column .widget_recent_reviews li .product-title {
+	padding-left: 0;
+	padding-right: 15px;
+}

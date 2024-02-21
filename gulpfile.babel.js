@@ -67,6 +67,11 @@ const styleTasks = config.styles.map((style) => {
 			.on('error', sass.logError)
 			.pipe(autoprefixer(config.BROWSERS_LIST))
 			.pipe(lineec())
+			.pipe(
+				rename({
+					basename: style.file
+				})
+			)
 			.pipe(gulp.dest(style.destination))
 			.pipe(filter('**/*.css'))
 			.pipe(mmq({log: true}))
@@ -100,8 +105,13 @@ const styleMinTasks = config.styles.map((style) => {
 			)
 			.on('error', sass.logError)
 			.pipe(autoprefixer(config.BROWSERS_LIST))
-			.pipe(rename({suffix: '.min'}))
 			.pipe(lineec())
+			.pipe(
+				rename({
+					basename: style.file,
+					suffix: '.min'
+				})
+			)
 			.pipe(gulp.dest(style.destination))
 			.pipe(filter('**/*.css'))
 			.pipe(mmq({log: true}))
