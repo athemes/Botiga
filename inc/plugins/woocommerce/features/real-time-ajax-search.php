@@ -134,8 +134,10 @@ function botiga_ajax_search_callback() {
         $output .= '</div>';
         
         if( $see_all_button ) {
+            $search_link_mounted = add_query_arg( 'post_type', 'product', get_search_link( $search_term ) );
+
             $output .= '<div class="botiga-ajax-search__see-all">';
-                $output .= '<a href="'. esc_url( get_search_link( $search_term ) ) .'&post_type=product" class="botiga-ajax-search__see-all-link">' . esc_html( 
+                $output .= '<a href="'. esc_url( $search_link_mounted ) .'" class="botiga-ajax-search__see-all-link">' . esc_html( 
                     /* Translators: 1. Search results quantity */
                     sprintf( __( 'See all products (%s)', 'botiga' ), $qry->post_count ) 
                 ) . '<span class="bas-arrow">→</span></a>';
