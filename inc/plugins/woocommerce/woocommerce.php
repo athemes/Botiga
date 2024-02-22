@@ -261,7 +261,7 @@ function botiga_wc_hooks() {
 	//Single product settings
 	if ( is_product() ) {
 		$single_breadcrumbs            = get_theme_mod( 'single_breadcrumbs', 1 );
-		$single_breadcrumbs_hide_title = get_theme_mod( 'single_breadcrumbs_hide_title', 0 );
+		$single_breadcrumbs_hide_title = get_theme_mod( 'single_breadcrumbs_hide_title', 1 );
 
 		//Content class
 		add_filter( 'botiga_content_class', 'botiga_wc_single_layout' );
@@ -270,8 +270,9 @@ function botiga_wc_hooks() {
 		add_action( 'woocommerce_after_add_to_cart_button', 'botiga_single_addtocart_wrapper_close' );
 
 		//Breadcrumbs
-		if ( !$single_breadcrumbs ) {
-			remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+		if ( $single_breadcrumbs ) {
+			add_action( 'woocommerce_before_main_content', 'botiga_woocommerce_breadcrumbs', 20 );
 		}
 
 		if( $single_breadcrumbs_hide_title ) {
@@ -631,7 +632,8 @@ add_filter( 'woocommerce_cart_item_quantity', 'botiga_cart_item_quantity', 10, 3
  */
 function botiga_remove_last_item_from_breadcrumb( $crumbs, $breadcrumb ) {
 	if( is_product() ) {
-		array_pop( $crumbs );
+		$last_index            = count( $crumbs ) - 1;
+		$crumbs[ $last_index ] = array( '', '' );
 	}
 
 	return $crumbs;
