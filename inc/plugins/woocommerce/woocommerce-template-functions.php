@@ -459,3 +459,14 @@ function botiga_single_product_shortcode() {
 		echo do_shortcode( $shortcode );
 	echo '</div>';
 }
+
+/**
+ * Render woocommerce breadcrumbs removing the trailing slash.
+ */
+function botiga_woocommerce_breadcrumbs() {
+	ob_start();
+	woocommerce_breadcrumb();
+	$breadcrumbs = ob_get_clean();
+
+	echo wp_kses_post( str_replace( array( '&nbsp;/&nbsp;</nav>', '&nbsp;&#47;&nbsp;</nav>' ), array( '</nav>', '</nav>' ), $breadcrumbs ) );
+}
