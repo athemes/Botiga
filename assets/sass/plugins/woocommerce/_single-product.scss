@@ -493,7 +493,7 @@
 		}
 
 		.woocommerce-product-gallery {
-			.flex-control-thumbs {
+			.flex-control-thumbs.botiga-slides {
 				display: block !important;
 			}
 		}
@@ -501,6 +501,12 @@
 
 	&.gallery-showcase {
 		padding: 80px 0;
+
+		.flex-control-thumbs {
+			&:not(.botiga-slides) {
+				margin: auto 0 !important;
+			}
+		}
 	}
 
 	&.gallery-grid,
