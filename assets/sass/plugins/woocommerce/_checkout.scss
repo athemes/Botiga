@@ -427,3 +427,27 @@ form.woocommerce-checkout {
 
 /* WooCommerce Checkout Block (WC 8.3+) */
 @import "_checkout-block";
+
+/* Square Payments */
+#square-gift-card-wrapper {
+	min-height: 0 !important;
+	padding: 0 !important;
+
+	& + .woocommerce-checkout-payment {
+		margin-top: 25px;
+	}
+}
+
+.sq-card-message {
+	display: none;
+
+	&.sq-visible {
+		display: block;
+	}
+}
+
+.woocommerce-checkout-review-order-table {
+	& + #square-gift-card-wrapper {
+		margin-top: 25px;
+	}
+}
