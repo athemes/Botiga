@@ -471,18 +471,13 @@ function botiga_single_product_elements_merchant_modules() {
 	}
 
 	$defaults = botiga_get_default_single_product_components();
+    $modules_to_migrate = Botiga_Merchant_Single_Product_Elements::$modules_data;
 
-    $modules_to_migrate = array(
-        'payment-logos' => 'botiga_merchant_payment_logos',
-        'trust-badges' => 'botiga_merchant_trust_badges',
-        'product-bundles' => 'botiga_merchant_product_bundles',
-    );
-
-    foreach ( $modules_to_migrate as $module_id => $module_callback ) {
+    foreach ( $modules_to_migrate as $module_id => $module_data ) {
         if ( Merchant_Modules::is_module_active( $module_id ) ) {
             $old_value = get_theme_mod( 'single_product_elements_order', $defaults );
-            $new_value = array_merge( $old_value, array( $module_callback ) );
-            
+            $new_value = array_merge( $old_value, array( $module_data['callback'] ) );
+
             set_theme_mod( 'single_product_elements_order', $new_value );
         }
     }
