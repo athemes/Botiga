@@ -1,6 +1,10 @@
 .header-item {
 	margin-left: 25px;
 	margin-right: 0;
+	
+	&:last-child {
+		margin-left: 0;
+	}
 }
 
 .header_layout_2 .menu-right .botiga-dropdown>div>ul {
@@ -13,24 +17,24 @@
 	ul {
 		padding-right: 0;
 	}
-
+	
 	> li {
 		margin-left: 35px;
 		margin-right: 0 !important;
 	}
-
+	
 	li {
 		&:last-of-type {
 			margin-left: 0;
 		}
 	}
-
+	
 	.dropdown-symbol {
 		margin-left: auto;
 		margin-right: 8px;
 		transform: rotate(180deg);
 	}
-
+	
 	.botiga-dropdown-ul {
 		.botiga-dropdown-ul {
 			.botiga-dropdown-li {
@@ -42,7 +46,7 @@
 				}
 			}
 		}
-	
+		
 	}
 }
 
@@ -91,4 +95,48 @@
 
 .top-bar .social-profile a {
 	margin-right: 0;
+}
+
+.bhfb.bhfb-header,
+.bhfb-mobile_offcanvas {
+	.social-profile {
+		a {
+			margin-right: 0;
+			margin-left: 0;
+			& + a {
+				margin-left: auto;
+				margin-right: 20px;
+			}
+		}
+	}
+	
+	.bhfb-component-contact_info {
+		.header-contact {
+			&.header-contact-inline {
+				a {
+					& + a {
+						margin-left: auto;
+						margin-right: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.header-search-form {
+	left: auto;
+	right: -9999em;
+}
+
+.header-login-register,
+.top-bar-login-register {
+	text-align: right;
+	> a:not(.botiga-login-register-link) {
+		&:after {
+			content: '';
+			margin-left: 0;
+			margin-right: 10px;
+		}
+	}
 }

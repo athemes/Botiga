@@ -14,7 +14,7 @@ if ( ! class_exists( 'Merchant' ) ) {
 	return;
 }
 
-class Botiga_Merchant_Compatibility {
+class Botiga_Merchant_Overlaping_Features {
 
 	/**
 	 * Overlaping modules.
@@ -174,4 +174,4 @@ class Botiga_Merchant_Compatibility {
 	}
 }
 
-new Botiga_Merchant_Compatibility();
+new Botiga_Merchant_Overlaping_Features();

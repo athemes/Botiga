@@ -1,0 +1,12 @@
+@media (min-width: 1024px) {
+	body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignfull,
+	body:not(.botiga-page-builder-mode) .no-sidebar .blocks-content .alignfull {
+		margin-left: auto;
+		margin-right: calc(50% - 50vw);
+	}
+	body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .entry-content .alignfull,
+	body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .blocks-content .alignfull {
+		margin-left: auto;
+		margin-right: calc(50% - calc(var(--botiga_boxed_width, 1200px) / 2));
+	}
+}

@@ -453,3 +453,41 @@ function botiga_templates_builder_new_ui() {
     set_theme_mod( 'botiga_templates_builder_new_ui_flag', true );
 }
 add_action( 'init', 'botiga_templates_builder_new_ui' );
+
+/**
+ * Enable/disable single product merchant elements.
+ * 
+ * @since 2.2.1
+ */
+function botiga_single_product_elements_merchant_modules() {
+	if ( ! class_exists( 'Merchant' ) ) {
+		return;
+	}
+	
+	$flag = get_theme_mod( 'botiga_single_product_elements_merchant_modules_flag', false );
+
+	if ( ! empty( $flag ) ) {
+		return;
+	}
+
+	$defaults = botiga_get_default_single_product_components();
+
+    $modules_to_migrate = array(
+        'payment-logos' => 'botiga_merchant_payment_logos',
+        'trust-badges' => 'botiga_merchant_trust_badges',
+        'product-bundles' => 'botiga_merchant_product_bundles',
+    );
+
+    foreach ( $modules_to_migrate as $module_id => $module_callback ) {
+        if ( Merchant_Modules::is_module_active( $module_id ) ) {
+            $old_value = get_theme_mod( 'single_product_elements_order', $defaults );
+            $new_value = array_merge( $old_value, array( $module_callback ) );
+            
+            set_theme_mod( 'single_product_elements_order', $new_value );
+        }
+    }
+
+	// Set flag
+	set_theme_mod( 'botiga_single_product_elements_merchant_modules_flag', true );
+}
+add_action( 'init', 'botiga_single_product_elements_merchant_modules' );

@@ -459,7 +459,9 @@ if ( class_exists( 'WooCommerce' ) ) {
  * Load Merchant compatibility file.
  */
 if ( class_exists( 'Merchant' ) ) {
-	require get_template_directory() . '/inc/plugins/merchant/merchant.php';
+	require get_template_directory() . '/inc/plugins/merchant/callbacks.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-single-product-elements.php';
 }
 
 /**
