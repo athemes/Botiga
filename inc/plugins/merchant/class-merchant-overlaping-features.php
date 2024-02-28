@@ -69,9 +69,9 @@ class Botiga_Merchant_Overlaping_Features {
 			if ( ! is_array( $theme_mod[ 'mod_value' ] ) ) {
 				return get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ) !== $theme_mod[ 'mod_value' ] ? $mmodule_id : false;
 			} elseif( ! is_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ) ) ) {
-					return ! in_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
-				} else {
-					return array_intersect( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
+				return ! in_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
+			} else {
+				return array_intersect( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
 			}
 		}, array_keys( $required_opts_to_disable_merchant_modules ), $required_opts_to_disable_merchant_modules );
 	}

@@ -117,9 +117,13 @@ function botiga_dashboard_settings() {
 	// Settings.
 	//
 	$settings['settings'] = array(
-		'general'     => esc_html__('General', 'botiga'),
-		'performance' => esc_html__('Performance', 'botiga'),
+		'general'      => esc_html__('General', 'botiga'),
+		'performance'  => esc_html__('Performance', 'botiga'),
 	);
+
+	if ( class_exists( 'Merchant' ) && defined( 'MERCHANT_VERSION' ) && version_compare( MERCHANT_VERSION, '1.9.2', '>' ) ) {
+		$settings['settings']['merchant'] = esc_html__('Merchant', 'botiga');
+	}
 
 	//
 	// Notifications.

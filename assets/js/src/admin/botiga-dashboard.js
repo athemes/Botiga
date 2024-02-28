@@ -200,6 +200,71 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 
 		}
 
+		// Option Switcher
+		var $optionSwitcher = $('.botiga-dashboard-option-switcher');
+
+		if ($optionSwitcher.length) {
+			$optionSwitcher.on('click', function (e) {
+				e.preventDefault();
+
+				const 
+					$this          = $( this ),
+					optionId 	   = $this.data( 'option-id' ),
+					activate   	   = $this.data( 'option-activate' ) ? true : false,
+					loadingMessage = activate ? window.botiga_dashboard.i18n.activating : window.botiga_dashboard.i18n.deactivating,
+					hasRedirect    = $this.data( 'module-after-activation-redirect' ) ? true : false,
+					redirectUrl    = hasRedirect ? $this.data( 'module-after-activation-redirect' ) : '';
+
+				$this
+					.html( '<i class="dashicons dashicons-update-alt"></i>' + loadingMessage )
+					.removeClass( 'botiga-dashboard-link-success' )
+					.addClass( 'loading' );
+
+				$.post( window.botiga_dashboard.ajax_url, {
+					action: 'botiga_option_switcher_handler',
+					nonce: window.botiga_dashboard.nonce,
+					optionId: optionId,
+					activate: activate
+				}, function ( response ) {
+					if( response.success ) {
+
+						if( activate ) {
+							$this
+								.html( window.botiga_dashboard.i18n.deactivate )
+								.removeClass( 'botiga-dashboard-link-success' )
+								.addClass( 'botiga-dashboard-link-danger' )
+								.removeClass( 'loading' )
+								.data( 'option-activate', false );
+
+							$this
+								.parent()
+								.find( '.botiga-dashboard-customize-link' )
+								.removeClass( 'bt-d-none' );
+
+							if( hasRedirect ) {
+								window.location = redirectUrl;
+							}
+
+						} else {
+							$this
+								.html( window.botiga_dashboard.i18n.activate )
+								.removeClass( 'botiga-dashboard-link-danger' )
+								.addClass( 'botiga-dashboard-link-success' )
+								.removeClass( 'loading' )
+								.data( 'option-activate', true );
+
+							$this
+								.parent()
+								.find( '.botiga-dashboard-customize-link' )
+								.addClass( 'bt-d-none' );
+
+						}
+					}
+				});
+
+			});
+		}
+
 		// Activate Module
 		const $activationModuleButton = $('.botiga-dashboard-module-activation');
 

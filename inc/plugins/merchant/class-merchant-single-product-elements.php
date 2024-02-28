@@ -14,6 +14,10 @@ if ( ! class_exists( 'Merchant' ) ) {
 	return;
 }
 
+if ( defined( 'MERCHANT_VERSION' ) && version_compare( MERCHANT_VERSION, '1.9.2', '<=' ) ) {
+	return;
+}
+
 class Botiga_Merchant_Single_Product_Elements {
 
 	/**
@@ -108,7 +112,16 @@ class Botiga_Merchant_Single_Product_Elements {
 			'buy-x-get-y'   => array(
 				'single_product_placement' => $default_desc,
 			),
+			'volume-discounts'   => array(
+				'single_product_placement' => $default_desc,
+			),
 			'product-bundles' => array(
+				'placement' => $default_desc,
+			),
+			'stock-scarcity' => array(
+				'single_product_placement' => $default_desc,
+			),
+			'reasons-to-buy' => array(
 				'placement' => $default_desc,
 			),
 		);
@@ -119,6 +132,21 @@ class Botiga_Merchant_Single_Product_Elements {
 	 * 
 	 */
 	public function __construct() {
+
+		/**
+		 * Hook 'botiga_merchant_modules_single_product_integration'
+		 * Filters whether to integrate Merchant modules with Botiga single product elements.
+		 * 
+		 * @since 2.2.1
+		 */
+		if ( ! apply_filters( 'botiga_merchant_modules_single_product_integration', true ) ) {
+			return;
+		}
+
+		if ( ! get_option( 'botiga_merchant_modules_single_product_integration', true ) ) {
+			return;
+		}
+
 		add_action( 'merchant_admin_module_activated', array( $this, 'add_module_to_customizer_single_product_elements' ) );
 		add_action( 'merchant_admin_module_deactivated', array( $this, 'remove_module_from_customizer_single_product_elements' ) );
 

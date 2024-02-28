@@ -463,6 +463,10 @@ function botiga_single_product_elements_merchant_modules() {
 	if ( ! class_exists( 'Merchant' ) ) {
 		return;
 	}
+
+    if ( defined( 'MERCHANT_VERSION' ) && version_compare( MERCHANT_VERSION, '1.9.2', '<=' ) ) {
+		return;
+	}
 	
 	$flag = get_theme_mod( 'botiga_single_product_elements_merchant_modules_flag', false );
 
@@ -478,7 +482,9 @@ function botiga_single_product_elements_merchant_modules() {
             $old_value = get_theme_mod( 'single_product_elements_order', $defaults );
             $new_value = array_merge( $old_value, array( $module_data['callback'] ) );
 
-            set_theme_mod( 'single_product_elements_order', $new_value );
+            if ( ! in_array( $module_data['callback'], $old_value, true ) ) {
+                set_theme_mod( 'single_product_elements_order', $new_value );
+            }
         }
     }
 
