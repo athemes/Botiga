@@ -581,6 +581,13 @@
 						path {
 							fill: #757575;
 						}
+
+						&.stroke-based {
+							path, line, rect {
+								fill: none;
+								stroke: #757575;
+							}
+						}
 					}
 					
 					&:before {
@@ -598,6 +605,13 @@
 					svg {
 						path {
 							fill: #3858E9;
+						}
+
+						&.stroke-based {
+							path, line, rect {
+								fill: none;
+								stroke: #3858E9;
+							}
 						}
 					}
 
