@@ -64,6 +64,8 @@ class Botiga_Dashboard
         add_action('wp_ajax_botiga_plugin', array( $this, 'ajax_plugin' ));
         add_action('wp_ajax_botiga_dismissed_handler', array( $this, 'ajax_dismissed_handler' ));
 
+        add_action( 'wp_ajax_botiga_option_switcher_handler', array( $this, 'ajax_option_switcher_handler' ) );
+        
         add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'ajax_module_activation_handler' ) );
         add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'ajax_module_activation_all_handler' ) );
 
@@ -475,6 +477,31 @@ class Botiga_Dashboard
      */
     public function reset_notices() {
         delete_transient(sprintf('%s_hero_notice', get_template()));
+    }
+
+    /**
+     * Option switcher handler.
+     */
+    public function ajax_option_switcher_handler() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
+
+        if( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error();
+        }
+
+        $option_id = ( isset( $_POST[ 'optionId' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['optionId'] ) ) : '';
+        $activate  = ( isset( $_POST[ 'activate' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['activate'] ) ) : '';
+
+        // Convert string to boolean
+        $activate = ( $activate === 'true' ) ? true : false;
+
+        if ( empty( $option_id ) ) {
+            wp_send_json_error();
+        }
+
+        update_option( $option_id, $activate );
+
+        wp_send_json_success();
     }
 
     /**

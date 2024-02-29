@@ -1,0 +1,14 @@
+.botiga-dropdown {
+	.botiga-dropdown-li {
+		margin-right: auto;
+		margin-left: 35px;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+.botiga-breadcrumb-trail ul {
+	display: flex;
+}

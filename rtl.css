@@ -21,9 +21,31 @@ select {
   background-position: 20px center;
 }
 
+.woocommerce-product-search .search-submit {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.botiga-dropdown .botiga-dropdown-li {
+  margin-right: auto;
+  margin-left: 35px;
+}
+.botiga-dropdown .botiga-dropdown-li:last-of-type {
+  margin-right: 0;
+}
+
+.botiga-breadcrumb-trail ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .header-item {
   margin-left: 25px;
   margin-right: 0;
+}
+.header-item:last-child {
+  margin-left: 0;
 }
 
 .header_layout_2 .menu-right .botiga-dropdown > div > ul {
@@ -102,7 +124,39 @@ select {
   margin-right: 0;
 }
 
-.botiga-offcanvas-menu .botiga-dropdown ul li {
+.bhfb.bhfb-header .social-profile a,
+.bhfb-mobile_offcanvas .social-profile a {
+  margin-right: 0;
+  margin-left: 0;
+}
+.bhfb.bhfb-header .social-profile a + a,
+.bhfb-mobile_offcanvas .social-profile a + a {
+  margin-left: auto;
+  margin-right: 20px;
+}
+.bhfb.bhfb-header .bhfb-component-contact_info .header-contact.header-contact-inline a + a,
+.bhfb-mobile_offcanvas .bhfb-component-contact_info .header-contact.header-contact-inline a + a {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.header-search-form {
+  left: auto;
+  right: -9999em;
+}
+
+.header-login-register,
+.top-bar-login-register {
+  text-align: right;
+}
+.header-login-register > a:not(.botiga-login-register-link):after,
+.top-bar-login-register > a:not(.botiga-login-register-link):after {
+  content: "";
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li {
   text-align: right;
 }
 
@@ -110,6 +164,18 @@ select {
   text-align: left;
 }
 
+@media (min-width: 1024px) {
+  body:not(.botiga-page-builder-mode) .no-sidebar .entry-content .alignfull,
+  body:not(.botiga-page-builder-mode) .no-sidebar .blocks-content .alignfull {
+    margin-left: auto;
+    margin-right: calc(50% - 50vw);
+  }
+  body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .entry-content .alignfull,
+  body:not(.botiga-page-builder-mode).botiga-site-layout-boxed .no-sidebar .blocks-content .alignfull {
+    margin-left: auto;
+    margin-right: calc(50% - var(--botiga_boxed_width, 1200px) / 2);
+  }
+}
 .woocommerce-sorting-wrapper select {
   padding: 0 0 0 25px;
   background-position: 8px center;
@@ -225,19 +291,43 @@ select {
   float: left;
 }
 
+.woocommerce-cart .cart_totals .woocommerce-shipping-methods {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .woocommerce-shipping-calculator {
+    right: auto;
+    left: -70px;
+  }
+}
+#coupon_code + .button {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 7px !important;
+  border-bottom-left-radius: 7px !important;
+}
+
 .botiga-side-mini-cart__close-button {
   right: auto;
   left: 40px;
 }
 
 .botiga-side-mini-cart .product_list_widget li {
-  padding: 20px 82px 20px 30px;
+  padding: 20px 0 20px 0;
 }
 
 .botiga-side-mini-cart .product_list_widget li > a:not(.remove),
 .botiga-side-mini-cart .product_list_widget li > span {
   padding-left: 0;
   padding-right: 15px;
+}
+
+.botiga-side-mini-cart .product_list_widget li a.remove {
+  right: -8px;
+  left: auto;
 }
 
 .checkout-wrapper {
@@ -283,6 +373,22 @@ select {
 .botiga-mstepc-wrapper:not(.order-review) .botiga-mstepc-next:before {
   left: auto;
   right: -30px;
+}
+
+.botiga-sc-order-review {
+  padding-right: 0;
+  padding-left: 30px;
+  border-left: 1px solid var(--bt-color-forms-dividers, #ddd);
+  border-right: none;
+}
+
+.botiga-sc-cart-summary-sticky {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+.botiga-sc-payment-methods li > input[type=radio] {
+  margin: 12px 12px 12px 0;
 }
 
 .woocommerce .select2-container .select2-selection--single .select2-selection__arrow,
@@ -444,6 +550,12 @@ select {
 ul.products li.product .button.added:after,
 ul.products li.product .button.loading:after {
   margin-right: 0.5em;
+}
+
+/* Templates Builder */
+.botiga-tb-wc-products .woocommerce-sorting-wrapper > .row > .col-auto:nth-child(1) {
+  margin-right: 0 !important;
+  margin-left: auto;
 }
 
 .single-post-author.single-post-author-right .author-avatar {
