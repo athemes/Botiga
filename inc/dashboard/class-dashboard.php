@@ -529,6 +529,30 @@ class Botiga_Dashboard
 
         update_option( 'botiga-modules', $modules );
 
+        if ( $activate ) {
+
+            /**
+             * Hook 'botiga_admin_module_activated'.
+             * Fires after a module is activated.
+             * 
+             * @param string $module Module ID.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_module_activated', $module );
+        } else {
+
+            /**
+             * Hook 'botiga_admin_module_deactivated'.
+             * Fires after a module is deactivated.
+             * 
+             * @param string $module Module ID.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_module_deactivated', $module );
+        }
+
         wp_send_json_success();
     }
 
@@ -567,6 +591,31 @@ class Botiga_Dashboard
 
         // Update modules option
         update_option( 'botiga-modules', $modules );
+
+        if ( $activate ) {
+
+            /**
+             * Hook 'botiga_admin_all_modules_activated'.
+             * Fires after all modules are activated.
+             * 
+             * @param array $modules Modules list.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_all_modules_activated', $modules );
+        } else {
+
+            /**
+             * Hook 'botiga_admin_all_modules_deactivated'.
+             * Fires after all modules are deactivated.
+             * 
+             * @param array $modules Modules list.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_all_modules_deactivated', $modules );
+        }
+        
 
         wp_send_json_success();
     }
