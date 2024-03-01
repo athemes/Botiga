@@ -158,9 +158,20 @@ class Botiga_Merchant_Single_Product_Elements {
 		add_filter( 'botiga_single_product_elements', array( $this, 'customizer_elements' ) );
 
 		// Merchant won't render the modules output if the shortcode option is off. So, we need to force it to be on.
-		foreach ( self::$modules_data as $module_id => $module ) {
-			add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
-		}
+		// This needs to be done via 'botiga_merchant_before_render_shortcode' because we don't want to force the shortcode functionality enable to the modules
+		// when some page builder such as botiga templates builder, elementor, wpbakery, beaver, etc, are in use. 
+		add_action( 'botiga_merchant_before_render_shortcode', array( $this, 'turn_on_merchant_modules_shortcode_functionality' ) );
+	}
+
+	/**
+	 * Turn on merchant modules shortcode functionality.
+	 * 
+	 * @param string $module_id Module ID.
+	 * 
+	 * @return void
+	 */
+	public function turn_on_merchant_modules_shortcode_functionality( $module_id ) {
+		add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
 	}
 
 	/**
@@ -199,7 +210,9 @@ class Botiga_Merchant_Single_Product_Elements {
 		$current_mod_value = get_theme_mod( 'single_product_elements_order', botiga_get_default_single_product_components() );
 		$new_mod_value     = array_merge( $current_mod_value, array( $module[ 'callback' ] ) );
 
-		set_theme_mod( 'single_product_elements_order', $new_mod_value );
+		if ( ! in_array( $module[ 'callback' ], $current_mod_value, true ) ) {
+			set_theme_mod( 'single_product_elements_order', $new_mod_value );
+		}
 	}
 
 	/**

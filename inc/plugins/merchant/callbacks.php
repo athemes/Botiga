@@ -16,6 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function botiga_merchant_payment_logos() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'payment-logos' );
+
 	echo do_shortcode( '[merchant_module_payment_logos]' );
 }
 
@@ -25,7 +34,16 @@ function botiga_merchant_payment_logos() {
  * @return void
  */
 function botiga_merchant_trust_badges() {
-	echo do_shortcode( '[merchant_module_trust_badges]' );
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode' );
+
+	echo do_shortcode( '[merchant_module_trust_badges]', 'trust-badges' );
 }
 
 /**
@@ -34,7 +52,16 @@ function botiga_merchant_trust_badges() {
  * @return void
  */
 function botiga_merchant_product_bundles() {
-	echo do_shortcode( '[merchant_module_product_bundles]' );
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode' );
+
+	echo do_shortcode( '[merchant_module_product_bundles]', 'product-bundles' );
 }
 
 /**
@@ -43,6 +70,15 @@ function botiga_merchant_product_bundles() {
  * @return void
  */
 function botiga_merchant_buy_x_get_y() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'buy-x-get-y' );
+
 	echo do_shortcode( '[merchant_module_buy_x_get_y]' );
 }
 
@@ -52,6 +88,15 @@ function botiga_merchant_buy_x_get_y() {
  * @return void
  */
 function botiga_merchant_volume_discounts() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'volume-discounts' );
+
 	echo do_shortcode( '[merchant_module_volume_discounts]' );
 }
 
@@ -61,6 +106,15 @@ function botiga_merchant_volume_discounts() {
  * @return void
  */
 function botiga_merchant_wait_list() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'wait-list' );
+
 	echo do_shortcode( '[merchant_module_wait_list]' );
 }
 
@@ -70,6 +124,15 @@ function botiga_merchant_wait_list() {
  * @return void
  */
 function botiga_merchant_stock_scarcity() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'stock-scarcity' );
+
 	echo do_shortcode( '[merchant_module_stock_scarcity]' );
 }
 
@@ -79,6 +142,15 @@ function botiga_merchant_stock_scarcity() {
  * @return void
  */
 function botiga_merchant_reasons_to_buy() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'reasons-to-buy' );
+
 	echo do_shortcode( '[merchant_module_reasons_to_buy]' );
 }
 
@@ -88,6 +160,15 @@ function botiga_merchant_reasons_to_buy() {
  * @return void
  */
 function botiga_merchant_product_brand_image() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'product-brand-image' );
+
 	echo do_shortcode( '[merchant_module_product_brand_image]' );
 }
 
@@ -97,5 +178,14 @@ function botiga_merchant_product_brand_image() {
  * @return void
  */
 function botiga_merchant_size_chart() {
+
+	/**
+	 * Hook 'botiga_merchant_before_render_shortcode'
+	 * Fires before rendering merchant shortcodes.
+	 * 
+	 * @since 2.2.1
+	 */
+	do_action( 'botiga_merchant_before_render_shortcode', 'size-chart' );
+
 	echo do_shortcode( '[merchant_module_size_chart]' );
 }

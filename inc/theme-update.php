@@ -483,6 +483,17 @@ function botiga_single_product_elements_merchant_modules() {
             $new_value = array_merge( $old_value, array( $module_data['callback'] ) );
 
             if ( ! in_array( $module_data['callback'], $old_value, true ) ) {
+                if ( in_array( $module_id, array( 'buy-x-get-y', 'volume-discounts', 'product-bundles', 'stock-scarcity' ) ) ) {
+                    $add_to_cart_position = array_search( 'woocommerce_template_single_add_to_cart', $new_value, true );
+
+                    if ( $add_to_cart_position ) {
+                        array_splice( $new_value, $add_to_cart_position, 0, $module_data['callback'] );
+
+                        // Remove duplicates.
+                        $new_value = array_unique( $new_value );
+                    }
+
+                }
                 set_theme_mod( 'single_product_elements_order', $new_value );
             }
         }
