@@ -160,18 +160,18 @@ class Botiga_Merchant_Single_Product_Elements {
 		// Merchant won't render the modules output if the shortcode option is off. So, we need to force it to be on.
 		// This needs to be done via 'botiga_merchant_before_render_shortcode' because we don't want to force the shortcode functionality enable to the modules
 		// when some page builder such as botiga templates builder, elementor, wpbakery, beaver, etc, are in use. 
-		add_action( 'botiga_merchant_before_render_shortcode', array( $this, 'turn_on_merchant_modules_shortcode_functionality' ) );
+		add_action( 'botiga_before_render_single_product_elements', array( $this, 'turn_on_merchant_modules_shortcode_functionality' ) );
 	}
 
 	/**
 	 * Turn on merchant modules shortcode functionality.
 	 * 
-	 * @param string $module_id Module ID.
-	 * 
 	 * @return void
 	 */
-	public function turn_on_merchant_modules_shortcode_functionality( $module_id ) {
-		add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
+	public function turn_on_merchant_modules_shortcode_functionality() {
+		foreach ( self::$modules_data as $module_id => $module ) {
+			add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
+		}
 	}
 
 	/**
@@ -294,12 +294,21 @@ class Botiga_Merchant_Single_Product_Elements {
 	 * @return array
 	 */
 	public function customizer_components_value( $components ) {
-		foreach( self::$modules_data as $module ) {
-			if ( ! Merchant_Modules::is_module_active( $module[ 'class' ]::MODULE_ID ) ) {
+		foreach( self::$modules_data as $module_id => $module_data ) {
+			if ( ! Merchant_Modules::is_module_active( $module_data[ 'class' ]::MODULE_ID ) ) {
 				continue;
 			}
 
-			$components[] = $module[ 'callback' ];
+			if ( in_array( $module_id, array( 'buy-x-get-y', 'volume-discounts', 'product-bundles', 'stock-scarcity' ), true ) ) {
+				$add_to_cart_callback_index = array_search( 'woocommerce_template_single_add_to_cart', $components, true );
+
+				if ( $add_to_cart_callback_index ) {
+					array_splice( $components, $add_to_cart_callback_index, 0, $module_data[ 'callback' ] );
+					return array_unique( $components );
+				}
+			}
+
+			$components[] = $module_data[ 'callback' ];
 		}
 
 		return $components;
