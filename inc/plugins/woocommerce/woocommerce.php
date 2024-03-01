@@ -293,11 +293,22 @@ function botiga_wc_hooks() {
 			$defaults   = botiga_get_default_single_product_components();
 			$components = get_theme_mod( 'single_product_elements_order', $defaults );
 
+			add_action( 'woocommerce_single_product_summary', function(){ 
+
+				/**
+				 * Hook 'botiga_before_render_single_product_elements'
+				 * Fires before rendering single product elements.
+				 * 
+				 * @since 2.2.1
+				 */
+				do_action( 'botiga_before_render_single_product_elements' );
+			}, 5 );
+
 			foreach ( $components as $component ) {
 				if( ! function_exists( $component ) ) {
 					continue;
 				}
-
+				
 				add_action( 'woocommerce_single_product_summary', $component, 5 );
 			}
 			

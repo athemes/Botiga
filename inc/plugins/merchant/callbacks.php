@@ -25,7 +25,7 @@ function botiga_merchant_payment_logos() {
  * @return void
  */
 function botiga_merchant_trust_badges() {
-	echo do_shortcode( '[merchant_module_trust_badges]' );
+	echo do_shortcode( '[merchant_module_trust_badges]', 'trust-badges' );
 }
 
 /**
@@ -34,7 +34,7 @@ function botiga_merchant_trust_badges() {
  * @return void
  */
 function botiga_merchant_product_bundles() {
-	echo do_shortcode( '[merchant_module_product_bundles]' );
+	echo do_shortcode( '[merchant_module_product_bundles]', 'product-bundles' );
 }
 
 /**
