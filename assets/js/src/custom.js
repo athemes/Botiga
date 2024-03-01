@@ -1423,6 +1423,7 @@ botiga.misc = {
 	init: function() {
 		this.wcExpressPayButtons();
 		this.singleProduct();
+		this.cart();
 		this.checkout();
 		this.customizer();
 	},
@@ -1527,6 +1528,30 @@ botiga.misc = {
 			$this.closest( '.variations_form' ).find( '.reset_variations' ).css( 'display', 'none' );
 		} else {
 			$this.closest( '.variations_form' ).find( '.reset_variations' ).css( 'display', 'inline-block' );
+		}
+	},
+	cart: function() {
+		const is_cart_page = document.querySelector( 'body.woocommerce-cart' );
+
+		if ( is_cart_page === null ) {
+			return false;
+		}
+
+		if( typeof jQuery === 'function' ) {
+			(function($){
+				if ( $( 'header.has-sticky-header' ).length ) {
+					$( document ).on( 'updated_cart_totals', function() {
+						$( window ).on( 'scroll', function(e){
+							$( 'html, body' ).stop( true, false );
+							$( this ).off( e );
+							
+							$( 'html, body' ).animate({
+								scrollTop: $( '[role="alert"]' ).offset().top - ( $( 'header.has-sticky-header' ).height() )
+							}, 1000);
+						} );
+					} );
+				}
+			})(jQuery);
 		}
 	},
 	checkout: function() {
