@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.2.0
+Version: 2.2.1
 Tested up to: 6.4
-Requires PHP: 5.6
-Stable tag: 2.2.0
+Requires PHP: 7
+Stable tag: 2.2.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,16 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.1 =
+Added - Merchant Compatibility: Single product modules from Merchant are now sortable via Botiga customizer options.
+Added - Quick View: Better compatibility with Merchant plugin.
+Fixed - Sticky Header: Hiding coupon notices after the scrolling.
+Fixed - Lighthouse: Error regarding improve scrolling performance with passive listeners.
+Fixed - RTL: Product title column not aligned to right in the cart page.
+Fixed - RTL: Menu dropdowns rendering wrong.
+Fixed - Real Time Ajax Search: 'See all products' not working with all permalink structures.
+Fixed - Single Product Hide Breadcrumb Product Title: Categories are not rendering with link.
+
 = 2.2.0 =
 Added - Shop Category List Widget: The active category is now highlighted.
 Fixed - Elementor Pro Theme Builder: The elementor pro widgets wasn't rendering correctly. 
