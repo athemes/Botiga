@@ -340,6 +340,7 @@ function botiga_quick_view_summary_add_to_cart( $product = null ) {
 	 * @since 1.0.0
 	 */
 	do_action( 'botiga_quick_view_product_add_to_cart_start' );
+
 	switch ( $product->get_type() ) {
 		case 'grouped':
 			botiga_grouped_add_to_cart( $product, 'quick_view' );

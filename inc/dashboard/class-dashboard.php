@@ -64,6 +64,8 @@ class Botiga_Dashboard
         add_action('wp_ajax_botiga_plugin', array( $this, 'ajax_plugin' ));
         add_action('wp_ajax_botiga_dismissed_handler', array( $this, 'ajax_dismissed_handler' ));
 
+        add_action( 'wp_ajax_botiga_option_switcher_handler', array( $this, 'ajax_option_switcher_handler' ) );
+        
         add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'ajax_module_activation_handler' ) );
         add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'ajax_module_activation_all_handler' ) );
 
@@ -478,6 +480,31 @@ class Botiga_Dashboard
     }
 
     /**
+     * Option switcher handler.
+     */
+    public function ajax_option_switcher_handler() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
+
+        if( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error();
+        }
+
+        $option_id = ( isset( $_POST[ 'optionId' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['optionId'] ) ) : '';
+        $activate  = ( isset( $_POST[ 'activate' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['activate'] ) ) : '';
+
+        // Convert string to boolean
+        $activate = ( $activate === 'true' ) ? true : false;
+
+        if ( empty( $option_id ) ) {
+            wp_send_json_error();
+        }
+
+        update_option( $option_id, $activate );
+
+        wp_send_json_success();
+    }
+
+    /**
      * Activate/Deactivate Module Ajax
      */
     public function ajax_module_activation_handler() {
@@ -501,6 +528,30 @@ class Botiga_Dashboard
         $modules[ $module ] = $activate;
 
         update_option( 'botiga-modules', $modules );
+
+        if ( $activate ) {
+
+            /**
+             * Hook 'botiga_admin_module_activated'.
+             * Fires after a module is activated.
+             * 
+             * @param string $module Module ID.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_module_activated', $module );
+        } else {
+
+            /**
+             * Hook 'botiga_admin_module_deactivated'.
+             * Fires after a module is deactivated.
+             * 
+             * @param string $module Module ID.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_module_deactivated', $module );
+        }
 
         wp_send_json_success();
     }
@@ -540,6 +591,31 @@ class Botiga_Dashboard
 
         // Update modules option
         update_option( 'botiga-modules', $modules );
+
+        if ( $activate ) {
+
+            /**
+             * Hook 'botiga_admin_all_modules_activated'.
+             * Fires after all modules are activated.
+             * 
+             * @param array $modules Modules list.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_all_modules_activated', $modules );
+        } else {
+
+            /**
+             * Hook 'botiga_admin_all_modules_deactivated'.
+             * Fires after all modules are deactivated.
+             * 
+             * @param array $modules Modules list.
+             * 
+             * @since 2.2.1
+             */
+            do_action( 'botiga_admin_all_modules_deactivated', $modules );
+        }
+        
 
         wp_send_json_success();
     }

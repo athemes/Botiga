@@ -1,9 +1,9 @@
 {
-  "name": "your-project",
-  "description": "A WPGulp based project.",
-  "version": "0.0.1",
-  "repository": "ahmadawais/WPGulp",
-  "license": "MIT",
+  "name": "botiga",
+  "description": "aThemes project.",
+  "version": "1.0.0",
+  "repository": "athemes/botiga",
+  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.12.1",
@@ -37,18 +37,14 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-wp-pot": "^2.0.7",
     "gulp-zip": "^5.0.2",
-    "node-sass": "^6.0.1"
+    "sass": "^1.69.5"
   },
   "scripts": {
     "start": "gulp",
     "zip": "gulp zip",
-    "styles": "gulp styles",
-    "images": "gulp images",
-    "js-custom": "gulp customJS",
-    "js-vendors": "gulp vendorsJS",
     "translate": "gulp translate",
-    "styles-rtl": "gulp stylesRTL",
     "cache-clear": "gulp clearCache",
+    "production": "gulp production",
     "tests-scenario-one": "npx playwright test scenario-one",
     "tests-scenario-two": "npx playwright test scenario-two",
     "tests-php-errors": "npx playwright test php-errors.spec.js --project=chromium",

@@ -905,6 +905,8 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		 * Login/Register
 		 */
 		public function login_register() {
+			$endpoints = wc_get_account_menu_items();
+
 			$output = '';
 
 			if( ! class_exists( 'Woocommerce' ) ) {
@@ -931,43 +933,38 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				$output .= '<nav>';
 
 					/**
-					 * Hook 'botiga_header_login_register_before_first_dropdown_item'
-					 *
+					 * Hook: botiga_header_login_register_after_last_dropdown_item
+					 * 
 					 * @since 1.0.0
+					 * 
 					 */
 					$output .= apply_filters( 'botiga_header_login_register_before_first_dropdown_item', '' );
 
-					$output .= '<a href="'. esc_url( wc_get_page_permalink( 'myaccount' ) ) .'">'. esc_html__( 'Dashboard', 'botiga' ) .'</a>';
+					foreach ( $endpoints as $endpoint => $label ) {
+						$page_url = wc_get_endpoint_url( $endpoint, '', wc_get_page_permalink( 'myaccount' ) );
 
-					if( ! empty( $endpoints[ 'orders' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Orders', 'botiga' ) . '">' . __( 'Orders', 'botiga' ) . '</a>';
-					}
-			
-					if( ! empty( $endpoints[ 'downloads' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'downloads', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Downloads', 'botiga' ) . '">' . __( 'Downloads', 'botiga' ) . '</a>';
-					}
-			
-					if( ! empty( $endpoints[ 'edit-address' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Addresses', 'botiga' ) . '">' . __( 'Addresses', 'botiga' ) . '</a>';
-					}
-			
-					if( ! empty( $endpoints[ 'edit-account' ] ) ) {
-						$output .= '<a href="' . wc_get_endpoint_url( 'edit-account', '', wc_get_page_permalink( 'myaccount' ) ) . '" title="' . __( 'Account details', 'botiga' ) . '">' . __( 'Account Details', 'botiga' ) . '</a>';
-					}
+						if ( 'dashboard' === $endpoint ) {
+							$page_url = wc_get_page_permalink( 'myaccount' );
+						}
 
-					/**
-					 * Hook 'botiga_header_login_register_before_logout_dropdown_item'
-					 *
-					 * @since 1.0.0
-					 */
-					$output .= apply_filters( 'botiga_header_login_register_before_logout_dropdown_item', '' );
+						if ( 'customer-logout' === $endpoint ) {
+							/**
+							 * Hook: botiga_header_login_register_before_logout_dropdown_item
+							 * 
+							 * @since 1.0.0
+							 * 
+							 */
+							$output .= apply_filters( 'botiga_header_login_register_before_logout_dropdown_item', '' );
+						}
 
-					$output .= '<a href="'. esc_url( wc_logout_url() ) .'">'. esc_html__( 'Logout', 'botiga' ) .'</a>';
+						$output .= '<a href="' . $page_url . '" title="' . $label . '">' . $label . '</a>';
+					}
 
 					/**
-					 * Hook 'botiga_header_login_register_after_last_dropdown_item'
-					 *
+					 * Hook: botiga_header_login_register_after_last_dropdown_item
+					 * 
 					 * @since 1.0.0
+					 * 
 					 */
 					$output .= apply_filters( 'botiga_header_login_register_after_last_dropdown_item', '' );
 

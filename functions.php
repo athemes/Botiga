@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.2.0' );
+	define( 'BOTIGA_VERSION', '2.2.1' );
 }
 
 // aThemes White Label Compatibility
@@ -459,7 +459,10 @@ if ( class_exists( 'WooCommerce' ) ) {
  * Load Merchant compatibility file.
  */
 if ( class_exists( 'Merchant' ) ) {
-	require get_template_directory() . '/inc/plugins/merchant/merchant.php';
+	require get_template_directory() . '/inc/plugins/merchant/callbacks.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-single-product-elements.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-quick-view-elements.php';
 }
 
 /**

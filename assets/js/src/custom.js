@@ -108,7 +108,6 @@ botiga.navigation = {
 		}
 	
 		const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
-
 		const mobileMenuClose = siteNavigation.getElementsByClassName( 'mobile-menu-close' )[ 0 ];
 
 		// Hide menu toggle button if menu is empty and return early.
@@ -314,14 +313,16 @@ botiga.navigation = {
 		const items = document.querySelectorAll( '.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li' );
 		for(const element of items) {
 			element.removeEventListener( 'mouseover', this.menuReverseEventHandler );
-			element.addEventListener( 'mouseover', this.menuReverseEventHandler );
+			element.addEventListener( 'mouseover', this.menuReverseEventHandler, { passive: true } );
 
 			element.removeEventListener( 'touchstart', this.menuReverseEventHandler );
-			element.addEventListener( 'touchstart', this.menuReverseEventHandler );
+			element.addEventListener( 'touchstart', this.menuReverseEventHandler, { passive: true } );
 		}
 	},
 
 	menuReverseEventHandler: function() {
+		const is_rtl = 'rtl' === document.querySelector('html').getAttribute( 'dir' );
+
 		event.stopPropagation();
 
 		var submenu = event.currentTarget.querySelector( '.header-login-register>nav, .top-bar-login-register>nav, .sub-menu' );
@@ -331,10 +332,15 @@ botiga.navigation = {
 		
 		// Reverse horizontally
 		submenu.classList.remove( 'sub-menu-reverse' );
-		if( botiga.helpers.isInHorizontalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+
+		if( is_rtl ) {
 			submenu.classList.add( 'sub-menu-reverse' );
 		} else {
-			submenu.classList.remove( 'sub-menu-reverse' );
+			if( botiga.helpers.isInHorizontalViewport( submenu ) == false && ! submenu.closest( '.menu-item' ).classList.contains( 'botiga-mega-menu' ) ) {
+				submenu.classList.add( 'sub-menu-reverse' );
+			} else {
+				submenu.classList.remove( 'sub-menu-reverse' );
+			}
 		}
 
 		// Reverse vertically
@@ -1417,6 +1423,7 @@ botiga.misc = {
 	init: function() {
 		this.wcExpressPayButtons();
 		this.singleProduct();
+		this.cart();
 		this.checkout();
 		this.customizer();
 	},
@@ -1521,6 +1528,30 @@ botiga.misc = {
 			$this.closest( '.variations_form' ).find( '.reset_variations' ).css( 'display', 'none' );
 		} else {
 			$this.closest( '.variations_form' ).find( '.reset_variations' ).css( 'display', 'inline-block' );
+		}
+	},
+	cart: function() {
+		const is_cart_page = document.querySelector( 'body.woocommerce-cart' );
+
+		if ( is_cart_page === null ) {
+			return false;
+		}
+
+		if( typeof jQuery === 'function' ) {
+			(function($){
+				if ( $( 'header.has-sticky-header' ).length ) {
+					$( document ).on( 'updated_cart_totals', function() {
+						$( window ).on( 'scroll', function(e){
+							$( 'html, body' ).stop( true, false );
+							$( this ).off( e );
+							
+							$( 'html, body' ).animate({
+								scrollTop: $( '[role="alert"]' ).offset().top - ( $( 'header.has-sticky-header' ).height() )
+							}, 1000);
+						} );
+					} );
+				}
+			})(jQuery);
 		}
 	},
 	checkout: function() {

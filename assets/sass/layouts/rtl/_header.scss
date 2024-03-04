@@ -1,0 +1,142 @@
+.header-item {
+	margin-left: 25px;
+	margin-right: 0;
+	
+	&:last-child {
+		margin-left: 0;
+	}
+}
+
+.header_layout_2 .menu-right .botiga-dropdown>div>ul {
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+}
+
+.botiga-dropdown {
+	ul {
+		padding-right: 0;
+	}
+	
+	> li {
+		margin-left: 35px;
+		margin-right: 0 !important;
+	}
+	
+	li {
+		&:last-of-type {
+			margin-left: 0;
+		}
+	}
+	
+	.dropdown-symbol {
+		margin-left: auto;
+		margin-right: 8px;
+		transform: rotate(180deg);
+	}
+	
+	.botiga-dropdown-ul {
+		.botiga-dropdown-ul {
+			.botiga-dropdown-li {
+				.dropdown-symbol {
+					margin-top: 0;
+					margin-bottom: 10px;			
+					margin-right: 0;
+					margin-left: 15px;
+				}
+			}
+		}
+		
+	}
+}
+
+@media screen and (min-width: 48em) {
+	.site-header-cart:hover .widget_shopping_cart, 
+	.site-header-cart.focus .widget_shopping_cart {
+		left: 0;
+		right: auto;
+	}
+}
+
+.botiga-desktop-offcanvas.content-align-right .header-elements {
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+}
+
+.top-bar-contact a i.ws-svg-icon, 
+.header-contact a i.ws-svg-icon {
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+.site-header .header-login-register>a,
+.top-bar .top-bar-login-register >a {
+	padding-right: 15px !important;
+}
+
+.site-header .header-login-register >a:after,
+.top-bar .top-bar-login-register >a:after {
+	position: absolute;
+	top: 55%;
+	right: 0;
+	transform: translate3d(0, -50%, 0) rotate(135deg);
+}
+
+.header-login-register nav, 
+.top-bar-login-register nav {
+	text-align: right;
+}
+
+.top-bar-contact a {
+	margin-right: 0;
+	margin-left: 15px;
+}
+
+.top-bar .social-profile a {
+	margin-right: 0;
+}
+
+.bhfb.bhfb-header,
+.bhfb-mobile_offcanvas {
+	.social-profile {
+		a {
+			margin-right: 0;
+			margin-left: 0;
+			& + a {
+				margin-left: auto;
+				margin-right: 20px;
+			}
+		}
+	}
+	
+	.bhfb-component-contact_info {
+		.header-contact {
+			&.header-contact-inline {
+				a {
+					& + a {
+						margin-left: auto;
+						margin-right: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.header-search-form {
+	left: auto;
+	right: -9999em;
+}
+
+.header-login-register,
+.top-bar-login-register {
+	text-align: right;
+	> a:not(.botiga-login-register-link) {
+		&:after {
+			content: '';
+			margin-left: 0;
+			margin-right: 10px;
+		}
+	}
+}

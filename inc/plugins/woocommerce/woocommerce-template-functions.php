@@ -5,6 +5,23 @@
  * @package Botiga
  */
 
+
+/**
+ * Insert the opening anchor tag for products in the loop.
+ */
+function botiga_woocommerce_template_loop_product_link_open() {
+	global $product;
+
+	/**
+	 * Hook 'woocommerce_loop_product_link'
+	 * 
+	 * @since 1.0.0
+	 */
+	$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
+
+	echo '<a href="' . esc_url( $link ) . '" title="' .  esc_attr( $product->get_title() ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">';
+}
+
 /**
  * Default single product components
  */
@@ -441,4 +458,15 @@ function botiga_single_product_shortcode() {
 	echo '<div class="shortcode-content">';
 		echo do_shortcode( $shortcode );
 	echo '</div>';
+}
+
+/**
+ * Render woocommerce breadcrumbs removing the trailing slash.
+ */
+function botiga_woocommerce_breadcrumbs() {
+	ob_start();
+	woocommerce_breadcrumb();
+	$breadcrumbs = ob_get_clean();
+
+	echo wp_kses_post( str_replace( array( '&nbsp;/&nbsp;</nav>', '&nbsp;&#47;&nbsp;</nav>' ), array( '</nav>', '</nav>' ), $breadcrumbs ) );
 }

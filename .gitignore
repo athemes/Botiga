@@ -6,3 +6,8 @@ node_modules
 /vendor/
 **.code-workspace
 **.vscode
+.DS_Store
+.idea
+assets/css
+assets/js/**/*
+!assets/js/src

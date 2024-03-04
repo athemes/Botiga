@@ -453,3 +453,58 @@ function botiga_templates_builder_new_ui() {
     set_theme_mod( 'botiga_templates_builder_new_ui_flag', true );
 }
 add_action( 'init', 'botiga_templates_builder_new_ui' );
+
+/**
+ * Enable/disable single product merchant elements.
+ * 
+ * @since 2.2.1
+ */
+function botiga_single_product_elements_merchant_modules() {
+	if ( ! class_exists( 'Woocommerce' ) ) {
+		return;
+	}
+
+    if ( ! class_exists( 'Merchant' ) ) {
+		return;
+	}
+
+    if ( defined( 'MERCHANT_VERSION' ) && version_compare( MERCHANT_VERSION, '1.9.2', '<=' ) ) {
+		return;
+	}
+	
+	$flag = get_theme_mod( 'botiga_single_product_elements_merchant_modules_flag', false );
+
+	if ( ! empty( $flag ) ) {
+		return;
+	}
+
+	$defaults = botiga_get_default_single_product_components();
+    $modules_to_migrate = Botiga_Merchant_Single_Product_Elements::$modules_data;
+
+    foreach ( $modules_to_migrate as $module_id => $module_data ) {
+        if ( Merchant_Modules::is_module_active( $module_id ) ) {
+            $old_value = get_theme_mod( 'single_product_elements_order', $defaults );
+            $new_value = array_merge( $old_value, array( $module_data['callback'] ) );
+
+            if ( ! in_array( $module_data['callback'], $old_value, true ) ) {
+                if ( in_array( $module_id, array( 'buy-x-get-y', 'volume-discounts', 'product-bundles', 'stock-scarcity' ), true ) ) {
+                    $add_to_cart_position = array_search( 'woocommerce_template_single_add_to_cart', $new_value, true );
+
+                    if ( $add_to_cart_position ) {
+                        array_splice( $new_value, $add_to_cart_position, 0, $module_data['callback'] );
+
+                        // Remove duplicates.
+                        $new_value = array_unique( $new_value );
+                    }
+
+                }
+
+                set_theme_mod( 'single_product_elements_order', $new_value );
+            }
+        }
+    }
+
+	// Set flag
+	set_theme_mod( 'botiga_single_product_elements_merchant_modules_flag', true );
+}
+add_action( 'init', 'botiga_single_product_elements_merchant_modules' );

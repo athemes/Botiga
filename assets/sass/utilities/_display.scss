@@ -1,0 +1,105 @@
+// Without important
+.bt-d-none-ni {
+    display: none;
+}
+
+// Mobile
+.bt-d-none {
+    display: none !important;
+}
+
+.bt-d-block {
+    display: block !important;
+}
+
+.bt-d-inline-block {
+    display: inline-block !important;
+}
+
+.bt-d-flex {
+    display: flex !important;
+}
+
+.bt-d-inline-flex {
+    display: inline-flex !important;
+}
+
+.bt-flex-no-wrap {
+    flex-wrap: nowrap;
+}
+
+.bt-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.bt-visibility-hidden {
+    visibility: hidden;
+}
+
+// Tablet
+@media screen and (min-width: 768px) {
+    .bt-md-d-none {
+        display: none;
+    }
+
+    .bt-md-d-block {
+        display: block;
+    }
+
+    .bt-md-d-flex {
+        display: flex;
+    }
+
+    .bt-md-flex-no-wrap {
+        flex-wrap: nowrap;
+    }
+
+    .bt-md-flex-wrap {
+        flex-wrap: wrap;
+    }
+}
+
+// Desktop
+@media screen and (min-width: 768px) {
+    .bt-lg-d-none {
+        display: none;
+    }
+
+    .bt-lg-d-block {
+        display: block;
+    }
+
+    .bt-lg-d-flex {
+        display: flex;
+    }
+
+    .bt-lg-flex-no-wrap {
+        flex-wrap: nowrap;
+    }
+
+    .bt-lg-flex-wrap {
+        flex-wrap: wrap;
+    }
+}
+
+// Hidden classes
+// Mobile
+@media screen and (max-width: 767px) {
+    .bt-mobile-hidden {
+        display: none;
+    }
+}
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .bt-tablet-hidden {
+        display: none;
+    }
+}
+
+// Desktop
+@media screen and (min-width: 1025px) {
+    .bt-desktop-hidden {
+        display: none;
+    }
+}

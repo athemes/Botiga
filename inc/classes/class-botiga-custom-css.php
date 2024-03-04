@@ -1403,16 +1403,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$shop_product_sale_tag_layout   = get_theme_mod( 'shop_product_sale_tag_layout', 'layout1' );
 			$shop_sale_tag_spacing          = get_theme_mod( 'shop_sale_tag_spacing', 20 );
 			$shop_sale_tag_radius           = get_theme_mod( 'shop_sale_tag_radius', 0 );
+			$rtl_left                       = is_rtl() ? 'right' : 'left';
 
 			$css .= ".wc-block-grid__product-onsale, span.onsale {border-radius:" . esc_attr( $shop_sale_tag_radius ) . "px;top:" . esc_attr( $shop_sale_tag_spacing ) . "px!important;left:" . esc_attr( $shop_sale_tag_spacing ) . "px!important;}" . "\n";
 			if ( 'layout2' === $shop_product_sale_tag_layout ) {
 				$css .= ".wc-block-grid__product-onsale, .products span.onsale {left:auto!important;right:" . esc_attr( $shop_sale_tag_spacing ) . "px;}" . "\n";
 			}
 			if ( 'gallery-vertical' === $single_product_gallery_layout ) {
-				$css .= ".single-product .has-gallery-images .product-gallery-summary span.onsale { left: 107px !important; }";
+				$css .= ".single-product .has-gallery-images .product-gallery-summary span.onsale { $rtl_left: 107px !important; }";
 			}
 			if ( 'gallery-showcase' === $single_product_gallery_layout ) {
-				$css .= ".single-product .has-gallery-images .product-gallery-summary span.onsale { top: 104px !important; left: 110px !important; }";
+				$css .= ".single-product .has-gallery-images .product-gallery-summary span.onsale { top: 104px !important; $rtl_left: 110px !important; }";
 			}
 			if ( 'gallery-full-width' === $single_product_gallery_layout ) {
 				$css .= ".single-product .has-gallery-images .product-gallery-summary span.onsale { top: 142px !important; }";
