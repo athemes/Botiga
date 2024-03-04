@@ -52,6 +52,7 @@ jobs:
           [ -f package.json ] && rm package.json
           [ -f package-lock.json ] && rm package-lock.json
           [ -f readme.md ] && rm readme.md
+          [ -f playwright.config.js ] && rm playwright.config.js
           [ -d assets/sass ] && rm -r assets/sass
           [ -d assets/js/src ] && rm -r assets/js/src
           [ -d node_modules ] && rm -r node_modules
