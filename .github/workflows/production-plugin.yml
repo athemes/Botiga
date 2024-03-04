@@ -56,6 +56,7 @@ jobs:
           [ -d assets/sass ] && rm -r assets/sass
           [ -d assets/js/src ] && rm -r assets/js/src
           [ -d node_modules ] && rm -r node_modules
+          [ -d e2etests ] && rm -r e2etests
 
       - name: Create directory for artifacts
         run: mkdir botiga
