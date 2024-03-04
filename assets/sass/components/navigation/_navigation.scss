@@ -822,3 +822,41 @@ body.mobile-menu-visible {
 		}
 	}
 }
+
+/* Breadcrumbs (botiga module) */
+.botiga-breadcrumb-trail {
+	border-bottom: 1px solid rgba(0, 16, 46, 0.1);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.8em;
+	font-weight: 600;
+	padding-top: 15px;
+    padding-bottom: 15px;
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			display: inline;
+			padding-bottom: 0;
+
+			&:last-of-type .botiga-svg-icon {
+				display: none;
+			}
+		}
+	}
+
+	.botiga-svg-icon {
+		margin: 0 9px;
+		position: relative;
+		top: 1px;
+	}
+
+	.botiga-svg-icon,
+	.botiga-svg-icon svg {
+		width: 0.9em;
+		height: 0.9em;
+	}
+}

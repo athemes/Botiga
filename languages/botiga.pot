@@ -141,11 +141,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:575
+#: functions.php:576
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:578
+#: functions.php:579
 msgid "Plugins"
 msgstr ""
 
@@ -4032,21 +4032,21 @@ msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:395
+#: inc/plugins/woocommerce/features/quick-view.php:396
 msgid "SKU:"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:395
+#: inc/plugins/woocommerce/features/quick-view.php:396
 msgid "N/A"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:399
+#: inc/plugins/woocommerce/features/quick-view.php:400
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:401
+#: inc/plugins/woocommerce/features/quick-view.php:402
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""
@@ -4111,19 +4111,19 @@ msgstr ""
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:418
+#: inc/plugins/woocommerce/woocommerce.php:429
 msgid "Decrease quantity"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:418
+#: inc/plugins/woocommerce/woocommerce.php:429
 msgid "Decrease product quantity."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:423
+#: inc/plugins/woocommerce/woocommerce.php:434
 msgid "Increase quantity"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:423
+#: inc/plugins/woocommerce/woocommerce.php:434
 msgid "Increase product quantity."
 msgstr ""
 
