@@ -1,0 +1,74 @@
+# GitHub Actions Workflow for bundling production plugin zip file.
+
+name: Create WP production plugin zip file
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build-plugin-zip-asset:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP 8.0
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          tools: composer
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '21'
+
+      - name: Install dependencies
+        run: composer install --no-dev --ignore-platform-reqs --prefer-dist --no-scripts --optimize-autoloader
+
+      - name: Install nodejs dependencies
+        run: npm install
+
+      - name: Generate production build
+        run: npm run production
+
+      - name: Generate translation files
+        run: npm run translate
+
+      - name: Clean unneeded files
+        run: |
+          [ -f .gitattributes ] && rm .gitattributes
+          [ -d .github ] && rm -r .github
+          [ -d .git ] && rm -r .git
+          [ -f .gitignore ] && rm .gitignore
+          [ -f phpcs.xml ] && rm phpcs.xml
+          [ -f wpgulp.config.js ] && rm wpgulp.config.js
+          [ -f gulpfile.babel.js ] && rm gulpfile.babel.js
+          [ -f composer.json ] && rm composer.json
+          [ -f composer.lock ] && rm composer.lock
+          [ -f package.json ] && rm package.json
+          [ -f package-lock.json ] && rm package-lock.json
+          [ -f readme.md ] && rm readme.md
+          [ -d assets/sass ] && rm -r assets/sass
+          [ -d assets/js/src ] && rm -r assets/js/src
+          [ -d node_modules ] && rm -r node_modules
+
+      - name: Create directory for artifacts
+        run: mkdir botiga
+
+      - name: Move files to merchant directory
+        run: rsync -av --progress --exclude=botiga . botiga/
+
+      - name: Create Artifact
+        run: zip -qq -r "botiga.zip" botiga/
+
+      - name: Upload release attachment
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: botiga.zip
+          tag: ${{ github.ref_name }}
+          overwrite: true
