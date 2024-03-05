@@ -59,12 +59,25 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			add_action( 'customize_save_after', array( $this, 'update_custom_css_file' ) );
-
 			add_action( 'after_switch_theme', array( $this, 'update_custom_css_file' ) );
+
+			add_action( 'botiga_admin_module_activated', array( $this, 'set_update_custom_css_flag' ) );
+			add_action( 'botiga_admin_module_deactivated', array( $this, 'set_update_custom_css_flag' ) );
+			add_action( 'botiga_admin_all_modules_activated', array( $this, 'set_update_custom_css_flag' ) );
+			add_action( 'botiga_admin_all_modules_deactivated', array( $this, 'set_update_custom_css_flag' ) );
 
 			add_action( 'switch_theme', array( $this, 'delete_custom_css_file' ) );
 
 			add_action( 'init', array( $this, 'init' ) );
+		}
+
+		/**
+		 * Set flag to update custom CSS file
+		 *
+		 * @return void 
+		 */
+		public function set_update_custom_css_flag() {
+			set_transient( 'botiga_update_custom_css_flag', true, 0 );
 		}
 
 		/**
@@ -1878,11 +1891,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 *
 		 */
 		public function init() {
+			if ( get_transient( 'botiga_update_custom_css_flag' ) ) {
+				$this->update_custom_css_file();
+				delete_transient( 'botiga_update_custom_css_flag' );
+			}
 
 			if ( false === get_transient( 'botiga_custom_css' ) ) {
 				$this->update_custom_css_file();
 			}
-		}       
+		}
 		
 		/**
 		 * Update custom css file 
