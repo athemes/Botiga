@@ -1,6 +1,6 @@
-# GitHub Actions Workflow for bundling production plugin zip file.
+# GitHub Actions Workflow for bundling production theme zip file.
 
-name: Create WP production plugin zip file
+name: Create WP production theme zip file
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - "*"
 
 jobs:
-  build-plugin-zip-asset:
+  build-theme-zip-asset:
     runs-on: ubuntu-latest
 
     steps:
