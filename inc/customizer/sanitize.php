@@ -247,21 +247,26 @@ function botiga_sanitize_hex_rgba( $input, $setting ) {
         return $setting->default;
     }
 
-    if ( false === strpos( $input, 'rgb' ) ) {
-        $input = sanitize_hex_color( $input );
-    } elseif ( false == strpos( $input, 'rgba' ) ) {
-            // Sanitize as RGB color
-            $input = str_replace( ' ', '', $input );
-            sscanf( $input, 'rgb(%d,%d,%d)', $red, $green, $blue );
-            $input = 'rgb(' . botiga_in_range( $red, 0, 255 ) . ',' . botiga_in_range( $green, 0, 255 ) . ',' . botiga_in_range( $blue, 0, 255 ) . ')';
-        }
-        else {
-            // Sanitize as RGBa color
-            $input = str_replace( ' ', '', $input );
-            sscanf( $input, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
-            $input = 'rgba(' . botiga_in_range( $red, 0, 255 ) . ',' . botiga_in_range( $green, 0, 255 ) . ',' . botiga_in_range( $blue, 0, 255 ) . ',' . botiga_in_range( $alpha, 0, 1 ) . ')';
+    // RGB
+    if ( strpos( $input, 'rgb(' ) !== false ) {
+        $input = str_replace( ' ', '', $input );
+        sscanf( $input, 'rgb(%d,%d,%d)', $red, $green, $blue );
+        $input = 'rgb(' . botiga_in_range( $red, 0, 255 ) . ',' . botiga_in_range( $green, 0, 255 ) . ',' . botiga_in_range( $blue, 0, 255 ) . ')';
+
+        return $input;
     }
-    return $input;
+
+    // RGBA
+    if ( strpos( $input, 'rgba(' ) !== false ) {
+        $input = str_replace( ' ', '', $input );
+        sscanf( $input, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
+        $input = 'rgba(' . botiga_in_range( $red, 0, 255 ) . ',' . botiga_in_range( $green, 0, 255 ) . ',' . botiga_in_range( $blue, 0, 255 ) . ',' . botiga_in_range( $alpha, 0, 1 ) . ')';
+
+        return $input;
+    }
+
+    // HEX
+    return sanitize_hex_color( $input );
 }
 
 /**
