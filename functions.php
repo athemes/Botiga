@@ -365,6 +365,9 @@ add_action( 'wp_enqueue_scripts', 'botiga_style_css', 12 );
  * Enqueue admin scripts and styles.
  */
 function botiga_admin_scripts() {
+	wp_register_script( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), BOTIGA_VERSION, false );
+	wp_register_style( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.6', 'all' );
+
 	wp_enqueue_script( 'botiga-admin-functions', get_template_directory_uri() . '/assets/js/admin-functions.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-admin-functions', 'botigaadm', array(
 		'hfUpdate' => array(
