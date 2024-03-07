@@ -158,9 +158,9 @@ class Botiga_Merchant_Overlaping_Features {
 			if ( $mmodule_id ) {
 				$is_pro = $required_opts_to_disable_merchant_modules[ $mmodule_id ][ 'pro' ] ?? false;
 
-				// if ( ! defined( 'BOTIGA_PRO_VERSION' ) && $is_pro ) {
-				// 	continue;
-				// }
+				if ( ! defined( 'BOTIGA_PRO_VERSION' ) && $is_pro ) {
+					continue;
+				}
 
 				add_filter( "merchant_module_{$mmodule_id}_deactivate", function() {
 					return true;
