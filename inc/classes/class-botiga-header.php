@@ -52,7 +52,16 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 				return;
 			}
 
-			wp_localize_script( 'botiga-custom', 'botiga_sticky_header_logo', wp_get_attachment_image_src( $logo, 'full' ) );
+			$image_src = wp_get_attachment_image_src( $logo, 'full' );
+			if ( ! $image_src )  {
+				return;
+			}
+
+			wp_localize_script( 'botiga-custom', 'botiga_sticky_header_logo', array_merge( 
+				$image_src, 
+				array( 'srcset' => wp_get_attachment_image_srcset( $logo, 'full' ) ),
+				array( 'sizes' => wp_get_attachment_image_sizes( $logo, 'full' ) ),
+			) );
 		}
 
 		/**
