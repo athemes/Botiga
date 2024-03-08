@@ -607,6 +607,11 @@ require get_template_directory() . '/inc/notices/class-botiga-pro-upsell.php';
 require get_template_directory() . '/inc/theme-update.php';
 
 /**
+ * Register WP-CLI commands.
+ */
+require get_template_directory() . '/inc/classes/class-botiga-wp-cli.php';
+
+/**
  * Botiga custom get template part
  */
 function botiga_get_template_part( $slug, $name = null, $args = array() ) {
