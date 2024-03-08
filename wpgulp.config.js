@@ -62,6 +62,14 @@ const styles = [
 		file: 'botiga-notices',
 	},
 
+	// Admin Modal.
+	{
+		name: 'adminModal',
+		src: './assets/sass/admin/admin-modal.scss',
+		destination: './assets/css/admin',
+		file: 'botiga-admin-modal',
+	},
+
 	// Frontend styles. ##############################
 
 	// BHFB.
@@ -157,7 +165,7 @@ const styles = [
 // Scripts to process.
 const scripts = [
 
-	// Admin styles. ##############################
+	// Admin scripts. ##############################
 
 	// Customizer.
 	{
@@ -213,6 +221,14 @@ const scripts = [
 		src: './assets/js/src/admin/botiga-dashboard.js',
 		destination: './assets/js/admin',
 		file: 'botiga-dashboard',
+	},
+
+	// Admin Modal.
+	{
+		name: 'adminModal',
+		src: './assets/js/src/admin/admin-modal.js',
+		destination: './assets/js/admin',
+		file: 'botiga-admin-modal',
 	},
 
 	// Frontend styles. ##############################
