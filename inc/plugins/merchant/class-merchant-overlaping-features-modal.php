@@ -124,10 +124,17 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_css' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
-
 		add_action( 'wp_ajax_enable_mechant_module', array( $this, 'ajax_enable_merchant_module' ) );
-
 		add_action( 'admin_footer', array( $this, 'modal_content' ) );
+	}
+
+	/**
+	 * Is merchant dashboard page.
+	 * 
+	 */
+	public function is_merchant_dashboard_page() {
+		global $pagenow;
+		return $pagenow === 'admin.php' && ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] === 'merchant' ); // phpcs:ignore WordPress.Security.NonceVerification
 	}
 
 	/**
@@ -135,6 +142,10 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 	 * 
 	 */
 	public function enqueue_admin_css() {
+		if ( ! $this->is_merchant_dashboard_page() ) {
+			return;
+		}
+
 		wp_enqueue_style( 'botiga-admin-modal' );
 
 		$css = "
@@ -272,6 +283,10 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 	 * 
 	 */
 	public function enqueue_admin_js() {
+		if ( ! $this->is_merchant_dashboard_page() ) {
+			return;
+		}
+
 		wp_enqueue_script( 'botiga-admin-modal' );
 		wp_localize_script( 'botiga-admin-modal', 'botiga_admin_modal', array( 
 			'loading'     => esc_html__( 'Loading...', 'botiga' ),
@@ -330,6 +345,7 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 	/**
 	 * Enable merchant module ajax callback.
 	 * 
+	 * @return void
 	 */
 	public function ajax_enable_merchant_module() {
 		check_ajax_referer( 'btm-enable-merchant-module', 'nonce' );
@@ -371,6 +387,10 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 	 * 
 	 */
 	public function modal_content() {
+		if ( ! $this->is_merchant_dashboard_page() ) {
+			return;
+		}
+		
 		?>
 
 		<div class="botiga-admin-modal">
