@@ -1,5 +1,5 @@
 .botiga-admin-modal {
-	display: none;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: fixed;
@@ -8,9 +8,17 @@
 	bottom: 0;
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.7);
+	visibility: hidden;
+	opacity: 0;
+	transform: translate3d(0, 15px, 0);
+	transition: ease opacity 300ms, ease transform 300ms;
+	z-index: -99999;
 
 	&.active {
-		display: flex;
+		opacity: 1;
+		visibility: visible;
+		transform: translate3d(0, 0, 0);
+		z-index: 1000;
 	}
 }
 
