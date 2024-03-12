@@ -1357,19 +1357,26 @@ botiga.collapse = {
     },
 
 	expand: function( el, options, first_load ) {
-
 		if( first_load && ! el.classList.contains( 'active' ) ) {
 			return false;
-		} 
+		}
 
 		const 
 			targetSelectorId = options.id,
 			target           = document.getElementById( targetSelectorId ),
 			targetContent    = target.querySelector( '.botiga-collapse__content' );
 
+		target.addEventListener( 'transitionend', this.expandTransitionEnd.bind( this, el ) );
+
 		target.style = 'max-height: '+ targetContent.clientHeight +'px;';
 		el.classList.add( 'active' );
 		target.classList.add( 'active' );
+	},
+
+	expandTransitionEnd: function( el ) {
+		if ( ! el.classList.contains( 'active' ) ) {
+			return false;
+		}
 		
 		el.dispatchEvent( new Event( 'botiga.collapse.expanded' ) );
 	},
