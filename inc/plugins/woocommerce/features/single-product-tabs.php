@@ -118,10 +118,28 @@ function botiga_woocommerce_output_product_data_tabs() {
 }
 
 /**
+ * Tabs Accordion JS
+ */
+function botiga_single_product_tab_as_accordion_append_inline_js() {
+	$js = "
+        (function($){
+            $( '[data-botiga-collapse]' ).each(function(){
+                $(this)[0].addEventListener( 'botiga.collapse.expanded', function(){
+                    window.scrollTo({ top: $(this).offset().top - 100, behavior: 'smooth' });
+                });
+            });
+        })(jQuery);
+    ";
+    wp_add_inline_script( 'botiga-custom', $js );
+}
+
+/**
  * Tabs Accordion Style
  */
 function botiga_single_product_tabs_as_accordion_output() {
     $accordion_one_at_time = get_theme_mod( 'single_product_tabs_accordion_one_at_time', 1 );
+    
+	botiga_single_product_tab_as_accordion_append_inline_js(); 
 
     /**
      * Hook 'woocommerce_product_tabs'
