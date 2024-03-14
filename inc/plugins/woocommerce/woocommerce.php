@@ -651,6 +651,33 @@ function botiga_remove_last_item_from_breadcrumb( $crumbs, $breadcrumb ) {
 }
 
 /**
+ * Display how many products are available before backorder.
+ * Currently we can do that only to simple products because the 'woocommerce_cart_item_backorder_notification' filter passes only the parent product id and not the variation ID.
+ * So we can't identify what is the variation added to cart. 
+ * 
+ * @param string $message The default message.
+ * @param int    $product_id The product ID.
+ * 
+ * @return string
+ */
+function botiga_cart_backorder_notification( $message, $product_id ){
+	$product             = wc_get_product( $product_id );
+	$new_default_message = sprintf( '<small class="bt-d-block bt-m-0">%1$s</small>', __( 'Available on backorder', 'botiga' ) );
+
+	if ( $product->get_type() !== 'simple' ) {
+		return $new_default_message;
+	}
+
+	$stock_quantity = $product->get_stock_quantity();
+	if ( $stock_quantity > 0 ) {
+		return sprintf( '<small class="bt-d-block bt-m-0">%1$s %2$s</small>', absint( $stock_quantity ), __( 'in stock. Remaining is available on backorder.', 'botiga' ) );
+	}
+
+	return $new_default_message;
+}
+add_filter( 'woocommerce_cart_item_backorder_notification', 'botiga_cart_backorder_notification', 10, 2 );
+
+/**
  * WooCommerce Blocks
  */
 require get_template_directory() . '/inc/plugins/woocommerce/blocks/product-categories/class-botiga-woocommerce-block-product-categories.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
