@@ -164,8 +164,8 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 
 			.botiga-admin-close-modal {
 				position: absolute;
-				top: 25px;
-				right: 25px;
+				top: 18px;
+				right: 16px;
 				transition: ease opacity 300ms;
 			}
 			.botiga-admin-close-modal:hover {
@@ -173,13 +173,14 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 			}
 
 			.btm-modules-modal h2 {
-				font-size: 20px;
+				font-size: 18px;
+				font-weight: 700;
 				line-height: 1;
 				margin: 0;
 			}
 
 			.btm-modules-modal h3 {
-				font-size: 16px;
+				font-size: 18px;
 				line-height: 1;
 				margin: 0 0 12px 0;
 			}
@@ -203,19 +204,29 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 			.btm-modules-modal-title {
 				display: flex;
 				align-items: center;
-				gap: 12px;
-				margin-bottom: 15px !important;
+				justify-content: center;
+				gap: 7px;
+				display: block;
+				max-width: 314px;
+				text-align: center;
+				background-color: #FFFCF6;
+				border: 1px solid #EFBF56;
+				border-radius: 35px;
+				margin: 0px auto 35px !important;
+				padding: 13px 30px 15px;
+			}
+
+			.btm-modules-modal-title svg {
+				position: relative;
+				top: 3px;
 			}
 
 			.btm-modules-modal-title-desc {
 				margin-bottom: 30px !important;
 			}
 
-			.btm-modules-modal-title-desc:after {
-				content: '';
-				display: block;
-				border-bottom: 1px solid #eee;
-				margin-top: 30px;
+			.btm-divider {
+				display: none;
 			}
 
 			@media (min-width: 768px) {
@@ -233,16 +244,23 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 				.btm-modules-modal-link {
 					margin-top: auto !important;
 				}
+
+				.btm-divider {
+					display: block;
+					max-width: 1px;
+					border-right: 1px solid #D9D9D9;
+				}
 			}
 
 			.btm-modules-modal-actions p {
-				margin-bottom: 28px !important;
+				margin-bottom: 22px !important;
 			}
 
 			.btm-modules-modal-link {
 				display: inline-flex;
 				align-items: center;
 				gap: 7px;
+				font-weight: 500;
 				text-decoration: underline;
 				transition: ease color 300ms;
 			}
@@ -397,25 +415,22 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 			<div class="botiga-admin-modal-content">
 				<div class="botiga-admin-modal-body btm-modules-modal">
 					<a href="#" class="botiga-admin-close-modal" title="<?php echo esc_attr__( 'Close', 'botiga' ); ?>">
-						<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<svg width="17" height="17" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M5.6875 5.6875L20.3125 20.3125" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 							<path d="M5.6875 20.3125L20.3125 5.6875" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>
 					</a>
 
 					<h2 class="btm-modules-modal-title">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.29 3.86002L1.81999 18C1.64536 18.3024 1.55296 18.6453 1.55198 18.9945C1.551 19.3438 1.64148 19.6872 1.81442 19.9905C1.98735 20.2939 2.23672 20.5468 2.5377 20.7239C2.83868 20.901 3.18079 20.9962 3.52999 21H20.47C20.8192 20.9962 21.1613 20.901 21.4623 20.7239C21.7633 20.5468 22.0126 20.2939 22.1856 19.9905C22.3585 19.6872 22.449 19.3438 22.448 18.9945C22.447 18.6453 22.3546 18.3024 22.18 18L13.71 3.86002C13.5317 3.56613 13.2807 3.32314 12.9812 3.15451C12.6817 2.98587 12.3437 2.89728 12 2.89728C11.6563 2.89728 11.3183 2.98587 11.0188 3.15451C10.7193 3.32314 10.4683 3.56613 10.29 3.86002Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							<path d="M12 9V13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							<path d="M12 17H12.01" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M19.7142 14.768L11.9066 1.09985C11.7115 0.764984 11.433 0.487331 11.0986 0.294411C10.7643 0.10149 10.3857 0 10.0004 0C9.6152 0 9.23663 0.10149 8.90228 0.294411C8.56793 0.487331 8.2894 0.764984 8.09429 1.09985L0.286657 14.768C0.0989313 15.0919 0 15.4603 0 15.8354C0 16.2105 0.0989313 16.5789 0.286657 16.9028C0.479264 17.2397 0.757321 17.5188 1.0923 17.7116C1.42727 17.9044 1.8071 18.0039 2.19281 17.9999H17.8081C18.1935 18.0036 18.5729 17.904 18.9076 17.7112C19.2422 17.5184 19.52 17.2394 19.7124 16.9028C19.9004 16.5791 19.9997 16.2108 20 15.8356C20.0003 15.4605 19.9017 15.0921 19.7142 14.768ZM9.2862 7.19999C9.2862 7.00903 9.36145 6.8259 9.4954 6.69088C9.62934 6.55585 9.81102 6.47999 10.0004 6.47999C10.1899 6.47999 10.3715 6.55585 10.5055 6.69088C10.6394 6.8259 10.7147 7.00903 10.7147 7.19999V10.8C10.7147 10.9909 10.6394 11.174 10.5055 11.3091C10.3715 11.4441 10.1899 11.5199 10.0004 11.5199C9.81102 11.5199 9.62934 11.4441 9.4954 11.3091C9.36145 11.174 9.2862 10.9909 9.2862 10.8V7.19999ZM10.0004 15.1199C9.78855 15.1199 9.58141 15.0566 9.40522 14.9379C9.22904 14.8192 9.09172 14.6506 9.01063 14.4532C8.92954 14.2559 8.90832 14.0387 8.94966 13.8292C8.991 13.6197 9.09304 13.4273 9.24287 13.2763C9.3927 13.1252 9.5836 13.0224 9.79143 12.9807C9.99926 12.939 10.2147 12.9604 10.4104 13.0421C10.6062 13.1239 10.7735 13.2623 10.8913 13.4399C11.009 13.6175 11.0718 13.8263 11.0718 14.0399C11.0718 14.3264 10.9589 14.6011 10.758 14.8036C10.5571 15.0061 10.2846 15.1199 10.0004 15.1199Z" fill="#F9BF14"/>
 						</svg>
 						<?php echo esc_html__( 'This module conflicts with Botiga!', 'botiga' ); ?>
 					</h2>
-					<p class="btm-modules-modal-title-desc"><?php echo esc_html__( 'This Merchant module is also present on Botiga and we intentionally deactivate it by default. But you still can switch to the Merchant module at any time through the options below.', 'botiga' ); ?></p>
 					<div class="btm-modules-modal-actions">
 						<div>
 							<h3><?php echo esc_html__( 'Continue with Botiga', 'botiga' ); ?></h3>
-							<p><?php echo esc_html__( 'If you want that the Botiga module continue having precedence over the Merchant module, click in the below link to go to the Botiga module settings.', 'botiga' ); ?></p>
+							<p><?php echo esc_html__( 'To maintain the Botiga module as your primary option over the Merchant module, please click the button below to access the Botiga module settings.', 'botiga' ); ?></p>
 							<a href="#" class="btm-modules-modal-link btm-modules-modal-link-botiga" title="<?php echo esc_attr__( 'Go to Botiga settings', 'botiga' ); ?>" target="_blank">
 								<?php echo esc_html__( 'Go to Botiga settings', 'botiga' ); ?>
 								<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -423,9 +438,10 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 								</svg>
 							</a>
 						</div>
+						<div class="btm-divider"></div>
 						<div>
-							<h3><?php echo esc_html__( 'Continue with Merchant', 'botiga' ); ?></h3>
-							<p><?php echo esc_html__( 'If you want to disable the Botiga module and enable the respective Merchant module, click in the below link.', 'botiga' ); ?></p>
+							<h3><?php echo esc_html__( 'Switch to Merchant', 'botiga' ); ?></h3>
+							<p><?php echo esc_html__( 'To disable the Botiga module and activate the corresponding Merchant module, please click the button below.', 'botiga' ); ?></p>
 							<a href="#" class="btm-modules-modal-link btm-modules-modal-link-merchant" title="<?php echo esc_attr__( 'Enable Merchant module', 'botiga' ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'btm-enable-merchant-module' ) ); ?>">
 								<?php echo esc_html__( 'Enable Merchant module', 'botiga' ); ?>
 							</a>
