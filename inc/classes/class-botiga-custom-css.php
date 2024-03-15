@@ -60,6 +60,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			add_action( 'customize_save_after', array( $this, 'update_custom_css_file' ) );
 			add_action( 'after_switch_theme', array( $this, 'update_custom_css_file' ) );
+			add_action( 'upgrader_process_complete', array( $this, 'after_theme_update' ), 10, 2 );
 
 			add_action( 'botiga_admin_module_activated', array( $this, 'set_update_custom_css_flag' ) );
 			add_action( 'botiga_admin_module_deactivated', array( $this, 'set_update_custom_css_flag' ) );
@@ -78,6 +79,17 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public function set_update_custom_css_flag() {
 			set_transient( 'botiga_update_custom_css_flag', true, 0 );
+		}
+
+		/**
+		 * After theme update
+		 *
+		 * @return void 
+		 */
+		public function after_theme_update( $upgrader_obj, $options ) {
+			if ( 'update' === $options['action'] && 'theme' === $options['type'] ) {
+				$this->update_custom_css_file();
+			}
 		}
 
 		/**
