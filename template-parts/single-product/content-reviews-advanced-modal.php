@@ -84,7 +84,7 @@ global $_product; ?>
                             $account_page_url = wc_get_page_permalink( 'myaccount' );
                             if ( $account_page_url ) {
                                 /* translators: %s opening and closing link tags respectively */
-                                $comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'botiga' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
+                                $comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$s logged in%2$s to post a review.', 'botiga' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
                             }
 
                             if ( wc_review_ratings_enabled() ) {
