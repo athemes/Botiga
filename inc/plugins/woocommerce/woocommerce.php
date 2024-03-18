@@ -18,8 +18,9 @@
  */
 function botiga_woocommerce_setup() {
 
-	$enable_zoom    = get_theme_mod( 'single_zoom_effects', 1 );
-	$enable_gallery = get_theme_mod( 'single_gallery_slider', 1 );
+	$enable_zoom     = get_theme_mod( 'single_zoom_effects', 1 );
+	$enable_gallery  = get_theme_mod( 'single_gallery_slider', 1 );
+	$enable_lightbox = get_theme_mod( 'single_product_image_lightbox', 1 );
 
 	add_theme_support(
 		'woocommerce',
@@ -43,8 +44,10 @@ function botiga_woocommerce_setup() {
 	if ( $enable_gallery ) {
 		add_theme_support( 'wc-product-gallery-slider' );
 	}
-
-	add_theme_support( 'wc-product-gallery-lightbox' );
+	
+	if ( $enable_lightbox ) {
+		add_theme_support( 'wc-product-gallery-lightbox' );
+	}
 }
 add_action( 'after_setup_theme', 'botiga_woocommerce_setup' );
 
