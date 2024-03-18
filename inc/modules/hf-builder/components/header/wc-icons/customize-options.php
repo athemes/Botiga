@@ -49,7 +49,7 @@ $wp_customize->add_control(
             'controls_general'		=> wp_json_encode(
                 array_merge(
                     array(
-                        '#customize-control-bhfb_woo_icons_visibility'
+                        '#customize-control-bhfb_woo_icons_visibility',
                     ),
                     array_map( function( $name ){ return "#customize-control-$name"; }, $opts_to_move[ 'general' ] )
                 ),
@@ -60,6 +60,7 @@ $wp_customize->add_control(
                         '#customize-control-bhfb_woo_icons',
                         '#customize-control-bhfb_woo_icons_sticky_title',
                         '#customize-control-bhfb_woo_icons_sticky',
+                        '#customize-control-bhfb_woo_icons_space_between_icons',
                         '#customize-control-bhfb_woo_icons_padding',
                         '#customize-control-bhfb_woo_icons_margin'
                     ),
@@ -205,6 +206,44 @@ $wp_customize->add_control(
         )
     )
 );
+
+// Space between icons.
+$wp_customize->add_setting('bhfb_woo_icons_space_between_icons_desktop', array(
+	'default'           => 25,
+	'transport'         => 'postMessage',
+	'sanitize_callback' => 'absint',
+));
+
+$wp_customize->add_setting('bhfb_woo_icons_space_between_icons_tablet', array(
+	'default'           => 25,
+	'transport'         => 'postMessage',
+	'sanitize_callback' => 'absint',
+));
+
+$wp_customize->add_setting('bhfb_woo_icons_space_between_icons_mobile', array(
+	'default'           => 25,
+	'transport'         => 'postMessage',
+	'sanitize_callback' => 'absint',
+));
+$wp_customize->add_control(new Botiga_Responsive_Slider(
+	$wp_customize,
+	'bhfb_woo_icons_space_between_icons',
+	array(
+		'label'         => esc_html__('Space between icons', 'botiga'),
+		'section'       => 'botiga_section_hb_component__woo_icons',
+		'is_responsive' => 1,
+		'settings'      => array(
+			'size_desktop'      => 'bhfb_woo_icons_space_between_icons_desktop',
+			'size_tablet'       => 'bhfb_woo_icons_space_between_icons_tablet',
+			'size_mobile'       => 'bhfb_woo_icons_space_between_icons_mobile',
+		),
+		'input_attrs' => array(
+			'min'   => 0,
+			'max'   => 200,
+		),
+        'priority' => 71
+	)
+));
 
 // Padding
 $wp_customize->add_setting( 

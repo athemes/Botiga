@@ -44,6 +44,19 @@ if( botiga_sticky_header_enabled() ) {
     $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_woo_icons_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-woo_icons .header-item:hover .botiga-image.is-svg' );
 }
 
+// Space between icons
+$css .= Botiga_Custom_CSS::get_variables_css(
+    '.bhfb-component-woo_icons .header-item',
+    array(
+        array(
+            'setting'  => 'bhfb_woo_icons_space_between_icons',
+            'defaults' => array( 'desktop' => 25, 'tablet'  => 25, 'mobile'  => 25 ),
+            'name'     => '--bt-bhfb-woo-icons-gap',
+            'unit'     => 'px',
+        ),
+    ),
+);
+
 // Padding
 $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
     'bhfb_woo_icons_padding',
