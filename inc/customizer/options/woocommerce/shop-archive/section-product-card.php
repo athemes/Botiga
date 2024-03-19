@@ -170,6 +170,29 @@ $wp_customize->add_control( new \Kirki\Control\Sortable( $wp_customize, 'shop_ca
 	'priority'   => 140,
 ) ) );
 
+// Product Cart Display Reviews Count
+$wp_customize->add_setting(
+    'shop_product_display_reviews_count',
+    array(
+        'default'           => 0,
+        'sanitize_callback' => 'botiga_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control(
+    new Botiga_Toggle_Control(
+        $wp_customize,
+        'shop_product_display_reviews_count',
+        array(
+            'label'    => esc_html__( 'Display Reviews Count', 'botiga' ),
+            'section'  => 'botiga_section_shop_archive_product_card',
+            'priority' => 141,
+            'active_callback' => function() {
+                return in_array( 'woocommerce_template_loop_rating', get_theme_mod( 'shop_card_elements', botiga_get_default_shop_archive_card_elements() ), true );
+            },
+        )
+    )
+);
+
 // Product Card Text Alignment
 $wp_customize->add_setting( 'shop_product_alignment',
 	array(

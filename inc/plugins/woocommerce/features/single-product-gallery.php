@@ -56,6 +56,10 @@ function botiga_single_product_preload_image() {
         return;
     }
 
+    if ( ! is_singular( 'product' ) ) {
+        return;
+    }
+
     $product       = wc_get_product( $post );
     $main_image_id = $product->get_image_id();
 

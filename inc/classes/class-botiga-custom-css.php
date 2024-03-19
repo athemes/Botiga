@@ -1370,6 +1370,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
 			$css .= "ul.wc-block-grid__products li.wc-block-grid__product, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product, ul.products li.product .wp-block-button__link { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
 
+			if ( 'center' === $shop_product_alignment ) {
+				$css .= ".woocommerce-product-rating { justify-content: center; }";
+			} elseif ( 'right' === $shop_product_alignment ) {
+				$css .= ".woocommerce-product-rating { justify-content: flex-end; }";
+				$css .= ".botiga-variation-type-color>a>span { text-indent: 9999px; }";
+			}
+
 			$shop_categories_alignment = get_theme_mod( 'shop_categories_alignment', 'center' );
 			$css .= "ul.products li.product-category .woocommerce-loop-category__title { text-align:" . esc_attr( $shop_categories_alignment ) . ";}" . "\n";
 

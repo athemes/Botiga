@@ -4,6 +4,18 @@
 		margin-left: inherit !important;
 		margin-right: inherit !important;
 	}
+
+	.wc-block-grid__product-rating {
+		.woocommerce-product-rating {
+			margin: 0;
+
+			&.botiga-wc-product-rating-with-count {
+				.woocommerce-review-link {
+					margin-top: 2px;
+				}
+			}
+		}
+	}
 }
 
 ul.wc-block-grid__products,
