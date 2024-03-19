@@ -800,7 +800,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					),
 				)
 			);
-			
+
 			$css .= self::get_variables_css(
 				'body',
 				array(
