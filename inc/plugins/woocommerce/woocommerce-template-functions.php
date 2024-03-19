@@ -23,6 +23,23 @@ function botiga_woocommerce_template_loop_product_link_open() {
 }
 
 /**
+ * Default shop archive card elements.
+ */
+function botiga_get_default_shop_archive_card_elements() {
+	$elements = array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' );
+
+	/**
+	 * Hook 'botiga_default_shop_archive_card_elements'
+	 * Filters the default shop archive card elements from customizer settings.
+	 * 
+	 * @param array $elements Default elements.
+	 * 
+	 * @since 2.2.2
+	 */
+	return apply_filters( 'botiga_default_shop_archive_card_elements', $elements );
+}
+
+/**
  * Default single product components
  */
 function botiga_get_default_single_product_components() {

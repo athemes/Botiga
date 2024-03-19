@@ -269,7 +269,7 @@ function botiga_wrap_loop_button_start() {
  * Loop product structure
  */
 function botiga_loop_product_structure() {
-	$elements   = get_theme_mod( 'shop_card_elements', array( 'botiga_shop_loop_product_title', 'woocommerce_template_loop_price' ) );
+	$elements   = get_theme_mod( 'shop_card_elements', botiga_get_default_shop_archive_card_elements() );
 	$layout     = get_theme_mod( 'shop_product_card_layout', 'layout1' );
 
 	/**
@@ -404,3 +404,45 @@ function botiga_product_card_title_output( $title, $loop_post ) {
 	return $the_title;
 }
 add_filter( 'botiga_shop_loop_product_title', 'botiga_product_card_title_output', 10, 2 );
+
+/**
+ * Add rating count to product grid.
+ * 
+ * @param string $html
+ * @param float $rating
+ * 
+ * @return string
+ */
+function botiga_get_products_grid_rating_count( $html, $rating, $count ) {
+	global $product;
+
+	if ( ! $product ) {
+		return $html;
+	}
+
+	$display_rating_count = get_theme_mod( 'shop_product_display_reviews_count', 0 );
+	if ( ! $display_rating_count ) {
+		return $html;
+	}
+
+	$is_inside_product_grid = did_action( 'woocommerce_after_single_product_summary' );
+	if ( is_singular( 'product' ) && ! $is_inside_product_grid ) {
+		return $html;
+	}
+
+	$review_count = $product->get_review_count();
+	if ( $review_count === 0 ) {
+		return $html;
+	}
+	
+	ob_start();
+	?>
+	
+	<a href="<?php echo esc_url( get_permalink( $product->get_id() ) ); ?>#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count"><?php echo esc_html( $review_count ); ?></span>)</a>
+
+	<?php
+	$html .= ob_get_clean();
+
+	return '<div class="woocommerce-product-rating botiga-wc-product-rating-with-count">' . $html . '</div>';
+}
+add_filter( 'woocommerce_product_get_rating_html', 'botiga_get_products_grid_rating_count', 10, 3 );
