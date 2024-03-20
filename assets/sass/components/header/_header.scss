@@ -526,6 +526,15 @@
             transform: translate3d(0, 15px, 0);
         }
     }
+
+    &.has-icon {
+        .header-login-register-link {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
 }
 
 @media screen and (min-width: 1025px) {
