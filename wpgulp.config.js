@@ -343,6 +343,8 @@ const zipIgnoreGlob = [
 	'!../@(Botiga|botiga)/**/*assets/img/raw',
 	'!../@(Botiga|botiga)/**/*assets/js/src/**/*',
 	'!../@(Botiga|botiga)/**/*assets/js/src',
+	'!../@(Botiga|botiga)/**/*assets/sass',
+	'!../@(Botiga|botiga)/**/*assets/sass/**/*',
 	'!../@(Botiga|botiga)/**/*tests/**/*',
 	'!../@(Botiga|botiga)/**/*tests',
 	'!../@(Botiga|botiga)/**/*e2etests/**/*',
