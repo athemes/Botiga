@@ -441,7 +441,7 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 						<div class="btm-divider"></div>
 						<div>
 							<h3><?php echo esc_html__( 'Switch to Merchant', 'botiga' ); ?></h3>
-							<p><?php echo esc_html__( 'To disable the Botiga module and activate the corresponding Merchant module, please click the button below.', 'botiga' ); ?></p>
+							<p><?php echo esc_html__( 'To disable the Botiga module and activate the corresponding Merchant module, please click the button below. This action will disable the Botiga module.', 'botiga' ); ?></p>
 							<a href="#" class="btm-modules-modal-link btm-modules-modal-link-merchant" title="<?php echo esc_attr__( 'Enable Merchant module', 'botiga' ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'btm-enable-merchant-module' ) ); ?>">
 								<?php echo esc_html__( 'Enable Merchant module', 'botiga' ); ?>
 							</a>
