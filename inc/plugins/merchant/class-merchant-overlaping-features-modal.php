@@ -159,7 +159,7 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 
 			.botiga-admin-modal-body {
 				position: relative;
-				padding: 30px;
+				padding: 40px 30px 30px 40px;
 			}
 
 			.botiga-admin-close-modal {
@@ -207,7 +207,7 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 				justify-content: center;
 				gap: 7px;
 				display: block;
-				max-width: 314px;
+				max-width: 321px;
 				text-align: center;
 				background-color: #FFFCF6;
 				border: 1px solid #EFBF56;
