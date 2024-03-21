@@ -299,7 +299,8 @@
 		}
 	}
 
-	&.gallery-default {
+	&.gallery-default,
+	&.gallery-vertical {
 		&.has-thumbs-grid {
 			.woocommerce-product-gallery__wrapper {
 				display: grid;

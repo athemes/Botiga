@@ -1434,11 +1434,18 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= "ul.wc-block-grid__products li.wc-block-grid__product .col-md-7>*, ul.wc-block-grid__products li.wc-block-grid__product .col-md-8>*, ul.wc-block-grid__products li.wc-block-grid__product>*, ul.wc-block-grid__products li.product .col-md-7>*, ul.wc-block-grid__products li.product .col-md-8>*, ul.wc-block-grid__products li.product>*, ul.products li.wc-block-grid__product .col-md-7>*, ul.products li.wc-block-grid__product .col-md-8>*, ul.products li.wc-block-grid__product>*, ul.products li.product .col-md-7>*, ul.products li.product .col-md-8>*, ul.products li.product>* { margin-bottom:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";
 			$css .= "ul.products li.product .product-description-column:not(:empty), ul.products li.wc-block-grid__product .product-description-column:not(:empty), ul.wc-block-grid__products li.wc-block-grid__product .product-description-column:not(:empty) { margin-top:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";
 
+			$enable_zoom     = get_theme_mod( 'single_zoom_effects', 1 );
+			$enable_gallery  = get_theme_mod( 'single_gallery_slider', 1 );
+			$enable_lightbox = get_theme_mod( 'single_product_image_lightbox', 1 );
 			$single_product_gallery_layout  = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 			$shop_product_sale_tag_layout   = get_theme_mod( 'shop_product_sale_tag_layout', 'layout1' );
 			$shop_sale_tag_spacing          = get_theme_mod( 'shop_sale_tag_spacing', 20 );
 			$shop_sale_tag_radius           = get_theme_mod( 'shop_sale_tag_radius', 0 );
 			$rtl_left                       = is_rtl() ? 'right' : 'left';
+
+			if ( ! $enable_lightbox ) {
+				$css .= ".woocommerce-product-gallery__wrapper a { pointer-events: none; }";
+			}
 
 			$css .= ".wc-block-grid__product-onsale, span.onsale {border-radius:" . esc_attr( $shop_sale_tag_radius ) . "px;top:" . esc_attr( $shop_sale_tag_spacing ) . "px!important;left:" . esc_attr( $shop_sale_tag_spacing ) . "px!important;}" . "\n";
 			if ( 'layout2' === $shop_product_sale_tag_layout ) {
