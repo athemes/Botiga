@@ -413,7 +413,7 @@ add_filter( 'botiga_shop_loop_product_title', 'botiga_product_card_title_output'
  * 
  * @return string
  */
-function botiga_get_products_grid_rating_count( $html, $rating, $count ) {
+function botiga_products_grid_rating_html( $html, $rating, $count ) {
 	global $product;
 
 	if ( ! $product ) {
@@ -445,4 +445,37 @@ function botiga_get_products_grid_rating_count( $html, $rating, $count ) {
 
 	return '<div class="woocommerce-product-rating botiga-wc-product-rating-with-count">' . $html . '</div>';
 }
-add_filter( 'woocommerce_product_get_rating_html', 'botiga_get_products_grid_rating_count', 10, 3 );
+add_filter( 'woocommerce_product_get_rating_html', 'botiga_products_grid_rating_html', 10, 3 );
+
+/**
+ * Add rating count to product grid on WooCommerce Blocks.
+ * 
+ * @param string $html
+ * @param object $data
+ * @param object $product
+ * 
+ * @return string
+ */
+function botiga_wc_blocks_products_grid_rating_html( $html, $data, $product ) {
+	$review_count = $product->get_review_count();
+	if ( $review_count === 0 ) {
+		return $html;
+	}
+
+	ob_start();
+	?>
+	
+	<a href="<?php echo esc_url( get_permalink( $product->get_id() ) ); ?>#reviews" class="woocommerce-review-link" rel="nofollow">(<span class="count"><?php echo esc_html( $review_count ); ?></span>)</a>
+
+	<?php
+	$rating_count_html= ob_get_clean();
+
+	$data->rating = str_replace( 
+		array( '"wc-block-grid__product-rating"', '</div></div>' ), 
+		array( '"wc-block-grid__product-rating botiga-wc-product-rating-with-count"', '</div>' . $rating_count_html . '</div>' ), 
+		$data->rating 
+	);
+
+	return $html;
+}
+add_filter( 'woocommerce_blocks_product_grid_item_html', 'botiga_wc_blocks_products_grid_rating_html', 10, 3 );
