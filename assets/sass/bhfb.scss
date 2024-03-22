@@ -482,6 +482,12 @@
 }
 
 /* Components */
+.bhfb-component-woo_icons {
+    .header-item {
+        margin-right: var( --bt-bhfb-woo-icons-gap, 25px );
+    }
+}
+
 .bhfb-component-widget1,
 .bhfb-component-widget2,
 .bhfb-component-widget3,

@@ -767,6 +767,8 @@ botiga.stickyHeader = {
 				}
 				const 
 					initialSrc    = logo.getAttribute( 'src' ),
+					initialSrcset = logo.getAttribute( 'srcset' ),
+					initialSizes  = logo.getAttribute( 'sizes' ),
 					initialHeight = logo.clientHeight;
 	
 				window.addEventListener( 'botiga.sticky.header.activated', function(){
@@ -776,7 +778,15 @@ botiga.stickyHeader = {
 
 					logo.setAttribute( 'src', botiga_sticky_header_logo[0] );
 					logo.setAttribute( 'style', 'max-height: ' + initialHeight + 'px;' );
-					
+
+					if ( typeof botiga_sticky_header_logo['srcset'] !== 'undefined' ) {
+						logo.setAttribute( 'srcset', botiga_sticky_header_logo['srcset'] );
+					}
+
+					if ( typeof botiga_sticky_header_logo['sizes'] !== 'undefined' ) {
+						logo.setAttribute( 'sizes', botiga_sticky_header_logo['sizes'] );
+					}
+
 					sticky_flag = true;
 				} );
 	
@@ -786,7 +796,9 @@ botiga.stickyHeader = {
 					}
 	
 					logo.setAttribute( 'src', initialSrc );
-	
+					logo.setAttribute( 'srcset', initialSrcset );
+					logo.setAttribute( 'sizes', initialSizes );
+					
 					sticky_flag = false;
 				} );
 			}
@@ -1345,19 +1357,26 @@ botiga.collapse = {
     },
 
 	expand: function( el, options, first_load ) {
-
 		if( first_load && ! el.classList.contains( 'active' ) ) {
 			return false;
-		} 
+		}
 
 		const 
 			targetSelectorId = options.id,
 			target           = document.getElementById( targetSelectorId ),
 			targetContent    = target.querySelector( '.botiga-collapse__content' );
 
+		target.addEventListener( 'transitionend', this.expandTransitionEnd.bind( this, el ) );
+
 		target.style = 'max-height: '+ targetContent.clientHeight +'px;';
 		el.classList.add( 'active' );
 		target.classList.add( 'active' );
+	},
+
+	expandTransitionEnd: function( el ) {
+		if ( ! el.classList.contains( 'active' ) ) {
+			return false;
+		}
 		
 		el.dispatchEvent( new Event( 'botiga.collapse.expanded' ) );
 	},

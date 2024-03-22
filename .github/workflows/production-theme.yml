@@ -1,6 +1,6 @@
-# GitHub Actions Workflow for bundling production plugin zip file.
+# GitHub Actions Workflow for bundling production theme zip file.
 
-name: Create WP production plugin zip file
+name: Create WP production theme zip file
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - "*"
 
 jobs:
-  build-plugin-zip-asset:
+  build-theme-zip-asset:
     runs-on: ubuntu-latest
 
     steps:
@@ -61,7 +61,7 @@ jobs:
       - name: Create directory for artifacts
         run: mkdir botiga
 
-      - name: Move files to merchant directory
+      - name: Move files to botiga directory
         run: rsync -av --progress --exclude=botiga . botiga/
 
       - name: Create Artifact
@@ -73,4 +73,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: botiga.zip
           tag: ${{ github.ref_name }}
+          release_name: "Botiga ${{ github.ref_name }}"
           overwrite: true
+          body: "Changelog: https://athemes.com/changelog/botiga/"

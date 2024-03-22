@@ -187,6 +187,17 @@ class Botiga_Merchant_Single_Product_Elements {
 					pointer-events: none;
 					opacity: 0.5;
 				}
+
+				.botiga-merchant-module-field-disabled .merchant-module-page-setting-field-desc {
+					font-size: 14px;
+					line-height: 1.6;
+					color: #1d2327;
+					border-radius: 4px;
+					border: 1px solid #0d65d7;
+					background-color: #e6effa;
+					padding: 8px 10px;
+					margin-top: 8px;
+				}
 			";
 
 			wp_add_inline_style( 'merchant-admin', $css );

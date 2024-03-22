@@ -52,6 +52,7 @@ class Botiga_Woocommerce_Block_Product_Categories {
 	 * @param string $current_url
 	 */
 	public function add_active_class( $block_content, $current_url ) {
+		$block_content = mb_convert_encoding($block_content, 'HTML-ENTITIES', 'UTF-8');
 		$dom = new DOMDocument();
 		$dom->loadHTML( $block_content );
 		$elements = $dom->getElementsByTagName( 'a' );
@@ -85,6 +86,7 @@ class Botiga_Woocommerce_Block_Product_Categories {
 
 		$has_bp_active_filter = strpos( $wp->query_string, 'filter_' ) !== FALSE;
 
+		$block_content = mb_convert_encoding($block_content, 'HTML-ENTITIES', 'UTF-8');
 		$dom = new DOMDocument();
 		$dom->loadHTML( $block_content );
 		$elements = $dom->getElementsByTagName( 'a' );

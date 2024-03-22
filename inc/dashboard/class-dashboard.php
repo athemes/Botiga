@@ -199,6 +199,10 @@ class Botiga_Dashboard
             document.addEventListener("DOMContentLoaded", function() {
                 const botigaUpsellMenuItem = document.querySelector( '#adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga"]' );
 
+                if ( ! botigaUpsellMenuItem ) {
+                    return;
+                }
+
                 botigaUpsellMenuItem.addEventListener( 'click', function( e ){
                     e.preventDefault();
 

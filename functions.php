@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.2.1' );
+	define( 'BOTIGA_VERSION', '2.2.2' );
 }
 
 // aThemes White Label Compatibility
@@ -365,6 +365,12 @@ add_action( 'wp_enqueue_scripts', 'botiga_style_css', 12 );
  * Enqueue admin scripts and styles.
  */
 function botiga_admin_scripts() {
+	wp_register_script( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), BOTIGA_VERSION, false );
+	wp_register_style( 'botiga-select2', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.6', 'all' );
+
+	wp_register_script( 'botiga-admin-modal', get_template_directory_uri() . '/assets/js/admin/botiga-admin-modal.min.js', array( 'jquery' ), BOTIGA_VERSION, false );
+	wp_register_style( 'botiga-admin-modal', get_template_directory_uri() . '/assets/css/admin/botiga-admin-modal.min.css', array(), BOTIGA_VERSION, 'all' );
+
 	wp_enqueue_script( 'botiga-admin-functions', get_template_directory_uri() . '/assets/js/admin-functions.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-admin-functions', 'botigaadm', array(
 		'hfUpdate' => array(
@@ -374,7 +380,7 @@ function botiga_admin_scripts() {
 		'hfUpdateDimiss' => array(
 			'confirmMessage' => __( 'Are you sure you want to dismiss this notice?', 'botiga' ),
 			'errorMessage' => __( 'It was not possible complete the request, please reload the page and try again.', 'botiga' ),
-		),                      
+		),
 	) );
 }
 add_action( 'admin_enqueue_scripts', 'botiga_admin_scripts' );
@@ -461,6 +467,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 if ( class_exists( 'Merchant' ) ) {
 	require get_template_directory() . '/inc/plugins/merchant/callbacks.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features-modal.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-single-product-elements.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-quick-view-elements.php';
 }
@@ -602,6 +609,11 @@ require get_template_directory() . '/inc/notices/class-botiga-pro-upsell.php';
  * Theme update migration functions.
  */
 require get_template_directory() . '/inc/theme-update.php';
+
+/**
+ * Register WP-CLI commands.
+ */
+require get_template_directory() . '/inc/classes/class-botiga-wp-cli.php';
 
 /**
  * Botiga custom get template part

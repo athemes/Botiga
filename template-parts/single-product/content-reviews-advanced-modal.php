@@ -20,7 +20,15 @@ global $_product; ?>
                 <?php echo get_the_post_thumbnail( $_product->get_id(), 'woocommerce_thumbnail' ); ?>
                 <div class="modal-product-info">
                     <h5><?php echo esc_html( $_product->get_name() ); ?></h5>
-                    <?php echo wp_kses_post( $_product->get_short_description() ); ?>
+                    <?php 
+                    
+                    /**
+                     * Hook 'botiga_advanced_reviews_modal_product_info_description_words_limit'
+                     * Filters the number of words in the product description in the advanced reviews modal.
+                     * 
+                     * @since 2.2.2
+                     */
+                    echo wp_kses_post( wp_trim_words( $_product->get_short_description(), apply_filters( 'botiga_advanced_reviews_modal_product_info_description_words_limit', 18 ) ) ); ?>
                 </div>
             </div>
             <div class="botiga-adv-reviews-modal-rating">
@@ -76,7 +84,7 @@ global $_product; ?>
                             $account_page_url = wc_get_page_permalink( 'myaccount' );
                             if ( $account_page_url ) {
                                 /* translators: %s opening and closing link tags respectively */
-                                $comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'botiga' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
+                                $comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$s logged in%2$s to post a review.', 'botiga' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
                             }
 
                             if ( wc_review_ratings_enabled() ) {

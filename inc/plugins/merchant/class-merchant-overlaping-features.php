@@ -54,6 +54,12 @@ class Botiga_Merchant_Overlaping_Features {
 	 * 
 	 */
 	public function __construct() {
+		if ( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
+
+			// Simply empty the array because all the overlapping modules are available only in Botiga Pro.
+			$this->overlaping_modules = array();
+		}
+
 		$this->disable_modules_by_customizer_settings();
 		$this->disable_modules_by_botiga_modules();
 	}
@@ -86,51 +92,61 @@ class Botiga_Merchant_Overlaping_Features {
 
 		$required_opts_to_disable_merchant_modules = array(
 			'recently-viewed-products' => array(
+				'pro'         => false,
 				'mod_name'    => 'single_recently_viewed_products',
 				'mod_value'   => 0,
 				'mod_default' => 0,
 			),
 			'quick-view' => array(
+				'pro'         => false,
 				'mod_name'    => 'shop_product_quickview_layout',
 				'mod_value'   => 'layout1',
 				'mod_default' => 'layout1',
 			),
 			'checkout' => array(
+				'pro'         => true,
 				'mod_name'    => 'shop_checkout_layout',
 				'mod_value'   => array( 'layout1', 'layout2' ),
 				'mod_default' => 'layout1',
 			),
 			'floating-mini-cart' => array(
+				'pro'         => true,
 				'mod_name'    => 'side_mini_cart_floating_icon',
-				'mod_value'   => 0,
+				'mod_value'   => '',
 				'mod_default' => 0,
 			),
 			'side-cart' => array(
+				'pro'         => true,
 				'mod_name'    => 'mini_cart_style',
 				'mod_value'   => 'default',
 				'mod_default' => 'default',
 			),
 			'reasons-to-buy' => array(
+				'pro'         => true,
 				'mod_name'    => 'single_product_elements_order',
 				'mod_value'   => array( 'botiga_single_product_reasons_to_buy' ),
 				'mod_default' => $default_single_product_components,
 			),
 			'product-brand-image' => array(
+				'pro'         => true,
 				'mod_name'    => 'single_product_elements_order',
 				'mod_value'   => array( 'botiga_single_product_brand_image' ),
 				'mod_default' => $default_single_product_components,
 			),
 			'trust-badges' => array(
+				'pro'         => true,
 				'mod_name'    => 'single_product_elements_order',
 				'mod_value'   => array( 'botiga_single_product_trust_badge_image' ),
 				'mod_default' => $default_single_product_components,
 			),
 			'real-time-search' => array(
+				'pro'         => false,
 				'mod_name'    => 'shop_search_enable_ajax',
-				'mod_value'   => 0,
+				'mod_value'   => '',
 				'mod_default' => 0,
 			),
 			'scroll-to-top-button' => array(
+				'pro'         => false,
 				'mod_name'    => 'enable_scrolltop',
 				'mod_value'   => '',
 				'mod_default' => 1,
@@ -140,6 +156,12 @@ class Botiga_Merchant_Overlaping_Features {
 		$overlaping_features = self::get_customizer_overlaping_features( $required_opts_to_disable_merchant_modules );
 		foreach( $overlaping_features as $mmodule_id ) {
 			if ( $mmodule_id ) {
+				$is_pro = $required_opts_to_disable_merchant_modules[ $mmodule_id ][ 'pro' ] ?? false;
+
+				if ( ! defined( 'BOTIGA_PRO_VERSION' ) && $is_pro ) {
+					continue;
+				}
+
 				add_filter( "merchant_module_{$mmodule_id}_deactivate", function() {
 					return true;
 				} );
