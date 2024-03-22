@@ -123,7 +123,7 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 		}
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_css' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ), 9999 );
 		add_action( 'wp_ajax_enable_mechant_module', array( $this, 'ajax_enable_merchant_module' ) );
 		add_action( 'admin_footer', array( $this, 'modal_content' ) );
 	}
@@ -308,17 +308,21 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 		wp_enqueue_script( 'botiga-admin-modal' );
 		wp_localize_script( 'botiga-admin-modal', 'botiga_admin_modal', array( 
 			'loading'     => esc_html__( 'Loading...', 'botiga' ),
-			'redirecting' => esc_html__( 'Redirecting to module settings...', 'botiga' ),
+			'redirecting' => esc_html__( 'Redirecting...', 'botiga' ),
 		) );
 
 		$botiga_dashboard_url = add_query_arg( array( 'page' => 'botiga-dashboard' ), admin_url( 'admin.php' ) );
 		$customize_url        = admin_url( 'customize.php' );
 		$js = "
 			(function($) {
+				
+				adminBotiga.modal.triggerSelector = '.merchant-module-activate.merchant-module-deactivated-by-bp';
+
 				$( document ).ready( function() {
 					const customizerSectionsMap = " . wp_json_encode( $this->disable_settings_map ) . ";
+
 					$( '.botiga-admin-modal' ).on( 'botiga-admin-modal-opened', function(e, modalPopup, modalTrigger) {
-						const merchantModuleId  = modalTrigger.data( 'module-id' );
+						const merchantModuleId  = modalTrigger.data( 'module' );
 						const modalPopupLink    = modalPopup.find( '.btm-modules-modal-link' );
 						const customizerSection = typeof customizerSectionsMap[merchantModuleId]['customizer_section'] !== 'undefined' ? customizerSectionsMap[merchantModuleId]['customizer_section'] : false;
 						const customizerSectionLink = customizerSection ? '" . esc_js( $customize_url ) . "?autofocus[section]=' + customizerSection : '" . esc_js( $botiga_dashboard_url ) . "';
@@ -354,6 +358,7 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 							});
 						} );
 					} );
+
 				});
 			})(jQuery);
 		";
@@ -389,9 +394,21 @@ class Botiga_Merchant_Overlaping_Features_Modal {
 				$botiga_modules[ $mutable_module_id ] = false;
 				update_option( 'botiga-modules', $botiga_modules );
 			}
-		} else {
+		} elseif ( ! is_array( $module_settings['theme_mod_value'] ) ) {
 			set_theme_mod( $module_settings['theme_mod_id'], $module_settings['theme_mod_value'] );
+		} else {
+			$current_value = get_theme_mod( $module_settings['theme_mod_id'], array() );
+			
+			if ( is_array( $current_value ) ) {
+				set_theme_mod( $module_settings['theme_mod_id'], array_merge( array_diff( $current_value, $module_settings['theme_mod_value'] ) ) );
+			}
 		}
+
+		// Activate merchant module.
+		$mmodules = get_option( Merchant_Modules::$option, array() );
+		$mmodules[ $module_id ] = true;
+
+		update_option( Merchant_Modules::$option, $mmodules );
 
 		wp_send_json_success( array( 
 			'message'  => esc_html__( 'Merchant module enabled', 'botiga' ),
