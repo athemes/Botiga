@@ -349,7 +349,7 @@ msgstr ""
 msgid "Project Name: %s"
 msgstr ""
 
-#: inc/customizer-helpers.php:87, inc/customizer-helpers.php:85, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58, inc/dashboard/class-dashboard.php:239, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:310, template-parts/content-wishlist.php:135
+#: inc/customizer-helpers.php:87, inc/customizer-helpers.php:85, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58, inc/dashboard/class-dashboard.php:243, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:310, template-parts/content-wishlist.php:135
 msgid "Loading..."
 msgstr ""
 
@@ -413,7 +413,7 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37, inc/dashboard/class-dashboard.php:900
+#: inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37, inc/dashboard/class-dashboard.php:904
 msgid "PRO"
 msgstr ""
 
@@ -1200,7 +1200,7 @@ msgstr ""
 msgid "Link spacing"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:334, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:224
+#: inc/customizer/options/header-mobile.php:334, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:224, inc/modules/hf-builder/components/header/wc-icons/customize-options.php:232
 msgid "Elements spacing"
 msgstr ""
 
@@ -2952,92 +2952,92 @@ msgstr ""
 msgid "Theme Dashboard"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:234, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
+#: inc/dashboard/class-dashboard.php:238, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
 msgid "Activate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:235, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:158, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-performance.php:27
+#: inc/dashboard/class-dashboard.php:239, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:158, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-performance.php:27
 msgid "Deactivate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:236
+#: inc/dashboard/class-dashboard.php:240
 msgid "Installing..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:237
+#: inc/dashboard/class-dashboard.php:241
 msgid "Activating..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:238
+#: inc/dashboard/class-dashboard.php:242
 msgid "Deactivating..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:240
+#: inc/dashboard/class-dashboard.php:244
 msgid "Saving..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:241
+#: inc/dashboard/class-dashboard.php:245
 msgid "Saved!"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:242
+#: inc/dashboard/class-dashboard.php:246
 msgid "You have unsaved changes."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:243, inc/dashboard/html-builder.php:162
+#: inc/dashboard/class-dashboard.php:247, inc/dashboard/html-builder.php:162
 msgid "Save"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:244
+#: inc/dashboard/class-dashboard.php:248, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:311
 msgid "Redirecting..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:245
+#: inc/dashboard/class-dashboard.php:249
 msgid "Activated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:246
+#: inc/dashboard/class-dashboard.php:250
 msgid "Deactivated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:247
+#: inc/dashboard/class-dashboard.php:251
 msgid "Something went wrong, contact support."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:428
+#: inc/dashboard/class-dashboard.php:432
 msgid "Insufficient permissions to install the plugin."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:458
+#: inc/dashboard/class-dashboard.php:462
 msgid "Failed to initialize or activate importer plugin."
 msgstr ""
 
 #. translators: %s: https://wordpress.org/
-#: inc/dashboard/class-dashboard.php:629
+#: inc/dashboard/class-dashboard.php:633
 msgid "Thank you for creating the website with <a href=\"%s\" class=\"botiga-dashboard-footer-link\" target=\"_blank\">Botiga</a>."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:726
+#: inc/dashboard/class-dashboard.php:730
 msgid "Botiga Template Part - "
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:830
+#: inc/dashboard/class-dashboard.php:834
 msgid "Select existing"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:827
+#: inc/dashboard/class-dashboard.php:831
 msgid "No templates found."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:900
+#: inc/dashboard/class-dashboard.php:904
 msgid "FREE"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:905
+#: inc/dashboard/class-dashboard.php:909
 msgid "Theme News"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:914
+#: inc/dashboard/class-dashboard.php:918
 msgid "Website"
 msgstr ""
 
@@ -3834,10 +3834,6 @@ msgstr ""
 msgid "Secondary Navigation Menu"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/wc-icons/customize-options.php:232
-msgid "Space between icons"
-msgstr ""
-
 #: inc/notices/class-botiga-pro-upsell.php:73
 msgid "Earn More with Your Botiga Store! 💰"
 msgstr ""
@@ -3915,51 +3911,47 @@ msgstr ""
 msgid "Fade In Right Shorter"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:311
-msgid "Redirecting to module settings..."
-msgstr ""
-
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:372
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:377
 msgid "You do not have permission to perform this action"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:377
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:382
 msgid "Invalid module ID"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:397
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:414
 msgid "Merchant module enabled"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:417
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:434
 msgid "Close"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:428
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:445
 msgid "This module conflicts with Botiga!"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:432
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:449
 msgid "Continue with Botiga"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:433
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:450
 msgid "To maintain the Botiga module as your primary option over the Merchant module, please click the button below to access the Botiga module settings."
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:434, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:435
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:451, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:452
 msgid "Go to Botiga settings"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:443
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:460
 msgid "Switch to Merchant"
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:444
-msgid "To disable the Botiga module and activate the corresponding Merchant module, please click the button below."
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:461
+msgid "To disable the Botiga module and activate the corresponding Merchant module, please click the button below. This action will disable the Botiga module."
 msgstr ""
 
-#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:445, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:446
+#: inc/plugins/merchant/class-merchant-overlaping-features-modal.php:462, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:463
 msgid "Enable Merchant module"
 msgstr ""
 
