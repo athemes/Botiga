@@ -8,12 +8,16 @@
 
 	var adminBotiga = adminBotiga || {};
 
+	window.adminBotiga = adminBotiga;
+
 	adminBotiga.modal = {
+		triggerSelector: '.botiga-admin-modal-trigger',
+
 		init: function() {
 			const self = this;
 
 			this.$modalPopup       = $('.botiga-admin-modal');
-			this.$modalTrigger     = $('.merchant-module-deactivated-by-bp');
+			this.$modalTrigger     = $( this.triggerSelector );
 			this.$modalCloseButton = $('.botiga-admin-close-modal');
 
 			this.$modalTrigger.on( 'click', this.openModal.bind( this ) );
@@ -23,6 +27,8 @@
 					self.closeModal();
 				}
 			} );
+
+			$( window ).trigger( 'botiga-admin-modal-after-init' );
 		},
 
 		/**
@@ -39,7 +45,7 @@
 			this.$modalPopup.addClass('active');
 
 			setTimeout(function(){
-				self.$modalPopup.trigger( 'botiga-admin-modal-opened', [ self.$modalPopup, $( e.target ).closest( '.merchant-modules-list-item' ) ] );
+				self.$modalPopup.trigger( 'botiga-admin-modal-opened', [ self.$modalPopup, $( e.target ).parent().find( self.triggerSelector ) ] );
 			}, 200);
 		},
 

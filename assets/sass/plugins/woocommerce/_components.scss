@@ -559,8 +559,24 @@ p.stars {
 }
 
 .botiga-wc-product-rating-with-count {
+	&.wc-block-grid__product-rating {
+		display: flex;
+		justify-content: center;
+
+		.star-rating {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.woocommerce-review-link {
+			margin-left: 4px;
+		}
+	}
+
 	.woocommerce-review-link {
-		margin-top: 4px;
+		display: flex;
+		align-items: center;
+		margin-top: 0;
 		text-decoration: none;
 	}
 }
@@ -1632,7 +1648,8 @@ dl.variation {
 		> a {
 			text-decoration: none;
 
-			&.disabled {
+			&.disabled,
+			&.permanent-disabled {
 				position: relative;
 				pointer-events: none;
 				opacity: 0.5;

@@ -207,7 +207,7 @@ $wp_customize->add_control(
     )
 );
 
-// Space between icons.
+// Elements spacing.
 $wp_customize->add_setting('bhfb_woo_icons_space_between_icons_desktop', array(
 	'default'           => 25,
 	'transport'         => 'postMessage',
@@ -229,7 +229,7 @@ $wp_customize->add_control(new Botiga_Responsive_Slider(
 	$wp_customize,
 	'bhfb_woo_icons_space_between_icons',
 	array(
-		'label'         => esc_html__('Space between icons', 'botiga'),
+		'label'         => esc_html__('Elements spacing', 'botiga'),
 		'section'       => 'botiga_section_hb_component__woo_icons',
 		'is_responsive' => 1,
 		'settings'      => array(

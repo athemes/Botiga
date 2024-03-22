@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.2.1
+Version: 2.2.2
 Tested up to: 6.4
 Requires PHP: 7
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,18 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.2 =
+Added - Header Builder WooCommerce Icons Component: New option to control spacing between the icons.
+Added - New option do display review rating count on product archive.
+Added - New customizer option to disable the single product lightbox.
+Changed - Regenerate the custom CSS file when a module is activated/deactivated.
+Changed - Do not disable Merchant modules that are related to Botiga Pro when Botiga Pro is deactivated.
+Changed - Single Product: Preload main product gallery image.
+Changed - Cart: Display how many products are in stock before backorder.
+Fixed - Quantity input displaying messed when product is variable and set to 'has-only-one-instock'.
+Fixed - Sale Tag: Transparent background color isn't working.
+Fixed - Botiga sticky header logo doesn’t work with big images.
+
 = 2.2.1 =
 Added - Merchant Compatibility: Single product modules from Merchant are now sortable via Botiga customizer options.
 Added - Quick View: Better compatibility with Merchant plugin.
