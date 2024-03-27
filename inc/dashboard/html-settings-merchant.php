@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
                 </div>
                 <div class="botiga-dashboard-module-card-header-actions bt-pt-0">
                     <div class="botiga-dashboard-box-link">
-                        <?php if ( get_option( 'botiga_merchant_modules_single_product_integration', true ) ) : ?>
+                        <?php if ( get_option( 'botiga_merchant_modules_single_product_integration', 'yes' ) === 'yes' ) : ?>
                             <a href="#" class="botiga-dashboard-link botiga-dashboard-link-danger botiga-dashboard-option-switcher" data-option-id="botiga_merchant_modules_single_product_integration" data-option-activate="false">
                                 <?php echo esc_html__( 'Deactivate', 'botiga' ); ?>
                             </a>
