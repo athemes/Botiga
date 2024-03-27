@@ -143,7 +143,7 @@ class Botiga_Merchant_Single_Product_Elements {
 			return;
 		}
 
-		if ( ! get_option( 'botiga_merchant_modules_single_product_integration', true ) ) {
+		if ( get_option( 'botiga_merchant_modules_single_product_integration', 'yes' ) === 'no' ) {
 			return;
 		}
 
