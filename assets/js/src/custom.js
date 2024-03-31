@@ -796,8 +796,14 @@ botiga.stickyHeader = {
 					}
 	
 					logo.setAttribute( 'src', initialSrc );
-					logo.setAttribute( 'srcset', initialSrcset );
-					logo.setAttribute( 'sizes', initialSizes );
+					
+					if ( initialSrcset !== null ) {
+						logo.setAttribute( 'srcset', initialSrcset );
+					}
+
+					if ( initialSizes !== null ) {
+						logo.setAttribute( 'sizes', initialSizes );
+					}
 					
 					sticky_flag = false;
 				} );
