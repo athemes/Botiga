@@ -246,6 +246,17 @@ function botiga_get_svg_icon( $icon, $do_echo = false, $wpkses = true ) {
 		)
 	) : Botiga_SVG_Icons::get_svg_icon( $icon );
 
+	/**
+	 * Hook 'botiga_get_svg_icon_output'.
+	 * Filters the SVG code for a specific theme icon.
+	 * 
+	 * @param string $svg_code SVG code.
+	 * @param string $icon Icon name.
+	 * 
+	 * @since 2.2.3
+	 */
+	$svg_code = apply_filters( 'botiga_get_svg_icon_output', $svg_code, $icon );
+
 	if ( $do_echo !== false ) {
 		echo $svg_code; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
