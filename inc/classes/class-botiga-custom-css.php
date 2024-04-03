@@ -1485,8 +1485,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$wishlist_layout = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' );
 			if( $wishlist_enable && 'layout1' !== $wishlist_layout ) {
 				// wishlist buttons/icons
-				$css .= $this->get_fill_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
-				$css .= $this->get_stroke_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button:hover svg path, .botiga-wishlist-button.active svg path' );
+				$css .= $this->get_fill_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button.active svg path' );
+				$css .= $this->get_stroke_css( 'shop_product_wishlist_icon_active_color', '#fda5a5', '.botiga-wishlist-button.active svg path' );
 				$css .= $this->get_background_color_css( 'shop_product_wishlist_icon_background_color', 'rgba(255,255,255,0)', '.botiga-wishlist-button' );
 			} 
 			
