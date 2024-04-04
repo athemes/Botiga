@@ -83,6 +83,7 @@ botiga.navigation = {
 	
 	init: function() {
 		const 
+			self           = this,
 			siteNavigation = document.getElementById( 'site-navigation' ) == null ? document.getElementById( 'site-navigation-mobile' ) : document.getElementById( 'site-navigation' ),
 			offCanvas 	   = document.getElementsByClassName( 'botiga-offcanvas-menu' )[0],
 			button 		   = document.getElementsByClassName( 'menu-toggle' )[ 0 ];
@@ -122,7 +123,7 @@ botiga.navigation = {
 
 		var focusableEls = offCanvas.querySelectorAll('a[href]:not([disabled]):not(.mobile-menu-close)');
 
-		var firstFocusableEl = focusableEls[0];  
+		var firstFocusableEl = focusableEls[0];
 
 		button.addEventListener( 'click', function(e) {
 
@@ -268,9 +269,88 @@ botiga.navigation = {
 		// Mobile accordion style navigation
 		this.mobileAccordionNavigation();
 
+		// Add hover class to dropdown items. 
+		// Run it only once and after the first user interaction on the page.
+		let initialized = false;
+		const events = [
+			{
+				name: 'scroll',
+				selector: window
+			},
+			{
+				name: 'mouseenter',
+				selector: document
+			},
+			{
+				name: 'touchstart',
+				selector: document
+			}
+		];
+
+		for( const event of events ) {
+			event.selector.addEventListener( event.name, function() {
+				if ( initialized ) {
+					return false;
+				}
+	
+				initialized = true;
+				self.addHoverClassToDropdownItems();
+			} );
+		}
+
 		// Menu reverse
 		this.checkMenuReverse();
 		
+	},
+
+	/**
+	 * Add hover class to dropdown items.
+	 */
+	addHoverClassToDropdownItems: function() {
+		const dropdownLis = document.querySelectorAll( '.botiga-dropdown-li' );
+		for( const li of dropdownLis ) {
+			let 
+				mouseOutTimeout,
+				mouseOverTimeout,
+				delayTime = 300;
+
+			const parent = li;
+
+			li.addEventListener( 'mouseover', function(e) {
+				const self = this;
+
+				clearTimeout(mouseOutTimeout);
+
+				mouseOverTimeout = setTimeout(function(){
+					self.classList.add( 'hovered' );
+				}, delayTime);
+			});
+
+			const subDropdownLis = li.querySelectorAll( '.botiga-dropdown-ul > .botiga-dropdown-li' );
+			for( const subLi of subDropdownLis ) {
+				subLi.addEventListener( 'mouseover', function(e) {
+					clearTimeout(mouseOutTimeout);
+					
+					setTimeout(function(){
+						parent.classList.add( 'hovered' );
+					}, delayTime);
+				});
+			}
+
+			li.addEventListener( 'mouseout', function(e) {
+				const self = this;
+
+				clearTimeout(mouseOverTimeout);
+
+				if ( parent.contains( e.relatedTarget ) ) {
+					return false;
+				}
+
+				mouseOutTimeout = setTimeout(function(){
+					self.classList.remove( 'hovered' );
+				}, delayTime);
+			});
+		}
 	},
 
 	/*
