@@ -1041,6 +1041,7 @@ p.no-comments {
 		opacity: 0;
 		transform: translate3d(0, 15px, 0);
 		transition: ease opacity 300ms, ease transform 300ms;
+		transition-delay: 300ms;
 
 		.woocommerce-mini-cart__total,
 		.woocommerce-mini-cart__buttons {
