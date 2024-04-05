@@ -282,6 +282,10 @@ botiga.navigation = {
 				selector: document
 			},
 			{
+				name: 'mouseover',
+				selector: document
+			},
+			{
 				name: 'touchstart',
 				selector: document
 			}
