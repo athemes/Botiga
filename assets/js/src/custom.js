@@ -1512,7 +1512,17 @@ botiga.tabsNav = {
 					tabId      = this.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ),
 					tabContent = document.querySelector( tabId );
 
+				if ( tabContent === null ) {
+					return false;
+				}
+
 				for( const tabItem of tabsNavItems ) {
+					const tabContentId = document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) );
+					
+					if ( tabContentId === null ) {
+						continue;
+					}
+
 					tabItem.classList.remove( 'is-active' );
 					document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) ).classList.remove( 'is-active' );
 				}
