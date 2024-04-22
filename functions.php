@@ -332,6 +332,11 @@ function botiga_scripts() {
 	wp_enqueue_script( 'botiga-custom', get_template_directory_uri() . '/assets/js/custom.min.js', array(), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-custom', 'botiga', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'settings' => array(
+			'misc' => array(
+				'dropdowns_hover_delay' => get_option( 'botiga_dropdowns_hover_delay', 'yes' ),
+			),
+		),
 		'i18n'    => array(
 			'botiga_sharebox_copy_link' => __( 'Copy link', 'botiga' ),
 			'botiga_sharebox_copy_link_copied' => __( 'Copied!', 'botiga' ),

@@ -46,7 +46,6 @@
 			overflow: hidden;
 			transform: translate3d(0, 15px, 0);
 			transition: ease transform 300ms, ease opacity 300ms;
-			transition-delay: 0ms;
 
 			.botiga-dropdown-ul {
 				left: 100%;
@@ -99,7 +98,6 @@
 			height: auto; 
 			overflow: visible;
 			transform: translate3d( 0, 0, 0 );
-			transition-delay: 300ms;
 
 			&.sub-menu-reverse {
 				left: auto;
@@ -151,6 +149,20 @@
 
 	.dropdown-symbol {
 		margin-left: 8px;
+	}
+
+	&.with-hover-delay {
+		.botiga-dropdown-ul {
+			.botiga-dropdown-ul {
+				transition-delay: 0ms;
+			}
+
+			.botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+			.botiga-dropdown-li:hover > .botiga-dropdown-ul,
+			.botiga-dropdown-li.focus > .botiga-dropdown-ul {
+				transition-delay: 300ms;
+			}
+		}
 	}
 
 	// Accordion Style On Mobile

@@ -269,6 +269,24 @@ botiga.navigation = {
 		// Mobile accordion style navigation
 		this.mobileAccordionNavigation();
 
+		// Hover with delay effect
+		this.initHoverClass();
+
+		// Menu reverse
+		this.checkMenuReverse();
+		
+	},
+
+	/**
+	 * Initialize hover class for dropdown items.
+	 */
+	initHoverClass: function() {
+		const self = this; 
+
+		if ( typeof botiga.settings !== 'undefined' && 'no' === botiga.settings.misc.dropdowns_hover_delay ) {
+			return false;
+		}
+
 		// Add hover class to dropdown items. 
 		// Run it only once and after the first user interaction on the page.
 		let initialized = false;
@@ -301,10 +319,6 @@ botiga.navigation = {
 				self.addHoverClassToDropdownItems();
 			} );
 		}
-
-		// Menu reverse
-		this.checkMenuReverse();
-		
 	},
 
 	/**
