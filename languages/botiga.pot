@@ -120,32 +120,32 @@ msgstr ""
 msgid "Footer %s"
 msgstr ""
 
-#: functions.php:336
+#: functions.php:341
 msgid "Copy link"
 msgstr ""
 
-#: functions.php:337
+#: functions.php:342
 msgid "Copied!"
 msgstr ""
 
-#: functions.php:377
+#: functions.php:382
 msgid "Are you sure you want to upgrade your header?"
 msgstr ""
 
-#: functions.php:378, functions.php:382
+#: functions.php:383, functions.php:387
 msgid "It was not possible complete the request, please reload the page and try again."
 msgstr ""
 
-#: functions.php:381
+#: functions.php:386
 msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:583
+#: functions.php:588
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:586
+#: functions.php:591
 msgid "Plugins"
 msgstr ""
 
@@ -171,27 +171,27 @@ msgstr ""
 msgid "Close mobile menu"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:845, inc/customizer/options/header.php:665, inc/modules/hf-builder/components/footer/button/button.php:13, inc/modules/hf-builder/components/footer/button/customize-options.php:63, inc/modules/hf-builder/components/header/button/button.php:13
+#: inc/classes/class-botiga-header.php:847, inc/customizer/options/header.php:665, inc/modules/hf-builder/components/footer/button/button.php:13, inc/modules/hf-builder/components/footer/button/customize-options.php:63, inc/modules/hf-builder/components/header/button/button.php:13
 msgid "Click me"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:868, inc/classes/class-botiga-topbar.php:138, inc/customizer/options/header.php:763, inc/customizer/options/topbar.php:230, inc/modules/hf-builder/components/header/contact-info/contact-info.php:14
+#: inc/classes/class-botiga-header.php:870, inc/classes/class-botiga-topbar.php:138, inc/customizer/options/header.php:763, inc/customizer/options/topbar.php:230, inc/modules/hf-builder/components/header/contact-info/contact-info.php:14
 msgid "office@example.org"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:869, inc/classes/class-botiga-topbar.php:139, inc/customizer/options/header.php:778, inc/customizer/options/topbar.php:245, inc/modules/hf-builder/components/header/contact-info/contact-info.php:15
+#: inc/classes/class-botiga-header.php:871, inc/classes/class-botiga-topbar.php:139, inc/customizer/options/header.php:778, inc/customizer/options/topbar.php:245, inc/modules/hf-builder/components/header/contact-info/contact-info.php:15
 msgid "111222333"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:982, inc/classes/class-botiga-topbar.php:290
+#: inc/classes/class-botiga-header.php:984, inc/classes/class-botiga-topbar.php:292
 msgid "Login"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:934, inc/classes/class-botiga-topbar.php:273
+#: inc/classes/class-botiga-header.php:936, inc/classes/class-botiga-topbar.php:275
 msgid "Welcome %s"
 msgstr ""
 
-#: inc/classes/class-botiga-header.php:1113, inc/modules/hf-builder/components/header/mobile-hamburger/mobile-hamburger.php:16
+#: inc/classes/class-botiga-header.php:1115, inc/modules/hf-builder/components/header/mobile-hamburger/mobile-hamburger.php:16
 msgid "Open mobile offcanvas menu"
 msgstr ""
 
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Sidebar Layout"
 msgstr ""
 
-#: inc/classes/class-botiga-metabox.php:147, inc/classes/class-botiga-metabox.php:908, inc/customizer/options/layout.php:38, inc/customizer/options/woocommerce/single-product/section-tabs.php:46, inc/customizer/options/woocommerce/woocommerce-cart.php:189, inc/template-functions.php:1395
+#: inc/classes/class-botiga-metabox.php:147, inc/classes/class-botiga-metabox.php:908, inc/customizer/options/layout.php:38, inc/customizer/options/woocommerce/single-product/section-tabs.php:46, inc/customizer/options/woocommerce/woocommerce-cart.php:189, inc/template-functions.php:1406
 msgid "Default"
 msgstr ""
 
@@ -295,43 +295,43 @@ msgstr ""
 msgid "Your text here"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:299
+#: inc/classes/class-botiga-topbar.php:301
 msgid "Login or register"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:280
+#: inc/classes/class-botiga-topbar.php:282
 msgid "My account"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:282
+#: inc/classes/class-botiga-topbar.php:284
 msgid "My account dashboard"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:282
+#: inc/classes/class-botiga-topbar.php:284
 msgid "Dashboard"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:283, inc/classes/class-botiga-topbar.php:283
+#: inc/classes/class-botiga-topbar.php:285, inc/classes/class-botiga-topbar.php:285
 msgid "Orders"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:284, inc/classes/class-botiga-topbar.php:284
+#: inc/classes/class-botiga-topbar.php:286, inc/classes/class-botiga-topbar.php:286
 msgid "Downloads"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:285, inc/classes/class-botiga-topbar.php:285
+#: inc/classes/class-botiga-topbar.php:287, inc/classes/class-botiga-topbar.php:287
 msgid "Addresses"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:286
+#: inc/classes/class-botiga-topbar.php:288
 msgid "Account details"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:286
+#: inc/classes/class-botiga-topbar.php:288
 msgid "Account Details"
 msgstr ""
 
-#: inc/classes/class-botiga-topbar.php:287, inc/classes/class-botiga-topbar.php:287
+#: inc/classes/class-botiga-topbar.php:289, inc/classes/class-botiga-topbar.php:289
 msgid "Logout"
 msgstr ""
 
@@ -509,7 +509,7 @@ msgstr ""
 msgid "System default"
 msgstr ""
 
-#: inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php:80, inc/dashboard/class-dashboard-settings.php:380
+#: inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php:80, inc/dashboard/class-dashboard-settings.php:381
 msgid "Custom Fonts"
 msgstr ""
 
@@ -752,7 +752,7 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
-#: inc/customizer/options/blog.php:14, inc/dashboard/class-dashboard-settings.php:288
+#: inc/customizer/options/blog.php:14, inc/dashboard/class-dashboard-settings.php:289
 msgid "Blog Archives"
 msgstr ""
 
@@ -800,7 +800,7 @@ msgstr ""
 msgid "Image size"
 msgstr ""
 
-#: inc/customizer/options/blog.php:329, inc/customizer/options/scrolltotop.php:104, inc/customizer/options/topbar.php:333, inc/template-functions.php:695
+#: inc/customizer/options/blog.php:329, inc/customizer/options/scrolltotop.php:104, inc/customizer/options/topbar.php:333, inc/template-functions.php:706
 msgid "Text"
 msgstr ""
 
@@ -852,7 +852,7 @@ msgstr ""
 msgid "Excerpt Title"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:15, inc/dashboard/class-dashboard-settings.php:304
+#: inc/customizer/options/buttons.php:15, inc/dashboard/class-dashboard-settings.php:305
 msgid "Buttons"
 msgstr ""
 
@@ -1156,7 +1156,7 @@ msgstr ""
 msgid "Additional elements"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:86, inc/customizer/options/header.php:540, inc/template-functions.php:600, inc/template-functions.php:617, inc/template-functions.php:638, inc/template-functions.php:658
+#: inc/customizer/options/header-mobile.php:86, inc/customizer/options/header.php:540, inc/template-functions.php:611, inc/template-functions.php:628, inc/template-functions.php:649, inc/template-functions.php:669
 msgid "Cart &amp; account icons"
 msgstr ""
 
@@ -1172,11 +1172,11 @@ msgstr ""
 msgid "Offcanvas mode"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:165, inc/customizer/options/woocommerce/shop-archive/section-categories.php:26, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:26, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:57, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:132, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:261, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:26, inc/customizer/options/woocommerce/single-product/section-layout.php:25, inc/customizer/options/woocommerce/woocommerce-cart.php:81, inc/customizer/options/woocommerce/woocommerce-checkout.php:79, inc/template-functions.php:537, inc/template-functions.php:572
+#: inc/customizer/options/header-mobile.php:165, inc/customizer/options/woocommerce/shop-archive/section-categories.php:26, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:26, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:57, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:132, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:261, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:26, inc/customizer/options/woocommerce/single-product/section-layout.php:25, inc/customizer/options/woocommerce/woocommerce-cart.php:81, inc/customizer/options/woocommerce/woocommerce-checkout.php:79, inc/template-functions.php:548, inc/template-functions.php:583
 msgid "Layout 1"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:169, inc/customizer/options/woocommerce/shop-archive/section-categories.php:30, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:30, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:61, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:136, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:265, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:30, inc/customizer/options/woocommerce/single-product/section-layout.php:29, inc/customizer/options/woocommerce/woocommerce-cart.php:85, inc/customizer/options/woocommerce/woocommerce-checkout.php:83, inc/template-functions.php:541, inc/template-functions.php:576
+#: inc/customizer/options/header-mobile.php:169, inc/customizer/options/woocommerce/shop-archive/section-categories.php:30, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:30, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:61, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:136, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:265, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:30, inc/customizer/options/woocommerce/single-product/section-layout.php:29, inc/customizer/options/woocommerce/woocommerce-cart.php:85, inc/customizer/options/woocommerce/woocommerce-checkout.php:83, inc/template-functions.php:552, inc/template-functions.php:587
 msgid "Layout 2"
 msgstr ""
 
@@ -1324,7 +1324,7 @@ msgstr ""
 msgid "Top right"
 msgstr ""
 
-#: inc/customizer/options/header.php:653, inc/modules/hf-builder/class-header-footer-builder.php:68, inc/modules/hf-builder/class-header-footer-builder.php:108, inc/modules/hf-builder/components/header/button/customize-options.php:27, inc/template-functions.php:601, inc/template-functions.php:618, inc/template-functions.php:639, inc/template-functions.php:659
+#: inc/customizer/options/header.php:653, inc/modules/hf-builder/class-header-footer-builder.php:68, inc/modules/hf-builder/class-header-footer-builder.php:108, inc/modules/hf-builder/components/header/button/customize-options.php:27, inc/template-functions.php:612, inc/template-functions.php:629, inc/template-functions.php:650, inc/template-functions.php:670
 msgid "Button"
 msgstr ""
 
@@ -1344,7 +1344,7 @@ msgstr ""
 msgid "Open in a new tab?"
 msgstr ""
 
-#: inc/customizer/options/header.php:751, inc/customizer/options/topbar.php:218, inc/template-functions.php:602, inc/template-functions.php:619, inc/template-functions.php:640, inc/template-functions.php:660, inc/template-functions.php:697
+#: inc/customizer/options/header.php:751, inc/customizer/options/topbar.php:218, inc/template-functions.php:613, inc/template-functions.php:630, inc/template-functions.php:651, inc/template-functions.php:671, inc/template-functions.php:708
 msgid "Contact info"
 msgstr ""
 
@@ -1468,7 +1468,7 @@ msgstr ""
 msgid "Manage the syle of the background that appear behind the website content."
 msgstr ""
 
-#: inc/customizer/options/navigation.php:72, inc/template-functions.php:2032
+#: inc/customizer/options/navigation.php:72, inc/template-functions.php:2043
 msgid "WooCommerce"
 msgstr ""
 
@@ -1488,7 +1488,7 @@ msgstr ""
 msgid "Manage the shop product images functionality and size."
 msgstr ""
 
-#: inc/customizer/options/navigation.php:132, inc/template-functions.php:2164
+#: inc/customizer/options/navigation.php:132, inc/template-functions.php:2175
 msgid "Blog"
 msgstr ""
 
@@ -1500,7 +1500,7 @@ msgstr ""
 msgid "Core"
 msgstr ""
 
-#: inc/customizer/options/scrolltotop.php:14, inc/dashboard/class-dashboard-settings.php:312
+#: inc/customizer/options/scrolltotop.php:14, inc/dashboard/class-dashboard-settings.php:313
 msgid "Scroll to Top"
 msgstr ""
 
@@ -1576,11 +1576,11 @@ msgstr ""
 msgid "Center the content?"
 msgstr ""
 
-#: inc/customizer/options/topbar.php:282, inc/modules/hf-builder/class-header-footer-builder.php:56, inc/modules/hf-builder/class-header-footer-builder.php:96, inc/modules/hf-builder/class-header-footer-builder.php:141, inc/template-functions.php:694
+#: inc/customizer/options/topbar.php:282, inc/modules/hf-builder/class-header-footer-builder.php:56, inc/modules/hf-builder/class-header-footer-builder.php:96, inc/modules/hf-builder/class-header-footer-builder.php:141, inc/template-functions.php:705
 msgid "Social"
 msgstr ""
 
-#: inc/customizer/options/topbar.php:381, inc/template-functions.php:696
+#: inc/customizer/options/topbar.php:381, inc/template-functions.php:707
 msgid "Secondary menu"
 msgstr ""
 
@@ -1596,7 +1596,7 @@ msgstr ""
 msgid "Top &amp; bottom padding"
 msgstr ""
 
-#: inc/customizer/options/typography.php:13, inc/dashboard/class-dashboard-settings.php:272
+#: inc/customizer/options/typography.php:13, inc/dashboard/class-dashboard-settings.php:273
 msgid "Typography"
 msgstr ""
 
@@ -1856,11 +1856,11 @@ msgstr ""
 msgid "Variation Swatch"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:406, inc/dashboard/class-dashboard-settings.php:651
+#: inc/customizer/options/upsell.php:406, inc/dashboard/class-dashboard-settings.php:652
 msgid "Add To Cart Notifications"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:418, inc/dashboard/class-dashboard-settings.php:483
+#: inc/customizer/options/upsell.php:418, inc/dashboard/class-dashboard-settings.php:484
 msgid "Free Shipping Progress Bar"
 msgstr ""
 
@@ -1868,27 +1868,27 @@ msgstr ""
 msgid "Advanced Breadcrumbs"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:442, inc/dashboard/class-dashboard-settings.php:473
+#: inc/customizer/options/upsell.php:442, inc/dashboard/class-dashboard-settings.php:474
 msgid "Buy Now"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:454, inc/dashboard/class-dashboard-settings.php:679
+#: inc/customizer/options/upsell.php:454, inc/dashboard/class-dashboard-settings.php:680
 msgid "Modal Popup"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:466, inc/dashboard/class-dashboard-settings.php:707
+#: inc/customizer/options/upsell.php:466, inc/dashboard/class-dashboard-settings.php:708
 msgid "Quick Links"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:478, inc/dashboard/class-dashboard-settings.php:390
+#: inc/customizer/options/upsell.php:478, inc/dashboard/class-dashboard-settings.php:391
 msgid "Wishlist"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:492, inc/dashboard/class-dashboard-settings.php:435
+#: inc/customizer/options/upsell.php:492, inc/dashboard/class-dashboard-settings.php:436
 msgid "Size Chart"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:504, inc/dashboard/class-dashboard-settings.php:445
+#: inc/customizer/options/upsell.php:504, inc/dashboard/class-dashboard-settings.php:446
 msgid "Advanced Reviews"
 msgstr ""
 
@@ -1896,7 +1896,7 @@ msgstr ""
 msgid "Sticky Add To Cart"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:528, inc/dashboard/class-dashboard-settings.php:513
+#: inc/customizer/options/upsell.php:528, inc/dashboard/class-dashboard-settings.php:514
 msgid "Linked Variations"
 msgstr ""
 
@@ -1908,15 +1908,15 @@ msgstr ""
 msgid "Render custom content in multiples areas across the website."
 msgstr ""
 
-#: inc/customizer/options/woocommerce/shop-archive/section-categories.php:34, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:65, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:140, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:269, inc/customizer/options/woocommerce/single-product/section-layout.php:33, inc/template-functions.php:545, inc/template-functions.php:580
+#: inc/customizer/options/woocommerce/shop-archive/section-categories.php:34, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:65, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:140, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:269, inc/customizer/options/woocommerce/single-product/section-layout.php:33, inc/template-functions.php:556, inc/template-functions.php:591
 msgid "Layout 3"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/shop-archive/section-categories.php:38, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:69, inc/customizer/options/woocommerce/single-product/section-layout.php:38, inc/template-functions.php:549
+#: inc/customizer/options/woocommerce/shop-archive/section-categories.php:38, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:69, inc/customizer/options/woocommerce/single-product/section-layout.php:38, inc/template-functions.php:560
 msgid "Layout 4"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/shop-archive/section-categories.php:42, inc/customizer/options/woocommerce/single-product/section-layout.php:43, inc/template-functions.php:553
+#: inc/customizer/options/woocommerce/shop-archive/section-categories.php:42, inc/customizer/options/woocommerce/single-product/section-layout.php:43, inc/template-functions.php:564
 msgid "Layout 5"
 msgstr ""
 
@@ -2124,7 +2124,7 @@ msgstr ""
 msgid "Lightbox effect"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/single-product/section-layout.php:148, inc/dashboard/class-dashboard-settings.php:697
+#: inc/customizer/options/woocommerce/single-product/section-layout.php:148, inc/dashboard/class-dashboard-settings.php:698
 msgid "Breadcrumbs"
 msgstr ""
 
@@ -2196,7 +2196,7 @@ msgstr ""
 msgid "Style 6"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-cart.php:12, inc/dashboard/class-dashboard-settings.php:344, inc/template-functions.php:2036
+#: inc/customizer/options/woocommerce/woocommerce-cart.php:12, inc/dashboard/class-dashboard-settings.php:345, inc/template-functions.php:2047
 msgid "Cart"
 msgstr ""
 
@@ -2220,7 +2220,7 @@ msgstr ""
 msgid "Your cart page is being rendered through the new WooCommerce 8.3.0 cart block. To have all Botiga cart features working, you must edit the cart page to use the classic cart shortcode instead."
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-cart.php:55, inc/customizer/options/woocommerce/woocommerce-checkout.php:52, inc/dashboard/class-dashboard-settings.php:775, inc/dashboard/html-home.php:135
+#: inc/customizer/options/woocommerce/woocommerce-cart.php:55, inc/customizer/options/woocommerce/woocommerce-checkout.php:52, inc/dashboard/class-dashboard-settings.php:776, inc/dashboard/html-home.php:135
 msgid "Learn More"
 msgstr ""
 
@@ -2280,7 +2280,7 @@ msgstr ""
 msgid "Style 9"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-search.php:14, inc/modules/hf-builder/class-header-footer-builder.php:60, inc/modules/hf-builder/class-header-footer-builder.php:100, inc/modules/hf-builder/components/header/search/customize-options.php:22, inc/template-functions.php:599, inc/template-functions.php:616, inc/template-functions.php:637, inc/template-functions.php:657, inc/template-functions.php:2168
+#: inc/customizer/options/woocommerce/woocommerce-search.php:14, inc/modules/hf-builder/class-header-footer-builder.php:60, inc/modules/hf-builder/class-header-footer-builder.php:100, inc/modules/hf-builder/components/header/search/customize-options.php:22, inc/template-functions.php:610, inc/template-functions.php:627, inc/template-functions.php:648, inc/template-functions.php:668, inc/template-functions.php:2179
 msgid "Search"
 msgstr ""
 
@@ -2340,7 +2340,7 @@ msgstr ""
 msgid "Results Order By"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-search.php:158, inc/template-functions.php:2060, template-parts/content-wishlist.php:158, template-parts/content-wishlist.php:19
+#: inc/customizer/options/woocommerce/woocommerce-search.php:158, inc/template-functions.php:2071, template-parts/content-wishlist.php:158, template-parts/content-wishlist.php:19
 msgid "Product Name"
 msgstr ""
 
@@ -2388,7 +2388,7 @@ msgstr ""
 msgid "Show popular products if no products found in search results page."
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-shop-archive.php:14, inc/dashboard/class-dashboard-settings.php:328
+#: inc/customizer/options/woocommerce/woocommerce-shop-archive.php:14, inc/dashboard/class-dashboard-settings.php:329
 msgid "Product Catalog"
 msgstr ""
 
@@ -2412,7 +2412,7 @@ msgstr ""
 msgid "Manage the overall design and functionality from the shop archive products categories."
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-single.php:14, inc/dashboard/class-dashboard-settings.php:336, inc/template-functions.php:2044
+#: inc/customizer/options/woocommerce/woocommerce-single.php:14, inc/dashboard/class-dashboard-settings.php:337, inc/template-functions.php:2055
 msgid "Single Product"
 msgstr ""
 
@@ -2468,7 +2468,7 @@ msgstr ""
 msgid "Free vs Pro"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:111, inc/dashboard/class-dashboard-settings.php:762
+#: inc/dashboard/class-dashboard-settings.php:111, inc/dashboard/class-dashboard-settings.php:763
 msgid "Templates Builder"
 msgstr ""
 
@@ -2476,475 +2476,479 @@ msgstr ""
 msgid "Performance"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:125
+#: inc/dashboard/class-dashboard-settings.php:122
+msgid "Misc"
+msgstr ""
+
+#: inc/dashboard/class-dashboard-settings.php:126
 msgid "Merchant"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:181
+#: inc/dashboard/class-dashboard-settings.php:182
 msgid "aThemes Blocks"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:182
+#: inc/dashboard/class-dashboard-settings.php:183
 msgid "Extend the Gutenberg Block Editor with additional functionality."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:190
+#: inc/dashboard/class-dashboard-settings.php:191
 msgid "WPForms"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:191
+#: inc/dashboard/class-dashboard-settings.php:192
 msgid "The best WordPress contact form plugin. Drag & Drop online form builder that helps you create beautiful contact forms + custom forms in minutes."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:199
+#: inc/dashboard/class-dashboard-settings.php:200
 msgid "HubSpot"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:200
+#: inc/dashboard/class-dashboard-settings.php:201
 msgid "HubSpot is a platform with all the tools and integrations you need for marketing, sales, and customer service."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:210, inc/modules/hf-builder/class-header-footer-builder.php:64, inc/modules/hf-builder/class-header-footer-builder.php:104
+#: inc/dashboard/class-dashboard-settings.php:211, inc/modules/hf-builder/class-header-footer-builder.php:64, inc/modules/hf-builder/class-header-footer-builder.php:104
 msgid "Site Identity"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:211
+#: inc/dashboard/class-dashboard-settings.php:212
 msgid "Set the title and upload logo."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:212, inc/dashboard/class-dashboard-settings.php:240, inc/dashboard/class-dashboard-settings.php:248, inc/dashboard/class-dashboard-settings.php:256, inc/dashboard/class-dashboard-settings.php:222, inc/dashboard/class-dashboard-settings.php:230, inc/dashboard/class-dashboard-settings.php:266, inc/dashboard/class-dashboard-settings.php:274, inc/dashboard/class-dashboard-settings.php:282, inc/dashboard/class-dashboard-settings.php:290, inc/dashboard/class-dashboard-settings.php:298, inc/dashboard/class-dashboard-settings.php:306, inc/dashboard/class-dashboard-settings.php:314, inc/dashboard/class-dashboard-settings.php:322, inc/dashboard/class-dashboard-settings.php:330, inc/dashboard/class-dashboard-settings.php:338, inc/dashboard/class-dashboard-settings.php:346, inc/dashboard/class-dashboard-settings.php:354, inc/dashboard/class-dashboard-settings.php:371, inc/dashboard/class-dashboard-settings.php:382, inc/dashboard/class-dashboard-settings.php:392, inc/dashboard/class-dashboard-settings.php:402, inc/dashboard/class-dashboard-settings.php:419, inc/dashboard/class-dashboard-settings.php:447, inc/dashboard/class-dashboard-settings.php:456, inc/dashboard/class-dashboard-settings.php:465, inc/dashboard/class-dashboard-settings.php:475, inc/dashboard/class-dashboard-settings.php:485, inc/dashboard/class-dashboard-settings.php:495, inc/dashboard/class-dashboard-settings.php:505, inc/dashboard/class-dashboard-settings.php:515, inc/dashboard/class-dashboard-settings.php:524, inc/dashboard/class-dashboard-settings.php:533, inc/dashboard/class-dashboard-settings.php:542, inc/dashboard/class-dashboard-settings.php:551, inc/dashboard/class-dashboard-settings.php:560, inc/dashboard/class-dashboard-settings.php:569, inc/dashboard/class-dashboard-settings.php:578, inc/dashboard/class-dashboard-settings.php:587, inc/dashboard/class-dashboard-settings.php:597, inc/dashboard/class-dashboard-settings.php:607, inc/dashboard/class-dashboard-settings.php:616, inc/dashboard/class-dashboard-settings.php:625, inc/dashboard/class-dashboard-settings.php:634, inc/dashboard/class-dashboard-settings.php:643, inc/dashboard/class-dashboard-settings.php:653, inc/dashboard/class-dashboard-settings.php:662, inc/dashboard/class-dashboard-settings.php:671, inc/dashboard/class-dashboard-settings.php:681, inc/dashboard/class-dashboard-settings.php:699, inc/dashboard/class-dashboard-settings.php:709, inc/dashboard/class-dashboard-settings.php:719, inc/dashboard/class-dashboard-settings.php:728, inc/dashboard/class-dashboard-settings.php:737, inc/dashboard/class-dashboard-settings.php:754, inc/dashboard/class-dashboard.php:149, inc/dashboard/class-dashboard.php:150
+#: inc/dashboard/class-dashboard-settings.php:213, inc/dashboard/class-dashboard-settings.php:241, inc/dashboard/class-dashboard-settings.php:249, inc/dashboard/class-dashboard-settings.php:257, inc/dashboard/class-dashboard-settings.php:223, inc/dashboard/class-dashboard-settings.php:231, inc/dashboard/class-dashboard-settings.php:267, inc/dashboard/class-dashboard-settings.php:275, inc/dashboard/class-dashboard-settings.php:283, inc/dashboard/class-dashboard-settings.php:291, inc/dashboard/class-dashboard-settings.php:299, inc/dashboard/class-dashboard-settings.php:307, inc/dashboard/class-dashboard-settings.php:315, inc/dashboard/class-dashboard-settings.php:323, inc/dashboard/class-dashboard-settings.php:331, inc/dashboard/class-dashboard-settings.php:339, inc/dashboard/class-dashboard-settings.php:347, inc/dashboard/class-dashboard-settings.php:355, inc/dashboard/class-dashboard-settings.php:372, inc/dashboard/class-dashboard-settings.php:383, inc/dashboard/class-dashboard-settings.php:393, inc/dashboard/class-dashboard-settings.php:403, inc/dashboard/class-dashboard-settings.php:420, inc/dashboard/class-dashboard-settings.php:448, inc/dashboard/class-dashboard-settings.php:457, inc/dashboard/class-dashboard-settings.php:466, inc/dashboard/class-dashboard-settings.php:476, inc/dashboard/class-dashboard-settings.php:486, inc/dashboard/class-dashboard-settings.php:496, inc/dashboard/class-dashboard-settings.php:506, inc/dashboard/class-dashboard-settings.php:516, inc/dashboard/class-dashboard-settings.php:525, inc/dashboard/class-dashboard-settings.php:534, inc/dashboard/class-dashboard-settings.php:543, inc/dashboard/class-dashboard-settings.php:552, inc/dashboard/class-dashboard-settings.php:561, inc/dashboard/class-dashboard-settings.php:570, inc/dashboard/class-dashboard-settings.php:579, inc/dashboard/class-dashboard-settings.php:588, inc/dashboard/class-dashboard-settings.php:598, inc/dashboard/class-dashboard-settings.php:608, inc/dashboard/class-dashboard-settings.php:617, inc/dashboard/class-dashboard-settings.php:626, inc/dashboard/class-dashboard-settings.php:635, inc/dashboard/class-dashboard-settings.php:644, inc/dashboard/class-dashboard-settings.php:654, inc/dashboard/class-dashboard-settings.php:663, inc/dashboard/class-dashboard-settings.php:672, inc/dashboard/class-dashboard-settings.php:682, inc/dashboard/class-dashboard-settings.php:700, inc/dashboard/class-dashboard-settings.php:710, inc/dashboard/class-dashboard-settings.php:720, inc/dashboard/class-dashboard-settings.php:729, inc/dashboard/class-dashboard-settings.php:738, inc/dashboard/class-dashboard-settings.php:755, inc/dashboard/class-dashboard.php:149, inc/dashboard/class-dashboard.php:150
 msgid "Customize"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:238
+#: inc/dashboard/class-dashboard-settings.php:239
 msgid "Main Header"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:239
+#: inc/dashboard/class-dashboard-settings.php:240
 msgid "Set the main header layout, elements and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:246, inc/modules/hf-builder/components/header/header-builder/customize-options.php:89
+#: inc/dashboard/class-dashboard-settings.php:247, inc/modules/hf-builder/components/header/header-builder/customize-options.php:89
 msgid "Mobile Header"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:247
+#: inc/dashboard/class-dashboard-settings.php:248
 msgid "Set the mobile header layout, elements and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:254
+#: inc/dashboard/class-dashboard-settings.php:255
 msgid "Footer Copyright"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:255
+#: inc/dashboard/class-dashboard-settings.php:256
 msgid "Set the copyright text, layout and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:220, inc/modules/hf-builder/class-header-footer-builder.php:399
+#: inc/dashboard/class-dashboard-settings.php:221, inc/modules/hf-builder/class-header-footer-builder.php:399
 msgid "Header Builder"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:221
+#: inc/dashboard/class-dashboard-settings.php:222
 msgid "Drag and drop header builder."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:228, inc/modules/hf-builder/class-header-footer-builder.php:489
+#: inc/dashboard/class-dashboard-settings.php:229, inc/modules/hf-builder/class-header-footer-builder.php:489
 msgid "Footer Builder"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:229
+#: inc/dashboard/class-dashboard-settings.php:230
 msgid "Drag and drop footer builder."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:264
+#: inc/dashboard/class-dashboard-settings.php:265
 msgid "Global Colors"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:265
+#: inc/dashboard/class-dashboard-settings.php:266
 msgid "Create your own palette and set the global colors."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:273
+#: inc/dashboard/class-dashboard-settings.php:274
 msgid "Set the global font size, style and library."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:280
+#: inc/dashboard/class-dashboard-settings.php:281
 msgid "Page Layout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:281
+#: inc/dashboard/class-dashboard-settings.php:282
 msgid "Set the page layout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:289
+#: inc/dashboard/class-dashboard-settings.php:290
 msgid "Set the blog layout, columns, pagination and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:296, inc/template-functions.php:2000
+#: inc/dashboard/class-dashboard-settings.php:297, inc/template-functions.php:2011
 msgid "Single Post"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:297
+#: inc/dashboard/class-dashboard-settings.php:298
 msgid "Set the single post layout, meta elements and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:305
+#: inc/dashboard/class-dashboard-settings.php:306
 msgid "Create your own button, set typography and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:313
+#: inc/dashboard/class-dashboard-settings.php:314
 msgid "Set the scroll to top type, icon, position and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:320
+#: inc/dashboard/class-dashboard-settings.php:321
 msgid "Ajax Real-Time Search"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:321
+#: inc/dashboard/class-dashboard-settings.php:322
 msgid "Built-in ajax functionalit to search without reloading the page."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:329
+#: inc/dashboard/class-dashboard-settings.php:330
 msgid "Set the shop layout, product cart and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:337
+#: inc/dashboard/class-dashboard-settings.php:338
 msgid "Set the product layout, tabs, size chart and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:345
+#: inc/dashboard/class-dashboard-settings.php:346
 msgid "Set the cart layout, mini cart and more. Side off-canvas mini cart available on Botiga Pro."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:352, inc/template-functions.php:2040
+#: inc/dashboard/class-dashboard-settings.php:353, inc/template-functions.php:2051
 msgid "Checkout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:353
+#: inc/dashboard/class-dashboard-settings.php:354
 msgid "Set the checkout layout, coupon and more. Multi-step, one-step and shopify checkout are avilable on Botiga Pro."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:361
+#: inc/dashboard/class-dashboard-settings.php:362
 msgid "Schema Markup"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:362
+#: inc/dashboard/class-dashboard-settings.php:363
 msgid "Add the schema structured data to your website."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:369, inc/modules/adobe-typekit/customizer/options.php:9
+#: inc/dashboard/class-dashboard-settings.php:370, inc/modules/adobe-typekit/customizer/options.php:9
 msgid "Adobe Fonts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:370
+#: inc/dashboard/class-dashboard-settings.php:371
 msgid "Set and use Adobe Fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:381
+#: inc/dashboard/class-dashboard-settings.php:382
 msgid "Upload your own custom fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:391
+#: inc/dashboard/class-dashboard-settings.php:392
 msgid "Your customers can save their favorite products to find them easily when they're ready to buy."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:400
+#: inc/dashboard/class-dashboard-settings.php:401
 msgid "Variation Swatches"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:401
+#: inc/dashboard/class-dashboard-settings.php:402
 msgid "Enable your customers to see all the available color, size, and other options as beautiful variation swatches."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:410
+#: inc/dashboard/class-dashboard-settings.php:411
 msgid "Product Video & Audio"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:411
+#: inc/dashboard/class-dashboard-settings.php:412
 msgid "Add videos to your products along with the image gallery. Featured videos to display in the shop catalog page are available as well."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:417
+#: inc/dashboard/class-dashboard-settings.php:418
 msgid "Image Hover Swap"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:418
+#: inc/dashboard/class-dashboard-settings.php:419
 msgid "Swap the product image on mouse over."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:427
+#: inc/dashboard/class-dashboard-settings.php:428
 msgid "Variations Gallery"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:428
+#: inc/dashboard/class-dashboard-settings.php:429
 msgid "Set different galleries for product each product variation."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:436
+#: inc/dashboard/class-dashboard-settings.php:437
 msgid "Add custom size charts to your products, e.g. size charts for clothes, shoes, bags, or jewelry."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:437
+#: inc/dashboard/class-dashboard-settings.php:438
 msgid "Size Charts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:446
+#: inc/dashboard/class-dashboard-settings.php:447
 msgid "Replace the default WooCommerce reviews workflow and style with a modern and intuitive star rating reviews."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:454
+#: inc/dashboard/class-dashboard-settings.php:455
 msgid "Product Gallery Layouts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:455
+#: inc/dashboard/class-dashboard-settings.php:456
 msgid "Set the gallery slideshow layout and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:463
+#: inc/dashboard/class-dashboard-settings.php:464
 msgid "Product Tab Styles"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:464
+#: inc/dashboard/class-dashboard-settings.php:465
 msgid "Set the tab layout, position, alignment and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:474
+#: inc/dashboard/class-dashboard-settings.php:475
 msgid "Allows to redirect customers directly to the checkout for quick buy."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:484
+#: inc/dashboard/class-dashboard-settings.php:485
 msgid "Display a progress bar to show how close you are to getting free delivery."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:493
+#: inc/dashboard/class-dashboard-settings.php:494
 msgid "Quantity Step Control"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:494
+#: inc/dashboard/class-dashboard-settings.php:495
 msgid "Set the min, max, step and default preset from all quantity inputs."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:503
+#: inc/dashboard/class-dashboard-settings.php:504
 msgid "Sticky Add to Cart"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:504
+#: inc/dashboard/class-dashboard-settings.php:505
 msgid "Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:514
+#: inc/dashboard/class-dashboard-settings.php:515
 msgid "Allows users to connect a group of any product types together by attribute(s) while they can still be managed as separate products."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:522
+#: inc/dashboard/class-dashboard-settings.php:523
 msgid "Trust Badge"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:523
+#: inc/dashboard/class-dashboard-settings.php:524
 msgid "Display a trust badge on single product pages."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:531
+#: inc/dashboard/class-dashboard-settings.php:532
 msgid "Reasons to Buy List"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:532
+#: inc/dashboard/class-dashboard-settings.php:533
 msgid "Display a list with reasons to buy on single product pages."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:540
+#: inc/dashboard/class-dashboard-settings.php:541
 msgid "Brand Image Upload"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:541
+#: inc/dashboard/class-dashboard-settings.php:542
 msgid "Display a brand image on single product pages."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:549
+#: inc/dashboard/class-dashboard-settings.php:550
 msgid "Next/Prev Buttons"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:550
+#: inc/dashboard/class-dashboard-settings.php:551
 msgid "Display next/prev buttons on single product pages."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:558
+#: inc/dashboard/class-dashboard-settings.php:559
 msgid "Shop Header Styles"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:559
+#: inc/dashboard/class-dashboard-settings.php:560
 msgid "Set the shop header colors, spacing and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:567
+#: inc/dashboard/class-dashboard-settings.php:568
 msgid "Upsell Products Slider"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:568
+#: inc/dashboard/class-dashboard-settings.php:569
 msgid "Display the upsell products as a slider."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:576
+#: inc/dashboard/class-dashboard-settings.php:577
 msgid "Related Products Slider"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:577
+#: inc/dashboard/class-dashboard-settings.php:578
 msgid "Display the related products as a slider."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:585
+#: inc/dashboard/class-dashboard-settings.php:586
 msgid "Shop Sidebar Layouts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:586
+#: inc/dashboard/class-dashboard-settings.php:587
 msgid "Set the shop sidebar layout, position and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:595
+#: inc/dashboard/class-dashboard-settings.php:596
 msgid "Custom Sidebars"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:596
+#: inc/dashboard/class-dashboard-settings.php:597
 msgid "Create any number of custom sidebars."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:605
+#: inc/dashboard/class-dashboard-settings.php:606
 msgid "Mega Menu"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:606
+#: inc/dashboard/class-dashboard-settings.php:607
 msgid "Create beautiful and unique mega menus."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:614
+#: inc/dashboard/class-dashboard-settings.php:615
 msgid "Multi-Step Checkout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:615
+#: inc/dashboard/class-dashboard-settings.php:616
 msgid "Multi-step style for the checkout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:623
+#: inc/dashboard/class-dashboard-settings.php:624
 msgid "Shopify Style Checkout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:624
+#: inc/dashboard/class-dashboard-settings.php:625
 msgid "Shopify style for the checkout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:632
+#: inc/dashboard/class-dashboard-settings.php:633
 msgid "One-Step Checkout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:633
+#: inc/dashboard/class-dashboard-settings.php:634
 msgid "One-step style for the checkout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:641
+#: inc/dashboard/class-dashboard-settings.php:642
 msgid "Distraction-Free Checkout"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:642
+#: inc/dashboard/class-dashboard-settings.php:643
 msgid "Increase your store conversion rate with the distraction free checkout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:652
+#: inc/dashboard/class-dashboard-settings.php:653
 msgid "Display a notification when a product is added to cart."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:660
+#: inc/dashboard/class-dashboard-settings.php:661
 msgid "Side Mini Cart"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:661
+#: inc/dashboard/class-dashboard-settings.php:662
 msgid "Display the mini cart inside of a offcanvas sidebar."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:669
+#: inc/dashboard/class-dashboard-settings.php:670
 msgid "Floating Mini Cart"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:670
+#: inc/dashboard/class-dashboard-settings.php:671
 msgid "Display the mini cart icon floating on the screen."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:680
+#: inc/dashboard/class-dashboard-settings.php:681
 msgid "Displays a modal popup to highlight any content. Display conditions are available."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:689
+#: inc/dashboard/class-dashboard-settings.php:690
 msgid "Login Popup"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:690
+#: inc/dashboard/class-dashboard-settings.php:691
 msgid "Display the login/register form inside a popup."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:698
+#: inc/dashboard/class-dashboard-settings.php:699
 msgid "Set the breadcrumb engine, spacing and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:708
+#: inc/dashboard/class-dashboard-settings.php:709
 msgid "Floating quick links bar (contact, social, etc)."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:717
+#: inc/dashboard/class-dashboard-settings.php:718
 msgid "Google Autocomplete"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:718
+#: inc/dashboard/class-dashboard-settings.php:719
 msgid "Help customers autocomplete their addresses on checkout with Google Maps API."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:726
+#: inc/dashboard/class-dashboard-settings.php:727
 msgid "Reading Post Time"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:727
+#: inc/dashboard/class-dashboard-settings.php:728
 msgid "Display reading post time as a meta on single posts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:735
+#: inc/dashboard/class-dashboard-settings.php:736
 msgid "Reading Progress Bar"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:736
+#: inc/dashboard/class-dashboard-settings.php:737
 msgid "Display a reading progress bar on single posts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:745
+#: inc/dashboard/class-dashboard-settings.php:746
 msgid "Table of Contents"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:746
+#: inc/dashboard/class-dashboard-settings.php:747
 msgid "Display a table of contents inside your blog posts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:752
+#: inc/dashboard/class-dashboard-settings.php:753
 msgid "Hooked Elements"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:753
+#: inc/dashboard/class-dashboard-settings.php:754
 msgid "Inject custom code across multiple available areas."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:763
+#: inc/dashboard/class-dashboard-settings.php:764
 msgid "Create custom templates for shop catalog, single products, 404 page, mega menu, modal popup and hooks."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:764
+#: inc/dashboard/class-dashboard-settings.php:765
 msgid "Build Templates"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:772
+#: inc/dashboard/class-dashboard-settings.php:773
 msgid "White Label (Agency)"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:773
+#: inc/dashboard/class-dashboard-settings.php:774
 msgid "Rename and present Botiga as your own."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:825
+#: inc/dashboard/class-dashboard-settings.php:826
 msgid "Get Pro"
 msgstr ""
 
@@ -2952,11 +2956,11 @@ msgstr ""
 msgid "Theme Dashboard"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:238, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
+#: inc/dashboard/class-dashboard.php:238, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:167, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-misc.php:31, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
 msgid "Activate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:239, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:158, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-performance.php:27
+#: inc/dashboard/class-dashboard.php:239, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:158, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-misc.php:27, inc/dashboard/html-settings-performance.php:27
 msgid "Deactivate"
 msgstr ""
 
@@ -3323,6 +3327,14 @@ msgstr ""
 
 #: inc/dashboard/html-settings-merchant.php:21
 msgid "Controls whether the display from Merchant single product modules should be managed by Botiga or Merchant settings. Activating this option means that Botiga will be responsible for managing the display options through Appearance > Customize > WooCommerce > Single Product."
+msgstr ""
+
+#: inc/dashboard/html-settings-misc.php:20
+msgid "Add hover delay to all navigation dropdowns"
+msgstr ""
+
+#: inc/dashboard/html-settings-misc.php:21
+msgid "Enable this option to add a slightly hover delay to the navigation dropdowns."
 msgstr ""
 
 #: inc/dashboard/html-settings-performance.php:20
@@ -3830,7 +3842,7 @@ msgstr ""
 msgid "Search for a product"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/secondary-menu/secondary-menu.php:30, inc/modules/hf-builder/components/header/secondary-menu/secondary-menu.php:26
+#: inc/modules/hf-builder/components/header/secondary-menu/secondary-menu.php:32, inc/modules/hf-builder/components/header/secondary-menu/secondary-menu.php:26
 msgid "Secondary Navigation Menu"
 msgstr ""
 
@@ -4192,223 +4204,223 @@ msgid "in stock. Remaining is available on backorder."
 msgstr ""
 
 #. translators: 1: social network link.
-#: inc/template-functions.php:381
+#: inc/template-functions.php:392
 msgid "Social network %s link."
 msgstr ""
 
-#: inc/template-functions.php:620
+#: inc/template-functions.php:631
 msgid "Hamburger button"
 msgstr ""
 
-#: inc/template-functions.php:714, inc/template-functions.php:2160
+#: inc/template-functions.php:725, inc/template-functions.php:2171
 msgid "Front Page"
 msgstr ""
 
-#: inc/template-functions.php:715, inc/template-functions.php:2019
+#: inc/template-functions.php:726, inc/template-functions.php:2030
 msgid "Pages"
 msgstr ""
 
-#: inc/template-functions.php:716
+#: inc/template-functions.php:727
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/template-functions.php:717
+#: inc/template-functions.php:728
 msgid "Blog Posts"
 msgstr ""
 
-#: inc/template-functions.php:718
+#: inc/template-functions.php:729
 msgid "Posts Search Results"
 msgstr ""
 
-#: inc/template-functions.php:719
+#: inc/template-functions.php:730
 msgid "404 Page"
 msgstr ""
 
-#: inc/template-functions.php:724
+#: inc/template-functions.php:735
 msgid "Shop Catalog"
 msgstr ""
 
-#: inc/template-functions.php:725
+#: inc/template-functions.php:736
 msgid "Shop Products"
 msgstr ""
 
-#: inc/template-functions.php:726
+#: inc/template-functions.php:737
 msgid "Shop Cart"
 msgstr ""
 
-#: inc/template-functions.php:727
+#: inc/template-functions.php:738
 msgid "Shop Checkout"
 msgstr ""
 
-#: inc/template-functions.php:728
+#: inc/template-functions.php:739
 msgid "Shop My Account"
 msgstr ""
 
-#: inc/template-functions.php:735
+#: inc/template-functions.php:746
 msgid "Shop Wishlist"
 msgstr ""
 
-#: inc/template-functions.php:1966
+#: inc/template-functions.php:1977
 msgid "Include"
 msgstr ""
 
-#: inc/template-functions.php:1971
+#: inc/template-functions.php:1982
 msgid "Exclude"
 msgstr ""
 
-#: inc/template-functions.php:1976
+#: inc/template-functions.php:1987
 msgid "Entire Site"
 msgstr ""
 
-#: inc/template-functions.php:1981
+#: inc/template-functions.php:1992
 msgid "Basic"
 msgstr ""
 
-#: inc/template-functions.php:1985
+#: inc/template-functions.php:1996
 msgid "Singulars"
 msgstr ""
 
-#: inc/template-functions.php:1989
+#: inc/template-functions.php:2000
 msgid "Archives"
 msgstr ""
 
-#: inc/template-functions.php:1996
+#: inc/template-functions.php:2007
 msgid "Posts"
 msgstr ""
 
-#: inc/template-functions.php:2004
+#: inc/template-functions.php:2015
 msgid "Post Archives"
 msgstr ""
 
-#: inc/template-functions.php:2008
+#: inc/template-functions.php:2019
 msgid "Post Categories"
 msgstr ""
 
-#: inc/template-functions.php:2012
+#: inc/template-functions.php:2023
 msgid "Post Tags"
 msgstr ""
 
-#: inc/template-functions.php:2023
+#: inc/template-functions.php:2034
 msgid "Single Page"
 msgstr ""
 
-#: inc/template-functions.php:2048
+#: inc/template-functions.php:2059
 msgid "Product Archives"
 msgstr ""
 
-#: inc/template-functions.php:2052
+#: inc/template-functions.php:2063
 msgid "Product Categories"
 msgstr ""
 
-#: inc/template-functions.php:2056
+#: inc/template-functions.php:2067
 msgid "Product Tags"
 msgstr ""
 
-#: inc/template-functions.php:2065
+#: inc/template-functions.php:2076
 msgid "Product Category Name"
 msgstr ""
 
-#: inc/template-functions.php:2070
+#: inc/template-functions.php:2081
 msgid "My Account"
 msgstr ""
 
-#: inc/template-functions.php:2074
+#: inc/template-functions.php:2085
 msgid "Edit Account"
 msgstr ""
 
-#: inc/template-functions.php:2078
+#: inc/template-functions.php:2089
 msgid "Order Thank You"
 msgstr ""
 
-#: inc/template-functions.php:2082
+#: inc/template-functions.php:2093
 msgid "View Order"
 msgstr ""
 
-#: inc/template-functions.php:2086
+#: inc/template-functions.php:2097
 msgid "Lost Password"
 msgstr ""
 
-#: inc/template-functions.php:2095
+#: inc/template-functions.php:2106
 msgid "Specific"
 msgstr ""
 
-#: inc/template-functions.php:2099
+#: inc/template-functions.php:2110
 msgid "Post Name"
 msgstr ""
 
-#: inc/template-functions.php:2104
+#: inc/template-functions.php:2115
 msgid "Page Name"
 msgstr ""
 
-#: inc/template-functions.php:2109
+#: inc/template-functions.php:2120
 msgid "Category Name"
 msgstr ""
 
-#: inc/template-functions.php:2114
+#: inc/template-functions.php:2125
 msgid "Tag Name"
 msgstr ""
 
-#: inc/template-functions.php:2119
+#: inc/template-functions.php:2130
 msgid "Author Name"
 msgstr ""
 
-#: inc/template-functions.php:2132
+#: inc/template-functions.php:2143
 msgid "Custom Post Types"
 msgstr ""
 
-#: inc/template-functions.php:2136
+#: inc/template-functions.php:2147
 msgid "CPT: Post Name"
 msgstr ""
 
-#: inc/template-functions.php:2141
+#: inc/template-functions.php:2152
 msgid "CPT: Term Name"
 msgstr ""
 
-#: inc/template-functions.php:2146
+#: inc/template-functions.php:2157
 msgid "CPT: Taxonomy Name"
 msgstr ""
 
-#: inc/template-functions.php:2156, inc/template-functions.php:2220
+#: inc/template-functions.php:2167, inc/template-functions.php:2231
 msgid "Other"
 msgstr ""
 
-#: inc/template-functions.php:2172
+#: inc/template-functions.php:2183
 msgid "404"
 msgstr ""
 
-#: inc/template-functions.php:2176, inc/template-functions.php:2224
+#: inc/template-functions.php:2187, inc/template-functions.php:2235
 msgid "Author"
 msgstr ""
 
-#: inc/template-functions.php:2180
+#: inc/template-functions.php:2191
 msgid "Privacy Policy Page"
 msgstr ""
 
-#: inc/template-functions.php:2199
+#: inc/template-functions.php:2210
 msgid "User Auth"
 msgstr ""
 
-#: inc/template-functions.php:2203
+#: inc/template-functions.php:2214
 msgid "User Logged In"
 msgstr ""
 
-#: inc/template-functions.php:2207
+#: inc/template-functions.php:2218
 msgid "User Logged Out"
 msgstr ""
 
-#: inc/template-functions.php:2214
+#: inc/template-functions.php:2225
 msgid "User Roles"
 msgstr ""
 
-#: inc/template-functions.php:2348
+#: inc/template-functions.php:2359
 msgid "Add Display Condition"
 msgstr ""
 
-#: inc/template-functions.php:2349
+#: inc/template-functions.php:2360
 msgid "Add User Condition"
 msgstr ""
 
-#: inc/template-functions.php:2353
+#: inc/template-functions.php:2364
 msgid "Save Conditions"
 msgstr ""
 
