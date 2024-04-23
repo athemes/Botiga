@@ -269,6 +269,24 @@ botiga.navigation = {
 		// Mobile accordion style navigation
 		this.mobileAccordionNavigation();
 
+		// Hover with delay effect
+		this.initHoverClass();
+
+		// Menu reverse
+		this.checkMenuReverse();
+		
+	},
+
+	/**
+	 * Initialize hover class for dropdown items.
+	 */
+	initHoverClass: function() {
+		const self = this; 
+
+		if ( typeof botiga.settings !== 'undefined' && 'no' === botiga.settings.misc.dropdowns_hover_delay ) {
+			return false;
+		}
+
 		// Add hover class to dropdown items. 
 		// Run it only once and after the first user interaction on the page.
 		let initialized = false;
@@ -301,10 +319,6 @@ botiga.navigation = {
 				self.addHoverClassToDropdownItems();
 			} );
 		}
-
-		// Menu reverse
-		this.checkMenuReverse();
-		
 	},
 
 	/**
@@ -1503,22 +1517,77 @@ botiga.tabsNav = {
 	},
 
 	events: function() {
-		const tabsNavItems = document.querySelectorAll( '.botiga-tabs-nav-item' );
+		let tabsNavItems = document.querySelectorAll( '.botiga-tabs-nav-item' );
 		for( const tabItem of tabsNavItems ) {
+			const hasClickOnMouseOver = tabItem.closest( '.botiga-tabs-nav' ).classList.contains( 'botiga-tabs-nav-click-on-mouseover' );
+
+			if ( hasClickOnMouseOver ) {
+				let st;
+
+				tabItem.addEventListener( 'mouseover', function(e){
+					e.preventDefault();
+
+					const self = this;
+					
+					st = setTimeout(function(){
+						self.dispatchEvent( new Event( 'click' ) );
+					}, 500);
+				} );
+
+				tabItem.addEventListener( 'mouseout', function(e){
+					clearTimeout(st);
+				});
+			}
+
 			tabItem.addEventListener( 'click', function(e){
 				e.preventDefault();
 
 				const
-					tabId      = this.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ),
-					tabContent = document.querySelector( tabId );
+					_this             = this,
+					tabId             = this.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ),
+					previousTabId     = this.closest( '.botiga-tabs-nav' ).querySelector( '.botiga-tabs-nav-item.is-active .botiga-tabs-nav-link' ).getAttribute( 'href' ),
+					previousActiveTab = document.querySelector( previousTabId ),
+					tabContentTo      = document.querySelector( tabId ),
+					activeTabsCount   = tabContentTo.parentNode.querySelectorAll( '.botiga-tab-content.is-active' ).length;
 
-				for( const tabItem of tabsNavItems ) {
-					tabItem.classList.remove( 'is-active' );
-					document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) ).classList.remove( 'is-active' );
+				if ( tabContentTo === null ) {
+					return false;
 				}
 
-				this.classList.add( 'is-active' );
-				tabContent.classList.add( 'is-active' );
+				if( activeTabsCount === 0 || activeTabsCount > 1 ) {
+					return false;
+				}
+				
+				if ( tabContentTo.classList.contains( 'is-active' ) ) {
+					return false;
+				}
+
+				tabsNavItems = this.closest( '.botiga-tabs-nav' ).querySelectorAll( '.botiga-tabs-nav-item' );
+				for( const tabItem of tabsNavItems ) {
+					const tabContentTo = document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) );
+					
+					if ( tabContentTo === null ) {
+						continue;
+					}
+
+					tabItem.classList.remove( 'is-active' );
+					tabContentTo.classList.remove( 'is-active' );
+				}
+
+				previousActiveTab.classList.add( 'removing' );
+
+				setTimeout(function(){
+					_this.classList.add( 'is-active' );
+
+					tabContentTo.classList.add( 'activating' );
+					setTimeout(function(){
+						tabContentTo.classList.add( 'is-active' );
+
+						tabContentTo.classList.remove( 'activating' );
+					}, 300);
+					
+					previousActiveTab.classList.remove( 'removing' );
+				}, 300);
 
 			} );
 		}

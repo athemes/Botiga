@@ -36,8 +36,22 @@
 .botiga-tab-content {
     display: none;
     padding: 20px;
+    opacity: 0;
+    transition: ease opacity 300ms;
 
     &.is-active {
         display: block;
+        opacity: 1 !important;
+    }
+
+    &.activating {
+        display: block;
+        opacity: 0;
+    }
+
+    &.removing {
+        display: block;
+        opacity: 0;
+        transition: opacity 0.3s;
     }
 }

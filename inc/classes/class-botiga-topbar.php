@@ -179,8 +179,10 @@ if ( !class_exists( 'Botiga_Top_Bar' ) ) :
 				<nav class="header-item secondary-navigation">
 					<?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
 				</nav>
-			<?php else: ?>				
-			<nav class="header-item top-bar-secondary-navigation secondary-navigation botiga-dropdown">
+			<?php else: 
+				$has_hover_delay = get_option( 'botiga_dropdowns_hover_delay', 'yes' );
+				?>
+			<nav class="header-item top-bar-secondary-navigation secondary-navigation botiga-dropdown<?php echo 'yes' === $has_hover_delay ? ' with-hover-delay' : ''; ?>">
 				<?php
 				wp_nav_menu( array(
 					'theme_location'=> 'secondary',

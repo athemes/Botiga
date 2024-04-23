@@ -119,6 +119,7 @@ function botiga_dashboard_settings() {
 	$settings['settings'] = array(
 		'general'      => esc_html__('General', 'botiga'),
 		'performance'  => esc_html__('Performance', 'botiga'),
+		'misc'         => esc_html__('Misc', 'botiga'),
 	);
 
 	if ( class_exists( 'Merchant' ) && defined( 'MERCHANT_VERSION' ) && version_compare( MERCHANT_VERSION, '1.9.2', '>' ) ) {
@@ -851,6 +852,10 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 				<path d="M14.1109 6.79335L15.5547 7.62693L12.9157 13.0315L10.75 11.7811L14.1109 6.79335Z" fill="#1E1E1E"/>
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M16.9497 16.9497C18.2165 15.683 19 13.933 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 13.933 5.7835 15.683 7.05025 16.9497L5.98959 18.0104C4.45139 16.4722 3.5 14.3472 3.5 12C3.5 7.30558 7.30558 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12C20.5 14.3472 19.5486 16.4722 18.0104 18.0104L16.9497 16.9497Z" fill="#1E1E1E"/>
 			</svg>';
+			break;
+
+		case 'misc':
+			$icon = '<svg width="24" height="24" viewBox="3.5 3 13 13" xmlns="http://www.w3.org/2000/svg"><path d="M7.62,5.86A1.68,1.68,0,1,0,9.29,7.54,1.68,1.68,0,0,0,7.62,5.86Zm0,2.6a.93.93,0,1,1,.92-.92A.93.93,0,0,1,7.62,8.46Z"/><path d="M12.38,9.21a1.68,1.68,0,1,0-1.67-1.67A1.68,1.68,0,0,0,12.38,9.21Zm0-2.6a.93.93,0,1,1,0,1.85.93.93,0,0,1,0-1.85Z"/><path d="M7.62,10.63A1.68,1.68,0,1,0,9.29,12.3,1.68,1.68,0,0,0,7.62,10.63Zm0,2.6a.93.93,0,1,1,0-1.85.93.93,0,0,1,0,1.85Z"/><path d="M12.38,10.63a1.68,1.68,0,1,0,1.68,1.67A1.67,1.67,0,0,0,12.38,10.63Zm0,2.6a.93.93,0,1,1,.93-.93A.92.92,0,0,1,12.38,13.23Z"/></svg>';
 			break;
 
 		case 'merchant':
