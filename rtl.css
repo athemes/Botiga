@@ -545,6 +545,12 @@ select {
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 }
+.botiga-product-navigation a.out-from-viewport span {
+  left: 200%;
+}
+.botiga-product-navigation a.out-from-viewport span:after {
+  left: 14%;
+}
 
 /* Product Cards */
 ul.products li.product .button.added:after,
