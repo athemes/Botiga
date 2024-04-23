@@ -143,7 +143,7 @@ class Botiga_Merchant_Single_Product_Elements {
 			return;
 		}
 
-		if ( ! get_option( 'botiga_merchant_modules_single_product_integration', true ) ) {
+		if ( get_option( 'botiga_merchant_modules_single_product_integration', 'yes' ) === 'no' ) {
 			return;
 		}
 
@@ -240,7 +240,7 @@ class Botiga_Merchant_Single_Product_Elements {
 
 		$module = self::$modules_data[ $module_id ];
 		$current_mod_value = get_theme_mod( 'single_product_elements_order', botiga_get_default_single_product_components() );
-		$new_mod_value     = array_diff( $current_mod_value, array( $module[ 'callback' ] ) );
+		$new_mod_value     = array_values( array_diff( $current_mod_value, array( $module[ 'callback' ] ) ) );
 
 		set_theme_mod( 'single_product_elements_order', $new_mod_value );
 	}

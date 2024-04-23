@@ -17,7 +17,7 @@ function botiga_typography_adobe_kits_control() {
     $url       = 'https://typekit.com/api/v1/json/kits/';
     $response  = wp_remote_request( $url . '?token=' . esc_attr( $token ), array() );
 
-    if ( wp_remote_retrieve_response_code( $response ) !== '200' ) {
+    if ( wp_remote_retrieve_response_code( $response ) !== 200 ) {
         update_option( 'botiga_adobe_fonts_kits', array() );
 
         wp_send_json( array(

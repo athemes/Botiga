@@ -497,7 +497,7 @@ class Botiga_Dashboard
         $activate  = ( isset( $_POST[ 'activate' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['activate'] ) ) : '';
 
         // Convert string to boolean
-        $activate = ( $activate === 'true' ) ? true : false;
+        $activate = ( $activate === 'true' ) ? 'yes' : 'no';
 
         if ( empty( $option_id ) ) {
             wp_send_json_error();

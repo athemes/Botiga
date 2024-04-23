@@ -364,6 +364,16 @@
 	margin-left: 0;
 	margin-right: 10px;
 	flex-direction: row-reverse;
+
+	a.out-from-viewport {
+		span {
+			left: 200%;
+
+			&:after {
+				left: 14%;
+			}
+		}
+	}
 }
 
 /* Product Cards */
