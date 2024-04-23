@@ -1517,7 +1517,7 @@ botiga.tabsNav = {
 	},
 
 	events: function() {
-		const tabsNavItems = document.querySelectorAll( '.botiga-tabs-nav-item' );
+		let tabsNavItems = document.querySelectorAll( '.botiga-tabs-nav-item' );
 		for( const tabItem of tabsNavItems ) {
 			const hasClickOnMouseOver = tabItem.closest( '.botiga-tabs-nav' ).classList.contains( 'botiga-tabs-nav-click-on-mouseover' );
 
@@ -1562,6 +1562,7 @@ botiga.tabsNav = {
 					return false;
 				}
 
+				tabsNavItems = this.closest( '.botiga-tabs-nav' ).querySelectorAll( '.botiga-tabs-nav-item' );
 				for( const tabItem of tabsNavItems ) {
 					const tabContentTo = document.querySelector( tabItem.querySelector( '.botiga-tabs-nav-link' ).getAttribute( 'href' ) );
 					

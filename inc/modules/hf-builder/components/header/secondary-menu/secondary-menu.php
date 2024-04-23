@@ -29,7 +29,7 @@ $device = isset( $params['device'] ) ? $params['device'] : 'desktop';
     <?php else: 
         $has_hover_delay = get_option( 'botiga_dropdowns_hover_delay', 'yes' );
         ?>
-    <nav class="top-bar-secondary-navigation secondary-navigation botiga-dropdown bhfb-navigation<?php echo $has_hover_delay ? ' with-hover-delay' : ''; ?>" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga' ); ?>">
+    <nav class="top-bar-secondary-navigation secondary-navigation botiga-dropdown bhfb-navigation<?php echo 'yes' === $has_hover_delay ? ' with-hover-delay' : ''; ?>" aria-label="<?php echo esc_attr__( 'Secondary Navigation Menu', 'botiga' ); ?>">
         <?php
         wp_nav_menu( array(
             'theme_location'=> 'mobile' === $device && has_nav_menu( 'top-bar-mobile' ) ? 'top-bar-mobile' : 'secondary',
