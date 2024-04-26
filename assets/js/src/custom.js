@@ -1303,6 +1303,13 @@ botiga.carousel = {
 					margin = 15;
 				}
 
+				const itemsQty = carouselEl.querySelectorAll( 'li.product' ).length;
+				if ( itemsQty <= parseInt( perPage ) ) {
+					carouselEl.classList.add( 'botiga-carousel-not-initialized' );
+
+					return false;
+				}
+
 				// Initialize
 				var carousel = new Siema({
 					parentSelector: carouselEl,

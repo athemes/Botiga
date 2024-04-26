@@ -83,6 +83,13 @@
 }
 
 .botiga-carousel {
+	&.botiga-carousel-not-initialized {
+		.botiga-carousel-stage {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
     &.botiga-carousel-nav2 {
         .botiga-carousel-nav-next,
         .botiga-carousel-nav-prev {
