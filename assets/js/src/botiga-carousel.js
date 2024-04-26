@@ -232,7 +232,9 @@ class Siema {
      * Build a sliderFrame and slide to a current item.
      */
     buildSliderFrame() {
-        if( this.innerElements.length <= this.perPage ) {
+        const has_nav = this.parentSelector.querySelector( '.botiga-carousel-nav-next' ) !== null ? true : false;
+
+        if( has_nav && this.innerElements.length <= this.perPage ) {
             this.parentSelector.querySelector( '.botiga-carousel-nav-next' ).remove();
             this.parentSelector.querySelector( '.botiga-carousel-nav-prev' ).remove();
             return false;
