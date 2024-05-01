@@ -508,3 +508,24 @@ function botiga_single_product_elements_merchant_modules() {
 	set_theme_mod( 'botiga_single_product_elements_merchant_modules_flag', true );
 }
 add_action( 'init', 'botiga_single_product_elements_merchant_modules' );
+
+/**
+ * Accordion style to widgets.
+ * The option ID changed from 'shop_accordion_to_widgets' to 'accordion_to_lists' in favor of more general usage throughout the theme.
+ * 
+ * @since 2.2.4
+ */
+function botiga_migrate_accordion_style_to_wdigets() {
+    $flag = get_theme_mod( 'botiga_migrate_accordion_style_to_wdigets_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+
+    set_theme_mod( 'accordion_to_lists', get_theme_mod( 'shop_accordion_to_widgets', 0 ) );
+    set_theme_mod( 'accordion_to_lists_initial_state', get_theme_mod( 'shop_accordion_to_widgets_initial_state', 'expanded' ) );
+
+    //Set flag
+    set_theme_mod( 'botiga_migrate_accordion_style_to_wdigets_flag', true );
+}
+add_action( 'init', 'botiga_migrate_accordion_style_to_wdigets' );
