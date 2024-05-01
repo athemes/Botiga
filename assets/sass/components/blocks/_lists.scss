@@ -1,0 +1,26 @@
+/**
+ * Lists.
+ * This file contains general styling for multiple blocks which contains lists
+ * and should be rendered the same way. The purpose of including alltogether is 
+ * to avoid repeating the same styles in multiple files which would generate more lines of CSS.
+ *
+ */
+
+.widget_nav_menu .menu,
+.wp-block-page-list,
+.wp-block-categories-list,
+.wc-block-product-categories-list {
+	padding-left: 0;
+
+	ul {
+		padding-left: 20px;
+	}
+
+	li {
+		list-style: none;
+
+		a {
+			text-decoration: none;
+		}
+	}
+}

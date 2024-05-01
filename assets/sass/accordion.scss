@@ -16,14 +16,14 @@
 		height: 8px;
 		border-left: 1px solid #000;
 		border-bottom: 1px solid #000;
-		transform: translateY(-50%) rotate(135deg);
+		transform: translateY(-50%) rotate(-45deg);
 		transition: ease opacity 300ms;
 		opacity: 0.6;
 	}
 
 	&.active {
 		&:after {
-			transform: translateY(-50%) rotate(-45deg);
+			transform: translateY(-50%) rotate(135deg);
 			opacity: 1;
 		}
 	}
@@ -42,7 +42,7 @@
 			height: 8px;
 			border-left: 1px solid #000;
 			border-bottom: 1px solid #000;
-			transform: translateY(-50%) rotate(135deg);
+			transform: translateY(-50%) rotate(-45deg);
 			transition: ease opacity 300ms;
 			opacity: 0.6;
 		}
@@ -53,7 +53,9 @@
 
 		&.active {
 			> span {
-				transform: translateY(-50%) rotate(-45deg);
+				position: relative;
+				top: 2px;
+				transform: translateY(-50%) rotate(135deg);
 				opacity: 1;
 			}
 		}
@@ -67,6 +69,8 @@
 }
 
 .botiga-accordion-body {
+	&.wp-block-navigation__submenu-container,
+	&.children,
 	&.wc-block-product-categories-list {
 		padding-top: 7px;
 	}
