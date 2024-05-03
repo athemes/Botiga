@@ -1853,8 +1853,7 @@ dl.variation {
 }
 
 .botiga-product-video,
-.botiga-product-audio{
-
+.botiga-product-audio {
 	+ .loop-image-wrap,
 	+ .woocommerce-loop-product__link{
 		display: none !important;
@@ -1862,18 +1861,22 @@ dl.variation {
 }
 
 .botiga-product-audio{
-
 	audio{
 		display: block;
 		width: 100%;
-	  max-width: 100%;
+		max-width: 100%;
 	}
 }
 
-.botiga-product-video-gallery{
-
-	.onsale{
+.botiga-product-video-gallery {
+	.onsale {
 		display: none;
+	}
+
+	&.active-slide-has-video {
+		.woocommerce-product-gallery__trigger {
+			display: none !important;
+		}
 	}
 }
 

@@ -5,61 +5,74 @@
  * 
  */
 
-'use strict';
+(function($){
 
-var botiga = botiga || {};
+	'use strict';
 
-botiga.gallery = {
+	let botiga = botiga || {};
 
-	init: function () {
+	botiga.gallery = {
+		productGallerySelector: '.woocommerce-product-gallery',
 
-		// fix quickview gallery thumbnails in "layout 2" mode
-		jQuery(document).on('wc-product-gallery-after-init', '.woocommerce-product-gallery', function (event, gallery) {
+		/**
+		 * Initialize.
+		 * 
+		 * @return {void}
+		 */
+		init: function () {
+			$(document).on( 'wc-product-gallery-before-init', this.productGallerySelector, this.beforeProductGalleryInitHandler.bind( this ) );
+			$(document).on( 'wc-product-gallery-after-init', this.productGallerySelector, this.afterProductGalleryInitHandler.bind( this ) );
+		},
 
-			var $gallery = jQuery(gallery);
-
-			if (!$gallery.parent().is('.gallery-quickview')) {
+		/**
+		 * Before Product Gallery Init Handler.
+		 * 
+		 * @param {Event} e
+		 * @param {HTMLElement} galleryEl
+		 * @return {void}
+		 */
+		beforeProductGalleryInitHandler: function (e, galleryEl) {
+			const gallery = $(galleryEl);
+			if ( ! gallery.parent().is('.gallery-quickview') ) {
 				return;
 			}
 
 			wc_single_product_params.flexslider.controlNav = 'thumbnails';
+		},
 
-		});
-
-		jQuery(document).on('wc-product-gallery-after-init', '.woocommerce-product-gallery', function (event, gallery) {
-
-			var $gallery = jQuery(gallery);
-
-			if ( !$gallery.parent().is('.gallery-default, .gallery-vertical, .gallery-quickview, .gallery-showcase, .gallery-full-width') ) {
+		/**
+		 * After Product Gallery Init Handler.
+		 * 
+		 * @param {Event} e
+		 * @param {HTMLElement} galleryEl
+		 * @return {void}
+		 */
+		afterProductGalleryInitHandler: function (e, galleryEl) {
+			const gallery = $(galleryEl);
+			if ( ! gallery.parent().is('.gallery-default, .gallery-vertical, .gallery-quickview, .gallery-showcase, .gallery-full-width') ) {
 				return;
 			}
 
-			var flexdata = $gallery.data('product_gallery');
-
-			if (!flexdata || !flexdata.$images) {
+			const flexdata = gallery.data('product_gallery');
+			if ( ! flexdata || ! flexdata.$images) {
 				return;
 			}
 
-			var $flexItems = flexdata.$images;
-			var $flexThumbs = $gallery.find('.flex-control-thumbs');
-
-			// pass carousel sliders if less than 5 items
-			if ($flexItems.length <= 5) {
+			var flexThumbs = gallery.find('.flex-control-thumbs');
+			if ( flexThumbs.find('li').length <= 5 ) {
 				return;
 			}
 
-			if ($gallery.parent().is('.gallery-vertical, .gallery-showcase')) {
+			if ( gallery.parent().is('.gallery-vertical, .gallery-showcase') ) {
+				flexThumbs.addClass('swiper-wrapper botiga-slides');
+				flexThumbs.find('li').addClass('swiper-slide');
+				flexThumbs.wrapAll('<div class="swiper botiga-swiper"></div>');
 
-				$flexThumbs.addClass('swiper-wrapper botiga-slides');
-				$flexThumbs.find('li').addClass('swiper-slide');
-				$flexThumbs.wrapAll('<div class="swiper botiga-swiper"></div>');
+				const swiper = gallery.find('.botiga-swiper');
+				swiper.append('<div class="botiga-swiper-button botiga-swiper-button-next"></div>');
+				swiper.append('<div class="botiga-swiper-button botiga-swiper-button-prev"></div>');
 
-				var $swiper = $gallery.find('.botiga-swiper');
-
-				$swiper.append('<div class="botiga-swiper-button botiga-swiper-button-next"></div>');
-				$swiper.append('<div class="botiga-swiper-button botiga-swiper-button-prev"></div>');
-
-				var swiper = new Swiper($swiper.get(0), {
+				const swiperInstance = new Swiper(swiper.get(0), {
 					direction: 'vertical',
 					slidesPerView: 6,
 					spaceBetween: 20,
@@ -69,35 +82,27 @@ botiga.gallery = {
 					},
 				});
 
-				jQuery(window).on('resize botiga.resize', function () {
+				$(window).on('resize botiga.resize', function () {
+					const winWidth = (window.innerWidth || document.documentElement.clientWidth);
 
-					var winWidth = (window.innerWidth || document.documentElement.clientWidth);
-
-					if (winWidth < 991 && swiper.params.direction !== 'horizontal') {
-
-						swiper.changeDirection('horizontal');
-						swiper.params.slidesPerView = 5;
-						swiper.update();
-
-					} else if (winWidth > 991 && swiper.params.direction !== 'vertical') {
-
-						swiper.changeDirection('vertical');
-						swiper.params.slidesPerView = 6;
-						swiper.update();
-
+					if ( winWidth < 991 && swiperInstance.params.direction !== 'horizontal' ) {
+						swiperInstance.changeDirection('horizontal');
+						swiperInstance.params.slidesPerView = 5;
+						swiperInstance.update();
+					} else if ( winWidth > 991 && swiperInstance.params.direction !== 'vertical' ) {
+						swiperInstance.changeDirection('vertical');
+						swiperInstance.params.slidesPerView = 6;
+						swiperInstance.update();
 					}
-
 				}).trigger('botiga.resize');
-
-			} else if ($gallery.parent().is('.gallery-default, .gallery-quickview, .gallery-full-width')) {
-
-				$flexThumbs.addClass('botiga-slides');
-				$flexThumbs.wrapAll('<div class="botiga-flexslider"></div>');
+			} else if (gallery.parent().is('.gallery-default, .gallery-quickview, .gallery-full-width')) {
+				flexThumbs.addClass('botiga-slides');
+				flexThumbs.wrapAll('<div class="botiga-flexslider"></div>');
 				
-				var $slider = $gallery.find('.botiga-flexslider');
-				var itemWidth = ($gallery.parent().is('.gallery-quickview')) ? 85 : 95;
+				const slider = gallery.find('.botiga-flexslider');
+				const itemWidth = (gallery.parent().is('.gallery-quickview')) ? 85 : 95;
 
-				$slider.flexslider({
+				slider.flexslider({
 					namespace: 'botiga-flex-',
 					selector: '.botiga-slides > li',
 					animation: 'slide',
@@ -107,23 +112,20 @@ botiga.gallery = {
 					itemWidth: itemWidth,
 					itemMargin: 20,
 					keyboard: false,
-					asNavFor: $gallery.get(0),
+					asNavFor: gallery.get(0),
 				});
 
-				var next_text = jQuery( '.botiga-flexslider .botiga-flex-next' ).text();
-				jQuery( '.botiga-flexslider .botiga-flex-next' ).text('').append( '<span>'+ next_text +'</span>' );
+				const next_text = $( '.botiga-flexslider .botiga-flex-next' ).text();
+				$( '.botiga-flexslider .botiga-flex-next' ).text('').append( '<span>'+ next_text +'</span>' );
 
-				var prev_text = jQuery( '.botiga-flexslider .botiga-flex-prev' ).text();
-				jQuery( '.botiga-flexslider .botiga-flex-prev' ).text('').append( '<span>'+ prev_text +'</span>' );
-
+				const prev_text = $( '.botiga-flexslider .botiga-flex-prev' ).text();
+				$( '.botiga-flexslider .botiga-flex-prev' ).text('').append( '<span>'+ prev_text +'</span>' );
 			}
+		},
+	}
 
-		});
+	$(document).ready(function () {
+		botiga.gallery.init();
+	});
 
-	},
-
-}
-
-jQuery(document).ready(function () {
-	botiga.gallery.init();
-});
+})(jQuery);
