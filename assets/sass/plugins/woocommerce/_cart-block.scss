@@ -27,7 +27,7 @@
 	}
 
 	.wc-block-components-quantity-selector__button {
-		background-color: transparent !important;
+		background-color: var( --bt-color-button-bg, $color__primary ) !important;
 		border: none;
 		padding: 0;
 		color: var( --bt-color-button, $color__primary ) !important;
@@ -36,6 +36,7 @@
 	.wc-block-cart__submit-button {
 		background-color: var(--bt-color-button-bg, $color__primary);
 		color: var(--bt-color-button, #FFF);
+		font-size: var( --bt-font-size-button, 14px );
 		text-decoration: none !important;
 
 		&:hover {
