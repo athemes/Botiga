@@ -36,6 +36,7 @@
 	.wc-block-cart__submit-button {
 		background-color: var(--bt-color-button-bg, $color__primary);
 		color: var(--bt-color-button, #FFF);
+		font-size: var( --bt-font-size-button, 14px );
 		text-decoration: none !important;
 
 		&:hover {

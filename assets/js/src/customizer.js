@@ -10,7 +10,7 @@
 ( function( $ ) {
 
 	// Button Selectors
-	var buttonSelector             = 'button, a.button, .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.products li.product .button, input[type="button"], input[type="reset"], input[type="submit"]';
+	var buttonSelector             = 'button:not(.wc-block-cart-item__remove-link):not(.wc-block-components-quantity-selector__button), a.button, .wp-block-button__link, .wc-block-components-button, ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.products li.product .button, input[type="button"], input[type="reset"], input[type="submit"]';
 	var loopPostTitleSelector      = '.posts-archive .entry-title';
 	var singlePostTitleSelector    = '.single .entry-header .entry-title';
 	var singleProductTitleSelector = '.product-gallery-summary .entry-title';
@@ -1523,12 +1523,14 @@
 
 	wp.customize( 'button_text_transform', function( value ) {
 		value.bind( function( to ) {
+			buttonSelector = buttonSelector + ', .wc-block-components-button .wc-block-components-button__text';
 			$( buttonSelector ).css( 'text-transform', to );
 		} );
 	} );
 
 	wp.customize( 'button_text_decoration', function( value ) {
 		value.bind( function( to ) {
+			buttonSelector = buttonSelector + ', .wc-block-components-button .wc-block-components-button__text';
 			$( buttonSelector ).css( 'text-decoration', to );
 		} );
 	} );
@@ -1538,19 +1540,6 @@
 			$( buttonSelector ).css( 'border-radius', to+'px' );
 		} );
 	} );
-
-	// var $buttonFontSize = { 'button_font_size': buttonSelector };
-	// $.each( $buttonFontSize, function( option, selector ) {
-	// 	$.each( $devices, function( device, mediaSize ) {
-	// 		wp.customize( option + '_' + device, function( value ) {
-	// 			value.bind( function( to ) {
-	// 				$( 'head' ).find( '#botiga-customizer-styles-' + option + '_' + device ).remove();
-	// 				var output = '@media ' + mediaSize + ' {' + selector + ' { font-size:' + to + 'px !important; } }';
-	// 				$( 'head' ).append( '<style id="botiga-customizer-styles-' + option + '_' + device + '">' + output + '</style>' );
-	// 			} );
-	// 		} );
-	// 	});
-	// });
 
 	var $buttonTBPadding = { 'button_top_bottom_padding': buttonSelector };
 	$.each( $buttonTBPadding, function( option, selector ) {
