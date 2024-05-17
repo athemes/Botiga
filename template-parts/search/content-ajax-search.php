@@ -38,12 +38,7 @@ if ( $query->have_posts() ) :
 
 		$_post = get_post();
 
-		$args = array(
-			'post_id' => $_post->ID,
-			'type'    => 'product',
-		);
-
-		botiga_get_template_part( 'template-parts/search/content', 'ajax-search-item', $args );
+		botiga_get_template_part( 'template-parts/search/content', 'ajax-search-item', array( 'post_id' => $_post->ID ) );
 	endwhile;
 
 	/**

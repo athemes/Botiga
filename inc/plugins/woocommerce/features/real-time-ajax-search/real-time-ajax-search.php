@@ -50,7 +50,7 @@ class Botiga_Real_Time_Ajax_Search {
 	 * 
 	 * @return void
 	 */
-	function enqueue_scripts() {
+	public function enqueue_scripts() {
 		wp_register_script( 'botiga-ajax-search', get_template_directory_uri() . '/assets/js/botiga-ajax-search.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 		wp_enqueue_script( 'botiga-ajax-search' );
 		wp_localize_script( 'botiga-ajax-search', 'botiga_ajax_search', array( 'nonce' => wp_create_nonce( 'botiga-ajax-search-random-nonce' ) ) );
@@ -153,7 +153,7 @@ class Botiga_Real_Time_Ajax_Search {
 		 *
 		 * @since 1.0.0
 		 */
-		$data['orderby'] = apply_filters( 'botiga_shop_ajax_search_orderby', get_theme_mod( 'shop_search_ajax_orderby', 'none' ) ); 
+		$data['orderby'] = apply_filters( 'botiga_shop_ajax_search_orderby', get_theme_mod( 'shop_search_ajax_orderby', 'title' ) ); 
 
 		/**
 		 * Hook 'botiga_shop_ajax_search_enable_search_by_sku'
