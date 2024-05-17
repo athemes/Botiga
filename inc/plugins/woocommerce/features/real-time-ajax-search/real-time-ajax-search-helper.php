@@ -37,7 +37,7 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 				array(
 					'taxonomy' => 'product_visibility',
 					'field'    => 'name',
-					'terms'    => array( 'exclude-from-catalog', 'exclude-from-search' ),
+					'terms'    => array( 'exclude-from-search' ),
 					'operator' => 'NOT IN',
 				),
 			),
@@ -88,6 +88,14 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 					'compare' => 'LIKE',
 				),
 			),
+			'tax_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+				array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'name',
+					'terms'    => array( 'exclude-from-search' ),
+					'operator' => 'NOT IN',
+				),
+			),
 		);
 		
 		if( $data['orderby'] === 'price' ) {
@@ -119,7 +127,7 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 
 		if ( ! is_admin() && $query->is_main_query() && $query->is_search() && $query->get( 'post_type' ) === 'product' && $query->get( 's' ) !== '' ) {
 			$search_term = $wpdb->esc_like( $query->get('s') );
-			
+
 			$clauses['join'] = " LEFT JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id )";
 			$clauses['where'] .= $wpdb->prepare( " OR ( {$wpdb->prefix}postmeta.meta_key = '_sku' AND {$wpdb->prefix}postmeta.meta_value LIKE %s )", "%{$search_term}%" );
 		}
