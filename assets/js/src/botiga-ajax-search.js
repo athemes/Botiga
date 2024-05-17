@@ -74,11 +74,6 @@ botiga.ajaxSearch = {
         _this.ajax( 'botiga_ajax_search_callback', botiga_ajax_search.nonce, {
             search_term          : search_term,
             type                 : type,
-            posts_per_page       : botiga_ajax_search.query_args.posts_per_page,
-            order                : botiga_ajax_search.query_args.order,
-            orderby              : botiga_ajax_search.query_args.orderby,
-            show_categories      : botiga_ajax_search.query_args.show_categories,
-            enable_search_by_sku : botiga_ajax_search.query_args.enable_search_by_sku
         }, function(){
 
             var response = JSON.parse( this.response );

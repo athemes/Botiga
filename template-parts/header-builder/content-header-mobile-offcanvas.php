@@ -6,6 +6,7 @@
  * @package Botiga
  * @var array $args Contains mobile offcanvas data
  */
+
 // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $row_data   = $args[ 'row_data' ];
 $device     = 'mobile';

@@ -3,6 +3,7 @@
  * Header Icons Template File
  * 
  */
+
 // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $show_cart 		             = get_theme_mod( 'enable_header_cart', 1 );
 $show_account                = get_theme_mod( 'enable_header_account', 1 );
