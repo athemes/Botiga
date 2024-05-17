@@ -33,6 +33,43 @@ if( $header_transparent ) {
 
 }
 
+// Mobile breakpoint.
+$mobile_breakpoint = get_theme_mod( 'mobile_breakpoint', 1024 );
+$min_width         = $mobile_breakpoint + 1;
+$css .= "
+    @media (max-width: {$mobile_breakpoint}px) {
+        .bhfb-header.bhfb-mobile,
+        .botiga-offcanvas-menu {
+            display: block;
+        }
+        .bhfb-header.bhfb-desktop {
+            display: none;
+        }
+        .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul {
+            -webkit-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+    }
+
+    @media (min-width: {$min_width}px) {
+        .bhfb-header.bhfb-mobile {
+            display: none;
+        }
+        .bhfb-header.bhfb-desktop {
+            display: block;
+        }
+        .bhfb-header .botiga-dropdown > .botiga-dropdown-ul,
+        .bhfb-header .botiga-dropdown > div > .botiga-dropdown-ul {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+    }
+";
+
 // Padding
 $css .= Botiga_Custom_CSS::get_responsive_dimensions_css( 
     'botiga_section_hb_wrapper__header_builder_padding', 

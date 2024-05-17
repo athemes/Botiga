@@ -148,6 +148,27 @@ $wp_customize->add_control(
 	) 
 );
 
+// Mobile breakpoint.
+$wp_customize->add_setting( 'mobile_breakpoint', array(
+	'default'           => 1024,
+	'sanitize_callback' => 'absint',
+) );            
+$wp_customize->add_control( new Botiga_Responsive_Slider( $wp_customize, 'mobile_breakpoint',
+	array(
+		'label'           => esc_html__( 'Mobile Breakpoint', 'botiga' ),
+		'section'         => 'botiga_section_hb_wrapper',
+		'is_responsive'   => 0,
+		'settings'        => array(
+			'size_desktop'      => 'mobile_breakpoint',
+		),
+		'input_attrs'     => array(
+			'min'   => 0,
+			'max'   => 2000,
+		),
+		'priority'        => 20,
+	)
+) );
+
 /**
  * Design (Tab Content)
  * 
