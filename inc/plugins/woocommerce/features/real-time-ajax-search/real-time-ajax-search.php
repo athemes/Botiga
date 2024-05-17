@@ -23,26 +23,24 @@ class Botiga_Real_Time_Ajax_Search {
 	 */
 	public function __construct() {
 		$ajax_search = get_theme_mod( 'shop_search_enable_ajax', 0 );
-		if ( ! $ajax_search ) {
-			return;
+		if ( $ajax_search ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 11 );
+
+			add_action( 'botiga_shop_ajax_search_products_loop_start', array( $this, 'products_loop_wrapper_open' ), 10, 2 );
+			add_action( 'botiga_shop_ajax_search_products_loop_end', array( $this, 'products_loop_wrapper_close' ), 10, 2 );
+			add_action( 'botiga_shop_ajax_search_products_loop_end', array( $this, 'see_all_button' ), 15, 2 );
+			add_action( 'botiga_shop_ajax_search_after_products_loop', array( $this, 'categories' ), 10, 2 );
+
+			add_action('wp_ajax_botiga_ajax_search_callback', array( $this, 'ajax_callback' ) );
+			add_action('wp_ajax_nopriv_botiga_ajax_search_callback', array( $this, 'ajax_callback' ) );
+
+			add_filter( 'botiga_custom_css_output', array( $this, 'custom_css' ) );
 		}
-
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 11 );
-
-		add_action( 'botiga_shop_ajax_search_products_loop_start', array( $this, 'products_loop_wrapper_open' ), 10, 2 );
-		add_action( 'botiga_shop_ajax_search_products_loop_end', array( $this, 'products_loop_wrapper_close' ), 10, 2 );
-		add_action( 'botiga_shop_ajax_search_products_loop_end', array( $this, 'see_all_button' ), 15, 2 );
-		add_action( 'botiga_shop_ajax_search_after_products_loop', array( $this, 'categories' ), 10, 2 );
-
-		add_action('wp_ajax_botiga_ajax_search_callback', array( $this, 'ajax_callback' ) );
-		add_action('wp_ajax_nopriv_botiga_ajax_search_callback', array( $this, 'ajax_callback' ) );
 
 		$enable_search_by_sku = get_theme_mod( 'shop_search_ajax_enable_search_by_sku', 0 );
 		if( $enable_search_by_sku ) {
 			add_filter( 'posts_clauses', array( 'Botiga_Real_Time_Ajax_Search_Helper', 'set_query_post_clauses' ), 10, 2 );
 		}
-
-		add_filter( 'botiga_custom_css_output', array( $this, 'custom_css' ) );
 	}
 
 	/**
