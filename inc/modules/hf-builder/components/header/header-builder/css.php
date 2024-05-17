@@ -34,8 +34,9 @@ if( $header_transparent ) {
 }
 
 // Mobile breakpoint.
-$mobile_breakpoint = get_theme_mod( 'mobile_breakpoint', 1024 );
+$mobile_breakpoint = absint( get_theme_mod( 'mobile_breakpoint', 1024 ) );
 $min_width         = $mobile_breakpoint + 1;
+
 $css .= "
     @media (max-width: {$mobile_breakpoint}px) {
         .bhfb-header.bhfb-mobile,
