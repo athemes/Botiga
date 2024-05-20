@@ -51,6 +51,20 @@ $css .= "
             transform: none;
             opacity: 1;
         }
+
+        .botiga-mega-menu-column {
+            margin-left: -10px;
+        }
+        .botiga-mega-menu-column > .botiga-dropdown-link,
+        .botiga-mega-menu-column > span {
+            display: none !important;
+        }
+        .botiga-mega-menu-column > .sub-menu.botiga-dropdown-ul{
+            display: block !important;
+        }
+        .botiga-mega-menu-column .is-mega-menu-heading {
+            display: none !important;
+        }
     }
 
     @media (min-width: {$min_width}px) {
