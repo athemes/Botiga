@@ -271,6 +271,10 @@ class Botiga_Header_Footer_Builder {
         remove_all_actions( 'botiga_header' );
         add_action( 'botiga_header', array( $this, 'header_front_output' ) );
 
+        // Important: Priority 20 is required here to ensure the mobile offcanvas is not outputted
+        // inside the header transparent wrapper which causes issues with large mobile breakpoints.
+        add_action( 'botiga_header', array( $this, 'mobile_offcanvas_output' ), 20 );
+
         remove_all_actions( 'botiga_footer' );
         add_action( 'botiga_footer', array( $this, 'footer_front_output' ) );
 
@@ -966,8 +970,19 @@ class Botiga_Header_Footer_Builder {
             do_action( 'botiga_after_header' ); ?>
 
             <?php 
-        } 
+        }
+
+        ?> 
         
+        <div class="search-overlay"></div>
+
+        <?php
+    }
+
+    /**
+     * Mobile Offcanvas output.
+     */
+    public function mobile_offcanvas_output() {
         /**
          * Hook 'botiga_mobile_offcanvas_classes'
          *
@@ -986,8 +1001,6 @@ class Botiga_Header_Footer_Builder {
             <?php $this->search_form( 'header' ); ?>
         </div>
         
-        <div class="search-overlay"></div>
-
         <?php
     }
 
