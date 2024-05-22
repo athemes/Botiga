@@ -31,7 +31,10 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 = 2.2.4 =
-
+Added - Header: New control for header mobile breakpoint.
+Changed - Real Time Search - Search by SKU: Ensure the SKU match is the first in the results list.
+Fixed - Real Time Search: Hidden products are displayed in the results.
+Fixed - Some customizer styling options are not being applied to the default Woo Cart & Checkout blocks.
 
 = 2.2.3 =
 Changed - Improved menu dropdowns user experience (added hover delay).
