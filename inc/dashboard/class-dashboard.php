@@ -630,7 +630,7 @@ class Botiga_Dashboard
     public function admin_footer_text() {
         $text = sprintf(
 			/* translators: %s: https://wordpress.org/ */
-			__( 'Thank you for creating the website with <a href="%s" class="botiga-dashboard-footer-link" target="_blank">Botiga</a>.', 'botiga' ),
+			__( 'Thank you for creating your website with <a href="%s" class="botiga-dashboard-footer-link" target="_blank">Botiga</a>.', 'botiga' ),
 			'https://athemes.com/theme/botiga/'
 		);
 
