@@ -21,10 +21,14 @@
 			const self = this;
 
 			$( '.botiga-accordion' ).each( function() {
-				const toggle = $( this ).find( '.botiga-accordion-toggle' );
-				const content = $( this ).find( '.botiga-accordion-body' );
+				const toggle = $( this ).find( ' > .botiga-accordion-toggle' );
+				const content = $( this ).find( '> .botiga-accordion-body' );
 
-				toggle.on( 'click', function() { self.slideToggleEffect( $( this ), content ); });
+				toggle.on( 'click', function(e) { 
+					e.preventDefault();
+
+					self.slideToggleEffect( $( this ), content ); 
+				});
 				toggle.on( 'keyup', function(e) {
 					if ( e.keyCode === 13 ) {
 						self.slideToggleEffect( $( this ), content );

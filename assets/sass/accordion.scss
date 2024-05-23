@@ -1,3 +1,7 @@
+.botiga-accordion {
+	position: relative;
+}
+
 .botiga-accordion-toggle {
 	position: relative;
 	cursor: pointer;
@@ -26,5 +30,48 @@
 
 	& + .botiga-accordion-body {
 		padding-top: 20px;
+	}
+
+	&--no-pseudo {
+		display: inline-flex;
+		padding: 6px;
+
+		> span {
+			display: flex;
+			width: 8px;
+			height: 8px;
+			border-left: 1px solid #000;
+			border-bottom: 1px solid #000;
+			transform: translateY(-50%) rotate(-45deg);
+			transition: ease opacity 300ms;
+			opacity: 0.6;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		&.active {
+			> span {
+				position: relative;
+				top: 2px;
+				transform: translateY(-50%) rotate(135deg);
+				opacity: 1;
+			}
+		}
+	}
+
+	&--pos-abs {
+		position: absolute;
+		right: -5px;
+		top: 7px;
+	}
+}
+
+.botiga-accordion-body {
+	&.wp-block-navigation__submenu-container,
+	&.children,
+	&.wc-block-product-categories-list {
+		padding-top: 7px;
 	}
 }

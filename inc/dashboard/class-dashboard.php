@@ -631,7 +631,7 @@ class Botiga_Dashboard
         $text = sprintf(
 			/* translators: %s: https://wordpress.org/ */
 			__( 'Thank you for creating the website with <a href="%s" class="botiga-dashboard-footer-link" target="_blank">Botiga</a>.', 'botiga' ),
-			'https://athemes.com/botiga-upgrade/'
+			'https://athemes.com/theme/botiga/'
 		);
 
         return $text;

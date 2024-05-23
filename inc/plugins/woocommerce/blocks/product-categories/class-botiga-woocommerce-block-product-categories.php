@@ -1,5 +1,6 @@
 <?php
 /**
+ * Botiga Woocommerce Block Product Categories
  * Class to handle with default WooCommerce product categories block.
  * 
  */
@@ -29,17 +30,19 @@ class Botiga_Woocommerce_Block_Product_Categories {
 	 * @param array $attributes
 	 * @return string
 	 */
-	public function render( $block_content, $block, $attributes ) {
+	public function render( $block_content, $block, $attributes ): string {
 		if ( is_admin() || wp_is_json_request() ) {
 			return $block_content;
 		}
 	
 		global $wp;
 		$current_url = trim( $wp->request, '/' );
-		
+
 		/**
 		 * Hook 'botiga_wc_block_product_categories_render'
 		 * 
+		 * @param string $block_content
+		 * @param string $current_url
 		 * @since 2.2.0
 		 */
 		return apply_filters( 'botiga_wc_block_product_categories_render', $block_content, $current_url );
@@ -51,8 +54,9 @@ class Botiga_Woocommerce_Block_Product_Categories {
 	 * @param string $block_content
 	 * @param string $current_url
 	 */
-	public function add_active_class( $block_content, $current_url ) {
-		$block_content = mb_convert_encoding($block_content, 'HTML-ENTITIES', 'UTF-8');
+	public function add_active_class( $block_content, $current_url ): string {
+		$block_content = htmlspecialchars($block_content, ENT_QUOTES, 'UTF-8');
+
 		$dom = new DOMDocument();
 		$dom->loadHTML( $block_content );
 		$elements = $dom->getElementsByTagName( 'a' );
@@ -74,19 +78,22 @@ class Botiga_Woocommerce_Block_Product_Categories {
 			$block_content = $dom->saveHTML();
 		}
 
-		return $block_content;
+		return html_entity_decode( $block_content );
 	}
 
 	/**
 	 * Filter items links.
 	 * 
+	 * @param string $block_content
+	 * @param string $current_url
+	 * @return string
 	 */
-	public function filter_items_links( $block_content, $current_url ) {
+	public function filter_items_links( $block_content, $current_url ): string {
 		global $wp;
 
 		$has_bp_active_filter = strpos( $wp->query_string, 'filter_' ) !== FALSE;
 
-		$block_content = mb_convert_encoding($block_content, 'HTML-ENTITIES', 'UTF-8');
+		$block_content = htmlspecialchars($block_content, ENT_QUOTES, 'UTF-8');
 		$dom = new DOMDocument();
 		$dom->loadHTML( $block_content );
 		$elements = $dom->getElementsByTagName( 'a' );
@@ -102,7 +109,7 @@ class Botiga_Woocommerce_Block_Product_Categories {
 			$block_content = $dom->saveHTML();
 		}
 
-		return $block_content;
+		return html_entity_decode( $block_content );
 	}
 }
 

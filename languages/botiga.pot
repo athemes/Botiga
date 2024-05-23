@@ -537,11 +537,11 @@ msgstr ""
 msgid "Link values together"
 msgstr ""
 
-#: inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:97, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:125, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:152, inc/customizer/options/blog.php:366, inc/customizer/options/footer.php:162, inc/customizer/options/woocommerce/shop-archive/section-layout.php:177, inc/modules/hf-builder/components/footer/columns/customize-options.php:115, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:195, inc/modules/hf-builder/components/footer/row/customize-options.php:364, inc/modules/hf-builder/components/header/columns/customize-options.php:117, inc/modules/hf-builder/components/header/header-builder/customize-options.php:255, inc/modules/hf-builder/components/header/row/customize-options.php:398
+#: inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:97, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:125, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:152, inc/customizer/options/blog.php:366, inc/customizer/options/footer.php:162, inc/customizer/options/woocommerce/shop-archive/section-layout.php:177, inc/modules/hf-builder/components/footer/columns/customize-options.php:115, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:195, inc/modules/hf-builder/components/footer/row/customize-options.php:364, inc/modules/hf-builder/components/header/columns/customize-options.php:117, inc/modules/hf-builder/components/header/header-builder/customize-options.php:276, inc/modules/hf-builder/components/header/row/customize-options.php:398
 msgid "Top"
 msgstr ""
 
-#: inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:109, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:137, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:164, inc/customizer/options/blog.php:368, inc/customizer/options/footer.php:164, inc/customizer/options/header.php:505, inc/modules/hf-builder/components/footer/columns/customize-options.php:117, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:197, inc/modules/hf-builder/components/footer/row/customize-options.php:366, inc/modules/hf-builder/components/header/columns/customize-options.php:119, inc/modules/hf-builder/components/header/header-builder/customize-options.php:257, inc/modules/hf-builder/components/header/row/customize-options.php:400
+#: inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:109, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:137, inc/customizer/controls/dimensions/class_botiga_dimensions_control.php:164, inc/customizer/options/blog.php:368, inc/customizer/options/footer.php:164, inc/customizer/options/header.php:505, inc/modules/hf-builder/components/footer/columns/customize-options.php:117, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:197, inc/modules/hf-builder/components/footer/row/customize-options.php:366, inc/modules/hf-builder/components/header/columns/customize-options.php:119, inc/modules/hf-builder/components/header/header-builder/customize-options.php:278, inc/modules/hf-builder/components/header/row/customize-options.php:400
 msgid "Bottom"
 msgstr ""
 
@@ -904,7 +904,7 @@ msgstr ""
 msgid "Choose the colors for your palette:"
 msgstr ""
 
-#: inc/customizer/options/colors.php:98, inc/customizer/options/colors.php:384, inc/customizer/options/footer.php:235, inc/customizer/options/footer.php:814, inc/customizer/options/header-mobile.php:400, inc/customizer/options/header-mobile.php:494, inc/customizer/options/header.php:805, inc/customizer/options/header.php:1203, inc/customizer/options/scrolltotop.php:357, inc/customizer/options/topbar.php:422, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:154, inc/customizer/options/woocommerce/woocommerce-store-notice.php:55, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:110, inc/modules/hf-builder/components/header/header-builder/customize-options.php:170
+#: inc/customizer/options/colors.php:98, inc/customizer/options/colors.php:384, inc/customizer/options/footer.php:235, inc/customizer/options/footer.php:814, inc/customizer/options/header-mobile.php:400, inc/customizer/options/header-mobile.php:494, inc/customizer/options/header.php:805, inc/customizer/options/header.php:1203, inc/customizer/options/scrolltotop.php:357, inc/customizer/options/topbar.php:422, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:154, inc/customizer/options/woocommerce/woocommerce-store-notice.php:55, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:110, inc/modules/hf-builder/components/header/header-builder/customize-options.php:191
 msgid "Background color"
 msgstr ""
 
@@ -1100,7 +1100,7 @@ msgstr ""
 msgid "Content Alignment"
 msgstr ""
 
-#: inc/customizer/options/footer.php:610, inc/customizer/options/header.php:344, inc/modules/hf-builder/components/footer/columns/customize-options.php:211, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:196, inc/modules/hf-builder/components/footer/row/customize-options.php:365, inc/modules/hf-builder/components/header/columns/customize-options.php:217, inc/modules/hf-builder/components/header/header-builder/customize-options.php:256, inc/modules/hf-builder/components/header/row/customize-options.php:399
+#: inc/customizer/options/footer.php:610, inc/customizer/options/header.php:344, inc/modules/hf-builder/components/footer/columns/customize-options.php:211, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:196, inc/modules/hf-builder/components/footer/row/customize-options.php:365, inc/modules/hf-builder/components/header/columns/customize-options.php:217, inc/modules/hf-builder/components/header/header-builder/customize-options.php:277, inc/modules/hf-builder/components/header/row/customize-options.php:399
 msgid "Center"
 msgstr ""
 
@@ -1148,7 +1148,7 @@ msgstr ""
 msgid "Mobile header"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:54, inc/customizer/options/header.php:170, inc/customizer/options/layout.php:14, inc/customizer/options/woocommerce/shop-archive/section-categories.php:21, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:21, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:21, inc/customizer/options/woocommerce/woocommerce-cart.php:76, inc/customizer/options/woocommerce/woocommerce-cart.php:32, inc/customizer/options/woocommerce/woocommerce-checkout.php:74, inc/customizer/options/woocommerce/woocommerce-checkout.php:21, inc/customizer/options/woocommerce/woocommerce-shop-archive.php:27, inc/customizer/options/woocommerce/woocommerce-single.php:29, inc/modules/hf-builder/components/header/header-builder/customize-options.php:475
+#: inc/customizer/options/header-mobile.php:54, inc/customizer/options/header.php:170, inc/customizer/options/layout.php:14, inc/customizer/options/woocommerce/shop-archive/section-categories.php:21, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:21, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:21, inc/customizer/options/woocommerce/woocommerce-cart.php:76, inc/customizer/options/woocommerce/woocommerce-cart.php:32, inc/customizer/options/woocommerce/woocommerce-checkout.php:74, inc/customizer/options/woocommerce/woocommerce-checkout.php:21, inc/customizer/options/woocommerce/woocommerce-shop-archive.php:27, inc/customizer/options/woocommerce/woocommerce-single.php:29, inc/modules/hf-builder/components/header/header-builder/customize-options.php:496
 msgid "Layout"
 msgstr ""
 
@@ -1384,7 +1384,7 @@ msgstr ""
 msgid "Mini Cart Text Color"
 msgstr ""
 
-#: inc/customizer/options/header.php:1064, inc/customizer/options/scrolltotop.php:398, inc/modules/hf-builder/components/footer/columns/customize-options.php:303, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:259, inc/modules/hf-builder/components/footer/row/customize-options.php:471, inc/modules/hf-builder/components/header/columns/customize-options.php:309, inc/modules/hf-builder/components/header/header-builder/customize-options.php:319, inc/modules/hf-builder/components/header/row/customize-options.php:505
+#: inc/customizer/options/header.php:1064, inc/customizer/options/scrolltotop.php:398, inc/modules/hf-builder/components/footer/columns/customize-options.php:303, inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:259, inc/modules/hf-builder/components/footer/row/customize-options.php:471, inc/modules/hf-builder/components/header/columns/customize-options.php:309, inc/modules/hf-builder/components/header/header-builder/customize-options.php:340, inc/modules/hf-builder/components/header/row/customize-options.php:505
 msgid "Padding"
 msgstr ""
 
@@ -2140,7 +2140,7 @@ msgstr ""
 msgid "SKU"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/single-product/section-layout.php:287, inc/customizer/options/woocommerce/woocommerce-shop-archive.php:196, inc/plugins/woocommerce/features/real-time-ajax-search.php:158
+#: inc/customizer/options/woocommerce/single-product/section-layout.php:287, inc/customizer/options/woocommerce/woocommerce-shop-archive.php:196, template-parts/search/content-ajax-search-categories.php:30
 msgid "Categories"
 msgstr ""
 
@@ -3190,7 +3190,7 @@ msgid "Premium support"
 msgstr ""
 
 #: inc/dashboard/html-home.php:207
-msgid "Get direct support from our developers via email. We aim to answer all premium support requests within 24 hours."
+msgid "Get support from our team of WordPress experts via email. We aim to respond within one business day, but we often manage to reply much sooner."
 msgstr ""
 
 #: inc/dashboard/html-home.php:209
@@ -3597,39 +3597,39 @@ msgstr ""
 msgid "Global Footer"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:148, inc/modules/hf-builder/components/footer/row/customize-options.php:317, inc/modules/hf-builder/components/header/header-builder/customize-options.php:208, inc/modules/hf-builder/components/header/row/customize-options.php:351
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:148, inc/modules/hf-builder/components/footer/row/customize-options.php:317, inc/modules/hf-builder/components/header/header-builder/customize-options.php:229, inc/modules/hf-builder/components/header/row/customize-options.php:351
 msgid "Background Image"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:169, inc/modules/hf-builder/components/footer/row/customize-options.php:338, inc/modules/hf-builder/components/header/header-builder/customize-options.php:229, inc/modules/hf-builder/components/header/row/customize-options.php:372
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:169, inc/modules/hf-builder/components/footer/row/customize-options.php:338, inc/modules/hf-builder/components/header/header-builder/customize-options.php:250, inc/modules/hf-builder/components/header/row/customize-options.php:372
 msgid "Background Size"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:171, inc/modules/hf-builder/components/footer/row/customize-options.php:340, inc/modules/hf-builder/components/header/header-builder/customize-options.php:231, inc/modules/hf-builder/components/header/row/customize-options.php:374
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:171, inc/modules/hf-builder/components/footer/row/customize-options.php:340, inc/modules/hf-builder/components/header/header-builder/customize-options.php:252, inc/modules/hf-builder/components/header/row/customize-options.php:374
 msgid "Cover"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:172, inc/modules/hf-builder/components/footer/row/customize-options.php:341, inc/modules/hf-builder/components/header/header-builder/customize-options.php:232, inc/modules/hf-builder/components/header/row/customize-options.php:375
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:172, inc/modules/hf-builder/components/footer/row/customize-options.php:341, inc/modules/hf-builder/components/header/header-builder/customize-options.php:253, inc/modules/hf-builder/components/header/row/customize-options.php:375
 msgid "Contain"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:193, inc/modules/hf-builder/components/footer/row/customize-options.php:362, inc/modules/hf-builder/components/header/header-builder/customize-options.php:253, inc/modules/hf-builder/components/header/row/customize-options.php:396
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:193, inc/modules/hf-builder/components/footer/row/customize-options.php:362, inc/modules/hf-builder/components/header/header-builder/customize-options.php:274, inc/modules/hf-builder/components/header/row/customize-options.php:396
 msgid "Background Position"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:218, inc/modules/hf-builder/components/footer/row/customize-options.php:387, inc/modules/hf-builder/components/header/header-builder/customize-options.php:278, inc/modules/hf-builder/components/header/row/customize-options.php:421
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:218, inc/modules/hf-builder/components/footer/row/customize-options.php:387, inc/modules/hf-builder/components/header/header-builder/customize-options.php:299, inc/modules/hf-builder/components/header/row/customize-options.php:421
 msgid "Background Repeat"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:220, inc/modules/hf-builder/components/footer/row/customize-options.php:389, inc/modules/hf-builder/components/header/header-builder/customize-options.php:280, inc/modules/hf-builder/components/header/row/customize-options.php:423
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:220, inc/modules/hf-builder/components/footer/row/customize-options.php:389, inc/modules/hf-builder/components/header/header-builder/customize-options.php:301, inc/modules/hf-builder/components/header/row/customize-options.php:423
 msgid "No Repeat"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:221, inc/modules/hf-builder/components/footer/row/customize-options.php:390, inc/modules/hf-builder/components/header/header-builder/customize-options.php:281, inc/modules/hf-builder/components/header/row/customize-options.php:424
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:221, inc/modules/hf-builder/components/footer/row/customize-options.php:390, inc/modules/hf-builder/components/header/header-builder/customize-options.php:302, inc/modules/hf-builder/components/header/row/customize-options.php:424
 msgid "Repeat"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:313, inc/modules/hf-builder/components/header/header-builder/customize-options.php:373, inc/modules/hf-builder/components/header/header-builder/customize-options.php:389
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:313, inc/modules/hf-builder/components/header/header-builder/customize-options.php:394, inc/modules/hf-builder/components/header/header-builder/customize-options.php:410
 msgid "Available Components"
 msgstr ""
 
@@ -3637,11 +3637,11 @@ msgstr ""
 msgid "Create a more information-rich footer with Botiga Pro!"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:337, inc/modules/hf-builder/components/header/header-builder/customize-options.php:413
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:337, inc/modules/hf-builder/components/header/header-builder/customize-options.php:434
 msgid "An extra HTML component"
 msgstr ""
 
-#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:338, inc/modules/hf-builder/components/header/header-builder/customize-options.php:414
+#: inc/modules/hf-builder/components/footer/footer-builder/customize-options.php:338, inc/modules/hf-builder/components/header/header-builder/customize-options.php:435
 msgid "A shortcode component"
 msgstr ""
 
@@ -3741,7 +3741,7 @@ msgstr ""
 msgid "Global Header"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:85, inc/modules/hf-builder/components/header/header-builder/customize-options.php:454
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:85, inc/modules/hf-builder/components/header/header-builder/customize-options.php:475
 msgid "Header Layouts"
 msgstr ""
 
@@ -3761,23 +3761,27 @@ msgstr ""
 msgid "All Rows"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:411
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:158
+msgid "Mobile Breakpoint"
+msgstr ""
+
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:432
 msgid "Do more with your headers with Botiga Pro!"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:415
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:436
 msgid "A login button"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:416
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:437
 msgid "Polylang/WPML language switcher component"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:435
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:456
 msgid "The header stays over the content. You need to manually change the background color from each header builder row to be transparent."
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:455
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:476
 msgid "Choose a header layout to start with."
 msgstr ""
 
@@ -3860,7 +3864,7 @@ msgstr ""
 
 #. translators: %1$s current user display name.
 #: inc/notices/class-botiga-review.php:68
-msgid "Hi %1$s, it's so exciting to see that you've made significant progress in building your website. We have a small request that would mean the world to us. Could you please take a moment to write a review for Botiga on WordPress.org? Your support will not only fuel our motivation but also help other users feel confident in choosing our theme. Thank you!"
+msgid "Hi %1$s, we hope you're enjoying using Botiga. We have a small request that would mean a lot to us. Could you please leave a review for Botiga on WordPress.org? Your support will not only motivate us but also help other users feel confident in choosing our theme. Thank you!"
 msgstr ""
 
 #: inc/notices/class-botiga-review.php:77
@@ -4116,16 +4120,7 @@ msgid_plural "Tags:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/real-time-ajax-search.php:114
-msgid "Products"
-msgstr ""
-
-#. translators: 1. Search results quantity
-#: inc/plugins/woocommerce/features/real-time-ajax-search.php:142
-msgid "See all products (%s)"
-msgstr ""
-
-#: inc/plugins/woocommerce/features/real-time-ajax-search.php:183
+#: inc/plugins/woocommerce/features/real-time-ajax-search/real-time-ajax-search.php:183
 msgid "No products found."
 msgstr ""
 
@@ -4694,16 +4689,25 @@ msgstr ""
 msgid "View Cart"
 msgstr ""
 
-#: template-parts/header-mobile/content-header-mobile-icons.php:21, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:21, template-parts/header/content-header-icons.php:21
+#: template-parts/header-mobile/content-header-mobile-icons.php:21, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:21, template-parts/header/content-header-icons.php:22
 msgid "Your account"
 msgstr ""
 
-#: template-parts/header-mobile/content-header-mobile-icons.php:35, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:35, template-parts/header/content-header-icons.php:35
+#: template-parts/header-mobile/content-header-mobile-icons.php:35, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:35, template-parts/header/content-header-icons.php:36
 msgid "Your Cart"
 msgstr ""
 
-#: template-parts/header-mobile/content-header-mobile-icons.php:49, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:49, template-parts/header/content-header-icons.php:50
+#: template-parts/header-mobile/content-header-mobile-icons.php:49, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:49, template-parts/header/content-header-icons.php:51
 msgid "Your wishlist"
+msgstr ""
+
+#: template-parts/search/content-ajax-search-loop-start.php:21
+msgid "Products"
+msgstr ""
+
+#. translators: 1. Search results quantity
+#: template-parts/search/content-ajax-search-see-all-button.php:28
+msgid "See all products (%s)"
 msgstr ""
 
 #: template-parts/single-product/content-reviews-advanced-modal.php:12

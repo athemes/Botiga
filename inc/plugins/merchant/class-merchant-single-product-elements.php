@@ -315,7 +315,7 @@ class Botiga_Merchant_Single_Product_Elements {
 
 				if ( $add_to_cart_callback_index ) {
 					array_splice( $components, $add_to_cart_callback_index, 0, $module_data[ 'callback' ] );
-					return array_unique( $components );
+					$components = array_unique( $components );
 				}
 			}
 

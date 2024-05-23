@@ -6,6 +6,7 @@
  * @package Botiga
  * @var array $args Contains top header row data
  */
+
 // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $row      = $args[ 'row' ];
 $device   = $args[ 'device' ]; 

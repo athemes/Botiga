@@ -688,7 +688,7 @@ require get_template_directory() . '/inc/plugins/woocommerce/blocks/product-cate
 /**
  * Real Time Ajax Search
  */
-require get_template_directory() . '/inc/plugins/woocommerce/features/real-time-ajax-search.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+require get_template_directory() . '/inc/plugins/woocommerce/features/real-time-ajax-search/real-time-ajax-search.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 /**
  * Header Mini Cart
