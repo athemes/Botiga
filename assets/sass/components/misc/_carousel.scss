@@ -32,6 +32,7 @@
 .cross-sells {
 	.botiga-carousel-wrapper {
 		position: relative;
+
 		.products,
 		.botiga-carousel-stage {
 			margin: 0;
@@ -80,16 +81,17 @@
 			z-index: 1;
 		}
 	}
-}
 
-.botiga-carousel {
 	&.botiga-carousel-not-initialized {
+		.products,
 		.botiga-carousel-stage {
 			opacity: 1;
 			visibility: visible;
 		}
 	}
+}
 
+.botiga-carousel {
     &.botiga-carousel-nav2 {
         .botiga-carousel-nav-next,
         .botiga-carousel-nav-prev {
