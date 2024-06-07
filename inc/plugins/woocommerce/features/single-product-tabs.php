@@ -121,11 +121,19 @@ function botiga_woocommerce_output_product_data_tabs() {
  * Tabs Accordion JS
  */
 function botiga_single_product_tab_as_accordion_append_inline_js() {
+
+    /**
+     * Hook 'botiga_single_product_tabs_as_accordion_scroll_offset'
+     * 
+     * @since 2.2.5
+     */
+    $offset = apply_filters( 'botiga_single_product_tabs_as_accordion_scroll_offset', 100 );
+
 	$js = "
         (function($){
             $( '[data-botiga-collapse]' ).each(function(){
                 $(this)[0].addEventListener( 'botiga.collapse.expanded', function(){
-                    window.scrollTo({ top: $(this).offset().top - 100, behavior: 'smooth' });
+                    window.scrollTo({ top: $(this).offset().top - $offset, behavior: 'smooth' });
                 });
             });
         })(jQuery);
