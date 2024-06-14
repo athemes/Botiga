@@ -51,6 +51,9 @@
 		}
 	}
 	
+	&:empty {
+		display: none;
+	}
 }
 
 .search-submit {
