@@ -34,6 +34,10 @@ class Botiga_Woocommerce_Block_Product_Categories {
 		if ( is_admin() || wp_is_json_request() ) {
 			return $block_content;
 		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
 	
 		global $wp;
 		$current_url = trim( $wp->request, '/' );
@@ -55,6 +59,10 @@ class Botiga_Woocommerce_Block_Product_Categories {
 	 * @param string $current_url
 	 */
 	public function add_active_class( $block_content, $current_url ): string {
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
 		$block_content = htmlspecialchars($block_content, ENT_QUOTES, 'UTF-8');
 
 		$dom = new DOMDocument();
@@ -90,6 +98,10 @@ class Botiga_Woocommerce_Block_Product_Categories {
 	 */
 	public function filter_items_links( $block_content, $current_url ): string {
 		global $wp;
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
 
 		$has_bp_active_filter = strpos( $wp->query_string, 'filter_' ) !== FALSE;
 
