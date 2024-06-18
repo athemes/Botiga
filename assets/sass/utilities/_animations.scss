@@ -95,6 +95,22 @@
     animation-name: fadeInDownShorter
 }
 
+/* Fade Out Down Shorter */
+@keyframes fadeOutDownShorter {
+    from {
+        opacity: 1;
+        transform: none;
+    }
+    to {
+        opacity: 0;
+        transform: translate(0,20px);
+    }
+}
+
+.fadeOutDownShorter {
+    animation-name: fadeOutDownShorter
+}
+
 .botiga-animated {
     opacity: 0;
 }
