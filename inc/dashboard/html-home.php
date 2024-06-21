@@ -257,7 +257,7 @@ if (!defined('ABSPATH')) {
                         <p><?php echo esc_html__( 'Our documentation is here to guide you through Botiga Pro\'s features.', 'botiga' ); ?></p>
                     <?php endif; ?>
                     <a href="<?php echo esc_url( $this->settings['knowledge_base_link'] ); ?>" class="button button-primary button-outline button-medium bt-font-weight-500" target="_blank">
-                        <?php echo esc_html__( 'View All', 'botiga' ); ?>
+                        <?php echo esc_html__( 'Browse Docs', 'botiga' ); ?>
                     </a>
                 </div>
             </div>
@@ -265,16 +265,16 @@ if (!defined('ABSPATH')) {
             <!-- Need Help? -->
             <div class="botiga-dashboard-card">
                 <div class="botiga-dashboard-card-header">
-                    <h2><?php echo ! defined( 'BOTIGA_PRO_VERSION' ) ? esc_html__( 'Free support', 'botiga' ) : esc_html__( 'Support', 'botiga' ); ?></h2>
+                    <h2><?php echo ! defined( 'BOTIGA_PRO_VERSION' ) ? esc_html__( 'Support', 'botiga' ) : esc_html__( 'Support', 'botiga' ); ?></h2>
                 </div>
                 <div class="botiga-dashboard-card-body">
                     <?php if( ! defined( 'BOTIGA_PRO_VERSION' ) ) : ?>
-                        <p><?php echo esc_html__( 'Post your question on the WordPress.org forum where a member of the team or community will get back to you.', 'botiga' ); ?></p>
+                        <p><?php echo esc_html__( 'Have a question? Hit a bug? Find solutions or ask a member of our expert team for help.', 'botiga' ); ?></p>
                     <?php else : ?>
                         <p><?php echo esc_html__( 'Need help? Submit a ticket and a member of our support team will aim to respond within one business day.', 'botiga' ); ?></p>
                     <?php endif; ?>
                     <a href="<?php echo esc_url( $this->settings['support_link'] ); ?>" class="button button-primary button-outline button-medium bt-font-weight-500" target="_blank">
-                        <?php echo ! defined( 'BOTIGA_PRO_VERSION' ) ? esc_html__( 'Create a Topic', 'botiga' ) : esc_html__( 'Submit a Ticket', 'botiga' ); ?>
+                        <?php echo ! defined( 'BOTIGA_PRO_VERSION' ) ? esc_html__( 'Get Support', 'botiga' ) : esc_html__( 'Submit a Ticket', 'botiga' ); ?>
                     </a>
                 </div>
             </div>
@@ -301,7 +301,7 @@ if (!defined('ABSPATH')) {
                     <h2><?php echo esc_html__( 'Join our Facebook community', 'botiga' ); ?></h2>
                 </div>
                 <div class="botiga-dashboard-card-body">
-                    <p><?php echo esc_html__( 'Want to share your awesome project or just say hi? Join our wonderful community!', 'botiga' ); ?></p>
+                    <p><?php echo esc_html__( 'Share your projects, ask questions, or connect with fellow Botiga users in our friendly community.', 'botiga' ); ?></p>
                     <a href="<?php echo esc_url( $this->settings['community_link'] ); ?>" class="button button-primary button-outline button-medium bt-font-weight-500" target="_blank">
                         <?php echo esc_html__( 'Join Now', 'botiga' ); ?>
                     </a>
