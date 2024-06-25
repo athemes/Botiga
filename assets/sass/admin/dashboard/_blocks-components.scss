@@ -1,0 +1,173 @@
+/* Navigation Links */
+.bt-navigation-links {
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 3px;
+		margin: 0;
+	}
+
+	li {
+		margin: 0;
+
+		a {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			text-decoration: none;
+			color: #212121;
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 26px;
+			padding: 9px 16px;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, 0);
+				width: 4px;
+				height: 100%;
+				border-radius: 0 4px 4px 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: ease opacity 200ms;
+			}
+
+			svg {
+				width: 18px;
+			}
+		}
+
+		&.active {
+			a {
+				color: #3858e9;
+
+				&:before {
+					background-color: #3858e9;
+					opacity: 1;
+					visibility: visible;
+				}
+
+				svg {
+					fill: #3858e9;
+				}
+			}
+		}
+	}
+}
+
+/* Presets List */
+.bt-presets-list {
+	margin-top: 15px;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 15px;
+		padding: 0px 20px;
+
+		strong {
+			width: 33.3333%;
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border: 1px solid #f0f0f1;
+		border-radius: 6px;
+		padding: 15px 20px;
+		transition: ease border-color 250ms;
+
+		p {
+			margin: 0;
+		}
+
+		p, div {
+			width: 33.3333%;
+		}
+
+		.button {
+			padding: 7px 17px;
+
+			& + .button {
+				margin-left: 10px;
+			}
+		}
+
+		&:hover {
+			border-color: #e1e1e1;
+		}
+	}
+
+	&__add-button {
+		padding: 7px 17px !important;
+		margin-top: 20px !important;
+	}
+}
+
+.botiga-dashboard {
+	
+	/* Help label */
+	.components-base-control__help {
+		color: #757575;
+		font-size: 13px;
+	}
+
+	/* Radio Control */
+	.components-radio-control {
+		.components-base-control__label,
+		.components-radio-control__label {
+			max-width: 100%;
+		}
+
+		.components-base-control__help {
+			margin-bottom: 10px;
+		}
+	}
+
+	/* Number Control */
+	.components-number-control {
+		.components-base-control__help {
+			margin-bottom: 10px;
+		}
+
+		.components-input-control__container {
+			max-width: 60px;
+		}
+	}
+
+	/* Select Control */
+	.components-select-control {
+		.components-input-control__container {
+			max-width: 60%;
+		}
+	}
+
+	/* Add new panel */
+	.btsf-add-new-panel-button {
+		padding: 7px 25px;
+		margin: 15px;
+	}
+
+	/* Field terms wrapper */
+	.btsf-field-terms-wrapper {
+		flex-wrap: wrap;
+		gap: 15px;
+		margin-bottom: 20px;
+
+		.components-base-control {
+			width: 100%;
+		}
+	}
+}
