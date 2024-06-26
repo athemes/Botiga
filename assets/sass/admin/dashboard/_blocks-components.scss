@@ -36,6 +36,10 @@
 				transition: ease opacity 200ms;
 			}
 
+			&:focus {
+				box-shadow: none;
+			}
+
 			svg {
 				width: 18px;
 			}
@@ -162,12 +166,27 @@
 
 	/* Field terms wrapper */
 	.btsf-field-terms-wrapper {
+		justify-content: flex-start;
 		flex-wrap: wrap;
 		gap: 15px;
 		margin-bottom: 20px;
 
 		.components-base-control {
 			width: 100%;
+		}
+	}
+
+	/* Custom Color Picker */
+	.btsf-custom-color-picker {
+		width: 100%;
+		
+		> div {
+			display: flex;
+			gap: 10px;
+
+			> div {
+				flex: 1;
+			}
 		}
 	}
 }

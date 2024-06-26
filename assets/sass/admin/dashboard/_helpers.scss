@@ -40,6 +40,10 @@
 	padding-top: 0 !important;
 }
 
+.bt-pl-0 {
+	padding-left: 0 !important;
+}
+
 // Positions
 .bt-p-relative {
 	position: relative;
@@ -79,4 +83,9 @@
 
 .bt-text-color-grey {
 	color: #757575 !important;
+}
+
+// Text decoration
+.bt-text-decoration-none {
+	text-decoration: none !important;
 }
