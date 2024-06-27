@@ -189,4 +189,16 @@
 			}
 		}
 	}
+
+	/* Select */
+	.btsf-components-select {
+		&__add-all,
+		&__remove-all {
+			margin-top: 10px;
+		}
+
+		&__add-all {
+			margin-right: 10px;
+		}
+	}
 }
