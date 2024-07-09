@@ -158,6 +158,19 @@
 		}
 	}
 
+	/* Panel body */
+	.components-panel__body {
+		transition: ease margin-top 250ms, ease opacity 250ms;
+
+		&.is-drag-hovering {
+			margin-top: 75px;
+		}
+
+		&.is-drag-active-item {
+			opacity: 0;
+		}
+	}
+
 	/* Add new panel */
 	.btsf-add-new-panel-button {
 		padding: 7px 25px;
@@ -166,8 +179,8 @@
 
 	/* Field terms wrapper */
 	.btsf-field-terms-wrapper {
-		justify-content: flex-start;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 		gap: 15px;
 		margin-bottom: 20px;
 
@@ -199,6 +212,18 @@
 
 		&__add-all {
 			margin-right: 10px;
+		}
+	}
+
+	/* Filter actions */
+	.btsf-filter-actions {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+
+		&__dragger {
+			position: relative;
+			top: 2px;
 		}
 	}
 }
