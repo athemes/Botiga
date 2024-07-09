@@ -122,6 +122,16 @@
 
 .botiga-dashboard {
 	
+	/* Base control */
+	.components-base-control {
+		width: 100%;
+	}
+
+	/* Control input */
+	.components-text-control__input {
+		height: 38px !important;
+	}
+
 	/* Help label */
 	.components-base-control__help {
 		color: #757575;
@@ -160,6 +170,7 @@
 
 	/* Panel body */
 	.components-panel__body {
+		border-top: 0 !important;
 		transition: ease margin-top 250ms, ease opacity 250ms;
 
 		&.is-drag-hovering {
