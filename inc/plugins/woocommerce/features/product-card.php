@@ -149,6 +149,12 @@ function botiga_product_card_hooks() {
 			// Do not include on single product pages
 			if ( current_theme_supports( 'wc-product-gallery-lightbox' ) && false === is_product() ) {
 				add_action( 'botiga_footer_after', function(){
+					$has_search_popular_products = get_theme_mod( 'shop_search_enable_popular_products', 0 ) ? true : false;
+
+					if ( is_search() && ! $has_search_popular_products ) {
+						return;
+					}
+
 					wc_get_template( 'single-product/photoswipe.php' );
 				} );
 			}
