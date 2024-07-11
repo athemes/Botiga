@@ -248,6 +248,11 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 * Page templates with blocks
 		 */
 		add_theme_support( 'block-templates' );
+
+		/**
+		 * Appearance tools.
+		 */
+		add_theme_support( 'appearance-tools' );
 	}
 endif;
 add_action( 'after_setup_theme', 'botiga_setup' );
