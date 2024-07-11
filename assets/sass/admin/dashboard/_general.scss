@@ -1,9 +1,13 @@
 /* Hide Notices */
-#wpbody-content {
-	.notice, 
-	div.updated, 
-	div.error {
-		display: none !important;
+body {
+	&.toplevel_page_botiga-dashboard {
+		#wpbody-content {
+			.notice, 
+			div.updated, 
+			div.error {
+				display: none !important;
+			}
+		}
 	}
 }
 
