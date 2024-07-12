@@ -37,6 +37,8 @@ if( $header_transparent ) {
 $mobile_breakpoint = absint( get_theme_mod( 'mobile_breakpoint', 1024 ) );
 $min_width         = $mobile_breakpoint + 1;
 
+// Some of the CSS below is already present in the .CSS files. However we have to duplicate it here 
+// because the breakpoint in those static CSS files are not dynamic.
 $css .= "
     @media (max-width: {$mobile_breakpoint}px) {
         .bhfb-header.bhfb-mobile,
@@ -62,7 +64,7 @@ $css .= "
         .botiga-mega-menu-column > .sub-menu.botiga-dropdown-ul{
             display: block !important;
         }
-        .botiga-mega-menu-column .is-mega-menu-heading {
+        .is-mega-menu:not(.is-mega-menu-vertical) .botiga-mega-menu-column .is-mega-menu-heading {
             display: none !important;
         }
     }
