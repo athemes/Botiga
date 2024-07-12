@@ -105,7 +105,7 @@ class Botiga_Merchant_Single_Product_Elements {
 			/* Translators: 1. Customizer link. 2. Link text. */
 			__( 'The display is being controlled by Botiga under <a href="%1$s" target="_blank">%2$s</a>', 'botiga' ),
 			$customizer_section_url,
-			__( 'Customizer > WooCommerce > Single Product (Elements)', 'botiga' )
+			__( 'Customizer > WooCommerce > Single Product > Layout (Elements)', 'botiga' )
 		);
 
 		return array(
