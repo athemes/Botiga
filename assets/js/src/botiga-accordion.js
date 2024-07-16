@@ -4,11 +4,11 @@
  * jQuery Dependant: true
  * 
  */
+'use strict';
+
+var botiga = botiga || {};
+
 (function($){
-
-	'use strict';
-
-	let botiga = botiga || {};
 
 	botiga.accordion = {
 

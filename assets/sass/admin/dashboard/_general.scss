@@ -61,6 +61,11 @@ body {
 		&.atss-demo-pro-link-button {
 			padding: 6px 20px !important;
 		}
+
+		&disabled,
+		&.disabled {
+			pointer-events: none;
+		}
 	}
 
 	.button-medium {
@@ -782,4 +787,17 @@ body {
 			font-style: normal;
 		}
 	}
+}
+
+/* Divider */
+.botiga-dashboard-divider {
+	border-top: 1px solid #e1e1e1;
+    border-bottom: 0;
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* Card inner header */
+.botiga-dashboard-card-inner-header {
+	
 }

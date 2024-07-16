@@ -376,6 +376,23 @@ function botiga_dashboard_settings() {
 
 	// Pro features.
 	$settings['features'][] = array(
+		'module'     => 'shop-filters',
+		'type'       => 'pro',
+		'title'      => esc_html__('Shop Filters', 'botiga'),
+		'desc'       => esc_html__('Filter store products.', 'botiga'),
+		'link_label' => esc_html__('Customize', 'botiga'),
+		'link_url'   => add_query_arg(
+			array(
+				'page' => 'botiga-dashboard',
+				'module-page' => 'shop-filters',
+				'settings-page' => 'filter-presets',
+			),
+			admin_url('admin.php')
+		),
+		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-filters-module/',
+	);
+
+	$settings['features'][] = array(
 		'module'     => 'custom-fonts',
 		'type'       => 'pro',
 		'title'      => esc_html__('Custom Fonts', 'botiga'),
@@ -754,7 +771,7 @@ function botiga_dashboard_settings() {
 		'desc'       => esc_html__('Inject custom code across multiple available areas.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg('autofocus[panel]', 'botiga_panel_hooks', admin_url('customize.php')),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-checkout-distraction-free-and-sticky-totals-box/',
+		'docs_link'  => 'https://docs.athemes.com/article/pro-hooks-system/',
 	);
 
 	$settings['features'][] = array(
