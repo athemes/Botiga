@@ -165,6 +165,29 @@ class Botiga_Dashboard
             2
         );
 
+        
+        // Add 'Templates Builder' link
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Templates Builder', 'botiga'),
+            esc_html__('Templates Builder', 'botiga'),
+            'manage_options',
+            get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
+            '',
+            3
+        );
+
+        // Add 'Products Filter' link
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Products Filter', 'botiga'),
+            esc_html__('Products Filter', 'botiga'),
+            'manage_options',
+            get_admin_url() . 'admin.php?page=botiga-dashboard&tab=products-filter',
+            '',
+            4
+        );
+
         // Add 'Upgrade' link
         if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
             add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
@@ -174,7 +197,7 @@ class Botiga_Dashboard
                 'manage_options',
                 'https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga',
                 '',
-                3
+                5
             );
         }
     }
@@ -230,6 +253,8 @@ class Botiga_Dashboard
 
         wp_enqueue_script( 'botiga-select2-js', get_template_directory_uri() . '/assets/vendor/select2/select2.full.min.js', array( 'jquery' ), '4.0.6', true );
 		wp_enqueue_style( 'botiga-select2-css', get_template_directory_uri() . '/assets/vendor/select2/select2.min.css', array(), '4.0.6', 'all' );
+
+        wp_enqueue_style('wp-components');
 
         wp_localize_script('botiga-dashboard', 'botiga_dashboard', array(
             'ajax_url' => admin_url('admin-ajax.php'),

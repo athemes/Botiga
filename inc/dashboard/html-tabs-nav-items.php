@@ -10,15 +10,20 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+$is_products_filter_page = isset( $_GET['tab'] ) && 'products-filter' === $_GET['tab'] ? true : false;
+
+ob_start();
 echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
     echo '<ul>';
 
         $num = 0; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-
-        
         $nav_tab = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         foreach ($this->settings['tabs'] as $nav_tab_id => $nav_tab_title) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+            if ( $nav_tab_id === 'products-filter' ) {
+                continue;
+            }
 
             if ($this->settings['has_pro'] && $nav_tab_id === 'free-vs-pro') {
                 continue;
@@ -34,3 +39,10 @@ echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
 
     echo '</ul>';
 echo '</nav>';
+$output = ob_get_clean();
+
+if ( $is_products_filter_page ) {
+	return;
+}
+
+echo $output;
