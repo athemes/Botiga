@@ -44,6 +44,8 @@ function botiga_dashboard_settings() {
 	// Upgrade to Pro.
 	//
 	$settings['upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
+	$settings['tb_upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=templates_builder&utm_medium=link&utm_campaign=Botiga';
+	$settings['pf_upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=product_filters&utm_medium=link&utm_campaign=Botiga';
 
 	//
 	// Promo.

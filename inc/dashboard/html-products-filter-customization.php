@@ -40,7 +40,7 @@
         </div>
     </div>
     <hr class="botiga-dashboard-divider">
-    <a href="<?php echo esc_url( $this->settings['upgrade_pro'] ); ?>" class="button button-primary btsf-save-settings botiga-dashboard-pro-tooltip" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>" target="_blank" style="max-width: 150px;">
+    <a href="<?php echo esc_url( $this->settings['pf_upgrade_pro'] ); ?>" class="button button-primary btsf-save-settings botiga-dashboard-pro-tooltip" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>" target="_blank" style="max-width: 150px;">
         Save settings
         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
     </a>
