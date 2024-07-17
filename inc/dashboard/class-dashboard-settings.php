@@ -44,6 +44,8 @@ function botiga_dashboard_settings() {
 	// Upgrade to Pro.
 	//
 	$settings['upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
+	$settings['tb_upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=templates_builder&utm_medium=link&utm_campaign=Botiga';
+	$settings['pf_upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=product_filters&utm_medium=link&utm_campaign=Botiga';
 
 	//
 	// Promo.
@@ -67,7 +69,7 @@ function botiga_dashboard_settings() {
 	//
 	// Support.
 	//
-	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
+	$settings['support_link']     = 'https://athemes.com/support/';
 	$settings['support_pro_link'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_support&utm_medium=button&utm_campaign=Botiga';
 
 	//
@@ -112,6 +114,8 @@ function botiga_dashboard_settings() {
 			array_slice( $settings['tabs'], 2 )
 		);
 	}
+
+	$settings['tabs']['products-filter'] = esc_html__( 'Products Filter', 'botiga' );
 
 	//
 	// Settings.
@@ -378,7 +382,7 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'shop-filters',
 		'type'       => 'pro',
-		'title'      => esc_html__('Shop Filters', 'botiga'),
+		'title'      => esc_html__('Product Filters', 'botiga'),
 		'desc'       => esc_html__('Filter store products.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(
@@ -389,7 +393,7 @@ function botiga_dashboard_settings() {
 			),
 			admin_url('admin.php')
 		),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-filters-module/',
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-filters-module/',
 	);
 
 	$settings['features'][] = array(
@@ -889,6 +893,22 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 			$icon = '<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M5.0301 6.45275C4.95061 6.37327 4.91246 6.27722 4.91564 6.16462C4.91882 6.05201 4.96028 5.95597 5.04003 5.87648L6.16278 4.75374H1.73142C1.61881 4.75374 1.52436 4.71558 1.44805 4.63928C1.37174 4.56297 1.33372 4.46864 1.33399 4.3563C1.33399 4.2437 1.37214 4.14924 1.44845 4.07294C1.52475 3.99663 1.61908 3.95861 1.73142 3.95887H6.16278L5.0301 2.82619C4.95061 2.74671 4.91087 2.65225 4.91087 2.54283C4.91087 2.4334 4.95061 2.33908 5.0301 2.25985C5.10958 2.18037 5.20404 2.14062 5.31347 2.14062C5.42289 2.14062 5.51722 2.18037 5.59644 2.25985L7.41468 4.0781C7.45443 4.11785 7.48265 4.1609 7.49934 4.20727C7.51603 4.25363 7.52424 4.30331 7.52398 4.3563C7.52398 4.4093 7.51563 4.45897 7.49894 4.50534C7.48225 4.55171 7.45416 4.59476 7.41468 4.63451L5.5865 6.46269C5.51364 6.53555 5.42263 6.57198 5.31347 6.57198C5.2043 6.57198 5.10985 6.53224 5.0301 6.45275Z" fill="#6D7175"/>
 			</svg>';
+			break;
+
+		case 'customization':
+			$icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"></path></svg>';
+			break;
+
+		case 'filter-presets':
+			$icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path></svg>';
+			break;
+		
+		case 'seo':
+			$icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3.445 16.505a.75.75 0 001.06.05l5.005-4.55 4.024 3.521 4.716-4.715V14h1.5V8.25H14v1.5h3.19l-3.724 3.723L9.49 9.995l-5.995 5.45a.75.75 0 00-.05 1.06z"></path></svg>';
+			break;
+
+		case 'documentation':
+			$icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M12 4.75a7.25 7.25 0 100 14.5 7.25 7.25 0 000-14.5zM3.25 12a8.75 8.75 0 1117.5 0 8.75 8.75 0 01-17.5 0zM12 8.75a1.5 1.5 0 01.167 2.99c-.465.052-.917.44-.917 1.01V14h1.5v-.845A3 3 0 109 10.25h1.5a1.5 1.5 0 011.5-1.5zM11.25 15v1.5h1.5V15h-1.5z"></path></svg>';
 			break;
 		
 	}

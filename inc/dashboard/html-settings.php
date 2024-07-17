@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Tabs Nav Items
+ * Settings.
  * 
  * @package Dashboard
  */
