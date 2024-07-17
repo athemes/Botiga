@@ -57,13 +57,22 @@
     }
 
     .btsf-save-settings {
-        gap: 7px;
         max-width: 165px !important;
+    }
+
+    .has-icon {
+        gap: 7px;
 
         svg {
             width: 18px;
             height: 18px;
             fill: #FFF;
+        }
+
+        &.has-icon-blue {
+            svg {
+                fill: #3858e9;
+            }
         }
     }
 }

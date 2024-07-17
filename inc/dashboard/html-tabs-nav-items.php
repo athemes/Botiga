@@ -45,4 +45,4 @@ if ( $is_products_filter_page ) {
 	return;
 }
 
-echo $output;
+echo wp_kses_post( $output );

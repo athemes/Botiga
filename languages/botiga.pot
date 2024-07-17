@@ -993,7 +993,7 @@ msgstr ""
 msgid "Templates Builder"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:116, inc/dashboard/class-dashboard.php:182, inc/dashboard/class-dashboard.php:183
+#: inc/dashboard/class-dashboard-settings.php:116
 msgid "Products Filter"
 msgstr ""
 
@@ -1181,8 +1181,8 @@ msgstr ""
 msgid "Set and use Adobe Fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:383
-msgid "Shop Filters"
+#: inc/dashboard/class-dashboard-settings.php:383, inc/dashboard/class-dashboard.php:182, inc/dashboard/class-dashboard.php:183
+msgid "Product Filters"
 msgstr ""
 
 #: inc/dashboard/class-dashboard-settings.php:384
@@ -1890,12 +1890,24 @@ msgstr ""
 msgid "No notifications found"
 msgstr ""
 
-#: inc/dashboard/html-products-filter-customization.php:43, inc/dashboard/html-products-filter-filter-presets.php:17, inc/dashboard/html-products-filter-filter-presets.php:18, inc/dashboard/html-products-filter-filter-presets.php:22, inc/dashboard/html-products-filter-filter-presets.php:25, inc/dashboard/html-products-filter-general.php:91, inc/dashboard/html-products-filter-seo.php:69
+#: inc/dashboard/html-products-filter-customization.php:3
+msgid "Customization Settings"
+msgstr ""
+
+#: inc/dashboard/html-products-filter-customization.php:43, inc/dashboard/html-products-filter-filter-presets.php:17, inc/dashboard/html-products-filter-filter-presets.php:21, inc/dashboard/html-products-filter-filter-presets.php:28, inc/dashboard/html-products-filter-filter-presets.php:34, inc/dashboard/html-products-filter-general.php:91, inc/dashboard/html-products-filter-seo.php:69
 msgid "This is only available on Botiga Pro"
 msgstr ""
 
-#: inc/dashboard/html-products-filter.php:29
+#: inc/dashboard/html-products-filter-filter-presets.php:3, inc/dashboard/html-products-filter.php:29
 msgid "Filter Presets"
+msgstr ""
+
+#: inc/dashboard/html-products-filter-general.php:3
+msgid "General Settings"
+msgstr ""
+
+#: inc/dashboard/html-products-filter-seo.php:3
+msgid "SEO Settings"
 msgstr ""
 
 #: inc/dashboard/html-products-filter.php:31
@@ -1907,11 +1919,11 @@ msgid "SEO"
 msgstr ""
 
 #: inc/dashboard/html-products-filter.php:77
-msgid "Please note that to use this feature you need to activate the Products Filter module."
+msgid "Please note that to use this feature you need to activate the Product Filters module."
 msgstr ""
 
 #: inc/dashboard/html-products-filter.php:79
-msgid "Activate Products Filter"
+msgid "Activate Product Filters"
 msgstr ""
 
 #: inc/dashboard/html-settings-general.php:72

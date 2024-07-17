@@ -1,6 +1,6 @@
 <div class="botiga-dashboard-card botiga-dashboard-card-no-box-shadow">
     <div class="botiga-dashboard-card-inner-header bt-mb-10px">
-        <h2 class="bt-font-size-20px bt-mb-10px bt-mt-0">SEO Settings</h2>
+        <h2 class="bt-font-size-20px bt-mb-10px bt-mt-0"><?php echo esc_html__( 'SEO Settings', 'botiga' ); ?></h2>
         <p class="bt-text-color-grey bt-m-0">The SEO settings for the shop filters.</p>
     </div>
     <form class="bt-shop-filter-settings">
