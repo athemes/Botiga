@@ -165,7 +165,6 @@ class Botiga_Dashboard
             2
         );
 
-        
         // Add 'Templates Builder' link
         add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
             'botiga-dashboard',
@@ -177,11 +176,11 @@ class Botiga_Dashboard
             3
         );
 
-        // Add 'Products Filter' link
+        // Add 'Product Filters' link
         add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
             'botiga-dashboard',
-            esc_html__('Products Filter', 'botiga'),
-            esc_html__('Products Filter', 'botiga'),
+            esc_html__('Product Filters', 'botiga'),
+            esc_html__('Product Filters', 'botiga'),
             'manage_options',
             get_admin_url() . 'admin.php?page=botiga-dashboard&tab=products-filter',
             '',

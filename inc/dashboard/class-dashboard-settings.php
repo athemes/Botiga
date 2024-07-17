@@ -67,7 +67,7 @@ function botiga_dashboard_settings() {
 	//
 	// Support.
 	//
-	$settings['support_link']     = 'https://wordpress.org/support/theme/botiga/';
+	$settings['support_link']     = 'https://athemes.com/support/';
 	$settings['support_pro_link'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_support&utm_medium=button&utm_campaign=Botiga';
 
 	//
@@ -380,7 +380,7 @@ function botiga_dashboard_settings() {
 	$settings['features'][] = array(
 		'module'     => 'shop-filters',
 		'type'       => 'pro',
-		'title'      => esc_html__('Shop Filters', 'botiga'),
+		'title'      => esc_html__('Product Filters', 'botiga'),
 		'desc'       => esc_html__('Filter store products.', 'botiga'),
 		'link_label' => esc_html__('Customize', 'botiga'),
 		'link_url'   => add_query_arg(
@@ -391,7 +391,7 @@ function botiga_dashboard_settings() {
 			),
 			admin_url('admin.php')
 		),
-		'docs_link'  => 'https://docs.athemes.com/article/pro-shop-filters-module/',
+		'docs_link'  => 'https://docs.athemes.com/article/pro-product-filters-module/',
 	);
 
 	$settings['features'][] = array(

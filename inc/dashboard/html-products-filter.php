@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
 
                                     <?php if ( 'documentation' === $section_id ) : ?>
                                         <li class="botiga-dashboard-tabs-nav-item<?php echo esc_attr( $tab_active ); ?>">
-                                            <a href="https://docs.athemes.com/article/pro-shop-filters-module/" class="botiga-dashboard-tabs-nav-link no-tabs-link" target="_blank">
+                                            <a href="https://docs.athemes.com/article/pro-product-filters-module/" class="botiga-dashboard-tabs-nav-link no-tabs-link" target="_blank">
                                                 <?php echo botiga_dashboard_get_setting_icon( $section_id ); ?>
                                                 <?php echo esc_html( $section_title ); ?>
                                             </a>
@@ -71,12 +71,12 @@ if (!defined('ABSPATH')) {
                                 </a>
                             </div>
                         <?php endif; ?>
-                        <?php if ( $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'templates' ) ) ) : ?>
+                        <?php if ( $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'shop-filters' ) ) ) : ?>
                             <div class="botiga-dashboard-alert botiga-dashboard-alert-warning botiga-dashboard-alert-with-icon botiga-dashboard-alert-with-upsell-link">
                                 <div class="alert-icon"><?php echo botiga_get_svg_icon( 'icon-warning' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-                                <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Products Filter module.', 'botiga' ); ?></p>
+                                <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Product Filters module.', 'botiga' ); ?></p>
                                 <a href="#" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-module-activation botiga-dashboard-external-link" data-module-id="shop-filters" data-module-activate="true" data-module-after-activation-redirect="<?php echo esc_url( get_admin_url() . 'admin.php?page=botiga-dashboard&module-page=shop-filters&settings-page=filter-presets' ); ?>">
-                                    <?php echo esc_html__( 'Activate Products Filter', 'botiga' ); ?>
+                                    <?php echo esc_html__( 'Activate Product Filters', 'botiga' ); ?>
                                 </a>
                             </div>
                         <?php endif; ?>
