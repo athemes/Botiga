@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.2.4
+Version: 2.2.5
 Tested up to: 6.5
 Requires PHP: 7
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,13 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.5 =
+Added - Support to 'appearance-tools' (more block editor controls).
+Fixed - Strong and bold tags: The bold style is not being applied in some browsers and OS's.
+Fixed - Search Page: PhotoSwiper buttons appearing in the bottom of the page when there's no results in the search.
+Fixed - Notices being hide in the Appearance > Themes page.
+Fixed - Product Categories Block/Widget: PHP error when option to display only children categories is enabled.
+
 = 2.2.4 =
 Added - Header: New control for header mobile breakpoint.
 Changed - Real Time Search - Search by SKU: Ensure the SKU match is the first in the results list.

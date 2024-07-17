@@ -7,16 +7,17 @@
 
 /**
  * Add popular products if no products found.
+ * 
+ * @return void
  */
 function botiga_woocommerce_no_products_found_popular_products() {
-
 	$enable = get_theme_mod( 'shop_search_enable_popular_products', 0 );
 
 	if ( ! $enable || ! is_search() ) {
 		return;
 	}
+	?>
 
-?>
 	<section class="products botiga-no-products-found-popular-products">
 		<?php
 
@@ -66,5 +67,4 @@ function botiga_woocommerce_no_products_found_popular_products() {
 	</section>
 	<?php
 }
-
 add_action( 'woocommerce_no_products_found', 'botiga_woocommerce_no_products_found_popular_products' );

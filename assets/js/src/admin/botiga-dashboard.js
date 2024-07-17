@@ -56,7 +56,7 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 			tabs.each(function(){
 				const tabWrapperId = $( this ).data( 'tab-wrapper-id' );
 
-				$( this ).find( '.botiga-dashboard-tabs-nav-link' ).on( 'click', function(e){
+				$( this ).find( '.botiga-dashboard-tabs-nav-link:not(.no-tabs-link)' ).on( 'click', function(e){
 					e.preventDefault();
 
 					const 

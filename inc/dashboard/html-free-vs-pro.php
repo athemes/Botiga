@@ -227,6 +227,14 @@ if (!defined('ABSPATH')) {
                                     <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
                                 </div>
                                 <div class="botiga-dashboard-freevspro-table__row">
+                                    <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature">
+                                        <strong><a href="https://docs.athemes.com/article/pro-size-chart/" target="_blank">Advanced Shop Filters<i class="dashicons dashicons-external"></i></a></strong>
+                                        <i class="botiga-dashboard-freevspro-table__desc">Shop filters management with advanced options.</i>
+                                    </div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
+                                    <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>
+                                </div>
+                                <div class="botiga-dashboard-freevspro-table__row">
                                     <div class="botiga-dashboard-freevspro-table__column botiga-dashboard-freevspro-table__column--feature"><strong>Wishlist</strong></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-no-alt"></i></div>
                                     <div class="botiga-dashboard-freevspro-table__column"><i class="botiga-dashboard-freevspro-table__icon dashicons dashicons-saved"></i></div>

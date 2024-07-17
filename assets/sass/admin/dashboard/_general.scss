@@ -1,9 +1,13 @@
 /* Hide Notices */
-#wpbody-content {
-	.notice, 
-	div.updated, 
-	div.error {
-		display: none !important;
+body {
+	&.toplevel_page_botiga-dashboard {
+		#wpbody-content {
+			.notice, 
+			div.updated, 
+			div.error {
+				display: none !important;
+			}
+		}
 	}
 }
 
@@ -56,6 +60,11 @@
 		&.atss-import-open-button,
 		&.atss-demo-pro-link-button {
 			padding: 6px 20px !important;
+		}
+
+		&disabled,
+		&.disabled {
+			pointer-events: none;
 		}
 	}
 
@@ -778,4 +787,17 @@
 			font-style: normal;
 		}
 	}
+}
+
+/* Divider */
+.botiga-dashboard-divider {
+	border-top: 1px solid #e1e1e1;
+    border-bottom: 0;
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* Card inner header */
+.botiga-dashboard-card-inner-header {
+	
 }

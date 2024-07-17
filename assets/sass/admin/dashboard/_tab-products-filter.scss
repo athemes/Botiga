@@ -1,0 +1,78 @@
+.botiga-products-filter-wrapper {
+    .botiga-dashboard-alert-warning {
+        a {
+            margin-top: 0 !important;
+        }
+    }
+
+    .botiga-dashboard-tabs-nav ul {
+        li {
+            a {
+                font-size: 16px !important;
+
+                svg {
+                    width: 18px !important;
+                }
+            }
+        }
+    }
+
+    .components-panel__row {
+        & + .components-panel__row {
+            margin-top: 18px !important;
+        }
+    }
+
+    .components-base-control__label,
+    .components-input-control__label {
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: calc(8px);
+        padding: 0px;
+    }
+
+    .components-flex.components-h-stack:not(.components-v-stack) {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-direction: row;
+        gap: calc(12px);
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .components-base-control__help {
+        margin-top: 5px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .components-radio-control__option {
+        & + .components-radio-control__option {
+            margin-top: 3px !important;
+        }
+    }
+
+    .btsf-save-settings {
+        max-width: 165px !important;
+    }
+
+    .has-icon {
+        gap: 7px;
+
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: #FFF;
+        }
+
+        &.has-icon-blue {
+            svg {
+                fill: #3858e9;
+            }
+        }
+    }
+}

@@ -15,6 +15,11 @@ global $pagenow;
 
 $screen = get_current_screen(); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $user   = wp_get_current_user(); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+$is_products_filter_page = isset( $_GET['tab'] ) && 'products-filter' === $_GET['tab'] ? true : false;
+
+if ( $is_products_filter_page ) {
+	return;
+}
 
 ?>
 
