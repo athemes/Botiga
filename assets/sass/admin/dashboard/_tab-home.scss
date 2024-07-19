@@ -82,6 +82,15 @@
 		}
 	}
 
+	&.botiga-dashboard-feature-card-plugin {
+		gap: 10px;
+		height: 100%;
+
+		a {
+			margin-top: auto;
+		}
+	}
+
 	&:hover {
 		box-shadow: 0px 8px 12px 0px rgba(240, 240, 241, 0.7);
 

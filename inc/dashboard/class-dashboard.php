@@ -483,7 +483,7 @@ class Botiga_Dashboard
 
         }
 
-        wp_send_json_error(esc_html__('Failed to initialize or activate importer plugin.', 'botiga'));
+        wp_send_json_error(esc_html__('Failed to initialize or activate the plugin.', 'botiga'));
     }
 
     /**
