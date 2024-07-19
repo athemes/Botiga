@@ -723,6 +723,15 @@ body {
 			border-bottom: 1px solid #F0F0F1;
 		}
 	}
+
+	&.botiga-dashboard-card-plugin {
+		gap: 10px;
+		height: 100%;
+
+		a {
+			margin-top: auto;
+		}
+	}
 }
 
 .botiga-dashboard-sticky-wrapper {
