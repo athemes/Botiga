@@ -190,7 +190,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				if ( 'System default' !== $body_font['font'] ) {
 					$css .= $body_selector . '{ font-family:' . esc_attr( $body_font['font'] ) . ',' . esc_attr( $body_font['category'] ) . '; font-weight: '. esc_attr( $body_font['regularweight'] ) .';}' . "\n";    
 				}
-				
+
 				if ( 'System default' !== $headings_font['font'] ) {
 					$selectors = array( 
 						'h1', 
@@ -204,6 +204,14 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 						'.checkout .recurring-totals > th',
 					);
 					$selector = self::get_mounted_selector( $selectors, $empty_selector );
+
+					if ( 'block-editor' === $context  ) {
+						$selectors = array_map( function( $selector ) {
+							return '.is-layout-flow ' . $selector;
+						}, $selectors );
+
+						$selector .= self::get_mounted_selector( $selectors, $empty_selector );
+					}
 					
 					$css .= $selector . '{ font-family:' . esc_attr( $headings_font['font'] ) . ',' . esc_attr( $headings_font['category'] ) . '; font-weight: '. esc_attr( $headings_font['regularweight'] ) .';}' . "\n";
 				}
@@ -672,6 +680,89 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$selector = self::get_mounted_selector( $selectors, $empty_selector );
 
 				$css .= $selector . "{ text-decoration:" . esc_attr( $header_menu_text_decoration ) . ";text-transform:" . esc_attr( $header_menu_text_transform ) . ";font-style:" . esc_attr( $header_menu_font_style ) . ";line-height:" . esc_attr( $header_menu_line_height ) . ";letter-spacing:" . esc_attr( $header_menu_letter_spacing ) . "px;}" . "\n";
+			}
+
+			return $css;
+		}
+
+		/**
+		 * Get block editor color palettes CSS.
+		 * 
+		 * @return string
+		 */
+		public static function get_block_editor_color_palettes_css( $context = 'frontend' ) {
+			$palettes = botiga_global_color_palettes();
+		    $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
+			$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
+			$css = '';
+
+			if ( $custom_palette_toggle ) {
+				for ( $i = 0; $i < 8; $i++ ) {
+					$color = get_theme_mod( 'custom_color' . ($i+1), '#212121' );
+					$css .= "{{SELECTOR_WRAPPER}}.has-color-" . $i . "-color, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-color:hover, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-color:active, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-color:visited { color:" . esc_attr( $color ) . ";}" . "\n";
+					$css .= "{{SELECTOR_WRAPPER}}.has-color-" . $i . "-background-color, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-background-color:hover { background-color:" . esc_attr( $color ) . ";}" . "\n";
+				}
+			} else {
+				for ( $i = 0; $i < 8; $i++ ) {
+					$css .= "{{SELECTOR_WRAPPER}}.has-color-" . $i . "-color, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-color:hover, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-color:active, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-color:visited { color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
+					$css .= "{{SELECTOR_WRAPPER}}.has-color-" . $i . "-background-color, {{SELECTOR_WRAPPER}}.has-color-" . $i . "-background-color:hover { background-color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
+				}
+			}
+
+			// Backward compatibility.
+			foreach ( $palettes as $key => $palette ) {
+				for ( $i = 0; $i < 8; $i++ ) { 
+					$css .= "{{SELECTOR_WRAPPER}}.has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color, {{SELECTOR_WRAPPER}}.has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color:active, {{SELECTOR_WRAPPER}}.has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color:visited { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+					$css .= "{{SELECTOR_WRAPPER}}.has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
+				}
+			}
+
+			if ( $context === 'block-editor' ) {
+				$css = str_replace( '{{SELECTOR_WRAPPER}}', 'div.editor-styles-wrapper ', $css );
+			} else {
+				$css = str_replace( '{{SELECTOR_WRAPPER}}', '', $css );
+			}
+
+			return $css;
+		}
+
+		/**
+		 * Get WPForms CSS.
+		 * 
+		 */
+		public static function get_wpforms_css( $context = 'frontend' ) {
+			$color_forms_placeholder = get_theme_mod( 'color_forms_placeholder' );
+			$button_border_radius = get_theme_mod( 'button_border_radius' );
+			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
+			$button_border_color = get_theme_mod( 'button_border_color', '#212121' );
+			$button_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
+
+			$css = self::get_background_color_css( 'color_forms_text', '', '{{SELECTOR_WRAPPER}}div.wpforms-container-full .wpforms-form .wpforms-field-number-slider input[type=range]::-webkit-slider-thumb', true );
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-field ::placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;opacity:1;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-field :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-field ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
+
+			// button
+			$css .= self::get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), '{{SELECTOR_WRAPPER}}.wpforms-submit', true );
+			$css .= self::get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '{{SELECTOR_WRAPPER}}.wpforms-submit', true );
+
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit { border-radius:" . intval( $button_border_radius ) . "px !important;}" . "\n";
+
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit { text-transform:" . esc_attr( $button_text_transform ) . " !important;}" . "\n";
+
+			$css .= self::get_background_color_css( 'button_background_color', '#212121', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-background)', true );          
+			$css .= self::get_background_color_css( 'button_background_color_hover', '#757575', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-background):hover', true );          
+
+			$css .= self::get_color_css( 'button_color', '#FFF', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-text-color)', true );           
+			$css .= self::get_color_css( 'button_color_hover', '#FFF', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-text-color):hover', true );
+			
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
+
+			if ( 'block-editor' === $context ) {
+				$css = str_replace( '{{SELECTOR_WRAPPER}}', 'div.editor-styles-wrapper ', $css );
+			} else {
+				$css = str_replace( '{{SELECTOR_WRAPPER}}', '', $css );
 			}
 
 			return $css;
@@ -1769,30 +1860,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_price_filter .ui-slider .ui-slider-handle:hover' );
 
 			//WPForms
-			$color_forms_borders = get_theme_mod( 'color_forms_borders' );
-			$color_forms_placeholder = get_theme_mod( 'color_forms_placeholder' );
 			if( defined( 'WPFORMS_VERSION' ) ) {
-				$css .= $this->get_background_color_css( 'color_forms_text', '', 'div.wpforms-container-full .wpforms-form .wpforms-field-number-slider input[type=range]::-webkit-slider-thumb', true );
-				$css .= ".wpforms-field ::placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;opacity:1;}" . "\n";
-				$css .= ".wpforms-field :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
-				$css .= ".wpforms-field ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
-
-				// button
-				$css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), '.wpforms-submit', true );
-				$css .= $this->get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '.wpforms-submit', true );
-
-				$css .= ".wpforms-submit { border-radius:" . intval( $button_border_radius ) . "px !important;}" . "\n";
-
-				$css .= ".wpforms-submit { text-transform:" . esc_attr( $button_text_transform ) . " !important;}" . "\n";
-
-				$css .= $this->get_background_color_css( 'button_background_color', '#212121', '.wpforms-submit:not(.has-background)', true );          
-				$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.wpforms-submit:not(.has-background):hover', true );          
-
-				$css .= $this->get_color_css( 'button_color', '#FFF', '.wpforms-submit:not(.has-text-color)', true );           
-				$css .= $this->get_color_css( 'button_color_hover', '#FFF', '.wpforms-submit:not(.has-text-color):hover', true );
-				
-				$css .= ".wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
-				$css .= ".wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
+				$css .= self::get_wpforms_css();
 			}
 
 			// Layouts
@@ -1824,31 +1893,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_background_color_rgba_css( 'content_background_color', '#ffffff', '.site', 1 );          
 			}
 
-			//Gutenberg palettes
-			$palettes = botiga_global_color_palettes();
-		    $selected_palette = get_theme_mod( 'color_palettes', 'palette1' );
-			$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
-
-			if ( $custom_palette_toggle ) {
-				for ( $i = 0; $i < 8; $i++ ) {
-					$color = get_theme_mod( 'custom_color' . ($i+1), '#212121' );
-					$css .= ".has-color-" . $i . "-color, .has-color-" . $i . "-color:hover, .has-color-" . $i . "-color:active, .has-color-" . $i . "-color:visited { color:" . esc_attr( $color ) . ";}" . "\n";
-					$css .= ".has-color-" . $i . "-background-color, .has-color-" . $i . "-background-color:hover { background-color:" . esc_attr( $color ) . ";}" . "\n";
-				}
-			} else {
-				for ( $i = 0; $i < 8; $i++ ) {
-					$css .= ".has-color-" . $i . "-color, .has-color-" . $i . "-color:hover, .has-color-" . $i . "-color:active, .has-color-" . $i . "-color:visited { color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
-					$css .= ".has-color-" . $i . "-background-color, .has-color-" . $i . "-background-color:hover { background-color:" . esc_attr( $palettes[$selected_palette][$i] ) . ";}" . "\n";
-				}
-			}
-
-			// Gutenberg palettes backward compatibility
-			foreach ( $palettes as $key => $palette ) {
-				for ( $i = 0; $i < 8; $i++ ) { 
-					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color, .has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color:active, .has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-color:visited { color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
-					$css .= ".has-" . str_replace( 'palette', 'palette-', $key ) . "-color-" . $i . "-background-color { background-color:" . esc_attr( $palettes[$key][$i] ) . ";}" . "\n";
-				}
-			}
+			// Block editor color palettes.
+			$css .= self::get_block_editor_color_palettes_css();
 
 			/**
 			 * Hook 'botiga_custom_css_output'

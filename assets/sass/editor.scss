@@ -9,13 +9,20 @@
 /*
 * General
 */
+
+html {
+	:where(.wp-block) {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
 .block-editor-block-list__block {
 	margin-top: 0;
 	margin-bottom: 25px;
 }
 @media (min-width: 1600px) {
 	.wp-block {
-		max-width: 1000px;
+		max-width: 1110px;
 	}
 }
 
@@ -37,32 +44,45 @@
 	}
 }
 
-/*
-* Spacing
-*/
 div.editor-styles-wrapper {
-	@import "utilities/spacing";
-}
+	color: $color__text-main;
+	font-family: $font__main;
+	font-size: 1rem;
+	line-height: $font__line-height-body;
 
-/*
-* Typography
-*/
-div.editor-styles-wrapper {
+	/*
+	 * Spacing
+	 */
+	@import "utilities/spacing";
+
+	/*
+	 * Typography
+	 */
 	@import "base/typography/typography";
 
-	.editor-post-title .editor-post-title__input {
-		@include font-size(32);
-    	margin: 0 0 12px;
-		font-weight: 600;
-		text-align: center;
+	.editor-visual-editor__post-title-wrapper {
+		margin: 1rem 0 0 !important;
+
+		.editor-post-title__input {
+			@include font-size(32);
+			margin-bottom: 1rem;
+			margin-top: 0 !important;
+			font-weight: 600;
+		}
 	}
-}
 
-/*
-* Elements
-*/
-div.editor-styles-wrapper {
+	/*
+	 * Paragraph.
+	 */
+	.wp-block {
+		&[data-empty="true"] {
+			display: none;
+		}
+	}
 
+	/*
+	 * Elements
+	 */
 	button:not(.components-button),
 	a.button,
 	.wp-block-button__link,
@@ -150,23 +170,57 @@ div.editor-styles-wrapper {
 	}
 	@import "base/elements/lists";
 	@import "base/elements/tables";
-}
 
-/*
-* Woocommerce
-*/ 
-// WooCommerce color variables
-$woocommerce__color-error: #e2401c;
-$woocommerce__color-success: #0f834d;
-$woocommerce__color-info: #3d9cd2;
+	/*
+	 * General blocks.
+	 */
+	@import "components/blocks/spacer";
 
-div.editor-styles-wrapper {
+	/*
+	 * Woocommerce
+	 */ 
+	$woocommerce__color-error: #e2401c;
+	$woocommerce__color-success: #0f834d;
+	$woocommerce__color-info: #3d9cd2;
 
 	@import "plugins/woocommerce/components";
 	@import "plugins/woocommerce/products";
 	@import "plugins/woocommerce/cart-block";
 	@import "plugins/woocommerce/checkout-block";
 
+	.wc-block-grid {
+		.wc-block-grid__products {
+			margin: 0;
+		}
+	}
+
+	/**
+	 * Widget blocks
+	 */
+	@import "components/widgets/widget_blocks";
+
+	/*
+	 * Pagination
+	 */
+	@import "components/navigation/navigation";
+
+	/*
+	 * Forms
+	 */
+	@import "components/misc/wpforms";
+	@import "components/misc/wpcf7";
+
+	/**
+	 * Variations table.
+	 */
+	table.variations {
+		border: none;
+
+		tr, th, td {
+			padding: 0;
+			border: none;
+		}
+	}
 }
 
 /*
@@ -179,16 +233,6 @@ div.editor-styles-wrapper {
 		margin: 0 0 20px;
 		@include font-size(18);		
 	}
-}
-div.editor-styles-wrapper {
-	@import "components/widgets/widget_blocks";
-}
-
-/*
-* Pagination
-*/
-div.editor-styles-wrapper {
-	@import "components/navigation/navigation";
 }
 
 /*

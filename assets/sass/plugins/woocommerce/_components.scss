@@ -1628,6 +1628,7 @@ dl.variation {
 			cursor: pointer;
 			overflow: hidden;
 			transition: ease all 300ms;
+			box-sizing: border-box;
 
 			&:hover,
 			&.active {
@@ -2235,6 +2236,7 @@ dl.variation {
 		opacity: 0.4;
 		overflow: hidden;
 		transition: all .3s;
+		box-sizing: border-box;
 
 		&:hover,
 		&.active{
