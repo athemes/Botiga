@@ -5,10 +5,10 @@ a.button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 2px solid $color__primary;
+	border: 2px solid var( --bt-color-button-bg, #212121 );
 	box-shadow: none;
-	background: $color__primary;
-	color: #fff;
+	background: var( --bt-color-button-bg, #212121 );
+	color: var( --bt-color-button, #FFF );
 	padding: 13px 24px;
 	cursor: pointer;
 	display: inline-block;
@@ -22,26 +22,35 @@ input[type="submit"] {
 	font-size: var( --bt-font-size-button, 14px );
 
 	&:hover {
-		border-color: $color__hover;
+		border-color: var( --bt-color-button-border-hover, #FFF );
 
 		&:not(.has-background) {
-			background-color: $color__hover;
+			background-color: var( --bt-color-button-bg-hover, #FFF );
 		}
 	}
 
 	&:active,
 	&:focus {
-		color: #fff;
+		color: var( --bt-color-button-hover, #FFF );
 	}
 }
-a.wc-backward {
-	color: #fff;
+
+a {
+	&.button.checkout:not(.has-text-color),
+	&.button:not(.wc-forward):not(.has-text-color),
+	&.wc-backward {
+		color: var( --bt-color-button, #FFF );
+	}
 }
-.is-style-outline .wp-block-button__link:not(.has-text-color),
-.wp-block-button__link:not(.has-text-color).is-style-outline {
-	color: $color__primary;
-	border: 2px solid $color__primary;
+
+.button {
+	&.checkout-button {
+		&:not(.has-text-color) {
+			color: var( --bt-color-button, #FFF );
+		}
+	}
 }
+
 .wp-block-button {
 	margin-bottom: 20px;
 
@@ -51,6 +60,12 @@ a.wc-backward {
 				background-color: transparent;
 				background-image: none;
 			}
+		}
+	}
+
+	&.is-style-squared {
+		a {
+			border-radius: 0;
 		}
 	}
 
@@ -78,10 +93,28 @@ a.wc-backward {
 		}
 	}
 }
-.wp-block-button.is-style-squared, 
-.wp-block-button__link.wp-block-button.is-style-squared {
-	a {
-		border-radius: 0;
+
+.wp-block-button__link {
+	&:not(.has-text-color) {
+		color: var( --bt-color-button, #FFF );
+
+		&.is-style-outline {
+			color: var( --bt-color-button, #FFF );
+			border: 2px solid var( --bt-color-button-border, #212121 );
+		}
+	}
+
+	&.wp-block-button.is-style-squared {
+		a {
+			border-radius: 0;
+		}
+	}
+
+	.is-style-outline & {
+		&:not(.has-text-color) {
+			color: var( --bt-color-button, #FFF );
+			border: 2px solid var( --bt-color-button-border, #212121 );
+		}
 	}
 }
 

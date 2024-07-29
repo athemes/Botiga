@@ -51,6 +51,23 @@ div.editor-styles-wrapper {
 	line-height: $font__line-height-body;
 
 	/*
+	 * Buttons Disabled
+	 */
+	.button-disabled, 
+	.button-secondary.disabled, 
+	.button-secondary:disabled, 
+	.button-secondary[disabled], 
+	.button.disabled, 
+	.button:disabled, 
+	.button[disabled] {
+		color: var( --bt-color-button, #FFF ) !important;
+		background-color: var( --bt-color-button-bg, #212121 ) !important;
+		opacity: 0.6 !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+
+	/*
 	 * Spacing
 	 */
 	@import "utilities/spacing";
@@ -83,80 +100,8 @@ div.editor-styles-wrapper {
 	/*
 	 * Elements
 	 */
-	button:not(.components-button),
-	a.button,
-	.wp-block-button__link,
-	input[type="button"],
-	input[type="reset"],
-	input[type="submit"] {
-		border: 2px solid $color__primary;
-		box-shadow: none;
-		background: $color__primary;
-		color: #fff;
-		padding: 13px 24px;
-		cursor: pointer;
-		display: inline-block;
-		transition: all 0.3s;
-		border-radius: 0;
-		height: auto;
-		border-radius: 0;
-		font-weight: 400;
-		@include font-size(14);
-	
-		&:hover {
-			color: #fff;
-			background-color: $color__hover;
-			border-color: $color__hover;
-		}
-	
-		&:active,
-		&:focus {
-			color: #fff;
-		}
-	}
-	a.wc-backward {
-		color: #fff;
-	}
-	.is-style-outline .wp-block-button__link:not(.has-text-color),
-	.wp-block-button__link:not(.has-text-color).is-style-outline {
-		color: $color__primary;
-		border: 2px solid $color__primary;
-	}
-	.wp-block-button {
-		margin-bottom: 20px;
-	
-		&[style*="text-transform"] {
-			.wp-block-button__link {
-				text-transform: inherit;
-			}
-		}
-	
-		&[style*="letter-spacing"] {
-			.wp-block-button__link {
-				letter-spacing: inherit;
-			}
-		}
-	
-		&[style*="font-weight"] {
-			.wp-block-button__link {
-				font-weight: inherit;
-			}
-		}
-	
-		&[style*="font-style"] {
-			.wp-block-button__link {
-				font-style: inherit;
-			}
-		}
-	}
-	.wp-block-button.is-style-squared, 
-	.wp-block-button__link.wp-block-button.is-style-squared {
-		a {
-			border-radius: 0;
-		}
-	}
-
 	@import "base/elements/links";
+	@import "base/elements/buttons";
 
 	.wp-block-freeform.block-library-rich-text__tinymce a {
 		color: $color__primary;

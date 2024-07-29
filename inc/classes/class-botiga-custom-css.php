@@ -769,17 +769,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 		}
 
 		/**
-		 * Output all custom CSS
+		 * Get mounted theme CSS variables.
+		 * 
 		 */
-		public function output_css( $custom_css = false ) {
-			global $post;
-
+		public static function get_mounted_body_variables() {
 			$css = '';
 
-			//Typograhpy
-			$css .= $this->get_typography_css( 'frontend' );
-
-			// Body variables.
 			$css .= self::get_variables_css(
 				'body',
 				array(
@@ -1019,8 +1014,37 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 						'name'     => '--bt-color-button-bg-hover',
 						'unit'     => '',
 					),
+					array(
+						'setting'  => 'button_border_color',
+						'defaults' => '#212121',
+						'name'     => '--bt-color-button-border',
+						'unit'     => '',
+					),
+					array(
+						'setting'  => 'button_border_color_hover',
+						'defaults' => '#757575',
+						'name'     => '--bt-color-button-border-hover',
+						'unit'     => '',
+					),
 				)
 			);
+
+			return $css;
+		}
+
+		/**
+		 * Output all custom CSS
+		 */
+		public function output_css( $custom_css = false ) {
+			global $post;
+
+			$css = '';
+
+			//Typograhpy
+			$css .= $this->get_typography_css( 'frontend' );
+
+			// Body variables.
+			$css .= self::get_mounted_body_variables();
 
 			//Global colors
 			$css .= $this->get_color_css( 'site_title_color', '', '.site-header .site-title a' );
@@ -1837,7 +1861,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= "button,a.button,.wp-block-button__link,.wc-block-components-button,.wc-block-components-button .wc-block-components-button__text,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . "; text-decoration:" . esc_attr( $button_text_decoration ) . ";}" . "\n";
 
 			$css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button:not(.has-background),a.button:not(.has-background),.wp-block-button .wp-block-button__link:not(.has-background),.wp-block-button__link:not(.has-background),.wp-block-search .wp-block-search__button:not(.has-background),input[type="button"]:not(.has-background),input[type="reset"]:not(.has-background),input[type="submit"]:not(.has-background),.comments-area .comment-reply-link:not(.has-background),.botiga-sc-product-quantity' );          
-			$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.is-style-outline .wp-block-button__link:not(.has-background):hover,button:not(.has-background):hover,a.button:not(.has-background):hover,.wp-block-button .wp-block-button__link:not(.has-background):hover,.wp-block-button__link:not(.has-background):hover,.wp-block-search .wp-block-search__button:not(.has-background):hover,input[type="button"]:not(.has-background):hover,input[type="reset"]:not(.has-background):hover,input[type="submit"]:not(.has-background):hover,.comments-area .comment-reply-link:not(.has-background):hover' );          
+			$css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.is-style-outline .wp-block-button__link:not(.has-background):hover,button:not(.has-background):hover,a.button:not(.has-background):hover,.wp-block-button .wp-block-button__link:not(.has-background):hover,.wp-block-button__link:not(.has-background):hover,.wp-block-search .wp-block-search__button:not(.has-background):hover,input[type="button"]:not(.has-background):hover,input[type="reset"]:not(.has-background):hover,input[type="submit"]:not(.has-background):hover,.comments-area .comment-reply-link:not(.has-background):hover' );       
 
 			$css .= $this->get_color_css( 'button_color', '#FFF', '.wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color),button:not(.has-text-color),a.button:not(.wc-forward):not(.has-text-color),a.button.checkout:not(.has-text-color),.checkout-button.button:not(.has-text-color),.wp-block-button .wp-block-button__link:not(.has-text-color),.wp-block-button__link:not(.has-text-color),input[type="button"]:not(.has-text-color),input[type="reset"]:not(.has-text-color),input[type="submit"]:not(.has-text-color),.woocommerce-message .button.wc-forward:not(.has-text-color),.comments-area .comment-reply-link:not(.has-text-color), .wp-block-search .wp-block-search__button:not(.has-text-color),.botiga-sc-product-quantity' );          
 			$css .= $this->get_color_css( 'button_color_hover', '#FFF', '.is-style-outline .wp-block-button__link:not(.has-text-color):hover,button:hover,a.button:not(.wc-forward):not(.has-text-color):hover,a.button.checkout:not(.has-text-color):hover,.checkout-button.button:not(.has-text-color):hover,.wp-block-button .wp-block-button__link:not(.has-text-color):hover,.wp-block-button__link:not(.has-text-color):hover,input[type="button"]:not(.has-text-color):hover,input[type="reset"]:not(.has-text-color):hover,input[type="submit"]:not(.has-text-color):hover,.woocommerce-message .button.wc-forward:not(.has-text-color):hover,.comments-area .comment-reply-link:not(.has-text-color):hover, .wp-block-search .wp-block-search__button:not(.has-text-color):hover' );

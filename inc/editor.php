@@ -37,27 +37,55 @@ function botiga_enqueue_gutenberg_assets() {
 	// Block editor color palettes.
 	$css .= Botiga_Custom_CSS::get_block_editor_color_palettes_css( 'block-editor' );
 
+	// Body CSS variables.
+	$css .= Botiga_Custom_CSS::get_mounted_body_variables();
+
 	//Buttons
-	$css .= Botiga_Custom_CSS::get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'div.editor-styles-wrapper button,a.button,div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"], div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link' );
-	$css .= Botiga_Custom_CSS::get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), 'div.editor-styles-wrapper button,a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"], div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link' );
+	// $css .= Botiga_Custom_CSS::get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'div.editor-styles-wrapper button,a.button,div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"], div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link' );
+	// $css .= Botiga_Custom_CSS::get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), 'div.editor-styles-wrapper button,a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"], div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link' );
+
+	$button_letter_spacing = get_theme_mod( 'button_letter_spacing' );
+	$css .= "div.editor-styles-wrapper button, div.editor-styles-wrapper a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper .wc-block-components-button, div.editor-styles-wrapper input[type=\"button\"], div.editor-styles-wrapper input[type=\"reset\"], div.editor-styles-wrapper input[type=\"submit\"] { letter-spacing:" . intval( $button_letter_spacing ) . "px;}" . "\n";
 
 	$button_border_radius = get_theme_mod( 'button_border_radius' );
 	$css .= "div.editor-styles-wrapper .wp-block-button__link { border-radius:" . intval( $button_border_radius ) . "px;}" . "\n";
 
-	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), 'div.editor-styles-wrapper button, div.editor-styles-wrapper a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"]' );
+	// $css .= Botiga_Custom_CSS::get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), 'div.editor-styles-wrapper button, div.editor-styles-wrapper a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"]' );
 	$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 	$css .= "div.editor-styles-wrapper .wp-block-button__link { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
 
-	$css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '#212121', 'div.editor-styles-wrapper .wp-block-button__link' );            
-	$css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color_hover', '#757575', 'div.editor-styles-wrapper .wp-block-button__link:hover, div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-background):hover' );         
+	// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '#212121', 'div.editor-styles-wrapper button:not(.has-background), div.editor-styles-wrapper a.button:not(.has-background), div.editor-styles-wrapper .wp-block-button .wp-block-button__link:not(.has-background), div.editor-styles-wrapper .wp-block-button__link:not(.has-background), div.editor-styles-wrapper .wp-block-search .wp-block-search__button:not(.has-background), div.editor-styles-wrapper input[type="button"]:not(.has-background), div.editor-styles-wrapper input[type="reset"]:not(.has-background), div.editor-styles-wrapper input[type="submit"]:not(.has-background), div.editor-styles-wrapper .comments-area .comment-reply-link:not(.has-background), div.editor-styles-wrapper .botiga-sc-product-quantity' );          
+	// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color_hover', '#757575', 'div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-background):hover, div.editor-styles-wrapper button:not(.has-background):hover, div.editor-styles-wrapper a.button:not(.has-background):hover, div.editor-styles-wrapper .wp-block-button .wp-block-button__link:not(.has-background):hover, div.editor-styles-wrapper .wp-block-button__link:not(.has-background):hover, div.editor-styles-wrapper .wp-block-search .wp-block-search__button:not(.has-background):hover, div.editor-styles-wrapper input[type="button"]:not(.has-background):hover, div.editor-styles-wrapper input[type="reset"]:not(.has-background):hover, div.editor-styles-wrapper input[type="submit"]:not(.has-background):hover, div.editor-styles-wrapper .comments-area .comment-reply-link:not(.has-background):hover' );
+	// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '#212121', 'div.editor-styles-wrapper .wp-block-button__link' );            
+	// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color_hover', '#757575', 'div.editor-styles-wrapper .wp-block-button__link:hover, div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-background):hover' );         
 
-	$css .= Botiga_Custom_CSS::get_color_css( 'button_color', '#ffffff', 'div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper .wp-block-button__link:visited, div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color)' );           
-	$css .= Botiga_Custom_CSS::get_color_css( 'button_color_hover', '#ffffff', 'div.editor-styles-wrapper .wp-block-button__link:hover, div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-text-color):hover' );           
+	// $css .= Botiga_Custom_CSS::get_color_css( 'button_color', '#ffffff', 'div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper .wp-block-button__link:visited, div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color)' );           
+	// $css .= Botiga_Custom_CSS::get_color_css( 'button_color_hover', '#ffffff', 'div.editor-styles-wrapper .wp-block-button__link:hover, div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-text-color):hover' );           
 
 	$button_border_color = get_theme_mod( 'button_border_color', '#212121' );
 	$button_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
-	$css .= "div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link, div.editor-styles-wrapper .is-style-outline .wp-block-button__link, div.editor-styles-wrapper .wp-block-button__link.is-style-outline, div.editor-styles-wrapper .wp-block-button__link { border-color:" . esc_attr( $button_border_color ) . ";}" . "\n";
-	$css .= "div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover, div.editor-styles-wrapper .wp-block-button__link:hover { border-color:" . esc_attr( $button_border_color_hover ) . ";}" . "\n";
+	$css .= "
+		div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link, 
+		div.editor-styles-wrapper .wp-block-button__link.is-style-outline,
+		div.editor-styles-wrapper .wp-block-search .wp-block-search__button,button,
+		div.editor-styles-wrapper a.button,.wp-block-button__link,
+		div.editor-styles-wrapper input[type=\"button\"],
+		div.editor-styles-wrapper input[type=\"reset\"],
+		div.editor-styles-wrapper input[type=\"submit\"] { 
+			border-color:" . esc_attr( $button_border_color ) . ";
+		}
+
+		div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover,
+		div.editor-styles-wrapper button:hover,
+		div.editor-styles-wrapper a.button:hover,
+		div.editor-styles-wrapper .wp-block-button__link:hover,
+		div.editor-styles-wrapper .wp-block-search .wp-block-search__button:hover,
+		div.editor-styles-wrapper input[type=\"button\"]:hover,
+		div.editor-styles-wrapper input[type=\"reset\"]:hover,
+		div.editor-styles-wrapper input[type=\"submit\"]:hover { 
+			border-color:" . esc_attr( $button_border_color_hover ) . ";
+		}
+	";
 
 	//Fonts
 	$css .= Botiga_Custom_CSS::get_font_sizes_css( 'single_post_title_size', $defaults = array( 'desktop' => 32, 'tablet' => 32, 'mobile' => 32 ), 'div.editor-styles-wrapper .editor-post-title .editor-post-title__input' );
@@ -136,6 +164,15 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= Botiga_Custom_CSS::get_background_color_css( 'color_forms_background', '#ffffff', 'div.editor-styles-wrapper input[type="text"], div.editor-styles-wrapper input[type="email"], div.editor-styles-wrapper input[type="url"], div.editor-styles-wrapper input[type="password"], div.editor-styles-wrapper input[type="search"], div.editor-styles-wrapper input[type="number"], div.editor-styles-wrapper input[type="tel"], div.editor-styles-wrapper input[type="range"], div.editor-styles-wrapper input[type="date"], div.editor-styles-wrapper input[type="month"], div.editor-styles-wrapper input[type="week"], div.editor-styles-wrapper input[type="time"], div.editor-styles-wrapper input[type="datetime"], div.editor-styles-wrapper input[type="datetime-local"], div.editor-styles-wrapper input[type="color"], div.editor-styles-wrapper textarea, div.editor-styles-wrapper select, div.editor-styles-wrapper .woocommerce .select2-container .select2-selection--single, div.editor-styles-wrapper .woocommerce-page .select2-container .select2-selection--single, div.editor-styles-wrapper .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"]' );
 	$css .= Botiga_Custom_CSS::get_border_color_css( 'color_forms_borders', '', 'div.editor-styles-wrapper input[type="text"], div.editor-styles-wrapper input[type="email"], div.editor-styles-wrapper input[type="url"], div.editor-styles-wrapper input[type="password"], div.editor-styles-wrapper input[type="search"], div.editor-styles-wrapper input[type="number"], div.editor-styles-wrapper input[type="tel"], div.editor-styles-wrapper input[type="range"], div.editor-styles-wrapper input[type="date"], div.editor-styles-wrapper input[type="month"], div.editor-styles-wrapper input[type="week"], div.editor-styles-wrapper input[type="time"], div.editor-styles-wrapper input[type="datetime"], div.editor-styles-wrapper input[type="datetime-local"], div.editor-styles-wrapper input[type="color"], div.editor-styles-wrapper textarea, div.editor-styles-wrapper select, div.editor-styles-wrapper .woocommerce .select2-container .select2-selection--single, div.editor-styles-wrapper .woocommerce-page .select2-container .select2-selection--single, div.editor-styles-wrapper .woocommerce-account fieldset, div.editor-styles-wrapper .woocommerce-account .woocommerce-form-login, div.editor-styles-wrapper .woocommerce-account .woocommerce-form-register, div.editor-styles-wrapper .woocommerce-cart .woocommerce-cart-form .actions .coupon input[type="text"], div.editor-styles-wrapper .wp-block-search .wp-block-search__input, div.editor-styles-wrapper .woocommerce-form__label-for-checkbox span:not(.required):after, div.editor-styles-wrapper .select2-dropdown, div.editor-styles-wrapper .botiga-sc-cart-total tfoot tr' );
 
+	// Always show the quantity plus and minus.
+	$css .= "
+		div.editor-styles-wrapper .botiga-quantity-plus, 
+		div.editor-styles-wrapper .botiga-quantity-minus {
+			opacity: 1;
+			visibility: visible;
+		}
+	";
+
 	//WPForms
 	if( defined( 'WPFORMS_VERSION' ) ) {
 		$css .= Botiga_Custom_CSS::get_wpforms_css( 'block-editor' );
@@ -145,7 +182,34 @@ function botiga_enqueue_gutenberg_assets() {
 	$css .= Botiga_Custom_CSS::get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'div.editor-styles-wrapper table.woocommerce-product-attributes tr:nth-child(even)', 0.3 );
 
 	// Additional CSS (from customizer)
-	$css .= wp_get_custom_css();
+	$wp_custom_css = wp_get_custom_css();
+
+	// Remove comments.
+	$wp_custom_css = preg_replace( '/\s*(?!<\")\/\*[^\*]+\*\/(?!\")\s*/' , '' , $wp_custom_css );
+
+	// Remove empty lines.
+	$wp_custom_css = preg_replace( '/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/' , '' , $wp_custom_css );
+	
+	// Add wrapper to custom CSS.
+	$wp_custom_css = preg_replace_callback(
+		'/(^|\})\s*([^{]+)\s*\{/',
+		function($matches) {
+			$selectors = explode(',', $matches[2]);
+			$wrapped_selectors = array_map(function($selector) {
+				return 'div.editor-styles-wrapper ' . trim($selector);
+			}, $selectors);
+			return $matches[1] . ' ' . implode(', ', $wrapped_selectors) . ' {';
+		},
+		$wp_custom_css
+	);
+
+	// Final replacements to ensure the wrapper is correctly applied.
+	$wp_custom_css = str_replace( 
+		array( 'div.editor-styles-wrapper @media', 'div.editor-styles-wrapper }', 'div.editor-styles-wrapper @keyframes', 'div.editor-styles-wrapper to {', '}  }' ), array( '@media', ' }', '@keyframes', 'to {', '} } div.editor-styles-wrapper ' ), 
+		$wp_custom_css 
+	);
+
+	$css .= $wp_custom_css;
 
 	/**
 	 * Hook 'botiga_block_editor_custom_css'.
@@ -157,7 +221,18 @@ function botiga_enqueue_gutenberg_assets() {
 
 	wp_add_inline_style( 'botiga-block-editor-styles', $css );
 
-	wp_enqueue_style( 'botiga-quick-view', get_template_directory_uri() . '/assets/css/quick-view.min.css', array(), BOTIGA_VERSION );
+	$has_quick_view = get_theme_mod( 'shop_product_quickview_layout', 'layout1' ) !== 'layout1';
+	if ( $has_quick_view ) {
+		wp_enqueue_style( 'botiga-quick-view', get_template_directory_uri() . '/assets/css/quick-view.min.css', array(), BOTIGA_VERSION );
+	}
+
+	/**
+	 * Hook 'botiga_block_editor_after_enqueue_assets'
+	 * Fires after enqueuing assets for the block editor.
+	 * 
+	 * @since 2.2.6
+	 */
+	do_action( 'botiga_block_editor_after_enqueue_assets' );
 }
 add_action( 'enqueue_block_editor_assets', 'botiga_enqueue_gutenberg_assets' );
 
