@@ -160,6 +160,11 @@
 		border-style: solid;
 		border-width: 1px;
 		transition: ease background-color 300ms, ease color 300ms;
+
+		&:hover {
+			color: var( --bt-color-button, #FFF );
+			background-color: var( --bt-color-button-bg, #212121 );
+		}
 	}
 	.botiga-quantity-plus {
 		border-bottom: 0;
@@ -198,7 +203,13 @@
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
 			max-width: 30%;
+			color: var( --bt-color-button, #FFF );
+			background-color: var(--bt-color-button-bg, #212121);
 			transition: ease background-color 300ms;
+
+			&:hover {
+				background-color: var(--bt-color-button-bg-hover, #757575);
+			}
 		}
 
 		.qty {
@@ -280,6 +291,7 @@
 			width: 22px;
 			height: 35%;
 			right: 10px;
+			background-color: var( --bt-color-button-bg, #212121 );
 		}
 		.botiga-quantity-plus {
 			top: 15%;
@@ -313,7 +325,13 @@
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
+			color: var( --bt-color-button, #FFF );
+			background-color: var( --bt-color-button-bg, #212121 );
 			transition: ease background-color 300ms;
+
+			&:hover {
+				background-color: var( --bt-color-button-bg-hover, #757575 );
+			}
 		}
 	}
 }

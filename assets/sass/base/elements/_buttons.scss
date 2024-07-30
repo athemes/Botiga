@@ -1,31 +1,84 @@
 button,
 a.button,
+.button,
+.checkout-button,
 .wp-block-button__link,
+.wc-block-components-button,
+ul.products li.product .button,
 .wpforms-submit,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 2px solid var( --bt-color-button-bg, #212121 );
+	border: 2px solid var( --bt-color-button-border, #212121 );
 	box-shadow: none;
 	background: var( --bt-color-button-bg, #212121 );
 	color: var( --bt-color-button, #FFF );
-	padding: 13px 24px;
+	padding-top: var( --bt-padding-button-top-bottom, 13px );
+	padding-bottom: var( --bt-padding-button-top-bottom, 13px );
+	padding-left: var( --bt-padding-button-left-right, 24px );
+	padding-right: var( --bt-padding-button-left-right, 24px );
 	cursor: pointer;
 	display: inline-block;
 	transition: all 0.3s;
 	border-radius: 0;
 	height: auto;
-	border-radius: 0;
+	border-radius: var( --bt-border-radius-button, 0 );
 	font-weight: 400;
 	text-transform: uppercase;
-	letter-spacing: 2px;
+	letter-spacing: var( --bt-letter-spacing-button, 0px );
 	font-size: var( --bt-font-size-button, 14px );
 
+	svg {
+		fill: var( --bt-color-button, #FFF );
+	}
+
+	&:not(.has-text-color),
+	&.checkout-button:not(.has-text-color),
+	&:not(.wc-forward):not(.has-text-color),
+	&.checkout:not(.has-text-color),
+	&.wc-backward {
+		color: var( --bt-color-button, #FFF );
+
+		&:hover {
+			color: var( --bt-color-button-hover, #FFF );
+		}
+	}
+
+	&.is-style-outline {
+		border-color: var( --bt-color-button-border, #212121 );
+
+		&:not(.has-text-color) {
+			color: var( --bt-color-button, #FFF );
+			border: 2px solid var( --bt-color-button-border, #212121 );
+		}
+	}
+
+	.is-style-outline & {
+		&:not(.has-text-color):hover {
+			color: var( --bt-color-button-hover, #FFF );
+		}
+		&:not(.has-background):hover {
+			background-color: var( --bt-color-button-bg-hover, #757575 );
+		}
+	}
+
+	&:not(.has-background) {
+		background-color: var( --bt-color-button-bg, #212121 );
+
+		&:hover {
+			background-color: var( --bt-color-button-bg-hover, #757575 );
+		}
+	}
+
 	&:hover {
-		border-color: var( --bt-color-button-border-hover, #FFF );
+		border-color: var( --bt-color-button-border-hover, #757575 );
+
+		svg {
+			fill: var( --bt-color-button-hover, #FFF );
+		}
 
 		&:not(.has-background) {
-			background-color: var( --bt-color-button-bg-hover, #FFF );
+			background-color: var( --bt-color-button-bg-hover, #757575 );
 		}
 	}
 
@@ -35,30 +88,41 @@ input[type="submit"] {
 	}
 }
 
-a {
-	&.button.checkout:not(.has-text-color),
-	&.button:not(.wc-forward):not(.has-text-color),
-	&.wc-backward {
-		color: var( --bt-color-button, #FFF );
-	}
-}
-
-.button {
-	&.checkout-button {
-		&:not(.has-text-color) {
-			color: var( --bt-color-button, #FFF );
-		}
-	}
-}
-
 .wp-block-button {
 	margin-bottom: 20px;
 
+	.wp-block-button__link {
+		&:not(.has-text-color) {
+			color: var( --bt-color-button, #FFF );
+
+			&:hover {
+				color: var( --bt-color-button-hover, #FFF );
+			}
+		}
+		&:not(.has-background) {
+			background-color: var( --bt-color-button-bg, #212121 );
+
+			&:hover {
+				background-color: var( --bt-color-button-bg-hover, #757575 );
+			}
+		}
+	}
+
 	&.is-style-outline {
 		.wp-block-button__link {
+			border-color: var( --bt-color-button-border, #212121 );
+
+			&:not(.has-text-color) {
+				color: var( --bt-color-button-bg, #FFF );
+			}
+
 			&:not(.has-background) {
 				background-color: transparent;
 				background-image: none;
+			}
+
+			&:hover {
+				border-color: var( --bt-color-button-border-hover, #757575 );
 			}
 		}
 	}
@@ -94,28 +158,67 @@ a {
 	}
 }
 
-.wp-block-button__link {
-	&:not(.has-text-color) {
-		color: var( --bt-color-button, #FFF );
+.wp-block-search {
+	.wp-block-search__button {
+		border-color: var( --bt-color-button-border, #212121 );
 
-		&.is-style-outline {
-			color: var( --bt-color-button, #FFF );
-			border: 2px solid var( --bt-color-button-border, #212121 );
-		}
-	}
-
-	&.wp-block-button.is-style-squared {
-		a {
-			border-radius: 0;
-		}
-	}
-
-	.is-style-outline & {
 		&:not(.has-text-color) {
 			color: var( --bt-color-button, #FFF );
-			border: 2px solid var( --bt-color-button-border, #212121 );
+
+			&:hover {
+				color: var( --bt-color-button-hover, #FFF );
+			}
+		}
+
+		&:not(.has-background) {
+			background-color: var( --bt-color-button-bg, #212121 );
+
+			&:hover {
+				background-color: var( --bt-color-button-bg-hover, #757575 );
+			}
+		}
+
+		&:hover {
+			border-color: var( --bt-color-button-border-hover, #757575 );
 		}
 	}
+}
+
+.woocommerce-message {
+	.button {
+		&.wc-forward:not(.has-text-color) {
+			color: var( --bt-color-button, #FFF );
+
+			&:hover {
+				color: var( --bt-color-button-hover, #FFF );
+			}
+		}
+	}
+}
+
+.comments-area {
+	.comment-reply-link {
+		&:not(.has-text-color) {
+			color: var( --bt-color-button, #FFF );
+
+			&:hover {
+				color: var( --bt-color-button-hover, #FFF );
+			}
+		}
+
+		&:not(.has-background) {
+			background-color: var( --bt-color-button-bg, #212121 );
+
+			&:hover {
+				background-color: var( --bt-color-button-bg-hover, #757575 );
+			}
+		}
+	}
+}
+
+.botiga-sc-product-quantity {
+	color: var( --bt-color-button, #FFF );
+	background-color: var( --bt-color-button-bg, #212121 );
 }
 
 #coupon_code {
@@ -132,7 +235,6 @@ a {
 	}
 }
 
-// Add To Cart Button
 ul.products {
 	li.product {
 		.button {

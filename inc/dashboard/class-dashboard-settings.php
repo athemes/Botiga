@@ -806,11 +806,11 @@ function botiga_dashboard_settings() {
 			'name' => __( 'Merchant', 'botiga' ),
 			'img_url' => get_template_directory_uri() . '/assets/img/merchant-logo.png',
 		),
-		'athemes-addons-for-elementor-lite' => array(
-			'slug' => 'athemes-addons-for-elementor-lite',
-			'path' => 'athemes-addons-for-elementor-lite/athemes-addons-elementor.php',
-			'name' => __( 'aThemes Addons For Elementor', 'botiga' ),
-			'img_url' => get_template_directory_uri() . '/assets/img/athemes-addons-logo.png',
+		'athemes-blocks' => array(
+			'slug' => 'athemes-blocks',
+			'path' => 'athemes-blocks/athemes-blocks.php',
+			'name' => __( 'aThemes Blocks', 'botiga' ),
+			'img_url' => get_template_directory_uri() . '/assets/img/athemes-blocks-logo.png',
 		),
 	);
 

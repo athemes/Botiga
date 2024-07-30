@@ -850,3 +850,22 @@
 
     }
 }
+
+// #masthead-mobile
+#masthead-mobile {
+    .search-submit {
+        svg {
+            &:not(.stroke-based) {
+                fill: var( --bt-color-button, #FFF );
+            }
+        }
+
+        &:hover {
+            svg {
+                &:not(.stroke-based) {
+                    fill: var( --bt-color-button-hover, #FFF );
+                }
+            }   
+        }
+    }
+}
