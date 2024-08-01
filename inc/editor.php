@@ -57,20 +57,8 @@ class Botiga_Block_Editor {
 		$css .= Botiga_Custom_CSS::get_mounted_body_variables();
 	
 		//Buttons
-		// $css .= Botiga_Custom_CSS::get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'div.editor-styles-wrapper button,a.button,div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"], div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link' );
-		// $css .= Botiga_Custom_CSS::get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), 'div.editor-styles-wrapper button,a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"], div.editor-styles-wrapper .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link' );
-	
-		// $css .= Botiga_Custom_CSS::get_font_sizes_css( 'button_font_size', $defaults = array( 'desktop' => 14, 'tablet' => 14, 'mobile' => 14 ), 'div.editor-styles-wrapper button, div.editor-styles-wrapper a.button, div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper input[type="button"], div.editor-styles-wrapper input[type="reset"], div.editor-styles-wrapper input[type="submit"]' );
 		$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 		$css .= "div.editor-styles-wrapper .wp-block-button__link { text-transform:" . esc_attr( $button_text_transform ) . ";}" . "\n";
-	
-		// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '#212121', 'div.editor-styles-wrapper button:not(.has-background), div.editor-styles-wrapper a.button:not(.has-background), div.editor-styles-wrapper .wp-block-button .wp-block-button__link:not(.has-background), div.editor-styles-wrapper .wp-block-button__link:not(.has-background), div.editor-styles-wrapper .wp-block-search .wp-block-search__button:not(.has-background), div.editor-styles-wrapper input[type="button"]:not(.has-background), div.editor-styles-wrapper input[type="reset"]:not(.has-background), div.editor-styles-wrapper input[type="submit"]:not(.has-background), div.editor-styles-wrapper .comments-area .comment-reply-link:not(.has-background), div.editor-styles-wrapper .botiga-sc-product-quantity' );          
-		// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color_hover', '#757575', 'div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-background):hover, div.editor-styles-wrapper button:not(.has-background):hover, div.editor-styles-wrapper a.button:not(.has-background):hover, div.editor-styles-wrapper .wp-block-button .wp-block-button__link:not(.has-background):hover, div.editor-styles-wrapper .wp-block-button__link:not(.has-background):hover, div.editor-styles-wrapper .wp-block-search .wp-block-search__button:not(.has-background):hover, div.editor-styles-wrapper input[type="button"]:not(.has-background):hover, div.editor-styles-wrapper input[type="reset"]:not(.has-background):hover, div.editor-styles-wrapper input[type="submit"]:not(.has-background):hover, div.editor-styles-wrapper .comments-area .comment-reply-link:not(.has-background):hover' );
-		// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color', '#212121', 'div.editor-styles-wrapper .wp-block-button__link' );            
-		// $css .= Botiga_Custom_CSS::get_background_color_css( 'button_background_color_hover', '#757575', 'div.editor-styles-wrapper .wp-block-button__link:hover, div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-background):hover' );         
-	
-		// $css .= Botiga_Custom_CSS::get_color_css( 'button_color', '#ffffff', 'div.editor-styles-wrapper .wp-block-button__link, div.editor-styles-wrapper .wp-block-button__link:visited, div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color)' );           
-		// $css .= Botiga_Custom_CSS::get_color_css( 'button_color_hover', '#ffffff', 'div.editor-styles-wrapper .wp-block-button__link:hover, div.editor-styles-wrapper .is-style-outline .wp-block-button__link:not(.has-text-color):hover' );           
 	
 		$button_border_color = get_theme_mod( 'button_border_color', '#212121' );
 		$button_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
@@ -141,13 +129,14 @@ class Botiga_Block_Editor {
 		$css .= "div.editor-styles-wrapper ul.products li.product .product-description-column:not(:empty), div.editor-styles-wrapper ul.products li.wc-block-grid__product .product-description-column:not(:empty), div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .product-description-column:not(:empty) { margin-top:" . esc_attr( $shop_product_element_spacing ) . "px;}" . "\n";
 	
 		$shop_product_alignment = get_theme_mod( 'shop_product_alignment', 'center' );
-		$css .= "div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product, div.editor-styles-wrapper ul.wc-block-grid__products li.product, div.editor-styles-wrapper ul.products li.wc-block-grid__product, div.editor-styles-wrapper ul.products li.product { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
+		$css .= "ul.wc-block-grid__products li.wc-block-grid__product, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product, ul.products li.product .wp-block-button__link { text-align:" . esc_attr( $shop_product_alignment ) . "!important;}" . "\n";
+		
 		if ( 'left' === $shop_product_alignment ) {
 			$css .= "div.editor-styles-wrapper .star-rating, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.wc-block-grid__products li.product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.product .button, div.editor-styles-wrapper ul.products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.products li.product .wp-block-button__link, div.editor-styles-wrapper ul.products li.product .button { margin-left:0!important;}" . "\n";
 		} elseif ( 'right' === $shop_product_alignment ) {
 			$css .= "div.editor-styles-wrapper .star-rating, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.wc-block-grid__products li.product .wp-block-button__link, div.editor-styles-wrapper ul.wc-block-grid__products li.product .button, div.editor-styles-wrapper ul.products li.wc-block-grid__product .wp-block-button__link, div.editor-styles-wrapper ul.products li.wc-block-grid__product .button, div.editor-styles-wrapper ul.products li.product .wp-block-button__link, div.editor-styles-wrapper ul.products li.product .button { margin-right:0!important;}" . "\n";       
 		}
-		
+
 		$alignval = 'center';
 		$textalign = 'center';
 		if ( 'left' === $shop_product_alignment ) {
@@ -193,7 +182,7 @@ class Botiga_Block_Editor {
 	
 		// Additional CSS (from customizer)
 		$wp_custom_css = self::get_wp_custom_css();
-	
+
 		$css .= $wp_custom_css;
 	
 		/**
@@ -226,13 +215,13 @@ class Botiga_Block_Editor {
 	 */
 	public static function get_wp_custom_css() {
 		$custom_css = wp_get_custom_css();
-	
+
 		// Remove comments.
 		$custom_css = preg_replace( '/\s*(?!<\")\/\*[^\*]+\*\/(?!\")\s*/' , '' , $custom_css );
-	
+
 		// Remove empty lines.
 		$custom_css = preg_replace( '/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/' , '' , $custom_css );
-		
+
 		// Add wrapper to custom CSS (for specifity).
 		$custom_css = preg_replace_callback(
 			'/(^|\})\s*([^{]+)\s*\{/',
@@ -245,7 +234,7 @@ class Botiga_Block_Editor {
 			},
 			$custom_css
 		);
-	
+
 		// Final replacements to ensure the wrapper is correctly applied.
 		$custom_css = str_replace( 
 			array( 

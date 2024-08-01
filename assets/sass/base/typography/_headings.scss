@@ -22,11 +22,6 @@ h1,
 	&:not(.has-text-color) {
 		color: var(--bt-color-heading-1, $color__primary);
 	}
-
-	// .is-layout-flow & {
-	// 	margin-block-start: 60px;
-	// 	margin-block-end: 40px;
-	// }
 }
 h2,
 .bt-h2 {
@@ -37,11 +32,6 @@ h2,
 	&:not(.has-text-color) {
 		color: var(--bt-color-heading-2, $color__primary);
 	}
-
-	// .is-layout-flow & {
-	// 	margin-block-start: 45px;
-	// 	margin-block-end: 30px;
-	// }
 }
 h3,
 .bt-h3 {
@@ -52,11 +42,6 @@ h3,
 	&:not(.has-text-color) {
 		color: var(--bt-color-heading-3, $color__primary);
 	}
-
-	// .is-layout-flow & {
-	// 	margin-block-start: 30px;
-	// 	margin-block-end: 16px;
-	// }
 }
 h4,
 .bt-h4 {

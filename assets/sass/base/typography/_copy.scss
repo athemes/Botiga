@@ -1,5 +1,5 @@
 p {
-	margin-bottom: 40px;
+	margin-bottom: var( --bt-paragraph-margin-bottom, 40px );
 	margin-top: 0;
 
 	// .is-layout-flow & {

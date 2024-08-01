@@ -1534,13 +1534,13 @@ p.no-comments {
 .wc-block-grid__product-onsale,
 span.onsale {
 	position: absolute;
-	background: $color__primary;
+	background: var( --bt-color-onsale-bg, #212121 );
 	top: 20px;
 	left: 20px;
 	font-weight: 400;
 	@include font-size(14);
 	text-transform: uppercase;
-	color: #fff;
+	color: var( --bt-color-onsale, #FFF );
 	padding: 3px 20px !important;
 	border-radius: 0;
 	z-index: 11;
