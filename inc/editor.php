@@ -287,7 +287,7 @@ class Botiga_Block_Editor {
 			( function( $ ) {
 				wp.domReady(function(){
 					const unsubscribeJsOnce = wp.data.subscribe(() => {
-						const isEditorReady = wp.data.select('core/editor').getBlocks().length > 0;
+						const isEditorReady = wp.data.select('core/block-editor').getBlocks().length > 0;
 	
 						if (isEditorReady) {
 							{$inner_js_once}
@@ -297,7 +297,7 @@ class Botiga_Block_Editor {
 					});
 
 					const unsubscribeJsMultiple = wp.data.subscribe(() => {
-						const isEditorReady = wp.data.select('core/editor').getBlocks().length > 0;
+						const isEditorReady = wp.data.select('core/block-editor').getBlocks().length > 0;
 	
 						if (isEditorReady) {
 							{$inner_js_multiple}	

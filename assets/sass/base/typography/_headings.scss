@@ -71,3 +71,9 @@ h4,h5,h6 {
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
+
+:where(.wp-block-heading) {
+	a {
+		text-decoration: inherit !important;
+	}
+}

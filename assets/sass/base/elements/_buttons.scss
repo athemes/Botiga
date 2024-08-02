@@ -125,6 +125,17 @@ input[type="submit"] {
 				border-color: var( --bt-color-button-border-hover, #757575 );
 			}
 		}
+
+		&:hover {
+			.wp-block-button__link {
+				border-color: var( --bt-color-button-border-hover, #757575 );
+
+				&:not(.has-background) {
+					color: var( --bt-color-button-hover, #FFF );
+					background-color: var( --bt-color-button-bg-hover, #212121 );
+				}
+			}
+		}
 	}
 
 	&.is-style-squared {
