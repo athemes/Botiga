@@ -69,6 +69,16 @@
     }
 }
 
+button {
+    &.customize-partial-edit-shortcut-button {
+        background-color: #3582c4 !important;
+        color: #FFF !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
 div[data-customize-partial-type="nav_menu_instance"] > .customize-partial-edit-shortcut,
 #site-navigation .customize-partial-edit-shortcut-button,
 #site-navigation-mobile .customize-partial-edit-shortcut-button {

@@ -19,6 +19,10 @@ html {
 		margin-bottom: 1.75rem;
 		margin-block-end: 1.75rem !important;
 	}
+	:where(.wp-block-group.wp-block-group-is-layout-flex) .wp-block-columns {
+		margin: 0 !important;
+		margin-block: 0 !important;
+	}
 }
 @media (min-width: 1600px) {
 	.wp-block {
@@ -206,6 +210,11 @@ div.editor-styles-wrapper {
 			margin: 0;
 		}
 	}
+
+	/**
+	 * Image block.
+	 */
+	@import "components/blocks/image";
 
 	/**
 	 * Widget blocks

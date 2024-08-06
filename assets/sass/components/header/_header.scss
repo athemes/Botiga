@@ -675,6 +675,10 @@
         visibility: visible;
         background: transparent !important;
         z-index: 2;
+
+        select, input, button {
+            line-height: 1;
+        }
     }
 }
 .header-search-form-active {

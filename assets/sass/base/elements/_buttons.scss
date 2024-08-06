@@ -1,4 +1,3 @@
-button,
 a.button,
 .button,
 .checkout-button,
@@ -20,7 +19,6 @@ input[type="submit"] {
 	cursor: pointer;
 	display: inline-block;
 	transition: all 0.3s;
-	border-radius: 0;
 	height: auto;
 	border-radius: var( --bt-border-radius-button, 0 );
 	font-weight: 400;

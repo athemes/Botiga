@@ -11,10 +11,9 @@ html {
 }
 
 .is-layout-flow {
-    // > * {
-    //     margin-block-start: 0;
-    //     margin-block-end: 0;
-    // }
+    > .wp-block-athemes-athemes-blocks-block-container {
+        margin-block-start: 0;
+    }
 }
 
 .container {

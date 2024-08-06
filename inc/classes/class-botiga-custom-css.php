@@ -1071,7 +1071,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 						'setting'  => 'button_border_radius',
 						'defaults' => 0,
 						'name'     => '--bt-border-radius-button',
-						'unit'     => '',
+						'unit'     => 'px',
 					),
 				)
 			);
