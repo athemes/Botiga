@@ -242,14 +242,14 @@ class Botiga_Block_Editor {
 				'div.editor-styles-wrapper }', 
 				'div.editor-styles-wrapper @keyframes', 
 				'div.editor-styles-wrapper to {', 
-				'}  }' 
+				'}  }',
 			), 
 			array( 
 				'@media', 
 				' }', 
 				'@keyframes', 
 				'to {', 
-				'} } div.editor-styles-wrapper ' 
+				'} } div.editor-styles-wrapper ',
 			), 
 			$custom_css 
 		);
