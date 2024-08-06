@@ -11,18 +11,7 @@
 */
 
 html {
-	:where(.wp-block) {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-	:where(.wp-block-columns) {
-		margin-bottom: 1.75rem;
-		margin-block-end: 1.75rem !important;
-	}
-	:where(.wp-block-group.wp-block-group-is-layout-flex) .wp-block-columns {
-		margin: 0 !important;
-		margin-block: 0 !important;
-	}
+	
 }
 @media (min-width: 1600px) {
 	.wp-block {
@@ -54,6 +43,19 @@ div.editor-styles-wrapper {
 	font-family: $font__main;
 	font-size: var(--bt-font-size-body, 16px);
 	line-height: $font__line-height-body;
+
+	:where(.wp-block) {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	:where(.wp-block-columns) {
+		margin-bottom: 1.75rem;
+		margin-block-end: 1.75rem !important;
+	}
+	:where(.wp-block-group.wp-block-group-is-layout-flex) .wp-block-columns {
+		margin: 0 !important;
+		margin-block: 0 !important;
+	}
 
 	.is-layout-flow {
 		> * {
