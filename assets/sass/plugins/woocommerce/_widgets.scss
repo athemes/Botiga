@@ -35,7 +35,7 @@
 		height: 1em;
 		cursor: ew-resize;
 		outline: none;
-		background: #fff;
+		background-color: var( --bt-color-button-bg, #212121 );
 		border: 2px solid $color__primary;
 		box-sizing: border-box;
 		margin-top: -7px;
@@ -48,6 +48,7 @@
 
 		&:hover,
 		&.ui-state-active {
+			background-color: var( --bt-color-button-bg-hover, #757575 );
 			box-shadow: 0 0 0 0.25em rgba(#000, 0.1);
 		}
 	}

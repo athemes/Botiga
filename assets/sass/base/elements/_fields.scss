@@ -141,5 +141,15 @@ label {
 	display: flex;
 	.search-submit {
 		margin-left: 10px;
+
+		svg {
+			fill: var( --bt-color-button, #FFF );
+		}
+
+		&:hover {
+			svg {
+				fill: var( --bt-color-button-hover, #FFF );
+			}
+		}
 	}
 }

@@ -313,6 +313,13 @@
 		&:last-child {
 			margin-right: 0;
 		}
+
+		&:hover,
+		&:focus,
+		&.current {
+			color: var( --bt-color-button-hover, #FFF );
+			background-color: var( --bt-color-button-bg, #212121 );
+		}
 	}
 }
 .woocommerce-pagination {
@@ -342,7 +349,14 @@
 			background: transparent;
 			transition: background-color 0.3s;
 			border-radius: 50%;
-			color: var(--bt-color-body-text, $color__primary);	
+			color: var(--bt-color-body-text, $color__primary);
+
+			&:hover,
+			&:focus,
+			&.current {
+				color: var( --bt-color-button-hover, #FFF );
+				background-color: var( --bt-color-button-bg, #212121 );
+			}
 		}
 	}
 }

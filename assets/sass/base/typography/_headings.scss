@@ -16,7 +16,8 @@ h1,
 .page-title,
 .bt-h1 {
 	font-size: var( --bt-font-size-h1, 64px );
-	margin: 60px 0 40px;
+	margin-top: 60px;
+	margin-bottom: 40px;
 
 	&:not(.has-text-color) {
 		color: var(--bt-color-heading-1, $color__primary);
@@ -25,7 +26,8 @@ h1,
 h2,
 .bt-h2 {
 	font-size: var( --bt-font-size-h2, 48px );
-	margin: 45px 0 30px;
+	margin-top: 45px;
+	margin-bottom: 30px;
 
 	&:not(.has-text-color) {
 		color: var(--bt-color-heading-2, $color__primary);
@@ -34,7 +36,8 @@ h2,
 h3,
 .bt-h3 {
 	font-size: var( --bt-font-size-h3, 32px );
-	margin: 30px 0 16px;
+	margin-top: 30px;
+	margin-bottom: 16px;
 
 	&:not(.has-text-color) {
 		color: var(--bt-color-heading-3, $color__primary);
@@ -65,5 +68,12 @@ h6,
 	}
 }
 h4,h5,h6 {
-	margin: 25px 0;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+:where(.wp-block-heading) {
+	a {
+		text-decoration: inherit !important;
+	}
 }

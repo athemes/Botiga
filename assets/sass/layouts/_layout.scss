@@ -10,6 +10,12 @@ html {
     box-sizing: inherit;
 }
 
+.is-layout-flow {
+    > .wp-block-athemes-athemes-blocks-block-container {
+        margin-block-start: 0;
+    }
+}
+
 .container {
     width: 100%;
     padding-right: 15px;
@@ -633,7 +639,7 @@ html {
 /**
  * Site Layouts
  */
-.botiga-site-layout-boxed{
+.botiga-site-layout-boxed {
 
     .botiga-mega-menu.botiga-mega-menu-full-width>.sub-menu,
     .botiga-mega-menu.botiga-mega-menu-contained-full-width>.sub-menu:before{
