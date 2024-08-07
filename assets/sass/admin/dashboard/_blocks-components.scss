@@ -60,6 +60,22 @@
 				}
 			}
 		}
+
+		&.has-separator {
+			position: relative;
+			margin-bottom: 20px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: -15px;
+				left: 50%;
+				width: calc( 100% - 32px );
+				height: 1px;
+				background-color: #f0f0f1;
+				transform: translate3d(-50%, 0, 0);
+			}
+		}
 	}
 }
 
