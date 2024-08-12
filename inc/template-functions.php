@@ -1965,11 +1965,11 @@ function botiga_get_display_condition_value_text( $value ) {
 }
 
 /**
- * Display conditions script template.
+ * Get display conditions options.
  * 
- * @return void The script template (including <script> tag).
+ * @return array The display conditions options.
  */
-function botiga_display_conditions_script_template() {
+function botiga_get_display_conditions_options() {
 	$settings = array();
 
 	$settings['types'][] = array(
@@ -2243,7 +2243,16 @@ function botiga_display_conditions_script_template() {
 	 *
 	 * @since 1.0.0
 	 */
-	$settings = apply_filters( 'botiga_display_conditions_script_settings', $settings );
+	return apply_filters( 'botiga_display_conditions_script_settings', $settings );
+}
+
+/**
+ * Display conditions script template.
+ * 
+ * @return void The script template (including <script> tag).
+ */
+function botiga_display_conditions_script_template() {
+	$settings = botiga_get_display_conditions_options();	
 
 	?>
 		<script type="text/javascript">
