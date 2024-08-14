@@ -783,6 +783,8 @@ class Botiga_Dashboard
 			'url'   => $edit_url,
 			'id'    => $post_id,
 			'title' => $post_title,
+            'author' => get_the_author_meta( 'display_name', get_post_field( 'post_author', $post_id ) ),
+            'date' => get_the_date( '', $post_id ),
 		);
 
 		wp_send_json_success( $result );
