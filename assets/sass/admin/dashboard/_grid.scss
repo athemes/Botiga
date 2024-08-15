@@ -41,8 +41,8 @@
 		}
 
 		&.botiga-dashboard-column-3 {
-			flex-basis: calc( 30% - 10px );
-			max-width: calc( 30% - 10px );
+			flex-basis: calc( 30% - 15px );
+			max-width: calc( 30% - 15px );
 		}
 
 		&.botiga-dashboard-column-4 {
@@ -63,8 +63,8 @@
 @media(min-width: 1600px) {
 	.botiga-dashboard-column {
 		&.botiga-dashboard-column-3 {
-			flex-basis: calc( 25% - 10px );
-			max-width: calc( 25% - 10px );
+			flex-basis: calc( 25% - 15px );
+			max-width: calc( 25% - 15px );
 		}
 
 		&.botiga-dashboard-column-9 {
