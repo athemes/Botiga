@@ -678,6 +678,12 @@ body {
 		}
 	}
 
+	.botiga-dashboard-card-inner-header {
+		&.with-border-bottom {
+			border-bottom: 1px solid #f0f0f1;
+		}
+	}
+
 	.botiga-dashboard-card-body {
 		p {
 			margin: 0;
@@ -1094,5 +1100,25 @@ body {
 
 	&__save-button {
 		margin-top: 15px;	
+	}
+}
+
+/* Empty templates message component */
+.bt-empty-templates-message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	max-width: 340px;
+    text-align: center;
+    margin: 70px auto;
+    padding: 30px;
+
+	strong {
+		color: #212121;
+	}
+
+	.components-button {
+		margin-top: 10px;
 	}
 }

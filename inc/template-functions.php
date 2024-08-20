@@ -1535,9 +1535,17 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 	}
 
 	if ( ! empty( $rules ) ) {
+		$has_specific_set_of_includes = array_filter( $rules, function( $rule ) {
+			return ! in_array( $rule['condition'], array( 'single-post', 'post-archives', 'single-page', 'single-product', 'product-archives' ) ) && $rule['type'] === 'include';
+		} );
+
+		if ( ! empty( $has_specific_set_of_includes ) ) {
+			$rules = array_filter( $has_specific_set_of_includes, function( $rule ) {
+				return ! in_array( $rule['condition'], array( 'single-post', 'post-archives', 'single-page', 'single-product', 'product-archives' ) );
+			} );
+		}
 
 		foreach ( $rules as $rule ) {
-
 			$object_id = ( ! empty( $rule['id'] ) ) ? intval( $rule['id'] ) : 0;
 			$condition = ( ! empty( $rule['condition'] ) ) ? $rule['condition'] : '';
 			$boolean   = ( ! empty( $rule['type'] ) && $rule['type'] === 'include' ) ? true : false;
@@ -1561,7 +1569,7 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 				$result = $boolean;
 			}
 
-			if ( $condition === 'post-archives' && is_archive() ) {
+			if ( $condition === 'post-archives' && is_archive() && ! is_post_type_archive( 'product' ) ) {
 				$result = $boolean;
 			}
 
@@ -1613,8 +1621,21 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 					$result = $boolean;
 				}
 
-				if ( $condition === 'product-category-id' && is_product_category() && get_queried_object_id() === $object_id ) {
-					$result = $boolean;
+				if ( $condition === 'product-category-id' ) {
+					if ( is_product_category() && get_queried_object_id() === $object_id ) {
+						$result = $boolean;
+					}
+
+					if ( is_singular( 'product' ) ) {
+						$product_cats = get_the_terms( get_the_ID(), 'product_cat' );
+						$product_cats = array_map( function( $category ) {
+							return $category->term_id;
+						}, $product_cats );
+	
+						if ( ! empty( $product_cats ) && in_array( $object_id, $product_cats ) ) {
+							$result = $boolean;
+						}
+					}
 				}
 
 				if ( $condition === 'cart-page' && is_cart() ) {
@@ -1636,7 +1657,6 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 				if ( $condition === 'edit-account-page' && is_edit_account_page() ) {
 					$result = $boolean;
 				}
-
 				if ( $condition === 'order-received-page' && is_order_received_page() ) {
 					$result = $boolean;
 				}
@@ -1660,34 +1680,43 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 				$result = $boolean;
 			}
 
+			if ( $condition === 'singular-category-id' && is_singular( 'post' ) ) {
+				$post_cats = get_the_category();
+				$post_cats = array_map( function( $category ) {
+					return $category->term_id;
+				}, $post_cats );
+
+				if ( ! empty( $post_cats ) && in_array( $object_id, $post_cats ) ) {
+					$result = $boolean;
+				}
+			}
+
 			if ( $condition === 'tag-id' && is_tag() && get_queried_object_id() === $object_id ) {
 				$result = $boolean;
 			}
 
-			if ( $condition === 'author-id' && get_the_author_meta( 'ID' ) === $object_id ) {
-				$result = $boolean;
-			}
+			if ( $condition === 'singular-tag-id' && is_singular('post') ) {
+				$post_tags = get_the_tags();
+				$post_tags = array_map( function( $tag ) {
+					return $tag->term_id;
+				}, $post_tags );
 
-			// User Auth
-			if ( $condition === 'logged-in' && is_user_logged_in() ) {
-				$result = $boolean;
-			}
-
-			if ( $condition === 'logged-out' && ! is_user_logged_in() ) {
-				$result = $boolean;
-			}
-
-			// User Roles
-			if ( substr( $condition, 0, 10 ) === 'user_role_' && is_user_logged_in() ) {
-
-				$user_role  = str_replace( 'user_role_', '', $condition );
-				$user_id    = get_current_user_id();
-				$user_roles = get_userdata( $user_id )->roles;
-
-				if ( in_array( $user_role, $user_roles ) ) {
+				if ( ! empty( $post_tags ) && in_array( $object_id, $post_tags ) ) {
 					$result = $boolean;
 				}
+			}
 
+			if ( $condition === 'author-id' ) {
+				global $post;
+
+				$product_author_id = get_post_field( 'post_author', $post->ID );
+				if ( is_singular( 'product' ) && (int) $product_author_id === $object_id ) {
+					$result = $boolean;
+				}
+			}
+			
+			if ( $condition === 'author-id' && get_the_author_meta( 'ID' ) === $object_id ) {
+				$result = $boolean;
 			}
 
 			// Others
@@ -1712,14 +1741,37 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 			}
 
 			if ( $condition === 'privacy-policy-page' && is_page() ) {
-
 				$post_id    = get_the_ID();
 				$privacy_id = get_option( 'wp_page_for_privacy_policy' );
 
 				if ( intval( $post_id ) === intval( $privacy_id ) ) {
 					$result = $boolean;
 				}
+			}
+// var_dump($rules);
+			if ( $result ) {
 
+				// User Auth
+				if ( $condition === 'logged-in' && is_user_logged_in() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'logged-out' && ! is_user_logged_in() ) {
+					$result = $boolean;
+				}
+
+				// User Roles
+				if ( substr( $condition, 0, 10 ) === 'user_role_' && is_user_logged_in() ) {
+
+					$user_role  = str_replace( 'user_role_', '', $condition );
+					$user_id    = get_current_user_id();
+					$user_roles = get_userdata( $user_id )->roles;
+
+					if ( in_array( $user_role, $user_roles ) ) {
+						$result = $boolean;
+					}
+
+				}
 			}
 
 		}
@@ -1780,16 +1832,19 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 			}
 			break;
 
+		case 'singular-tag-id':
 		case 'tag-id':
+		case 'singular-category-id':
 		case 'category-id':
+		case 'singular-product-category-id':
 		case 'product-category-id':
 			$taxonomy = 'category';
 
-			if ( $source === 'tag-id' ) {
+			if ( $source === 'tag-id' || $source === 'singular-tag-id' ) {
 				$taxonomy = 'post_tag';
 			}
 
-			if ( $source === 'product-category-id' ) {
+			if ( $source === 'product-category-id' || $source === 'singular-product-category-id' ) {
 				$taxonomy = 'product_cat';
 			}
 
@@ -1889,6 +1944,7 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 					if ( in_array( $taxonomy_key, array( 'category', 'post_tag', 'post_format' ) ) ) {
 						continue;
 					}
+
 					if ( preg_match( '/'. strtolower( $term ) .'/', strtolower( $taxonomy->label ) ) ) {
 						$options[] = array(
 							'id'   => $taxonomy_key,
