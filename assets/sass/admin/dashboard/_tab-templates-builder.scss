@@ -1,0 +1,52 @@
+.botiga-templates-builder-wrapper {
+    .bt-navigation-links {
+        .bt-navigation-link {
+            a {
+                width: 100%;
+            }
+
+            .bt-navigation-link-lock-icon {
+                position: relative;
+                right: -20px;
+                line-height: 1;
+                margin-left: auto;
+                opacity: 0;
+                visibility: hidden;
+                transition: ease opacity 250ms;
+
+                svg {
+                    width: 20px !important;
+                    height: auto;
+                }
+            }
+
+            &:hover {
+                a {
+                    color: #3858e9;
+                }
+
+                .bt-navigation-link-lock-icon {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    .components-card {
+        border: 1px solid #e1e1e1;
+
+        &__header {
+            border-bottom: 1px solid #e1e1e1;
+        }
+    }
+
+    .components-button {
+        &.with-lock-icon {
+            svg {
+                width: 17px;
+                margin-left: 6px;
+            }
+        }
+    }
+}

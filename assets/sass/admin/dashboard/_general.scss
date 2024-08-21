@@ -1072,14 +1072,17 @@ body {
 
 		&-type {
 			flex-basis: 22%;
+			min-width: 100px;
 		}
 
 		&-value {
-			flex-basis: 68%;
-		}
+			width: 100%;
 
-		&-actions {
-
+			&.has-combobox {
+				display: flex;
+				flex-basis: 68%;
+				gap: 11px;
+			}
 		}
 
 		& + .bt-display-conditions__condition-item {
@@ -1087,10 +1090,10 @@ body {
 			padding-top: 15px;
 			margin-top: 15px;
 		}
-	}
 
-	&__conditions-actions {
-		margin-top: 15px;
+		& + .bt-display-conditions__conditions-actions {
+			margin-top: 15px;
+		}
 	}
 
 	&__add-button {
@@ -1100,6 +1103,39 @@ body {
 
 	&__save-button {
 		margin-top: 15px;	
+	}
+}
+
+/* Display conditions combobox */
+.bt-display-conditions-combobox {
+	position: relative;
+	width: 160px;
+
+	[data-wp-component="Flex"] {
+		height: 31px;
+	}
+
+	.components-form-token-field__suggestions-list {
+		position: absolute;
+		top: calc( 100% + 3px );
+		left: 0;
+		width: 100%;
+		border-radius: 3px;
+		background-color: #FFF;
+		box-shadow: none;
+
+		li {
+			border-left: 1px solid #CCC;
+			border-right: 1px solid #CCC;
+
+			&:first-child {
+				border-top: 1px solid #CCC;
+			}
+
+			&:last-child {
+				border-bottom: 1px solid #CCC;
+			}
+		}
 	}
 }
 

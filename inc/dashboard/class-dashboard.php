@@ -119,6 +119,7 @@ class Botiga_Dashboard
      * Add menu page
      */
     public function add_menu_page() {
+        $is_templates_builder_v3 = get_option( 'botiga_templates_builder_v3', 'yes' ) === 'yes';
 
         // Add main 'Botiga' page
         add_menu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_menu_page
@@ -171,7 +172,7 @@ class Botiga_Dashboard
             esc_html__('Templates Builder', 'botiga'),
             esc_html__('Templates Builder', 'botiga'),
             'manage_options',
-            get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
+            $is_templates_builder_v3 ? get_admin_url() . 'admin.php?page=botiga-dashboard&tab=templates-builder' : get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
             '',
             3
         );
