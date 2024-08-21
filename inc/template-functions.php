@@ -1535,16 +1535,17 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 	}
 
 	if ( ! empty( $rules ) ) {
-		$has_specific_set_of_includes = array_filter( $rules, function( $rule ) {
-			return ! in_array( $rule['condition'], array( 'single-post', 'post-archives', 'single-page', 'single-product', 'product-archives' ) ) && $rule['type'] === 'include';
+		$has_post_id_rules = array_filter( $rules, function( $rule ) {
+			return ! in_array( $rule['condition'], array( 'product-id' ) );
 		} );
+		$has_post_id_rules = ! empty( $has_post_id_rules );
 
-		if ( ! empty( $has_specific_set_of_includes ) ) {
-			$rules = array_filter( $has_specific_set_of_includes, function( $rule ) {
-				return ! in_array( $rule['condition'], array( 'single-post', 'post-archives', 'single-page', 'single-product', 'product-archives' ) );
-			} );
-		}
+		$has_user_rules = array_filter( $rules, function( $rule ) {
+			return in_array( $rule['condition'], array( 'logged-in', 'logged-out', 'user_role_administrator', 'user_role_editor', 'user_role_author', 'user_role_contributor', 'user_role_subscriber', 'user_role_customer', 'user_role_shop_manager' ) );
+		} );
+		$has_user_rules = ! empty( $has_user_rules );
 
+var_dump($rules);
 		foreach ( $rules as $rule ) {
 			$object_id = ( ! empty( $rule['id'] ) ) ? intval( $rule['id'] ) : 0;
 			$condition = ( ! empty( $rule['condition'] ) ) ? $rule['condition'] : '';
@@ -1615,27 +1616,6 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 	
 				if ( $condition === 'product-tags' && is_product_tag() ) {
 					$result = $boolean;
-				}
-
-				if ( $condition === 'product-id' && get_queried_object_id() === $object_id ) {
-					$result = $boolean;
-				}
-
-				if ( $condition === 'product-category-id' ) {
-					if ( is_product_category() && get_queried_object_id() === $object_id ) {
-						$result = $boolean;
-					}
-
-					if ( is_singular( 'product' ) ) {
-						$product_cats = get_the_terms( get_the_ID(), 'product_cat' );
-						$product_cats = array_map( function( $category ) {
-							return $category->term_id;
-						}, $product_cats );
-	
-						if ( ! empty( $product_cats ) && in_array( $object_id, $product_cats ) ) {
-							$result = $boolean;
-						}
-					}
 				}
 
 				if ( $condition === 'cart-page' && is_cart() ) {
@@ -1748,16 +1728,70 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 					$result = $boolean;
 				}
 			}
-// var_dump($rules);
-			if ( $result ) {
+
+		}
+
+		// If the above rules passed, check the post id rules.
+		if ( $result && $has_post_id_rules ) {
+			$post_id_result = false;
+
+			foreach ( $rules as $rule ) {
+				$object_id = ( ! empty( $rule['id'] ) ) ? intval( $rule['id'] ) : 0;
+				$condition = ( ! empty( $rule['condition'] ) ) ? $rule['condition'] : '';
+				$boolean   = ( ! empty( $rule['type'] ) && $rule['type'] === 'include' ) ? true : false;
+
+				// Single product - by product id.
+				if ( $condition === 'product-id' && is_singular( 'product' ) ) {
+					if ( get_queried_object_id() === $object_id ) {
+						$post_id_result = $boolean;
+					} elseif ( $rule['type'] === 'exclude' ){
+						$post_id_result = true;
+					}
+				}
+
+				// Shop archive - by product category id.
+				if ( $condition === 'product-category-id' && is_product_category() ) {
+					if ( get_queried_object_id() === $object_id ) {
+						$post_id_result = $boolean;
+					} elseif ( $rule['type'] === 'exclude' ){
+						$post_id_result = true;
+					}
+				} 
+
+				// Single product - by product category id.
+				if ( $condition === 'product-category-id' && is_singular( 'product' ) ) {
+					$product_cats = get_the_terms( get_the_ID(), 'product_cat' );
+					$product_cats = array_map( function( $category ) {
+						return $category->term_id;
+					}, $product_cats );
+
+					if ( ! empty( $product_cats ) && in_array( $object_id, $product_cats, true ) ) {
+						$post_id_result = $boolean;
+					} elseif ( $rule['type'] === 'exclude' ){
+						$post_id_result = true;
+					}
+				}
+			}
+
+			$result = $post_id_result === true ? true : false;
+		} 
+
+		// If the above rules passed, check the user rules.
+		if ( $result && $has_user_rules ) {
+			$user_result = false;
+			
+			foreach ( $rules as $rule ) {
+				$object_id = ( ! empty( $rule['id'] ) ) ? intval( $rule['id'] ) : 0;
+				$condition = ( ! empty( $rule['condition'] ) ) ? $rule['condition'] : '';
+				$boolean   = ( ! empty( $rule['type'] ) && $rule['type'] === 'include' ) ? true : false;
 
 				// User Auth
 				if ( $condition === 'logged-in' && is_user_logged_in() ) {
-					$result = $boolean;
+					$user_result = true;
 				}
 
 				if ( $condition === 'logged-out' && ! is_user_logged_in() ) {
-					$result = $boolean;
+					$user_result = true;
 				}
 
 				// User Roles
@@ -1767,13 +1801,15 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 					$user_id    = get_current_user_id();
 					$user_roles = get_userdata( $user_id )->roles;
 
-					if ( in_array( $user_role, $user_roles ) ) {
-						$result = $boolean;
+					if ( in_array( $user_role, $user_roles, true ) ) {
+						$user_result = true;
 					}
 
 				}
+
 			}
 
+			$result = $user_result === true ? true : false;
 		}
 
 	}
@@ -1834,7 +1870,6 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 
 		case 'singular-tag-id':
 		case 'tag-id':
-		case 'singular-category-id':
 		case 'category-id':
 		case 'singular-product-category-id':
 		case 'product-category-id':
