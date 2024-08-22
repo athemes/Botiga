@@ -487,3 +487,108 @@ function botiga_woocommerce_breadcrumbs() {
 
 	echo wp_kses_post( str_replace( array( '&nbsp;/&nbsp;</nav>', '&nbsp;&#47;&nbsp;</nav>' ), array( '</nav>', '</nav>' ), $breadcrumbs ) );
 }
+
+/**
+ * Render the product archive description.
+ * For some reason the default WooCommerce 'woocommerce_product_archive_description' function do not
+ * display the description whether the page has the 'paged' query_var. This function is a workaround
+ * to display the description in this case.
+ * 
+ * @since 2.2.6
+ * 
+ * @return void
+ */
+function botiga_woocommerce_product_archive_description() {
+	if ( is_search() ) {
+		return;
+	}
+
+	if ( is_post_type_archive( 'product' ) ) {
+		$shop_page = get_post( wc_get_page_id( 'shop' ) );
+		if ( $shop_page ) {
+
+			$allowed_html = wp_kses_allowed_html( 'post' );
+
+			// This is needed for the search product block to work.
+			$allowed_html = array_merge(
+				$allowed_html,
+				array(
+					'form'   => array(
+						'action'         => true,
+						'accept'         => true,
+						'accept-charset' => true,
+						'enctype'        => true,
+						'method'         => true,
+						'name'           => true,
+						'target'         => true,
+					),
+
+					'input'  => array(
+						'type'        => true,
+						'id'          => true,
+						'class'       => true,
+						'placeholder' => true,
+						'name'        => true,
+						'value'       => true,
+					),
+
+					'button' => array(
+						'type'  => true,
+						'class' => true,
+						'label' => true,
+					),
+
+					'svg'    => array(
+						'hidden'    => true,
+						'role'      => true,
+						'focusable' => true,
+						'xmlns'     => true,
+						'width'     => true,
+						'height'    => true,
+						'viewbox'   => true,
+					),
+					'path'   => array(
+						'd' => true,
+					),
+				)
+			);
+
+			$description = wc_format_content( wp_kses( $shop_page->post_content, $allowed_html ) );
+			if ( $description ) {
+				echo '<div class="page-description">' . $description . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+		}
+	}
+}
+
+/**
+ * Render the taxonomy archive description.
+ * For some reason the default WooCommerce 'woocommerce_taxonomy_archive_description' function do not
+ * display the description whether the page has the 'paged' query_var. This function is a workaround
+ * to display the description in this case.
+ * 
+ * @since 2.2.6
+ * 
+ * @return void
+ */
+function botiga_woocommerce_taxonomy_archive_description() {
+	if ( is_product_taxonomy() ) {
+		$term = get_queried_object();
+
+		if ( $term ) {
+			/**
+			 * Filters the archive's raw description on taxonomy archives.
+			 *
+			 * @since WooCommerce 6.7.0
+			 *
+			 * @param string  $term_description Raw description text.
+			 * @param WP_Term $term             Term object for this taxonomy archive.
+			 */
+			$term_description = apply_filters( 'woocommerce_taxonomy_archive_description_raw', $term->description, $term );
+
+			if ( ! empty( $term_description ) ) {
+				echo '<div class="term-description">' . wc_format_content( wp_kses_post( $term_description ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+		}
+	}
+}
