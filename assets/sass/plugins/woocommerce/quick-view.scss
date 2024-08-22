@@ -288,6 +288,26 @@ ul.wc-block-grid__products {
 				}
 			}
 		}
+
+		@media (min-width: 991px) {
+			.product-gallery-summary {
+				max-height: 75vh;
+				overflow-y: auto;
+	
+				&::-webkit-scrollbar {
+					width: 7px;
+				}
+				 
+				&::-webkit-scrollbar-track {
+					background: #e2e2e2;
+				}
+				 
+				&::-webkit-scrollbar-thumb {
+					background-color: #CCC;
+				}
+			}
+		}
+
 		.botiga-quick-view-summary {
 			display: block;
 			max-height: 75vh;
@@ -505,8 +525,21 @@ ul.wc-block-grid__products {
 			max-width: calc( 100% - 30px );
 			.botiga-quick-view-popup-content-ajax {
 				max-height: 80vh;
+				padding-right: 12px;
 				overflow-y: auto;
 				overflow-x: hidden;
+
+				&::-webkit-scrollbar {
+					width: 7px;
+				}
+				 
+				&::-webkit-scrollbar-track {
+					background: #e2e2e2;
+				}
+				 
+				&::-webkit-scrollbar-thumb {
+					background-color: #CCC;
+				}
 			}
 		}
 	}
