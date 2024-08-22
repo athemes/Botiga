@@ -2632,7 +2632,7 @@ function botiga_get_display_conditions_options() {
  * @return void The script template (including <script> tag).
  */
 function botiga_display_conditions_script_template() {
-	$settings = botiga_get_display_conditions_options();	
+	$settings = botiga_get_display_conditions_options();
 
 	?>
 		<script type="text/javascript">
