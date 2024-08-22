@@ -11,6 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 $is_products_filter_page = isset( $_GET['tab'] ) && 'products-filter' === $_GET['tab'] ? true : false;
+$is_templates_builder_page = isset( $_GET['tab'] ) && 'templates-builder' === $_GET['tab'] ? true : false;
 
 ob_start();
 echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
@@ -21,7 +22,7 @@ echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
 
         foreach ($this->settings['tabs'] as $nav_tab_id => $nav_tab_title) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
-            if ( $nav_tab_id === 'products-filter' ) {
+            if ( $nav_tab_id === 'products-filter' || $nav_tab_id === 'templates-builder' ) {
                 continue;
             }
 
@@ -41,7 +42,7 @@ echo '<nav class="botiga-dashboard-tabs-nav" data-tab-wrapper-id="main">';
 echo '</nav>';
 $output = ob_get_clean();
 
-if ( $is_products_filter_page ) {
+if ( $is_products_filter_page || $is_templates_builder_page ) {
 	return;
 }
 

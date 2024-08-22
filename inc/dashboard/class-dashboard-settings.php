@@ -107,7 +107,9 @@ function botiga_dashboard_settings() {
 	);
 
 	$is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
-	if ( ! $is_legacy_tb && ( isset( $settings['has_pro'] ) && $settings['has_pro'] && Botiga_Modules::is_module_active( 'templates' ) ) || !$is_legacy_tb && ! $settings['has_pro'] ) {
+	$is_templates_builder_v3 = get_option( 'botiga_templates_builder_v3', 'yes' ) === 'yes';
+
+	if ( ! $is_legacy_tb && ( isset( $settings['has_pro'] ) && $settings['has_pro'] && Botiga_Modules::is_module_active( 'templates' ) ) && ! $is_templates_builder_v3 || ! $is_legacy_tb && ! $settings['has_pro'] && ! $is_templates_builder_v3 ) {
 		$settings['tabs'] = array_merge(
 			array_slice( $settings['tabs'], 0, 2 ),
 			array( 'builder' => esc_html__( 'Templates Builder', 'botiga' ) ),
@@ -116,6 +118,7 @@ function botiga_dashboard_settings() {
 	}
 
 	$settings['tabs']['products-filter'] = esc_html__( 'Products Filter', 'botiga' );
+	$settings['tabs']['templates-builder'] = esc_html__( 'Templates Builder', 'botiga' );
 
 	//
 	// Settings.
@@ -778,13 +781,25 @@ function botiga_dashboard_settings() {
 		'docs_link'  => 'https://docs.athemes.com/article/pro-hooks-system/',
 	);
 
+	$is_legacy_templates_builder = get_option( 'botiga-legacy-templates-builder' );
+	$is_templates_builder_v3 = get_option( 'botiga_templates_builder_v3', 'yes' ) === 'yes';
+	$templates_builder_link = add_query_arg(array( 'page' => 'botiga-dashboard', 'tab' => 'builder' ), admin_url('admin.php'));
+
+	if ( $is_legacy_templates_builder ) {
+		$templates_builder_link = add_query_arg('post_type', 'athemes_hf', admin_url('edit.php'));
+	}
+
+	if ( $is_templates_builder_v3 ) {
+		$templates_builder_link = add_query_arg(array( 'page' => 'botiga-dashboard', 'module-page' => 'builder', 'settings-page' => 'create-new' ), admin_url('admin.php'));
+	}
+
 	$settings['features'][] = array(
 		'module'     => 'templates',
 		'type'       => 'pro',
 		'title'      => esc_html__('Templates Builder', 'botiga'),
 		'desc'       => esc_html__('Create custom templates for shop catalog, single products, 404 page, mega menu, modal popup and hooks.', 'botiga'),
 		'link_label' => esc_html__('Build Templates', 'botiga'),
-		'link_url'   => get_option( 'botiga-legacy-templates-builder' ) ? add_query_arg('post_type', 'athemes_hf', admin_url('edit.php')) : add_query_arg(array( 'page' => 'botiga-dashboard', 'tab' => 'builder' ), admin_url('admin.php')),
+		'link_url'   => $templates_builder_link,
 		'link_target'=> '_self',
 		'docs_link'  => 'https://docs.athemes.com/article/pro-templates-builder-overview/',
 	);
