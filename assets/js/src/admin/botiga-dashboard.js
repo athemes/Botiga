@@ -511,7 +511,7 @@ y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scrol
 
 			$('#add-new-template').on('click', function() {
 				var $template_item = $('#template-builder .template-item').first().clone();
-
+console.log($template_item);
 				$template_item.attr('data-id', 'botiga-template-' + Math.random().toString(36).slice(2));
 				$template_item.find('h4').replaceWith('<input type="text" placeholder="Template name" name="template_name" value="">');
 				$template_item.find('.template-options').show();
