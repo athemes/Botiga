@@ -119,7 +119,7 @@ class Botiga_Merchant_Single_Product_Elements {
 				'placement' => $default_desc,
 			),
 			'stock-scarcity' => array(
-				'single_product_placement' => $default_desc,
+				'hook-order-single-product' => $default_desc,
 			),
 			'reasons-to-buy' => array(
 				'placement' => $default_desc,
@@ -197,6 +197,10 @@ class Botiga_Merchant_Single_Product_Elements {
 					background-color: #e6effa;
 					padding: 8px 10px;
 					margin-top: 8px;
+				}
+
+				.botiga-merchant-module-field-disabled + .merchant-module-page-setting-field-info {
+					display: none !important;
 				}
 			";
 
@@ -312,10 +316,12 @@ class Botiga_Merchant_Single_Product_Elements {
 
 			if ( in_array( $module_id, array( 'buy-x-get-y', 'volume-discounts', 'product-bundles', 'stock-scarcity' ), true ) ) {
 				$add_to_cart_callback_index = array_search( 'woocommerce_template_single_add_to_cart', $components, true );
-
+				
 				if ( $add_to_cart_callback_index ) {
 					array_splice( $components, $add_to_cart_callback_index, 0, $module_data[ 'callback' ] );
 					$components = array_unique( $components );
+
+					continue;
 				}
 			}
 
