@@ -1541,7 +1541,11 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:878
+#: inc/dashboard/class-dashboard-settings.php:833
+msgid "aThemes Addons for Elementor"
+msgstr ""
+
+#: inc/dashboard/class-dashboard-settings.php:884
 msgid "Get Pro"
 msgstr ""
 
