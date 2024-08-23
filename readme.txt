@@ -35,6 +35,7 @@ Fixed - Quick View: Issue with big images overtaking the modal container.
 Fixed - Cart: Border is not consistent.
 Fixed - Customizer: Tabs control over multiple color control tooltips.
 Fixed - Shop Archive Categories: The category description is disappearing when pagination is active.
+Fixed - Merchant Integration: Stock Scarcity module being displayed twice in the customizer single product elements sorting.
 
 = 2.2.5 =
 Added - Support to 'appearance-tools' (more block editor controls).

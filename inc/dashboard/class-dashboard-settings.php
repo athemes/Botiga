@@ -801,7 +801,7 @@ function botiga_dashboard_settings() {
 		'link_label' => esc_html__('Build Templates', 'botiga'),
 		'link_url'   => $templates_builder_link,
 		'link_target'=> '_self',
-		'docs_link'  => 'https://docs.athemes.com/article/pro-templates-builder-overview/',
+		'docs_link'  => $is_templates_builder_v3 ? 'https://docs.athemes.com/article/pro-templates-builder-v3/' : 'https://docs.athemes.com/article/pro-templates-builder-overview/',
 	);
 
 	$settings['features'][] = array(
@@ -825,7 +825,13 @@ function botiga_dashboard_settings() {
 			'slug' => 'athemes-blocks',
 			'path' => 'athemes-blocks/athemes-blocks.php',
 			'name' => __( 'aThemes Blocks', 'botiga' ),
-			'img_url' => get_template_directory_uri() . '/assets/img/athemes-blocks-logo.png',
+			'img_url' => get_template_directory_uri() . '/assets/img/athemes-blocks-logo.svg',
+		),
+		'athemes-addons-for-elementor-lite' => array(
+			'slug' => 'athemes-addons-for-elementor-lite',
+			'path' => 'athemes-addons-for-elementor-lite/athemes-addons-elementor.php',
+			'name' => __( 'aThemes Addons for Elementor', 'botiga' ),
+			'img_url' => get_template_directory_uri() . '/assets/img/athemes-addons-logo.png',
 		),
 	);
 
