@@ -121,8 +121,8 @@ function botiga_woocommerce_page_header() {
 				}
 
 				if( ( $shop_page_description && ( is_shop() || is_product_category() || is_product_tag() || is_product_taxonomy() ) ) || !is_shop() && !is_product_category() && !is_product_tag() && !is_product_taxonomy() ) {
-					woocommerce_taxonomy_archive_description();
-					woocommerce_product_archive_description();
+					botiga_woocommerce_taxonomy_archive_description();
+					botiga_woocommerce_product_archive_description();
 				}
 				
 				if( $shop_archive_header_style_show_categories ) {

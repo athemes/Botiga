@@ -60,7 +60,7 @@ $disabled = ! $this->settings['has_pro'] || $this->settings['has_pro'] && ( clas
 				$templates = array();
 				$custom_templates = get_option( 'botiga_template_builder_data' );
 
-				if ( !is_array( $custom_templates ) && empty( $custom_templates ) ) {
+				if ( !is_array( $custom_templates ) && empty( $custom_templates ) || empty( $custom_templates ) ) {
 					$templates['global'] = array(
 						'id' 			=> 'global',
 						'template_name' => 'Global',

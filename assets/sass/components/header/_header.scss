@@ -675,6 +675,10 @@
         visibility: visible;
         background: transparent !important;
         z-index: 2;
+
+        select, input, button {
+            line-height: 1;
+        }
     }
 }
 .header-search-form-active {
@@ -848,5 +852,24 @@
             }
         }
 
+    }
+}
+
+// #masthead-mobile
+#masthead-mobile {
+    .search-submit {
+        svg {
+            &:not(.stroke-based) {
+                fill: var( --bt-color-button, #FFF );
+            }
+        }
+
+        &:hover {
+            svg {
+                &:not(.stroke-based) {
+                    fill: var( --bt-color-button-hover, #FFF );
+                }
+            }   
+        }
     }
 }

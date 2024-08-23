@@ -678,6 +678,12 @@ body {
 		}
 	}
 
+	.botiga-dashboard-card-inner-header {
+		&.with-border-bottom {
+			border-bottom: 1px solid #f0f0f1;
+		}
+	}
+
 	.botiga-dashboard-card-body {
 		p {
 			margin: 0;
@@ -721,6 +727,15 @@ body {
 			left: 20px;
 			width: calc( 100% - 40px );
 			border-bottom: 1px solid #F0F0F1;
+		}
+	}
+
+	&.botiga-dashboard-card-plugin {
+		gap: 10px;
+		height: 100%;
+
+		a {
+			margin-top: auto;
 		}
 	}
 }
@@ -797,7 +812,348 @@ body {
     margin: 5px 0;
 }
 
-/* Card inner header */
-.botiga-dashboard-card-inner-header {
-	
+/* Templates Builder Card */
+.bt-template-card {
+	&__header {
+		padding: 10px !important;
+
+		h2 {
+			font-size: 0.9rem;
+			line-height: 1;
+			margin: 0;
+		}
+	}
+
+	&__icons {
+		display: flex;
+		gap: 3px;
+	}
+
+	&__icon {
+		padding: 0;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+
+		svg {
+			width: 19px;
+			height: 19px;
+			fill: #757575;
+			transition: ease fill 250ms;
+		}
+
+		&:hover {
+			svg {
+				fill: #212121;
+			}
+		}
+	}
+
+	&__body {
+		padding: 0 !important;
+	}
+
+	&__iframe-view {
+		position: relative;
+		height: 244px;
+
+		iframe {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 672.206px;
+			width: 1200px;
+			border: none;
+			transform: scale(0.363);
+			transform-origin: 0 0;
+		}
+	}
+
+	&__footer {
+		padding: 10px !important;
+	}
+
+	&__meta-info {
+		display: flex;
+		align-items: center;
+		gap: 7px;
+
+		&-author {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			color: #757575;
+
+			img {
+				width: 12px;
+				height: 12px;
+			}
+		}
+
+		&-date {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			color: #757575;
+
+			svg {
+				width: 12px;
+				height: auto;
+			}
+		}
+	}
+
+	.bt-display-conditions {
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		color: #757575;
+		transition: ease color 250ms;
+
+		&:hover {
+			color: #212121;
+			cursor: pointer;
+		}
+	}
+
+	&__title-input {
+		border: none !important;
+		border-bottom: 1px solid #CCC !important;
+		padding: 0 !important;
+		border-radius: 0 !important;
+		width: 75% !important;
+		outline: none !important;
+		box-shadow: none !important;
+	}
+
+	&__save-button {
+		padding-left: 17px;
+		padding-right: 17px;
+	}
+
+	&__choose-builder {
+		display: flex;
+		justify-content: space-between;
+
+		&-radio {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			gap: 5px;
+
+			label {
+				display: flex;
+				align-items: center;
+				color: #757575;
+				cursor: pointer;
+				transition: ease color 250ms;
+
+				&:first-of-type {
+					margin-left: auto;
+				}
+				
+				.bt-template-card__choose-builder-icon {
+					opacity: 0.6;
+					transition: ease opacity 250ms;
+				}
+
+				&:hover {
+					color: #212121;
+
+					.bt-template-card__choose-builder-icon {
+						opacity: 1;
+					}
+				}
+			}
+
+			input {
+				display: none;
+			}
+		}
+
+		&-icons {
+			display: flex;
+			align-items: center;			
+		}
+
+		&-icon {
+			width: 15px;
+			margin-right: 3px;
+		}
+
+		&--selected {
+			.bt-template-card__choose-builder-radio {
+				width: auto;
+			}
+		}
+	}
+
+	&__editor-modal {
+		width: 100% !important;
+		max-width: 96vw !important;
+		height: 100%;
+		max-height: 96vh;
+
+		.components-modal__content {
+			padding: 0 10px 10px !important;
+		}
+	}
+
+	&__iframe-editor {
+		position: relative;
+		height: 87vh;
+
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__preview-placeholder {
+		position: relative;
+		height: 244px;
+		background-color: #f5f5f5;
+	}
+
+	&--create-new {
+		.bt-template-card__body {
+			position: relative;
+
+			.components-button {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				opacity: 0;
+				visibility: hidden;
+				transform: translate3d(-50%, -50%, 0);
+				transition: ease opacity 250ms;
+			}
+
+			&:hover {
+				.components-button {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
+}
+
+/* Display Conditions Modal */
+.bt-display-conditions-modal {
+	max-width: 500px !important;
+    width: 100% !important;
+
+	.components-modal__content {
+		padding: 4px 25px 25px;
+	}
+
+	.components-modal__header {
+		padding: 14px 26px 10px;
+	}
+}
+
+/* Display Conditions Component (repeater) */
+.bt-display-conditions {
+	&__conditions {
+		.components-base-control__field {
+			margin-bottom: 0;
+		}
+	}
+
+	&__condition-item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		&-type {
+			flex-basis: 22%;
+			min-width: 100px;
+		}
+
+		&-value {
+			width: 100%;
+
+			&.has-combobox {
+				display: flex;
+				flex-basis: 68%;
+				gap: 11px;
+			}
+		}
+
+		& + .bt-display-conditions__condition-item {
+			border-top: 1px solid #f0f0f1;
+			padding-top: 15px;
+			margin-top: 15px;
+		}
+
+		& + .bt-display-conditions__conditions-actions {
+			margin-top: 15px;
+		}
+	}
+
+	&__add-button {
+		width: 100%;
+		justify-content: center;	
+	}
+
+	&__save-button {
+		margin-top: 15px;	
+	}
+}
+
+/* Display conditions combobox */
+.bt-display-conditions-combobox {
+	position: relative;
+	width: 160px;
+
+	[data-wp-component="Flex"] {
+		height: 31px;
+	}
+
+	.components-form-token-field__suggestions-list {
+		position: absolute;
+		top: calc( 100% + 3px );
+		left: 0;
+		width: 100%;
+		border-radius: 3px;
+		background-color: #FFF;
+		box-shadow: none;
+
+		li {
+			border-left: 1px solid #CCC;
+			border-right: 1px solid #CCC;
+
+			&:first-child {
+				border-top: 1px solid #CCC;
+			}
+
+			&:last-child {
+				border-bottom: 1px solid #CCC;
+			}
+		}
+	}
+}
+
+/* Empty templates message component */
+.bt-empty-templates-message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	max-width: 340px;
+    text-align: center;
+    margin: 70px auto;
+    padding: 30px;
+
+	strong {
+		color: #212121;
+	}
+
+	.components-button {
+		margin-top: 10px;
+	}
 }

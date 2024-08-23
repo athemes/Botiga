@@ -119,6 +119,7 @@ class Botiga_Dashboard
      * Add menu page
      */
     public function add_menu_page() {
+        $is_templates_builder_v3 = get_option( 'botiga_templates_builder_v3', 'yes' ) === 'yes';
 
         // Add main 'Botiga' page
         add_menu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_menu_page
@@ -171,7 +172,7 @@ class Botiga_Dashboard
             esc_html__('Templates Builder', 'botiga'),
             esc_html__('Templates Builder', 'botiga'),
             'manage_options',
-            get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
+            $is_templates_builder_v3 ? get_admin_url() . 'admin.php?page=botiga-dashboard&tab=templates-builder' : get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
             '',
             3
         );
@@ -483,7 +484,7 @@ class Botiga_Dashboard
 
         }
 
-        wp_send_json_error(esc_html__('Failed to initialize or activate importer plugin.', 'botiga'));
+        wp_send_json_error(esc_html__('Failed to initialize or activate the plugin.', 'botiga'));
     }
 
     /**
@@ -753,7 +754,7 @@ class Botiga_Dashboard
 
 			$post_title     = __( 'Botiga Template Part - ', 'botiga' ) . str_replace( 'botiga-template-', '', $key ) . '-' . sanitize_text_field( wp_unslash( $_POST['part_type'] ) );
 
-			$params = array(
+            $params = array(
 				'post_content' => '',
 				'post_type'    => 'athemes_hf',
 				'post_title'   => $post_title,
@@ -783,6 +784,9 @@ class Botiga_Dashboard
 			'url'   => $edit_url,
 			'id'    => $post_id,
 			'title' => $post_title,
+            'author' => get_the_author_meta( 'display_name', get_post_field( 'post_author', $post_id ) ),
+            'author_image' => get_avatar_url( get_the_author_meta( 'ID', get_post_field( 'post_author', $post_id ) ), array( 'size' => 32 ) ),
+            'date' => get_the_date( '', $post_id ),
 		);
 
 		wp_send_json_success( $result );

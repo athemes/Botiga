@@ -160,6 +160,11 @@
 		border-style: solid;
 		border-width: 1px;
 		transition: ease background-color 300ms, ease color 300ms;
+
+		&:hover {
+			color: var( --bt-color-button, #FFF );
+			background-color: var( --bt-color-button-bg, #212121 );
+		}
 	}
 	.botiga-quantity-plus {
 		border-bottom: 0;
@@ -198,7 +203,13 @@
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
 			max-width: 30%;
+			color: var( --bt-color-button, #FFF );
+			background-color: var(--bt-color-button-bg, #212121);
 			transition: ease background-color 300ms;
+
+			&:hover {
+				background-color: var(--bt-color-button-bg-hover, #757575);
+			}
 		}
 
 		.qty {
@@ -280,6 +291,7 @@
 			width: 22px;
 			height: 35%;
 			right: 10px;
+			background-color: var( --bt-color-button-bg, #212121 );
 		}
 		.botiga-quantity-plus {
 			top: 15%;
@@ -313,7 +325,13 @@
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
+			color: var( --bt-color-button, #FFF );
+			background-color: var( --bt-color-button-bg, #212121 );
 			transition: ease background-color 300ms;
+
+			&:hover {
+				background-color: var( --bt-color-button-bg-hover, #757575 );
+			}
 		}
 	}
 }
@@ -1516,13 +1534,13 @@ p.no-comments {
 .wc-block-grid__product-onsale,
 span.onsale {
 	position: absolute;
-	background: $color__primary;
+	background: var( --bt-color-onsale-bg, #212121 );
 	top: 20px;
 	left: 20px;
 	font-weight: 400;
 	@include font-size(14);
 	text-transform: uppercase;
-	color: #fff;
+	color: var( --bt-color-onsale, #FFF );
 	padding: 3px 20px !important;
 	border-radius: 0;
 	z-index: 11;
@@ -1628,6 +1646,7 @@ dl.variation {
 			cursor: pointer;
 			overflow: hidden;
 			transition: ease all 300ms;
+			box-sizing: border-box;
 
 			&:hover,
 			&.active {
@@ -2235,6 +2254,7 @@ dl.variation {
 		opacity: 0.4;
 		overflow: hidden;
 		transition: all .3s;
+		box-sizing: border-box;
 
 		&:hover,
 		&.active{

@@ -111,3 +111,11 @@
 		}
 	}
 }
+
+@media(max-width: 767px) {
+	.botiga-dashboard-hero {
+		.botiga-dashboard-hero-image {
+			display: none;
+		}
+	}	
+}

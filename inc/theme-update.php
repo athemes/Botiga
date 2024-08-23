@@ -529,3 +529,30 @@ function botiga_migrate_accordion_style_to_wdigets() {
     set_theme_mod( 'botiga_migrate_accordion_style_to_wdigets_flag', true );
 }
 add_action( 'init', 'botiga_migrate_accordion_style_to_wdigets' );
+
+/**
+ * Enable the templates builder v3 for new and existing users. 
+ * With exception for users that have the legacy templates builder active.
+ * 
+ * @since 2.2.6
+ */
+function botiga_enable_templates_builder_v3() {
+    $flag = get_theme_mod( 'botiga_enable_templates_builder_v3_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+
+    // Do not enable the templates builder v3 to users that have the legacy templates builder active.
+    $is_legacy_templates_builder = get_option( 'botiga-legacy-templates-builder' );
+    if ( $is_legacy_templates_builder ) {
+        return;
+    }
+
+    // Enable the templates builder v3 to v2 users and new users.
+    update_option( 'botiga_templates_builder_v3', 'yes' );
+
+    //Set flag
+    set_theme_mod( 'botiga_enable_templates_builder_v3_flag', true );
+}
+add_action( 'init', 'botiga_enable_templates_builder_v3' );

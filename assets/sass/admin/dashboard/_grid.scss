@@ -24,6 +24,12 @@
 	.botiga-dashboard-column {
 		&.botiga-dashboard-column-4 {
 			flex-basis: calc( 50% - 10px );
+			max-width: calc( 50% - 10px );
+		}
+
+		&.botiga-dashboard-column-6 {
+			flex-basis: calc( 50% - 10px );
+			max-width: calc( 50% - 10px );
 		}
 	}
 }
@@ -35,7 +41,8 @@
 		}
 
 		&.botiga-dashboard-column-3 {
-			flex-basis: calc( 30% - 10px );
+			flex-basis: calc( 30% - 15px );
+			max-width: calc( 30% - 15px );
 		}
 
 		&.botiga-dashboard-column-4 {
@@ -44,6 +51,7 @@
 
 		&.botiga-dashboard-column-9 {
 			flex-basis: calc( 70% - 10px );
+			max-width: calc( 70% - 10px );
 		}
 
 		&.botiga-dashboard-column-10 {
@@ -55,11 +63,13 @@
 @media(min-width: 1600px) {
 	.botiga-dashboard-column {
 		&.botiga-dashboard-column-3 {
-			flex-basis: calc( 25% - 10px );
+			flex-basis: calc( 25% - 15px );
+			max-width: calc( 25% - 15px );
 		}
 
 		&.botiga-dashboard-column-9 {
 			flex-basis: calc( 75% - 10px );
+			max-width: calc( 75% - 10px );
 		}
 	}
 }

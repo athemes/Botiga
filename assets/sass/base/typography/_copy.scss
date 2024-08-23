@@ -1,6 +1,19 @@
 p {
-	margin-bottom: 40px;
+	margin-bottom: var( --bt-paragraph-margin-bottom, 40px );
 	margin-top: 0;
+
+	// .is-layout-flow & {
+	// 	margin-block-start: 0;
+	// 	margin-block-end: 40px;
+
+	&.smallmargin {
+		margin-block-start: 8px;
+		margin-block-end: 8px;
+
+		& + p {
+			margin-block-start: 0;
+		}
+	}
 }
 
 dfn,

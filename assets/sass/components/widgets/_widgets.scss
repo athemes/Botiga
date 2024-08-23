@@ -102,7 +102,14 @@
 	&.widget_product_tag_cloud {
 		.tag-cloud-link {
 			padding: 7px 14px;
+			color: var( --bt-color-button, #FFF );
+			background-color: var( --bt-color-button-bg, #212121 );
 			transition: ease background 300ms;
+
+			&:hover {
+				color: var( --bt-color-button-hover, #FFF );
+				background-color: var( --bt-color-button-bg-hover, #757575 );
+			}
 		}	
 	}
 }
