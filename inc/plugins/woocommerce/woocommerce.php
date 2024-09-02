@@ -681,6 +681,33 @@ function botiga_cart_backorder_notification( $message, $product_id ){
 add_filter( 'woocommerce_cart_item_backorder_notification', 'botiga_cart_backorder_notification', 10, 2 );
 
 /**
+ * Disable the ComingSoon block from being displayed in the widget areas.
+ * Since Woo 9.2.0+ the ComingSoon block is loaded in the widget areas such as the customizer. 
+ * Due to how the CSS is written in the block, the customizer is taking too much to load generating a bad user experience.
+ * 
+ * Note: There's a PR opened to fix this issue in the plugin here: https://github.com/woocommerce/woocommerce/pull/51058.
+ * Once it is approved we can remove this filter.
+ * 
+ * @param array $block_types The block types.
+ * 
+ * @since 2.2.7
+ * @return array
+ */
+function botiga_disable_coming_soon_block_from_widget_areas( $block_types ) {
+	global $pagenow;
+
+	if ( ! in_array( $pagenow, array( 'widgets.php', 'themes.php', 'customize.php' ), true ) ) {
+		return $block_types;
+	}
+
+	return array_diff(
+		$block_types,
+		array( 'ComingSoon' )
+	);
+}
+add_filter( 'woocommerce_get_block_types', 'botiga_disable_coming_soon_block_from_widget_areas' );
+
+/**
  * WooCommerce Blocks
  */
 require get_template_directory() . '/inc/plugins/woocommerce/blocks/product-categories/class-botiga-woocommerce-block-product-categories.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
