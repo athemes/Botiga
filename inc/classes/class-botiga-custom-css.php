@@ -2548,6 +2548,8 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css = '';
 
 			foreach( $variables as $variable ) {
+				$temp_css = '';
+
 				$is_responsive = is_array($variable[ 'defaults' ]);
 
 				if( $is_responsive ) {
@@ -2560,11 +2562,13 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$mod = "#$mod";
 				}
 				
-				$css .= $variable[ 'name' ] .':' . $mod . $variable[ 'unit' ] .';' . "\n";
+				$temp_css .= $variable[ 'name' ] .':' . $mod . $variable[ 'unit' ] .';' . "\n";
 
 				if( ! $is_responsive && $device !== 'mobile' ) {
-					$css = '';
+					$temp_css = '';
 				}
+
+				$css .= $temp_css;
 
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! in_array( $variable[ 'name' ], self::$css_to_replace ) ) {
