@@ -463,6 +463,11 @@ add_filter( 'woocommerce_product_get_rating_html', 'botiga_products_grid_rating_
  * @return string
  */
 function botiga_wc_blocks_products_grid_rating_html( $html, $data, $product ) {
+	$display_rating_count = get_theme_mod( 'shop_product_display_reviews_count', 0 );
+	if ( ! $display_rating_count ) {
+		return $html;
+	}
+
 	$review_count = $product->get_review_count();
 	if ( $review_count === 0 ) {
 		return $html;
@@ -477,8 +482,8 @@ function botiga_wc_blocks_products_grid_rating_html( $html, $data, $product ) {
 	$rating_count_html= ob_get_clean();
 
 	$data->rating = str_replace( 
-		array( '"wc-block-grid__product-rating"', '</div></div>' ), 
-		array( '"wc-block-grid__product-rating botiga-wc-product-rating-with-count"', '</div>' . $rating_count_html . '</div>' ), 
+		array( '"wc-block-grid__product-rating"' ), 
+		array( '"wc-block-grid__product-rating botiga-wc-product-rating-with-count"' ), 
 		$data->rating 
 	);
 

@@ -254,6 +254,12 @@ ul.products {
 		transform: translate3d(-50%, -10%, 0);
 		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
 		z-index: 3;
+
+		&.button-with-buy-now {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
 	}
 
 	&.botiga-add-to-cart-button-layout3 {
@@ -289,6 +295,10 @@ ul.products {
 		transition: ease opacity 300ms, ease visibility 300ms, ease transform 300ms;
 		z-index: 3;
 	}
+}
+
+.botiga-buy-now-button {
+	min-width: 145px;
 }
 
 .button-layout2 {
