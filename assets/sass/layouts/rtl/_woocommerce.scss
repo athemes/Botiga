@@ -399,3 +399,12 @@ ul.products {
 		}
 	}
 }
+
+/* Mini Cart */
+.site-header-cart, 
+.botiga-side-mini-cart {
+	.widget_shopping_cart {
+		left: auto;
+		right: -999em;
+	}
+}

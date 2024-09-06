@@ -266,8 +266,10 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					$selectors = array( 
 						'button', 
 						'a.button', 
+						'.button',
 						'.wp-block-button__link', 
 						'.wc-block-components-button',
+						'ul.products li.product .button',
 						'input[type="button"]', 
 						'input[type="reset"]', 
 						'input[type="submit"]', 
@@ -1556,6 +1558,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= ".product-category-item-layout4 ul.products li.product-category > a h2 { border-radius: 0 0 " . esc_attr( $shop_categories_radius ) . "px " . esc_attr( $shop_categories_radius ) . "px;}" . "\n";
 			}
 
+			$shop_product_add_to_cart_layout = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
 			$shop_product_card_style        = get_theme_mod( 'shop_product_card_style', 'layout1' );
 			$shop_product_card_border_color = get_theme_mod( 'shop_product_card_border_color', '#eee' );
 			$shop_product_card_border_size  = get_theme_mod( 'shop_product_card_border_size', 1 );
@@ -1575,9 +1578,15 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			}
 
 			if ( 'left' === $shop_product_alignment ) {
-				$css .= ".star-rating,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.wc-block-grid__products li.product .wp-block-button__link, ul.wc-block-grid__products li.product .button, ul.products li.wc-block-grid__product .wp-block-button__link, ul.products li.wc-block-grid__product .button, ul.products li.product .wp-block-button__link, ul.products li.product .button { margin-left:0!important;}" . "\n";
+				$css .= ".star-rating { margin-left:0!important;}" . "\n";
 			} elseif ( 'right' === $shop_product_alignment ) {
-				$css .= ".star-rating,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.wc-block-grid__products li.product .wp-block-button__link, ul.wc-block-grid__products li.product .button, ul.products li.wc-block-grid__product .wp-block-button__link, ul.products li.wc-block-grid__product .button, ul.products li.product .wp-block-button__link, ul.products li.product .button { margin-right:0!important;}" . "\n";      
+				$css .= ".star-rating { margin-right:0!important;}" . "\n";      
+			}
+
+			if ( 'left' === $shop_product_alignment && 'layout3' !== $shop_product_add_to_cart_layout ) {
+				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.wc-block-grid__products li.product .wp-block-button__link, ul.wc-block-grid__products li.product .button, ul.products li.wc-block-grid__product .wp-block-button__link, ul.products li.wc-block-grid__product .button, ul.products li.product .wp-block-button__link, ul.products li.product .button { margin-left:0!important;}" . "\n";
+			} elseif ( 'right' === $shop_product_alignment && 'layout3' !== $shop_product_add_to_cart_layout ) {
+				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link, ul.wc-block-grid__products li.wc-block-grid__product .button, ul.wc-block-grid__products li.product .wp-block-button__link, ul.wc-block-grid__products li.product .button, ul.products li.wc-block-grid__product .wp-block-button__link, ul.products li.wc-block-grid__product .button, ul.products li.product .wp-block-button__link, ul.products li.product .button { margin-right:0!important;}" . "\n";      
 			}
 
 			$shop_product_add_to_cart_button_width = get_theme_mod( 'shop_product_add_to_cart_button_width', 'auto' );
@@ -1897,7 +1906,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$button_text_decoration = get_theme_mod( 'button_text_decoration', 'none' );
-			$css .= "button,a.button,.wp-block-button__link,.wc-block-components-button,.wc-block-components-button .wc-block-components-button__text,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . "; text-decoration:" . esc_attr( $button_text_decoration ) . ";}" . "\n";
+			$css .= "button,a.button,.button,.wp-block-button__link,.wc-block-components-button,.wc-block-components-button .wc-block-components-button__text,ul.products li.product .button,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . "; text-decoration:" . esc_attr( $button_text_decoration ) . ";}" . "\n";
 
 			// $css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button:not(.has-background),a.button:not(.has-background),.wp-block-button .wp-block-button__link:not(.has-background),.wp-block-button__link:not(.has-background),.wp-block-search .wp-block-search__button:not(.has-background),input[type="button"]:not(.has-background),input[type="reset"]:not(.has-background),input[type="submit"]:not(.has-background),.comments-area .comment-reply-link:not(.has-background),.botiga-sc-product-quantity' );          
 			// $css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.is-style-outline .wp-block-button__link:not(.has-background):hover,button:not(.has-background):hover,a.button:not(.has-background):hover,.wp-block-button .wp-block-button__link:not(.has-background):hover,.wp-block-button__link:not(.has-background):hover,.wp-block-search .wp-block-search__button:not(.has-background):hover,input[type="button"]:not(.has-background):hover,input[type="reset"]:not(.has-background):hover,input[type="submit"]:not(.has-background):hover,.comments-area .comment-reply-link:not(.has-background):hover' );       
