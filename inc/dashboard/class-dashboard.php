@@ -790,6 +790,7 @@ class Botiga_Dashboard
             'author' => get_the_author_meta( 'display_name', get_post_field( 'post_author', $post_id ) ),
             'author_image' => get_avatar_url( get_the_author_meta( 'ID', get_post_field( 'post_author', $post_id ) ), array( 'size' => 32 ) ),
             'date' => get_the_date( '', $post_id ),
+            'preview_url' => get_permalink( $post_id ),
 		);
 
 		wp_send_json_success( $result );
