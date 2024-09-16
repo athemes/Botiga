@@ -1345,8 +1345,13 @@ botiga.carousel = {
 
 			jQuery( document.body ).on( 'wc_fragment_refresh added_to_cart removed_from_cart', function(){
 				setTimeout(function(){
-					var mini_cart 	   = document.getElementById( 'site-header-cart' ),
-						mini_cart_list = mini_cart.querySelector( '.cart_list' ); 
+					const mini_cart = document.getElementById( 'site-header-cart' );
+
+					if ( mini_cart === null ) {
+						return false;
+					}
+
+					const mini_cart_list = mini_cart.querySelector( '.cart_list' );
 
 					if( mini_cart_list !== null ) {
 						if( mini_cart_list.children.length > 2 ) {
