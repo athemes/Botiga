@@ -119,6 +119,7 @@ class Botiga_Dashboard
      * Add menu page
      */
     public function add_menu_page() {
+        $is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
         $is_templates_builder_v3 = get_option( 'botiga_templates_builder_v3', 'yes' ) === 'yes';
 
         // Add main 'Botiga' page
@@ -167,15 +168,17 @@ class Botiga_Dashboard
         );
 
         // Add 'Templates Builder' link
-        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-            'botiga-dashboard',
-            esc_html__('Templates Builder', 'botiga'),
-            esc_html__('Templates Builder', 'botiga'),
-            'manage_options',
-            $is_templates_builder_v3 ? get_admin_url() . 'admin.php?page=botiga-dashboard&tab=templates-builder' : get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
-            '',
-            3
-        );
+        if ( ! $is_legacy_tb ) {
+            add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+                'botiga-dashboard',
+                esc_html__('Templates Builder', 'botiga'),
+                esc_html__('Templates Builder', 'botiga'),
+                'manage_options',
+                $is_templates_builder_v3 ? get_admin_url() . 'admin.php?page=botiga-dashboard&tab=templates-builder' : get_admin_url() . 'admin.php?page=botiga-dashboard&tab=builder',
+                '',
+                3
+            );
+        }
 
         // Add 'Product Filters' link
         add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
@@ -787,6 +790,7 @@ class Botiga_Dashboard
             'author' => get_the_author_meta( 'display_name', get_post_field( 'post_author', $post_id ) ),
             'author_image' => get_avatar_url( get_the_author_meta( 'ID', get_post_field( 'post_author', $post_id ) ), array( 'size' => 32 ) ),
             'date' => get_the_date( '', $post_id ),
+            'preview_url' => get_permalink( $post_id ),
 		);
 
 		wp_send_json_success( $result );

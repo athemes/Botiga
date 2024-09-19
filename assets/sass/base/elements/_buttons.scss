@@ -1,3 +1,4 @@
+button:not(.components-button),
 a.button,
 .button,
 .checkout-button,
@@ -83,6 +84,15 @@ input[type="submit"] {
 	&:active,
 	&:focus {
 		color: var( --bt-color-button-hover, #FFF );
+	}
+}
+
+.is-style-outline {
+	.wp-block-button__link {
+		padding-top: var( --bt-padding-button-top-bottom, 13px );
+		padding-bottom: var( --bt-padding-button-top-bottom, 13px );
+		padding-left: var( --bt-padding-button-left-right, 24px );
+		padding-right: var( --bt-padding-button-left-right, 24px );
 	}
 }
 

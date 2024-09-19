@@ -117,7 +117,6 @@ function botiga_sidebar() {
 add_action( 'botiga_do_sidebar', 'botiga_sidebar' );
 
 function botiga_page_post_sidebar() {
-
 	global $post;
 
 	if ( !isset( $post ) ) {
@@ -126,7 +125,6 @@ function botiga_page_post_sidebar() {
 
 	$enable_post    = get_theme_mod( 'sidebar_single_post', 0 );
 	$enable_page    = get_theme_mod( 'sidebar_single_page', 0 );
-
 	$sidebar_layout = get_post_meta( $post->ID, '_botiga_sidebar_layout', true );
 
 	if ( 'no-sidebar' === $sidebar_layout ) {

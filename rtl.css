@@ -564,6 +564,13 @@ ul.products li.product .button.loading:after {
   margin-left: auto;
 }
 
+/* Mini Cart */
+.site-header-cart .widget_shopping_cart,
+.botiga-side-mini-cart .widget_shopping_cart {
+  left: auto;
+  right: -999em;
+}
+
 .single-post-author.single-post-author-right .author-avatar {
   margin-left: 0;
   margin-right: 25px;
