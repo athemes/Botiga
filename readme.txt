@@ -30,6 +30,9 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.8 =
+Fixed - CSS: Button HTML tags are not styled by the theme options.
+
 = 2.2.7 =
 Fixed - Customizer: Taking too much to load since WooCommerce 9.2.0+.
 
