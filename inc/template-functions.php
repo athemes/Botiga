@@ -1845,7 +1845,7 @@ function botiga_get_enhanced_display_conditions( $maybe_rules, $default_value = 
 					$result = $boolean;
 				}
 
-				if ( $condition === 'cart-page' && is_cart() ) {
+				if ( $condition === 'cart' && is_cart() ) {
 					$result = $boolean;
 				}
 
