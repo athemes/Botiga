@@ -144,6 +144,14 @@ const styles = [
 		file: 'dokan',
 	},
 
+	// Merchant.
+	{
+		name: 'merchant',
+		src: './assets/sass/merchant.scss',
+		destination: './assets/css',
+		file: 'merchant',
+	},
+
 	// Quick View.
 	{
 		name: 'quickView',

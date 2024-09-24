@@ -476,6 +476,7 @@ if ( class_exists( 'WooCommerce' ) ) {
  */
 if ( class_exists( 'Merchant' ) ) {
 	require get_template_directory() . '/inc/plugins/merchant/callbacks.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-compatibility-assets.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features-modal.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-single-product-elements.php';
