@@ -1798,13 +1798,15 @@ dl.variation {
  * Express Pay Buttons (Google and Apple)
  */
 #wc-stripe-payment-request-button-separator,
-#wcpay-payment-request-button-separator {
+#wcpay-payment-request-button-separator,
+#wcpay-express-checkout-button-separator {
 	width: 100%;
 	margin: 20px 0 !important;
 }
 
 #wc-stripe-payment-request-wrapper,
-#wcpay-payment-request-wrapper {
+#wcpay-payment-request-wrapper,
+.wcpay-payment-request-wrapper {
 	width: 100%;
 	padding: 0 !important;
 }

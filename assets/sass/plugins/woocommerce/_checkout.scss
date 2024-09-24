@@ -305,7 +305,8 @@ form.woocommerce-checkout {
 		background: transparent;
 	}
 }
-.woocommerce-NoticeGroup-checkout {
+.woocommerce-NoticeGroup-checkout,
+.woocommerce-NoticeGroup-updateOrderReview {
 	flex: 0 0 100%;
 
 	ul {
