@@ -1845,7 +1845,11 @@ function botiga_get_enhanced_display_conditions( $maybe_rules, $default_value = 
 					$result = $boolean;
 				}
 
-				if ( $condition === 'cart' && is_cart() ) {
+				if ( $condition === 'cart' && is_cart() && ! WC()->cart->is_empty() ) {
+					$result = $boolean;
+				}
+
+				if ( $condition === 'cart-empty' && ( is_cart() && WC()->cart->is_empty() ) ) {
 					$result = $boolean;
 				}
 
