@@ -269,7 +269,15 @@ function botiga_main_wrapper_start() {
 	global $post;
 
 	if ( isset( $post ) ) {
-		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+		$page_builder_mode = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+		/**
+		 * Hook 'botiga_page_builder_mode'
+		 * Filters the page builder mode.
+		 * 
+		 * @since 2.2.10
+		 */
+		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post ); 
 
 		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '<div class="content-wrapper">';
@@ -292,6 +300,14 @@ function botiga_main_wrapper_end() {
 
 	if ( isset( $post ) ) {
 		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+		/**
+		 * Hook 'botiga_page_builder_mode'
+		 * Filters the page builder mode.
+		 * 
+		 * @since 2.2.10
+		 */
+		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
 
 		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '</div>';
@@ -319,6 +335,14 @@ function botiga_page_builder_mode() {
 
 	if ( isset( $post ) && is_singular() ) {
 		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+		/**
+		 * Hook 'botiga_page_builder_mode'
+		 * Filters the page builder mode.
+		 * 
+		 * @since 2.2.10
+		 */
+		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
 
 		if ( $page_builder_mode ) {
 			add_filter( 'botiga_entry_header', '__return_false' );

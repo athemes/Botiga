@@ -15,7 +15,7 @@ function botiga_quick_view_scripts() {
 
 	$has_search_popular_products = get_theme_mod( 'shop_search_enable_popular_products', 0 ) ? true : false;
 
-	if( empty( $post ) ) {
+	if( empty( $post ) && ! is_404() ) {
 		if ( is_search() ) {
 			if ( ! $has_search_popular_products ) {
 				return;

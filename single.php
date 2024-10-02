@@ -25,7 +25,9 @@ $content_class = apply_filters( 'botiga_content_class', '' );
 		 *
 		 * @since 1.0.0
 		 */
-		do_action( 'botiga_do_single_content' ); ?>
+		do_action( 'botiga_do_single_content' );
+		
+		?>
 	</main><!-- #main -->
 
 <?php
