@@ -8,14 +8,17 @@
 class Botiga_Elementor_Compatibility {
     public function __construct() {
 
-        // Extend Motion Effects with custom animations
+        // Extend Motion Effects with custom animations.
         add_filter( 'elementor/controls/animations/additional_animations', array( $this, 'extend_motion_effects' ) );
 
-        // Init
+        // Init.
         add_action( 'wp', array( $this, 'init' ) );
 
-        // add inline style
-        add_action( 'wp_enqueue_scripts', array( $this, 'add_inline_style' ), 20 );
+        // Add inline style.
+        add_action( 'wp_enqueue_scripts', array( $this, 'add_global_inline_style' ), 20 );
+
+        // Automatically set the page builder mode to posts that have been built with Elementor.
+        add_filter( 'botiga_page_builder_mode', array( $this, 'set_page_builder' ), 10, 2 );
     }
 
     /**
@@ -29,25 +32,63 @@ class Botiga_Elementor_Compatibility {
     }
 
     /**
-     * Add inline style
+     * Set page builder mode
+     * 
+     * @param string|bool $mode
+     * @param object $post
+     * @return bool
+     */
+    public function set_page_builder( $mode, $post ) {
+        if ( $mode ) {
+            return $mode;
+        }
+
+        if ( ! $post ) {
+            return false;
+        }
+
+        if ( Botiga_Elementor_Helpers::is_built_with_elementor( $post->ID ) ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Add global inline style
      * 
      */
-    public function add_inline_style() {
-        $inline_style = '';
-
-        if ( Botiga_Elementor_Helpers::elementor_has_location( 'single' ) || Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
-            $inline_style .= '
-                .container.content-wrapper {
-                    max-width: 100%;
-                    padding: 0;
-                }
-                
-                div[data-elementor-type="product"],
-                div[data-elementor-type="product-archive"] {
-                    width: 100%;
-                }
-            ';
+    public function add_global_inline_style() {
+        if ( ! Botiga_Elementor_Helpers::is_built_with_elementor() ) {
+            return;
         }
+
+        $inline_style = "
+            @media(min-width: 1140px) {
+                .e-con.e-parent>.e-con-inner {
+                    max-width: calc( var(--content-width) - 30px );
+                }
+
+                div[data-elementor-type=\"loop-item\"] .e-con.e-parent>.e-con-inner {
+                    max-width: var(--content-width);
+                }
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            div[data-elementor-type] {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            div[data-elementor-type].post {
+                margin: 0;
+            }
+        ";
 
         // Add inline style
         if ( ! empty( $inline_style ) ) {
@@ -62,6 +103,7 @@ class Botiga_Elementor_Compatibility {
     public function register_elementor_locations( $elementor_theme_manager ) {
         $elementor_theme_manager->register_location( 'header' );
         $elementor_theme_manager->register_location( 'footer' );
+        $elementor_theme_manager->register_location( 'single' );
     }
 
     /**
@@ -91,6 +133,8 @@ class Botiga_Elementor_Helpers {
     /**
      * Check if a theme builder location is active
      * 
+     * @param string $location
+     * @return bool
      */
     public static function elementor_has_location( $location ) {
         if ( ! did_action( 'elementor_pro/init' ) ) {
@@ -102,8 +146,55 @@ class Botiga_Elementor_Helpers {
         }
 
         $conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
-        $documents          = $conditions_manager->get_documents_for_location( $location );
+        $documents          = $conditions_manager->get_theme_templates_ids( $location );
 
         return ! empty( $documents );
+    }
+
+    /**
+     * Check if a post is built with Elementor.
+     * 
+     * @param int $post_id
+     * @return bool
+     */
+    public static function is_built_with_elementor( $post_id = 0 ) {
+        global $post;
+
+        if ( ! $post_id && $post ) {
+            $post_id = $post->ID;
+        }
+
+        if ( ! did_action( 'elementor/init' ) ) {
+            return false;
+        }
+        
+        if ( ! class_exists( 'Elementor\Plugin' ) ) {
+            return false;
+        }
+
+        if (
+            ! empty( $post_id ) &&  
+            \Elementor\Plugin::$instance->documents->get( $post_id ) && 
+            \Elementor\Plugin::$instance->documents->get( $post_id )->is_built_with_elementor() 
+        ) {
+            return true;
+        } else {
+            
+            $location_type = '';
+
+            if ( is_singular() || is_404() ) {
+                $location_type = 'single';
+            }
+
+            if ( is_home() ||  is_archive() || is_search() ) {
+                $location_type = 'archive';
+            }
+
+            if ( self::elementor_has_location( $location_type ) ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

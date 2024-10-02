@@ -17,7 +17,9 @@ get_header();
 		 * 
 		 * @since 1.0.0
 		 */
-		do_action( 'botiga_404_content' ); ?>
+		do_action( 'botiga_404_content' );
+		
+		?>
 	</main><!-- #main -->
 
 <?php
