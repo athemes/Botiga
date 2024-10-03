@@ -9,10 +9,6 @@
 /*
 * General
 */
-
-html {
-	
-}
 @media (min-width: 1600px) {
 	.wp-block {
 		max-width: 1110px;
@@ -177,6 +173,12 @@ div.editor-styles-wrapper {
 	@import "base/elements/links";
 	@import "base/elements/buttons";
 
+	button,
+	.button {
+		line-height: 1.68;
+		min-height: 0;
+	}
+
 	.wp-block-freeform.block-library-rich-text__tinymce a {
 		color: $color__primary;
 		text-decoration: underline;
@@ -231,6 +233,7 @@ div.editor-styles-wrapper {
 	/*
 	 * Forms
 	 */
+	@import "base/elements/fields";
 	@import "components/misc/wpforms";
 	@import "components/misc/wpcf7";
 
