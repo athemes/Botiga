@@ -289,6 +289,11 @@ div.editor-styles-wrapper {
 .botiga-dimensions-control {
 	> div {
 		max-width: 100%;
+		gap: 3px;
+	}
+
+	.components-number-control {
+		margin-bottom: 8px;
 	}
 }
 
@@ -298,5 +303,6 @@ div.editor-styles-wrapper {
 		text-transform: none !important;
 		font-weight: 400 !important;
 		font-size: inherit !important;
+		// margin: 0;
 	}
 }
