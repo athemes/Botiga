@@ -1400,8 +1400,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			//Single 
 			$single_post_header_alignment = get_theme_mod( 'single_post_header_alignment', 'middle' );
-			if ( 'middle' !== $single_post_header_alignment ) {
+			if ( 'left' === $single_post_header_alignment ) {
 				$css .= ".single .entry-header { text-align:left;}" . "\n";
+			}
+
+			if ( 'right' === $single_post_header_alignment ) {
+				$css .= ".single .entry-header { text-align:right;}" . "\n";
 			}
 
 			$single_post_header_spacing = get_theme_mod( 'single_post_header_spacing', 40 );
