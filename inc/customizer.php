@@ -118,6 +118,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/options/performance.php';
 			if ( class_exists( 'WooCommerce' ) ) {
 				require get_template_directory() . '/inc/customizer/options/woocommerce/woocommerce-general.php';
+				require get_template_directory() . '/inc/customizer/options/woocommerce/woocommerce-product-images.php';
 				require get_template_directory() . '/inc/customizer/options/woocommerce/woocommerce-shop-archive.php';
 				require get_template_directory() . '/inc/customizer/options/woocommerce/woocommerce-single.php';
 				require get_template_directory() . '/inc/customizer/options/woocommerce/woocommerce-cart.php';
