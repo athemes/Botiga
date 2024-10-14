@@ -8,6 +8,9 @@
 class Botiga_Elementor_Compatibility {
     public function __construct() {
 
+        // Enqueue global elementor compatibility file.
+        add_action( 'wp_enqueue_scripts', array( $this, 'add_compatibility_css' ) );
+
         // Extend Motion Effects with custom animations.
         add_filter( 'elementor/controls/animations/additional_animations', array( $this, 'extend_motion_effects' ) );
 
@@ -22,8 +25,18 @@ class Botiga_Elementor_Compatibility {
     }
 
     /**
+     * Compatibility CSS.
+     * 
+     * @return void
+     */
+    public function add_compatibility_css() {
+        wp_enqueue_style( 'botiga-elementor', get_template_directory_uri() . '/assets/css/elementor.min.css', array(), BOTIGA_VERSION );
+    }
+
+    /**
      * Initialize through 'wp' action
      * 
+     * @return void
      */
     public function init() {
 
