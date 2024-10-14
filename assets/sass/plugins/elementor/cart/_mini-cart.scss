@@ -1,0 +1,87 @@
+
+// Builtin Elementor mini cart.
+.elementor-menu-cart__products {
+    .quantity {
+        justify-content: flex-start;
+        height: auto;
+        border: none;
+        margin-bottom: 0;    
+    }
+}
+
+// Theme mini cart.
+.elementor-menu-cart__main {
+    .widget_shopping_cart_content {
+        .woocommerce-mini-cart {
+            padding: 0;
+
+            .woocommerce-mini-cart-item {
+                position: relative;
+                list-style: none;
+                padding: 0;
+
+                .remove_from_cart_button {
+                    width: 18px;
+                    height: 18px;
+                    font-size: 16px;
+                    line-height: 16px;
+                    background-color: var( --bt-color-heading-4, $color__primary );
+                    color: var(--bt-color-bg, #FFF);
+                    text-align: center;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -5px;
+                    left: -8px;
+                    transition: ease transform 300ms;
+                    z-index: 11;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+                a:not(.remove_from_cart_button) {
+                    display: flex;
+
+                    img {
+                        max-width: 80px;
+                    }
+                }
+
+                .quantity {
+                    justify-content: flex-start;
+                    height: auto;
+                    border: none;
+                    margin-bottom: 0;   
+                }
+
+                & + .woocommerce-mini-cart-item {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    .buttons {
+        margin-bottom: 0;
+
+        & + .buttons {
+            margin-top: 20px;
+        }
+    }
+
+    .woocommerce-mini-cart__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        .button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    #ppc-button-minicart {
+        width: 100%;
+    }
+}
