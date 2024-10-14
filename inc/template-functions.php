@@ -1887,7 +1887,7 @@ function botiga_get_enhanced_display_conditions( $maybe_rules, $default_value = 
 					$result = $boolean;
 				}
 
-				if ( $condition === 'checkout-page' && is_checkout() ) {
+				if ( ( $condition === 'checkout-page' || $condition === 'checkout' ) && is_checkout() ) {
 					$result = $boolean;
 				}
 
