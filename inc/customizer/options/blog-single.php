@@ -211,6 +211,7 @@ $wp_customize->add_control(new Botiga_Radio_Buttons(
 		'choices'   => array(
 			'left'      => esc_html__('Left', 'botiga'),
 			'middle'    => esc_html__('Middle', 'botiga'),
+			'right'    => esc_html__('Right', 'botiga'),
 		),
 		'priority'  => 70,
 	)
