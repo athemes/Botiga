@@ -42,6 +42,16 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 				),
 			),
 		);
+
+		if ( get_option( 'woocommerce_hide_out_of_stock_items' ) === 'yes' ) {
+			$query_args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'     => '_stock_status',
+					'value'   => 'outofstock',
+					'compare' => 'NOT LIKE',
+				),
+			);
+		}
 		
 		if( $data['orderby'] === 'price' ) {
 			$query_args[ 'meta_key' ] = '_price'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
@@ -81,7 +91,7 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 			'orderby'        => $data['orderby'],
 			'post_status'    => array( 'publish' ),
 			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-				'relation' => 'OR',
+				'relation' => 'AND',
 				array(
 					'key' => '_sku',
 					'value' => $data['search-term'],
@@ -97,6 +107,14 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 				),
 			),
 		);
+
+		if ( get_option( 'woocommerce_hide_out_of_stock_items' ) === 'yes' ) {
+			$args['meta_query'][] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				'key'     => '_stock_status',
+				'value'   => 'outofstock',
+				'compare' => 'NOT LIKE',
+			);
+		}
 		
 		if( $data['orderby'] === 'price' ) {
 			$args[ 'meta_key' ] = '_price'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
@@ -130,6 +148,10 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 
 			$clauses['join'] = " LEFT JOIN {$wpdb->prefix}postmeta ON ( {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id )";
 			$clauses['where'] .= $wpdb->prepare( " OR ( {$wpdb->prefix}postmeta.meta_key = '_sku' AND {$wpdb->prefix}postmeta.meta_value LIKE %s )", "%{$search_term}%" );
+
+			if ( get_option( 'woocommerce_hide_out_of_stock_items' ) === 'yes' ) {
+				$clauses['where'] .= $wpdb->prepare( " AND ( {$wpdb->prefix}postmeta.meta_key = '_stock_status' AND {$wpdb->prefix}postmeta.meta_value NOT LIKE %s )", "outofstock" );
+			}
 		}
 		
 		return $clauses;

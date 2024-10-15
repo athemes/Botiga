@@ -25,6 +25,14 @@
 				}
 			}
 		}
+
+		&.botiga-carousel-not-initialized {
+			.products,
+			.botiga-carousel-stage {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
 	}
 }
 

@@ -17,16 +17,17 @@
  * @return void
  */
 function botiga_woocommerce_setup() {
-
-	$enable_zoom     = get_theme_mod( 'single_zoom_effects', 1 );
-	$enable_gallery  = get_theme_mod( 'single_gallery_slider', 1 );
+	$enable_zoom = get_theme_mod( 'single_zoom_effects', 1 );
+	$enable_gallery = get_theme_mod( 'single_gallery_slider', 1 );
 	$enable_lightbox = get_theme_mod( 'single_product_image_lightbox', 1 );
+	$thumbnail_image_width = get_theme_mod( 'shop_woocommerce_thumbnail_image_width', 420 );
+	$single_image_width = get_theme_mod( 'shop_woocommerce_single_image_width', 800 );
 
 	add_theme_support(
 		'woocommerce',
 		array(
-			'thumbnail_image_width' => 420,
-			'single_image_width'    => 800,
+			'thumbnail_image_width' => $thumbnail_image_width,
+			'single_image_width'    => $single_image_width,
 			'product_grid'          => array(
 				'default_rows'    => 3,
 				'min_rows'        => 1,
@@ -441,7 +442,7 @@ add_action( 'woocommerce_after_quantity_input_field', 'botiga_woocommerce_after_
 function botiga_get_quantity_symbols_output( $type = 'plus' ) {
 	$qty_style = get_theme_mod( 'shop_general_quantity_style', 'style1' );
 
-	if( in_array( $qty_style, array( 'style1', 'style2', 'style4', 'style5', 'style6', 'style8' ) ) ) {
+	if( in_array( $qty_style, array( 'style1', 'style2', 'style4', 'style5', 'style6', 'style8' ), true ) ) {
 		if( $type === 'plus' ) {
 			return '+';
 		} else {

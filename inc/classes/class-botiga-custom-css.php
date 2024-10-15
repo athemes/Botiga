@@ -1156,6 +1156,25 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 					}            
 				}
 
+				// Mega menu.
+				$css .= "
+					@media (max-width: 1024px) {
+						.botiga-mega-menu-column {
+							margin-left: -10px;
+						}
+						.botiga-mega-menu-column > .botiga-dropdown-link,
+						.botiga-mega-menu-column > span {
+							display: none !important;
+						}
+						.botiga-mega-menu-column > .sub-menu.botiga-dropdown-ul{
+							display: block !important;
+						}
+						.is-mega-menu:not(.is-mega-menu-vertical) .botiga-mega-menu-column .is-mega-menu-heading {
+							display: none !important;
+						}
+					}
+				";
+
 				$center_top_bar_contents = get_theme_mod( 'center_top_bar_contents', 0 );
 				if ( $center_top_bar_contents ) {
 					$css .= ".top-bar-inner > .row { display:block;} .top-bar-inner .col,.top-bar-inner .col:last-of-type {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}" . "\n";
@@ -1400,8 +1419,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			//Single 
 			$single_post_header_alignment = get_theme_mod( 'single_post_header_alignment', 'middle' );
-			if ( 'middle' !== $single_post_header_alignment ) {
+			if ( 'left' === $single_post_header_alignment ) {
 				$css .= ".single .entry-header { text-align:left;}" . "\n";
+			}
+
+			if ( 'right' === $single_post_header_alignment ) {
+				$css .= ".single .entry-header { text-align:right;}" . "\n";
 			}
 
 			$single_post_header_spacing = get_theme_mod( 'single_post_header_spacing', 40 );

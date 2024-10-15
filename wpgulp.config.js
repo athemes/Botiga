@@ -136,6 +136,14 @@ const styles = [
 		file: 'woocommerce',
 	},
 
+	// Elementor.
+	{
+		name: 'elementor',
+		src: './assets/sass/plugins/elementor/elementor.scss',
+		destination: './assets/css',
+		file: 'elementor',
+	},
+
 	// Dokan.
 	{
 		name: 'dokan',

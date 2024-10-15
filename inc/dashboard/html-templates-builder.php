@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
-                                    </svg><?php echo esc_html( 'All templates', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'All templates', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
-                                    </svg><?php echo esc_html( 'Single', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Single', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -43,7 +43,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
-                                    </svg><?php echo esc_html( 'Archive', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Archive', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -53,7 +53,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
-                                    </svg><?php echo esc_html( 'Page', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Page', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -63,7 +63,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M3.445 16.505a.75.75 0 001.06.05l5.005-4.55 4.024 3.521 4.716-4.715V14h1.5V8.25H14v1.5h3.19l-3.724 3.723L9.49 9.995l-5.995 5.45a.75.75 0 00-.05 1.06z"></path>
-                                    </svg><?php echo esc_html( '404', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( '404', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -73,7 +73,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"></path>
-                                    </svg><?php echo esc_html( 'Content Block', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Content Block', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -83,7 +83,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path fill-rule="evenodd" d="M10.289 4.836A1 1 0 0111.275 4h1.306a1 1 0 01.987.836l.244 1.466c.787.26 1.503.679 2.108 1.218l1.393-.522a1 1 0 011.216.437l.653 1.13a1 1 0 01-.23 1.273l-1.148.944a6.025 6.025 0 010 2.435l1.149.946a1 1 0 01.23 1.272l-.653 1.13a1 1 0 01-1.216.437l-1.394-.522c-.605.54-1.32.958-2.108 1.218l-.244 1.466a1 1 0 01-.987.836h-1.306a1 1 0 01-.986-.836l-.244-1.466a5.995 5.995 0 01-2.108-1.218l-1.394.522a1 1 0 01-1.217-.436l-.653-1.131a1 1 0 01.23-1.272l1.149-.946a6.026 6.026 0 010-2.435l-1.148-.944a1 1 0 01-.23-1.272l.653-1.131a1 1 0 011.217-.437l1.393.522a5.994 5.994 0 012.108-1.218l.244-1.466zM14.929 12a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"></path>
-                                    </svg><?php echo esc_html( 'Single Product', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Single Product', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -93,7 +93,27 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
-                                    </svg><?php echo esc_html( 'Shop Archive', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Shop Archive', 'botiga' ); ?>
+                                    <div class="bt-navigation-link-lock-icon">
+                                        <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="bt-navigation-link">
+                                <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                                        <path d="M18.5 5.5V8H20V5.5h2.5V4H20V1.5h-1.5V4H16v1.5h2.5zM12 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-6h-1.5v6a.5.5 0 01-.5.5H6a.5.5 0 01-.5-.5V6a.5.5 0 01.5-.5h6V4z"></path>
+                                    </svg><?php echo esc_html__( 'Cart', 'botiga' ); ?>
+                                    <div class="bt-navigation-link-lock-icon">
+                                        <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="bt-navigation-link">
+                                <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                                        <path d="M18.3 5.6L9.9 16.9l-4.6-3.4-.9 1.2 5.8 4.3 9.3-12.6z"></path>
+                                    </svg><?php echo esc_html__( 'Checkout', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -103,7 +123,7 @@ if (!defined('ABSPATH')) {
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M3.445 16.505a.75.75 0 001.06.05l5.005-4.55 4.024 3.521 4.716-4.715V14h1.5V8.25H14v1.5h3.19l-3.724 3.723L9.49 9.995l-5.995 5.45a.75.75 0 00-.05 1.06z"></path>
-                                    </svg><?php echo esc_html( 'Order Thank You', 'botiga' ); ?>
+                                    </svg><?php echo esc_html__( 'Order Thank You', 'botiga' ); ?>
                                     <div class="bt-navigation-link-lock-icon">
                                         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                     </div>
@@ -113,7 +133,7 @@ if (!defined('ABSPATH')) {
                                 <a href="https://docs.athemes.com/article/pro-templates-builder-v3/" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M12 4.75a7.25 7.25 0 100 14.5 7.25 7.25 0 000-14.5zM3.25 12a8.75 8.75 0 1117.5 0 8.75 8.75 0 01-17.5 0zM12 8.75a1.5 1.5 0 01.167 2.99c-.465.052-.917.44-.917 1.01V14h1.5v-.845A3 3 0 109 10.25h1.5a1.5 1.5 0 011.5-1.5zM11.25 15v1.5h1.5V15h-1.5z"></path>
-                                    </svg><?php echo esc_html( 'Documentation', 'botiga' ); ?> 
+                                    </svg><?php echo esc_html__( 'Documentation', 'botiga' ); ?> 
                                 </a>
                             </li>
                         </ul>
@@ -135,7 +155,7 @@ if (!defined('ABSPATH')) {
                     <?php if ( $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'templates' ) ) ) : ?>
                         <div class="botiga-dashboard-alert botiga-dashboard-alert-warning botiga-dashboard-alert-with-icon botiga-dashboard-alert-with-upsell-link">
                             <div class="alert-icon"><?php echo botiga_get_svg_icon( 'icon-warning' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-                            <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Product Filters module.', 'botiga' ); ?></p>
+                            <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Templates Builder module.', 'botiga' ); ?></p>
                             <a href="#" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-module-activation botiga-dashboard-external-link" data-module-id="templates" data-module-activate="true" data-module-after-activation-redirect="<?php echo esc_url( get_admin_url() . 'admin.php?page=botiga-dashboard&module-page=builder&settings-page=create-new' ); ?>">
                                 <?php echo esc_html__( 'Activate Templates Builder', 'botiga' ); ?>
                             </a>
@@ -144,8 +164,8 @@ if (!defined('ABSPATH')) {
 
                     <div class="botiga-dashboard-card botiga-dashboard-card-no-box-shadow">
                         <div class="botiga-dashboard-card-inner-header with-border-bottom bt-mb-10px">
-                            <h2 class="bt-font-size-20px bt-mb-10px bt-mt-0"><?php echo esc_html( 'Create New', 'botiga' ); ?></h2>
-                            <p class="bt-text-color-grey bt-mt-0"><?php echo esc_html( 'Start from scratch and design a custom template tailored to your specific needs.', 'botiga' ); ?></p>
+                            <h2 class="bt-font-size-20px bt-mb-10px bt-mt-0"><?php echo esc_html__( 'Create New', 'botiga' ); ?></h2>
+                            <p class="bt-text-color-grey bt-mt-0"><?php echo esc_html__( 'Start from scratch and design a custom template tailored to your specific needs.', 'botiga' ); ?></p>
                         </div>
                         <div class="botiga-dashboard-card-inner-body with-top-divider">
                             <div class="botiga-dashboard-row">
@@ -153,7 +173,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Single', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Single', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -169,7 +189,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Archive', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Archive', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -185,7 +205,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Page', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Page', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -201,7 +221,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Page', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Page', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -217,7 +237,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Content Block', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Content Block', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -233,7 +253,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Single Product', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Single Product', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -249,7 +269,7 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Shop Archive', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Shop Archive', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
@@ -265,7 +285,39 @@ if (!defined('ABSPATH')) {
                                     <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
                                         <div class="css-10klw3m e19lxcc00">
                                             <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
-                                                <h2><?php echo esc_html( 'Order Thank You', 'botiga' ); ?></h2>
+                                                <h2><?php echo esc_html__( 'Cart', 'botiga' ); ?></h2>
+                                            </div>
+                                            <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
+                                                    <?php echo esc_html__( 'Create New', 'botiga' ); ?>
+                                                    <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
+                                                </a>
+                                                <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/dashboard/templates-builder/cart.svg' ); ?>" alt="Order Thank You">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="botiga-dashboard-column botiga-dashboard-column-3">
+                                    <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
+                                        <div class="css-10klw3m e19lxcc00">
+                                            <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
+                                                <h2><?php echo esc_html__( 'Checkout', 'botiga' ); ?></h2>
+                                            </div>
+                                            <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
+                                                    <?php echo esc_html__( 'Create New', 'botiga' ); ?>
+                                                    <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
+                                                </a>
+                                                <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/dashboard/templates-builder/checkout.svg' ); ?>" alt="Order Thank You">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="botiga-dashboard-column botiga-dashboard-column-3">
+                                    <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
+                                        <div class="css-10klw3m e19lxcc00">
+                                            <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
+                                                <h2><?php echo esc_html__( 'Order Thank You', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
                                                 <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">

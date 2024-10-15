@@ -1611,11 +1611,27 @@ botiga.tabsNav = {
  */
 botiga.misc = {
 	init: function() {
+		this.general();
 		this.wcExpressPayButtons();
 		this.singleProduct();
 		this.cart();
 		this.checkout();
 		this.customizer();
+	},
+	general: function() {
+		const mini_cart = document.getElementById( 'site-header-cart' );
+
+		if ( mini_cart === null ) {
+			return false;
+		}
+
+		mini_cart.addEventListener( 'mouseover', function(){
+			document.body.classList.add( 'bt-mini-cart-hovered' );
+		});
+
+		mini_cart.addEventListener( 'mouseout', function(){
+			document.body.classList.remove( 'bt-mini-cart-hovered' );
+		});
 	},
 	wcExpressPayButtons: function() {
 		var is_checkout_page  = document.querySelector( 'body.woocommerce-checkout' ),

@@ -269,7 +269,15 @@ function botiga_main_wrapper_start() {
 	global $post;
 
 	if ( isset( $post ) ) {
-		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+		$page_builder_mode = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+		/**
+		 * Hook 'botiga_page_builder_mode'
+		 * Filters the page builder mode.
+		 * 
+		 * @since 2.2.10
+		 */
+		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post ); 
 
 		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '<div class="content-wrapper">';
@@ -292,6 +300,14 @@ function botiga_main_wrapper_end() {
 
 	if ( isset( $post ) ) {
 		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+		/**
+		 * Hook 'botiga_page_builder_mode'
+		 * Filters the page builder mode.
+		 * 
+		 * @since 2.2.10
+		 */
+		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
 
 		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '</div>';
@@ -319,6 +335,14 @@ function botiga_page_builder_mode() {
 
 	if ( isset( $post ) && is_singular() ) {
 		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+		/**
+		 * Hook 'botiga_page_builder_mode'
+		 * Filters the page builder mode.
+		 * 
+		 * @since 2.2.10
+		 */
+		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
 
 		if ( $page_builder_mode ) {
 			add_filter( 'botiga_entry_header', '__return_false' );
@@ -1845,11 +1869,25 @@ function botiga_get_enhanced_display_conditions( $maybe_rules, $default_value = 
 					$result = $boolean;
 				}
 
-				if ( $condition === 'cart-page' && is_cart() ) {
+				if ( $condition === 'cart' && is_cart() && ! WC()->cart->is_empty() ) {
+					$has_cart_empty = false;
+					foreach( $rules as $rule ) {
+						if ( isset( $rule['condition'] ) && $rule['condition'] === 'cart-empty' ) {
+							$has_cart_empty = true;
+							break;
+						}
+					}
+
+					if ( ! $has_cart_empty ) {
+						$result = $boolean;
+					}
+				}
+
+				if ( $condition === 'cart-empty' && ( is_cart() && WC()->cart->is_empty() ) ) {
 					$result = $boolean;
 				}
 
-				if ( $condition === 'checkout-page' && is_checkout() ) {
+				if ( ( $condition === 'checkout-page' || $condition === 'checkout' ) && is_checkout() ) {
 					$result = $boolean;
 				}
 

@@ -514,6 +514,16 @@ endif;
  */
 if ( ! function_exists( 'botiga_single_content' ) ) :
 	function botiga_single_content() {
+		if ( 
+			class_exists( 'Botiga_Elementor_Helpers' ) && 
+			Botiga_Elementor_Helpers::elementor_has_location( 'single' ) && 
+			function_exists( 'elementor_theme_do_location' ) 
+		) {
+			elementor_theme_do_location( 'single' );
+
+			return;
+		}
+
 
 		while ( have_posts() ) :
 			the_post();
@@ -545,7 +555,7 @@ endif;
  */
 if ( ! function_exists( 'botiga_archive_content' ) ) :
 	function botiga_archive_content() { 
-		
+
 		?>
 
 		<?php if ( have_posts() ) : 
@@ -604,7 +614,18 @@ endif;
  * Prints the 404 page content.
  */
 if ( ! function_exists( 'botiga_404_page_content' ) ) :
-	function botiga_404_page_content() { ?>
+	function botiga_404_page_content() { 
+		if ( 
+			class_exists( 'Botiga_Elementor_Helpers' ) && 
+			Botiga_Elementor_Helpers::elementor_has_location( 'single' ) && 
+			function_exists( 'elementor_theme_do_location' ) 
+		) {
+			elementor_theme_do_location( 'single' );
+
+			return;
+		}
+		
+		?>
 		
 		<section class="error-404 not-found">
 			<header class="page-header">
