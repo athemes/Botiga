@@ -135,7 +135,7 @@ if (!defined('ABSPATH')) {
                     <?php if ( $this->settings['has_pro'] && ( class_exists( 'Botiga_Modules' ) && ! Botiga_Modules::is_module_active( 'templates' ) ) ) : ?>
                         <div class="botiga-dashboard-alert botiga-dashboard-alert-warning botiga-dashboard-alert-with-icon botiga-dashboard-alert-with-upsell-link">
                             <div class="alert-icon"><?php echo botiga_get_svg_icon( 'icon-warning' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-                            <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Product Filters module.', 'botiga' ); ?></p>
+                            <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the Templates Builder module.', 'botiga' ); ?></p>
                             <a href="#" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-module-activation botiga-dashboard-external-link" data-module-id="templates" data-module-activate="true" data-module-after-activation-redirect="<?php echo esc_url( get_admin_url() . 'admin.php?page=botiga-dashboard&module-page=builder&settings-page=create-new' ); ?>">
                                 <?php echo esc_html__( 'Activate Templates Builder', 'botiga' ); ?>
                             </a>
