@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.2.9
+Version: 2.2.10
 Tested up to: 6.6
 Requires PHP: 7
-Stable tag: 2.2.9
+Stable tag: 2.2.10
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,16 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.10 =
+Added - New customizer options to control the products 'thumbnail_image_width' and 'single_image_width'.
+Added - Blog - Single Posts: Right alignment option for the single post header.
+Added - Elementor Pro Theme Builder: Compatibility with all the template types.
+Fixed - Elementor Pro Custom Headers: The mini cart/side cart widget is broken in terms of styling.
+Fixed - Single Product Gallery Lightbox: Styling issue with the buttons.
+Fixed - Real Time Ajax Search: Hide out of stock option from WooCommerce isn’t taking effect.
+Fixed - Merchant Frequently Bought Together: Broken layout when set to display products in the checkout page.
+Fixed - Cart Cross Sell: Hidden when there's more than 3 products to be displayed.
+
 = 2.2.9 =
 Fixed - Plugin conflict: Buttons conflicting with the Side Cart module from Merchant. 
 Fixed - WooCommerce update order review notice being displayed with wrong layout in the checkout when Merchant FBT product is added.
