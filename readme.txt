@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.2.10
+Version: 2.2.11
 Tested up to: 6.6
 Requires PHP: 7
-Stable tag: 2.2.10
+Stable tag: 2.2.11
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.11 =
+Fixed - Merchant compatibility: Buttons styling conflict with the Side Cart module.
+
 = 2.2.10 =
 Added - New customizer options to control the products 'thumbnail_image_width' and 'single_image_width'.
 Added - Blog - Single Posts: Right alignment option for the single post header.
