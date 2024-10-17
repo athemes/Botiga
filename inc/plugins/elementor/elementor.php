@@ -60,6 +60,11 @@ class Botiga_Elementor_Compatibility {
             return false;
         }
 
+        $is_page_created_via_elementor_theme_builder = get_post_meta( $post->ID, '_botiga_page_builder_mode', true ) === '' ? true : false;
+        if ( $post->post_type === 'page' && $is_page_created_via_elementor_theme_builder === false ) {
+            return $mode;
+        }
+
         if ( Botiga_Elementor_Helpers::is_built_with_elementor( $post->ID ) ) {
             return true;
         }
