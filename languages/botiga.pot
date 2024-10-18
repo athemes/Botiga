@@ -3772,19 +3772,19 @@ msgstr ""
 msgid "Vendor Dashboard"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:128
+#: inc/plugins/elementor/elementor.php:133
 msgid "Fade In Up Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:129
+#: inc/plugins/elementor/elementor.php:134
 msgid "Fade In Down Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:130
+#: inc/plugins/elementor/elementor.php:135
 msgid "Fade In Left Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:131
+#: inc/plugins/elementor/elementor.php:136
 msgid "Fade In Right Shorter"
 msgstr ""
 
@@ -3933,27 +3933,27 @@ msgstr ""
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:433
+#: inc/plugins/woocommerce/woocommerce.php:436
 msgid "Decrease quantity"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:433
+#: inc/plugins/woocommerce/woocommerce.php:436
 msgid "Decrease product quantity."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:438
+#: inc/plugins/woocommerce/woocommerce.php:441
 msgid "Increase quantity"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:438
+#: inc/plugins/woocommerce/woocommerce.php:441
 msgid "Increase product quantity."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:669
+#: inc/plugins/woocommerce/woocommerce.php:672
 msgid "Available on backorder"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:677
+#: inc/plugins/woocommerce/woocommerce.php:680
 msgid "in stock. Remaining is available on backorder."
 msgstr ""
 

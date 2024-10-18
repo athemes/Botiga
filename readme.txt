@@ -30,6 +30,9 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.12 =
+Fixed - Elementor: Title hidden on pages built with elementor.
+
 = 2.2.11 =
 Fixed - Merchant compatibility: Buttons styling conflict with the Side Cart module.
 
