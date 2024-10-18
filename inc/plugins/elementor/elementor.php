@@ -60,8 +60,8 @@ class Botiga_Elementor_Compatibility {
             return false;
         }
 
-        $is_page_created_via_elementor_theme_builder = get_post_meta( $post->ID, '_botiga_page_builder_mode', true ) === '' ? true : false;
-        if ( $post->post_type === 'page' && $is_page_created_via_elementor_theme_builder === false ) {
+        // Pages shouldn't be automatically enable the page builder mode.
+        if ( $post->post_type === 'page' ) {
             return $mode;
         }
 
@@ -84,7 +84,7 @@ class Botiga_Elementor_Compatibility {
         $inline_style = "
             @media(min-width: 1140px) {
                 .e-con.e-parent>.e-con-inner {
-                    max-width: calc( var(--content-width) - 30px );
+                    max-width: calc( var(--content-width) - 15px );
                 }
 
                 div[data-elementor-type=\"loop-item\"] .e-con.e-parent>.e-con-inner {
@@ -149,7 +149,39 @@ new Botiga_Elementor_Compatibility();
 class Botiga_Elementor_Helpers {
 
     /**
-     * Check if a theme builder location is active
+     * Get location type.
+     * 
+     * @return string
+     */
+    public static function get_location_type() {
+        if ( is_singular() || is_404() ) {
+            return 'single';
+        }
+
+        if ( is_home() ||  is_archive() || is_search() ) {
+            return 'archive';
+        }
+
+        return '';
+    }
+
+    /**
+     * Get custom template by location type.
+     * 
+     * @param string $location_type
+     * @return array
+     */
+    public static function get_custom_template_by_location_type( $location_type ) {
+        $conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
+        $documents          = $conditions_manager->get_theme_templates_ids( $location_type );
+        
+        $documents = reset( $documents );
+
+        return $documents;
+    }
+
+    /**
+     * Check if a theme builder location is active.
      * 
      * @param string $location
      * @return bool
@@ -163,10 +195,9 @@ class Botiga_Elementor_Helpers {
             return false;
         }
 
-        $conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
-        $documents          = $conditions_manager->get_theme_templates_ids( $location );
+        $custom_template = self::get_custom_template_by_location_type( $location );
 
-        return ! empty( $documents );
+        return ! empty( $custom_template );
     }
 
     /**
@@ -197,20 +228,27 @@ class Botiga_Elementor_Helpers {
         ) {
             return true;
         } else {
-            
-            $location_type = '';
-
-            if ( is_singular() || is_404() ) {
-                $location_type = 'single';
-            }
-
-            if ( is_home() ||  is_archive() || is_search() ) {
-                $location_type = 'archive';
-            }
+            $location_type = self::get_location_type();
 
             if ( self::elementor_has_location( $location_type ) ) {
                 return true;
             }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check whether a pace is loaded via Elementor Pro Theme Builder.
+     * 
+     * @return bool
+     */
+    public static function is_page_loaded_by_elementor_theme_builder() {
+        $location_type = Botiga_Elementor_Helpers::get_location_type();
+        $template = Botiga_Elementor_Helpers::get_custom_template_by_location_type( $location_type );
+
+        if ( Botiga_Elementor_Helpers::is_built_with_elementor( $template ) ) {
+            return true;
         }
 
         return false;
