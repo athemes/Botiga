@@ -112,3 +112,27 @@ function botiga_is_cart_block_layout() {
 
 	return false;
 }
+
+/**
+ * Check whether a page is loaded via any builder. 
+ * e.g. Elementor Pro Theme Builder, Botiga Pro Templates Builder, etc.
+ * 
+ * @return bool
+ */
+function botiga_is_page_loaded_by_builders() {
+	if ( 
+		class_exists( 'Botiga_Elementor_Helpers' ) && 
+		Botiga_Elementor_Helpers::is_page_loaded_by_elementor_theme_builder() 
+	) {
+		return true;
+	}
+	
+	if ( 
+		class_exists( 'BotigaPro\Modules\TemplatesBuilder\Frontend\Utils' ) && 
+		BotigaPro\Modules\TemplatesBuilder\Frontend\Utils::is_page_loaded_by_templates_builder() 
+	) {
+		return true;
+	}
+
+	return false;
+}
