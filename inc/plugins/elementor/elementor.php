@@ -84,7 +84,7 @@ class Botiga_Elementor_Compatibility {
         $inline_style = "
             @media(min-width: 1140px) {
                 .e-con.e-parent>.e-con-inner {
-                    max-width: calc( var(--content-width) - 30px );
+                    max-width: calc( var(--content-width) - 15px );
                 }
 
                 div[data-elementor-type=\"loop-item\"] .e-con.e-parent>.e-con-inner {
