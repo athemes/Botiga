@@ -84,11 +84,15 @@ class Botiga_Elementor_Compatibility {
         $inline_style = "
             @media(min-width: 1140px) {
                 .e-con.e-parent>.e-con-inner {
-                    max-width: calc( var(--content-width) - 15px );
+                    padding-left: 15px;
+                    padding-right: 15px;
                 }
+            }
 
-                div[data-elementor-type=\"loop-item\"] .e-con.e-parent>.e-con-inner {
-                    max-width: var(--content-width);
+            @media(max-width: 1024px) {
+                body[class*=\"elementor-page\"] .e-con.e-parent {
+                    --padding-left: var(--container-default-padding-left, 15px);
+                    --padding-right: var(--container-default-padding-right, 15px);
                 }
             }
 
@@ -96,6 +100,19 @@ class Botiga_Elementor_Compatibility {
                 max-width: 100%;
                 margin: 0;
                 padding: 0;
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper .site-main { 
+                padding: 0 !important;
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper > .main-row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper .entry-header .page-title {
+                margin-top: 80px;
             }
 
             div[data-elementor-type] {
