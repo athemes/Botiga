@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.2.12' );
+	define( 'BOTIGA_VERSION', '2.2.13' );
 }
 
 // aThemes White Label Compatibility
@@ -51,9 +51,8 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		load_theme_textdomain( 'botiga', get_template_directory() . '/languages' );
 
 		// Store the theme version in the database.
-		// This option were introduced in the version 2.2.13.
-		if ( ! get_option( 'botiga_first_install_theme_version' ) ) {
-			update_option( 'botiga_first_install_theme_version', BOTIGA_VERSION );
+		if ( ! get_option( 'botiga-theme-version' ) ) {
+			update_option( 'botiga-theme-version', BOTIGA_VERSION );
 		}
 
 		// Add default posts and comments RSS feed links to head.
