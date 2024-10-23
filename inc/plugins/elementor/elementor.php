@@ -17,11 +17,19 @@ class Botiga_Elementor_Compatibility {
         // Init.
         add_action( 'wp', array( $this, 'init' ) );
 
-        // Add inline style.
-        add_action( 'wp_enqueue_scripts', array( $this, 'add_global_inline_style' ), 20 );
+        $first_theme_version = get_option( 'botiga-first-theme-version' );
+        if ( $first_theme_version && version_compare( $first_theme_version, '2.2.13', '>=' ) ) {
 
-        // Automatically set the page builder mode to posts that have been built with Elementor.
-        add_filter( 'botiga_page_builder_mode', array( $this, 'set_page_builder' ), 10, 2 );
+            // Add inline style.
+            add_action( 'wp_enqueue_scripts', array( $this, 'add_enhanced_global_inline_style' ), 20 );
+            
+            // Automatically set the page builder mode to posts that have been built with Elementor.
+            add_filter( 'botiga_page_builder_mode', array( $this, 'set_page_builder' ), 10, 2 );
+        } else {
+            
+            // Add inline style.
+            add_action( 'wp_enqueue_scripts', array( $this, 'add_global_inline_style' ), 20 );
+        }
     }
 
     /**
@@ -60,11 +68,6 @@ class Botiga_Elementor_Compatibility {
             return false;
         }
 
-        // Pages shouldn't be automatically enable the page builder mode.
-        if ( $post->post_type === 'page' ) {
-            return $mode;
-        }
-
         if ( Botiga_Elementor_Helpers::is_built_with_elementor( $post->ID ) ) {
             return true;
         }
@@ -73,10 +76,41 @@ class Botiga_Elementor_Compatibility {
     }
 
     /**
-     * Add global inline style
+     * Add inline style.
+     * Note: To ensure backward compatibility, this method is only called if the theme version is less than 2.2.13.
      * 
+     * @return void
      */
     public function add_global_inline_style() {
+        $inline_style = '';
+
+        if ( Botiga_Elementor_Helpers::elementor_has_location( 'single' ) || Botiga_Elementor_Helpers::elementor_has_location( 'archive' ) ) {
+            $inline_style .= '
+                .container.content-wrapper {
+                    max-width: 100%;
+                    padding: 0;
+                }
+                
+                div[data-elementor-type="product"],
+                div[data-elementor-type="product-archive"] {
+                    width: 100%;
+                }
+            ';
+        }
+
+        // Add inline style
+        if ( ! empty( $inline_style ) ) {
+            wp_add_inline_style( 'botiga-style', $inline_style );
+        }
+    }
+
+    /**
+     * Add enhanced global inline style.
+     * Note: This method is only called if the theme version is greater than or equal to 2.2.13.
+     * 
+     * @return void
+     */
+    public function add_enhanced_global_inline_style() {
         if ( ! Botiga_Elementor_Helpers::is_built_with_elementor() ) {
             return;
         }
@@ -84,11 +118,15 @@ class Botiga_Elementor_Compatibility {
         $inline_style = "
             @media(min-width: 1140px) {
                 .e-con.e-parent>.e-con-inner {
-                    max-width: calc( var(--content-width) - 15px );
+                    padding-left: 15px;
+                    padding-right: 15px;
                 }
+            }
 
-                div[data-elementor-type=\"loop-item\"] .e-con.e-parent>.e-con-inner {
-                    max-width: var(--content-width);
+            @media(max-width: 1024px) {
+                body[class*=\"elementor-page\"] .e-con.e-parent {
+                    --padding-left: var(--container-default-padding-left, 15px);
+                    --padding-right: var(--container-default-padding-right, 15px);
                 }
             }
 
@@ -96,6 +134,19 @@ class Botiga_Elementor_Compatibility {
                 max-width: 100%;
                 margin: 0;
                 padding: 0;
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper .site-main { 
+                padding: 0 !important;
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper > .main-row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            body[class*=\"elementor-page\"] .content-wrapper .entry-header .page-title {
+                margin-top: 80px;
             }
 
             div[data-elementor-type] {
@@ -172,6 +223,10 @@ class Botiga_Elementor_Helpers {
      * @return array
      */
     public static function get_custom_template_by_location_type( $location_type ) {
+        if( ! class_exists( 'ElementorPro\\Plugin' ) ) {
+            return false;
+        }
+
         $conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
         $documents          = $conditions_manager->get_theme_templates_ids( $location_type );
         
