@@ -556,3 +556,53 @@ function botiga_enable_templates_builder_v3() {
     set_theme_mod( 'botiga_enable_templates_builder_v3_flag', true );
 }
 add_action( 'init', 'botiga_enable_templates_builder_v3' );
+
+/**
+ * Store the first theme version in the database to new users.
+ * 
+ * @param string $old_theme_name
+ * 
+ * @return void
+ */
+
+function botiga_set_database_theme_version_to_new_users( $old_theme_name ) {
+    $flag = get_theme_mod( 'botiga_set_database_theme_version_to_new_users_flag', false );
+
+    if ( ! empty( $flag ) ) {
+        return;
+    }
+
+	$old_theme_name = strtolower( $old_theme_name );
+    $not_theme_update = strpos( $old_theme_name, 'botiga' ) === FALSE;
+
+	if( ! get_option( 'botiga-first-theme-version' ) && $not_theme_update ) {
+		update_option( 'botiga-first-theme-version', BOTIGA_VERSION );
+	}
+
+    // Set flag
+    set_theme_mod( 'botiga_set_database_theme_version_to_new_users_flag', true );
+}
+add_action('after_switch_theme', 'botiga_set_database_theme_version_to_new_users');
+
+/**
+ * Update the theme version in the database after every update or
+ * manual theme installation via the WordPress admin.
+ * 
+ * @param WP_Upgrader $upgrader_object
+ * @param array $options
+ * 
+ * @return void
+ */
+function botiga_update_database_theme_version( $upgrader_object, $options ) {
+    $new_theme_name = isset( $upgrader_object->new_theme_data ) ? $upgrader_object->new_theme_data['Name'] : '';
+    $new_theme_version = isset( $upgrader_object->new_theme_data ) ? $upgrader_object->new_theme_data['Version'] : '';
+
+    if ( $new_theme_name !== 'Botiga' ) {
+        return;
+    }
+
+    if( ( $options['action'] === 'update' || $options['action'] === 'install' ) && $options['type'] === 'theme' ) {
+        update_option( 'botiga-theme-version', BOTIGA_VERSION );              
+    }
+}
+add_action('upgrader_process_complete', 'botiga_update_database_theme_version', 10, 2);

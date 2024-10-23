@@ -269,6 +269,18 @@ function botiga_wc_hooks() {
 		//Content class
 		add_filter( 'botiga_content_class', 'botiga_wc_single_layout' );
 
+		// Trigger action before page header.
+		add_action( 'botiga_before_page_header', function() {
+			
+			/**
+			 * Hook: botiga_single_product_before_header.
+			 * 
+			 * @since 1.0.0
+			 */
+			do_action( 'botiga_single_product_after_header' );
+		} );
+
+		// Add to cart wrapper.
 		add_action( 'woocommerce_before_add_to_cart_button', 'botiga_single_addtocart_wrapper_open' );
 		add_action( 'woocommerce_after_add_to_cart_button', 'botiga_single_addtocart_wrapper_close' );
 

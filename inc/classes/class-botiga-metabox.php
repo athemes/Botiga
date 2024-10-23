@@ -8,7 +8,11 @@ class Botiga_Metabox {
 
 	public static $options = array();
 
+	private $first_theme_version = '';
+
 	public function __construct() {
+		$this->first_theme_version = get_option( 'botiga-first-theme-version' );
+
 		add_action( 'load-post.php', array( $this, 'init_metabox' ) );
 		add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
 		add_action( 'wp_ajax_botiga_select_ajax', array( $this, 'botiga_select_ajax' ) );
@@ -121,6 +125,7 @@ class Botiga_Metabox {
 			'type'      => 'switcher',
 			'title'     => esc_html__( 'Page Builder Mode', 'botiga' ),
 			'subtitle'  => esc_html__( 'This mode activates a simplified canvas for building custom pages with either the WP editor or a page builder plugin.', 'botiga' ),
+			'hide_from_elementor' => true,
 		) );
 		// End: General Options
 		//
@@ -338,6 +343,17 @@ class Botiga_Metabox {
 						if ( ! empty( $option['fields'] ) ) {
 
 							foreach ( $option['fields'] as $field_id => $field ) {
+								$hide_from_elementor = ( ! empty( $field['hide_from_elementor'] ) ) ? true : false;
+								$has_elementor_edit_mode = get_post_meta( $post->ID, '_elementor_edit_mode', true );
+
+								if ( 
+									defined( 'ELEMENTOR_VERSION' ) && 
+									$hide_from_elementor && 
+									$has_elementor_edit_mode &&
+									version_compare( $this->first_theme_version, '2.2.13', '>=' )
+								) {
+									continue;
+								}
 
 								$separator = ( ! empty( $field['separator'] ) ) ? $field['separator'] : 'after';
 

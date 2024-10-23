@@ -326,12 +326,13 @@ add_action( 'botiga_main_wrapper_end', 'botiga_main_wrapper_end' );
  * Page builder mode filters
  */
 function botiga_page_builder_mode() {
-
 	global $post;
 
-	if( is_singular( 'product' ) ) {
+	if ( is_singular( 'product' ) ) {
 		return;
 	}
+
+	$first_theme_version = get_option( 'botiga-first-theme-version' );
 
 	if ( isset( $post ) && is_singular() ) {
 		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
@@ -349,6 +350,10 @@ function botiga_page_builder_mode() {
 			add_filter( 'botiga_sidebar', '__return_false' );
 			add_filter( 'botiga_entry_footer', '__return_false' );
 			add_filter( 'body_class', function( $classes ) { $classes[] = 'no-sidebar botiga-page-builder-mode'; return $classes; } );
+
+			if ( $first_theme_version && version_compare( $first_theme_version, '2.2.13', '>=' ) && is_singular('post') ) {
+				remove_all_actions( 'botiga_after_single_post_content' );
+			}
 		}
 	}
 }
