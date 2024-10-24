@@ -30,6 +30,11 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 	 */
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 		parent::__construct( $manager, $id, $args );
+
+		$is_legacy_tb = get_option( 'botiga-legacy-templates-builder', false ) == true;
+		if ( ! $is_legacy_tb ) {
+			$this->templates_builder_templates = true;
+		}
 	}
 
 	/**
@@ -44,7 +49,6 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 	 * Render the control in the customizer
 	 */
 	public function render_content() {
-
 		$choices         = $this->choices; 
 		$select2_options = $this->select2_options; 
 		$multiple        = $this->multiple; 
@@ -72,6 +76,8 @@ class Botiga_Select2_Control extends WP_Customize_Control {
 		if( $this->templates_builder_templates ) {
 			$choices = array();
 			$templates = get_option( 'botiga_template_builder_data' );
+
+			$choices[''] = esc_html__( 'None', 'botiga' );
 
 			if ( ! empty( $templates ) ) {
 				$templates = array_filter( $templates, function( $item ) {
