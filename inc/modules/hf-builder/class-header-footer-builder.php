@@ -864,12 +864,16 @@ class Botiga_Header_Footer_Builder {
         foreach( $devices as $device ) { ?>
 
             <?php 
-            /**
-             * Hook 'botiga_before_header'
-             *
-             * @since 1.0.0
-             */
-            do_action( 'botiga_before_header' ); ?>
+            if ( ! did_action( 'botiga_before_header' ) ) {
+
+                /**
+                 * Hook 'botiga_before_header'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_before_header' );
+            } 
+            ?>
 
             <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?> <?php botiga_schema( 'header' ); ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
@@ -962,14 +966,14 @@ class Botiga_Header_Footer_Builder {
             </header>
 
             <?php 
-            /**
-             * Hook 'botiga_after_header'
-             *
-             * @since 1.0.0
-             */
-            do_action( 'botiga_after_header' ); ?>
-
-            <?php 
+            if ( ! did_action( 'botiga_after_header' ) ) {
+                /**
+                 * Hook 'botiga_after_header'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_after_header' );
+            }
         }
 
         ?> 
