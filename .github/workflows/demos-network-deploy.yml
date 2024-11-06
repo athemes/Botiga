@@ -1,0 +1,29 @@
+# GitHub Actions Workflow to deploy on production server
+# This workflow runs PHP tests on pull requests targeting the main branch.
+
+name: Deploy to demos network
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+  
+      - name: 📂 Sync files with SSH
+        uses: easingthemes/ssh-deploy@main
+          
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "./"
+          REMOTE_HOST: ${{secrets.SERVER_REMOTE_HOST}}
+          REMOTE_USER: ${{secrets.SERVER_REMOTE_USER}}
+          REMOTE_PORT: "22"
+          TARGET: "www/wp-content/themes/botiga/"
+        
