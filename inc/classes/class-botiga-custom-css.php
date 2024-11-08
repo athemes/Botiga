@@ -218,7 +218,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 				if ( 'System default' !== $button_font['font'] ) {
 					$selectors = array( 
-						'button', 
 						'a.button', 
 						'.wp-block-button__link',
 						'.wc-block-components-button',
@@ -264,7 +263,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 				if ( 'System default' !== $button_font['font'] ) {
 					$selectors = array( 
-						'button', 
 						'a.button', 
 						'.button',
 						'.wp-block-button__link', 
@@ -419,7 +417,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				
 				if ( 'System default' !== $button_font['font'] ) {
 					$selectors = array(
-						'button',
 						'a.button',
 						'.wp-block-button__link',
 						'.wc-block-components-button',
@@ -557,7 +554,6 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 				
 				if ( ! empty( $button_font ) && 'System default' !== $button_font ) {
 					$selectors = array(
-						'button',
 						'a.button',
 						'.wp-block-button__link',
 						'.wc-block-components-button',
@@ -1929,7 +1925,7 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$button_text_decoration = get_theme_mod( 'button_text_decoration', 'none' );
-			$css .= "button,a.button,.button,.wp-block-button__link,.wc-block-components-button,.wc-block-components-button .wc-block-components-button__text,ul.products li.product .button,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . "; text-decoration:" . esc_attr( $button_text_decoration ) . ";}" . "\n";
+			$css .= "a.button,.button,.wp-block-button__link,.wc-block-components-button,.wc-block-components-button .wc-block-components-button__text,ul.products li.product .button,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . "; text-decoration:" . esc_attr( $button_text_decoration ) . ";}" . "\n";
 
 			// $css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button:not(.has-background),a.button:not(.has-background),.wp-block-button .wp-block-button__link:not(.has-background),.wp-block-button__link:not(.has-background),.wp-block-search .wp-block-search__button:not(.has-background),input[type="button"]:not(.has-background),input[type="reset"]:not(.has-background),input[type="submit"]:not(.has-background),.comments-area .comment-reply-link:not(.has-background),.botiga-sc-product-quantity' );          
 			// $css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.is-style-outline .wp-block-button__link:not(.has-background):hover,button:not(.has-background):hover,a.button:not(.has-background):hover,.wp-block-button .wp-block-button__link:not(.has-background):hover,.wp-block-button__link:not(.has-background):hover,.wp-block-search .wp-block-search__button:not(.has-background):hover,input[type="button"]:not(.has-background):hover,input[type="reset"]:not(.has-background):hover,input[type="submit"]:not(.has-background):hover,.comments-area .comment-reply-link:not(.has-background):hover' );       
