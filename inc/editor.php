@@ -65,7 +65,7 @@ class Botiga_Block_Editor {
 		$css .= "
 			div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link, 
 			div.editor-styles-wrapper .wp-block-button__link.is-style-outline,
-			div.editor-styles-wrapper .wp-block-search .wp-block-search__button,button,
+			div.editor-styles-wrapper .wp-block-search .wp-block-search__button,
 			div.editor-styles-wrapper a.button,.wp-block-button__link,
 			div.editor-styles-wrapper input[type=\"button\"],
 			div.editor-styles-wrapper input[type=\"reset\"],
@@ -74,7 +74,6 @@ class Botiga_Block_Editor {
 			}
 	
 			div.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover,
-			div.editor-styles-wrapper button:hover,
 			div.editor-styles-wrapper a.button:hover,
 			div.editor-styles-wrapper .wp-block-button__link:hover,
 			div.editor-styles-wrapper .wp-block-search .wp-block-search__button:hover,
