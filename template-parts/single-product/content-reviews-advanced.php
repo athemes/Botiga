@@ -13,14 +13,21 @@ $average      = $_product->get_average_rating();
 
 // Dropdown sort
 $default_sorting   = get_theme_mod( 'single_product_reviews_advanced_default_sorting', 'newest' );
-$sort_orderby      = isset( $_GET['orderby'] ) ? sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) : $default_sorting; 
+$sort_orderby      = isset( $_GET['orderby'] ) ? sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) : apply_filters( 'botiga_adv_reviews_default_sorting', $default_sorting ); 
 
 // Reviews bars rating
-$bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
+$bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); 
 
-<section id="reviews" class="botiga-adv-reviews products">
-    <h2 id="reviews-stars" class="text-center"><?php echo esc_html__( 'Why people love our products', 'botiga' ); ?></h2>
-    <p class="text-center"><?php echo esc_html__( 'High-quality, ethically sourced products at affordable prices', 'botiga' ); ?></p>
+// Section HTML tag.
+$section_tag = apply_filters( 'botiga_adv_reviews_section_tag', 'section' );
+?>
+
+<<?php echo tag_escape( $section_tag ); ?> id="reviews" class="botiga-adv-reviews products">
+
+    <?php if ( apply_filters( 'botiga_adv_reviews_display_section_title', true ) === true ) : ?>
+        <h2 id="reviews-stars" class="text-center"><?php echo esc_html__( 'Why people love our products', 'botiga' ); ?></h2>
+        <p class="text-center"><?php echo esc_html__( 'High-quality, ethically sourced products at affordable prices', 'botiga' ); ?></p>
+    <?php endif; ?>
 
     <div class="botiga-adv-reviews-header">
         <div class="row justify-content-between<?php echo ( $bars_data[ 'total' ] === 0 ) ? ' align-items-center' : ''; ?>">
@@ -322,5 +329,5 @@ $bars_data = botiga_get_advanced_reviews_bars_rating_data( $product_id ); ?>
 
         echo '</div>';
     } ?>
-</section>
+</<?php echo tag_escape( $section_tag ); ?>>
 <?php // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>

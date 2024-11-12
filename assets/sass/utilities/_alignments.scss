@@ -1,3 +1,15 @@
+.valign {
+    @include valign;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
 .alignleft {
 
 	/*rtl:ignore*/
