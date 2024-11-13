@@ -622,6 +622,11 @@ require get_template_directory() . '/inc/notices/class-botiga-review.php';
 require get_template_directory() . '/inc/notices/class-botiga-pro-upsell.php';
 
 /**
+ * Botiga campaign notice.
+ */
+require get_template_directory() . '/inc/notices/class-botiga-campaign.php';
+
+/**
  * Theme update migration functions.
  */
 require get_template_directory() . '/inc/theme-update.php';
