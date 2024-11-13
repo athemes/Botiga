@@ -197,7 +197,7 @@ class Botiga_Campaign_Notice {
                 get_template_directory_uri() . '/assets/img/admin/40-percent.png'
             ) ); ?></h3>
 
-            <a href="https://athemes.com/black-friday/?utm_source=plugin_notice&utm_medium=button&utm_campaign=Botiga#botiga-pro" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Give Me This Deal', 'botiga' ); ?></a>
+            <a href="https://athemes.com/black-friday/?utm_source=theme_notice&utm_medium=button&utm_campaign=Botiga#botiga-pro" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Give Me This Deal', 'botiga' ); ?></a>
 
             <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/admin/people-trust.png' ); ?>" alt="<?php echo esc_attr__( 'Ready to join 130,000+ WordPress creators who\'ve found their perfect match?', 'botiga' ); ?>" class="botiga-campaign-notice-thumbnail" />
 
