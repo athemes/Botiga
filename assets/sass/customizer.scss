@@ -603,6 +603,7 @@ li.control-section-botiga-section-hidden {
 		.accordion-section-title {
 			.change-theme {
 				right: 16px;
+				padding: 0px 10px;
 			}
 		}
 	}
@@ -2348,10 +2349,26 @@ label {
 
 #customize-outer-theme-controls .accordion-section-title,
 #customize-theme-controls .accordion-section-title {
+	display: flex;
+	align-items: center;
+    gap: 5px;
 	color: #1e1e1e;
 	border: none;
 	font-weight: 400;
 	padding: 7px 15px;
+
+	button {
+		padding: 0;
+
+		&:hover {
+			color: #3858E9 !important;
+			background: none !important;
+		}
+	}
+
+	&:after {
+		font-size: 13px;
+	}
 }
 
 #customize-controls .control-section .accordion-section-title:focus,
