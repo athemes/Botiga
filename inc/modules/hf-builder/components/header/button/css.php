@@ -22,26 +22,26 @@ $css .= Botiga_Custom_CSS::get_responsive_css(
 );
 
 // Background Color
-$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_background_color', '#212121', '.bhfb-component-button .button' );
+$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_background_color', '#212121', '.bhfb-component-button .button', true );
 
 // Text Color
-$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_color', '#FFF', '.bhfb-component-button .button' );
+$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_color', '#FFF', '.bhfb-component-button .button', true );
 
 // Border Color
-$css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_border_color', '#212121', '.bhfb-component-button .button' );
+$css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_border_color', '#212121', '.bhfb-component-button .button', true );
 
 /**
  * Hover State
  */
 
 // Background Color
-$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_background_color_hover', '#757575', '.bhfb-component-button .button:hover' );
+$css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_background_color_hover', '#757575', '.bhfb-component-button .button:hover', true );
 
 // Text Color
-$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_color_hover', '#FFF', '.bhfb-component-button .button:hover' );
+$css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_color_hover', '#FFF', '.bhfb-component-button .button:hover', true );
 
 // Border Color
-$css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_border_color_hover', '#757575', '.bhfb-component-button .button:hover' );
+$css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_border_color_hover', '#757575', '.bhfb-component-button .button:hover', true );
 
 /**
  * Sticky Header Active State
@@ -53,26 +53,26 @@ if( botiga_sticky_header_enabled() ) {
      */
 
     // Background Color
-    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_sticky_background_color', '#212121', '.sticky-header-active .bhfb-component-button .button' );
+    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_sticky_background_color', '#212121', '.sticky-header-active .bhfb-component-button .button', true );
 
     // Text Color
-    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_sticky_color', '#FFF', '.sticky-header-active .bhfb-component-button .button' );
+    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_sticky_color', '#FFF', '.sticky-header-active .bhfb-component-button .button', true );
 
     // Border Color
-    $css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_sticky_border_color', '#212121', '.sticky-header-active .bhfb-component-button .button' );
+    $css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_sticky_border_color', '#212121', '.sticky-header-active .bhfb-component-button .button', true );
 
     /**
      * Hover State
      */
 
     // Background Color
-    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_sticky_background_color_hover', '#757575', '.sticky-header-active .bhfb-component-button .button:hover' );
+    $css .= Botiga_Custom_CSS::get_background_color_css( 'bhfb_button_sticky_background_color_hover', '#757575', '.sticky-header-active .bhfb-component-button .button:hover', true );
 
     // Text Color
-    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-button .button:hover' );
+    $css .= Botiga_Custom_CSS::get_color_css( 'bhfb_button_sticky_color_hover', '#757575', '.sticky-header-active .bhfb-component-button .button:hover', true );
 
     // Border Color
-    $css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_sticky_border_color_hover', '#757575', '.sticky-header-active .bhfb-component-button .button:hover' );
+    $css .= Botiga_Custom_CSS::get_border_color_css( 'bhfb_button_sticky_border_color_hover', '#757575', '.sticky-header-active .bhfb-component-button .button:hover', true );
 
 }
 
