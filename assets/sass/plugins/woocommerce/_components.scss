@@ -582,12 +582,12 @@ p.stars {
 		justify-content: center;
 
 		.star-rating {
-			margin-left: 0;
-			margin-right: 0;
+			margin-inline-start: 0;
+			margin-inline-end: 0;
 		}
 
 		.woocommerce-review-link {
-			margin-left: 4px;
+			margin-inline-start: 4px;
 		}
 	}
 

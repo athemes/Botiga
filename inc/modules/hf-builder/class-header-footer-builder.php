@@ -41,6 +41,51 @@ class Botiga_Header_Footer_Builder {
      */
     public function __construct() {
 
+        // Important: Components data must be the first thing to run and set before any other actions.
+        // This is required to make sure the components data is available for other methods.
+        // Development Note: Previously we was setting the data in the constructor, however since WP 6.7 we had to move it here
+        // to avoid translations loaded too early warning. 
+        add_action( 'init', array( $this, 'set_components_data' ), -1 );
+
+        if( is_customize_preview() ) {
+            add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        }
+        
+        add_action( 'customize_preview_init', array( $this, 'customize_preview_scripts' ) );
+
+        // The order '1000' is required here to make sure BP features will be registered as well.
+        add_action( 'customize_register', array( $this, 'customizer_options' ), 1000 );
+
+        add_action( 'customize_controls_print_footer_scripts', function(){ $this->header_builder_admin_grid( 'header' ); } );
+        add_action( 'customize_controls_print_footer_scripts', function(){ $this->header_builder_admin_grid( 'footer' ); } );
+
+        add_action( 'customize_controls_print_footer_scripts', function() {
+            echo '<aside class="widget-area"></aside>';
+        });
+        
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+        add_filter( 'body_class', array( $this, 'body_class' ) );
+
+        remove_all_actions( 'botiga_header' );
+        add_action( 'botiga_header', array( $this, 'header_front_output' ) );
+
+        // Important: Priority 20 is required here to ensure the mobile offcanvas is not outputted
+        // inside the header transparent wrapper which causes issues with large mobile breakpoints.
+        add_action( 'botiga_header', array( $this, 'mobile_offcanvas_output' ), 20 );
+
+        remove_all_actions( 'botiga_footer' );
+        add_action( 'botiga_footer', array( $this, 'footer_front_output' ) );
+
+        // Header Image (customize > header > header image)
+        add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
+    }
+
+    /**
+     * Set components data.
+     * 
+     */
+    public function set_components_data() {
+
         // Desktop Components.
         $this->desktop_components = array(
             array(
@@ -247,45 +292,14 @@ class Botiga_Header_Footer_Builder {
                 'default'     => $this->get_row_default_value( 'below_footer_row' ),
             ),
         );
-
-        if( is_customize_preview() ) {
-            add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-        }
-        
-        add_action( 'customize_preview_init', array( $this, 'customize_preview_scripts' ) );
-
-        // The order '1000' is required here to make sure BP features will be registered as well.
-        add_action( 'customize_register', array( $this, 'customizer_options' ), 1000 );
-
-        add_action( 'customize_controls_print_footer_scripts', function(){ $this->header_builder_admin_grid( 'header' ); } );
-        add_action( 'customize_controls_print_footer_scripts', function(){ $this->header_builder_admin_grid( 'footer' ); } );
-
-        add_action( 'customize_controls_print_footer_scripts', function() {
-            echo '<aside class="widget-area"></aside>';
-        });
-        
-        
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-        add_filter( 'body_class', array( $this, 'body_class' ) );
-
-        remove_all_actions( 'botiga_header' );
-        add_action( 'botiga_header', array( $this, 'header_front_output' ) );
-
-        // Important: Priority 20 is required here to ensure the mobile offcanvas is not outputted
-        // inside the header transparent wrapper which causes issues with large mobile breakpoints.
-        add_action( 'botiga_header', array( $this, 'mobile_offcanvas_output' ), 20 );
-
-        remove_all_actions( 'botiga_footer' );
-        add_action( 'botiga_footer', array( $this, 'footer_front_output' ) );
-
-        // Header Image (customize > header > header image)
-        add_action( 'botiga_header', array( $this, 'header_image' ), 30 );
     }
 
     /**
      * Enqueue Admin Scripts
      */
     public function admin_enqueue_scripts() {
+        $this->set_components_data();
+
         wp_enqueue_script( 'jquery-ui-sortable' );
 
         wp_enqueue_style( 'botiga-bhfb', get_template_directory_uri() . '/assets/css/admin/botiga-bhfb.min.css', array(), BOTIGA_VERSION );
@@ -864,12 +878,16 @@ class Botiga_Header_Footer_Builder {
         foreach( $devices as $device ) { ?>
 
             <?php 
-            /**
-             * Hook 'botiga_before_header'
-             *
-             * @since 1.0.0
-             */
-            do_action( 'botiga_before_header' ); ?>
+            if ( ! did_action( 'botiga_before_header' ) ) {
+
+                /**
+                 * Hook 'botiga_before_header'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_before_header' );
+            } 
+            ?>
 
             <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?> <?php botiga_schema( 'header' ); ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
@@ -962,14 +980,14 @@ class Botiga_Header_Footer_Builder {
             </header>
 
             <?php 
-            /**
-             * Hook 'botiga_after_header'
-             *
-             * @since 1.0.0
-             */
-            do_action( 'botiga_after_header' ); ?>
-
-            <?php 
+            if ( ! did_action( 'botiga_after_header' ) ) {
+                /**
+                 * Hook 'botiga_after_header'
+                 *
+                 * @since 1.0.0
+                 */
+                do_action( 'botiga_after_header' );
+            }
         }
 
         ?> 

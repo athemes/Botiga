@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.2.13' );
+	define( 'BOTIGA_VERSION', '2.2.14' );
 }
 
 // aThemes White Label Compatibility
@@ -620,6 +620,11 @@ require get_template_directory() . '/inc/notices/class-botiga-review.php';
  * Botiga pro upsell notice.
  */
 require get_template_directory() . '/inc/notices/class-botiga-pro-upsell.php';
+
+/**
+ * Botiga campaign notice.
+ */
+require get_template_directory() . '/inc/notices/class-botiga-campaign.php';
 
 /**
  * Theme update migration functions.

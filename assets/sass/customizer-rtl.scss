@@ -102,3 +102,23 @@
 .woocommerce-cropping-control{
   margin-right: 0;
 }
+
+.customize-pane-parent>li.control-section .accordion-section-title:after { 
+  left: 10px;
+  right: auto;
+}
+
+.customize-pane-parent>li.control-section .accordion-section-title:hover:after {
+	transform: translate3d(-4px, 0, 0);
+}
+
+.control-section .accordion-section-title:after, 
+.customize-pane-child .accordion-section-title:after {
+	left: 15px;
+	right: auto;
+}
+
+.control-section .accordion-section-title:hover:after, 
+.customize-pane-child .accordion-section-title:hover:after {
+	transform: translate3d(-4px, 0, 0);
+}
