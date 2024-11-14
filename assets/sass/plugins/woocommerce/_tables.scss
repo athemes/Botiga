@@ -310,7 +310,7 @@ table.woocommerce-product-attributes {
 				order: 3;
 
 				.quantity {
-					margin-right: 20px;
+					margin-inline-end: 20px;
 				}
 			}
 
@@ -323,7 +323,7 @@ table.woocommerce-product-attributes {
 
 		.product-price {
 			vertical-align: top !important;
-			text-align: right;
+			text-align: end;
 			font-weight: 700;
 		}
 
@@ -338,7 +338,7 @@ table.woocommerce-product-attributes {
 					content: '';
 					position: absolute;
 					bottom: 0;
-					left: 0;
+					inset-inline-start: 0;
 					width: 100%;
 					border-bottom-width: 2px;
 					border-bottom-style: solid;
@@ -356,7 +356,7 @@ table.woocommerce-product-attributes {
 		&.botiga_wishlist_table {
 			.product-addtocart {
 				width: 30%;
-				text-align: right;
+				text-align: end;
 			}
 		}
 	}
@@ -375,7 +375,7 @@ table.woocommerce-product-attributes {
 					margin-bottom: 25px;
 	
 					dd {
-						margin-right: 0;
+						margin-inline-end: 0;
 					}
 	
 					dt {
@@ -385,7 +385,8 @@ table.woocommerce-product-attributes {
 					dd + dt {
 						&:before {
 							content: '•';
-							margin: 0 13px;
+							margin-block: 0;
+							margin-inline: 13px;
 						}
 					}
 				}	
