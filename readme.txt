@@ -33,7 +33,7 @@ Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 = 2.2.14 =
 Fixed - Translations ‘loaded too early’ warning since WordPress 6.7.
 Fixed - Customizer broken after WordPress 6.7.
-Fixed - Header Builder: Button color options don't work.
+Fixed - Header Builder: Button color options not working.
 Fixed - Elementor Tabs is conflicting with ‘button’ tag styles from Botiga.
 
 = 2.2.13 =
