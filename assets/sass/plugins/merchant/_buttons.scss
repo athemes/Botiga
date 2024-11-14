@@ -1,0 +1,36 @@
+button[class*="merchant-"]:not(.button) {
+    border: 2px solid var( --bt-color-button-border, #212121 );
+	box-shadow: none;
+	background: var( --bt-color-button-bg, #212121 );
+	color: var( --bt-color-button, #FFF );
+	padding-top: var( --bt-padding-button-top-bottom, 13px );
+	padding-bottom: var( --bt-padding-button-top-bottom, 13px );
+	padding-left: var( --bt-padding-button-left-right, 24px );
+	padding-right: var( --bt-padding-button-left-right, 24px );
+	cursor: pointer;
+	display: inline-block;
+	transition: all 0.3s;
+	height: auto;
+	border-radius: var( --bt-border-radius-button, 0 );
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: var( --bt-letter-spacing-button, 0px );
+	font-size: var( --bt-font-size-button, 14px );
+
+	svg {
+		fill: var( --bt-color-button, #FFF );
+	}
+
+	&:hover {
+		border-color: var( --bt-color-button-border-hover, #757575 );
+
+		svg {
+			fill: var( --bt-color-button-hover, #FFF );
+		}
+	}
+
+	&:active,
+	&:focus {
+		color: var( --bt-color-button-hover, #FFF );
+	}
+}
