@@ -138,8 +138,11 @@ botiga.navigation = {
 			//Toggle submenus
 			var submenuToggles = offCanvas.querySelectorAll( '.dropdown-symbol, .menu-item-has-children > a[href="#"]' );
 			for ( var submenuToggle of submenuToggles ) {
-				submenuToggle.addEventListener( 'touchstart', submenuToggleHandler );
-				submenuToggle.addEventListener( 'click', submenuToggleHandler );
+				if ( 'ontouchstart' in window ) {
+					submenuToggle.addEventListener( 'touchstart', submenuToggleHandler );
+				} else {
+					submenuToggle.addEventListener( 'click', submenuToggleHandler );
+				}
 
 				submenuToggle.addEventListener('keydown', function(e) {
 					var isTabPressed = (e.key === 'Enter' || e.keyCode === 13);
@@ -159,6 +162,7 @@ botiga.navigation = {
 
 		function submenuToggleHandler(e) {
 			e.preventDefault();
+
 			var parent = e.target.closest( 'li' );
 			parent.querySelector( '.sub-menu' ).classList.toggle( 'toggled' );
 		}
