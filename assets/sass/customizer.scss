@@ -775,6 +775,12 @@ li.control-section-botiga-section-hidden {
 			padding: 9px 16px;
 		}
 
+		.accordion-section-title {
+			button {
+				padding: 6px 10px;
+			}
+		}
+
 		// Botiga Section Upsell
 		&.control-section-botiga-section-upsell {
 			.accordion-section-title {
@@ -2358,9 +2364,10 @@ label {
 	padding: 7px 15px;
 
 	button {
-		padding: 0;
+		padding: 0px;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			color: #3858E9 !important;
 			background: none !important;
 		}
