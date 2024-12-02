@@ -1655,7 +1655,7 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 					$result = $boolean;
 				}
 
-				if ( $condition === 'account-page' && is_account_page() ) {
+				if ( ( $condition === 'account-page' || $condition === 'my-account' ) && is_account_page() ) {
 					$result = $boolean;
 				}
 
@@ -1896,7 +1896,7 @@ function botiga_get_enhanced_display_conditions( $maybe_rules, $default_value = 
 					$result = $boolean;
 				}
 
-				if ( $condition === 'account-page' && is_account_page() ) {
+				if ( ( $condition === 'account-page' || $condition === 'my-account' ) && is_account_page() ) {
 					$result = $boolean;
 				}
 
