@@ -721,11 +721,13 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 .single-product {
 	.woocommerce-notices-wrapper {
 		margin-bottom: 30px;
+
 		&:empty {
 			display: none;
 		}
+		
 		.wc-forward {
-			margin-right: 15px;
+			margin-inline-start: 15px;
 		}
 	}
 
