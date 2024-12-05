@@ -178,7 +178,7 @@ class Botiga_Merchant_Single_Product_Elements {
 	}
 
 	/**
-	 * Turn on merchant modules shortcode functionality.
+	 * Turn on merchant modules shortcode functionality to specific modules.
 	 * 
 	 * @return void
 	 */
