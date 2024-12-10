@@ -4,8 +4,7 @@
  *
  */
 
-
-if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
+if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 
 	/**
 	 * Botiga_Custom_CSS 
@@ -1918,37 +1917,12 @@ if ( !class_exists( 'Botiga_Custom_CSS' ) ) :
 			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', 'table.woocommerce-product-attributes tr:nth-child(even)', 0.3 );
 
 			//Buttons
-			// $css .= $this->get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), 'button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,.wc-block-components-button,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );
-			// $css .= $this->get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), 'button,a.button,.wp-block-button__link,.wc-block-components-button,ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link,ul.wc-block-grid__products li.wc-block-grid__product .button,ul.products li.product .button,input[type="button"],input[type="reset"],input[type="submit"]' );
-			// $css .= $this->get_border_color_css( 'button_border_color', '#212121', "button,a.button,.wp-block-button .wp-block-button__link,.wp-block-button__link,.wc-block-components-button,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]" );
-			// $css .= $this->get_border_color_css( 'button_border_color_hover', '#757575', "button:hover,a.button:hover,.wp-block-button .wp-block-button__link:hover,.wp-block-button__link:hover,.wc-block-components-button:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover" );
-
 			$button_text_transform = get_theme_mod( 'button_text_transform', 'uppercase' );
 			$button_text_decoration = get_theme_mod( 'button_text_decoration', 'none' );
 			$css .= "a.button,.button,.wp-block-button__link,.wc-block-components-button,.wc-block-components-button .wc-block-components-button__text,ul.products li.product .button,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"] { text-transform:" . esc_attr( $button_text_transform ) . "; text-decoration:" . esc_attr( $button_text_decoration ) . ";}" . "\n";
 
-			// $css .= $this->get_background_color_css( 'button_background_color', '#212121', 'button:not(.has-background),a.button:not(.has-background),.wp-block-button .wp-block-button__link:not(.has-background),.wp-block-button__link:not(.has-background),.wp-block-search .wp-block-search__button:not(.has-background),input[type="button"]:not(.has-background),input[type="reset"]:not(.has-background),input[type="submit"]:not(.has-background),.comments-area .comment-reply-link:not(.has-background),.botiga-sc-product-quantity' );          
-			// $css .= $this->get_background_color_css( 'button_background_color_hover', '#757575', '.is-style-outline .wp-block-button__link:not(.has-background):hover,button:not(.has-background):hover,a.button:not(.has-background):hover,.wp-block-button .wp-block-button__link:not(.has-background):hover,.wp-block-button__link:not(.has-background):hover,.wp-block-search .wp-block-search__button:not(.has-background):hover,input[type="button"]:not(.has-background):hover,input[type="reset"]:not(.has-background):hover,input[type="submit"]:not(.has-background):hover,.comments-area .comment-reply-link:not(.has-background):hover' );       
-
-			// $css .= $this->get_color_css( 'button_color', '#FFF', '.wp-block-button.is-style-outline .wp-block-button__link:not(.has-text-color),button:not(.has-text-color),a.button:not(.wc-forward):not(.has-text-color),a.button.checkout:not(.has-text-color),.checkout-button.button:not(.has-text-color),.wp-block-button .wp-block-button__link:not(.has-text-color),.wp-block-button__link:not(.has-text-color),input[type="button"]:not(.has-text-color),input[type="reset"]:not(.has-text-color),input[type="submit"]:not(.has-text-color),.woocommerce-message .button.wc-forward:not(.has-text-color),.comments-area .comment-reply-link:not(.has-text-color), .wp-block-search .wp-block-search__button:not(.has-text-color),.botiga-sc-product-quantity' );          
-			// $css .= $this->get_color_css( 'button_color_hover', '#FFF', '.is-style-outline .wp-block-button__link:not(.has-text-color):hover,button:hover,a.button:not(.wc-forward):not(.has-text-color):hover,a.button.checkout:not(.has-text-color):hover,.checkout-button.button:not(.has-text-color):hover,.wp-block-button .wp-block-button__link:not(.has-text-color):hover,.wp-block-button__link:not(.has-text-color):hover,input[type="button"]:not(.has-text-color):hover,input[type="reset"]:not(.has-text-color):hover,input[type="submit"]:not(.has-text-color):hover,.woocommerce-message .button.wc-forward:not(.has-text-color):hover,.comments-area .comment-reply-link:not(.has-text-color):hover, .wp-block-search .wp-block-search__button:not(.has-text-color):hover' );
-			
-			// $css .= $this->get_fill_css( 'button_color', '#FFF', '.woocommerce-product-search .search-submit svg, #masthead-mobile .search-submit svg:not(.stroke-based), ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link svg, ul.wc-block-grid__products li.product .wp-block-button__link svg, ul.products li.wc-block-grid__product .wp-block-button__link svg, ul.products li.product .button svg' );
-			// $css .= $this->get_fill_css( 'button_color_hover', '#FFF', '.woocommerce-product-search .search-submit:hover svg, #masthead-mobile .search-submit:hover svg:not(.stroke-based), ul.wc-block-grid__products li.wc-block-grid__product .wp-block-button__link:hover svg, ul.wc-block-grid__products li.product .wp-block-button__link:hover svg, ul.products li.wc-block-grid__product .wp-block-button__link:hover svg, ul.products li.product .button:hover svg' );
-
-			$button_border_color = get_theme_mod( 'button_border_color', '#212121' );
-			$button_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
-			// $css .= $this->get_border_color_css( 'button_border_color', '#212121', '.wp-block-button.is-style-outline .wp-block-button__link, .wp-block-button__link.is-style-outline,.wp-block-search .wp-block-search__button,button,a.button,.wp-block-button__link,input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]' );
-			// $css .= $this->get_border_color_css( 'button_border_color_hover', '#757575', '.wp-block-button.is-style-outline .wp-block-button__link:hover,button:hover,a.button:hover,.wp-block-button__link:hover,.wp-block-search .wp-block-search__button:hover,input[type=\"button\"]:hover,input[type=\"reset\"]:hover,input[type=\"submit\"]:hover' );
-
 			//Widgets
 			$css .= $this->get_border_color_rgba_css( 'color_body_text', '#212121', '.widget-area .widget', 0.1 );
-			// $css .= $this->get_color_css( 'button_color', '', '.widget_product_tag_cloud .tag-cloud-link' );
-			// $css .= $this->get_color_css( 'button_color_hover', '', '.widget_product_tag_cloud .tag-cloud-link:hover' );
-			// $css .= $this->get_background_color_css( 'button_background_color', '', '.widget_product_tag_cloud .tag-cloud-link' );
-			// $css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_product_tag_cloud .tag-cloud-link:hover' );
-			// $css .= $this->get_background_color_css( 'button_background_color', '', '.widget_price_filter .ui-slider .ui-slider-handle' );
-			// $css .= $this->get_background_color_css( 'button_background_color_hover', '', '.widget_price_filter .ui-slider .ui-slider-handle:hover' );
 
 			//WPForms
 			if( defined( 'WPFORMS_VERSION' ) ) {

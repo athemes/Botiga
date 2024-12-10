@@ -29,6 +29,12 @@
 	}
 }
 
+.single-post {
+	.entry-content {
+		--bt-single-post-entry-content-max-width: 730px;
+	}
+}
+
 .single-post:not(.blog-single-layout2):not(.blog-single-layout3) .no-sidebar,
 .single-post:not(.blog-single-layout2):not(.blog-single-layout3).no-sidebar  {
 	.entry-header,
@@ -38,7 +44,7 @@
 	.post-navigation,
 	.comments-area,
 	.single-post-author {
-		max-width: 730px;
+		max-width: var(--bt-single-post-entry-content-max-width);
 		margin-left: auto;
 		margin-right: auto;
 	}
