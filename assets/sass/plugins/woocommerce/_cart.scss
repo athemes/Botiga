@@ -296,7 +296,7 @@
 	top: 67px;
 }
 
-@media ( min-width: 992px ) {
+@media (min-width: 992px) {
 	.woocommerce-cart {
 		.shop_table {
 			td.product-subtotal,
@@ -314,9 +314,6 @@
 		}
 	}
 	.cart-layout2 {
-		.woocommerce-notices-wrapper:not(:empty) {
-			margin-bottom: 30px;
-		}
 		.woocommerce-cart-form {
 			width: 70%;
 			float: left;
@@ -329,7 +326,7 @@
 	}	
 }
 
-@media ( min-width: 1200px ) {
+@media (min-width: 1200px) {
 	.cart-layout1 {
 		.cart-collaterals {
 			max-width: 640px;

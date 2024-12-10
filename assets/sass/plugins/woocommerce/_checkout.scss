@@ -367,28 +367,6 @@ form.woocommerce-checkout {
 	}
 }
 
-/* Coupon */
-.checkout_coupon.woocommerce-form-coupon {
-	display: flex;
-	flex-wrap: wrap;
-
-	> p {
-		&:first-child {
-			width: 100%;
-			margin-bottom: 20px;
-		}
-
-		&.form-row-first,
-		&.form-row-last {
-			margin-bottom: 10px;
-		}
-	}
-
-	#coupon_code {
-		height: 100%;
-	}
-}
-
 /* WooCommerce Amazon Pay compatibility */
 #amazon_customer_details {
 	.col-1,

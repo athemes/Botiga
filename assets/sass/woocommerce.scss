@@ -13,6 +13,11 @@ $woocommerce__color-info: #3d9cd2;
 @import "abstracts/abstracts";
 
 /**
+ * Notices
+ */
+@import "plugins/woocommerce/notices";
+
+/**
  * Shop tables
  */
 @import "plugins/woocommerce/tables";
@@ -71,3 +76,8 @@ $woocommerce__color-info: #3d9cd2;
  * Addresses
  */
  @import "plugins/woocommerce/addresses";
+
+ /**
+ * Coupon
+ */
+ @import "plugins/woocommerce/coupon";
