@@ -42,7 +42,10 @@ class Botiga_Backward_Compatibility {
      * @return void
      */
     public function set_single_blog_posts_container_full_width() {
-        if ( $this->first_theme_version && version_compare( $this->first_theme_version, '2.2.15', '<' ) ) {
+        if ( 
+            ! $this->first_theme_version || 
+            ( $this->first_theme_version && version_compare( $this->first_theme_version, '2.2.15', '<' ) )
+        ) {
             return;
         }
 
