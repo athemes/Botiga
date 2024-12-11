@@ -718,26 +718,6 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
 		width: 100%;
 	}
 }
-.single-product {
-	.woocommerce-notices-wrapper {
-		margin-bottom: 30px;
-		&:empty {
-			display: none;
-		}
-		.wc-forward {
-			margin-right: 15px;
-		}
-	}
-
-	&.no-single-breadcrumbs {
-		.woocommerce-notices-wrapper {
-			&:not(:empty) {
-				margin-bottom: 120px;
-				margin-top: -40px;
-			}
-		}
-	}
-}
 
 .woocommerce-product-rating,
 .comment_container {
@@ -867,27 +847,6 @@ table.variations {
 // When sold individually option is checked
 form.cart .quantity.hidden {
 	display: none !important;
-}
-
-@media (max-width: 767px) {
-	.single-product {
-		.woocommerce-notices-wrapper {	
-			.woocommerce-message {
-				display: flex;
-				flex-wrap: wrap;
-				flex-direction: column;
-				text-align: center;
-			}
-	
-			.wc-forward {
-				padding: 8px 24px;
-				order: 2;
-				margin-top: 15px;
-				align-self: center;
-				margin-right: 0;
-			}
-		}
-	}
 }
 
 /*

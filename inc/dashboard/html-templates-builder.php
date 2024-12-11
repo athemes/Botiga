@@ -119,6 +119,16 @@ if (!defined('ABSPATH')) {
                                     </div>
                                 </a>
                             </li>
+                            <li class="bt-navigation-link">
+                                <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                                        <path d="M10 4.5a1 1 0 11-2 0 1 1 0 012 0zm1.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm2.25 7.5v-1A2.75 2.75 0 0011 8.25H7A2.75 2.75 0 004.25 11v1h1.5v-1c0-.69.56-1.25 1.25-1.25h4c.69 0 1.25.56 1.25 1.25v1h1.5zM4 20h9v-1.5H4V20zm16-4H4v-1.5h16V16z" fill-rule="evenodd" clip-rule="evenodd" />
+                                    </svg><?php echo esc_html__( 'My Account', 'botiga' ); ?>
+                                    <div class="bt-navigation-link-lock-icon">
+                                        <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="bt-navigation-link has-separator">
                                 <a href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ); ?>" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
@@ -309,6 +319,22 @@ if (!defined('ABSPATH')) {
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
                                                 <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/dashboard/templates-builder/checkout.svg' ); ?>" alt="Order Thank You">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="botiga-dashboard-column botiga-dashboard-column-3">
+                                    <div data-wp-c16t="true" data-wp-component="Card" class="components-surface components-card bt-template-card bt-template-card--create-new css-1pd4mph e19lxcc00">
+                                        <div class="css-10klw3m e19lxcc00">
+                                            <div data-wp-c16t="true" data-wp-component="CardHeader" class="components-flex components-card__header components-card-header bt-template-card__header bt-d-flex bt-justify-content-between css-off1bd e19lxcc00">
+                                                <h2><?php echo esc_html__( 'My Account', 'botiga' ); ?></h2>
+                                            </div>
+                                            <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $this->settings['tb_upgrade_pro'] ) ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
+                                                    <?php echo esc_html__( 'Create New', 'botiga' ); ?>
+                                                    <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
+                                                </a>
+                                                <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/dashboard/templates-builder/my-account.svg' ); ?>" alt="My Account">
                                             </div>
                                         </div>
                                     </div>

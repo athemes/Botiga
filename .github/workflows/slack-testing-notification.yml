@@ -1,19 +1,18 @@
-# GitHub Actions Workflow to deploy on production server
-# This workflow runs PHP tests on pull requests targeting the main branch.
+# GitHub Actions Workflow for deploying the testing theme zip to Slack
 
-name: Deploy to demos network
+name: Deploy Testing Theme Zip to Slack
 
 on:
-  push:
-    branches:
-      - main
-      
+  pull_request:
+    types: [closed]
+
 jobs:
-  deploy:
+  notify-slack-channel:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'develop'
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Setup PHP 8.0
         uses: shivammathur/setup-php@v2
@@ -43,6 +42,7 @@ jobs:
           [ -f .gitattributes ] && rm .gitattributes
           [ -d .github ] && rm -r .github
           [ -d .git ] && rm -r .git
+          [ -d .vscode ] && rm -r .vscode
           [ -f .gitignore ] && rm .gitignore
           [ -f phpcs.xml ] && rm phpcs.xml
           [ -f wpgulp.config.js ] && rm wpgulp.config.js
@@ -50,12 +50,12 @@ jobs:
           [ -f composer.json ] && rm composer.json
           [ -f composer.lock ] && rm composer.lock
           [ -f package.json ] && rm package.json
-          [ -f package-lock.json ] && rm package-lock.json
           [ -f readme.md ] && rm readme.md
-          [ -f playwright.config.js ] && rm playwright.config.js
           [ -d assets/sass ] && rm -r assets/sass
           [ -d assets/js/src ] && rm -r assets/js/src
           [ -d node_modules ] && rm -r node_modules
+          [ -d playwright-report ] && rm -r playwright-report
+          [ -d tests ] && rm -r tests
           [ -d e2etests ] && rm -r e2etests
 
       - name: Create directory for artifacts
@@ -63,16 +63,23 @@ jobs:
 
       - name: Move files to botiga directory
         run: rsync -av --progress --exclude=botiga . botiga/
-  
-      - name: 📂 Sync files with SSH
-        uses: easingthemes/ssh-deploy@main
+
+      - name: Create Artifact
+        run: zip -qq -r "botiga.zip" botiga/
+
+      - name: Upload file to Slack
+        run: >
+          curl -F file=@botiga.zip
+          -F "initial_comment=🎉 Hey Team! 
           
-        env:
-          SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
-          ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: "botiga/"
-          REMOTE_HOST: ${{secrets.SERVER_REMOTE_HOST}}
-          REMOTE_USER: ${{secrets.SERVER_REMOTE_USER}}
-          REMOTE_PORT: "22"
-          TARGET: "www/wp-content/themes/botiga/"
-        
+          A new testing version of *Botiga* has been written by *${{ github.actor }}* in <https://github.com/${{ github.repository }}|${{ github.repository }}>.
+
+          *Here's what's included:* :rocket:
+
+          ${{ github.event.pull_request.body }}
+
+
+          _Dive deeper into the changes: ${{ github.event.pull_request.html_url }} _"
+          -F channels=${{ secrets.SLACK_CHANNEL_ID }}
+          -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}"
+          https://slack.com/api/files.upload

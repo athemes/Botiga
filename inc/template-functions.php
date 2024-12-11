@@ -269,15 +269,7 @@ function botiga_main_wrapper_start() {
 	global $post;
 
 	if ( isset( $post ) ) {
-		$page_builder_mode = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
-
-		/**
-		 * Hook 'botiga_page_builder_mode'
-		 * Filters the page builder mode.
-		 * 
-		 * @since 2.2.10
-		 */
-		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post ); 
+		$page_builder_mode = botiga_get_page_builder_mode(); 
 
 		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '<div class="content-wrapper">';
@@ -299,15 +291,7 @@ function botiga_main_wrapper_end() {
 	global $post;
 
 	if ( isset( $post ) ) {
-		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
-
-		/**
-		 * Hook 'botiga_page_builder_mode'
-		 * Filters the page builder mode.
-		 * 
-		 * @since 2.2.10
-		 */
-		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
+		$page_builder_mode = botiga_get_page_builder_mode();
 
 		if ( $page_builder_mode && ! is_singular( 'product' ) ) {
 			echo '</div>';
@@ -335,15 +319,7 @@ function botiga_page_builder_mode() {
 	$first_theme_version = get_option( 'botiga-first-theme-version' );
 
 	if ( isset( $post ) && is_singular() ) {
-		$page_builder_mode  = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
-
-		/**
-		 * Hook 'botiga_page_builder_mode'
-		 * Filters the page builder mode.
-		 * 
-		 * @since 2.2.10
-		 */
-		$page_builder_mode = apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
+		$page_builder_mode  = botiga_get_page_builder_mode();
 
 		if ( $page_builder_mode ) {
 			add_filter( 'botiga_entry_header', '__return_false' );
@@ -1655,7 +1631,7 @@ function botiga_get_display_conditions( $maybe_rules, $default_value = true, $mo
 					$result = $boolean;
 				}
 
-				if ( $condition === 'account-page' && is_account_page() ) {
+				if ( ( $condition === 'account-page' || $condition === 'my-account' ) && is_account_page() ) {
 					$result = $boolean;
 				}
 
@@ -1896,7 +1872,7 @@ function botiga_get_enhanced_display_conditions( $maybe_rules, $default_value = 
 					$result = $boolean;
 				}
 
-				if ( $condition === 'account-page' && is_account_page() ) {
+				if ( ( $condition === 'account-page' || $condition === 'my-account' ) && is_account_page() ) {
 					$result = $boolean;
 				}
 

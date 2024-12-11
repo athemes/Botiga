@@ -158,9 +158,12 @@ class Botiga_Merchant_Single_Product_Elements {
 		add_filter( 'botiga_single_product_elements', array( $this, 'customizer_elements' ) );
 
 		// Merchant won't render the modules output if the shortcode option is off. So, we need to force it to be on.
-		// This needs to be done via 'botiga_merchant_before_render_shortcode' because we don't want to force the shortcode functionality enable to the modules
+		// This needs to be done via 'botiga_merchant_before_render_shortcode' because we don't want to force the shortcode functionality enabled to the modules
 		// when some page builder such as botiga templates builder, elementor, wpbakery, beaver, etc, are in use. 
 		add_action( 'botiga_before_render_single_product_elements', array( $this, 'turn_on_merchant_modules_shortcode_functionality' ) );
+
+		// Some modules like the 'reasons-to-buy' are initialized in the 'wp' hook. So we have to rely on this hook to force the activation from the shortcode mode.
+		add_action( 'wp', array( $this, 'turn_on_merchant_modules_shortcode_functionality_to_specific_modules' ) );
 	}
 
 	/**
@@ -170,6 +173,21 @@ class Botiga_Merchant_Single_Product_Elements {
 	 */
 	public function turn_on_merchant_modules_shortcode_functionality() {
 		foreach ( self::$modules_data as $module_id => $module ) {
+			add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
+		}
+	}
+
+	/**
+	 * Turn on merchant modules shortcode functionality to specific modules.
+	 * 
+	 * @return void
+	 */
+	public function turn_on_merchant_modules_shortcode_functionality_to_specific_modules() {
+		foreach ( self::$modules_data as $module_id => $module ) {
+			if ( ! in_array( $module_id, array( 'reasons-to-buy' ), true ) ) {
+				continue;
+			}
+
 			add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
 		}
 	}

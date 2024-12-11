@@ -11,6 +11,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Get the page builder mode.
+ * 
+ * @return string
+ */
+function botiga_get_page_builder_mode() {
+	global $post;
+
+	if ( empty( $post ) ) {
+		return;
+	}
+
+	$page_builder_mode = get_post_meta( $post->ID, '_botiga_page_builder_mode', true );
+
+	/**
+	 * Hook 'botiga_page_builder_mode'
+	 * Filters the page builder mode.
+	 * 
+	 * @since 2.2.10
+	 */
+	return apply_filters( 'botiga_page_builder_mode', $page_builder_mode, $post );
+}
+
+/**
  * Check if the current page has a WooCommerce shortcode.
  *
  * @param object $post
@@ -135,4 +158,14 @@ function botiga_is_page_loaded_by_builders() {
 	}
 
 	return false;
+}
+
+/**
+ * Get Botiga first theme version.
+ * Returns from the database a string if the first theme version is set, otherwise returns false.
+ * 
+ * @return string|bool
+ */
+function botiga_get_first_theme_version() {
+	return get_option( 'botiga-first-theme-version' ) ? get_option( 'botiga-first-theme-version' ) : false;
 }

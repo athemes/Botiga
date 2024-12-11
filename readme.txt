@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.2.14
+Version: 2.2.15
 Tested up to: 6.7
 Requires PHP: 7
-Stable tag: 2.2.14
+Stable tag: 2.2.15
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,14 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.15 =
+Fixed - Cart Page: Ugly CSS styling for invalid coupon notice.
+Fixed - Added to cart notice ‘View Cart’ button position and style is not correct.
+Fixed - Header social icons customizer: Discord is excluded from icon color style.
+Fixed - Single Blog Posts: The ‘Page Builder Mode’, when enabled, isn’t following the block editor full width settings from the blocks.
+Fixed - Customizer: Some section navigation items without style after WordPress 6.7.1.
+Changed - Sale Badge: Improve logic and implementation for better compatibility with Merchant Storewide Sale.
+
 = 2.2.14 =
 Fixed - Translations ‘loaded too early’ warning since WordPress 6.7.
 Fixed - Customizer broken after WordPress 6.7.
