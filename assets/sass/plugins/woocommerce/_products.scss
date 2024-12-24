@@ -681,7 +681,6 @@ ul.wc-block-grid__products {
 			grid-gap: 10px;
 			
 			.quantity {
-				
 				.botiga-quantity-plus,
 				.botiga-quantity-minus {
 					font-size: 1.2em;
@@ -696,6 +695,31 @@ ul.wc-block-grid__products {
 			.button,
 			.add_to_cart_button {
 				margin: 0;
+			}
+		}
+
+		@media(max-width: 1024px) {
+			.button-with-quantity {
+				&.button-layout2 {
+					max-height: none;
+
+					.quantity {
+						width: 100%;
+						max-width: 100%;
+						height: 45px;
+					}
+					.button {
+						width: 100%;
+						text-align: center;
+					}
+				}
+
+				&.button-width-full {
+					flex-wrap: wrap;
+					.quantity {
+						width: 100%;
+					}
+				}
 			}
 		}
 	}
@@ -798,9 +822,49 @@ ul.wc-block-grid__products {
 	&.columns-6 {
 		li.product {
 			.button-with-quantity {
-
 				&.button-layout2 {
+					max-height: none;
+
 					.quantity {
+						width: 100%;
+						max-width: 100%;
+						height: 45px;
+					}
+					.button {
+						width: 100%;
+						text-align: center;
+					}
+				}
+
+				&.button-width-full {
+					flex-wrap: wrap;
+					.quantity {
+						width: 100%;
+					}
+				}
+			}
+
+			.button-layout2 {
+				.button {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+.has-4-columns,
+.has-5-columns,
+.has-6-columns {
+	.wc-block-grid__products {
+		.wc-block-grid__product {
+			.button-with-quantity {
+				&.button-layout2 {
+					max-height: none;
+
+					.quantity {
+						width: 100%;
 						max-width: 100%;
 						height: 45px;
 					}
