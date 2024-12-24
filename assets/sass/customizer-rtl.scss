@@ -24,6 +24,10 @@
   margin-right: 0;
 }
 
+.botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li {
+	margin-left: 0;
+}
+
 .botiga-bhfb .botiga-bhfb-rows-wrapper .botiga-bhfb-row .bhfb-button i.bhfb-edit-element{
   margin-left: 0;
   margin-right: 2px;
@@ -37,6 +41,18 @@
 .botiga-to-widget-area-link .dashicons-arrow-right-alt2:before,
 .bhfb-available-columns-items-wrapper .dashicons-arrow-right-alt2:before{
   content: "\f341";
+}
+
+@media (max-width: 800px) {
+    .bhfb {
+        .bhfb-builder-item[class*="bhfb-component-"] {
+            .customize-partial-edit-shortcut button, 
+            .widget .customize-partial-edit-shortcut button {
+                left: auto;
+				right: 0;
+            }
+        }
+    }
 }
 
 /* Display Conditions control */
