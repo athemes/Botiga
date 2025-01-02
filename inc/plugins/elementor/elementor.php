@@ -14,9 +14,9 @@ class Botiga_Elementor_Compatibility {
         // Extend Motion Effects with custom animations.
         add_filter( 'elementor/controls/animations/additional_animations', array( $this, 'extend_motion_effects' ) );
 
-        // Init.
-        add_action( 'wp', array( $this, 'init' ) );
-
+        // Register elementor locations (Theme Builder).
+        add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
+        
         $first_theme_version = get_option( 'botiga-first-theme-version' );
         if ( $first_theme_version && version_compare( $first_theme_version, '2.2.13', '>=' ) ) {
 
@@ -39,17 +39,6 @@ class Botiga_Elementor_Compatibility {
      */
     public function add_compatibility_css() {
         wp_enqueue_style( 'botiga-elementor', get_template_directory_uri() . '/assets/css/elementor.min.css', array(), BOTIGA_VERSION );
-    }
-
-    /**
-     * Initialize through 'wp' action
-     * 
-     * @return void
-     */
-    public function init() {
-
-        // Register elementor locations (Theme Builder)
-        add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
     }
 
     /**
