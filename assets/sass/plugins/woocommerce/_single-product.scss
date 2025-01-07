@@ -819,6 +819,11 @@ table.variations {
 	@include font-size(13);
 }
 
+button.reset_variations {
+	background: none;
+	border: none;
+}
+
 .grouped_form.cart {
 	.product_type_variable {
 		width: 100%;

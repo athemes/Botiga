@@ -1,4 +1,4 @@
-# Copyright (C) 2024 botiga
+# Copyright (C) 2025 botiga
 # This file is distributed under the same license as the botiga package.
 msgid ""
 msgstr ""
@@ -3785,19 +3785,19 @@ msgstr ""
 msgid "Vendor Dashboard"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:184
+#: inc/plugins/elementor/elementor.php:173
 msgid "Fade In Up Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:185
+#: inc/plugins/elementor/elementor.php:174
 msgid "Fade In Down Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:186
+#: inc/plugins/elementor/elementor.php:175
 msgid "Fade In Left Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:187
+#: inc/plugins/elementor/elementor.php:176
 msgid "Fade In Right Shorter"
 msgstr ""
 
