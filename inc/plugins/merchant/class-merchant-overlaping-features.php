@@ -71,13 +71,16 @@ class Botiga_Merchant_Overlaping_Features {
 	 * @return array $overlaping_features Overlaping features.
 	 */
 	public function get_customizer_overlaping_features( $required_opts_to_disable_merchant_modules ) {
-		return array_map( function( $mmodule_id, $theme_mod ) {
-			if ( ! is_array( $theme_mod[ 'mod_value' ] ) ) {
-				return get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ) !== $theme_mod[ 'mod_value' ] ? $mmodule_id : false;
-			} elseif( ! is_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ) ) ) {
-				return ! in_array( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
+		return array_map( function( $mmodule_id, $module_theme_mod_data ) {
+			if ( ! is_array( $module_theme_mod_data[ 'mod_value' ] ) ) {
+				$theme_mod_value = get_theme_mod( $module_theme_mod_data[ 'mod_name' ], $module_theme_mod_data[ 'mod_default' ] );
+				$theme_mod_value = $theme_mod_value === '' ? 0 : $theme_mod_value;
+
+				return $theme_mod_value !== $module_theme_mod_data[ 'mod_value' ] ? $mmodule_id : false;
+			} elseif( ! is_array( get_theme_mod( $module_theme_mod_data[ 'mod_name' ], $module_theme_mod_data[ 'mod_default' ] ) ) ) {
+				return ! in_array( get_theme_mod( $module_theme_mod_data[ 'mod_name' ], $module_theme_mod_data[ 'mod_default' ] ), $module_theme_mod_data[ 'mod_value' ] ) ? $mmodule_id : false;
 			} else {
-				return array_intersect( get_theme_mod( $theme_mod[ 'mod_name' ], $theme_mod[ 'mod_default' ] ), $theme_mod[ 'mod_value' ] ) ? $mmodule_id : false;
+				return array_intersect( get_theme_mod( $module_theme_mod_data[ 'mod_name' ], $module_theme_mod_data[ 'mod_default' ] ), $module_theme_mod_data[ 'mod_value' ] ) ? $mmodule_id : false;
 			}
 		}, array_keys( $required_opts_to_disable_merchant_modules ), $required_opts_to_disable_merchant_modules );
 	}

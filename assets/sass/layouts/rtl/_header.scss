@@ -129,6 +129,10 @@
 	right: -9999em;
 }
 
+.header-search-form-active .header-search-form {
+	right: 0;
+}
+
 .header-login-register,
 .top-bar-login-register {
 	text-align: right;
@@ -139,4 +143,12 @@
 			margin-right: 10px;
 		}
 	}
+}
+
+.bhfb-component-woo_icons {
+    .header-item {
+		&:last-child {
+			margin-right: var( --bt-bhfb-woo-icons-gap, 25px );
+		}
+    }
 }

@@ -145,6 +145,10 @@ select {
   right: -9999em;
 }
 
+.header-search-form-active .header-search-form {
+  right: 0;
+}
+
 .header-login-register,
 .top-bar-login-register {
   text-align: right;
@@ -154,6 +158,17 @@ select {
   content: "";
   margin-left: 0;
   margin-right: 10px;
+}
+
+.bhfb-component-woo_icons .header-item:last-child {
+  margin-right: var(--bt-bhfb-woo-icons-gap, 25px);
+}
+
+.botiga-offcanvas-menu {
+  left: auto;
+  right: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
 }
 
 .botiga-offcanvas-menu .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li {

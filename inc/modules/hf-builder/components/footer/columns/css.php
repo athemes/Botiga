@@ -57,7 +57,7 @@ foreach( $rows as $row ) {
             $section_id . '_elements_spacing', 
             array( 'desktop' => '25', 'tablet' => '25', 'mobile' => '25' ), 
             "$column_selector .bhfb-builder-item + .bhfb-builder-item",
-            'margin-left',
+            is_rtl() ? 'margin-right' : 'margin-left',
             'px',
             $row,
             $section_id

@@ -14,7 +14,11 @@ $css .= '.bhfb-mobile_offcanvas .bhfb-builder-item + .bhfb-builder-item { margin
 
 // Close Icon Offset
 $offset = get_theme_mod( 'bhfb_mobile_offcanvas_close_offset', 25 );
-$css .= '.bhfb-mobile_offcanvas .mobile-menu-close { top: '. esc_attr( $offset ) .'px; right: '. esc_attr( $offset ) .'px; }';
+if ( is_rtl() ) {
+    $css .= '.bhfb-mobile_offcanvas .mobile-menu-close { top: '. esc_attr( $offset ) .'px; left: '. esc_attr( $offset ) .'px; right: auto; }';
+} else {
+    $css .= '.bhfb-mobile_offcanvas .mobile-menu-close { top: '. esc_attr( $offset ) .'px; right: '. esc_attr( $offset ) .'px; }';
+}
 
 // Background Color
 $css .= Botiga_Custom_CSS::get_background_color_css( 'offcanvas_menu_background', '#FFF', '.bhfb-mobile_offcanvas' );
