@@ -11,6 +11,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+wp_enqueue_script( 'botiga-plugin-installer' );
+
 ?>
 
 <style>
@@ -312,8 +314,8 @@ if (!defined('ABSPATH')) {
             <div class="alert-icon">
                 <svg height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title/><path d="M85.57,446.25H426.43a32,32,0,0,0,28.17-47.17L284.18,82.58c-12.09-22.44-44.27-22.44-56.36,0L57.4,399.08A32,32,0,0,0,85.57,446.25Z" fill="none" stroke="#000" stroke-linecap="rounded" stroke-width="32" stroke-linejoin="round" /><path d="M250.26,195.39l5.74,122,5.73-121.95a5.74,5.74,0,0,0-5.79-6h0A5.74,5.74,0,0,0,250.26,195.39Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" /><path d="M256,397.25a20,20,0,1,1,20-20A20,20,0,0,1,256,397.25Z"/></svg>
             </div>
-            <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to activate the aThemes Patcher plugin.', 'botiga' ); ?></p>
-            <a href="#" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-module-activation botiga-dashboard-external-link" data-module-id="shop-filters" data-module-activate="true" data-module-after-activation-redirect="<?php echo esc_url( get_admin_url() . 'admin.php?page=botiga-dashboard&module-page=shop-filters&settings-page=filter-presets' ); ?>">
+            <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note that to use this feature you need to install and activate the aThemes Patcher plugin.', 'botiga' ); ?></p>
+            <a href="#" class="botiga-dashboard-link botiga-dashboard-link-succes botiga-dashboard-external-link botiga-install-plugin" data-type="external" data-plugin-url="https://patcher.athemes.com/athemes-patcher.zip?nocache=<?php echo esc_attr( time() ); ?>" data-plugin-name="athemes-patcher/athemes-patcher.php" data-redirect-to="<?php echo esc_url( add_query_arg('page', 'athemes-patcher-bp', admin_url('admin.php')) ); ?>">
                 <?php echo esc_html__( 'Install and Activate aThemes Patcher', 'botiga' ); ?>
             </a>
         </div>
