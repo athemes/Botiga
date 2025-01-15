@@ -42,6 +42,7 @@
   "scripts": {
     "start": "gulp",
     "zip": "gulp zip",
+    "zip-remote-upload": "gulp zip && gulp upload-file-to-remote --local-path /home/rodrigo/docker/athemes/athemesdev/ --remote-path /var/www/html/wp-content/themes/ --file-name botiga.zip",
     "translate": "gulp translate",
     "cache-clear": "gulp clearCache",
     "production": "gulp production",
