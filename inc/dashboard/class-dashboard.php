@@ -53,6 +53,10 @@ class Botiga_Dashboard
             }
         }
 
+        if( $this->is_patcher_page() ) {
+            add_action('admin_enqueue_scripts', array( $this, 'enqueue_patcher_scripts' ));
+        }
+
         add_filter('woocommerce_enable_setup_wizard', '__return_false');
 
         add_action('admin_menu', array( $this, 'add_menu_page' ));
@@ -98,6 +102,17 @@ class Botiga_Dashboard
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         return $pagenow === 'admin.php' && ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] === 'botiga-dashboard' );
+    }
+
+    /**
+     * Is aThemes Patcher page.
+     * 
+     */
+    public function is_patcher_page() {
+        global $pagenow;
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        return $pagenow === 'admin.php' && ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] === 'athemes-patcher-preview-bp' );
     }
 
     /**
@@ -191,6 +206,17 @@ class Botiga_Dashboard
             4
         );
 
+        // Add 'aThemes Patcher' link
+        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+            'botiga-dashboard',
+            esc_html__('Patcher', 'botiga'),
+            esc_html__('Patcher', 'botiga'),
+            'manage_options',
+            'athemes-patcher-preview-bp',
+            array( $this, 'html_patcher' ),
+            5
+        );
+
         // Add 'Upgrade' link
         if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
             add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
@@ -200,7 +226,7 @@ class Botiga_Dashboard
                 'manage_options',
                 'https://athemes.com/botiga-upgrade?utm_source=theme_submenu_page&utm_medium=button&utm_campaign=Botiga',
                 '',
-                5
+                6
             );
         }
     }
@@ -279,6 +305,14 @@ class Botiga_Dashboard
                 'failed_message' => esc_html__('Something went wrong, contact support.', 'botiga'),
             ),
         ));
+    }
+
+    /**
+     * Enqueue aThemes Patcher preview scripts and styles.
+     * 
+     */
+    public function enqueue_patcher_scripts() {
+        wp_enqueue_style( 'wp-components' );
     }
 
     /**
@@ -919,8 +953,7 @@ class Botiga_Dashboard
     /**
      * HTML Notice
      */
-    public function html_notice()
-    {
+    public function html_notice() {
 
         global $pagenow;
 
@@ -930,16 +963,22 @@ class Botiga_Dashboard
 
             $transient = sprintf('%s_hero_notice', get_template());
 
-            if (!get_transient($transient)) {
-                ?>
-            <div class="botiga-dashboard botiga-dashboard-notice">
-            <div class="botiga-dashboard-dismissable dashicons dashicons-dismiss" data-notice="<?php echo esc_attr($transient); ?>"></div>
-            <?php require get_template_directory() . '/inc/dashboard/html-hero.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
-            </div>
-        <?php
-}
-
+            if (!get_transient($transient)) { ?>
+                <div class="botiga-dashboard botiga-dashboard-notice">
+                <div class="botiga-dashboard-dismissable dashicons dashicons-dismiss" data-notice="<?php echo esc_attr($transient); ?>"></div>
+                <?php require get_template_directory() . '/inc/dashboard/html-hero.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound ?>
+                </div>
+            <?php
+            }
         }
+    }
+
+    /**
+     * HTML aThemes Patcher.
+     * 
+     */
+    public function html_patcher() {
+        require get_template_directory() . '/inc/dashboard/html-patcher.php';
     }
 }
 

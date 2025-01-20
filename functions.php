@@ -555,6 +555,7 @@ require get_template_directory() . '/inc/classes/class-botiga-svg-icons.php';
 require get_template_directory() . '/inc/classes/class-botiga-metabox.php';
 require get_template_directory() . '/inc/classes/class-botiga-custom-css.php';
 require get_template_directory() . '/inc/classes/class-botiga-backward-compatibility.php';
+require get_template_directory() . '/inc/classes/class-botiga-plugin-installer.php';
 
 /**
  * Theme ajax callbacks.
