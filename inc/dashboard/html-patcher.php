@@ -349,9 +349,9 @@ wp_enqueue_script( 'botiga-plugin-installer' );
                     <tbody>
                         <tr>
                             <td>#467</td>
-                            <td>FIX: Lorem ipsum dolor sit a met, dont sit a le quat.</td>
+                            <td>Improved performance when loading custom assets during page transitions.</td>
                             <td>
-                                <a class="components-button has-lock-icon css-adm54n botiga-dashboard-pro-tooltip" href="https://athemes.com/botiga-upgrade?utm_source=athemes-patcher&utm_medium=link&utm_campaign=Botiga" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
+                                <a class="components-button has-lock-icon css-adm54n addons-dashboard-pro-tooltip" href="https://athemes.com/addons?utm_source=athemes-patcher&utm_medium=link&utm_campaign=aThemes Addons" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Sydney Pro', 'athemes-addons-elementor' ); ?>">
                                     Apply
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="48" height="48" aria-hidden="true" focusable="false"><path d="M17 10h-1.2V7c0-2.1-1.7-3.8-3.8-3.8-2.1 0-3.8 1.7-3.8 3.8v3H7c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-8c0-.6-.4-1-1-1zM9.8 7c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2v3H9.8V7zm6.7 11.5h-9v-7h9v7z"></path></svg>
                                 </a>
@@ -359,7 +359,7 @@ wp_enqueue_script( 'botiga-plugin-installer' );
                         </tr>
                         <tr>
                             <td>#465</td>
-                            <td>FIX: Lorem ipsum dolor sit a met, dont sit a le quat. Lorem ipsum dolor sit a met, dont sit a le quat.</td>
+                            <td>Updated widget behavior for smoother interactions across multiple devices.</td>
                             <td>
                                 <button type="button" disabled="" class="components-button css-wpjqd">Applied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="css-152qpu8" aria-hidden="true" focusable="false">
                                         <path d="M18.3 5.6L9.9 16.9l-4.6-3.4-.9 1.2 5.8 4.3 9.3-12.6z"></path>
@@ -369,7 +369,7 @@ wp_enqueue_script( 'botiga-plugin-installer' );
                         </tr>
                         <tr>
                             <td>#463</td>
-                            <td>FIX: Lorem ipsum dolor sit a met, dont quat. Lorem ipsum dolor.</td>
+                            <td>Minor fix to improve admin panel usability. </td>
                             <td>
                                 <button type="button" disabled="" class="components-button css-wpjqd">Applied <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="css-152qpu8" aria-hidden="true" focusable="false">
                                         <path d="M18.3 5.6L9.9 16.9l-4.6-3.4-.9 1.2 5.8 4.3 9.3-12.6z"></path>
