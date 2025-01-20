@@ -215,10 +215,28 @@ gulp.task('zip', () => {
 });
 
 /**
- * Task: `upload-file-to-remote`.
- * Command args: --local-path /home/rodrigo/docker/athemes/athemesdev/ --remote-path /var/www/html/wp-content/plugins/ --file-name merchant.zip
+ * Task: `copy-file-to-remote`.
+ * Command args: --local-path /home/rodrigo/docker/athemes/dev/wp-content/themes/ --remote-path /var/www/html/wp-content/themes/ --file-name botiga.zip
  */
-gulp.task('upload-file-to-remote', async function () {
+gulp.task('copy-file-to-remote', async function () {
+	const localPath = process.argv[4];
+	const remotePath = process.argv[6];
+	const fileName = process.argv[8];
+
+	exec(`docker cp ${ localPath }${ fileName } ddev-athemesdev-web:${ remotePath }${ fileName }`, (err, stdout, stderr) => {
+		if (err) {
+			console.error(`Error copying file: ${stderr}`);
+		} else {
+			console.log(`File copied successfully: ${stdout}`);
+		}
+	})
+});
+
+ /**
+ * Task: `unzip-remote-file`.
+ * Command args: --local-path /home/rodrigo/docker/athemes/athemesdev/ --remote-path /var/www/html/wp-content/themes/ --file-name botiga.zip
+ */
+gulp.task('unzip-remote-file', async function () {
 	const localPath = process.argv[4];
 	const remotePath = process.argv[6];
 	const fileName = process.argv[8];
