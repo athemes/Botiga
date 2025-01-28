@@ -564,12 +564,6 @@ select {
   left: 14%;
 }
 
-/* Product Cards */
-ul.products li.product .button.added:after,
-ul.products li.product .button.loading:after {
-  margin-right: 0.5em;
-}
-
 /* Templates Builder */
 .botiga-tb-wc-products .woocommerce-sorting-wrapper > .row > .col-auto:nth-child(1) {
   margin-right: 0 !important;
