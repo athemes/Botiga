@@ -970,6 +970,7 @@ botiga.scrollDirection = {
 
 				var button       = this,
 					productId    = this.getAttribute('data-product-id'),
+					context      = this.getAttribute('data-context'),
 					initial_text = this.innerHTML,
 					loading_text = this.getAttribute('data-loading-text'),
 					added_text   = this.getAttribute('data-added-text'),
@@ -995,7 +996,7 @@ botiga.scrollDirection = {
 					}
 				};
 
-				ajax.send('action=botiga_custom_addtocart&product_id=' + productId + '&nonce=' + nonce );
+				ajax.send('action=botiga_custom_addtocart&product_id=' + productId + '&context=' + context + '&nonce=' + nonce );
 			});
 		}
 	}

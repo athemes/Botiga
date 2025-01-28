@@ -369,18 +369,6 @@
 	}
 }
 
-/* Product Cards */
-ul.products { 
-	li.product {
-		.button.added,
-		.button.loading {
-			&:after {
-				margin-right: 0.5em;
-			}	
-		}
-	}
-}
-
 /* Templates Builder */
 .botiga-tb-wc-products {
 	.woocommerce-sorting-wrapper {
