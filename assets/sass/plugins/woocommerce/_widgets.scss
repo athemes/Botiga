@@ -219,3 +219,76 @@
 		}
 	}
 }
+
+/** 
+ * Top rated products
+ * Products
+ * Recent reviews
+ * 
+ */
+.widget_top_rated_products,
+.widget_products,
+.widget_recent_reviews {
+	.product_list_widget {
+		li {
+			display: block;
+			padding: 0;
+			padding-bottom: 25px;
+			min-height: 0;
+
+			&:after {
+				width: 100%;
+				left: 0;
+				bottom: 0;
+			}
+
+			a {
+				margin: 0;
+			}
+
+			img {
+				top: 0;
+				left: 0;
+			}
+
+			.product-title {
+				max-width: calc(75% + 15px);
+				font-size: 0.85rem;
+				padding-left: 0;
+				margin-left: calc(15% + 15px);
+			}
+
+			.star-rating {
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+
+			.reviewer {
+				font-size: 0.7rem;
+			}
+
+			del, ins {
+				font-size: .875rem;
+			}
+
+			del {
+				color: #999;
+			}
+
+			ins {
+				font-weight: 700;
+			}
+
+			& + li {
+				margin-top: 25px;
+			}
+		}
+	}
+}
+
+/* Tag cloud */
+.tagcloud {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}

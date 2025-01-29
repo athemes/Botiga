@@ -1,0 +1,61 @@
+/** 
+ * All reviews
+ * Reviews by category 
+ * Reviews by product
+ *
+ */
+.wp-block-woocommerce-all-reviews,
+.wp-block-woocommerce-reviews-by-category,
+.wp-block-woocommerce-reviews-by-product {
+    .wc-block-sort-select {
+        font-size: .85rem;
+
+        .wc-block-components-sort-select__select {
+            padding: 3px 27px 3px 7px;
+            min-height: 0;
+            margin-bottom: 10px;
+        }
+    }
+
+    .wc-block-components-review-list-item__info {
+        margin-bottom: 10px;
+    }
+
+    .wc-block-components-review-list-item__product {
+        line-height: 1.4;
+
+        a {
+            font-size: .85rem;
+            font-weight: 500;
+        }
+    }
+
+    .wc-block-components-review-list-item__rating {
+        margin: 7px 0 10px;
+    }
+
+    .wc-block-review-list-item__author,
+    .wc-block-review-list-item__published-date {
+        font-size: .7rem;
+    }
+
+    .wc-block-review-list-item__text {
+        font-size: .85rem;
+    }
+}
+
+/* Featured product */
+.wc-block-featured-product {
+    .wc-block-featured-product__title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}
+
+/* Featured category */
+.wc-block-featured-category {
+    .wc-block-featured-category__title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}
