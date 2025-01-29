@@ -436,11 +436,15 @@ function botiga_products_grid_rating_html( $html, $rating, $count ) {
 		return $html;
 	}
 
+	$is_inside_quick_view = did_action( 'botiga_before_quick_view_popup_content' );
+	if ( $is_inside_quick_view ) {
+		return $html;
+	}
+
 	$review_count = $product->get_review_count();
 	if ( $review_count === 0 ) {
 		return $html;
 	}
-	
 	ob_start();
 	?>
 	
