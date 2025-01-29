@@ -1842,7 +1842,7 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Single product options
 			$css .= $this->get_border_color_css( 'color_link_default', '', '.single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active' );
 			$css .= $this->get_color_css( 'single_product_title_color', '', '.product-gallery-summary .product_title' );
-      		$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price' );
+      		$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price .woocommerce-Price-amount' );
 			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', '.single-product .site-main>.product>section.products:nth-child(even):after', 0.5 );
 
 			$single_product_title_text_transform  = get_theme_mod( 'single_product_title_text_transform', 'none' );
