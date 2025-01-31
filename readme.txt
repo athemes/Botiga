@@ -30,6 +30,17 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.2.17 =
+Changed - Merchant compatibility: Remove extra margin-left in the Buy Now button.
+Changed - Added support to x.com in the Twitter social icons.
+Fixed - Customizer Additional CSS: The code editor width is wrong.
+Fixed - Quick View: Unncessary doubled review counter.
+Fixed - Product Card: Image radius being applied to the wrong element.
+Fixed - Popular Products (search): Layout broken when 'Masonry' is set.
+Fixed - Customizer: Single product price color isn't working.
+Fixed - Blog Archive: The post meta author image is breaking to a new line on small containers.
+Fixed - Mini Cart: The Merchant product labels and Wishlist icon are displayed over the mini cart content.
+
 = 2.2.16 =
 Fixed - Elementor Pro: Custom header/footer templates not displaying in the shop archive page.
 Fixed - Single Product: Clear variation button with wrong style when it's rendered as a HTML button tag.

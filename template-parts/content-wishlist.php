@@ -137,7 +137,7 @@ if( $products ) :
                                             break;
                                     } // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                                     
-                                    echo sprintf(
+                                    printf(
                                         '<div class="bt-d-inline-flex flex-direction-column align-items-center gap-5"><a href="%1$s" class="%2$s" data-product-id="%3$s" data-product_id="%3$s" data-context="wishlist-page" data-loading-text="%4$s" data-added-text="%5$s" data-nonce="%6$s">%7$s</a></div>',
                                         esc_url( $button_url ),
                                         $has_strong ? esc_attr( $button_class ) . ' strong' : esc_attr( $button_class ),
