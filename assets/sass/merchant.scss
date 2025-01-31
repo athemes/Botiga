@@ -13,9 +13,24 @@
 /**
  * Single product.
  */
- @import "plugins/merchant/single-product";
+@import "plugins/merchant/single-product";
 
 /**
  * Side Cart module.
  */
- @import "plugins/merchant/side-cart";
+@import "plugins/merchant/side-cart";
+
+/**
+ * Buy Now module.
+ */
+@import "plugins/merchant/buy-now";
+
+/**
+ * Product Labels module.
+ */
+@import "plugins/merchant/product-labels";
+
+/**
+ * Wishlist module.
+ */
+@import "plugins/merchant/wishlist";

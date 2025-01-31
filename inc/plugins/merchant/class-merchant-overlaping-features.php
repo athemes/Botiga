@@ -115,7 +115,7 @@ class Botiga_Merchant_Overlaping_Features {
 			'floating-mini-cart' => array(
 				'pro'         => true,
 				'mod_name'    => 'side_mini_cart_floating_icon',
-				'mod_value'   => '',
+				'mod_value'   => 0,
 				'mod_default' => 0,
 			),
 			'side-cart' => array(
@@ -145,18 +145,19 @@ class Botiga_Merchant_Overlaping_Features {
 			'real-time-search' => array(
 				'pro'         => false,
 				'mod_name'    => 'shop_search_enable_ajax',
-				'mod_value'   => '',
+				'mod_value'   => 0,
 				'mod_default' => 0,
 			),
 			'scroll-to-top-button' => array(
 				'pro'         => false,
 				'mod_name'    => 'enable_scrolltop',
-				'mod_value'   => '',
+				'mod_value'   => 0,
 				'mod_default' => 1,
 			),
 		);
 
 		$overlaping_features = self::get_customizer_overlaping_features( $required_opts_to_disable_merchant_modules );
+
 		foreach( $overlaping_features as $mmodule_id ) {
 			if ( $mmodule_id ) {
 				$is_pro = $required_opts_to_disable_merchant_modules[ $mmodule_id ][ 'pro' ] ?? false;

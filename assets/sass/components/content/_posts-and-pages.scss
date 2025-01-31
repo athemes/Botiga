@@ -117,6 +117,12 @@
 			}
 		}
 	}
+
+	.author {
+		&.vcard {
+			display: inline-block;
+		}
+	}
 }
 
 .entry-meta {
@@ -652,7 +658,13 @@
 		.entry-header {
 			text-align: right;
 		}		
-	}	
+	}
+
+	.author {
+		&.vcard {
+			display: inline-block;
+		}
+	}
 
 	.list-image {
 		width: 30%;

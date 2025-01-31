@@ -112,27 +112,41 @@ if( $products ) :
                                             $button_class = '';
                                             $button_text  = __( 'View Products', 'botiga' );
                                             $button_url   = $_product->add_to_cart_url();
+                                            $has_strong   = true;
                                             break;
                                         
                                         case 'variable':
                                             $button_class = '';
                                             $button_text  = __( 'Select Options', 'botiga' );
                                             $button_url   = $_product->add_to_cart_url();
+                                            $has_strong   = true;
                                             break;
                                 
                                         case 'external':
                                             $button_class = '';
                                             $button_text  = $_product->get_button_text();
                                             $button_url   = $_product->get_product_url();
+                                            $has_strong   = true;
                                             break;
                                         
                                         default:
-                                            $button_class = 'botiga-custom-addtocart';
+                                            $button_class = 'yes' === get_option( 'woocommerce_enable_ajax_add_to_cart' ) ? 'button add_to_cart_button ajax_add_to_cart' : 'add_to_cart_button';
                                             $button_text  = __( 'Add to Cart', 'botiga' );
                                             $button_url   = $_product->add_to_cart_url();
+                                            $has_strong   = false;
                                             break;
                                     } // @codingStandardsIgnoreEnd WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-                                    echo '<strong><a href="'. esc_url( $button_url ) .'" class="'. esc_attr( $button_class ) .'" data-product-id="'. absint( $product_id ) .'" data-loading-text="'. esc_attr__( 'Loading...', 'botiga' ) .'" data-added-text="'. esc_attr__( 'Added!', 'botiga' ) .'" data-nonce="'. esc_attr( wp_create_nonce( 'botiga-custom-addtocart-nonce' ) ) .'">'. esc_html( $button_text ) .'</a></strong>';
+                                    
+                                    printf(
+                                        '<div class="bt-d-inline-flex flex-direction-column align-items-center gap-5"><a href="%1$s" class="%2$s" data-product-id="%3$s" data-product_id="%3$s" data-context="wishlist-page" data-loading-text="%4$s" data-added-text="%5$s" data-nonce="%6$s">%7$s</a></div>',
+                                        esc_url( $button_url ),
+                                        $has_strong ? esc_attr( $button_class ) . ' strong' : esc_attr( $button_class ),
+                                        absint( $product_id ),
+                                        esc_attr__( 'Loading...', 'botiga' ),
+                                        esc_attr__( 'Added!', 'botiga' ),
+                                        esc_attr( wp_create_nonce( 'botiga-custom-addtocart-nonce' ) ),
+                                        esc_html( $button_text ),
+                                    );
                                 ?>
                             </td>
                         </tr>

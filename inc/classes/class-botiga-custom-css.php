@@ -1586,7 +1586,7 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 
 			if ( 'layout2' === $shop_product_card_style || 'layout3' === $shop_product_card_style ) {
 				$css .= "ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product { border-radius: " . intval( $shop_product_card_radius ) . "px; border-width: " . intval( $shop_product_card_border_size ) . "px; border-style: solid;padding:30px !important;}" . "\n";           
-				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap, ul.wc-block-grid__products li.product .loop-image-wrap, ul.products li.wc-block-grid__product .loop-image-wrap, ul.products li.product .loop-image-wrap { overflow:hidden;border-radius:" . esc_attr( $shop_product_card_thumb_radius ) . "px;}" . "\n";
+				$css .= "ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap img, ul.wc-block-grid__products li.product .loop-image-wrap img, ul.products li.wc-block-grid__product .loop-image-wrap img, ul.products li.product .loop-image-wrap img { overflow:hidden;border-radius:" . esc_attr( $shop_product_card_thumb_radius ) . "px;}" . "\n";
 				$css .= $this->get_background_color_css( 'shop_product_card_background', '', 'ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product' );
 				$css .= $this->get_border_color_css( 'shop_product_card_border_color', '#eee', 'ul.wc-block-grid__products li.wc-block-grid__product, ul.wc-block-grid__products li.product, ul.products li.wc-block-grid__product, ul.products li.product' );
 			}
@@ -1842,7 +1842,7 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 			//Single product options
 			$css .= $this->get_border_color_css( 'color_link_default', '', '.single-product div.product .gallery-vertical .flex-control-thumbs li img:hover, .single-product div.product .gallery-vertical .flex-control-thumbs li img.flex-active' );
 			$css .= $this->get_color_css( 'single_product_title_color', '', '.product-gallery-summary .product_title' );
-      		$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price' );
+      		$css .= $this->get_color_css( 'single_product_price_color', '', '.product-gallery-summary .price .woocommerce-Price-amount' );
 			$css .= $this->get_background_color_rgba_css( 'content_cards_background', '#f5f5f5', '.single-product .site-main>.product>section.products:nth-child(even):after', 0.5 );
 
 			$single_product_title_text_transform  = get_theme_mod( 'single_product_title_text_transform', 'none' );

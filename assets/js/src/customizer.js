@@ -367,7 +367,7 @@
 
 	wp.customize( 'shop_product_card_thumb_radius', function( value ) {
 		value.bind( function( to ) {
-			$( 'ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap, ul.wc-block-grid__products li.product .loop-image-wrap, ul.products li.wc-block-grid__product .loop-image-wrap, ul.products li.product .loop-image-wrap' ).css( 'border-radius', to + 'px' );
+			$( 'ul.wc-block-grid__products li.wc-block-grid__product .loop-image-wrap img, ul.wc-block-grid__products li.product .loop-image-wrap img, ul.products li.wc-block-grid__product .loop-image-wrap img, ul.products li.product .loop-image-wrap img' ).css( 'border-radius', to + 'px' );
 		} );
 	} );
 

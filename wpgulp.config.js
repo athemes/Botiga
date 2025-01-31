@@ -183,6 +183,14 @@ const scripts = [
 
 	// Admin scripts. ##############################
 
+	// Plugin installer.
+	{
+		name: 'pluginInstaller',
+		src: './assets/js/src/admin/plugin-installer.js',
+		destination: './assets/js/admin',
+		file: 'plugin-installer',
+	},
+	
 	// Customizer.
 	{
 		name: 'customizer',

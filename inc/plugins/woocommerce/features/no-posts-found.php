@@ -18,7 +18,7 @@ function botiga_woocommerce_no_products_found_popular_products() {
 	}
 	?>
 
-	<section class="products botiga-no-products-found-popular-products">
+	<section class="botiga-no-products-found-popular-products">
 		<?php
 
 			/**

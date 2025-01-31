@@ -5,6 +5,8 @@ a.button,
 .wc-block-components-button,
 ul.products li.product .button,
 .wpforms-submit,
+.widget_product_search button,
+.search-submit,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -253,31 +255,27 @@ input[type="submit"] {
 	}
 }
 
-ul.products {
-	li.product {
-		.button {
-			&.loading:after {
-				font-family: WooCommerce;
-				content: "";
-				-webkit-animation: spin 2s linear infinite;
-				animation: spin 2s linear infinite;
-				margin-left: 0.5em;
-				display: inline-block;
-				width: auto;
-				height: auto;
-			}
-			&.loading {
-				opacity: 0.5;
-				pointer-events: none;
-			}
-			&.added:after {
-				font-family: WooCommerce;
-				content: "";
-				margin-left: 0.5em;
-				display: inline-block;
-				width: auto;
-				height: auto;
-			}
-		}
+.button {
+	&.loading:after {
+		font-family: WooCommerce;
+		content: "";
+		-webkit-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+		margin-left: 0.5em;
+		display: inline-block;
+		width: auto;
+		height: auto;
+	}
+	&.loading {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+	&.added:after {
+		font-family: WooCommerce;
+		content: "";
+		margin-left: 0.5em;
+		display: inline-block;
+		width: auto;
+		height: auto;
 	}
 }

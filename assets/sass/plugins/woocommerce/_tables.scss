@@ -355,7 +355,7 @@ table.woocommerce-product-attributes {
 
 		&.botiga_wishlist_table {
 			.product-addtocart {
-				width: 30%;
+				width: 45%;
 				text-align: end;
 			}
 		}
@@ -434,7 +434,7 @@ table.woocommerce-product-attributes {
 }
 
 // Wishlist Shop Table Layout 2
-@media (max-width: 991px) {
+@media (max-width: 767px) {
 	.shop-table-layout2 {
 		.botiga_wishlist_table {
 			.botiga-qty-remove-wrapper {
