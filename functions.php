@@ -486,6 +486,7 @@ if ( class_exists( 'Merchant' ) ) {
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-overlaping-features-modal.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-single-product-elements.php';
 	require get_template_directory() . '/inc/plugins/merchant/class-merchant-quick-view-elements.php';
+	require get_template_directory() . '/inc/plugins/merchant/class-merchant-side-cart-compatibility.php';
 }
 
 /**
