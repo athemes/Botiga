@@ -74,7 +74,7 @@ jQuery(document).ready(function ($) {
 	$( '.control-section-botiga-section-upsell, .control-panel-botiga-panel-upsell' ).on( 'click', function() {
 		const feature = $( this ).data( 'feature' );
 
-		window.open( 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_'+ feature +'&utm_medium=botiga_customizer&utm_campaign=Botiga', '_blank' );
+		window.open( 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer&utm_content='+ feature +'&utm_medium=botiga_customizer&utm_campaign=Botiga', '_blank' );
 	} );
 });
 
