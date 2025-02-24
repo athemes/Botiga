@@ -625,7 +625,8 @@ li.control-section-botiga-section-hidden {
 #customize-outer-theme-controls {
 	.control-section,
 	.control-panel {
-		&.control-section-botiga-section-upsell {
+		&.control-section-botiga-section-upsell,
+		&.control-panel-botiga-panel-upsell {
 			cursor: pointer;
 		}
 
