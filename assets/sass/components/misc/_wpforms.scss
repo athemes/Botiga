@@ -1,52 +1,56 @@
 /* WPForms */
-.wpforms-field {
-    ::placeholder,
-    :-ms-input-placeholder,
-    ::-ms-input-placeholder {
-        color: var( --bt-color-forms-placeholder, #848484 );
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="url"],
-    input[type="password"],
-    input[type="search"],
-    input[type="number"],
-    input[type="tel"],
-    input[type="date"],
-    input[type="month"],
-    input[type="week"],
-    input[type="time"],
-    input[type="datetime"],
-    input[type="datetime-local"],
-    input[type="color"],
-    textarea,
-    select {
-        background-color: var( --bt-color-forms-background, transparent ) !important;
-        color: var( --bt-color-forms-text, $color__primary ) !important;
-        border-color: var( --bt-color-forms-borders, #212121 );
-        border-radius: 0 !important;
-        padding: 12px 16px !important;
-        min-height: 51px !important;
-    
-        &:focus {
-            outline: none !important;
-            box-shadow: 0 0 0 1px !important;
+.wpforms-block {
+    &:not(.wpforms-render-modern) {
+        .wpforms-field {
+            ::placeholder,
+            :-ms-input-placeholder,
+            ::-ms-input-placeholder {
+                color: var( --bt-color-forms-placeholder, #848484 ) !important;
+            }
+        
+            input[type="text"],
+            input[type="email"],
+            input[type="url"],
+            input[type="password"],
+            input[type="search"],
+            input[type="number"],
+            input[type="tel"],
+            input[type="date"],
+            input[type="month"],
+            input[type="week"],
+            input[type="time"],
+            input[type="datetime"],
+            input[type="datetime-local"],
+            input[type="color"],
+            textarea,
+            select {
+                background-color: var( --bt-color-forms-background, transparent ) !important;
+                color: var( --bt-color-forms-text, $color__primary ) !important;
+                border-color: var( --bt-color-forms-borders, #212121 ) !important;
+                border-radius: 0 !important;
+                padding: 12px 16px !important;
+                min-height: 51px !important;
+            
+                &:focus {
+                    outline: none !important;
+                    box-shadow: 0 0 0 1px !important;
+                }
+            }
+        
+            input[type="range"] {
+                height: 0 !important;
+                min-height: 0;
+                border-radius: 0 !important;
+                margin-top: 22px !important;
+            }
+        
+            .wpforms-field-number-slider-hint {
+                margin-top: 15px !important;
+            }
+        }
+        
+        .wpforms-field-label {
+            margin-bottom: 15px !important;
         }
     }
-
-    input[type="range"] {
-        height: 0 !important;
-        min-height: 0;
-        border-radius: 0 !important;
-        margin-top: 22px !important;
-    }
-
-    .wpforms-field-number-slider-hint {
-        margin-top: 15px !important;
-    }
-}
-
-.wpforms-field-label {
-    margin-bottom: 15px !important;
 }

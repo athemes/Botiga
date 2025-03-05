@@ -114,7 +114,39 @@
 		input[type="password"] {
 			width: 100%;
 		}
-	}	
+	}
+
+	.password-input {
+		display: flex;
+
+		.show-password-input {
+			background: none;
+			border: 0;
+			margin-left: -2.5em;
+
+			&:after {
+				content: '';
+				display: flex;
+				background-image: url(../img/icons/eye-line-through.svg);
+				background-size: 1.3em;
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 1.3em;
+				height: 1.3em;
+				cursor: pointer;
+			}
+
+			&.display-password {
+				&:after {
+					background-image: url(../img/icons/eye.svg);
+				}
+			}
+		}
+
+		.woocommerce-Input {
+			padding-right: 2.7em;
+		}
+	}
 }
 
 @media only screen and (max-width: 991px) {
