@@ -122,7 +122,12 @@
 		.show-password-input {
 			background: none;
 			border: 0;
-			margin-left: -2.5em;
+			margin-left: -2.6em;
+			width: 2.6em;
+
+			@media(max-width: 767px) {
+				margin-left: -3em;
+			}
 
 			&:after {
 				content: '';
