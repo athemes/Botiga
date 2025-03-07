@@ -198,12 +198,6 @@ gulp.task('translate', () => {
 			})
 		)
 		.pipe(gulp.dest(config.translationDestination + '/' + config.translationFile))
-		.pipe(
-			notify({
-				message: '\n\n✅  ===> Translate — completed!\n',
-				onLast: true
-			})
-		);
 });
 
 /**
