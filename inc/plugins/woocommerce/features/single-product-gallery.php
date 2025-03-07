@@ -68,11 +68,14 @@ function botiga_single_product_preload_image() {
     }
 
     $image_src = wp_get_attachment_image_src( $main_image_id, 'full' );
-    if ( ! $image_src ) {
+    $image_srcset = wp_get_attachment_image_srcset( $main_image_id, 'full' );
+    $image_sizes = wp_get_attachment_image_sizes( $main_image_id, 'full' );
+
+    if ( ! $image_src || ! $image_srcset || ! $image_sizes ) {
         return;
     }
 
-    echo '<link rel="preload" href="' . esc_url( $image_src[0] ) . '" as="image">';
+    echo '<link rel="preload" href="' . esc_url( $image_src[0] ) . '" as="image" imagesrcset="' . esc_attr( $image_srcset ) . '" imagesizes="' . esc_attr( $image_sizes ) . '" fetchpriority="high">';
 }
 
 /**

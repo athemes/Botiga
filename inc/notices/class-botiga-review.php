@@ -17,7 +17,6 @@ class Botiga_Theme_Review_Notice {
 	 * Constructor
 	 */
 	public function __construct() {
-
 		if( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
 			return;
 		}
@@ -54,6 +53,10 @@ class Botiga_Theme_Review_Notice {
 		$current_user             = wp_get_current_user();
 		$ignored_notice           = get_user_meta( $user_id, 'botiga_disable_review_notice', true );
 		$ignored_notice_partially = get_user_meta( $user_id, 'delay_botiga_disable_review_notice_partially', true );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
 
 		if ( ( get_option( 'botiga_theme_installed_time' ) > strtotime( '-14 day' ) ) || ( $ignored_notice_partially > strtotime( '-14 day' ) ) || ( $ignored_notice ) ) {
 			return;

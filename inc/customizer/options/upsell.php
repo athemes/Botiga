@@ -32,6 +32,8 @@ $wp_customize->add_control(
                 esc_html__( 'Polylang/WPML language switcher', 'botiga' ),
             ),
             'section'     => 'botiga_section_main_header',
+            'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=main_header&utm_medium=button&utm_campaign=Botiga',
+            'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=main_header_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
             'priority'    => 999,
         )
     ) 
@@ -59,6 +61,8 @@ $wp_customize->add_control(
                 esc_html__( 'Page level options to control the image', 'botiga' ),
             ),
             'section'       => 'header_image',
+            'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=header_image&utm_medium=button&utm_campaign=Botiga',
+            'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=header_image_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
             'priority'      => 999,
         )
     ) 
@@ -95,6 +99,8 @@ $wp_customize->add_control(
                 'link_text'        => esc_html__( 'many other premium features!', 'botiga' ),
             ),
             'section'       => 'botiga_section_typography_general',
+            'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=typography_general&utm_medium=button&utm_campaign=Botiga',
+            'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=typography_general_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
             'priority'      => 999,
         )
     ) 
@@ -128,6 +134,8 @@ $wp_customize->add_control(
                 'link_text'        => esc_html__( 'many other premium features!', 'botiga' ),
             ),
             'section'       => 'botiga_section_layout',
+            'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=site_layout&utm_medium=button&utm_campaign=Botiga',
+            'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=site_layout_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
             'priority'      => 999,
         )
     ) 
@@ -161,6 +169,8 @@ $wp_customize->add_control(
                 esc_html__( 'Social share buttons', 'botiga' ),
             ),
             'section'       => 'botiga_section_blog_singles',
+            'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=blog_single&utm_medium=button&utm_campaign=Botiga',
+            'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=blog_single_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
             'priority'      => 999,
         )
     ) 
@@ -190,6 +200,8 @@ if( class_exists( 'Woocommerce' ) ) {
                     esc_html__( '5+ layout variations', 'botiga' ),
                 ),
                 'section'     => 'botiga_section_single_product_tabs',
+                'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=single_product_tabs&utm_medium=button&utm_campaign=Botiga',
+                'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=single_product_tabs_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
                 'priority'    => 999,
             )
         ) 
@@ -220,6 +232,8 @@ if( class_exists( 'Woocommerce' ) ) {
                     esc_html__( 'Product spacing control', 'botiga' ),
                 ),
                 'section'     => 'woocommerce_product_catalog',
+                'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=shop_archive_layout&utm_medium=button&utm_campaign=Botiga',
+                'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=shop_archive_layout_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
                 'priority'    => 999,
             )
         ) 
@@ -250,6 +264,8 @@ if( class_exists( 'Woocommerce' ) ) {
                     esc_html__( 'A cool product image swap effect', 'botiga' ),
                 ),
                 'section'     => 'botiga_section_shop_archive_product_card',
+                'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=shop_archive_product_card&utm_medium=button&utm_campaign=Botiga',
+                'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=shop_archive_product_card_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
                 'priority'    => 999,
             )
         ) 
@@ -280,6 +296,8 @@ if( class_exists( 'Woocommerce' ) ) {
                     esc_html__( 'An option to show a quantity picker inside the mini cart', 'botiga' ),
                 ),
                 'section'     => 'botiga_section_shop_cart',
+                'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=cart&utm_medium=button&utm_campaign=Botiga',
+                'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=cart_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
                 'priority'    => 999,
             )
         ) 
@@ -310,6 +328,8 @@ if( class_exists( 'Woocommerce' ) ) {
                     esc_html__( 'A distraction-free checkout page', 'botiga' ),
                 ),
                 'section'     => 'woocommerce_checkout',
+                'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=checkout&utm_medium=button&utm_campaign=Botiga',
+                'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=checkout_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
                 'priority'    => 999,
             )
         ) 
@@ -333,6 +353,7 @@ $wp_customize->add_section(
                 esc_html__( 'A \'Footer Copyright Menu\' location', 'botiga' ),
             ),
             'panel'         => 'nav_menus',
+            'button_link'   => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=menus&utm_medium=button&utm_campaign=Botiga',
             'priority'      => 999,
         )
     ) 
@@ -361,6 +382,8 @@ $wp_customize->add_control(
             'title'   => __( 'More footer copyright options available in PRO version.', 'botiga' ),
             'display_thumb' => false, 
             'section'       => 'botiga_section_footer_credits',
+            'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=footer_copyright&utm_medium=button&utm_campaign=Botiga',
+            'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=footer_copyright_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
             'priority'      => 999,
         )
     ) 
@@ -380,6 +403,7 @@ $wp_customize->add_section(
         'botiga_section_sidebar',
         array(
             'title'         => esc_html__( 'Custom Sidebar', 'botiga' ),
+            'feature_slug' => 'custom-sidebar',
             'priority'      => 30,
         )
     ) 
@@ -392,6 +416,7 @@ $wp_customize->add_section(
         'botiga_section_product_swatches',
         array(
             'title'         => esc_html__( 'Variation Swatch', 'botiga' ),
+            'feature_slug' => 'variation-swatches',
             'priority'      => 150,
         )
     ) 
@@ -404,6 +429,7 @@ $wp_customize->add_section(
         'botiga_section_adtcnotif',
         array(
             'title'         => esc_html__( 'Add To Cart Notifications', 'botiga' ),
+            'feature_slug' => 'add-to-cart-notifications',
             'priority'      => 152,
         )
     ) 
@@ -416,6 +442,7 @@ $wp_customize->add_section(
         'botiga_section_free_shipping_progress_bar',
         array(
             'title'         => esc_html__( 'Free Shipping Progress Bar', 'botiga' ),
+            'feature_slug' => 'free-shipping-progress-bar',
             'priority'      => 152,
         )
     ) 
@@ -428,6 +455,7 @@ $wp_customize->add_section(
         'botiga_breadcrumbs',
         array(
             'title'         => esc_html__( 'Advanced Breadcrumbs', 'botiga' ),
+            'feature_slug' => 'breadcrumbs',
             'priority'      => 80,
         )
     ) 
@@ -440,6 +468,7 @@ $wp_customize->add_section(
         'botiga_section_buy_now',
         array(
             'title'         => esc_html__( 'Buy Now', 'botiga' ),
+            'feature_slug' => 'buy-now',
             'priority'      => 151,
         )
     ) 
@@ -452,6 +481,7 @@ $wp_customize->add_section(
         'botiga_section_modal_popup',
         array(
             'title'         => esc_html__( 'Modal Popup', 'botiga' ),
+            'feature_slug' => 'modal-popup',
             'priority'      => 185,
         )
     ) 
@@ -464,6 +494,7 @@ $wp_customize->add_section(
         'botiga_quicklinks',
         array(
             'title'         => esc_html__( 'Quick Links', 'botiga' ),
+            'feature_slug' => 'quick-links',
             'priority'      => 85,
         )
     ) 
@@ -476,6 +507,7 @@ $wp_customize->add_section(
         'botiga_section_wishlist',
         array(
             'title'         => esc_html__( 'Wishlist', 'botiga' ),
+            'feature_slug' => 'wishlist',
             'priority'      => 149,
         )
     ) 
@@ -490,6 +522,7 @@ $wp_customize->add_section(
         'botiga_section_single_product_size_chart',
         array(
             'title'         => esc_html__( 'Size Chart', 'botiga' ),
+            'feature_slug' => 'size-chart',
             'panel'         => 'botiga_panel_single_product',
         )
     ) 
@@ -502,6 +535,7 @@ $wp_customize->add_section(
         'botiga_section_single_product_advanced_reviews',
         array(
             'title'         => esc_html__( 'Advanced Reviews', 'botiga' ),
+            'feature_slug' => 'advanced-reviews',
             'panel'         => 'botiga_panel_single_product',
         )
     ) 
@@ -514,6 +548,7 @@ $wp_customize->add_section(
         'botiga_section_single_product_sticky_add_to_cart',
         array(
             'title'         => esc_html__( 'Sticky Add To Cart', 'botiga' ),
+            'feature_slug' => 'sticky-add-to-cart',
             'panel'         => 'botiga_panel_single_product',
         )
     ) 
@@ -526,6 +561,7 @@ $wp_customize->add_section(
         'botiga_section_single_product_linked_variations',
         array(
             'title'         => esc_html__( 'Linked Variations', 'botiga' ),
+            'feature_slug' => 'linked-variations',
             'panel'         => 'botiga_panel_single_product',
         )
     ) 
@@ -541,6 +577,7 @@ $wp_customize->add_panel(
 		array(
 			'title'       => esc_html__( 'Hooks', 'botiga' ),
 			'description' => esc_html__( 'Render custom content in multiples areas across the website.', 'botiga' ),
+            'feature_slug' => 'hooks',
 			'priority'    => 190,
 		)
 	)

@@ -358,7 +358,7 @@ class Botiga_Header_Footer_Builder {
                 'title'  => esc_html__( 'PRO Components', 'botiga' ),
                 'total'  => esc_html__( '13+ Components Available', 'botiga' ),
                 'button' => esc_html__( 'Get Botiga Pro Now!', 'botiga' ),
-                'link'   => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga',
+                'link'   => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=hf_builder&utm_medium=button&utm_campaign=Botiga',
             ),
             'header_presets' => $this->header_presets_values(),
             'i18n' => array(

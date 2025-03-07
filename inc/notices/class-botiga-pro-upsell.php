@@ -22,6 +22,10 @@ class Botiga_Pro_Upsell_Notice {
 			return;
 		}
 
+		if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+			return;
+		}
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_notices', array( $this, 'notice_markup' ), 20 );
         add_action( 'admin_init', array( $this, 'dimiss_notice' ), 0 );
@@ -42,7 +46,7 @@ class Botiga_Pro_Upsell_Notice {
 		$user_id                  = get_current_user_id();
 		$dismissed_notice         = get_user_meta( $user_id, 'botiga_pro_upsell_notice_dismiss', true ) ? true : false;
 
-		if( defined( 'BOTIGA_PRO_VERSION' ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
@@ -80,7 +84,7 @@ class Botiga_Pro_Upsell_Notice {
 				?>
 			</p>
 
-			<a href="https://athemes.com/botiga-upgrade?utm_source=theme_notice&utm_medium=button&utm_campaign=Botiga" class="botiga-btn botiga-btn-secondary" target="_blank"><?php esc_html_e( 'Upgrade To Botiga Pro', 'botiga' ); ?></a>
+			<a href="https://athemes.com/botiga-upgrade?utm_source=theme_notice&utm_content=upgrade_notice&utm_medium=button&utm_campaign=Botiga" class="botiga-btn botiga-btn-secondary" target="_blank"><?php esc_html_e( 'Upgrade To Botiga Pro', 'botiga' ); ?></a>
 			
 			<a class="notice-dismiss" href="?botiga_pro_upsell_notice_dismiss=1" style="text-decoration:none;"></a>
 		</div>

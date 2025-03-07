@@ -735,26 +735,26 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 			$button_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
 
 			$css = self::get_background_color_css( 'color_forms_text', '', '{{SELECTOR_WRAPPER}}div.wpforms-container-full .wpforms-form .wpforms-field-number-slider input[type=range]::-webkit-slider-thumb', true );
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-field ::placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;opacity:1;}" . "\n";
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-field :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-field ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-field ::placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;opacity:1;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-field :-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-field ::-ms-input-placeholder { color:" . esc_attr( $color_forms_placeholder ) . " !important;}" . "\n";
 
 			// button
-			$css .= self::get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), '{{SELECTOR_WRAPPER}}.wpforms-submit', true );
-			$css .= self::get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '{{SELECTOR_WRAPPER}}.wpforms-submit', true );
+			$css .= self::get_top_bottom_padding_css( 'button_top_bottom_padding', $defaults = array( 'desktop' => 13, 'tablet' => 13, 'mobile' => 13 ), '{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit', true );
+			$css .= self::get_left_right_padding_css( 'button_left_right_padding', $defaults = array( 'desktop' => 24, 'tablet' => 24, 'mobile' => 24 ), '{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit', true );
 
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit { border-radius:" . intval( $button_border_radius ) . "px !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit { border-radius:" . intval( $button_border_radius ) . "px !important;}" . "\n";
 
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit { text-transform:" . esc_attr( $button_text_transform ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit { text-transform:" . esc_attr( $button_text_transform ) . " !important;}" . "\n";
 
-			$css .= self::get_background_color_css( 'button_background_color', '#212121', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-background)', true );          
-			$css .= self::get_background_color_css( 'button_background_color_hover', '#757575', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-background):hover', true );          
+			$css .= self::get_background_color_css( 'button_background_color', '#212121', '{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background)', true );          
+			$css .= self::get_background_color_css( 'button_background_color_hover', '#757575', '{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background):hover', true );          
 
-			$css .= self::get_color_css( 'button_color', '#FFF', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-text-color)', true );           
-			$css .= self::get_color_css( 'button_color_hover', '#FFF', '{{SELECTOR_WRAPPER}}.wpforms-submit:not(.has-text-color):hover', true );
+			$css .= self::get_color_css( 'button_color', '#FFF', '{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color)', true );           
+			$css .= self::get_color_css( 'button_color_hover', '#FFF', '{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color):hover', true );
 			
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
-			$css .= "{{SELECTOR_WRAPPER}}.wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit { border-color:" . esc_attr( $button_border_color ) . " !important;}" . "\n";
+			$css .= "{{SELECTOR_WRAPPER}}.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover { border-color:" . esc_attr( $button_border_color_hover ) . " !important;}" . "\n";
 
 			if ( 'block-editor' === $context ) {
 				$css = str_replace( '{{SELECTOR_WRAPPER}}', 'div.editor-styles-wrapper ', $css );
