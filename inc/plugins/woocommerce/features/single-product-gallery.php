@@ -17,6 +17,9 @@ function botiga_single_product_gallery_hooks() {
 
     $single_product_gallery = get_theme_mod( 'single_product_gallery', 'gallery-default' );
 
+    // Preload main product image.
+    add_action( 'wp_head', 'botiga_single_product_preload_image', 5 );
+
     //Gallery
     if( 'gallery-grid' === $single_product_gallery || 'gallery-scrolling' === $single_product_gallery ) {
         remove_theme_support( 'wc-product-gallery-slider' );
@@ -40,6 +43,40 @@ function botiga_single_product_gallery_hooks() {
     }
 }
 add_action( 'wp', 'botiga_single_product_gallery_hooks' );
+
+/**
+ * Preload main product image.
+ * 
+ * @return void
+ */
+function botiga_single_product_preload_image() {
+    global $post;
+
+    if ( ! $post ) {
+        return;
+    }
+
+    if ( ! is_singular( 'product' ) ) {
+        return;
+    }
+
+    $product       = wc_get_product( $post );
+    $main_image_id = $product->get_image_id();
+
+    if ( ! $main_image_id ) {
+        return;
+    }
+
+    $image_src = wp_get_attachment_image_src( $main_image_id, 'full' );
+    $image_srcset = wp_get_attachment_image_srcset( $main_image_id, 'full' );
+    $image_sizes = wp_get_attachment_image_sizes( $main_image_id, 'full' );
+
+    if ( ! $image_src || ! $image_srcset || ! $image_sizes ) {
+        return;
+    }
+
+    echo '<link rel="preload" href="' . esc_url( $image_src[0] ) . '" as="image" imagesrcset="' . esc_attr( $image_srcset ) . '" imagesizes="' . esc_attr( $image_sizes ) . '" fetchpriority="high">';
+}
 
 /**
  * Single product top area wrapper
