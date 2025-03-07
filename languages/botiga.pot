@@ -141,11 +141,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:601
+#: functions.php:602
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:604
+#: functions.php:605
 msgid "Plugins"
 msgstr ""
 
@@ -1225,7 +1225,7 @@ msgstr ""
 msgid "Upload your own custom fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:415, inc/customizer/options/upsell.php:478
+#: inc/dashboard/class-dashboard-settings.php:415, inc/customizer/options/upsell.php:509
 msgid "Wishlist"
 msgstr ""
 
@@ -1265,7 +1265,7 @@ msgstr ""
 msgid "Set different galleries for product each product variation."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:460, inc/customizer/options/upsell.php:492
+#: inc/dashboard/class-dashboard-settings.php:460, inc/customizer/options/upsell.php:524
 msgid "Size Chart"
 msgstr ""
 
@@ -1277,7 +1277,7 @@ msgstr ""
 msgid "Size Charts"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:470, inc/customizer/options/upsell.php:504
+#: inc/dashboard/class-dashboard-settings.php:470, inc/customizer/options/upsell.php:537
 msgid "Advanced Reviews"
 msgstr ""
 
@@ -1301,7 +1301,7 @@ msgstr ""
 msgid "Set the tab layout, position, alignment and more."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:498, inc/customizer/options/upsell.php:442
+#: inc/dashboard/class-dashboard-settings.php:498, inc/customizer/options/upsell.php:470
 msgid "Buy Now"
 msgstr ""
 
@@ -1309,7 +1309,7 @@ msgstr ""
 msgid "Allows to redirect customers directly to the checkout for quick buy."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:508, inc/customizer/options/upsell.php:418
+#: inc/dashboard/class-dashboard-settings.php:508, inc/customizer/options/upsell.php:444
 msgid "Free Shipping Progress Bar"
 msgstr ""
 
@@ -1333,7 +1333,7 @@ msgstr ""
 msgid "Display a sticky add-to-cart button on your product single page. It will stay visible as the user explores the product."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:538, inc/customizer/options/upsell.php:528
+#: inc/dashboard/class-dashboard-settings.php:538, inc/customizer/options/upsell.php:563
 msgid "Linked Variations"
 msgstr ""
 
@@ -1453,7 +1453,7 @@ msgstr ""
 msgid "Increase your store conversion rate with the distraction free checkout."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:676, inc/customizer/options/upsell.php:406
+#: inc/dashboard/class-dashboard-settings.php:676, inc/customizer/options/upsell.php:431
 msgid "Add To Cart Notifications"
 msgstr ""
 
@@ -1477,7 +1477,7 @@ msgstr ""
 msgid "Display the mini cart icon floating on the screen."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:704, inc/customizer/options/upsell.php:454
+#: inc/dashboard/class-dashboard-settings.php:704, inc/customizer/options/upsell.php:483
 msgid "Modal Popup"
 msgstr ""
 
@@ -1501,7 +1501,7 @@ msgstr ""
 msgid "Set the breadcrumb engine, spacing and styles."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:732, inc/customizer/options/upsell.php:466
+#: inc/dashboard/class-dashboard-settings.php:732, inc/customizer/options/upsell.php:496
 msgid "Quick Links"
 msgstr ""
 
@@ -1750,7 +1750,7 @@ msgstr ""
 msgid "FREE"
 msgstr ""
 
-#: inc/dashboard/html-dashboard.php:31, inc/customizer/controls/class_botiga_panel_upsell.php:37, inc/customizer/controls/class_botiga_section_upsell.php:37
+#: inc/dashboard/html-dashboard.php:31, inc/customizer/controls/class_botiga_panel_upsell.php:62, inc/customizer/controls/class_botiga_section_upsell.php:65
 msgid "PRO"
 msgstr ""
 
@@ -1914,7 +1914,7 @@ msgstr ""
 msgid "Check the latest news from Botiga"
 msgstr ""
 
-#: inc/dashboard/html-notifications-sidebar.php:54, inc/customizer/controls/class_botiga_panel_upsell.php:39, inc/customizer/controls/class_botiga_section_upsell.php:39, inc/customizer/controls/class_botiga_section_upsell_message.php:70, inc/customizer/controls/class_botiga_upsell_message.php:60
+#: inc/dashboard/html-notifications-sidebar.php:54, inc/customizer/controls/class_botiga_panel_upsell.php:64, inc/customizer/controls/class_botiga_section_upsell.php:67, inc/customizer/controls/class_botiga_section_upsell_message.php:70, inc/customizer/controls/class_botiga_upsell_message.php:60
 msgid "Botiga Pro"
 msgstr ""
 
@@ -2071,44 +2071,44 @@ msgid "Start from scratch and design a custom template tailored to your specific
 msgstr ""
 
 #. translators: 1. Image url.
-#: inc/notices/class-botiga-campaign.php:196
+#: inc/notices/class-botiga-campaign.php:200
 msgid "Botiga Black Friday: Up to <span><img src=\"%1$s\" class=\"botiga-campaign-notice-percent\" alt=\"Up to 40 Percent Off!\" /> Off!</span>"
 msgstr ""
 
-#: inc/notices/class-botiga-campaign.php:200
+#: inc/notices/class-botiga-campaign.php:204
 msgid "Give Me This Deal"
 msgstr ""
 
-#: inc/notices/class-botiga-campaign.php:202
+#: inc/notices/class-botiga-campaign.php:206
 msgid "Ready to join 130,000+ WordPress creators who've found their perfect match?"
 msgstr ""
 
-#: inc/notices/class-botiga-pro-upsell.php:73
+#: inc/notices/class-botiga-pro-upsell.php:77
 msgid "Earn More with Your Botiga Store! 💰"
 msgstr ""
 
-#: inc/notices/class-botiga-pro-upsell.php:77
+#: inc/notices/class-botiga-pro-upsell.php:81
 msgid "Botiga Pro offers 40+ conversion-boosting features created specifically for the Botiga theme. Wishlists, size charts, advanced reviews, variation swatches, gallery styles, and many more! Join the thousands of happy entrepreneurs who have already taken their Botiga store to the next level."
 msgstr ""
 
-#: inc/notices/class-botiga-pro-upsell.php:83
+#: inc/notices/class-botiga-pro-upsell.php:87
 msgid "Upgrade To Botiga Pro"
 msgstr ""
 
 #. translators: %1$s current user display name.
-#: inc/notices/class-botiga-review.php:68
+#: inc/notices/class-botiga-review.php:71
 msgid "Hi %1$s, we hope you're enjoying using Botiga. We have a small request that would mean a lot to us. Could you please leave a review for Botiga on WordPress.org? Your support will not only motivate us but also help other users feel confident in choosing our theme. Thank you!"
 msgstr ""
 
-#: inc/notices/class-botiga-review.php:77
+#: inc/notices/class-botiga-review.php:80
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: inc/notices/class-botiga-review.php:78
+#: inc/notices/class-botiga-review.php:81
 msgid "Nope, maybe later"
 msgstr ""
 
-#: inc/notices/class-botiga-review.php:79
+#: inc/notices/class-botiga-review.php:82
 msgid "I already rated it"
 msgstr ""
 
@@ -2321,19 +2321,19 @@ msgstr ""
 msgid "Your page is created!<br>Click <a href=\"%s\" target=\"_blank\">here</a> if you want to edit the page.<br><br>If you want to show a link to this page, assign the page to a menu by clicking <a href=\"#\" data-goto=\"nav_menus\" data-type=\"panel\">here</a>"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_panel_upsell.php:36
+#: inc/customizer/controls/class_botiga_panel_upsell.php:61
 msgid "Press return or enter to open this panel"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_section_upsell.php:36
+#: inc/customizer/controls/class_botiga_section_upsell.php:64
 msgid "Press return or enter to open this section"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_section_upsell.php:46
+#: inc/customizer/controls/class_botiga_section_upsell.php:74
 msgid "Back"
 msgstr ""
 
-#: inc/customizer/controls/class_botiga_section_upsell.php:55
+#: inc/customizer/controls/class_botiga_section_upsell.php:83
 msgid "Help"
 msgstr ""
 
@@ -2929,7 +2929,7 @@ msgstr ""
 msgid "Mobile header"
 msgstr ""
 
-#: inc/customizer/options/header-mobile.php:54, inc/customizer/options/header.php:170, inc/customizer/options/layout.php:14, inc/customizer/options/woocommerce/woocommerce-cart.php:76, inc/customizer/options/woocommerce/woocommerce-cart.php:32, inc/customizer/options/woocommerce/woocommerce-checkout.php:74, inc/customizer/options/woocommerce/woocommerce-checkout.php:21, inc/customizer/options/woocommerce/woocommerce-shop-archive.php:27, inc/customizer/options/woocommerce/woocommerce-single.php:29, inc/customizer/options/woocommerce/shop-archive/section-categories.php:21, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:21, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:21, inc/modules/hf-builder/components/header/header-builder/customize-options.php:496
+#: inc/customizer/options/header-mobile.php:54, inc/customizer/options/header.php:170, inc/customizer/options/layout.php:14, inc/customizer/options/woocommerce/woocommerce-cart.php:76, inc/customizer/options/woocommerce/woocommerce-cart.php:32, inc/customizer/options/woocommerce/woocommerce-checkout.php:74, inc/customizer/options/woocommerce/woocommerce-checkout.php:21, inc/customizer/options/woocommerce/woocommerce-shop-archive.php:27, inc/customizer/options/woocommerce/woocommerce-single.php:29, inc/customizer/options/woocommerce/shop-archive/section-categories.php:21, inc/customizer/options/woocommerce/shop-archive/section-product-card.php:21, inc/customizer/options/woocommerce/shop-archive/section-sale-tag.php:21, inc/modules/hf-builder/components/header/header-builder/customize-options.php:498
 msgid "Layout"
 msgstr ""
 
@@ -3177,15 +3177,15 @@ msgstr ""
 msgid "Site Layout"
 msgstr ""
 
-#: inc/customizer/options/layout.php:43, inc/customizer/options/upsell.php:122
+#: inc/customizer/options/layout.php:43, inc/customizer/options/upsell.php:128
 msgid "Boxed"
 msgstr ""
 
-#: inc/customizer/options/layout.php:48, inc/customizer/options/upsell.php:123
+#: inc/customizer/options/layout.php:48, inc/customizer/options/upsell.php:129
 msgid "Padded"
 msgstr ""
 
-#: inc/customizer/options/layout.php:53, inc/customizer/options/upsell.php:124
+#: inc/customizer/options/layout.php:53, inc/customizer/options/upsell.php:130
 msgid "Fluid"
 msgstr ""
 
@@ -3393,219 +3393,219 @@ msgstr ""
 msgid "Polylang/WPML language switcher"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:56
+#: inc/customizer/options/upsell.php:58
 msgid "More header image options available with Botiga Pro."
 msgstr ""
 
-#: inc/customizer/options/upsell.php:58
+#: inc/customizer/options/upsell.php:60
 msgid "Display shop category image"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:59
+#: inc/customizer/options/upsell.php:61
 msgid "Page level options to control the image"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:83
+#: inc/customizer/options/upsell.php:87
 msgid "Create your own custom Fonts Library with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:84
+#: inc/customizer/options/upsell.php:88
 msgid "You can upload your favorite fonts in the following formats:"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:94
+#: inc/customizer/options/upsell.php:98
 msgid "Plus, you'll unlock"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:95, inc/customizer/options/upsell.php:128
+#: inc/customizer/options/upsell.php:99, inc/customizer/options/upsell.php:134
 msgid "many other premium features!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:119
+#: inc/customizer/options/upsell.php:125
 msgid "Switch to a different site layout with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:120
+#: inc/customizer/options/upsell.php:126
 msgid "You'll unlock the following layouts:"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:127
+#: inc/customizer/options/upsell.php:133
 msgid "Plus, you'll get access to"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:156
+#: inc/customizer/options/upsell.php:164
 msgid "Improve the user experience of your blog posts with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:158
+#: inc/customizer/options/upsell.php:166
 msgid "A reading time estimator"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:159
+#: inc/customizer/options/upsell.php:167
 msgid "A reading progress bar"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:160
+#: inc/customizer/options/upsell.php:168
 msgid "Table of contents"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:161
+#: inc/customizer/options/upsell.php:169
 msgid "Social share buttons"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:187
+#: inc/customizer/options/upsell.php:197
 msgid "Single product tabs options available with Botiga Pro."
 msgstr ""
 
-#: inc/customizer/options/upsell.php:189
+#: inc/customizer/options/upsell.php:199
 msgid "More positions to display the tabs"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:190
+#: inc/customizer/options/upsell.php:200
 msgid "5+ layout variations"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:214
+#: inc/customizer/options/upsell.php:226
 msgid "Increase the conversion rate of your product catalog with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:216
+#: inc/customizer/options/upsell.php:228
 msgid "Wishlist buttons"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:217
+#: inc/customizer/options/upsell.php:229
 msgid "Off-canvas sidebar filters"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:218
+#: inc/customizer/options/upsell.php:230
 msgid "Extra shop header styles"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:219
+#: inc/customizer/options/upsell.php:231
 msgid "'Load more' pagination"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:220
+#: inc/customizer/options/upsell.php:232
 msgid "Product spacing control"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:244
+#: inc/customizer/options/upsell.php:258
 msgid "Make your product cards more engaging with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:246
+#: inc/customizer/options/upsell.php:260
 msgid "A quantity picker"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:247
+#: inc/customizer/options/upsell.php:261
 msgid "An in-cart quantity counter"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:248
+#: inc/customizer/options/upsell.php:262
 msgid "A product stock status label"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:249
+#: inc/customizer/options/upsell.php:263
 msgid "Custom fields added with the ACF plugin"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:250
+#: inc/customizer/options/upsell.php:264
 msgid "A cool product image swap effect"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:274
+#: inc/customizer/options/upsell.php:290
 msgid "Deliver a better cart experience with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:276
+#: inc/customizer/options/upsell.php:292
 msgid "Additional cart table styles"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:277
+#: inc/customizer/options/upsell.php:293
 msgid "A stylish 'Continue shopping' button"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:278
+#: inc/customizer/options/upsell.php:294
 msgid "Off-canvas side mini cart functionality"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:279
+#: inc/customizer/options/upsell.php:295
 msgid "A floating mini cart icon"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:280
+#: inc/customizer/options/upsell.php:296
 msgid "An option to show a quantity picker inside the mini cart"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:304
+#: inc/customizer/options/upsell.php:322
 msgid "Make the checkout process easier than ever with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:306
+#: inc/customizer/options/upsell.php:324
 msgid "A one-step checkout layout"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:307
+#: inc/customizer/options/upsell.php:325
 msgid "A Shopify-like checkout layout"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:308
+#: inc/customizer/options/upsell.php:326
 msgid "A multi-step checkout layout"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:309
+#: inc/customizer/options/upsell.php:327
 msgid "An option to show a quantity picker on the checkout page"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:310
+#: inc/customizer/options/upsell.php:328
 msgid "A distraction-free checkout page"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:328
+#: inc/customizer/options/upsell.php:348
 msgid "Create more complex menus with Botiga Pro!"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:330
+#: inc/customizer/options/upsell.php:350
 msgid "A mega menu module"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:331
+#: inc/customizer/options/upsell.php:351
 msgid "A 'Primary Mobile Menu' location"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:332
+#: inc/customizer/options/upsell.php:352
 msgid "A 'Secondary Mobile Menu' location"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:333
+#: inc/customizer/options/upsell.php:353
 msgid "A 'Footer Copyright Menu' location"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:361
+#: inc/customizer/options/upsell.php:382
 msgid "More footer copyright options available in PRO version."
 msgstr ""
 
-#: inc/customizer/options/upsell.php:382
+#: inc/customizer/options/upsell.php:405
 msgid "Custom Sidebar"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:394
+#: inc/customizer/options/upsell.php:418
 msgid "Variation Swatch"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:430
+#: inc/customizer/options/upsell.php:457
 msgid "Advanced Breadcrumbs"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:516
+#: inc/customizer/options/upsell.php:550
 msgid "Sticky Add To Cart"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:542
+#: inc/customizer/options/upsell.php:578
 msgid "Hooks"
 msgstr ""
 
-#: inc/customizer/options/upsell.php:543
+#: inc/customizer/options/upsell.php:579
 msgid "Render custom content in multiples areas across the website."
 msgstr ""
 
@@ -4895,7 +4895,7 @@ msgstr ""
 msgid "Global Header"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:85, inc/modules/hf-builder/components/header/header-builder/customize-options.php:475
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:85, inc/modules/hf-builder/components/header/header-builder/customize-options.php:477
 msgid "Header Layouts"
 msgstr ""
 
@@ -4931,11 +4931,11 @@ msgstr ""
 msgid "Polylang/WPML language switcher component"
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:456
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:458
 msgid "The header stays over the content. You need to manually change the background color from each header builder row to be transparent."
 msgstr ""
 
-#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:476
+#: inc/modules/hf-builder/components/header/header-builder/customize-options.php:478
 msgid "Choose a header layout to start with."
 msgstr ""
 
