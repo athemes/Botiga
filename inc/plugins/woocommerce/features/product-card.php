@@ -237,6 +237,7 @@ function botiga_page_has_woo_shortcode() {
 	$shortcodes = array(
 		'products',
 		'product_page',
+		'latest_arrivals', // third-party shortcode
 	);
 
 	if( $post ) {
