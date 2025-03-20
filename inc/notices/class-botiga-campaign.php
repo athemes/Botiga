@@ -18,7 +18,7 @@ class Botiga_Campaign_Notice {
      *
      * @var string
      */
-    private $end_date_target = '2024-12-01';
+    private $end_date_target = '2025-04-21';
     
 	/**
 	 * Constructor
@@ -56,7 +56,9 @@ class Botiga_Campaign_Notice {
 
             .botiga-campaign-notice {
                 position: relative !important;
-                background-color: #000;
+                background: url(". esc_url( get_template_directory_uri() . '/assets/img/admin/easter-background.jpg' ) .");
+                background-size: cover;
+                background-position: center;
                 padding: 30px 30px 0px !important;
                 border-left: 0;
             }
@@ -68,7 +70,7 @@ class Botiga_Campaign_Notice {
             }
 
             .botiga-campaign-notice h3 {
-                color: #FFF;
+                color: #212121;
                 font-size: 42px;
                 font-weight: 700;
                 line-height: 1.1;
@@ -77,7 +79,7 @@ class Botiga_Campaign_Notice {
 
             @media(min-width: 576px) {
                 .botiga-campaign-notice h3 {
-                    min-width: 455px;
+                    min-width: 425px;
                     max-width: 25%;
                     line-height: 0.8;
                 }   
@@ -89,7 +91,7 @@ class Botiga_Campaign_Notice {
                 display: inline-flex;
                 align-items: center;
                 gap: 10px;
-                color: #FFDB12;
+                color: #68B43A;
             }
 
             .botiga-campaign-notice-thumbnail {
@@ -128,7 +130,7 @@ class Botiga_Campaign_Notice {
 
             .botiga-campaign-notice .notice-dismiss,
             .botiga-campaign-notice .notice-dismiss:before {
-                color: #FFF;
+                color: #212121;
             }
 
             .botiga-campaign-notice .notice-dismiss:active:before, 
@@ -149,7 +151,7 @@ class Botiga_Campaign_Notice {
 	public function is_dismissed() {
 		$user_id = get_current_user_id();
 
-        return get_user_meta( $user_id, 'botiga_disable_review_notice', true ) ? true : false;
+        return get_user_meta( $user_id, 'botiga_disable_easter2025_notice', true ) ? true : false;
 	}
 
     /**
@@ -197,13 +199,13 @@ class Botiga_Campaign_Notice {
         <div class="botiga-notice notice botiga-campaign-notice" style="position:relative;">
 			<h3><?php echo wp_kses_post( sprintf(
                 /* Translators: 1. Image url. */
-                __( 'Botiga Black Friday: Up to <span><img src="%1$s" class="botiga-campaign-notice-percent" alt="Up to 40 Percent Off!" /> Off!</span>', 'botiga' ),
-                get_template_directory_uri() . '/assets/img/admin/40-percent.png'
+                __( 'Botiga Easter Sale: Up to <span><img src="%1$s" class="botiga-campaign-notice-percent" alt="Up to 30 Percent Off!" /> Off!</span>', 'botiga' ),
+                get_template_directory_uri() . '/assets/img/admin/30-percent-green.png'
             ) ); ?></h3>
 
-            <a href="https://athemes.com/black-friday/?utm_source=theme_notice&utm_medium=button&utm_campaign=Botiga#botiga-pro" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Give Me This Deal', 'botiga' ); ?></a>
+            <a href="https://athemes.com/pricing/?utm_source=theme_notice&utm_content=easter-notice&utm_medium=button&utm_campaign=Botiga#botiga-pro" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Give Me This Deal', 'botiga' ); ?></a>
 
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/admin/people-trust.png' ); ?>" alt="<?php echo esc_attr__( 'Ready to join 130,000+ WordPress creators who\'ve found their perfect match?', 'botiga' ); ?>" class="botiga-campaign-notice-thumbnail" />
+            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/admin/people-easter.png' ); ?>" alt="<?php echo esc_attr__( 'Ready to join 130,000+ WordPress creators who\'ve found their perfect match?', 'botiga' ); ?>" class="botiga-campaign-notice-thumbnail" />
 
 			<a class="notice-dismiss" href="?page=botiga-dashboard&nag_botiga_disable_campaign_notice=0" style="text-decoration:none;"></a>             
 		</div>
@@ -217,7 +219,7 @@ class Botiga_Campaign_Notice {
 	public function dismiss_notice_handler() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, Universal.Operators.StrictComparisons.LooseEqual
 		if ( isset( $_GET['nag_botiga_disable_campaign_notice'] ) && '0' == $_GET['nag_botiga_disable_campaign_notice'] ) {
-			add_user_meta( get_current_user_id(), 'botiga_disable_review_notice', 'true', true );
+			add_user_meta( get_current_user_id(), 'botiga_disable_easter2025_notice', 'true', true );
 		}
 	}
 }
