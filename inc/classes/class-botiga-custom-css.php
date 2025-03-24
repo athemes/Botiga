@@ -57,7 +57,7 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 				remove_action( 'wp_head', 'wp_custom_css_cb', 101 );
 			}
 
-			add_action( 'customize_save_after', array( $this, 'update_custom_css_file' ) );
+			add_action( 'customize_save_after', array( $this, 'update_custom_css_file_on_customizer_save_after_hook' ) );
 			add_action( 'after_switch_theme', array( $this, 'update_custom_css_file' ) );
 			add_action( 'upgrader_process_complete', array( $this, 'after_theme_update' ), 10, 2 );
 
@@ -78,6 +78,25 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 		 */
 		public function set_update_custom_css_flag() {
 			set_transient( 'botiga_update_custom_css_flag', true, 0 );
+		}
+
+		/**
+		 * Customizer update custom CSS file.
+		 * 
+		 * @return void
+		 */
+		public function update_custom_css_file_on_customizer_save_after_hook() {
+
+			// If the hook 'init' has not been fired yet, set the flag to update the custom CSS file.
+			// This is needed because the customizer_save_after hook might be fired before the init hook in some
+			// situations. E.g when some extra plugin trigger it before the 'init' hook.
+			//
+			// The transient will be then set to true and the custom CSS file will be enqueued to be updated on the next 'init' hook.
+			if ( ! did_action( 'init' ) ) {
+				set_transient( 'botiga_update_custom_css_flag', true, 0 );
+			}
+
+			$this->update_custom_css_file();
 		}
 
 		/**
