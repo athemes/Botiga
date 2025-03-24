@@ -358,7 +358,7 @@ function botiga_quick_view_summary_excerpt( $product = null ) {
 		 */
 		do_action( 'botiga_quick_view_product_excerpt_start' ); ?>
 		<div class="woocommerce-product-details__short-description">
-			<p><?php echo wp_kses_post( $short_description ); ?></p>
+			<p><?php echo wp_kses_post( do_shortcode( $short_description ) ); ?></p>
 		</div>
 		<?php 
 		/**
