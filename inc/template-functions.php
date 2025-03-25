@@ -362,7 +362,7 @@ add_action( 'wp', 'botiga_page_options' );
  */
 function botiga_get_social_network( $social ) {
 
-	$networks = array( 'facebook', 'twitter', 'x.com', 'instagram', 'github', 'linkedin', 'youtube', 'xing', 'flickr', 'dribbble', 'vk', 'weibo', 'vimeo', 'mix', 'behance', 'spotify', 'soundcloud', 'twitch', 'bandcamp', 'etsy', 'pinterest', 'tiktok', 'discord' );
+	$networks = array( 'facebook', 'twitter', 'x.com', 'instagram', 'github', 'linkedin', 'youtube', 'xing', 'flickr', 'dribbble', 'vk', 'weibo', 'vimeo', 'mix', 'behance', 'spotify', 'soundcloud', 'twitch', 'bandcamp', 'etsy', 'pinterest', 'tiktok', 'discord', 'xiaohongshu' );
 
 	foreach ( $networks as $network ) {
 		$found = strpos( $social, $network );
