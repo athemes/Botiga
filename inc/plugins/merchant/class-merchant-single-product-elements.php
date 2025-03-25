@@ -163,7 +163,16 @@ class Botiga_Merchant_Single_Product_Elements {
 		add_action( 'botiga_before_render_single_product_elements', array( $this, 'turn_on_merchant_modules_shortcode_functionality' ) );
 
 		// Some modules like the 'reasons-to-buy' are initialized in the 'wp' hook. So we have to rely on this hook to force the activation from the shortcode mode.
-		add_action( 'wp', array( $this, 'turn_on_merchant_modules_shortcode_functionality_to_specific_modules' ) );
+		add_action( 'wp', array( $this, 'turn_on_merchant_modules_shortcode_functionality_on_wp_hook' ) );
+	}
+
+	/**
+	 * Get the single product gallery layout (from customizer).
+	 * 
+	 * @return string
+	 */
+	public function get_single_product_gallery_layout() {
+		return get_theme_mod( 'single_product_gallery', 'gallery-default' );
 	}
 
 	/**
@@ -173,6 +182,10 @@ class Botiga_Merchant_Single_Product_Elements {
 	 */
 	public function turn_on_merchant_modules_shortcode_functionality() {
 		foreach ( self::$modules_data as $module_id => $module ) {
+			if ( 'gallery-full-width' === $this->get_single_product_gallery_layout() ) {
+				continue;
+			}
+
 			add_filter( "merchant_{$module_id}_is_shortcode_enabled", '__return_true' );
 		}
 	}
@@ -182,9 +195,13 @@ class Botiga_Merchant_Single_Product_Elements {
 	 * 
 	 * @return void
 	 */
-	public function turn_on_merchant_modules_shortcode_functionality_to_specific_modules() {
+	public function turn_on_merchant_modules_shortcode_functionality_on_wp_hook() {
 		foreach ( self::$modules_data as $module_id => $module ) {
 			if ( ! in_array( $module_id, array( 'reasons-to-buy' ), true ) ) {
+				continue;
+			}
+
+			if ( 'gallery-full-width' === $this->get_single_product_gallery_layout() ) {
 				continue;
 			}
 
@@ -282,6 +299,10 @@ class Botiga_Merchant_Single_Product_Elements {
 			return $classes;
 		}
 
+		if ( 'gallery-full-width' === $this->get_single_product_gallery_layout() ) {
+			return $classes;
+		}
+
 		$descriptions_map = self::get_module_admin_field_descriptions();
 		if ( ! array_key_exists( $module_id, $descriptions_map ) || ! array_key_exists( $settings['id'], $descriptions_map[ $module_id ] ) ) {
 			return $classes;
@@ -303,6 +324,10 @@ class Botiga_Merchant_Single_Product_Elements {
 	 */
 	public function replace_module_field_description( $desc, $settings, $value, $module_id ) {
 		if ( ! array_key_exists( $module_id, self::$modules_data ) ) {
+			return $desc;
+		}
+
+		if ( 'gallery-full-width' === $this->get_single_product_gallery_layout() ) {
 			return $desc;
 		}
 
