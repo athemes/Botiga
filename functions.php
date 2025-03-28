@@ -539,6 +539,13 @@ if( class_exists( 'WC_EU_VAT_Compliance' ) && class_exists( 'Woocommerce' ) ) {
 }
 
 /**
+ * Load WP Rocket compatibility file.
+ */
+if ( defined( 'WP_ROCKET_VERSION' ) ) {
+	require get_template_directory() . '/inc/plugins/wp-rocket/wp-rocket.php';
+}
+
+/**
  * Upsell.
  */
 if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
