@@ -375,6 +375,13 @@ class Botiga_WP_Rocket {
             self::$used_css_params['rocket_rucss_safelist'][] = '.product-gallery-summary .botiga-trust-badge-wrapper+div';
             self::$used_css_params['rocket_rucss_safelist'][] = '.product-gallery-summary .botiga-reasons-list+div';
             
+            self::$used_css_params['rocket_rucss_safelist'][] = '.product-gallery-summary .woocommerce-product-rating';
+            self::$used_css_params['rocket_rucss_safelist'][] = '.woocommerce-product-rating';
+            self::$used_css_params['rocket_rucss_safelist'][] = '.woocommerce-product-rating .star-rating, .comment_container .star-rating';
+            self::$used_css_params['rocket_rucss_safelist'][] = '.star-rating';
+            self::$used_css_params['rocket_rucss_safelist'][] = '.star-rating span';
+            self::$used_css_params['rocket_rucss_safelist'][] = '.woocommerce-product-rating .woocommerce-review-link';
+
             foreach( self::$theme_areas_selectors as $theme_area => $selectors ) {
                 if ( $theme_area === 'single-product-gallery' ) {
                     self::$used_css_params['rocket_rucss_safelist'] = array_merge( self::$used_css_params['rocket_rucss_safelist'], $selectors );
