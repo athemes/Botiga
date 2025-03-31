@@ -110,6 +110,11 @@ class Botiga_Elementor_Compatibility {
                     padding-left: 15px;
                     padding-right: 15px;
                 }
+
+                .swiper-slide .e-con.e-parent>.e-con-inner {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
             }
 
             @media(max-width: 1024px) {
@@ -138,7 +143,7 @@ class Botiga_Elementor_Compatibility {
                 margin-top: 80px;
             }
 
-            div[data-elementor-type] {
+            div[data-elementor-type]:not(.swiper-slide) {
                 width: 100% !important;
                 max-width: 100% !important;
             }
