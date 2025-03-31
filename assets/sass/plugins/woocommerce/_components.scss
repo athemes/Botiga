@@ -1877,8 +1877,17 @@ dl.variation {
 	}
 }
 
+.botiga-product-video-anchor-link {
+	display: block;
+
+	.botiga-product-video {
+		pointer-events: none;
+	}
+}
+
 .botiga-product-video,
-.botiga-product-audio {
+.botiga-product-audio,
+.botiga-product-video-anchor-link {
 	+ .loop-image-wrap,
 	+ .woocommerce-loop-product__link{
 		display: none !important;
