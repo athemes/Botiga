@@ -141,11 +141,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:602
+#: functions.php:609
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:605
+#: functions.php:612
 msgid "Plugins"
 msgstr ""
 
@@ -1922,16 +1922,12 @@ msgstr ""
 msgid "No notifications found"
 msgstr ""
 
-#: inc/dashboard/html-patcher.php:317
-msgid "Please note that to use this feature you need to install and activate the aThemes Patcher plugin."
-msgstr ""
-
-#: inc/dashboard/html-patcher.php:319
-msgid "Install and Activate aThemes Patcher"
-msgstr ""
-
-#: inc/dashboard/html-patcher.php:354, inc/dashboard/html-products-filter-customization.php:43, inc/dashboard/html-products-filter-filter-presets.php:17, inc/dashboard/html-products-filter-filter-presets.php:21, inc/dashboard/html-products-filter-filter-presets.php:28, inc/dashboard/html-products-filter-filter-presets.php:34, inc/dashboard/html-products-filter-general.php:91, inc/dashboard/html-products-filter-seo.php:69, inc/dashboard/html-templates-builder.php:189, inc/dashboard/html-templates-builder.php:205, inc/dashboard/html-templates-builder.php:221, inc/dashboard/html-templates-builder.php:237, inc/dashboard/html-templates-builder.php:253, inc/dashboard/html-templates-builder.php:269, inc/dashboard/html-templates-builder.php:285, inc/dashboard/html-templates-builder.php:301, inc/dashboard/html-templates-builder.php:317, inc/dashboard/html-templates-builder.php:333, inc/dashboard/html-templates-builder.php:349
+#: inc/dashboard/html-patcher.php:348, inc/dashboard/html-products-filter-customization.php:43, inc/dashboard/html-products-filter-filter-presets.php:17, inc/dashboard/html-products-filter-filter-presets.php:21, inc/dashboard/html-products-filter-filter-presets.php:28, inc/dashboard/html-products-filter-filter-presets.php:34, inc/dashboard/html-products-filter-general.php:91, inc/dashboard/html-products-filter-seo.php:69, inc/dashboard/html-templates-builder.php:189, inc/dashboard/html-templates-builder.php:205, inc/dashboard/html-templates-builder.php:221, inc/dashboard/html-templates-builder.php:237, inc/dashboard/html-templates-builder.php:253, inc/dashboard/html-templates-builder.php:269, inc/dashboard/html-templates-builder.php:285, inc/dashboard/html-templates-builder.php:301, inc/dashboard/html-templates-builder.php:317, inc/dashboard/html-templates-builder.php:333, inc/dashboard/html-templates-builder.php:349
 msgid "This is only available on Botiga Pro"
+msgstr ""
+
+#: inc/dashboard/html-patcher.php:344
+msgid "This will install and activate the aThemes Patcher plugin"
 msgstr ""
 
 #: inc/dashboard/html-products-filter-customization.php:3
@@ -2071,15 +2067,15 @@ msgid "Start from scratch and design a custom template tailored to your specific
 msgstr ""
 
 #. translators: 1. Image url.
-#: inc/notices/class-botiga-campaign.php:200
-msgid "Botiga Black Friday: Up to <span><img src=\"%1$s\" class=\"botiga-campaign-notice-percent\" alt=\"Up to 40 Percent Off!\" /> Off!</span>"
-msgstr ""
-
-#: inc/notices/class-botiga-campaign.php:204
-msgid "Give Me This Deal"
+#: inc/notices/class-botiga-campaign.php:202
+msgid "Botiga Easter Sale: Up to <span><img src=\"%1$s\" class=\"botiga-campaign-notice-percent\" alt=\"Up to 30 Percent Off!\" /> Off!</span>"
 msgstr ""
 
 #: inc/notices/class-botiga-campaign.php:206
+msgid "Give Me This Deal"
+msgstr ""
+
+#: inc/notices/class-botiga-campaign.php:208
 msgid "Ready to join 130,000+ WordPress creators who've found their perfect match?"
 msgstr ""
 
@@ -3813,19 +3809,19 @@ msgstr ""
 msgid "Vendor Dashboard"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:173
+#: inc/plugins/elementor/elementor.php:178
 msgid "Fade In Up Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:174
+#: inc/plugins/elementor/elementor.php:179
 msgid "Fade In Down Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:175
+#: inc/plugins/elementor/elementor.php:180
 msgid "Fade In Left Shorter"
 msgstr ""
 
-#: inc/plugins/elementor/elementor.php:176
+#: inc/plugins/elementor/elementor.php:181
 msgid "Fade In Right Shorter"
 msgstr ""
 
@@ -4401,21 +4397,21 @@ msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:449
+#: inc/plugins/woocommerce/features/quick-view.php:463
 msgid "SKU:"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:449
+#: inc/plugins/woocommerce/features/quick-view.php:463
 msgid "N/A"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:453
+#: inc/plugins/woocommerce/features/quick-view.php:467
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:455
+#: inc/plugins/woocommerce/features/quick-view.php:469
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""
