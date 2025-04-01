@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.2.18' );
+	define( 'BOTIGA_VERSION', '2.3.0' );
 }
 
 // aThemes White Label Compatibility
@@ -536,6 +536,13 @@ if( class_exists( 'WooCommerce_Germanized' ) && class_exists( 'Woocommerce' ) ) 
  */
 if( class_exists( 'WC_EU_VAT_Compliance' ) && class_exists( 'Woocommerce' ) ) {
 	require get_template_directory() . '/inc/plugins/woocommerce-eu-vat-compliance-premium/class-woocommerce-eu-vat-compliance-premium.php';
+}
+
+/**
+ * Load WP Rocket compatibility file.
+ */
+if ( defined( 'WP_ROCKET_VERSION' ) ) {
+	require get_template_directory() . '/inc/plugins/wp-rocket/wp-rocket.php';
 }
 
 /**

@@ -1348,11 +1348,16 @@ class Botiga_Header_Footer_Builder {
         foreach ( $devices as $device => $media ) {
             $mod = get_theme_mod( $setting . '_' . $device, $defaults[$device] );
             $mod = self::convert_column_css_value( $mod );
-
+            
             if( $row && $column ) {
                 
                 // Get 'Inner Layout' to check and convert according to its value.
                 $inner_layout = get_theme_mod( $column . '_inner_layout' . '_' . $device, $default );
+
+                // Inline.
+                if ( $inner_layout === 'inline' ) {
+                    $new_css_prop = $css_prop;
+                }
 
                 // Stack.
                 if( $inner_layout === 'stack' ) {
@@ -1375,7 +1380,6 @@ class Botiga_Header_Footer_Builder {
                 } elseif( $css_prop === 'margin-top' ) {
                     $new_css_prop = 'margin-left';
                 }
-                
             }
 
             if( ! $unit ) {
