@@ -35,12 +35,6 @@
         "phpcompatibility/phpcompatibility-wp": "*"
     },
     "config": {
-        "vendor-dir": "vendor",
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "platform": {
-            "php": "7.4"
-        },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
