@@ -47,8 +47,8 @@ jobs:
         with:
           composer-options: -q -n -a --no-progress --prefer-dist
 
-      # - name: Manually set PHPCS standard paths
-      #   run: vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs,vendor/phpcompatibility/phpcompatibility-wp,vendor/woocommerce/woocommerce-sniffs
+      - name: Manually set PHPCS standard paths
+        run: vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs,vendor/phpcompatibility/phpcompatibility-wp,vendor/woocommerce/woocommerce-sniffs
 
       - name: Debug PHPCS standards installed
         run: vendor/bin/phpcs -i
