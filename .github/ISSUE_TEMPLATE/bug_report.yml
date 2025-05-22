@@ -1,0 +1,51 @@
+name: "\U0001F41E Bug Report"
+description: Found a bug? Please fill in the report below to help us improve
+labels: bug
+body:
+  - type: textarea
+    id: current_behaviour
+    attributes:
+      label: Current Behavior
+      description: Describe what happens when you encounter the issue. Feel free to include errors or attachments to highlight the incorrect behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behaviour
+    attributes:
+      label: Expected Behavior
+      description: Outline the intended behavior of the functionality.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        List the steps needed to replicate the issue, including relevant links, code snippets, etc.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: athemesblocks_version_is
+    attributes:
+      label: Environment Where the Issue is Reproducible
+      description: Specify the aThemes Blocks Core version or branch where the issue occurs.
+      placeholder: e.g. Core 1.8.4 or Core 1.8.5 (develop).
+    validations:
+      required: false
+  - type: input
+    id: athemesblocks_version_is_not
+    attributes:
+      label: Environment Where the Issue is NOT Reproducible
+      description: Specify the aThemes Blocks Core version, or branch where the issue is NOT present.
+      placeholder: e.g. Core 1.8.4 or Core 1.8.5 (develop).
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes & Attachments
+      description: Share any extra details or attachments that might help, such as a suggested fix, related HelpScout ticket, or end-to-end test references.
