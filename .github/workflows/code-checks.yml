@@ -31,9 +31,6 @@ jobs:
       - name: Validate composer.json
         run: composer validate
 
-      - name: show files
-        run: ls -la
-
       - name: Cache Composer dependencies
         id: composer-cache
         uses: actions/cache@v3
@@ -46,6 +43,7 @@ jobs:
             composer-${{ runner.os }}-
 
       - name: Install Composer dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
         uses: ramsey/composer-install@v2
         with:
           composer-options: -q -n -a --no-progress --prefer-dist
