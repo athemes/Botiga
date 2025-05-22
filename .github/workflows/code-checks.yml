@@ -34,22 +34,8 @@ jobs:
       - name: show files
         run: ls -la
 
-      - name: Cache Composer dependencies
-        id: composer-cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.composer/cache
-            vendor
-          key: composer-${{ runner.os }}-${{ hashFiles('composer.json') }}
-          restore-keys: |
-            composer-${{ runner.os }}-
-
       - name: Install Composer dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        uses: ramsey/composer-install@v2
-        with:
-          composer-options: -q -n -a --no-progress --prefer-dist
+        run: composer install -q -n -a --no-progress --prefer-dist
 
       # Run composer script to run php syntax checks.
       - name: Run Check PHP Syntax
