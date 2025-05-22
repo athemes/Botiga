@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef5a2eb41de04e5f408334f771eea220",
+    "content-hash": "000b5712d7f60d55c1f72e4d47234ae5",
     "packages": [
         {
             "name": "wptt/webfont-loader",
@@ -707,8 +707,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "platform-overrides": {
-        "php": "7.4"
-    },
     "plugin-api-version": "2.2.0"
 }
