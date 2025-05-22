@@ -31,7 +31,6 @@ const babel  = require('gulp-babel');
 const rename      = require('gulp-rename');
 const lineec      = require('gulp-line-ending-corrector');
 const filter      = require('gulp-filter');
-const notify      = require('gulp-notify');
 const wpPot       = require('gulp-wp-pot');
 const sort        = require('gulp-sort');
 const cache       = require('gulp-cache');
@@ -44,7 +43,6 @@ const zip         = require('gulp-zip');
  * Custom Error Handler.
  */
 const errorHandler = r => {
-	notify.onError('\n\n❌  ===> ERROR: <%= error.message %>\n')(r);
 	beep();
 };
  
@@ -75,13 +73,7 @@ const styleTasks = config.styles.map((style) => {
 			)
 			.pipe(gulp.dest(style.destination))
 			.pipe(filter('**/*.css'))
-			.pipe(mmq({log: true}))
-			.pipe(
-				notify({
-					message: '\n\n✅  ===> CSS - ' + style.name + ' Expanded — completed!\n',
-					onLast: true
-				})
-			);
+			.pipe(mmq({log: true}));
 	});
 
 	return taskName;
@@ -115,13 +107,7 @@ const styleMinTasks = config.styles.map((style) => {
 			)
 			.pipe(gulp.dest(style.destination))
 			.pipe(filter('**/*.css'))
-			.pipe(mmq({log: true}))
-			.pipe(
-				notify({
-					message: '\n\n✅  ===> CSS - ' + style.name + ' Minified — completed!\n',
-					onLast: true
-				})
-			);
+			.pipe(mmq({log: true}));
 	});
 
 	return taskName;
@@ -162,13 +148,7 @@ const scriptTasks = config.scripts.map((script) => {
 			)
 			.pipe(uglify())
 			.pipe(lineec())
-			.pipe(gulp.dest(script.destination))
-			.pipe(
-				notify({
-					message: '\n\n✅  ===> JS - ' + script.name + ' — completed!\n',
-					onLast: true
-				})
-			);
+			.pipe(gulp.dest(script.destination));
 	});
 
 	return taskName;

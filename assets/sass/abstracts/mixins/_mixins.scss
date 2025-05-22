@@ -7,12 +7,12 @@
 
 // Column width with margin
 @mixin column-width($numberColumns: 3) {
-	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+	width: map-get($columns, $numberColumns) - ( calc(($columns--margin * ($numberColumns - 1)) / $numberColumns) );
 }
 
 @mixin font-size($sizeValue: 1) {
 	font-size: ($sizeValue) * 1px;
-	font-size: ($sizeValue / 16) * 1rem;	
+	font-size: calc($sizeValue / 16) * 1rem;	
 }
 
 @mixin valign {
