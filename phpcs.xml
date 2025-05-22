@@ -8,9 +8,6 @@
 
     <!-- Include paths -->
     <file>inc</file>
-    <file>admin</file>
-    <file>templates</file>
-    <file>merchant.php</file>
 
     <!-- Exclude paths -->
     <exclude-pattern>tests/</exclude-pattern>
