@@ -11,7 +11,7 @@ on:
 jobs:
   # Run php tests.
   php-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     strategy:
       matrix:
