@@ -58,6 +58,7 @@ const styleTasks = config.styles.map((style) => {
 			.pipe(plumber(errorHandler))
 			.pipe(
 				sass({
+					silenceDeprecations: ['import', 'legacy-js-api'],
 					errLogToConsole: config.errLogToConsole,
 					outputStyle: 'expanded',
 					precision: config.precision
@@ -91,6 +92,7 @@ const styleMinTasks = config.styles.map((style) => {
 			.pipe(plumber(errorHandler))
 			.pipe(
 				sass({
+					silenceDeprecations: ['import', 'legacy-js-api'],
 					errLogToConsole: config.errLogToConsole,
 					outputStyle: 'compressed',
 					precision: config.precision
