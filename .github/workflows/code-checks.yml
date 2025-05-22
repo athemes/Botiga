@@ -31,6 +31,9 @@ jobs:
       - name: Validate composer.json
         run: composer validate
 
+      - name: show files
+        run: ls -la
+
       - name: Cache Composer dependencies
         id: composer-cache
         uses: actions/cache@v3
@@ -46,9 +49,6 @@ jobs:
         uses: ramsey/composer-install@v2
         with:
           composer-options: -q -n -a --no-progress --prefer-dist
-
-      - name: Debug PHPCS standards installed
-        run: vendor/bin/phpcs -i
 
       # Run composer script to run php syntax checks.
       - name: Run Check PHP Syntax
