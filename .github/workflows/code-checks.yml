@@ -48,6 +48,9 @@ jobs:
         with:
           composer-options: -q -n -a --no-progress --prefer-dist
 
+      - name: Debug PHPCS standards installed
+        run: vendor/bin/phpcs -i
+
       # Run composer script to run php syntax checks.
       - name: Run Check PHP Syntax
         run: composer phpcs:fix
