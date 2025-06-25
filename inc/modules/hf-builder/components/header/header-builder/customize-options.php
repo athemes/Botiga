@@ -437,8 +437,8 @@ if( ! defined( 'BOTIGA_AWL_ACTIVE' ) && ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 					esc_html__( 'Polylang/WPML language switcher component', 'botiga' )
 				),
 				'section'       => 'botiga_section_hb_wrapper',
-				'button_link' => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_content=header_builder&utm_medium=button&utm_campaign=Botiga',
-				'all_features_link' => 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_content=header_builder_all_features&utm_medium=button&utm_campaign=Botiga#see-all-features',
+				'button_link' => botiga_upgrade_link( 'theme_customizer_deep', 'Header Builder Upgrade Button' ),
+				'all_features_link' => botiga_upgrade_link( 'theme_customizer_deep', 'Header Builder All Features Link', '#see-all-features' ),
 				'priority'      => 999
 			)
 		) 

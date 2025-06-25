@@ -300,7 +300,7 @@ wp_enqueue_script( 'botiga-plugin-installer' );
                 <svg height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title/><path d="M85.57,446.25H426.43a32,32,0,0,0,28.17-47.17L284.18,82.58c-12.09-22.44-44.27-22.44-56.36,0L57.4,399.08A32,32,0,0,0,85.57,446.25Z" fill="none" stroke="#000" stroke-linecap="rounded" stroke-width="32" stroke-linejoin="round" /><path d="M250.26,195.39l5.74,122,5.73-121.95a5.74,5.74,0,0,0-5.79-6h0A5.74,5.74,0,0,0,250.26,195.39Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" /><path d="M256,397.25a20,20,0,1,1,20-20A20,20,0,0,1,256,397.25Z"/></svg>
             </div>
             <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note this feature is available only in Botiga Pro', 'botiga' ); ?></p>
-            <a href="https://athemes.com/botiga-upgrade?utm_source=athemes-patcher&utm_medium=link&utm_campaign=Botiga" class="botiga-dashboard-external-link" target="_blank">
+            <a href="<?php echo esc_url( botiga_upgrade_link( 'athemes-patcher' ) ); ?>" class="botiga-dashboard-external-link" target="_blank">
                 <?php echo esc_html__( 'Upgrade Now', 'botiga' ); ?>
 
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -341,11 +341,11 @@ wp_enqueue_script( 'botiga-plugin-installer' );
                             <td>Improved performance when loading custom assets during page transitions.</td>
                             <td>
                                 <?php if ( defined( 'BOTIGA_PRO_VERSION' ) && ! defined( 'ATHEMES_PATCHER_VERSION' ) ) : ?>
-                                    <a class="components-button has-lock-icon css-adm54n botiga-dashboard-pro-tooltip botiga-install-plugin" href="https://athemes.com/botiga-upgrade?utm_source=athemes-patcher&utm_medium=link&utm_campaign=Botiga" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This will install and activate the aThemes Patcher plugin', 'botiga' ); ?>" data-type="external" data-plugin-url="https://patcher.athemes.com/athemes-patcher.zip?nocache=<?php echo esc_attr( time() ); ?>" data-plugin-name="athemes-patcher/athemes-patcher.php" data-redirect-to="<?php echo esc_url( add_query_arg('page', 'athemes-patcher-bp', admin_url('admin.php')) ); ?>">
+                                    <a class="components-button has-lock-icon css-adm54n botiga-dashboard-pro-tooltip botiga-install-plugin" href="<?php echo esc_url( botiga_upgrade_link( 'athemes-patcher' ) ); ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This will install and activate the aThemes Patcher plugin', 'botiga' ); ?>" data-type="external" data-plugin-url="https://patcher.athemes.com/athemes-patcher.zip?nocache=<?php echo esc_attr( time() ); ?>" data-plugin-name="athemes-patcher/athemes-patcher.php" data-redirect-to="<?php echo esc_url( add_query_arg('page', 'athemes-patcher-bp', admin_url('admin.php')) ); ?>">
                                         Install Patcher
                                     </a>
                                 <?php else : ?>
-                                    <a class="components-button has-lock-icon css-adm54n botiga-dashboard-pro-tooltip" href="https://athemes.com/botiga-upgrade?utm_source=athemes-patcher&utm_medium=link&utm_campaign=Botiga" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
+                                    <a class="components-button has-lock-icon css-adm54n botiga-dashboard-pro-tooltip" href="<?php echo esc_url( botiga_upgrade_link( 'athemes-patcher' ) ); ?>" target="_blank" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>">
                                         Apply
                                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="48" height="48" aria-hidden="true" focusable="false"><path d="M17 10h-1.2V7c0-2.1-1.7-3.8-3.8-3.8-2.1 0-3.8 1.7-3.8 3.8v3H7c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-8c0-.6-.4-1-1-1zM9.8 7c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2v3H9.8V7zm6.7 11.5h-9v-7h9v7z"></path></svg>
                                     </a>

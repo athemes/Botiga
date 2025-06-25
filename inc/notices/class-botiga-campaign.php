@@ -203,7 +203,7 @@ class Botiga_Campaign_Notice {
                 get_template_directory_uri() . '/assets/img/admin/30-percent-green.png'
             ) ); ?></h3>
 
-            <a href="https://athemes.com/pricing/?utm_source=theme_notice&utm_content=easter-notice&utm_medium=button&utm_campaign=Botiga#botiga-pro" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Give Me This Deal', 'botiga' ); ?></a>
+            <a href="<?php echo esc_url( botiga_upgrade_link( 'theme_notice', 'Easter Campaign Deal Button', '#botiga-pro' ) ); ?>" class="botiga-btn botiga-btn-primary" target="_blank"><?php esc_html_e( 'Give Me This Deal', 'botiga' ); ?></a>
 
             <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/admin/people-easter.png' ); ?>" alt="<?php echo esc_attr__( 'Ready to join 130,000+ WordPress creators who\'ve found their perfect match?', 'botiga' ); ?>" class="botiga-campaign-notice-thumbnail" />
 

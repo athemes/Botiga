@@ -396,6 +396,7 @@ function botiga_admin_scripts() {
 			'confirmMessage' => __( 'Are you sure you want to dismiss this notice?', 'botiga' ),
 			'errorMessage' => __( 'It was not possible complete the request, please reload the page and try again.', 'botiga' ),
 		),
+		'customizer_upgrade_link_with_utm_content_markup' => botiga_upgrade_link( 'theme_customizer', '{{utm_content}}' ),
 	) );
 }
 add_action( 'admin_enqueue_scripts', 'botiga_admin_scripts' );
