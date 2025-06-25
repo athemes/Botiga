@@ -186,14 +186,14 @@ function botiga_get_first_theme_version() {
 function botiga_utm_link( $link, $medium, $content = '', $term = '', $hashtag = '' ) {
 	$mounted_link = add_query_arg(
 		array_filter(
-			[
+			array(
 				'utm_campaign' => defined( 'BOTIGA_PRO_VERSION' ) ? 'botiga-pro' : 'botiga-free',
 				'utm_source'   => strpos( $link, 'https://athemes.com' ) === 0 ? 'WordPress' : 'botiga',
 				'utm_medium'   => rawurlencode( $medium ),
 				'utm_content'  => rawurlencode( $content ),
 				'utm_term'     => rawurlencode( $term ),
 				'utm_locale'   => sanitize_key( get_locale() ),
-			]
+			)
 		),
 		$link
 	);
@@ -210,7 +210,7 @@ function botiga_utm_link( $link, $medium, $content = '', $term = '', $hashtag = 
  *
  * @return string
  */
-function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {	
+function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {
 	$url = 'https://athemes.com/botiga-upgrade/';
 
 	if ( defined( 'BOTIGA_PRO_VERSION' ) ) {
@@ -223,11 +223,21 @@ function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {
 		);
 	}
 
+	/**
+	 * Filter the upgrade link medium.
+	 *
+	 * @since 2.3.1
+	 * 
+	 * @param string $medium Upgrade link medium.
+	 * @return string
+	 */
 	$upgrade = botiga_utm_link( $url, apply_filters( 'botiga_upgrade_link_medium', $medium ), $content, '', $hashtag );
 
 	/**
 	 * Filter the upgrade link.
 	 *
+	 * @since 2.3.1
+	 * 
 	 * @param string $upgrade Upgrade links.
 	 */
 	return apply_filters( 'botiga_upgrade_link', $upgrade );

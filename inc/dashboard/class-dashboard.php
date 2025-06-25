@@ -242,14 +242,14 @@ class Botiga_Dashboard
             #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="admin.php?page=botiga-dashboard"] {
                 display: none;
             }
-            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="<?php echo botiga_upgrade_link( 'theme_submenu_page' ); ?>"] {
+            #adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="<?php echo esc_url( botiga_upgrade_link( 'theme_submenu_page' ) ); ?>"] {
                 background-color: green;
                 color: #FFF;
             }
         </style>
         <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
-                const botigaUpsellMenuItem = document.querySelector( '#adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="<?php echo botiga_upgrade_link( 'theme_submenu_page' ); ?>"]' );
+                const botigaUpsellMenuItem = document.querySelector( '#adminmenu .toplevel_page_botiga-dashboard .wp-submenu a[href="<?php echo esc_url( botiga_upgrade_link( 'theme_submenu_page' ) ); ?>"]' );
 
                 if ( ! botigaUpsellMenuItem ) {
                     return;
