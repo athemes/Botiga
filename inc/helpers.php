@@ -206,7 +206,7 @@ function botiga_utm_link( $link, $medium, $content = '', $term = '', $hashtag = 
  *
  * @param string $medium  URL parameter: utm_medium.
  * @param string $content URL parameter: utm_content.
- * @param string $hashtag URL parameter: utm_term.
+ * @param string $hashtag URL hashtag.
  *
  * @return string
  */
