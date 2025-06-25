@@ -229,7 +229,6 @@ function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {
 	 * @since 2.3.1
 	 * 
 	 * @param string $medium Upgrade link medium.
-	 * @return string
 	 */
 	$upgrade = botiga_utm_link( $url, apply_filters( 'botiga_upgrade_link_medium', $medium ), $content, '', $hashtag );
 
@@ -238,7 +237,7 @@ function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {
 	 *
 	 * @since 2.3.1
 	 * 
-	 * @param string $upgrade Upgrade links.
+	 * @param string $upgrade Upgrade link.
 	 */
 	return apply_filters( 'botiga_upgrade_link', $upgrade );
 }
