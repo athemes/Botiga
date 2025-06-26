@@ -73,7 +73,7 @@ final class Botiga_Customize_Upsell {
 				'botiga_upsell',
 				array(
 					'pro_text' => esc_html__( 'View Pro Features',  'botiga' ),
-					'pro_url'  => 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer&utm_content=view_pro_features&utm_medium=botiga_customizer&utm_campaign=Botiga',
+					'pro_url'  => botiga_upgrade_link( 'theme_customizer', 'View Pro Features Button' ),
 					'priority' => -999,
 				)
 			)

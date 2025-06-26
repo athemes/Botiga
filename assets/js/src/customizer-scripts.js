@@ -73,8 +73,10 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
 	$( '.control-section-botiga-section-upsell, .control-panel-botiga-panel-upsell' ).on( 'click', function() {
 		const feature = $( this ).data( 'feature' );
-
-		window.open( 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer&utm_content='+ feature +'&utm_medium=botiga_customizer&utm_campaign=Botiga', '_blank' );
+		const decodedUpgradeLink = decodeURIComponent( botigaadm.customizer_upgrade_link_with_utm_content_markup );
+		const url = decodedUpgradeLink.replace( '{{utm_content}}', feature );
+		
+		window.open( url, '_blank' );
 	} );
 });
 

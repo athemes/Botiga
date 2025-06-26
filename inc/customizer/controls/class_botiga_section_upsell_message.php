@@ -20,11 +20,12 @@ class Botiga_Section_Upsell_Message extends WP_Customize_Section {
 	public $display_thumb = false;
 	public $features_list = array();
 	public $button_text   = '';
-	public $button_link   = 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga';
+	public $button_link   = '';
 
     public function __construct( $wp_customize, $id, $args = array(), $options = array() ) {
 		parent::__construct( $wp_customize, $id, $args );
 
+		$this->button_link = botiga_upgrade_link( 'theme_customizer_deep' );
         $this->button_text = esc_html__( 'Upgrade Now', 'botiga' );
 	}
 

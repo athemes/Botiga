@@ -169,3 +169,75 @@ function botiga_is_page_loaded_by_builders() {
 function botiga_get_first_theme_version() {
 	return get_option( 'botiga-first-theme-version' ) ? get_option( 'botiga-first-theme-version' ) : false;
 }
+
+/**
+ * Add UTM tags to a link that allows detecting traffic sources for our or partners' websites.
+ *
+ * @param string $link    Link to which you need to add UTM tags.
+ * @param string $medium  The page or location description. Check your current page and try to find
+ *                        and use an already existing medium for links otherwise, use a page name.
+ * @param string $content The feature's name, the button's content, the link's text, or something
+ *                        else that describes the element that contains the link.
+ * @param string $term    Additional information for the content that makes the link more unique.
+ * @param string $hashtag Hash tag to add to the end of the link.
+ *
+ * @return string
+ */
+function botiga_utm_link( $link, $medium, $content = '', $term = '', $hashtag = '' ) {
+	$mounted_link = add_query_arg(
+		array_filter(
+			array(
+				'utm_campaign' => defined( 'BOTIGA_PRO_VERSION' ) ? 'botiga-pro' : 'botiga-free',
+				'utm_source'   => strpos( $link, 'https://athemes.com' ) === 0 ? 'WordPress' : 'botiga',
+				'utm_medium'   => rawurlencode( $medium ),
+				'utm_content'  => rawurlencode( $content ),
+				'utm_term'     => rawurlencode( $term ),
+				'utm_locale'   => sanitize_key( get_locale() ),
+			)
+		),
+		$link
+	);
+
+	return $hashtag ? $mounted_link . $hashtag : $mounted_link;
+}
+
+/**
+ * Upgrade a link used within the various admin pages.
+ *
+ * @param string $medium  URL parameter: utm_medium.
+ * @param string $content URL parameter: utm_content.
+ * @param string $hashtag URL hashtag.
+ *
+ * @return string
+ */
+function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {
+	$url = 'https://athemes.com/botiga-upgrade/';
+
+	if ( defined( 'BOTIGA_PRO_VERSION' ) ) {
+		$license_key = get_option( 'botiga_pro_license_key' );
+
+		$url = add_query_arg(
+			'license_key',
+			sanitize_text_field( $license_key ),
+			'https://athemes.com/theme/botiga/'
+		);
+	}
+
+	/**
+	 * Filter the upgrade link medium.
+	 *
+	 * @since 2.3.1
+	 * 
+	 * @param string $medium Upgrade link medium.
+	 */
+	$upgrade = botiga_utm_link( $url, apply_filters( 'botiga_upgrade_link_medium', $medium ), $content, '', $hashtag );
+
+	/**
+	 * Filter the upgrade link.
+	 *
+	 * @since 2.3.1
+	 * 
+	 * @param string $upgrade Upgrade link.
+	 */
+	return apply_filters( 'botiga_upgrade_link', $upgrade );
+}
