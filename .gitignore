@@ -11,3 +11,4 @@ node_modules
 assets/css
 assets/js/**/*.js
 !assets/js/src/**/*.js
+composer.lock

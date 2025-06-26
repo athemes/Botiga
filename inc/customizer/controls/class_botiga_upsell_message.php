@@ -23,14 +23,17 @@ class Botiga_Upsell_Message extends WP_Customize_Control {
 	public $features_list = array();
 	public $features_list_last_item_text = array();
 	public $button_text   = '';
-	public $button_link   = 'https://athemes.com/botiga-upgrade?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga';
-	public $all_features_link = 'https://athemes.com/theme/botiga/?utm_source=theme_customizer_deep&utm_medium=button&utm_campaign=Botiga#see-all-features';
+	public $button_link   = '';
+	public $all_features_link = '';
 
 	/**
 	 * Constructor
 	 */
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 		parent::__construct( $manager, $id, $args );
+
+		$this->button_link = botiga_upgrade_link( 'theme_customizer_deep' );
+		$this->all_features_link = botiga_upgrade_link( 'theme_customizer_deep', '', '#see-all-features' );
 
 		$this->button_text = esc_html__( 'Upgrade to Botiga Pro', 'botiga' );
 

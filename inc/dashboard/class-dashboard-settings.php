@@ -43,9 +43,9 @@ function botiga_dashboard_settings() {
 	//
 	// Upgrade to Pro.
 	//
-	$settings['upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
-	$settings['tb_upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=templates_builder&utm_medium=link&utm_campaign=Botiga';
-	$settings['pf_upgrade_pro'] = 'https://athemes.com/botiga-upgrade?utm_source=product_filters&utm_medium=link&utm_campaign=Botiga';
+	$settings['upgrade_pro'] = botiga_upgrade_link( 'theme_info' );
+	$settings['tb_upgrade_pro'] = botiga_upgrade_link( 'templates_builder' );
+	$settings['pf_upgrade_pro'] = botiga_upgrade_link( 'product_filters' );
 
 	//
 	// Promo.
@@ -53,7 +53,7 @@ function botiga_dashboard_settings() {
 	$settings['promo_title']  = esc_html__('Upgrade to Pro', 'botiga');
 	$settings['promo_desc']   = esc_html__('Take Botiga to a whole other level by upgrading to the Pro version.', 'botiga');
 	$settings['promo_button'] = esc_html__('Discover Botiga Pro', 'botiga');
-	$settings['promo_link']   = 'https://athemes.com/botiga-upgrade?utm_source=theme_info&utm_medium=link&utm_campaign=Botiga';
+	$settings['promo_link']   = botiga_upgrade_link( 'theme_info' );
 
 	//
 	// Review.
@@ -70,7 +70,7 @@ function botiga_dashboard_settings() {
 	// Support.
 	//
 	$settings['support_link']     = 'https://athemes.com/support/';
-	$settings['support_pro_link'] = 'https://athemes.com/botiga-upgrade?utm_source=theme_support&utm_medium=button&utm_campaign=Botiga';
+	$settings['support_pro_link'] = botiga_upgrade_link( 'theme_support' );
 
 	//
 	// Community.
@@ -882,7 +882,7 @@ function botiga_demos_settings($settings) {
 	// Pro.
 	$settings['has_pro']   = false;
 	$settings['pro_label'] = esc_html__('Get Pro', 'botiga');
-	$settings['pro_link']  = 'https://athemes.com/botiga-upgrade/?utm_source=theme_table&utm_medium=button&utm_campaign=Botiga';
+	$settings['pro_link']  = botiga_upgrade_link( 'theme_table' );
 
 	return $settings;
 }

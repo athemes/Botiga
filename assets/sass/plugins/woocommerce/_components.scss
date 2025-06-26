@@ -194,11 +194,12 @@
 
 .quantity-button-style4 {
 	.quantity {
+		border-width: 1px;
+		
 		@media(min-width: 1025px) {
 			width: 40%;
 		}
 
-		border-width: 1px;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
@@ -220,10 +221,10 @@
 
 .quantity-button-style5 {
 	.quantity {
+		border: none;
 		@media(min-width: 1025px) {
 			width: 40%;
 		}
-		border: none;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
@@ -240,10 +241,10 @@
 
 .quantity-button-style6 {
 	.quantity {
+		border: none;
 		@media(min-width: 1025px) {
 			width: 50%;
 		}
-		border: none;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
@@ -282,10 +283,10 @@
 
 .quantity-button-style7 {
 	.quantity {
+		border-width: 1px;
 		@media(min-width: 1025px) {
 			width: 22%;
 		}
-		border-width: 1px;
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			width: 22px;
@@ -317,11 +318,13 @@
 
 .quantity-button-style8 {
 	.quantity {
+		padding: 5px;
+		border-width: 1px;
+		
 		@media(min-width: 1025px) {
 			width: 40%;
 		}
-		padding: 5px;
-		border-width: 1px;
+
 		.botiga-quantity-plus,
 		.botiga-quantity-minus {
 			font-size: 1.4rem;
