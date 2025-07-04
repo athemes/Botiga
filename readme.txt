@@ -7,7 +7,7 @@ Requires at least: 5.4
 Version: 2.3.1
 Tested up to: 6.8
 Requires PHP: 7
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.3.2 =
+Fixed - Customizer tabs not working due to changes in HTML structure.
+
 = 2.3.1 =
 Added - Wrapper function for UTM links.
 
