@@ -24,7 +24,7 @@
         "gulp-line-ending-corrector": "^1.0.1",
         "gulp-merge-media-queries": "^0.2.1",
         "gulp-newer": "^1.4.0",
-        "gulp-notify": "^3.0.0",
+        "gulp-notify": "^5.0.0",
         "gulp-once": "^2.1.1",
         "gulp-plumber": "^1.2.0",
         "gulp-remember": "^1.0.1",
