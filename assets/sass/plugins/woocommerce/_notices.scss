@@ -48,6 +48,15 @@
             margin-inline-end: 0;
 			margin-inline-start: 15px;
 		}
+
+		.woocommerce-message {
+			display: flex;
+			align-content: center;
+			flex-wrap: nowrap;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
     }
 
     &.no-single-breadcrumbs {
