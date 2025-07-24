@@ -4,7 +4,7 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.3.1
+Version: 2.3.3
 Tested up to: 6.8
 Requires PHP: 7
 Stable tag: 2.3.2
@@ -30,6 +30,12 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.3.3 =
+Fixed - Resolved issue where range slider controls were affected by the header builder.
+Fixed - Main header row bottom border now supports solid color properly.
+Fixed - Fixed inconsistent resizing of the search button in the main header row.
+Fixed - Corrected default WooCommerce cart notice alignment issue.
+
 = 2.3.2 =
 Fixed - Customizer tabs not working due to changes in HTML structure.
 

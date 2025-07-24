@@ -42,7 +42,7 @@
             this.headerPresets();
 
             this.extraNavigation();
-            
+
 
             this.showHideBuilder();
             this.showHideBuilderTop();
@@ -359,11 +359,11 @@
 
             $( document ).on( 'click', '.botiga-bhfb-area:not(.bhfb-available-components)', function(e){
 
-                const 
+                const
                     popup = _this.currentBuilder.find( '#botiga-bhfb-elements' ),
                     rect  = $(this)[0].getBoundingClientRect(),
                     row   = $(this).data( 'bhfb-row' );
-                    
+
                 setTimeout(function(){
                     popup.css( 'top', 0 );
                     popup.css( 'left', rect.left );
@@ -389,19 +389,15 @@
             } );
 
             $( '#customize-preview iframe' ).on( 'mouseup', function(e) {
-                if( ! _this.currentBuilder ) {
-                    return false;
+                if( _this.currentBuilder ) {
+                    _this.closeElementsPopup(e);
                 }
-
-                _this.closeElementsPopup(e);
             } );
 
             $( document ).on( 'mouseup', function(e){
-                if( ! _this.currentBuilder ) {
-                    return false;
+                if( _this.currentBuilder ) {
+                    _this.closeElementsPopup(e);
                 }
-
-                _this.closeElementsPopup(e);
             } );
 
         },
